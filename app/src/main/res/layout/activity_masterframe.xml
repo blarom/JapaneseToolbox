@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:context="com.japanesetoolbox.MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background1"
+        android:layout_marginBottom="0dp" >
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/InputQueryPlaceholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/FunctionFragmentsPlaceholder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/InputQueryPlaceholder"
+        android:layout_alignParentLeft="true" >
+    </FrameLayout>
+
+    <!--
+        <FrameLayout
+            android:id="@+id/translator_placeholder3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/translator_placeholder1"
+            android:layout_alignParentLeft="true" >
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/translator_placeholder4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/translator_placeholder1"
+            android:layout_alignParentLeft="true" >
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/translator_placeholder5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/translator_placeholder1"
+            android:layout_alignParentLeft="true" >
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/translator_placeholder6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/translator_placeholder1"
+            android:layout_alignParentLeft="true" >
+        </FrameLayout>
+     -->
+
+</RelativeLayout>
+

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="6dp" >
+
+    <TextView
+        android:id="@+id/ResultDisplay_ExtraKeywords"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:text="@string/NoStringResult"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp"
+        android:textIsSelectable="true" />
+
+    <TextView
+        android:id="@+id/ResultDisplay_ExplanationX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/NoStringResult"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:layout_marginBottom="4dp"
+        android:textIsSelectable="true" />
+
+
+    <TextView
+        android:id="@+id/ResultDisplay_RuleX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/NoStringResult"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:textIsSelectable="true" />
+   
+    <TextView
+        android:id="@+id/ResultDisplay_Example_English"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:text="@string/NoStringResult"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#000000"
+        android:textSize="14sp"
+		android:textIsSelectable="true" />
+
+    <TextView
+        android:id="@+id/ResultDisplay_Example_Romaji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:text="@string/NoStringResult"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#777777"
+        android:textSize="14sp"
+        android:textStyle="italic"
+		android:textIsSelectable="true" />
+
+    <TextView
+        android:id="@+id/ResultDisplay_Example_Kanji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:text="@string/NoStringResult"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#0000FF"
+        android:textSize="14sp"
+		android:textIsSelectable="true" />
+    
+    <TextView
+        android:id="@+id/ResultDisplay_Opposite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:text="@string/NoStringResult"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#009900"
+        android:textSize="14sp"
+		android:textIsSelectable="true" />
+    
+    <TextView
+        android:id="@+id/ResultDisplay_Synonym"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:text="@string/NoStringResult"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#009900"
+        android:textSize="14sp"
+		android:textIsSelectable="true" />
+
+		        
+</LinearLayout>

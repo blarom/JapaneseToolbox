@@ -1,0 +1,137 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_grammarmodule"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.japanesetoolbox.MainMenuActivity$PlaceholderFragment" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="9dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/conversion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|left"
+            android:text="@string/Conversion"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#800080"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/conversion_latin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|left"
+                android:text="@string/ConversionLatin"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#0000FF"
+                android:textSize="18sp"
+                android:layout_marginLeft="8dp"
+                android:textStyle="bold"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:id="@+id/Result_latin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/EmptyResult"
+                android:layout_gravity="center_horizontal|left"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#0000FF"
+                android:textSize="18sp"
+                android:layout_marginLeft="6dp"
+                android:textStyle="bold"
+                android:textIsSelectable="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/conversion_hiragana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|left"
+                android:text="@string/ConversionHiragana"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#0000FF"
+                android:textSize="18sp"
+                android:layout_marginLeft="8dp"
+                android:textStyle="bold"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:id="@+id/Result_hiragana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/EmptyResult"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#0000FF"
+                android:textSize="18sp"
+                android:layout_marginLeft="25dp"
+                android:textStyle="bold"
+                android:textIsSelectable="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/conversion_katakana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|left"
+                android:text="@string/ConversionKatakana"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#0000FF"
+                android:textSize="18sp"
+                android:layout_marginLeft="8dp"
+                android:textStyle="bold"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:id="@+id/Result_katakana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/EmptyResult"
+                android:layout_gravity="center_horizontal|left"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#0000FF"
+                android:textSize="18sp"
+                android:layout_marginLeft="22dp"
+                android:textStyle="bold"
+                android:textIsSelectable="true" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/TransliteratorHint"
+        android:id="@+id/Hint"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_alignParentRight="true"
+        android:background="#BFFFFFFF"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>
