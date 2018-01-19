@@ -27,14 +27,13 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
+import com.japanesetoolboxapp.utiities.GlobalConstants;
+
 public class InputQueryFragment extends Fragment {
-    
-    // Fragment Functions
-		private	String[] output = {"word","","fast"};
- 		//public static View GlobalInputQueryFragment;
-		String[] queryHistory;
-		ArrayList<String> new_queryHistory;
-        //View InputQueryFragment;
+
+    private	String[] output = {"word","","fast"};
+    String[] queryHistory;
+    ArrayList<String> new_queryHistory;
 
     // Fragment Lifecycle Functions
 	 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -103,10 +102,10 @@ public class InputQueryFragment extends Fragment {
                             button_searchByRadical.getBackground().clearColorFilter();
                             button_Decompose.getBackground().clearColorFilter();
 
-                            if (MainActivity.heap_size_before_decomposition_loader < MainActivity.decomposition_min_heap_size) {
+                            if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                                 button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
                             }
-                            if (MainActivity.heap_size_before_searchbyradical_loader < MainActivity.components_min_heap_size) {
+                            if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                                 button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
                             }
 
@@ -146,10 +145,10 @@ public class InputQueryFragment extends Fragment {
                             }.start();
                         }
 
-                        if (MainActivity.heap_size_before_decomposition_loader < MainActivity.decomposition_min_heap_size) {
+                        if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                             button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
                         }
-                        if (MainActivity.heap_size_before_searchbyradical_loader < MainActivity.components_min_heap_size) {
+                        if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                             button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
                         }
 
@@ -182,10 +181,10 @@ public class InputQueryFragment extends Fragment {
                             }.start();
                         }
 
-                        if (MainActivity.heap_size_before_decomposition_loader < MainActivity.decomposition_min_heap_size) {
+                        if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                             button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
                         }
-                        if (MainActivity.heap_size_before_searchbyradical_loader < MainActivity.components_min_heap_size) {
+                        if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                             button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
                         }
 
@@ -204,10 +203,10 @@ public class InputQueryFragment extends Fragment {
                         button_searchByRadical.getBackground().clearColorFilter();
                         button_Decompose.getBackground().clearColorFilter();
 
-                        if (MainActivity.heap_size_before_decomposition_loader < MainActivity.decomposition_min_heap_size) {
+                        if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                             button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
                         }
-                        if (MainActivity.heap_size_before_searchbyradical_loader < MainActivity.components_min_heap_size) {
+                        if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                             button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
                         }
 
@@ -227,10 +226,10 @@ public class InputQueryFragment extends Fragment {
                         button_searchByRadical.getBackground().clearColorFilter();
                         button_Decompose.getBackground().clearColorFilter();
 
-                        if (MainActivity.heap_size_before_decomposition_loader < MainActivity.decomposition_min_heap_size) {
+                        if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                             button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
                         }
-                        if (MainActivity.heap_size_before_searchbyradical_loader < MainActivity.components_min_heap_size) {
+                        if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                             button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
                         }
 
@@ -267,7 +266,7 @@ public class InputQueryFragment extends Fragment {
                         Log.i("Diagnosis Time","Starting radical module.");
 
                         // If the app memory is too low to load the radicals and decomposition databases, make the searchByRadical and Decompose buttons inactive
-                        if (MainActivity.heap_size_before_searchbyradical_loader < MainActivity.components_min_heap_size) {
+                        if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                             Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
                             button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
                         }
@@ -305,10 +304,10 @@ public class InputQueryFragment extends Fragment {
                         Log.i("Diagnosis Time","Starting decomposition module.");
 
                         // If the app memory is too low to load the radicals and decomposition databases, make the searchByRadical and Decompose buttons inactive
-                        if (MainActivity.heap_size_before_searchbyradical_loader < MainActivity.components_min_heap_size) {
+                        if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                             button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
                         }
-                        if (MainActivity.heap_size_before_decomposition_loader < MainActivity.decomposition_min_heap_size) {
+                        if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                             Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
                             button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
                         }
@@ -361,6 +360,8 @@ public class InputQueryFragment extends Fragment {
 	        
 	        savedInstanceState.putStringArray("queryHistory", queryHistory);
 	 	}
+
+    // Fragment Functions
 	    private class QueryInputSpinnerAdapter extends ArrayAdapter<String> {
     	// Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
 	    	public QueryInputSpinnerAdapter(Context ctx, int txtViewResourceId, List<String> list) {
@@ -426,20 +427,6 @@ public class InputQueryFragment extends Fragment {
 		    		public void onNothingSelected(AdapterView<?> arg0) { }
 		        });
 	    }
-        public long AvailableMemory() {
-            final Runtime runtime = Runtime.getRuntime();
-            final long usedMemInMB=(runtime.totalMemory() - runtime.freeMemory()) / 1048576L;
-            final long maxHeapSizeInMB=runtime.maxMemory() / 1048576L;
-            final long availHeapSizeInMB = maxHeapSizeInMB - usedMemInMB;
-            Log.i("Diagnosis Time","Available heap size: " + availHeapSizeInMB);
-            return availHeapSizeInMB;
-        }
-        public void Delay(int milliseconds){
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {}
-            }, milliseconds);
-        }
 
 	// Interface Functions
         private UserEnteredQueryListener userEnteredQueryListener;

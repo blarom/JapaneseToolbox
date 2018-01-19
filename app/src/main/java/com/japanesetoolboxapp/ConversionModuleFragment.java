@@ -526,7 +526,7 @@ public class ConversionModuleFragment extends Fragment {
                     else if (character_next.equals("ゅ")) { added_string = "pyu"; i++; }
                     else if (character_next.equals("ぇ")) { added_string = "pye"; i++; }
                     else if (character_next.equals("ょ")) { added_string = "pyo"; i++; }
-                    else { added_string = "ピ"; }
+                    else { added_string = "pi"; }
                 }
                 else if (character.equals("ぺ")) { added_string = "pe"; }
                 else if (character.equals("ぽ")) { added_string = "po"; }

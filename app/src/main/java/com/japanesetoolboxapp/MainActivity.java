@@ -1,5 +1,7 @@
 package com.japanesetoolboxapp;
 
+import com.japanesetoolboxapp.utiities.*;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,11 +10,8 @@ import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
-import android.text.Html;
-import android.text.Spanned;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -22,16 +21,28 @@ import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
+
+//TODO can't find "tetsudau"
+//TODO link Japanese Toolbox to OK Google / Google Assistant, for on-the-fly lookups
+//TODO can't find "okodukai" / "kodukai"
+//TODO "tsutaeru" not found in local database on app
+//TODO when entering "tsureteiku", online results show "reteiku"
+//TODO imperative display for godan verbs
+//TODO Show the adjective conjugations (it will also explain to the user why certain adjectives appear in the list, based on their conjugations)
+//TODO If the user enter "一", make sure the app gives all results with a bar
+//TODO Give the user the option to reduce/increase the number of search results (useful when there are many results)
+//TODO Display the number of results
+//TODO Add the option of selecting which databases to search in (in order to limit the number of results)
+//TODO Allow for different kanji versions of a verb by comparing the input verb's kanji to a list associated with every verb,
+//     then applying the reverse conjugation by searching using the database's kanji instead of the user's input, and also showing the other possible kanji dict. forms
+//TODO Add filtering functionality: if more than one word is entered, the results will be limited to those that include all words.
+//TODO Translate the app into other European languages, and allow the user to choose the wanted language.
 
 public class MainActivity extends FragmentActivity
 								 implements InputQueryFragment.UserEnteredQueryListener,
@@ -61,17 +72,13 @@ public class MainActivity extends FragmentActivity
     static Typeface CJK_typeface;
     static String[] radical_module_user_selections;
 
-    static long total_required_heap_size = 45;
-    static long decomposition_min_heap_size = 23;
-    static long components_min_heap_size = 6;
-    static long heap_size;
-    static long heap_size_before_decomposition_loader;
-    static long heap_size_before_searchbyradical_loader;
-    static Boolean enough_memory_for_heavy_functions;
-
-    static int SheetRowLength;
-    static int NumbersSheetSize;
-    public static Intent restartIntent;
+    public static long heap_size;
+    public static long heap_size_before_decomposition_loader;
+    public static long heap_size_before_searchbyradical_loader;
+    public static Boolean enough_memory_for_heavy_functions;
+    int mSheetRowLength;
+    Intent restartIntent;
+    Toast mLastToast;
 
 	@Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,22 +150,13 @@ public class MainActivity extends FragmentActivity
             }
         }
 
-	    	/*FrameLayout frame_verb = (FrameLayout) findViewById(R.id.translator_placeholder2);
-	    	frame_verb.setVisibility(View.GONE);
-	    	FrameLayout frame_word = (FrameLayout) findViewById(R.id.translator_placeholder3);
-	    	frame_word.setVisibility(View.GONE);
-	    	FrameLayout frame_convert = (FrameLayout) findViewById(R.id.translator_placeholder4);
-	    	frame_convert.setVisibility(View.GONE);
-            FrameLayout frame_radicals = (FrameLayout) findViewById(R.id.translator_placeholder5);
-            frame_radicals.setVisibility(View.GONE);*/
-
         fragmentTransaction.commit();
 
         // Remove the software keyboard if the EditText is not in focus
         findViewById(android.R.id.content).setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                hideSoftKeyboard();
+                SharedMethods.hideSoftKeyboard(MainActivity.this);
                 return false;
             }
         });
@@ -179,6 +177,7 @@ public class MainActivity extends FragmentActivity
         //see https://stackoverflow.com/questions/11786553/changing-the-android-typeface-doesnt-work
 
     }
+
     @Override protected void onStart() {
         super.onStart();
 
@@ -221,9 +220,8 @@ public class MainActivity extends FragmentActivity
     @Override protected void onDestroy() {
         super.onDestroy();
         try {
-            trimCache(this);
+            SharedMethods.trimCache(this);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -234,40 +232,15 @@ public class MainActivity extends FragmentActivity
             super.onBackPressed();
         }
     }
-    public static void trimCache(Context context) {
-        // http://stackoverflow.com/questions/10977288/clear-application-cache-on-exit-in-android
-        try {
-            File dir = context.getCacheDir();
-            if (dir != null && dir.isDirectory()) {
-                deleteDir(dir);
-            }
-        } catch (Exception e) {
-            // TODO: handle exception
-        }
-    }
-    public static boolean deleteDir(File dir) {
-        if (dir != null && dir.isDirectory()) {
-            String[] children = dir.list();
-            for (String aChildren : children) {
-                boolean success = deleteDir(new File(dir, aChildren));
-                if (!success) {
-                    return false;
-                }
-            }
-        }
 
-        // The directory is now empty so delete it
-        return dir.delete();
-    }
-
-    Toast lastToast;
-    public void showToast(final String message) {
+    public void showDatabaseLoadingToast(final String message, final Context context) {
         runOnUiThread(new Runnable() {
             public void run()
             {
-                if(lastToast != null) {lastToast.cancel();}
+                if(mLastToast != null) {
+                    mLastToast.cancel();}
 
-                Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.BOTTOM|Gravity.FILL_HORIZONTAL, 0, 0);
 
                 View toastview = toast.getView();
@@ -281,7 +254,7 @@ public class MainActivity extends FragmentActivity
                 toastMessage.setTextSize(12);
                 toast.show();
 
-                lastToast = toast;
+                mLastToast = toast;
             }
         });
     }
@@ -294,7 +267,7 @@ public class MainActivity extends FragmentActivity
 
         protected Void doInBackground(Void... params) {
 
-            heap_size = AvailableMemory();
+            heap_size = SharedMethods.getAvailableMemory();
             enough_memory_for_heavy_functions = true;
             //Sizes based on file size, not on number of rows
             int CJK_Database_size = 2051;
@@ -309,82 +282,84 @@ public class MainActivity extends FragmentActivity
             int total_assets_size_radical_functions = CJK_Database_size+RadicalsDatabase_size+KanjiDict_Database_size+RadicalsOnlyDatabase_size;
             int total_assets_size = total_assets_size_main_functions+total_assets_size_radical_functions;
 
+            Context applicationContext = getApplicationContext();
+
             int cumulative_progress = 0;
-            showToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Main Database...");
+            showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Main Database...", applicationContext);
             if (MainDatabase == null) { MainDatabase = getMainDatabase();}
             Log.i("Diagnosis Time","Loaded MainDatabase.");
 
-            if (ExamplesDatabase == null) { ExamplesDatabase = readCSVFile("LineExamples - 3000 kanji.csv", getBaseContext()); }
+            if (ExamplesDatabase == null) { ExamplesDatabase = SharedMethods.readCSVFile("LineExamples - 3000 kanji.csv", getBaseContext()); }
             Log.i("Diagnosis Time","Loaded ExamplesDatabase.");
 
-            if (MeaningsDatabase == null) { MeaningsDatabase = readCSVFile("LineMeanings - 3000 kanji.csv", getBaseContext()); }
+            if (MeaningsDatabase == null) { MeaningsDatabase = SharedMethods.readCSVFile("LineMeanings - 3000 kanji.csv", getBaseContext()); }
             Log.i("Diagnosis Time","Loaded MeaningsDatabase.");
 
-            if (MultExplanationsDatabase == null) { MultExplanationsDatabase = readCSVFile("LineMultExplanations - 3000 kanji.csv", getBaseContext()); }
+            if (MultExplanationsDatabase == null) { MultExplanationsDatabase = SharedMethods.readCSVFile("LineMultExplanations - 3000 kanji.csv", getBaseContext()); }
             Log.i("Diagnosis Time","Loaded MultExplanationsDatabase.");
 
-            if (LegendDatabase == null) { LegendDatabase = readCSVFile("LineLegend - 3000 kanji.csv", getBaseContext()); }
+            if (LegendDatabase == null) { LegendDatabase = SharedMethods.readCSVFile("LineLegend - 3000 kanji.csv", getBaseContext()); }
 
             cumulative_progress = cumulative_progress + MainDatabase_size;
-            showToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Latin Database...");
-            if (GrammarDatabaseIndexedLatin == null) { GrammarDatabaseIndexedLatin = readCSVFile("LineGrammarSortedIndexLatin - 3000 kanji.csv", getBaseContext());}
+            showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Latin Database...", applicationContext);
+            if (GrammarDatabaseIndexedLatin == null) { GrammarDatabaseIndexedLatin = SharedMethods.readCSVFile("LineGrammarSortedIndexLatin - 3000 kanji.csv", getBaseContext());}
             Log.i("Diagnosis Time","Loaded GrammarDatabaseIndexedLatin.");
 
             cumulative_progress = cumulative_progress + GrammarDatabaseIndexedLatin_size;
-            showToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Kanji Database...");
-            if (GrammarDatabaseIndexedKanji == null) { GrammarDatabaseIndexedKanji = readCSVFile("LineGrammarSortedIndexKanji - 3000 kanji.csv", getBaseContext());}
+            showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Kanji Database...", applicationContext);
+            if (GrammarDatabaseIndexedKanji == null) { GrammarDatabaseIndexedKanji = SharedMethods.readCSVFile("LineGrammarSortedIndexKanji - 3000 kanji.csv", getBaseContext());}
             Log.i("Diagnosis Time","Loaded GrammarDatabaseIndexedKanji.");
 
             cumulative_progress = cumulative_progress + GrammarDatabaseIndexedKanji_size;
-            showToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Verbs Database...");
-            if (VerbDatabase == null || VerbDatabase.size() < 5) { VerbDatabase = MainActivity.readCSVFile("LineVerbs - 3000 kanji.csv", getBaseContext());}
+            showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Verbs Database...", applicationContext);
+            if (VerbDatabase == null || VerbDatabase.size() < 5) { VerbDatabase = SharedMethods.readCSVFile("LineVerbs - 3000 kanji.csv", getBaseContext());}
             Log.i("Diagnosis Time","Loaded VerbDatabase.");
 
-            if (VerbLatinConjDatabase == null || VerbLatinConjDatabase.size() < 5) { VerbLatinConjDatabase = MainActivity.readCSVFile("LineLatinConj - 3000 kanji.csv", getBaseContext());}
+            if (VerbLatinConjDatabase == null || VerbLatinConjDatabase.size() < 5) { VerbLatinConjDatabase = SharedMethods.readCSVFile("LineLatinConj - 3000 kanji.csv", getBaseContext());}
             Log.i("Diagnosis Time","Loaded VerbLatinConjDatabase.");
 
-            if (VerbKanjiConjDatabase == null   || VerbKanjiConjDatabase.size() < 5)   { VerbKanjiConjDatabase = MainActivity.readCSVFile("LineKanjiConj - 3000 kanji.csv", getBaseContext());}
+            if (VerbKanjiConjDatabase == null   || VerbKanjiConjDatabase.size() < 5)   { VerbKanjiConjDatabase = SharedMethods.readCSVFile("LineKanjiConj - 3000 kanji.csv", getBaseContext());}
             Log.i("Diagnosis Time","Loaded VerbKanjiConjDatabase.");
 
-            if (SimilarsDatabase == null   || SimilarsDatabase.size() < 5)   { SimilarsDatabase = MainActivity.readCSVFile("LineSimilars - 3000 kanji.csv", getBaseContext());}
+            if (SimilarsDatabase == null   || SimilarsDatabase.size() < 5)   { SimilarsDatabase = SharedMethods.readCSVFile("LineSimilars - 3000 kanji.csv", getBaseContext());}
             Log.i("Diagnosis Time","Loaded SimilarsDatabase.");
 
-            heap_size = AvailableMemory();
+            heap_size = SharedMethods.getAvailableMemory();
             heap_size_before_decomposition_loader = heap_size;
             cumulative_progress = cumulative_progress + VerbDatabase_size;
 
-            if (heap_size_before_decomposition_loader >= decomposition_min_heap_size) {
+            if (heap_size_before_decomposition_loader >= GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
 
-                showToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Radicals Database...");
-                if (RadicalsDatabase == null) { RadicalsDatabase = readCSVFile("LineRadicals - 3000 kanji.csv", getBaseContext());}
+                showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Radicals Database...", applicationContext);
+                if (RadicalsDatabase == null) { RadicalsDatabase = SharedMethods.readCSVFile("LineRadicals - 3000 kanji.csv", getBaseContext());}
                 Log.i("Diagnosis Time","Loaded RadicalsDatabase.");
 
                 cumulative_progress = cumulative_progress + RadicalsDatabase_size;
-                showToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Decompositions Database...");
-                heap_size = AvailableMemory();
-                if (CJK_Database == null) { CJK_Database = readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", getBaseContext());}
+                showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Decompositions Database...", applicationContext);
+                heap_size = SharedMethods.getAvailableMemory();
+                if (CJK_Database == null) { CJK_Database = SharedMethods.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", getBaseContext());}
                 Log.i("Diagnosis Time", "Loaded CJK_Database.");
 
                 cumulative_progress = cumulative_progress + CJK_Database_size;
-                showToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Characters Database...");
-                heap_size = AvailableMemory();
-                if (KanjiDict_Database == null) { KanjiDict_Database = readCSVFile("LineKanjiDictionary - 3000 kanji.csv", getBaseContext());}
+                showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Characters Database...", applicationContext);
+                heap_size = SharedMethods.getAvailableMemory();
+                if (KanjiDict_Database == null) { KanjiDict_Database = SharedMethods.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", getBaseContext());}
                 Log.i("Diagnosis Time", "Loaded KanjiDict_Database.");
 
-                heap_size = AvailableMemory();
-                if (RadicalsOnlyDatabase == null) { RadicalsOnlyDatabase = readCSVFile("LineRadicalsOnly - 3000 kanji.csv", getBaseContext());}
+                heap_size = SharedMethods.getAvailableMemory();
+                if (RadicalsOnlyDatabase == null) { RadicalsOnlyDatabase = SharedMethods.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", getBaseContext());}
                 Log.i("Diagnosis Time", "Loaded RadicalsOnlyDatabase.");
 
-                heap_size = AvailableMemory();
+                heap_size = SharedMethods.getAvailableMemory();
                 heap_size_before_searchbyradical_loader = heap_size;
                 enough_memory_for_heavy_functions = true;
 
                 cumulative_progress = cumulative_progress + (KanjiDict_Database_size+RadicalsOnlyDatabase_size);
-                if (heap_size_before_searchbyradical_loader >= components_min_heap_size) {
+                if (heap_size_before_searchbyradical_loader >= GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
 
-                    showToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Components Database...");
+                    showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Components Database...", applicationContext);
                     if (Components_Database == null) {
-                        Components_Database = readCSVFile("LineComponents - 3000 kanji.csv", getBaseContext());
+                        Components_Database = SharedMethods.readCSVFile("LineComponents - 3000 kanji.csv", getBaseContext());
                         List<String[]> temp = new ArrayList<>();
                         Array_of_Components_Databases = new ArrayList<>();
                         for (int i=0; i<Components_Database.size();i++) {
@@ -394,23 +369,24 @@ public class MainActivity extends FragmentActivity
                             }
                             if (!Components_Database.get(i)[0].equals("") && !Components_Database.get(i)[1].equals("")) {temp.add(Components_Database.get(i));}
                         }
+                        Array_of_Components_Databases.add(temp);
                         temp = null;
                         Components_Database = null;
                     }
                     Log.i("Diagnosis Time", "Loaded Components_Database.");
 
-                    showToast("Progress: 100%. Loaded all databases.");
+                    showDatabaseLoadingToast("Progress: 100%. Loaded all databases.", applicationContext);
                 }
                 else {
-                    showToast("Stopped at " + Math.round(100*cumulative_progress/total_assets_size) + "% due to low memory.");
+                    showDatabaseLoadingToast("Stopped at " + Math.round(100*cumulative_progress/total_assets_size) + "% due to low memory.", applicationContext);
                 }
 
             }
             else {
                 enough_memory_for_heavy_functions = false;
-                showToast("Stopped at " + Math.round(100*cumulative_progress/total_assets_size) + "% due to low memory.");
+                showDatabaseLoadingToast("Stopped at " + Math.round(100*cumulative_progress/total_assets_size) + "% due to low memory.", applicationContext);
             }
-            heap_size = AvailableMemory();
+            heap_size = SharedMethods.getAvailableMemory();
 
             Log.i("Diagnosis Time","Loaded All Databases.");
             return null;
@@ -424,14 +400,23 @@ public class MainActivity extends FragmentActivity
             Log.i("Diagnosis Time","Loadeded all databases.");
         }
     }
+    public List<String[]> getMainDatabase() {
 
-    public long AvailableMemory() {
-        final Runtime runtime = Runtime.getRuntime();
-        final long usedMemInMB=(runtime.totalMemory() - runtime.freeMemory()) / 1048576L;
-        final long maxHeapSizeInMB=runtime.maxMemory() / 1048576L;
-        final long availHeapSizeInMB = maxHeapSizeInMB - usedMemInMB;
-        Log.i("Diagnosis Time","Available heap size: " + availHeapSizeInMB);
-        return availHeapSizeInMB;
+        // Import the excel sheets (csv format)
+
+        List<String[]> LinemySheet 				= new ArrayList<>();
+        List<String[]> LinemySheetTypes 		= SharedMethods.readCSVFile("LineTypes - 3000 kanji.csv", getBaseContext());
+        List<String[]> LinemySheetGrammar 		= SharedMethods.readCSVFile("LineGrammar - 3000 kanji.csv", getBaseContext());
+        List<String[]> LinemySheetVerbs     	= SharedMethods.readCSVFile("LineVerbsForGrammar - 3000 kanji.csv", getBaseContext());
+
+        LinemySheet.addAll(LinemySheetTypes);
+        LinemySheet.addAll(LinemySheetGrammar);
+        LinemySheet.addAll(LinemySheetVerbs);
+
+        if (LinemySheet.size()>0) {
+            mSheetRowLength = LinemySheet.get(0).length;}
+
+        return LinemySheet;
     }
 
 	private String Global_Fragment_chooser_keyword;
@@ -488,7 +473,7 @@ public class MainActivity extends FragmentActivity
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
-        else if (Global_Fragment_chooser_keyword.equals("radicals")  && heap_size_before_decomposition_loader >= decomposition_min_heap_size) {
+        else if (Global_Fragment_chooser_keyword.equals("radicals")  && heap_size_before_decomposition_loader >= GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
 
             SearchByRadicalsModuleFragment SearchByRadicalsModuleFragment = new SearchByRadicalsModuleFragment();
             SearchByRadicalsModuleFragment.setArguments(bundle);
@@ -500,7 +485,7 @@ public class MainActivity extends FragmentActivity
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
-        else if (Global_Fragment_chooser_keyword.equals("decompose")  && heap_size_before_decomposition_loader >= decomposition_min_heap_size) {
+        else if (Global_Fragment_chooser_keyword.equals("decompose")  && heap_size_before_decomposition_loader >= GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
 
             DecompositionModuleFragment DecompositionModuleFragment = new DecompositionModuleFragment();
             DecompositionModuleFragment.setArguments(bundle);
@@ -533,7 +518,6 @@ public class MainActivity extends FragmentActivity
         inputQueryFragment.setNewQuery(outputFromRadicalsModuleFragment);
         fragmentTransaction.commit();
     }
-
     public void UserWantsToConjugateFoundVerbFromGrammarModule(String[] outputFromGrammarModuleFragment) {
 
         Bundle bundle = new Bundle();
@@ -551,158 +535,9 @@ public class MainActivity extends FragmentActivity
         fragmentTransaction.commit();
     }
 
-    public List<String[]> getMainDatabase() {
-
-        // Import the excel sheets (csv format)
-
-        List<String[]> LinemySheet 				= new ArrayList<>();
-        List<String[]> LinemySheetTypes 		= readCSVFile("LineTypes - 3000 kanji.csv", getBaseContext());
-        List<String[]> LinemySheetGrammar 		= readCSVFile("LineGrammar - 3000 kanji.csv", getBaseContext());
-        List<String[]> LinemySheetVerbs     	= readCSVFile("LineVerbsForGrammar - 3000 kanji.csv", getBaseContext());
-
-        LinemySheet.addAll(LinemySheetTypes);
-        LinemySheet.addAll(LinemySheetGrammar);
-        LinemySheet.addAll(LinemySheetVerbs);
-
-        if (LinemySheet.size()>0) {SheetRowLength = LinemySheet.get(0).length;}
-
-        return LinemySheet;
-    }
-    public static List<String[]> readCSVFile(String filename, Context context) {
-
-        List<String[]> mySheet = new ArrayList<>();
-
-        // OpenCSV implementation
-        //                String next[] = null;
-        //                CSVReader reader = null;
-        //                try {
-        //                    reader = new CSVReader(new InputStreamReader(GlobalTranslatorActivity.getAssets().open(filename)));
-        //                } catch (IOException e) {
-        //                    e.printStackTrace();
-        //                }
-        //                if (reader != null) {
-        //                    for (; ; ) {
-        //                        try {
-        //                            next = reader.readNext();
-        //                        } catch (IOException e) {
-        //                            e.printStackTrace();
-        //                        }
-        //                        if (next != null) {
-        //                            mySheet.add(next);
-        //                        } else {
-        //                            break;
-        //                        }
-        //                    }
-        //                }
-        //                try {
-        //                    reader.close();
-        //                } catch (IOException e) {
-        //                    e.printStackTrace();
-        //                }
-
-        // "|" Parser implementation
-
-        BufferedReader fileReader = null;
-
-        int line_number = 0;
-        try {
-            String line;
-            fileReader = new BufferedReader(new InputStreamReader(context.getAssets().open(filename)));
-
-            while ((line = fileReader.readLine()) != null) {
-                String[] tokens = line.split("\\|",-1);
-                if (tokens.length > 0) {
-                    mySheet.add(tokens);
-                    line_number++;
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Error in CsvFileReader !!!");
-            e.printStackTrace();
-            Log.i("Diagnosis Time","Error in CsvFileReader opening Loaded DecompositionDatabase_PART4. Line number:"+line_number);
-        } finally {
-            try {
-                if (fileReader != null) {fileReader.close();}
-            } catch (IOException e) {
-                System.out.println("Error while closing fileReader !!!");
-                e.printStackTrace();
-                Log.i("Diagnosis Time","Error in CsvFileReader closing Loaded DecompositionDatabase_PART4.");
-            }
-        }
-
-        return mySheet;
-    }
-    public static  List<String[]> readCSVFileFirstRow(String filename, Context context) {
-
-        List<String[]> mySheetFirstRow = new ArrayList<>();
-
-        //OpenCSV implementation
-        //				  String firstrow[] = null;
-        //                String next[] = null;
-        //                CSVReader reader = null;
-        //
-        //                try {
-        //                    reader = new CSVReader(new InputStreamReader(GlobalTranslatorActivity.getAssets().open(filename)));
-        //                } catch (IOException e) {
-        //                    e.printStackTrace();
-        //                }
-        //
-        //                if (reader != null) {
-        //                    try {
-        //                        firstrow = reader.readNext();
-        //                    } catch (IOException e) {
-        //                        e.printStackTrace();
-        //                    }
-        //                    if (firstrow != null) {
-        //                        mySheetFirstRow.add(firstrow);
-        //                    }
-        //                }
-        //
-        //                try {
-        //                    reader.close();
-        //                } catch (IOException e) {
-        //                    e.printStackTrace();
-        //                }
-
-        // "|" Parser implementation
-
-        BufferedReader fileReader = null;
-
-        try {
-            String line;
-            fileReader = new BufferedReader(new InputStreamReader(context.getAssets().open(filename)));
-
-            line = fileReader.readLine();
-            String[] tokens = line.split("\\|",-1);
-            if (tokens.length > 0) {
-                mySheetFirstRow.add(tokens);
-            }
-        } catch (Exception e) {
-            System.out.println("Error in CsvFileReader !!!");
-            e.printStackTrace();
-        } finally {
-            try {
-                if (fileReader != null) {fileReader.close();}
-            } catch (IOException e) {
-                System.out.println("Error while closing fileReader !!!");
-                e.printStackTrace();
-            }
-        }
-
-        return mySheetFirstRow;
-    }
-
-    @SuppressWarnings("deprecation")
-    public static Spanned fromHtml(String source) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            return Html.fromHtml(source, Html.FROM_HTML_MODE_LEGACY);
-        } else {
-            return Html.fromHtml(source);
-        }
-    }
-    public void hideSoftKeyboard() {
-        InputMethodManager inputMethodManager =(InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+    public void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =(InputMethodManager) activity.getBaseContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 }
 

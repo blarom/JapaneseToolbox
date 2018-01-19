@@ -21,6 +21,8 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.japanesetoolboxapp.utiities.SharedMethods;
+
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
@@ -218,7 +220,7 @@ public class DecompositionModuleFragment extends Fragment {
                                         tv = new TextView(getContext());
                                         tv.setLayoutParams(radical_gallery_layoutParams);
                                         display_text = decomposed_kanji.get(i).get(0);
-                                        text = MainActivity.fromHtml("<b><font color='#800080'>" + display_text + "</font></b>");
+                                        text = SharedMethods.fromHtml("<b><font color='#800080'>" + display_text + "</font></b>");
                                         clickable_text = new SpannableString(text);
                                         ClickableSpan Radical_Iteration_ClickableSpan = new ClickableSpan() {
                                             @Override

@@ -17,6 +17,10 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.japanesetoolboxapp.utiities.GlobalConstants;
+import com.japanesetoolboxapp.utiities.SharedMethods;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -264,10 +268,6 @@ public class VerbModuleFragment extends Fragment {
             return mySpinner;
         }
     }
-    public void                     hideSoftKeyboard() {
-        InputMethodManager inputMethodManager =(InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
-    }
     public void                     DisplayConjugations(int position, String displayType,
                                         List<List<String>> chosenVerbCharacteristics_Results_English,
                                         List<List<String>> chosenVerbCharacteristics_Results_Kanji,
@@ -384,7 +384,7 @@ public class VerbModuleFragment extends Fragment {
                 //Toast.makeText(GlobalTranslatorActivity.getBaseContext(), parsedPopulatedList.get(position).get(0), Toast.LENGTH_SHORT).show();
 
                 // Initialization
-                hideSoftKeyboard();
+                SharedMethods.hideSoftKeyboard(getActivity());
 
                 List<List<String>> chosenVerbCharacteristicsEnglish = new ArrayList<>();
                 List<List<String>> chosenVerbCharacteristicsKanji = new ArrayList<>();
@@ -419,14 +419,14 @@ public class VerbModuleFragment extends Fragment {
                 }
 
                 // Implementing the ConjugationChooserSpinner
-                Spinner ConjugationChooserSpinner = (Spinner) getActivity().findViewById(R.id.ConjugationChooserSpinner);
+                Spinner ConjugationChooserSpinner = getActivity().findViewById(R.id.ConjugationChooserSpinner);
 
                 GlobalConjugationsSpinnerList = ConjugationsSpinnerList;
                 ConjugationChooserSpinner.setAdapter(new ConjugationsSpinnerAdapter(getContext(), R.layout.custom_conjugationchooser_spinner, ConjugationsSpinnerList));
 
 
                 // Hide the subsequent fields of there is nothing to show
-                ScrollView scrollView1 = (ScrollView) getActivity().findViewById(R.id.scrollView1);
+                ScrollView scrollView1 = getActivity().findViewById(R.id.scrollView1);
                 scrollView1.setVisibility(View.VISIBLE);
                 if (chosenVerbCharacteristicsEnglish.size() == 0) {
                     scrollView1.setVisibility(View.GONE);
@@ -442,13 +442,13 @@ public class VerbModuleFragment extends Fragment {
                         // Getting the user choice for displaying the conjugations in Romaji or Kanji
 
                         final int position = pos;
-                        RadioGroup chosenVerbSearchType = (RadioGroup) getActivity().findViewById(R.id.radio_DisplayType);
+                        RadioGroup chosenVerbSearchType = getActivity().findViewById(R.id.radio_DisplayType);
 
                         chosenVerbSearchType.setOnCheckedChangeListener(new OnCheckedChangeListener() {
                             public void onCheckedChanged(RadioGroup group, int checkedId) {
                                 // checkedId is the RadioButton selected
 
-                                RadioButton chosenVerbSearchType = (RadioButton) getActivity().findViewById(checkedId);
+                                RadioButton chosenVerbSearchType = getActivity().findViewById(checkedId);
                                 // Define a boolean depending on which radio button was checked
                                 boolean checked = chosenVerbSearchType.isChecked();
                                 // Define an action depending on the given boolean, ie. depending on the checked RadioButton ID
@@ -473,8 +473,8 @@ public class VerbModuleFragment extends Fragment {
                             }
                         });
 
-                        RadioButton displayEnglish = (RadioButton) getActivity().findViewById(R.id.radio_Romaji);
-                        RadioButton displayKanji = (RadioButton) getActivity().findViewById(R.id.radio_Kanji);
+                        RadioButton displayEnglish = getActivity().findViewById(R.id.radio_Romaji);
+                        RadioButton displayKanji = getActivity().findViewById(R.id.radio_Kanji);
 
                         List<Boolean> types = FindType(inputVerbString);
                         boolean TypeisKanji = types.get(2);
@@ -696,15 +696,15 @@ public class VerbModuleFragment extends Fragment {
             current_length = 0;
             List<String[]> mySheetLengths = new ArrayList<>();
             if (TypeisLatin) {
-                mySheetLengths = MainActivity.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", context);
+                mySheetLengths = SharedMethods.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", context);
                 current_length = concatenated_verb_length;
             }
             else if (TypeisKana) {
-                mySheetLengths = MainActivity.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", context);
+                mySheetLengths = SharedMethods.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", context);
                 current_length = concatenated_translation_length;
             }
             else if (TypeisKanji) {
-                mySheetLengths = MainActivity.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", context);
+                mySheetLengths = SharedMethods.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", context);
                 current_length = concatenated_verb_length;
             }
             for (int col = GlobalConstants.VerbModule_colIndex_istem; col < NumberOfSheetCols; col++) {
@@ -848,10 +848,10 @@ public class VerbModuleFragment extends Fragment {
                         }
 
                         // Removing the particles in the columns to reflect user error in the input verb
-                        //***TODO
+                        //TODO Remove the particles in the columns to reflect user error in the input verb
 
                         // Removing the polite "o" in the columns
-                        //***TODO
+                        //TODO Remove the polite "o" in the columns
 
                         // Family rows are not relevant for searches
                     }
@@ -1188,7 +1188,7 @@ public class VerbModuleFragment extends Fragment {
                     matchingVerbRowIndex = matchingVerbRowIndexList.get(p);
 
                     // Find the conjugation family relevant to this matching row index
-                    for (int i = 3; i< MainActivity.VerbDatabase.size(); i++) {
+                    for (int i = 2; i< MainActivity.VerbDatabase.size(); i++) {
                         if (MainActivity.VerbDatabase.get(i)[GlobalConstants.VerbModule_colIndex_rootLatin].equals("")
                                 && MainActivity.VerbDatabase.get(i)[GlobalConstants.VerbModule_colIndex_english].equals("")
                                 && !MainActivity.VerbDatabase.get(i)[GlobalConstants.VerbModule_colIndex_family].equals("")) {

@@ -1,5 +1,6 @@
 package com.japanesetoolboxapp;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
@@ -7,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.method.LinkMovementMethod;
@@ -30,6 +32,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+
+import com.japanesetoolboxapp.utiities.GlobalConstants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -610,14 +614,19 @@ public class SearchByRadicalsModuleFragment extends Fragment {
                             current_element[0] = MainActivity.Array_of_Components_Databases.get(chosen_components_list).get(i)[0];
                             current_element[1] = Integer.toString(MainActivity.Array_of_Components_Databases.get(chosen_components_list).get(i)[1].length());
 
-                            contains_at_least_one_printable_glyph = false;
-                            printable_results_for_current_element = Arrays.asList(MainActivity.Array_of_Components_Databases.get(chosen_components_list).get(i)[1].split(";"));
-                            for (int j = 0; j < printable_results_for_current_element.size(); j++) {
-                                if (isPrintable(printable_results_for_current_element.get(j).substring(0,1))) {
-                                    contains_at_least_one_printable_glyph = true;
-                                    break;
+                            contains_at_least_one_printable_glyph = true;
+
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                printable_results_for_current_element = Arrays.asList(MainActivity.Array_of_Components_Databases.get(chosen_components_list).get(i)[1].split(";"));
+                                for (int j = 0; j < printable_results_for_current_element.size(); j++) {
+                                    contains_at_least_one_printable_glyph = false;
+                                    if (isPrintable(printable_results_for_current_element.get(j).substring(0, 1))) {
+                                        contains_at_least_one_printable_glyph = true;
+                                        break;
+                                    }
                                 }
                             }
+
                             if (contains_at_least_one_printable_glyph) { full_list.add(current_element);}
                         }
                     }
@@ -630,10 +639,16 @@ public class SearchByRadicalsModuleFragment extends Fragment {
 
                 //Displaying only the search results that have a glyph in the font
                 printable_selections = new ArrayList<>();
-                for (int i = 0; i < selections.size(); i++) {
-                    if (isPrintable(selections.get(i).substring(0,1))) {
-                        printable_selections.add(selections.get(i));
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    for (int i = 0; i < selections.size(); i++) {
+                        if (isPrintable(selections.get(i).substring(0, 1))) {
+                            printable_selections.add(selections.get(i));
+                        }
                     }
+                }
+                else {
+                    printable_selections = selections;
                 }
 
                 //Displaying only the first XX values to prevent overload
@@ -1163,10 +1178,16 @@ public class SearchByRadicalsModuleFragment extends Fragment {
                 //Displaying only the search results that have a glyph in the font
                 List<String> printable_search_results;
                 printable_search_results = new ArrayList<>();
-                for (int i = 0; i < search_results.size(); i++) {
-                    if (isPrintable(search_results.get(i).substring(0,1))) {
-                        printable_search_results.add(search_results.get(i));
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    for (int i = 0; i < search_results.size(); i++) {
+                        if (isPrintable(search_results.get(i).substring(0, 1))) {
+                            printable_search_results.add(search_results.get(i));
+                        }
                     }
+                }
+                else {
+                    printable_search_results = search_results;
                 }
 
                 //Displaying only the first 400 values to prevent overload
@@ -1817,6 +1838,8 @@ public class SearchByRadicalsModuleFragment extends Fragment {
             show_grid = false;
             grid_block_linearLayout.setVisibility((View.GONE));
         }
+
+        @TargetApi(23)
         public boolean isPrintable( String c ) {
             Paint paint=new Paint();
             paint.setTypeface(MainActivity.CJK_typeface);

@@ -5,10 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -19,19 +18,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.japanesetoolboxapp.utiities.GlobalConstants;
+import com.japanesetoolboxapp.utiities.SharedMethods;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.InetAddress;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,48 +42,46 @@ import java.util.Locale;
 public class GrammarModuleFragment extends Fragment {
 
     // Parameters
-    public static List<Object> MatchingWordCharacteristics;
-    public static ArrayList<String> GlobalGrammarSpinnerList_element0;
-    static String last_searched_word;
-    static List<List<Integer>> matchingWordRowColIndexList;
-    public int max_number_of_results_shown = 50;
-    Activity FragmentActivity;
+    private List<Object> mMatchingWordCharacteristics;
+    private ArrayList<String> mGlobalGrammarSpinnerList_element0;
+    private String mLastSearchedWord;
+    private List<List<Integer>> mMatchingWordRowColIndexList;
+    private int mMaxNumberOfResultsShown = 50;
+    private Activity mFragmentActivity;
 
-    Boolean app_was_in_background;
-    GrammarExpandableListAdapter SearchResultsListAdapter;
-    ExpandableListView SearchResultsExpandableListView;
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listHeaderDetails;
-    HashMap<String, List<List<String>>> listDataChild;
-    String searched_word;
-    List<Object> AsyncMatchingWordCharacteristics;
+    private Boolean mAppWasInBackground;
+    private GrammarExpandableListAdapter mSearchResultsListAdapter;
+    private ExpandableListView mSearchResultsExpandableListView;
+    private List<String> mListDataHeader;
+    private HashMap<String, List<String>> mListHeaderDetails;
+    private HashMap<String, List<List<String>>> mListDataChild;
+    private String mSearchedWord;
+    private List<Object> mAsyncMatchingWordCharacteristics;
+    private Boolean mInternetIsAvailable;
 
     // Fragment Lifecycle Functions
     @Override public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Activity){
-            this.FragmentActivity = (Activity) context;
-        }
+        if (context instanceof Activity) this.mFragmentActivity = (Activity) context;
 
         // This makes sure that the container activity has implemented the callback interface. If not, it throws an exception
         try {
-            mCallbackWord = (UserWantsNewSearchForSelectedWordListener) FragmentActivity;
+            mCallbackWord = (UserWantsNewSearchForSelectedWordListener) mFragmentActivity;
         } catch (ClassCastException e) {
-            throw new ClassCastException(FragmentActivity.toString()
-                    + " must implement TextClicked");
+            throw new ClassCastException(mFragmentActivity.toString() + " must implement TextClicked");
         }
         try {
-            mCallbackVerb = (UserWantsToConjugateFoundVerbListener) FragmentActivity;
+            mCallbackVerb = (UserWantsToConjugateFoundVerbListener) mFragmentActivity;
         } catch (ClassCastException e) {
-            throw new ClassCastException(FragmentActivity.toString()
-                    + " must implement TextClicked");
+            throw new ClassCastException(mFragmentActivity.toString() + " must implement TextClicked");
         }
 
    }
     @Override public void onCreate(Bundle savedInstanceState) { //instead of onActivityCreated
         super.onCreate(savedInstanceState);
         //super.onActivityCreated(savedInstanceState);
-        InternetIsAvailable = checkInternetConnection(getContext());
+        mSharedMethods = new SharedMethods();
+        mInternetIsAvailable = mSharedMethods.internetIsAvailableCheck(getContext());
 
     }
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -96,24 +94,9 @@ public class GrammarModuleFragment extends Fragment {
 
         return fragmentView;
     }
-    @Override public void onStart() {
-        super.onStart();
-
-//        if (getArguments() != null) {
-//            String outputFromInputQueryFragment = getArguments().getString("input_to_fragment");
-//            Titles = getTitles();
-//
-//            // Get the row index of the words matching the user's entry
-//            matchingWordRowColIndexList = FindMatchingWordIndex(outputFromInputQueryFragment);
-//
-//            SearchInDictionary(outputFromInputQueryFragment);
-//        }
-
-    }
     @Override public void onPause() {
         super.onPause();
-
-        app_was_in_background = true;
+        mAppWasInBackground = true;
     }
     @Override public void onResume() {
         super.onResume();
@@ -122,11 +105,11 @@ public class GrammarModuleFragment extends Fragment {
             String outputFromInputQueryFragment = getArguments().getString("input_to_fragment");
 
             //If the application is resumed (switched to), then display the last results instead of performing a new search on the last input
-            if (app_was_in_background == null || !app_was_in_background) {
-                app_was_in_background = false;
+            if (mAppWasInBackground == null || !mAppWasInBackground) {
+                mAppWasInBackground = false;
 
                 // Get the row index of the words matching the user's entry
-                matchingWordRowColIndexList = FindMatchingWordIndex(outputFromInputQueryFragment);
+                mMatchingWordRowColIndexList = FindMatchingWordIndex(outputFromInputQueryFragment);
 
                 SearchInDictionary(outputFromInputQueryFragment);
             }
@@ -134,45 +117,46 @@ public class GrammarModuleFragment extends Fragment {
     }
     @Override public void onDetach() {
         super.onDetach();
-        this.FragmentActivity = null;
+        this.mFragmentActivity = null;
     }
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
 
         // save excel results to display in spinners, load the results on activity restart
-        savedInstanceState.putStringArrayList("GlobalGrammarSpinnerList_element0", GlobalGrammarSpinnerList_element0);
+        savedInstanceState.putStringArrayList("mGlobalGrammarSpinnerList_element0", mGlobalGrammarSpinnerList_element0);
     }
     public void SearchInDictionary(String word) {
 
-        final List<Integer> matchingWordRowIndexList = matchingWordRowColIndexList.get(0); // Use matchingWordRowColIndexList.get(1) to get columns
-        searched_word = word;
-        last_searched_word = word;
+        final List<Integer> matchingWordRowIndexList = mMatchingWordRowColIndexList.get(0); // Use mMatchingWordRowColIndexList.get(1) to get columns
+        mSearchedWord = word;
+        mLastSearchedWord = word;
 
         // Run the Grammar Module on the input word
-        MatchingWordCharacteristics = getCharacteristicsForAllHits(matchingWordRowIndexList);
+        mMatchingWordCharacteristics = getCharacteristicsForAllHits(matchingWordRowIndexList);
 
         // If there are no results, retrieve the results from Jisho.org
         Toast.makeText(getContext(), "Looking for results online, please wait...", Toast.LENGTH_SHORT).show();
-        AsyncMatchingWordCharacteristics = new ArrayList<>();
-        new getResultsFromWebInBackground().execute(searched_word);
+        mAsyncMatchingWordCharacteristics = new ArrayList<>();
+        new getResultsFromWebInBackground().execute(mSearchedWord);
 
-        DisplayResults(searched_word);
+        DisplayResults(mSearchedWord);
     }
+    private SharedMethods mSharedMethods;
 
 	// Functionality Functions
     public void     DisplayResults(String word) {
 
         // Populate the list of choices for the SearchResultsChooserSpinner. Each text element of inside the idividual spinner choices corresponds to a sub-element of the choicelist
-        populateSearchResultsForDisplay(word, MatchingWordCharacteristics);
+        populateSearchResultsForDisplay(word, mMatchingWordCharacteristics);
 
-        hideSoftKeyboard();
+        SharedMethods.hideSoftKeyboard(getActivity());
         // Implementing the SearchResultsChooserListView
         try {
-            if (listDataHeader != null && listHeaderDetails != null && listDataChild != null) {
-                SearchResultsListAdapter = new GrammarExpandableListAdapter(getContext(), listDataHeader, listHeaderDetails, listDataChild);
-                SearchResultsExpandableListView = getView().findViewById(R.id.SentenceConstructionExpandableListView); //CAUSED CRASH
-                SearchResultsExpandableListView.setAdapter(SearchResultsListAdapter);
-                SearchResultsExpandableListView.setVisibility(View.VISIBLE);
+            if (mListDataHeader != null && mListHeaderDetails != null && mListDataChild != null) {
+                mSearchResultsListAdapter = new GrammarExpandableListAdapter(getContext(), mListDataHeader, mListHeaderDetails, mListDataChild);
+                mSearchResultsExpandableListView = getView().findViewById(R.id.SentenceConstructionExpandableListView); //CAUSED CRASH
+                mSearchResultsExpandableListView.setAdapter(mSearchResultsListAdapter);
+                mSearchResultsExpandableListView.setVisibility(View.VISIBLE);
             }
         }
         catch (java.lang.NullPointerException e) {
@@ -205,9 +189,9 @@ public class GrammarModuleFragment extends Fragment {
         String responseString = "";
         String inputLine;
         HttpURLConnection connection = null;
-        InternetIsAvailable = checkInternetConnection(getContext());
-        TellUserIfThereIsNoInternetConnection();
-        if (InternetIsAvailable) {
+        mInternetIsAvailable = mSharedMethods.internetIsAvailableCheck(getContext());
+        mSharedMethods.TellUserIfThereIsNoInternetConnection(getActivity());
+        if (mInternetIsAvailable) {
             try {
                 //https://stackoverflow.com/questions/35568584/android-studio-deprecated-on-httpparams-httpconnectionparams-connmanagerparams
                 //String current_url = "https://www.google.co.il/search?dcr=0&source=hp&q=" + prepared_word;
@@ -232,7 +216,16 @@ public class GrammarModuleFragment extends Fragment {
             } catch (Exception e) {
                 e.printStackTrace();
                 Log.i("Diagnosis Time", "Failed to access online resources.");
-                Toast.makeText(getContext(), "Failed to access online resources.", Toast.LENGTH_SHORT).show();
+                Looper.prepare();
+                try {
+                    getActivity().runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(getContext(), "Failed to access online resources.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
                 return setOf_matchingWordCharacteristics;
             } finally {
                 try {
@@ -349,14 +342,14 @@ public class GrammarModuleFragment extends Fragment {
                 identifier = "<div class=\"meaning-tags\">";
                 index_of_current_meaning_tags_start = website_code.indexOf(identifier, current_index_in_block) + identifier.length();
                 index_of_current_meaning_tags_end = website_code.indexOf("<", index_of_current_meaning_tags_start);
-                current_meaning_tag = MainActivity.fromHtml(website_code.substring(index_of_current_meaning_tags_start, index_of_current_meaning_tags_end)).toString();
+                current_meaning_tag = SharedMethods.fromHtml(website_code.substring(index_of_current_meaning_tags_start, index_of_current_meaning_tags_end)).toString();
 
                 if (current_meaning_tag.contains("Wikipedia") || current_meaning_tag.contains("Other forms") || current_meaning_tag.contains("Notes")) break;
                 if (index_of_current_meaning_tags_end < current_index_in_block) break;
 
                 index_of_next_meaning_tags_start = website_code.indexOf(identifier, index_of_current_meaning_tags_end) + identifier.length()+1;
                 index_of_next_meaning_tags_end = website_code.indexOf("<", index_of_current_meaning_tags_start);
-                next_meaning_tag = MainActivity.fromHtml(website_code.substring(index_of_current_meaning_tags_start, index_of_current_meaning_tags_end)).toString();
+                next_meaning_tag = SharedMethods.fromHtml(website_code.substring(index_of_current_meaning_tags_start, index_of_current_meaning_tags_end)).toString();
 
                 current_index_in_block = index_of_current_meaning_tags_end;
 
@@ -366,7 +359,7 @@ public class GrammarModuleFragment extends Fragment {
                     identifier = "<span class=\"meaning-meaning\">";
                     index_of_meanings_start = website_code.indexOf(identifier, current_index_in_block) + identifier.length();
                     index_of_meanings_end = website_code.indexOf("<", index_of_meanings_start);
-                    meanings_semicolumns = MainActivity.fromHtml(website_code.substring(index_of_meanings_start, index_of_meanings_end)).toString();
+                    meanings_semicolumns = SharedMethods.fromHtml(website_code.substring(index_of_meanings_start, index_of_meanings_end)).toString();
 
                     if (index_of_meanings_start > index_of_next_meaning_tags_start) break;
 
@@ -376,7 +369,7 @@ public class GrammarModuleFragment extends Fragment {
                             if (meanings_semicolumns.substring(i, i + 1).equals(";")) { meanings_commas += ","; }
                             else { meanings_commas += meanings_semicolumns.substring(i, i + 1); }
                         }
-                        meanings_commas = MainActivity.fromHtml(meanings_commas).toString();
+                        meanings_commas = SharedMethods.fromHtml(meanings_commas).toString();
                         meanings_commas = meanings_commas.replaceAll("',", "'");
 
                         current_meaning_tags.add(current_meaning_tag);
@@ -531,7 +524,7 @@ public class GrammarModuleFragment extends Fragment {
 
         protected List<Object> doInBackground(String... requested_search_word) {
             List<Object> AsyncMatchingWordCharacteristics = new ArrayList<>();
-            if (InternetIsAvailable) {
+            if (mInternetIsAvailable) {
                 try {
                     AsyncMatchingWordCharacteristics = getResultsFromWeb(requested_search_word[0]);
                 } catch (IOException e) {
@@ -540,7 +533,7 @@ public class GrammarModuleFragment extends Fragment {
             }
             else {
                 Log.i("Diagnosis Time", "Failed to access online resources.");
-                TellUserIfThereIsNoInternetConnection();
+                mSharedMethods.TellUserIfThereIsNoInternetConnection(getActivity());
             }
             return AsyncMatchingWordCharacteristics;
         }
@@ -552,9 +545,9 @@ public class GrammarModuleFragment extends Fragment {
         protected void onPostExecute(List<Object> result) {
             Log.i("Diagnosis Time","Finished getting Internet result.");
 
-            AsyncMatchingWordCharacteristics = result;
+            mAsyncMatchingWordCharacteristics = result;
 
-            if (AsyncMatchingWordCharacteristics.size() != 0 ) {
+            if (mAsyncMatchingWordCharacteristics.size() != 0 ) {
                 List<Object> finalList = new ArrayList<>();
                 List<Object> finallist_element = new ArrayList<>();
                 List<Object> current_async_meaning_blocks = new ArrayList<>();
@@ -573,10 +566,10 @@ public class GrammarModuleFragment extends Fragment {
                 List<Object> FinalAsyncElements = new ArrayList<>();
                 Boolean async_meaning_found_locally;
 
-                FinalAsyncElements.addAll(AsyncMatchingWordCharacteristics);
+                FinalAsyncElements.addAll(mAsyncMatchingWordCharacteristics);
 
-                for (int j=0; j<MatchingWordCharacteristics.size(); j++) {
-                    List<Object> current_match_element = (List<Object>) MatchingWordCharacteristics.get(j);
+                for (int j = 0; j< mMatchingWordCharacteristics.size(); j++) {
+                    List<Object> current_match_element = (List<Object>) mMatchingWordCharacteristics.get(j);
                     finallist_element = new ArrayList<>();
                     current_local_romaji = (String) current_match_element.get(0);
                     finallist_element.add(current_local_romaji);
@@ -592,6 +585,7 @@ public class GrammarModuleFragment extends Fragment {
                     int current_index = FinalAsyncElements.size()-1;
                     while (current_index >= 0 && FinalAsyncElements.size() != 0) {
 
+                        if (current_index > FinalAsyncElements.size()-1) {break;}
                         List<Object> current_async_element = (List<Object>) FinalAsyncElements.get(current_index);
                         current_async_romaji = (String) current_async_element.get(0);
                         current_async_kanji = (String) current_async_element.get(1);
@@ -629,17 +623,17 @@ public class GrammarModuleFragment extends Fragment {
                 }
                 finalList.addAll(FinalAsyncElements);
 
-                MatchingWordCharacteristics = finalList;
-                DisplayResults(searched_word);
+                mMatchingWordCharacteristics = finalList;
+                DisplayResults(mSearchedWord);
             }
         }
     }
     public void     populateSearchResultsForDisplay(String word, List<Object> MatchingHitsCharacteristics) {
 
         //Initialization
-        listDataHeader = new ArrayList<>();
-        listHeaderDetails = new HashMap<>();
-        listDataChild = new HashMap<>();
+        mListDataHeader = new ArrayList<>();
+        mListHeaderDetails = new HashMap<>();
+        mListDataChild = new HashMap<>();
 
         String current_explanation = "XXX";
         String current_rule = "";
@@ -677,8 +671,8 @@ public class GrammarModuleFragment extends Fragment {
             texts_in_elements_of_child.add("");
             texts_in_elements_of_child.add("");
             texts_in_elements_of_child.add("");
-            listDataHeader.add(Integer.toString(0));
-            listHeaderDetails.put(Integer.toString(0), texts_in_elements_of_child);
+            mListDataHeader.add(Integer.toString(0));
+            mListHeaderDetails.put(Integer.toString(0), texts_in_elements_of_child);
 
             texts_in_elements_of_child = new ArrayList<>();
             texts_in_elements_of_child.add("No match found.");
@@ -691,7 +685,7 @@ public class GrammarModuleFragment extends Fragment {
             texts_in_elements_of_child.add("");
             elements_of_child = new ArrayList<>();
             elements_of_child.add(texts_in_elements_of_child);
-            listDataChild.put(Integer.toString(0), elements_of_child);
+            mListDataChild.put(Integer.toString(0), elements_of_child);
         }
         else {
             for (int i = 0; i< MatchingHitsCharacteristics.size(); i++) {
@@ -702,8 +696,8 @@ public class GrammarModuleFragment extends Fragment {
                 String altspellings_value = (String) current_MatchingHitsCharacteristics.get(2);
                 List<Object> current_MatchingHitsCharacteristics_Meaning_Blocks = (List<Object>) current_MatchingHitsCharacteristics.get(3);
 
-                //Populate elements in listDataHeader
-                if (i>max_number_of_results_shown) {break;}
+                //Populate elements in mListDataHeader
+                if (i> mMaxNumberOfResultsShown) {break;}
 
                 texts_in_elements_of_group = new ArrayList<>();
 
@@ -718,10 +712,10 @@ public class GrammarModuleFragment extends Fragment {
                 texts_in_elements_of_group.add(kanji_value);
                 texts_in_elements_of_group.add(removeDuplicatesFromCommaList(cumulative_meaning_value));
 
-                listDataHeader.add(Integer.toString(i));
-                listHeaderDetails.put(Integer.toString(i), texts_in_elements_of_group);
+                mListDataHeader.add(Integer.toString(i));
+                mListHeaderDetails.put(Integer.toString(i), texts_in_elements_of_group);
 
-                //Populate elements in listDataChild
+                //Populate elements in mListDataChild
                 elements_of_child = new ArrayList<>();
 
                 texts_in_elements_of_child = new ArrayList<>();
@@ -768,19 +762,12 @@ public class GrammarModuleFragment extends Fragment {
 
                     elements_of_child.add(texts_in_elements_of_child);
                 }
-                listDataChild.put(Integer.toString(i), elements_of_child);
+                mListDataChild.put(Integer.toString(i), elements_of_child);
 
             }
         }
     }
-    public void     hideSoftKeyboard() {
-        try {
-            InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
-            inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
-        } catch (Exception e) {
 
-        }
-    }
     private class   WordClickableSpan extends ClickableSpan{
         // code extracted from http://stackoverflow.com/questions/15475907/make-parts-of-textview-clickable-not-url
         public void onClick(View textView) {
@@ -904,7 +891,6 @@ public class GrammarModuleFragment extends Fragment {
         String hitFirstRelevantWord;
         String concatenated_hit;
         String best_match;
-        String explanation;
         String MM_index;
         String type;
         int[] current_match_values;
@@ -1547,17 +1533,9 @@ public class GrammarModuleFragment extends Fragment {
         //Getting the set of Meanings
 
         //Initializations
-        List<String> matchingWordMeaning_containerB = new ArrayList<>();
-        List<List<String>> matchingWordMeaning_containerA = new ArrayList<>();
         String matchingWordMeaning;
-        List<String> matchingWordType_containerB = new ArrayList<>();
-        List<List<String>> matchingWordType_containerA = new ArrayList<>();
         String matchingWordType;
-        List<String> matchingWordOpposite_containerB = new ArrayList<>();
-        List<List<String>> matchingWordOpposite_containerA = new ArrayList<>();
         String matchingWordOpposite;
-        List<String> matchingWordSynonym_containerB = new ArrayList<>();
-        List<List<String>> matchingWordSynonym_containerA = new ArrayList<>();
         String matchingWordSynonym;
         List<String> matchingWordCurrentExplanationBlock;
         List<List<String>> matchingWordExplanationBlocks;
@@ -1567,7 +1545,6 @@ public class GrammarModuleFragment extends Fragment {
         String[] current_meaning_characteristics;
         Boolean has_multiple_explanations;
         String ME_index;
-        int[] limitsME;
 
         //Finding the meanings using the supplied index
         String MM_index = MainActivity.MainDatabase.get(matchingWordRowIndex)[3];
@@ -1760,6 +1737,7 @@ public class GrammarModuleFragment extends Fragment {
     }
 
     // ExpandableListView Functions
+    //TODO Fix mixing of example sentences and phrase structures, e.g. in "no you ni" search
     private class GrammarExpandableListAdapter extends BaseExpandableListAdapter {
 
         private Context _context;
@@ -1810,7 +1788,7 @@ public class GrammarModuleFragment extends Fragment {
             if (childPosition == 0) {
                 String alternatespellings = childArray.get(0);
                 if (!alternatespellings.equals("")) {
-                    Spanned spanned_alternatespellings = MainActivity.fromHtml("<font face='serif' color='purple'>" + "<b>" + "Alternate spellings: " + "</b>" + alternatespellings + "</font>");
+                    Spanned spanned_alternatespellings = SharedMethods.fromHtml("<font face='serif' color='purple'>" + "<b>" + "Alternate spellings: " + "</b>" + alternatespellings + "</font>");
                     TextView tv_alternatespellings = new TextView(getContext());
                     tv_alternatespellings.setText(spanned_alternatespellings);
                     tv_alternatespellings.setTextSize(14);
@@ -1829,7 +1807,7 @@ public class GrammarModuleFragment extends Fragment {
                 }
                 if (full_type == "") { full_type = type; }
                 //String type_and_meaning = "[" + full_type + "] " + childArray.get(2);
-                Spanned type_and_meaning = MainActivity.fromHtml("<i><font color='#023991'>" + "[" + full_type + "] " + "</font></i>" + "<b>" + childArray.get(2) + "</b>");
+                Spanned type_and_meaning = SharedMethods.fromHtml("<i><font color='#023991'>" + "[" + full_type + "] " + "</font></i>" + "<b>" + childArray.get(2) + "</b>");
                 TextView tv_type_and_meaning = new TextView(getContext());
                 tv_type_and_meaning.setText(type_and_meaning);
                 tv_type_and_meaning.setTextColor(Color.BLACK);
@@ -2002,7 +1980,7 @@ public class GrammarModuleFragment extends Fragment {
                                 tv_rule.setText(final_text);
                                 tv_rule.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
                             } else {
-                                spanned_rule = MainActivity.fromHtml("<b>" + intro + parsedRule.get(0) + "</b>" + "<font face='serif' color='purple'>" + where + "</font>" + "<b>" + parsedRule.get(1) + "</b>");
+                                spanned_rule = SharedMethods.fromHtml("<b>" + intro + parsedRule.get(0) + "</b>" + "<font face='serif' color='purple'>" + where + "</font>" + "<b>" + parsedRule.get(1) + "</b>");
                                 tv_rule.setText(spanned_rule);
                             }
 
@@ -2171,49 +2149,4 @@ public class GrammarModuleFragment extends Fragment {
         }
     }
 
-    //Internet Connectivity functions
-    boolean InternetIsAvailable;
-    public void TellUserIfThereIsNoInternetConnection() {
-        //adapted from https://stackoverflow.com/questions/43315393/android-internet-connection-timeout
-
-        if(!InternetIsAvailable) {
-            try {
-                getActivity().runOnUiThread(new Runnable() {
-                    public void run() {
-                        Toast.makeText(getContext(), "Failed to connect to the Internet.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            } catch (Exception e) {
-
-            }
-        }
-    }
-    public static boolean checkInternetConnection(Context context) {
-        //adapted from https://stackoverflow.com/questions/43315393/android-internet-connection-timeout
-        final ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo activeNetworkInfo = connMgr.getActiveNetworkInfo();
-
-        if (activeNetworkInfo != null) { // connected to the internet
-            //Toast.makeText(context, activeNetworkInfo.getTypeName(), Toast.LENGTH_SHORT).show();
-
-            if (activeNetworkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
-                // connected to wifi
-                return isWifiInternetAvailable();
-            } else if (activeNetworkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
-                // connected to the mobile provider's data plan
-                return true;
-            }
-        }
-        return false;
-    }
-    static public boolean isWifiInternetAvailable() {
-        //adapted from https://stackoverflow.com/questions/43315393/android-internet-connection-timeout
-        try {
-            InetAddress ipAddr = InetAddress.getByName("google.com"); //You can replace it with your name
-            return !ipAddr.toString().equals("");
-        } catch (Exception e) {
-            return false;
-        }
-    }
 }
