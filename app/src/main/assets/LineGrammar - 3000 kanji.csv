@@ -1,284 +1,292 @@
 KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings|
-e, へ, to, toward|e|へ|2||
-mo, も, also, either, even|mo|も|3;4||
-mo ... mo, も...も, both ... and, neither ... nor, mo|mo ... mo|も...も|5;6||
-to, と, and, with, when, object marker, if X then Y|to|と|7;8;9;10;11||
-ya, や, and (amongst others)|ya|や|12||
-nado, 等, and so forth, and the like, etc..., et cetera|nado|等|13||
-no, の, of, made of, pronunciation of hyphen, feminine tone, question marker, noun descriptor, in fact, indeed, polite softener, verb noun modifier|no|の|14;15;16;17;18;19;20;21||
-no ga, のが, of, made of + verb object marker, good at, not good at, like to do/be, dislike to do/be|no ga|のが|22;23||
-no wo, のを, of, made of + verb object marker|no wo|のを|24||
-n, ん, in fact, indeed, softener, emphasis, n da, n desu|n|ん|25;26||
-wo, を, verb object marker, gerund object marker, "leaving" verb object marker, "going through" verb object marker|wo|を|27;28;29;30||
-wa, は, subject marker, choice marker, verb object marker, verb object marker, verb object marker, as for, regarding, in relation to|wa|は|31;32;33;34;35||
-wa, わ, you know, certainly, hear me out|wa|わ|36||
-de, で, location of an activity, by means of, substance of a material, because of, due to, limits in space, limits in time, limits in price or quantity, X and Y, where, takes place|de|で|37;38;39;40;41;42;43;44||
-datte, だって, even, too, as well, also, they say, I hear, you mean, after all, because, but|datte|だって|45;46;47;48;49||
-yo, da yo, wa yo, よ, だよ, わよ, you know, certainly, hear me out, n da yo, n desu yo|yo, da yo, wa yo|よ, だよ, わよ|50||
-yone, よね, confirmation|yone|よね|51||
-na, な, na-adjective marker, you are ordered not to do/be X|na|な|52;53||
-ka, kai, kae, か, question marker|ka, kai, kae|か|54||
-ka naa, ka shira, かなあ, かしら, don't know if yes or no, かな〜, ka na, na no ka naa, na no ka shira|ka naa, ka shira|かなあ, かしら|55|かな〜|
-ka, か, or, I don't Y if X is ...|ka|か|56;57||
-ka ...ka, か...か, either or|ka ...ka|か...か|58||
-ga, が, emphasis, object marker, subject marker, but, and (less common)|ga|が|59;60;61;62;63||
-ka, ga, ヶ, kanji connector|ka, ga|ヶ|64||
-ne, wa ne, ね, わね, negative question marker, opinion|ne, wa ne|ね, わね|65;66||
-kara, から, (away) from, therefore|kara|から|67;68||
-made, まで, until, by a certain time, up to|made|まで|69;70||
-nozoi, 除い, except for|nozoi|除い|71||
-maru de, まるで, like, similar to, as if, as though, quite, entirely, completely, at all|maru de|まるで|72||
-you de, ようで, like, similar to|you de|ようで|73||
-goto, 如, like, similar to, same as|goto|如|74||
-no made, 間で, between|no made|間で|75||
-ni yotte, に よって, made by, because of, due to, by means of, depending on|ni yotte|に よって|76||
-ni, に, existence at a location, performing a continuous action at a location, final location, final destination, time of an action/event, frequency or proportion of an action/event, change or resulting condition, object marker for decision verb, object marker for verb in causative active tense, object marker for giving/receiving verb, subject marker in a passive sentence, object marker for person who is allowed/made to do an action, used when comparing/differentiating/estimating, for the purpose of, made for, cause for a given situation, ability, skill, knowledge, used with adverb describing manner, lists, do Y in order to do/be X, X by means of Y, go/come to do X, adverb form|ni|に|77;78;79;80;81;82;83;84;85;86;87;88;89;90;91;92;93;94;95;96;97;98||
-ni wa, には, from the object's point of view, verb object marker, ni ha|ni wa|には|99;100||
-no wa, には, possesive subject marker, no ha|no wa|には|101||
-toka …toka, とか...とか, among other things, such things as, something like that, toka|toka …toka|とか...とか|102||
-oyobi, 及び, and, as well as|oyobi|及び|103||
-wa ... ga ii desu, は...が いい です, out of X, the Y is good, wa, ga|wa ... ga ii desu|は...が いい です|104||
-wa ... ga ..., は...が..., As for X, Y is (verb), wa, ga|wa ... ga ...|は...が...|105||
-de ... en, で...円, (counter) X are worth (price) yen, de, en, worth, priced, price, money|de ... en|で...円|106||
-de utteiru, で売っています, sold at, de utteimasu|de utteiru|で売っています|107||
-ni suru, にします, I will have X, ni shimasu, will take, will order, out of|ni suru|にします|108||
-mo sou, もそう, (I) also X so|mo sou|もそう|109||
-(...), (...), Y that X, ga|(...)|(...)|110||
-mama, まま, X just the way it is|mama|まま|111||
-touri ni, 通りに, X the way it is meant to be, douri ni|touri ni|通りに|112||
-hou ga ii da, ほうが いい です, it would be best if, hou ga ii desu, hou ga, ta hou ga|hou ga ii da|ほうが いい です|113||
-mitai, 見たい, It seems that (he) does/is X, seems that, looks like, looks as if|mitai|見たい|114||
-rashii, らしい, (He) seems to do/be X, like, as if, apparently, it seems, I heard that, sounds like|rashii|らしい|115||
-sou, そう, (He) seems to do/be X / (I've) heard that X (from what I can see), (I've) heard that (he's) not X (from what I can see), looks like, appears to be, feels like, sounds like, seems to be, sou ni, sou mo nai, da sou|sou|そう|116;117||
-tte, datte, って, だって, (I've) heard that X, it seems that X|tte, datte|って, だって|118||
-you, よう, (He) seems to do/be X (from what I can deduce), looks like, appears to be, feels like, sounds like, seems to be|you|よう|119||
-te mo, ても, even if (he) does/is X, de mo|te mo|ても|120||
-ikura ...te mo, 幾ら ...ても, no matter how much (he) does/is X, de mo|ikura ...te mo|幾ら ...ても|121||
-ii desu ka, ikaga desu ka, いですか, いかがですか, would (you) like to/be X?|ii desu ka, ikaga desu ka|いですか, いかがですか|122||
-dearu, である, there is|dearu|である|123||
-ga tsuiteimasu, がついています, X is included|ga tsuiteimasu|がついています|124||
-ga hatteimasu, がついています, X is included|ga hatteimasu|がついています|125||
-X ka nanika wo, か何かを, do/be X or something|X ka nanika wo|か何かを|126||
-X ka dareka wo, か誰かを, do/be X or someone|X ka dareka wo|か誰かを|127||
-X ka dokoka wo, かどこかを, do/be X or somewhere|X ka dokoka wo|かどこかを|128||
-darou, だろう, (He) probably does/is X, (I) wonder if (he) does/is X, likely, presumptive|darou|だろう|129;130||
-deshou, でしょう, (He) probably does/is X, (I) wonder if (he) does/is X, likely, presumptive|deshou|でしょう|131;132||
-no hoka, のほか, apart from X|no hoka|のほか|133||
-sugiru, すぎる, too much X, sugimasu, suginai|sugiru|すぎる|134||
-baai, 場合, In case (you) do/are X, in case of, in the case that, in case that, if|baai|場合|135||
-bakari ni, ばかいに, Y only because of X, bakkari ni, bakashi ni, bakkashi ni|bakari ni|ばかいに|136||
-na n da, なんだ, It's because of X, bakkari ni, bakashi ni, bakkashi ni|na n da|なんだ|137||
-ba, ば, if X then Y, if, then, nara, naraba, kereba, if that's the case, if so, that being the case|ba|ば|138||
-nakereba, なければ, if not X then Y, kereba, denakereba, kunakereba, ba|nakereba|なければ|139||
-nakya, なきゃ, if not X then Y, kereba, denakereba, kunakereba, ba|nakya|なきゃ|140||
-ba ii da, ばいいだ, what must one do/be when X?, ba ii desu ka, dou sureba, it will be fine if, it will be enough if, you should do, ba yokatta, nakereba ii desu, nakereba yokatta desu|ba ii da|ばいいだ|141||
-shi, し, because of X, shi ne|shi|し|142||
-tara ii da, たらいいだ, what must one do/be when X?, tara yokatta da, tara yokatta desu|tara ii da|たらいいだ|143||
-tara, たら, if X then Y, when X then Y, taraba, daraba, if, then, dattara, kattara|tara|たら|144;145||
-nakattara, なかったら, if not X then Y, when not X then Y, daraba, taraba, if, then, denakattara, kunakattara|nakattara|なかったら|146;147||
-sore de, それで, therefore, still, even so, therefore, thus, consequently, as such|sore de|それで|148;149||
-soko de, 其処で, so, accordingly, thereupon, therefore, therefore, thus, consequently, as such|soko de|其処で|150||
-yue ni, 故に, therefore, therefore, thus, consequently, as such|yue ni|故に|151||
-soshitara, そしたら, therefore, therefore, thus, consequently, as such|soshitara|そしたら|152||
-node, ので, therefore, nande, nanode, therefore, thus, consequently, as such|node|ので|153||
-nde, んで, therefore, nande, nanode, therefore, thus, consequently, as such|nde|んで|154||
-te, de, て, で, therefore, X by means of Y, is so, so much that|te, de|て, で|155;156||
-nara, なら, if X|nara|なら|157||
-kakawarazu, かかわらず, despite, in spite of, regardless of, 拘らず, 関らず, 拘わらず, 関わらず, 不抱|kakawarazu|かかわらず|158|拘らず, 関らず, 拘わらず, 関わらず, 不抱|
-igai, 以外, except for, other than, with the exception of|igai|以外|159||
-temo, demo, ても, でも, however, but, nevertheless, even so, notwithstanding|temo, demo|ても, でも|160||
-soredemo, それでも, however, but, nevertheless, even so, notwithstanding|soredemo|それでも|161||
-soreyori, それより, however, but, apart from that, other than that, aside from that, more than that|soreyori|それより|162||
-tadashi, 但し, but, however, provided that, nevertheless, even so, notwithstanding|tadashi|但し|163||
-kedo, けど, but, and (less common), dakedo|kedo|けど|164;165||
-keredomo, けれども, but (politer form of kedo), dakeredomo|keredomo|けれども|166||
-tokoro de, ところで, even if X|tokoro de|ところで|167||
-sore demo, それでも, still, even so|sore demo|それでも|168||
-tokoro ga, 所が, even so, however, still, whereupon, even though, nevertheless, on the contrary, as a matter of fact, despite|tokoro ga|所が|169||
-sore ni shite mo, それにしても, nevertheless, however|sore ni shite mo|それにしても|170||
-soretomo, それとも, X? or Y?, either or|soretomo|それとも|171||
-naide, ないで, don't do X but instead do Y, don't do Y without doing X, not X and then Y, do not do|naide|ないで|172;173;174||
-noni, のに, Y despite, even though X, in order to do/be X, for the purpose of doing/being X, in spite of, despite this, although, and yet, but even so, but even then, however, nevertheless, for all that, nothwithstanding that, nanoni, datta noni|noni|のに|175;176||
-shikashi, 然し, X but Y|shikashi|然し|177||
-ja nakute, じゃなくて, not X but Y instead|ja nakute|じゃなくて|178||
-mata wa, 又は, or, otherwise, mata ha|mata wa|又は|179||
-to issho ni, と一緒に, X together with Y, altogether with|to issho ni|と一緒に|180||
-sore ni, それに, besides, in addition|sore ni|それに|181||
-sono ue, その上, besides, in addition|sono ue|その上|182||
-nagara, ながら, do Y during X|nagara|ながら|183||
-shi, dashi, し, だし, X and Y (amongst other things)|shi, dashi|し, だし|184||
-X tari Y tari suru, たり, X and/or Y, tari, dattari|X tari Y tari suru|たり|185||
-toki, 時, Y happening at the same time as X, Y happened/will have happened/is agreed upon to happen at the same time as X, when, during, in case of|toki|時|186;187||
-uchi ni, 内に, Y happening while X is still happening, when, during|uchi ni|内に|188||
-no tochuu de, の途中で, action Y happening in the midst of event X, in the middle of, in the midst of, during, 途中|no tochuu de|の途中で|189||
-tochuu ni, 途中に, Y exists on the way during movement X, in the middle of, in the midst of, during, 途中|tochuu ni|途中に|190||
-tochuu de, 途中で, action Y happening on the way during movement X, in the middle of, in the midst of, during, 途中|tochuu de|途中で|191||
-ato, あと, X is true and also Y, atto|ato|あと|192||
-you ni, ように, (make an effort) in order to do X, in the hopes of something uncertain|you ni|ように|193||
-tame ni, 為に, Y for the sake of doing/being X, for the sake of something certain, in order to, for, for the sake of, in favor of, in favour of, on behalf of|tame ni|為に|194||
-no tame ni, no tame no, の為に, の為の, Y for the benefit of X, for the sake of something certain|no tame ni, no tame no|の為に, の為の|195||
-you ni, ようにと, tell/ask to do/be X, initiator, initiates|you ni|ようにと|196||
-to iu, to tsutaeru, と言う, と伝える, say/tell that X, da to imasu, da to iu, da to tsutaeru, da to tsutaemasu, say that, tell that|to iu, to tsutaeru|と言う, と伝える|197||
-to omou, と思う, think that X, da to omou, da to omoimasu, I think that, she thinks that,youthink that|to omou|と思う|198||
-to wa kagiranai, と, だとは限らない, is/do not always X, is not always, do not always, da to wa kagiranai, da to wa kagirimasen|to wa kagiranai|と, だとは限らない|199||
-tokoro dewa, ところでは, as far as X|tokoro dewa|ところでは|200||
-ka ...ka, か ...か, do you Y if X is ...?, ka, か, know if, believe that, think that, remember that, remember if|ka ...ka|か ...か|201||
-ka dou ka, かどうか, do you Y if X is ... or not?, I don't Y if X is ... or not, know if, believe that, think that|ka dou ka|かどうか|202;203||
-ka dou ka … te miru, かどうか, In order to see if X is … or not|ka dou ka … te miru|かどうか|204||
-hazu, 筈, 弭, is supposed to do/be X, is not supposed to do/be X, was certainly supposed to do/be X, was regrettably supposed to do/be X, was certainly not supposed to do/be X, expected to do, should do, expected to be, supposed to be, should be, must do, must be, sure|hazu|筈, 弭|205;206;207;208;209||
-ni tsuite, について, about X, relating to X, regarding X, with regard to, with regards to, in regards to|ni tsuite|について|210||
-naru, なる, becomes X, became X, ni naru, you ni naru, comes to be, comes to do|naru|なる|211;212||
-you ni naritai, ようになりたい, become able to be/do X, will be be able to do, will be able to be, etai|you ni naritai|ようになりたい|213||
-you ni naru kamo shirenai, ようになるかもしれない, not become able to be/do X, will not be be able to do, will not be able to be, you ni naru kamo shiremasen|you ni naru kamo shirenai|ようになるかもしれない|214||
-onaji, 同じ, X and Y have the same (characteristic)|onaji|同じ|215||
-ni niteiru, に似ている, Y resembles X|ni niteiru|に似ている|216||
-to dochira ga, とどち が, which of X and Y is most (characteristic) ?|to dochira ga|とどち が|217||
-no naka de ... ga ichiban, の中で...が一番, out of all the X, Y is the most (characteristic)|no naka de ... ga ichiban|の中で...が一番|218||
-yori ... hou ga, より...ほうが, Y more ... than X|yori ... hou ga|より...ほうが|219||
-yori, より, X less … than Y|yori|より|220||
-noto ... noto, のと...のと, between/of X and Y, which of, decision, decide|noto ... noto|のと...のと|221||
-yori mou sukoshi ..., よりもう少し, less X and a bit more Y|yori mou sukoshi ...|よりもう少し|222||
-you ni, you na, sou na, ように, ような, X seems to be like Y, X looks like Y, appears to be, no you ni|you ni, you na, sou na|ように, ような|223||
-ato de, 後で, after X, ato, no ato de, の後で, no atto de, afterwards|ato de|後で|224||
-mae ni, 前に, before X, no mae ni, の前に|mae ni|前に|225||
-te, て, X and then Y, afterwards|te|て|226||
-sorekara, それから, X and then Y, afterwards|sorekara|それから|227||
-soshite, 然して, 然うして, X and then Y, soushite, thus|soshite|然して, 然うして|228||
-sara ni, さらに, furthermore, again, after all, more and more, moreover, even more|sara ni|さらに|229||
-shikamo, しかも, moreover, furthermore, nevertheless, and yet|shikamo|しかも|230||
-teite, deite, ていて, でいて, X is being done (present progressive) while doing/being something|teite, deite|ていて, でいて|231||
-tete, dete, てて, でて, X is being done (present progressive) while doing/being something|tete, dete|てて, でて|232||
-te iru, ている, X is being done (present progressive), X past action/event that is still relevant to the present, te imasu, de iru, de imasu|te iru|ている|233;234||
-te aru, てある, X has (already) been done, te arimasu, de aru, de arimasu|te aru|てある|235||
-te iku, て行く, X has been happening and will continue to happen, do/be X while moving away, do/be X then go somewhere, te ikimasu, de iku, de ikimasu|te iku|て行く|236;237;238||
-te oku, ておく, to do/be X preemptively, in preparation for, in advance, te okimasu, de oku, de okimasu, preemptively, preparation|te oku|ておく|239||
-ttoku, っとく, to do/be X preemptively, in preparation for, in advance, ttokimasu, preemptively, preparation|ttoku|っとく|240||
-te kara, てから, X and then Y, de kara, then, afterwards|te kara|てから|241||
-te kuru, て来る, to come to do/be X, do/be X while approaching, do/be X then come over, te kimasu, de kuru, de kimasu|te kuru|て来る|242;243;244||
-te mo ii da, てもいいだ, X is possible, te mo ii desu, de mo ii da, de mo ii desu, alright, may, permission|te mo ii da|てもいいだ|245||
-te wa ikenai, てはいけない, X is not permitted, te wa ikemasen, de wa ikenai, de wa ikemasen, not allowed, not permitted, forbidden, may not, prohibition|te wa ikenai|てはいけない|246||
-cha ikenai, ちゃいけない, X is not permitted, te wa ikemasen, de wa ikenai, de wa ikemasen, not allowed, not permitted, forbidden, may not, prohibition|cha ikenai|ちゃいけない|247||
-te mo ii desu ka?, てもいいですか?, is it fine if (he) does/is X?, mou ii da, is it ok, is it fine, is ok, is fine, is acceptable, permission, may I, may she, may he, may they, de mo ii desu ka|te mo ii desu ka?|てもいいですか?|248||
-te ageru, て上げる, (He) does/is X as a favor, personally, for someone, te ageru, te agemasu, de ageru, de agemasu|te ageru|て上げる|249||
-te hoshii, てほしい, (I) want someone to do X, hope someone does X, te hoshii desu|te hoshii|てほしい|250||
-te kudasai, て下さい, please do X, to please do/be X, de kudasai|te kudasai|て下さい|251;252||
-te kuremasen ka, te kurenai, て呉れませんか, て呉れない, would you please do X, de kuremasen ka, de kurenai|te kuremasen ka, te kurenai|て呉れませんか, て呉れない|253||
-te kureru, て呉れる, (He) does/is X as a favor, te kuremasu, de kureru, de kuremasu|te kureru|て呉れる|254||
-te miru, て見る, do X and see what happens, te mimasu, de miru, de mimasu|te miru|て見る|255||
-te mitai da, て見たいだ, want to do X and see what happens, want to try doing X, te mitai desu, de mitai da, de mitai desu, te mitakatta, de mitakatta|te mitai da|て見たいだ|256||
-te moraeru, て貰えます, (He) can do/be X as a favor, te moraemasu, de moraeru, de moraemasu|te moraeru|て貰えます|257||
-te moraemasu ka, て貰えますか, could (you) do/be X (as a favor)?, de moraemasu ka|te moraemasu ka|て貰えますか|258||
-te moreru to, て貰えると, if someone can do/be X as a favor, de moraeru to|te moreru to|て貰えると|259||
-te goran, てご覧, please try to do/be X|te goran|てご覧|260||
-te morau, て貰う, someone does/is X as a favor, personally, for someone else, de moraimasu, de morau, de moraimasu|te morau|て貰う|261||
-te moraitai, て貰いたい, I want someone to do/be X (as a favor), de moraitai|te moraitai|て貰いたい|262||
-te sokonau, て損なう, I want someone to do/be X (as a favor), to fail to do/be X, de moraitai|te sokonau|て損なう|263;264||
-te moraitai n desu ga, て貰いたいんですが, would you please do/be X (as a favor), de moraitai no desu ga, de moraitai n desu ga, de moraitai no desu ga|te moraitai n desu ga|て貰いたいんですが|265||
-te shimau, て仕舞う, (He has) completely finished doing/being X, (He) regrets doing/being X, te shimau, te shimaimasu, de shimau, de shimaimasu|te shimau|て仕舞う|266;267||
-te shimatta, て仕舞った, did/was X and regret doing it, te shimaimashita, de shimatta, de shimaimashita|te shimatta|て仕舞った|268||
-cchimatta, っちまった, did/was X and regret doing it|cchimatta|っちまった|269||
-te sumimasen, てすみません, (He is) sorry to do/be X|te sumimasen|てすみません|270||
-te bakari iru, ばかりいる, always doing X, bakkari iru, bakashi iru, bakkashi iru, bakkari imasu, bakashi imasu, bakkashi imasu|te bakari iru|ばかりいる|271||
-te koto wa dekinai, ことはできない, (He) cannot make a X-ing, koto ha dekinai, koto ha dekimasen|te koto wa dekinai|ことはできない|272||
-te choudai, て頂戴, to do/be X as a favor for me|te choudai|て頂戴|273||
-sou ni naru, そう, (He) almost does/is X, sou ni narimasu|sou ni naru|そう|274||
-nasasou, なさそう, (He) doesn't seem to do/be X, sou, sou ni nai, sou mo nai, doesn't look like, doesn't sound like, doesn't appear to be, apparently not, doesn't seem to be|nasasou|なさそう|275||
-eru, える, to be able to do/be X|eru|える|276||
-eta, えた, to have been able to do/be X|eta|えた|277||
-saseru, させる, to make someone do/de X (causative active)|saseru|させる|278||
-koto ga dekiru, ことができる, to be able to do a X-ing|koto ga dekiru|ことができる|279||
-koto, こと, 事, A/an X-ing/X-ment, ru koto, suru koto|koto|こと, 事|280||
-koto ni kimeru, ことに決める, (He) has decided to do/be X|koto ni kimeru|ことに決める|281||
-beki, べき, should X, must X, ought to X|beki|べき|282||
-komu, 込む, to go into, to put into, to remain (seated), to be plunged into (silence), to do thoroughly, to do intently, to continue in the same state|komu|込む|283||
-hajimeru, 始める, to start to do/be|hajimeru|始める|284||
-chau, jau, ちゃう, じゃう, (He has) completely finished doing/being X|chau, jau|ちゃう, じゃう|285||
-chatta, jatta, ちゃった, じゃった, did/was X and regret doing it, te shimaimashita, de shimatta, de shimaimashita|chatta, jatta|ちゃった, じゃった|286||
-(o) ni naru, になる, to do/be X (honorific)|(o) ni naru|になる|287||
-(o) nasaru, なさる, to do/be X (honorific)|(o) nasaru|なさる|288||
-(o) suru, する, to do/be X (humble)|(o) suru|する|289||
-(o) itasu, いたす, to do/be X (humble)|(o) itasu|いたす|290||
-(o) kudasai, 下さい, to please do/be X|(o) kudasai|下さい|291||
-(o) naide kudasai, ないで下さい, to please don't do/be X|(o) naide kudasai|ないで下さい|292||
-(o) nasaimase, なさいませ, to please do/be X (honorific)|(o) nasaimase|なさいませ|293||
-(o) nasaimasu na, なさいますな, to please don't do/be X (honorific)|(o) nasaimasu na|なさいますな|294||
-nasai, なさい, you are ordered to do/be X (polite)|nasai|なさい|295||
-nasaru na, なさるな, you are ordered not to do/be X (polite)|nasaru na|なさるな|296||
-ta mama, た儘, た侭, as it is, as one likes, because, as, as long as|ta mama|た儘, た侭|297||
-naosu, 直す, to do/be X over again|naosu|直す|298||
-tai, たい, want to do/be X|tai|たい|299||
-takatta, たかった, wanted to do/be X|takatta|たかった|300||
-takunai, たくない, don't want to do/be X|takunai|たくない|301||
-takunakatta, たくなかった, didn't want to do/be X|takunakatta|たくなかった|302||
-tai desu, たいです, want to do/be X (polite)|tai desu|たいです|303||
-tai deshita, たいでした, wanted to do/be X (polite)|tai deshita|たいでした|304||
-taku arimasen, たくありません, don't want to do/be X (polite)|taku arimasen|たくありません|305||
-taku arimasen deshita, たくありませんでした, didn't want to do/be X (polite)|taku arimasen deshita|たくありませんでした|306||
-tagaru, たがる, (I understand that) he/she wants to do/be X|tagaru|たがる|307||
-yasui, やすい, easy to do/be X, easy to be|yasui|やすい|308||
-nikui, にくい, difficult to do/be X, difficult to be, difficult to do, hard to be|nikui|にくい|309||
-yagaru, やがる, to do/be X (speaker is contemptuous), difficult to be, difficult to do, hard to be|yagaru|やがる|310||
-yagare, やがる, to do/be with hatred or contempt, yagare|yagare|やがる|311||
-nu, ぬ, to not do/be X|nu|ぬ|312||
-zu, ず, to (verb) without doing/being X|zu|ず|313||
-agaru, 上がる, is done doing/being X|agaru|上がる|314||
-hodo, 程, to the point of|hodo|程|315||
-ina ka, 否か, or not|ina ka|否か|316||
-koto ni suru, ことにする, to have decided to do/be X (in the future), nai koto ni suru, nai koto ni shimasu, koto ni kimeru|koto ni suru|ことにする|317||
-koto ni shita, ことにした, we decided to do/be X|koto ni shita|ことにした|318||
-maji, まじ, cannot, should not, will not, must not, must not do/be X|maji|まじ|319||
-koto ni shiteiru, ことにしている, (I) have decided to be doing/being X|koto ni shiteiru|ことにしている|320||
-koto ni naru, ことになる, It has been decided that (he) does/be X, nai koto ni naru, nai koto ni narimasu|koto ni naru|ことになる|321||
-ga hayai ka, が早いか, as soon as (he) does/is X|ga hayai ka|が早いか|322||
-tara dou desu ka, たらどうですか, Why don't (you) do/be X? How about doing/being X?, dara dou desu, tara dou da, dara dou da|tara dou desu ka|たらどうですか|323||
-tara ii desu ka, たらいいですか, What do (you) think/suggest if (he) does/is X?, dara ii desu ka|tara ii desu ka|たらいいですか|324||
-deshou ka, でしょうか, Shouldn't (you) do/be X?|deshou ka|でしょうか|325||
-masen ka, nai ka, ませんか, ないか, Why don't (you) do/be X?|masen ka, nai ka|ませんか, ないか|326||
-mashou ka, ませんか, May (he) do/be X?|mashou ka|ませんか|327||
-dake, だけ, only do X, dake da, dake desu|dake|だけ|328||
-ta bakari, たばかり, have (just) recently done X, bakkari, bakashi, bakkashi, just done, recently done, just recently done|ta bakari|たばかり|329||
-bakari, ばかり, ready to do/be X, bakkari, bakashi, bakkashi|bakari|ばかり|330||
-ta tokoro da, たところだ, to have done/been X just now, ta tokoro desu|ta tokoro da|たところだ|331||
-tokoro da, ところだ, just about to do/be X|tokoro da|ところだ|332||
-teiru tokoro da, ているところだ, to be just in the middle of X-ing, teiru tokoro desu|teiru tokoro da|ているところだ|333||
-koto ga aru, ことがある, occasionally do/be X, nai koto ga aru, nai koto ga arimasu, koto ga nai, koto ga nakatta|koto ga aru|ことがある|334||
-koto ga dearu, ことがである, allowed to do/be X, nai koto ga dearu, nai koto ga dearimasu|koto ga dearu|ことがである|335||
-ta koto ga aru, たことがある, to have experienced X-ing, have done before|ta koto ga aru|たことがある|336||
-ta koto ni naru, たことになる, to have happened to do/be X|ta koto ni naru|たことになる|337||
-koto ni natteiru, ことになっている, to be scheduled/due to do X, nai koto ni natteiru, nai koto ni natteimasu, scheduled to do, due to do|koto ni natteiru|ことになっている|338||
-ou to suru, ou to shiteiru, おうとする, おうとしている, about to do/be X, ou to shimasu, ou to shiteimasu, intend to do/be|ou to suru, ou to shiteiru|おうとする, おうとしている|339||
-ou to shita, おうとした, was just about to do X, tried to do X, ou to shimashita|ou to shita|おうとした|340||
-ou to omou, ou to omotteiru, おうと思う, plan to do/be X, intend to do/be X, ou to omoimasu, plan to be, considering to do, considering to be|ou to omou, ou to omotteiru|おうと思う|341||
-ou to omou, ou to omotteiru, おうと思っている, planning to do/be X,  ou to omotteimasu, plan to be, considering to do, considering to be|ou to omou, ou to omotteiru|おうと思っている|342||
-tomonaku, ともなく, not intending to do/be X, absentmindedly, without planning to, without intending to|tomonaku|ともなく|343||
-tsumori, 積もり, intend to do/be X, 積り|tsumori|積もり|344|積り|
-ba ii noni, ばいいのに, (He) should do/be X|ba ii noni|ばいいのに|345||
-ba yokatta noni, ばよかったのに, (He) should do/be X|ba yokatta noni|ばよかったのに|346||
-ba yokatta, ばよかった, (He) should have done/been X|ba yokatta|ばよかった|347||
-i, い, present tense, keiyoushi, i keiyoushi, i-adjective|i|い|348||
-i desu, いです, present tense (polite), keiyoushi, i keiyoushi, i-adjective|i desu|いです|349||
-kunai desu, くないです, present tense negative, keiyoushi, i keiyoushi, i-adjective|kunai desu|くないです|350||
-ku arimasen, くありません, present negative tense (polite), keiyoushi, i keiyoushi, i-adjective|ku arimasen|くありません|351||
-katta desu, かったです, past tense, keiyoushi, i keiyoushi, i-adjective|katta desu|かったです|352||
-kunakatta desu, くなかったです, past negative tense, keiyoushi, i keiyoushi, i-adjective|kunakatta desu|くなかったです|353||
-ku arimasen deshita, くありませんでした, past negative tense (polite), keiyoushi, i keiyoushi, i-adjective|ku arimasen deshita|くありませんでした|354||
-ku, く, adverb form, keiyoushi, i keiyoushi, i-adjective|ku|く|355||
-kute, くて, X and Y, is so X that, keiyoushi, i keiyoushi, i-adjective|kute|くて|356;357||
-ku naru, くなる, to turn into X, keiyoushi, i keiyoushi, i-adjective|ku naru|くなる|358||
-ku suru, くする, to make X, keiyoushi, i keiyoushi, i-adjective|ku suru|くする|359||
-mi, み, noun form, keiyoushi, i keiyoushi, i-adjective|mi|み|360||
-kereba, ければ, if X, kereba desu, conditional, keiyoushi, i keiyoushi, i-adjective|kereba|ければ|361||
-karou, かろう, should be X, must be X, ought to be X, volitional, suggestive, keiyoushi, i keiyoushi, i-adjective|karou|かろう|362||
-[root], , present tense, keiyoudoushi, na keiyoushi, na-adjective|[root]||363||
-desu, です, present tense (polite), keiyoudoushi, na keiyoushi, na-adjective|desu|です|364||
-de wa arimasen, ではありません, present negative tense (most polite), keiyoudoushi, na keiyoushi, na-adjective|de wa arimasen|ではありません|365||
-ja nai desu, じゃないです, present negative tense (polite), keiyoudoushi, na keiyoushi, na-adjective|ja nai desu|じゃないです|366||
-dewa nai, ではない, present negative tense (neutral), keiyoudoushi, na keiyoushi, na-adjective|dewa nai|ではない|367||
-ja nai, じゃない, present negative tense (impolite), keiyoudoushi, na keiyoushi, na-adjective|ja nai|じゃない|368||
-deshita, でした, past tense, keiyoudoushi, na keiyoushi, na-adjective|deshita|でした|369||
-ja arimasen deshita, じゃありませんでした, past negative tense, keiyoudoushi, na keiyoushi, na-adjective|ja arimasen deshita|じゃありませんでした|370||
-de wa arimasen deshita, じゃありませんでした, past negative tense (polite), keiyoudoushi, na keiyoushi, na-adjective|de wa arimasen deshita|じゃありませんでした|371||
-de (next adj.), で, X and Y, keiyoudoushi, na keiyoushi, na-adjective|de (next adj.)|で|372||
-ni naru, になる, to turn into X , keiyoudoushi, na keiyoushi, na-adjective|ni naru|になる|373||
-ni suru, にする, to make X, keiyoudoushi, na keiyoushi, na-adjective|ni suru|にする|374||
-deareba, であれば, if X, deareba desu, conditional, keiyoudoushi, na keiyoushi, na-adjective|deareba|であれば|375||
+e, へ, scholarship, stipend, bursary, student loan|e|へ|2||
+mo, も, scholarship, stipend, bursary, student loan|mo|も|3;4||
+mo ... mo, も...も, scholarship, stipend, bursary, student loan, mo|mo ... mo|も...も|5;6||
+to, と, scholarship, stipend, bursary, student loan|to|と|7;8;9;10;11||
+ya, や, scholarship, stipend, bursary, student loan|ya|や|12||
+nado, 等, scholarship, stipend, bursary, student loan, et cetera|nado|等|13||
+no, の, scholarship, stipend, bursary, student loan|no|の|14;15;16;17;18;19;20;21||
+no ga, のが, scholarship, stipend, bursary, student loan|no ga|のが|22;23||
+no wo, のを, scholarship, stipend, bursary, student loan|no wo|のを|24||
+n, ん, scholarship, stipend, bursary, student loan, emphasis, n da, n desu|n|ん|25;26||
+wo, を, scholarship, stipend, bursary, student loan|wo|を|27;28;29;30||
+wa, は, scholarship, stipend, bursary, student loan, as for, regarding, in relation to|wa|は|31;32;33;34;35||
+wa, わ, scholarship, stipend, bursary, student loan|wa|わ|36||
+de, で, scholarship, stipend, bursary, student loan, where, takes place|de|で|37;38;39;40;41;42;43;44||
+de wa, では, scholarship, stipend, bursary, student loan, de ha|de wa|では|6147||
+datte, だって, scholarship, stipend, bursary, student loan|datte|だって|45;46;47;48;49||
+yo, da yo, wa yo, よ, だよ, わよ, scholarship, stipend, bursary, student loan, n da yo, n desu yo|yo, da yo, wa yo|よ, だよ, わよ|50||
+yone, よね, scholarship, stipend, bursary, student loan|yone|よね|51||
+na, な, scholarship, stipend, bursary, student loan|na|な|52;53||
+ka, kai, kae, か, scholarship, stipend, bursary, student loan|ka, kai, kae|か|54||
+ka naa, ka shira, かなあ, かしら, scholarship, stipend, bursary, student loan, かな〜, ka na, na no ka naa, na no ka shira|ka naa, ka shira|かなあ, かしら|55|かな〜|
+ka, か, scholarship, stipend, bursary, student loan|ka|か|56;57||
+ka ...ka, か...か, scholarship, stipend, bursary, student loan|ka ...ka|か...か|58||
+ga, が, scholarship, stipend, bursary, student loan|ga|が|59;60;61;62;63||
+ka, ga, ヶ, scholarship, stipend, bursary, student loan|ka, ga|ヶ|64||
+ne, wa ne, ね, わね, scholarship, stipend, bursary, student loan|ne, wa ne|ね, わね|65;66||
+kara, から, scholarship, stipend, bursary, student loan|kara|から|67;68||
+made, まで, scholarship, stipend, bursary, student loan|made|まで|69;70||
+nozoi, 除い, scholarship, stipend, bursary, student loan|nozoi|除い|71||
+maru de, まるで, scholarship, stipend, bursary, student loan|maru de|まるで|72||
+you de, ようで, scholarship, stipend, bursary, student loan|you de|ようで|73||
+goto, 如, scholarship, stipend, bursary, student loan|goto|如|74||
+no made, 間で, scholarship, stipend, bursary, student loan|no made|間で|75||
+ni yotte, に よって, scholarship, stipend, bursary, student loan|ni yotte|に よって|76||
+ni, に, scholarship, stipend, bursary, student loan|ni|に|77;78;79;80;81;82;83;84;85;86;87;88;89;90;91;92;93;94;95;96;97;98||
+ni wa, には, scholarship, stipend, bursary, student loan, ni ha|ni wa|には|99;100||
+no wa, には, scholarship, stipend, bursary, student loan, no ha|no wa|には|101||
+toka …toka, とか...とか, scholarship, stipend, bursary, student loan, toka|toka …toka|とか...とか|102||
+oyobi, 及び, scholarship, stipend, bursary, student loan|oyobi|及び|103||
+wa ... ga ii desu, は...が いい です, scholarship, stipend, bursary, student loan, wa, ga|wa ... ga ii desu|は...が いい です|104||
+wa ... ga ..., は...が..., scholarship, stipend, bursary, student loan, wa, ga|wa ... ga ...|は...が...|105||
+de ... en, で...円, scholarship, stipend, bursary, student loan, de, en, worth, priced, price, money|de ... en|で...円|106||
+de utteiru, で売っています, scholarship, stipend, bursary, student loan, de utteimasu|de utteiru|で売っています|107||
+ni suru, にします, scholarship, stipend, bursary, student loan, ni shimasu, will take, will order, out of|ni suru|にします|108||
+mo sou, もそう, scholarship, stipend, bursary, student loan|mo sou|もそう|109||
+(...), (...), scholarship, stipend, bursary, student loan, ga|(...)|(...)|110||
+mama, まま, scholarship, stipend, bursary, student loan|mama|まま|111||
+touri ni, 通りに, scholarship, stipend, bursary, student loan, douri ni|touri ni|通りに|112||
+hou ga ii da, ほうが いい です, scholarship, stipend, bursary, student loan, hou ga ii desu, hou ga, ta hou ga|hou ga ii da|ほうが いい です|113||
+mitai, 見たい, scholarship, stipend, bursary, student loan, seems that, looks like, looks as if|mitai|見たい|114||
+rashii, らしい, scholarship, stipend, bursary, student loan, like, as if, apparently, it seems, I heard that, sounds like|rashii|らしい|115||
+sou, そう, scholarship, stipend, bursary, student loan, looks like, appears to be, feels like, sounds like, seems to be, sou ni, sou mo nai, da sou|sou|そう|116;117||
+tte, datte, って, だって, scholarship, stipend, bursary, student loan|tte, datte|って, だって|118||
+you, よう, scholarship, stipend, bursary, student loan, looks like, appears to be, feels like, sounds like, seems to be|you|よう|119||
+te mo, ても, scholarship, stipend, bursary, student loan, de mo|te mo|ても|120||
+ikura ...te mo, 幾ら ...ても, scholarship, stipend, bursary, student loan, de mo|ikura ...te mo|幾ら ...ても|121||
+de mo, でも, scholarship, stipend, bursary, student loan|de mo|でも|6128||
+ii desu ka, ikaga desu ka, いですか, いかがですか, scholarship, stipend, bursary, student loan|ii desu ka, ikaga desu ka|いですか, いかがですか|122||
+dearu, である, scholarship, stipend, bursary, student loan|dearu|である|123||
+ga tsuiteimasu, がついています, scholarship, stipend, bursary, student loan|ga tsuiteimasu|がついています|124||
+ga hatteimasu, がついています, scholarship, stipend, bursary, student loan|ga hatteimasu|がついています|125||
+X ka nanika wo, か何かを, scholarship, stipend, bursary, student loan|X ka nanika wo|か何かを|126||
+X ka dareka wo, か誰かを, scholarship, stipend, bursary, student loan|X ka dareka wo|か誰かを|127||
+X ka dokoka wo, かどこかを, scholarship, stipend, bursary, student loan|X ka dokoka wo|かどこかを|128||
+darou, だろう, scholarship, stipend, bursary, student loan, likely, presumptive|darou|だろう|129;130||
+deshou, でしょう, scholarship, stipend, bursary, student loan, likely, presumptive|deshou|でしょう|131;132||
+no hoka, のほか, scholarship, stipend, bursary, student loan|no hoka|のほか|133||
+sugiru, すぎる, scholarship, stipend, bursary, student loan, sugimasu, suginai|sugiru|すぎる|134||
+baai, 場合, scholarship, stipend, bursary, student loan, in case of, in the case that, in case that, if|baai|場合|135||
+bakari ni, ばかいに, scholarship, stipend, bursary, student loan, bakkari ni, bakashi ni, bakkashi ni|bakari ni|ばかいに|136||
+na n da, なんだ, scholarship, stipend, bursary, student loan, bakkari ni, bakashi ni, bakkashi ni|na n da|なんだ|137||
+ba, ば, scholarship, stipend, bursary, student loan, if, then, nara, naraba, kereba, if that's the case, if so, that being the case|ba|ば|138||
+nakereba, なければ, scholarship, stipend, bursary, student loan, kereba, denakereba, kunakereba, ba|nakereba|なければ|139||
+nakya, なきゃ, scholarship, stipend, bursary, student loan, kereba, denakereba, kunakereba, ba|nakya|なきゃ|140||
+ba ii da, ばいいだ, scholarship, stipend, bursary, student loan, ba ii desu ka, dou sureba, it will be fine if, it will be enough if, you should do, ba yokatta, nakereba ii desu, nakereba yokatta desu|ba ii da|ばいいだ|141||
+shi, し, scholarship, stipend, bursary, student loan, shi ne|shi|し|142||
+tara ii da, たらいいだ, scholarship, stipend, bursary, student loan, tara yokatta da, tara yokatta desu|tara ii da|たらいいだ|143||
+tara, たら, scholarship, stipend, bursary, student loan, taraba, daraba, if, then, dattara, kattara|tara|たら|144;145||
+nakattara, なかったら, scholarship, stipend, bursary, student loan, daraba, taraba, if, then, denakattara, kunakattara|nakattara|なかったら|146;147||
+sore de, それで, scholarship, stipend, bursary, student loan, therefore, thus, consequently, as such|sore de|それで|148;149||
+soko de, 其処で, scholarship, stipend, bursary, student loan, therefore, thus, consequently, as such|soko de|其処で|150||
+yue ni, 故に, scholarship, stipend, bursary, student loan, therefore, thus, consequently, as such|yue ni|故に|151||
+soshitara, そしたら, scholarship, stipend, bursary, student loan, therefore, thus, consequently, as such|soshitara|そしたら|152||
+node, ので, scholarship, stipend, bursary, student loan, nande, nanode, therefore, thus, consequently, as such|node|ので|153||
+nde, んで, scholarship, stipend, bursary, student loan, nande, nanode, therefore, thus, consequently, as such|nde|んで|154||
+te, de, て, で, scholarship, stipend, bursary, student loan, is so, so much that|te, de|て, で|155;156||
+nara, なら, scholarship, stipend, bursary, student loan|nara|なら|157||
+kakawarazu, かかわらず, scholarship, stipend, bursary, student loan, 拘らず, 関らず, 拘わらず, 関わらず, 不抱|kakawarazu|かかわらず|158|拘らず, 関らず, 拘わらず, 関わらず, 不抱|
+igai, 以外, scholarship, stipend, bursary, student loan|igai|以外|159||
+temo, demo, ても, でも, scholarship, stipend, bursary, student loan, nevertheless, even so, notwithstanding|temo, demo|ても, でも|160||
+soredemo, それでも, scholarship, stipend, bursary, student loan, nevertheless, even so, notwithstanding|soredemo|それでも|161||
+soreyori, それより, scholarship, stipend, bursary, student loan|soreyori|それより|162||
+tadashi, 但し, scholarship, stipend, bursary, student loan, nevertheless, even so, notwithstanding|tadashi|但し|163||
+kedo, けど, scholarship, stipend, bursary, student loan, dakedo|kedo|けど|164;165||
+keredomo, けれども, scholarship, stipend, bursary, student loan, dakeredomo|keredomo|けれども|166||
+tokoro de, ところで, scholarship, stipend, bursary, student loan|tokoro de|ところで|167||
+sore demo, それでも, scholarship, stipend, bursary, student loan|sore demo|それでも|168||
+tokoro ga, 所が, scholarship, stipend, bursary, student loan|tokoro ga|所が|169||
+sore ni shite mo, それにしても, scholarship, stipend, bursary, student loan|sore ni shite mo|それにしても|170||
+soretomo, それとも, scholarship, stipend, bursary, student loan, either or|soretomo|それとも|171||
+naide, ないで, scholarship, stipend, bursary, student loan, do not do|naide|ないで|172;173;174||
+noni, のに, scholarship, stipend, bursary, student loan, in spite of, despite this, although, and yet, but even so, but even then, however, nevertheless, for all that, nothwithstanding that, nanoni, datta noni|noni|のに|175;176||
+shikashi, 然し, scholarship, stipend, bursary, student loan|shikashi|然し|177||
+ja nakute, じゃなくて, scholarship, stipend, bursary, student loan|ja nakute|じゃなくて|178||
+mata wa, 又は, scholarship, stipend, bursary, student loan, mata ha|mata wa|又は|179||
+to issho ni, と一緒に, scholarship, stipend, bursary, student loan, altogether with|to issho ni|と一緒に|180||
+sore ni, それに, scholarship, stipend, bursary, student loan|sore ni|それに|181||
+sono ue, その上, scholarship, stipend, bursary, student loan|sono ue|その上|182||
+nagara, ながら, scholarship, stipend, bursary, student loan|nagara|ながら|183||
+shi, dashi, し, だし, scholarship, stipend, bursary, student loan|shi, dashi|し, だし|184||
+X tari Y tari suru, たり, scholarship, stipend, bursary, student loan, tari, dattari|X tari Y tari suru|たり|185||
+toki, 時, scholarship, stipend, bursary, student loan, when, during, in case of|toki|時|186;187||
+uchi ni, 内に, scholarship, stipend, bursary, student loan, when, during|uchi ni|内に|188||
+no tochuu de, の途中で, scholarship, stipend, bursary, student loan, in the middle of, in the midst of, during, 途中|no tochuu de|の途中で|189||
+tochuu ni, 途中に, scholarship, stipend, bursary, student loan, in the middle of, in the midst of, during, 途中|tochuu ni|途中に|190||
+tochuu de, 途中で, scholarship, stipend, bursary, student loan, in the middle of, in the midst of, during, 途中|tochuu de|途中で|191||
+ato, あと, scholarship, stipend, bursary, student loan, atto|ato|あと|192||
+you ni, ように, scholarship, stipend, bursary, student loan|you ni|ように|193||
+tame ni, 為に, scholarship, stipend, bursary, student loan, in order to, for, for the sake of, in favor of, in favour of, on behalf of|tame ni|為に|194||
+no tame ni, no tame no, の為に, の為の, scholarship, stipend, bursary, student loan|no tame ni, no tame no|の為に, の為の|195||
+you ni, ようにと, scholarship, stipend, bursary, student loan, initiator, initiates|you ni|ようにと|196||
+to ii n desu ga, といいんですが, scholarship, stipend, bursary, student loan, da to ii n da, da to ii n desu, da to ii da, da to ii desu|to ii n desu ga|といいんですが|6104||
+to ii desu (ne), といいですね, scholarship, stipend, bursary, student loan, da to ii n da, da to ii n desu, da to ii da, da to ii desu|to ii desu (ne)|といいですね|6148||
+to iu, to tsutaeru, と言う, と伝える, scholarship, stipend, bursary, student loan, da to imasu, da to iu, da to tsutaeru, da to tsutaemasu, say that, tell that|to iu, to tsutaeru|と言う, と伝える|197||
+to omou, と思う, scholarship, stipend, bursary, student loan, da to omou, da to omoimasu, I think that, she thinks that,youthink that|to omou|と思う|198||
+to wa kagiranai, と, だとは限らない, scholarship, stipend, bursary, student loan, is not always, do not always, da to wa kagiranai, da to wa kagirimasen|to wa kagiranai|と, だとは限らない|199||
+tokoro dewa, ところでは, scholarship, stipend, bursary, student loan|tokoro dewa|ところでは|200||
+ka ...ka, か ...か, scholarship, stipend, bursary, student loan, ka, か, know if, believe that, think that, remember that, remember if|ka ...ka|か ...か|201||
+ka dou ka, かどうか, scholarship, stipend, bursary, student loan, know if, believe that, think that|ka dou ka|かどうか|202;203||
+ka dou ka … te miru, かどうか, scholarship, stipend, bursary, student loan|ka dou ka … te miru|かどうか|204||
+hazu, 筈, 弭, scholarship, stipend, bursary, student loan, expected to do, should do, expected to be, supposed to be, should be, must do, must be, sure|hazu|筈, 弭|205;206;207;208;209||
+ni tsuite, について, scholarship, stipend, bursary, student loan, with regard to, with regards to, in regards to|ni tsuite|について|210||
+naru, なる, scholarship, stipend, bursary, student loan, ni naru, you ni naru, comes to be, comes to do|naru|なる|211;212||
+you ni naritai, ようになりたい, scholarship, stipend, bursary, student loan, will be be able to do, will be able to be, etai|you ni naritai|ようになりたい|213||
+you ni naru kamo shirenai, ようになるかもしれない, scholarship, stipend, bursary, student loan, will not be be able to do, will not be able to be, you ni naru kamo shiremasen|you ni naru kamo shirenai|ようになるかもしれない|214||
+onaji, 同じ, scholarship, stipend, bursary, student loan|onaji|同じ|215||
+ni niteiru, に似ている, scholarship, stipend, bursary, student loan|ni niteiru|に似ている|216||
+to dochira ga, とどち が, scholarship, stipend, bursary, student loan|to dochira ga|とどち が|217||
+no naka de ... ga ichiban, の中で...が一番, scholarship, stipend, bursary, student loan|no naka de ... ga ichiban|の中で...が一番|218||
+yori ... hou ga, より...ほうが, scholarship, stipend, bursary, student loan|yori ... hou ga|より...ほうが|219||
+yori, より, scholarship, stipend, bursary, student loan|yori|より|220||
+noto ... noto, のと...のと, scholarship, stipend, bursary, student loan, which of, decision, decide|noto ... noto|のと...のと|221||
+yori mou sukoshi ..., よりもう少し, scholarship, stipend, bursary, student loan|yori mou sukoshi ...|よりもう少し|222||
+you ni, you na, sou na, ように, ような, scholarship, stipend, bursary, student loan, appears to be, no you ni|you ni, you na, sou na|ように, ような|223||
+ato de, 後で, scholarship, stipend, bursary, student loan, ato, no ato de, の後で, no atto de, afterwards|ato de|後で|224||
+mae ni, 前に, scholarship, stipend, bursary, student loan, no mae ni, の前に|mae ni|前に|225||
+te, て, scholarship, stipend, bursary, student loan, afterwards|te|て|226||
+sorekara, それから, scholarship, stipend, bursary, student loan, afterwards|sorekara|それから|227||
+soshite, 然して, 然うして, scholarship, stipend, bursary, student loan, soushite, thus|soshite|然して, 然うして|228||
+sara ni, さらに, scholarship, stipend, bursary, student loan|sara ni|さらに|229||
+shikamo, しかも, scholarship, stipend, bursary, student loan|shikamo|しかも|230||
+teite, deite, ていて, でいて, scholarship, stipend, bursary, student loan|teite, deite|ていて, でいて|231||
+tete, dete, てて, でて, scholarship, stipend, bursary, student loan|tete, dete|てて, でて|232||
+te iru, ている, scholarship, stipend, bursary, student loan, te imasu, de iru, de imasu|te iru|ている|233;234||
+te aru, てある, scholarship, stipend, bursary, student loan, te arimasu, de aru, de arimasu|te aru|てある|235||
+te iku, て行く, scholarship, stipend, bursary, student loan, te ikimasu, de iku, de ikimasu|te iku|て行く|236;237;238||
+te oku, ておく, scholarship, stipend, bursary, student loan, te okimasu, de oku, de okimasu, preemptively, preparation|te oku|ておく|239||
+ttoku, っとく, scholarship, stipend, bursary, student loan, ttokimasu, preemptively, preparation|ttoku|っとく|240||
+te kara, てから, scholarship, stipend, bursary, student loan, de kara, then, afterwards|te kara|てから|241||
+te kuru, て来る, scholarship, stipend, bursary, student loan, te kimasu, de kuru, de kimasu|te kuru|て来る|242;243;244||
+te mo ii da, てもいいだ, scholarship, stipend, bursary, student loan, te mo ii desu, de mo ii da, de mo ii desu, alright, may, permission|te mo ii da|てもいいだ|245||
+te wa ikenai, てはいけない, scholarship, stipend, bursary, student loan, te wa ikemasen, de wa ikenai, de wa ikemasen, not allowed, not permitted, forbidden, may not, prohibition|te wa ikenai|てはいけない|246||
+cha ikenai, ちゃいけない, scholarship, stipend, bursary, student loan, te wa ikemasen, de wa ikenai, de wa ikemasen, not allowed, not permitted, forbidden, may not, prohibition|cha ikenai|ちゃいけない|247||
+te mo ii desu ka?, てもいいですか?, scholarship, stipend, bursary, student loan, mou ii da, is it ok, is it fine, is ok, is fine, is acceptable, permission, may I, may she, may he, may they, de mo ii desu ka|te mo ii desu ka?|てもいいですか?|248||
+te ageru, て上げる, scholarship, stipend, bursary, student loan, te ageru, te agemasu, de ageru, de agemasu|te ageru|て上げる|249||
+te hoshii, てほしい, scholarship, stipend, bursary, student loan, te hoshii desu|te hoshii|てほしい|250||
+te kudasai, て下さい, scholarship, stipend, bursary, student loan, de kudasai|te kudasai|て下さい|251;252||
+te kurenai, て呉れない, scholarship, stipend, bursary, student loan, de kurenai|te kurenai|て呉れない|253||
+te kuremasen ka, て呉れませんか, scholarship, stipend, bursary, student loan, de kuremasen ka|te kuremasen ka|て呉れませんか|6125||
+te itadakemasen ka, て呉れませんか, scholarship, stipend, bursary, student loan, de itadakemasen ka|te itadakemasen ka|て呉れませんか|6126||
+te kureru, て呉れる, scholarship, stipend, bursary, student loan, te kuremasu, de kureru, de kuremasu|te kureru|て呉れる|254||
+te miru, て見る, scholarship, stipend, bursary, student loan, te mimasu, de miru, de mimasu|te miru|て見る|255||
+te mitai da, て見たいだ, scholarship, stipend, bursary, student loan, te mitai desu, de mitai da, de mitai desu, te mitakatta, de mitakatta|te mitai da|て見たいだ|256||
+te moraeru, て貰えます, scholarship, stipend, bursary, student loan, te moraemasu, de moraeru, de moraemasu|te moraeru|て貰えます|257||
+te moraemasu ka, て貰えますか, scholarship, stipend, bursary, student loan, de moraemasu ka|te moraemasu ka|て貰えますか|258||
+te moreru to, て貰えると, scholarship, stipend, bursary, student loan, de moraeru to|te moreru to|て貰えると|259||
+te itadaku, ていただく, scholarship, stipend, bursary, student loan|te itadaku|ていただく|6100||
+te goran, てご覧, scholarship, stipend, bursary, student loan|te goran|てご覧|260||
+te morau, て貰う, scholarship, stipend, bursary, student loan, de moraimasu, de morau, de moraimasu|te morau|て貰う|261||
+te moraitai, て貰いたい, scholarship, stipend, bursary, student loan, de moraitai|te moraitai|て貰いたい|262||
+te sokonau, て損なう, scholarship, stipend, bursary, student loan, de moraitai|te sokonau|て損なう|263;264||
+te moraitai n desu ga, て貰いたいんですが, scholarship, stipend, bursary, student loan, de moraitai no desu ga, de moraitai n desu ga, de moraitai no desu ga|te moraitai n desu ga|て貰いたいんですが|265||
+te shimau, て仕舞う, scholarship, stipend, bursary, student loan, te shimau, te shimaimasu, de shimau, de shimaimasu|te shimau|て仕舞う|266;267||
+te shimatta, て仕舞った, scholarship, stipend, bursary, student loan, te shimaimashita, de shimatta, de shimaimashita|te shimatta|て仕舞った|268||
+cchimatta, っちまった, scholarship, stipend, bursary, student loan|cchimatta|っちまった|269||
+te sumimasen, てすみません, scholarship, stipend, bursary, student loan|te sumimasen|てすみません|270||
+te bakari iru, ばかりいる, scholarship, stipend, bursary, student loan, bakkari iru, bakashi iru, bakkashi iru, bakkari imasu, bakashi imasu, bakkashi imasu|te bakari iru|ばかりいる|271||
+te koto wa dekinai, ことはできない, scholarship, stipend, bursary, student loan, koto ha dekinai, koto ha dekimasen|te koto wa dekinai|ことはできない|272||
+te choudai, て頂戴, scholarship, stipend, bursary, student loan|te choudai|て頂戴|273||
+sou ni naru, そう, scholarship, stipend, bursary, student loan, sou ni narimasu|sou ni naru|そう|274||
+nasasou, なさそう, scholarship, stipend, bursary, student loan, sou, sou ni nai, sou mo nai, doesn't look like, doesn't sound like, doesn't appear to be, apparently not, doesn't seem to be|nasasou|なさそう|275||
+eru, える, scholarship, stipend, bursary, student loan|eru|える|276||
+eta, えた, scholarship, stipend, bursary, student loan|eta|えた|277||
+saseru, させる, scholarship, stipend, bursary, student loan|saseru|させる|278||
+koto ga dekiru, ことができる, scholarship, stipend, bursary, student loan|koto ga dekiru|ことができる|279||
+koto, こと, 事, scholarship, stipend, bursary, student loan, ru koto, suru koto|koto|こと, 事|280||
+koto ni kimeru, ことに決める, scholarship, stipend, bursary, student loan|koto ni kimeru|ことに決める|281||
+beki, べき, scholarship, stipend, bursary, student loan|beki|べき|282||
+komu, 込む, scholarship, stipend, bursary, student loan|komu|込む|283||
+hajimeru, 始める, scholarship, stipend, bursary, student loan|hajimeru|始める|284||
+chau, jau, ちゃう, じゃう, scholarship, stipend, bursary, student loan|chau, jau|ちゃう, じゃう|285||
+chatta, jatta, ちゃった, じゃった, scholarship, stipend, bursary, student loan, te shimaimashita, de shimatta, de shimaimashita|chatta, jatta|ちゃった, じゃった|286||
+(o) ni naru, になる, scholarship, stipend, bursary, student loan|(o) ni naru|になる|287||
+(o) nasaru, なさる, scholarship, stipend, bursary, student loan|(o) nasaru|なさる|288||
+(o) suru, する, scholarship, stipend, bursary, student loan|(o) suru|する|289||
+(o) itasu, いたす, scholarship, stipend, bursary, student loan|(o) itasu|いたす|290||
+(o) kudasai, 下さい, scholarship, stipend, bursary, student loan|(o) kudasai|下さい|291||
+(o) naide kudasai, ないで下さい, scholarship, stipend, bursary, student loan|(o) naide kudasai|ないで下さい|292||
+(o) nasaimase, なさいませ, scholarship, stipend, bursary, student loan|(o) nasaimase|なさいませ|293||
+(o) nasaimasu na, なさいますな, scholarship, stipend, bursary, student loan|(o) nasaimasu na|なさいますな|294||
+nasai, なさい, scholarship, stipend, bursary, student loan|nasai|なさい|295||
+nasaru na, なさるな, scholarship, stipend, bursary, student loan|nasaru na|なさるな|296||
+ta mama, た儘, た侭, scholarship, stipend, bursary, student loan|ta mama|た儘, た侭|297||
+naosu, 直す, scholarship, stipend, bursary, student loan|naosu|直す|298||
+tai, たい, scholarship, stipend, bursary, student loan|tai|たい|299||
+takatta, たかった, scholarship, stipend, bursary, student loan|takatta|たかった|300||
+takunai, たくない, scholarship, stipend, bursary, student loan|takunai|たくない|301||
+takunakatta, たくなかった, scholarship, stipend, bursary, student loan|takunakatta|たくなかった|302||
+tai desu, たいです, scholarship, stipend, bursary, student loan|tai desu|たいです|303||
+tai deshita, たいでした, scholarship, stipend, bursary, student loan|tai deshita|たいでした|304||
+taku arimasen, たくありません, scholarship, stipend, bursary, student loan|taku arimasen|たくありません|305||
+taku arimasen deshita, たくありませんでした, scholarship, stipend, bursary, student loan|taku arimasen deshita|たくありませんでした|306||
+tagaru, たがる, scholarship, stipend, bursary, student loan|tagaru|たがる|307||
+yasui, やすい, scholarship, stipend, bursary, student loan, easy to be|yasui|やすい|308||
+nikui, にくい, scholarship, stipend, bursary, student loan, difficult to be, difficult to do, hard to be|nikui|にくい|309||
+yagaru, やがる, scholarship, stipend, bursary, student loan, difficult to be, difficult to do, hard to be|yagaru|やがる|310||
+yagare, やがる, scholarship, stipend, bursary, student loan, yagare|yagare|やがる|311||
+nu, ぬ, scholarship, stipend, bursary, student loan|nu|ぬ|312||
+zu, ず, scholarship, stipend, bursary, student loan|zu|ず|313||
+agaru, 上がる, scholarship, stipend, bursary, student loan|agaru|上がる|314||
+hodo, 程, scholarship, stipend, bursary, student loan|hodo|程|315||
+ina ka, 否か, scholarship, stipend, bursary, student loan|ina ka|否か|316||
+koto ni suru, ことにする, scholarship, stipend, bursary, student loan, nai koto ni suru, nai koto ni shimasu, koto ni kimeru|koto ni suru|ことにする|317||
+koto ni shita, ことにした, scholarship, stipend, bursary, student loan|koto ni shita|ことにした|318||
+maji, まじ, scholarship, stipend, bursary, student loan|maji|まじ|319||
+koto ni shiteiru, ことにしている, scholarship, stipend, bursary, student loan|koto ni shiteiru|ことにしている|320||
+koto ni naru, ことになる, scholarship, stipend, bursary, student loan, nai koto ni naru, nai koto ni narimasu|koto ni naru|ことになる|321||
+ga hayai ka, が早いか, scholarship, stipend, bursary, student loan|ga hayai ka|が早いか|322||
+tara dou desu ka, たらどうですか, scholarship, stipend, bursary, student loan, dara dou desu, tara dou da, dara dou da|tara dou desu ka|たらどうですか|323||
+tara ii desu ka, たらいいですか, scholarship, stipend, bursary, student loan, dara ii desu ka|tara ii desu ka|たらいいですか|324||
+deshou ka, でしょうか, scholarship, stipend, bursary, student loan|deshou ka|でしょうか|325||
+masen ka, nai ka, ませんか, ないか, scholarship, stipend, bursary, student loan|masen ka, nai ka|ませんか, ないか|326||
+mashou ka, ませんか, scholarship, stipend, bursary, student loan|mashou ka|ませんか|327||
+dake, だけ, scholarship, stipend, bursary, student loan, dake da, dake desu|dake|だけ|328||
+ta bakari, たばかり, scholarship, stipend, bursary, student loan, bakkari, bakashi, bakkashi, just done, recently done, just recently done|ta bakari|たばかり|329||
+bakari, ばかり, scholarship, stipend, bursary, student loan, bakkari, bakashi, bakkashi|bakari|ばかり|330||
+ta tokoro da, たところだ, scholarship, stipend, bursary, student loan, ta tokoro desu|ta tokoro da|たところだ|331||
+tokoro da, ところだ, scholarship, stipend, bursary, student loan|tokoro da|ところだ|332||
+teiru tokoro da, ているところだ, scholarship, stipend, bursary, student loan, teiru tokoro desu|teiru tokoro da|ているところだ|333||
+koto ga aru, ことがある, scholarship, stipend, bursary, student loan, nai koto ga aru, nai koto ga arimasu, koto ga nai, koto ga nakatta|koto ga aru|ことがある|334||
+koto ga dearu, ことがである, scholarship, stipend, bursary, student loan, nai koto ga dearu, nai koto ga dearimasu|koto ga dearu|ことがである|335||
+ta koto ga aru, たことがある, scholarship, stipend, bursary, student loan, have done before|ta koto ga aru|たことがある|336||
+ta koto ni naru, たことになる, scholarship, stipend, bursary, student loan|ta koto ni naru|たことになる|337||
+koto ni natteiru, ことになっている, scholarship, stipend, bursary, student loan, nai koto ni natteiru, nai koto ni natteimasu, scheduled to do, due to do|koto ni natteiru|ことになっている|338||
+ou to suru, ou to shiteiru, おうとする, おうとしている, scholarship, stipend, bursary, student loan, ou to shimasu, ou to shiteimasu, intend to do/be|ou to suru, ou to shiteiru|おうとする, おうとしている|339||
+ou to shita, おうとした, scholarship, stipend, bursary, student loan, ou to shimashita|ou to shita|おうとした|340||
+ou to omou, ou to omotteiru, おうと思う, scholarship, stipend, bursary, student loan, ou to omoimasu, plan to be, considering to do, considering to be|ou to omou, ou to omotteiru|おうと思う|341||
+ou to omou, ou to omotteiru, おうと思っている, scholarship, stipend, bursary, student loan,  ou to omotteimasu, plan to be, considering to do, considering to be|ou to omou, ou to omotteiru|おうと思っている|342||
+tomonaku, ともなく, scholarship, stipend, bursary, student loan, absentmindedly, without planning to, without intending to|tomonaku|ともなく|343||
+tsumori, 積もり, scholarship, stipend, bursary, student loan, 積り|tsumori|積もり|344|積り|
+ba ii noni, ばいいのに, scholarship, stipend, bursary, student loan|ba ii noni|ばいいのに|345||
+ba yokatta noni, ばよかったのに, scholarship, stipend, bursary, student loan|ba yokatta noni|ばよかったのに|346||
+ba yokatta, ばよかった, scholarship, stipend, bursary, student loan|ba yokatta|ばよかった|347||
+i, い, scholarship, stipend, bursary, student loan, keiyoushi, i keiyoushi, i-adjective|i|い|348||
+i desu, いです, scholarship, stipend, bursary, student loan, keiyoushi, i keiyoushi, i-adjective|i desu|いです|349||
+kunai desu, くないです, scholarship, stipend, bursary, student loan, keiyoushi, i keiyoushi, i-adjective|kunai desu|くないです|350||
+ku arimasen, くありません, scholarship, stipend, bursary, student loan, keiyoushi, i keiyoushi, i-adjective|ku arimasen|くありません|351||
+katta desu, かったです, scholarship, stipend, bursary, student loan, keiyoushi, i keiyoushi, i-adjective|katta desu|かったです|352||
+kunakatta desu, くなかったです, scholarship, stipend, bursary, student loan, keiyoushi, i keiyoushi, i-adjective|kunakatta desu|くなかったです|353||
+ku arimasen deshita, くありませんでした, scholarship, stipend, bursary, student loan, keiyoushi, i keiyoushi, i-adjective|ku arimasen deshita|くありませんでした|354||
+ku, く, scholarship, stipend, bursary, student loan, keiyoushi, i keiyoushi, i-adjective|ku|く|355||
+kute, くて, scholarship, stipend, bursary, student loan, keiyoushi, i keiyoushi, i-adjective|kute|くて|356;357||
+ku naru, くなる, scholarship, stipend, bursary, student loan, keiyoushi, i keiyoushi, i-adjective|ku naru|くなる|358||
+ku suru, くする, scholarship, stipend, bursary, student loan, keiyoushi, i keiyoushi, i-adjective|ku suru|くする|359||
+mi, み, scholarship, stipend, bursary, student loan, keiyoushi, i keiyoushi, i-adjective|mi|み|360||
+kereba, ければ, scholarship, stipend, bursary, student loan, kereba desu, conditional, keiyoushi, i keiyoushi, i-adjective|kereba|ければ|361||
+karou, かろう, scholarship, stipend, bursary, student loan, volitional, suggestive, keiyoushi, i keiyoushi, i-adjective|karou|かろう|362||
+[root], , scholarship, stipend, bursary, student loan, keiyoudoushi, na keiyoushi, na-adjective|[root]||363||
+desu, です, scholarship, stipend, bursary, student loan, keiyoudoushi, na keiyoushi, na-adjective|desu|です|364||
+de wa arimasen, ではありません, scholarship, stipend, bursary, student loan, keiyoudoushi, na keiyoushi, na-adjective|de wa arimasen|ではありません|365||
+ja nai desu, じゃないです, scholarship, stipend, bursary, student loan, keiyoudoushi, na keiyoushi, na-adjective|ja nai desu|じゃないです|366||
+dewa nai, ではない, scholarship, stipend, bursary, student loan, keiyoudoushi, na keiyoushi, na-adjective|dewa nai|ではない|367||
+ja nai, じゃない, scholarship, stipend, bursary, student loan, keiyoudoushi, na keiyoushi, na-adjective|ja nai|じゃない|368||
+deshita, でした, scholarship, stipend, bursary, student loan, keiyoudoushi, na keiyoushi, na-adjective|deshita|でした|369||
+ja arimasen deshita, じゃありませんでした, scholarship, stipend, bursary, student loan, keiyoudoushi, na keiyoushi, na-adjective|ja arimasen deshita|じゃありませんでした|370||
+de wa arimasen deshita, じゃありませんでした, scholarship, stipend, bursary, student loan, keiyoudoushi, na keiyoushi, na-adjective|de wa arimasen deshita|じゃありませんでした|371||
+de (next adj.), で, scholarship, stipend, bursary, student loan, keiyoudoushi, na keiyoushi, na-adjective|de (next adj.)|で|372||
+ni naru, になる, scholarship, stipend, bursary, student loan, keiyoudoushi, na keiyoushi, na-adjective|ni naru|になる|373||
+ni suru, にする, scholarship, stipend, bursary, student loan, keiyoudoushi, na keiyoushi, na-adjective|ni suru|にする|374||
+deareba, であれば, scholarship, stipend, bursary, student loan, deareba desu, conditional, keiyoudoushi, na keiyoushi, na-adjective|deareba|であれば|375||
+yotei da, 予定だ, scholarship, stipend, bursary, student loan, to yotei desu|yotei da|予定だ|6149||

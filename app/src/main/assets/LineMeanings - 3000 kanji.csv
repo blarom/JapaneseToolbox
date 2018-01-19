@@ -246,19 +246,19 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 246|X is not permitted|VC||X wa ikenai @ X = verb te form / sentence object|890, 483||cha ikenai|
 247|X is not permitted|VC|Colloquial form of "te wa ikenai" for verbs.|X cha ikenai @ X = verb root|||te wa ikenai|
 248|is it fine if (he) does/is X?|VC||X mo ii desu ka @ X = verb te form|891|||
-249|(He) does/is X as a favor, personally, for someone|VC|Use "te ageru" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence).|X ageru @ X = verb te form|885, 1393||te morau, te kureru|
+249|(He) does/is X as a personal favor for someone|VC|Use "te ageru" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence).|X ageru @ X = verb te form|885, 1393, 1436, 1437, 1440, 1443||te morau, te kureru|
 250|(I) want someone to do X, hope someone does X|VC||X hoshii da @ X = verb te form||||
 251|please do X|VC||X kudasai @ X = verb te form (add "sumimasen" or "chotto" to soften the request)|886|||
 252|to please do/be X|VC||X kudasai @ X = verb te form||||
-253|would you please do X|VC||X kuremasen ka @ X = verb te form (expression used when the request may cause some trouble to the other person)||||
-254|(He) does/is X as a favor|VC|Use "te kureru" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence). Usually refers to performing an act for the subject or a close familiar.|X kureru @ X = verb te form|||te morau, te ageru|
+253|would you please do X|VC||X kuremasen ka @ X = verb te form (expression used when the request may cause some trouble to the other person)|||te kurenai, te itadakemasen ka|
+254|(He) does/is X as a favor for me|VC|Use "te kureru" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence). Usually refers to performing an act for the subject or a close familiar. Usage of "te kureru" corresponds to an active phrase as opposted to "te morau"that corresponds to a passive phrase.|Y ga Z wo X kureru @ X = verb te form, Y = person doing the favor, Z = object of the favor|1435, 1438. 1441||te morau, te ageru|
 255|do X and see what happens|VC||X miru @ X = verb te form|1349, 1350, 1390|||
 256|want to do X and see what happens, want to try doing X|VC||X miru @ X = verb te form|990|||
 257|(He) can do/be X as a favor|VC||X moraeru @ X = verb te form||||
 258|could (you) do/be X (as a favor)?|VC||X moraemasu ka @ X = verb te form||||
 259|if someone can do/be X as a favor|VC||X moraeru to @ X = verb te form||||
 260|please try to do/be X|VC||X goran @ X = verb te form||||
-261|someone does/is X as a favor, personally, for someone else|VC|Use "te morau" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence).|X morau @ X = verb te form|||te kureru, te ageru|
+261|someone does/is X as a personal favor for someone or for me|VC|Use "te morau" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence). Usage of "te kureru" corresponds to an active phrase as opposted to "te morau"that corresponds to a passive phrase.|Y ni Z wo X morau @ X = verb te form, Y = person doing the favor, Z = object of the favor|1430, 1432, 1439, 1441||te kureru, te ageru|
 262|I want someone to do/be X (as a favor)|VC||X moraitai @ X = verb te form||||
 263|I want someone to do/be X (as a favor)|VC||X moraitai @ X = verb te form||||
 264|to fail to do/be X|VC||X sokonau @ X = verb te form||||
@@ -1215,8 +1215,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1215|anyday|AT|||745|||
 1216|anytime|AT|||743|||
 1217|around a specific point in time|AT|||671|||
-1218|at once;  immediately;  directly;  in person;  automatically|AT||||||
-1219|at that time;  in those days|AT||||||
+1218|at once, immediately, directly, in person, automatically|AT||||||
+1219|at that time, in those days|AT||||||
 1220|barely, narrowly, hardly, only just|AT||||||
 1221|finally, at last|AT||||||
 1222|gradually, little by little, by degrees|AT||||||
@@ -1331,7 +1331,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1331|time|NT|||481, 1314, 1320||toki|
 1332|house number|C||||||
 1333|large animals|C||||||
-1334|large flat objects|C|Used for mirrors, boards for board games (chess, igo, shogi), stages of computer games, walls of a room, tennis courts.|||||
+1334|broad, flat objects, levels or stages, e.g. in a video game|C|Used for mirrors, boards for board games (chess, igo, shogi), stages of computer games, walls of a room, tennis courts.|||||
 1335|long narrow objects|C|Used for trees, pencils, bottles, sticks, etc.. (Note tha the counter for book is "satsu", not "hon"). Examples: ippon (1), sanbon (3), roppon (6), happon (8), juppon (10), nanbon (how many)||1121, 1122|||
 1336|book|NGO|||298|||
 1337|machines|C|Used for cars, bicycles, machines, mechanical devices, household appliances.||1149|||
@@ -2305,7 +2305,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2305|industry|NACF||||||
 2306|influence, effect|NACF||||||
 2307|information session, briefing, explanatory meeting|NACF||||||
-2308|information,  guidance, instruction|NACF||||||
+2308|information,  guidance, instruction|NAc||||||
 2309|ingredient, material|NACF||||||
 2310|injury, hurt, wound|NACF||||||
 2311|insight, power of observation|NACF||||||
@@ -2576,7 +2576,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2576|rest, break|NACF||||||
 2577|vacation, holidays|NACF|Used in an informal dialogue||77, 1298|||
 2578|result, consequence, outcome, effect|NACF||||||
-2579|results, record, grades, performance|NACF||||||
+2579|results, record, grades, performance, marks|NACF||||||
 2580|retirement|NACF||||||
 2581|reverse, opposite, converse|NACF||||||
 2582|reversed situation, being beaten at one's own game|NACF||||||
@@ -3364,7 +3364,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3364|dishes, tableware|NGO||||||
 3365|dishwasher|NGO||||||
 3366|documents, official papers|NGO||||||
-3367|doll|NGO|||345, 1335|||
+3367|doll, puppet|NGO|||345, 1335|||
 3368|dollar|NGO||||||
 3369|dome|NGO|||377|||
 3370|door|NGO|||374||to|
@@ -4707,7 +4707,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4707|enlighten, edify (archaic)|VkuT||||||
 4708|open (e.g. path), clear (the way), break up (e.g. land)|VkuT||||||
 4709|unfasten, untie, unwrap (e.g. parcel)|VkuT||||||
-4710|shine, glitter, sparkle|VkuI||||||
+4710|shine, glitter, sparkle, twinkle (e.g. stars)|VkuI||||||
 4711|incline toward, slant, lurch, heel over, be disposed to, trend toward, be prone to, go down (sun), wane, sink, decline|VkuI||||||
 4712|break, smash, crush|VkuT||||||
 4713|persuade, coax, solicit, seduce, make advances, make a play, make a pass, put the moves on, come on to, hit on, court, woo, romance|VkuT||||||
@@ -4738,7 +4738,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4738|wind, coil, roll|VkuT||||||
 4739|remove, exclude, except|VkuT||||||
 4740|omit, leave out, exclude, eliminate, curtail, save, cut down, economize, economise|VkuT||||||
-4741|resound, be heard far away, reverberate, shake, vibrate, come (home), remain (with someone), have an effect, make an impression|VkuI||||||
+4741|resound, be heard far away, reverberate, shake, vibrate, come (home), remain (with someone), have an effect, make an impression, echo|VkuI||||||
 4742|ascend (the throne), accede, take (seat, position, course, etc.), assume, start (on a journey), commence, depart, study (under teacher), be an apprentice|VkuI||||||
 4743|turn one's face, turn around, look over one's shoulder|VkuI||||||
 4744|be grounded on, be based on, be due to, originate from|VkuI||||||
@@ -5269,7 +5269,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5269|obtain, come possess, get hold of, get one's hands on|VrugT||||||
 5270|form, shape, make, mold, build up|VrugT||||||
 5271|shake, jolt, rock, cradle, swing|VrugT||||||
-5272||||||||
+5272|mouse, rat|NFa||||||
 5273|stand|VtsuI||||||
 5274|wait|VtsuI||||||
 5275|await, look forward to, anticipate, expect|VtsuT||||||
@@ -5425,7 +5425,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5425|remember, memorize (not for a specific purpose), learn (news)|VruiT||||||
 5426|vanish, disappear, be extinguished|VruiI||||||
 5427|plant, grow|VruiT||||||
-5428|tell, send a message|VruiT|||1280|||
+5428|convey, report, transmit, communicate, tell, impart, propagate, teach, bequeath, send a message|VruiT|||1280|||
 5429|make a mistake|VruiI||||||
 5430|appear, come out|VruiI||||||
 5431|fall (down, ina trap, in love, ...), drop, sink, decrease, be omitted, be missing, fade, be removed, fail, lose, be defeated, degrade, fall behind, give in, give up, surrender, die (animals)|VruiI|||1254, 1328|otosu||
@@ -6078,3 +6078,75 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6078|glitter, sparkle, glisten, twinkle|VsuruI||||||
 6079|flee, desert, escape|VsuruI||||||
 6080|fly, soar|VsuruI||||||
+6081|firefly, lightning bug, glowworm|NFa||||||
+6082|blink (one's eyes), wink, bat, twinkle (e.g. stars), flicker, waver|VkuI||||||
+6083|how, how much, up to how much, to what extent, to what degree|ADg||||||
+6084|one night, one evening|AT||||||
+6085|complete, entire|Sx||||||
+6086|walk about, walk to and fro, pace around|VrugI||||||
+6087|to turn up, to make an appearance, to put in an appearance, to appear, to show up|CE||||||
+6088|cry (esp. animal), roar, chirp, tweet, bark, whine, meow|NAc||||||
+6089|echo, reverberation, sound|NAc||||||
+6090|resound, echo, reverberate|VrugI||||||
+6091|oversleep|VsuI||||||
+6092|sleep in late, oversleep|VsuruI||||||
+6093|sleeping in late, oversleeping|NAc||||||
+6094|late riser, sleepy head|Npe||||||
+6095|miss (train, bus, …)|VruiT||||||
+6096|alarm clock|NGO||||||
+6097|alarm (clock)|NGO||||||
+6098|opening one's eyes, keeping one's eyes open|NAc||||||
+6099|brilliant, splendid, striking, remarkable|Ai||||||
+6100|someone does/is X as a personal favor for someone else (polite)|VC|Politer than "te morau".|X morau @ X = verb te form|1431||te morau|
+6101|hedgehog|NFa||||||
+6102|dark gray, dark grey, slate|NCo||||||
+6103|I have a problem|CE||||||
+6104|(I) hope that X|SSD|ME#0245;0246|||||
+6105|(it's) well made|CE||||||
+6106|do the dishes|VuI||||||
+6107|divide (into), split (into), part, separate, divide up, classify, sort out, divide out​|VruiT||||||
+6108|share, distribute, deal out, dish out​|VruiT||||||
+6109|distinguish, discriminate, differentiate (between)​|VruiT||||||
+6110|break up (a fight), mediate​|VruiT||||||
+6111|call a draw, tie​|VruiT||||||
+6112|push one's way through (a crowd)​|VruiT||||||
+6113|sell​|VruiT||||||
+6114|clean (usu. vacuum cleaner)|NGO||||||
+6115|give (someone) a treat|VrugT||||||
+6116|be extravagant, live|VrugI||||||
+6117|be proud, be haughty|VrugI||||||
+6118|inform, guide, instruct, lead, show around, announce, invite, make acquaintance with|VsuruT||||||
+6119|florist|NPe||||||
+6120|flower shop, florist|NPl||||||
+6121|letter of recommendation, recommendation letter|NGO||||||
+6122|recommendation, referral, endorsement|NAc||||||
+6123|recommend, refer, endorse|VsuruT||||||
+6124|explain|VsuruT||||||
+6125|will you please do X|VC||X kurenai @ X = verb te form (expression used when the request may cause some trouble to the other person)|||te kuremasen ka, te itadakemasen ka|
+6126|could you please do X|VC||X itadakemasen ka @ X = verb te form (expression used when the request may cause some trouble to the other person)|||te kuremasen ka, te kurenai|
+6127|daruma, tumbling doll, round, red-painted good-luck doll in the shape of Bodhidharma, with an blank eye to be completed when a person's wish is granted|NGO||||||
+6128|also there|PP|Literally: also (at a place) where the action is performed|||||
+6129|eyebrow, eyebrows, brow|NAn||||||
+6130|moustache|NAn||||||
+6131|beard|NAn||||||
+6132|(cheek) whiskers|NAn||||||
+6133|the 12 signs of the Chinese zodiac|NACF||||||
+6134|cotton|NFl||||||
+6135|face|NAn||||||
+6136|mask, face guard|NCO||||||
+6137|(in kendo) striking the head|NAc||||||
+6138|surface (esp. a geometrical surface)|NMSE||||||
+6139|page|NGO||||||
+6140|aspect, facet, side|NACF||||||
+6141|chamfer|NACF||||||
+6142|noodles|NCu||||||
+6143|dismissal|NAc||||||
+6144|drum|NGO|Usually refers to a Japanese-style drum.|||||
+6145|ancient times|NACF||||||
+6146|folklore demons of the Oga Peninsula (villagers dress up as namahage on New Year's Eve and frighten children)|NPe||||||
+6147|as for in|PP|||1444|||
+6148|(I) hope that X|SSD|ME#0247;0248|||||
+6149|I plan to X|SSD||X wo yotei da|1448|||
+6150|scholarship, stipend, bursary|NACF||||||
+6151|student loan|NACF|||1450|||
+6152|go smoothly, turn out well, do the trick, have peaceful relations|VKuI||||||

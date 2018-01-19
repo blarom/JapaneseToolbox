@@ -87,11 +87,13 @@ public class JapaneseToolboxUITest {
             ViewInteraction button = onView(
                     allOf(withId(R.id.button_searchWord), withText("DICT"), isDisplayed()));
             button.perform(click());
+            //button.perform(closeSoftKeyboard()).perform(scrollTo()).perform(click());
         }
         else {
             ViewInteraction button = onView(
                     allOf(withId(R.id.button_searchVerb), withText("CONJ"), isDisplayed()));
             button.perform(click());
+            //button.perform(closeSoftKeyboard()).perform(scrollTo()).perform(click());
         }
     }
     public void TestSpinnerLink(String button_string, String input) {

@@ -43,7 +43,7 @@ konna, こんな, this kind of|konna|こんな|422||
 shosen, 所詮, after all|shosen|所詮|423||
 douse, どうせ, anyhow, in any case, at any rate, after all, at best, at most, at all|douse|どうせ|424||
 toriaezu, 取りあえず, at once, first of all, for the time being, for now, 取り敢えず, 取敢えず|toriaezu|取りあえず|425|取り敢えず, 取敢えず|
-mochiron, 勿論, certainly, of course|mochiron|勿論|426||
+mochiron, 勿論, of course, certainly|mochiron|勿論|426||
 muron, 無論, certainly, of course|muron|無論|427||
 desae, でさえ, even|desae|でさえ|428||
 sae, sura, さえ, すら, even, if only, if just, as long as|sae, sura|さえ, すら|429||
@@ -667,8 +667,8 @@ nanjidemo, 何時でも, any hour, all hours|nanjidemo|何時でも|1214||
 nanyoubidemo, 何曜日でも, anyday|nanyoubidemo|何曜日でも|1215||
 itsudemo, いつでも, anytime|itsudemo|いつでも|1216||
 goro, ごろ, around a specific point in time|goro|ごろ|1217||
-tadachi ni, 直ちに, at once;  immediately;  directly;  in person;  automatically|tadachi ni|直ちに|1218||
-touji, 当時, at that time;  in those days|touji|当時|1219||
+tadachi ni, 直ちに, at once, immediately, directly, in person, automatically|tadachi ni|直ちに|1218||
+touji, 当時, at that time, in those days|touji|当時|1219||
 youyaku, 漸く, barely, narrowly, hardly, only just, finally, at last, gradually, little by little, by degrees|youyaku|漸く|1220;1221;1222||
 konshuujuu ni, 今週中に, before the week is out, before the week is over, within the week, sometime this week|konshuujuu ni|今週中に|1223||
 izen wa, 以前, beforehand, izen ha|izen wa|以前|1224||
@@ -744,7 +744,7 @@ metta ni, 滅多に, very seldom, almost never, rarely|metta ni|滅多に|1301||
 mou sugu, もうすぐ, very soon, before long, in a moment|mou sugu|もうすぐ|1302||
 hoka ni, ほか に, X in addition to, besides Y|hoka ni|ほか に|1303||
 kinou, 昨日, yesterday, yesterday|kinou|昨日|1304;1305||
-hiki, 匹, animals|hiki|匹|1306||
+hiki, 匹, animals, ippiki, sanbiki|hiki|匹|1306||
 wa, ba, pa, 羽, birds, rabbits|wa, ba, pa|羽|1307||
 satsu, 冊, books, novels|satsu|冊|1308||
 hako, 箱, boxes, box, train car, receptacle, bako|hako|箱|1309;1310||
@@ -764,7 +764,6 @@ hatsu, 発, gunshots, bursts of gas, bullets, bombs, blows, punches, departure, 
 jikan, 時間, hour-long periods, time, yojikan, shichijikan, kujikan, juuyojikan, nijuuyojikan|jikan|時間|1330;1331||
 banchi, 番地, house number|banchi|番地|1332||
 tou, 頭, large animals|tou|頭|1333||
-men, 面, large flat objects|men|面|1334||
 hon, 本, long narrow objects, book, bon, pon, nanbon, ippon, sanbon, roppon, happon, juppon|hon|本|1335;1336||
 dai, 台, machines|dai|台|1337||
 kagetsu, tsuki, kagetsukan, 月, ヶ月, か月, 箇月, month-long periods, nikagetsu, ikkagetsu, hitotsuki, rokkagetsu, hachikagetsu, hakkagetsu, jikkagetsu, jukkagetsu|kagetsu, tsuki, kagetsukan|月, ヶ月, か月, 箇月|1338||
@@ -1961,7 +1960,7 @@ daihyou, 代表, representative, representation, delegation, type, example, mode
 kakugo, 覚悟, resolution, resignation, readiness, preparedness|kakugo|覚悟|2575||
 yasumi, 休み, rest, break, vacation, holidays|yasumi|休み|2576;2577||
 kekka, 結果, result, consequence, outcome, effect|kekka|結果|2578||
-seiseki, 成績, results, record, grades, performance|seiseki|成績|2579||
+seiseki, 成績, results, record, grades, performance, marks|seiseki|成績|2579||
 intai, 引退, retirement|intai|引退|2580||
 gyaku, 逆, reverse, opposite, converse|gyaku|逆|2581||
 kaeriuchi, 返り討ち, reversed situation, being beaten at one's own game|kaeriuchi|返り討ち|2582||
@@ -2735,7 +2734,7 @@ waribikiken, 割り引き券, discount coupon, discount ticket|waribikiken|割�
 shokki, 食器, dishes, tableware|shokki|食器|3364||
 shokkiarraki, 食器荒木, dishwasher|shokkiarraki|食器荒木|3365||
 shorui, 書類, documents, official papers|shorui|書類|3366||
-ningyou, 人形, doll|ningyou|人形|3367||
+ningyou, 人形, doll, puppet|ningyou|人形|3367||
 doru, ドル, dollar|doru|ドル|3368||
 doomu, ドーム, dome|doomu|ドーム|3369||
 doa, ドア, door|doa|ドア|3370||
@@ -3822,3 +3821,37 @@ juu, 中, through, throughout, during all of, in the course of, all of, all over
 teki, 的, typical of, similar to, like|teki|的|4473||
 ppoi, っぽい, typical of, similar to, like|ppoi|っぽい|4474||
 rashii, らしい, typical of, similar to, like, appropriate for, becoming of, worthy of the name, rashikatta, rashikunai, rashikunakatta|rashii|らしい|4475||
+hotaru, 蛍, firefly, lightning bug, glowworm|hotaru|蛍|6081||
+donna ni, どんあに, how, how much, up to how much, to what extent, to what degree|donna ni|どんあに|6083||
+hitoban, 一晩, one night, one evening|hitoban|一晩|6084||
+ju, じゅ, complete, entire|ju|じゅ|6085||
+kao wo dasu, 顔を出す, to turn up, to make an appearance, to put in an appearance, to appear, to show up|kao wo dasu|顔を出す|6087||
+nakigoe, 鳴き声, cry (esp. animal), roar, chirp, tweet, bark, whine, meow|nakigoe|鳴き声|6088||
+hibiki, 響き, echo, reverberation, sound|hibiki|響き|6089||
+nebou, 寝坊, sleeping in late, oversleeping, late riser, sleepy head|nebou|寝坊|6093;6094||
+mezamashidokei, 目覚まし時計, alarm clock|mezamashidokei|目覚まし時計|6096||
+mezamashi, 目覚まし, alarm (clock), opening one's eyes, keeping one's eyes open|mezamashi|目覚まし|6097;6098||
+mezamashii, 目覚ましい, brilliant, splendid, striking, remarkable|mezamashii|目覚ましい|6099||
+hari nezumi, 針鼠, hedgehog|hari nezumi|針鼠|6101||
+nezumi, 鼠, mouse, rat, dark gray, dark grey, slate|nezumi|鼠|5272;6102||
+komarimashita ne, 困りましたね, I have a problem|komarimashita ne|困りましたね|6103||
+yoku dekiteimasu, よくできています, (it's) well made|yoku dekiteimasu|よくできています|6105||
+soujiki, 掃除機, clean (usu. vacuum cleaner)|soujiki|掃除機|6114||
+ohanayasan, お花屋さん, florist|ohanayasan|お花屋さん|6119||
+hanaya, 花屋, flower shop, florist|hanaya|花屋|6120||
+suisenjou, 推薦状, letter of recommendation, recommendation letter|suisenjou|推薦状|6121||
+suisen, 推薦状, recommendation, referral, endorsement|suisen|推薦状|6122||
+daruma, 達磨, daruma, tumbling doll, round, red-painted good-luck doll in the shape of Bodhidharma, with an blank eye to be completed when a person's wish is granted|daruma|達磨|6127||
+mayu, 眉, eyebrow, eyebrows, brow|mayu|眉|6129||
+hige, 髭, moustache|hige|髭|6130||
+hige, 鬚, beard|hige|鬚|6131||
+hige, 髯, (cheek) whiskers|hige|髯|6132||
+juunishi, 十二支, the 12 signs of the Chinese zodiac|juunishi|十二支|6133||
+men, 綿, cotton|men|綿|6134||
+men, 面, broad, flat objects, levels or stages, e.g. in a video game, face, mask, face guard, (in kendo) striking the head, surface (esp. a geometrical surface), page, aspect, facet, side, chamfer|men|面|1334;6135;6136;6137;6138;6139;6140;6141||
+men, 麺, noodles, 麪|men|麺|6142|麪|
+men, 免, dismissal|men|免|6143||
+taiko, 太鼓, drum|taiko|太鼓|6144||
+taiko, 太古, ancient times|taiko|太古|6145||
+namahage, amahage, 生剥, folklore demons of the Oga Peninsula (villagers dress up as namahage on New Year's Eve and frighten children)|namahage, amahage|生剥|6146||
+shougakukin, 奨学金, scholarship, stipend, bursary, student loan|shougakukin|奨学金|6150;6151||

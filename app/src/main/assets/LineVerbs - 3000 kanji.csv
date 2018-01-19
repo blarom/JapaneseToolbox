@@ -192,6 +192,7 @@ su godan|send back, return|T|を|おくりかえす|送り返す|okurikaesu|送�
 su godan|begin rain, start rain|I||ふりだす|降り出す|furidasu|降り出|furida||
 su godan|shake and give, start shaking, shake out, write (draw) on a check (cheque)|T|を|ふりだす|振り出す|furidasu|振り出|furida||
 su godan|pollute, contaminate, soil, make dirty, stain, disgrace, dishonour, dishonor, defile|T|を|よごす|汚す|yogosu|汚|yogo||
+su godan|oversleep|I||ねすごす|寝過ごす|nesugosu|寝過ご|nesugo||
 ||||||||||
 ku godan||||XXXく|XXXく|ku|||7|
 ku godan|go|I||いく|行く|iku|行|i|8|
@@ -267,7 +268,7 @@ ku godan|face, turn toward, be suited to, be fit for|I||むく|向く|muku|向|m
 ku godan|wind, coil, roll|T|を|まく|巻く|maku|巻|ma||
 ku godan|remove, exclude, except|T|を|のぞく|除く|nozoku|除|nozo||
 ku godan|omit, leave out, exclude, eliminate, curtail, save, cut down, economize, economise|T|を|はぶく|省く|habuku|省|habu||
-ku godan|resound, be heard far away, reverberate, shake, vibrate, come (home), remain (with someone), have an effect, make an impression|I||ひびく|響く|hibiku|響|hibi||
+ku godan|resound, be heard far away, reverberate, shake, vibrate, come (home), remain (with someone), have an effect, make an impression, echo|I||ひびく|響く|hibiku|響|hibi||
 ku godan|ascend (the throne), accede, take (seat, position, course, etc.), assume, start (on a journey), commence, depart, study (under teacher), be an apprentice|I||つく|就く|tsuku|就|tsu||
 ku godan|turn one's face, turn around, look over one's shoulder|I||ふりむく|振り向く|furimuku|振り向|furimu||
 ku godan|be grounded on, be based on, be due to, originate from|I||もとづく|基づく|motoduku|基づ|motodu||
@@ -311,8 +312,10 @@ ku godan|cut off, cut up, tear pieces|T|を|きりさく|切り裂く|kirisaku|�
 ku godan|draw, paint, sketch|T|を|えがく|描く|egaku|描|ega||
 ku godan|imagine, figure, picture, see|T|を|おもいえがく|思い描く|omoiegaku|思い描|omoiega||
 ku godan|stumble, trip, fail|I||つまずく|躓く|tsumazuku|躓|tsumazu||
+ku godan|blink (one's eyes), wink, bat, twinkle (e.g. stars), flicker, waver|I||まばたく|瞬く|mabataku|瞬|mabata||
+ku godan|go smoothly, turn out well, do the trick, have peaceful relations|I||うまくいく|上手く行く|umakuiku|上手く行|umakui|14|
 ||||||||||
-gu godan||||XXXぐ|XXXぐ|gu|||15|
+gu godan||||XXXぐ|XXXぐ|gu|||16|
 gu godan|swim|I||およぐ|泳ぐ|oyogu|泳|oyo||
 gu godan|hurry, rush, hasten|I||いそぐ|急ぐ|isogu|急|iso||
 gu godan|look up (to, at), respect, revere, ask for, seek, turn someone, depend on, drink, take|T|を|あおぐ|仰ぐ|aogu|仰|ao||
@@ -333,7 +336,7 @@ gu godan|stop up, close up, block up, plug up, shut up, cover (ears, eyes, etc),
 gu godan|pour (into), fill, sprinkle on, shed (e.g. tears), concentrate one's strength or spirit on|T|を|そそぐ|注ぐ|sosogu|注|soso||
 gu godan|defend (against), protect, prevent|T|を|ふせぐ|防ぐ|fusegu|防|fuse||
 ||||||||||
-bu godan||||XXXぶ|XXXぶ|bu|||17|
+bu godan||||XXXぶ|XXXぶ|bu|||18|
 bu godan|call, invite, summon, invoke, call out to, designate, name, brand, garner (support), gather|T|を|よぶ|呼ぶ|yobu|呼|yo||
 bu godan|jump, leap, spring, bound, hop|I||とぶ|跳ぶ|tobu|跳|to||
 bu godan|fly, soar|I||とぶ|飛ぶ|tobu|飛|to||
@@ -351,8 +354,8 @@ bu godan|be delighted, be glad, be pleased, congratulate, gratefully accept|I||�
 bu godan|lie down, throw oneself down|I||ねころぶ|寝転ぶ|nekorobu|寝転|nekoro||
 bu godan|shout, cry|I||さけぶ|叫ぶ|sakebu|叫|sake||
 ||||||||||
-mu godan||||XXXむ|XXXむ|mu|||19|
-mu godan|drink, gulp, swallow|T|を|のむ|飲む|nomu|飲|no|20|
+mu godan||||XXXむ|XXXむ|mu|||20|
+mu godan|drink, gulp, swallow|T|を|のむ|飲む|nomu|飲|no|21|
 mu godan|finish, be finished, end, be completed, result less severely than expected, feel at ease|I||すむ|済む|sumu|済|su||
 mu godan|live (in a dwelling), reside, inhabit, dwell|I||すむ|住む|sumu|住|su||
 mu godan|rest (on holiday), be absent, go bed, lie down sleep, retire (bed), suspend business, take a break|T|を|やすむ|休む|yasumu|休|yasu||
@@ -362,10 +365,10 @@ mu godan|pick (a flower), pluck, trim|T|を|つむ|摘む|tsumu|摘|tsu||
 mu godan|pile up, stack, load,(car, ship, etc), pack|T|を|つむ|積む|tsumu|積|tsu||
 mu godan|become fine|T|を|つむ|詰む|tsumu|詰|tsu||
 mu godan|jump, plunge|I||とびこむ|飛びこむ|tobikomu|飛びこ|tobiko||
-mu godan|be crowded, be full, be packed (fig.)|I||こむ|混む|komu|混|ko|21|
+mu godan|be crowded, be full, be packed (fig.)|I||こむ|混む|komu|混|ko|22|
 mu godan|request, ask (for something)|T|を|たのむ|頼む|tanomu|頼|tano||
 mu godan|surround, encircle, enclose, fence, wall in, besiege, lay siege to, play (go, shogi, etc.)|T|を|かこむ|囲む|kakomu|囲|kako||
-mu godan|stop, cease|I||やむ|止む|yamu|止|ya|22|
+mu godan|stop, cease|I||やむ|止む|yamu|止|ya|23|
 mu godan|step on, tread on, experience, appraise, inherit (archaic), follow (the rules)|T|を|ふむ|踏む|fumu|踏|fu||
 mu godan|be zealous, brace oneself, endeavour, endeavor, strive, make an effort|I||はげむ|励む|hagemu|励|hage||
 mu godan|interpose, hold between, insert|T|を|はさむ|挟む|hasamu|挟|hasa||
@@ -452,14 +455,14 @@ mu godan|redden, blush, become red|I||あからむ|赤らむ|akaramu|赤ら|akar
 mu godan|send in|T|を|おくりこむ|送り込む|okurikomu|送り込|okuriko||
 mu godan|flow into, pour into, stream into|I||ながれこむ|流れ込む|nagarekomu|流れ込|nagareko||
 ||||||||||
-nu godan||||XXXぬ|XXXぬ|nu|||24|
+nu godan||||XXXぬ|XXXぬ|nu|||25|
 nu godan|die|I||しぬ|死ぬ|shinu|死|shi||
 nu godan|leave (archaic)|I||いぬ|去ぬ|inu|去|i||
 ||||||||||
-ru godan||||XXXる|XXXる|ru|||26|
-ru godan|have, exist (object is inanimate)|I|が|ある|ある|aru|あ|a|27|
+ru godan||||XXXる|XXXる|ru|||27|
+ru godan|have, exist (object is inanimate)|I|が|ある|ある|aru|あ|a|28|
 ru godan|take, pick up, harvest, earn, choose, remove (one's glasses, etc.), compete (in sumo, cards, etc.), play|T|を|とる|取る|toru|取|to||
-ru godan|exist (object is animate), come, go|I||おる|居る|oru|居|o|28|
+ru godan|exist (object is animate), come, go|I||おる|居る|oru|居|o|29|
 ru godan|fall (precipitate), come down|I|が|ふる|降る|furu|降|fu||
 ru godan|send, dispatch, give (someone of equal/lower status), do, undertake, perform, play (a game), practice (a profession)|T|を|やる|遣る|yaru|遣|ya||
 ru godan|have sex with|T|を|やる|犯る|yaru|犯|ya||
@@ -483,26 +486,26 @@ ru godan|need, want|T|を|いる|要る|iru|要|i||
 ru godan|enter, join, contain, accommodate, wear (specifically pants, underwear, shoes), take a bath|I|に|はいる|入る|hairu|入|hai||
 ru godan|cut|T|を|きる|切る|kiru|切|ki||
 ru godan|chatter, talk|I||しゃべる|喋る|shaberu|喋|shabe||
-ru godan|know|T|を|しる|知る|shiru|知|shi|29|
+ru godan|know|T|を|しる|知る|shiru|知|shi|30|
 ru godan|warm oneself|T|を|あたたまる|温まる|atatamaru|温ま|atatama||
 ru godan|stop|I||とまる|止まる|tomaru|止ま|toma||
-ru godan|start, break out|I||はじまる|始まる|hajimaru|始ま|hajima|30|
-ru godan|eat, drink|T|を|めしあがる|召し上がる|meshiagaru|召し上が|meshiaga|31|
+ru godan|start, break out|I||はじまる|始まる|hajimaru|始ま|hajima|31|
+ru godan|eat, drink|T|を|めしあがる|召し上がる|meshiagaru|召し上が|meshiaga|32|
 ru godan|rise, go up, come up, ascend, be raised, increase, get out of the water, come ashore, stop (raining), be finished, be done, be over, stop (working properly), give out, cut out, die, visit (humble), go (humble)|I||あがる|上がる|agaru|上が|aga||
 ru godan|turn, bend|I|を|まがる|曲がる|magaru|曲が|maga||
 ru godan|leave, exit|I||たちさる|立ち去る|tachisaru|立ち去|tachisa||
-ru godan|obey respectfully, humble oneself, sit straight (upright, respectfully, attentively)|I||かしこまる|畏まる|kashikomaru|畏ま|kashikoma|32|
-ru godan|be understood (used as "understand"), be comprehended, be grasped|I|が|わかる|分かる|wakaru|分か|waka|33|
+ru godan|obey respectfully, humble oneself, sit straight (upright, respectfully, attentively)|I||かしこまる|畏まる|kashikomaru|畏ま|kashikoma|33|
+ru godan|be understood (used as "understand"), be comprehended, be grasped|I|が|わかる|分かる|wakaru|分か|waka|34|
 ru godan|be found|I||みつかる|見つかる|mitsukaru|見つか|mitsuka||
 ru godan|be awarded, be given (something)|I||さずかる|授かる|sazukaru|授か|sazuka||
 ru godan|end, finish, close|I||おわる|終わる|owaru|終わ|owa||
 ru godan|occur, happen, be caused|I||おこる|起こる|okoru|起こ|oko||
-ru godan|give (polite, speaker is the recepient or his relative), please|T|を|くださる|下さる|kudasaru|下さ|kudasa|34|
-ru godan|exist, come, go|I||いらっしゃる|いらっしゃる|irassharu|いらっしゃ|irassha|35|
-ru godan|say|T|を|おっしゃる|仰る|ossharu|仰|ossha|36|
-ru godan|be (archaic)|I||ござる|御座る|gozaru|御座|goza|37|
-ru godan|do, request|T|を/に|なさる|為さる|nasaru|為さ|nasa|38|
-ru godan|come home, go home, leave (guest, customer, etc.)|I|に|かえる|帰る|kaeru|帰|kae|39|
+ru godan|give (polite, speaker is the recepient or his relative), please|T|を|くださる|下さる|kudasaru|下さ|kudasa|35|
+ru godan|exist, come, go|I||いらっしゃる|いらっしゃる|irassharu|いらっしゃ|irassha|36|
+ru godan|say|T|を|おっしゃる|仰る|ossharu|仰|ossha|37|
+ru godan|be (archaic)|I||ござる|御座る|gozaru|御座|goza|38|
+ru godan|do, request|T|を/に|なさる|為さる|nasaru|為さ|nasa|39|
+ru godan|come home, go home, leave (guest, customer, etc.)|I|に|かえる|帰る|kaeru|帰|kae|40|
 ru godan|take (time, money), hang (e.g. on the wall), come under (a contract, a tax), start (engines, motors), attend, deal with, handle, depend on, exact (a fee)|T|を|かかる|掛かる|kakaru|掛か|kaka||
 ru godan|gather, collect, assemble|I||あつまる|集まる|atsumaru|集ま|atsuma||
 ru godan|strike against, collide with, bump into, conflict with, clash with|I||ぶつかる|打つかる|butsukaru|打つか|butsuka||
@@ -522,7 +525,7 @@ ru godan|wait upon, serve|I||はべる|侍る|haberu|侍|habe||
 ru godan|plot, attempt, plan, devise, design, aim for, refer A B|T|を|はかる|図る|hakaru|図|haka||
 ru godan|consult with, discuss, confer, deliberate|T|を|はかる|諮る|hakaru|諮|haka||
 ru godan|stick, paste, affix, link (internet), stretch, spread, strain, tighten, form (e.g. ice on a pond), fill, swell, stick out, put, slap, be expensive|I||はる|張る|haru|張|ha||
-ru godan|do (honorific)|I||はる|はる|haru|は|ha|40|
+ru godan|do (honorific)|I||はる|はる|haru|は|ha|41|
 ru godan|run, travel (movement of vehicles), retreat (from battle), elope|I||はしる|走る|hashiru|走|hashi||
 ru godan|be popular, come infashion, be prevalent, spread widely (e.g. disease), be endemic, flourish, thrive|I||はやる|流行る|hayaru|流行|haya||
 ru godan|be in high spirits, be impatient, be hotblooded, be rash, be impetuous|I||はやる|逸る|hayaru|逸|haya||
@@ -808,8 +811,12 @@ ru godan|be arrested, turn up (of evidence, etc.), be listed (as a candidate)|I|
 ru godan|obtain, come possess, get hold of, get one's hands on|T|を|てにはいる|手に入る|te ni hairu|手に入|te ni hai||
 ru godan|form, shape, make, mold, build up|T|を|かたちづくる|形作る|katachidukuru|形作|katachiduku||
 ru godan|shake, jolt, rock, cradle, swing|T|を|ゆる|揺る|yuru|揺|yu||
+ru godan|walk about, walk and fro, pace around|I||あるきまわる|歩き回る|arukimawaru|歩き回|arukimawa||
+ru godan|resound, echo, reverberate|I||あるきまわる|響き渡る|hibikiwataru|響き渡|hibikiwata||
+ru godan|give (someone) a treat|T|を|おごる|奢る|ogoru|奢|ogo||
+ru godan|be extravagant, live, be proud, be haughty|I||おごる|奢る|ogoru|奢|ogo||
 ||||||||||
-tsu godan||||XXXつ|XXXつ|tsu|||42|
+tsu godan||||XXXつ|XXXつ|tsu|||43|
 tsu godan|stand|I||たつ|立つ|tatsu|立|ta||
 tsu godan|wait, await, look forward to, anticipate, expect|T/I|を/まで|まつ|待つ|matsu|待|ma||
 tsu godan|win, gain victory|I||かつ|勝つ|katsu|勝|ka||
@@ -832,14 +839,14 @@ tsu godan|consist of, be made up of, be composed of, be practical (logical, feas
 tsu godan|conquer (e.g. an enemy), defeat, overcome (a difficulty)|T|を|うちかつ|打ち勝つ|uchikatsu|打ち勝|uchika||
 tsu godan|keep, preserve, hold, retain, maintain, support, sustain, last, endure, keep well (food), wear well, be durable|T|を|たもつ|保つ|tamotsu|保|tamo||
 ||||||||||
-u godan||||XXXう|XXXう|u|||44|
+u godan||||XXXう|XXXう|u|||45|
 u godan|buy|T|を|かう|買う|kau|買|ka||
 u godan|think, consider, believe, plan (do), judge, assess, regard, imagine, suppose, dream, expect, look forward to, feel, desire, want, recall, remember|T|を|おもう|思う|omou|思|omo||
 u godan|pay, sweep, wipe, pay attention|I||はらう|払う|harau|払|hara||
 u godan|meet|I|に|あう|会う|au|会|a||
 u godan|do ... each other|T|を|あう|合う|au|合|a||
-u godan|receive|T|を|もらう|貰う|morau|貰|mora|45|
-u godan|say, express|T|を|いう|言う|iu|言|i|46|
+u godan|receive|T|を|もらう|貰う|morau|貰|mora|46|
+u godan|say, express|T|を|いう|言う|iu|言|i|47|
 u godan|differ, be wrong|I||ちがう|違う|chigau|違|chiga||
 u godan|use (a thing, method, person, time, money, language), make use of, put use, employ, handle, operate, manage, manipulate, spend, consume, speak|T|を|つかう|使う|tsukau|使|tsuka||
 u godan|suck in, smoke, inhale, sip|T|を|すう|吸う|suu|吸|su||
@@ -887,8 +894,8 @@ u godan|wash, investigate|T|を|あらう|洗う|arau|洗|ara||
 u godan|be in time for, serve a purpose, be good enough|I||まにあう|間に合う|maniau|間に合|mania||
 u godan|be fragrant, smell (good)|I||におう|匂う|niou|匂|nio||
 u godan|stink, smell (bad)|I||におう|臭う|niou|臭|nio||
-u godan|ask, inquire, hear, be told, implore, seek direction|T|を|うかがう|伺う|ukagau|伺|ukaga|47|
-u godan|visit, speak (a large crowd)|I||うかがう|伺う|ukagau|伺|ukaga|48|
+u godan|ask, inquire, hear, be told, implore, seek direction|T|を|うかがう|伺う|ukagau|伺|ukaga|48|
+u godan|visit, speak (a large crowd)|I||うかがう|伺う|ukagau|伺|ukaga|49|
 u godan|peep (through), peep, examine (esp. covertly), await (one's chance), guess, infer, gather, surmise|T|を|うかがう|窺う|ukagau|窺|ukaga||
 u godan|rage, run amok, run amuck, tear around|I||あばれくるう|暴れ狂う|abarekuruu|暴れ狂|abarekuru||
 u godan|do something completely|T|を|ちまう|ちまう|chimau|ちま|chima||
@@ -930,25 +937,26 @@ u godan|swear, vow, take an oath, pledge|T|を|ちかう|誓う|chikau|誓|chika
 u godan|sew, stitch, weave one's way (e.g. through a crowd)|T|を|ぬう|縫う|nuu|縫|nu||
 u godan|harm, hurt, injure, damage|T|を|そこなう|損なう|sokonau|損な|sokona||
 u godan|strike back at, bite back, turn on, rise against, oppose, defy|I||はむかう|刃向かう|hamukau|刃向か|hamuka||
+u godan|do the dishes, wash the dishes|I||しょっきあらう|食器あらう|shokkiarau|食器あら|shokkiara||
 ||||||||||
-ru ichidan||||XXXる|XXXる|ru|||50|
+ru ichidan||||XXXる|XXXる|ru|||51|
 ru ichidan|keep, be doing|T|を|いる|いる|iru|い|i||
-ru ichidan|exist, have (when noun in position of direct object is animate), stay|I|が|いる|居る|iru|居|i|51|
+ru ichidan|exist, have (when noun in position of direct object is animate), stay|I|が|いる|居る|iru|居|i|52|
 ru ichidan|remain (continue be)|I||まま で いる|ままでいる|mama de iru|ままでい|mama de i||
-ru ichidan|see, look, watch, view, observe, to look over, look on, assess, examine, judge, try, try out|T|を|みる|見る|miru|見|mi|52|
+ru ichidan|see, look, watch, view, observe, look over, look on, assess, examine, judge, try, try out|T|を|みる|見る|miru|見|mi|53|
 ru ichidan|wear (bodywear)|T|を|きる|着る|kiru|着|ki||
 ru ichidan|be scattered|I||ちる|散る|chiru|散|chi||
-ru ichidan|go, come (polite, humble)|I||おまいる|お参る|(o)mairu|お参|(o)mai|53|
+ru ichidan|go, come (polite, humble)|I||おまいる|お参る|(o)mairu|お参|(o)mai|54|
 ru ichidan|leave, exit, get to, produce, appear|I|から,を|でる|出る|deru|出|de||
 ru ichidan|lie down, go bed, lie in bed, sleep (lying down), have intercourse, have sex, lie idle|I||ねる|寝る|neru|寝|ne||
-ru ichidan|eat|T|を|たべる|食べる|taberu|食べ|tabe|54|
+ru ichidan|eat|T|を|たべる|食べる|taberu|食べ|tabe|55|
 ru ichidan|be expressed (as in a facial expression)|I||うかべる|浮かべる|ukaberu|浮かべ|ukabe||
 ru ichidan|close, shut|T|を|しめる|閉める|shimeru|閉め|shime||
 ru ichidan|warm someone/thing up|T|を|あたためる|温める|atatameru|温め|atatame||
-ru ichidan|stop, turn off, fasten, fix inplace, park|T|を|とめる|止める|tomeru|止め|tome|55|
+ru ichidan|stop, turn off, fasten, fix inplace, park|T|を|とめる|止める|tomeru|止め|tome|56|
 ru ichidan|throw away, abandon, cast aside, resign, break up with (someone)|T|を|すてる|捨てる|suteru|捨て|sute||
 ru ichidan|be born|I||うまれる|生まれる|umareru|生まれ|umare||
-ru ichidan|give (polite, speaker is the recepient or his relative)|T|を|くれる|呉れる|kureru|呉れ|kure|56|
+ru ichidan|give (polite, speaker is the recepient or his relative)|T|を|くれる|呉れる|kureru|呉れ|kure|57|
 ru ichidan|forget, leave carelessly|T|を|わすれる|忘れる|wasureru|忘れ|wasure||
 ru ichidan|get tired|I||つかれる|疲れる|tsukareru|疲れ|tsukare||
 ru ichidan|put in, let in, take in, bring in, insert, set (a jewel, etc.), ink in (e.g. a tattoo), admit, accept, employ, hire, comply, grant, adopt (a policy, etc.), take (advice, etc.), listen to, pay attention to, include, pay (one's rent, etc.), cast (a vote), turn on (a switch, etc.), send (a fax), call|T|を|いれる|入れる|ireru|入れ|ire||
@@ -961,32 +969,32 @@ ru ichidan|break (ie. daybreak)|I||あける|明ける|akeru|明け|ake||
 ru ichidan|attach, join, add, append, affix, stick, glue, fasten, sew on, apply (ointment), furnish (a house with), wear, put on, keep a diary, make an entry, appraise, set (a price), bring alongside, place (under guard or doctor), follow, shadow, load, give (courage to), keep (an eye on), establish (relations or understanding)|T|を|つける|付ける|tsukeru|付け|tsuke||
 ru ichidan|turn on, light|T|を|つける|点ける|tsukeru|点け|tsuke||
 ru ichidan|rush|I||かけつける|駆けつける|kaketsukeru|駆けつけ|kaketsuke||
-ru ichidan|give (polite, speaker is the giver), offer up the gods, raise, elevate, do up (one's hair), fly (a kite, etc.), launch (fireworks, etc.), surface (a submarine, etc.), land (a boat), show someone (ina room), send someone (away), enrol (one's child in school), enroll, increase (price, quality, status, etc.), make (a loud sound), raise (one's voice), praise, bear (a child)|T|を|あげる|上げる|ageru|上げ|age|57|
+ru ichidan|give (polite, speaker is the giver), offer up the gods, raise, elevate, do up (one's hair), fly (a kite, etc.), launch (fireworks, etc.), surface (a submarine, etc.), land (a boat), show someone (ina room), send someone (away), enrol (one's child in school), enroll, increase (price, quality, status, etc.), make (a loud sound), raise (one's voice), praise, bear (a child)|T|を|あげる|上げる|ageru|上げ|age|58|
 ru ichidan|give (polite)|T|を|しゃしげる|者繁る|shashigeru|者繁|shashige||
 ru ichidan|cry (out/for help)|I||こえ wお あげる|声を上げる|koe wo ageru|声を上げ|koe wo age||
 ru ichidan|be visible, appear|I|が|みえる|見える|mieru|見え|mie||
 ru ichidan|remember, memorize (not for a specific purpose), learn (news)|T|を|おぼえる|覚える|oboeru|覚え|oboe||
 ru ichidan|vanish, disappear, be extinguished|I||きえる|消える|kieru|消え|kie||
 ru ichidan|plant, grow|T|を|うえる|植える|ueru|植え|ue||
-ru ichidan|tell, send a message|T|を|つたえる|伝える|tsutaeru|伝え|tsutae||
+ru ichidan|convey, report, transmit, communicate, tell, impart, propagate, teach, bequeath, send a message|T|を|つたえる|伝える|tsutaeru|伝え|tsutae||
 ru ichidan|make a mistake|I||まちがえる|間違える|machigaeru|間違え|machigae||
 ru ichidan|appear, come out|I||あらわれる|あらわれる|arawareru|あらわれ|araware||
 ru ichidan|fall (down, ina trap, in love, ...), drop, sink, decrease, be omitted, be missing, fade, be removed, fail, lose, be defeated, degrade, fall behind, give in, give up, surrender, die (animals)|I||おちる|落ちる|ochiru|落ち|ochi||
 ru ichidan|rent, borrow|T|を|かりる|借りる|kariru|借り|kari||
-ru ichidan|get up, wake up|I||おきる|起きる|okiru|起き|oki|58|
+ru ichidan|get up, wake up|I||おきる|起きる|okiru|起き|oki|59|
 ru ichidan|hang (e.g. picture), hoist (e.g. sail), raise (e.g. flag), sit, be partway (verb), begin (but not complete), take (time, money), make (a call), multiply, secure (e.g. lock), wear / put on (glasses, etc.), cover, burden someone, apply (insurance), turn on (an engine, etc.), set (a dial, an alarm clock, etc.), put an effect on (spell, anaesthetic, etc.), hold an emotion for (pity, hope, etc.), bind, pour / sprinkle / spray onto, argue (in court), deliberate (in a meeting), present (e.g. idea a conference, etc.), increase further, catch (in a trap, etc.), set atop, erect (a makeshift building), hold (a play, festival, etc.)|T|を|かける|掛ける|kakeru|掛け|kake||
 ru ichidan|concentrate on, pay attention to, remember, bear in mind|T|を|とめる|留める|tomeru|留め|tome||
 ru ichidan|ask, enquire, inquire, search, look for, look into, investigate|T|を|たずねる|尋ねる|tazuneru|尋ね|tazune||
 ru ichidan|show|T|を|みせる|見せる|miseru|見せ|mise||
 ru ichidan|flee, run away, escape|I||にげる|逃げる|nigeru|逃げ|nige||
 ru ichidan|award, give, grant|T|を|さずける|授ける|sazukeru|授け|sazuke||
-ru ichidan|swell (from inflammation), become swollen|I||はれる|腫れる|hareru|腫れ|hare|59|
+ru ichidan|swell (from inflammation), become swollen|I||はれる|腫れる|hareru|腫れ|hare|60|
 ru ichidan|break|I|が|こわれる|壊れる|kowareru|壊れ|koware||
 ru ichidan|start|T|を|はじめる|始める|hajimeru|始め|hajime||
 ru ichidan|examine, inspect, investigate, check up, sense, study, inquire, search for (in a dictionary)|T|を|しらべる|調べる|shiraberu|調べ|shirabe||
 ru ichidan|bathe, take a shower, bask in (e.g. the sun), be flooded with (e.g. light), shower, suffer (an attack), draw criticism|T|を|あびる|浴びる|abiru|浴び|abi||
 ru ichidan|answer|T|を|こたえる|答える|kotaeru|答え|kotae||
-ru ichidan|know|T|を|ごぞんじる|ご存じる|(go)zonjiru|ご存じ|(go)zonji|60|
+ru ichidan|know|T|を|ごぞんじる|ご存じる|(go)zonjiru|ご存じ|(go)zonji|61|
 ru ichidan|believe, trust|T|を|しんじる|信じる|shinjiru|信じ|shinji||
 ru ichidan|consider, think about|T|を/と|かんがえる|考える|kangaeru|考え|kangae||
 ru ichidan|become greasy|I||あぶらじみる|脂染みる|aburajimiru|脂染み|aburajimi||
@@ -1070,7 +1078,7 @@ ru ichidan|discover, find, come across, detect, spot, locate, find fault, be use
 ru ichidan|profit, get, earn, gain, have (bear, beget) a child, have a stroke of luck|T|を|もうける|儲ける|moukeru|儲け|mouke||
 ru ichidan|leak out, escape, come through, shine through, filter out, be omitted|I||もれる|漏れる|moreru|漏れ|more||
 ru ichidan|be well liked, be popular, be pampered (spoiled, doted upon, etc.), be welcomed, endure (the tests of time, the elements, etc.), last|I||もてる|持てる|moteru|持て|mote||
-ru ichidan|want, wish for, request, demand, seek, search for, pursue (pleasure), hunt (a job), purchase, buy (polite)|T|を|もとめる|求める|motomeru|求め|motome|61|
+ru ichidan|want, wish for, request, demand, seek, search for, pursue (pleasure), hunt (a job), purchase, buy (polite)|T|を|もとめる|求める|motomeru|求め|motome|62|
 ru ichidan|go out meet, receive, welcome, accept (e.g. as a member of a group or family), call for, summon, invite, approach (a certain time, a point in one's life, etc.)|T|を|むかえる|迎える|mukaeru|迎え|mukae||
 ru ichidan|view, gaze at, watch|T|を|ながめる|眺める|nagameru|眺め|nagame||
 ru ichidan|stream, flow (liquid, time, etc.), run (ink), be washed away|I||ながれる|流れる|nagareru|流れ|nagare||
@@ -1358,19 +1366,21 @@ ru ichidan|send or drop off and later pick up or go meet|T|を|おくりむか�
 ru ichidan|send to, deliver, escort home|T|を|おうりとどける|送り届ける|okuritodokeru|送り届け|okuritodoke||
 ru ichidan|try, test|T|を|こころみる|試みる|kokomiru|試み|kokomi||
 ru ichidan|endeavor, try, strive, make an effort, exert oneself, be diligent|T|を|つとめる|努める|tsutomeru|努め|tsutome||
-ru ichidan|keep in mind, bear in mind, try, aim to do, endeavor, endeavour|T|を|こころがける|心がける|kokorogakeru|心がけ|kokorogake||
+ru ichidan|keep in mind, bear in mind, try, aim do, endeavor, endeavour|T|を|こころがける|心がける|kokorogakeru|心がけ|kokorogake||
 ru ichidan|change lower-body clothing (shoes, slippers, pants, skirt…)|T|を|こころがける|心がける|hakikaeru|心がけ|hakikae||
-ru ichidan|enchant, to enrapture, to enthrall, to enthral, to charm|T|を|うっとりさせる|うっとりさせる|uttorisaseru|うっとりさせ|uttorisase||
+ru ichidan|enchant, enrapture, enthrall, enthral, charm|T|を|うっとりさせる|うっとりさせる|uttorisaseru|うっとりさせ|uttorisase||
+ru ichidan|miss (train, bus, …)|T|を|うっとりさせる|うっとりさせる|noriokureru|うっとりさせ|noriokure||
+ru ichidan|divide (into), split (into), part, separate, divide up, classify, sort out, divide out​, share, distribute, deal out, dish out​, distinguish, discriminate, differentiate (between)​,  break up (a fight), mediate​, call a draw, tie​, push one's way through (a crowd)​, sell|T|を|わける|分ける|wakeru|分け|wake||
 ||||||||||
-desu copula|||||||||63|
+desu copula|||||||||64|
 desu copula|there is|I||だ|だ|da||||
 ||||||||||
-kuru verb|||||||||65|
+kuru verb|||||||||66|
 kuru verb|come|I|に|くる|来る|kuru||||
 kuru verb|bring something|T|を|もってくる|持ってくる|motte kuru|持って|motte ||
 kuru verb|bring someone along|T|を|つれてくる|連れてくる|tsurete kuru|連れて|tsurete ||
 ||||||||||
-suru verb|||||||||67|
+suru verb|||||||||68|
 suru verb|do, wear (specifically shoes, accessories), request, make|T|を / に|する|する|suru||||
 suru verb|move (apartments)|I||きこする|聞する|kiko suru|聞|kiko ||
 suru verb|grow up|I||せいちょうする|成長する|seichou suru|成長|seichou ||
@@ -1399,7 +1409,7 @@ suru verb|lie down (in bed), take one's bed (archaic)|I||がする|臥する|ga 
 suru verb|file|T|を|ふぁいるする|ファイルする|fairu suru|ファイル|fairu ||
 suru verb|enter information, fill in/fill out a form|T|を|きにゅうする|記入する|kinyuu suru|記入|kinyuu ||
 suru verb|download|T|を|だうんろおどする|ダウンロードする|daunroodo suru|ダウンロード|daunroodo ||
-suru verb|print|T|を|ぷりんとする|プリントする|purinto suru|プリント|purinto ||
+suru verb|print|T|を|ぷりんとする|プリントする|purinsuru|プリント|purin||
 suru verb|try something on|T|を|しちゃくする|試着する|shichaku suru|試着|shichaku ||
 suru verb|study|T|を|べんきょうする|勉強する|benkyou suru|勉強|benkyou ||
 suru verb|exchange|T|を|りょうがえする|両替する|ryougae suru|両替|ryougae ||
@@ -1407,7 +1417,7 @@ suru verb|eat|T|を|しょくじする|食事する|shokuji suru|食事|shokuji 
 suru verb|shop|I||かいものする|買い物する|kaimono suru|買い物|kaimono ||
 suru verb|jog|I||じょぎんぐする|ジョギングする|jogingu suru|ジョギング|jogingu ||
 suru verb|slam shut, splash|T|を|ぴしゃりする|ぴしゃりする|pishari suru|ぴしゃり|pishari ||
-suru verb|work|I||しごとする|仕事する|shigoto suru|仕事|shigoto ||
+suru verb|work|I||しごとする|仕事する|shigosuru|仕事|shigo||
 suru verb|make a call, ring, telephone|I||でんわする|電話する|denwa suru|電話|denwa ||
 suru verb|travel|I||りょこうする|旅行する|ryokou suru|旅行|ryokou ||
 suru verb|clean|T|を|そうじする|掃除する|souji suru|掃除|souji ||
@@ -1626,4 +1636,8 @@ suru verb|be entranced, be enraptured, be transported, be fascinated, be absentm
 suru verb|glitter, sparkle, glisten, twinkle|I||きらきらする|きらきらする|kirakira suru|きらきら|kirakira ||
 suru verb|flee, desert, escape|I||とうそうする|逃走する|tousou suru|逃走|tousou ||
 suru verb|fly, soar|I||ひしょうする|飛翔する|hishou suru|飛翔|hishou ||
+suru verb|sleep in late, oversleep|I||ねぼうする|寝坊する|nebou suru|寝坊|nebou ||
+suru verb|inform, guide, instruct, lead, show around, announce, invite, make acquaintance with|T|を|あんあいする|寝坊する|annai suru|寝坊|annai ||
+suru verb|recommend, refer, endorse|T|を|すいせんする|推薦する|suisen suru|推薦|suisen ||
+suru verb|explain|T|を|すいせんする|推薦する|setsumei suru|推薦|setsumei ||
 -|-|-||||||||
