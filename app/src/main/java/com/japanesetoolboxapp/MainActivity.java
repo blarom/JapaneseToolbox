@@ -28,10 +28,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//TODO can't find "tetsudau"
 //TODO link Japanese Toolbox to OK Google / Google Assistant, for on-the-fly lookups
-//TODO can't find "okodukai" / "kodukai"
-//TODO "tsutaeru" not found in local database on app
 //TODO when entering "tsureteiku", online results show "reteiku"
 //TODO imperative display for godan verbs
 //TODO Show the adjective conjugations (it will also explain to the user why certain adjectives appear in the list, based on their conjugations)

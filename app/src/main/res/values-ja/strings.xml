@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Japanese Toolbox</string>
+    <string name="input_query">探して！</string>
+    <string name="GrammarModule_GetWord">辞書</string>
+    <string name="button_Conjugate">活用</string>
+</resources>
