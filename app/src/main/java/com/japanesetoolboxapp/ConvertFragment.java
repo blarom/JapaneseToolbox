@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class ConversionModuleFragment extends Fragment {
+public class ConvertFragment extends Fragment {
 
     // Fragment Lifecycle Functions
         @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -18,8 +18,8 @@ public class ConversionModuleFragment extends Fragment {
             // Retain this fragment (used to save user inputs on activity creation/destruction)
             setRetainInstance(true);
 
-            // Define that this fragment is related to fragment_verbmodule.xml
-            View fragmentView = inflater.inflate(R.layout.fragment_conversionmodule, container, false);
+            // Define that this fragment is related to fragment_conjugator.xml
+            View fragmentView = inflater.inflate(R.layout.fragment_convert, container, false);
 
 
             return fragmentView;
@@ -138,14 +138,14 @@ public class ConversionModuleFragment extends Fragment {
 
             }
 
-            translation.set(0,GrammarModuleFragment.SpecialConcatenator(translation_latin));
-            translation.set(1,GrammarModuleFragment.SpecialConcatenator(translation_hiragana));
-            translation.set(2,GrammarModuleFragment.SpecialConcatenator(translation_katakana));
+            translation.set(0, DictionaryFragment.SpecialConcatenator(translation_latin));
+            translation.set(1, DictionaryFragment.SpecialConcatenator(translation_hiragana));
+            translation.set(2, DictionaryFragment.SpecialConcatenator(translation_katakana));
 			return translation;
 		}
         public static String TextType(String input_value) {
 
-            input_value = GrammarModuleFragment.SpecialConcatenator(input_value);
+            input_value = DictionaryFragment.SpecialConcatenator(input_value);
             String character;
             String text_type = "";
 

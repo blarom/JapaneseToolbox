@@ -31,7 +31,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class DecompositionModuleFragment extends Fragment {
+public class DecomposeKanjiFragment extends Fragment {
 
 
     // Fragment Lifecycle Functions
@@ -44,8 +44,8 @@ public class DecompositionModuleFragment extends Fragment {
             // Retain this fragment (used to save user inputs on activity creation/destruction)
             setRetainInstance(true);
 
-            // Define that this fragment is related to fragment_grammarmodule.xml
-            View fragmentView = inflater.inflate(R.layout.fragment_decompositionmodule, container, false);
+            // Define that this fragment is related to fragment_dictionary.xml
+            View fragmentView = inflater.inflate(R.layout.fragment_decompose_kanji, container, false);
 
             return fragmentView;
         }
@@ -66,7 +66,7 @@ public class DecompositionModuleFragment extends Fragment {
 
 
             TextView decompositionsHint = getActivity().findViewById(R.id.decompositionsHint);
-            String text_type = ConversionModuleFragment.TextType(inputQuery);
+            String text_type = ConvertFragment.TextType(inputQuery);
             if (inputQuery.equals("") || text_type.equals("latin") || text_type.equals("number")) {
                 decompositionsHint.setVisibility(View.VISIBLE);
             }
@@ -885,8 +885,8 @@ public class DecompositionModuleFragment extends Fragment {
         public List<String> KanjiDictCharacteristicsFinder(String word) {
 
             int relevant_column_index = 0;
-            String concatenated_input = GrammarModuleFragment.SpecialConcatenator(word);
-            int[] limits = GrammarModuleFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.KanjiDict_Database, relevant_column_index);
+            String concatenated_input = DictionaryFragment.SpecialConcatenator(word);
+            int[] limits = DictionaryFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.KanjiDict_Database, relevant_column_index);
 
             List<String> characteristics = new ArrayList<>();
 
@@ -912,8 +912,8 @@ public class DecompositionModuleFragment extends Fragment {
         public List<String> RadicalCharacteristicsFinder(String word) {
 
             int relevant_column_index = 0;
-            String concatenated_input = GrammarModuleFragment.SpecialConcatenator(word);
-            int[] limits = GrammarModuleFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.RadicalsDatabase, relevant_column_index);
+            String concatenated_input = DictionaryFragment.SpecialConcatenator(word);
+            int[] limits = DictionaryFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.RadicalsDatabase, relevant_column_index);
 
             List<String> radical_characteristics = new ArrayList<>();
 
@@ -954,8 +954,8 @@ public class DecompositionModuleFragment extends Fragment {
         public List<List<String>> Decomposition(String word) {
 
             int relevant_column_index = 0;
-            String concatenated_input = GrammarModuleFragment.SpecialConcatenator(word);
-            int[] limits = GrammarModuleFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.CJK_Database, relevant_column_index);
+            String concatenated_input = DictionaryFragment.SpecialConcatenator(word);
+            int[] limits = DictionaryFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.CJK_Database, relevant_column_index);
 
             List<List<String>> decomposed_kanji = new ArrayList<>();
             List<String> kanji_and_its_structure = new ArrayList<>();

@@ -121,7 +121,7 @@ public class JapaneseToolboxUITest {
 //        ViewInteraction spinner = onView(
 //                allOf(withId(R.id.VerbChooserSpinner),
 //                        withParent(allOf(withId(R.id.VerbChooserSpinnerBox),
-//                                withParent(withId(R.id.fragment_verbmodule)))),
+//                                withParent(withId(R.id.fragment_conjugator)))),
 //                        isDisplayed()));
 //        spinner.perform(click());
     }

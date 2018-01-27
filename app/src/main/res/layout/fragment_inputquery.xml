@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_inputquery"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="2dp"
+    android:orientation="vertical" >
+	    
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+	        android:layout_marginLeft="4dp"
+	        android:layout_marginRight="4dp"
+            android:orientation="horizontal" >
+            
+	        <AutoCompleteTextView
+	            android:id="@+id/query"
+	            android:layout_width="fill_parent"
+	            android:layout_height="45dp"
+	        	android:layout_marginEnd="4dp"
+	            android:layout_gravity="left|center_vertical"
+	            android:ems="10"
+	            android:hint="@string/input_query"
+	            android:imeOptions="actionDone"
+	            android:inputType="text"
+                android:textSize="22sp"
+	            android:maxLines="1"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:textColor="#0099FF" />
+	
+	        <!--<Button-->
+	            <!--android:id="@+id/choose_ClearQuery"-->
+	            <!--android:layout_width="42dp"-->
+	            <!--android:layout_height="40dp"-->
+	        	<!--android:layout_marginEnd="40dp"-->
+	            <!--android:layout_gravity="right|center_vertical"-->
+	            <!--android:background="@null"-->
+	            <!--android:onClick="sendMessage"-->
+	            <!--android:text="@string/button_X"-->
+	            <!--android:textColor="#777777"-->
+	            <!--android:textStyle="bold" />-->
+
+            <Button
+                android:id="@+id/clearQuery"
+                android:layout_width="@dimen/clearButtonWidth"
+                android:layout_height="@dimen/clearButtonWidth"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/clearButtonLeftRightMargin"
+                android:drawableStart="@drawable/ic_clear_black_24dp"
+                android:background="@android:color/transparent" />
+
+            <Button
+                android:id="@+id/showHistory"
+                android:layout_width="@dimen/histButtonWidth"
+                android:layout_height="@dimen/histButtonWidth"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/histButtonLeftRightMargin"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/ic_history_black_24dp"/>
+
+            <Button
+                android:id="@+id/getTextThroughSpeech"
+                android:layout_width="@dimen/speechButtonWidth"
+                android:layout_height="@dimen/speechButtonWidth"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/speechButtonLeftRightMargin"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/ic_keyboard_voice_black_24dp"/>
+
+            <!--<Button-->
+	            <!--android:id="@+id/choose_ShowHistory"-->
+	            <!--android:layout_width="42dp"-->
+	            <!--android:layout_height="40dp"-->
+	        	<!--android:layout_marginRight="4dp"-->
+	            <!--android:layout_gravity="right|center_vertical"-->
+	            <!--android:background="@null"-->
+	            <!--android:onClick="sendMessage"-->
+	            <!--android:text="@string/button_H"-->
+	            <!--android:textColor="#770077"-->
+	            <!--android:textStyle="bold" />-->
+
+		</FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            style="?android:buttonBarStyle">
+
+            <Button
+                android:id="@+id/button_searchWord"
+                style="?android:buttonBarButtonStyle"
+                android:layout_width="@dimen/inputQueryButtonWidthAtTopRow"
+                android:layout_height="@dimen/inputQueryButtonHeight"
+                android:textSize="@dimen/inputQueryButtonTextSize"
+                android:text="@string/GrammarModule_GetWord"/>
+
+            <Button
+                android:id="@+id/button_searchVerb"
+                style="?android:buttonBarButtonStyle"
+                android:layout_width="@dimen/inputQueryButtonWidthAtTopRow"
+                android:layout_height="@dimen/inputQueryButtonHeight"
+                android:textSize="@dimen/inputQueryButtonTextSize"
+                android:text="@string/button_Conjugate"/>
+
+            <Button
+                android:id="@+id/button_convert"
+                style="?android:buttonBarButtonStyle"
+                android:layout_width="@dimen/inputQueryButtonWidthAtTopRow"
+                android:layout_height="@dimen/inputQueryButtonHeight"
+                android:textSize="@dimen/inputQueryButtonTextSize"
+                android:text="@string/Convert"/>
+
+            <Button
+                android:id="@+id/button_searchTangorin"
+                style="?android:buttonBarButtonStyle"
+                android:layout_width="@dimen/inputQueryButtonWidthAtTopRow"
+                android:layout_height="@dimen/inputQueryButtonHeight"
+                android:textSize="@dimen/inputQueryButtonTextSize"
+                android:text="@string/button_SearchTangorin"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            style="?android:buttonBarStyle">
+
+
+            <Button
+                android:id="@+id/button_searchByRadical"
+                style="?android:buttonBarButtonStyle"
+                android:layout_width="@dimen/inputQueryButtonWidthAtBottomRow"
+                android:layout_height="@dimen/inputQueryButtonHeight"
+                android:textSize="@dimen/inputQueryButtonTextSize"
+                android:text="@string/button_SearchByRadical"/>
+
+            <Button
+                android:id="@+id/button_Decompose"
+                style="?android:buttonBarButtonStyle"
+                android:layout_width="@dimen/inputQueryButtonWidthAtBottomRow"
+                android:layout_height="@dimen/inputQueryButtonHeight"
+                android:textSize="@dimen/inputQueryButtonTextSize"
+                android:text="@string/button_Decompose"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--<RadioGroup
+        android:id="@+id/radio_SearchType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/radio_FastSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/button_FastSearch" />
+
+        <RadioButton
+            android:id="@+id/radio_DeepSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_DeepSearch"
+            android:layout_marginLeft="12dp"
+            android:checked="false" />
+    </RadioGroup>-->
+
+</LinearLayout>

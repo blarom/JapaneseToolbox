@@ -1,13 +1,11 @@
 package com.japanesetoolboxapp;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -26,7 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public class VerbModuleFragment extends Fragment {
+public class ConjugatorFragment extends Fragment {
 	
     // Fragment Modules
     public static List<List<String>> GlobalVerbSpinnerList;
@@ -51,8 +49,8 @@ public class VerbModuleFragment extends Fragment {
         // Retain this fragment (used to save user inputs on activity creation/destruction)
             setRetainInstance(true);
 
-        // Define that this fragment is related to fragment_verbmodule.xml
-            View fragmentView = inflater.inflate(R.layout.fragment_verbmodule, container, false);
+        // Define that this fragment is related to fragment_conjugator.xml
+            View fragmentView = inflater.inflate(R.layout.fragment_conjugator, container, false);
 
             Spinner VerbChooserSpinner = (Spinner) fragmentView.findViewById(R.id.VerbChooserSpinner);
             VerbChooserSpinner.setVisibility(View.GONE);
@@ -519,9 +517,9 @@ public class VerbModuleFragment extends Fragment {
     }
     static public List<Boolean>             FindType(String verb) {
 
-        List<String> translationList = ConversionModuleFragment.Kana_to_Romaji_to_Kana(verb);
+        List<String> translationList = ConvertFragment.Kana_to_Romaji_to_Kana(verb);
 
-        String text_type = ConversionModuleFragment.TextType(verb);
+        String text_type = ConvertFragment.TextType(verb);
 
         boolean TypeisLatin   = false;
         boolean TypeisKana    = false;
@@ -607,9 +605,9 @@ public class VerbModuleFragment extends Fragment {
         int current_length;
 
         // Getting the input type and its converted form (english/romaji/kanji/invalid)
-        List<String> translationList = ConversionModuleFragment.Kana_to_Romaji_to_Kana(verb);
+        List<String> translationList = ConvertFragment.Kana_to_Romaji_to_Kana(verb);
         String translation = "";
-        String text_type = ConversionModuleFragment.TextType(verb);
+        String text_type = ConvertFragment.TextType(verb);
 
         boolean TypeisLatin   = false;
         boolean TypeisKana    = false;
@@ -659,8 +657,8 @@ public class VerbModuleFragment extends Fragment {
             }
 
             // Concatenating the verb & its translation for future use
-            String concatenated_verb = GrammarModuleFragment.SpecialConcatenator(verb);
-            String concatenated_translation = GrammarModuleFragment.SpecialConcatenator(translation);
+            String concatenated_verb = DictionaryFragment.SpecialConcatenator(verb);
+            String concatenated_translation = DictionaryFragment.SpecialConcatenator(translation);
             int concatenated_verb_length = concatenated_verb.length();
             int concatenated_translation_length = concatenated_translation.length();
 

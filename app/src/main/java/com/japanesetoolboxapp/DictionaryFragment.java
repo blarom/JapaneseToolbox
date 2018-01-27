@@ -7,8 +7,10 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Looper;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.Loader;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -19,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,19 +30,15 @@ import android.widget.Toast;
 import com.japanesetoolboxapp.utiities.GlobalConstants;
 import com.japanesetoolboxapp.utiities.SharedMethods;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-public class GrammarModuleFragment extends Fragment {
+public class DictionaryFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Object>>{
 
     // Parameters
     private List<Object> mMatchingWordCharacteristics;
@@ -58,6 +57,9 @@ public class GrammarModuleFragment extends Fragment {
     private String mSearchedWord;
     private List<Object> mAsyncMatchingWordCharacteristics;
     private Boolean mInternetIsAvailable;
+    private static final int JISHO_WEB_SEARCH_LOADER = 41;
+    private static final String JISHO_LOADER_INPUT_EXTRA = "input";
+    Boolean matchFound;
 
     // Fragment Lifecycle Functions
     @Override public void onAttach(Context context) {
@@ -81,7 +83,7 @@ public class GrammarModuleFragment extends Fragment {
         super.onCreate(savedInstanceState);
         //super.onActivityCreated(savedInstanceState);
         mSharedMethods = new SharedMethods();
-        mInternetIsAvailable = mSharedMethods.internetIsAvailableCheck(getContext());
+        mInternetIsAvailable = SharedMethods.internetIsAvailableCheck(this.getContext());
 
     }
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -89,8 +91,8 @@ public class GrammarModuleFragment extends Fragment {
         // Retain this fragment (used to save user inputs on activity creation/destruction)
         setRetainInstance(true);
 
-        // Define that this fragment is related to fragment_grammarmodule.xml
-        final View fragmentView = inflater.inflate(R.layout.fragment_grammarmodule, container, false);
+        // Define that this fragment is related to fragment_dictionary.xml
+        final View fragmentView = inflater.inflate(R.layout.fragment_dictionary, container, false);
 
         return fragmentView;
     }
@@ -132,19 +134,81 @@ public class GrammarModuleFragment extends Fragment {
         mLastSearchedWord = word;
 
         // Run the Grammar Module on the input word
+        matchFound = true;
         mMatchingWordCharacteristics = getCharacteristicsForAllHits(matchingWordRowIndexList);
+        if (mMatchingWordCharacteristics.size() == 0) matchFound = false;
 
         // If there are no results, retrieve the results from Jisho.org
-        Toast.makeText(getContext(), "Looking for results online, please wait...", Toast.LENGTH_SHORT).show();
+        Toast toast = Toast.makeText(getContext(), "Looking for results online, please wait...", Toast.LENGTH_SHORT);
+        toast.show();
         mAsyncMatchingWordCharacteristics = new ArrayList<>();
-        new getResultsFromWebInBackground().execute(mSearchedWord);
 
-        DisplayResults(mSearchedWord);
+        //Attempting to access jisho.org to complete the results found in the local dictionary
+        if (getActivity()!=null) {
+            Bundle queryBundle = new Bundle();
+            queryBundle.putString(JISHO_LOADER_INPUT_EXTRA, mSearchedWord);
+
+            LoaderManager loaderManager = getActivity().getSupportLoaderManager();
+            Loader<String> JishoWebSearchLoader = loaderManager.getLoader(JISHO_WEB_SEARCH_LOADER);
+            if (JishoWebSearchLoader == null)  loaderManager.initLoader(JISHO_WEB_SEARCH_LOADER, queryBundle, this);
+            else loaderManager.restartLoader(JISHO_WEB_SEARCH_LOADER, queryBundle, this);
+        }
+
+        displayResults(mSearchedWord);
+
+        //If no dictionary match was found, then this is probably a vrb conjugation, so try that
+        if (!matchFound) {
+            toast.cancel();
+            getActivity().findViewById(R.id.button_searchVerb).performClick();
+        }
     }
-    private SharedMethods mSharedMethods;
+    SharedMethods mSharedMethods;
+
+    //Asyncronous methods
+    @Override public Loader<List<Object>> onCreateLoader(int id, final Bundle args) {
+        return new AsyncTaskLoader<List<Object>>(getContext()) {
+
+            @Override
+            protected void onStartLoading() {
+
+                /* If no arguments were passed, we don't have a query to perform. Simply return. */
+                if (args == null) return;
+
+                forceLoad();
+            }
+
+            @Override
+            public List<Object> loadInBackground() {
+
+                List<Object> AsyncMatchingWordCharacteristics = new ArrayList<>();
+                if (mInternetIsAvailable) {
+                    try {
+                        String speechRecognizerString = args.getString(JISHO_LOADER_INPUT_EXTRA);
+                        AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromWeb(speechRecognizerString, getActivity());
+                    } catch (IOException e) {
+                        //throw new RuntimeException(e);
+                    }
+                }
+                else {
+                    Log.i("Diagnosis Time", "Failed to access online resources.");
+                    SharedMethods.TellUserIfThereIsNoInternetConnection(getActivity());
+                }
+                return AsyncMatchingWordCharacteristics;
+            }
+        };
+    }
+    @Override public void onLoadFinished(Loader<List<Object>> loader, List<Object> data) {
+        mAsyncMatchingWordCharacteristics = data;
+
+        if (mAsyncMatchingWordCharacteristics.size() != 0 ) {
+            compareMatchingWordCharacteristics();
+            displayResults(mSearchedWord);
+        }
+    }
+    @Override public void onLoaderReset(Loader<List<Object>> loader) {}
 
 	// Functionality Functions
-    public void     DisplayResults(String word) {
+    public void displayResults(String word) {
 
         // Populate the list of choices for the SearchResultsChooserSpinner. Each text element of inside the idividual spinner choices corresponds to a sub-element of the choicelist
         populateSearchResultsForDisplay(word, mMatchingWordCharacteristics);
@@ -165,470 +229,85 @@ public class GrammarModuleFragment extends Fragment {
             startActivity(intent);
         }
     }
-    public          List<Object> getResultsFromWeb(String word) throws IOException {
+    private void compareMatchingWordCharacteristics() {
+        List<Object> finalList = new ArrayList<>();
+        List<Object> finallist_element = new ArrayList<>();
+        List<Object> current_async_meaning_blocks = new ArrayList<>();
+        List<Object> current_local_meaning_blocks = new ArrayList<>();
+        List<Object> current_async_meaning_block;
+        List<Object> current_local_meaning_block;
+        String current_local_meaning = "";
+        String current_local_type;
+        String current_async_meaning = "";
+        String current_async_romaji;
+        String current_async_kanji;
+        String current_local_romaji;
+        String current_local_kanji;
+        String current_local_altspellings;
+        List<Object> current_final_meaning_blocks = new ArrayList<>();
+        List<Object> FinalAsyncElements = new ArrayList<>();
+        Boolean async_meaning_found_locally;
 
-        List<Object> setOf_matchingWordCharacteristics = new ArrayList<>();
-        List<Object> matchingWordCharacteristics = new ArrayList<>();
-        if (word.equals("")) { return setOf_matchingWordCharacteristics; }
+        FinalAsyncElements.addAll(mAsyncMatchingWordCharacteristics);
 
-        //Preparing the word to be included in the url
-        String prepared_word = "";
-        if (ConversionModuleFragment.TextType(word).equals("kanji")) {
-            String converted_word = convertToUTF8(word);
-            converted_word = converted_word.substring(2,converted_word.length());
-            prepared_word = "";
-            for (int i = 0; i < converted_word.length() - 1; i = i + 2) {
-                prepared_word = prepared_word + "%" + converted_word.substring(i, i + 2);
-            }
-        }
-        else {
-            prepared_word = word;
-        }
+        for (int j = 0; j< mMatchingWordCharacteristics.size(); j++) {
+            List<Object> current_match_element = (List<Object>) mMatchingWordCharacteristics.get(j);
+            finallist_element = new ArrayList<>();
+            current_local_romaji = (String) current_match_element.get(0);
+            finallist_element.add(current_local_romaji);
+            current_local_kanji = (String) current_match_element.get(1);
+            finallist_element.add(current_local_kanji);
+            current_local_altspellings = (String) current_match_element.get(2);
+            finallist_element.add(current_local_altspellings);
 
-        //Checking for a Web connection and extracting the site code if there is one. Otherwise, returning null.
-        String responseString = "";
-        String inputLine;
-        HttpURLConnection connection = null;
-        mInternetIsAvailable = mSharedMethods.internetIsAvailableCheck(getContext());
-        mSharedMethods.TellUserIfThereIsNoInternetConnection(getActivity());
-        if (mInternetIsAvailable) {
-            try {
-                //https://stackoverflow.com/questions/35568584/android-studio-deprecated-on-httpparams-httpconnectionparams-connmanagerparams
-                //String current_url = "https://www.google.co.il/search?dcr=0&source=hp&q=" + prepared_word;
-                String current_url = "http://jisho.org/search/" + prepared_word;
-                URL dataUrl = new URL(current_url);
-                connection = (HttpURLConnection) dataUrl.openConnection();
-                connection.setConnectTimeout(2000);
-                connection.setReadTimeout(2000);
-                connection.setInstanceFollowRedirects(true);
-                // optional default is GET
-                connection.setRequestMethod("GET");
+            current_local_meaning_blocks = (List<Object>) current_match_element.get(3);
+            current_final_meaning_blocks = new ArrayList<>();
+            current_final_meaning_blocks.addAll(current_local_meaning_blocks);
 
-                int responseCode = connection.getResponseCode();
-                if (responseCode == 200) {
-                    BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    responseString = "";
-                    while ((inputLine = in.readLine()) != null)
-                        responseString += inputLine + '\n';
-                    in.close();
-                    in = null;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                Log.i("Diagnosis Time", "Failed to access online resources.");
-                Looper.prepare();
-                try {
-                    getActivity().runOnUiThread(new Runnable() {
-                        public void run() {
-                            Toast.makeText(getContext(), "Failed to access online resources.", Toast.LENGTH_SHORT).show();
+            int current_index = FinalAsyncElements.size()-1;
+            while (current_index >= 0 && FinalAsyncElements.size() != 0) {
+
+                if (current_index > FinalAsyncElements.size()-1) {break;}
+                List<Object> current_async_element = (List<Object>) FinalAsyncElements.get(current_index);
+                current_async_romaji = (String) current_async_element.get(0);
+                current_async_kanji = (String) current_async_element.get(1);
+                current_async_meaning_blocks = (List<Object>) current_async_element.get(3);
+
+                if (current_async_romaji.equals(current_local_romaji) && current_async_kanji.equals(current_local_kanji)) {
+
+                    for (int m = 0; m< current_async_meaning_blocks.size(); m++) {
+                        current_async_meaning_block = (List<Object>) current_async_meaning_blocks.get(m);
+                        current_async_meaning = (String) current_async_meaning_block.get(0);
+
+                        async_meaning_found_locally = false;
+                        for (int k = 0; k< current_local_meaning_blocks.size(); k++) {
+                            current_local_meaning_block = (List<Object>) current_local_meaning_blocks.get(k);
+                            current_local_meaning = (String) current_local_meaning_block.get(0);
+
+                            if (current_local_meaning.contains(current_async_meaning)) {
+                                async_meaning_found_locally = true;
+                                break;
+                            }
                         }
-                    });
-                } catch (Exception e2) {
-                    e2.printStackTrace();
-                }
-                return setOf_matchingWordCharacteristics;
-            } finally {
-                try {
-                    if (connection != null) {connection.disconnect(); connection = null; }
-                } catch (Exception e) {
-                    e.printStackTrace(); //If you want further info on failure...
-                    //return null;
-                }
-            }
-        }
-        String website_code = responseString;
-
-        //Extracting the definition from Jisho.org
-
-        ;//Initializatons
-        String identifier;
-        int index_of_current_results_block_marker_start;
-        int index_of_current_results_block_marker_end;
-        String current_results_block_descriptor;
-
-        int index_of_requested_word_kanji_start;
-        int index_of_requested_word_kanji_end;
-        String requested_word_kanji = "";
-
-        int index_of_requested_word_romaji_start;
-        int index_of_requested_word_romaji_end;
-        String requested_word_romaji = "";
-
-        int index_of_current_meaning_tags_start;
-        int index_of_current_meaning_tags_end;
-        List<String> current_meaning_tags = new ArrayList<>();
-
-        int index_of_meanings_start = 0;
-        int index_of_meanings_end = 0;
-        String meanings_semicolumns;
-        String meanings_commas = "";
-
-        int current_index_in_block;
-        int current_meanings_block_start;
-        int current_meanings_block_end;
-        List<String> current_meanings;
-
-        if (website_code.contains("Sorry, couldn't find anything matching") || website_code.contains("Sorry, couldn't find any words matching")) {
-            return setOf_matchingWordCharacteristics;
-        }
-
-        int current_index_in_site = 0;
-        current_index_in_block = website_code.length()-1;
-        while (true) {
-
-            //Get start of current results block
-            identifier = "div class=\"concept_light-status";
-            index_of_current_results_block_marker_start = website_code.indexOf(identifier, current_index_in_site) + identifier.length();
-            index_of_current_results_block_marker_end = website_code.indexOf("a class=\"light-details_link", index_of_current_results_block_marker_start);
-
-            //Getting the start index of the current meaning block
-            identifier = "concept_light-meanings medium-9 columns";
-            current_meanings_block_start = website_code.indexOf(identifier, index_of_current_results_block_marker_start) + identifier.length();
-            current_meanings_block_end = website_code.indexOf("a class=\"light-details_link", current_meanings_block_start);
-
-            //Exiting the loop if the last entry from the website has been registered or if the loop restarts
-            if (index_of_current_results_block_marker_start < current_index_in_site || index_of_current_results_block_marker_start == -1) break;
-
-            //Skipping this results block if it is not a valid block
-            //index_of_current_results_block_marker_end = website_code.indexOf(">", index_of_current_results_block_marker_start)-1;
-            //current_results_block_descriptor = website_code.substring(index_of_current_results_block_marker_start, index_of_current_results_block_marker_end);
-            //if (!current_results_block_descriptor.equals("concept_light-status")) continue;
-
-            current_index_in_site = index_of_current_results_block_marker_start;
-
-            //Kanji extraction
-            identifier = "Sentence search for ";
-            index_of_requested_word_kanji_start = website_code.indexOf(identifier, current_index_in_site) + identifier.length();
-            index_of_requested_word_kanji_end = website_code.indexOf("<", index_of_requested_word_kanji_start);
-            requested_word_kanji = website_code.substring(index_of_requested_word_kanji_start, index_of_requested_word_kanji_end);
-
-            //Romaji extraction (if there is no second "Sentence search for " marker, create the Romaji value manually)
-            identifier = "Sentence search for ";
-            index_of_requested_word_romaji_start = website_code.indexOf(identifier, index_of_requested_word_kanji_end) + identifier.length();
-
-                //If there is not further "Sentence search for " statement in the website, continue (to loop closure)
-                if (index_of_requested_word_romaji_start == -1) { current_index_in_site = index_of_requested_word_romaji_start; continue; }
-
-                //Otherwise:
-                index_of_requested_word_romaji_end = index_of_requested_word_romaji_start;
-                if (index_of_requested_word_romaji_start > current_meanings_block_start) {
-                    requested_word_romaji = ConversionModuleFragment.Kana_to_Romaji_to_Kana(requested_word_kanji).get(0);
+                        if (!async_meaning_found_locally) {
+                            current_final_meaning_blocks.add(current_async_meaning_block);
+                        }
+                    }
+                    FinalAsyncElements.remove(current_index);
+                    if (current_index == 0) break;
                 }
                 else {
-                    index_of_requested_word_romaji_end = website_code.indexOf("<", index_of_requested_word_romaji_start);
-                    requested_word_romaji = website_code.substring(index_of_requested_word_romaji_start, index_of_requested_word_romaji_end);
+                    current_index -= 1;
                 }
-
-                //If the Kanji word is in Hiragana or Katakana script, make sure that the Romaji value is correct, no matter what is extracted from the website
-                if (ConversionModuleFragment.TextType(requested_word_kanji).equals("hiragana") ||
-                        ConversionModuleFragment.TextType(requested_word_kanji).equals("katakana") ) {
-                    requested_word_romaji = ConversionModuleFragment.Kana_to_Romaji_to_Kana(requested_word_kanji).get(0);
-                }
-
-            current_index_in_site = current_meanings_block_start;
-
-            //Getting the tags and corresponding meanings
-            current_index_in_block = current_meanings_block_start;
-            current_meaning_tags = new ArrayList<>();
-            current_meanings = new ArrayList<>();
-            long index_of_next_meaning_tags_start = current_index_in_block;
-            long index_of_next_meaning_tags_end = current_index_in_block;
-            String next_meaning_tag;
-            meanings_commas = "";
-            String current_meaning_tag = "";
-
-            while(current_index_in_block < current_meanings_block_end) {
-
-                identifier = "<div class=\"meaning-tags\">";
-                index_of_current_meaning_tags_start = website_code.indexOf(identifier, current_index_in_block) + identifier.length();
-                index_of_current_meaning_tags_end = website_code.indexOf("<", index_of_current_meaning_tags_start);
-                current_meaning_tag = SharedMethods.fromHtml(website_code.substring(index_of_current_meaning_tags_start, index_of_current_meaning_tags_end)).toString();
-
-                if (current_meaning_tag.contains("Wikipedia") || current_meaning_tag.contains("Other forms") || current_meaning_tag.contains("Notes")) break;
-                if (index_of_current_meaning_tags_end < current_index_in_block) break;
-
-                index_of_next_meaning_tags_start = website_code.indexOf(identifier, index_of_current_meaning_tags_end) + identifier.length()+1;
-                index_of_next_meaning_tags_end = website_code.indexOf("<", index_of_current_meaning_tags_start);
-                next_meaning_tag = SharedMethods.fromHtml(website_code.substring(index_of_current_meaning_tags_start, index_of_current_meaning_tags_end)).toString();
-
-                current_index_in_block = index_of_current_meaning_tags_end;
-
-                //Getting the meanings for the current tag
-                while (current_index_in_block < index_of_next_meaning_tags_start && current_index_in_block < current_meanings_block_end) {
-
-                    identifier = "<span class=\"meaning-meaning\">";
-                    index_of_meanings_start = website_code.indexOf(identifier, current_index_in_block) + identifier.length();
-                    index_of_meanings_end = website_code.indexOf("<", index_of_meanings_start);
-                    meanings_semicolumns = SharedMethods.fromHtml(website_code.substring(index_of_meanings_start, index_of_meanings_end)).toString();
-
-                    if (index_of_meanings_start > index_of_next_meaning_tags_start) break;
-
-                    if (!meanings_semicolumns.equals("")) {
-                        meanings_commas = "";
-                        for (int i = 0; i < meanings_semicolumns.length(); i++) {
-                            if (meanings_semicolumns.substring(i, i + 1).equals(";")) { meanings_commas += ","; }
-                            else { meanings_commas += meanings_semicolumns.substring(i, i + 1); }
-                        }
-                        meanings_commas = SharedMethods.fromHtml(meanings_commas).toString();
-                        meanings_commas = meanings_commas.replaceAll("',", "'");
-
-                        current_meaning_tags.add(current_meaning_tag);
-                        current_meanings.add(meanings_commas);
-                    }
-                    current_index_in_block = index_of_meanings_end;
-                }
-
-                if (current_index_in_block < current_meanings_block_start) break;
             }
-
-            //Preventing crashes if the website code does not supply a "meaning-tags" instance in the current block
-            if (current_meaning_tags.size() == 0) {
-                current_index_in_site = current_index_in_block;
-                continue;
-            }
-
-            current_index_in_site = current_meanings_block_end;
-
-            //Updating the characteristics
-            matchingWordCharacteristics = new ArrayList<>();
-
-            //Getting the Romaji value
-            String matchingWordRomaji = ConversionModuleFragment.Kana_to_Romaji_to_Kana(requested_word_romaji).get(0);
-            matchingWordCharacteristics.add(matchingWordRomaji);
-
-            //Getting the Kanji value
-            String matchingWordKanji = requested_word_kanji;
-            matchingWordCharacteristics.add(matchingWordKanji);
-
-            //Getting the Alt Spellings value
-            String matchingWordAltSpellings = "";
-            matchingWordCharacteristics.add(matchingWordAltSpellings);
-
-            //Getting the set of Meanings
-
-            ;//Initializations
-            List<Object> matchingWordCurrentMeaningsBlock = new ArrayList<>();
-            List<Object> matchingWordCurrentMeaningBlocks = new ArrayList<>();
-            String matchingWordMeaning;
-            String matchingWordType;
-            String matchingWordOpposite;
-            String matchingWordSynonym;
-
-            List<List<String>> matchingWordExplanationBlocks = new ArrayList<>();
-            List<String> matchingWordCurrentExplanationsBlock;
-            String matchingWordExplanation;
-            String matchingWordRules;
-
-            for (int i=0; i<current_meanings.size(); i++) {
-
-                matchingWordCurrentMeaningsBlock = new ArrayList<>();
-
-                //Getting the Meaning value
-                matchingWordMeaning = current_meanings.get(i);
-                matchingWordCurrentMeaningsBlock.add(matchingWordMeaning);
-
-                //Getting the Type value
-                matchingWordType = current_meaning_tags.get(i);
-                if (matchingWordType.contains("verb")) {
-                    if      (matchingWordType.contains("su ending")) {
-                        if (matchingWordType.contains("intransitive")) matchingWordType = "VsuI";
-                        if (matchingWordType.contains("Transitive")) matchingWordType = "VsuT";
-                        else matchingWordType = "VsuI";
-                    }
-                    else if (matchingWordType.contains("ku ending")) {
-                        if (matchingWordType.contains("intransitive")) matchingWordType = "VkuI";
-                        if (matchingWordType.contains("Transitive")) matchingWordType = "VkuT";
-                        else matchingWordType = "VkuI";
-                    }
-                    else if (matchingWordType.contains("gu ending")) {
-                        if (matchingWordType.contains("intransitive")) matchingWordType = "VguI";
-                        if (matchingWordType.contains("Transitive")) matchingWordType = "VguT";
-                        else matchingWordType = "VguI";
-                    }
-                    else if (matchingWordType.contains("mu ending")) {
-                        if (matchingWordType.contains("intransitive")) matchingWordType = "VmuI";
-                        if (matchingWordType.contains("Transitive")) matchingWordType = "VmuT";
-                        else matchingWordType = "VmuI";
-                    }
-                    else if (matchingWordType.contains("bu ending")) {
-                        if (matchingWordType.contains("intransitive")) matchingWordType = "VbuI";
-                        if (matchingWordType.contains("Transitive")) matchingWordType = "VbuT";
-                        else matchingWordType = "VbuI";
-                    }
-                    else if (matchingWordType.contains("nu ending")) {
-                        if (matchingWordType.contains("intransitive")) matchingWordType = "VnuI";
-                        if (matchingWordType.contains("Transitive")) matchingWordType = "VnuT";
-                        else matchingWordType = "VnuI";
-                    }
-                    else if (matchingWordType.contains("ru ending")) {
-                        if (matchingWordType.contains("intransitive")) matchingWordType = "VrugI";
-                        if (matchingWordType.contains("Transitive")) matchingWordType = "VrugT";
-                        else matchingWordType = "VrugI";
-                    }
-                    else if (matchingWordType.contains("tsu ending")) {
-                        if (matchingWordType.contains("intransitive")) matchingWordType = "VtsuI";
-                        if (matchingWordType.contains("Transitive")) matchingWordType = "VtsuT";
-                        else matchingWordType = "VtsuI";
-                    }
-                    else if (matchingWordType.contains("u ending")) {
-                        if (matchingWordType.contains("intransitive")) matchingWordType = "VuI";
-                        if (matchingWordType.contains("Transitive")) matchingWordType = "VuT";
-                        else matchingWordType = "VuI";
-                    }
-                    else if (matchingWordType.contains("Ichidan")) {
-                        if (matchingWordType.contains("intransitive")) matchingWordType = "VruiI";
-                        if (matchingWordType.contains("Transitive")) matchingWordType = "VruiT";
-                        else matchingWordType = "VruiI";
-                    }
-                }
-                matchingWordCurrentMeaningsBlock.add(matchingWordType);
-
-                //Getting the Opposite value
-                matchingWordOpposite = "";
-                matchingWordCurrentMeaningsBlock.add(matchingWordOpposite);
-
-                //Getting the Synonym value
-                matchingWordSynonym = "";
-                matchingWordCurrentMeaningsBlock.add(matchingWordSynonym);
-
-                //Getting the set of Explanations
-                matchingWordCurrentExplanationsBlock = new ArrayList<>();
-
-                //Getting the Explanation value
-                matchingWordExplanation = "";
-                matchingWordCurrentExplanationsBlock.add(matchingWordExplanation);
-
-                //Getting the Rules value
-                matchingWordRules = "";
-                matchingWordCurrentExplanationsBlock.add(matchingWordRules);
-
-                matchingWordExplanationBlocks.add(matchingWordCurrentExplanationsBlock);
-
-                matchingWordCurrentMeaningsBlock.add(matchingWordExplanationBlocks);
-                matchingWordCurrentMeaningBlocks.add(matchingWordCurrentMeaningsBlock);
-            }
-
-            matchingWordCharacteristics.add(matchingWordCurrentMeaningBlocks);
-
-            setOf_matchingWordCharacteristics.add(matchingWordCharacteristics);
+            finallist_element.add(current_final_meaning_blocks);
+            finalList.add(finallist_element);
         }
+        finalList.addAll(FinalAsyncElements);
 
-        return setOf_matchingWordCharacteristics;
+        mMatchingWordCharacteristics = finalList;
     }
-    private class   getResultsFromWebInBackground extends AsyncTask< String, Void, List<Object> >  {
-
-        @Override protected void onPreExecute() {
-            super.onPreExecute();
-            Log.i("Diagnosis Time","Started Internet result query.");
-        }
-
-        protected List<Object> doInBackground(String... requested_search_word) {
-            List<Object> AsyncMatchingWordCharacteristics = new ArrayList<>();
-            if (mInternetIsAvailable) {
-                try {
-                    AsyncMatchingWordCharacteristics = getResultsFromWeb(requested_search_word[0]);
-                } catch (IOException e) {
-                    //throw new RuntimeException(e);
-                }
-            }
-            else {
-                Log.i("Diagnosis Time", "Failed to access online resources.");
-                mSharedMethods.TellUserIfThereIsNoInternetConnection(getActivity());
-            }
-            return AsyncMatchingWordCharacteristics;
-        }
-
-        protected void onProgressUpdate(Integer... progress) {
-            //setProgressPercent(progress[0]);
-        }
-
-        protected void onPostExecute(List<Object> result) {
-            Log.i("Diagnosis Time","Finished getting Internet result.");
-
-            mAsyncMatchingWordCharacteristics = result;
-
-            if (mAsyncMatchingWordCharacteristics.size() != 0 ) {
-                List<Object> finalList = new ArrayList<>();
-                List<Object> finallist_element = new ArrayList<>();
-                List<Object> current_async_meaning_blocks = new ArrayList<>();
-                List<Object> current_local_meaning_blocks = new ArrayList<>();
-                List<Object> current_async_meaning_block;
-                List<Object> current_local_meaning_block;
-                String current_local_meaning = "";
-                String current_local_type;
-                String current_async_meaning = "";
-                String current_async_romaji;
-                String current_async_kanji;
-                String current_local_romaji;
-                String current_local_kanji;
-                String current_local_altspellings;
-                List<Object> current_final_meaning_blocks = new ArrayList<>();
-                List<Object> FinalAsyncElements = new ArrayList<>();
-                Boolean async_meaning_found_locally;
-
-                FinalAsyncElements.addAll(mAsyncMatchingWordCharacteristics);
-
-                for (int j = 0; j< mMatchingWordCharacteristics.size(); j++) {
-                    List<Object> current_match_element = (List<Object>) mMatchingWordCharacteristics.get(j);
-                    finallist_element = new ArrayList<>();
-                    current_local_romaji = (String) current_match_element.get(0);
-                    finallist_element.add(current_local_romaji);
-                    current_local_kanji = (String) current_match_element.get(1);
-                    finallist_element.add(current_local_kanji);
-                    current_local_altspellings = (String) current_match_element.get(2);
-                    finallist_element.add(current_local_altspellings);
-
-                    current_local_meaning_blocks = (List<Object>) current_match_element.get(3);
-                    current_final_meaning_blocks = new ArrayList<>();
-                    current_final_meaning_blocks.addAll(current_local_meaning_blocks);
-
-                    int current_index = FinalAsyncElements.size()-1;
-                    while (current_index >= 0 && FinalAsyncElements.size() != 0) {
-
-                        if (current_index > FinalAsyncElements.size()-1) {break;}
-                        List<Object> current_async_element = (List<Object>) FinalAsyncElements.get(current_index);
-                        current_async_romaji = (String) current_async_element.get(0);
-                        current_async_kanji = (String) current_async_element.get(1);
-                        current_async_meaning_blocks = (List<Object>) current_async_element.get(3);
-
-                        if (current_async_romaji.equals(current_local_romaji) && current_async_kanji.equals(current_local_kanji)) {
-
-                            for (int m = 0; m< current_async_meaning_blocks.size(); m++) {
-                                current_async_meaning_block = (List<Object>) current_async_meaning_blocks.get(m);
-                                current_async_meaning = (String) current_async_meaning_block.get(0);
-
-                                async_meaning_found_locally = false;
-                                for (int k = 0; k< current_local_meaning_blocks.size(); k++) {
-                                    current_local_meaning_block = (List<Object>) current_local_meaning_blocks.get(k);
-                                    current_local_meaning = (String) current_local_meaning_block.get(0);
-
-                                    if (current_local_meaning.contains(current_async_meaning)) {
-                                        async_meaning_found_locally = true;
-                                        break;
-                                    }
-                                }
-                                if (!async_meaning_found_locally) {
-                                    current_final_meaning_blocks.add(current_async_meaning_block);
-                                }
-                            }
-                            FinalAsyncElements.remove(current_index);
-                            if (current_index == 0) break;
-                        }
-                        else {
-                            current_index -= 1;
-                        }
-                    }
-                    finallist_element.add(current_final_meaning_blocks);
-                    finalList.add(finallist_element);
-                }
-                finalList.addAll(FinalAsyncElements);
-
-                mMatchingWordCharacteristics = finalList;
-                DisplayResults(mSearchedWord);
-            }
-        }
-    }
-    public void     populateSearchResultsForDisplay(String word, List<Object> MatchingHitsCharacteristics) {
+    public void populateSearchResultsForDisplay(String word, List<Object> MatchingHitsCharacteristics) {
 
         //Initialization
         mListDataHeader = new ArrayList<>();
@@ -656,11 +335,11 @@ public class GrammarModuleFragment extends Fragment {
         if (MatchingHitsCharacteristics.size() == 0) {
             //Create a generic answer for the empty search
             if (word.equals("")) {
-                ListElement1 = "Please enter an English/Japanese word. Complete words will yield the best results, but word fragments will also do.";
+                ListElement1 = getResources().getString(R.string.PleaseEnterWord);
                 ListElement2 = "";
             }
             else {
-                ListElement1 = "No match found. Try searching with CONJ (Conjugated verb search) or TGN (Tangorin Dictionary).";
+                ListElement1 = getResources().getString(R.string.NoMatchFound);
                 ListElement2 = "";
             }
             texts_in_elements_of_child.add(ListElement1);
@@ -867,7 +546,7 @@ public class GrammarModuleFragment extends Fragment {
 
     UserWantsToConjugateFoundVerbListener mCallbackVerb;
     interface UserWantsToConjugateFoundVerbListener {
-        // Interface used to transfer the selected verb to VerbModuleFragment through MainActivity
+        // Interface used to transfer the selected verb to ConjugatorFragment through MainActivity
         void UserWantsToConjugateFoundVerbFromGrammarModule(String[] selectedVerbString);
     }
     public void VerbSelectedAction(String selectedVerbString) {
@@ -938,12 +617,12 @@ public class GrammarModuleFragment extends Fragment {
         int inglessVerb_length = inglessVerb.length();
 
         // getting the input type and its converted form (english/romaji/kanji/invalid)
-        List<String> translationList = ConversionModuleFragment.Kana_to_Romaji_to_Kana(word);
+        List<String> translationList = ConvertFragment.Kana_to_Romaji_to_Kana(word);
 
         String translationLatin = translationList.get(0);
         String translationHira = translationList.get(1);
         String translationKata = translationList.get(2);
-        String text_type = ConversionModuleFragment.TextType(word);
+        String text_type = ConvertFragment.TextType(word);
 
         boolean TypeisLatin   = false;
         boolean TypeisKana    = false;
@@ -1075,7 +754,7 @@ public class GrammarModuleFragment extends Fragment {
                     if (hit.length()>3 && hit.substring(0,3).equals("to ")) { is_verb_and_latin = true;} else { is_verb_and_latin = false; }
 
                     concatenated_hit = SpecialConcatenator(hit);
-                    if (TypeisKanji && !ConversionModuleFragment.TextType(concatenated_hit).equals("kanji") ) { continue; }
+                    if (TypeisKanji && !ConvertFragment.TextType(concatenated_hit).equals("kanji") ) { continue; }
                     if (concatenated_hit.length() < concatenated_word_length) { continue; }
                     if (TypeisLatin && word_length == 2 && hit.length() > 2) { continue;}
                     if (TypeisLatin && hit.length() < inglessVerb_length) {continue;}
@@ -1118,7 +797,7 @@ public class GrammarModuleFragment extends Fragment {
                             match_length = best_match.length();
                             continue;
                         }
-                        if (ConversionModuleFragment.TextType(concatenated_hit).equals("latin") && hit.length() <= match_length) {
+                        if (ConvertFragment.TextType(concatenated_hit).equals("latin") && hit.length() <= match_length) {
                             best_match = hit;
                             found_match = true;
                             match_length = best_match.length();

@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class SearchByRadicalsModuleFragment extends Fragment {
+public class ComposeKanjiFragment extends Fragment {
 
     // Global parameters
     ImageView selected_structure_overlapping;
@@ -115,9 +115,9 @@ public class SearchByRadicalsModuleFragment extends Fragment {
 
             // Note: checking the null condition actually speeds up the database loading...
             // This may be due to the way the fragment is called and created, while the static variables stay defined until the application is killed
-    //        if (RadicalsDatabase == null) { RadicalsDatabase = GrammarModuleFragment.readCSVFile("LineRadicals - 3000 kanji.csv");}
+    //        if (RadicalsDatabase == null) { RadicalsDatabase = DictionaryFragment.readCSVFile("LineRadicals - 3000 kanji.csv");}
     //        Log.i("Diagnosis Time","Loaded RadicalsDatabase.");
-    //        if (CJK_Database == null) { CJK_Database = GrammarModuleFragment.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv");}
+    //        if (CJK_Database == null) { CJK_Database = DictionaryFragment.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv");}
     //        Log.i("Diagnosis Time","Loaded RadicalsDatabase.");
 
 
@@ -127,8 +127,8 @@ public class SearchByRadicalsModuleFragment extends Fragment {
             // Retain this fragment (used to save user inputs on activity creation/destruction)
             setRetainInstance(true);
 
-            // Define that this fragment is related to fragment_grammarmodule.xml
-            final View fragmentView = inflater.inflate(R.layout.fragment_radicalsmodule, container, false);
+            // Define that this fragment is related to fragment_dictionaryl
+            final View fragmentView = inflater.inflate(R.layout.fragment_compose_kanji, container, false);
 
             return fragmentView;
         }
@@ -1228,8 +1228,8 @@ public class SearchByRadicalsModuleFragment extends Fragment {
 
                 //Finding the list of matches corresponding to the user's input
                 if(!elementA.equals("")) {
-                    concatenated_input = GrammarModuleFragment.SpecialConcatenator(elementA);
-                    limits = GrammarModuleFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
+                    concatenated_input = DictionaryFragment.SpecialConcatenator(elementA);
+                    limits = DictionaryFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
 
                     if (limits[0] == limits[1] && limits[0] == -1) { }
                     else {
@@ -1244,8 +1244,8 @@ public class SearchByRadicalsModuleFragment extends Fragment {
                     }
                 }
                 if(!elementB.equals("")) {
-                    concatenated_input = GrammarModuleFragment.SpecialConcatenator(elementB);
-                    limits = GrammarModuleFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
+                    concatenated_input = DictionaryFragment.SpecialConcatenator(elementB);
+                    limits = DictionaryFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
 
                     if (limits[0] == limits[1] && limits[0] == -1) {
                     } else {
@@ -1260,8 +1260,8 @@ public class SearchByRadicalsModuleFragment extends Fragment {
                     }
                 }
                 if(!elementC.equals("")) {
-                    concatenated_input = GrammarModuleFragment.SpecialConcatenator(elementC);
-                    limits = GrammarModuleFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
+                    concatenated_input = DictionaryFragment.SpecialConcatenator(elementC);
+                    limits = DictionaryFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
 
                     if (limits[0] == limits[1] && limits[0] == -1) {
                     } else {
@@ -1276,8 +1276,8 @@ public class SearchByRadicalsModuleFragment extends Fragment {
                     }
                 }
                 if(!elementD.equals("")) {
-                    concatenated_input = GrammarModuleFragment.SpecialConcatenator(elementD);
-                    limits = GrammarModuleFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
+                    concatenated_input = DictionaryFragment.SpecialConcatenator(elementD);
+                    limits = DictionaryFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
 
                     if (limits[0] == limits[1] && limits[0] == -1) {
                     } else {
@@ -1357,14 +1357,14 @@ public class SearchByRadicalsModuleFragment extends Fragment {
                     for (int i=0; i< MainActivity.Array_of_Components_Databases.get(selected_structure).size(); i++) {
                         current_array = Arrays.asList(MainActivity.Array_of_Components_Databases.get(selected_structure).get(i)[1].split(";"));
                         for (String x : current_array){
-                            if (!previous_array.contains(x)) complete_results_for_given_structure.add(GrammarModuleFragment.convertToUTF8(x));
+                            if (!previous_array.contains(x)) complete_results_for_given_structure.add(DictionaryFragment.convertToUTF8(x));
                         }
                         previous_array = current_array;
                     }
                     java.util.Collections.sort(complete_results_for_given_structure);
 
                     for (String x : list_of_intersecting_results) {
-                        String converted = GrammarModuleFragment.convertToUTF8(x);
+                        String converted = DictionaryFragment.convertToUTF8(x);
                         int index = java.util.Collections.binarySearch(complete_results_for_given_structure, converted);
                         if (index >= 0) { list_of_intersecting_results_and_structure.add(x); }
                     }

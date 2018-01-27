@@ -12,13 +12,17 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import java.util.ArrayList;
@@ -41,11 +45,10 @@ import android.widget.Toast;
 //TODO Add filtering functionality: if more than one word is entered, the results will be limited to those that include all words.
 //TODO Translate the app into other European languages, and allow the user to choose the wanted language.
 
-public class MainActivity extends FragmentActivity
-								 implements InputQueryFragment.UserEnteredQueryListener,
-                                            GrammarModuleFragment.UserWantsNewSearchForSelectedWordListener,
-                                            GrammarModuleFragment.UserWantsToConjugateFoundVerbListener,
-                                            SearchByRadicalsModuleFragment.UserWantsNewSearchForSelectedCharacterListener {
+public class MainActivity extends AppCompatActivity implements InputQueryFragment.UserEnteredQueryListener,
+                                            DictionaryFragment.UserWantsNewSearchForSelectedWordListener,
+                                            DictionaryFragment.UserWantsToConjugateFoundVerbListener,
+                                            ComposeKanjiFragment.UserWantsNewSearchForSelectedCharacterListener {
 
     //Globals
     InputQueryFragment inputQueryFragment;
@@ -110,40 +113,40 @@ public class MainActivity extends FragmentActivity
                 inputQueryFragment = new InputQueryFragment();
                 fragmentTransaction.add(R.id.InputQueryPlaceholder, inputQueryFragment);
 
-                //grammarModuleFragment = new GrammarModuleFragment();
+                //grammarModuleFragment = new DictionaryFragment();
                 //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, grammarModuleFragment);
 
-                //verbModuleFragment = new VerbModuleFragment();
+                //verbModuleFragment = new ConjugatorFragment();
                 //fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, verbModuleFragment);
 
-                //conversionModuleFragment = new ConversionModuleFragment();
+                //conversionModuleFragment = new ConvertFragment();
                 //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, conversionModuleFragment);
 
-                //SearchByRadicalsModuleFragment = new SearchByRadicalsModuleFragment();
-                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, SearchByRadicalsModuleFragment);
+                //ComposeKanjiFragment = new ComposeKanjiFragment();
+                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, ComposeKanjiFragment);
 
-                //DecompositionModuleFragment = new DecompositionModuleFragment();
-                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, DecompositionModuleFragment);
+                //DecomposeKanjiFragment = new DecomposeKanjiFragment();
+                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, DecomposeKanjiFragment);
             }
         } else {
             if (savedInstanceState == null) {
                 inputQueryFragment = new InputQueryFragment();
                 fragmentTransaction.add(R.id.InputQueryPlaceholder, inputQueryFragment);
 
-                //grammarModuleFragment = new GrammarModuleFragment();
+                //grammarModuleFragment = new DictionaryFragment();
                 //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, grammarModuleFragment);
 
-                //verbModuleFragment = new VerbModuleFragment();
+                //verbModuleFragment = new ConjugatorFragment();
                 //fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, verbModuleFragment);
 
-                //conversionModuleFragment = new ConversionModuleFragment();
+                //conversionModuleFragment = new ConvertFragment();
                 //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, conversionModuleFragment);
 
-                //SearchByRadicalsModuleFragment = new SearchByRadicalsModuleFragment();
-                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, SearchByRadicalsModuleFragment);
+                //ComposeKanjiFragment = new ComposeKanjiFragment();
+                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, ComposeKanjiFragment);
 
-                //DecompositionModuleFragment = new DecompositionModuleFragment();
-                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, DecompositionModuleFragment);
+                //DecomposeKanjiFragment = new DecomposeKanjiFragment();
+                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, DecomposeKanjiFragment);
             }
         }
 
@@ -174,33 +177,8 @@ public class MainActivity extends FragmentActivity
         //see https://stackoverflow.com/questions/11786553/changing-the-android-typeface-doesnt-work
 
     }
-
     @Override protected void onStart() {
         super.onStart();
-
-//        if (GrammarDatabase.size() == 0 || GrammarDatabase == null) {
-//
-//            // ie. If Android killed GlobalTranslatorActivity, restart the app
-//            int delay = 1;
-//            Log.e("", "Restarting app");
-//            if (this != null) {
-//                restartIntent = this.getBaseContext().getPackageManager()
-//                        .getLaunchIntentForPackage(this.getBaseContext().getPackageName());
-//                PendingIntent intent = PendingIntent.getActivity(
-//                        this.getBaseContext(), 0,
-//                        restartIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-//                AlarmManager manager = (AlarmManager) this.getBaseContext().getSystemService(Context.ALARM_SERVICE);
-//                manager.set(AlarmManager.RTC, System.currentTimeMillis() + delay, intent);
-//                System.exit(2);
-//            }
-//            else {
-//                Intent intent = new Intent();
-//                intent.setClass(GlobalGrammarModuleFragmentView.getContext(), SplashScreen.class);
-//                startActivity(intent);
-//            }
-//        }
-
-
         restartIntent = this.getBaseContext().getPackageManager()
                 .getLaunchIntentForPackage(this.getBaseContext().getPackageName());
 
@@ -211,9 +189,6 @@ public class MainActivity extends FragmentActivity
         savedInstanceState.putString("RequestedFragment", Global_Fragment_chooser_keyword);
         
  	}
-    @Override protected void onStop(){
-        super.onStop();
-    }
     @Override protected void onDestroy() {
         super.onDestroy();
         try {
@@ -228,6 +203,26 @@ public class MainActivity extends FragmentActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    @Override public boolean onOptionsItemSelected(MenuItem item) {
+        int itemThatWasClickedId = item.getItemId();
+
+        switch (itemThatWasClickedId) {
+            case R.id.action_settings:
+                Intent startSettingsActivity = new Intent(this, SettingsActivity.class);
+                startActivity(startSettingsActivity);
+                return true;
+            case R.id.action_about:
+                Intent startAboutActivity = new Intent(this, AboutActivity.class);
+                startActivity(startAboutActivity);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void showDatabaseLoadingToast(final String message, final Context context) {
@@ -436,63 +431,63 @@ public class MainActivity extends FragmentActivity
 
         if (Global_Fragment_chooser_keyword.equals("verb")) {
 
-        	VerbModuleFragment verbModuleFragment = new VerbModuleFragment();
-            verbModuleFragment.setArguments(bundle);
+        	ConjugatorFragment conjugatorFragment = new ConjugatorFragment();
+            conjugatorFragment.setArguments(bundle);
 
             android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
             android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, verbModuleFragment);
+            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, conjugatorFragment);
 
             fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
+            fragmentTransaction.commitAllowingStateLoss ();
         }
         else if (Global_Fragment_chooser_keyword.equals("word")) {
 
-        	GrammarModuleFragment grammarModuleFragment = new GrammarModuleFragment();
-            grammarModuleFragment.setArguments(bundle);
+        	DictionaryFragment dictionaryFragment = new DictionaryFragment();
+            dictionaryFragment.setArguments(bundle);
 
             android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
             android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, grammarModuleFragment);
+            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, dictionaryFragment);
 
             fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
+            fragmentTransaction.commitAllowingStateLoss ();
         }
         else if (Global_Fragment_chooser_keyword.equals("convert")) {
 
-            ConversionModuleFragment conversionModuleFragment = new ConversionModuleFragment();
-            conversionModuleFragment.setArguments(bundle);
+            ConvertFragment convertFragment = new ConvertFragment();
+            convertFragment.setArguments(bundle);
 
             android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
             android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, conversionModuleFragment);
+            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, convertFragment);
 
             fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
+            fragmentTransaction.commitAllowingStateLoss ();
         }
         else if (Global_Fragment_chooser_keyword.equals("radicals")  && heap_size_before_decomposition_loader >= GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
 
-            SearchByRadicalsModuleFragment SearchByRadicalsModuleFragment = new SearchByRadicalsModuleFragment();
-            SearchByRadicalsModuleFragment.setArguments(bundle);
+            ComposeKanjiFragment ComposeKanjiFragment = new ComposeKanjiFragment();
+            ComposeKanjiFragment.setArguments(bundle);
 
             android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
             android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, SearchByRadicalsModuleFragment);
+            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, ComposeKanjiFragment);
 
             fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
+            fragmentTransaction.commitAllowingStateLoss ();
         }
         else if (Global_Fragment_chooser_keyword.equals("decompose")  && heap_size_before_decomposition_loader >= GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
 
-            DecompositionModuleFragment DecompositionModuleFragment = new DecompositionModuleFragment();
-            DecompositionModuleFragment.setArguments(bundle);
+            DecomposeKanjiFragment DecomposeKanjiFragment = new DecomposeKanjiFragment();
+            DecomposeKanjiFragment.setArguments(bundle);
 
             android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
             android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, DecompositionModuleFragment);
+            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, DecomposeKanjiFragment);
 
             fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
+            fragmentTransaction.commitAllowingStateLoss ();
 
         }
     }
@@ -520,12 +515,12 @@ public class MainActivity extends FragmentActivity
         Bundle bundle = new Bundle();
         bundle.putString("input_to_fragment", outputFromGrammarModuleFragment[1]);
 
-        VerbModuleFragment verbModuleFragment = new VerbModuleFragment();
-        verbModuleFragment.setArguments(bundle);
+        ConjugatorFragment conjugatorFragment = new ConjugatorFragment();
+        conjugatorFragment.setArguments(bundle);
 
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, verbModuleFragment);
+        fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, conjugatorFragment);
 
         fragmentTransaction.addToBackStack(null);
 

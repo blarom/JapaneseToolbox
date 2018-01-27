@@ -6,17 +6,23 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Handler;
+import android.os.Looper;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.japanesetoolboxapp.ConvertFragment;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.InetAddress;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -204,11 +210,27 @@ public class SharedMethods {
         return availHeapSizeInMB;
     }
 
+    static public String convertToUTF8(String input_string) {
+
+        byte[] byteArray = {};
+        try {
+            byteArray = input_string.getBytes("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        String prepared_word = "1.";
+        for (byte b : byteArray) {
+            prepared_word = prepared_word + Integer.toHexString(b & 0xFF);
+        }
+        return prepared_word;
+    }
+
     //Internet Connectivity functions
-    public void TellUserIfThereIsNoInternetConnection(final Activity activity) {
+    private static Boolean mInternetIsAvailable;
+    public static void TellUserIfThereIsNoInternetConnection(final Activity activity) {
         //adapted from https://stackoverflow.com/questions/43315393/android-internet-connection-timeout
 
-        if(!internetIsAvailableCheck(activity.getBaseContext())) {
+        if(!internetIsAvailableCheck(activity)) {
             try {
                 activity.runOnUiThread(new Runnable() {
                     public void run() {
@@ -220,7 +242,7 @@ public class SharedMethods {
             }
         }
     }
-    public boolean internetIsAvailableCheck(Context context) {
+    public static boolean internetIsAvailableCheck(Context context) {
         //adapted from https://stackoverflow.com/questions/43315393/android-internet-connection-timeout
         final ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -239,7 +261,7 @@ public class SharedMethods {
         }
         return false;
     }
-    public boolean isWifiInternetAvailable() {
+    private static boolean isWifiInternetAvailable() {
         //adapted from https://stackoverflow.com/questions/43315393/android-internet-connection-timeout
         try {
             InetAddress ipAddr = InetAddress.getByName("google.com"); //You can replace it with your name
@@ -248,4 +270,357 @@ public class SharedMethods {
             return false;
         }
     }
+    public static List<Object> getResultsFromWeb(String word, final Activity activity) throws IOException {
+
+        List<Object> setOf_matchingWordCharacteristics = new ArrayList<>();
+        List<Object> matchingWordCharacteristics = new ArrayList<>();
+        if (word.equals("")) { return setOf_matchingWordCharacteristics; }
+
+        //Preparing the word to be included in the url
+        String prepared_word = "";
+        if (ConvertFragment.TextType(word).equals("kanji")) {
+            String converted_word = convertToUTF8(word);
+            converted_word = converted_word.substring(2,converted_word.length());
+            prepared_word = "";
+            for (int i = 0; i < converted_word.length() - 1; i = i + 2) {
+                prepared_word = prepared_word + "%" + converted_word.substring(i, i + 2);
+            }
+        }
+        else {
+            prepared_word = word;
+        }
+
+        //Checking for a Web connection and extracting the site code if there is one. Otherwise, returning null.
+        String responseString = "";
+        String inputLine;
+        HttpURLConnection connection = null;
+        mInternetIsAvailable = internetIsAvailableCheck(activity.getBaseContext());
+        TellUserIfThereIsNoInternetConnection(activity);
+        if (mInternetIsAvailable) {
+            try {
+                //https://stackoverflow.com/questions/35568584/android-studio-deprecated-on-httpparams-httpconnectionparams-connmanagerparams
+                //String current_url = "https://www.google.co.il/search?dcr=0&source=hp&q=" + prepared_word;
+                String current_url = "http://jisho.org/search/" + prepared_word;
+                URL dataUrl = new URL(current_url);
+                connection = (HttpURLConnection) dataUrl.openConnection();
+                connection.setConnectTimeout(2000);
+                connection.setReadTimeout(2000);
+                connection.setInstanceFollowRedirects(true);
+                // optional default is GET
+                connection.setRequestMethod("GET");
+
+                int responseCode = connection.getResponseCode();
+                if (responseCode == 200) {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    responseString = "";
+                    while ((inputLine = in.readLine()) != null)
+                        responseString += inputLine + '\n';
+                    in.close();
+                    in = null;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.i("Diagnosis Time", "Failed to access online resources.");
+                Looper.prepare();
+                try {
+                    activity.runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(activity.getBaseContext(), "Failed to access online resources.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+                return setOf_matchingWordCharacteristics;
+            } finally {
+                try {
+                    if (connection != null) {connection.disconnect(); connection = null; }
+                } catch (Exception e) {
+                    e.printStackTrace(); //If you want further info on failure...
+                    //return null;
+                }
+            }
+        }
+        String website_code = responseString;
+
+        //Extracting the definition from Jisho.org
+
+        ;//Initializatons
+        String identifier;
+        int index_of_current_results_block_marker_start;
+        int index_of_current_results_block_marker_end;
+        String current_results_block_descriptor;
+
+        int index_of_requested_word_kanji_start;
+        int index_of_requested_word_kanji_end;
+        String requested_word_kanji = "";
+
+        int index_of_requested_word_romaji_start;
+        int index_of_requested_word_romaji_end;
+        String requested_word_romaji = "";
+
+        int index_of_current_meaning_tags_start;
+        int index_of_current_meaning_tags_end;
+        List<String> current_meaning_tags = new ArrayList<>();
+
+        int index_of_meanings_start = 0;
+        int index_of_meanings_end = 0;
+        String meanings_semicolumns;
+        String meanings_commas = "";
+
+        int current_index_in_block;
+        int current_meanings_block_start;
+        int current_meanings_block_end;
+        List<String> current_meanings;
+
+        if (website_code.contains("Sorry, couldn't find anything matching")
+                || website_code.contains("Sorry, couldn't find any words matching")
+                || (website_code.contains("Searched for") && website_code.contains("No matches for"))) {
+            return setOf_matchingWordCharacteristics;
+        }
+
+        int current_index_in_site = 0;
+        current_index_in_block = website_code.length()-1;
+        while (true) {
+
+            //Get start of current results block
+            identifier = "div class=\"concept_light-status";
+            index_of_current_results_block_marker_start = website_code.indexOf(identifier, current_index_in_site) + identifier.length();
+            index_of_current_results_block_marker_end = website_code.indexOf("a class=\"light-details_link", index_of_current_results_block_marker_start);
+
+            //Getting the start index of the current meaning block
+            identifier = "concept_light-meanings medium-9 columns";
+            current_meanings_block_start = website_code.indexOf(identifier, index_of_current_results_block_marker_start) + identifier.length();
+            current_meanings_block_end = website_code.indexOf("a class=\"light-details_link", current_meanings_block_start);
+
+            //Exiting the loop if the last entry from the website has been registered or if the loop restarts
+            if (index_of_current_results_block_marker_start < current_index_in_site || index_of_current_results_block_marker_start == -1) break;
+
+            //Skipping this results block if it is not a valid block
+            //index_of_current_results_block_marker_end = website_code.indexOf(">", index_of_current_results_block_marker_start)-1;
+            //current_results_block_descriptor = website_code.substring(index_of_current_results_block_marker_start, index_of_current_results_block_marker_end);
+            //if (!current_results_block_descriptor.equals("concept_light-status")) continue;
+
+            current_index_in_site = index_of_current_results_block_marker_start;
+
+            //Kanji extraction
+            identifier = "Sentence search for ";
+            index_of_requested_word_kanji_start = website_code.indexOf(identifier, current_index_in_site) + identifier.length();
+            index_of_requested_word_kanji_end = website_code.indexOf("<", index_of_requested_word_kanji_start);
+            requested_word_kanji = website_code.substring(index_of_requested_word_kanji_start, index_of_requested_word_kanji_end);
+
+            //Romaji extraction (if there is no second "Sentence search for " marker, create the Romaji value manually)
+            identifier = "Sentence search for ";
+            index_of_requested_word_romaji_start = website_code.indexOf(identifier, index_of_requested_word_kanji_end) + identifier.length();
+
+            //If there is not further "Sentence search for " statement in the website, continue (to loop closure)
+            if (index_of_requested_word_romaji_start == -1) { current_index_in_site = index_of_requested_word_romaji_start; continue; }
+
+            //Otherwise:
+            index_of_requested_word_romaji_end = index_of_requested_word_romaji_start;
+            if (index_of_requested_word_romaji_start > current_meanings_block_start) {
+                requested_word_romaji = ConvertFragment.Kana_to_Romaji_to_Kana(requested_word_kanji).get(0);
+            }
+            else {
+                index_of_requested_word_romaji_end = website_code.indexOf("<", index_of_requested_word_romaji_start);
+                requested_word_romaji = website_code.substring(index_of_requested_word_romaji_start, index_of_requested_word_romaji_end);
+            }
+
+            //If the Kanji word is in Hiragana or Katakana script, make sure that the Romaji value is correct, no matter what is extracted from the website
+            if (ConvertFragment.TextType(requested_word_kanji).equals("hiragana") ||
+                    ConvertFragment.TextType(requested_word_kanji).equals("katakana") ) {
+                requested_word_romaji = ConvertFragment.Kana_to_Romaji_to_Kana(requested_word_kanji).get(0);
+            }
+
+            current_index_in_site = current_meanings_block_start;
+
+            //Getting the tags and corresponding meanings
+            current_index_in_block = current_meanings_block_start;
+            current_meaning_tags = new ArrayList<>();
+            current_meanings = new ArrayList<>();
+            long index_of_next_meaning_tags_start = current_index_in_block;
+            long index_of_next_meaning_tags_end = current_index_in_block;
+            String next_meaning_tag;
+            meanings_commas = "";
+            String current_meaning_tag = "";
+
+            while(current_index_in_block < current_meanings_block_end) {
+
+                identifier = "<div class=\"meaning-tags\">";
+                index_of_current_meaning_tags_start = website_code.indexOf(identifier, current_index_in_block) + identifier.length();
+                index_of_current_meaning_tags_end = website_code.indexOf("<", index_of_current_meaning_tags_start);
+                current_meaning_tag = SharedMethods.fromHtml(website_code.substring(index_of_current_meaning_tags_start, index_of_current_meaning_tags_end)).toString();
+
+                if (current_meaning_tag.contains("Wikipedia") || current_meaning_tag.contains("Other forms") || current_meaning_tag.contains("Notes")) break;
+                if (index_of_current_meaning_tags_end < current_index_in_block) break;
+
+                index_of_next_meaning_tags_start = website_code.indexOf(identifier, index_of_current_meaning_tags_end) + identifier.length()+1;
+                index_of_next_meaning_tags_end = website_code.indexOf("<", index_of_current_meaning_tags_start);
+                next_meaning_tag = SharedMethods.fromHtml(website_code.substring(index_of_current_meaning_tags_start, index_of_current_meaning_tags_end)).toString();
+
+                current_index_in_block = index_of_current_meaning_tags_end;
+
+                //Getting the meanings for the current tag
+                while (current_index_in_block < index_of_next_meaning_tags_start && current_index_in_block < current_meanings_block_end) {
+
+                    identifier = "<span class=\"meaning-meaning\">";
+                    index_of_meanings_start = website_code.indexOf(identifier, current_index_in_block) + identifier.length();
+                    index_of_meanings_end = website_code.indexOf("<", index_of_meanings_start);
+                    meanings_semicolumns = SharedMethods.fromHtml(website_code.substring(index_of_meanings_start, index_of_meanings_end)).toString();
+
+                    if (index_of_meanings_start > index_of_next_meaning_tags_start) break;
+
+                    if (!meanings_semicolumns.equals("")) {
+                        meanings_commas = "";
+                        for (int i = 0; i < meanings_semicolumns.length(); i++) {
+                            if (meanings_semicolumns.substring(i, i + 1).equals(";")) { meanings_commas += ","; }
+                            else { meanings_commas += meanings_semicolumns.substring(i, i + 1); }
+                        }
+                        meanings_commas = SharedMethods.fromHtml(meanings_commas).toString();
+                        meanings_commas = meanings_commas.replaceAll("',", "'");
+
+                        current_meaning_tags.add(current_meaning_tag);
+                        current_meanings.add(meanings_commas);
+                    }
+                    current_index_in_block = index_of_meanings_end;
+                }
+
+                if (current_index_in_block < current_meanings_block_start) break;
+            }
+
+            //Preventing crashes if the website code does not supply a "meaning-tags" instance in the current block
+            if (current_meaning_tags.size() == 0) {
+                current_index_in_site = current_index_in_block;
+                continue;
+            }
+
+            current_index_in_site = current_meanings_block_end;
+
+            //Updating the characteristics
+            matchingWordCharacteristics = new ArrayList<>();
+
+            //Getting the Romaji value
+            String matchingWordRomaji = ConvertFragment.Kana_to_Romaji_to_Kana(requested_word_romaji).get(0);
+            matchingWordCharacteristics.add(matchingWordRomaji);
+
+            //Getting the Kanji value
+            String matchingWordKanji = requested_word_kanji;
+            matchingWordCharacteristics.add(matchingWordKanji);
+
+            //Getting the Alt Spellings value
+            String matchingWordAltSpellings = "";
+            matchingWordCharacteristics.add(matchingWordAltSpellings);
+
+            //Getting the set of Meanings
+
+            ;//Initializations
+            List<Object> matchingWordCurrentMeaningsBlock = new ArrayList<>();
+            List<Object> matchingWordCurrentMeaningBlocks = new ArrayList<>();
+            String matchingWordMeaning;
+            String matchingWordType;
+            String matchingWordOpposite;
+            String matchingWordSynonym;
+
+            List<List<String>> matchingWordExplanationBlocks = new ArrayList<>();
+            List<String> matchingWordCurrentExplanationsBlock;
+            String matchingWordExplanation;
+            String matchingWordRules;
+
+            for (int i=0; i<current_meanings.size(); i++) {
+
+                matchingWordCurrentMeaningsBlock = new ArrayList<>();
+
+                //Getting the Meaning value
+                matchingWordMeaning = current_meanings.get(i);
+                matchingWordCurrentMeaningsBlock.add(matchingWordMeaning);
+
+                //Getting the Type value
+                matchingWordType = current_meaning_tags.get(i);
+                if (matchingWordType.contains("verb")) {
+                    if      (matchingWordType.contains("su ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VsuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VsuT";
+                        else matchingWordType = "VsuI";
+                    }
+                    else if (matchingWordType.contains("ku ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VkuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VkuT";
+                        else matchingWordType = "VkuI";
+                    }
+                    else if (matchingWordType.contains("gu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VguI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VguT";
+                        else matchingWordType = "VguI";
+                    }
+                    else if (matchingWordType.contains("mu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VmuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VmuT";
+                        else matchingWordType = "VmuI";
+                    }
+                    else if (matchingWordType.contains("bu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VbuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VbuT";
+                        else matchingWordType = "VbuI";
+                    }
+                    else if (matchingWordType.contains("nu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VnuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VnuT";
+                        else matchingWordType = "VnuI";
+                    }
+                    else if (matchingWordType.contains("ru ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VrugI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VrugT";
+                        else matchingWordType = "VrugI";
+                    }
+                    else if (matchingWordType.contains("tsu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VtsuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VtsuT";
+                        else matchingWordType = "VtsuI";
+                    }
+                    else if (matchingWordType.contains("u ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VuT";
+                        else matchingWordType = "VuI";
+                    }
+                    else if (matchingWordType.contains("Ichidan")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VruiI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VruiT";
+                        else matchingWordType = "VruiI";
+                    }
+                }
+                matchingWordCurrentMeaningsBlock.add(matchingWordType);
+
+                //Getting the Opposite value
+                matchingWordOpposite = "";
+                matchingWordCurrentMeaningsBlock.add(matchingWordOpposite);
+
+                //Getting the Synonym value
+                matchingWordSynonym = "";
+                matchingWordCurrentMeaningsBlock.add(matchingWordSynonym);
+
+                //Getting the set of Explanations
+                matchingWordCurrentExplanationsBlock = new ArrayList<>();
+
+                //Getting the Explanation value
+                matchingWordExplanation = "";
+                matchingWordCurrentExplanationsBlock.add(matchingWordExplanation);
+
+                //Getting the Rules value
+                matchingWordRules = "";
+                matchingWordCurrentExplanationsBlock.add(matchingWordRules);
+
+                matchingWordExplanationBlocks.add(matchingWordCurrentExplanationsBlock);
+
+                matchingWordCurrentMeaningsBlock.add(matchingWordExplanationBlocks);
+                matchingWordCurrentMeaningBlocks.add(matchingWordCurrentMeaningsBlock);
+            }
+
+            matchingWordCharacteristics.add(matchingWordCurrentMeaningBlocks);
+
+            setOf_matchingWordCharacteristics.add(matchingWordCharacteristics);
+        }
+
+        return setOf_matchingWordCharacteristics;
+    }
+
 }
