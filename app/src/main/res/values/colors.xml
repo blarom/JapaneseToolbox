@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#2e7d32</color>
+    <color name="colorPrimaryDark">#005005</color>
+    <color name="colorPrimaryLight">#60ad5e</color>
+    <color name="colorAccent">#303f9f</color>
+    <color name="colorAccentDark">#001970</color>
+    <color name="colorAccentLight">#666ad1</color>
+    <color name="textColorPrimary">#000000</color>
+    <color name="textColorSecondary">#000000</color>
+
+    <!--InputQueryFragment colors-->
+    <color name="textColorSearch">#0099FF</color>
+
+    <!--Dictionary colors-->
+    <color name="textColorDictionaryGroupItemRomajiAndKanji">#800080</color>
+    <color name="textColorDictionaryGroupItemMeanings">#000000</color>
+    <color name="textColorDictionaryChildItemRomaji">#000000</color>
+    <color name="textColorDictionaryChildItemKanji">#000000</color>
+    <color name="textColorDictionarySpanClicked">#283593</color>
+    <color name="textColorDictionaryAlternateSpellings">#6a1b9a</color>
+    <color name="textColorDictionaryTypeMeaning">#023991</color>
+    <color name="textColorDictionaryTypeMeaning2">#000000</color>
+    <color name="textColorDictionaryAntonymSynonym">#009900</color>
+    <color name="textColorDictionaryExplanation">#283593</color>
+    <color name="textColorDictionaryRule">#283593</color>
+    <color name="textColorDictionaryRuleWhereClause">#6a1b9a</color>
+    <color name="textColorDictionaryExamples">#000000</color>
+    <color name="textColorDictionaryExampleEnglish">#000000</color>
+    <color name="textColorDictionaryExampleRomaji">#777777</color>
+    <color name="textColorDictionaryExampleKanji">#0000FF</color>
+
+    <!--Conjugation colors-->
+    <color name="textColorConjugatorPreposition">#800080</color>
+    <color name="textColorConjugatorKanji">#0022ee</color>
+    <color name="textColorConjugatorCharacteristics">#777777</color>
+    <color name="textColorConjugatorMeaning">#000000</color>
 </resources>

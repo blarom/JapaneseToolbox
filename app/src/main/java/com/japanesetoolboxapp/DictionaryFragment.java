@@ -3,9 +3,7 @@ package com.japanesetoolboxapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -21,7 +19,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -139,12 +136,13 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         if (mMatchingWordCharacteristics.size() == 0) matchFound = false;
 
         // If there are no results, retrieve the results from Jisho.org
-        Toast toast = Toast.makeText(getContext(), "Looking for results online, please wait...", Toast.LENGTH_SHORT);
-        toast.show();
+        Toast showOnlineResultsToast = Toast.makeText(getContext(), getResources().getString(R.string.showOnlineResultsToastString), Toast.LENGTH_SHORT);
         mAsyncMatchingWordCharacteristics = new ArrayList<>();
 
         //Attempting to access jisho.org to complete the results found in the local dictionary
-        if (getActivity()!=null) {
+        if (getActivity()!=null && MainActivity.mShowOnlineResults) {
+            if (!mSearchedWord.equals("")) showOnlineResultsToast.show();
+
             Bundle queryBundle = new Bundle();
             queryBundle.putString(JISHO_LOADER_INPUT_EXTRA, mSearchedWord);
 
@@ -157,14 +155,14 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         displayResults(mSearchedWord);
 
         //If no dictionary match was found, then this is probably a vrb conjugation, so try that
-        if (!matchFound) {
-            toast.cancel();
+        if (!matchFound && !mSearchedWord.equals("")) {
+            showOnlineResultsToast.cancel();
             getActivity().findViewById(R.id.button_searchVerb).performClick();
         }
     }
     SharedMethods mSharedMethods;
 
-    //Asyncronous methods
+    //Asynchronous methods
     @Override public Loader<List<Object>> onCreateLoader(int id, final Bundle args) {
         return new AsyncTaskLoader<List<Object>>(getContext()) {
 
@@ -200,7 +198,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     @Override public void onLoadFinished(Loader<List<Object>> loader, List<Object> data) {
         mAsyncMatchingWordCharacteristics = data;
 
-        if (mAsyncMatchingWordCharacteristics.size() != 0 ) {
+        if (mAsyncMatchingWordCharacteristics.size() != 0 && MainActivity.mShowOnlineResults) {
             compareMatchingWordCharacteristics();
             displayResults(mSearchedWord);
         }
@@ -479,8 +477,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
        }
         @Override
         public void updateDrawState(TextPaint ds) {
-            ds.setColor(Color.BLUE);//set text color
-            ds.setUnderlineText(false); // set to false to remove underline
+            ds.setColor(getResources().getColor(R.color.textColorDictionarySpanClicked));
+            ds.setUnderlineText(false);
        }
     }
     private class   VerbClickableSpan extends ClickableSpan {
@@ -517,8 +515,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         @Override
         public void updateDrawState(TextPaint ds) {
-            ds.setColor(Color.BLUE);//set text color
-            ds.setUnderlineText(false); // set to false to remove underline
+            ds.setColor(getResources().getColor(R.color.textColorDictionarySpanClicked));
+            ds.setUnderlineText(false);
         }
     }
     static public   String getValidCharacter(String input) {
@@ -1467,7 +1465,10 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             if (childPosition == 0) {
                 String alternatespellings = childArray.get(0);
                 if (!alternatespellings.equals("")) {
-                    Spanned spanned_alternatespellings = SharedMethods.fromHtml("<font face='serif' color='purple'>" + "<b>" + "Alternate spellings: " + "</b>" + alternatespellings + "</font>");
+                    String htmlText = "<font face='serif' color='" +
+                            getResources().getColor(R.color.textColorDictionaryAlternateSpellings) +
+                            "'>" + "<b>" + "Alternate spellings: " + "</b>" + alternatespellings + "</font>";
+                    Spanned spanned_alternatespellings = SharedMethods.fromHtml(htmlText);
                     TextView tv_alternatespellings = new TextView(getContext());
                     tv_alternatespellings.setText(spanned_alternatespellings);
                     tv_alternatespellings.setTextSize(14);
@@ -1484,12 +1485,15 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 for (int i=0; i<MainActivity.LegendDatabase.size(); i++) {
                     if (MainActivity.LegendDatabase.get(i)[0].equals(type)) { full_type = MainActivity.LegendDatabase.get(i)[1]; break; }
                 }
-                if (full_type == "") { full_type = type; }
+                if (full_type.equals("")) { full_type = type; }
                 //String type_and_meaning = "[" + full_type + "] " + childArray.get(2);
-                Spanned type_and_meaning = SharedMethods.fromHtml("<i><font color='#023991'>" + "[" + full_type + "] " + "</font></i>" + "<b>" + childArray.get(2) + "</b>");
+                String htmlText = "<i><font color='"+
+                        getResources().getColor(R.color.textColorDictionaryTypeMeaning) +
+                        "'>" + "[" + full_type + "] " + "</font></i>" + "<b>" + childArray.get(2) + "</b>";
+                Spanned type_and_meaning = SharedMethods.fromHtml(htmlText);
                 TextView tv_type_and_meaning = new TextView(getContext());
                 tv_type_and_meaning.setText(type_and_meaning);
-                tv_type_and_meaning.setTextColor(Color.BLACK);
+                tv_type_and_meaning.setTextColor(getResources().getColor(R.color.textColorDictionaryTypeMeaning2));
                 tv_type_and_meaning.setTextSize(15);
                 //tv_type_and_meaning.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
                 elements_container.addView(tv_type_and_meaning);
@@ -1578,7 +1582,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     TextView tv_antonym = new TextView(getContext());
                     tv_antonym.setText(OppositeXSpannable);
                     tv_antonym.setMovementMethod(LinkMovementMethod.getInstance());
-                    tv_antonym.setTextColor(Color.parseColor("#009900"));
+                    tv_antonym.setTextColor(getResources().getColor(R.color.textColorDictionaryAntonymSynonym));
                     tv_antonym.setTextSize(14);
                     tv_antonym.setTextIsSelectable(true);
                     elements_container.addView(tv_antonym);
@@ -1608,7 +1612,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     TextView tv_synonym = new TextView(getContext());
                     tv_synonym.setText(SynonymXSpannable);
                     tv_synonym.setMovementMethod(LinkMovementMethod.getInstance());
-                    tv_synonym.setTextColor(Color.parseColor("#009900"));
+                    tv_synonym.setTextColor(getResources().getColor(R.color.textColorDictionaryAntonymSynonym));
                     tv_synonym.setTextSize(14);
                     tv_synonym.setTextIsSelectable(true);
                     elements_container.addView(tv_synonym);
@@ -1634,7 +1638,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                         if (current_element.substring(0,4).equals("EXPL")) {
                             TextView tv_explanation = new TextView(getContext());
                             tv_explanation.setText(current_element.substring(4,current_element.length()));
-                            tv_explanation.setTextColor(Color.BLUE);
+                            tv_explanation.setTextColor(getResources().getColor(R.color.textColorDictionaryExplanation));
                             tv_explanation.setPadding(0,10,0,0);
                             tv_explanation.setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
                             elements_container.addView(tv_explanation);
@@ -1643,7 +1647,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                         //Setting the rule
                         else if (current_element.substring(0,4).equals("RULE")) {
                             TextView tv_rule = new TextView(getContext());
-                            tv_rule.setTextColor(Color.BLUE);
+                            tv_rule.setTextColor(getResources().getColor(R.color.textColorDictionaryRule));
                             tv_rule.setPadding(0,10,0,0);
                             tv_rule.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
 
@@ -1651,7 +1655,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                             String where = " where: ";
                             String final_text;
                             String intro = "";
-                            if (!parsedRule.get(0).contains(":")) { intro = "Phrase structure: "; }
+                            if (!parsedRule.get(0).contains(":")) { intro = getResources().getString(R.string.PhraseStructure) + " "; }
                             Spanned spanned_rule;
 
                             if (parsedRule.size() == 1) { // If the rule doesn't have a "where" clause
@@ -1659,7 +1663,10 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                                 tv_rule.setText(final_text);
                                 tv_rule.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
                             } else {
-                                spanned_rule = SharedMethods.fromHtml("<b>" + intro + parsedRule.get(0) + "</b>" + "<font face='serif' color='purple'>" + where + "</font>" + "<b>" + parsedRule.get(1) + "</b>");
+                                String htmlText = "<b>" + intro + parsedRule.get(0) + "</b>" + "<font face='serif' color='"+
+                                        getResources().getColor(R.color.textColorDictionaryRuleWhereClause) +
+                                        "purple'>" + where + "</font>" + "<b>" + parsedRule.get(1) + "</b>";
+                                spanned_rule = SharedMethods.fromHtml(htmlText);
                                 tv_rule.setText(spanned_rule);
                             }
 
@@ -1670,8 +1677,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                         else if (current_element.substring(0,4).equals("EXMP")) {
 
                             if (is_first_example) {
-                                tv_examples.setText("Example sentences (>show)");
-                                tv_examples.setTextColor(Color.BLACK);
+                                tv_examples.setText(getResources().getString(R.string.ShowExamples));
+                                tv_examples.setTextColor(getResources().getColor(R.color.textColorDictionaryExamples));
                                 tv_examples.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
                                 tv_examples.setPadding(0, 10, 0, 0);
                                 elements_container.addView(tv_examples);
@@ -1684,7 +1691,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                                 tv_example_English.setText(example_English.substring(4,example_English.length()));
                                 tv_example_English.setTextSize(14);
                                 tv_example_English.setPadding(4,10,0,0);
-                                tv_example_English.setTextColor(Color.BLACK);
+                                tv_example_English.setTextColor(getResources().getColor(R.color.textColorDictionaryExampleEnglish));
                                 examples_layout.addView(tv_example_English);
                             }
 
@@ -1695,7 +1702,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                                 tv_example_Romaji.setTextSize(14);
                                 tv_example_Romaji.setPadding(4,0,0,0);
                                 tv_example_Romaji.setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
-                                tv_example_Romaji.setTextColor(Color.parseColor("#777777"));
+                                tv_example_Romaji.setTextColor(getResources().getColor(R.color.textColorDictionaryExampleRomaji));
                                 examples_layout.addView(tv_example_Romaji);
                             }
 
@@ -1705,7 +1712,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                                 tv_example_Kanji.setText(example_Kanji.substring(4,example_Kanji.length()));
                                 tv_example_Kanji.setTextSize(14);
                                 tv_example_Kanji.setPadding(4,0,0,0);
-                                tv_example_Kanji.setTextColor(Color.parseColor("#0000FF"));
+                                tv_example_Kanji.setTextColor(getResources().getColor(R.color.textColorDictionaryExampleKanji));
                                 examples_layout.addView(tv_example_Kanji);
                             }
 
@@ -1771,36 +1778,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = infalInflater.inflate(R.layout.custom_grammar_list_group_item, null);
             }
-
-            /*TextView grammarchooser_Title = (TextView) convertView.findViewById(R.id.grammarchooser_element_title);
-            grammarchooser_Title.setText(headerDetailsArray.get(0));
-            grammarchooser_Title.setClickable(true);
-
-            if (headerDetailsArray.get(1).equals("")) {
-                Spanned emptytitle = MainActivity.fromHtml("<b>" + "<font color='#800080'>"+ headerDetailsArray.get(0) + "</font>"+ "</b>");
-                grammarchooser_Title.setTextSize(18);
-                LinearLayout.LayoutParams linear1 = new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
-                linear1.setMargins(4,15,0,0);
-                grammarchooser_Title.setLayoutParams(linear1);
-                grammarchooser_Title.setText(emptytitle);
-            }
-
-            // Set the color of the title in the current position according to the match's category, e.g. Adverb
-            if 		(headerDetailsArray.get(0).contains("Number"))          { grammarchooser_Title.setTextColor(Color.parseColor("#800080")); } //purple
-            else if (headerDetailsArray.get(0).contains("Noun"))            { grammarchooser_Title.setTextColor(Color.parseColor("#0000ff")); } //blue
-            else if (headerDetailsArray.get(0).contains("Adjective"))       { grammarchooser_Title.setTextColor(Color.parseColor("#009900")); } //green (web-safe)
-            else if (headerDetailsArray.get(0).contains("Adverb"))          { grammarchooser_Title.setTextColor(Color.parseColor("#ff0000")); } //red
-            else if (headerDetailsArray.get(0).contains("Particles"))       { grammarchooser_Title.setTextColor(Color.parseColor("#993333")); } //brown
-            else if (headerDetailsArray.get(0).contains("Sentence Type"))   { grammarchooser_Title.setTextColor(Color.parseColor("#ff9900")); } //orange (web-safe)
-            else if (headerDetailsArray.get(0).contains("Conjugation"))     { grammarchooser_Title.setTextColor(Color.parseColor("#cc33ba")); } //dark magenta
-            else if (headerDetailsArray.get(0).contains("Prefix")
-                    || headerDetailsArray.get(0).contains("Suffix")
-                    || headerDetailsArray.get(0).contains("Counter"))       { grammarchooser_Title.setTextColor(Color.parseColor("#33cccc")); } //turquoise
-            else if (headerDetailsArray.get(0).contains("Expressions")
-                    ||headerDetailsArray.get(0).contains("Onomatopeia")
-                    || headerDetailsArray.get(0).contains("Impolite"))      { grammarchooser_Title.setTextColor(Color.parseColor("#ffcc00")); } //tangerine yellow
-            else if (headerDetailsArray.get(0).contains("Verb"))            { grammarchooser_Title.setTextColor(Color.parseColor("#53ad2d")); } //kelly green
-            */
 
             //Updating the romaji and kanji values
             String romaji_value = headerDetailsArray.get(0);

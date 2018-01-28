@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_complete_local_with_online_search_default"
+        android:key="@string/pref_complete_local_with_online_search_key"
+        android:summaryOff="@string/hidden"
+        android:summaryOn="@string/shown"
+        android:title="@string/complete_local_with_online_search" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_preferred_language_japanese"
+        android:entries="@array/pref_preferred_speech_language_labels"
+        android:entryValues="@array/pref_preferred_speech_language_values"
+        android:key="@string/pref_preferred_language_key"
+        android:title="@string/pref_preferred_language" />
+</PreferenceScreen>

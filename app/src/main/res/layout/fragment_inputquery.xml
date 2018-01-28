@@ -20,7 +20,7 @@
 	            android:layout_width="fill_parent"
 	            android:layout_height="45dp"
 	        	android:layout_marginEnd="4dp"
-	            android:layout_gravity="left|center_vertical"
+	            android:layout_gravity="start|center_vertical"
 	            android:ems="10"
 	            android:hint="@string/input_query"
 	            android:imeOptions="actionDone"
@@ -28,7 +28,7 @@
                 android:textSize="22sp"
 	            android:maxLines="1"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-	            android:textColor="#0099FF" />
+	            android:textColor="@color/textColorSearch" />
 	
 	        <!--<Button-->
 	            <!--android:id="@+id/choose_ClearQuery"-->

@@ -13,10 +13,31 @@
     <string name="EmptyResult">…</string>
     <string name="NoStringResult"></string>
     <string name="NoText"></string>
+    <string name="userInput">userInput</string>
+    <string name="applicationPreferences">ApplicationPrefs</string>
+
+    <!--Splashscreen-->
+    <string name="Title1">Your personal aid for deciphering</string>
+    <string name="Title2">the Japanese language.</string>
+    <string name="Title3">Loading Local Database…</string>
+    <string name="Title4">This should only take a few seconds.</string>
 
     <!--Menu Strings-->
     <string name="settings">Settings</string>
     <string name="about">About</string>
+
+    <!--Preferences Strings-->
+    <string name="hidden">Hidden</string>
+    <string name="shown">Shown</string>
+    <string name="pref_complete_local_with_online_search_key">complete_local_with_online_search</string>
+    <string name="complete_local_with_online_search">Show online results</string>
+    <string name="pref_preferred_language_japanese" translatable="false">preferred_language_japanese</string>
+    <string name="language_label_japanese">Japanese</string>
+    <string name="language_label_english">English (US)</string>
+    <string name="pref_preferred_language_value_japanese" translatable="false">japanese</string>
+    <string name="pref_preferred_language_value_english" translatable="false">english</string>
+    <string name="pref_preferred_language">Speech-To-Text Language</string>
+    <string name="pref_preferred_language_key" translatable="false">preferred_result</string>
 
     <!--InputQueryFragment Strings-->
     <string name="input_query">Search Me!</string>
@@ -28,6 +49,8 @@
     <string name="button_SearchByRadical">女+子 &#8658; 好</string>
     <string name="button_Decompose">好 &#8658; 女+子</string>
     <string name="SpeechUserPrompt">Please state your query in English or Japanese.</string>
+    <string name="SpeechLanguageJapanese">ja_JP</string>
+    <string name="SpeechLanguageEnglish">en-US</string>
 
     <!--DictionaryFragment Strings-->
     <string name="NoMatchFound">No match found. Searching for conjugations…</string>
@@ -42,6 +65,9 @@
     <string name="GrammarModule_Explanation">Details:</string>
     <string name="GrammarModule_Example">Rules and Examples:</string>
     <string name="GrammarModule_Constructor">Constructor</string>
+    <string name="showOnlineResultsToastString">Looking for results online, please wait…</string>
+    <string name="ShowExamples">Example sentences (>show)</string>
+    <string name="PhraseStructure">Phrase structure</string>
 
     <!--ConjugationFragment Strings-->
     <string name="CurrenVerbInfo">Current Verb Info</string>
@@ -93,6 +119,9 @@
         \nEnter a Kanji into the Search bar and click on the decomposition (好 > 女+子) button in order to get its decompositions.
         \n
         \nThe decompositions are evaluated using a heavily modified and corrected version of Gavin Grover\&apos;s decomposition database (see cjkdecomp.codeplex.com). </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

@@ -2,17 +2,17 @@ package com.japanesetoolboxapp;
 
 import com.japanesetoolboxapp.utiities.*;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.StrictMode;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -21,8 +21,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 
 import java.util.ArrayList;
@@ -48,7 +46,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements InputQueryFragment.UserEnteredQueryListener,
                                             DictionaryFragment.UserWantsNewSearchForSelectedWordListener,
                                             DictionaryFragment.UserWantsToConjugateFoundVerbListener,
-                                            ComposeKanjiFragment.UserWantsNewSearchForSelectedCharacterListener {
+                                            ComposeKanjiFragment.UserWantsNewSearchForSelectedCharacterListener,
+                                            SharedPreferences.OnSharedPreferenceChangeListener {
 
     //Globals
     InputQueryFragment inputQueryFragment;
@@ -80,10 +79,16 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
     Intent restartIntent;
     Toast mLastToast;
 
+    //Preferences Globals
+    public static Boolean mShowOnlineResults;
+    public static String mChosenSpeechToTextLanguage;
+
 	@Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Log.i("Diagnosis Time", "Started MainActivity.");
+        setupSharedPreferences();
+
 
         // Start loading the database in the background
         if (MainDatabase == null) {
@@ -94,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
 
         // Define that MainActivity is related to activity_masterframe.xml
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_masterframe);
+        setContentView(R.layout.activity_main);
 
 
         //Code allowing to bypass strict mode
@@ -183,11 +188,10 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
                 .getLaunchIntentForPackage(this.getBaseContext().getPackageName());
 
     }
- 	@Override public void onSaveInstanceState(Bundle savedInstanceState) {
+    @Override public void onSaveInstanceState(Bundle savedInstanceState) {
  		super.onSaveInstanceState(savedInstanceState);
  		
         savedInstanceState.putString("RequestedFragment", Global_Fragment_chooser_keyword);
-        
  	}
     @Override protected void onDestroy() {
         super.onDestroy();
@@ -196,6 +200,7 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         } catch (Exception e) {
             e.printStackTrace();
         }
+        PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
     }
     @Override public void onBackPressed() {
         if (getFragmentManager().getBackStackEntryCount() > 0) {
@@ -215,14 +220,41 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         switch (itemThatWasClickedId) {
             case R.id.action_settings:
                 Intent startSettingsActivity = new Intent(this, SettingsActivity.class);
+                startSettingsActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(startSettingsActivity);
                 return true;
             case R.id.action_about:
                 Intent startAboutActivity = new Intent(this, AboutActivity.class);
+                startAboutActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(startAboutActivity);
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if (key.equals(getString(R.string.pref_complete_local_with_online_search_key))) {
+            setShowOnlineResults(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default)));
+        }
+    }
+    private void setupSharedPreferences() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        setShowOnlineResults(sharedPreferences.getBoolean(getString(R.string.pref_complete_local_with_online_search_key),
+                getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default)));
+        setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_language_key),
+                getString(R.string.pref_preferred_language_value_japanese)));
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+    }
+    public void setShowOnlineResults(boolean showCourse) {
+        mShowOnlineResults = showCourse;
+    }
+    public void setSpeechToTextLanguage(String language) {
+        if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
+            mChosenSpeechToTextLanguage = getResources().getString(R.string.SpeechLanguageJapanese);
+        }
+        else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
+            mChosenSpeechToTextLanguage = getResources().getString(R.string.SpeechLanguageEnglish);
+        }
     }
 
     public void showDatabaseLoadingToast(final String message, final Context context) {
@@ -251,12 +283,10 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         });
     }
     private class BackgroundDatabaseLoader extends AsyncTask<Void, Void, Void> {
-
         @Override protected void onPreExecute() {
             super.onPreExecute();
             Log.i("Diagnosis Time","Started background database loading.");
         }
-
         protected Void doInBackground(Void... params) {
 
             heap_size = SharedMethods.getAvailableMemory();
@@ -383,11 +413,9 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
             Log.i("Diagnosis Time","Loaded All Databases.");
             return null;
         }
-
         protected void onProgressUpdate(Integer... progress) {
             //setProgressPercent(progress[0]);
         }
-
         protected void onPostExecute() {
             Log.i("Diagnosis Time","Loadeded all databases.");
         }
@@ -419,7 +447,6 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
     	if (Global_Fragment_chooser_keyword.equals("start"))
     			{ Global_Fragment_chooser_keyword = outputFromInputQueryFragment[0]; }
     	else  	{ Global_Fragment_chooser_keyword = outputFromInputQueryFragment[0]; }
-
 
         FrameLayout frame = findViewById(R.id.FunctionFragmentsPlaceholder);
         frame.setVisibility(View.VISIBLE);
@@ -525,11 +552,6 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         fragmentTransaction.addToBackStack(null);
 
         fragmentTransaction.commit();
-    }
-
-    public void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager =(InputMethodManager) activity.getBaseContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 }
 

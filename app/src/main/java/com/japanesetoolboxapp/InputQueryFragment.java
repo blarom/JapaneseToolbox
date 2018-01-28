@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.net.Uri;
@@ -37,6 +38,7 @@ import com.japanesetoolboxapp.utiities.SharedMethods;
 
 public class InputQueryFragment extends Fragment implements LoaderManager.LoaderCallbacks<String> {
 
+    //Locals
     private	String[] output = {"word","","fast"};
     String[] queryHistory;
     ArrayList<String> new_queryHistory;
@@ -50,6 +52,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     Button button_searchTangorin;
     Button button_searchByRadical;
     Button button_Decompose;
+    String mQueryText;
 
     // Fragment Lifecycle Functions
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -79,7 +82,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
         ;// Initialize inputs and prepare them for listeners below
         query = InputQueryFragment.findViewById(R.id.query);
-        query.setText("");
+        mQueryText = "";
+        query.setText(mQueryText);
 
         // Restore inputs from the savedInstanceState (if applicable)
         if (queryHistory == null) {
@@ -357,8 +361,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
             intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, maxResultsToReturn);
             intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechUserPrompt));
-            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ja_JP");
-            intent.putExtra(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES, "en-US");
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, MainActivity.mChosenSpeechToTextLanguage);
+            intent.putExtra(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES, getResources().getString(R.string.SpeechLanguageEnglish));
             startActivityForResult(intent, SPEECH_RECOGNIZER_REQUEST_CODE);
         } } );
 
@@ -375,6 +379,11 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         }
 
     }
+    @Override public void onResume() {
+        super.onResume();
+        query.setText(mQueryText);
+    }
+
     @Override public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
 
@@ -394,7 +403,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 if (data == null) return;
                 ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
-                query.setText(results.get(0));
+                mQueryText = results.get(0);
+                query.setText(mQueryText);
 
                 //Attempting to access jisho.org to get the romaji value of the requested word
                 if (getActivity()!=null) {
@@ -411,8 +421,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     }
 
     //Asyncronous methods
-    @Override
-    public Loader<String> onCreateLoader(int id, final Bundle args) {
+    @Override public Loader<String> onCreateLoader(int id, final Bundle args) {
         return new AsyncTaskLoader<String>(getContext()) {
 
             @Override
@@ -442,9 +451,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             }
         };
     }
-
-    @Override
-    public void onLoadFinished(Loader<String> loader, String data) {
+    @Override public void onLoadFinished(Loader<String> loader, String data) {
         if (data!=null) {
             query.setText(data);
         }
@@ -452,146 +459,144 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             button_searchWord.performClick();
         }
     }
-
-    @Override
-    public void onLoaderReset(Loader<String> loader) {
+    @Override public void onLoaderReset(Loader<String> loader) {
 
     }
 
     // Fragment Functions
-	    private class QueryInputSpinnerAdapter extends ArrayAdapter<String> {
-    	// Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
-	    	public QueryInputSpinnerAdapter(Context ctx, int txtViewResourceId, List<String> list) {
-	    		super(ctx, txtViewResourceId, list);
-	    		}
-	    	@Override
-	    	public View getDropDownView( int position, View cnvtView, ViewGroup prnt) {
-	    		return getCustomView(position, cnvtView, prnt);
-	    	}
-	    	@Override
-	    	public View getView(int pos, View cnvtView, ViewGroup prnt) {
-	    		return getCustomView(pos, cnvtView, prnt);
-	    	}
-	    	public View getCustomView(int position, View convertView, ViewGroup parent) {
-	    		
-	    		LayoutInflater inflater = LayoutInflater.from(getActivity().getBaseContext());
-	    		View mySpinner = inflater.inflate(R.layout.custom_queryhistory_spinner, parent, false);
-	    		TextView pastquery = (TextView) mySpinner.findViewById(R.id.pastquery);
-	    		pastquery.setText(new_queryHistory.get(position));
+    private class QueryInputSpinnerAdapter extends ArrayAdapter<String> {
+    // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
+        public QueryInputSpinnerAdapter(Context ctx, int txtViewResourceId, List<String> list) {
+            super(ctx, txtViewResourceId, list);
+            }
+        @Override
+        public View getDropDownView( int position, View cnvtView, ViewGroup prnt) {
+            return getCustomView(position, cnvtView, prnt);
+        }
+        @Override
+        public View getView(int pos, View cnvtView, ViewGroup prnt) {
+            return getCustomView(pos, cnvtView, prnt);
+        }
+        public View getCustomView(int position, View convertView, ViewGroup parent) {
 
-	    		return mySpinner;
-	    	}
-	    }
-	    public void DisplayQueryHistory(String queryStr, final AutoCompleteTextView query) {
-	    							
-    		// Implementing a FIFO array for the spinner
-    		// Add the entry at the beginning of the stack
-			// If the entry is already in the spinner, remove that entry
+            LayoutInflater inflater = LayoutInflater.from(getActivity().getBaseContext());
+            View mySpinner = inflater.inflate(R.layout.custom_queryhistory_spinner, parent, false);
+            TextView pastquery = (TextView) mySpinner.findViewById(R.id.pastquery);
+            pastquery.setText(new_queryHistory.get(position));
 
-		    	if (!queryHistory[0].equals(queryStr)) { // if the query hasn't changed, don't change the dropdown list
-					String temp;
-					int i = queryHistory.length-1;
-					while ( i>0 ) {
-						temp = queryHistory[i-1];
-						queryHistory[i] = temp;
-						if (queryHistory[i].equalsIgnoreCase(queryStr)) { queryHistory[i]=""; }
-						i--;
-					}
-					queryHistory[0]=queryStr;
-					
-					new_queryHistory = new ArrayList<>();
-                    for (String aQueryHistory : queryHistory) {
-                        if (!aQueryHistory.equals("")) {
-                            new_queryHistory.add(aQueryHistory);
-                        }
+            return mySpinner;
+        }
+    }
+    public void DisplayQueryHistory(String queryStr, final AutoCompleteTextView query) {
+
+        // Implementing a FIFO array for the spinner
+        // Add the entry at the beginning of the stack
+        // If the entry is already in the spinner, remove that entry
+
+            if (!queryHistory[0].equals(queryStr)) { // if the query hasn't changed, don't change the dropdown list
+                String temp;
+                int i = queryHistory.length-1;
+                while ( i>0 ) {
+                    temp = queryHistory[i-1];
+                    queryHistory[i] = temp;
+                    if (queryHistory[i].equalsIgnoreCase(queryStr)) { queryHistory[i]=""; }
+                    i--;
+                }
+                queryHistory[0]=queryStr;
+
+                new_queryHistory = new ArrayList<>();
+                for (String aQueryHistory : queryHistory) {
+                    if (!aQueryHistory.equals("")) {
+                        new_queryHistory.add(aQueryHistory);
                     }
-		    	}
+                }
+            }
 
-			// Set the dropdown main to include all past entries
-		    	query.setAdapter(new QueryInputSpinnerAdapter(
-		    			getActivity().getBaseContext(),
-		    			R.layout.custom_queryhistory_spinner,
-		    			new_queryHistory));
-		    	
-		    	//For some reason the following does nothing
-		    	query.setOnItemSelectedListener(new OnItemSelectedListener() {
-		    		@Override
-		    		public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long id) {
-		    			String inputWordString = query.getText().toString();
-		    			onWordEntered_PerformThisFunction(inputWordString);
-		            }
-		    		@Override
-		    		public void onNothingSelected(AdapterView<?> arg0) { }
-		        });
-	    }
+        // Set the dropdown main to include all past entries
+            query.setAdapter(new QueryInputSpinnerAdapter(
+                    getActivity().getBaseContext(),
+                    R.layout.custom_queryhistory_spinner,
+                    new_queryHistory));
 
-	// Interface Functions
-        private UserEnteredQueryListener userEnteredQueryListener;
-	    interface UserEnteredQueryListener {
-	    	// Interface used to transfer the verb to ConjugatorFragment or DictionaryFragment
-	        void OnQueryEnteredSwitchToRelevantFragment(String[] output);
-	    }
+            //For some reason the following does nothing
+            query.setOnItemSelectedListener(new OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long id) {
+                    String inputWordString = query.getText().toString();
+                    onWordEntered_PerformThisFunction(inputWordString);
+                }
+                @Override
+                public void onNothingSelected(AdapterView<?> arg0) { }
+            });
+    }
 
-        public void setNewQuery(String outputFromGrammarModuleFragment) {
-            AutoCompleteTextView queryInit = (AutoCompleteTextView) getActivity().findViewById(R.id.query);
-            queryInit.setText(outputFromGrammarModuleFragment);
-        }
+    // Interface Functions
+    private UserEnteredQueryListener userEnteredQueryListener;
+    interface UserEnteredQueryListener {
+        // Interface used to transfer the verb to ConjugatorFragment or DictionaryFragment
+        void OnQueryEnteredSwitchToRelevantFragment(String[] output);
+    }
 
-        public void onVerbEntered_PerformThisFunction(String inputVerbString) {
+    public void setNewQuery(String outputFromGrammarModuleFragment) {
+        AutoCompleteTextView queryInit = (AutoCompleteTextView) getActivity().findViewById(R.id.query);
+        queryInit.setText(outputFromGrammarModuleFragment);
+    }
 
-            // Send inputVerbString and SearchType to MainActivity through the interface
-            output[0] = "verb";
-            output[1] = inputVerbString;
-            output[2] = "deep";
-            userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
-        }
-        public void onWordEntered_PerformThisFunction(String inputWordString) {
+    public void onVerbEntered_PerformThisFunction(String inputVerbString) {
 
-                /*// Check which Search Type was chosen (Fast or Deep) ************This part is obsolete
-                    // Get the ID of the checked radio button in the RadioGroup
-                        int selectedId = verbSearchType.getCheckedRadioButtonId();
-                    // Return the RadioButton that has the above ID
-                        RadioButton chosenVerbSearchType = (RadioButton)fragmentView.findViewById(selectedId);
-                    // Define a boolean depending on which radio button was checked
-                        boolean checked = chosenVerbSearchType.isChecked();
-                    // Define an action depending on the given boolean, ie. depending on the checked RadioButton ID
-                        String SearchType = "fast";
-                        switch(chosenVerbSearchType.getId()) {
-                            case R.id.radio_FastSearch:
-                                if (checked) { SearchType = "fast";} break;
-                            case R.id.radio_DeepSearch:
-                                if (checked) { SearchType = "deep";} break;
-                        }*/
+        // Send inputVerbString and SearchType to MainActivity through the interface
+        output[0] = "verb";
+        output[1] = inputVerbString;
+        output[2] = "deep";
+        userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
+    }
+    public void onWordEntered_PerformThisFunction(String inputWordString) {
 
-            // Send inputWordString and SearchType to MainActivity through the interface
-            output[0] = "word";
-            output[1] = inputWordString;
-            output[2] = "fast";
-            userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
-        }
-        public void onConvertEntered_PerformThisFunction(String inputWordString) {
+            /*// Check which Search Type was chosen (Fast or Deep) ************This part is obsolete
+                // Get the ID of the checked radio button in the RadioGroup
+                    int selectedId = verbSearchType.getCheckedRadioButtonId();
+                // Return the RadioButton that has the above ID
+                    RadioButton chosenVerbSearchType = (RadioButton)fragmentView.findViewById(selectedId);
+                // Define a boolean depending on which radio button was checked
+                    boolean checked = chosenVerbSearchType.isChecked();
+                // Define an action depending on the given boolean, ie. depending on the checked RadioButton ID
+                    String SearchType = "fast";
+                    switch(chosenVerbSearchType.getId()) {
+                        case R.id.radio_FastSearch:
+                            if (checked) { SearchType = "fast";} break;
+                        case R.id.radio_DeepSearch:
+                            if (checked) { SearchType = "deep";} break;
+                    }*/
 
-            // Send inputWordString and SearchType to MainActivity through the interface
-            output[0] = "convert";
-            output[1] = inputWordString;
-            output[2] = "fast";
-            userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
-        }
-        public void onSearchByRadicalsEntered_PerformThisFunction(String inputWordString) {
+        // Send inputWordString and SearchType to MainActivity through the interface
+        output[0] = "word";
+        output[1] = inputWordString;
+        output[2] = "fast";
+        userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
+    }
+    public void onConvertEntered_PerformThisFunction(String inputWordString) {
 
-            // Send inputWordString and SearchType to MainActivity through the interface
-            output[0] = "radicals";
-            output[1] = inputWordString;
-            output[2] = "fast";
-            userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
-        }
-        public void onDecomposeEntered_PerformThisFunction(String inputWordString) {
+        // Send inputWordString and SearchType to MainActivity through the interface
+        output[0] = "convert";
+        output[1] = inputWordString;
+        output[2] = "fast";
+        userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
+    }
+    public void onSearchByRadicalsEntered_PerformThisFunction(String inputWordString) {
 
-            // Send inputWordString and SearchType to MainActivity through the interface
-            output[0] = "decompose";
-            output[1] = inputWordString;
-            output[2] = "fast";
-            userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
-        }
+        // Send inputWordString and SearchType to MainActivity through the interface
+        output[0] = "radicals";
+        output[1] = inputWordString;
+        output[2] = "fast";
+        userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
+    }
+    public void onDecomposeEntered_PerformThisFunction(String inputWordString) {
+
+        // Send inputWordString and SearchType to MainActivity through the interface
+        output[0] = "decompose";
+        output[1] = inputWordString;
+        output[2] = "fast";
+        userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
+    }
 
 }
