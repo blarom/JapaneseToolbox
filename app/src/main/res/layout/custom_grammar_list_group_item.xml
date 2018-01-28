@@ -4,7 +4,10 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="2dp" >
+    android:paddingStart="2dp"
+    android:paddingEnd="2dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp" >
 
     <TextView
 		android:id="@+id/ExpandableListViewGroupElement_romaji_and_Kanji"
@@ -13,7 +16,7 @@
 		android:layout_marginStart="2dp"
 		android:text="@string/Kanji"
 		android:textColor="@color/textColorDictionaryGroupItemRomajiAndKanji"
-		android:textSize="16sp"
+		android:textSize="@dimen/DictionaryGroupItemRomajiKanji"
 		android:textStyle="bold" />
 
 	
@@ -24,7 +27,7 @@
 		android:layout_marginStart="2dp"
 		android:layout_marginBottom="2dp"
         android:textColor="@color/textColorDictionaryGroupItemMeanings"
-        android:textSize="14sp"
+        android:textSize="@dimen/DictionaryGroupItemMeanings"
 		android:text="@string/English" />
 
 </LinearLayout>

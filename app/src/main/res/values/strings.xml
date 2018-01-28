@@ -48,7 +48,8 @@
     <string name="Convert">あ&#8660;A</string>
     <string name="button_SearchByRadical">女+子 &#8658; 好</string>
     <string name="button_Decompose">好 &#8658; 女+子</string>
-    <string name="SpeechUserPrompt">Please state your query in English or Japanese.</string>
+    <string name="SpeechUserPromptEnglish">Please state your query in English.</string>
+    <string name="SpeechUserPromptJapanese">Please state your query in Japanese.</string>
     <string name="SpeechLanguageJapanese">ja_JP</string>
     <string name="SpeechLanguageEnglish">en-US</string>
 
@@ -120,8 +121,12 @@
         \n
         \nThe decompositions are evaluated using a heavily modified and corrected version of Gavin Grover\&apos;s decomposition database (see cjkdecomp.codeplex.com). </string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
+    <!--AboutActivity Text-->
+    <string name="AboutText">
+        Japanese Toolbox is a set of reference tools designed to make learning Japanese much more efficient,
+        by giving quick answers to questions on difficult subjects such as grammar, verb conjugations and Kanji decompositions.\n
+        The app includes a local dictionary complete with grammar rules, a reverse-conjugation finder, Latin-to-Kana converter,
+        Kanji builder and Kanji decomposer.
+        If you have any comments or feedback, you're welcome to post them at japanesetoolboxapp@gmail.com.
+    </string>
 </resources>

@@ -18,8 +18,8 @@
             android:layout_height="72dp"
             android:singleLine="false"
             android:background="#BFFFFFFF"
-            android:layout_marginRight="16dp"
-            android:layout_marginLeft="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="4dp"
             android:layout_marginBottom="2dp"
             android:layout_marginTop="0dp" />
         <TextView
@@ -35,7 +35,7 @@
             android:layout_marginBottom="4dp"
             android:layout_marginTop="2dp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
     <TextView
@@ -43,23 +43,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/verbHint"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="0dp"
         android:layout_below="@+id/VerbChooserSpinnerBox"
         android:background="#BFFFFFFF"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/VerbChooserSpinnerBox"
+        android:layout_alignStart="@+id/VerbChooserSpinnerBox"
         android:layout_below="@+id/verbHint"
         android:layout_marginBottom="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:layout_marginTop="0dp" >
 
         <LinearLayout
@@ -81,8 +81,8 @@
                     android:background="#BFFFFFFF"
                     android:singleLine="false"
                     android:gravity="top|left"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginLeft="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="4dp"
                     android:layout_marginBottom="2dp"
                     android:layout_marginTop="0dp" />
                 <TextView
@@ -98,7 +98,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="2dp"
                     android:layout_marginBottom="4dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_alignParentEnd="true" />
             </RelativeLayout>
 
@@ -119,7 +119,7 @@
 		        <RadioButton
 		            android:id="@+id/radio_Kanji"
 		            android:layout_width="wrap_content"
-		        	android:layout_marginLeft="15dp"
+		        	android:layout_marginStart="15dp"
 		            android:layout_height="wrap_content"
 		            android:text="@string/Kanji" />
 		    </RadioGroup>
@@ -127,8 +127,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-	            android:layout_marginLeft="4dp"
-	            android:layout_marginRight="4dp"
+	            android:layout_marginStart="4dp"
+	            android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
                 
                 <TextView
@@ -138,7 +138,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoStringResult"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -148,10 +148,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-	        		android:layout_marginLeft="2dp"
+	        		android:layout_marginStart="2dp"
                     android:text="@string/NoStringResult"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"
@@ -161,8 +161,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-	            android:layout_marginLeft="4dp"
-	            android:layout_marginRight="4dp"
+	            android:layout_marginStart="4dp"
+	            android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
 
                 <TextView
@@ -172,7 +172,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -182,10 +182,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-	        		android:layout_marginLeft="2dp"
+	        		android:layout_marginStart="2dp"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"
@@ -195,8 +195,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-	            android:layout_marginLeft="4dp"
-	            android:layout_marginRight="4dp"
+	            android:layout_marginStart="4dp"
+	            android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
 
                 <TextView
@@ -206,7 +206,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -216,10 +216,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-	        		android:layout_marginLeft="2dp"
+	        		android:layout_marginStart="2dp"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"
@@ -229,8 +229,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-	            android:layout_marginLeft="4dp"
-	            android:layout_marginRight="4dp"
+	            android:layout_marginStart="4dp"
+	            android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
 
                 <TextView
@@ -240,7 +240,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -250,10 +250,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-	        		android:layout_marginLeft="2dp"
+	        		android:layout_marginStart="2dp"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"
@@ -263,8 +263,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-	            android:layout_marginLeft="4dp"
-	            android:layout_marginRight="4dp"
+	            android:layout_marginStart="4dp"
+	            android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
 
                 <TextView
@@ -274,7 +274,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -284,10 +284,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-	        		android:layout_marginLeft="2dp"
+	        		android:layout_marginStart="2dp"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"
@@ -297,8 +297,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-	            android:layout_marginLeft="4dp"
-	            android:layout_marginRight="4dp"
+	            android:layout_marginStart="4dp"
+	            android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
 
                 <TextView
@@ -308,7 +308,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -318,10 +318,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-	        		android:layout_marginLeft="2dp"
+	        		android:layout_marginStart="2dp"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"
@@ -331,8 +331,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-	            android:layout_marginLeft="4dp"
-	            android:layout_marginRight="4dp"
+	            android:layout_marginStart="4dp"
+	            android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
                 <TextView
                     android:id="@+id/Tense6"
@@ -341,7 +341,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -351,10 +351,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-	        		android:layout_marginLeft="2dp"
+	        		android:layout_marginStart="2dp"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"
@@ -364,8 +364,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-	            android:layout_marginLeft="4dp"
-	            android:layout_marginRight="4dp"
+	            android:layout_marginStart="4dp"
+	            android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
                 <TextView
                     android:id="@+id/Tense7"
@@ -374,7 +374,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -384,10 +384,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-	        		android:layout_marginLeft="2dp"
+	        		android:layout_marginStart="2dp"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"
@@ -397,8 +397,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-	            android:layout_marginLeft="4dp"
-	            android:layout_marginRight="4dp"
+	            android:layout_marginStart="4dp"
+	            android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
                 <TextView
                     android:id="@+id/Tense8"
@@ -407,7 +407,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -417,10 +417,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-	        		android:layout_marginLeft="2dp"
+	        		android:layout_marginStart="2dp"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"
@@ -430,8 +430,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-	            android:layout_marginLeft="4dp"
-	            android:layout_marginRight="4dp"
+	            android:layout_marginStart="4dp"
+	            android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
                 <TextView
                     android:id="@+id/Tense9"
@@ -440,7 +440,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -450,10 +450,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-	        		android:layout_marginLeft="2dp"
+	        		android:layout_marginStart="2dp"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"
@@ -463,8 +463,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-	            android:layout_marginLeft="4dp"
-	            android:layout_marginRight="4dp"
+	            android:layout_marginStart="4dp"
+	            android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
                 <TextView
                     android:id="@+id/Tense10"
@@ -473,7 +473,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -483,10 +483,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-	        		android:layout_marginLeft="2dp"
+	        		android:layout_marginStart="2dp"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"
@@ -496,8 +496,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
                 <TextView
                     android:id="@+id/Tense11"
@@ -506,7 +506,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -516,10 +516,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginStart="2dp"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"
@@ -529,8 +529,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
                 <TextView
                     android:id="@+id/Tense12"
@@ -539,7 +539,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -549,10 +549,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginStart="2dp"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"
@@ -562,8 +562,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 android:orientation="horizontal" >
                 <TextView
                     android:id="@+id/Tense13"
@@ -572,7 +572,7 @@
                     android:layout_weight="0.8"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#000000"
+                    android:textColor="@color/textColorConjugatorLabel"
                     android:textSize="14sp"
                     android:background="#BFFFFFFF"
                     android:textIsSelectable="true" />
@@ -582,10 +582,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginStart="2dp"
                     android:text="@string/NoText"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#0099FF"
+                    android:textColor="@color/textColorConjugatorResults"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:background="#BFFFFFFF"

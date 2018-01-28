@@ -53,6 +53,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     Button button_searchByRadical;
     Button button_Decompose;
     String mQueryText;
+    Boolean mUserUsedSpeech;
 
     // Fragment Lifecycle Functions
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -84,6 +85,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         query = InputQueryFragment.findViewById(R.id.query);
         mQueryText = "";
         query.setText(mQueryText);
+        mUserUsedSpeech = false;
 
         // Restore inputs from the savedInstanceState (if applicable)
         if (queryHistory == null) {
@@ -360,9 +362,14 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
             intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, maxResultsToReturn);
-            intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechUserPrompt));
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, MainActivity.mChosenSpeechToTextLanguage);
             intent.putExtra(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES, getResources().getString(R.string.SpeechLanguageEnglish));
+            if (MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.SpeechLanguageJapanese))) {
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechUserPromptJapanese));
+            }
+            else if (MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.SpeechLanguageEnglish))) {
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechUserPromptEnglish));
+            }
             startActivityForResult(intent, SPEECH_RECOGNIZER_REQUEST_CODE);
         } } );
 
@@ -382,6 +389,10 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     @Override public void onResume() {
         super.onResume();
         query.setText(mQueryText);
+//        if (mUserUsedSpeech && !query.getText().toString().equals("")) {
+//            button_searchWord.performClick();
+//        }
+//        mUserUsedSpeech = false;
     }
 
     @Override public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -429,6 +440,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
                 /* If no arguments were passed, we don't have a query to perform. Simply return. */
                 if (args == null) return;
+                mUserUsedSpeech = true;
 
                 forceLoad();
             }
@@ -452,6 +464,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         };
     }
     @Override public void onLoadFinished(Loader<String> loader, String data) {
+        mUserUsedSpeech = true;
         if (data!=null) {
             query.setText(data);
         }

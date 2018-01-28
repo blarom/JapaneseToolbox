@@ -57,6 +57,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     private static final int JISHO_WEB_SEARCH_LOADER = 41;
     private static final String JISHO_LOADER_INPUT_EXTRA = "input";
     Boolean matchFound;
+    Toast mShowOnlineResultsToast;
 
     // Fragment Lifecycle Functions
     @Override public void onAttach(Context context) {
@@ -136,12 +137,12 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         if (mMatchingWordCharacteristics.size() == 0) matchFound = false;
 
         // If there are no results, retrieve the results from Jisho.org
-        Toast showOnlineResultsToast = Toast.makeText(getContext(), getResources().getString(R.string.showOnlineResultsToastString), Toast.LENGTH_SHORT);
+        mShowOnlineResultsToast = Toast.makeText(getContext(), getResources().getString(R.string.showOnlineResultsToastString), Toast.LENGTH_SHORT);
         mAsyncMatchingWordCharacteristics = new ArrayList<>();
 
         //Attempting to access jisho.org to complete the results found in the local dictionary
         if (getActivity()!=null && MainActivity.mShowOnlineResults) {
-            if (!mSearchedWord.equals("")) showOnlineResultsToast.show();
+            if (!mSearchedWord.equals("")) mShowOnlineResultsToast.show();
 
             Bundle queryBundle = new Bundle();
             queryBundle.putString(JISHO_LOADER_INPUT_EXTRA, mSearchedWord);
@@ -154,11 +155,11 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         displayResults(mSearchedWord);
 
-        //If no dictionary match was found, then this is probably a vrb conjugation, so try that
-        if (!matchFound && !mSearchedWord.equals("")) {
-            showOnlineResultsToast.cancel();
+        if (!matchFound && !mSearchedWord.equals("") && !MainActivity.mShowOnlineResults) {
+            if (mShowOnlineResultsToast!=null) mShowOnlineResultsToast.cancel();
             getActivity().findViewById(R.id.button_searchVerb).performClick();
         }
+
     }
     SharedMethods mSharedMethods;
 
@@ -199,8 +200,15 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         mAsyncMatchingWordCharacteristics = data;
 
         if (mAsyncMatchingWordCharacteristics.size() != 0 && MainActivity.mShowOnlineResults) {
+            matchFound = true;
             compareMatchingWordCharacteristics();
             displayResults(mSearchedWord);
+        }
+
+        //If no dictionary match was found, then this is probably a verb conjugation, so try that
+        if (!matchFound && !mSearchedWord.equals("")) {
+            if (mShowOnlineResultsToast!=null) mShowOnlineResultsToast.cancel();
+            getActivity().findViewById(R.id.button_searchVerb).performClick();
         }
     }
     @Override public void onLoaderReset(Loader<List<Object>> loader) {}

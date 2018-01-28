@@ -6,6 +6,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
+import static android.support.test.espresso.Espresso.getIdlingResources;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.*;
 import static android.support.test.espresso.matcher.ViewMatchers.*;
@@ -65,7 +66,6 @@ public class JapaneseToolboxUITest {
         TestInputStringAndButton("CONJ", "予約する");
 
         TestSpinnerLink("DICT", "taberu");
-
         TestTransliterator("tabertai");
 
         TestRadicalComposition();
@@ -143,7 +143,8 @@ public class JapaneseToolboxUITest {
     public void TestRadicalComposition() {
 
         ViewInteraction button2 = onView(
-                allOf(withId(R.id.button_searchByRadical), withText("女+子 > 好"), isDisplayed()));
+                allOf(withId(R.id.button_searchByRadical), isDisplayed()));
+        //allOf(withId(R.id.button_searchByRadical), withText("女+子 &#8658; 好"), isDisplayed()));
         button2.perform(click());
 
 //
@@ -230,7 +231,7 @@ public class JapaneseToolboxUITest {
         autoCompleteTextView2.perform(replaceText(kanji_level0), closeSoftKeyboard());
 
         ViewInteraction button2 = onView(
-                allOf(withId(R.id.button_Decompose), withText("好 > 女+子"), isDisplayed()));
+                allOf(withId(R.id.button_Decompose), isDisplayed()));
         button2.perform(click());
 
         ViewInteraction textView = onView(
