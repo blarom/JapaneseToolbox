@@ -9,6 +9,7 @@
     <color name="textColorPrimary">@color/colorPrimaryDark</color>
     <color name="textColorSecondary">@color/colorAccent</color>
     <color name="Black">#000000</color>
+    <color name="White">#ffffff</color>
 
     <!--InputQueryFragment colors-->
     <color name="textColorSearch">@color/colorPrimaryDark</color>
@@ -35,9 +36,14 @@
     <color name="textColorConjugatorVerbChooserPreposition">@color/colorPrimaryLight</color>
     <color name="textColorConjugatorVerbChooserKanjiRomaji">@color/colorPrimaryDark</color>
     <color name="textColorConjugatorVerbChooserCharacteristics">@color/colorPrimary</color>
-    <color name="textColorConjugatorVerbChooserMeaning">#000000</color>
+    <color name="textColorConjugatorVerbChooserMeaning">@color/Black</color>
     <color name="textColorConjugatorConjugationChooserUpper">@color/textColorSecondary</color>
-    <color name="textColorConjugatorConjugationChooserLower">#000000</color>
+    <color name="textColorConjugatorConjugationChooserLower">@color/Black</color>
     <color name="textColorConjugatorLabel">@color/Black</color>
     <color name="textColorConjugatorResults">@color/textColorSecondary</color>
+
+    <!--Composition colors-->
+    <color name="textColorCompositionGridElementDefault">#800080</color>
+    <color name="textColorCompositionGridElementSelected">@color/colorAccent</color>
+
 </resources>

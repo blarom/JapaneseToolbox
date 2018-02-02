@@ -1516,14 +1516,14 @@ public class ComposeKanjiFragment extends Fragment {
                                 TextView tv_grid;
                                 for (int i=0;i<num_children;i++) {
                                     tv_grid = (TextView) searchResultsGrid.getChildAt(i);
-                                    tv_grid.setTextColor(Color.parseColor("#800080"));
+                                    tv_grid.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
                                 }
 
                                 for (int i=0; i<remainder_list.size();i++) {
-                                    tv_lastline[i].setTextColor(Color.parseColor("#800080"));
+                                    tv_lastline[i].setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
                                 }
 
-                                tv.setTextColor(Color.BLUE);
+                                tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementSelected));
                             }
                         });
                         lastSearchResultsLine_linearLayout.addView(tv);
@@ -1536,7 +1536,7 @@ public class ComposeKanjiFragment extends Fragment {
                             tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
                             tv.setTextSize(32);
                             tv.setText(printable_search_results.get(position));
-                            tv.setTextColor(Color.parseColor("#800080"));
+                            tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
 
                             tv.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -1562,12 +1562,12 @@ public class ComposeKanjiFragment extends Fragment {
                                     TextView tv_grid;
                                     for (int i=0;i<num_children;i++) {
                                         tv_grid = (TextView) searchResultsGrid.getChildAt(i);
-                                        tv_grid.setTextColor(Color.parseColor("#800080"));
+                                        tv_grid.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
                                     }
                                     for (int i=0; i<remainder_list.size();i++) {
-                                        tv_lastline[i].setTextColor(Color.parseColor("#800080"));
+                                        tv_lastline[i].setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
                                     }
-                                    tv.setTextColor(Color.BLUE);
+                                    tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementSelected));
 
                                 }
                             });
@@ -1747,13 +1747,13 @@ public class ComposeKanjiFragment extends Fragment {
             tv.setGravity(Gravity.CENTER_HORIZONTAL);
             tv.setText(text);
             tv.setTextSize(16);
-            tv.setTextColor(Color.parseColor("#800080"));
+            tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
             tv.setTextIsSelectable(false);
             tv.setTypeface(null, Typeface.BOLD);
             tv.setMovementMethod(LinkMovementMethod.getInstance());
             tv.setSelected(false);
             tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
-            tv.setBackgroundColor(Color.parseColor("#ffffff"));
+            tv.setBackgroundColor(getResources().getColor(R.color.White));
             tv.setAlpha((float) 0.90);
             tv.setOnTouchListener(new View.OnTouchListener() {
                 @Override
@@ -1796,7 +1796,7 @@ public class ComposeKanjiFragment extends Fragment {
             if (width != 0) {character_chooser.setWidth(width);}
             character_chooser.setHeight(10);
             character_chooser.setTextSize(12);
-            character_chooser.setTextColor(Color.parseColor("#000000"));
+            character_chooser.setTextColor(getResources().getColor(R.color.Black));
             character_chooser.setTextIsSelectable(false);
             character_chooser.setTypeface(null, Typeface.BOLD);
             character_chooser.setSelected(false);
@@ -1814,12 +1814,12 @@ public class ComposeKanjiFragment extends Fragment {
             autocomplete_input.setSingleLine(true);
             autocomplete_input.setHint(ghost_text);
             autocomplete_input.setTextSize(16);
-            autocomplete_input.setTextColor(Color.parseColor("#800080"));
+            autocomplete_input.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
             autocomplete_input.setTextIsSelectable(false);
             autocomplete_input.setTypeface(null, Typeface.BOLD);
             autocomplete_input.setMovementMethod(LinkMovementMethod.getInstance());
             autocomplete_input.setSelected(false);
-            autocomplete_input.setBackgroundColor(Color.parseColor("#ffffff"));
+            autocomplete_input.setBackgroundColor(getResources().getColor(R.color.White));
             autocomplete_input.setAlpha((float) 0.90);
             autocomplete_input.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
             autocomplete_input.setId(View.generateViewId());

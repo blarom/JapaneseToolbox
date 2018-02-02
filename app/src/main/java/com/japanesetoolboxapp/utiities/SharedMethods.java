@@ -341,6 +341,7 @@ public class SharedMethods {
                 }
             }
         }
+
         String website_code = responseString;
 
         //Extracting the definition from Jisho.org

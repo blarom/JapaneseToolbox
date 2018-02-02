@@ -125,471 +125,143 @@
 		    </RadioGroup>
 	    
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-	            android:layout_marginStart="4dp"
-	            android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
-                
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense0"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoStringResult"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense0_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-	        		android:layout_marginStart="2dp"
-                    android:text="@string/NoStringResult"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
             
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-	            android:layout_marginStart="4dp"
-	            android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
-
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense1_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-	        		android:layout_marginStart="2dp"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-	            android:layout_marginStart="4dp"
-	            android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
-
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense2_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-	        		android:layout_marginStart="2dp"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
             
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-	            android:layout_marginStart="4dp"
-	            android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
-
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense3_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-	        		android:layout_marginStart="2dp"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
             
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-	            android:layout_marginStart="4dp"
-	            android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
-
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense4"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense4_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-	        		android:layout_marginStart="2dp"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
             
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-	            android:layout_marginStart="4dp"
-	            android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
-
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense5"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense5_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-	        		android:layout_marginStart="2dp"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
             
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-	            android:layout_marginStart="4dp"
-	            android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense6"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense6_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-	        		android:layout_marginStart="2dp"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
             
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-	            android:layout_marginStart="4dp"
-	            android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense7"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense7_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-	        		android:layout_marginStart="2dp"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
             
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-	            android:layout_marginStart="4dp"
-	            android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense8"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense8_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-	        		android:layout_marginStart="2dp"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
             
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-	            android:layout_marginStart="4dp"
-	            android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense9"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense9_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-	        		android:layout_marginStart="2dp"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
             
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-	            android:layout_marginStart="4dp"
-	            android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense10"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense10_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-	        		android:layout_marginStart="2dp"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense11"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense11_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="2dp"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense12"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense12_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="2dp"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:orientation="horizontal" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout" >
                 <TextView
                     android:id="@+id/Tense13"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorLabel"
-                    android:textSize="14sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
-
+                    style="@style/VerbCharacteristicsDisplayLabel" />
                 <TextView
                     android:id="@+id/Tense13_Result"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="2dp"
-                    android:text="@string/NoText"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="@color/textColorConjugatorResults"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:background="#BFFFFFFF"
-                    android:textIsSelectable="true" />
+                    style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
         </LinearLayout>
 	

@@ -3,12 +3,14 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="clearButtonLeftRightMargin">65dp</dimen>
+    <dimen name="clearButtonLeftRightMargin">95dp</dimen>
     <dimen name="clearButtonWidth">30dp</dimen>
-    <dimen name="histButtonLeftRightMargin">35dp</dimen>
+    <dimen name="histButtonLeftRightMargin">65dp</dimen>
     <dimen name="histButtonWidth">30dp</dimen>
-    <dimen name="speechButtonLeftRightMargin">5dp</dimen>
+    <dimen name="speechButtonLeftRightMargin">35dp</dimen>
     <dimen name="speechButtonWidth">30dp</dimen>
+    <dimen name="cameraButtonLeftRightMargin">5dp</dimen>
+    <dimen name="cameraButtonWidth">30dp</dimen>
 
     <dimen name="inputQueryButtonTextSize">16sp</dimen>
     <dimen name="inputQueryButtonHeight">40dp</dimen>

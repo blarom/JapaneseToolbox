@@ -177,7 +177,7 @@ public class DecomposeKanjiFragment extends Fragment {
                                 tv.setSelected(false);
                                 overall_row_linearLayout.addView(tv);
 
-                            //Structure image
+                            //Structure mImageToBeDecoded
                                 img = new ImageView(getContext());
                                 img.setLayoutParams(overall_row_layoutParams);
                                 img.setPadding(0,10,0,0);

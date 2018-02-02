@@ -7,5 +7,5 @@
     android:layout_marginLeft="2dp"
     android:layout_marginRight="2dp"
     android:text="@string/EmptyResult"
-    android:textColor="#800080"
+    android:textColor="@color/textColorCompositionGridElementDefault"
     android:textSize="22sp"/>
