@@ -128,7 +128,7 @@ public class JapaneseToolboxUITest {
     public void TestTransliterator(String input) {
 
 //        ViewInteraction autoCompleteTextView = onView(
-//                allOf(withId(R.id.query), isDisplayed()));
+//                allOf(withId(R.id.inputQueryAutoCompleteTextView), isDisplayed()));
 //        autoCompleteTextView.perform(click());
 
         ViewInteraction autoCompleteTextView2 = onView(

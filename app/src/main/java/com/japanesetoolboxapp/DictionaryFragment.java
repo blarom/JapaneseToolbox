@@ -170,7 +170,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             @Override
             protected void onStartLoading() {
 
-                /* If no arguments were passed, we don't have a query to perform. Simply return. */
+                /* If no arguments were passed, we don't have a inputQueryAutoCompleteTextView to perform. Simply return. */
                 if (args == null) return;
 
                 forceLoad();
@@ -468,10 +468,10 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
             // Instead of implementing the direct text change in the InputQueryFragment (this can cause bugs in the long run), it is sent through an interface
                 ;//This is the code that's avoided
-                    //AutoCompleteTextView queryInit = (AutoCompleteTextView)InputQueryFragment.GlobalInputQueryFragment.findViewById(R.id.query);
+                    //AutoCompleteTextView queryInit = (AutoCompleteTextView)InputQueryFragment.GlobalInputQueryFragment.findViewById(R.id.inputQueryAutoCompleteTextView);
                     //queryInit.setText(text.getText().subSequence(start, end));
 
-                ;//The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the query and is activated
+                ;//The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
                    try {
                         mCallbackWord = (UserWantsNewSearchForSelectedWordListener) getActivity();
                    } catch (ClassCastException e) {
@@ -504,10 +504,10 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
             // Instead of implementing the direct text change in the InputQueryFragment (this can cause bugs in the long run), it is sent through an interface
             //This is the code that's avoided
-            //AutoCompleteTextView queryInit = (AutoCompleteTextView)InputQueryFragment.GlobalInputQueryFragment.findViewById(R.id.query);
+            //AutoCompleteTextView queryInit = (AutoCompleteTextView)InputQueryFragment.GlobalInputQueryFragment.findViewById(R.id.inputQueryAutoCompleteTextView);
             //queryInit.setText(text.getText().subSequence(start, end));
 
-            //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the query and is activated
+            //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
             try {
                 mCallbackVerb = (UserWantsToConjugateFoundVerbListener) getActivity();
             } catch (ClassCastException e) {
@@ -782,7 +782,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                         hitFirstRelevantWord = "";
                     }
 
-                    // Perform the comparison to the input query and return the length of the shortest hit
+                    // Perform the comparison to the input inputQueryAutoCompleteTextView and return the length of the shortest hit
                     ;// Match length is reduced every time there's a hit and the hit is shorter
                     if (       (concatenated_hit.contains(concatenated_word)
                             || (TypeisLatin && hit.equals("to " + inglessVerb))

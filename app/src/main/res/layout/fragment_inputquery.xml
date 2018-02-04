@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="2dp"
+    android:paddingBottom="8dp"
     android:orientation="vertical" >
 	    
         <FrameLayout
@@ -18,15 +18,18 @@
 	        <AutoCompleteTextView
 	            android:id="@+id/query"
 	            android:layout_width="fill_parent"
-	            android:layout_height="45dp"
-	        	android:layout_marginEnd="4dp"
+	            android:layout_height="50dp"
+                android:layout_marginEnd="@dimen/queryTextHorizontalMargin"
+                android:layout_marginStart="@dimen/queryTextHorizontalMargin"
 	            android:layout_gravity="start|center_vertical"
 	            android:ems="10"
 	            android:hint="@string/input_query"
 	            android:imeOptions="actionDone"
 	            android:inputType="text"
                 android:textSize="22sp"
-	            android:maxLines="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:scrollbars = "horizontal"
                 android:textAppearance="?android:attr/textAppearanceMedium"
 	            android:textColor="@color/textColorSearch" />
 
@@ -48,25 +51,33 @@
                 android:background="@android:color/transparent"
                 android:drawableStart="@drawable/ic_history_black_24dp"/>
 
-            <Button
-                android:id="@+id/getTextThroughSpeech"
-                android:layout_width="@dimen/speechButtonWidth"
-                android:layout_height="@dimen/speechButtonWidth"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginEnd="@dimen/speechButtonLeftRightMargin"
-                android:background="@android:color/transparent"
-                android:drawableStart="@drawable/ic_keyboard_voice_black_24dp"/>
-
-            <Button
-                android:id="@+id/getTextThroughCamera"
-                android:layout_width="@dimen/cameraButtonWidth"
-                android:layout_height="@dimen/cameraButtonWidth"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginEnd="@dimen/cameraButtonLeftRightMargin"
-                android:background="@android:color/transparent"
-                android:drawableStart="@drawable/ic_camera_alt_black_24dp"/>
 
 		</FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/getTextThroughSpeech"
+            android:layout_width="@dimen/speechButtonWidth"
+            android:layout_height="@dimen/speechButtonWidth"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="@dimen/speechButtonLeftRightMargin"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_keyboard_voice_black_24dp"/>
+
+        <Button
+            android:id="@+id/getTextThroughCamera"
+            android:layout_width="@dimen/cameraButtonWidth"
+            android:layout_height="@dimen/cameraButtonWidth"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="@dimen/cameraButtonLeftRightMargin"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_camera_alt_black_24dp"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"

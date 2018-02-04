@@ -1447,7 +1447,7 @@ public class ComposeKanjiFragment extends Fragment {
                         tv.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the query and is activated
+                                //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
                                 try {
                                     mCallbackWord = (UserWantsNewSearchForSelectedCharacterListener) getActivity();
                                 } catch (ClassCastException e) {
@@ -1502,7 +1502,7 @@ public class ComposeKanjiFragment extends Fragment {
                             @Override
                             public void onClick(View view) {
 
-                                //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the query and is activated
+                                //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
                                 try {
                                     mCallbackWord = (UserWantsNewSearchForSelectedCharacterListener) getActivity();
                                 } catch (ClassCastException e) {
@@ -1545,7 +1545,7 @@ public class ComposeKanjiFragment extends Fragment {
                                     //selected_item_position = position;
                                     //grid.setSelection((int) (grid.getAdapter()).getItemId(selected_item_position));
 
-                                    //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the query and is activated
+                                    //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
                                     try {
                                         mCallbackWord = (UserWantsNewSearchForSelectedCharacterListener) getActivity();
                                     } catch (ClassCastException e) {

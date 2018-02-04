@@ -72,10 +72,10 @@ public class DecomposeKanjiFragment extends Fragment {
             }
             else { decompositionsHint.setVisibility(View.GONE); }
 
-            // Check that the input query is valid. If not, return no result.
+            // Check that the input inputQueryAutoCompleteTextView is valid. If not, return no result.
             if (text_type.equals("latin") || text_type.equals("number")) { return; }
             else {
-                // Search for the input query in the database and retrieve the result's characteristics
+                // Search for the input inputQueryAutoCompleteTextView in the database and retrieve the result's characteristics
                 decomposed_kanji = Decomposition(inputQuery.substring(0,1));
                 kanjidict_characteristics = KanjiDictCharacteristicsFinder(inputQuery);
                 main_radical_info = RadicalCharacteristicsFinder(inputQuery);

@@ -50,6 +50,8 @@
     <string name="DialogMessage">Current Android version is too low</string>
     <string name="cancel">Cancel</string>
     <string name="OCR_image" translatable="false">OCR Iamge</string>
+    <string name="OCR_failed">Failed to initialize OCR engine.</string>
+    <string name="processing">Please wait, performing OCR…</string>
 
     <!--DictionaryFragment Strings-->
     <string name="NoMatchFound">No match found. Searching for conjugations…</string>

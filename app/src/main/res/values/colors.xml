@@ -10,6 +10,7 @@
     <color name="textColorSecondary">@color/colorAccent</color>
     <color name="Black">#000000</color>
     <color name="White">#ffffff</color>
+    <color name="Transparent">#80FFFFFF</color>
 
     <!--InputQueryFragment colors-->
     <color name="textColorSearch">@color/colorPrimaryDark</color>
