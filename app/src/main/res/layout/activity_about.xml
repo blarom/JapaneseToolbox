@@ -8,10 +8,84 @@
     android:padding="4dp"
     tools:context="com.japanesetoolboxapp.AboutActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <TextView
-            android:id="@+id/AboutTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/AboutText"/>
+            android:id="@+id/AboutTextView1"
+            style="@style/AboutTextViewItem"
+            android:text="@string/AboutText1"/>
+
+        <TextView
+            android:id="@+id/AboutTextView2"
+            style="@style/AboutTextViewItem"
+            android:text="@string/AboutText2"/>
+        <TextView
+            android:id="@+id/AboutTextView2Subtext1"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText2Subtext1"/>
+        <TextView
+            android:id="@+id/AboutTextView2Subtext2"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText2Subtext2"/>
+        <TextView
+            android:id="@+id/AboutTextView2Subtext3"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText2Subtext3"/>
+        <TextView
+            android:id="@+id/AboutTextView2Subtext4"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText2Subtext4"/>
+        <TextView
+            android:id="@+id/AboutTextView2Subtext5"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText2Subtext5"/>
+        <TextView
+            android:id="@+id/AboutTextView2Subtext6"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText2Subtext6"/>
+
+        <TextView
+            android:id="@+id/AboutTextView3"
+            style="@style/AboutTextViewItem"
+            android:text="@string/AboutText3"/>
+
+        <TextView
+            android:id="@+id/AboutTextView4"
+            style="@style/AboutTextViewItem"
+            android:text="@string/AboutText4"/>
+        <TextView
+            android:id="@+id/AboutTextView4Subtext1"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText4Subtext1"/>
+        <TextView
+            android:id="@+id/AboutTextView4Subtext2"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText4Subtext2"/>
+        <TextView
+            android:id="@+id/AboutTextView4Subtext3"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText4Subtext3"/>
+        <TextView
+            android:id="@+id/AboutTextView4Subtext4"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText4Subtext4"/>
+        <TextView
+            android:id="@+id/AboutTextView4Subtext5"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText4Subtext5"/>
+
+        <TextView
+            android:id="@+id/AboutTextView5"
+            style="@style/AboutTextViewItem"
+            android:text="@string/AboutText5"/>
+
+        <TextView
+            android:id="@+id/AboutTextView6"
+            android:layout_marginTop="10dp"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText6"/>
+    </LinearLayout>
 </ScrollView>

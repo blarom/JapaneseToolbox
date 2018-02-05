@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_inputquery"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -18,9 +19,9 @@
 	        <AutoCompleteTextView
 	            android:id="@+id/query"
 	            android:layout_width="fill_parent"
-	            android:layout_height="50dp"
-                android:layout_marginEnd="@dimen/queryTextHorizontalMargin"
-                android:layout_marginStart="@dimen/queryTextHorizontalMargin"
+	            android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/queryTextMarginEnd"
+                android:layout_marginStart="@dimen/queryTextMarginStart"
 	            android:layout_gravity="start|center_vertical"
 	            android:ems="10"
 	            android:hint="@string/input_query"
@@ -35,20 +36,22 @@
 
             <Button
                 android:id="@+id/clearQuery"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="@dimen/clearButtonWidth"
                 android:layout_height="@dimen/clearButtonWidth"
                 android:layout_gravity="end|center_vertical"
                 android:layout_marginEnd="@dimen/clearButtonLeftRightMargin"
                 android:drawableStart="@drawable/ic_clear_black_24dp"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/white" />
 
             <Button
                 android:id="@+id/showHistory"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="@dimen/histButtonWidth"
                 android:layout_height="@dimen/histButtonWidth"
                 android:layout_gravity="end|center_vertical"
                 android:layout_marginEnd="@dimen/histButtonLeftRightMargin"
-                android:background="@android:color/transparent"
+                android:background="@android:color/white"
                 android:drawableStart="@drawable/ic_history_black_24dp"/>
 
 
@@ -58,25 +61,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_margin="4dp"
+        android:orientation="horizontal">
 
-        <Button
+        <ImageView
             android:id="@+id/getTextThroughSpeech"
-            android:layout_width="@dimen/speechButtonWidth"
-            android:layout_height="@dimen/speechButtonWidth"
+            android:layout_width="@dimen/speechButtonSize"
+            android:layout_height="@dimen/speechButtonSize"
             android:layout_gravity="end|center_vertical"
-            android:layout_marginEnd="@dimen/speechButtonLeftRightMargin"
+            android:layout_marginEnd="@dimen/functionIconsLeftRightMargin"
+            android:layout_marginStart="@dimen/functionIconsLeftRightMargin"
             android:background="@android:color/transparent"
-            android:drawableStart="@drawable/ic_keyboard_voice_black_24dp"/>
+            android:src="@drawable/ic_keyboard_voice_black_24dp"
+            android:contentDescription="@string/getTextThroughSpeech"/>
 
-        <Button
+        <ImageView
             android:id="@+id/getTextThroughCamera"
-            android:layout_width="@dimen/cameraButtonWidth"
-            android:layout_height="@dimen/cameraButtonWidth"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginEnd="@dimen/cameraButtonLeftRightMargin"
+            android:layout_width="@dimen/cameraButtonSize"
+            android:layout_height="@dimen/cameraButtonSize"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="@dimen/functionIconsLeftRightMargin"
+            android:layout_marginStart="@dimen/functionIconsLeftRightMargin"
             android:background="@android:color/transparent"
-            android:drawableStart="@drawable/ic_camera_alt_black_24dp"/>
+            android:src="@drawable/ic_camera_alt_black_24dp"
+            android:contentDescription="@string/getTextThroughCamera"/>
+
+        <ImageView
+            android:id="@+id/speakQuery"
+            android:layout_width="@dimen/cameraButtonSize"
+            android:layout_height="@dimen/cameraButtonSize"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="@dimen/functionIconsLeftRightMargin"
+            android:layout_marginStart="@dimen/functionIconsLeftRightMargin"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_volume_up_black_24dp"
+            android:contentDescription="@string/speakQuery"/>
     </LinearLayout>
 
     <LinearLayout
@@ -95,6 +114,7 @@
             <Button
                 android:id="@+id/button_searchWord"
                 style="?android:buttonBarButtonStyle"
+
                 android:layout_width="@dimen/inputQueryButtonWidthAtTopRow"
                 android:layout_height="@dimen/inputQueryButtonHeight"
                 android:textSize="@dimen/inputQueryButtonTextSize"
@@ -116,13 +136,13 @@
                 android:textSize="@dimen/inputQueryButtonTextSize"
                 android:text="@string/Convert"/>
 
-            <Button
-                android:id="@+id/button_searchTangorin"
-                style="?android:buttonBarButtonStyle"
-                android:layout_width="@dimen/inputQueryButtonWidthAtTopRow"
-                android:layout_height="@dimen/inputQueryButtonHeight"
-                android:textSize="@dimen/inputQueryButtonTextSize"
-                android:text="@string/button_SearchTangorin"/>
+            <!--<Button-->
+                <!--android:id="@+id/button_searchTangorin"-->
+                <!--style="?android:buttonBarButtonStyle"-->
+                <!--android:layout_width="@dimen/inputQueryButtonWidthAtTopRow"-->
+                <!--android:layout_height="@dimen/inputQueryButtonHeight"-->
+                <!--android:textSize="@dimen/inputQueryButtonTextSize"-->
+                <!--android:text="@string/button_SearchTangorin"/>-->
 
         </LinearLayout>
 
@@ -138,6 +158,7 @@
                 android:id="@+id/button_searchByRadical"
                 style="?android:buttonBarButtonStyle"
                 android:layout_width="@dimen/inputQueryButtonWidthAtBottomRow"
+                android:gravity="center_vertical|center_horizontal"
                 android:layout_height="@dimen/inputQueryButtonHeight"
                 android:textSize="@dimen/inputQueryButtonTextSize"
                 android:text="@string/button_SearchByRadical"/>
@@ -146,34 +167,12 @@
                 android:id="@+id/button_Decompose"
                 style="?android:buttonBarButtonStyle"
                 android:layout_width="@dimen/inputQueryButtonWidthAtBottomRow"
+                android:gravity="center_vertical|center_horizontal"
                 android:layout_height="@dimen/inputQueryButtonHeight"
                 android:textSize="@dimen/inputQueryButtonTextSize"
                 android:text="@string/button_Decompose"/>
         </LinearLayout>
 
     </LinearLayout>
-
-    <!--<RadioGroup
-        android:id="@+id/radio_SearchType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal" >
-
-        <RadioButton
-            android:id="@+id/radio_FastSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/button_FastSearch" />
-
-        <RadioButton
-            android:id="@+id/radio_DeepSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_DeepSearch"
-            android:layout_marginLeft="12dp"
-            android:checked="false" />
-    </RadioGroup>-->
 
 </LinearLayout>

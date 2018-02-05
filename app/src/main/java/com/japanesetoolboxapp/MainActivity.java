@@ -30,7 +30,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//TODO link Japanese Toolbox to OK Google / Google Assistant, for on-the-fly lookups
+//TODO Fix mixing of example sentences and phrase structures in GrammarExpandableListAdapter, e.g. in "no you ni" search
 //TODO when entering "tsureteiku", online results show "reteiku"
 //TODO imperative display for godan verbs
 //TODO Show the adjective conjugations (it will also explain to the user why certain adjectives appear in the list, based on their conjugations)
@@ -82,18 +82,19 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
     //Preferences Globals
     public static Boolean mShowOnlineResults;
     public static String mChosenSpeechToTextLanguage;
+    public static String mChosenTextToSpeechLanguage;
+    public static boolean activityResumedFromSTTOrOCR;
 
-	@Override protected void onCreate(Bundle savedInstanceState) {
+    @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Log.i("Diagnosis Time", "Started MainActivity.");
         setupSharedPreferences();
+        activityResumedFromSTTOrOCR = false;
 
 
         // Start loading the database in the background
         if (MainDatabase == null) {
-
-            //MainDatabase = getMainDatabase();
             new BackgroundDatabaseLoader().execute();
         }
 
@@ -193,6 +194,10 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
  		
         savedInstanceState.putString("RequestedFragment", Global_Fragment_chooser_keyword);
  	}
+    @Override protected void onResume() {
+        super.onResume();
+        //activityResumedFromSTTOrOCR = false;
+    }
     @Override protected void onDestroy() {
         super.onDestroy();
         try {
@@ -236,13 +241,19 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         if (key.equals(getString(R.string.pref_complete_local_with_online_search_key))) {
             setShowOnlineResults(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default)));
         }
+        else if (key.equals(getString(R.string.pref_preferred_STT_language_key))) {
+            setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese)));
+        }
+        else if (key.equals(getString(R.string.pref_preferred_TTS_language_key))) {
+            setTextToSpeechLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese)));
+        }
     }
     private void setupSharedPreferences() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         setShowOnlineResults(sharedPreferences.getBoolean(getString(R.string.pref_complete_local_with_online_search_key),
                 getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default)));
-        setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_language_key),
-                getString(R.string.pref_preferred_language_value_japanese)));
+        setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese)));
+        setTextToSpeechLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese)));
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
     public void setShowOnlineResults(boolean showCourse) {
@@ -250,10 +261,18 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
     }
     public void setSpeechToTextLanguage(String language) {
         if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
-            mChosenSpeechToTextLanguage = getResources().getString(R.string.SpeechLanguageJapanese);
+            mChosenSpeechToTextLanguage = getResources().getString(R.string.languageLocaleJapanese);
         }
         else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
-            mChosenSpeechToTextLanguage = getResources().getString(R.string.SpeechLanguageEnglish);
+            mChosenSpeechToTextLanguage = getResources().getString(R.string.languageLocaleEnglishUS);
+        }
+    }
+    public void setTextToSpeechLanguage(String language) {
+        if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
+            mChosenTextToSpeechLanguage = getResources().getString(R.string.languageLocaleJapanese);
+        }
+        else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
+            mChosenTextToSpeechLanguage = getResources().getString(R.string.languageLocaleEnglishUS);
         }
     }
 
@@ -282,6 +301,8 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
             }
         });
     }
+
+
     private class BackgroundDatabaseLoader extends AsyncTask<Void, Void, Void> {
         @Override protected void onPreExecute() {
             super.onPreExecute();

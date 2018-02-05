@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class SplashScreen extends Activity {
 
-    private final int SPLASH_DISPLAY_LENGTH = 1500; //Miliseconds
+    private final int SPLASH_DISPLAY_LENGTH = 2000; //Miliseconds
 
     @Override protected void onCreate(Bundle savedInstanceState)
     {

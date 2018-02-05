@@ -25,13 +25,16 @@
     <string name="shown">Shown</string>
     <string name="pref_complete_local_with_online_search_key" translatable="false">complete_local_with_online_search</string>
     <string name="complete_local_with_online_search">Show online results</string>
-    <string name="pref_preferred_language_japanese" translatable="false">preferred_language_japanese</string>
+    <string name="pref_preferred_STT_language_japanese" translatable="false">preferred_STT_language_japanese</string>
+    <string name="pref_preferred_TTS_language_japanese" translatable="false">preferred_TTS_language_japanese</string>
     <string name="language_label_japanese">Japanese</string>
     <string name="language_label_english">English (US)</string>
     <string name="pref_preferred_language_value_japanese" translatable="false">japanese</string>
     <string name="pref_preferred_language_value_english" translatable="false">english</string>
-    <string name="pref_preferred_language">Speech-To-Text Language</string>
-    <string name="pref_preferred_language_key" translatable="false">preferred_result</string>
+    <string name="pref_preferred_STT_language">Speech-To-Text Language</string>
+    <string name="pref_preferred_STT_language_key" translatable="false">preferred_STT_result</string>
+    <string name="pref_preferred_TTS_language">Text-To-Speech Language</string>
+    <string name="pref_preferred_TTS_language_key" translatable="false">preferred_TTS_result</string>
 
     <!--InputQueryFragment Strings-->
     <string name="input_query">Search Me!</string>
@@ -42,16 +45,25 @@
     <string name="Convert">あ&#8660;A</string>
     <string name="button_SearchByRadical">女+子 &#8658; 好</string>
     <string name="button_Decompose">好 &#8658; 女+子</string>
-    <string name="SpeechUserPromptEnglish">Please state your query in English.</string>
-    <string name="SpeechUserPromptJapanese">Please state your query in Japanese.</string>
-    <string name="SpeechLanguageJapanese">ja_JP</string>
-    <string name="SpeechLanguageEnglish">en-US</string>
+    <string name="SpeechToTextUserPromptEnglish">Please state your query in English.</string>
+    <string name="SpeechToTextUserPromptJapanese">Please state your query in Japanese.</string>
+    <string name="languageLocaleJapanese">ja_JP</string>
+    <string name="languageLocaleEnglishUS">en-US</string>
+    <string name="TextToSpeechLanguageJapanese">jpn</string>
+    <string name="TextToSpeechLanguageEnglish">eng</string>
     <string name="DialogTitle">Please select the text for OCR</string>
     <string name="DialogMessage">Current Android version is too low</string>
     <string name="cancel">Cancel</string>
     <string name="OCR_image" translatable="false">OCR Iamge</string>
     <string name="OCR_failed">Failed to initialize OCR engine.</string>
     <string name="processing">Please wait, performing OCR…</string>
+    <string name="OCRinstructions">Please select and crop a Japanese script input for Optical Character Recognition.
+        For optimal results, make sure that the text is clear and occupies a large area.</string>
+    <string name="getTextThroughSpeech">Speak words</string>
+    <string name="getTextThroughCamera">Optical character recognition</string>
+    <string name="speakQuery">Hear user query</string>
+    <string name="requestingDictSearch">requestingDictSearch</string>
+    <string name="STTACtivityNotFound">Sorry, it appears your phone does not have Speech-To-Text functionality. Redirecting to relevant resources…</string>
 
     <!--DictionaryFragment Strings-->
     <string name="NoMatchFound">No match found. Searching for conjugations…</string>
@@ -92,8 +104,11 @@
         \n\nAlso note that this app uses a variation of Kunrei-Shiki romanization, where for example \&quot;う\&quot; is always transliterated to \&quot;u\&quot;, and \&quot;づ\&quot; is always transliterated to \&quot;du\&quot;.</string>
 
     <!--DecomposeKanjiFragment Strings-->
-    <string name="RadicalDecomp">Radical Decomposition</string>
-    <string name="CharConstr">Character Finder</string>
+    <string name="CharConstr">Kanji Finder</string>
+    <string name="ChooseTheStructure">Choose The Structure</string>
+
+    <!--DecomposeKanjiFragment Strings-->
+    <string name="RadicalDecomp">Kanji Decomposition</string>
     <string name="QueryOnMeaning">On meaning: </string>
     <string name="QueryKunMeaning">Kun meaning: </string>
     <string name="QueryOnReadings">On readings: </string>
@@ -106,12 +121,74 @@
         \nThe decompositions are evaluated using a heavily modified and corrected version of Gavin Grover\&apos;s decomposition database (see cjkdecomp.codeplex.com). </string>
 
     <!--AboutActivity Text-->
-    <string name="AboutText">
+    <string name="AboutText1">
         Japanese Toolbox is a set of reference tools designed to make learning Japanese much more efficient,
-        by giving quick answers to questions on difficult subjects such as grammar, verb conjugations and Kanji decompositions.\n
-        The app includes a local dictionary complete with grammar rules, a reverse-conjugation finder, Latin-to-Kana converter,
-        Kanji builder and Kanji decomposer.
-        If you have any comments or feedback, you're welcome to post them at japanesetoolboxapp@gmail.com.
+        by giving quick answers to questions on difficult subjects such as grammar, verb conjugations and Kanji decompositions. Most
+        of the app\'s functions require no Internet connectivity.
+    </string>
+    <string name="AboutText2">
+        The app includes the following tools:
+    </string>
+    <string name="AboutText2Subtext1">
+        - A local dictionary complete with grammar rules (DICT button).
+    </string>
+    <string name="AboutText2Subtext2">
+        - A reverse-conjugation finder (CONJ button).
+    </string>
+    <string name="AboutText2Subtext3">
+        - A Latin-to-Kana-to-Latin script converter (あ&#8660;A button).
+    </string>
+    <string name="AboutText2Subtext4">
+        - A Kanji composer (女+子 &#8658; 好 button) where you can find all Kanjis based through their radicals and/or components.
+    </string>
+    <string name="AboutText2Subtext5">
+        - A Kanji decomposer (好 &#8658; 女+子 button) where you can get the meaning and readings of all of the components in a given Kanji.
+    </string>
+    <string name="AboutText2Subtext6">
+        - A Text-To-Speech (speaker button) function so that you may listen to your query in English or in Japanese. You can choose the speech language in the Settings menu.
+    </string>
+    <string name="AboutText3">
+        You can perform a query by writing/pasting the text manually in the Search Me! box, or by using the Speech-To-Text
+        (microphone button) or Image-To-Text (camera button) functions.\nYou
+        can choose the Speech-To-Text language (English/Japanese) in the Settings menu. Since OCR capabilities are memory-heavy, only Japanese text OCR
+        is provided for the Image-To-Text function.
+    </string>
+
+    <string name="AboutText4">
+        Credits - I built JapaneseToolbox\'s local database and search algorithms on my own, but also used the following open-source tools:
+    </string>
+    <string name="AboutText4Subtext1">
+        - The OCR engine is provided by the Tesseract open-source project (supported by Google).
+    </string>
+    <string name="AboutText4Subtext2">
+        - The Text-To-Speech and Speech-To-Text functions are based on Google APIs.
+    </string>
+    <string name="AboutText4Subtext3">
+        - The camera tools are provided by the ArthurHub library (https://github.com/ArthurHub/Android-Image-Cropper).
+    </string>
+    <string name="AboutText4Subtext4">
+        - Image sharpening is provided by Pete Houston\'s algorithm (https://xjaphx.wordpress.com/2011/06/22/image-processing-sharpening-image/).
+    </string>
+    <string name="AboutText4Subtext5">
+        - The CJK character decompositions database is a heavily modified and corrected version of the cjkdecomp database by Gavin Grover (https://github.com/amake/cjk-decomp) - see disclaimer*.
+    </string>
+
+    <string name="AboutText5">
+        If you have any comments or feedback, or encountered a bug, you\'re welcome to post them at japanesetoolboxapp@gmail.com.\n\nI
+        built JapaneseToolbox on my spare time out of love for the Japanese language and to help people learn Japanese faster. The app will always remain
+        FREE, with no ads whatsoever, and the user information you enter in the app through the query input, Speech-To-Text and Image-To-Text functions is in no way
+        used for purposes other than the services provided in the app.\n\nThe
+        source code for the project is freely available at https://github.com/blarom/JapaneseToolbox.\nYou
+        can copy the code to your heart\'s content! I encourage the free sharing of knowledge, and if you want to build an app with similar functions,
+        you\'re more than welcome to do so. Just don\'t forget to mention me as the source, I spent a lot of time developing these tools :)
+    </string>
+
+    <string name="AboutText6">
+        *disclaimer for cjkdecomp:\nCopyright 2017 Gavin Grover\nLicensed under the Apache License,
+        Version 2.0 (the "License"); you may not use this database except in compliance with the License.\nYou may
+        obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0\nUnless required by applicable
+        law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and limitations under the License.
     </string>
 
     <!--OcrCaptureACtivity-->

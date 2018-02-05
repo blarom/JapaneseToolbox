@@ -153,7 +153,7 @@ public class ComposeKanjiFragment extends Fragment {
             //resetLinearLayoutViews(overall_block_container, 1);
             overall_block_container.removeAllViews();
 
-            overall_block_container.setBackgroundColor(Color.parseColor("#ffffff"));
+            overall_block_container.setBackgroundColor(getResources().getColor(R.color.White));
             overall_block_container.setAlpha((float) 0.90);
 
             overall_block_container.setOnTouchListener(new View.OnTouchListener() {
@@ -186,7 +186,7 @@ public class ComposeKanjiFragment extends Fragment {
 
             userselections_block_linearLayout.removeAllViews();
 
-            makeText("Choose the Structure", userselections_overall_block_layoutParams, userselections_block_linearLayout);
+            makeText(getResources().getString(R.string.ChooseTheStructure), userselections_overall_block_layoutParams, userselections_block_linearLayout);
 
             createUserInputFields();
 
@@ -428,7 +428,7 @@ public class ComposeKanjiFragment extends Fragment {
 
                 HorizontalScrollView scrollview_layout = new HorizontalScrollView(getContext());
                 scrollview_layout.setLayoutParams(scrollview_layoutParams);
-                scrollview_layout.setBackgroundColor(Color.parseColor("#ffffff"));
+                scrollview_layout.setBackgroundColor(getResources().getColor(R.color.White));
                 scrollview_layout.setAlpha((float) 0.90);
 
                 // Configuring the layout of local_row
@@ -1062,7 +1062,7 @@ public class ComposeKanjiFragment extends Fragment {
 
                 HorizontalScrollView scrollview_layout = new HorizontalScrollView(getContext());
                 scrollview_layout.setLayoutParams(scrollview_layoutParams);
-                scrollview_layout.setBackgroundColor(Color.parseColor("#ffffff"));
+                scrollview_layout.setBackgroundColor(Color.WHITE);
                 scrollview_layout.setAlpha((float) 0.90);
 
                 // Configuring the layout of local_row
@@ -1591,7 +1591,7 @@ public class ComposeKanjiFragment extends Fragment {
         UserWantsNewSearchForSelectedCharacterListener mCallbackWord;
         interface UserWantsNewSearchForSelectedCharacterListener {
             // Interface used to transfer the selected word to InputQueryFragment through MainActivity
-            public void UserWantsToSearchForSelectedResultFromRadicalsModule(String selectedWordString);
+            void UserWantsToSearchForSelectedResultFromRadicalsModule(String selectedWordString);
         }
         public void CharacterSelectedAction(String selectedWordString) {
 
@@ -1747,7 +1747,8 @@ public class ComposeKanjiFragment extends Fragment {
             tv.setGravity(Gravity.CENTER_HORIZONTAL);
             tv.setText(text);
             tv.setTextSize(16);
-            tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
+            //tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
+            tv.setTextColor(getResources().getColor(R.color.colorPrimaryLight));
             tv.setTextIsSelectable(false);
             tv.setTypeface(null, Typeface.BOLD);
             tv.setMovementMethod(LinkMovementMethod.getInstance());

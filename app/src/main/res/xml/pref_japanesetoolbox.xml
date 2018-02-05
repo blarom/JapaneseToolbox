@@ -9,9 +9,16 @@
         android:title="@string/complete_local_with_online_search" />
 
     <ListPreference
-        android:defaultValue="@string/pref_preferred_language_japanese"
-        android:entries="@array/pref_preferred_speech_language_labels"
-        android:entryValues="@array/pref_preferred_speech_language_values"
-        android:key="@string/pref_preferred_language_key"
-        android:title="@string/pref_preferred_language" />
+        android:defaultValue="@string/pref_preferred_STT_language_japanese"
+        android:entries="@array/pref_preferred_STT_language_labels"
+        android:entryValues="@array/pref_preferred_STT_language_values"
+        android:key="@string/pref_preferred_STT_language_key"
+        android:title="@string/pref_preferred_STT_language" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_preferred_TTS_language_japanese"
+        android:entries="@array/pref_preferred_TTS_language_labels"
+        android:entryValues="@array/pref_preferred_TTS_language_values"
+        android:key="@string/pref_preferred_TTS_language_key"
+        android:title="@string/pref_preferred_TTS_language" />
 </PreferenceScreen>

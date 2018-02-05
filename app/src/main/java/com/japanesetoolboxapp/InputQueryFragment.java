@@ -10,22 +10,23 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
-import android.graphics.LightingColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.net.Uri;
@@ -36,6 +37,7 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.speech.RecognizerIntent;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -43,6 +45,7 @@ import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -61,21 +64,21 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
+import com.japanesetoolboxapp.utiities.ConvolutionMatrix;
 import com.japanesetoolboxapp.utiities.GlobalConstants;
 import com.japanesetoolboxapp.utiities.SharedMethods;
 import com.theartofdev.edmodo.cropper.CropImage;
 
-public class InputQueryFragment extends Fragment implements LoaderManager.LoaderCallbacks<String> {
+public class InputQueryFragment extends Fragment implements LoaderManager.LoaderCallbacks<String>,
+        TextToSpeech.OnInitListener {
 
     //Locals
     private static final int RESULT_OK = -1;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int SPEECH_RECOGNIZER_REQUEST_CODE = 2;
-    static final int REQUEST_IMAGE_CROP = 3;
     private static final int WEB_SEARCH_LOADER = 42;
     private static final String SPEECH_RECOGNIZER_EXTRA = "inputQueryAutoCompleteTextView";
     private static final String TAG = "tesseract_ocr";
-    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 42;
     private	String[] output = {"word","","fast"};
     String[] queryHistory;
     ArrayList<String> new_queryHistory;
@@ -92,11 +95,12 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     TessBaseAPI mTess;
     String datapath = "";
     private boolean mInitializedOcrApi;
-    private File mPhotoFile;
-    private String mLanguage;
+    private String mOCRLanguage;
     Uri mPhotoURI;
     String mOcrResultString;
-    private boolean isActive;
+    private boolean firstTimeInitialized;
+    private TextToSpeech tts;
+    private boolean mInternetIsAvailable;
 
     //Fragment Lifecycle methods
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -106,12 +110,16 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         final View InputQueryFragment = inflater.inflate(R.layout.fragment_inputquery, container, false);
 
         // Initializations
+        mInternetIsAvailable = SharedMethods.internetIsAvailableCheck(this.getContext());
         inputQueryAutoCompleteTextView = InputQueryFragment.findViewById(R.id.query);
         inputQueryAutoCompleteTextView.setMovementMethod(new ScrollingMovementMethod());
         mQueryText = "";
         mOcrResultString = "";
         inputQueryAutoCompleteTextView.setText(mQueryText);
-        mLanguage = "jpn";
+        mOCRLanguage = "jpn";
+        firstTimeInitialized = true;
+        registerThatUserIsRequestingDictSearch(false);
+        tts = new TextToSpeech(getContext(), this);
         initializeTesseractAPI();
 
         // Restoring inputs from the savedInstanceState (if applicable)
@@ -141,21 +149,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 DisplayQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
                 inputQueryAutoCompleteTextView.dismissDropDown();
 
-
-                button_searchVerb.getBackground().clearColorFilter();
-                button_searchWord.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.GREEN));
-                button_choose_Convert.getBackground().clearColorFilter();
-                button_searchTangorin.getBackground().clearColorFilter();
-                button_searchByRadical.getBackground().clearColorFilter();
-                button_Decompose.getBackground().clearColorFilter();
-
-                if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                    button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
-                }
-                if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                    button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
-                }
-
                 onWordEntered_PerformThisFunction(inputWordString);
             }
             else {
@@ -169,15 +162,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         button_searchVerb.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
             //EditText inputVerbObject = (EditText)fragmentView.findViewById(R.id.input_verb);
             String inputVerbString = inputQueryAutoCompleteTextView.getText().toString();
-
+            mQueryText = inputVerbString;
             DisplayQueryHistory(inputVerbString, inputQueryAutoCompleteTextView);
-
-            button_searchVerb.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.GREEN));
-            button_searchWord.getBackground().clearColorFilter();
-            button_choose_Convert.getBackground().clearColorFilter();
-            button_searchTangorin.getBackground().clearColorFilter();
-            button_searchByRadical.getBackground().clearColorFilter();
-            button_Decompose.getBackground().clearColorFilter();
 
             // Check if the database has finished loading. If not, make the user wait.
             while(MainActivity.VerbKanjiConjDatabase == null){
@@ -191,13 +177,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                         // millisUntilFinished    The amount of time until finished.
                     }
                 }.start();
-            }
-
-            if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
-            }
-            if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
             }
 
             onVerbEntered_PerformThisFunction(inputVerbString);
@@ -206,15 +185,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         button_searchWord = InputQueryFragment.findViewById(R.id.button_searchWord);
         button_searchWord.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
             String inputWordString = inputQueryAutoCompleteTextView.getText().toString();
-
+            mQueryText = inputWordString;
             DisplayQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
-
-            button_searchVerb.getBackground().clearColorFilter();
-            button_searchWord.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.GREEN));
-            button_choose_Convert.getBackground().clearColorFilter();
-            button_searchTangorin.getBackground().clearColorFilter();
-            button_searchByRadical.getBackground().clearColorFilter();
-            button_Decompose.getBackground().clearColorFilter();
 
             // Check if the database has finished loading. If not, make the user wait.
             while(MainActivity.VerbKanjiConjDatabase == null){
@@ -229,14 +201,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                     }
                 }.start();
             }
-
-            if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
-            }
-            if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
-            }
-
             onWordEntered_PerformThisFunction(inputWordString);
         } } );
 
@@ -246,48 +210,20 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
             DisplayQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
 
-            button_searchVerb.getBackground().clearColorFilter();
-            button_searchWord.getBackground().clearColorFilter();
-            button_choose_Convert.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.GREEN));
-            button_searchTangorin.getBackground().clearColorFilter();
-            button_searchByRadical.getBackground().clearColorFilter();
-            button_Decompose.getBackground().clearColorFilter();
-
-            if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
-            }
-            if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
-            }
-
             onConvertEntered_PerformThisFunction(inputWordString);
         } } );
 
-        button_searchTangorin = InputQueryFragment.findViewById(R.id.button_searchTangorin);
-        button_searchTangorin.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
-            // Search using Tangorin
-            String queryString = inputQueryAutoCompleteTextView.getText().toString();
-
-            DisplayQueryHistory(queryString, inputQueryAutoCompleteTextView);
-
-            button_searchVerb.getBackground().clearColorFilter();
-            button_searchWord.getBackground().clearColorFilter();
-            button_choose_Convert.getBackground().clearColorFilter();
-            button_searchTangorin.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.GREEN));
-            button_searchByRadical.getBackground().clearColorFilter();
-            button_Decompose.getBackground().clearColorFilter();
-
-            if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
-            }
-            if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
-            }
-
-            String website = "http://www.tangorin.com/general/" + queryString;
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(website));
-            startActivity(intent);
-        } } );
+        //button_searchTangorin = InputQueryFragment.findViewById(R.id.button_searchTangorin);
+//        button_searchTangorin.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
+//            // Search using Tangorin
+//            String queryString = inputQueryAutoCompleteTextView.getText().toString();
+//
+//            DisplayQueryHistory(queryString, inputQueryAutoCompleteTextView);
+//
+//            String website = "http://www.tangorin.com/general/" + queryString;
+//            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(website));
+//            startActivity(intent);
+//        } } );
 
         button_searchByRadical = InputQueryFragment.findViewById(R.id.button_searchByRadical);
         button_searchByRadical.setEnabled(true);
@@ -297,13 +233,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             String inputWordString = inputQueryAutoCompleteTextView.getText().toString();
 
             DisplayQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
-
-            button_searchVerb.getBackground().clearColorFilter();
-            button_searchWord.getBackground().clearColorFilter();
-            button_choose_Convert.getBackground().clearColorFilter();
-            button_searchTangorin.getBackground().clearColorFilter();
-            button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.GREEN));
-            button_Decompose.getBackground().clearColorFilter();
 
             // Check if the database has finished loading. If not, make the user wait.
             while(MainActivity.RadicalsOnlyDatabase == null && MainActivity.enough_memory_for_heavy_functions) {
@@ -321,10 +250,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             // If the app memory is too low to load the radicals and decomposition databases, make the searchByRadical and Decompose buttons inactive
             if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                 Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
-                button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
             }
             else {
-                button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.GREEN));
                 onSearchByRadicalsEntered_PerformThisFunction(inputWordString);
             }
         } } );
@@ -337,13 +264,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             String inputWordString = inputQueryAutoCompleteTextView.getText().toString();
 
             DisplayQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
-
-            button_searchByRadical.getBackground().clearColorFilter();
-            button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.GREEN));
-            button_searchVerb.getBackground().clearColorFilter();
-            button_searchWord.getBackground().clearColorFilter();
-            button_choose_Convert.getBackground().clearColorFilter();
-            button_searchTangorin.getBackground().clearColorFilter();
 
             // Check if the database has finished loading. If not, make the user wait.
             while(MainActivity.RadicalsOnlyDatabase == null && MainActivity.enough_memory_for_heavy_functions) {
@@ -359,15 +279,10 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             Log.i("Diagnosis Time","Starting decomposition module.");
 
             // If the app memory is too low to load the radicals and decomposition databases, make the searchByRadical and Decompose buttons inactive
-            if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                button_searchByRadical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
-            }
             if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
                 Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
-                button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.RED));
             }
             else {
-                button_Decompose.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.GREEN));
                 onDecomposeEntered_PerformThisFunction(inputWordString);
             }
         } } );
@@ -390,33 +305,50 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 inputQueryAutoCompleteTextView.showDropDown();}
         } } );
 
-        final Button button_Speech = InputQueryFragment.findViewById(R.id.getTextThroughSpeech);
-        button_Speech.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
+        final ImageView button_SpeechToText = InputQueryFragment.findViewById(R.id.getTextThroughSpeech);
+        button_SpeechToText.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
 
             int maxResultsToReturn = 1;
-            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-            intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, maxResultsToReturn);
-            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, MainActivity.mChosenSpeechToTextLanguage);
-            intent.putExtra(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES, getResources().getString(R.string.SpeechLanguageEnglish));
-            if (MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.SpeechLanguageJapanese))) {
-                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechUserPromptJapanese));
+            try {
+                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+                intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, maxResultsToReturn);
+                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, MainActivity.mChosenSpeechToTextLanguage);
+                intent.putExtra(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES, getResources().getString(R.string.languageLocaleEnglishUS));
+                if (MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
+                    intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechToTextUserPromptJapanese));
+                } else if (MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleEnglishUS))) {
+                    intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechToTextUserPromptEnglish));
+                }
+                startActivityForResult(intent, SPEECH_RECOGNIZER_REQUEST_CODE);
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(getContext(),getResources().getString(R.string.STTACtivityNotFound),Toast.LENGTH_SHORT).show();
+                String appPackageName = "com.google.android.tts";
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW,   Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName));
+                startActivity(browserIntent);
             }
-            else if (MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.SpeechLanguageEnglish))) {
-                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechUserPromptEnglish));
-            }
-            startActivityForResult(intent, SPEECH_RECOGNIZER_REQUEST_CODE);
         } } );
 
-        final Button button_Camera = InputQueryFragment.findViewById(R.id.getTextThroughCamera);
-        button_Camera.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
+        final ImageView button_ImageToText = InputQueryFragment.findViewById(R.id.getTextThroughCamera);
+        button_ImageToText.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
             if (mInitializedOcrApi) {
+                if (firstTimeInitialized) {
+                    Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.OCRinstructions), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                    toast.show();
+                    firstTimeInitialized = false;
+                }
                 performImageCaptureAndCrop();
-                //dispatchTakePictureIntent();
             }
             else {
-                Toast.makeText(getContext(),getResources().getString(R.string.OCR_failed), Toast.LENGTH_SHORT).show();
+                Toast toast = Toast.makeText(getContext(),getResources().getString(R.string.OCR_failed), Toast.LENGTH_SHORT);
+                toast.show();
             }
+        } } );
+
+        final ImageView button_TextToSpeech = InputQueryFragment.findViewById(R.id.speakQuery);
+        button_TextToSpeech.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
+            speakOut(inputQueryAutoCompleteTextView.getText().toString());
         } } );
 
         return InputQueryFragment;
@@ -425,7 +357,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         super.onAttach(context);
         if (context instanceof UserEnteredQueryListener) {
             userEnteredQueryListener = (UserEnteredQueryListener) context;
-        } else {
+        }
+        else {
             throw new ClassCastException(context.toString()
                     + " must implement InputQueryFragment.UserEnteredQueryListener");
         }
@@ -438,6 +371,10 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     @Override public void onDestroy() {
         super.onDestroy();
         if (mTess != null) mTess.end();
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
     }
     @Override public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
@@ -465,9 +402,10 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
             mQueryText = results.get(0);
             inputQueryAutoCompleteTextView.setText(mQueryText);
+            registerThatUserIsRequestingDictSearch(true);
 
             //Attempting to access jisho.org to get the romaji value of the requested word, if it's a Japanese word
-            if (getActivity() != null && MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.SpeechLanguageJapanese))) {
+            if (getActivity() != null && MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
                 Bundle queryBundle = new Bundle();
                 queryBundle.putString(SPEECH_RECOGNIZER_EXTRA, results.get(0));
 
@@ -479,6 +417,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             }
         }
         else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            registerThatUserIsRequestingDictSearch(true);
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 mPhotoURI = result.getUri();
@@ -490,6 +429,13 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             }
         }
 
+    }
+
+    private void registerThatUserIsRequestingDictSearch(Boolean state) {
+        SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.requestingDictSearch), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean(getString(R.string.requestingDictSearch), state);
+        editor.apply();
     }
 
     //Image methods
@@ -521,22 +467,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         mediaScanIntent.setData(getImageUriFromFile(mCurrentPhotoPath));
         if (getActivity()!=null) getActivity().sendBroadcast(mediaScanIntent);
-    }
-    @Nullable private File createImageFile() throws IOException {
-        if (getActivity()==null) return null;
-        // Create an mImageToBeDecoded file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = image.getAbsolutePath();
-        return image;
     }
     private void scaleImage(ImageView pictureHolder, double scaleFactor) {
         // Get the dimensions of the View
@@ -611,6 +541,18 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
         return ret;
     }
+    public Bitmap adjustImageSharpness(Bitmap src, double weight) {
+        //https://xjaphx.wordpress.com/2011/06/22/image-processing-sharpening-image/
+        double[][] SharpConfig = new double[][] {
+                { 0 , -2    , 0  },
+                { -2, weight, -2 },
+                { 0 , -2    , 0  }
+        };
+        ConvolutionMatrix convMatrix = new ConvolutionMatrix(3);
+        convMatrix.applyConfig(SharpConfig);
+        convMatrix.Factor = weight - 8;
+        return ConvolutionMatrix.computeConvolution3x3(src, convMatrix);
+    }
 
     //Tesseract OCR methods
     private void initializeTesseractAPI() {
@@ -622,8 +564,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             try {
                 datapath = getActivity().getFilesDir() + "/tesseract/";
                 mTess = new TessBaseAPI();
-                checkFile(new File(datapath + "tessdata/"), mLanguage);
-                mTess.init(datapath, mLanguage);
+                checkFile(new File(datapath + "tessdata/"), mOCRLanguage);
+                mTess.init(datapath, mOCRLanguage);
                 mInitializedOcrApi = true;
                 Log.e(TAG, "Initialized Tesseract");
             } catch (Exception e) {
@@ -683,6 +625,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     private Bitmap adjustImageBeforeOCR(Bitmap image) {
 
         image = adjustImageAngleAndScale(image, 0, 0.5);
+        image = adjustImageSharpness(image,1);
         //image = adjustImageContrastAndBrightness(image, 1, 0);
         image = image.copy(Bitmap.Config.ARGB_8888, true);// Convert to ARGB_8888, required by tess
         return image;
@@ -744,7 +687,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         final String ocrResultsList[] = ocrResult.split("\\r\\n|\\n|\\r");
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<> (getActivity(), android.R.layout.simple_list_item_1, ocrResultsList);
 
-        inputQueryAutoCompleteTextView.setText(ocrResultsList[0]);
+        mQueryText = ocrResultsList[0];
+        inputQueryAutoCompleteTextView.setText(mQueryText);
         ocrResultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -777,13 +721,40 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         dialog.show();
     }
 
+    //TextToSpeech methods
+    @Override public void onInit(int status) {
+        if (status == TextToSpeech.SUCCESS) {
+            setTTSLanguage();
+        } else {
+            Log.e("TTS", "Initilization Failed!");
+        }
+    }
+    private void setTTSLanguage() {
+        int result;
+        if (MainActivity.mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
+            result = tts.setLanguage(Locale.JAPAN);
+        }
+        else if (MainActivity.mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleEnglishUS))) {
+            result = tts.setLanguage(Locale.US);
+        }
+        else result = tts.setLanguage(Locale.US);
+
+        if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+            Log.e("TTS", "This Language is not supported, set to default English.");
+            tts.setLanguage(Locale.US);
+        }
+    }
+    private void speakOut(String text) {
+        setTTSLanguage();
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+    }
+
     //Query display methods
     @Override public Loader<String> onCreateLoader(int id, final Bundle args) {
         return new AsyncTaskLoader<String>(getContext()) {
 
             @Override
             protected void onStartLoading() {
-
                 /* If no arguments were passed, we don't have a inputQueryAutoCompleteTextView to perform. Simply return. */
                 if (args == null) return;
                 forceLoad();
@@ -794,17 +765,20 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 //This method retrieves the first romaji transliteration of the kanji searched word.
 
                 List<Object> AsyncMatchingWordCharacteristics = new ArrayList<>();
-                try {
-                    String speechRecognizerString = args.getString(SPEECH_RECOGNIZER_EXTRA);
-                    AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromWeb(speechRecognizerString, getActivity());
-                } catch (IOException e) {
-                    //throw new RuntimeException(e);
+                if (mInternetIsAvailable) {
+                    try {
+                        String speechRecognizerString = args.getString(SPEECH_RECOGNIZER_EXTRA);
+                        AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromWeb(speechRecognizerString, getActivity());
+                    } catch (IOException e) {
+                        //throw new RuntimeException(e);
+                    }
+                    if (AsyncMatchingWordCharacteristics.size() != 0) {
+                        List<String> results = (List<String>) AsyncMatchingWordCharacteristics.get(0);
+                        mQueryText = results.get(0);
+                        return mQueryText;
+                    } else return null;
                 }
-                if (AsyncMatchingWordCharacteristics.size() != 0) {
-                    List<String> results = (List<String>) AsyncMatchingWordCharacteristics.get(0);
-                    mQueryText = results.get(0);
-                    return mQueryText;
-                } else return null;
+                else return null;
             }
         };
     }
@@ -902,6 +876,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         output[0] = "verb";
         output[1] = inputVerbString;
         output[2] = "deep";
+        registerThatUserIsRequestingDictSearch(true);
         userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
     }
     public void onWordEntered_PerformThisFunction(String inputWordString) {
@@ -910,6 +885,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         output[0] = "word";
         output[1] = inputWordString;
         output[2] = "fast";
+        registerThatUserIsRequestingDictSearch(false);
         userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
     }
     public void onConvertEntered_PerformThisFunction(String inputWordString) {

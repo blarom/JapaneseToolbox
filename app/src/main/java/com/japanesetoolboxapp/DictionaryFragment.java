@@ -3,6 +3,7 @@ package com.japanesetoolboxapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -58,6 +59,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     private static final String JISHO_LOADER_INPUT_EXTRA = "input";
     Boolean matchFound;
     Toast mShowOnlineResultsToast;
+    private boolean searchResultsAlreadyDisplayed;
+    SharedMethods mSharedMethods;
 
     // Fragment Lifecycle Functions
     @Override public void onAttach(Context context) {
@@ -88,6 +91,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         // Retain this fragment (used to save user inputs on activity creation/destruction)
         setRetainInstance(true);
+        searchResultsAlreadyDisplayed = false;
 
         // Define that this fragment is related to fragment_dictionary.xml
         final View fragmentView = inflater.inflate(R.layout.fragment_dictionary, container, false);
@@ -101,17 +105,24 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     @Override public void onResume() {
         super.onResume();
 
-        if (getArguments() != null) {
-            String outputFromInputQueryFragment = getArguments().getString("input_to_fragment");
+        Boolean userHasRequestedDictSearch = checkIfUserRequestedDictSearch();
 
-            //If the application is resumed (switched to), then display the last results instead of performing a new search on the last input
-            if (mAppWasInBackground == null || !mAppWasInBackground) {
-                mAppWasInBackground = false;
+        if (userHasRequestedDictSearch == null || userHasRequestedDictSearch) {
+            if (getArguments() != null && !searchResultsAlreadyDisplayed) {
+                String outputFromInputQueryFragment = getArguments().getString("input_to_fragment");
+                searchResultsAlreadyDisplayed = true;
 
-                // Get the row index of the words matching the user's entry
-                mMatchingWordRowColIndexList = FindMatchingWordIndex(outputFromInputQueryFragment);
+                //If the application is resumed (switched to), then display the last results instead of performing a new search on the last input
+                if (mAppWasInBackground == null || !mAppWasInBackground) {
+                    mAppWasInBackground = false;
 
-                SearchInDictionary(outputFromInputQueryFragment);
+                    // Get the row index of the words matching the user's entry
+                    mMatchingWordRowColIndexList = FindMatchingWordIndex(outputFromInputQueryFragment);
+
+                    SearchInDictionary(outputFromInputQueryFragment);
+                }
+            } else {
+                searchResultsAlreadyDisplayed = false;
             }
         }
     }
@@ -125,43 +136,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         // save excel results to display in spinners, load the results on activity restart
         savedInstanceState.putStringArrayList("mGlobalGrammarSpinnerList_element0", mGlobalGrammarSpinnerList_element0);
     }
-    public void SearchInDictionary(String word) {
 
-        final List<Integer> matchingWordRowIndexList = mMatchingWordRowColIndexList.get(0); // Use mMatchingWordRowColIndexList.get(1) to get columns
-        mSearchedWord = word;
-        mLastSearchedWord = word;
-
-        // Run the Grammar Module on the input word
-        matchFound = true;
-        mMatchingWordCharacteristics = getCharacteristicsForAllHits(matchingWordRowIndexList);
-        if (mMatchingWordCharacteristics.size() == 0) matchFound = false;
-
-        // If there are no results, retrieve the results from Jisho.org
-        mShowOnlineResultsToast = Toast.makeText(getContext(), getResources().getString(R.string.showOnlineResultsToastString), Toast.LENGTH_SHORT);
-        mAsyncMatchingWordCharacteristics = new ArrayList<>();
-
-        //Attempting to access jisho.org to complete the results found in the local dictionary
-        if (getActivity()!=null && MainActivity.mShowOnlineResults) {
-            if (!mSearchedWord.equals("")) mShowOnlineResultsToast.show();
-
-            Bundle queryBundle = new Bundle();
-            queryBundle.putString(JISHO_LOADER_INPUT_EXTRA, mSearchedWord);
-
-            LoaderManager loaderManager = getActivity().getSupportLoaderManager();
-            Loader<String> JishoWebSearchLoader = loaderManager.getLoader(JISHO_WEB_SEARCH_LOADER);
-            if (JishoWebSearchLoader == null)  loaderManager.initLoader(JISHO_WEB_SEARCH_LOADER, queryBundle, this);
-            else loaderManager.restartLoader(JISHO_WEB_SEARCH_LOADER, queryBundle, this);
-        }
-
-        displayResults(mSearchedWord);
-
-        if (!matchFound && !mSearchedWord.equals("") && !MainActivity.mShowOnlineResults) {
-            if (mShowOnlineResultsToast!=null) mShowOnlineResultsToast.cancel();
-            getActivity().findViewById(R.id.button_searchVerb).performClick();
-        }
-
-    }
-    SharedMethods mSharedMethods;
 
     //Asynchronous methods
     @Override public Loader<List<Object>> onCreateLoader(int id, final Bundle args) {
@@ -214,6 +189,42 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     @Override public void onLoaderReset(Loader<List<Object>> loader) {}
 
 	// Functionality Functions
+    public void SearchInDictionary(String word) {
+
+        final List<Integer> matchingWordRowIndexList = mMatchingWordRowColIndexList.get(0); // Use mMatchingWordRowColIndexList.get(1) to get columns
+        mSearchedWord = word;
+        mLastSearchedWord = word;
+
+        // Run the Grammar Module on the input word
+        matchFound = true;
+        mMatchingWordCharacteristics = getCharacteristicsForAllHits(matchingWordRowIndexList);
+        if (mMatchingWordCharacteristics.size() == 0) matchFound = false;
+
+        // If there are no results, retrieve the results from Jisho.org
+        mShowOnlineResultsToast = Toast.makeText(getContext(), getResources().getString(R.string.showOnlineResultsToastString), Toast.LENGTH_SHORT);
+        mAsyncMatchingWordCharacteristics = new ArrayList<>();
+
+        //Attempting to access jisho.org to complete the results found in the local dictionary
+        if (getActivity()!=null && MainActivity.mShowOnlineResults) {
+            if (!mSearchedWord.equals("")) mShowOnlineResultsToast.show();
+
+            Bundle queryBundle = new Bundle();
+            queryBundle.putString(JISHO_LOADER_INPUT_EXTRA, mSearchedWord);
+
+            LoaderManager loaderManager = getActivity().getSupportLoaderManager();
+            Loader<String> JishoWebSearchLoader = loaderManager.getLoader(JISHO_WEB_SEARCH_LOADER);
+            if (JishoWebSearchLoader == null)  loaderManager.initLoader(JISHO_WEB_SEARCH_LOADER, queryBundle, this);
+            else loaderManager.restartLoader(JISHO_WEB_SEARCH_LOADER, queryBundle, this);
+        }
+
+        displayResults(mSearchedWord);
+
+        if (!matchFound && !mSearchedWord.equals("") && !MainActivity.mShowOnlineResults) {
+            if (mShowOnlineResultsToast!=null) mShowOnlineResultsToast.cancel();
+            getActivity().findViewById(R.id.button_searchVerb).performClick();
+        }
+
+    }
     public void displayResults(String word) {
 
         // Populate the list of choices for the SearchResultsChooserSpinner. Each text element of inside the idividual spinner choices corresponds to a sub-element of the choicelist
@@ -559,6 +570,12 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         String[] output = {"verb",selectedVerbString,"fast"};
         mCallbackVerb.UserWantsToConjugateFoundVerbFromGrammarModule(output);
+    }
+
+    private Boolean checkIfUserRequestedDictSearch() {
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        Boolean state = sharedPref.getBoolean(getString(R.string.requestingDictSearch), true);
+        return state;
     }
 
 	// Grammar Module Functions
@@ -1422,7 +1439,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     }
 
     // ExpandableListView Functions
-    //TODO Fix mixing of example sentences and phrase structures, e.g. in "no you ni" search
     private class GrammarExpandableListAdapter extends BaseExpandableListAdapter {
 
         private Context _context;

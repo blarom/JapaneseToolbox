@@ -3,15 +3,17 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="queryTextHorizontalMargin">2dp</dimen>
-    <dimen name="clearButtonLeftRightMargin">95dp</dimen>
+    <dimen name="queryTextMarginStart">2dp</dimen>
+    <dimen name="queryTextMarginEnd">2dp</dimen>
+
+    <dimen name="clearButtonLeftRightMargin">35dp</dimen>
     <dimen name="clearButtonWidth">30dp</dimen>
-    <dimen name="histButtonLeftRightMargin">65dp</dimen>
+    <dimen name="histButtonLeftRightMargin">5dp</dimen>
     <dimen name="histButtonWidth">30dp</dimen>
-    <dimen name="speechButtonLeftRightMargin">35dp</dimen>
-    <dimen name="speechButtonWidth">30dp</dimen>
-    <dimen name="cameraButtonLeftRightMargin">5dp</dimen>
-    <dimen name="cameraButtonWidth">30dp</dimen>
+
+    <dimen name="functionIconsLeftRightMargin">30dp</dimen>
+    <dimen name="speechButtonSize">25dp</dimen>
+    <dimen name="cameraButtonSize">25dp</dimen>
 
     <dimen name="inputQueryButtonTextSize">16sp</dimen>
     <dimen name="inputQueryButtonHeight">40dp</dimen>
@@ -20,6 +22,9 @@
 
     <dimen name="DictionaryGroupItemRomajiKanji">20sp</dimen>
     <dimen name="DictionaryGroupItemMeanings">18sp</dimen>
+
+    <dimen name="AboutTextViewSize">18sp</dimen>
+    <dimen name="AboutTextViewSubtextSize">16sp</dimen>
 
 
 </resources>
