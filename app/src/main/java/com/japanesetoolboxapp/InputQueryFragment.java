@@ -1,27 +1,33 @@
 package com.japanesetoolboxapp;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.text.SimpleDateFormat;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -38,11 +44,13 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
-import android.support.annotation.Nullable;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.preference.PreferenceManager;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
@@ -69,16 +77,19 @@ import com.japanesetoolboxapp.utiities.GlobalConstants;
 import com.japanesetoolboxapp.utiities.SharedMethods;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import static android.content.Context.DOWNLOAD_SERVICE;
+
 public class InputQueryFragment extends Fragment implements LoaderManager.LoaderCallbacks<String>,
         TextToSpeech.OnInitListener {
 
     //Locals
     private static final int RESULT_OK = -1;
-    static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int SPEECH_RECOGNIZER_REQUEST_CODE = 2;
+    private static final int ADJUST_IMAGE_ACTIVITY_REQUEST_CODE = 3;
     private static final int WEB_SEARCH_LOADER = 42;
     private static final String SPEECH_RECOGNIZER_EXTRA = "inputQueryAutoCompleteTextView";
-    private static final String TAG = "tesseract_ocr";
+    private static final String TAG_TESSERACT = "tesseract_ocr";
+    private static final String TAG_PERMISSIONS = "Permission error";
     private	String[] output = {"word","","fast"};
     String[] queryHistory;
     ArrayList<String> new_queryHistory;
@@ -93,7 +104,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     String mCurrentPhotoPath;
     Bitmap mImageToBeDecoded;
     TessBaseAPI mTess;
-    String datapath = "";
+    String mInternalStorageTesseractFolderPath = "";
     private boolean mInitializedOcrApi;
     private String mOCRLanguage;
     Uri mPhotoURI;
@@ -101,6 +112,15 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     private boolean firstTimeInitialized;
     private TextToSpeech tts;
     private boolean mInternetIsAvailable;
+    private long enqueue;
+    private DownloadManager downloadmanager;
+    private boolean hasStoragePermissions;
+    private String mInternalStorageTesseractDataFilepath;
+    private String mFilename;
+    private String mDownloadsFolder;
+    private int timesPressed;
+    private boolean ocrDataIsAvailable;
+    private String mChosenTextToSpeechLanguage;
 
     //Fragment Lifecycle methods
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -118,9 +138,15 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         inputQueryAutoCompleteTextView.setText(mQueryText);
         mOCRLanguage = "jpn";
         firstTimeInitialized = true;
+        mInitializedOcrApi = false;
+        timesPressed= 0;
+        ocrDataIsAvailable = false;
+        setupPaths();
+        setupBroadcastReceiverForDownloadedOCRData();
         registerThatUserIsRequestingDictSearch(false);
         tts = new TextToSpeech(getContext(), this);
-        initializeTesseractAPI();
+        ifOcrDataIsNotAvailableThenMakeItAvailable();
+        if (ocrDataIsAvailable) initializeTesseractAPI();
 
         // Restoring inputs from the savedInstanceState (if applicable)
         if (queryHistory == null) {
@@ -338,10 +364,17 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                     toast.show();
                     firstTimeInitialized = false;
                 }
+                timesPressed = 0;
                 performImageCaptureAndCrop();
             }
             else {
-                Toast toast = Toast.makeText(getContext(),getResources().getString(R.string.OCR_failed), Toast.LENGTH_SHORT);
+                if (timesPressed <= 3) {
+                    ifOcrDataIsNotAvailableThenMakeItAvailable();
+                    initializeTesseractAPI();
+                    mInitializedOcrApi = true;
+                    timesPressed++; //Prevents multiple clicks on the button from freezing the app
+                }
+                Toast toast = Toast.makeText(getContext(),getResources().getString(R.string.OCR_reinitializing), Toast.LENGTH_SHORT);
                 toast.show();
             }
         } } );
@@ -379,7 +412,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     @Override public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
 
-        EditText query = (EditText)getActivity().findViewById(R.id.query);
+        EditText query = getActivity().findViewById(R.id.query);
         savedInstanceState.putString("inputQueryAutoCompleteTextView", query.getText().toString());
 
         /*RadioButton radio_FastSearch = (RadioButton)GlobalInputQueryFragment.findViewById(R.id.radio_FastSearch);
@@ -391,12 +424,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            //Bundle extras = data.getExtras();
-            //Bitmap imageBitmap = (Bitmap) extras.get("data");
-            //mImageView.setImageBitmap(imageBitmap);
-            galleryAddPic();
-        } else if (requestCode == SPEECH_RECOGNIZER_REQUEST_CODE) {
+        if (requestCode == SPEECH_RECOGNIZER_REQUEST_CODE) {
             if (data == null) return;
             ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
@@ -417,25 +445,31 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             }
         }
         else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            registerThatUserIsRequestingDictSearch(true);
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
+                registerThatUserIsRequestingDictSearch(true);
                 mPhotoURI = result.getUri();
                 mImageToBeDecoded = getImageFromUri(mPhotoURI);
-                mImageToBeDecoded = adjustImageBeforeOCR(mImageToBeDecoded);
-                getOcrTextWithTesseractAndDisplayDialog(mImageToBeDecoded);
+
+                //Send the image Uri to the AdjustImageActivity
+                Intent intent = new Intent(getActivity(), AdjustImageActivity.class);
+                intent.putExtra("imageUri", mPhotoURI.toString());
+                startActivityForResult(intent, ADJUST_IMAGE_ACTIVITY_REQUEST_CODE);
+
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
         }
-
-    }
-
-    private void registerThatUserIsRequestingDictSearch(Boolean state) {
-        SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.requestingDictSearch), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(getString(R.string.requestingDictSearch), state);
-        editor.apply();
+        else if (requestCode == ADJUST_IMAGE_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                registerThatUserIsRequestingDictSearch(true);
+                //mImageToBeDecoded = adjustImageBeforeOCR(mImageToBeDecoded);
+                Bundle extras = data.getExtras();
+                Uri adjustedImageUri = Uri.parse(extras.getString("returnImageUri"));
+                mImageToBeDecoded = getImageFromUri(adjustedImageUri);
+                getOcrTextWithTesseractAndDisplayDialog(mImageToBeDecoded);
+            }
+        }
     }
 
     //Image methods
@@ -463,114 +497,88 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         }
         return imageToBeDecoded;
     }
-    private void galleryAddPic() {
-        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        mediaScanIntent.setData(getImageUriFromFile(mCurrentPhotoPath));
-        if (getActivity()!=null) getActivity().sendBroadcast(mediaScanIntent);
-    }
-    private void scaleImage(ImageView pictureHolder, double scaleFactor) {
-        // Get the dimensions of the View
-        int targetW = (int) Math.floor(pictureHolder.getWidth()*scaleFactor);
-        int targetH = (int) Math.floor(pictureHolder.getHeight()*scaleFactor);
-
-        int ih = pictureHolder.getMeasuredHeight();//height of imageView
-        int iw = pictureHolder.getMeasuredWidth();//width of imageView
-        int iH = pictureHolder.getDrawable().getIntrinsicHeight();//original height of underlying image
-        int iW = pictureHolder.getDrawable().getIntrinsicWidth();//original width of underlying image
-
-        if (ih/iH <= iw/iW) iw = iW*ih/iH;//rescaled width of image within ImageView
-        else ih = iH*iw/iW;//rescaled height of image within ImageView
-
-        pictureHolder.setMinimumHeight(targetH);
-        pictureHolder.setMinimumWidth(targetW);
-
-//        // Get the dimensions of the bitmap
-//        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-//        bmOptions.inJustDecodeBounds = true;
-//        BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-//        int photoW = bmOptions.outWidth;
-//        int photoH = bmOptions.outHeight;
-//
-//        // Determine how much to scale down the image
-//        int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
-//
-//        // Decode the image file into a Bitmap sized to fill the View
-//        bmOptions.inJustDecodeBounds = false;
-//        bmOptions.inSampleSize = scaleFactor;
-//        bmOptions.inPurgeable = true;
-//
-//        Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-//        pictureHolder.setImageBitmap(bitmap);
-    }
-    private Bitmap adjustImageAngleAndScale(Bitmap source, float angle, double scaleFactor) {
-
-        int newWidth = (int) Math.floor(source.getWidth()*scaleFactor);
-        int newHeight = (int) Math.floor(source.getHeight()*scaleFactor);
-
-        Bitmap scaledBitmap = Bitmap.createScaledBitmap(source, newWidth, newHeight,true);
-
-        Matrix matrix = new Matrix();
-        matrix.postRotate(angle);
-        Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap , 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
-
-        return rotatedBitmap;
-    }
-    private Bitmap adjustImageContrastAndBrightness(Bitmap bmp, float contrast, float brightness) {
-        //https://stackoverflow.com/questions/12891520/how-to-programmatically-change-contrast-of-a-bitmap-in-android
-        /*
-         * @param bmp input bitmap
-         * @param contrast 0..10 1 is default
-         * @param brightness -255..255 0 is default
-         * @return new bitmap
-         */
-        ColorMatrix cm = new ColorMatrix(new float[]
-                {
-                        contrast, 0, 0, 0, brightness,
-                        0, contrast, 0, 0, brightness,
-                        0, 0, contrast, 0, brightness,
-                        0, 0, 0, 1, 0
-                });
-
-        Bitmap ret = Bitmap.createBitmap(bmp.getWidth(), bmp.getHeight(), bmp.getConfig());
-
-        Canvas canvas = new Canvas(ret);
-
-        Paint paint = new Paint();
-        paint.setColorFilter(new ColorMatrixColorFilter(cm));
-        canvas.drawBitmap(bmp, 0, 0, paint);
-
-        return ret;
-    }
-    public Bitmap adjustImageSharpness(Bitmap src, double weight) {
-        //https://xjaphx.wordpress.com/2011/06/22/image-processing-sharpening-image/
-        double[][] SharpConfig = new double[][] {
-                { 0 , -2    , 0  },
-                { -2, weight, -2 },
-                { 0 , -2    , 0  }
-        };
-        ConvolutionMatrix convMatrix = new ConvolutionMatrix(3);
-        convMatrix.applyConfig(SharpConfig);
-        convMatrix.Factor = weight - 8;
-        return ConvolutionMatrix.computeConvolution3x3(src, convMatrix);
-    }
 
     //Tesseract OCR methods
+    public void setupBroadcastReceiverForDownloadedOCRData() {
+        BroadcastReceiver receiver = new BroadcastReceiver() {
+            //https://stackoverflow.com/questions/38563474/how-to-store-downloaded-image-in-internal-storage-using-download-manager-in-andr
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
+                    long downloadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, 0);
+                    DownloadManager.Query query = new DownloadManager.Query();
+                    query.setFilterById(enqueue);
+                    Cursor c = downloadmanager.query(query);
+                    if (c.moveToFirst()) {
+                        int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_STATUS);
+                        if (DownloadManager.STATUS_SUCCESSFUL == c.getInt(columnIndex)) {
+
+                            String uriString = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
+                            Uri a = Uri.parse(uriString);
+                            File d = new File(a.getPath());
+                            // copy file from external to internal will esaily avalible on net use google.
+                            //String sdCard = Environment.getExternalStorageDirectory().toString();
+                            File sourceLocation = new File(mDownloadsFolder + "/" + mFilename);
+                            File targetLocation = new File(mInternalStorageTesseractDataFilepath);
+                            moveFile(sourceLocation, targetLocation);
+                            if (ocrDataIsAvailable) initializeTesseractAPI();
+                        }
+                    }
+                }
+            }
+        };
+        getActivity().registerReceiver(receiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+    }
+    private void setupPaths() {
+        //mInternalStorageTesseractFolderPath = Environment.getExternalStoragePublicDirectory(Environment.).getAbsolutePath() + "/";
+        mInternalStorageTesseractFolderPath = getActivity().getFilesDir() + "/tesseract/";
+        mInternalStorageTesseractDataFilepath = mInternalStorageTesseractFolderPath + "tessdata/";
+        mFilename = mOCRLanguage + ".traineddata";
+        mDownloadsFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/";
+    }
     private void initializeTesseractAPI() {
         mImageToBeDecoded = BitmapFactory.decodeResource(getResources(), R.drawable.test_image);
-        mInitializedOcrApi = false;
 
+        mInitializedOcrApi = false;
         if (getActivity()!=null) {
             //Download language files from https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
             try {
-                datapath = getActivity().getFilesDir() + "/tesseract/";
                 mTess = new TessBaseAPI();
-                checkFile(new File(datapath + "tessdata/"), mOCRLanguage);
-                mTess.init(datapath, mOCRLanguage);
+                mTess.init(mInternalStorageTesseractFolderPath, mOCRLanguage);
                 mInitializedOcrApi = true;
-                Log.e(TAG, "Initialized Tesseract");
+                Log.e(TAG_TESSERACT, "Initialized Tesseract.");
             } catch (Exception e) {
+                Log.e(TAG_TESSERACT, "Failed to initialize Tesseract.");
                 Toast.makeText(getContext(),getResources().getString(R.string.OCR_failed), Toast.LENGTH_SHORT).show();
                 e.printStackTrace();
+            }
+        }
+    }
+    private void ifOcrDataIsNotAvailableThenMakeItAvailable() {
+
+        Boolean fileExistsInInternalStorage = checkIfFileExistsInSpecificFolder(new File(mInternalStorageTesseractDataFilepath), mFilename);
+        if (!fileExistsInInternalStorage) {
+            hasStoragePermissions = checkStoragePermission();
+            makeOcrDataAvailableInAppFolder();
+        }
+        else ocrDataIsAvailable = true;
+    }
+    public void makeOcrDataAvailableInAppFolder() {
+        Boolean fileExistsInDownloadsFolder = checkIfFileExistsInSpecificFolder(new File(mDownloadsFolder), mFilename);
+        if (hasStoragePermissions) {
+            if (fileExistsInDownloadsFolder) {
+                Log.e(TAG_TESSERACT, "File successfully found in Downloads folder.");
+                File sourceLocation = new File(mDownloadsFolder + mFilename);
+                File targetLocation = new File(mInternalStorageTesseractDataFilepath);
+                moveFile(sourceLocation, targetLocation);
+            } else {
+
+                ocrDataIsAvailable = false;
+                Log.e(TAG_TESSERACT, "File not found in Downloads folder.");
+                //if (!fileExistsInInternalStorage) copyFileFromAssets(mOCRLanguage);
+                Toast.makeText(getActivity(), "Attempting to download the Japanese OCR data", Toast.LENGTH_SHORT).show();
+                downloadFileToDownloadsFolder(mOCRLanguage);
             }
         }
     }
@@ -579,22 +587,24 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         mTess.setImage(imageToBeDecoded);
         new TesseractOCRAsyncTask(getActivity()).execute();
     }
-    private void checkFile(File dir, String language) {
+    @NonNull private Boolean checkIfFileExistsInSpecificFolder(File dir, String filename) {
+
         if (!dir.exists()&& dir.mkdirs()){
-            copyFiles(language);
+            return false;
         }
         if(dir.exists()) {
-            String datafilepath = datapath+ "/tessdata/" + language + ".traineddata";
+            String datafilepath = dir + "/" + filename;
             File datafile = new File(datafilepath);
 
             if (!datafile.exists()) {
-                copyFiles(language);
+                return false;
             }
         }
+        return true;
     }
-    private void copyFiles(String language) {
+    private void copyFileFromAssets(String language) {
         try {
-            String filepath = datapath + "/tessdata/" +language+ ".traineddata";
+            String filepath = mInternalStorageTesseractFolderPath + "/tessdata/" + language + ".traineddata";
             AssetManager assetManager = getActivity().getAssets();
 
             InputStream instream = assetManager.open("tessdata/" +language+ ".traineddata");
@@ -622,17 +632,97 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             e.printStackTrace();
         }
     }
-    private Bitmap adjustImageBeforeOCR(Bitmap image) {
+    private void downloadFileToDownloadsFolder(String mOCRLanguage) {
 
-        image = adjustImageAngleAndScale(image, 0, 0.5);
-        image = adjustImageSharpness(image,1);
-        //image = adjustImageContrastAndBrightness(image, 1, 0);
-        image = image.copy(Bitmap.Config.ARGB_8888, true);// Convert to ARGB_8888, required by tess
-        return image;
+        Log.e(TAG_TESSERACT, "Attempting file download");
+        String url = "https://github.com/tesseract-ocr/tessdata/raw/master/" + mFilename;
+
+        //https://stackoverflow.com/questions/38563474/how-to-store-downloaded-image-in-internal-storage-using-download-manager-in-andr
+        downloadmanager = (DownloadManager) getActivity().getSystemService(DOWNLOAD_SERVICE);
+        Uri downloadUri = Uri.parse(url);
+        DownloadManager.Request request = new DownloadManager.Request(downloadUri);
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, mFilename);
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+        request.setAllowedOverRoaming(false);
+        request.setTitle("Downloading Tesseract OCR data");
+        request.setDescription("Japanese");
+        request.setVisibleInDownloadsUi(true);
+        enqueue = downloadmanager.enqueue(request);
+
+        //Finished download activates the broadcast receiver, that in turn initializes the Tesseract API
+
+    }
+    public boolean checkStoragePermission() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (getActivity().checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                Log.e(TAG_PERMISSIONS,"You have permission");
+                return true;
+            } else {
+                Log.e(TAG_PERMISSIONS,"You have asked for permission");
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                return false;
+            }
+        }
+        else { //you dont need to worry about these stuff below api level 23
+            Log.e(TAG_PERMISSIONS,"You already have the permission");
+            return true;
+        }
+    }
+    @Override public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
+            hasStoragePermissions = true;
+
+            Log.e(TAG_PERMISSIONS,"Returned from permission request.");
+            makeOcrDataAvailableInAppFolder();
+            if (!mInitializedOcrApi) initializeTesseractAPI();
+        }
+    }
+    private void moveFile(File file, File dir) {
+        File newFile = new File(dir, file.getName());
+        FileChannel outputChannel = null;
+        FileChannel inputChannel = null;
+        try {
+            outputChannel = new FileOutputStream(newFile).getChannel();
+            inputChannel = new FileInputStream(file).getChannel();
+            inputChannel.transferTo(0, inputChannel.size(), outputChannel);
+            inputChannel.close();
+            ocrDataIsAvailable = true;
+            Toast.makeText(getContext(),getResources().getString(R.string.OCR_copy_data), Toast.LENGTH_SHORT).show();
+            Log.v(TAG_TESSERACT, "Successfully moved data file to app folder.");
+            //file.delete();
+        } catch (IOException e) {
+            ocrDataIsAvailable = false;
+            Log.v(TAG_TESSERACT, "Copy file failed.");
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (inputChannel != null) inputChannel.close();
+                if (outputChannel != null) outputChannel.close();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        }
+
     }
     private Bitmap adjustImageAfterOCR(Bitmap imageToBeDecoded) {
-        imageToBeDecoded = adjustImageAngleAndScale(imageToBeDecoded, 0, 0.5);
+        //imageToBeDecoded = adjustImageAngleAndScale(imageToBeDecoded, 0, 0.5);
         return imageToBeDecoded;
+    }
+    private Bitmap adjustImageAngleAndScale(Bitmap source, float angle, double scaleFactor) {
+
+        int newWidth = (int) Math.floor(source.getWidth()*scaleFactor);
+        int newHeight = (int) Math.floor(source.getHeight()*scaleFactor);
+
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(source, newWidth, newHeight,true);
+
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap , 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
+
+        return rotatedBitmap;
     }
     private class TesseractOCRAsyncTask extends AsyncTask {
 
@@ -731,10 +821,16 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     }
     private void setTTSLanguage() {
         int result;
-        if (MainActivity.mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
+        //Getting the user setting from the preferences
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String language = sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese));
+        setTextToSpeechLanguage(language);
+
+        //Setting the language
+        if (mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
             result = tts.setLanguage(Locale.JAPAN);
         }
-        else if (MainActivity.mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleEnglishUS))) {
+        else if (mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleEnglishUS))) {
             result = tts.setLanguage(Locale.US);
         }
         else result = tts.setLanguage(Locale.US);
@@ -748,8 +844,16 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         setTTSLanguage();
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
+    public void setTextToSpeechLanguage(String language) {
+        if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
+            mChosenTextToSpeechLanguage = getResources().getString(R.string.languageLocaleJapanese);
+        }
+        else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
+            mChosenTextToSpeechLanguage = getResources().getString(R.string.languageLocaleEnglishUS);
+        }
+    }
 
-    //Query display methods
+    //Query input methods
     @Override public Loader<String> onCreateLoader(int id, final Bundle args) {
         return new AsyncTaskLoader<String>(getContext()) {
 
@@ -810,7 +914,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
             LayoutInflater inflater = LayoutInflater.from(getActivity().getBaseContext());
             View mySpinner = inflater.inflate(R.layout.custom_queryhistory_spinner, parent, false);
-            TextView pastquery = (TextView) mySpinner.findViewById(R.id.pastQuery);
+            TextView pastquery = mySpinner.findViewById(R.id.pastQuery);
             pastquery.setText(new_queryHistory.get(position));
 
             return mySpinner;
@@ -861,6 +965,12 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     public void setNewQuery(String outputFromGrammarModuleFragment) {
         AutoCompleteTextView queryInit = getActivity().findViewById(R.id.query);
         queryInit.setText(outputFromGrammarModuleFragment);
+    }
+    private void registerThatUserIsRequestingDictSearch(Boolean state) {
+        SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.requestingDictSearch), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean(getString(R.string.requestingDictSearch), state);
+        editor.apply();
     }
 
     //Interface methods

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:sample="http://schemas.android.com/apk/res-auto">
 
     <CheckBoxPreference
         android:defaultValue="@bool/pref_complete_local_with_online_search_default"
@@ -9,16 +10,39 @@
         android:title="@string/complete_local_with_online_search" />
 
     <ListPreference
-        android:defaultValue="@string/pref_preferred_STT_language_japanese"
+        android:defaultValue="@string/pref_preferred_language_value_japanese"
         android:entries="@array/pref_preferred_STT_language_labels"
         android:entryValues="@array/pref_preferred_STT_language_values"
         android:key="@string/pref_preferred_STT_language_key"
         android:title="@string/pref_preferred_STT_language" />
 
     <ListPreference
-        android:defaultValue="@string/pref_preferred_TTS_language_japanese"
+        android:defaultValue="@string/pref_preferred_language_value_japanese"
         android:entries="@array/pref_preferred_TTS_language_labels"
         android:entryValues="@array/pref_preferred_TTS_language_values"
         android:key="@string/pref_preferred_TTS_language_key"
         android:title="@string/pref_preferred_TTS_language" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_OCR_image_saturation_default_value"
+        android:key="@string/pref_OCR_image_saturation_key"
+        android:summary="@string/pref_OCR_image_saturation_summary"
+        android:inputType="number"
+        android:title="@string/pref_OCR_image_saturation_title" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_OCR_image_contrast_default_value"
+        android:key="@string/pref_OCR_image_contrast_key"
+        android:summary="@string/pref_OCR_image_contrast_summary"
+        android:inputType="number"
+        android:title="@string/pref_OCR_image_contrast_title" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_OCR_image_brightness_default_value"
+        android:key="@string/pref_OCR_image_brightness_key"
+        android:summary="@string/pref_OCR_image_brightness_summary"
+        android:inputType="number"
+        android:title="@string/pref_OCR_image_brightness_title" />
+
+
 </PreferenceScreen>

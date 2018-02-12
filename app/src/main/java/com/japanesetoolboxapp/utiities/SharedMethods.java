@@ -1,7 +1,9 @@
 package com.japanesetoolboxapp.utiities;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -14,6 +16,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.japanesetoolboxapp.ConvertFragment;
+import com.japanesetoolboxapp.R;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -225,6 +228,86 @@ public class SharedMethods {
         return prepared_word;
     }
 
+    public static int loadOCRImageContrastFromSharedPreferences(SharedPreferences sharedPreferences, Context context) {
+        float contrastValue = Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_contrast_default_value));
+        try {
+            contrastValue = Float.parseFloat(sharedPreferences.getString(context.getResources().getString(R.string.pref_OCR_image_contrast_key),
+                    context.getResources().getString(R.string.pref_OCR_image_contrast_default_value)));
+        } catch (Exception e) {
+            contrastValue = Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_contrast_default_value));
+        } finally {
+            contrastValue = truncateToRange(contrastValue,
+                    Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_contrast_min_value)),
+                    Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_contrast_max_value)));
+        }
+        return (int) contrastValue;
+    }
+    public static int loadOCRImageSaturationFromSharedPreferences(SharedPreferences sharedPreferences, Context context) {
+        float saturationValue = Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_saturation_default_value));
+        try {
+            saturationValue = Float.parseFloat(sharedPreferences.getString(context.getResources().getString(R.string.pref_OCR_image_saturation_key),
+                    context.getResources().getString(R.string.pref_OCR_image_saturation_default_value)));
+        } catch (Exception e) {
+            saturationValue = Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_saturation_default_value));
+        } finally {
+            saturationValue = truncateToRange(saturationValue,
+                    Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_saturation_min_value)),
+                    Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_saturation_max_value)));
+        }
+        return (int) saturationValue;
+    }
+    public static int loadOCRImageBrightnessFromSharedPreferences(SharedPreferences sharedPreferences, Context context) {
+        float brightnessValue = Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_brightness_default_value));
+        try {
+            brightnessValue = Float.parseFloat(sharedPreferences.getString(context.getResources().getString(R.string.pref_OCR_image_brightness_key),
+                    context.getResources().getString(R.string.pref_OCR_image_brightness_default_value)));
+        } catch (Exception e) {
+            brightnessValue = Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_brightness_default_value));
+        } finally {
+            brightnessValue = truncateToRange(brightnessValue,
+                    Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_brightness_min_value)),
+                    Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_brightness_max_value)));
+        }
+        return (int) brightnessValue;
+    }
+    public static float truncateToRange(float value, float min, float max) {
+        if (value < min) value = min;
+        else if (value > max) value = max;
+        return value;
+    }
+    public static float convertContrastProgressToValue(float contrastBarValue, Context context) {
+        float contrastValue = contrastBarValue
+                /((float) Integer.parseInt(context.getString(R.string.pref_OCR_image_contrast_range)))
+                *((float) Integer.parseInt(context.getString(R.string.pref_OCR_image_contrast_max_value)));
+        return contrastValue;
+    }
+    public static float convertSaturationProgressToValue(float saturationBarValue, Context context) {
+        float saturationValue = saturationBarValue
+                /((float) Integer.parseInt(context.getString(R.string.pref_OCR_image_saturation_range)))
+                *((float) Integer.parseInt(context.getString(R.string.pref_OCR_image_saturation_multipliers)));
+        return saturationValue;
+    }
+    public static int convertBrightnessProgresToValue(int brightnessBarValue, Context context) {
+        int brightnessValue = brightnessBarValue-256;
+        return brightnessValue;
+    }
+    public static int convertContrastValueToProgress(float contrastValue, Context context) {
+        float contrastBarValue = contrastValue
+                *((float) Integer.parseInt(context.getString(R.string.pref_OCR_image_contrast_range)))
+                /((float) Integer.parseInt(context.getString(R.string.pref_OCR_image_contrast_max_value)));
+        return (int) contrastBarValue;
+    }
+    public static int convertSaturationValueToProgress(float saturationValue, Context context) {
+        float saturationBarValue = saturationValue
+                *((float) Integer.parseInt(context.getString(R.string.pref_OCR_image_saturation_range)))
+                /((float) Integer.parseInt(context.getString(R.string.pref_OCR_image_saturation_multipliers)));
+        return (int) saturationBarValue;
+    }
+    public static int convertBrightnessValueToProgress(int brightnessValue, Context context) {
+        int brightnessBarValue = brightnessValue+256;
+        return brightnessBarValue;
+    }
+
     //Internet Connectivity functions
     private static Boolean mInternetIsAvailable;
     public static void TellUserIfThereIsNoInternetConnection(final Activity activity) {
@@ -346,7 +429,7 @@ public class SharedMethods {
 
         //Extracting the definition from Jisho.org
 
-        ;//Initializatons
+        //Initializatons
         String identifier;
         int index_of_current_results_block_marker_start;
         int index_of_current_results_block_marker_end;
@@ -514,7 +597,7 @@ public class SharedMethods {
 
             //Getting the set of Meanings
 
-            ;//Initializations
+            //Initializations
             List<Object> matchingWordCurrentMeaningsBlock = new ArrayList<>();
             List<Object> matchingWordCurrentMeaningBlocks = new ArrayList<>();
             String matchingWordMeaning;
@@ -623,5 +706,7 @@ public class SharedMethods {
 
         return setOf_matchingWordCharacteristics;
     }
+
+
 
 }

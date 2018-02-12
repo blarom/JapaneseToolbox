@@ -84,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
     public static String mChosenSpeechToTextLanguage;
     public static String mChosenTextToSpeechLanguage;
     public static boolean activityResumedFromSTTOrOCR;
+    private float mOcrImageDefaultContrast;
+    private float mOcrImageDefaultBrightness;
+    private float mOcrImageDefaultSaturation;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,8 +181,8 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
 
         //Set the typeface for Chinese/Japanese fonts
         CJK_typeface = Typeface.DEFAULT;
-        ;//CJK_typeface = Typeface.createFromAsset(getAssets(), "fonts/DroidSansFallback.ttf");
-        ;//CJK_typeface = Typeface.createFromAsset(getAssets(), "fonts/DroidSansJapanese.ttf");
+        //CJK_typeface = Typeface.createFromAsset(getAssets(), "fonts/DroidSansFallback.ttf");
+        //CJK_typeface = Typeface.createFromAsset(getAssets(), "fonts/DroidSansJapanese.ttf");
         //see https://stackoverflow.com/questions/11786553/changing-the-android-typeface-doesnt-work
 
     }
@@ -247,6 +250,15 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         else if (key.equals(getString(R.string.pref_preferred_TTS_language_key))) {
             setTextToSpeechLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese)));
         }
+        else if (key.equals(getString(R.string.pref_OCR_image_saturation_key))) {
+            mOcrImageDefaultSaturation = SharedMethods.loadOCRImageSaturationFromSharedPreferences(sharedPreferences, getApplicationContext());
+        }
+        else if (key.equals(getString(R.string.pref_OCR_image_contrast_key))) {
+            mOcrImageDefaultContrast = SharedMethods.loadOCRImageContrastFromSharedPreferences(sharedPreferences, getApplicationContext());
+        }
+        else if (key.equals(getString(R.string.pref_OCR_image_brightness_key))) {
+            mOcrImageDefaultBrightness = SharedMethods.loadOCRImageBrightnessFromSharedPreferences(sharedPreferences, getApplicationContext());
+        }
     }
     private void setupSharedPreferences() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -254,6 +266,9 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
                 getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default)));
         setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese)));
         setTextToSpeechLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese)));
+        mOcrImageDefaultContrast = SharedMethods.loadOCRImageContrastFromSharedPreferences(sharedPreferences, getApplicationContext());
+        mOcrImageDefaultSaturation = SharedMethods.loadOCRImageSaturationFromSharedPreferences(sharedPreferences, getApplicationContext());
+        mOcrImageDefaultBrightness = SharedMethods.loadOCRImageBrightnessFromSharedPreferences(sharedPreferences, getApplicationContext());
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
     public void setShowOnlineResults(boolean showCourse) {
@@ -274,6 +289,36 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
             mChosenTextToSpeechLanguage = getResources().getString(R.string.languageLocaleEnglishUS);
         }
+    }
+    private void loadOCRImageContrastFromSharedPreferences(SharedPreferences sharedPreferences) {
+        float contrastValue;
+        try {
+            contrastValue = Float.parseFloat(sharedPreferences.getString(getString(R.string.pref_OCR_image_contrast_key),
+                    getString(R.string.pref_OCR_image_contrast_default_value)));
+        } catch (Exception e) {
+            contrastValue = Float.parseFloat(getString(R.string.pref_OCR_image_contrast_default_value));
+        }
+        mOcrImageDefaultContrast = contrastValue;
+    }
+    private void loadOCRImageSaturationFromSharedPreferences(SharedPreferences sharedPreferences) {
+        float saturationValue;
+        try {
+            saturationValue = Float.parseFloat(sharedPreferences.getString(getString(R.string.pref_OCR_image_saturation_key),
+                    getString(R.string.pref_OCR_image_saturation_default_value)));
+        } catch (Exception e) {
+            saturationValue = Float.parseFloat(getString(R.string.pref_OCR_image_saturation_default_value));
+        }
+        mOcrImageDefaultSaturation = saturationValue;
+    }
+    private void loadOCRImageBrightnessFromSharedPreferences(SharedPreferences sharedPreferences) {
+        float brightnessValue;
+        try {
+            brightnessValue = Float.parseFloat(sharedPreferences.getString(getString(R.string.pref_OCR_image_brightness_key),
+                    getString(R.string.pref_OCR_image_brightness_default_value)));
+        } catch (Exception e) {
+            brightnessValue = Float.parseFloat(getString(R.string.pref_OCR_image_brightness_default_value));
+        }
+        mOcrImageDefaultBrightness = brightnessValue;
     }
 
     public void showDatabaseLoadingToast(final String message, final Context context) {
@@ -301,7 +346,6 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
             }
         });
     }
-
 
     private class BackgroundDatabaseLoader extends AsyncTask<Void, Void, Void> {
         @Override protected void onPreExecute() {

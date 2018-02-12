@@ -36,6 +36,34 @@
     <string name="pref_preferred_TTS_language">Text-To-Speech Language</string>
     <string name="pref_preferred_TTS_language_key" translatable="false">preferred_TTS_result</string>
 
+    <string name="pref_OCR_image_contrast_key" translatable="false">pref_OCR_image_contrast_key</string>
+    <string name="pref_OCR_image_contrast_title">OCR Default Contrast [0;10]</string>
+    <string name="pref_OCR_image_contrast_summary">Value: 5/10</string>
+    <string name="pref_OCR_image_contrast_default_value">1</string>
+    <string name="pref_OCR_image_contrast_min_value">0</string>
+    <string name="pref_OCR_image_contrast_max_value">10</string>
+    <string name="pref_OCR_image_contrast_range">100</string>
+    <string name="pref_OCR_image_contrast_interval">0.1</string>
+
+    <string name="pref_OCR_image_saturation_key" translatable="false">pref_OCR_image_saturation_key</string>
+    <string name="pref_OCR_image_saturation_title">OCR Default Saturation [0;3]</string>
+    <string name="pref_OCR_image_saturation_summary">Value: 0</string>
+    <string name="pref_OCR_image_saturation_default_value">-255</string>
+    <string name="pref_OCR_image_saturation_min_value">0</string>
+    <string name="pref_OCR_image_saturation_max_value">512</string>
+    <string name="pref_OCR_image_saturation_range">512</string>
+    <string name="pref_OCR_image_saturation_interval">1</string>
+    <string name="pref_OCR_image_saturation_multipliers">3</string>
+
+    <string name="pref_OCR_image_brightness_key" translatable="false">pref_OCR_image_brightness_key</string>
+    <string name="pref_OCR_image_brightness_title">OCR Default Brightness [-1;1]</string>
+    <string name="pref_OCR_image_brightness_summary">Value: 0</string>
+    <string name="pref_OCR_image_brightness_default_value">0</string>
+    <string name="pref_OCR_image_brightness_min_value">-256</string>
+    <string name="pref_OCR_image_brightness_max_value">256</string>
+    <string name="pref_OCR_image_brightness_range">512</string>
+    <string name="pref_OCR_image_brightness_interval">1</string>
+
     <!--InputQueryFragment Strings-->
     <string name="input_query">Search Me!</string>
     <string name="GrammarModule_GetWord">DICT</string>
@@ -55,7 +83,9 @@
     <string name="DialogMessage">Current Android version is too low</string>
     <string name="cancel">Cancel</string>
     <string name="OCR_image" translatable="false">OCR Iamge</string>
-    <string name="OCR_failed">Failed to initialize OCR engine.</string>
+    <string name="OCR_failed">OCR engine initialization failed.</string>
+    <string name="OCR_reinitializing">OCR engine was not initialized. Trying again…</string>
+    <string name="OCR_copy_data">Successfully installed data from Downloads Folder.</string>
     <string name="processing">Please wait, performing OCR…</string>
     <string name="OCRinstructions">Please select and crop a Japanese script input for Optical Character Recognition.
         For optimal results, make sure that the text is clear and occupies a large area.</string>
@@ -121,6 +151,9 @@
         \nThe decompositions are evaluated using a heavily modified and corrected version of Gavin Grover\&apos;s decomposition database (see cjkdecomp.codeplex.com). </string>
 
     <!--AboutActivity Text-->
+    <string name="DONE">DONE</string>
+
+    <!--AboutActivity Text-->
     <string name="AboutText1">
         Japanese Toolbox is a set of reference tools designed to make learning Japanese much more efficient,
         by giving quick answers to questions on difficult subjects such as grammar, verb conjugations and Kanji decompositions. Most
@@ -130,16 +163,17 @@
         The app includes the following tools:
     </string>
     <string name="AboutText2Subtext1">
-        - A local dictionary complete with grammar rules (DICT button).
+        - A local dictionary of frequent Japanese words and expressions, complete with grammar rules (DICT button). If there is Internet access then online results are added.
     </string>
     <string name="AboutText2Subtext2">
-        - A reverse-conjugation finder (CONJ button).
+        - A reverse verb conjugation finder (CONJ button). If you search for a conjugation shared by many verbs (such as "saseru"), the search results will be limited to 50 verbs.
     </string>
     <string name="AboutText2Subtext3">
         - A Latin-to-Kana-to-Latin script converter (あ&#8660;A button).
     </string>
     <string name="AboutText2Subtext4">
-        - A Kanji composer (女+子 &#8658; 好 button) where you can find all Kanjis based through their radicals and/or components.
+        - A Kanji composer (女+子 &#8658; 好 button) where you can find all Kanjis based through their radicals and/or components and/or general structure. Note
+        that users of Android versions below Marshmallow may experience "blank symbols" instead of Japanese characters in some cases.
     </string>
     <string name="AboutText2Subtext5">
         - A Kanji decomposer (好 &#8658; 女+子 button) where you can get the meaning and readings of all of the components in a given Kanji.
