@@ -887,8 +887,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             Toast.makeText(getActivity(), "Attempting to download the " + mLanguageBeingDownloadedLabel + " OCR data. Please wait.", Toast.LENGTH_SHORT).show();
         }
         request.setAllowedOverRoaming(false);
-        request.setTitle("Downloading Tesseract OCR data");
-        request.setDescription(mLanguageBeingDownloadedLabel);
+        request.setTitle("Downloading " + filename);
         request.setVisibleInDownloadsUi(true);
         enqueue = downloadmanager.enqueue(request);
 
@@ -921,16 +920,16 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                     dialog.dismiss();
                 }
             });
-            mProgressDialog.setButton(DialogInterface.BUTTON_NEUTRAL, getResources().getString(R.string.readjust), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    mTess.stop();
-                    initializeTesseractAPI(mOCRLanguage);
-                    mTesseractOCRAsyncTask.cancel(true);
-                    if (mCropImageResult != null) adjustImageBeforeOCR(mCropImageResult);
-                    dialog.dismiss();
-                }
-            });
+//            mProgressDialog.setButton(DialogInterface.BUTTON_NEUTRAL, getResources().getString(R.string.readjust), new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    mTess.stop();
+//                    initializeTesseractAPI(mOCRLanguage);
+//                    mTesseractOCRAsyncTask.cancel(true);
+//                    if (mCropImageResult != null) adjustImageBeforeOCR(mCropImageResult);
+//                    dialog.dismiss();
+//                }
+//            });
             mProgressDialog.show();
             super.onPreExecute();
         }
