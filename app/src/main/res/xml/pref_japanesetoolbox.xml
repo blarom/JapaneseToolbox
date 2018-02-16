@@ -23,6 +23,13 @@
         android:key="@string/pref_preferred_TTS_language_key"
         android:title="@string/pref_preferred_TTS_language" />
 
+    <ListPreference
+        android:defaultValue="@string/pref_preferred_language_value_japanese"
+        android:entries="@array/pref_preferred_OCR_language_labels"
+        android:entryValues="@array/pref_preferred_OCR_language_values"
+        android:key="@string/pref_preferred_OCR_language_key"
+        android:title="@string/pref_preferred_OCR_language" />
+
     <EditTextPreference
         android:defaultValue="@string/pref_OCR_image_saturation_default_value"
         android:key="@string/pref_OCR_image_saturation_key"

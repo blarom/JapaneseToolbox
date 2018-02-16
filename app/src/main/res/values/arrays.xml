@@ -21,4 +21,14 @@
         <item>@string/pref_preferred_language_value_english</item>
     </array>
 
+    <array name="pref_preferred_OCR_language_labels">
+        <item>@string/language_label_japanese</item>
+        <item>@string/language_label_english</item>
+    </array>
+
+    <array name="pref_preferred_OCR_language_values">
+        <item>@string/pref_preferred_language_value_japanese</item>
+        <item>@string/pref_preferred_language_value_english</item>
+    </array>
+
 </resources>

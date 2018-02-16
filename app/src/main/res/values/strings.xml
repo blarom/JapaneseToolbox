@@ -25,16 +25,19 @@
     <string name="shown">Shown</string>
     <string name="pref_complete_local_with_online_search_key" translatable="false">complete_local_with_online_search</string>
     <string name="complete_local_with_online_search">Show online results</string>
-    <string name="pref_preferred_STT_language_japanese" translatable="false">preferred_STT_language_japanese</string>
-    <string name="pref_preferred_TTS_language_japanese" translatable="false">preferred_TTS_language_japanese</string>
     <string name="language_label_japanese">Japanese</string>
     <string name="language_label_english">English (US)</string>
     <string name="pref_preferred_language_value_japanese" translatable="false">japanese</string>
     <string name="pref_preferred_language_value_english" translatable="false">english</string>
     <string name="pref_preferred_STT_language">Speech-To-Text Language</string>
     <string name="pref_preferred_STT_language_key" translatable="false">preferred_STT_result</string>
+    <string name="pref_preferred_STT_language_japanese" translatable="false">preferred_STT_language_japanese</string>
     <string name="pref_preferred_TTS_language">Text-To-Speech Language</string>
     <string name="pref_preferred_TTS_language_key" translatable="false">preferred_TTS_result</string>
+    <string name="pref_preferred_TTS_language_japanese" translatable="false">preferred_TTS_language_japanese</string>
+    <string name="pref_preferred_OCR_language">OCR Language</string>
+    <string name="pref_preferred_OCR_language_key" translatable="false">preferred_OCR_result</string>
+    <string name="pref_preferred_OCR_language_japanese" translatable="false">preferred_OCR_language_japanese</string>
 
     <string name="pref_OCR_image_contrast_key" translatable="false">pref_OCR_image_contrast_key</string>
     <string name="pref_OCR_image_contrast_title">OCR Default Contrast [0;10]</string>
@@ -79,21 +82,33 @@
     <string name="languageLocaleEnglishUS">en-US</string>
     <string name="TextToSpeechLanguageJapanese">jpn</string>
     <string name="TextToSpeechLanguageEnglish">eng</string>
-    <string name="DialogTitle">Please select the text for OCR</string>
-    <string name="DialogMessage">Current Android version is too low</string>
+    <string name="OCRDialogTitle">Please select the text for OCR</string>
+    <string name="LowVersionDialogMessage">Current Android version is too low</string>
     <string name="cancel">Cancel</string>
+    <string name="readjust">Readjust Image</string>
     <string name="OCR_image" translatable="false">OCR Iamge</string>
     <string name="OCR_failed">OCR engine initialization failed.</string>
     <string name="OCR_reinitializing">OCR engine was not initialized. Trying again…</string>
+    <string name="OCR_waitWhileProcessing">Wait while processing…</string>
+    <string name="OCR_waitWhileProcessingExplanation">A long processing time may mean the OCR engine is having trouble deciphering the
+        image and will result in random OCR text. In such case you should try using a better picture.</string>
+    <string name="OCR_downloading">Please wait until the OCR data finishes downloading.</string>
     <string name="OCR_copy_data">Successfully installed data from Downloads Folder.</string>
     <string name="processing">Please wait, performing OCR…</string>
-    <string name="OCRinstructions">Please select and crop a Japanese script input for Optical Character Recognition.
-        For optimal results, make sure that the text is clear and occupies a large area.</string>
+    <string name="OCRinstructionsJPN">Please select and crop Japanese text.
+        For best results, select a FEW symbols occupying a large area in a clear picture. Otherwise the OCR engine may not work properly.</string>
+    <string name="OCRinstructionsENG">Please select and crop English text.
+        For best results, select a FEW words occupying a large area in a clear picture. Otherwise the OCR engine may not work properly.</string>
     <string name="getTextThroughSpeech">Speak words</string>
     <string name="getTextThroughCamera">Optical character recognition</string>
     <string name="speakQuery">Hear user query</string>
     <string name="requestingDictSearch">requestingDictSearch</string>
     <string name="STTACtivityNotFound">Sorry, it appears your phone does not have Speech-To-Text functionality. Redirecting to relevant resources…</string>
+    <string name="DownloadDialogTitle">Download OCR data files.</string>
+    <string name="DownloadDialogMessageJPN">Please select how you want to download the required Japanese Optical Character Recognition data (approx. 40MB).</string>
+    <string name="DownloadDialogMessageENG">Please select how you want to download the required English Optical Character Recognition data (approx. 20MB).</string>
+    <string name="DownloadDialogWifiOnly">WiFi only</string>
+    <string name="DownloadDialogWifiAndMobile">Anytime</string>
 
     <!--DictionaryFragment Strings-->
     <string name="NoMatchFound">No match found. Searching for conjugations…</string>
@@ -133,7 +148,7 @@
         \nUse an apostrophe (\&apos;) after \&quot;n\&quot; to ensure its transliteration to \&quot;ん\&quot;.
         \n\nAlso note that this app uses a variation of Kunrei-Shiki romanization, where for example \&quot;う\&quot; is always transliterated to \&quot;u\&quot;, and \&quot;づ\&quot; is always transliterated to \&quot;du\&quot;.</string>
 
-    <!--DecomposeKanjiFragment Strings-->
+    <!--ComposeKanjiFragment Strings-->
     <string name="CharConstr">Kanji Finder</string>
     <string name="ChooseTheStructure">Choose The Structure</string>
 

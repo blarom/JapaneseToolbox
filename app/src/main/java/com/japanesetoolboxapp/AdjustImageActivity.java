@@ -96,17 +96,7 @@ public class AdjustImageActivity extends AppCompatActivity {
             }
         });
 
-        //Getting the user's chosen default values from the settings
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        float contrastValue = SharedMethods.loadOCRImageContrastFromSharedPreferences(sharedPreferences, getApplicationContext());
-        float saturationValue = SharedMethods.loadOCRImageSaturationFromSharedPreferences(sharedPreferences, getApplicationContext());
-        int brightnessValue = SharedMethods.loadOCRImageBrightnessFromSharedPreferences(sharedPreferences, getApplicationContext());
-
-        contrastBar.setProgress(SharedMethods.convertContrastValueToProgress(contrastValue, getApplicationContext()));
-        saturationBar.setProgress(SharedMethods.convertSaturationValueToProgress(saturationValue, getApplicationContext()));
-        brightnessBar.setProgress(SharedMethods.convertBrightnessValueToProgress(brightnessValue, getApplicationContext()));
-
+        setupBitmapImageWithPreferenceValues();
         loadBitmapAfterAdjustment();
 
     }
@@ -164,7 +154,19 @@ public class AdjustImageActivity extends AppCompatActivity {
         return uri;
 
     }
+    private void setupBitmapImageWithPreferenceValues() {
 
+        //Getting the user's chosen default values from the settings
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        float contrastValue = SharedMethods.loadOCRImageContrastFromSharedPreferences(sharedPreferences, getApplicationContext());
+        float saturationValue = SharedMethods.loadOCRImageSaturationFromSharedPreferences(sharedPreferences, getApplicationContext());
+        int brightnessValue = SharedMethods.loadOCRImageBrightnessFromSharedPreferences(sharedPreferences, getApplicationContext());
+
+        contrastBar.setProgress(SharedMethods.convertContrastValueToProgress(contrastValue, getApplicationContext()));
+        saturationBar.setProgress(SharedMethods.convertSaturationValueToProgress(saturationValue, getApplicationContext()));
+        brightnessBar.setProgress(SharedMethods.convertBrightnessValueToProgress(brightnessValue, getApplicationContext()));
+    }
     private void loadBitmapAfterAdjustment() {
         if (bitmapMaster != null) {
             //Contrast, 1=min. 10=max
@@ -200,60 +202,6 @@ public class AdjustImageActivity extends AppCompatActivity {
 
         }
     }
-
-
-    private int loadOCRImageContrastFromSharedPreferences(SharedPreferences sharedPreferences) {
-        float contrastValue = Float.parseFloat(getString(R.string.pref_OCR_image_contrast_default_value));
-        try {
-            contrastValue = Float.parseFloat(sharedPreferences.getString(getString(R.string.pref_OCR_image_contrast_key),
-                    getString(R.string.pref_OCR_image_contrast_default_value)));
-        } catch (Exception e) {
-            contrastValue = Float.parseFloat(getString(R.string.pref_OCR_image_contrast_default_value));
-        } finally {
-            if (contrastValue < Float.parseFloat(getString(R.string.pref_OCR_image_contrast_min_value))) {
-                contrastValue = Float.parseFloat(getString(R.string.pref_OCR_image_contrast_min_value));
-            }
-            else if (contrastValue > Float.parseFloat(getString(R.string.pref_OCR_image_contrast_max_value))) {
-                contrastValue = Float.parseFloat(getString(R.string.pref_OCR_image_contrast_max_value));
-            }
-        }
-        return (int) contrastValue;
-    }
-    private int loadOCRImageSaturationFromSharedPreferences(SharedPreferences sharedPreferences) {
-        float saturationValue = Float.parseFloat(getString(R.string.pref_OCR_image_saturation_default_value));
-        try {
-            saturationValue = Float.parseFloat(sharedPreferences.getString(getString(R.string.pref_OCR_image_saturation_key),
-                    getString(R.string.pref_OCR_image_saturation_default_value)));
-        } catch (Exception e) {
-            saturationValue = Float.parseFloat(getString(R.string.pref_OCR_image_saturation_default_value));
-        } finally {
-            if (saturationValue < Float.parseFloat(getString(R.string.pref_OCR_image_saturation_min_value))) {
-                saturationValue = Float.parseFloat(getString(R.string.pref_OCR_image_saturation_min_value));
-            }
-            else if (saturationValue > Float.parseFloat(getString(R.string.pref_OCR_image_saturation_max_value))) {
-                saturationValue = Float.parseFloat(getString(R.string.pref_OCR_image_saturation_max_value));
-            }
-        }
-        return (int) saturationValue;
-    }
-    private int loadOCRImageBrightnessFromSharedPreferences(SharedPreferences sharedPreferences) {
-        float brightnessValue = Float.parseFloat(getString(R.string.pref_OCR_image_brightness_default_value));
-        try {
-            brightnessValue = Float.parseFloat(sharedPreferences.getString(getString(R.string.pref_OCR_image_brightness_key),
-                    getString(R.string.pref_OCR_image_brightness_default_value)));
-        } catch (Exception e) {
-            brightnessValue = Float.parseFloat(getString(R.string.pref_OCR_image_brightness_default_value));
-        } finally {
-            if (brightnessValue < Float.parseFloat(getString(R.string.pref_OCR_image_brightness_min_value))) {
-                brightnessValue = Float.parseFloat(getString(R.string.pref_OCR_image_brightness_min_value));
-            }
-            else if (brightnessValue > Float.parseFloat(getString(R.string.pref_OCR_image_brightness_max_value))) {
-                brightnessValue = Float.parseFloat(getString(R.string.pref_OCR_image_brightness_max_value));
-            }
-        }
-        return (int) brightnessValue;
-    }
-
     private Bitmap adjustBitmapSaturation(Bitmap src, float settingSat) {
 
         int w = src.getWidth();

@@ -8,8 +8,8 @@ android {
         applicationId "com.japanesetoolboxapp"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 9
-        versionName "1.16"
+        versionCode 10
+        versionName "1.17"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
@@ -30,7 +30,6 @@ dependencies {
     compile 'com.android.support:design:27.0.2'
     compile 'com.rmtheis:tess-two:8.0.0'
     compile 'com.theartofdev.edmodo:android-image-cropper:2.6.+'
-    compile 'com.pavelsikun:material-seekbar-preference:2.3.0+'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
