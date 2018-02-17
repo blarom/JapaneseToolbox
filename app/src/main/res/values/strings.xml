@@ -199,8 +199,7 @@
     <string name="AboutText3">
         You can perform a query by writing/pasting the text manually in the Search Me! box, or by using the Speech-To-Text
         (microphone button) or Image-To-Text (camera button) functions.\nYou
-        can choose the Speech-To-Text language (English/Japanese) in the Settings menu. Since OCR capabilities are memory-heavy, only Japanese text OCR
-        is provided for the Image-To-Text function.
+        can choose the Speech-To-Text and OCR languages (English/Japanese) in the Settings menu.
     </string>
 
     <string name="AboutText4">

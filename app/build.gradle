@@ -8,9 +8,14 @@ android {
         applicationId "com.japanesetoolboxapp"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 10
-        versionName "1.17"
+        versionCode 14
+        versionName "1.21"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        // the following code makes the app only available to relevant phones, thereby reducing the apk size
+        // See https://android.jlelse.eu/controlling-apk-size-when-using-native-libraries-45c6c0e5b70a
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
     }
     buildTypes {
         release {
@@ -26,8 +31,6 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:27.0.2'
     compile 'com.android.support:preference-v7:27.0.2'
-    compile 'com.google.android.gms:play-services-vision:11.8.0'
-    compile 'com.android.support:design:27.0.2'
     compile 'com.rmtheis:tess-two:8.0.0'
     compile 'com.theartofdev.edmodo:android-image-cropper:2.6.+'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2', {

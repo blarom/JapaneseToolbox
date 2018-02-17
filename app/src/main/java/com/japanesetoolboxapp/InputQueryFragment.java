@@ -55,6 +55,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -95,7 +96,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     Button button_searchVerb;
     Button button_searchWord;
     Button button_choose_Convert;
-    Button button_searchTangorin;
     Button button_searchByRadical;
     Button button_Decompose;
     String mQueryText;
@@ -130,9 +130,10 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     private boolean mJpnOcrFileIsDownloading;
     private boolean mEngOcrFileIsDownloading;
     private CropImage.ActivityResult mCropImageResult;
+    private BroadcastReceiver mBroadcastReceiver;
 
     //Fragment Lifecycle methods
-    @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
 
         setRetainInstance(true);
@@ -336,6 +337,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         final Button button_ClearQuery = InputQueryFragment.findViewById(R.id.clearQuery);
         button_ClearQuery.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
             inputQueryAutoCompleteTextView.setText("");
+            mQueryText = "";
         } } );
 
         final Button button_ShowHistory = InputQueryFragment.findViewById(R.id.showHistory);
@@ -449,6 +451,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     @Override public void onResume() {
         super.onResume();
         inputQueryAutoCompleteTextView.setText(mQueryText);
+        //inputQueryAutoCompleteTextView.clearFocus();
+        if (getActivity() != null) getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         getLanguageParametersFromSettingsAndReinitializeOcrIfNecessary();
     }
     @Override public void onDestroy() {
@@ -458,12 +462,20 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             tts.stop();
             tts.shutdown();
         }
+        if (getActivity() != null && mBroadcastReceiver != null) getActivity().unregisterReceiver(mBroadcastReceiver);
     }
-    @Override public void onSaveInstanceState(Bundle savedInstanceState) {
+    @Override public void onPause() {
+        super.onPause();
+        mQueryText = inputQueryAutoCompleteTextView.getText().toString();
+    }
+
+    @Override public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
 
-        EditText query = getActivity().findViewById(R.id.query);
-        savedInstanceState.putString("inputQueryAutoCompleteTextView", query.getText().toString());
+        if (getActivity() != null) {
+            EditText query = getActivity().findViewById(R.id.query);
+            savedInstanceState.putString("inputQueryAutoCompleteTextView", query.getText().toString());
+        }
 
         /*RadioButton radio_FastSearch = (RadioButton)GlobalInputQueryFragment.findViewById(R.id.radio_FastSearch);
         if (radio_FastSearch.isChecked()) { savedInstanceState.putBoolean("radio_FastSearch", true); }
@@ -507,9 +519,11 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             if (resultCode == RESULT_OK) {
                 registerThatUserIsRequestingDictSearch(true);
                 Bundle extras = data.getExtras();
-                Uri adjustedImageUri = Uri.parse(extras.getString("returnImageUri"));
-                mImageToBeDecoded = getImageFromUri(adjustedImageUri);
-                getOcrTextWithTesseractAndDisplayDialog(mImageToBeDecoded);
+                if (extras != null) {
+                    Uri adjustedImageUri = Uri.parse(extras.getString("returnImageUri"));
+                    mImageToBeDecoded = getImageFromUri(adjustedImageUri);
+                    getOcrTextWithTesseractAndDisplayDialog(mImageToBeDecoded);
+                }
             }
         }
     }
@@ -529,13 +543,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
         // start source picker (camera, gallery, etc..) to get image for cropping and then use the image in cropping activity
         //CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).start(getActivity());
-        CropImage.activity().start(getContext(), this); //For FragmentActivity use
+        if (getContext() != null) CropImage.activity().start(getContext(), this); //For FragmentActivity use
 
-    }
-    private Uri getImageUriFromFile(String path) {
-        File f = new File(path);
-        Uri contentUri = Uri.fromFile(f);
-        return contentUri;
     }
     private Bitmap getImageFromUri(Uri resultUri) {
         Bitmap imageToBeDecoded = null;
@@ -543,7 +552,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             //BitmapFactory.Options bmOptions = new BitmapFactory.Options();
             //bmOptions.inJustDecodeBounds = false;
             //image = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-            imageToBeDecoded = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), resultUri);
+            if (getActivity() != null) imageToBeDecoded = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), resultUri);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -562,34 +571,39 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
         Matrix matrix = new Matrix();
         matrix.postRotate(angle);
-        Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap , 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
+        return Bitmap.createBitmap(scaledBitmap , 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true); //rotated Bitmap
 
-        return rotatedBitmap;
     }
 
     //Setup methods
     private void getOcrDataDownloadingStatus() {
 
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
-        mJpnOcrFileIsDownloading = sharedPreferences.getBoolean(JPN_FILE_DOWNLOADING_FLAG, false);
-        mEngOcrFileIsDownloading = sharedPreferences.getBoolean(ENG_FILE_DOWNLOADING_FLAG, false);
+        if (getContext() != null) {
+            SharedPreferences sharedPreferences = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
+            mJpnOcrFileIsDownloading = sharedPreferences.getBoolean(JPN_FILE_DOWNLOADING_FLAG, false);
+            mEngOcrFileIsDownloading = sharedPreferences.getBoolean(ENG_FILE_DOWNLOADING_FLAG, false);
+        }
     }
     public String getOCRLanguageFromSettings() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String language = sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_preferred_language_value_japanese));
+        if (getActivity() != null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String language = sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_preferred_language_value_japanese));
 
-        if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
-            return "jpn";
-        } else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
-            return "eng";
+            if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
+                return "jpn";
+            } else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
+                return "eng";
+            } else return "jpn";
         }
         else return "jpn";
     }
     private void setupPaths() {
-        //mInternalStorageTesseractFolderPath = Environment.getExternalStoragePublicDirectory(Environment.).getAbsolutePath() + "/";
-        mInternalStorageTesseractFolderPath = getActivity().getFilesDir() + "/tesseract/";
-        mPhoneAppFolderTesseractDataFilepath = mInternalStorageTesseractFolderPath + "tessdata/";
-        mDownloadsFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/";
+        if (getActivity() != null) {
+            //mInternalStorageTesseractFolderPath = Environment.getExternalStoragePublicDirectory(Environment.).getAbsolutePath() + "/";
+            mInternalStorageTesseractFolderPath = getActivity().getFilesDir() + "/tesseract/";
+            mPhoneAppFolderTesseractDataFilepath = mInternalStorageTesseractFolderPath + "tessdata/";
+            mDownloadsFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/";
+        }
     }
     private void getLanguageParametersFromSettingsAndReinitializeOcrIfNecessary() {
         String newLanguage = getOCRLanguageFromSettings();
@@ -602,7 +616,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         else return getResources().getString(R.string.language_label_english);
     }
     public void setupBroadcastReceiverForDownloadedOCRData() {
-        BroadcastReceiver receiver = new BroadcastReceiver() {
+        mBroadcastReceiver = new BroadcastReceiver() {
             //https://stackoverflow.com/questions/38563474/how-to-store-downloaded-image-in-internal-storage-using-download-manager-in-andr
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -634,7 +648,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 }
             }
         };
-        getActivity().registerReceiver(receiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+        if (getActivity() != null) getActivity().registerReceiver(mBroadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
     }
     private void initializeOcrEngineForChosenLanguage() {
         mOCRLanguage = getOCRLanguageFromSettings();
@@ -749,21 +763,24 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     }
     public boolean checkStoragePermission() {
         if (Build.VERSION.SDK_INT >= 23) {
-            if (getActivity().checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                Log.e(TAG_PERMISSIONS,"You have permission");
-                return true;
-            } else {
-                Log.e(TAG_PERMISSIONS,"You have asked for permission");
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-                return false;
+            if (getActivity() != null) {
+                if (getActivity().checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    Log.e(TAG_PERMISSIONS, "You have permission");
+                    return true;
+                } else {
+                    Log.e(TAG_PERMISSIONS, "You have asked for permission");
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                    return false;
+                }
             }
+            else return false;
         }
         else { //you dont need to worry about these stuff below api level 23
             Log.e(TAG_PERMISSIONS,"You already have the permission");
             return true;
         }
     }
-    @Override public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    @Override public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
             hasStoragePermissions = true;
@@ -862,7 +879,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         }
     }
     public void getOcrTextWithTesseractAndDisplayDialog(Bitmap imageToBeDecoded){
-        String OCRresult = null;
         mTess.setImage(imageToBeDecoded);
         mTesseractOCRAsyncTask = new TesseractOCRAsyncTask(getActivity()).execute();
     }
@@ -1017,22 +1033,22 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     private void setTTSLanguage() {
         int result;
         //Getting the user setting from the preferences
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String language = sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese));
-        mChosenTextToSpeechLanguage = getTextToSpeechLanguageLocale(language);
+        if (getActivity() != null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String language = sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese));
+            mChosenTextToSpeechLanguage = getTextToSpeechLanguageLocale(language);
 
-        //Setting the language
-        if (mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
-            result = tts.setLanguage(Locale.JAPAN);
-        }
-        else if (mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleEnglishUS))) {
-            result = tts.setLanguage(Locale.US);
-        }
-        else result = tts.setLanguage(Locale.US);
+            //Setting the language
+            if (mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
+                result = tts.setLanguage(Locale.JAPAN);
+            } else if (mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleEnglishUS))) {
+                result = tts.setLanguage(Locale.US);
+            } else result = tts.setLanguage(Locale.US);
 
-        if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-            Log.e("TTS", "This Language is not supported, set to default English.");
-            tts.setLanguage(Locale.US);
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "This Language is not supported, set to default English.");
+                tts.setLanguage(Locale.US);
+            }
         }
     }
     private void speakOut(String text) {
@@ -1106,25 +1122,28 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     }
     private class QueryInputSpinnerAdapter extends ArrayAdapter<String> {
     // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
-        public QueryInputSpinnerAdapter(Context ctx, int txtViewResourceId, List<String> list) {
+        QueryInputSpinnerAdapter(Context ctx, int txtViewResourceId, List<String> list) {
             super(ctx, txtViewResourceId, list);
             }
         @Override
         public View getDropDownView( int position, View cnvtView, ViewGroup prnt) {
             return getCustomView(position, cnvtView, prnt);
         }
+        @NonNull
         @Override
-        public View getView(int pos, View cnvtView, ViewGroup prnt) {
+        public View getView(int pos, View cnvtView, @NonNull ViewGroup prnt) {
             return getCustomView(pos, cnvtView, prnt);
         }
-        public View getCustomView(int position, View convertView, ViewGroup parent) {
+        View getCustomView(int position, View convertView, ViewGroup parent) {
 
-            LayoutInflater inflater = LayoutInflater.from(getActivity().getBaseContext());
-            View mySpinner = inflater.inflate(R.layout.custom_queryhistory_spinner, parent, false);
-            TextView pastquery = mySpinner.findViewById(R.id.pastQuery);
-            pastquery.setText(new_queryHistory.get(position));
-
-            return mySpinner;
+            if (getActivity() != null) {
+                LayoutInflater inflater = LayoutInflater.from(getActivity().getBaseContext());
+                View mySpinner = inflater.inflate(R.layout.custom_queryhistory_spinner, parent, false);
+                TextView pastquery = mySpinner.findViewById(R.id.pastQuery);
+                pastquery.setText(new_queryHistory.get(position));
+                return mySpinner;
+            }
+            else return null;
         }
     }
     public void DisplayQueryHistory(String queryStr, final AutoCompleteTextView query) {
@@ -1153,6 +1172,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             }
 
         // Set the dropdown main to include all past entries
+        if (getActivity() != null) {
             query.setAdapter(new QueryInputSpinnerAdapter(
                     getActivity().getBaseContext(),
                     R.layout.custom_queryhistory_spinner,
@@ -1161,35 +1181,46 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             //For some reason the following does nothing
             query.setOnItemSelectedListener(new OnItemSelectedListener() {
                 @Override
-                public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long id) {
+                public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                     String inputWordString = query.getText().toString();
                     onWordEntered_PerformThisFunction(inputWordString);
                 }
+
                 @Override
-                public void onNothingSelected(AdapterView<?> arg0) { }
+                public void onNothingSelected(AdapterView<?> arg0) {
+                }
             });
+        }
     }
     public void setNewQuery(String outputFromGrammarModuleFragment) {
-        AutoCompleteTextView queryInit = getActivity().findViewById(R.id.query);
-        queryInit.setText(outputFromGrammarModuleFragment);
+        if (getActivity() != null) {
+            AutoCompleteTextView queryInit = getActivity().findViewById(R.id.query);
+            queryInit.setText(outputFromGrammarModuleFragment);
+        }
     }
     private void registerThatUserIsRequestingDictSearch(Boolean state) {
-        SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.requestingDictSearch), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(getString(R.string.requestingDictSearch), state);
-        editor.apply();
+        if (getContext() != null) {
+            SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.requestingDictSearch), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(getString(R.string.requestingDictSearch), state);
+            editor.apply();
+        }
     }
     public void setJpnOcrDataIsDownloadingStatus(Boolean status) {
-        SharedPreferences sharedPref = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(JPN_FILE_DOWNLOADING_FLAG, status);
-        editor.apply();
+        if (getContext() != null) {
+            SharedPreferences sharedPref = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(JPN_FILE_DOWNLOADING_FLAG, status);
+            editor.apply();
+        }
     }
     public void setEngOcrDataIsDownloadingStatus(Boolean status) {
-        SharedPreferences sharedPref = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(ENG_FILE_DOWNLOADING_FLAG, status);
-        editor.apply();
+        if (getContext() != null) {
+            SharedPreferences sharedPref = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(ENG_FILE_DOWNLOADING_FLAG, status);
+            editor.apply();
+        }
     }
     public void setOcrDataIsDownloadingStatus(String filename, Boolean status) {
         if (filename.equals("jpn.traineddata")) setJpnOcrDataIsDownloadingStatus(status);

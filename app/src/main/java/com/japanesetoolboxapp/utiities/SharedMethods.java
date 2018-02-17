@@ -194,7 +194,9 @@ public class SharedMethods {
 
     public static void hideSoftKeyboard(Activity activity) {
         InputMethodManager inputMethodManager =(InputMethodManager) activity.getBaseContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        if (inputMethodManager != null && activity.getCurrentFocus() != null) {
+            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        }
     }
 
     public void makeDelay(int milliseconds){
@@ -404,7 +406,7 @@ public class SharedMethods {
             } catch (Exception e) {
                 e.printStackTrace();
                 Log.i("Diagnosis Time", "Failed to access online resources.");
-                Looper.prepare();
+                if (Looper.myLooper() == null) Looper.prepare(); //Checks if the looper already exists. If this is the case, uses the old looper
                 try {
                     activity.runOnUiThread(new Runnable() {
                         public void run() {
