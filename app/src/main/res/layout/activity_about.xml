@@ -46,11 +46,14 @@
             android:id="@+id/AboutTextView2Subtext6"
             style="@style/AboutTextViewItemSubtext"
             android:text="@string/AboutText2Subtext6"/>
-
         <TextView
-            android:id="@+id/AboutTextView3"
-            style="@style/AboutTextViewItem"
-            android:text="@string/AboutText3"/>
+            android:id="@+id/AboutTextView2Subtext7"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText2Subtext7"/>
+        <TextView
+            android:id="@+id/AboutTextView2Subtext8"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText2Subtext8"/>
 
         <TextView
             android:id="@+id/AboutTextView4"

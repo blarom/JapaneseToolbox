@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.preference.PreferenceManager;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -137,7 +138,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         savedInstanceState.putStringArrayList("mGlobalGrammarSpinnerList_element0", mGlobalGrammarSpinnerList_element0);
     }
 
-
     //Asynchronous methods
     @Override public Loader<List<Object>> onCreateLoader(int id, final Bundle args) {
         return new AsyncTaskLoader<List<Object>>(getContext()) {
@@ -155,17 +155,19 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             public List<Object> loadInBackground() {
 
                 List<Object> AsyncMatchingWordCharacteristics = new ArrayList<>();
-                if (mInternetIsAvailable) {
-                    try {
-                        String speechRecognizerString = args.getString(JISHO_LOADER_INPUT_EXTRA);
-                        AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromWeb(speechRecognizerString, getActivity());
-                    } catch (IOException e) {
-                        //throw new RuntimeException(e);
+
+                if (mAppWasInBackground == null || !mAppWasInBackground) {
+                    if (mInternetIsAvailable) {
+                        try {
+                            String speechRecognizerString = args.getString(JISHO_LOADER_INPUT_EXTRA);
+                            AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromWeb(speechRecognizerString, getActivity());
+                        } catch (IOException e) {
+                            //throw new RuntimeException(e);
+                        }
+                    } else {
+                        Log.i("Diagnosis Time", "Failed to access online resources.");
+                        SharedMethods.TellUserIfThereIsNoInternetConnection(getActivity());
                     }
-                }
-                else {
-                    Log.i("Diagnosis Time", "Failed to access online resources.");
-                    SharedMethods.TellUserIfThereIsNoInternetConnection(getActivity());
                 }
                 return AsyncMatchingWordCharacteristics;
             }
@@ -174,19 +176,31 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     @Override public void onLoadFinished(Loader<List<Object>> loader, List<Object> data) {
         mAsyncMatchingWordCharacteristics = data;
 
-        if (mAsyncMatchingWordCharacteristics.size() != 0 && MainActivity.mShowOnlineResults) {
-            matchFound = true;
-            compareMatchingWordCharacteristics();
-            displayResults(mSearchedWord);
-        }
+        if (mAppWasInBackground == null || !mAppWasInBackground) {
+            Boolean showOnlineResults = getShowOnlineResultsPreference();
+            if (mAsyncMatchingWordCharacteristics.size() != 0 && showOnlineResults) {
+                matchFound = true;
+                compareMatchingWordCharacteristics();
+                displayResults(mSearchedWord);
+            }
 
-        //If no dictionary match was found, then this is probably a verb conjugation, so try that
-        if (!matchFound && !mSearchedWord.equals("")) {
-            if (mShowOnlineResultsToast!=null) mShowOnlineResultsToast.cancel();
-            getActivity().findViewById(R.id.button_searchVerb).performClick();
+            //If no dictionary match was found, then this is probably a verb conjugation, so try that
+            if (!matchFound && !mSearchedWord.equals("") && getActivity() != null) {
+                if (mShowOnlineResultsToast != null) mShowOnlineResultsToast.cancel();
+                getActivity().findViewById(R.id.button_searchVerb).performClick();
+            }
         }
     }
     @Override public void onLoaderReset(Loader<List<Object>> loader) {}
+    public Boolean getShowOnlineResultsPreference() {
+        Boolean showOnlineResults = false;
+        if (getActivity()!=null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            showOnlineResults = sharedPreferences.getBoolean(getString(R.string.pref_complete_local_with_online_search_key),
+                    getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default));
+        }
+        return showOnlineResults;
+    }
 
 	// Functionality Functions
     public void SearchInDictionary(String word) {
@@ -204,8 +218,11 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         mShowOnlineResultsToast = Toast.makeText(getContext(), getResources().getString(R.string.showOnlineResultsToastString), Toast.LENGTH_SHORT);
         mAsyncMatchingWordCharacteristics = new ArrayList<>();
 
+        //Getting user preference for showing online results
+        Boolean showOnlineResults = getShowOnlineResultsPreference();
+
         //Attempting to access jisho.org to complete the results found in the local dictionary
-        if (getActivity()!=null && MainActivity.mShowOnlineResults) {
+        if (getActivity()!=null && showOnlineResults) {
             if (!mSearchedWord.equals("")) mShowOnlineResultsToast.show();
 
             Bundle queryBundle = new Bundle();
@@ -213,13 +230,13 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
             LoaderManager loaderManager = getActivity().getSupportLoaderManager();
             Loader<String> JishoWebSearchLoader = loaderManager.getLoader(JISHO_WEB_SEARCH_LOADER);
-            if (JishoWebSearchLoader == null)  loaderManager.initLoader(JISHO_WEB_SEARCH_LOADER, queryBundle, this);
+            if (JishoWebSearchLoader == null) loaderManager.initLoader(JISHO_WEB_SEARCH_LOADER, queryBundle, this);
             else loaderManager.restartLoader(JISHO_WEB_SEARCH_LOADER, queryBundle, this);
         }
 
         displayResults(mSearchedWord);
 
-        if (!matchFound && !mSearchedWord.equals("") && !MainActivity.mShowOnlineResults) {
+        if (!matchFound && !mSearchedWord.equals("") && !showOnlineResults) {
             if (mShowOnlineResultsToast!=null) mShowOnlineResultsToast.cancel();
             getActivity().findViewById(R.id.button_searchVerb).performClick();
         }
@@ -478,11 +495,11 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             //Toast.makeText(GlobalGrammarModuleFragmentView.getContext(), "Clicked", Toast.LENGTH_SHORT).show();
 
             // Instead of implementing the direct text change in the InputQueryFragment (this can cause bugs in the long run), it is sent through an interface
-                ;//This is the code that's avoided
+            //This is the code that's avoided
                     //AutoCompleteTextView queryInit = (AutoCompleteTextView)InputQueryFragment.GlobalInputQueryFragment.findViewById(R.id.inputQueryAutoCompleteTextView);
                     //queryInit.setText(text.getText().subSequence(start, end));
 
-                ;//The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
+            //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
                    try {
                         mCallbackWord = (UserWantsNewSearchForSelectedWordListener) getActivity();
                    } catch (ClassCastException e) {
@@ -765,8 +782,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 if (limits[0] != -1) {
                     type = MainActivity.MeaningsDatabase.get(limits[0])[2];
                 }
-                if (type.substring(0,1).equals("V") && !type.equals("VC")) { is_verb = true; }
-                else { is_verb = false; }
+                is_verb = type.substring(0, 1).equals("V") && !type.equals("VC");
 
                 for (int i = 0; i < parsed_list.size(); i++) {
 
@@ -774,7 +790,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     hit = parsed_list.get(i).trim(); //also trims the extra space before the word
 
                     if (is_verb) { hit = "to " + hit; } //Add "to " to the hit if it's a verb (the "to " was removed to save memory in the database)
-                    if (hit.length()>3 && hit.substring(0,3).equals("to ")) { is_verb_and_latin = true;} else { is_verb_and_latin = false; }
+                    is_verb_and_latin = hit.length() > 3 && hit.substring(0, 3).equals("to ");
 
                     concatenated_hit = SpecialConcatenator(hit);
                     if (TypeisKanji && !ConvertFragment.TextType(concatenated_hit).equals("kanji") ) { continue; }
@@ -800,7 +816,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     }
 
                     // Perform the comparison to the input inputQueryAutoCompleteTextView and return the length of the shortest hit
-                    ;// Match length is reduced every time there's a hit and the hit is shorter
+                    // Match length is reduced every time there's a hit and the hit is shorter
                     if (       (concatenated_hit.contains(concatenated_word)
                             || (TypeisLatin && hit.equals("to " + inglessVerb))
                             || (!translationLatin.equals("") && concatenated_hit.contains(translationLatin))
@@ -841,7 +857,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
             // Sorting the results according to the shortest keyword as found in the above search
 
-            ;// Computing the value length
+            // Computing the value length
             int current_row_index;
             int current_col_index;
             int current_romaji_length;

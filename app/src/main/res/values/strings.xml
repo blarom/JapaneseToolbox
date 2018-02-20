@@ -103,6 +103,7 @@
     <string name="getTextThroughCamera">Optical character recognition</string>
     <string name="speakQuery">Hear user query</string>
     <string name="requestingDictSearch">requestingDictSearch</string>
+    <string name="queryHistoryKey">queryHistoryKey</string>
     <string name="STTACtivityNotFound">Sorry, it appears your phone does not have Speech-To-Text functionality. Redirecting to relevant resources…</string>
     <string name="DownloadDialogTitle">Download OCR data files.</string>
     <string name="DownloadDialogMessageJPN">Please select how you want to download the required Japanese Optical Character Recognition data (approx. 40MB).</string>
@@ -167,8 +168,6 @@
 
     <!--AboutActivity Text-->
     <string name="DONE">DONE</string>
-
-    <!--AboutActivity Text-->
     <string name="AboutText1">
         Japanese Toolbox is a set of reference tools designed to make learning Japanese much more efficient,
         by giving quick answers to questions on difficult subjects such as grammar, verb conjugations and Kanji decompositions. Most
@@ -194,12 +193,13 @@
         - A Kanji decomposer (好 &#8658; 女+子 button) where you can get the meaning and readings of all of the components in a given Kanji.
     </string>
     <string name="AboutText2Subtext6">
-        - A Text-To-Speech (speaker button) function so that you may listen to your query in English or in Japanese. You can choose the speech language in the Settings menu.
+        - A Text-To-Speech function (speaker button) so that you may listen to your query in English or in Japanese. You can choose the speech language in the Settings menu.
     </string>
-    <string name="AboutText3">
-        You can perform a query by writing/pasting the text manually in the Search Me! box, or by using the Speech-To-Text
-        (microphone button) or Image-To-Text (camera button) functions.\nYou
-        can choose the Speech-To-Text and OCR languages (English/Japanese) in the Settings menu.
+    <string name="AboutText2Subtext7">
+        - A Speech-To-Text function (microphone button) for Japanese or English speech. You can choose the speech recognition language in the Settings menu.
+    </string>
+    <string name="AboutText2Subtext8">
+        - A Image-To-Text function (camera button) for Japanese or English scripts. You can choose the script recognition language in the Settings menu.
     </string>
 
     <string name="AboutText4">

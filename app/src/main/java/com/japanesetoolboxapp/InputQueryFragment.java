@@ -47,6 +47,7 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
@@ -169,10 +170,15 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
         initializeOcrEngineForChosenLanguage();
 
-        // Restoring inputs from the savedInstanceState (if applicable)
+        // Restoring query history
         if (queryHistory == null) {
             queryHistory = new String[7];
             for (int i=0;i<queryHistory.length;i++) { queryHistory[i] = ""; } //7 elements in the array
+        }
+        if (getContext() != null) {
+            SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.queryHistoryKey), Context.MODE_PRIVATE);
+            String queryHistoryAsString = sharedPref.getString(getString(R.string.queryHistoryKey), "");
+            if (!queryHistoryAsString.equals("")) queryHistory = TextUtils.split(queryHistoryAsString,",");
         }
         Log.i("Diagnosis Time", "Loaded Search History.");
 
@@ -193,7 +199,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 String inputWordString = inputQueryAutoCompleteTextView.getText().toString();
 
-                DisplayQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
+                updateQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
                 inputQueryAutoCompleteTextView.dismissDropDown();
 
                 onWordEntered_PerformThisFunction(inputWordString);
@@ -210,7 +216,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             //EditText inputVerbObject = (EditText)fragmentView.findViewById(R.id.input_verb);
             String inputVerbString = inputQueryAutoCompleteTextView.getText().toString();
             mQueryText = inputVerbString;
-            DisplayQueryHistory(inputVerbString, inputQueryAutoCompleteTextView);
+            updateQueryHistory(inputVerbString, inputQueryAutoCompleteTextView);
 
             // Check if the database has finished loading. If not, make the user wait.
             while(MainActivity.VerbKanjiConjDatabase == null){
@@ -233,7 +239,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         button_searchWord.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
             String inputWordString = inputQueryAutoCompleteTextView.getText().toString();
             mQueryText = inputWordString;
-            DisplayQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
+            updateQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
 
             // Check if the database has finished loading. If not, make the user wait.
             while(MainActivity.VerbKanjiConjDatabase == null){
@@ -255,7 +261,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         button_choose_Convert.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
             String inputWordString = inputQueryAutoCompleteTextView.getText().toString();
 
-            DisplayQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
+            updateQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
 
             onConvertEntered_PerformThisFunction(inputWordString);
         } } );
@@ -265,7 +271,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 //            // Search using Tangorin
 //            String queryString = inputQueryAutoCompleteTextView.getText().toString();
 //
-//            DisplayQueryHistory(queryString, inputQueryAutoCompleteTextView);
+//            updateQueryHistory(queryString, inputQueryAutoCompleteTextView);
 //
 //            String website = "http://www.tangorin.com/general/" + queryString;
 //            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(website));
@@ -279,7 +285,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
             String inputWordString = inputQueryAutoCompleteTextView.getText().toString();
 
-            DisplayQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
+            updateQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
 
             // Check if the database has finished loading. If not, make the user wait.
             while(MainActivity.RadicalsOnlyDatabase == null && MainActivity.enough_memory_for_heavy_functions) {
@@ -310,7 +316,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
             String inputWordString = inputQueryAutoCompleteTextView.getText().toString();
 
-            DisplayQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
+            updateQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
 
             // Check if the database has finished loading. If not, make the user wait.
             while(MainActivity.RadicalsOnlyDatabase == null && MainActivity.enough_memory_for_heavy_functions) {
@@ -344,7 +350,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         button_ShowHistory.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
 
             String queryString = inputQueryAutoCompleteTextView.getText().toString();
-            DisplayQueryHistory(queryString, inputQueryAutoCompleteTextView);
+            updateQueryHistory(queryString, inputQueryAutoCompleteTextView);
             boolean queryHistoryIsEmpty = true;
             for (String element : queryHistory) {
                 if (!element.equals("")) { queryHistoryIsEmpty = false; }
@@ -451,7 +457,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     @Override public void onResume() {
         super.onResume();
         inputQueryAutoCompleteTextView.setText(mQueryText);
-        //inputQueryAutoCompleteTextView.clearFocus();
+        inputQueryAutoCompleteTextView.clearFocus();
         if (getActivity() != null) getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         getLanguageParametersFromSettingsAndReinitializeOcrIfNecessary();
     }
@@ -463,12 +469,21 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             tts.shutdown();
         }
         if (getActivity() != null && mBroadcastReceiver != null) getActivity().unregisterReceiver(mBroadcastReceiver);
+
     }
     @Override public void onPause() {
         super.onPause();
         mQueryText = inputQueryAutoCompleteTextView.getText().toString();
-    }
 
+        //Save the query history
+        if (getContext() != null) {
+            String queryHistoryAsString = TextUtils.join(",", queryHistory);
+            SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.queryHistoryKey), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString(getString(R.string.queryHistoryKey), queryHistoryAsString);
+            editor.apply();
+        }
+    }
     @Override public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
 
@@ -1146,32 +1161,32 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             else return null;
         }
     }
-    public void DisplayQueryHistory(String queryStr, final AutoCompleteTextView query) {
+    public void updateQueryHistory(String queryStr, final AutoCompleteTextView query) {
 
         // Implementing a FIFO array for the spinner
         // Add the entry at the beginning of the stack
         // If the entry is already in the spinner, remove that entry
 
-            if (!queryHistory[0].equals(queryStr)) { // if the inputQueryAutoCompleteTextView hasn't changed, don't change the dropdown list
-                String temp;
-                int i = queryHistory.length-1;
-                while ( i>0 ) {
-                    temp = queryHistory[i-1];
-                    queryHistory[i] = temp;
-                    if (queryHistory[i].equalsIgnoreCase(queryStr)) { queryHistory[i]=""; }
-                    i--;
-                }
-                queryHistory[0]=queryStr;
+        if (!queryHistory[0].equals(queryStr)) { // if the inputQueryAutoCompleteTextView hasn't changed, don't change the dropdown list
+            String temp;
+            int i = queryHistory.length-1;
+            while ( i>0 ) {
+                temp = queryHistory[i-1];
+                queryHistory[i] = temp;
+                if (queryHistory[i].equalsIgnoreCase(queryStr)) { queryHistory[i]=""; }
+                i--;
+            }
+            queryHistory[0]=queryStr;
 
-                new_queryHistory = new ArrayList<>();
-                for (String aQueryHistory : queryHistory) {
-                    if (!aQueryHistory.equals("")) {
-                        new_queryHistory.add(aQueryHistory);
-                    }
+            new_queryHistory = new ArrayList<>();
+            for (String aQueryHistory : queryHistory) {
+                if (!aQueryHistory.equals("")) {
+                    new_queryHistory.add(aQueryHistory);
                 }
             }
+        }
 
-        // Set the dropdown main to include all past entries
+        // Set the dropdow`n main to include all past entries
         if (getActivity() != null) {
             query.setAdapter(new QueryInputSpinnerAdapter(
                     getActivity().getBaseContext(),
