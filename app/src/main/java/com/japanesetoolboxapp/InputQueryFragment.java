@@ -149,8 +149,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         inputQueryAutoCompleteTextView.setMovementMethod(new ScrollingMovementMethod());
         inputQueryAutoCompleteTextView.setLongClickable(false);
         //inputQueryAutoCompleteTextView.setTextIsSelectable(true);
-
-
         inputQueryAutoCompleteTextView.setFocusable(true);
         inputQueryAutoCompleteTextView.setFocusableInTouchMode(true);
         mQueryText = "";
@@ -356,6 +354,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         button_ShowHistory.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
 
             String queryString = inputQueryAutoCompleteTextView.getText().toString();
+            mQueryText = queryString;
             updateQueryHistory(queryString, inputQueryAutoCompleteTextView);
             boolean queryHistoryIsEmpty = true;
             for (String element : queryHistory) {
@@ -366,6 +365,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
         final ImageView button_Copy = InputQueryFragment.findViewById(R.id.copyQuery);
         button_Copy.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
+            String queryString = inputQueryAutoCompleteTextView.getText().toString();
+            mQueryText = queryString;
             if (getActivity() != null) {
                 ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("Copied Text", inputQueryAutoCompleteTextView.getText().toString());
@@ -470,7 +471,9 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
         final ImageView button_TextToSpeech = InputQueryFragment.findViewById(R.id.speakQuery);
         button_TextToSpeech.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
-            speakOut(inputQueryAutoCompleteTextView.getText().toString());
+            String queryString = inputQueryAutoCompleteTextView.getText().toString();
+            mQueryText = queryString;
+            speakOut(queryString);
         } } );
 
         return InputQueryFragment;

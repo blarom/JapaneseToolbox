@@ -167,6 +167,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     } else {
                         Log.i("Diagnosis Time", "Failed to access online resources.");
                         SharedMethods.TellUserIfThereIsNoInternetConnection(getActivity());
+                        cancelLoadInBackground();
                     }
                 }
                 return AsyncMatchingWordCharacteristics;

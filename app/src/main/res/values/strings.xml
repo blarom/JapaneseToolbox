@@ -125,7 +125,7 @@
     <string name="GrammarModule_Example">Rules and Examples:</string>
     <string name="showOnlineResultsToastString">Looking for results online, please wait…</string>
     <string name="ShowExamples">Example sentences (>show)</string>
-    <string name="PhraseStructure">Phrase structure</string>
+    <string name="PhraseStructure">Phrase structure:</string>
 
     <!--ConjugationFragment Strings-->
     <string name="English">English</string>
