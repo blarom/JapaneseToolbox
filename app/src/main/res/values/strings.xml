@@ -104,6 +104,7 @@
     <string name="speakQuery">Hear user query</string>
     <string name="requestingDictSearch">requestingDictSearch</string>
     <string name="queryHistoryKey">queryHistoryKey</string>
+    <string name="copiedTextToClipboard">Copied text to clipboard</string>
     <string name="STTACtivityNotFound">Sorry, it appears your phone does not have Speech-To-Text functionality. Redirecting to relevant resources…</string>
     <string name="DownloadDialogTitle">Download OCR data files.</string>
     <string name="DownloadDialogMessageJPN">Please select how you want to download the required Japanese Optical Character Recognition data (approx. 40MB).</string>

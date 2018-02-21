@@ -11,7 +11,7 @@
     <dimen name="histButtonLeftRightMargin">5dp</dimen>
     <dimen name="histButtonWidth">30dp</dimen>
 
-    <dimen name="functionIconsLeftRightMargin">30dp</dimen>
+    <dimen name="functionIconsLeftRightMargin">15dp</dimen>
     <dimen name="speechButtonSize">25dp</dimen>
     <dimen name="cameraButtonSize">25dp</dimen>
 

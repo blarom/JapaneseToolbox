@@ -20,6 +20,9 @@ import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
+import android.content.ClipData;
+import android.content.ClipDescription;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -144,6 +147,12 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         mInternetIsAvailable = SharedMethods.internetIsAvailableCheck(this.getContext());
         inputQueryAutoCompleteTextView = InputQueryFragment.findViewById(R.id.query);
         inputQueryAutoCompleteTextView.setMovementMethod(new ScrollingMovementMethod());
+        inputQueryAutoCompleteTextView.setLongClickable(false);
+        //inputQueryAutoCompleteTextView.setTextIsSelectable(true);
+
+
+        inputQueryAutoCompleteTextView.setFocusable(true);
+        inputQueryAutoCompleteTextView.setFocusableInTouchMode(true);
         mQueryText = "";
         mOcrResultString = "";
         inputQueryAutoCompleteTextView.setText(mQueryText);
@@ -203,9 +212,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 inputQueryAutoCompleteTextView.dismissDropDown();
 
                 onWordEntered_PerformThisFunction(inputWordString);
-            }
-            else {
-                //inputQueryAutoCompleteTextView.showDropDown();
             }
             return true;
         } } );
@@ -355,8 +361,34 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             for (String element : queryHistory) {
                 if (!element.equals("")) { queryHistoryIsEmpty = false; }
             }
-            if (!queryHistoryIsEmpty) {
-                inputQueryAutoCompleteTextView.showDropDown();}
+            if (!queryHistoryIsEmpty) inputQueryAutoCompleteTextView.showDropDown();
+        } } );
+
+        final ImageView button_Copy = InputQueryFragment.findViewById(R.id.copyQuery);
+        button_Copy.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
+            if (getActivity() != null) {
+                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("Copied Text", inputQueryAutoCompleteTextView.getText().toString());
+                if (clipboard != null) clipboard.setPrimaryClip(clip);
+                Toast.makeText(getContext(), getResources().getString(R.string.copiedTextToClipboard), Toast.LENGTH_SHORT).show();
+            }
+        } } );
+
+        final ImageView button_Paste = InputQueryFragment.findViewById(R.id.pasteToQuery);
+        button_Paste.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
+
+            if (getActivity() != null) {
+                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+                if (clipboard != null) {
+                    if (clipboard.hasPrimaryClip()) {
+                        android.content.ClipDescription description = clipboard.getPrimaryClipDescription();
+                        android.content.ClipData data = clipboard.getPrimaryClip();
+                        if (data != null && description != null && description.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN))
+                            inputQueryAutoCompleteTextView.setText(String.valueOf(data.getItemAt(0).getText()));
+                    }
+                }
+            }
+
         } } );
 
         final ImageView button_SpeechToText = InputQueryFragment.findViewById(R.id.getTextThroughSpeech);
@@ -1177,17 +1209,18 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 i--;
             }
             queryHistory[0]=queryStr;
+        }
 
-            new_queryHistory = new ArrayList<>();
-            for (String aQueryHistory : queryHistory) {
-                if (!aQueryHistory.equals("")) {
-                    new_queryHistory.add(aQueryHistory);
-                }
+        new_queryHistory = new ArrayList<>();
+        for (String aQueryHistory : queryHistory) {
+            if (!aQueryHistory.equals("")) {
+                new_queryHistory.add(aQueryHistory);
             }
         }
 
-        // Set the dropdow`n main to include all past entries
+        // Set the dropdown main to include all past entries
         if (getActivity() != null) {
+
             query.setAdapter(new QueryInputSpinnerAdapter(
                     getActivity().getBaseContext(),
                     R.layout.custom_queryhistory_spinner,
