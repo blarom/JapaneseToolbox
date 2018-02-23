@@ -18,10 +18,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18|noun descriptor|PP||X no Y @ Y = noun, X = descriptor|774|||
 19|in fact, indeed|PP|Used to provide emphasis to the sentence, politer than "n".|X no @ X = verb (any tense)|775, 776, 777|||
 20|polite softener|PP|Used as a softener to the sentence, politer than "n".|X no @ X = verb|778, 779|||
-21|verb noun modifier|VC|Used to make a noun out of a verb (all plain tenses), similar in function to "koto" in forming a verb gerund.|X no @ X = verb plain form|867, 1387, 1388, 1389|||
-22|of, made of + verb object marker|PP|This is a combination of two prepositions: a possessive marker and an object indicator for verbs requiring "ga".|X no ga|771|||
+21|noun modifier for verb|VC|Used to make a noun out of a verb (all plain tenses), similar in function to "koto" in forming a verb gerund.|X no @ X = verb plain form|867, 1387, 1388, 1389|||
+22|noun modifier and use as subject|PP|This is a combination of two prepositions: a possessive marker "no" and a subject indicator "ga". It transforms the phrase (adverb, adjective, verb) into a noun for use as the subject of an enclosing phrase. The enclosing phrase in turn requires the "ga" subject marker due to the grammar rules governing it.|X no ga|771, 1453|||
 23|good at, not good at, like to do/be, dislike to do/be|SSD||X no ga Y da @ X = verb plain form, Y = suki, kirai, ii, warui, jouzu, etc..|1387|||
-24|of, made of + verb object marker|PP|This is a combination of two prepositions: a possessive marker and an object indicator for verbs requiring "wo".|X no wo||||
+24|noun modifier and use as object|PP|This is a combination of two prepositions: a possessive marker "no" and an object indicator "wo". It transforms the phrase (adverb, adjective, verb) into a noun for use as the object of an enclosing phrase. The enclosing phrase in turn requires the "wo" subject marker due to the grammar rules governing it.|X no wo|1455|||
 25|in fact, indeed|PP|Used to provide emphasis to the sentence, casual form of "no".|X n @ X = verb|780, 781, 782|||
 26|softener|PP|Used as a softener to the sentence, casual form of "no".|X n @ X = verb|783, 784|||
 27|verb object marker|PP||X wo Y @ X = object, Y = verb|785, 1343|||
@@ -98,7 +98,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 98|adverb form|naAC||Adjective conjuation: [root] + ni|1092, 1093|||
 99|from the object's point of view|PP||X ni wa|841, 842, 1269|||
 100|verb object marker|PP|Used for verbs taking "ni" in a compound sentence.|X ni wa Y @ X = object, Y = verb taking "ni" as object marker (e.g. au)|843|||
-101|possesive subject marker|PP|Used to transform a verb into a noun (e.g. eat food > the eating of food) and subsequently use that noun as the subject of a phrase (e.g. the eating of food is good).|X no wa Y @ X = object, Y =phrase|1329, 1330, 1451|||
+101|noun modifier and use as subject|PP|This is a combination of two prepositions: a possessive marker "no" and a subject indicator "wa". It transforms the phrase (adverb, adjective, verb) into a noun for use as the subject of an enclosing phrase. The enclosing phrase in turn requires the "wa" subject marker according to the grammar rules governing it. For example, "eat food" is modified to "the eating of food" and is used as the subject of the phrase "the eating of food is good".|X no wa Y @ X = object, Y =phrase|1329, 1330, 1451, 1452, 1454|||
 102|among other things, such things as, something like that|PP|Similar to "ya… nado", emphasis on providing a list of examples.|X toka Y toka @ X/Y = noun, verb in plain form or adjective|1296, 1297, 1298|||
 103|and, as well as|PP||||||
 104|out of X, the Y is good|SSD||X wa Y ga ii desu @ X = noun describing a set of objects, Y = noun as subset of X|844|||
@@ -6149,7 +6149,6 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6149|I plan to X|SSD||X wo yotei da|1448|||
 6150|scholarship, stipend, bursary|NACF||||||
 6151|student loan|NACF|||1450|||
-6152|go smoothly, turn out well, do the trick, have peaceful relations|VKuI||||||
 6152|miserable, pitiable, shameful, deplorable, pathetic|Ai|Also used as an insult in a condescending setting.|||||
 6153|harbour, harbor, port|NPl||||||
 6154|importantly, valuably, seriously|AM||||||
@@ -6160,3 +6159,4 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6159|skill|NACF||||||
 6160|arm (esp. upper arm)|NAn||||||
 6161|counter used to measure the thickness of round objects|C||||||
+6162|go smoothly, turn out well, do the trick, have peaceful relations|VKuI||||||
