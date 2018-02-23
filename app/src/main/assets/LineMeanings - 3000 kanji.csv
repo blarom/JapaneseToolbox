@@ -98,7 +98,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 98|adverb form|naAC||Adjective conjuation: [root] + ni|1092, 1093|||
 99|from the object's point of view|PP||X ni wa|841, 842, 1269|||
 100|verb object marker|PP|Used for verbs taking "ni" in a compound sentence.|X ni wa Y @ X = object, Y = verb taking "ni" as object marker (e.g. au)|843|||
-101|possesive subject marker|PP||X no wa Y @ X = object, Y =phrase|1329, 1330|||
+101|possesive subject marker|PP|Used to transform a verb into a noun (e.g. eat food > the eating of food) and subsequently use that noun as the subject of a phrase (e.g. the eating of food is good).|X no wa Y @ X = object, Y =phrase|1329, 1330, 1451|||
 102|among other things, such things as, something like that|PP|Similar to "ya… nado", emphasis on providing a list of examples.|X toka Y toka @ X/Y = noun, verb in plain form or adjective|1296, 1297, 1298|||
 103|and, as well as|PP||||||
 104|out of X, the Y is good|SSD||X wa Y ga ii desu @ X = noun describing a set of objects, Y = noun as subset of X|844|||
@@ -251,7 +251,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 251|please do X|VC||X kudasai @ X = verb te form (add "sumimasen" or "chotto" to soften the request)|886|||
 252|to please do/be X|VC||X kudasai @ X = verb te form||||
 253|would you please do X|VC||X kuremasen ka @ X = verb te form (expression used when the request may cause some trouble to the other person)|||te kurenai, te itadakemasen ka|
-254|(He) does/is X as a favor for me|VC|Use "te kureru" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence). Usually refers to performing an act for the subject or a close familiar. Usage of "te kureru" corresponds to an active phrase as opposted to "te morau"that corresponds to a passive phrase.|Y ga Z wo X kureru @ X = verb te form, Y = person doing the favor, Z = object of the favor|1435, 1438. 1441||te morau, te ageru|
+254|(He) does/is X as a favor for me|VC|Use "te kureru" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence). Usually refers to performing an act for the subject or a close familiar. Usage of "te kureru" corresponds to an active phrase as opposted to "te morau"that corresponds to a passive phrase.|Y ga Z wo X kureru @ X = verb te form, Y = person doing the favor, Z = object of the favor|1435, 1438, 1441||te morau, te ageru|
 255|do X and see what happens|VC||X miru @ X = verb te form|1349, 1350, 1390|||
 256|want to do X and see what happens, want to try doing X|VC||X miru @ X = verb te form|990|||
 257|(He) can do/be X as a favor|VC||X moraeru @ X = verb te form||||
@@ -2548,7 +2548,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2548|question|NACF|||116|||
 2549|queue, line|NACF|||65|||
 2550|quick temper, short temper|NACF||||||
-2551|qulitative difference, disparity, gap|NACF||||||
+2551|qualitative difference, disparity, gap|NACF||||||
 2552|radiance|NACF||||||
 2553|rainy season|NACF||||||
 2554|rainy season|NACF|||126|||
@@ -2924,7 +2924,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2924|sweater|NAt|||201|||
 2925|tuxedo|NAt|||205|||
 2926|underwear|NAt||||||
-2927|western clothes|NAt|||190|||
+2927|Western clothes|NAt|||190|||
 2928|Y-shirt, business shirt|NAt|||201|||
 2929|zori, sandal|NAt|Reserved for Japanese sandals|||||
 2930|Atheism|NB||||||
@@ -6150,3 +6150,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6150|scholarship, stipend, bursary|NACF||||||
 6151|student loan|NACF|||1450|||
 6152|go smoothly, turn out well, do the trick, have peaceful relations|VKuI||||||
+6152|miserable, pitiable, shameful, deplorable, pathetic|Ai|Also used as an insult in a condescending setting.|||||
+6153|harbour, harbor, port|NPl||||||
+6154|importantly, valuably, seriously|AM||||||
+6155|zealously, enthusiatically|AM||||||
+6156|directly, erectly, straightforwardly, honestly, frankly|AM||||||
+6157|approval, agreement, support, favour, favor|NACF||||||
+6158|arm|NAn||||||
+6159|skill|NACF||||||
+6160|arm (esp. upper arm)|NAn||||||
+6161|counter used to measure the thickness of round objects|C||||||

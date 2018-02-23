@@ -332,7 +332,7 @@ futari de, 二人で, both|futari de|二人で|756||
 doushitemo, 如何しても, by all means, at any cost, no matter what|doushitemo|如何しても|757||
 jiriki de, 自力で, by oneself|jiriki de|自力で|758||
 nonbiri, のんびり, carefreely, leisurely|nonbiri|のんびり|759||
-taisetsuni, 大切に, carefully, cautiously|taisetsuni|大切に|760||
+taisetsu ni, 大切に, carefully, cautiously|taisetsu ni|大切に|760||
 ukkari, うっかり, carelessly, thoughtlessly, inadvertently|ukkari|うっかり|761||
 hakkiri, はっきり, clearly, plainly, distinctly|hakkiri|はっきり|762||
 kirei ni, きれいに, completely, entirely|kirei ni|きれいに|763||
@@ -1933,7 +1933,7 @@ ryou, 両, quantity|ryou|両|2547||
 shitsumon, 質問, question|shitsumon|質問|2548||
 retsu, 列, queue, line|retsu|列|2549||
 kanki, 短気, quick temper, short temper|kanki|短気|2550||
-kakusa, 格差, qulitative difference, disparity, gap|kakusa|格差|2551||
+kakusa, 格差, qualitative difference, disparity, gap|kakusa|格差|2551||
 kagayaki, 輝き, radiance|kagayaki|輝き|2552||
 baiu, 梅雨, rainy season|baiu|梅雨|2553||
 tsuyu, 梅雨, rainy season|tsuyu|梅雨|2554||
@@ -2270,7 +2270,7 @@ buraakutai, ブラックタイ, black tie|buraakutai|ブラックタイ|2892||
 burausu, ブラウス, blouse|burausu|ブラウス|2893||
 sebiro, 背広, blouse|sebiro|背広|2894||
 botan, ボタン, button|botan|ボタン|2895||
-fuku, youfuku, 服, clothes|fuku, youfuku|服|2896||
+fuku, 服, clothes|fuku|服|2896||
 kooto, コート, coat|kooto|コート|2897||
 uwagi, 上着, coat, jacket, outerwear|uwagi|上着|2898||
 kontakutorenzu, コンタクトレンズ, contact lens|kontakutorenzu|コンタクトレンズ|2899||
@@ -2301,7 +2301,7 @@ sangurasu, サングラス, sunglasses|sangurasu|サングラス|2923||
 seetaa, セーター, sweater|seetaa|セーター|2924||
 takishiido, タキシード, tuxedo|takishiido|タキシード|2925||
 shitagi, 下着, underwear|shitagi|下着|2926||
-youfuku, 洋服, western clothes|youfuku|洋服|2927||
+youfuku, 洋服, Western clothes|youfuku|洋服|2927||
 waishatsu, ワイシャツ, Y-shirt, business shirt|waishatsu|ワイシャツ|2928||
 zouri, 草履, zori, sandal|zouri|草履|2929||
 mushinron, 無神論, Atheism|mushinron|無神論|2930||
@@ -3855,3 +3855,10 @@ taiko, 太鼓, drum|taiko|太鼓|6144||
 taiko, 太古, ancient times|taiko|太古|6145||
 namahage, amahage, 生剥, folklore demons of the Oga Peninsula (villagers dress up as namahage on New Year's Eve and frighten children)|namahage, amahage|生剥|6146||
 shougakukin, 奨学金, scholarship, stipend, bursary, student loan|shougakukin|奨学金|6150;6151||
+nasakenai, 情けない, go smoothly, turn out well, do the trick, have peaceful relations, 情け無い, 情無い, 情ない|nasakenai|情けない|6152|情け無い, 情無い, 情ない|
+minato, 港, miserable, pitiable, shameful, deplorable, pathetic|minato|港|6153||
+daiji ni, 大事に, harbour, harbor, port|daiji ni|大事に|6154||
+massugu ni, 真っ直ぐに, importantly, valuably, seriously, 真っすぐに|massugu ni|真っ直ぐに|6155|真っすぐに|
+sansei, 賛成, directly, erectly, straightforwardly, honestly, frankly|sansei|賛成|6157||
+ude, 腕, approval, agreement, support, favour, favor, arm|ude|腕|6158;6159||
+kaina, 腕, skill, arm (esp. upper arm)|kaina|腕|6160;6161||

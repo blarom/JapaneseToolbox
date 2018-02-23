@@ -785,12 +785,22 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 }
                 is_verb = type.substring(0, 1).equals("V") && !type.equals("VC");
 
+                boolean valueIsInParentheses = false;
                 for (int i = 0; i < parsed_list.size(); i++) {
 
                     // Performing certain actions on the hit to prepare the comparison
                     hit = parsed_list.get(i).trim(); //also trims the extra space before the word
 
-                    if (is_verb) { hit = "to " + hit; } //Add "to " to the hit if it's a verb (the "to " was removed to save memory in the database)
+                    //Add "to " to the hit if it's a verb (the "to " was removed to save memory in the database)
+                    if (is_verb) {
+                        //Don't add "to " if the word is an explanation in parentheses
+                        if (!valueIsInParentheses) {
+                            hit = "to " + hit;
+                        }
+                        if (hit.contains("(") && !hit.contains(")")) valueIsInParentheses = true;
+                        else if (!hit.contains("(") && hit.contains(")")) valueIsInParentheses = false;
+                    }
+
                     is_verb_and_latin = hit.length() > 3 && hit.substring(0, 3).equals("to ");
 
                     concatenated_hit = SpecialConcatenator(hit);
@@ -1287,10 +1297,25 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             if (matchingWordType.contains("V") && !matchingWordType.equals("VC")) {
                 List<String> parsed_meaning = Arrays.asList(matchingWordMeaning.split(","));
                 String fixed_meaning = "";
+                String last_parsed_meaning = "";
+                boolean valueIsInParentheses = false;
                 for (int k = 0; k < parsed_meaning.size(); k++) {
-                    fixed_meaning += "to " + parsed_meaning.get(k).trim();
+                    if (valueIsInParentheses) {
+                        fixed_meaning += parsed_meaning.get(k).trim();
+                    }
+                    else {
+                        fixed_meaning += "to " + parsed_meaning.get(k).trim();
+                    }
+
                     if (k < parsed_meaning.size() - 1) {
                         fixed_meaning += ", ";
+                    }
+
+                    if (parsed_meaning.get(k).contains("(") && !parsed_meaning.get(k).contains(")")) {
+                        valueIsInParentheses = true;
+                    }
+                    else if (!parsed_meaning.get(k).contains("(") && parsed_meaning.get(k).contains(")")) {
+                        valueIsInParentheses = false;
                     }
                 }
                 matchingWordMeaning = fixed_meaning;

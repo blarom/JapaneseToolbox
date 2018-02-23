@@ -113,7 +113,7 @@
     <string name="DownloadDialogWifiAndMobile">Anytime</string>
 
     <!--DictionaryFragment Strings-->
-    <string name="NoMatchFound">No match found. Searching for conjugations…</string>
+    <string name="NoMatchFound">Not found in local dictionary. Searching in other sources…</string>
     <string name="PleaseEnterWord">Please enter an English/Japanese word. Complete words will yield the best results, but word fragments will also do.</string>
     <string name="GrammarModule_Romaji_construction">Romaji:</string>
     <string name="GrammarModule_Kana_construction">Kana:</string>

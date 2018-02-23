@@ -23,14 +23,15 @@
                 android:layout_marginEnd="@dimen/queryTextMarginEnd"
                 android:layout_marginStart="@dimen/queryTextMarginStart"
                 android:layout_gravity="start|center_vertical"
+                android:completionThreshold="100"
                 android:ems="10"
                 android:hint="@string/input_query"
                 android:imeOptions="actionDone"
-                android:inputType="text"
+                android:inputType="text|textNoSuggestions"
                 android:textSize="22sp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:scrollbars = "horizontal"
+                android:scrollbars="horizontal"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/textColorSearch" />
 

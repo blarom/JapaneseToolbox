@@ -84,8 +84,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
     //Locals
     private static final int RESULT_OK = -1;
-    private static final int SPEECH_RECOGNIZER_REQUEST_CODE = 2;
-    private static final int ADJUST_IMAGE_ACTIVITY_REQUEST_CODE = 3;
+    private static final int SPEECH_RECOGNIZER_REQUEST_CODE = 101;
+    private static final int ADJUST_IMAGE_ACTIVITY_REQUEST_CODE = 201;
     private static final int WEB_SEARCH_LOADER = 42;
     private static final String SPEECH_RECOGNIZER_EXTRA = "inputQueryAutoCompleteTextView";
     private static final String TAG_TESSERACT = "tesseract_ocr";
@@ -135,6 +135,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     private boolean mEngOcrFileIsDownloading;
     private CropImage.ActivityResult mCropImageResult;
     private BroadcastReceiver mBroadcastReceiver;
+    private boolean requestedSpeechToText;
 
     //Fragment Lifecycle methods
     @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -161,6 +162,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         timesPressed = 0;
         jpnOcrDataIsAvailable = false;
         engOcrDataIsAvailable = false;
+        requestedSpeechToText = false;
         mCropImageResult = null;
 
         getOcrDataDownloadingStatus();
@@ -526,17 +528,13 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             EditText query = getActivity().findViewById(R.id.query);
             savedInstanceState.putString("inputQueryAutoCompleteTextView", query.getText().toString());
         }
-
-        /*RadioButton radio_FastSearch = (RadioButton)GlobalInputQueryFragment.findViewById(R.id.radio_FastSearch);
-        if (radio_FastSearch.isChecked()) { savedInstanceState.putBoolean("radio_FastSearch", true); }
-        else							  { savedInstanceState.putBoolean("radio_FastSearch", false); }*/
-
         savedInstanceState.putStringArray("queryHistory", queryHistory);
     }
     @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == SPEECH_RECOGNIZER_REQUEST_CODE) {
+
             if (data == null) return;
             ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
@@ -1125,8 +1123,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         }
         else return getResources().getString(R.string.languageLocaleEnglishUS);
     }
-
-    //Query input methods
     @Override public Loader<String> onCreateLoader(int id, final Bundle args) {
         return new AsyncTaskLoader<String>(getContext()) {
 
@@ -1147,9 +1143,10 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                         String speechRecognizerString = args.getString(SPEECH_RECOGNIZER_EXTRA);
                         AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromWeb(speechRecognizerString, getActivity());
                     } catch (IOException e) {
+                        cancelLoadInBackground();
                         //throw new RuntimeException(e);
                     }
-                    if (AsyncMatchingWordCharacteristics.size() != 0) {
+                    if (AsyncMatchingWordCharacteristics.size() != 0 && requestedSpeechToText) {
                         List<String> results = (List<String>) AsyncMatchingWordCharacteristics.get(0);
                         mQueryText = results.get(0);
                         return mQueryText;
@@ -1170,6 +1167,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     @Override public void onLoaderReset(Loader<String> loader) {
 
     }
+
+    //Query input methods
     private class QueryInputSpinnerAdapter extends ArrayAdapter<String> {
     // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
         QueryInputSpinnerAdapter(Context ctx, int txtViewResourceId, List<String> list) {
