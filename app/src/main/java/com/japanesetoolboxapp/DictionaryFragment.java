@@ -206,9 +206,11 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 	// Functionality Functions
     public void SearchInDictionary(String word) {
 
+        if (mMatchingWordRowColIndexList.size() == 0 ) return;
         final List<Integer> matchingWordRowIndexList = mMatchingWordRowColIndexList.get(0); // Use mMatchingWordRowColIndexList.get(1) to get columns
-        mSearchedWord = word;
-        mLastSearchedWord = word;
+
+        mSearchedWord = SharedMethods.SpecialConcatenator(word);
+        mLastSearchedWord = SharedMethods.SpecialConcatenator(word);
 
         // Run the Grammar Module on the input word
         matchFound = true;
@@ -433,12 +435,14 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 elements_of_child = new ArrayList<>();
 
                 texts_in_elements_of_child = new ArrayList<>();
+
                 texts_in_elements_of_child.add(altspellings_value);
                 texts_in_elements_of_child.add(current_type);
                 elements_of_child.add(texts_in_elements_of_child);
 
                 for (int j = 0; j< current_MatchingHitsCharacteristics_Meaning_Blocks.size(); j++) {
                     texts_in_elements_of_child = new ArrayList<>();
+                    int element_index = 0;
 
                     current_MatchingHitsCharacteristics_Meanings_Block = (List<Object>) current_MatchingHitsCharacteristics_Meaning_Blocks.get(j);
                     current_meaning = (String) current_MatchingHitsCharacteristics_Meanings_Block.get(0);
@@ -446,31 +450,54 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     current_antonym = (String) current_MatchingHitsCharacteristics_Meanings_Block.get(2);
                     current_synonym = (String) current_MatchingHitsCharacteristics_Meanings_Block.get(3);
 
-                    texts_in_elements_of_child.add(""); //Altspellings placeholder
-                    texts_in_elements_of_child.add(current_type);
-                    texts_in_elements_of_child.add(current_meaning);
-                    texts_in_elements_of_child.add(current_antonym);
-                    texts_in_elements_of_child.add(current_synonym);
+                    texts_in_elements_of_child.add(""); element_index++; //Altspellings placeholder
+                    texts_in_elements_of_child.add(current_type); element_index++;
+                    texts_in_elements_of_child.add(current_meaning); element_index++;
+                    texts_in_elements_of_child.add(current_antonym); element_index++;
+                    texts_in_elements_of_child.add(current_synonym); element_index++;
 
                     List<Object> current_MatchingHitsCharacteristics_Explanation_Blocks = (List<Object>) current_MatchingHitsCharacteristics_Meanings_Block.get(4);
                     for (int m=0; m<current_MatchingHitsCharacteristics_Explanation_Blocks.size(); m++) {
                         List<String> current_MatchingHitsCharacteristics_Explanations_Block = (List<String>) current_MatchingHitsCharacteristics_Explanation_Blocks.get(m);
                         current_explanation = current_MatchingHitsCharacteristics_Explanations_Block.get(0);
                         current_rule = current_MatchingHitsCharacteristics_Explanations_Block.get(1);
+
                         texts_in_elements_of_child.add("EXPL" + current_explanation);
+                        element_index++;
+
                         texts_in_elements_of_child.add("RULE" + current_rule);
+                        element_index++;
 
                         int number_of_examples = 0;
+                        int show_examples_element_index = 0;
                         if (current_MatchingHitsCharacteristics_Explanations_Block.size() > 2) {
                             number_of_examples = (current_MatchingHitsCharacteristics_Explanations_Block.size() - 2) / 3;
+
+                            texts_in_elements_of_child.add("SHOW EXAMPLES AT INDEXES:");
+                            show_examples_element_index = element_index;
+                            element_index++;
                         }
+                        String new_show_examples_element;
                         for (int k = 0; k < number_of_examples; k++) {
                             example_English = current_MatchingHitsCharacteristics_Explanations_Block.get(2 + k*3);
                             example_Romaji = current_MatchingHitsCharacteristics_Explanations_Block.get(2 + k*3 + 1);
                             example_Kanji = current_MatchingHitsCharacteristics_Explanations_Block.get(2 + k*3 + 2);
-                            texts_in_elements_of_child.add("EXMP" + example_English);
-                            texts_in_elements_of_child.add("EXMP" + example_Romaji);
-                            texts_in_elements_of_child.add("EXMP" + example_Kanji);
+
+                            texts_in_elements_of_child.add("EXEN" + example_English);
+                            new_show_examples_element = texts_in_elements_of_child.get(show_examples_element_index) + element_index + ":";
+                            texts_in_elements_of_child.set(show_examples_element_index, new_show_examples_element);
+                            element_index++;
+
+                            texts_in_elements_of_child.add("EXRO" + example_Romaji);
+                            new_show_examples_element = texts_in_elements_of_child.get(show_examples_element_index) + element_index + ":";
+                            texts_in_elements_of_child.set(show_examples_element_index, new_show_examples_element);
+                            element_index++;
+
+                            texts_in_elements_of_child.add("EXKJ" + example_Kanji);
+                            new_show_examples_element = texts_in_elements_of_child.get(show_examples_element_index) + element_index + ":";
+                            texts_in_elements_of_child.set(show_examples_element_index, new_show_examples_element);
+                            element_index++;
+
                         }
                     }
 
@@ -681,10 +708,10 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         if (!TypeisInvalid) {
 
             // Concatenating the input word to increase the match chances
-            String concatenated_word = SpecialConcatenator(word);
-            String concatenated_translationLatin = SpecialConcatenator(translationLatin);
-            String concatenated_translationHira = SpecialConcatenator(translationHira);
-            String concatenated_translationKata = SpecialConcatenator(translationKata);
+            String concatenated_word = SharedMethods.SpecialConcatenator(word);
+            String concatenated_translationLatin = SharedMethods.SpecialConcatenator(translationLatin);
+            String concatenated_translationHira = SharedMethods.SpecialConcatenator(translationHira);
+            String concatenated_translationKata = SharedMethods.SpecialConcatenator(translationKata);
             int concatenated_word_length = concatenated_word.length();
 
             // Removing any apostrophes to make user searches less strict
@@ -722,6 +749,10 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 SortedIndex = MainActivity.GrammarDatabaseIndexedKanji;
                 int relevant_column_index = 2;
                 limits = BinarySearchInUTF8Index(concatenated_word, SortedIndex, relevant_column_index);
+            } else {
+                matchingWordRowColIndexList.add(matchingWordRowIndexList);
+                matchingWordRowColIndexList.add(matchingWordColIndexList);
+                return matchingWordRowColIndexList;
             }
 
             // Get the indexes of all of the results that were found using the binary search
@@ -803,7 +834,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
                     is_verb_and_latin = hit.length() > 3 && hit.substring(0, 3).equals("to ");
 
-                    concatenated_hit = SpecialConcatenator(hit);
+                    concatenated_hit = SharedMethods.SpecialConcatenator(hit);
                     if (TypeisKanji && !ConvertFragment.TextType(concatenated_hit).equals("kanji") ) { continue; }
                     if (concatenated_hit.length() < concatenated_word_length) { continue; }
                     if (TypeisLatin && word_length == 2 && hit.length() > 2) { continue;}
@@ -1261,7 +1292,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         //Getting the set of Meanings
 
-        //Initializations
+        ;//Initializations
         String matchingWordMeaning;
         String matchingWordType;
         String matchingWordOpposite;
@@ -1409,23 +1440,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         return matchingWordCharacteristics;
     }
-    public static String                SpecialConcatenator(String sentence) {
-        String current_char;
-        String concatenated_sentence = "";
-        for (int index=0; index<sentence.length(); index++) {
-            current_char = Character.toString(sentence.charAt(index));
-            if (!( current_char.equals(" ")
-                    || current_char.equals(".")
-                    || current_char.equals("-")
-                    || current_char.equals("(")
-                    || current_char.equals(")")
-                    || current_char.equals(":")
-                    || current_char.equals("/") ) ) {
-                concatenated_sentence = concatenated_sentence + current_char;
-            }
-        }
-        return concatenated_sentence;
-    }
     public static String                ApostropheRemover(String sentence) {
         String current_char;
         String concatenated_sentence = "";
@@ -1505,14 +1519,13 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         @Override
         public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
-            //hideSoftKeyboard();
             final List<String> childArray = (List<String>) getChild(groupPosition, childPosition);
             final List<List<String>> childrenArray = this._listDataChild.get(this._listDataHeader.get(groupPosition));
             List<String> headerDetailsArray = this._listHeaderDetails.get(this._listDataHeader.get(groupPosition));
 
             if (convertView == null) {
-                LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = infalInflater.inflate(R.layout.custom_grammar_list_child_item, null);
+                LayoutInflater inflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.custom_grammar_list_child_item, null);
             }
 
             //Initialization
@@ -1685,37 +1698,37 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 }
             }
 
-            final LinearLayout examples_layout = new LinearLayout(getContext());
-            LinearLayout.LayoutParams examples_layout_params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
-            examples_layout.setOrientation(LinearLayout.VERTICAL);
-            examples_layout.setLayoutParams(examples_layout_params);
-            examples_layout.setVisibility(View.GONE);
-            final TextView tv_examples = new TextView(getContext());
+            //Setting the explanation, rule show/hide line and examples
             if (childPosition > 0) {
-                int number_of_remaining_elements = childArray.size() - 5;
                 String current_element;
-                Boolean is_first_example = true;
-                for (int i = 0; i < number_of_remaining_elements; i++) {
-                    current_element = childArray.get(5 + i);
+
+                final List<TextView> elements = new ArrayList<>();
+                for (int i=0; i<childArray.size(); i++) {
+                    final TextView current_element_TextView = new TextView(getContext());
+                    elements.add(current_element_TextView);
+                }
+
+                for (int i = 5; i < childArray.size(); i++) {
+                    current_element = childArray.get(i);
+                    final int currentPosition = i;
 
                     if (current_element.length() > 4) {
 
-                        //Setting the explanation
+                        elements_container.addView(elements.get(i));
+
+                        //Setting the explanation characteristics
                         if (current_element.substring(0,4).equals("EXPL")) {
-                            TextView tv_explanation = new TextView(getContext());
-                            tv_explanation.setText(current_element.substring(4,current_element.length()));
-                            tv_explanation.setTextColor(getResources().getColor(R.color.textColorDictionaryExplanation));
-                            tv_explanation.setPadding(0,10,0,0);
-                            tv_explanation.setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
-                            elements_container.addView(tv_explanation);
+                            elements.get(i).setText(current_element.substring(4,current_element.length()));
+                            elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryExplanation));
+                            elements.get(i).setPadding(0,10,0,0);
+                            elements.get(i).setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
                         }
 
-                        //Setting the rule
+                        //Setting the rule characteristics
                         else if (current_element.substring(0,4).equals("RULE")) {
-                            TextView tv_rule = new TextView(getContext());
-                            tv_rule.setTextColor(getResources().getColor(R.color.textColorDictionaryRule));
-                            tv_rule.setPadding(0,10,0,0);
-                            tv_rule.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+                            elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryRule));
+                            elements.get(i).setPadding(0,30,0,0);
+                            elements.get(i).setTypeface(Typeface.DEFAULT, Typeface.BOLD);
 
                             List<String> parsedRule = Arrays.asList(current_element.substring(4,current_element.length()).split("@"));
                             String where = " where: ";
@@ -1726,90 +1739,117 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
                             if (parsedRule.size() == 1) { // If the rule doesn't have a "where" clause
                                 final_text = intro + current_element.substring(4,current_element.length());
-                                tv_rule.setText(final_text);
-                                tv_rule.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+                                elements.get(i).setText(final_text);
+                                elements.get(i).setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
                             } else {
-                                String htmlText = "<b>" + intro + parsedRule.get(0) + "</b>" + "<font face='serif' color='"+
-                                        getResources().getColor(R.color.textColorDictionaryRuleWhereClause) +
-                                        "purple'>" + where + "</font>" + "<b>" + parsedRule.get(1) + "</b>";
+                                String htmlText = "<b>" +
+                                        "<font color='" + getResources().getColor(R.color.textColorDictionaryRulePhraseStructureClause) + "'>" +
+                                        intro +
+                                        "</font>" +
+                                        parsedRule.get(0) +
+                                        "</b>" + "<font color='" + getResources().getColor(R.color.textColorDictionaryRuleWhereClause) + "'>" +
+                                        where +
+                                        "</font>" +
+                                        "<b>" + parsedRule.get(1) + "</b>";
                                 spanned_rule = SharedMethods.fromHtml(htmlText);
-                                tv_rule.setText(spanned_rule);
+                                elements.get(i).setText(spanned_rule);
                             }
-
-                            elements_container.addView(tv_rule);
                         }
 
-                        //Setting the examples
-                        else if (current_element.substring(0,4).equals("EXMP")) {
+                        //Setting the show/hide examples line characteristics
+                        else if (current_element.substring(0,4).equals("SHOW")) {
 
-                            if (is_first_example) {
-                                tv_examples.setText(getResources().getString(R.string.ShowExamples));
-                                tv_examples.setTextColor(getResources().getColor(R.color.textColorDictionaryExamples));
-                                tv_examples.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-                                tv_examples.setPadding(0, 10, 0, 0);
-                                elements_container.addView(tv_examples);
-                                is_first_example = false;
-                            }
+                            //If there are no examples, hide this line
+                            if (current_element.equals("SHOW EXAMPLES AT INDEXES:")) elements.get(i).setVisibility(View.GONE);
 
-                            final String example_English = childArray.get(5 + i);
+                            elements.get(i).setText(getResources().getString(R.string.ShowExamples));
+                            elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryExamples));
+                            elements.get(i).setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+                            elements.get(i).setPadding(0, 10, 0, 0);
+                            elements.get(i).setClickable(true);
+                            elements.get(i).setFocusable(false);
+
+                            final List<String> exampleSentencesIndexesForCurrentRule = Arrays.asList(current_element.split(":"));
+
+                            elements.get(i).setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    int index;
+
+                                    //Check if the example sentences are hidden and set the indicator (if the first is hidden, then so are the others)
+                                    if (exampleSentencesIndexesForCurrentRule.size()>1) {
+                                        index = Integer.parseInt(exampleSentencesIndexesForCurrentRule.get(1));
+                                        if (elements.get(index).getVisibility() == View.VISIBLE) {
+                                            elements.get(currentPosition).setText(getResources().getString(R.string.ShowExamples));
+                                        } else {
+                                            elements.get(currentPosition).setText(getResources().getString(R.string.HideExamples));
+                                        }
+                                    }
+
+                                    //In any case, reverse GONE <> VISIBLE on click
+                                    for (int j = 1; j < exampleSentencesIndexesForCurrentRule.size(); j++) {
+                                        if (!exampleSentencesIndexesForCurrentRule.get(j).equals("")) {
+                                            index = Integer.parseInt(exampleSentencesIndexesForCurrentRule.get(j));
+                                            int visibility = elements.get(index).getVisibility();
+                                            reverseVisibility(elements.get(index));
+                                        }
+                                    }
+                                }
+                            });
+                        }
+
+                        //Setting the English example characteristics
+                        else if (current_element.substring(0,4).equals("EXEN")) {
+                            String example_English = current_element;
                             if (!example_English.equals("")) {
-                                TextView tv_example_English = new TextView(getContext());
-                                tv_example_English.setText(example_English.substring(4,example_English.length()));
-                                tv_example_English.setTextSize(14);
-                                tv_example_English.setPadding(4,10,0,0);
-                                tv_example_English.setTextColor(getResources().getColor(R.color.textColorDictionaryExampleEnglish));
-                                examples_layout.addView(tv_example_English);
+                                elements.get(i).setText(example_English.substring(4,example_English.length()));
+                                elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryExampleEnglish));
+                                elements.get(i).setTextSize(14);
+                                elements.get(i).setPadding(4,15,0,0);
+                                elements.get(i).setVisibility(View.GONE);
                             }
+                        }
 
-                            final String example_Romaji = childArray.get(5 + i + 1);
+                        //Setting the Romaji example characteristics
+                        else if (current_element.substring(0,4).equals("EXRO")) {
+                            String example_Romaji = current_element;
                             if (!example_Romaji.equals("")) {
-                                TextView tv_example_Romaji = new TextView(getContext());
-                                tv_example_Romaji.setText(example_Romaji.substring(4,example_Romaji.length()));
-                                tv_example_Romaji.setTextSize(14);
-                                tv_example_Romaji.setPadding(4,0,0,0);
-                                tv_example_Romaji.setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
-                                tv_example_Romaji.setTextColor(getResources().getColor(R.color.textColorDictionaryExampleRomaji));
-                                examples_layout.addView(tv_example_Romaji);
+                                elements.get(i).setText(example_Romaji.substring(4,example_Romaji.length()));
+                                elements.get(i).setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
+                                elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryExampleRomaji));
+                                elements.get(i).setTextSize(14);
+                                elements.get(i).setPadding(4,0,0,0);
+                                elements.get(i).setVisibility(View.GONE);
                             }
+                        }
 
-                            String example_Kanji = childArray.get(5 + i + 2);
+                        //Setting the Kanji example characteristics
+                        else if (current_element.substring(0,4).equals("EXKJ")) {
+                            String example_Kanji = current_element;
                             if (!example_Kanji.equals("")) {
-                                TextView tv_example_Kanji = new TextView(getContext());
-                                tv_example_Kanji.setText(example_Kanji.substring(4,example_Kanji.length()));
-                                tv_example_Kanji.setTextSize(14);
-                                tv_example_Kanji.setPadding(4,0,0,0);
-                                tv_example_Kanji.setTextColor(getResources().getColor(R.color.textColorDictionaryExampleKanji));
-                                examples_layout.addView(tv_example_Kanji);
+                                elements.get(i).setText(example_Kanji.substring(4,example_Kanji.length()));
+                                elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryExampleKanji));
+                                elements.get(i).setTextSize(14);
+                                elements.get(i).setPadding(4,0,0,0);
+                                elements.get(i).setVisibility(View.GONE);
                             }
-
-
-                            i = i + 2;
                         }
                     }
                 }
             }
 
-            elements_container.addView(examples_layout);
-
-            tv_examples.setClickable(true);
-            tv_examples.setFocusable(false);
             elements_container.setFocusable(false);
             convertView.setClickable(true);
-            tv_examples.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (examples_layout.getVisibility() == View.VISIBLE) {
-                        examples_layout.setVisibility(View.GONE);
-                        tv_examples.setText("Example sentences (>show)");
-                    }
-                    else {
-                        examples_layout.setVisibility(View.VISIBLE);
-                        tv_examples.setText("Example sentences (>hide)");
-                    }
-                }
-            });
 
             return convertView;
+        }
+        public void reverseVisibility(TextView textView) {
+            if (textView.getVisibility() == View.VISIBLE) {
+                textView.setVisibility(View.GONE);
+            }
+            else {
+                textView.setVisibility(View.VISIBLE);
+            }
         }
         @Override
         public int getChildrenCount(int groupPosition) {

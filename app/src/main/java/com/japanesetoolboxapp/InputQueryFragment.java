@@ -238,7 +238,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 }.start();
             }
 
-            onVerbEntered_PerformThisFunction(inputVerbString);
+            onVerbEntered_PerformThisFunction(SharedMethods.SpecialConcatenator(inputVerbString));
         } } );
 
         button_searchWord = InputQueryFragment.findViewById(R.id.button_searchWord);
@@ -260,7 +260,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                     }
                 }.start();
             }
-            onWordEntered_PerformThisFunction(inputWordString);
+            onWordEntered_PerformThisFunction(SharedMethods.SpecialConcatenator(inputWordString));
         } } );
 
         button_choose_Convert = InputQueryFragment.findViewById(R.id.button_convert);
@@ -311,7 +311,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
             }
             else {
-                onSearchByRadicalsEntered_PerformThisFunction(inputWordString);
+                onSearchByRadicalsEntered_PerformThisFunction(SharedMethods.SpecialConcatenator(inputWordString));
             }
         } } );
 
@@ -342,7 +342,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
             }
             else {
-                onDecomposeEntered_PerformThisFunction(inputWordString);
+                onDecomposeEntered_PerformThisFunction(SharedMethods.SpecialConcatenator(inputWordString));
             }
         } } );
 

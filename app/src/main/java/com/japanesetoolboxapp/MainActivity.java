@@ -30,7 +30,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//TODO Fix mixing of example sentences and phrase structures in GrammarExpandableListAdapter, e.g. in "no you ni" search
 //TODO when entering "tsureteiku", online results show "reteiku"
 //TODO imperative display for godan verbs
 //TODO Show the adjective conjugations (it will also explain to the user why certain adjectives appear in the list, based on their conjugations)

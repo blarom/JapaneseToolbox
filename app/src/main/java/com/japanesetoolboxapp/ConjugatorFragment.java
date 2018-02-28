@@ -657,8 +657,8 @@ public class ConjugatorFragment extends Fragment {
             }
 
             // Concatenating the verb & its translation for future use
-            String concatenated_verb = DictionaryFragment.SpecialConcatenator(verb);
-            String concatenated_translation = DictionaryFragment.SpecialConcatenator(translation);
+            String concatenated_verb = SharedMethods.SpecialConcatenator(verb);
+            String concatenated_translation = SharedMethods.SpecialConcatenator(translation);
             int concatenated_verb_length = concatenated_verb.length();
             int concatenated_translation_length = concatenated_translation.length();
 

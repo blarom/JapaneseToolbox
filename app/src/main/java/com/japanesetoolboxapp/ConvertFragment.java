@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.japanesetoolboxapp.utiities.*;
+
 public class ConvertFragment extends Fragment {
 
     // Fragment Lifecycle Functions
@@ -138,14 +140,14 @@ public class ConvertFragment extends Fragment {
 
             }
 
-            translation.set(0, DictionaryFragment.SpecialConcatenator(translation_latin));
-            translation.set(1, DictionaryFragment.SpecialConcatenator(translation_hiragana));
-            translation.set(2, DictionaryFragment.SpecialConcatenator(translation_katakana));
+            translation.set(0, SharedMethods.SpecialConcatenator(translation_latin));
+            translation.set(1, SharedMethods.SpecialConcatenator(translation_hiragana));
+            translation.set(2, SharedMethods.SpecialConcatenator(translation_katakana));
 			return translation;
 		}
         public static String TextType(String input_value) {
 
-            input_value = DictionaryFragment.SpecialConcatenator(input_value);
+            input_value = SharedMethods.SpecialConcatenator(input_value);
             String character;
             String text_type = "";
 

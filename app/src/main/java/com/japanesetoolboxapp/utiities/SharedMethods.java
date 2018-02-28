@@ -229,6 +229,23 @@ public class SharedMethods {
         }
         return prepared_word;
     }
+    public static String SpecialConcatenator(String sentence) {
+        String current_char;
+        String concatenated_sentence = "";
+        for (int index=0; index<sentence.length(); index++) {
+            current_char = Character.toString(sentence.charAt(index));
+            if (!( current_char.equals(" ")
+                    || current_char.equals(".")
+                    || current_char.equals("-")
+                    || current_char.equals("(")
+                    || current_char.equals(")")
+                    || current_char.equals(":")
+                    || current_char.equals("/") ) ) {
+                concatenated_sentence = concatenated_sentence + current_char;
+            }
+        }
+        return concatenated_sentence;
+    }
 
     public static int loadOCRImageContrastFromSharedPreferences(SharedPreferences sharedPreferences, Context context) {
         float contrastValue = Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_contrast_default_value));
@@ -459,7 +476,8 @@ public class SharedMethods {
         int current_meanings_block_end;
         List<String> current_meanings;
 
-        if (website_code.contains("Sorry, couldn't find anything matching")
+        if (website_code.length() == 0
+                ||website_code.contains("Sorry, couldn't find anything matching")
                 || website_code.contains("Sorry, couldn't find any words matching")
                 || (website_code.contains("Searched for") && website_code.contains("No matches for"))) {
             return setOf_matchingWordCharacteristics;

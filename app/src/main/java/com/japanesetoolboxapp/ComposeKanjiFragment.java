@@ -34,6 +34,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.japanesetoolboxapp.utiities.GlobalConstants;
+import com.japanesetoolboxapp.utiities.SharedMethods;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -1228,7 +1229,7 @@ public class ComposeKanjiFragment extends Fragment {
 
                 //Finding the list of matches corresponding to the user's input
                 if(!elementA.equals("")) {
-                    concatenated_input = DictionaryFragment.SpecialConcatenator(elementA);
+                    concatenated_input = SharedMethods.SpecialConcatenator(elementA);
                     limits = DictionaryFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
 
                     if (limits[0] == limits[1] && limits[0] == -1) { }
@@ -1244,7 +1245,7 @@ public class ComposeKanjiFragment extends Fragment {
                     }
                 }
                 if(!elementB.equals("")) {
-                    concatenated_input = DictionaryFragment.SpecialConcatenator(elementB);
+                    concatenated_input = SharedMethods.SpecialConcatenator(elementB);
                     limits = DictionaryFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
 
                     if (limits[0] == limits[1] && limits[0] == -1) {
@@ -1260,7 +1261,7 @@ public class ComposeKanjiFragment extends Fragment {
                     }
                 }
                 if(!elementC.equals("")) {
-                    concatenated_input = DictionaryFragment.SpecialConcatenator(elementC);
+                    concatenated_input = SharedMethods.SpecialConcatenator(elementC);
                     limits = DictionaryFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
 
                     if (limits[0] == limits[1] && limits[0] == -1) {
@@ -1276,7 +1277,7 @@ public class ComposeKanjiFragment extends Fragment {
                     }
                 }
                 if(!elementD.equals("")) {
-                    concatenated_input = DictionaryFragment.SpecialConcatenator(elementD);
+                    concatenated_input = SharedMethods.SpecialConcatenator(elementD);
                     limits = DictionaryFragment.BinarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
 
                     if (limits[0] == limits[1] && limits[0] == -1) {

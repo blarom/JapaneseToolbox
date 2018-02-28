@@ -124,7 +124,8 @@
     <string name="GrammarModule_Explanation">Details:</string>
     <string name="GrammarModule_Example">Rules and Examples:</string>
     <string name="showOnlineResultsToastString">Looking for results online, please wait…</string>
-    <string name="ShowExamples">Example sentences (>show)</string>
+    <string name="ShowExamples">Example sentences: (>show)</string>
+    <string name="HideExamples">Example sentences: (>hide)</string>
     <string name="PhraseStructure">Phrase structure:</string>
 
     <!--ConjugationFragment Strings-->
