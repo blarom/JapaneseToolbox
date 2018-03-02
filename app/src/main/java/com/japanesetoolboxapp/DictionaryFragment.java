@@ -1,11 +1,13 @@
 package com.japanesetoolboxapp;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
@@ -139,7 +141,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     }
 
     //Asynchronous methods
-    @Override public Loader<List<Object>> onCreateLoader(int id, final Bundle args) {
+    @SuppressLint("StaticFieldLeak") @NonNull @Override public Loader<List<Object>> onCreateLoader(int id, final Bundle args) {
         return new AsyncTaskLoader<List<Object>>(getContext()) {
 
             @Override
@@ -209,8 +211,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         if (mMatchingWordRowColIndexList.size() == 0 ) return;
         final List<Integer> matchingWordRowIndexList = mMatchingWordRowColIndexList.get(0); // Use mMatchingWordRowColIndexList.get(1) to get columns
 
-        mSearchedWord = SharedMethods.SpecialConcatenator(word);
-        mLastSearchedWord = SharedMethods.SpecialConcatenator(word);
+        mSearchedWord = SharedMethods.removeSpecialCharacters(word);
+        mLastSearchedWord = SharedMethods.removeSpecialCharacters(word);
 
         // Run the Grammar Module on the input word
         matchFound = true;
@@ -708,10 +710,10 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         if (!TypeisInvalid) {
 
             // Concatenating the input word to increase the match chances
-            String concatenated_word = SharedMethods.SpecialConcatenator(word);
-            String concatenated_translationLatin = SharedMethods.SpecialConcatenator(translationLatin);
-            String concatenated_translationHira = SharedMethods.SpecialConcatenator(translationHira);
-            String concatenated_translationKata = SharedMethods.SpecialConcatenator(translationKata);
+            String concatenated_word = SharedMethods.removeSpecialCharacters(word);
+            String concatenated_translationLatin = SharedMethods.removeSpecialCharacters(translationLatin);
+            String concatenated_translationHira = SharedMethods.removeSpecialCharacters(translationHira);
+            String concatenated_translationKata = SharedMethods.removeSpecialCharacters(translationKata);
             int concatenated_word_length = concatenated_word.length();
 
             // Removing any apostrophes to make user searches less strict
@@ -834,7 +836,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
                     is_verb_and_latin = hit.length() > 3 && hit.substring(0, 3).equals("to ");
 
-                    concatenated_hit = SharedMethods.SpecialConcatenator(hit);
+                    concatenated_hit = SharedMethods.removeSpecialCharacters(hit);
                     if (TypeisKanji && !ConvertFragment.TextType(concatenated_hit).equals("kanji") ) { continue; }
                     if (concatenated_hit.length() < concatenated_word_length) { continue; }
                     if (TypeisLatin && word_length == 2 && hit.length() > 2) { continue;}

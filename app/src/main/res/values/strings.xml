@@ -146,6 +146,7 @@
     <string name="ConversionLatin">Latin Script: </string>
     <string name="ConversionHiragana">Hiragana: </string>
     <string name="ConversionKatakana">Katakana: </string>
+    <string name="EnterWord">Please enter a word.</string>
     <string name="TransliteratorHint">
         \n<b>Hint:</b>
         \nUse an apostrophe (\&apos;) after \&quot;n\&quot; to ensure its transliteration to \&quot;ん\&quot;.

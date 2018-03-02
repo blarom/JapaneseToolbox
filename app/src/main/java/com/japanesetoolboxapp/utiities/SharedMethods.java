@@ -229,7 +229,7 @@ public class SharedMethods {
         }
         return prepared_word;
     }
-    public static String SpecialConcatenator(String sentence) {
+    public static String removeSpecialCharacters(String sentence) {
         String current_char;
         String concatenated_sentence = "";
         for (int index=0; index<sentence.length(); index++) {
@@ -617,7 +617,7 @@ public class SharedMethods {
 
             //Getting the set of Meanings
 
-            //Initializations
+            ;//Initializations
             List<Object> matchingWordCurrentMeaningsBlock = new ArrayList<>();
             List<Object> matchingWordCurrentMeaningBlocks = new ArrayList<>();
             String matchingWordMeaning;

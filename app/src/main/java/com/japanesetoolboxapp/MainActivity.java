@@ -30,7 +30,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//TODO when entering "tsureteiku", online results show "reteiku"
 //TODO imperative display for godan verbs
 //TODO Show the adjective conjugations (it will also explain to the user why certain adjectives appear in the list, based on their conjugations)
 //TODO If the user enter "一", make sure the app gives all results with a bar
