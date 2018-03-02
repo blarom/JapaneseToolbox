@@ -467,7 +467,6 @@ public class ConvertFragment extends Fragment {
                         case "ゆ":     added_string = "n'";     break;
                         default:     added_string = "n";     break;
                     } break;
-
                 case "に":
                     switch (character_next) {
                         case "ゃ":     added_string = "nya";     i++;     break;
@@ -570,6 +569,7 @@ public class ConvertFragment extends Fragment {
                 case "ゐ": added_string = "xwi"; break;
                 case "ゑ": added_string = "xwe"; break;
                 case "っ": added_string = "small_tsu"; break;
+
                 case "ア":
                     if (character.equals(character_last)) { added_string = "a_double_vowel";
                     } else { added_string = "a";
@@ -654,13 +654,14 @@ public class ConvertFragment extends Fragment {
                         case "ュ": added_string = "tu"; i++; break;
                         default: added_string = "te"; break;
                     } break;
-                case "ト": added_string = "to";
+                case "ト":
                     switch (character_next) {
                         case "ャ": added_string = "ta"; i++; break;
                         case "ゥ": added_string = "tu"; i++; break;
                         case "ェ": added_string = "te"; i++; break;
                         case "ィ": added_string = "ti"; i++; break;
                         case "ョ": added_string = "to"; i++; break;
+                        default: added_string = "to"; break;
                     } break;
                 case "ダ": added_string = "da"; break;
                 case "デ":
@@ -865,7 +866,9 @@ public class ConvertFragment extends Fragment {
                 case "ヰ": added_string = "xwi"; break;
                 case "ヱ": added_string = "xwe"; break;
                 case "ッ": added_string = "small_tsu"; break;
+
                 case "ー": added_string = "katakana_repeat_bar"; break;
+
                 case "a":
                     if (character.equals(character_last)) {
                         added_string = "a_double_vowel";
@@ -1186,6 +1189,7 @@ public class ConvertFragment extends Fragment {
                         case "z": added_string = "small_tsu"; break;
                         default: added_string = "*"; break;
                     } break;
+
                 default: added_string = "original"; break;
             }
 
