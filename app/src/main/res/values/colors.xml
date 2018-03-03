@@ -22,14 +22,14 @@
     <color name="textColorDictionaryChildItemKanji">@color/colorAccent</color>
     <color name="textColorDictionarySpanClicked">@color/colorPrimary</color>
     <color name="textColorDictionaryAlternateSpellings">#6a1b9a</color>
-    <color name="textColorDictionaryTypeMeaning">#023991</color>
+    <color name="textColorDictionaryTypeMeaning">@color/Black</color>
     <color name="textColorDictionaryTypeMeaning2">@color/Black</color>
     <color name="textColorDictionaryAntonymSynonym">#009900</color>
     <color name="textColorDictionaryExplanation">@color/colorPrimaryDark</color>
     <color name="textColorDictionaryRule">@color/colorPrimary</color>
     <color name="textColorDictionaryRulePhraseStructureClause">@color/textColorSecondary</color>
     <color name="textColorDictionaryRuleWhereClause">@color/textColorSecondary</color>
-    <color name="textColorDictionaryExamples">@color/Black</color>
+    <color name="textColorDictionaryExamples">@color/textColorSecondary</color>
     <color name="textColorDictionaryExampleEnglish">@color/Black</color>
     <color name="textColorDictionaryExampleRomaji">@color/colorPrimary</color>
     <color name="textColorDictionaryExampleKanji">@color/colorPrimaryLight</color>

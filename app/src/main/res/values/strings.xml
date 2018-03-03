@@ -71,7 +71,6 @@
     <string name="input_query">Search Me!</string>
     <string name="GrammarModule_GetWord">DICT</string>
     <string name="button_Conjugate">CONJ</string>
-    <string name="button_SearchTangorin">TGN</string>
     <string name="button_SearchKAD">KAD</string>
     <string name="Convert">あ&#8660;A</string>
     <string name="button_SearchByRadical">女+子 &#8658; 好</string>
@@ -140,6 +139,9 @@
         \n\nThe &lt;DICT&gt; search also covers alternate Romaji or Kanji spellings for a variety of verbs (in dictionary form).
         The &lt;CONJ&gt; search only looks up conjugations for the most common Romaji spelling and Kanji interpretation of each verb.</string>
     <string name="where">, where: </string>
+    <string name="PleaseEnterJapVerb">Please enter a Japanese verb.</string>
+    <string name="CanEnterEngVerb">You can also enter an English verb in ing/infinitive form.</string>
+    <string name="SeeHints">Check the rules below for hints.</string>
 
     <!--ConversionFragment Strings-->
     <string name="Conversion">Transliteration: </string>

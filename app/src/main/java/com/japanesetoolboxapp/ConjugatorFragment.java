@@ -2,6 +2,7 @@ package com.japanesetoolboxapp;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,16 +98,12 @@ public class ConjugatorFragment extends Fragment {
 
             if (verbCharacteristics.size() == 0) {
                 if (inputVerbString.equals("")) {
-                    SpinnerText1 = "Please enter a Japanese verb.";
-                    SpinnerText2 = "You can also enter an English verb in ing/infinitive form.";
+                    SpinnerText1 = getResources().getString(R.string.PleaseEnterJapVerb);
+                    SpinnerText2 = getResources().getString(R.string.CanEnterEngVerb);
                 }
-                else if (SearchType.equals("fast") ) {
-                    SpinnerText1 = "No match found.";
-                    SpinnerText2 = "Check the rules below for hints, or search using TGN (Tangorin Dictionary).";
-                }
-                else if (SearchType.equals("deep") ) {
-                    SpinnerText1 = "No match found.";
-                    SpinnerText2 = "Check the rules below for hints, or search using TGN (Tangorin Dictionary).";
+                else {
+                    SpinnerText1 = getResources().getString(R.string.NoMatchFound);
+                    SpinnerText2 = getResources().getString(R.string.SeeHints);
                 }
                 inside_list.add(SpinnerText1);
                 inside_list.add("");
@@ -213,19 +210,17 @@ public class ConjugatorFragment extends Fragment {
     return populatedlist;
 }
     private class                   VerbSpinnerAdapter extends ArrayAdapter<List<String>> {
-    // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
-        public VerbSpinnerAdapter(Context ctx, int txtViewResourceId, List<List<String>> list) {
+        // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
+        VerbSpinnerAdapter(Context ctx, int txtViewResourceId, List<List<String>> list) {
             super(ctx, txtViewResourceId, list);
             }
-        @Override
-        public View getDropDownView( int position, View cnvtView, ViewGroup prnt) {
+        @Override public View getDropDownView( int position, View cnvtView, ViewGroup prnt) {
             return getCustomView(position, cnvtView, prnt);
         }
-        @Override
-        public View getView(int pos, View cnvtView, ViewGroup prnt) {
+        @NonNull @Override public View getView(int pos, View cnvtView, ViewGroup prnt) {
             return getCustomView(pos, cnvtView, prnt);
         }
-        public View getCustomView(int position, View convertView, ViewGroup parent) {
+        View getCustomView(int position, View convertView, ViewGroup parent) {
 
             LayoutInflater inflater = LayoutInflater.from(getActivity().getBaseContext());
             View mySpinner = inflater.inflate(R.layout.custom_verbchooser_spinner, parent, false);
@@ -242,19 +237,17 @@ public class ConjugatorFragment extends Fragment {
         }
     }
     private class                   ConjugationsSpinnerAdapter extends ArrayAdapter<List<String>> {
-    // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
-        public ConjugationsSpinnerAdapter(Context ctx, int txtViewResourceId, List<List<String>> list) {
+        // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
+        ConjugationsSpinnerAdapter(Context ctx, int txtViewResourceId, List<List<String>> list) {
             super(ctx, txtViewResourceId, list);
             }
-        @Override
-        public View getDropDownView( int position, View cnvtView, ViewGroup prnt) {
+        @Override public View getDropDownView( int position, View cnvtView, ViewGroup prnt) {
             return getCustomView(position, cnvtView, prnt);
         }
-        @Override
-        public View getView(int pos, View cnvtView, ViewGroup prnt) {
+        @Override public View getView(int pos, View cnvtView, ViewGroup prnt) {
             return getCustomView(pos, cnvtView, prnt);
         }
-        public View getCustomView(int position, View convertView, ViewGroup parent) {
+        View getCustomView(int position, View convertView, ViewGroup parent) {
 
             LayoutInflater inflater = LayoutInflater.from(getActivity().getBaseContext());
             View mySpinner = inflater.inflate(R.layout.custom_conjugationchooser_spinner, parent, false);
@@ -620,7 +613,6 @@ public class ConjugatorFragment extends Fragment {
         if (text_type.equals("kanji") )                                     { translation = translationList.get(1); TypeisKanji = true;}
         if ( verb.contains("*") || verb.contains("＊") || verb.equals("") ) { TypeisInvalid = true;}
         if ( translation.contains("*") || translation.contains("＊"))        { translationIsInvalid = true; }
-        int translation_length = translation.length();
 
         // Starting the algorithm
         if (!TypeisInvalid) {
@@ -1069,7 +1061,7 @@ public class ConjugatorFragment extends Fragment {
 
             ////// 3. Sorting the results according to the length of the Kana and Kanji values
 
-            // 3a. Computing the value length
+            ;// 3a. Computing the value length
             int current_row_index;
             int current_col_index;
             int current_romaji_length;

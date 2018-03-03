@@ -1570,7 +1570,11 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 //String type_and_meaning = "[" + full_type + "] " + childArray.get(2);
                 String htmlText = "<i><font color='"+
                         getResources().getColor(R.color.textColorDictionaryTypeMeaning) +
-                        "'>" + "[" + full_type + "] " + "</font></i>" + "<b>" + childArray.get(2) + "</b>";
+                        "'>" + "[" +
+                        full_type +
+                        "] " + "</font></i>" + "<b>" +
+                        childArray.get(2) +
+                        "</b>";
                 Spanned type_and_meaning = SharedMethods.fromHtml(htmlText);
                 TextView tv_type_and_meaning = new TextView(getContext());
                 tv_type_and_meaning.setText(type_and_meaning);
@@ -1582,58 +1586,15 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
             //Showing the romaji and kanji values for user click
             if (childPosition == 0) {
-                String chosenitem_romaji;
-                String chosenitem_kanji;
-                String pre_text;
-                String after_text;
 
                 ChosenItem.setVisibility(View.VISIBLE);
 
                 if (type.contains("V") && !type.equals("VC")) {
-                    pre_text = "Conjugate ";
-                    after_text = " ";
-                    chosenitem_romaji = pre_text + headerDetailsArray.get(0) + after_text;
-                    SpannableString VerbSpannable = new SpannableString(chosenitem_romaji);
-                    VerbSpannable.setSpan(new VerbClickableSpan(), pre_text.length(), chosenitem_romaji.length() - after_text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    ChosenItem_RomajiX.setText(VerbSpannable);
-                    ChosenItem_RomajiX.setTypeface(Typeface.SERIF);
-                    ChosenItem_RomajiX.setTypeface(null, Typeface.BOLD_ITALIC);
-                    ChosenItem_RomajiX.setTextSize(16);
-                    ChosenItem_RomajiX.setMovementMethod(LinkMovementMethod.getInstance());
-
-                    pre_text = "(";
-                    after_text = ").";
-                    chosenitem_kanji = pre_text + headerDetailsArray.get(1) + after_text;
-                    VerbSpannable = new SpannableString(chosenitem_kanji);
-                    VerbSpannable.setSpan(new VerbClickableSpan(), pre_text.length(), chosenitem_kanji.length() - after_text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    ChosenItem_KanjiX.setText(VerbSpannable);
-                    ChosenItem_KanjiX.setTypeface(Typeface.SERIF);
-                    ChosenItem_KanjiX.setTypeface(null, Typeface.BOLD_ITALIC);
-                    ChosenItem_KanjiX.setTextSize(16);
-                    ChosenItem_KanjiX.setMovementMethod(LinkMovementMethod.getInstance());
+                    setHyperlinksInCopyToInputLine(ChosenItem_RomajiX, "Conjugate ", headerDetailsArray.get(0), " ");
+                    setHyperlinksInCopyToInputLine(ChosenItem_KanjiX, "(", headerDetailsArray.get(1), ").");
                 } else {
-
-                    pre_text = "Copy ";
-                    after_text = " ";
-                    chosenitem_romaji = pre_text + headerDetailsArray.get(0) + after_text;
-                    SpannableString WordSpannable = new SpannableString(chosenitem_romaji);
-                    WordSpannable.setSpan(new WordClickableSpan(), pre_text.length(), chosenitem_romaji.length() - after_text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    ChosenItem_RomajiX.setText(WordSpannable);
-                    ChosenItem_RomajiX.setTypeface(Typeface.SERIF);
-                    ChosenItem_RomajiX.setTypeface(null, Typeface.BOLD_ITALIC);
-                    ChosenItem_RomajiX.setTextSize(16);
-                    ChosenItem_RomajiX.setMovementMethod(LinkMovementMethod.getInstance());
-
-                    pre_text = "(";
-                    after_text = ") to input.";
-                    chosenitem_kanji = pre_text + headerDetailsArray.get(1) + after_text;
-                    WordSpannable = new SpannableString(chosenitem_kanji);
-                    WordSpannable.setSpan(new WordClickableSpan(), pre_text.length(), chosenitem_kanji.length() - after_text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    ChosenItem_KanjiX.setText(WordSpannable);
-                    ChosenItem_KanjiX.setTypeface(Typeface.SERIF);
-                    ChosenItem_KanjiX.setTypeface(null, Typeface.BOLD_ITALIC);
-                    ChosenItem_KanjiX.setTextSize(16);
-                    ChosenItem_KanjiX.setMovementMethod(LinkMovementMethod.getInstance());
+                    setHyperlinksInCopyToInputLine(ChosenItem_RomajiX, "Copy ", headerDetailsArray.get(0), " ");
+                    setHyperlinksInCopyToInputLine(ChosenItem_KanjiX, "(", headerDetailsArray.get(1), ") to input.");
                 }
             }
             else {
@@ -1734,14 +1695,18 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
                             List<String> parsedRule = Arrays.asList(current_element.substring(4,current_element.length()).split("@"));
                             String where = " where: ";
-                            String final_text;
                             String intro = "";
                             if (!parsedRule.get(0).contains(":")) { intro = getResources().getString(R.string.PhraseStructure) + " "; }
                             Spanned spanned_rule;
 
                             if (parsedRule.size() == 1) { // If the rule doesn't have a "where" clause
-                                final_text = intro + current_element.substring(4,current_element.length());
-                                elements.get(i).setText(final_text);
+                                String htmlText = "<b>" +
+                                        "<font color='" + getResources().getColor(R.color.textColorDictionaryRulePhraseStructureClause) + "'>" +
+                                        intro +
+                                        "</font>" +
+                                        current_element.substring(4,current_element.length());
+                                spanned_rule = SharedMethods.fromHtml(htmlText);
+                                elements.get(i).setText(spanned_rule);
                                 elements.get(i).setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
                             } else {
                                 String htmlText = "<b>" +
@@ -1845,7 +1810,25 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
             return convertView;
         }
-        public void reverseVisibility(TextView textView) {
+        void setHyperlinksInCopyToInputLine(TextView textView, String before, String hyperlinkText, String after) {
+            String totalText = "<b>" +
+                    "<font color='" + getResources().getColor(R.color.textColorSecondary) + "'>" +
+                    before +
+                    "</font>" +
+                    hyperlinkText +
+                    "<font color='" + getResources().getColor(R.color.textColorSecondary) + "'>" +
+                    after +
+                    "</font>";
+            Spanned spanned_totalText = SharedMethods.fromHtml(totalText);
+            SpannableString WordSpannable = new SpannableString(spanned_totalText);
+            WordSpannable.setSpan(new WordClickableSpan(), before.length(), spanned_totalText.length() - after.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            textView.setText(WordSpannable);
+            textView.setTypeface(Typeface.SERIF);
+            textView.setTypeface(null, Typeface.BOLD_ITALIC);
+            textView.setTextSize(16);
+            textView.setMovementMethod(LinkMovementMethod.getInstance());
+        }
+        void reverseVisibility(TextView textView) {
             if (textView.getVisibility() == View.VISIBLE) {
                 textView.setVisibility(View.GONE);
             }
