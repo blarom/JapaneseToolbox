@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -265,6 +266,7 @@ public class ConjugatorFragment extends Fragment {
                                         List<List<List<String>>> TitlesList) {
 
         List<TextView> Tense = new ArrayList<>();
+        List<LinearLayout> TenseLayout = new ArrayList<>();
         List<TextView> Tense_Result = new ArrayList<>();
 
         Tense.add((TextView) getActivity().findViewById(R.id.Tense0));
@@ -281,6 +283,20 @@ public class ConjugatorFragment extends Fragment {
         Tense.add((TextView) getActivity().findViewById(R.id.Tense11));
         Tense.add((TextView) getActivity().findViewById(R.id.Tense12));
         Tense.add((TextView) getActivity().findViewById(R.id.Tense13));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout0));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout1));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout2));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout3));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout4));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout5));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout6));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout7));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout8));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout9));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout10));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout11));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout12));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout13));
         Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense0_Result));
         Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense1_Result));
         Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense2_Result));
@@ -298,6 +314,7 @@ public class ConjugatorFragment extends Fragment {
 
         for (int i=0;i<Tense.size();i++) {
             Tense.get(i).setText("");
+            TenseLayout.get(i).setVisibility(View.GONE);
             Tense_Result.get(i).setText("");
         }
 
@@ -314,6 +331,7 @@ public class ConjugatorFragment extends Fragment {
                 if (displayType.equals("Romaji")) { Tense_Result.get(i).setText(displayed_text_English); }
                 else 							   { Tense_Result.get(i).setText( displayed_text_Kanji ); }
 
+                TenseLayout.get(i).setVisibility(View.VISIBLE);
             }
         }
     }

@@ -1290,7 +1290,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         output[0] = "verb";
         output[1] = inputVerbString;
         output[2] = "deep";
-        registerThatUserIsRequestingDictSearch(true);
+        registerThatUserIsRequestingDictSearch(false);
         userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
     }
     public void onWordEntered_PerformThisFunction(String inputWordString) {

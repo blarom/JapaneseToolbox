@@ -114,6 +114,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             if (getArguments() != null && !searchResultsAlreadyDisplayed) {
                 String outputFromInputQueryFragment = getArguments().getString("input_to_fragment");
                 searchResultsAlreadyDisplayed = true;
+                registerThatUserIsRequestingDictSearch(false);
 
                 //If the application is resumed (switched to), then display the last results instead of performing a new search on the last input
                 if (mAppWasInBackground == null || !mAppWasInBackground) {
@@ -510,7 +511,14 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             }
         }
     }
-
+    private void registerThatUserIsRequestingDictSearch(Boolean state) {
+        if (getContext() != null) {
+            SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.requestingDictSearch), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(getString(R.string.requestingDictSearch), state);
+            editor.apply();
+        }
+    }
     private class   WordClickableSpan extends ClickableSpan{
         // code extracted from http://stackoverflow.com/questions/15475907/make-parts-of-textview-clickable-not-url
         public void onClick(View textView) {
