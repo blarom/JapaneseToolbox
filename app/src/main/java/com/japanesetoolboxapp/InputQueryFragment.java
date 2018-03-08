@@ -211,6 +211,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 updateQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
                 inputQueryAutoCompleteTextView.dismissDropDown();
 
+                registerThatUserIsRequestingDictSearch(true);
                 onWordEntered_PerformThisFunction(inputWordString);
             }
             return true;
@@ -237,7 +238,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                     }
                 }.start();
             }
-
+            registerThatUserIsRequestingDictSearch(false);
             onVerbEntered_PerformThisFunction(SharedMethods.removeSpecialCharacters(inputVerbString));
         } } );
 
@@ -260,6 +261,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                     }
                 }.start();
             }
+            registerThatUserIsRequestingDictSearch(true);
             onWordEntered_PerformThisFunction(SharedMethods.removeSpecialCharacters(inputWordString));
         } } );
 
@@ -540,7 +542,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
             mQueryText = results.get(0);
             inputQueryAutoCompleteTextView.setText(mQueryText);
-            registerThatUserIsRequestingDictSearch(true);
 
             //Attempting to access jisho.org to get the romaji value of the requested word, if it's a Japanese word
             if (getActivity() != null && MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
@@ -565,7 +566,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         }
         else if (requestCode == ADJUST_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-                registerThatUserIsRequestingDictSearch(true);
                 Bundle extras = data.getExtras();
                 if (extras != null) {
                     Uri adjustedImageUri = Uri.parse(extras.getString("returnImageUri"));
@@ -578,7 +578,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
     //Image methods
     private void adjustImageBeforeOCR(CropImage.ActivityResult result) {
-        registerThatUserIsRequestingDictSearch(true);
         mPhotoURI = result.getUri();
         mImageToBeDecoded = getImageFromUri(mPhotoURI);
 
@@ -1249,8 +1248,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         }
     }
     private void registerThatUserIsRequestingDictSearch(Boolean state) {
-        if (getContext() != null) {
-            SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.requestingDictSearch), Context.MODE_PRIVATE);
+        if (getActivity() != null) {
+            SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putBoolean(getString(R.string.requestingDictSearch), state);
             editor.apply();
@@ -1290,7 +1289,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         output[0] = "verb";
         output[1] = inputVerbString;
         output[2] = "deep";
-        registerThatUserIsRequestingDictSearch(false);
         userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
     }
     public void onWordEntered_PerformThisFunction(String inputWordString) {
@@ -1299,7 +1297,6 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         output[0] = "word";
         output[1] = inputWordString;
         output[2] = "fast";
-        registerThatUserIsRequestingDictSearch(false);
         userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
     }
     public void onConvertEntered_PerformThisFunction(String inputWordString) {

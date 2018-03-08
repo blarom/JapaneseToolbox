@@ -43,7 +43,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
     // Parameters
     private List<Object> mMatchingWordCharacteristics;
-    private ArrayList<String> mGlobalGrammarSpinnerList_element0;
     private String mLastSearchedWord;
     private List<List<Integer>> mMatchingWordRowColIndexList;
     private int mMaxNumberOfResultsShown = 50;
@@ -62,7 +61,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     private static final String JISHO_LOADER_INPUT_EXTRA = "input";
     Boolean matchFound;
     Toast mShowOnlineResultsToast;
-    private boolean searchResultsAlreadyDisplayed;
     SharedMethods mSharedMethods;
 
     // Fragment Lifecycle Functions
@@ -94,7 +92,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         // Retain this fragment (used to save user inputs on activity creation/destruction)
         setRetainInstance(true);
-        searchResultsAlreadyDisplayed = false;
 
         // Define that this fragment is related to fragment_dictionary.xml
         final View fragmentView = inflater.inflate(R.layout.fragment_dictionary, container, false);
@@ -111,9 +108,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         Boolean userHasRequestedDictSearch = checkIfUserRequestedDictSearch();
 
         if (userHasRequestedDictSearch == null || userHasRequestedDictSearch) {
-            if (getArguments() != null && !searchResultsAlreadyDisplayed) {
+            if (getArguments() != null) {
                 String outputFromInputQueryFragment = getArguments().getString("input_to_fragment");
-                searchResultsAlreadyDisplayed = true;
                 registerThatUserIsRequestingDictSearch(false);
 
                 //If the application is resumed (switched to), then display the last results instead of performing a new search on the last input
@@ -125,8 +121,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
                     SearchInDictionary(outputFromInputQueryFragment);
                 }
-            } else {
-                searchResultsAlreadyDisplayed = false;
             }
         }
     }
@@ -138,7 +132,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         super.onSaveInstanceState(savedInstanceState);
 
         // save excel results to display in spinners, load the results on activity restart
-        savedInstanceState.putStringArrayList("mGlobalGrammarSpinnerList_element0", mGlobalGrammarSpinnerList_element0);
+        //savedInstanceState.putStringArrayList("mGlobalGrammarSpinnerList_element0", mGlobalGrammarSpinnerList_element0);
     }
 
     //Asynchronous methods
@@ -512,8 +506,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         }
     }
     private void registerThatUserIsRequestingDictSearch(Boolean state) {
-        if (getContext() != null) {
-            SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.requestingDictSearch), Context.MODE_PRIVATE);
+        if (getActivity() != null) {
+            SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putBoolean(getString(R.string.requestingDictSearch), state);
             editor.apply();
@@ -626,10 +620,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         String[] output = {"verb",selectedVerbString,"fast"};
         mCallbackVerb.UserWantsToConjugateFoundVerbFromGrammarModule(output);
     }
-
     private Boolean checkIfUserRequestedDictSearch() {
         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        Boolean state = sharedPref.getBoolean(getString(R.string.requestingDictSearch), true);
+        Boolean state = sharedPref.getBoolean(getString(R.string.requestingDictSearch), false);
         return state;
     }
 

@@ -1313,7 +1313,7 @@ public class ConvertFragment extends Fragment {
                 case "o": added_string_latin = "o"; added_string_hiragana = "お"; added_string_katakana = "オ"; break;
                 case "pa": added_string_latin = "pa"; added_string_hiragana = "ぱ"; added_string_katakana = "パ"; break;
                 case "pi": added_string_latin = "pi"; added_string_hiragana = "ぴ"; added_string_katakana = "ビ"; break;
-                case "pu": added_string_latin = "pu"; added_string_hiragana = "ぷ"; added_string_katakana = "ヌ"; break;
+                case "pu": added_string_latin = "pu"; added_string_hiragana = "ぷ"; added_string_katakana = "プ"; break;
                 case "pe": added_string_latin = "pe"; added_string_hiragana = "ぺ"; added_string_katakana = "ペ"; break;
                 case "po": added_string_latin = "po"; added_string_hiragana = "ぽ"; added_string_katakana = "ポ"; break;
                 case "pya": added_string_latin = "pya"; added_string_hiragana = "ぴゃ"; added_string_katakana = "ピャ"; break;
