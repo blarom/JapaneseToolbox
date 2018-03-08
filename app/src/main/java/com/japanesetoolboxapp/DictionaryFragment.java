@@ -42,7 +42,7 @@ import java.util.Locale;
 public class DictionaryFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Object>>{
 
     // Parameters
-    private List<Object> mMatchingWordCharacteristics;
+    private List<Object> mLocalMatchingWordCharacteristics;
     private String mLastSearchedWord;
     private List<List<Integer>> mMatchingWordRowColIndexList;
     private int mMaxNumberOfResultsShown = 50;
@@ -88,12 +88,10 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         mInternetIsAvailable = SharedMethods.internetIsAvailableCheck(this.getContext());
 
     }
-    @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Retain this fragment (used to save user inputs on activity creation/destruction)
         setRetainInstance(true);
-
-        // Define that this fragment is related to fragment_dictionary.xml
         final View fragmentView = inflater.inflate(R.layout.fragment_dictionary, container, false);
 
         return fragmentView;
@@ -128,7 +126,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         super.onDetach();
         this.mFragmentActivity = null;
     }
-    public void onSaveInstanceState(Bundle savedInstanceState) {
+    public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
 
         // save excel results to display in spinners, load the results on activity restart
@@ -136,7 +134,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     }
 
     //Asynchronous methods
-    @SuppressLint("StaticFieldLeak") @NonNull @Override public Loader<List<Object>> onCreateLoader(int id, final Bundle args) {
+    @NonNull
+    @SuppressLint("StaticFieldLeak") @Override public Loader<List<Object>> onCreateLoader(int id, final Bundle args) {
         return new AsyncTaskLoader<List<Object>>(getContext()) {
 
             @Override
@@ -171,15 +170,16 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             }
         };
     }
-    @Override public void onLoadFinished(Loader<List<Object>> loader, List<Object> data) {
+    @Override public void onLoadFinished(@NonNull Loader<List<Object>> loader, List<Object> data) {
         mAsyncMatchingWordCharacteristics = data;
 
         if (mAppWasInBackground == null || !mAppWasInBackground) {
             Boolean showOnlineResults = getShowOnlineResultsPreference();
             if (mAsyncMatchingWordCharacteristics.size() != 0 && showOnlineResults) {
                 matchFound = true;
-                compareMatchingWordCharacteristics();
-                displayResults(mSearchedWord);
+                List<Object> totalMatchingWordCharacteristics = mergeMatchingWordCharacteristics(mLocalMatchingWordCharacteristics, mAsyncMatchingWordCharacteristics);
+                totalMatchingWordCharacteristics = sortResultsAccordingToRomajiAndKanjiLengths(mSearchedWord, totalMatchingWordCharacteristics);
+                displayResults(mSearchedWord, totalMatchingWordCharacteristics);
             }
 
             //If no dictionary match was found, then this is probably a verb conjugation, so try that
@@ -189,7 +189,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             }
         }
     }
-    @Override public void onLoaderReset(Loader<List<Object>> loader) {}
+    @Override public void onLoaderReset(@NonNull Loader<List<Object>> loader) {}
     public Boolean getShowOnlineResultsPreference() {
         Boolean showOnlineResults = false;
         if (getActivity()!=null) {
@@ -211,8 +211,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         // Run the Grammar Module on the input word
         matchFound = true;
-        mMatchingWordCharacteristics = getCharacteristicsForAllHits(matchingWordRowIndexList);
-        if (mMatchingWordCharacteristics.size() == 0) matchFound = false;
+        mLocalMatchingWordCharacteristics = getCharacteristicsForAllHits(matchingWordRowIndexList);
+        if (mLocalMatchingWordCharacteristics.size() == 0) matchFound = false;
 
         // If there are no results, retrieve the results from Jisho.org
         mShowOnlineResultsToast = Toast.makeText(getContext(), getResources().getString(R.string.showOnlineResultsToastString), Toast.LENGTH_SHORT);
@@ -234,7 +234,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             else loaderManager.restartLoader(JISHO_WEB_SEARCH_LOADER, queryBundle, this);
         }
 
-        displayResults(mSearchedWord);
+        mLocalMatchingWordCharacteristics = sortResultsAccordingToRomajiAndKanjiLengths(mSearchedWord, mLocalMatchingWordCharacteristics);
+        displayResults(mSearchedWord, mLocalMatchingWordCharacteristics);
 
         if (!matchFound && !mSearchedWord.equals("") && !showOnlineResults) {
             if (mShowOnlineResultsToast!=null) mShowOnlineResultsToast.cancel();
@@ -242,15 +243,64 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         }
 
     }
-    public void displayResults(String word) {
+    private List<Object> sortResultsAccordingToRomajiAndKanjiLengths(String searchWord, List<Object> mMatchingWordCharacteristics) {
+
+        List<int[]> matchingWordIndexesAndLengths = new ArrayList<>();
+        for (int i = 0; i < mMatchingWordCharacteristics.size(); i++) {
+
+            List<Object> current_MatchingHitsCharacteristics = (List<Object>) mMatchingWordCharacteristics.get(i);
+            String romaji_value = (String) current_MatchingHitsCharacteristics.get(0);
+            String kanji_value = (String) current_MatchingHitsCharacteristics.get(1);
+
+            //Get the length of the shortest meaning containing the word, and use it to prioritize the results
+            List<Object> current_MatchingHitsCharacteristics_Meaning_Blocks = (List<Object>) current_MatchingHitsCharacteristics.get(3);
+            List<Object> current_MatchingHitsCharacteristics_Meanings_Block;
+            String currentMeaning;
+            int currentMeaningLength = 1000;
+            for (int j=0; j<current_MatchingHitsCharacteristics_Meaning_Blocks.size(); j++) {
+                current_MatchingHitsCharacteristics_Meanings_Block = (List<Object>) current_MatchingHitsCharacteristics_Meaning_Blocks.get(j);
+                currentMeaning = (String) current_MatchingHitsCharacteristics_Meanings_Block.get(0);
+                if (currentMeaning.contains(searchWord) && currentMeaning.length() <= currentMeaningLength) {
+                    currentMeaningLength = currentMeaning.length();
+                }
+            }
+
+            //Get the total length
+            int length = romaji_value.length() + kanji_value.length() + currentMeaningLength;
+
+            //If the romaji or Kanji value is an exact match to the search word, then it must appear at the start of the list
+            if (romaji_value.equals(searchWord) || kanji_value.equals(searchWord)) length = 0;
+
+            int[] currentMatchingWordIndexAndLength = new int[2];
+            currentMatchingWordIndexAndLength[0] = i;
+            currentMatchingWordIndexAndLength[1] = length;
+
+            matchingWordIndexesAndLengths.add(currentMatchingWordIndexAndLength);
+        }
+
+        //Sort the results according to total length
+        if (matchingWordIndexesAndLengths.size() != 0) {
+            matchingWordIndexesAndLengths = bubbleSortForTwoIntegerList(matchingWordIndexesAndLengths);
+        }
+
+        //Return the sorted list
+        List<Object> newMatchingWordCharacteristics = new ArrayList<>();
+        for (int i = 0; i < matchingWordIndexesAndLengths.size(); i++) {
+            int sortedIndex = matchingWordIndexesAndLengths.get(i)[0];
+            newMatchingWordCharacteristics.add(mMatchingWordCharacteristics.get(sortedIndex));
+        }
+
+        return newMatchingWordCharacteristics;
+    }
+    public void displayResults(String word, List<Object> matchingWordCharacteristics) {
 
         // Populate the list of choices for the SearchResultsChooserSpinner. Each text element of inside the idividual spinner choices corresponds to a sub-element of the choicelist
-        populateSearchResultsForDisplay(word, mMatchingWordCharacteristics);
+        populateSearchResultsForDisplay(word, matchingWordCharacteristics);
 
         SharedMethods.hideSoftKeyboard(getActivity());
         // Implementing the SearchResultsChooserListView
         try {
-            if (mListDataHeader != null && mListHeaderDetails != null && mListDataChild != null) {
+            if (mListDataHeader != null && mListHeaderDetails != null && mListDataChild != null && getView() != null) {
                 mSearchResultsListAdapter = new GrammarExpandableListAdapter(getContext(), mListDataHeader, mListHeaderDetails, mListDataChild);
                 mSearchResultsExpandableListView = getView().findViewById(R.id.SentenceConstructionExpandableListView); //CAUSED CRASH
                 mSearchResultsExpandableListView.setAdapter(mSearchResultsListAdapter);
@@ -258,34 +308,34 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             }
         }
         catch (java.lang.NullPointerException e) {
+            //If a NullPointerException happens, restart activity since the list cannot be diplayed
             Intent intent = new Intent(getContext(), MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
     }
-    private void compareMatchingWordCharacteristics() {
+    private List<Object> mergeMatchingWordCharacteristics(List<Object> localMatchingWordCharacteristics, List<Object> asyncMatchingWordCharacteristics) {
         List<Object> finalList = new ArrayList<>();
-        List<Object> finallist_element = new ArrayList<>();
-        List<Object> current_async_meaning_blocks = new ArrayList<>();
-        List<Object> current_local_meaning_blocks = new ArrayList<>();
+        List<Object> finallist_element;
+        List<Object> current_async_meaning_blocks;
+        List<Object> current_local_meaning_blocks;
         List<Object> current_async_meaning_block;
         List<Object> current_local_meaning_block;
-        String current_local_meaning = "";
-        String current_local_type;
-        String current_async_meaning = "";
+        String current_local_meaning;
+        String current_async_meaning;
         String current_async_romaji;
         String current_async_kanji;
         String current_local_romaji;
         String current_local_kanji;
         String current_local_altspellings;
-        List<Object> current_final_meaning_blocks = new ArrayList<>();
+        List<Object> current_final_meaning_blocks;
         List<Object> FinalAsyncElements = new ArrayList<>();
         Boolean async_meaning_found_locally;
 
-        FinalAsyncElements.addAll(mAsyncMatchingWordCharacteristics);
+        FinalAsyncElements.addAll(asyncMatchingWordCharacteristics);
 
-        for (int j = 0; j< mMatchingWordCharacteristics.size(); j++) {
-            List<Object> current_match_element = (List<Object>) mMatchingWordCharacteristics.get(j);
+        for (int j = 0; j< localMatchingWordCharacteristics.size(); j++) {
+            List<Object> current_match_element = (List<Object>) localMatchingWordCharacteristics.get(j);
             finallist_element = new ArrayList<>();
             current_local_romaji = (String) current_match_element.get(0);
             finallist_element.add(current_local_romaji);
@@ -339,9 +389,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         }
         finalList.addAll(FinalAsyncElements);
 
-        mMatchingWordCharacteristics = finalList;
+        return finalList;
     }
-    public void populateSearchResultsForDisplay(String word, List<Object> MatchingHitsCharacteristics) {
+    public void populateSearchResultsForDisplay(String word, List<Object> matchingWordCharacteristics) {
 
         //Initialization
         mListDataHeader = new ArrayList<>();
@@ -366,7 +416,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         String current_type = "";
         List<Object> current_MatchingHitsCharacteristics_Meanings_Block;
 
-        if (MatchingHitsCharacteristics.size() == 0) {
+        if (matchingWordCharacteristics.size() == 0) {
             //Create a generic answer for the empty search
             if (word.equals("")) {
                 ListElement1 = getResources().getString(R.string.PleaseEnterWord);
@@ -401,9 +451,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             mListDataChild.put(Integer.toString(0), elements_of_child);
         }
         else {
-            for (int i = 0; i< MatchingHitsCharacteristics.size(); i++) {
+            for (int i = 0; i< matchingWordCharacteristics.size(); i++) {
 
-                List<Object> current_MatchingHitsCharacteristics = (List<Object>) MatchingHitsCharacteristics.get(i);
+                List<Object> current_MatchingHitsCharacteristics = (List<Object>) matchingWordCharacteristics.get(i);
                 String romaji_value = (String) current_MatchingHitsCharacteristics.get(0);
                 String kanji_value = (String) current_MatchingHitsCharacteristics.get(1);
                 String altspellings_value = (String) current_MatchingHitsCharacteristics.get(2);
@@ -587,13 +637,21 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             ds.setUnderlineText(false);
         }
     }
-    static public   String getValidCharacter(String input) {
-        String output = input;
-        for (int i = 0; i< MainActivity.SimilarsDatabase.size(); i++) {
-            if (MainActivity.SimilarsDatabase.get(i)[0].equals(input)) {
-                output = MainActivity.SimilarsDatabase.get(i)[1];
-                break;
+    public String replaceInvalidKanjisWithValidOnes(String input) {
+        String output = "";
+        char currentChar;
+        boolean found;
+        for (int i=0; i<input.length(); i++) {
+            currentChar = input.charAt(i);
+            found = false;
+            for (int j = 0; j < MainActivity.SimilarsDatabase.size(); j++) {
+                if (MainActivity.SimilarsDatabase.get(j).length > 0 && MainActivity.SimilarsDatabase.get(j)[0].charAt(0) == currentChar) {
+                    output += MainActivity.SimilarsDatabase.get(j)[1].charAt(0);
+                    found = true;
+                    break;
+                }
             }
+            if (!found) output += currentChar;
         }
         return output;
     }
@@ -657,6 +715,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         if (MainActivity.MainDatabase != null) {lastIndex = MainActivity.MainDatabase.size() - 1;}
         else { return matchingWordRowColIndexList; }
 
+        //Fixing any invalid Kanji characters in the input
+        word = replaceInvalidKanjisWithValidOnes(word);
+
         // converting the word to lowercase (the algorithm is not efficient if needing to search both lower and upper case)
         word = word.toLowerCase(Locale.ENGLISH);
 
@@ -668,16 +729,16 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         if (verb_length > 2 && verb.substring(verb_length-3).equals("ing")) {
 
             if (verb_length > 5 && verb.substring(verb_length-6).equals("inging")) {
-                if (	(verb.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(verb.substring(3,verb_length))) ||
-                        (!verb.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(verb.substring(0,verb_length)))   ) {
+                if (	(verb.substring(0, 2+1).equals("to ") && checkIfWordIsOfTypeIngIng(verb.substring(3,verb_length))) ||
+                        (!verb.substring(0, 2+1).equals("to ") && checkIfWordIsOfTypeIngIng(verb.substring(0,verb_length)))   ) {
                     // If the verb ends with "inging" then remove the the second "ing"
                     inglessVerb = verb.substring(0,verb_length-3);
                 }
             }
             else {
                 verb2 = verb + "ing";
-                if ((!verb2.substring(0, 2 + 1).equals("to ") || !IsOfTypeIngIng(verb2.substring(3, verb_length + 3))) &&
-                        (verb2.substring(0, 2+1).equals("to ") || !IsOfTypeIngIng(verb2.substring(0, verb_length + 3)))) {
+                if ((!verb2.substring(0, 2 + 1).equals("to ") || !checkIfWordIsOfTypeIngIng(verb2.substring(3, verb_length + 3))) &&
+                        (verb2.substring(0, 2+1).equals("to ") || !checkIfWordIsOfTypeIngIng(verb2.substring(0, verb_length + 3)))) {
                     // If the verb does not belong to the list, then remove the ending "ing" so that it can be compared later on to the verbs excel
                     //If the verb is for e.g. to sing / sing, where verb2 = to singing / singing, then check that verb2 (without the "to ") belongs to the list, and if it does then do nothing
 
@@ -718,9 +779,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             int concatenated_word_length = concatenated_word.length();
 
             // Removing any apostrophes to make user searches less strict
-            word = ApostropheRemover(word);
-            concatenated_word = ApostropheRemover(concatenated_word);
-            concatenated_translationLatin = ApostropheRemover(concatenated_translationLatin);
+            word = removeApostrophe(word);
+            concatenated_word = removeApostrophe(concatenated_word);
+            concatenated_translationLatin = removeApostrophe(concatenated_translationLatin);
 
             // Search for the matches in the indexed list using a custom limit-finding binary search
             List<String[]> SortedIndex = new ArrayList<>();
@@ -736,7 +797,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     }
                 }
 
-                limits = BinarySearchInLatinIndex(TypeisLatin, input_word, concatenated_translationLatin, SortedIndex);
+                limits = binarySearchInLatinIndex(TypeisLatin, input_word, concatenated_translationLatin, SortedIndex);
 
                 // If the entered word is Latin and only has one character, limit the word list to be checked later
                 if (concatenated_word.length() == 1 && limits[0] != -1) {
@@ -751,7 +812,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             } else if (TypeisKanji) {
                 SortedIndex = MainActivity.GrammarDatabaseIndexedKanji;
                 int relevant_column_index = 2;
-                limits = BinarySearchInUTF8Index(concatenated_word, SortedIndex, relevant_column_index);
+                limits = binarySearchInUTF8Index(concatenated_word, SortedIndex, relevant_column_index);
             } else {
                 matchingWordRowColIndexList.add(matchingWordRowIndexList);
                 matchingWordRowColIndexList.add(matchingWordColIndexList);
@@ -771,7 +832,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             // Add search results where the "ing" is removed from an "ing" verb
             if ((TypeisLatin || TypeisKana || TypeisNumber) && !inglessVerb.equals(word)) {
                 SortedIndex = MainActivity.GrammarDatabaseIndexedLatin;
-                limits = BinarySearchInLatinIndex(TypeisLatin, inglessVerb, inglessVerb, SortedIndex);
+                limits = binarySearchInLatinIndex(TypeisLatin, inglessVerb, inglessVerb, SortedIndex);
                 if (limits[0] != -1) {
                     for (int i = limits[0]; i <= limits[1]; i++) {
                         parsed_list = Arrays.asList(SortedIndex.get(i)[1].split(";"));
@@ -812,7 +873,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 match_length = 1000;
                 best_match = "";
                 MM_index = MainActivity.MainDatabase.get(rowIndex)[GlobalConstants.GrammarModule_colIndex_Meaning];
-                limits = BinarySearchInLatinIndex(true, MM_index, MM_index, MainActivity.MeaningsDatabase);
+                limits = binarySearchInLatinIndex(true, MM_index, MM_index, MainActivity.MeaningsDatabase);
                 type = "z";
                 if (limits[0] != -1) {
                     type = MainActivity.MeaningsDatabase.get(limits[0])[2];
@@ -848,8 +909,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                         concatenated_hit = concatenated_hit.toLowerCase(Locale.ENGLISH);
                     }
 
-                    hit = ApostropheRemover(hit);
-                    concatenated_hit = ApostropheRemover(concatenated_hit);
+                    hit = removeApostrophe(hit);
+                    concatenated_hit = removeApostrophe(concatenated_hit);
 
                     // Getting the first word if the hit is a sentence
                     if (hit.length() > word_length) {
@@ -900,40 +961,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
             }
 
-            // Sorting the results according to the shortest keyword as found in the above search
-
-            // Computing the value length
-            int current_row_index;
-            int current_col_index;
-            int current_romaji_length;
-            int current_kanji_length;
-            int list_size = MatchList.size();
-            int[][] matches = new int[list_size][2];
-            for (int i=0;i<list_size;i++) {
-                matches[i][0] = MatchList.get(i)[0];
-                matches[i][1] = MatchList.get(i)[1];
-            }
-
-            // Sorting
-            int tempVar0;
-            int tempVar1;
-            for (int i=0;i<list_size;i++) { //Bubble sort
-                for (int t=1;t<list_size-i;t++) {
-                    if (matches[t-1][1] > matches[t][1]) {
-                        tempVar0 = matches[t-1][0];
-                        tempVar1 = matches[t-1][1];
-                        matches[t-1][0] = matches[t][0];
-                        matches[t-1][1] = matches[t][1];
-                        matches[t][0] = tempVar0;
-                        matches[t][1] = tempVar1;
-                    }
-                }
-            }
-
-            // Creating an Arraylist with the sorted values
-            List<Integer> MatchList_Sorted = new ArrayList<>();
-            for (int i=0;i<list_size;i++) {
-                matchingWordRowIndexList.add(matches[i][0]);
+            for (int i=0;i<MatchList.size();i++) {
+                matchingWordRowIndexList.add(MatchList.get(i)[0]);
                 matchingWordColIndexList.add(GlobalConstants.GrammarModule_colIndex_Romaji_construction);
             }
 
@@ -945,7 +974,46 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         return matchingWordRowColIndexList;
     }
-    static public int[]                 BinarySearchInLatinIndex(boolean TypeisLatin, String concatenated_word, String concatenated_translationLatin, List<String[]> SortedIndex) {
+    private List<int[]>                 bubbleSortForTwoIntegerList(List<int[]> MatchList) {
+
+        // Sorting the results according to the shortest keyword as found in the above search
+
+        // Computing the value length
+        int list_size = MatchList.size();
+        int[][] matches = new int[list_size][2];
+        for (int i=0;i<list_size;i++) {
+            matches[i][0] = MatchList.get(i)[0];
+            matches[i][1] = MatchList.get(i)[1];
+        }
+
+        // Sorting
+        int tempVar0;
+        int tempVar1;
+        for (int i=0;i<list_size;i++) { //Bubble sort
+            for (int t=1;t<list_size-i;t++) {
+                if (matches[t-1][1] > matches[t][1]) {
+                    tempVar0 = matches[t-1][0];
+                    tempVar1 = matches[t-1][1];
+                    matches[t-1][0] = matches[t][0];
+                    matches[t-1][1] = matches[t][1];
+                    matches[t][0] = tempVar0;
+                    matches[t][1] = tempVar1;
+                }
+            }
+        }
+
+        List<int[]> sortedMatchList = new ArrayList<>();
+        int[] element;
+        for (int i=0;i<list_size;i++) {
+            element = new int[2];
+            element[0] = matches[i][0];
+            element[1] = matches[i][1];
+            sortedMatchList.add(element);
+        }
+
+        return sortedMatchList;
+    }
+    static public int[]                 binarySearchInLatinIndex(boolean TypeisLatin, String concatenated_word, String concatenated_translationLatin, List<String[]> SortedIndex) {
 
         String prepared_word = "";
         // Prepare the input word to be used in the following algorithm (it must be only in latin script)
@@ -1073,7 +1141,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         return result;
         }
-    static public int[]                 BinarySearchInUTF8Index(String concatenated_word, List<String[]> SortedIndex, int relevant_column_index) {
+    static public int[]                 binarySearchInUTF8Index(String concatenated_word, List<String[]> SortedIndex, int relevant_column_index) {
 
         // Prepare the input word to be used in the following algorithm: the word is converted to its hex utf-8 value as a string, in fractional form
         String prepared_word = convertToUTF8(concatenated_word);
@@ -1443,7 +1511,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         return matchingWordCharacteristics;
     }
-    public static String                ApostropheRemover(String sentence) {
+    public static String                removeApostrophe(String sentence) {
         String current_char;
         String concatenated_sentence = "";
         for (int index=0; index<sentence.length(); index++) {
@@ -1454,7 +1522,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         }
         return concatenated_sentence;
     }
-    public Boolean                      IsOfTypeIngIng(String verb) {
+    public Boolean                      checkIfWordIsOfTypeIngIng(String verb) {
             Boolean answer = false;
             if (	verb.equals("accinging") || verb.equals("astringing") || verb.equals("befringing") || verb.equals("besinging") ||
                     verb.equals("binging") || verb.equals("boinging") || verb.equals("bowstringing") || verb.equals("bringing") ||
@@ -1591,11 +1659,11 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 ChosenItem.setVisibility(View.VISIBLE);
 
                 if (type.contains("V") && !type.equals("VC")) {
-                    setHyperlinksInCopyToInputLine(ChosenItem_RomajiX, "Conjugate ", headerDetailsArray.get(0), " ");
-                    setHyperlinksInCopyToInputLine(ChosenItem_KanjiX, "(", headerDetailsArray.get(1), ").");
+                    setHyperlinksInCopyToInputLine("verb", ChosenItem_RomajiX, "Conjugate ", headerDetailsArray.get(0), " ");
+                    setHyperlinksInCopyToInputLine("verb", ChosenItem_KanjiX, "(", headerDetailsArray.get(1), ").");
                 } else {
-                    setHyperlinksInCopyToInputLine(ChosenItem_RomajiX, "Copy ", headerDetailsArray.get(0), " ");
-                    setHyperlinksInCopyToInputLine(ChosenItem_KanjiX, "(", headerDetailsArray.get(1), ") to input.");
+                    setHyperlinksInCopyToInputLine("word", ChosenItem_RomajiX, "Copy ", headerDetailsArray.get(0), " ");
+                    setHyperlinksInCopyToInputLine("word", ChosenItem_KanjiX, "(", headerDetailsArray.get(1), ") to input.");
                 }
             }
             else {
@@ -1811,7 +1879,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
             return convertView;
         }
-        void setHyperlinksInCopyToInputLine(TextView textView, String before, String hyperlinkText, String after) {
+        void setHyperlinksInCopyToInputLine(String type, TextView textView, String before, String hyperlinkText, String after) {
             String totalText = "<b>" +
                     "<font color='" + getResources().getColor(R.color.textColorSecondary) + "'>" +
                     before +
@@ -1822,7 +1890,11 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     "</font>";
             Spanned spanned_totalText = SharedMethods.fromHtml(totalText);
             SpannableString WordSpannable = new SpannableString(spanned_totalText);
-            WordSpannable.setSpan(new WordClickableSpan(), before.length(), spanned_totalText.length() - after.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if (type.equals("word")) {
+                WordSpannable.setSpan(new WordClickableSpan(), before.length(), spanned_totalText.length() - after.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            } else {
+                WordSpannable.setSpan(new VerbClickableSpan(), before.length(), spanned_totalText.length() - after.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
             textView.setText(WordSpannable);
             textView.setTypeface(Typeface.SERIF);
             textView.setTypeface(null, Typeface.BOLD_ITALIC);
