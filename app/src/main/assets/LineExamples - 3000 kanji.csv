@@ -956,7 +956,7 @@ ID|Example English|Example Roumaji|Example Kanji|
 956|I got home early but since I stayed up late watching TV, I am sleepy.|kaeri ga hayakatta noni yoru osoku made terebi wo miteita node nemui.|帰りが早かったのに夜遅くまでテレビを観ていたので 眠い。|
 957|I made a phone call, but nobody was there.|denwa wo shimashita, shikashi imasen deshita.|電話をしました，然しいませんでした。|
 958|That's not what I meant.|sou ja nakute.|そうじゃなくて。|
-959|He talks while drinking coffee.|koohii wo nominagara hanashiteimasu.|コーヒーを飲みながら歯しています。|
+959|He talks while drinking coffee.|koohii wo nominagara hanashiteimasu.|コーヒーを飲みながら話しています。|
 960|She always speaks on the phone when (/ every time) she washes the dishes.|kanojo wa itsumo shokki wo arainagara denwa de hanashimasu.|彼女はいつもしょっきをあらいながら電話で読します。|
 961|He's the teacher, and he's older...|sensei da shi toshiue da shi....|先生だし年上だし...|
 962|Because he's kind, attractive, and interesting (amongst other things).|yasashii shi kakkoii shi omoshiroi kara.|優しいしかっこいいし面白いから。|
@@ -1454,3 +1454,40 @@ ID|Example English|Example Roumaji|Example Kanji|
 1454|I don’t want the boring one.|tsumaranai no wa iya desu.|つまらないのはいやです|
 1455|Please give me an interesting one.|omoshiroi no wo kudasai.|おもしろいのを ください|
 1456|You can play games after you do (your) homework.|geemu wo shite mo ii da shukudai wo shita ato de ne.|下エムをしてもいいだ宿題をした後でね。|
+1457|In what way did (he) get from the train station to the hotel?|eki kara hoteru made dou yatte ikimashita ka.|駅からホテルまでどうやって行きましたか？|
+1458|What is the height of an elephant?|zou san no takasa wa nan desu ka?|ぞうさんの高さは何ですか？|
+1459|This car’s quietness is amazing.|kono kuruma no shizukasa wa odoroku beki desu.|この車の静かさは驚くべきです。|
+1460|Did you speak with the boss? (polite)|shachou to o hanashi ni narimashita ka?|社長とお話になりましたか？|
+1461|Won’t you drink something? (polite)|nanika o nomi ni narimasen ka?|何かお飲みになりませんか？|
+1462|Please sell (me this). (honorific)|o uri kudasai.|お売りください。|
+1463|Please eat. (polite)|o tabe kudasai.|お食べください。|
+1464|I’m not really good at Japanese.|nihongo ga amari jouzu ja nai.|日本語があまり上手じゃない。|
+1465|Even if the world ends…|tatoe sekai ga owattemo…|たとえ世界が終わっても・・・|
+1466|Even if we fail, let’s keep at it.|tatoe shippai shitemo mata ganbarimashou.|たとえ失敗してもまた頑張りましょう。|
+1467|Even if we shall never meet again, I won’t forget.|tatoe nido to aenaku temo wasuremasen.|たとえ二度と会えなくても忘れません。|
+1468|About a week|isshuu kan hodo|一週間ほど。|
+1469|The train station is about ten kilometers ahead.|eki wa jukkiro hodo saki desu.|駅は１０キロほどさきです。|
+1470|This can be bought for about 5000 yen.|kore wa go sen en hodo de kaemasu.|これは５０００円ほどで買えます。|
+1471|What will you have?|nani ni shimasu ka?|なににしますか？|
+1472|I’ll have tempura.|watashi wa tenpura ni shimasu.|私はてんぷらにします。|
+1473|Have you been to America?|amerika ni itta koto ga arimasu ka?|アメリカに行ったことがありますか？|
+1474|(I) have eaten natto before.|nattou o tabeta koto ga arimasu.|納豆を食べたことがあります。|
+1475|Please don’t eat the cake.|keeki o tabe naide kudasai.|ケーキを食べないでください。|
+1476|Please don’t go skydiving.|sukaidaibingu o shinaide kudasai.|スカイダイビングをしないでください。|
+1477|The way to read a Kanji.|kanji no yomi kata.|漢字の読み方。|
+1478|Please teach me how to use chopsticks correctly.|hashi no tadashii tsukai kata o oshiete kudasai.|はしの正しい使い方を教えてください。|
+1479|The blue one.|aoi no.|青いの。|
+1480|I want the cheap one.|yasui no ga hoshii.|安いのがほしい。|
+1481|Whatcha doing?|nani wo shite iru n desu ka .|何をしているんですか。|
+1482|Just what exactly happened (to you)!?|ittai, doushita n desu ka?|いったい、どうしたんですか？|
+1483|You are not allowed to watch this movie.|sono eiga o micha ikemasen yo.|その映画を見ちゃいけませんよ。|
+1484|Don’t speak to strangers.|shiranai hito to hanashite wa ikemasen.|知らない人と話してはいけません。|
+1485|This is an announcement about the program (TV for example).|bangumi ni tsuite no oshirase desu.|番組についてのお知らせです。 |
+1486|What do you think about that movie?|ano eiga ni tsuite dou omou?|あの映画についてどう思う？ |
+1487|Out of all foods, what do you like the best?|tabemono no naka wa nani ga ichiban suki desu ka?|食べ物の中で何が一番好きですか？|
+1488|Mt. Fuji isn’t the tallest mountain in the world.|fujisan wa sekai de ichiban takai yama ja nai.|富士山は、世界で一番高い山じゃない。|
+1489|Even if you tell a joke, he won’t laugh.|joudan wo ittemo, kare wa waraimasen. |冗談を言っても、彼は笑いません。|
+1490|Even if it is cold, I can eat it.|tsumetakutemo taberaremasu.|冷たくても、食べられます。|
+1491|Even Superman can’t do that!|suupaman demo sonna koto wa dekinai yo.|スーパマンでも、そんなことはできないよ。|
+1492|I have a fever.|netsu ga aru.|熱がある。|
+1493|I'm coughing.|seki ga deru.|咳が出る。|

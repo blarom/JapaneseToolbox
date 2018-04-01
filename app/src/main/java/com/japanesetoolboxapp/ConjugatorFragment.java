@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -572,7 +573,7 @@ public class ConjugatorFragment extends Fragment {
     }
     public List<List<Integer>>              FindMatchingVerbIndex(String verb, Context context) {
 
-        // Value Initializations
+        //region Value Initializations
         List<Integer> matchingVerbRowIndexList = new ArrayList<>();
         List<Integer> matchingVerbColIndexList = new ArrayList<>();
         List<Integer> ConjugationSearchMatchingVerbRowIndexList = new ArrayList<>();
@@ -614,8 +615,9 @@ public class ConjugatorFragment extends Fragment {
         List<Integer> diluted_columns;
         int max_length;
         int current_length;
+        //endregion
 
-        // Getting the input type and its converted form (english/romaji/kanji/invalid)
+        //region Getting the input type and its converted form (english/romaji/kanji/invalid)
         List<String> translationList = ConvertFragment.Kana_to_Romaji_to_Kana(verb);
         String translation = "";
         String text_type = ConvertFragment.TextType(verb);
@@ -631,6 +633,7 @@ public class ConjugatorFragment extends Fragment {
         if (text_type.equals("kanji") )                                     { translation = translationList.get(1); TypeisKanji = true;}
         if ( verb.contains("*") || verb.contains("＊") || verb.equals("") ) { TypeisInvalid = true;}
         if ( translation.contains("*") || translation.contains("＊"))        { translationIsInvalid = true; }
+        //endregion
 
         // Starting the algorithm
         if (!TypeisInvalid) {
@@ -644,7 +647,7 @@ public class ConjugatorFragment extends Fragment {
             int lastIndex = MainActivity.VerbDatabase.size()-1;
             while (MainActivity.VerbDatabase.get(lastIndex)[0].length() == 0) { lastIndex--; }
 
-            // Removing the "ing" from the verb (if relevant)
+            //region Removing the "ing" from the verb (if relevant)
             if (verb_length > 2 && verb.substring(verb_length-3).equals("ing")) {
 
                 if (verb_length > 5 && verb.substring(verb_length-6).equals("inging")) {
@@ -665,14 +668,16 @@ public class ConjugatorFragment extends Fragment {
                     }
                 }
             }
+            //endregion
 
-            // Concatenating the verb & its translation for future use
+            //region Concatenating the verb & its translation for future use
             String concatenated_verb = SharedMethods.removeSpecialCharacters(verb);
             String concatenated_translation = SharedMethods.removeSpecialCharacters(translation);
             int concatenated_verb_length = concatenated_verb.length();
             int concatenated_translation_length = concatenated_translation.length();
+            //endregion
 
-            // Taking care of the case where the input is a basic conjugation that will cause the app to return all verbs
+            //region Taking care of the case where the input is a basic conjugation that will cause the app to return all verbs
             String[] title_row = new String[NumberOfSheetCols];
             List<String> parsedConj;
             boolean verb_is_conjoined = false;
@@ -699,8 +704,9 @@ public class ConjugatorFragment extends Fragment {
                     }
                 }
             }
+            //endregion
 
-            // Performing column dilution in order to make the search more efficient (the diluted column ArrayList is used in the Search Algorithm)
+            //region Performing column dilution in order to make the search more efficient (the diluted column ArrayList is used in the Search Algorithm)
             current_length = 0;
             List<String[]> mySheetLengths = new ArrayList<>();
             if (TypeisLatin) {
@@ -720,14 +726,12 @@ public class ConjugatorFragment extends Fragment {
                 else { max_length = 0; }
                 if (max_length >= current_length) { diluted_columns_true_verb.add(col); }
             }
+            //endregion
 
-            // Checking to see if the verb is suru
+            //region Checking to see if the verb is suru
             rowIndex_of_suru = 0;
             rowIndex_of_kuru = 0;
             for (int current_index = 3; current_index < MainActivity.VerbDatabase.size(); current_index++) {
-                if (MainActivity.VerbDatabase.get(current_index).length == 2){
-                    String a ="";
-                }
                 value_Romaji = MainActivity.VerbDatabase.get(current_index)[GlobalConstants.VerbModule_colIndex_ustem];
                 if (value_Romaji.equals("suru")) { rowIndex_of_suru = current_index; break;}
             }
@@ -753,6 +757,7 @@ public class ConjugatorFragment extends Fragment {
                     }
                 }
             }
+            //endregion
 
             // 2. Search algorithm
             if (verb_is_suru) {
@@ -793,10 +798,9 @@ public class ConjugatorFragment extends Fragment {
                     }
                 }
 
-                // Normal search loop
                 for (int rowIndex = 3; rowIndex < lastIndex + 1; rowIndex++) {
 
-                    // Loop starting parameters initialization
+                    //region Loop starting parameters initialization
                     found_match = false;
                     skip_this_row = true;
                     first_letter_is_identical = false;
@@ -806,8 +810,9 @@ public class ConjugatorFragment extends Fragment {
                         current_row_values_latin[p] = MainActivity.VerbDatabase.get(rowIndex)[p];
                         current_row_values_kanji[p] = MainActivity.VerbDatabase.get(rowIndex)[p];
                     }
+                    //endregion
 
-                    //Extracting the cumulative english meanings
+                    //region Extracting the cumulative english meanings
                     value_English = current_row_values_latin[GlobalConstants.VerbModule_colIndex_english];
                     if (value_English.equals("")) { value_english_is_empty = true; }
 
@@ -818,19 +823,21 @@ public class ConjugatorFragment extends Fragment {
 
                     value_rootKanji = current_row_values_kanji[GlobalConstants.VerbModule_colIndex_rootKanji];
                     value_rootLatin = current_row_values_latin[GlobalConstants.VerbModule_colIndex_rootLatin];
+                    //endregion
 
-                    // Add "to " to the values of value_English (the "to "s were removed in the database to free space)
+                    //region Add "to " to the values of value_English (the "to "s were removed in the database to free space)
                     List<String> parsed_value = Arrays.asList(value_English.split(","));
                     value_English = "to ";
                     for (int k=0; k<parsed_value.size();k++) {
                         value_English = value_English + parsed_value.get(k).trim();
                         if (k<parsed_value.size()-1) {value_English = value_English + ", to ";}
                     }
+                    //endregion
 
                     // Skipping empty/family rows
                     if (value_Family.equals("") || value_Family.equals("-")) { continue; }
 
-                    // Registering the current family row
+                    //region Registering the current family row
                     if (value_english_is_empty) {
 
                         verb_is_a_conjugation_of_the_current_family = false;
@@ -863,25 +870,29 @@ public class ConjugatorFragment extends Fragment {
 
                         // Family rows are not relevant for searches
                     }
+                    //endregion
 
-                    // If the verb appears as a conjoined verb in one of the conjugations, don't use the whole conjugations row
+                    //region If the verb appears as a conjoined verb in one of the conjugations, don't use the whole conjugations row
                     if (!verb_is_conjoined) { diluted_columns = diluted_columns_true_verb; }
                     else { diluted_columns = diluted_columns_no_conjugations; }
+                    //endregion
 
-                    // Preventing conjugation searches on short verbs
+                    //region Preventing conjugation searches on short verbs
                     if ( (TypeisLatin && verb_length < 3) || (TypeisKana  && verb_length < 2) || (TypeisKanji && verb_length < 2)) {
                         diluted_columns = diluted_columns_no_conjugations;
                     }
+                    //endregion
 
-                    // Getting the exception row if relevant
+                    //region Getting the exception row if relevant
                     value_Exception = current_row_values_latin[GlobalConstants.VerbModule_colIndex_istem];
                     if (!value_Exception.equals("")) {
                         value_Exception_asInt = Integer.valueOf(value_Exception);
                         row_values_current_exceptionLatin = MainActivity.VerbLatinConjDatabase.get(value_Exception_asInt);
                         row_values_current_exceptionKanji = MainActivity.VerbKanjiConjDatabase.get(value_Exception_asInt);
                     }
+                    //endregion
 
-                    // Preventing searches on verbs that don't have the same first kana
+                    //region Preventing searches on verbs that don't have the same first kana
                     if (!value_english_is_empty) {
                         if (        TypeisLatin
                                 ||  TypeisKana  && (value_Kana.charAt(0) == verb.charAt(0))
@@ -889,24 +900,27 @@ public class ConjugatorFragment extends Fragment {
                                 ||  value_Romaji.equals("kuru") ||  value_Romaji.equals("da"))
                         { first_letter_is_identical = true; skip_this_row = false; }
                     }
+                    //endregion
 
-                    // Including the rows for verbs starting in o or go
+                    //region Including the rows for verbs starting in o or go
                     if (!value_english_is_empty) {
                         if (((TypeisLatin && verb_length > 2) || (TypeisKana && verb_length > 1) || (TypeisKanji && verb_length > 1))
                                 && (value_Kanji.charAt(0) == 'お' || value_Kanji.charAt(0) == 'ご' || value_Kanji.charAt(0) == '御')) {
                             skip_this_row = false;
                         }
                     }
+                    //endregion
 
-                    // If the verb is a suru conjugation but is also a valid verb, don't skip this row
+                    //region If the verb is a suru conjugation but is also a valid verb, don't skip this row
                     if (verb_is_suru && suru_conjugation_is_also_a_verb) {
                         skip_this_row = true;
                         for (String suru_conj_as_verb:suru_conjugation_verb)
                             if (value_Kanji.equals(suru_conj_as_verb)) { skip_this_row = false; break;}
                         if (skip_this_row  || value_Romaji.equals("suru")) {continue;}
                     }
+                    //endregion
 
-                    // If the verb is equal to a family conjugation, only roots with length 1 (ie. iru/aru/eru/oru/uru verbs only) or a verb with the exact romaji value are considered. This prevents too many results. This does not conflict with da or kuru.
+                    //region If the verb is equal to a family conjugation, only roots with length 1 (ie. iru/aru/eru/oru/uru verbs only) or a verb with the exact romaji value are considered. This prevents too many results. This does not conflict with da or kuru.
                     if (verb_is_a_family_conjugation) {
                         if (TypeisKana || TypeisKanji) {
                             if (value_rootKanji.length() == 1 && verb_is_a_conjugation_of_the_current_family) {
@@ -925,8 +939,9 @@ public class ConjugatorFragment extends Fragment {
                             }
                         }
                     }
+                    //endregion
 
-                    // Main Comparator Algorithm
+                    //region Main Comparator Algorithm
                     if (!skip_this_row && !found_match) {
                         if (TypeisLatin) {
 
@@ -1068,6 +1083,7 @@ public class ConjugatorFragment extends Fragment {
                             }
                         }
                     }
+                    //endregion
 
                     if (found_match) {
                         ConjugationSearchMatchingVerbRowIndexList.add(rowIndex);
@@ -1077,7 +1093,7 @@ public class ConjugatorFragment extends Fragment {
             }
 
 
-            ////// 3. Sorting the results according to the length of the Kana and Kanji values
+            //region 3. Sorting the results according to the length of the Kana and Kanji values
 
             ;// 3a. Computing the value length
             int current_row_index;
@@ -1124,9 +1140,10 @@ public class ConjugatorFragment extends Fragment {
                 ConjugationSearchMatchingVerbRowIndexList_Sorted.add(total_length[i][0]);
                 ConjugationSearchMatchingVerbColIndexList_Sorted.add(total_length[i][1]);
             }
+            //endregion
 
 
-            ////// 4. Finalization
+            // 4. Finalization
             matchingVerbRowIndexList = ConjugationSearchMatchingVerbRowIndexList_Sorted;
             matchingVerbColIndexList = ConjugationSearchMatchingVerbColIndexList_Sorted;
         }

@@ -19,11 +19,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 19|in fact, indeed|PP|Used to provide emphasis to the sentence, politer than "n".|X no @ X = verb (any tense)|775, 776, 777|||
 20|polite softener|PP|Used as a softener to the sentence, politer than "n".|X no @ X = verb|778, 779|||
 21|noun modifier for verb|VC|Used to make a noun out of a verb (all plain tenses), similar in function to "koto" in forming a verb gerund.|X no @ X = verb plain form|867, 1387, 1388, 1389|||
-22|noun modifier and use as subject|PP|This is a combination of two prepositions: a possessive marker "no" and a subject indicator "ga". It transforms the phrase (adverb, adjective, verb) into a noun for use as the subject of an enclosing phrase. The enclosing phrase in turn requires the "ga" subject marker due to the grammar rules governing it.|X no ga|771, 1453|||
+22|pronoun modifier and use as subject|PP|This is a combination of two prepositions: a possessive marker "no" and a subject indicator "ga". It transforms the phrase (adverb, adjective, verb) into a noun for use as the subject of an enclosing phrase. The enclosing phrase in turn requires the "ga" subject marker due to the grammar rules governing it.|X no ga|771, 1453, 1480|||
 23|good at, not good at, like to do/be, dislike to do/be|SSD||X no ga Y da @ X = verb plain form, Y = suki, kirai, ii, warui, jouzu, etc..|1387|||
 24|noun modifier and use as object|PP|This is a combination of two prepositions: a possessive marker "no" and an object indicator "wo". It transforms the phrase (adverb, adjective, verb) into a noun for use as the object of an enclosing phrase. The enclosing phrase in turn requires the "wo" subject marker due to the grammar rules governing it.|X no wo|1455|||
 25|in fact, indeed|PP|Used to provide emphasis to the sentence, casual form of "no".|X n @ X = verb|780, 781, 782|||
-26|softener|PP|Used as a softener to the sentence, casual form of "no".|X n @ X = verb|783, 784|||
+26|softener, emphasizer|PP|Used as a softener/emphasizer to the sentence, casual form of "no".|X n @ X = verb|783, 784,  1481, 1482|||
 27|verb object marker|PP||X wo Y @ X = object, Y = verb|785, 1343|||
 28|gerund object marker|PP||X wo Y @ X = object, Y = verb gerund|786, 787|||
 29|"leaving" verb object marker|PP|Used for "leaving" verbs: deru, oru, etc..|X wo Y @ X = object, Y = verb|788, 789|||
@@ -69,11 +69,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 69|until, by a certain time|PP||X made|822|||
 70|up to|PP||X made||||
 71|except for|PP||X nozoi||||
-72|like, similar to, as if, as though, quite, entirely, completely, at all|PP||X marude||||
+72|quite, entirely, completely, at all|PP||X marude||||
 73|like, similar to|PP||X you de||||
 74|like, similar to, same as|PP||X goto||||
 75|between|PP|between X and Y|X to Y no made||||
-76|made by, because of, due to, by means of, depending on|PP||X ni yotte|1309, 1310, 1311|||
+76|made by, because of, due to, by means of, depending on, according to|PP||X ni yotte|1309, 1310, 1311|||
 77|existence at a location, performing a continuous action at a location|PP|Is differentiated from the use of "de" for an action taking place at a location by the long-term continuity of the action, e.g. sleeping at a location.|X ni|823|||
 78|final location|PP||X ni|824|||
 79|final destination|PP||X ni|825|||
@@ -105,7 +105,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 105|As for X, Y is (verb)|SSD||X wa Y ga (verb) @ X = subject 1, Y = subject 2|845, 846|||
 106|(counter) X are worth (price) yen|SSD||X (counter) de (price) en|847|||
 107|sold at|SSD||Use "utteiru" instead of passive tense for "sold at".||||
-108|I will have X|SSD||X ni suru @ X = noun|848|||
+108|I will have X|SSD||X ni suru @ X = noun|848, 1471, 1472|||
 109|(I) also X so|SSD||mo sou X @ X = verb|849|||
 110|Y that X|SSD|An action used to describe the subject of a sentence. Note that if the said action originally includes "wa", it is changed to "ga" so as to avoid to "wa" markers in the sentence.|X Y @ X = phrase in simple form, Y = action|850, 851, 852, 853|||
 111|X just the way it is|SSD|ME#0071;0072;0073|||||
@@ -157,8 +157,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 157|if X|SSCC||X nara @ X = phrase||||
 158|despite, in spite of, regardless of|SSOF||X kakawarazu||||
 159|except for, other than, with the exception of|SSOF||X igai||||
-160|however, but|SSOF|ME#0142;0143|||||
-161|however, but|SSOF||X soredemo Y @ X/Y = phrase|795|||
+160|however, but, even if, nevertheless, even so, notwithstanding|SSOF|ME#0142;0143|||||
+161|however, but, even if, nevertheless, even so, notwithstanding|SSOF||X soredemo Y @ X/Y = phrase|795|||
 162|however, but, apart from that, other than that, aside from that, more than that|SSOF||soreyori Y @ Y = phrase||||
 163|but, however, provided that|SSOF||tadashi X||||
 164|but|SSOF|ME#0149;0150|||||
@@ -215,7 +215,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 215|X and Y have the same (characteristic)|SSC||X to Y onaji (characteristic)|1049|||
 216|Y resembles X|SSC||X wa Y ni niteiru @ X = noun|1361|||
 217|which of X and Y is most (characteristic) ?|SSC||X to Y to dochira ga (characteristic)|767|||
-218|out of all the X, Y is the most (characteristic)|SSC||X no naka de Y ga ichiban (characteristic) |1050|||
+218|out of all the X, Y is the most (characteristic)|SSC||X no naka de Y ga ichiban (characteristic) |1050, 1487|||
 219|Y more ... than X|SSC|ME#0215;0216;0217|||||
 220|X less … than Y|SSC|ME#0218;0219|||||
 221|between/of X and Y|SSC|ME#0220;0221|||||
@@ -243,8 +243,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 243|do/be X while approaching|VC||X kuru @ X = verb te form||||
 244|do/be X then come over|VC||X kuru @ X = verb te form||||
 245|X is possible|VC||X mo ii da @ X = verb te form / sentence object|887, 888, 889, 150|||
-246|X is not permitted|VC||X wa ikenai @ X = verb te form / sentence object|890, 483||cha ikenai|
-247|X is not permitted|VC|Colloquial form of "te wa ikenai" for verbs.|X cha ikenai @ X = verb root|||te wa ikenai|
+246|X is not permitted|VC||X wa ikenai @ X = verb te form / sentence object|890, 483, 1484||cha ikenai|
+247|X is not permitted|VC|Colloquial form of "te wa ikenai" for verbs.|X cha ikenai @ X = verb root|1483||te wa ikenai|
 248|is it fine if (he) does/is X?|VC||X mo ii desu ka @ X = verb te form|891|||
 249|(He) does/is X as a personal favor for someone|VC|Use "te ageru" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence).|X ageru @ X = verb te form|885, 1393, 1436, 1437, 1440, 1443||te morau, te kureru|
 250|(I) want someone to do X, hope someone does X|VC||X hoshii da @ X = verb te form||||
@@ -284,12 +284,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 284|to start to do/be|VC||X hajimeru @ X = verb masu stem||||
 285|(He has) completely finished doing/being X|VC|Used colloquially (casual speech) only.|X chatta/jatta @ X = verb masu form or root (depending on verb type)||||
 286|did/was X and regret doing it|VC|Used colloquially (casual speech) only.|X chatta/jatta @ X = verb masu form or root (depending on verb type)||||
-287|to do/be X (honorific)|VC||(o) X ni naru @ X = verb masu stem||||
+287|to do/be X (honorific)|VC||(o) X ni naru @ X = verb masu stem|1460, 1461|||
 288|to do/be X (honorific)|VC||(o) X nasaru @ X = verb masu stem||||
 289|to do/be X (humble)|VC||(o) X suru @ X = verb masu stem||||
 290|to do/be X (humble)|VC||(o) X itasu @ X = verb masu stem||||
-291|to please do/be X|VC||(o) X kudasai @ X = verb masu stem||||
-292|to please don't do/be X|VC||(o) X kudasai @ X = verb naide form||||
+291|to please do/be X|VC||(o) X kudasai @ X = verb masu stem|1462, 1463|||
+292|to please don't do/be X|VC||(o) X kudasai @ X = verb naide form|1475, 1476|||
 293|to please do/be X (honorific)|VC||X nasaimase @ X = verb masu stem||||
 294|to please don't do/be X (honorific)|VC||X nasaimasu na @ X = verb masu stem||||
 295|you are ordered to do/be X (polite)|VC||X nasai @ X = verb masu stem||||
@@ -333,7 +333,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 333|to be just in the middle of X-ing|VC||X tokoro da @ X = verb teiru form||||
 334|occasionally do/be X|VC||X koto ga aru @ X = verb dict./nai form||||
 335|allowed to do/be X|VC||X koto ga de aru @ X = verb dict./nai form||||
-336|to have experienced X-ing|VC||X koto ga aru @ X = verb ta form||||
+336|to have experienced X-ing|VC||X koto ga aru @ X = verb ta form|1473, 1474|||
 337|to have happened to do/be X|VC||X koto ni naru @ X = verb ta form||||
 338|to be scheduled/due to do X|VC||X koto ni nattieru @ X = verb dict./nai form||||
 339|about to do/be X|VC||X to suru/shiteiru @ X = verb ou (volitional) form||||
@@ -408,7 +408,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 408|none|A||||||
 409|noone, nobody|A|||710|||
 410|not particularly, nothing, separately, apart|A||||||
-411|nothing|A|||1376|||
+411|nothing (with neg. verbs), not any|A|||1376|||
 412|particularly, especially|A|||631|||
 413|some kind|A||||||
 414|someone|A|||709|||
@@ -421,8 +421,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 421|this|A|||104|||
 422|this kind of|A||"konna" describing the type of object.|721|||
 423|after all|ADc||||||
-424|anyhow, in any case, at any rate, after all, at best, at most, at all|ADc||||||
-425|at once, first of all, for the time being, for now|ADc|Not used in the literal "in the meanwhile" sense, more in the figurative sense.|||||
+424|anyhow, in any case, at any rate, after all, no matter what, at best, at most, at all|ADc||||||
+425|first of all, at once, right away|ADc|Not used in the literal "in the meanwhile" sense, more in the figurative sense.|||||
 426|of course, certainly|ADc|||624|||
 427|certainly, of course|ADc||||||
 428|even|ADc||||||
@@ -441,7 +441,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 441|no, nay|ADc|Used by both male and female subjects.|||||
 442|no, nay|ADc||||||
 443|once, tentatively, in outline, for the time being, just in case, so far as it goes, in the meanwhile, for the meanwhile, for now|ADc|||1401|||
-444|perhaps, almost all, majority|ADc||||||
+444|almost all, in large part, for the greater part, in majority, mostly, for the most part|ADc||||||
 445|perhaps, possibly, if I'm not wrong|ADc||||||
 446|please|ADc||||||
 447|please|ADc|Dialect.|||||
@@ -473,7 +473,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 473|just, only|ADg|||648|||
 474|always, without exception, necessarily, certainly, without fail, positively, invariably|ADg||||||
 475|approximately, about (quantity, time)|ADg|||632, 141|||
-476|approximately, at most|ADg||||||
+476|approximately, about, at most|ADg|||1468, 1469, 1470|||
 477|degree, extent, bounds, limit|NACF||||||
 478|as ever, as usual, the same|ADg|Based on the "zu" conjugation of kawaru (ie. without changing).||1413|||
 479|at last, at length|ADg||||||
@@ -518,7 +518,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 518|mostly, nearly, practically, well-nigh, almost invariably, all but, just about, almost|ADg|||1416|||
 519|mostly, ordinarily, usually, generally, probably|ADg|||1428|||
 520|ordinary, usual, general, probable|Ana|||613, 1272|||
-521|motionlessly, fixedly, patiently, firmly (e.g. hold), restrained|ADg||||||
+521|motionlessly, fixedly, patiently, firmly (e.g. hold), in a restrained manner|ADg||||||
 522|no matter what, however much|ADg||||||
 523|whatever kind of, what kind of|PNA||||||
 524|normally, generally, usually, regularly|ADg||||||
@@ -530,7 +530,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 530|not important, doesn't matter|ADg|||729, 730, 731|||
 531|not less than, more, more than, further, beyond, above-mentioned, foregoing, the end, this is all|ADg|||1290|||
 532|not less than, ... and more, ... and upwards, beyond ... (e.g. one's means),further (e.g. nothing further to say),more than ... (e.g. cannot pay more than that), above-mentioned, foregoing, since ..., seeing that …, this is all, that is the end, the end|NACF||||ikka||
-533|not much, not often|ADg|Use in phrase with negative tense only.||680, 681||metta ni, zenzen|
+533|not much, not often|ADg|Use in phrase with negative tense only.||680, 681, 1464||metta ni, zenzen|
 534|not so much, not very|ADg|Used in a negative phrase.|||||
 535|not very (well)|ADg|||680, 1321, 1414|||
 536|remainder, rest, balance, remains, scraps, residue, remnant, surplus, excess|NACF||||||
@@ -572,7 +572,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 572|amazing, great, wonderful, terrific, impressive, vast, extensive|Ai|||574|||
 573|applauded (to applaud)|Ai|Verb-based, linked to object by "ga" when used with desu verb.|||||
 574|appropriate, adequate, suitable|Ai||||||
-575|ashamed, embarrased|Ai||||||
+575|shy, ashamed, embarrassed|Ai||||||
 576|awful, terrible|Ai|"hidee" is used colloquially.||535, 1284|idai||
 577|bad|Ai|||514|ii, yoi, kekkou, yoroshii||
 578|beautiful|Ai||||||
@@ -591,7 +591,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 591|charming, bewitching, mysterious|Ai||||||
 592|cheap, inexpensive|Ai|||512, 538|takai||
 593|cold (object)|Ai|||542|atatakai, atsui|samui, suzushii|
-594|cold (temperature)|Ai||||atsui, atatakai|suzushii, tsumetai|
+594|cold (ambient temperature)|Ai||||atsui, atatakai|suzushii, tsumetai|
 595|convenient|Ai||||||
 596|cool, refreshing|Ai|Used for weather.||528|atatakai, atsui|samui, tsumetai|
 597|corase, rough|Ai||||||
@@ -689,7 +689,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 689|salty|Ai|||580|||
 690|scarse, insufficient, few|Ai|||544, 1272, 1286|ooi||
 691|scary, frightenin, eerie, dreadful|Ai|||569|||
-692|severe, strict, rigid, unsparing, relentless, stern, austere, grave, solemn|Ai||||||
+692|severe, strict, rigid, unsparing, relentless, stern, austere, grave, solemn, intense (e.g. cold), harsh, tough|Ai||||||
 693|shallow, superficial|Ai|||567|fukai||
 694|short|Ai|||533|nagai||
 695|short & simple|Ai||||||
@@ -1198,10 +1198,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1198|again, once more, a second time|AT||||||
 1199|all day|AT||||||
 1200|all day and night|AT||||||
-1201|all day long|AT||||||
+1201|all day long, all the day, throughout the day|AT||||||
 1202|all night long|AT||||||
 1203|all night long|AT|||1303|||
-1204|all year round|AT|||1303|||
+1204|all year round|AT||||||
 1205|all year, year round|AT||||||
 1206|alreaady, a while ago|AT||||||
 1207|already, too late|AT||||||
@@ -1303,7 +1303,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1303|X in addition to, besides Y|AT||hoka ni X Y, WHERE: X = characteristic, Y = time||||
 1304|yesterday|AT|||746|||
 1305|yesterday|NT|||||yuube|
-1306|animals|C|Used for small animals, insects, fish, reptiles, amphibians, oni (demons/ogres).|||||
+1306|animals|C|Used for small animals, insects, fish, reptiles, amphibians, oni (demons/ogres). Usage: (1) ippiki, (2) nihiki), (3) sanbiki, (4) yonhiki, (5) gohiki, (6) roppiki, (7) nanahiki, (8) hachihiki, (9) kyuuhiki, (10) juppiki|||||
 1307|birds, rabbits|C||||||
 1308|books, novels|C|||1143|||
 1309|boxes|C|Use "bako" when necessary.|||||
@@ -1314,34 +1314,34 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1314|bus line|C||||||
 1315|copies|C|Used for magazines, newspapers or stacks of papers.|||||
 1316|days, -st/nd/rd/th day|C|For counting days, except for ichinichi.||1145|||
-1317|days, -st/nd/rd/th day (also "of the month")|C|Examples: ichinichi/tsuitachi (1), futsuka (2), mikka (3), yokka (4), itsuka (5), muika (6), nanoka (7), youka (8), kokonoka (9), touka (10), juu yokka (14), hatsuka (20), nijuu yokka (24)||1130, 1131|||
+1317|days, -st/nd/rd/th day (also "of the month")|C|Usage: ichinichi/tsuitachi (1), futsuka (2), mikka (3), yokka (4), itsuka (5), muika (6), nanoka (7), youka (8), kokonoka (9), touka (10), juu yokka (14), hatsuka (20), nijuu yokka (24)||1130, 1131|||
 1318|day of the month|NT|||||hi|
 1319|degrees, times|C|Used for occurrences, number of times, degrees of temperature or angle (see also: kai). Examples: ichido (once), saido (twice), sando (thrice)...||1137, 1138||kai, tabi|
 1320|desks, chairs, long-stemmed glasses|C|Use "byaku" when necessary.|||||
 1321|floor, stories|C|||1136|||
 1322|food, drink, medicine, etc.|C||||||
-1323|full glasses, cups|C|Used for cups and glasses of drink, spoonsful, cuttlefish, octopuses, crabs, squid, abalone, boats (slang).||1142|||
+1323|full glasses, cups, drinks|C|Used for cups and glasses of drink, spoonsful, cuttlefish, octopuses, crabs, squid, abalone, boats (slang). Usage: (1) ippai, (2) nihai, (3) sanbai, (4) yonhai, (5) gohai, (6) roppai, (7) nanahai, (8) hachihai, (9) kyuuhai, (10) juppai||1142|||
 1324|goods, items, articles of clothing, works of art|C||||||
 1325|spot, mark, point, dot, score, point|NACF||||||
 1326|decimal point|NMSE||||||
 1327|gunshots, bursts of gas, bullets, bombs, blows, punches|C||||||
 1328|departure|NAc||||||
 1329|departing from, departing at time, sent by, sent at|Sx|||1329|||
-1330|hour-long periods|C|Examples:  yojikan (4), shichijikan (7), kujikan (9), juuyojikan (14), nijuuyojikan (24)||1146|||
+1330|hour-long periods|C|Usage:  yojikan (4), shichijikan (7), kujikan (9), juuyojikan (14), nijuuyojikan (24)||1146|||
 1331|time|NT|||481, 1314, 1320||toki|
 1332|house number|C||||||
 1333|large animals|C||||||
 1334|broad, flat objects, levels or stages, e.g. in a video game|C|Used for mirrors, boards for board games (chess, igo, shogi), stages of computer games, walls of a room, tennis courts.|||||
-1335|long narrow objects|C|Used for trees, pencils, bottles, sticks, etc.. (Note tha the counter for book is "satsu", not "hon"). Examples: ippon (1), sanbon (3), roppon (6), happon (8), juppon (10), nanbon (how many)||1121, 1122|||
+1335|long narrow objects|C|Used for trees, pencils, bottles, sticks, etc.. (Note tha the counter for book is "satsu", not "hon"). Usage: ippon (1), sanbon (3), roppon (6), happon (8), juppon (10), nanbon (how many)||1121, 1122|||
 1336|book|NGO|||298|||
 1337|machines|C|Used for cars, bicycles, machines, mechanical devices, household appliances.||1149|||
-1338|month-long periods|C|Examples: ikkagetsu/hitotsuki (1),  nikagetsu (2), rokkagetsu (6), hachikagetsu/hakkagetsu (8), jikkagetsu/jukkagetsu (10)||1147, 1148|||
+1338|month-long periods|C|Usage: ikkagetsu/hitotsuki (1),  nikagetsu (2), rokkagetsu (6), hachikagetsu/hakkagetsu (8), jikkagetsu/jukkagetsu (10)||1147, 1148|||
 1339|multiples|C|Used for multiples, fold as in "twofold". Examples: ippai (1), sanbai (3), roppai (6), happai (8), jubbai (10)||1135|||
-1340|nights of a stay|C|Examples: ippaku (1), nihaku (2), sampaku (3), yonhaku/yompaku (4), gohaku (5), roppaku (6), nanahaku (7), happaku (8), kyuuhaku (9), zyuppaku (10)|||||
+1340|nights of a stay|C|Usage: ippaku (1), nihaku (2), sampaku (3), yonhaku/yompaku (4), gohaku (5), roppaku (6), nanahaku (7), happaku (8), kyuuhaku (9), zyuppaku (10)|||||
 1341|number |C|Used in position, turn, sports matches.||1139, 377, 1140, 1141|||
-1342|o'clock|C|Examples: yoji (4), shichiji (7), kuji (9). In speech use numbers until 12 only, e.g. yoji (16) instead of juu roku ji.||1128, 1129, 1329|||
+1342|o'clock|C|Usage: yoji (4), shichiji (7), kuji (9). In speech use numbers until 12 only, e.g. yoji (16) instead of juu roku ji.||1128, 1129, 1329|||
 1343|hour, moment|NT|||437|||
-1344|people|C|Examples: hitori (1), futari (2), yonnin (4), shichinin (7), juuyonin (14), nijuuyonin (24)||1134, 7, 1290, 1355|||
+1344|people|C|Usage: hitori (1), futari (2), yonnin (4), shichinin (7), juuyonin (14), nijuuyonin (24)||1134, 7, 1290, 1355|||
 1345|people|C|Used in a polite context.|||||
 1346|pills, capsules|C|||1284|||
 1347|rooms|C|This room counter is usually not used.|||||
@@ -1361,11 +1361,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1361|style, manner|Sx||||||
 1362|Tatami mats|C|||1370|||
 1363|thick slices, cuts (e.g. fish, meat)|C||||||
-1364|thousands|C|Examples:  issen (1), sanzen (3), hassen (8), nanzen (how many)|||||
+1364|thousands|C|Usage:  issen (1), sanzen (3), hassen (8), nanzen (how many)|||||
 1365|one thousand |NN|||9|||
 1366|times, occurences|C|Used for occurrences, number of times (see also: do). Examples: ikkai (once), nikai (twice), ikkaime (first time), nikaime (second time)||1135, 1388, 1428||do, tabi|
 1367|times, occurences|C|||||do, kai|
-1368|undefined objects |C|Examples: hitotsu (1), futatsu (2), mittsu (3), yottsu (4), itsutsu (5), muttsu (6), nanatsu (7), yattsu (8), kokonotsu (9), tou (10)||1125, 1126, 1127|||
+1368|undefined objects |C|Usage: hitotsu (1), futatsu (2), mittsu (3), yottsu (4), itsutsu (5), muttsu (6), nanatsu (7), yattsu (8), kokonotsu (9), tou (10)||1125, 1126, 1127|||
 1369|weeks|C|||1137|||
 1370|week|NT|As of time passing.||499|||
 1371|year-long periods|C||||||
@@ -1381,7 +1381,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1381|(I) sneezed|CE||||||
 1382|(I) will check and see|CE|||1392|||
 1383|(let it be) as it is|CE||||||
-1384|according to|CE|||1255, 1256|||
+1384|according to|CE|||1256|||
 1385|again next week|CE|||1223|||
 1386|ah, ok|CE|||1211|||
 1387|almost never, few and far between, little or nothing, hardly any, hardly anything at all, very little|CE||||||
@@ -1435,7 +1435,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1435|how is it|CE||||||
 1436|how was it?|CE||||||
 1437|how was it?|CE||||||
-1438|how, in what way, by what means|CE||||||
+1438|how, in what way, by what means|CE|Lieterally "dou" (how) + "yatte" (do).||1457|||
 1439|how…!, what…!, what?|CE||||||
 1440|such as, (things) like|Sx||||||
 1441|I agree|CE|||1165|||
@@ -1467,7 +1467,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1467|I've enjoyed my meal very much|CE||||||
 1468|I've heard that, rumour has it that, it appears as if|CE||||||
 1469|ladies and gentlemen|CE||||||
-1470|let me introduce you|CE||||||
+1470|let me introduce you (to a person)|CE||||||
 1471|let me see, well|CE|||1171|||
 1472|let there be good (respects), my best greetings, please favor me|CE||||||
 1473|let's eat, bon appetit, enjoy the meal|CE||||||
@@ -1666,7 +1666,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1666|business, trade|NAc||||||
 1667|calculation, counting, consideration, reckoning, allowance, settlement|NAc||||||
 1668|cancellation|NAc|||1289|||
-1669|change, alteration, abnormality, acident, difference, distinction|NAc||||||
+1669|change, alteration|NAc||||||
 1670|comman, control, commander|NAc||||||
 1671|command, direction|NAc||||||
 1672|commerce, trade, business|NAc||||||
@@ -2006,7 +2006,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2006|beginning, start, outset, opening|NACF||||||
 2007|below-mentioned, following, rest (of a statement)|NACF||||||
 2008|not exceeding, and downwards, and below, under, less than|Sx||||||
-2009|best, first, number one, most|NACF||||||
+2009|best, first, number one, most|NACF|||1050, 1487, 1488|||
 2010|birth date|NACF||||||
 2011|birth year|NACF||||||
 2012|birth, birthplace|NACF||||||
@@ -2043,7 +2043,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2043|chance of winning, way to prevail|NACF||||||
 2044|chance, opportunity|NACF||||||
 2045|change (of money)|NACF||||||
-2046|change, alteration, unusual state or event,accident,abnormality, difference,distinction|NACF||||||
+2046|unusual state or event, accident, abnormality|NACF||||||
 2047|change, modification, alteration, revision, amendment|NACF||||||
 2048|chapter, section|NACF||||||
 2049|medal|NGO||||||
@@ -2206,7 +2206,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2206|feeling, sense, impression|NACF||||||
 2207|female|NACF|||80|||
 2208|festival|NACF|||106|||
-2209|fever|NACF|||115|||
+2209|fever, temperature|NACF|||115, 1492|||
 2210|field, sphere, realm, division, branch|NACF||||||
 2211|figure, form, shape, appearance, dress, guise, state, condition, picture, image, form|NACF||||||
 2212|figure, form, style|NACF||||||
@@ -2599,7 +2599,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2599|scale, scope, plan, structure|NACF||||||
 2600|scar|NACF||||||
 2601|scene, setting (e.g. of a novel)|NACF||||||
-2602|scenery|NACF|||137, 1275|||
+2602|scenery, scene, landscape|NACF|||137, 1275|||
 2603|scenery|NACF||||||
 2604|schematic, schema, illustration, explanatory diagram|NACF||||||
 2605|school term, semester|NACF||||||
@@ -2643,7 +2643,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2643|society, the world, the times|NACF||||||
 2644|something done together, game of make-believe|NACF||||||
 2645|something strange or suspicious, ghost at sea, idiot, fool|NACF||||||
-2646|song|NACF|||123|||
+2646|song|NACF|To sing a song: "uto wo utau".||123|||
 2647|sorcery, magic, heresy|NACF||||||
 2648|soul, spirit|NACF||||||
 2649|soul, spirit|NACF||||||
@@ -2683,7 +2683,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2683|strong point, merit, virtue, advantage|NACF||||||
 2684|style|NACF||||||
 2685|substance, real form, body (of a machine), object of worship (at a shrine, temple, etc), noumenon|NACF||||||
-2686|substitute, addition|NACF||||||
+2686|substitute, replacement, substituting, replacing|NACF||||||
 2687|success|NACF||||||
 2688|success rate|NACF||||||
 2689|summer vacation|NACF||||||
@@ -2762,7 +2762,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2762|use, utilization, utilisation, application|NACF|||1270|||
 2763|usual, habitual, ordinary, everyday, always|NACF||||||
 2764|vacation, holidays|NACF|Used in a formal dialogue|||||
-2765|vacation, holidays|NACF| Used in word conjunctions & for medium-long vacations|||||
+2765|vacation, holidays|NACF|Used in word conjunctions & for medium-long vacations|||||
 2766|valuables, treasures|NACF|||152|||
 2767|value, worth, price, dignity|NACF||||||
 2768|vedana|NACF|From Buddhism: sensation.|||||
@@ -3415,7 +3415,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3415|lighter|NGO||||||
 3416|luggage, baggage, burden, payload|NGO|||369, 1286, 1369|||
 3417|machine|NGO||||||
-3418|machine, mechanism|NGO|||1414|||
+3418|machine, mechanism, instrument, appliance, apparatus|NGO|||1414|||
 3419|magazine|NGO|||330|||
 3420|map|NGO|||334|||
 3421|marble, glass marble|NGO||||||
@@ -3446,7 +3446,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3446|perfume|NGO|||303|||
 3447|personal computer|NGO|||370|||
 3448|phone number|NGO|||350, 1278|||
-3449|photograph, picture|NGO|||323, 1294|||
+3449|photograph, picture|NGO|To take a picture: "shashin wo toru".||323, 1294|||
 3450|piano|NGO|||367|||
 3451|picture, painting|NGO|Not a photograph||348|||
 3452|picture, painting|NGO||||||
@@ -3557,7 +3557,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3557|cancer|NMe||||||
 3558|cholera|NMe||||||
 3559|constipation|NMe||||||
-3560|cough, coughing, tussis|NMe||||||
+3560|cough, coughing, tussis|NMe|||1493|||
 3561|department of obstetrics and gynaecology (gynecology)|NMe||||||
 3562|dermatology|NMe||||||
 3563|diarrhoea, diarrhea|NMe||||||
@@ -3897,7 +3897,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3897|patient|NPe||||||
 3898|pedestrian|NPe||||||
 3899|person|NPe|Honorific reference.||389||hito|
-3900|method of, manner of, way of|Sx|||1115, 1116, 1307|||
+3900|method of, manner of, way of, how to|Sx|||1115, 1116, 1307, 1477, 1478|||
 3901|person|NPe|Rarely used without a qualifier.||390|||
 3902|person on duty|NPe||||||
 3903|person, human|NPe|||1272, 1311||kata|
@@ -4035,7 +4035,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4035|department store|NPl|||409|||
 4036|desert|NPl||||||
 4037|dine-in|NPl||||||
-4038|direction, way, side, area|NPl|||377|||
+4038|bus stop|NPl|||377|||
 4039|direction, way, side, area|NPl|||468, 468, 469|||
 4040|district, section, sector|NPl||||||
 4041|doctor's office, clinic, dispensary|NPl||||||
@@ -4243,7 +4243,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4243|moon|NS||||||
 4244|nebula|NS||||||
 4245|planet|NS||||||
-4246|space|NS||||||
+4246|universe, cosmos, space|NS||||||
 4247|star|NS||||||
 4248|sun, solar|NS||||||
 4249|sun, sunlight|NS||||||
@@ -4268,7 +4268,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4268|morning, AM|NT|||495|||
 4269|morning, dawn|NT|||489|||
 4270|next semester|NT||||||
-4271|night|NT|||493||ban, yuugata|
+4271|night, evening|NT|||493||ban, yuugata|
 4272|noon, daytime|NT|||490|||
 4273|season|NT||||||
 4274|several years|NT||||||
@@ -4717,7 +4717,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4717|spread out, lay out, take a position, impose widely (e.g. over a city)|VkuT||||||
 4718|solve, answer, untie|VkuT||||||
 4719|continue, last, go on, be unbroken, occur again and again, lead to, connect to|VkuI||||||
-4720|bake, grill, burn (an object, a disc), toast, develop (photos)|VkuT||||||
+4720|bake, grill, burn (an object, a disc), toast|VkuT||||||
 4721|give up, except|VkuI||||||
 4722|match, equal, catch up with, overtake|VkuT||||||
 4723|occur repeatedly, be repeated (archaic)|VkuI||||||
@@ -4726,7 +4726,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4726|explain, advocate, preach, persuade|VkuT||||||
 4727|dissolve (paint), scramble (eggs), melt (metal, etc.), mix (water with flour, etc.)|VkuT||||||
 4728|take, carry (away), bear|VkuT|||1286|||
-4729|burn (down), suntan, be jealous, be envious|VkuI||||||
+4729|burn (down), suntan|VkuI||||||
 4730|go, proceed|VkuI||||||
 4731|conquer, subjugate|VkuT||||||
 4732|go out, take a stroll, go about|VkuI||||||
@@ -4964,7 +4964,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4964|be (archaic)|VrugI||||||
 4965|do, request|VrugT||||||
 4966|come home, go home, leave (guest, customer, etc.)|VrugI||||||
-4967|take (time, money), hang (e.g. on the wall), come under (a contract, a tax), start (engines, motors), attend, deal with, handle, depend on, exact (a fee)|VrugT|||1289|||
+4967|take (a resource, e.g. time or money)|VrugT|||1289|||
 4968|gather, collect, assemble|VrugI|||1265|||
 4969|strike against, collide with, bump into, conflict with, clash with|VrugI||||||
 4970|be silent|VrugI||||||
@@ -5020,7 +5020,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5020|restrict, limit, confine|VrugT||||||
 5021|be restricted to, be limited to, be confined to|VrugI||||||
 5022|chew, bite (at), gnaw, nibble, munch, crunch, dabble in (e.g. hobby, instrument)|VrugT||||||
-5023|suffer from|VrugI||||||
+5023|suffer from, contract (a disease)|VrugI||||||
 5024|span, bridge, cross, straddle|VrugI||||||
 5025|be the work of, be the result of, be done by, concern, affect, involve, relate to|VrugI||||||
 5026|be affected, be influenced, be concerned with, have do with, stick (opinions)|VrugI||||||
@@ -6162,3 +6162,151 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6162|go smoothly, turn out well, do the trick, have peaceful relations|VKuI||||||
 6163|moving (dwelling, office, etc.), changing residence|NAc||||||
 6164|appearing all together|NAc||||||
+6165|news, word, tidings, notice, notification, information, omen|NACF||||||
+6166|picture book, children's book|NGO||||||
+6167|jail, gaol, prison|NPl||||||
+6168|Netflix|NNe||||||
+6169|mood, situation|NACF||||||
+6170|someone with no presence, someone who doesn't stand out at all|NPe||||||
+6171|nap (afternoon), siesta|NACF||||||
+6172|Hirune|NPl||||||
+6173|take a nap|VsuruI||||||
+6174|sports ground, playing field, playground|NPl||||||
+6175|manner of doing, way, method, means|NACF||||||
+6176|group|NACF||||||
+6177|how, by what means|AM||||||
+6178|attractive, good-looking, handsome, stylish, cool, smooth, neat, with-it, groovy|Ai||||||
+6179|attractive, good-looking, handsome, stylish, cool, smooth, neat, with-it, groovy|Ai||||||
+6180|sexy|An||||||
+6181|favorable, favourable, satisfactory|An||||||
+6182|main principle, gist, general plan, guidelines, outline|NACF||||||
+6183|important points, main points|NACF||||||
+6184|sunshine, sunlight|NACF||||||
+6185|overseas travel, (in preliberation China) a store operated by a foreigner|NACF||||||
+6186|winter vacation|NACF||||||
+6187|one day, first day of the month|NT||||||
+6188|how long, how far, how much|ADg||||||
+6189|(hospital) nurse, (registered nurse, RN|NPe||||||
+6190|island|NPl||||||
+6191|territory (of a prostitute, organized crime gang, etc.), turf|NPl||||||
+6192|as if, as though, just like, similar to|PP||||||
+6193|for now, for the time being|ADc||||||
+6194|people in general, general public, public at large|NACF||||||
+6195|large part, greater part, majority|NACF||||||
+6196|probably, maybe, perhaps|ADc||||||
+6197|level, degree of something|iAC|Add "sa" to adjectives to express a degree or amount.|i/na-adj. root + sa|1458, 1459|||
+6198|yes, that's right|CE||||||
+6199|now that you mention it, speaking of that…|CE||||||
+6200|seen from that light, thinking like that, from that point of view|CE||||||
+6201|if you do it that way…, if done that way…|CE||||||
+6202|if you don’t do it that way…|CE||||||
+6203|that’s too bad, I regret (to say), unfortunately|CE||||||
+6204|even if X|SSOF|"If" condition used for more "poetic" phrases.|tatoe X mo Y @ X = phrase with verb in te form, Y = second phrase|1465, 1466, 1467|||
+6205|pronoun modifier|PP||X no @ X = phrase|1479|||
+6206|even if|iAC||X temo @ X = i-adj. root|1490|||
+6207|even if|iAC||X demo @ X = na-adj. root||||
+6208|clever, smart|CE||||||
+6209|fat, plump, stout|CE||||||
+6210|slim, thin|CE||||||
+6211|date (between persons who are already in a relationship)|NACF|Not to be confused with the English usage of "date", also for persons who are not yet in a relationship.|||||
+6212|at the same time|AM||||||
+6213|same, identical, alike|NACF||||||
+6214|shark|NFa||||||
+6215|tuition, school expenses|NACF||||||
+6216|student aid, tuition assistance|NACF||||||
+6217|arrest, apprehension, capture|NAc||||||
+6218|arrest, apprehend, capture|VsuruT||||||
+6219|trial, judgement, judgment|NAc||||||
+6220|try, judge|VsuruT||||||
+6221|difference, distinction|NACF||||||
+6222|stand-in, proxy, alternate, deputy, relief, successor|NACF||||||
+6223|compensation, exchange, return|NACF||||||
+6224|second helping, another cup, seconds|NACF||||||
+6225|upcoming program, upcoming programme|NACF||||||
+6226|doubt, question, uncertainty, skepticism, scepticism, suspicion, distrust|NACF||||||
+6227|100,000,000 yen|NACF||||||
+6228|army, force, troops|NACF||||||
+6229|group (of people, animals, etc.)|NACF||||||
+6230|group|NMSE||||||
+6231|district, county|NPl||||||
+6232|gun, rifle, small arms|NGO||||||
+6233|gun, cannon, artillery, ordnance|NGO||||||
+6234|pipe, tube, cylinder|NGO||||||
+6235|gun barrel|NGO||||||
+6236|gun|NGO||||||
+6237|gun, cannon, artillery|NGO||||||
+6238|gun|NGO||||||
+6239|gun, firearm|NGO||||||
+6240|gun, pistol|NGO||||||
+6241|machine gun|NGO||||||
+6242|empty gun, gun loaded with blanks, firing a blank|NGO||||||
+6243|hunting gun, sports gun|NGO||||||
+6244|use, service, role|NACF||||||
+6245|post, position|NACF||||||
+6246|scoring combination (e.g. in mahjong, card games, etc.), hand|NACF||||||
+6247|develop (photos)|VkuT||||||
+6248|be jealous, to be envious|VkuI||||||
+6249|approximately, about|ADg||||||
+6250|promise|NACF||||||
+6251|shortening, reduction, simplification|NACF||||||
+6252|contraction (in phonetics)|NACF||||||
+6253|misfortune, bad luck, evil, disaster|NACF||||||
+6254|benefit, use, good, advantage, gain|NACF||||||
+6255|profit, gains|NACF||||||
+6256|officer, official, executive, staff|NPe||||||
+6257|part, assigning (allotment of) parts, role, duties|NACF||||||
+6258|arrange, promise, appoint, pact on, engage on|VsuruI||||||
+6259|medicines, drugs|NACF||||||
+6260|North Korea|NNn||||||
+6261|top|NACF||||||
+6262|top position|NACF||||||
+6263|senior management, senior bureaucrat|NPe||||||
+6264|Europe|NPl||||||
+6265|heat|NACF||||||
+6266|zeal, passion, enthusiasm|NACF||||||
+6267|mania, craze, rage|NACF||||||
+6268|and everything else (with noun plus "mo"), all|A||||||
+6269|engine|NACF||||||
+6270|agency, organisation, organization, institution, organ, body|NACF||||||
+6271|system, facility, facilities|NACF||||||
+6272|repatriation, return|NACF||||||
+6273|(electrical) feedback|NACF||||||
+6274|mainstay, nucleus, key|NACF||||||
+6275|quarterly (e.g. magazine)|NGO||||||
+6276|organ (of body), instrument|NGO||||||
+6277|already published|NACF||||||
+6278|trachea|NACF||||||
+6279|fragment, splinter, broken piece, chip, shard|NACF||||||
+6280|in the rain|NACF||||||
+6281|punish, penalize, penalise|VsuruT||||||
+6282|severly, strictly, rigidly, unsparingly, relentlessly, sternly, austerely, gravely, solemnly, intensely, harshly|AM||||||
+6283|duty, responsibility (incl. supervision of staff), liability, onus|NACF||||||
+6284|person in charge (including a supervisory role for other staff), person responsible for …, responsible party, supervisor, manager|NPe||||||
+6285|come into view, arrive|VruiT||||||
+6286|have started to, be on the verge of|VruiT||||||
+6287|overlap (e.g. information in a manual)|VruiT||||||
+6288|(come) at|VruiT||||||
+6289|be fastened|VruiT||||||
+6290|be covered (e.g. with dust, a tablecloth, etc.)|VruiT||||||
+6291|be caught in|VruiT||||||
+6292|get a call|VruiT||||||
+6293|investigator (usu. םכ criminal cases)|NPe||||||
+6294|investigation firm|NACF||||||
+6295|institution, establishment, facility (for elderly, orphans, etc.)|NPl||||||
+6296|envoy, embassy, mission, delegate|NACF||||||
+6297|private|Ana||||||
+6298|the teacher's theory|NACF||||||
+6299|personal opinion|NACF||||||
+6300|Russia|NNn||||||
+6301|lucky|Ai||||||
+6302|Thailand|NNn||||||
+6303|Vietnam|NNn||||||
+6304|careless person, scatterbrain, birdbrain|NPe||||||
+6305|expectation that something took place, will take place or was in some state; it should be so; bound to be; expected to be; must be|NACF||||||
+6306|nock (of a bow)​|NACF||||||
+6307|nock (of an arrow)​|NACF||||||
+6308|nock-shaped grip (between thumb and forefinger)​|NACF||||||
+6309|wooden frame on the tip of the mast of a Japanese ship that prevents the hawser from falling out​|NGO||||||
+6310|disgraceful, shameful|Ai||||||
+6311|awaken to (instinct, ability, perception, etc.), become aware of, become conscious of, realize|VruiI||||||
+6312|come to one's senses|VruiI||||||

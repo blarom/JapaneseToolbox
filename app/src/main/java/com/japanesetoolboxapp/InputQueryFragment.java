@@ -33,6 +33,7 @@ import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -556,6 +557,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             }
         }
         else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            unmuteSpeaker();
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 mCropImageResult = result;
@@ -590,6 +592,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
         // start source picker (camera, gallery, etc..) to get image for cropping and then use the image in cropping activity
         //CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).start(getActivity());
+        muteSpeaker();
         if (getContext() != null) CropImage.activity().start(getContext(), this); //For FragmentActivity use
 
     }
@@ -620,6 +623,18 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         matrix.postRotate(angle);
         return Bitmap.createBitmap(scaledBitmap , 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true); //rotated Bitmap
 
+    }
+    private void muteSpeaker() {
+        if (getActivity() != null) {
+            AudioManager mgr = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+            if (mgr != null) mgr.setStreamMute(AudioManager.STREAM_SYSTEM, true);
+        }
+    }
+    private void unmuteSpeaker() {
+        if (getActivity() != null) {
+            AudioManager mgr = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+            if (mgr != null) mgr.setStreamMute(AudioManager.STREAM_SYSTEM, false);
+        }
     }
 
     //Setup methods
@@ -1140,7 +1155,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 if (mInternetIsAvailable) {
                     try {
                         String speechRecognizerString = args.getString(SPEECH_RECOGNIZER_EXTRA);
-                        AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromWeb(speechRecognizerString, getActivity());
+                        AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromJishoOnWeb(speechRecognizerString, getActivity());
                     } catch (IOException e) {
                         cancelLoadInBackground();
                         //throw new RuntimeException(e);

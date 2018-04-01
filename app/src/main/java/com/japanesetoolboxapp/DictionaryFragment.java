@@ -156,7 +156,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     if (mInternetIsAvailable) {
                         try {
                             String speechRecognizerString = args.getString(JISHO_LOADER_INPUT_EXTRA);
-                            AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromWeb(speechRecognizerString, getActivity());
+                            AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromJishoOnWeb(speechRecognizerString, getActivity());
                         } catch (IOException e) {
                             //throw new RuntimeException(e);
                         }
@@ -687,7 +687,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 	// Grammar Module Functions
     public List<List<Integer>>          FindMatchingWordIndex(String word) {
 
-        // Initializations
+        //region Initializations
         List<List<Integer>> matchingWordRowColIndexList = new ArrayList<>();
         List<Integer> matchingWordRowIndexList = new ArrayList<>();
         List<Integer> matchingWordColIndexList = new ArrayList<>();
@@ -714,6 +714,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         int lastIndex;
         if (MainActivity.MainDatabase != null) {lastIndex = MainActivity.MainDatabase.size() - 1;}
         else { return matchingWordRowColIndexList; }
+        //endregion
 
         //Fixing any invalid Kanji characters in the input
         word = replaceInvalidKanjisWithValidOnes(word);
@@ -721,7 +722,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         // converting the word to lowercase (the algorithm is not efficient if needing to search both lower and upper case)
         word = word.toLowerCase(Locale.ENGLISH);
 
-        // If there is an "inging" verb instance, reduce it to an "ing" instance (e.g. singing >> sing)
+        //region If there is an "inging" verb instance, reduce it to an "ing" instance (e.g. singing >> sing)
         int verb_length = word.length();
         String verb = word;
         String verb2;
@@ -747,8 +748,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             }
         }
         int inglessVerb_length = inglessVerb.length();
+        //endregion
 
-        // getting the input type and its converted form (english/romaji/kanji/invalid)
+        //region getting the input type and its converted form (english/romaji/kanji/invalid)
         List<String> translationList = ConvertFragment.Kana_to_Romaji_to_Kana(word);
 
         String translationLatin = translationList.get(0);
@@ -767,23 +769,26 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         if (text_type.equals("kanji") )                                     { TypeisKanji = true;}
         if (text_type.equals("number") )                                    { TypeisNumber = true;}
         if (word.contains("*") || word.contains("＊") || word.equals("") || word.equals("-") ) { TypeisInvalid = true;}
+        //endregion
 
         // Performing the search
         if (!TypeisInvalid) {
 
-            // Concatenating the input word to increase the match chances
+            //region Concatenating the input word to increase the match chances
             String concatenated_word = SharedMethods.removeSpecialCharacters(word);
             String concatenated_translationLatin = SharedMethods.removeSpecialCharacters(translationLatin);
             String concatenated_translationHira = SharedMethods.removeSpecialCharacters(translationHira);
             String concatenated_translationKata = SharedMethods.removeSpecialCharacters(translationKata);
             int concatenated_word_length = concatenated_word.length();
+            //endregion
 
-            // Removing any apostrophes to make user searches less strict
+            //region Removing any apostrophes to make user searches less strict
             word = removeApostrophe(word);
             concatenated_word = removeApostrophe(concatenated_word);
             concatenated_translationLatin = removeApostrophe(concatenated_translationLatin);
+            //endregion
 
-            // Search for the matches in the indexed list using a custom limit-finding binary search
+            //region Search for the matches in the indexed list using a custom limit-finding binary search
             List<String[]> SortedIndex = new ArrayList<>();
             int[] limits = {0, 1};
             if (TypeisLatin || TypeisKana || TypeisNumber) {
@@ -818,8 +823,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 matchingWordRowColIndexList.add(matchingWordColIndexList);
                 return matchingWordRowColIndexList;
             }
+            //endregion
 
-            // Get the indexes of all of the results that were found using the binary search
+            //region Get the indexes of all of the results that were found using the binary search
             if (limits[0] != -1) {
                 for (int i = limits[0]; i <= limits[1]; i++) {
                     parsed_list = Arrays.asList(SortedIndex.get(i)[1].split(";"));
@@ -828,8 +834,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     }
                 }
             }
+            //endregion
 
-            // Add search results where the "ing" is removed from an "ing" verb
+            //region Add search results where the "ing" is removed from an "ing" verb
             if ((TypeisLatin || TypeisKana || TypeisNumber) && !inglessVerb.equals(word)) {
                 SortedIndex = MainActivity.GrammarDatabaseIndexedLatin;
                 limits = binarySearchInLatinIndex(TypeisLatin, inglessVerb, inglessVerb, SortedIndex);
@@ -842,19 +849,21 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     }
                 }
             }
+            //endregion
 
             MatchesIndexesFromSortedListSize = MatchesIndexesFromSortedList.size();
 
-            // Perform the match finding in the database
+            //region Perform the match finding in the database
             for (int rowIndex = 2; rowIndex < lastIndex; rowIndex++) {
 
-                // Loop initializations
+                //region Loop initializations
                 list = MainActivity.MainDatabase.get(rowIndex)[GlobalConstants.GrammarModule_colIndex_Keyword];
                 parsed_list = Arrays.asList(list.split(","));
                 found_match = false;
                 skip_this_row = true;
+                //endregion
 
-                // Choosing which rows to skip. For all the entries in the database, look through the binary search hits.
+                //region Choosing which rows to skip. For all the entries in the database, look through the binary search hits.
                 if (TypeisLatin || TypeisKana || TypeisKanji || TypeisNumber) {
                     for (int i = 0; i < MatchesIndexesFromSortedListSize; i++) {
                         if (rowIndex == MatchesIndexesFromSortedList.get(i)) {
@@ -866,18 +875,22 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 if (list.equals("") || list.equals("-") || list.equals("KEYWORDS")) {
                     skip_this_row = true;
                 }
+                if (MainActivity.MeaningsDatabase.get(rowIndex).length < 6) {
+                    //If somehow line breks entered the table, the row is skipped to prevent crashing the program
+                    Log.v("JapaneseToolbox","Serious error: row " + rowIndex + " in Meanings table has less columns than expected! Check for accidental line breaks.");
+                    skip_this_row = true;
+                }
+                //endregion
 
                 if (skip_this_row) { continue; }
 
-                // If there is a word in the list that matches the input word, get the corresponding row index
+                //region If there is a word in the list that matches the input word, get the corresponding row index
                 match_length = 1000;
                 best_match = "";
                 MM_index = MainActivity.MainDatabase.get(rowIndex)[GlobalConstants.GrammarModule_colIndex_Meaning];
                 limits = binarySearchInLatinIndex(true, MM_index, MM_index, MainActivity.MeaningsDatabase);
                 type = "z";
-                if (limits[0] != -1) {
-                    type = MainActivity.MeaningsDatabase.get(limits[0])[2];
-                }
+                if (limits[0] != -1) type = MainActivity.MeaningsDatabase.get(limits[0])[2];
                 is_verb = type.substring(0, 1).equals("V") && !type.equals("VC");
 
                 boolean valueIsInParentheses = false;
@@ -886,7 +899,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     // Performing certain actions on the hit to prepare the comparison
                     hit = parsed_list.get(i).trim(); //also trims the extra space before the word
 
-                    //Add "to " to the hit if it's a verb (the "to " was removed to save memory in the database)
+                    //region Add "to " to the hit if it's a verb (the "to " was removed to save memory in the database)
                     if (is_verb) {
                         //Don't add "to " if the word is an explanation in parentheses
                         if (!valueIsInParentheses) {
@@ -895,6 +908,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                         if (hit.contains("(") && !hit.contains(")")) valueIsInParentheses = true;
                         else if (!hit.contains("(") && hit.contains(")")) valueIsInParentheses = false;
                     }
+                    //endregion
 
                     is_verb_and_latin = hit.length() > 3 && hit.substring(0, 3).equals("to ");
 
@@ -912,7 +926,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     hit = removeApostrophe(hit);
                     concatenated_hit = removeApostrophe(concatenated_hit);
 
-                    // Getting the first word if the hit is a sentence
+                    //region Getting the first word if the hit is a sentence
                     if (hit.length() > word_length) {
                         List<String> parsed_hit = Arrays.asList(hit.split(" "));
                         if (is_verb_and_latin) { hitFirstRelevantWord = parsed_hit.get(1);}
@@ -920,8 +934,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     } else {
                         hitFirstRelevantWord = "";
                     }
+                    //endregion
 
-                    // Perform the comparison to the input inputQueryAutoCompleteTextView and return the length of the shortest hit
+                    //region Perform the comparison to the input inputQueryAutoCompleteTextView and return the length of the shortest hit
                     // Match length is reduced every time there's a hit and the hit is shorter
                     if (       (concatenated_hit.contains(concatenated_word)
                             || (TypeisLatin && hit.equals("to " + inglessVerb))
@@ -949,8 +964,10 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                             if (is_verb_and_latin) { match_length = match_length-3;}
                         }
                     }
+                    //endregion
                     if (found_match) {break;}
                 }
+                //endregion
 
                 if (found_match) {
                     current_match_values = new int[2];
@@ -960,6 +977,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 }
 
             }
+            //endregion
 
             for (int i=0;i<MatchList.size();i++) {
                 matchingWordRowIndexList.add(MatchList.get(i)[0]);

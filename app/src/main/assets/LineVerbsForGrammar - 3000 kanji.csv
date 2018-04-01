@@ -243,7 +243,7 @@ oku, 置く, put, place, leave (behind), do in advance|oku|置く|4716||
 shiku, 敷く, spread out, lay out, take a position, impose widely (e.g. over a city)|shiku|敷く|4717||
 toku, 解く, solve, answer, untie|toku|解く|4718||
 tsuduku, 続く, continue, last, go on, be unbroken, occur again and again, lead to, connect to, tsuzuku|tsuduku|続く|4719|tsuzuku|
-yaku, 焼く, bake, grill, burn (an object, a disc), toast, develop (photos)|yaku|焼く|4720||
+yaku, 焼く, bake, grill, burn (an object, a disc), toast, develop (photos)|yaku|焼く|4720;6247||
 oku, 措く, give up, except|oku|措く|4721||
 shiku, 若く, match, equal, catch up with, overtake|shiku|若く|4722||
 shiku, 頻く, occur repeatedly, be repeated (archaic)|shiku|頻く|4723||
@@ -252,7 +252,7 @@ toku, 梳く, comb, untangle (hair)|toku|梳く|4725||
 toku, 説く, explain, advocate, preach, persuade|toku|説く|4726||
 toku, 溶く, dissolve (paint), scramble (eggs), melt (metal, etc.), mix (water with flour, etc.)|toku|溶く|4727||
 motte iku, 持っていく, take, carry (away), bear|motte iku|持っていく|4728||
-yaku, 焼く, burn (down), suntan, be jealous, be envious|yaku|焼く|4729||
+yaku, 焼く, burn (down), suntan, be jealous, to be envious|yaku|焼く|4729;6248||
 yuku, 行く, go, proceed|yuku|行く|4730||
 yuku, 征く, conquer, subjugate|yuku|征く|4731||
 dearuku, 出歩く, go out, take a stroll, go about|dearuku|出歩く|4732||
@@ -492,7 +492,7 @@ ossharu, 仰る, say|ossharu|仰る|4963||
 gozaru, 御座る, be (archaic)|gozaru|御座る|4964||
 nasaru, 為さる, do, request|nasaru|為さる|4965||
 kaeru, 帰る, come home, go home, leave (guest, customer, etc.)|kaeru|帰る|4966||
-kakaru, 掛かる, take (time, money), hang (e.g. on the wall), come under (a contract, a tax), start (engines, motors), attend, deal with, handle, depend on, exact (a fee)|kakaru|掛かる|4967||
+kakaru, 掛かる, take (a resource, e.g. time or money), come into view, arrive, have started to, be on the verge of, overlap (e.g. information in a manual), (come) at, be fastened, be covered (e.g. with dust, a tablecloth, etc.), be caught in, get a call|kakaru|掛かる|4967;6285;6286;6287;6288;6289;6290;6291;6292||
 atsumaru, 集まる, gather, collect, assemble|atsumaru|集まる|4968||
 butsukaru, 打つかる, strike against, collide with, bump into, conflict with, clash with|butsukaru|打つかる|4969||
 damaru, 黙る, be silent|damaru|黙る|4970||
@@ -548,7 +548,7 @@ kageru, 陰る, darken, get dark, be clouded, be obscured|kageru|陰る|5019||
 kagiru, 限る, restrict, limit, confine|kagiru|限る|5020||
 kagiru, 限る, be restricted to, be limited to, be confined to|kagiru|限る|5021||
 kajiru, 齧る, chew, bite (at), gnaw, nibble, munch, crunch, dabble in (e.g. hobby, instrument)|kajiru|齧る|5022||
-kakaru, 罹る, suffer from|kakaru|罹る|5023||
+kakaru, 罹る, suffer from, contract (a disease)|kakaru|罹る|5023||
 kakaru, 架かる, span, bridge, cross, straddle|kakaru|架かる|5024||
 kakaru, 係る, be the work of, be the result of, be done by, concern, affect, involve, relate to|kakaru|係る|5025||
 kakawaru, 係わる, be affected, be influenced, be concerned with, have do with, stick (opinions)|kakawaru|係わる|5026||
@@ -1153,7 +1153,7 @@ kureru, 暮れる, get dark, end, close, run out, be sunk (in despair), be lost|
 bakeru, 化ける, take the form of, assume the shape of, turn into, transform into, diguise as, change, metamorphose, improve dramtically|bakeru|化ける|5622||
 kikaseru, 効かせる, season (food), bring out taste, use, exercise, display|kikaseru|効かせる|5623||
 fuzakeru, ふざける, romp, gambol, frolic, soke, make fun of, flirt, mess around, screw around, josh|fuzakeru|ふざける|5624||
-mezameru, 目覚める, wake up|mezameru|目覚める|5625||
+mezameru, 目覚める, wake up, awaken to (instinct, ability, perception, etc.), become aware of, become conscious of, realize, come to one's senses|mezameru|目覚める|5625;6311;6312||
 nukeru, 抜ける, come out, fall out, be omitted, be missing, escape, come loose, fade, discolour, wear a hole(e.g. clothes), leave (e.g. meeting), be clear, be transparent (e.g. sky), exit (a program loop)|nukeru|抜ける|5626||
 nebokeru, 寝ぼける, be half asleep, be half awake|nebokeru|寝ぼける|5627||
 takameru, 高める, raise, lift, boost, enhance|takameru|高める|5628||
@@ -1292,7 +1292,7 @@ hikiageru, 引き上げる, pull up, drag up, lift up, increase, raise (e.g. tax
 ikeru, 行ける, be good (at), go well, look good, taste good|ikeru|行ける|5761||
 osaeru, 押える, pin something down, hold something down, hold something back, stop, restrain, curb, seize, grasp, arrest, catch happening, determine (important points), find (proof), understand, 押さえる|osaeru|押える|5762|押さえる|
 osaeru, 抑える, gain control of something, govern, keep down (e.g. information), suppress|osaeru|抑える|5763||
-yaseru, 瘠せる, become thin, lose weight, reduce (one's) weight, slim, be barren, be infertile, be sterile, 痩せる, 痩る, 瘠る, 瘦せる|yaseru|瘠せる|5764|痩せる, 痩る, 瘠る, 瘦せる|
+yaseru, 瘠せる, become thin, lose weight, reduce (one's) weight, slim, be barren, be infertile, be sterile, 瘠せる, 痩る, 瘠る, 瘦せる|yaseru|瘠せる|5764|瘠せる, 痩る, 瘠る, 瘦せる|
 oikakeru, 追いかける, chase, run after, pursue, 追い掛ける, 追掛ける|oikakeru|追いかける|5765|追い掛ける, 追掛ける|
 shikaritsukeru, 叱り付ける, rebuke, scold harshly, 叱りつける|shikaritsukeru|叱り付ける|5766|叱りつける|
 seshimeru, せしめる, cheat someone out of, wangle|seshimeru|せしめる|5767||
@@ -1614,3 +1614,8 @@ nebou suru, 寝坊する, sleep in late, oversleep|nebou suru|寝坊する|6092|
 annai suru, 寝坊する, inform, guide, instruct, lead, show around, announce, invite, make acquaintance with|annai suru|寝坊する|6118||
 suisen suru, 推薦する, recommendation, referral, endorsement|suisen suru|推薦する|6122||
 setsumei suru, 推薦する, explain|setsumei suru|推薦する|6124||
+hirune suru, 昼寝する, take a nap|hirune suru|昼寝する|6173||
+taiho suru, 逮捕する, arrest, apprehend, capture|taiho suru|逮捕する|6218||
+saibansuru, 裁判する, try, judge|saibansuru|裁判する|6220||
+yakusoku suru, 約束する, arrange, promise, appoint, pact on, engage on|yakusoku suru|約束する|6258||
+bassuru, 罰する, punish, penalize, penalise|bassuru|罰する|6281||

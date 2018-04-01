@@ -1,7 +1,6 @@
 package com.japanesetoolboxapp.utiities;
 
 import android.app.Activity;
-import android.content.res.Configuration;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -18,6 +17,11 @@ import android.widget.Toast;
 import com.japanesetoolboxapp.ConvertFragment;
 import com.japanesetoolboxapp.R;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -31,6 +35,7 @@ import java.util.List;
 
 public class SharedMethods {
 
+    //Activity operation functions
     public static void trimCache(Context context) {
         // http://stackoverflow.com/questions/10977288/clear-application-cache-on-exit-in-android
         try {
@@ -42,8 +47,7 @@ public class SharedMethods {
             e.printStackTrace();
         }
     }
-
-    public static boolean deleteDir(File dir) {
+    private static boolean deleteDir(File dir) {
         if (dir != null && dir.isDirectory()) {
             String[] children = dir.list();
             for (String aChildren : children) {
@@ -57,7 +61,6 @@ public class SharedMethods {
         // The directory is now empty so delete it
         return dir.delete();
     }
-
     public static List<String[]> readCSVFile(String filename, Context context) {
 
         List<String[]> mySheet = new ArrayList<>();
@@ -122,7 +125,6 @@ public class SharedMethods {
 
         return mySheet;
     }
-
     public static List<String[]> readCSVFileFirstRow(String filename, Context context) {
 
         List<String[]> mySheetFirstRow = new ArrayList<>();
@@ -182,30 +184,12 @@ public class SharedMethods {
 
         return mySheetFirstRow;
     }
-
-    @SuppressWarnings("deprecation")
-    public static Spanned fromHtml(String source) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            return Html.fromHtml(source, Html.FROM_HTML_MODE_LEGACY);
-        } else {
-            return Html.fromHtml(source);
-        }
-    }
-
-    public static void hideSoftKeyboard(Activity activity) {
-        InputMethodManager inputMethodManager =(InputMethodManager) activity.getBaseContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
-        if (inputMethodManager != null && activity.getCurrentFocus() != null) {
-            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-        }
-    }
-
     public void makeDelay(int milliseconds){
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {}
         }, milliseconds);
     }
-
     public static long getAvailableMemory() {
         final Runtime runtime = Runtime.getRuntime();
         final long usedMemInMB=(runtime.totalMemory() - runtime.freeMemory()) / 1048576L;
@@ -214,8 +198,15 @@ public class SharedMethods {
         Log.i("Diagnosis Time","Available heap size: " + availHeapSizeInMB);
         return availHeapSizeInMB;
     }
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager =(InputMethodManager) activity.getBaseContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        if (inputMethodManager != null && activity.getCurrentFocus() != null) {
+            inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        }
+    }
 
-    static public String convertToUTF8(String input_string) {
+    //Character manipulations module
+    private static String convertToUTF8(String input_string) {
 
         byte[] byteArray = {};
         try {
@@ -246,7 +237,15 @@ public class SharedMethods {
         }
         return concatenated_sentence;
     }
+    @SuppressWarnings("deprecation") public static Spanned fromHtml(String source) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return Html.fromHtml(source, Html.FROM_HTML_MODE_LEGACY);
+        } else {
+            return Html.fromHtml(source);
+        }
+    }
 
+    //OCR module
     public static int loadOCRImageContrastFromSharedPreferences(SharedPreferences sharedPreferences, Context context) {
         float contrastValue = Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_contrast_default_value));
         try {
@@ -289,7 +288,7 @@ public class SharedMethods {
         }
         return (int) brightnessValue;
     }
-    public static float truncateToRange(float value, float min, float max) {
+    private static float truncateToRange(float value, float min, float max) {
         if (value < min) value = min;
         else if (value > max) value = max;
         return value;
@@ -372,13 +371,13 @@ public class SharedMethods {
             return false;
         }
     }
-    public static List<Object> getResultsFromWeb(String word, final Activity activity) throws IOException {
+    public static List<Object> getResultsFromJishoOnWeb(String word, final Activity activity) throws IOException {
 
         List<Object> setOf_matchingWordCharacteristics = new ArrayList<>();
         List<Object> matchingWordCharacteristics = new ArrayList<>();
         if (word.equals("")) { return setOf_matchingWordCharacteristics; }
 
-        //Preparing the word to be included in the url
+        //region Preparing the word to be included in the url
         String prepared_word = "";
         if (ConvertFragment.TextType(word).equals("kanji")) {
             String converted_word = convertToUTF8(word);
@@ -391,64 +390,14 @@ public class SharedMethods {
         else {
             prepared_word = word;
         }
+        //endregion
 
-        //Checking for a Web connection and extracting the site code if there is one. Otherwise, returning null.
-        String responseString = "";
-        String inputLine;
-        HttpURLConnection connection = null;
-        mInternetIsAvailable = internetIsAvailableCheck(activity.getBaseContext());
-        TellUserIfThereIsNoInternetConnection(activity);
-        if (mInternetIsAvailable) {
-            try {
-                //https://stackoverflow.com/questions/35568584/android-studio-deprecated-on-httpparams-httpconnectionparams-connmanagerparams
-                //String current_url = "https://www.google.co.il/search?dcr=0&source=hp&q=" + prepared_word;
-                String current_url = "http://jisho.org/search/" + prepared_word;
-                URL dataUrl = new URL(current_url);
-                connection = (HttpURLConnection) dataUrl.openConnection();
-                connection.setConnectTimeout(2000);
-                connection.setReadTimeout(2000);
-                connection.setInstanceFollowRedirects(true);
-                // optional default is GET
-                connection.setRequestMethod("GET");
-
-                int responseCode = connection.getResponseCode();
-                if (responseCode == 200) {
-                    BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    responseString = "";
-                    while ((inputLine = in.readLine()) != null)
-                        responseString += inputLine + '\n';
-                    in.close();
-                    in = null;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                Log.i("Diagnosis Time", "Failed to access online resources.");
-                if (Looper.myLooper() == null) Looper.prepare(); //Checks if the looper already exists. If this is the case, uses the old looper
-                try {
-                    activity.runOnUiThread(new Runnable() {
-                        public void run() {
-                            Toast.makeText(activity.getBaseContext(), "Failed to access online resources.", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                } catch (Exception e2) {
-                    e2.printStackTrace();
-                }
-                return setOf_matchingWordCharacteristics;
-            } finally {
-                try {
-                    if (connection != null) {connection.disconnect(); connection = null; }
-                } catch (Exception e) {
-                    e.printStackTrace(); //If you want further info on failure...
-                    //return null;
-                }
-            }
-        }
-
-        String website_code = responseString;
+        String website_code = getWebsiteXml("http://jisho.org/search/" + prepared_word, activity);
+        if (website_code != null && website_code.equals("")) return setOf_matchingWordCharacteristics;
 
         //Extracting the definition from Jisho.org
 
-        //Initializatons
+        //region Initializatons
         String identifier;
         int index_of_current_results_block_marker_start;
         int index_of_current_results_block_marker_end;
@@ -485,60 +434,56 @@ public class SharedMethods {
 
         int current_index_in_site = 0;
         current_index_in_block = website_code.length()-1;
+        //endregion
+
         while (true) {
 
-            //Get start of current results block
+            //region Get start of current results block
             identifier = "div class=\"concept_light-status";
             index_of_current_results_block_marker_start = website_code.indexOf(identifier, current_index_in_site) + identifier.length();
             index_of_current_results_block_marker_end = website_code.indexOf("a class=\"light-details_link", index_of_current_results_block_marker_start);
+            //endregion
 
-            //Getting the start index of the current meaning block
+            //region Getting the start index of the current meaning block
             identifier = "concept_light-meanings medium-9 columns";
             current_meanings_block_start = website_code.indexOf(identifier, index_of_current_results_block_marker_start) + identifier.length();
             current_meanings_block_end = website_code.indexOf("a class=\"light-details_link", current_meanings_block_start);
+            //endregion
 
             //Exiting the loop if the last entry from the website has been registered or if the loop restarts
             if (index_of_current_results_block_marker_start < current_index_in_site || index_of_current_results_block_marker_start == -1) break;
 
-            //Skipping this results block if it is not a valid block
-            //index_of_current_results_block_marker_end = website_code.indexOf(">", index_of_current_results_block_marker_start)-1;
-            //current_results_block_descriptor = website_code.substring(index_of_current_results_block_marker_start, index_of_current_results_block_marker_end);
-            //if (!current_results_block_descriptor.equals("concept_light-status")) continue;
-
             current_index_in_site = index_of_current_results_block_marker_start;
 
-            //Kanji extraction
+            //region Kanji extraction
             identifier = "Sentence search for ";
             index_of_requested_word_kanji_start = website_code.indexOf(identifier, current_index_in_site) + identifier.length();
             index_of_requested_word_kanji_end = website_code.indexOf("<", index_of_requested_word_kanji_start);
             requested_word_kanji = website_code.substring(index_of_requested_word_kanji_start, index_of_requested_word_kanji_end);
+            //endregion
 
-            //Romaji extraction (if there is no second "Sentence search for " marker, create the Romaji value manually)
+            //region Romaji extraction (if there is no second "Sentence search for " marker, create the Romaji value manually)
             identifier = "Sentence search for ";
             index_of_requested_word_romaji_start = website_code.indexOf(identifier, index_of_requested_word_kanji_end) + identifier.length();
 
-            //If there is not further "Sentence search for " statement in the website, continue (to loop closure)
-            if (index_of_requested_word_romaji_start == -1) { current_index_in_site = index_of_requested_word_romaji_start; continue; }
-
-            //Otherwise:
-            index_of_requested_word_romaji_end = index_of_requested_word_romaji_start;
-            if (index_of_requested_word_romaji_start > current_meanings_block_start) {
-                requested_word_romaji = ConvertFragment.Kana_to_Romaji_to_Kana(requested_word_kanji).get(0);
+            if (index_of_requested_word_romaji_start < index_of_current_results_block_marker_start) {
+                //If the Kanji word is in Hiragana or Katakana script, set the romaji value to be the kanji value
+                if (ConvertFragment.TextType(requested_word_kanji).equals("hiragana") || ConvertFragment.TextType(requested_word_kanji).equals("katakana") ) {
+                    requested_word_romaji = requested_word_kanji;
+                } else {
+                    requested_word_romaji = "*";
+                }
             }
             else {
+                //If there is a second "Senetence search for " marker, get the romaji value from the website
                 index_of_requested_word_romaji_end = website_code.indexOf("<", index_of_requested_word_romaji_start);
                 requested_word_romaji = website_code.substring(index_of_requested_word_romaji_start, index_of_requested_word_romaji_end);
             }
-
-            //If the Kanji word is in Hiragana or Katakana script, make sure that the Romaji value is correct, no matter what is extracted from the website
-            if (ConvertFragment.TextType(requested_word_kanji).equals("hiragana") ||
-                    ConvertFragment.TextType(requested_word_kanji).equals("katakana") ) {
-                requested_word_romaji = ConvertFragment.Kana_to_Romaji_to_Kana(requested_word_kanji).get(0);
-            }
+            //endregion
 
             current_index_in_site = current_meanings_block_start;
 
-            //Getting the tags and corresponding meanings
+            //region Getting the tags and corresponding meanings
             current_index_in_block = current_meanings_block_start;
             current_meaning_tags = new ArrayList<>();
             current_meanings = new ArrayList<>();
@@ -591,19 +536,21 @@ public class SharedMethods {
 
                 if (current_index_in_block < current_meanings_block_start) break;
             }
+            //endregion
 
-            //Preventing crashes if the website code does not supply a "meaning-tags" instance in the current block
+            //region Preventing crashes if the website code does not supply a "meaning-tags" instance in the current block
             if (current_meaning_tags.size() == 0) {
                 current_index_in_site = current_index_in_block;
                 continue;
             }
+            //endregion
 
             current_index_in_site = current_meanings_block_end;
 
-            //Updating the characteristics
+            //region Updating the characteristics for the current result
             matchingWordCharacteristics = new ArrayList<>();
 
-            //Getting the Romaji value
+            //Getting the Romaji value (and make sure that the Romaji value is correct, no matter what is extracted from the website)
             String matchingWordRomaji = ConvertFragment.Kana_to_Romaji_to_Kana(requested_word_romaji).get(0);
             matchingWordCharacteristics.add(matchingWordRomaji);
 
@@ -617,7 +564,7 @@ public class SharedMethods {
 
             //Getting the set of Meanings
 
-            ;//Initializations
+            //region Initializations
             List<Object> matchingWordCurrentMeaningsBlock = new ArrayList<>();
             List<Object> matchingWordCurrentMeaningBlocks = new ArrayList<>();
             String matchingWordMeaning;
@@ -629,7 +576,9 @@ public class SharedMethods {
             List<String> matchingWordCurrentExplanationsBlock;
             String matchingWordExplanation;
             String matchingWordRules;
+            //endregion
 
+            //region Meaning loop
             for (int i=0; i<current_meanings.size(); i++) {
 
                 matchingWordCurrentMeaningsBlock = new ArrayList<>();
@@ -718,15 +667,68 @@ public class SharedMethods {
                 matchingWordCurrentMeaningsBlock.add(matchingWordExplanationBlocks);
                 matchingWordCurrentMeaningBlocks.add(matchingWordCurrentMeaningsBlock);
             }
+            //endregion
 
             matchingWordCharacteristics.add(matchingWordCurrentMeaningBlocks);
+            //endregion
 
             setOf_matchingWordCharacteristics.add(matchingWordCharacteristics);
         }
 
         return setOf_matchingWordCharacteristics;
     }
+    private static String getWebsiteXml(String websiteUrl, final Activity activity) {
 
+        String responseString = "";
+        String inputLine;
+        HttpURLConnection connection = null;
+        mInternetIsAvailable = internetIsAvailableCheck(activity.getBaseContext());
+        TellUserIfThereIsNoInternetConnection(activity);
 
+        if (!mInternetIsAvailable) return responseString;
+
+        try {
+            //https://stackoverflow.com/questions/35568584/android-studio-deprecated-on-httpparams-httpconnectionparams-connmanagerparams
+            //String current_url = "https://www.google.co.il/search?dcr=0&source=hp&q=" + prepared_word;
+            URL dataUrl = new URL(websiteUrl);
+            connection = (HttpURLConnection) dataUrl.openConnection();
+            connection.setConnectTimeout(2000);
+            connection.setReadTimeout(2000);
+            connection.setInstanceFollowRedirects(true);
+            // optional default is GET
+            connection.setRequestMethod("GET");
+
+            int responseCode = connection.getResponseCode();
+            if (responseCode == 200) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                responseString = "";
+                while ((inputLine = in.readLine()) != null)
+                    responseString += inputLine + '\n';
+                in.close();
+                in = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.i("Diagnosis Time", "Failed to access online resources.");
+            if (Looper.myLooper() == null) Looper.prepare(); //Checks if the looper already exists. If this is the case, uses the old looper
+            try {
+                activity.runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(activity.getBaseContext(), "Failed to access online resources.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+            return null;
+        } finally {
+            try {
+                if (connection != null) {connection.disconnect(); connection = null; }
+            } catch (Exception e) {
+                e.printStackTrace(); //If you want further info on failure...
+            }
+        }
+        return responseString;
+    }
 
 }

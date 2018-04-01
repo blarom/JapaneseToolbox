@@ -506,7 +506,7 @@ ru godan|say|T|を|おっしゃる|仰る|ossharu|仰|ossha|37|
 ru godan|be (archaic)|I||ござる|御座る|gozaru|御座|goza|38|
 ru godan|do, request|T|を/に|なさる|為さる|nasaru|為さ|nasa|39|
 ru godan|come home, go home, leave (guest, customer, etc.)|I|に|かえる|帰る|kaeru|帰|kae|40|
-ru godan|take (time, money), hang (e.g. on the wall), come under (a contract, a tax), start (engines, motors), attend, deal with, handle, depend on, exact (a fee)|T|を|かかる|掛かる|kakaru|掛か|kaka||
+ru godan|take (a resource, e.g. time or money), come into view, arrive, have started to, be on the verge of, overlap (e.g. information in a manual), (come) at, be fastened, be covered (e.g. with dust, a tablecloth, etc.), be caught in, get a call|T|を|かかる|掛かる|kakaru|掛か|kaka||
 ru godan|gather, collect, assemble|I||あつまる|集まる|atsumaru|集ま|atsuma||
 ru godan|strike against, collide with, bump into, conflict with, clash with|I||ぶつかる|打つかる|butsukaru|打つか|butsuka||
 ru godan|be silent|I||だまる|黙る|damaru|黙|dama||
@@ -562,7 +562,7 @@ ru godan|darken, get dark, be clouded, be obscured|I||かげる|陰る|kageru|�
 ru godan|restrict, limit, confine|T|を|かぎる|限る|kagiru|限|kagi||
 ru godan|be restricted to, be limited to, be confined to|I||かぎる|限る|kagiru|限|kagi||
 ru godan|chew, bite (at), gnaw, nibble, munch, crunch, dabble in (e.g. hobby, instrument)|T|を|かじる|齧る|kajiru|齧|kaji||
-ru godan|suffer from|I|に|かかる|罹る|kakaru|罹|kaka||
+ru godan|suffer from, contract (a disease)|I|に|かかる|罹る|kakaru|罹|kaka||
 ru godan|span, bridge, cross, straddle|I||かかる|架かる|kakaru|架か|kaka||
 ru godan|be the work of, be the result of, be done by, concern, affect, involve, relate to|I||かかる|係る|kakaru|係|kaka||
 ru godan|be affected, be influenced, be concerned with, have do with, stick (opinions)|I||かかわる|係わる|kakawaru|係わ|kakawa||
@@ -1173,7 +1173,7 @@ ru ichidan|get dark, end, close, run out, be sunk (in despair), be lost|I||く�
 ru ichidan|take the form of, assume the shape of, turn into, transform into, diguise as, change, metamorphose, improve dramtically|I||ばける|化ける|bakeru|化け|bake||
 ru ichidan|season (food), bring out taste, use, exercise, display|T|を|きかせる|効かせる|kikaseru|効かせ|kikase||
 ru ichidan|romp, gambol, frolic, soke, make fun of, flirt, mess around, screw around, josh|I||ふざける|ふざける|fuzakeru|ふざけ|fuzake||
-ru ichidan|wake up|I||めざめる|目覚める|mezameru|目覚め|mezame||
+ru ichidan|wake up, awake, awaken to (instinct, ability, perception, etc.), become aware of, become conscious of, realize, come to one's senses|I||めざめる|目覚める|mezameru|目覚め|mezame||
 ru ichidan|come out, fall out, be omitted, be missing, escape, come loose, fade, discolour, wear a hole(e.g. clothes), leave (e.g. meeting), be clear, be transparent (e.g. sky), exit (a program loop)|I||ぬける|抜ける|nukeru|抜け|nuke||
 ru ichidan|be half asleep, be half awake|I||ねぼける|寝ぼける|nebokeru|寝ぼけ|neboke||
 ru ichidan|raise, lift, boost, enhance|T|を|たかめる|高める|takameru|高め|takame||
@@ -1312,7 +1312,7 @@ ru ichidan|pull up, drag up, lift up, increase, raise (e.g. taxes), withdraw, le
 ru ichidan|be good (at), go well, look good, taste good|I||いける|行ける|ikeru|行け|ike||
 ru ichidan|pin something down, hold something down, hold something back, stop, restrain, curb, seize, grasp, arrest, catch happening, determine (important points), find (proof), understand|T|を|おさえる|押える|osaeru|押え|osae||
 ru ichidan|gain control of something, govern, keep down (e.g. information), suppress|T|を|おさえる|抑える|osaeru|抑え|osae||
-ru ichidan|become thin, lose weight, reduce (one's) weight, slim, be barren, be infertile, be sterile|I||やせる|瘠せる|yaseru|瘠せ|yase||
+ru ichidan|become thin, lose weight, reduce (one's) weight, slim, be barren, be infertile, be sterile|I||やせる|瘠せる|yaseru|痩せ|yase||
 ru ichidan|chase, run after, pursue|T|を|おいかける|追いかける|oikakeru|追いかけ|oikake||
 ru ichidan|rebuke, scold harshly|T|を|しかりつける|叱り付ける|shikaritsukeru|叱り付け|shikaritsuke||
 ru ichidan|cheat someone out of, wangle|T|を|せしめる|せしめる|seshimeru|せしめ|seshime||
@@ -1640,4 +1640,9 @@ suru verb|sleep in late, oversleep|I||ねぼうする|寝坊する|nebou suru|�
 suru verb|inform, guide, instruct, lead, show around, announce, invite, make acquaintance with|T|を|あんあいする|寝坊する|annai suru|寝坊|annai ||
 suru verb|recommend, refer, endorse|T|を|すいせんする|推薦する|suisen suru|推薦|suisen ||
 suru verb|explain|T|を|すいせんする|推薦する|setsumei suru|推薦|setsumei ||
+suru verb|take a nap|I||ひるねする|昼寝する|hirune suru|昼寝|hirune ||
+suru verb|arrest, apprehend, capture|T|を|たいほする|逮捕する|taiho suru|逮捕|taiho ||
+suru verb|try, judge|T|を|さいばんする|裁判する|saibansuru|裁判|saiban||
+suru verb|arrange, promise, appoint, pact on, engage on|I||やくそくする|約束する|yakusoku suru|約束|yakusoku ||
+suru verb|punish, penalize, penalise|T|を|ばっする|罰する|bassuru|罰|bas||
 -|-|-||||||||
