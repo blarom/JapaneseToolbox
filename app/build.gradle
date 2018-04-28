@@ -33,7 +33,6 @@ dependencies {
     compile 'com.android.support:preference-v7:27.1.0'
     compile 'com.rmtheis:tess-two:8.0.0'
     compile 'com.theartofdev.edmodo:android-image-cropper:2.6.+'
-    compile 'org.jsoup:jsoup:1.10.1'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     }

@@ -17,11 +17,6 @@ import android.widget.Toast;
 import com.japanesetoolboxapp.ConvertFragment;
 import com.japanesetoolboxapp.R;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -393,7 +388,7 @@ public class SharedMethods {
         //endregion
 
         String website_code = getWebsiteXml("http://jisho.org/search/" + prepared_word, activity);
-        if (website_code != null && website_code.equals("")) return setOf_matchingWordCharacteristics;
+        if ((website_code != null && website_code.equals("")) || website_code == null) return setOf_matchingWordCharacteristics;
 
         //Extracting the definition from Jisho.org
 

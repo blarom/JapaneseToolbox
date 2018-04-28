@@ -876,7 +876,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     skip_this_row = true;
                 }
                 if (MainActivity.MeaningsDatabase.get(rowIndex).length < 6) {
-                    //If somehow line breks entered the table, the row is skipped to prevent crashing the program
+                    //If somehow line breaks entered the table, the row is skipped to prevent crashing the program
                     Log.v("JapaneseToolbox","Serious error: row " + rowIndex + " in Meanings table has less columns than expected! Check for accidental line breaks.");
                     skip_this_row = true;
                 }
