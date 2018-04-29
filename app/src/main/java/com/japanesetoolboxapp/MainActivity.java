@@ -30,6 +30,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//TODO "egao suru" gives no hit in DICT
+//TODO "sugee" gives incorrect transliteration when loading results from web
+//TODO searching for "ii tokoro" gives no results in jisho.org, but "iitoko" is displayed wrongly in the app as "iitokoro"
 //TODO "kamoshi" search return at least one incorrectly displayed result
 //TODO "hanashinagara" returns conjugated verb, but hiragana equivalent doesn't
 //TODO imperative display for godan verbs

@@ -181,7 +181,7 @@ abunai, 危ない, dangerous, risky, hazardous, perilous, precarious, unreliable
 kurai, 暗い, dark, gloomy, dull, depressed, despirited, sorowful, bitter, unclear, unfamiliar, unknown, kura, kurakunai, kurakatta, kurakunakatta, kurakute, kurami, kurakereba, kurakarou|kurai|暗い|601||
 natsukashii, 懐かしい, dear, desired, missed, natsukashi, natsukashikunai, natsukashikatta, natsukashikunakatta, natsukashikute, natsukashimi, natsukashikereba, natsukashikarou|natsukashii|懐かしい|602||
 koi, 濃い, deep (colour), dark, strong (flavour, smell, etc), thick (consistency), dense, ko, kokunai, kokatta, kokunakatta, kokute, komi, kokereba, kokarou|koi|濃い|603||
-fukai, 深い, deep, profound, thick, fuka, fukakunai, fukakatta, fukakunakatta, fukakute, fukami, fukakereba, fukakarou|fukai|深い|604||
+fukai, 深い, deep​, profound​, dense, thick​, close (relationship)​, intense, strong​, late​, fuka, fukakunai, fukakatta, fukakunakatta, fukakute, fukami, fukakereba, fukakarou|fukai|深い|604;6636;6637;6638;6639;6640||
 umai, 美味い, delicious, appetizing, appetising, uma, umakunai, umakatta, umakunakatta, umakute, umami, umakereba, umakarou|umai|美味い|605||
 hitoke no nai, 人気のない, deserted, empty of people, hitoke no na, hitoke no nakunai, hitoke no nakatta, hitoke no nakunakatta, hitoke no nakute, hitoke no nami, hitoke no nakereba, hitoke no nakarou|hitoke no nai|人気のない|606||
 kuwashii, 詳しい, detailed, full, accurate, knowing very well, well-acquainted, well-informed, 精しい, 委しい, kuwashi, kuwashikunai, kuwashikatta, kuwashikunakatta, kuwashikute, kuwashimi, kuwashikereba, kuwashikarou|kuwashii|詳しい|607|精しい, 委しい|
@@ -284,7 +284,7 @@ suppai, 酸っぱい, sour, suppa, suppakunai, suppakatta, suppakunakatta, suppa
 karai, 辛い, spicy, hot, kara, karakunai, karakatta, karakunakatta, karakute, karami, karakereba, karakarou, taste|karai|辛い|706||
 katai, 固い, stiff, tight, wooden, formal, bookish, kata, katakunai, katakatta, katakunakatta, katakute, katami, katakereba, katakarou|katai|固い|707||
 kusai, 臭い, stinky, smelly, suspicious, fishy, kusa, kusakunai, kusakatta, kusakunakatta, kusakute, kusami, kusakereba, kusakarou|kusai|臭い|708||
-tsuyoi, 強い, strong, tsuyo, tsuyokunai, tsuyokatta, tsuyokunakatta, tsuyokute, tsuyomi, tsuyokereba, tsuyokarou|tsuyoi|強い|709||
+tsuyoi, 強い, strong, potent, competent, domineering, tough​, strong, brawny, powerful, healthy, rugged​, good (at), skilled, knowledgeable​, being able to handle, know how to deal (with), durable (against), resistant (to), resilient, firm, rigid, solid​, intense, strong, fierce, high​, tsuyo, tsuyokunai, tsuyokatta, tsuyokunakatta, tsuyokute, tsuyomi, tsuyokereba, tsuyokarou|tsuyoi|強い|709;6615;6616;6617;6618;6619||
 katai, 堅い, strong, firm, tough, kata, katakunai, katakatta, katakunakatta, katakute, katami, katakereba, katakarou|katai|堅い|710||
 ayashii, 怪しい, suspicious, dubious, doubtful, dodgy, dangerous, ominous, strange, shady, fishy, ayashi, ayashikunai, ayashikatta, ayashikunakatta, ayashikute, ayashimi, ayashikereba, ayashikarou|ayashii|怪しい|711||
 amai, 甘い, sweet, ama, amakunai, amakatta, amakunakatta, amakute, amami, amakereba, amakarou, taste|amai|甘い|712||
@@ -319,7 +319,7 @@ hiroi, 広い, wide, broad, spacious, hiro, hirokunai, hirokatta, hirokunakatta,
 kashikoi, 賢い, wise, clever, smart, 畏い, kashiko, kashikokunai, kashikokatta, kashikokunakatta, kashikokute, kashikomi, kashikokereba, kashikokarou|kashikoi|賢い|742|畏い|
 subarashii, 素晴らしい, wonderful, subarashi, subarashikunai, subarashikatta, subarashikunakatta, subarashikute, subarashimi, subarashikereba, subarashikarou|subarashii|素晴らしい|743||
 kiiroi, 黄色い, yellow, kiiro, kiirokunai, kiirokatta, kiirokunakatta, kiirokute, kiiromi, kiirokereba, kiirokarou, color, colour|kiiroi|黄色い|744||
-wakai, 若い, young, waka, wakakunai, wakakatta, wakakunakatta, wakakute, wakami, wakakereba, wakakarou|wakai|若い|745||
+wakai, 若い, young, youthful​, immature, green​, low (number), small​, waka, wakakunai, wakakatta, wakakunakatta, wakakute, wakami, wakakereba, wakakarou|wakai|若い|745;6613;6614||
 fukafuka, ふかふか, absent-mindedly, soft, fluffy|fukafuka|ふかふか|746;747||
 saisan, 再三, again and again, repeatedly|saisan|再三|748||
 hitori de, 一人で, alone|hitori de|一人で|749||
@@ -354,7 +354,7 @@ baka ni, 馬鹿に, foolishly, stupidly, idiotically, absurdly, ridiculously|bak
 mizukara, 自ら, for one's self, personally|mizukara|自ら|784||
 jiyuu ni, 自由に, freely|jiyuu ni|自由に|785||
 kirakira, きらきら, glitterlingly, sparklingly, glitter, sparkle, twinkle|kirakira|きらきら|786;787||
-dandan, 段々, gradually, progressively, little by little, by degrees|dandan|段々|788||
+dandan, 段々, gradually, progressively, little by little, by degrees, more and more, increasingly​|dandan|段々|788||
 doudou, 堂々, 道道, grandly, boldly, confidently, fairly, squarely, unreservedly, without apology, without hesitation, magnificient, grand, impressive, dignified, majestic, imposing, stately, fair, square, open|doudou|堂々, 道道|789;790||
 koufuku ni, 幸福に, happily|koufuku ni|幸福に|791||
 isoide, 急いで, hastily, hurriedly|isoide|急いで|792||
@@ -518,7 +518,7 @@ kokuritsu, 国立, national, kokuritsuni|kokuritsu|国立|1009||
 touzen, 当然, natural, as a matter of course, touzenni|touzen|当然|1010||
 atarimae, 当たり前, natural, reasonable, obvous, usual, common, ordinary, atarimaeni|atarimae|当たり前|1011||
 hitsuyou, 必要, necessary, needed, essential, indispensable, necessity, need, requirement, hitsuyouni|hitsuyou|必要|1012;1013||
-dame, 駄目, ダメ, no good, useless, broken, hopeless, wasted, in vain, not serving its purpose, not allowed, forbidden, dameni|dame|駄目, ダメ|1014||
+dame, 駄目, no good, not serving its purpose, useless, broken​, hopeless, wasted, in vain, purposeless​, cannot, must not, not allowed, ダメ, dameni|dame|駄目|1014;6610;6611|ダメ|
 seishiki, 正式, of due form, official, formal, due form, officiality, formality, seishikini|seishiki|正式|1015;1016||
 wazuka, 僅か, only, merely, (a) little, small quantity, wazukani|wazuka|僅か|1017;1018||
 hantai, 反対, opposition, resistance, antagonism, hostility, contrast, objection, dissension, reverse, opposite, vice versa, opposition, resistance, antagonism, hostility, contrast, objection, dissension, reverse, opposite, vice versa, hantaini|hantai|反対|1019;1020||
@@ -566,7 +566,7 @@ maji, マジ, serious, majini|maji|マジ|1076||
 juudai, 重大, serious, important, significant, grave, weighty, juudaini|juudai|重大|1077||
 mitai, 見たい, similar, mitaini|mitai|見たい|1078||
 kan'i, 簡易, simple, convenient, easy, simplicity, convenience, easiness, quasi-, kan'ini|kan'i|簡易|1079;1080||
-kantan, 簡単, simple, easy, brief, straightforward, uncomplicated, simple, easy, brief, uncomplicated, straightforward, kantanni|kantan|簡単|1081;1082||
+kantan, 簡単, simple, easy, straightforward, uncomplicated, brief, quick, light​, kantanni|kantan|簡単|1081;1082||
 jouzu, 上手, skilled, skillful, proficient, skill, dexterity, jouzuni|jouzu|上手|1083;1084||
 yasegisu, 痩せぎす, skinny, yasegisuni|yasegisu|痩せぎす|1085||
 keibi, 軽微, slight, little, insignificant, keibini|keibi|軽微|1086||
@@ -792,7 +792,7 @@ tsu, つ, undefined objects , hitotsu, futatsu, mittsu, yottsu, itsutsu, muttsu,
 shuukan, 週間, weeks, week|shuukan|週間|1369;1370||
 nenkan, 年間, year-long periods|nenkan|年間|1371||
 nen, 年, years|nen|年|1372||
-sai, 才, 歳, years old, school years, issai, hachisai, hassai, jissai, jussai, hatachi, year old|sai|才, 歳|1373||
+sai, 才, 歳, years old, school years, issai, hachisai, hassai, jissai, jussai, juu issai, hatachi, year old|sai|才, 歳|1373||
 en, 円, yen, yen|en|円|1374;1375||
 shumi ga warui, 趣味が悪い, (he) has bad taste, (he) has bad fashion sense|shumi ga warui|趣味が悪い|1376||
 memai ga shimasu, 目眩がします, (I) am feeling dizzy|memai ga shimasu|目眩がします|1377||
@@ -1180,7 +1180,7 @@ kensa, 検査, inspection (e.g. customs, factory), examination, scan (e.g. MRI, 
 etsuran, 閲覧, inspection, reading|etsuran|閲覧|1768||
 tsuuyaku, 通訳, interpretation, interpretation, oral translation|tsuuyaku|通訳|1769;1770||
 mensetsu, 面接, interview|mensetsu|面接|1771||
-shoukai, 紹介, introduction, ご紹介|shoukai|紹介|1772|ご紹介|
+shoukai, 紹介, introduction, presentation, referral, listing​, ご紹介|shoukai|紹介|1772|ご紹介|
 zengo, 前後, inversion, reversion, getting out of order, co-occuring, front and back, front and rear, before and behind, before and after, order, context, consequences, around, approximately, about, nearly|zengo|前後|1773;1774;1775||
 nenju, 念誦, invocation|nenju|念誦|1776||
 kangai, 灌漑, irrigation|kangai|灌漑|1777||
@@ -1500,7 +1500,7 @@ hanzai, 判事, crime|hanzai|判事|2105||
 tsumi, 罪, crime, fault, indiscretion, sin|tsumi|罪|2106||
 hihyou, 批評, criticism|hihyou|批評|2107||
 oudan, 横断, crossing, transverse|oudan|横断|2108||
-oozei, 大勢, crowd, great number of people, many people|oozei|大勢|2109||
+oozei, 大勢, crowd of people, great number of people, many people|oozei|大勢|2109||
 karuchaa, カルチャー, culture|karuchaa|カルチャー|2110||
 bunka, 文化, culture, civilization, civilisation, Bunka era|bunka|文化|2111;2112||
 joutai, 状態, current status, condition, situation, circumstances, state|joutai|状態|2113||
@@ -1629,7 +1629,7 @@ yoshimi, 好, 誼, friendship, friendly relations, connection, relation, intimac
 kongo, 今後, from now on, hereafter|kongo|今後|2236||
 shoumen, 正面, front, frontage, façade, main|shoumen|正面|2237||
 kinou, 機能, function, facility, faculty, feature|kinou|機能|2238||
-mirai, 未来, future (usually distant)|mirai|未来|2239||
+mirai, 未来, the future (usually distant)​, future tense​, the world to come​|mirai|未来|2239;6643;6644||
 ashimoto, 足元, gait, pace, step, at one's feet, underfoot, 足下, 足もと, 足許|ashimoto|足元|2240|足下, 足もと, 足許|
 emono, 獲物, game, spoils, trophy, prey|emono|獲物|2241||
 shiri, 地理, geography|shiri|地理|2242||
@@ -1892,7 +1892,7 @@ nasake, 情け, pity, sumpathy, compassion, affection|nasake|情け|2507||
 basho, 場所, place, location, spot, position, room, space, sumo wresting tournament|basho|場所|2508||
 kei, 計, plan, meter, measuring device, in total, total of|kei|計|2509;2510||
 saku, 策, plan, policy|saku|策|2511||
-keikaku, 計画, plan, schedule|keikaku|計画|2512||
+keikaku, 計画, plan, project, schedule, scheme, program, programme​|keikaku|計画|2512||
 yotei, 予定, plans, schedule, arrangement, program, expectation, estimate|yotei|予定|2513||
 shibai, 芝居, play, drama, show|shibai|芝居|2514||
 keisatsu, 警察, police|keisatsu|警察|2515||
@@ -1915,7 +1915,7 @@ bukka, 物価, price of commodities, cost-of-living, consumer price|bukka|物価
 daikin, 代金, price, payment, cost, charge, money, bill|daikin|代金|2532||
 jiman, 自慢, pride, boast|jiman|自慢|2533||
 shou, 賞, prize, award|shou|賞|2534||
-mondai, 問題, problem, question|mondai|問題|2535||
+mondai, 問題, question (e.g. on a test), problem​, problem (e.g. societal, political), question, issue, subject (e.g. of research), case, matter​, question (i.e. doubt)​, public discussion, controversy​, trouble, problem, inconvenience, difficulty​|mondai|問題|2535;6630;6631;6632;6633||
 tetsuduki, 手続き, procedure|tetsuduki|手続き|2536||
 sakumotsu, 作物, produce, crops|sakumotsu|作物|2537||
 sousaku, 創作, production, literary creation, work|sousaku|創作|2538||
@@ -2039,7 +2039,7 @@ ma, 間, space, room, time, pause|ma|間|2657||
 tokugi, 特技, special skill|tokugi|特技|2658||
 senmon, 専門, speciality, specialty, subject of study, expertise, 專門|senmon|専門|2659|專門|
 supiichi, スピーチ, speech|supiichi|スピーチ|2660||
-seifu, 台詞, 科白, speech, words, one's lines, remarks|seifu|台詞, 科白|2661||
+seifu, 台詞, speech, words, one's lines, remarks, 科白|seifu|台詞|2661|科白|
 reitai, 霊体, spirit body|reitai|霊体|2662||
 reibai, 霊媒, spirit medium|reibai|霊媒|2663||
 youryoku, 妖力, spirit power, magical power|youryoku|妖力|2664||
@@ -2487,37 +2487,37 @@ suika, すいか, watermelon|suika|すいか|3114||
 wain, ワイン, wine|wain|ワイン|3115||
 iisuto, イースト, yeast|iisuto|イースト|3116||
 yooguruto, ヨーグルト, yoghurt|yooguruto|ヨーグルト|3117||
-tsuitachi, 一日, 1|tsuitachi|一日|3118||
-tooka, 十日, 10|tooka|十日|3119||
-juuichi nichi, 十一日, 11|juuichi nichi|十一日|3120||
-juuni nichi, 十二日, 12|juuni nichi|十二日|3121||
-juusan nichi, 十三日, 13|juusan nichi|十三日|3122||
-juuyokka, 十四日, 14|juuyokka|十四日|3123||
-juugo nichi, 十五日, 15|juugo nichi|十五日|3124||
-juuroku nichi, 十六日, 16|juuroku nichi|十六日|3125||
-juushichi nichi, 十七日, 17|juushichi nichi|十七日|3126||
-juuhachi nichi, 十八日, 18|juuhachi nichi|十八日|3127||
-juuku nichi, 十九日, 19|juuku nichi|十九日|3128||
-futsuka, 二日, 2|futsuka|二日|3129||
-hatsuka, 二十日, 20|hatsuka|二十日|3130||
-nijuuichi nichi, 二十一日, 21|nijuuichi nichi|二十一日|3131||
-nijuuni nichi, 二十二日, 22|nijuuni nichi|二十二日|3132||
-nijuusan nichi, 二十三日, 23|nijuusan nichi|二十三日|3133||
-nijuuyokka, 二十四日, 24|nijuuyokka|二十四日|3134||
-nijuugo nichi, 二十五日, 25|nijuugo nichi|二十五日|3135||
-nijuuroku nichi, 二十六日, 26|nijuuroku nichi|二十六日|3136||
-nijuushichi nichi, 二十七日, 27|nijuushichi nichi|二十七日|3137||
-nijuuhachi nichi, 二十八日, 28|nijuuhachi nichi|二十八日|3138||
-nijuuku nichi, 二十九日, 29|nijuuku nichi|二十九日|3139||
-mikka, 三日, 3|mikka|三日|3140||
-sanjuu nichi, 三十日, 30|sanjuu nichi|三十日|3141||
-sanjuuichi nichi, 三十一日, 31|sanjuuichi nichi|三十一日|3142||
-yokka, 四日, 4|yokka|四日|3143||
-itsuka, 五日, 5|itsuka|五日|3144||
-muika, 六日, 6|muika|六日|3145||
-nanoka, 七日, 7|nanoka|七日|3146||
-youka, 八日, 8|youka|八日|3147||
-kokonoka, 九日, 9|kokonoka|九日|3148||
+tsuitachi, 一日, 1, the first day of the month​, one day|tsuitachi|一日|3118;6577||
+tooka, 十日, 10, the tenth day of the month​, ten days|tooka|十日|3119;6578||
+juuichi nichi, 十一日, 11, the eleventh day of the month​, eleven days|juuichi nichi|十一日|3120;6579||
+juuni nichi, 十二日, 12, the twelth day of the month​, twelve days|juuni nichi|十二日|3121;6580||
+juusan nichi, 十三日, 13, the thirteenth day of the month​, thirteen days|juusan nichi|十三日|3122;6581||
+juuyokka, 十四日, 14, the fourteenth day of the month​, fourteen days|juuyokka|十四日|3123;6582||
+juugo nichi, 十五日, 15, the fifteenth day of the month​, fifteen days|juugo nichi|十五日|3124;6583||
+juuroku nichi, 十六日, 16, the sixteenth day of the month​, sixteen days|juuroku nichi|十六日|3125;6584||
+juushichi nichi, 十七日, 17, the seventeenth day of the month​, seventeen days|juushichi nichi|十七日|3126;6585||
+juuhachi nichi, 十八日, 18, the eighteenth day of the month​, eighteen days|juuhachi nichi|十八日|3127;6586||
+juuku nichi, 十九日, 19, the nineteenth day of the month​, nineteen days|juuku nichi|十九日|3128;6587||
+futsuka, 二日, 2, the second day of the month​, two days|futsuka|二日|3129;6588||
+hatsuka, 二十日, 20, the twentieth day of the month​, twenty days|hatsuka|二十日|3130;6589||
+nijuuichi nichi, 二十一日, 21, the twenty-first day of the month​, twenty-one days|nijuuichi nichi|二十一日|3131;6590||
+nijuuni nichi, 二十二日, 22, the twenty-second day of the month​, twenty-two days|nijuuni nichi|二十二日|3132;6591||
+nijuusan nichi, 二十三日, 23, the twenty-third day of the month​, twenty-three days|nijuusan nichi|二十三日|3133;6592||
+nijuuyokka, 二十四日, 24, the twenty-fourth day of the month​, twenty-four days|nijuuyokka|二十四日|3134;6593||
+nijuugo nichi, 二十五日, 25, the twenty-fifth day of the month​, twenty-five days|nijuugo nichi|二十五日|3135;6594||
+nijuuroku nichi, 二十六日, 26, the twenty-sixth day of the month​, twenty-six days|nijuuroku nichi|二十六日|3136;6595||
+nijuushichi nichi, 二十七日, 27, the twenty-seventh day of the month​, twenty-seven days|nijuushichi nichi|二十七日|3137;6596||
+nijuuhachi nichi, 二十八日, 28, the twenty-eighth day of the month​, twenty-eight days|nijuuhachi nichi|二十八日|3138;6597||
+nijuuku nichi, 二十九日, 29, the twenty-ninth day of the month​, twenty-nine days|nijuuku nichi|二十九日|3139;6598||
+mikka, 三日, 3, the third day of the month​, three days|mikka|三日|3140;6599||
+sanjuu nichi, 三十日, 30, the thirtieth day of the month​, thirty days|sanjuu nichi|三十日|3141;6600||
+sanjuuichi nichi, 三十一日, 31, the thirty-first day of the month​, thirty-one days|sanjuuichi nichi|三十一日|3142;6601||
+yokka, 四日, 4, the fourth day of the month​, four days|yokka|四日|3143;6602||
+itsuka, 五日, 5, the fifth day of the month​, five days|itsuka|五日|3144;6603||
+muika, 六日, 6, the sixth day of the month​, six days|muika|六日|3145;6604||
+nanoka, 七日, 7, the seventh day of the month​, seven days|nanoka|七日|3146;6605||
+youka, 八日, 8, the eighth day of the month​, eight days|youka|八日|3147;6606||
+kokonoka, 九日, 9, the ninth day of the month​, nine days|kokonoka|九日|3148;6607||
 youbi, 曜日, day of the week|youbi|曜日|3149||
 kinyou, kinyoubi, 金曜, 金曜日, Friday|kinyou, kinyoubi|金曜, 金曜日|3150||
 getsuyou, getsuyoubi, 火曜, 月曜日, Monday|getsuyou, getsuyoubi|火曜, 月曜日|3151||
@@ -2676,7 +2676,7 @@ kamidome, 髪留め, barrette, hair clip, hair slide, hair band|kamidome|髪留�
 kago, 籠, basket (shopping, etc.), hamper, cage|kago|籠|3307||
 furo, 風呂, bath, bathtub, お風呂|furo|風呂|3308|お風呂|
 yokujou, 浴場, bathtub, bath house|yokujou|浴場|3309||
-denchi, 電池, battery, batteries|denchi|電池|3310||
+denchi, 電池, battery, cell​, batteries|denchi|電池|3310||
 beddo, ベッド, bed|beddo|ベッド|3311||
 beru, suzu, ベル, 鈴, bell|beru, suzu|ベル, 鈴|3312||
 kanjou, okanjou, お勘定, bill|kanjou, okanjou|お勘定|3313||
@@ -2857,7 +2857,7 @@ kisha, 汽車, steam train|kisha|汽車|3491||
 sutereo, ステレオ, stereo|sutereo|ステレオ|3492||
 ishi, 石, stone, gem, jewel|ishi|石|3493;3494||
 himo, 紐, string, cord, lace|himo|紐|3495||
-nuigurumi, 縫い包み, stuffed toy|nuigurumi|縫い包み|3496||
+nuigurumi, 縫い包み, stuffed toy, plush toy, soft toy, cuddly toy​|nuigurumi|縫い包み|3496||
 suutsukeesu, スーツケース, suitcase|suutsukeesu|スーツケース|3497||
 teeburu, テーブル, table|teeburu|テーブル|3498||
 fumie, 踏み絵, 踏絵, tablet bearing Christian images, on which Edo-period authorities forced suspected Christians to trample|fumie|踏み絵, 踏絵|3499||
@@ -2871,14 +2871,14 @@ kyoukasho, 教科書, textbook|kyoukasho|教科書|3507||
 ito, 糸, thread, yarn, string|ito|糸|3508||
 chiketto, チケット, ticket|chiketto|チケット|3509||
 kippu, 切符, ticket|kippu|切符|3510||
-ken, 券, ticket|ken|券|3511||
+ken, 券, ticket, coupon, bond, certificate​|ken|券|3511||
 koukuuken, 航空券, ticket|koukuuken|航空券|3512||
 maeuriken, 前売り券, ticket sold in advance|maeuriken|前売り券|3513||
 shibari, oshibari, お縛り, tie|shibari, oshibari|お縛り|3514||
 tisshupeepaa, ティッシュペーパー, tissue|tisshupeepaa|ティッシュペーパー|3515||
 tabako, タバコ, 煙草, tobacco, cigarettes|tabako|タバコ, 煙草|3516||
 fuda, 札, token, label, ticket, card, charm, talisman|fuda|札|3517||
-omocha, 玩具, toys|omocha|玩具|3518||
+omocha, 玩具, toys, toy, plaything|omocha|玩具|3518||
 ressha, 列車, train|ressha|列車|3519||
 toraberaazu chekku, トラベラーズチェック, traveler's check|toraberaazu chekku|トラベラーズチェック|3520||
 takaramono, 宝物, treasure, treasured item|takaramono|宝物|3521||
@@ -3208,7 +3208,7 @@ tomo, 友, friend, companion, comrade, pal|tomo|友|3849||
 tensai, 天才, genius, prodigy, person with a natural gift|tensai|天才|3850||
 onna no ko, 女の子, girl, female child, baby girl|onna no ko|女の子|3851||
 henge, 変化, goblin, ghost, apparition, bugbear|henge|変化|3852||
-koumuin, 公務員, government employee, pubic servant, civil servant|koumuin|公務員|3853||
+koumuin, 公務員, government employee, public servant, civil servant, government worker|koumuin|公務員|3853||
 fujinkai, 婦人科医, gynecologist, obstetrician|fujinkai|婦人科医|3854||
 babaa, 婆, hag, bitch|babaa|婆|3855||
 han'you, 半妖, half-human and half-demon|han'you|半妖|3856||
@@ -4024,3 +4024,34 @@ shoubou, 消防, fire fighting​, fire department, fire brigade​|shoubou|消�
 yukuefumei, 行方不明, missing, lost, unaccounted for, whereabouts unknown​|yukuefumei|行方不明|6547||
 haba, 幅, width, breadth​, freedom (e.g. of thought), latitude​, gap, difference (e.g. in price), range (e.g. of voice)|haba|幅|6548;6549;6550||
 okuyuki, 奥行き, depth, length​, Okuyuki​|okuyuki|奥行き|6551;6552||
+hatsuba, 発売, sale, offering for sale, release (for sale), launch (product)​|hatsuba|発売|6574||
+gou, 号, number, edition, make, model, issue, part of that group​, sobriquet, pen-name​, suffix attached to names of ships, trains, airplanes, etc.​|gou|号|6645;6646;6647||
+gou, 合, 0.18039 litres (liters)​, 0.3306 metres square (meters)​, one-tenth of the way from the base to the summit of a mountain​, conjunction, counter for covered containers​, counter for matches, battles, etc.​|gou|合|6648;6649;6650;6651;6652;6653||
+gou, 壕, moat, fosse, trench, ditch​, underground air-raid shelter, dugout​|gou|壕|6655;6656||
+gou, 濠, moat, fosse, trench, ditch​|gou|濠|6657||
+goutou, 強盗, robber, mugger​, robbery, burglary​|goutou|強盗|6658;6659||
+seifu, 政府, government, administration​|seifu|政府|6660||
+seifuku, 制服, uniform|seifuku|制服|6661||
+okage, お蔭, grace (of God), benevolence (of Buddha), blessing​, assistance, help, aid|okage|お蔭|6662;6663||
+busshitsu, 物質, material, substance, matter|busshitsu|物質|6665;6666||
+busshitsuteki, 物質的, material, physical​|busshitsuteki|物質的|6667||
+kono you na, このような, likewise|kono you na|このような|6668||
+kantan ni, 簡単に, simply, easily, briefly, quickly, lightly|kantan ni|簡単に|6669;6670||
+ii tokoro, いい所, a good place|ii tokoro|いい所|6671||
+hosuto, ホスト, host|hosuto|ホスト|6672||
+dizonii, ディズニー, Disney|dizonii|ディズニー|6673||
+sugoku, 凄く, awfully, very, immensely, greatly, extensively, impressively|sugoku|凄く|6674||
+jishoku, 辞職, resignation|jishoku|辞職|6675||
+koumu, 公務, official business, public business​|koumu|公務|6676||
+puro, プロ, professional|puro|プロ|6677||
+bouhan, 防犯, prevention of crime​|bouhan|防犯|6678||
+haretsu, 破裂, explosion, rupture, break off​|haretsu|破裂|6679||
+kaizokuban, 海賊版, pirated edition, bootleg|kaizokuban|海賊版|6680||
+kyoka, 許可, permission, approval, authorization, license​|kyoka|許可|6681||
+setsuzoku, 接続, connection, attachment, union, join, joint, link​, changing trains​|setsuzoku|接続|6682;6683||
+dantai, 団体, organization, organisation, association|dantai|団体|6685||
+renkyuu, 連休, consecutive holidays​|renkyuu|連休|6686||
+heiwa, 平和, peace, harmony​, peaceful, harmonious|heiwa|平和|6687;6688||
+egao, 笑顔, smiling face, smile​|egao|笑顔|6689||
+iinchou, 委員長, committee chairman​|iinchou|委員長|6690||
+sekaijuu, 世界中, around the world, throughout the world​|sekaijuu|世界中|6691||

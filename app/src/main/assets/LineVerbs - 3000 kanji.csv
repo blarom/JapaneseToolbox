@@ -491,7 +491,7 @@ ru godan|warm oneself|T|を|あたたまる|温まる|atatamaru|温ま|atatama||
 ru godan|stop|I||とまる|止まる|tomaru|止ま|toma||
 ru godan|start, break out|I||はじまる|始まる|hajimaru|始ま|hajima|31|
 ru godan|eat, drink|T|を|めしあがる|召し上がる|meshiagaru|召し上が|meshiaga|32|
-ru godan|rise, go up, come up, ascend, be raised, increase, get out of the water, come ashore, stop (raining), be finished, be done, be over, stop (working properly), give out, cut out, die, visit (humble), go (humble)|I||あがる|上がる|agaru|上が|aga||
+ru godan|rise, go up, come up, ascend, be raised​, enter (esp. from outdoors), come in, go in​, enter (a school), advance the next grade​, get out (of water), come ashore​, increase, improve, make progress​, be promoted, advance​, be made (of profit, etc.)​, occur (esp. of a favourable result)​, be adequate (cover expenses, etc.)​, be finished, be done, be over​, (of rain) stop, lift​, stop (working properly), cut out, give out, die​, win (in a card game, etc.)​, be spoken loudly​, get stage fright, be offered (the gods, etc.)​, go, visit​, eat, drink​Honorific or respectful (sonkeigo), serve (in one's master's home)​, go north​|I||あがる|上がる|agaru|上が|aga||
 ru godan|turn, bend|I|を|まがる|曲がる|magaru|曲が|maga||
 ru godan|leave, exit|I||たちさる|立ち去る|tachisaru|立ち去|tachisa||
 ru godan|obey respectfully, humble oneself, sit straight (upright, respectfully, attentively)|I||かしこまる|畏まる|kashikomaru|畏ま|kashikoma|33|
@@ -1005,7 +1005,7 @@ ru ichidan|be in a hurry|I||あせる|焦る|aseru|焦|ase||
 ru ichidan|collect, assemble, gather|T|を|あつめる|集める|atsumeru|集め|atsume||
 ru ichidan|become confused (disconcerted, disorganized, disorganised), be flustered, panic, be in a hurry, rush|I||あわてる|慌てる|awateru|慌て|awate||
 ru ichidan|knock, run into, nail on, strike hard, hit and attack, try (an idea) on someone|T|を|ぶtうける|打付ける|butukeru|打付け|butuke||
-ru ichidan|be able (in a position) do, be up the task, be ready, be made, be built, be completed, become intimate (with somebody), grow, be raised, become pregnant|I||できる|出来る|dekiru|出来|deki||
+ru ichidan|be able (in a position) do, be up the task​, be ready, be completed​, be made, be built​, be good at, be permitted (do)​, become intimate, take up (with somebody)​, grow, be raised​, become pregnant​|I||できる|出来る|dekiru|出来|deki||
 ru ichidan|be out of, have no more at hand|I||できる|出切る|dekiru|出切|deki||
 ru ichidan|get, acquire, obtain, procure, earn, win, gain, secure, attain|T|を|える|得る|eru|得|e||
 ru ichidan|increase, multiply|I||ふえる|増える|fueru|増え|fue||
@@ -1652,4 +1652,13 @@ suru verb|punish, penalize, penalise|T|を|ばっする|罰する|bassuru|罰|ba
 suru verb|race|I||きょうそうする|競走する|kyousou suru|競走|kyousou ||
 suru verb|plan, arrange, schedule, program, expect, estimate​|I||よていする|予定する|yotei suru|予定|yotei ||
 suru verb|firefight, extinguish a fire|I||しょうぼうする|消防する|shoubou suru|消防|shoubou ||
+suru verb|sell, offer for sale, release (for sale), launch (product)​|T|を|はつばする|発売する|hatsuba suru|発売|hatsuba ||
+suru verb|be thankful, be grateful|I||かんしゃする|感謝する|kansha suru|感謝|kansha ||
+suru verb|study, research, investigate|T|を|けんきゅうする|研究する|kenkyuu suru|研究|kenkyuu ||
+suru verb|resign, hand-in a resignation|I||じしょくする|辞職する|jishoku suru|辞職|jishoku ||
+suru verb|explode, rupture, break off|I||はれつする|破裂する|haretsu suru|破裂|haretsu ||
+suru verb|permit, authorize|T|を|きょかする|許可する|kyoka suru|許可|kyoka ||
+suru verb|connect, attach, unite, join, link, change trains|I||せつぞくする|接続する|setsuzoku suru|接続|setsuzoku ||
+suru verb|use, apply|T|を|りようする|利用する|riyou suru|利用|riyou ||
+suru verb|smile, make a smiling face|I||えがおする|笑顔する|egao suru|笑顔|egao ||
 -|-|-||||||||

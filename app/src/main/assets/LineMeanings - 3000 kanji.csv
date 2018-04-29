@@ -311,7 +311,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 311|to do/be with hatred or contempt|VC|Used in very vulgar language to indicate hatred, contempt or disdain for another's actions.|X yagare @ X = verb masu stem|897|||
 312|to not do/be X|VC|Archaic form of negation.|X nu @ X = verb masu stem||||
 313|to (verb) without doing/being X|VC|Archaic form of negation.|X zu @ X = verb masu stem|898|||
-314|is done doing/being X|VC||X agaru @ X = verb masu stem||||
+314|is done doing/being X|VC|Indicates the completion of an action.|X agaru @ X = verb masu stem||||
 315|to the point of|VC||X hodo @ X = verb dict. form|1267|||
 316|or not|VC||X ka ina ka @ X = verb dict. form|1268|||
 317|to have decided to do/be X (in the future)|VC|More colloquial form of "koto ni kimeru".|X koto ni suru @ X = verb dict./nai form|1410|||
@@ -339,7 +339,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 339|about to do/be X|VC||X to suru/shiteiru @ X = verb ou (volitional) form||||
 340|was just about to do X, tried to do X|VC||X to shita @ X = verb ou (volitional) form||||
 341|plan to do/be X, intend to do/be X|VC|"tsumori" indicates more of a concrete intention that "ou to omou".|X to omou @ X = verb ou (volitional) form|||tsumori|
-342|planning to do/be X|VC||X to omoteiru @ X = verb ou (volitional) form||||
+342|planning to do/be X|VC|"tsumori" indicates more of a concrete intention that "ou to omotteiru".|X to omoteiru @ X = verb ou (volitional) form||||
 343|not intending to do/be X|VC||X tomonaku @ X = verb dict. form|988|||
 344|intend to do/be X|VC|"tsumori" indicates more of a concrete intention that "ou to omou".|X tsumori da @ X = verb plain form|989, 1294||ou to omou|
 345|(He) should do/be X|VC||X ii noni @ X = verb ba form||||
@@ -601,7 +601,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 601|dark, gloomy, dull, depressed, despirited, sorowful, bitter, unclear, unfamiliar, unknown|Ai|||517, 1383|akarui||
 602|dear, desired, missed|Ai||||apart from||
 603|deep (colour), dark, strong (flavour, smell, etc), thick (consistency), dense|Ai|||572|usui||
-604|deep, profound, thick|Ai|||568|sasi||
+604|deep​|Ai|||568|浅い||
 605|delicious, appetizing, appetising|Ai||||||
 606|deserted, empty of people|Ai||||||
 607|detailed, full, accurate, knowing very well, well-acquainted, well-informed|Ai||||||
@@ -706,7 +706,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 706|spicy, hot|Ai|||582|||
 707|stiff, tight, wooden, formal, bookish|Ai||||||
 708|stinky, smelly, suspicious, fishy|Ai|||571|||
-709|strong|Ai|||520, 1321|yowai, hiyowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, kasuka, hijaku, yawa|joubu, kyouryoku|
+709|strong, potent, competent, domineering, tough​|Ai|||520, 1321|yowai, hiyowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, kasuka, hijaku, yawa|joubu, kyouryoku|
 710|strong, firm, tough|Ai|||565|yawarakai||
 711|suspicious, dubious, doubtful, dodgy, dangerous, ominous, strange, shady, fishy|Ai||||||
 712|sweet|Ai|||579|||
@@ -742,7 +742,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 742|wise, clever, smart|Ai||||||
 743|wonderful|Ai||||||
 744|yellow|Ai|||578|||
-745|young|Ai|||560, 561|furui|atarashii|
+745|young, youthful​|Ai|||560, 561|furui|atarashii|
 746|absent-mindedly|AM||||||
 747|soft, fluffy|Ana||||||
 748|again and again, repeatedly|AM||||||
@@ -785,7 +785,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 785|freely|AM|||629|||
 786|glitterlingly, sparklingly|AM||||||
 787|glitter, sparkle, twinkle|NAc||||||
-788|gradually, progressively, little by little, by degrees|AM|||654|||
+788|gradually, progressively, little by little, by degrees, more and more, increasingly​|AM|||654|||
 789|grandly, boldly, confidently, fairly, squarely, unreservedly, without apology, without hesitation|AM||||||
 790|magnificient, grand, impressive, dignified, majestic, imposing, stately, fair, square, open|Sa||||||
 791|happily|AM||||||
@@ -1011,7 +1011,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1011|natural, reasonable, obvous, usual, common, ordinary|Ana||||||
 1012|necessary, needed, essential, indispensable|Ana|||1325|||
 1013|necessity, need, requirement|NACF||||||
-1014|no good, useless, broken, hopeless, wasted, in vain, not serving its purpose, not allowed, forbidden|Ana|||616|||
+1014|no good, not serving its purpose, useless, broken​|Ana|||616|||
 1015|of due form, official, formal|Ana||||||
 1016|due form, officiality, formality|NACF||||||
 1017|only, merely, (a) little|Ana||||||
@@ -1078,8 +1078,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1078|similar|Ana|Used colloquially.|||||
 1079|simple, convenient, easy|Ana||||||
 1080|simplicity, convenience, easiness, quasi-|NACF||||||
-1081|simple, easy, brief, straightforward, uncomplicated|Ana|||589|fukuzatsu, taihen||
-1082|simple, easy, brief, uncomplicated, straightforward|Ana|||604|||
+1081|simple, easy, straightforward, uncomplicated|Ana|||589, 604|fukuzatsu, taihen||
+1082|brief, quick, light​|Ana||||||
 1083|skilled, skillful, proficient|Ana|Verb-based, linked to object by "ga" when used with desu verb.||367, 620|heta||
 1084|skill, dexterity|NACF||||||
 1085|skinny|Ana||||||
@@ -1370,7 +1370,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1370|week|NT|As of time passing.||499|||
 1371|year-long periods|C||||||
 1372|years|C|Used for years, school years (grades), not years of age.||1144|||
-1373|years old, school years|C|used for years of age (才 is used informally as a shorthand), counter is optional. Examples: issai (1), hachisai/hassai (8), jissai/jussai (10), hatachi (20).||1132, 1133|||
+1373|years old, school years|C|used for years of age (才 is used informally as a shorthand), counter is optional. Examples: issai (1), hachisai/hassai (8), jissai/jussai (10), juu issai (11), hatachi (20).||1132, 1133|||
 1374|yen|C||||||
 1375|yen|NACF||||||
 1376|(he) has bad taste, (he) has bad fashion sense|CE||||||
@@ -1769,7 +1769,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1769|interpretation|NAc||||||
 1770|interpretation, oral translation|NACF|||||hon'yaku|
 1771|interview|NAc|||1384|||
-1772|introduction|NAc||||||
+1772|introduction, presentation, referral, listing​|NAc||||||
 1773|inversion, reversion, getting out of order, co-occuring|NAc||||||
 1774|front and back, front and rear, before and behind, before and after, order, context, consequences|NACF||||||
 1775|around, approximately, about, nearly|NT||||||
@@ -2064,7 +2064,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2064|clique, fashion, school (e.g. of style)|NACF||||||
 2065|tooth, teeth|NAn|||182, 1324|||
 2066|cloth, material, texture, one's true character, unglazed pottery, uncooked dough, batter|NACF||||||
-2067|club, students'society|NACF||||||
+2067|club, students'society|NACF|Not to be confused with a dance club.|||||
 2068|clue, key, trail, scent, track, contact, handhold, on hand|NACF||||||
 2069|code, cipher, password|NACF|||150|||
 2070|cold|NACF|As of an illness||130, 1322|||
@@ -2106,7 +2106,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2106|crime, fault, indiscretion, sin|NACF||||||
 2107|criticism|NACF||||||
 2108|crossing, transverse|NACF||||||
-2109|crowd, great number of people, many people|NACF|||148|||
+2109|crowd of people, great number of people, many people|NACF|||148|||
 2110|culture|NACF||||||
 2111|culture, civilization, civilisation|NACF|||1375|||
 2112|Bunka era|NJEP|1804.2.11-1818.4.22AD|||||
@@ -2236,7 +2236,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2236|from now on, hereafter|NACF||||||
 2237|front, frontage, façade, main|NACF||||||
 2238|function, facility, faculty, feature|NACF||||||
-2239|future (usually distant)|NACF|||1338||shourai|
+2239|the future (usually distant)​|NACF|||1338||shourai|
 2240|gait, pace, step, at one's feet, underfoot|NACF||||||
 2241|game, spoils, trophy, prey|NACF||||||
 2242|geography|NACF||||||
@@ -2509,7 +2509,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2509|plan, meter, measuring device|NACF||||||
 2510|in total, total of|Px||||||
 2511|plan, policy|NACF||||||
-2512|plan, schedule|NACF||||||
+2512|plan, project, schedule, scheme, program, programme​|NACF||||||
 2513|plans, schedule, arrangement, program, expectation, estimate|NACF|||1283, 1385|||
 2514|play, drama, show|NACF|As of in a theater.|||||
 2515|police|NACF||||||
@@ -2532,7 +2532,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2532|price, payment, cost, charge, money, bill|NACF||||||
 2533|pride, boast|NACF||||||
 2534|prize, award|NACF||||||
-2535|problem, question|NACF|||159|||
+2535|question (e.g. on a test), problem​|NACF|||159|||
 2536|procedure|NACF||||||
 2537|produce, crops|NACF||||||
 2538|production, literary creation, work|NACF||||||
@@ -3115,37 +3115,37 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3115|wine|NCu|||271|||
 3116|yeast|NCu||||||
 3117|yoghurt|NCu||||||
-3118|1|NDM|||20|||
-3119|10|NDM|||29|||
-3120|11|NDM|||30|||
-3121|12|NDM|||31|||
-3122|13|NDM|||32|||
-3123|14|NDM|||33|||
-3124|15|NDM|||34|||
-3125|16|NDM|||35|||
-3126|17|NDM|||36|||
-3127|18|NDM|||37|||
-3128|19|NDM|||38|||
-3129|2|NDM|||21|||
-3130|20|NDM|||39|||
-3131|21|NDM|||40|||
-3132|22|NDM|||41|||
-3133|23|NDM|||42|||
-3134|24|NDM|||43|||
-3135|25|NDM|||44|||
-3136|26|NDM|||45|||
-3137|27|NDM|||46|||
-3138|28|NDM|||47|||
-3139|29|NDM|||48|||
-3140|3|NDM|||22|||
-3141|30|NDM|||49|||
-3142|31|NDM|||50|||
-3143|4|NDM|||23|||
-3144|5|NDM|||24|||
-3145|6|NDM|||25|||
-3146|7|NDM|||26|||
-3147|8|NDM|||27|||
-3148|9|NDM|||28|||
+3118|1, the first day of the month​|NDM|||20|||
+3119|10, the tenth day of the month​|NDM|||29|||
+3120|11, the eleventh day of the month​|NDM|||30|||
+3121|12, the twelth day of the month​|NDM|||31|||
+3122|13, the thirteenth day of the month​|NDM|||32|||
+3123|14, the fourteenth day of the month​|NDM|||33|||
+3124|15, the fifteenth day of the month​|NDM|||34|||
+3125|16, the sixteenth day of the month​|NDM|||35|||
+3126|17, the seventeenth day of the month​|NDM|||36|||
+3127|18, the eighteenth day of the month​|NDM|||37|||
+3128|19, the nineteenth day of the month​|NDM|||38|||
+3129|2, the second day of the month​|NDM|||21|||
+3130|20, the twentieth day of the month​|NDM|||39|||
+3131|21, the twenty-first day of the month​|NDM|||40|||
+3132|22, the twenty-second day of the month​|NDM|||41|||
+3133|23, the twenty-third day of the month​|NDM|||42|||
+3134|24, the twenty-fourth day of the month​|NDM|||43|||
+3135|25, the twenty-fifth day of the month​|NDM|||44|||
+3136|26, the twenty-sixth day of the month​|NDM|||45|||
+3137|27, the twenty-seventh day of the month​|NDM|||46|||
+3138|28, the twenty-eighth day of the month​|NDM|||47|||
+3139|29, the twenty-ninth day of the month​|NDM|||48|||
+3140|3, the third day of the month​|NDM|||22|||
+3141|30, the thirtieth day of the month​|NDM|||49|||
+3142|31, the thirty-first day of the month​|NDM|||50|||
+3143|4, the fourth day of the month​|NDM|||23|||
+3144|5, the fifth day of the month​|NDM|||24|||
+3145|6, the sixth day of the month​|NDM|||25|||
+3146|7, the seventh day of the month​|NDM|||26|||
+3147|8, the eighth day of the month​|NDM|||27|||
+3148|9, the ninth day of the month​|NDM|||28|||
 3149|day of the week|NDW||||||
 3150|Friday|NDW|||56|||
 3151|Monday|NDW|||52|||
@@ -3307,7 +3307,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3307|basket (shopping, etc.), hamper, cage|NGO||||||
 3308|bath, bathtub|NGO|||361|||
 3309|bathtub, bath house|NGO||||||
-3310|battery, batteries|NGO||||||
+3310|battery, cell​, batteries|NGO||||||
 3311|bed|NGO|||380|||
 3312|bell|NGO||||||
 3313|bill|NGO|||357|||
@@ -3493,7 +3493,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3493|stone|NNE||||||
 3494|gem, jewel|NGO||||||
 3495|string, cord, lace|NGO|||378|||
-3496|stuffed toy|NGO||||||
+3496|stuffed toy, plush toy, soft toy, cuddly toy​|NGO||||||
 3497|suitcase|NGO||||||
 3498|table|NGO|||104|||
 3499|tablet bearing Christian images, on which Edo-period authorities forced suspected Christians to trample|NGO||||||
@@ -3508,14 +3508,14 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3508|thread, yarn, string|NGO||||||
 3509|ticket|NGO||||||
 3510|ticket|NGO|||333, 1255, 1325|||
-3511|ticket|NGO||||||
+3511|ticket, coupon, bond, certificate​|NGO||||||
 3512|ticket|NGO||||||
 3513|ticket sold in advance|NGO|||335, 1301|||
 3514|tie|NGO||||||
 3515|tissue|NGO|||306|||
 3516|tobacco, cigarettes|NGO|||312|||
 3517|token, label, ticket, card, charm, talisman|NGO||||||
-3518|toys|NGO||||||
+3518|toys, toy, plaything|NGO||||||
 3519|train|NGO|Special type of train|||||
 3520|traveler's check|NGO||||||
 3521|treasure, treasured item|NGO||||||
@@ -3850,7 +3850,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3850|genius, prodigy, person with a natural gift|NPe||||||
 3851|girl, female child, baby girl|NPe|||392|otoko no ko||
 3852|goblin, ghost, apparition, bugbear|NPe||||||
-3853|government employee, pubic servant, civil servant|NPe||||||
+3853|government employee, public servant, civil servant, government worker|NPe||||||
 3854|gynecologist, obstetrician|NPe||||||
 3855|hag, bitch|NPe|Derogatory.|||||
 3856|half-human and half-demon|NPe||||||
@@ -4949,7 +4949,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4949|stop|VrugI||||||
 4950|start, break out|VrugI||||||
 4951|eat, drink|VrugT||||||
-4952|rise, go up, come up, ascend, be raised, increase, get out of the water, come ashore, stop (raining), be finished, be done, be over, stop (working properly), give out, cut out, die, visit (humble), go (humble)|VrugI||||sagaru||
+4952|rise, go up, come up, ascend, be raised​|VrugI||||下がる||
 4953|turn, bend|VrugI|||1244|||
 4954|leave, exit|VrugI||||||
 4955|obey respectfully, humble oneself, sit straight (upright, respectfully, attentively)|VrugI||||||
@@ -5451,7 +5451,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5451|collect, assemble, gather|VruiT|||1295|||
 5452|become confused (disconcerted, disorganized, disorganised), be flustered, panic, be in a hurry, rush|VruiI||||||
 5453|knock, run into, nail on, strike hard, hit and attack, try (an idea) on someone|VruiT||||||
-5454|be able (in a position) do, be up the task, be ready, be made, be built, be completed, become intimate (with somebody), grow, be raised, become pregnant|VruiI||||||
+5454|be able (in a position) do, be up the task​|VruiI||||||
 5455|be out of, have no more at hand|VruiI||||||
 5456|get, acquire, obtain, procure, earn, win, gain, secure, attain|VruiT||||||
 5457|increase, multiply|VruiI||||heru||
@@ -6550,3 +6550,142 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6550|gap, difference (e.g. in price), range (e.g. of voice)|NACF||||||
 6551|depth, length​|NACF||||||
 6552|Okuyuki​|NPl||||||
+6553|enter (esp. from outdoors), come in, go in​|VrugI||||||
+6554|enter (a school), advance the next grade​|VrugI||||||
+6555|get out (of water), come ashore​|VrugI||||||
+6556|increase|VrugI||||||
+6557|improve, make progress​|VrugI||||||
+6558|be promoted, advance​|VrugI||||||
+6559|be made (of profit, etc.)​|VrugI||||||
+6560|occur (esp. of a favourable result)​|VrugI||||||
+6561|be adequate (cover expenses, etc.)​|VrugI||||||
+6562|be finished, be done, be over​|VrugI||||||
+6563|(of rain) stop, lift​|VrugI||||||
+6564|stop (working properly), cut out, give out, die​|VrugI||||||
+6565|win (in a card game, etc.)​|VrugI||||||
+6566|be spoken loudly​|VrugI||||||
+6567|get stage fright|VrugI||||||
+6568|be offered (the gods, etc.)​|VrugI||||||
+6569|go, visit​|VrugI||||||
+6570|eat, drink​Honorific or respectful (sonkeigo)|VrugI||||||
+6571|serve (in one's master's home)​|VrugI||||||
+6572|go north​|VrugI||||||
+6573|in great numbers​|ADg||||||
+6574|sale, offering for sale, release (for sale), launch (product)​|NAc||||||
+6575|sell, offer for sale, release (for sale), launch (product)​|VsuruT||||||
+6576|steps, stairs, staircase, terrace​|NPl||||||
+6577|one day|NT||||||
+6578|ten days|NT||||||
+6579|eleven days|NT||||||
+6580|twelve days|NT||||||
+6581|thirteen days|NT||||||
+6582|fourteen days|NT||||||
+6583|fifteen days|NT||||||
+6584|sixteen days|NT||||||
+6585|seventeen days|NT||||||
+6586|eighteen days|NT||||||
+6587|nineteen days|NT||||||
+6588|two days|NT||||||
+6589|twenty days|NT||||||
+6590|twenty-one days|NT||||||
+6591|twenty-two days|NT||||||
+6592|twenty-three days|NT||||||
+6593|twenty-four days|NT||||||
+6594|twenty-five days|NT||||||
+6595|twenty-six days|NT||||||
+6596|twenty-seven days|NT||||||
+6597|twenty-eight days|NT||||||
+6598|twenty-nine days|NT||||||
+6599|three days|NT||||||
+6600|thirty days|NT||||||
+6601|thirty-one days|NT||||||
+6602|four days|NT||||||
+6603|five days|NT||||||
+6604|six days|NT||||||
+6605|seven days|NT||||||
+6606|eight days|NT||||||
+6607|nine days|NT||||||
+6608|be thankful, be grateful|VsuruI||||||
+6609|study, research, investigate|VsuruT||||||
+6610|hopeless, wasted, in vain, purposeless​|Ana||||||
+6611|cannot, must not, not allowed|Ana||||||
+6612|I am interested in|SSD||||||
+6613|immature, green​|Ai||||||
+6614|low (number), small​|Ai||||||
+6615|strong, brawny, powerful, healthy, rugged​|Ai||||||
+6616|good (at), skilled, knowledgeable​|Ai||||||
+6617|being able to handle, know how to deal (with), durable (against), resistant (to), resilient|Ai||||||
+6618|firm, rigid, solid​|Ai||||||
+6619|intense, strong, fierce, high​|Ai||||||
+6620|dependable, trustworthy​|Ai||||||
+6621|resign, hand-in a resignation|VsuruI||||||
+6622|be ready, be completed​|VruiI||||||
+6623|be made, be built​|VruiI||||||
+6624|be good at, be permitted (do)​|VruiI||||||
+6625|become intimate, take up (with somebody)​|VruiI||||||
+6626|grow, be raised​|VruiI||||||
+6627|become pregnant​|VruiI||||||
+6628|explode, rupture, break off|VsuruI||||||
+6629|permit, authorize|VsuruT||||||
+6630|problem (e.g. societal, political), question, issue, subject (e.g. of research), case, matter​|NACF||||||
+6631|question (i.e. doubt)​|NACF||||||
+6632|public discussion, controversy​|NACF||||||
+6633|trouble, problem, inconvenience, difficulty​|NACF||||||
+6634|connect, attach, unite, join, link|VsuruI||||||
+6635|change trains|VsuruI||||||
+6636|profound​|Ai||||||
+6637|dense, thick​|Ai||||||
+6638|close (relationship)​|Ai||||||
+6639|intense, strong​|Ai||||||
+6640|late​|Ai||||||
+6641|use, apply|VsuruT||||||
+6642|smile, make a smiling face|VsuruI||||||
+6643|future tense​|NACF||||||
+6644|the world to come​|NACF||||||
+6645|number, edition, make, model, issue, part of that group​|NACF||||||
+6646|sobriquet, pen-name​|NGO||||||
+6647|suffix attached to names of ships, trains, airplanes, etc.​|Sx||||||
+6648|0.18039 litres (liters)​|NMSE||||||
+6649|0.3306 metres square (meters)​|NMSE||||||
+6650|one-tenth of the way from the base to the summit of a mountain​|NMSE||||||
+6651|conjunction|NMSE||||||
+6652|counter for covered containers​|C||||||
+6653|counter for matches, battles, etc.​|C||||||
+6654|karma (i.e. actions committed in a former life)|NB||||||
+6655|moat, fosse, trench, ditch​|NPl|Usually dry, ie. with no water.|||||
+6656|underground air-raid shelter, dugout​|NPl||||||
+6657|moat, fosse, trench, ditch​|NPl|Usually filled with water.|||||
+6658|robber, mugger​|NPe||||||
+6659|robbery, burglary​|NAc||||||
+6660|government, administration​|NACF||||||
+6661|uniform|NAt||||||
+6662|grace (of God), benevolence (of Buddha), blessing​|NB||||||
+6663|assistance, help, aid|NAc||||||
+6664|effects, influence|NACF||||||
+6665|material, substance|NACF||||||
+6666|matter|NMSE||||||
+6667|material, physical​|Ana||||||
+6668|likewise|ADc||||||
+6669|simply, easily|AM||||||
+6670|briefly, quickly, lightly|AM||||||
+6671|a good place|CE||||||
+6672|host|NPe||||||
+6673|Disney|NNe||||||
+6674|awfully, very, immensely, greatly, extensively, impressively|ADg||||||
+6675|resignation|NAc||||||
+6676|official business, public business​|NACF||||||
+6677|professional|NPe||||||
+6678|prevention of crime​|NACF||||||
+6679|explosion, rupture, break off​|NAc||||||
+6680|pirated edition, bootleg|NACF||||||
+6681|permission, approval, authorization, license​|NAc||||||
+6682|connection, attachment, union, join, joint, link​|NAc||||||
+6683|changing trains​|NACF||||||
+6684|conjunction|NACF||||||
+6685|organization, organisation, association|NACF||||||
+6686|consecutive holidays​|NACF||||||
+6687|peace, harmony​|NACF||||||
+6688|peaceful, harmonious|Ana||||||
+6689|smiling face, smile​|NAc||||||
+6690|committee chairman​|NPe||||||
+6691|around the world, throughout the world​|NACF||||||
