@@ -320,7 +320,7 @@ sawagu, 騒ぐ, make noise, be noisy, rustle, swoosh, clamor, clamour, make a fu
 tsugu, 注ぐ, pour (ina vessel), fill, dish out food or drink|tsugu|注ぐ|4792||
 tsunagu, 繋ぐ, tie, fasten, connect, transfer (phone call)|tsunagu|繋ぐ|4793||
 tsugu, 次ぐ, rank next to, come after, follow|tsugu|次ぐ|4794||
-tsugu, 継ぐ, succeed (someone in a business or inheritance)|tsugu|継ぐ|4795||
+tsugu, 継ぐ, succeed (a person, a position, etc.), inherit, take over, follow​, patch (clothes), mend, repair, add (e.g. charcoal the fire), replenish with, feed with, follow up with (e.g. remarks), gather (one's breath)​|tsugu|継ぐ|4795;6736;6737||
 tsugu, 接ぐ, join, piece together, set (bones), graft (trees)|tsugu|接ぐ|4796||
 mitsugu, 貢ぐ, support, finance|mitsugu|貢ぐ|4797||
 kagu, 嗅ぐ, sniff, smell|kagu|嗅ぐ|4798||
@@ -383,7 +383,7 @@ susumu, 進む, advance, go forward, precede, go ahead (of), make progress, impr
 takuramu, 企む, scheme, plan, play a trick, invent, conspire, frame up|takuramu|企む|4855||
 tanoshimu, 楽しむ, enjoy (oneself), have fun|tanoshimu|楽しむ|4856||
 tatamu, 畳む, fold (clothes), close (a shop), vacate|tatamu|畳む|4857||
-tsukamu, 掴む, seize, catch, grasp, grip, grab, hold, catch hold of, lay one's hands on, clutch, understand, comprehend|tsukamu|掴む|4858||
+tsukamu, 掴む, seize, catch, grasp, grip, grab, hold, catch hold of, lay one's hands on|tsukamu|掴む|4858||
 tsutsumu, 包む, wrap up, tuck in, pack, do up, cover with, dress in|tsutsumu|包む|4859||
 umu, 産む, give birth, deliver, produce, lay eggs|umu|産む|4860||
 uramu, 恨む, resent, curse, feel bitter, blame, bear a grudge|uramu|恨む|4861||
@@ -444,6 +444,10 @@ oshikomu, 押し込む, push into, cram into, stuff into, crowd into|oshikomu|�
 akaramu, 赤らむ, redden, blush, become red|akaramu|赤らむ|4916||
 okurikomu, 送り込む, send in|okurikomu|送り込む|4917||
 nagarekomu, 流れ込む, flow into, pour into, stream into|nagarekomu|流れ込む|4918||
+sashimu, 差し込む, insert, put in, thrust in, plug in|sashimu|差し込む|6809||
+sashimu, 差し込む, have a griping pain​, flow in, shine in|sashimu|差し込む|6810;6811||
+sashimu, 射し込む, shine in (light), illuminate|sashimu|射し込む|6812||
+sashimu, 挿し込む, insert, put in, thrust in, plug in|sashimu|挿し込む|6813||
 shinu, 死ぬ, die|shinu|死ぬ|4919||
 inu, 去ぬ, leave (archaic)|inu|去ぬ|4920||
 aru, ある, have, exist (object is inanimate), 在る, 有る|aru|ある|4921|在る, 有る|
@@ -454,12 +458,12 @@ yaru, 遣る, send, dispatch, give (someone of equal/lower status), do, undertak
 yaru, 犯る, have sex with|yaru|犯る|4926||
 yaru, 殺る, get rid of, bump off, do someone in|yaru|殺る|4927||
 yaru, 演る, appear (e.g. on TV), perform, show|yaru|演る|4928||
-naru, なる, become, pass/grow (in time), 成る|naru|なる|4929|成る|
+naru, 成る, become, get, grow, be, reach, attain, result in, prove be​, consist of, be composed of​, succeed, be complete​, change into, be exchanged for​, play a role​, be promoted|naru|成る|4929;6797;6798;6799;6800;6801;6802||
 tsukuru, 作る, make, produce, build, create|tsukuru|作る|4930||
-okuru, 送る, send, see off|okuru|送る|4931||
+okuru, 送る, send (a thing), dispatch, despatch, transmit​|okuru|送る|4931||
 noru, 乗る, get on, drive/take (car, bus, train), ride (horse), board|noru|乗る|4932||
 modoru, 戻る, return, go back|modoru|戻る|4933||
-ayamaru, 誤る, make a mistake|ayamaru|誤る|4934||
+ayamaru, 誤る, make a mistake, err, be misleading, be misguiding, mislead, misguide|ayamaru|誤る|4934;6745||
 ayamaru, 謝る, apologize, apologise|ayamaru|謝る|4935||
 suwaru, 座る, sit|suwaru|座る|4936||
 komaru, 困る, be in distress, in a bad position, be troubled, be in trouble|komaru|困る|4937||
@@ -557,7 +561,7 @@ kakawaru, 係わる, be affected, be influenced, be concerned with, have do with
 kakeru, 翔る, soar, fly, run, dash|kakeru|翔る|5027||
 kasanaru, 重なる, be piled up, pile up (e.g. stress), accumulate, overlap (each other), happen simultaneously|kasanaru|重なる|5028||
 katamaru, 固まる, harden, solidify, become certain, gather (together), assemble, huddle together|katamaru|固まる|5029||
-kawaigaru, 可愛がる, love, be affectionate|kawaigaru|可愛がる|5030||
+kawaigaru, 可愛がる, love, be affectionate, favor, favour, be partial to, torment, tease, be rough with​|kawaigaru|可愛がる|5030;6741||
 kawaru, 変わる, change, be transformed, be altered, vary, move to, be different, be uncommon, be unusual|kawaru|変わる|5031;6440;6441||
 kazaru, 飾る, decorate, ornament, adorn|kazaru|飾る|5032||
 keru, 蹴る, kick, refuse, reject|keru|蹴る|5033||
@@ -767,7 +771,7 @@ kiru, 斬る, kill (a human) using a blade (sword, machete, knife, etc.), slice 
 taru, 足る, be sufficient, be enough, be worthy of|taru|足る|5237||
 tachidomaru, 立ち止まる, stop, halt, stand still, 立ち止る, 立ちどまる, 立止る, 立ち留まる, 立留まる, 立留る|tachidomaru|立ち止まる|5238|立ち止る, 立ちどまる, 立止る, 立ち留まる, 立留まる, 立留る|
 tachiagaru, 立ち上がる, stand up, get up, rise, recover, take action, start, 立上がる, 起ち上がる, 立ちあがる|tachiagaru|立ち上がる|5239|立上がる, 起ち上がる, 立ちあがる|
-tooru, 通る, go by, go past, go along, travel along, pass through, use (a road), take (a route), go via, go by way of​, run (between), operate (between), connect​of public transport, go indoors, go ina room, be admitted, be shown in, be ushered in, come in​, penetrate, pierce, skewer, go through, come through​, permeate, soak into, spread throughout​, carry (e.g. of a voice), reach far​, be passed on (e.g. of a customer's order the kitchen), be relayed, be conveyed​, pass (a test, a bill in the House, etc.), be approved, be accepted​, go by (a name), be known as, be accepted as, have a reputation for​, , get across (e.g. of one's point), be understood​, be straight (e.g. wood grain)​, 徹る, 透る|tooru|通る|5240;6429;6430;6431;6432;6433;6434;6435;6436;64367;6438;6439|徹る, 透る|
+tooru, 通る, go by, go past, go along, travel along, pass through, use (a road), take (a route), go via, go by way of​, run (between), operate (between), connect​of public transport, go indoors, go ina room, be admitted, be shown in, be ushered in, come in​, penetrate, pierce, skewer, go through, come through​, permeate, soak into, spread throughout​, carry (e.g. of a voice), reach far​, be passed on (e.g. of a customer's order the kitchen), be relayed, be conveyed​, pass (a test, a bill in the House, etc.), be approved, be accepted​, go by (a name), be known as, be accepted as, have a reputation for​, be coherent, be logical, be reasonable, be comprehensible, be understandable, make sense​, get across (e.g. of one's point), be understood​, be straight (e.g. wood grain)​, 徹る, 透る|tooru|通る|5240;6429;6430;6431;6432;6433;6434;6435;6436;6437;6438;6439|徹る, 透る|
 tsuresaru, 連れ去る, take away, kidnap, 連去る|tsuresaru|連れ去る|5241|連去る|
 mawaru, 回る, turn, revolve, visit several places, function well, pass a certain time, 廻る|mawaru|回る|5242|廻る|
 ukaru, 受かる, pass (an exam)|ukaru|受かる|5243||
@@ -1064,7 +1068,7 @@ moteru, 持てる, be well liked, be popular, be pampered (spoiled, doted upon, 
 motomeru, 求める, want, wish for, request, demand, seek, search for, pursue (pleasure), hunt (a job), purchase, buy (polite)|motomeru|求める|5530||
 mukaeru, 迎える, go out to meet, to receive, to welcome, to greet, to salute, to hail, to reach, to approach, to enter (a phase, era, etc.)​, to accept (e.g. as a member of a group or family)​, to call for, to summon, to invite​, to approach (a certain time, a point in one's life, etc.)​|mukaeru|迎える|5531;6356;6357;6358;6359||
 nagameru, 眺める, view, gaze at, watch|nagameru|眺める|5532||
-nagareru, 流れる, stream, flow (liquid, time, etc.), run (ink), be washed away|nagareru|流れる|5533||
+nagareru, 流れる, stream, flow (liquid, time, etc.), run (ink), be washed away, be carried​, drift, float (e.g. clouds), wander, stray​, sweep (e.g. rumour, fire), spread, circulate​, be heard (e.g. music), be played​, lapse (e.g. inindolence, despair)​, pass, elapse, be transmitted​, be called off, be forfeited​, disappear, be removed​|nagareru|流れる|5533;6692;6693;6694;6695;6696;6697;6698;6699||
 nageru, 投げる, throw, cast away, face defeat, give up|nageru|投げる|5534||
 nagusameru, 慰める, comfort, console, amuse|nagusameru|慰める|5535||
 namakeru, 怠ける, be idle, slacken, be lazy|namakeru|怠ける|5536||
@@ -1151,7 +1155,7 @@ miru, 診る, examine (medically)|miru|診る|5616||
 miru, 看る, look after (often medically), take care of|miru|看る|5617||
 utsubuseru, 俯せる, lie face-down|utsubuseru|俯せる|5618||
 megakeru, 目がける, aim at|megakeru|目がける|5619||
-azukeru, 預ける, give incustody, leave in the care of, entrust, deposit, lean on|azukeru|預ける|5620||
+azukeru, 預ける, give in custody, leave (a child) in the care of, entrust, deposit, lean on|azukeru|預ける|5620||
 kureru, 暮れる, get dark, end, close, run out, be sunk (in despair), be lost|kureru|暮れる|5621||
 bakeru, 化ける, take the form of, assume the shape of, turn into, transform into, diguise as, change, metamorphose, improve dramtically|bakeru|化ける|5622||
 kikaseru, 効かせる, season (food), bring out taste, use, exercise, display|kikaseru|効かせる|5623||
@@ -1351,10 +1355,11 @@ okuritodokeru, 送り届ける, send to, deliver, escort home|okuritodokeru|送�
 kokomiru, 試みる, try, test|kokomiru|試みる|5816||
 tsutomeru, 努める, endeavor, try, strive, make an effort, exert oneself, be diligent|tsutomeru|努める|5817||
 kokorogakeru, 心がける, keep in mind, bear in mind, try, aim to do, endeavor, endeavour, 心掛ける, 心懸ける|kokorogakeru|心がける|5818|心掛ける, 心懸ける|
-hakikaeru, 心がける, change lower-body clothing (shoes, slippers, pants, skirt…), 履替える|hakikaeru|心がける|5819|履替える|
+hakikaeru, 履き替える, change lower-body clothing (shoes, slippers, pants, skirt…), 履替える|hakikaeru|履き替える|5819|履替える|
 uttorisaseru, うっとりさせる, enchant, to enrapture, to enthrall, to enthral, to charm|uttorisaseru|うっとりさせる|5820||
-noriokureru, うっとりさせる, miss (train, bus, …)|noriokureru|うっとりさせる|6095||
+noriokureru, 乗り遅れる, miss (train, bus, …)|noriokureru|乗り遅れる|6095||
 wakeru, 分ける, divide (into), split (into), part, separate, divide up, classify, sort out, divide out​, share, distribute, deal out, dish out​, distinguish, discriminate, differentiate (between)​, break up (a fight), mediate​, call a draw, tie​, push one's way through (a crowd)​, sell​|wakeru|分ける|6107;6108;6109;6110;6111;6112;6113||
+okikaeru, 置き換える, replace, move, change the position of​|okikaeru|置き換える|6808||
 da, だ, there is, です|da|だ|5821|です|
 kuru, 来る, come|kuru|来る|5822||
 motte kuru, 持ってくる, bring something, 持って来る|motte kuru|持ってくる|5823|持って来る|
@@ -1423,12 +1428,12 @@ eikyou suru, 影響する, influence, affect, impact have an effect on, have inf
 mushi suru, 無視する, disregard, ignore|mushi suru|無視する|5886||
 osusume suru, お勧めする, recommend, advise, suggest, encourage|osusume suru|お勧めする|5887||
 suppatsu suru, 出発する, depart, leave|suppatsu suru|出発する|5888||
-sewa suru, 世話する, look after, help, aid, assist|sewa suru|世話する|5889||
+sewa suru, 世話する, look after, help, aid, assist, care for|sewa suru|世話する|5889||
 geshuku suru, 下宿する, board, lodge|geshuku suru|下宿する|5890||
 hantai suru, 反対する, resist, oppose, contrast, object to, antagonize, dissent, reverse|hantai suru|反対する|5891||
 housou suru, 放送する, boradcast|housou suru|放送する|5892||
 yoshuu suru, 予習する, prepare for a lesson|yoshuu suru|予習する|5893||
-kankei suru, 関係する, have a relationship with, have sexual relations with|kankei suru|関係する|5894||
+kankei suru, 関係する, be in a relationship with, connect to, participate, be involved, be concerned, have influence, have effect, have sexual relations with|kankei suru|関係する|5894;6703;6704;6705||
 kyousou suru, 競争する, compete|kyousou suru|競争する|5895||
 keiken suru, 経験する, experience|keiken suru|経験する|5896||
 shitaku suru, 支度する, prepare, arrange|shitaku suru|支度する|5897||
@@ -1472,7 +1477,7 @@ fuuin suru, 封印する, stamp, affix a seal, seal up, seal off|fuuin suru|封�
 intai suru, 引退する, retire|intai suru|引退する|5935||
 oudan suru, 横断する, cross|oudan suru|横断する|5936||
 kaiten suru, 回転する, rotate, revolve, turn, 廻転する|kaiten suru|回転する|5937|廻転する|
-kanshin suru, 感心する, admire|kanshin suru|感心する|5938||
+kanshin suru, 感心する, be in admiration of, be impressed by, be astonished, be appalled|kanshin suru|感心する|5938;6740||
 shuzai suru, 取材する, collect data, cover and event|shuzai suru|取材する|5939||
 undou suru, 運動する, work out, exercise|undou suru|運動する|5940||
 hensou suru, 変装する, disguise oneself, masquerade|hensou suru|変装する|5941||
@@ -1597,7 +1602,7 @@ hasshin suru, 発進する, start, depart, take off|hasshin suru|発進する|60
 souzou suru, 想像する, imagine, guess|souzou suru|想像する|6061||
 hantai suru, 反対する, oppose, resist, contrast, object, dissent, reverse|hantai suru|反対する|6062||
 jidouka suru, 自動化する, automate|jidouka suru|自動化する|6063||
-kandou suru, 感動する, move, excite, impress|kandou suru|感動する|6064||
+kandou suru, 感動する, be deeply moved emotionally, be excited, be passionate, be inspired, be impressed|kandou suru|感動する|6064||
 soudan suru, 相談する, consult (with)|soudan suru|相談する|6065||
 touban suru, 登板する, take the plate, pitch a game|touban suru|登板する|6066||
 kensa suru, 検査する, inspect, examine, scan, check|kensa suru|検査する|6067||
@@ -1635,3 +1640,11 @@ kyoka suru, 許可する, permit, authorize|kyoka suru|許可する|6629||
 setsuzoku suru, 接続する, connect, attach, unite, join, link, change trains|setsuzoku suru|接続する|6634;6635||
 riyou suru, 利用する, use, apply|riyou suru|利用する|6641||
 egao suru, 笑顔する, smile, make a smiling face|egao suru|笑顔する|6642||
+funka suru, 噴火する, erupt|funka suru|噴火する|1019||
+kekka suru, 結果する, come to fruition, bear fruit​|kekka suru|結果する|6717||
+senden suru, 宣伝する, publicize, advertise, promote|senden suru|宣伝する|6723||
+sabori suru, サボりする, skip class, cut class, procrastinate|sabori suru|サボりする|6732||
+kincho suru, 緊張する, be tense, be under mental strain, be nervous, be stressed|kincho suru|緊張する|6733||
+kurou suru, 苦労する, be in trouble, be in difficulty, be in pain, be anxious, be worried, be concerned, care|kurou suru|苦労する|6803;6804||
+doryoku suru, 努力する, make an effort, exert oneself, endeavour, endeavor, work hard, strive|doryoku suru|努力する|6805||
+muri suru, 無理する, no way, not a chance, never, dream on|muri suru|無理する|6821||

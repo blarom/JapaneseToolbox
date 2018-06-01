@@ -30,6 +30,17 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//TODO when joining online results, compare verb[space]suru with verb[no space]suru, and show verb[space]suru to user
+//TODO make ranking in in dict put special concat hits at end of list or invalidate them
+//TODO add root as keyword for suru verbs
+//TODO implement short description for long definitions
+//TODO indicate if word is common in search results
+//TODO indicate source as local/jisho in search results
+//TODO not found "koto ga dekiru" & "te oku" in local db
+//TODO searching "kemuri" leads to incorrect results display
+//TODO searching "fue" leads to incorrect results display
+//TODO searching "beikoku" yields no online results
+//TODO searching for "福" through left radical yields no results, since it does not point to spirit radical, just radical variant
 //TODO "egao suru" gives no hit in DICT
 //TODO "sugee" gives incorrect transliteration when loading results from web
 //TODO searching for "ii tokoro" gives no results in jisho.org, but "iitoko" is displayed wrongly in the app as "iitokoro"

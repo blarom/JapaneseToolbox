@@ -300,7 +300,7 @@ public class SharedMethods {
                 *((float) Integer.parseInt(context.getString(R.string.pref_OCR_image_saturation_multipliers)));
         return saturationValue;
     }
-    public static int convertBrightnessProgresToValue(int brightnessBarValue, Context context) {
+    public static int convertBrightnessProgressToValue(int brightnessBarValue, Context context) {
         int brightnessValue = brightnessBarValue-256;
         return brightnessValue;
     }
@@ -387,12 +387,14 @@ public class SharedMethods {
         }
         //endregion
 
-        String website_code = getWebsiteXml("http://jisho.org/search/" + prepared_word, activity);
+        String website_code = getWebsiteXml(activity.getResources().getString(R.string.jisho_website_url) + prepared_word, activity);
         if ((website_code != null && website_code.equals("")) || website_code == null) return setOf_matchingWordCharacteristics;
 
         //Extracting the definition from Jisho.org
 
-        //region Initializatons
+        List<Object> parsed = parseJishoWebsite(website_code);
+
+        //region Initializations
         String identifier;
         int index_of_current_results_block_marker_start;
         int index_of_current_results_block_marker_end;
@@ -726,4 +728,124 @@ public class SharedMethods {
         return responseString;
     }
 
+    private static List<Object> parseJishoWebsite(String website_code) {
+
+        int initial_offset = 15; //Skips <!DOCTYPE html>
+        websiteCodeString = website_code.substring(initial_offset, website_code.length());
+        List<Object> parsedWebsiteTree = getChildren();
+
+        return parsedWebsiteTree;
+    }
+    private static int runningIndex = 0;
+    private static String websiteCodeString = "";
+    private static List<Object> getChildren() {
+
+        List<Object> currentParent = new ArrayList<>();
+        String remainingwebsiteCodeString = websiteCodeString.substring(runningIndex,websiteCodeString.length());
+
+        if (!remainingwebsiteCodeString.contains("<")) {
+            currentParent.add(remainingwebsiteCodeString);
+            return currentParent;
+        }
+
+        while (0 <= runningIndex && runningIndex < websiteCodeString.length()) {
+
+            //Getting the next header characteristics
+            int nextHeaderStart = websiteCodeString.indexOf("<", runningIndex);
+            if (nextHeaderStart==-1) return currentParent;
+            int nextHeaderEnd = websiteCodeString.indexOf(">", nextHeaderStart);
+            String currentHeader = websiteCodeString.substring(nextHeaderStart + 1, nextHeaderEnd);
+
+            Log.i("Diagnosis Time", "Current child: " + runningIndex + ", " + currentHeader);
+
+            //If there is String text before the next header, add it to the list and continue to the header
+            if (nextHeaderStart != runningIndex) {
+                String currentText = websiteCodeString.substring(runningIndex, nextHeaderStart);
+                if (!currentText.contains("\n")) currentParent.add(currentText);
+                runningIndex = nextHeaderStart;
+            }
+
+            //If the header is of type "<XXX/>" then there is no subtree. In this case add the header to the tree and move to next subtree.
+            if (websiteCodeString.substring(nextHeaderEnd - 1, nextHeaderEnd + 1).equals("/>")) {
+                currentParent.add(currentHeader);
+                runningIndex = nextHeaderEnd + 1;
+            }
+
+            //If the header is of type "<XXX>" then:
+            // - if the header is <br> there is no substree and the header should be treated as text
+            else if (currentHeader.equals("br")) {
+                currentParent.add("<br>");
+                runningIndex = nextHeaderEnd + 1;
+            }
+            // - if the header is a tail, move up the stack
+            else if (currentHeader.substring(0,1).equals("/")) {
+                int endOfTail = websiteCodeString.indexOf(">", nextHeaderStart);
+                runningIndex = endOfTail+1;
+                return currentParent;
+            }
+            // - if the header is <!-- XXX> then this is a comment and should be ignored
+            else if (currentHeader.contains("!--")) {
+                int endOfComment = websiteCodeString.indexOf("-->", runningIndex);
+                runningIndex = endOfComment+3;
+            }
+            //If the subtree is valid and is not the <head> subtree, add it to the tree
+            else if (currentHeader.equals("head")) {
+                currentParent.add(currentHeader);
+                currentParent.add("");
+                runningIndex = websiteCodeString.indexOf("</head>") + 7;
+            }
+            // - if the header is not <br> then there is a subtree and the methods recurses
+            else {
+                currentParent.add(currentHeader);
+                runningIndex = nextHeaderEnd+1;
+                List<Object> subtree = getChildren();
+                currentParent.add(subtree);
+            }
+
+        }
+
+        return currentParent;
+    }
+
+    private static List<String> getParentHeaderElements(String website_code, int startIndex) {
+
+        int indexOfEnclosureHeaderStart = website_code.indexOf("<", startIndex);
+        int indexOfEnclosureHeaderEnd = website_code.indexOf(">", indexOfEnclosureHeaderStart);
+        String currentEnclosureHeader = website_code.substring(indexOfEnclosureHeaderStart +1, indexOfEnclosureHeaderEnd);
+
+        //Getting the title and parameters for the current block
+        List<String> enclosureHeaderElements = new ArrayList<>();
+        boolean isWithinQuotes = false;
+        int cutIndex = 0;
+        for (int i = 0; i< currentEnclosureHeader.length(); i++) {
+            if (currentEnclosureHeader.substring(i,i+1).equals("\"")) {
+                isWithinQuotes = !isWithinQuotes;
+            }
+            if (i< currentEnclosureHeader.length()-1 && currentEnclosureHeader.substring(i,i+1).equals(" ") && !isWithinQuotes) {
+                enclosureHeaderElements.add(currentEnclosureHeader.substring(cutIndex,i));
+                i++;
+                cutIndex = i;
+            }
+            if (i== currentEnclosureHeader.length()-1) {
+                enclosureHeaderElements.add(currentEnclosureHeader.substring(cutIndex,i));
+            }
+        }
+
+        //Getting the true end of the current block
+        int indexOfEnclosureTail1 = website_code.indexOf("</", indexOfEnclosureHeaderEnd);
+        int indexOfEnclosureTail2 = website_code.indexOf("/>", indexOfEnclosureHeaderEnd);
+
+        int indexOfEnclosureTail;
+        if (indexOfEnclosureTail2 < indexOfEnclosureTail1) {
+            indexOfEnclosureTail = indexOfEnclosureTail2+1;
+        }
+        else {
+            indexOfEnclosureTail = website_code.indexOf(">", indexOfEnclosureTail1);
+        }
+
+        enclosureHeaderElements.add(1,Integer.toString(indexOfEnclosureTail));
+        enclosureHeaderElements.add(1,Integer.toString(indexOfEnclosureHeaderEnd));
+
+        return enclosureHeaderElements;
+    }
 }

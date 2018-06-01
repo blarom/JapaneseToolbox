@@ -158,7 +158,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                             String speechRecognizerString = args.getString(JISHO_LOADER_INPUT_EXTRA);
                             AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromJishoOnWeb(speechRecognizerString, getActivity());
                         } catch (IOException e) {
-                            //throw new RuntimeException(e);
+                            e.printStackTrace();
                         }
                     } else {
                         Log.i("Diagnosis Time", "Failed to access online resources.");

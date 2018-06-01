@@ -51,7 +51,7 @@ hou ga ii da, ほうがいいです, it would be best if, hou ga ii desu, hou ga
 mitai, 見たい, It seems that (he) does/is X, seems that, looks like, looks as if|mitai|見たい|114||
 rashii, らしい, (He) seems to do/be X, like, as if, apparently, it seems, I heard that, sounds like|rashii|らしい|115||
 sou, そう, (He) seems to do/be X / (I've) heard that X (from what I can see), (I've) heard that (he's) not X (from what I can see), looks like, appears to be, feels like, sounds like, seems to be, sou ni, sou mo nai, da sou|sou|そう|116;117||
-tte, datte, って, だって, (I've) heard that X, it seems that X|tte, datte|って, だって|118||
+tte, datte, って, だって, (I've) heard that X, it seems that X, tte, datte|tte, datte|って, だって|118||
 you, よう, (He) seems to do/be X (from what I can deduce), looks like, appears to be, feels like, sounds like, seems to be, you da, na you da, no you da|you|よう|119||
 te mo, ても, even if (he) does/is X, de mo|te mo|ても|120||
 ikura ...te mo, 幾ら...ても, no matter how much (he) does/is X, de mo|ikura ...te mo|幾ら...ても|121||
@@ -138,9 +138,10 @@ you ni naritai, ようになりたい, become able to be/do X, will be be able t
 you ni naru kamo shirenai, ようになるかもしれない, not become able to be/do X, will not be be able to do, will not be able to be, you ni naru kamo shiremasen|you ni naru kamo shirenai|ようになるかもしれない|214||
 onaji, 同じ, X and Y have the same (characteristic)|onaji|同じ|215||
 ni niteiru, に似ている, Y resembles X|ni niteiru|に似ている|216||
+ni tai suru, にたいする, toward, respective to|ni tai suru|にたいする|6742||
 to dochira ga, とどちが, which of X and Y is most (characteristic) ?|to dochira ga|とどちが|217||
 no naka de ... ga ichiban, の中で...が一番, out of all the X, Y is the most (characteristic)|no naka de ... ga ichiban|の中で...が一番|218||
-yori ... hou ga, より...ほうが, Y more ... than X|yori ... hou ga|より...ほうが|219||
+yori ... hou ga, より...ほうが, Y more ... than X, hou ga, yori|yori ... hou ga|より...ほうが|219||
 yori, より, X less … than Y|yori|より|220||
 noto ... noto, のと...のと, between/of X and Y, which of, decision, decide|noto ... noto|のと...のと|221||
 yori mou sukoshi ..., よりもう少し, less X and a bit more Y|yori mou sukoshi ...|よりもう少し|222||

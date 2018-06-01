@@ -180,7 +180,7 @@ public class AdjustImageActivity extends AppCompatActivity {
 
             // Preparing the values to be set in the image adjustment methods
             float contrastValue = SharedMethods.convertContrastProgressToValue(contrastBarValue, getApplicationContext());
-            int brightnessValue = SharedMethods.convertBrightnessProgresToValue(brightnessBarValue, getApplicationContext());
+            int brightnessValue = SharedMethods.convertBrightnessProgressToValue(brightnessBarValue, getApplicationContext());
             float saturationValue = SharedMethods.convertSaturationProgressToValue(saturationBarValue, getApplicationContext());
 
             //float contrastDisplay = (float) progressContrast / Float.parseFloat(getResources().getString(R.string.pref_OCR_image_contrast_max_value));
