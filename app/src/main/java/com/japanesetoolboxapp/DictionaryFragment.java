@@ -1,6 +1,5 @@
 package com.japanesetoolboxapp;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -32,7 +31,6 @@ import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.utiities.GlobalConstants;
 import com.japanesetoolboxapp.utiities.SharedMethods;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,23 +38,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-public class DictionaryFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Object>>{
+public class DictionaryFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Word>>{
 
     // Parameters
-    private List<Object> mLocalMatchingWordCharacteristics;
-    private String mLastSearchedWord;
     private List<List<Integer>> mMatchingWordRowColIndexList;
     private final static int MAX_NUMBER_RESULTS_SHOWN = 50;
     private Activity mFragmentActivity;
 
     private Boolean mAppWasInBackground;
-    private GrammarExpandableListAdapter mSearchResultsListAdapter;
-    private ExpandableListView mSearchResultsExpandableListView;
     private List<String> mExpandableListDataHeader;
     private HashMap<String, List<String>> mExpandableListHeaderDetails;
     private HashMap<String, List<List<String>>> mExpandableListDataChild;
     private String mSearchedWord;
-    private List<Object> mAsyncMatchingWordCharacteristics;
     private Boolean mInternetIsAvailable;
     private static final int JISHO_WEB_SEARCH_LOADER = 41;
     private static final String JISHO_LOADER_INPUT_EXTRA = "input";
@@ -64,7 +57,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     Toast mShowOnlineResultsToast;
     SharedMethods mSharedMethods;
     private List<Word> mLocalMatchingWordsList;
-    private List<Word> mAsyncMatchingWords;
 
     // Fragment Lifecycle Functions
     @Override public void onAttach(Context context) {
@@ -86,9 +78,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
    }
     @Override public void onCreate(Bundle savedInstanceState) { //instead of onActivityCreated
         super.onCreate(savedInstanceState);
-        //super.onActivityCreated(savedInstanceState);
         mSharedMethods = new SharedMethods();
-        mInternetIsAvailable = SharedMethods.internetIsAvailableCheck(this.getContext());
+        if (getContext() != null) mInternetIsAvailable = SharedMethods.internetIsAvailableCheck(getContext());
 
     }
     @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -137,75 +128,75 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     }
 
     //Asynchronous methods
-    @NonNull
-    @SuppressLint("StaticFieldLeak") @Override public Loader<List<Object>> onCreateLoader(int id, final Bundle args) {
-        return new AsyncTaskLoader<List<Object>>(getContext()) {
+    @NonNull @Override public Loader<List<Word>> onCreateLoader(int id, final Bundle args) {
 
-            @Override
-            protected void onStartLoading() {
+        WebResultsAsyncTaskLoader webResultsAsyncTaskLoader = new WebResultsAsyncTaskLoader(getContext(), mSearchedWord, mAppWasInBackground, mInternetIsAvailable);
+        webResultsAsyncTaskLoader.setLoaderState(true);
+        return webResultsAsyncTaskLoader;
 
-                /* If no arguments were passed, we don't have a inputQueryAutoCompleteTextView to perform. Simply return. */
-                if (args == null) return;
-
-                forceLoad();
-            }
-
-            @Override
-            public List<Object> loadInBackground() {
-
-                List<Object> AsyncMatchingWordCharacteristics = new ArrayList<>();
-                List<Word> matchingWordsFromJisho = new ArrayList<>();
-
-                if (mAppWasInBackground == null || !mAppWasInBackground) {
-                    if (mInternetIsAvailable) {
-                        try {
-                            String speechRecognizerString = args.getString(JISHO_LOADER_INPUT_EXTRA);
-                            AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromJishoOnWeb(speechRecognizerString, getActivity());
-                            matchingWordsFromJisho = SharedMethods.getWordsFromJishoOnWeb(speechRecognizerString, getActivity());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Log.i("Diagnosis Time", "Failed to access online resources.");
-                        SharedMethods.TellUserIfThereIsNoInternetConnection(getActivity());
-                        cancelLoadInBackground();
-                    }
-                }
-                return AsyncMatchingWordCharacteristics;
-            }
-        };
     }
-    @Override public void onLoadFinished(@NonNull Loader<List<Object>> loader, List<Object> data) {
-        mAsyncMatchingWordCharacteristics = data;
-        mAsyncMatchingWords = new ArrayList<>();
+    @Override public void onLoadFinished(@NonNull Loader<List<Word>> loader, List<Word> asyncMatchingWords) {
 
         if (mAppWasInBackground == null || !mAppWasInBackground) {
             Boolean showOnlineResults = getShowOnlineResultsPreference();
-            if (mAsyncMatchingWordCharacteristics.size() != 0 && showOnlineResults) {
+            if (asyncMatchingWords.size() != 0 && showOnlineResults) {
                 matchFound = true;
-                List<Object> totalMatchingWordCharacteristics = mergeMatchingWordCharacteristics(mLocalMatchingWordCharacteristics, mAsyncMatchingWordCharacteristics);
-                List<Word> totalWords = mergeWordLists(mLocalMatchingWordsList, mAsyncMatchingWords);
-                ////////////////// NEED TO CHANGE THE LOADER TO USE LIST<WORD>
-                totalMatchingWordCharacteristics = sortResultsAccordingToRomajiAndKanjiLengths(mSearchedWord, totalMatchingWordCharacteristics);
-                displayResults(mSearchedWord, totalMatchingWordCharacteristics, mLocalMatchingWordsList);
+                List<Word> totalWords = mergeWordLists(mLocalMatchingWordsList, asyncMatchingWords);
+                totalWords = sortWordsAccordingToRomajiAndKanjiLengths(mSearchedWord, totalWords);
+                displayResults(mSearchedWord, totalWords);
             }
 
             //If no dictionary match was found, then this is probably a verb conjugation, so try that
             if (!matchFound && !mSearchedWord.equals("") && getActivity() != null) {
                 if (mShowOnlineResultsToast != null) mShowOnlineResultsToast.cancel();
+                Toast.makeText(getContext(), "No match found, looking up conjugations.", Toast.LENGTH_SHORT).show();
                 getActivity().findViewById(R.id.button_searchVerb).performClick();
             }
         }
     }
-    @Override public void onLoaderReset(@NonNull Loader<List<Object>> loader) {}
-    public Boolean getShowOnlineResultsPreference() {
-        Boolean showOnlineResults = false;
-        if (getActivity()!=null) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            showOnlineResults = sharedPreferences.getBoolean(getString(R.string.pref_complete_local_with_online_search_key),
-                    getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default));
+    @Override public void onLoaderReset(@NonNull Loader<List<Word>> loader) {}
+    private static class WebResultsAsyncTaskLoader extends AsyncTaskLoader <List<Word>> {
+
+        String speechRecognizerString;
+        private boolean appWasInBackground;
+        private boolean internetIsAvailable;
+        private boolean mAllowLoaderStart;
+
+        WebResultsAsyncTaskLoader(Context context,
+                                  String speechRecognizerString,
+                                  boolean appWasInBackground,
+                                  boolean internetIsAvailable) {
+            super(context);
+            this.speechRecognizerString = speechRecognizerString;
+            this.appWasInBackground = appWasInBackground;
+            this.internetIsAvailable = internetIsAvailable;
         }
-        return showOnlineResults;
+
+        @Override
+        protected void onStartLoading() {
+            if (mAllowLoaderStart) forceLoad();
+        }
+
+        @Override
+        public List<Word> loadInBackground() {
+
+            List<Word> matchingWordsFromJisho = new ArrayList<>();
+
+            if (!appWasInBackground) {
+                if (internetIsAvailable) {
+                    matchingWordsFromJisho = SharedMethods.getWordsFromJishoOnWeb(speechRecognizerString, getContext());
+                } else {
+                    Log.i("Diagnosis Time", "Failed to access online resources.");
+                    Toast.makeText(getContext(), "Failed to connect to the Internet.", Toast.LENGTH_SHORT).show();
+                    cancelLoadInBackground();
+                }
+            }
+            return matchingWordsFromJisho;
+        }
+
+        void setLoaderState(boolean state) {
+            mAllowLoaderStart = state;
+        }
     }
 
 	// Functionality Functions
@@ -215,17 +206,14 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         final List<Integer> matchingWordRowIndexList = mMatchingWordRowColIndexList.get(0); // Use mMatchingWordRowColIndexList.get(1) to get columns
 
         mSearchedWord = SharedMethods.removeSpecialCharacters(word);
-        mLastSearchedWord = SharedMethods.removeSpecialCharacters(word);
 
         // Run the Grammar Module on the input word
         matchFound = true;
-        mLocalMatchingWordCharacteristics = getCharacteristicsForAllHits(matchingWordRowIndexList);
-        mLocalMatchingWordsList = getWordsList(matchingWordRowIndexList); //*************NEW
-        if (mLocalMatchingWordCharacteristics.size() == 0) matchFound = false;
+        mLocalMatchingWordsList = getWordsList(matchingWordRowIndexList);
+        if (mLocalMatchingWordsList.size() == 0) matchFound = false;
 
         // If there are no results, retrieve the results from Jisho.org
         mShowOnlineResultsToast = Toast.makeText(getContext(), getResources().getString(R.string.showOnlineResultsToastString), Toast.LENGTH_SHORT);
-        mAsyncMatchingWordCharacteristics = new ArrayList<>();
 
         //Getting user preference for showing online results
         Boolean showOnlineResults = getShowOnlineResultsPreference();
@@ -243,64 +231,14 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             else loaderManager.restartLoader(JISHO_WEB_SEARCH_LOADER, queryBundle, this);
         }
 
-        mLocalMatchingWordCharacteristics = sortResultsAccordingToRomajiAndKanjiLengths(mSearchedWord, mLocalMatchingWordCharacteristics);
-        mLocalMatchingWordsList = sortWordsAccordingToRomajiAndKanjiLengths(mSearchedWord, mLocalMatchingWordsList); //*************NEW
-        displayResults(mSearchedWord, mLocalMatchingWordCharacteristics, mLocalMatchingWordsList);
+        mLocalMatchingWordsList = sortWordsAccordingToRomajiAndKanjiLengths(mSearchedWord, mLocalMatchingWordsList);
+        displayResults(mSearchedWord, mLocalMatchingWordsList);
 
         if (!matchFound && !mSearchedWord.equals("") && !showOnlineResults) {
             if (mShowOnlineResultsToast!=null) mShowOnlineResultsToast.cancel();
             getActivity().findViewById(R.id.button_searchVerb).performClick();
         }
 
-    }
-    private List<Object> sortResultsAccordingToRomajiAndKanjiLengths(String searchWord, List<Object> mMatchingWordCharacteristics) {
-
-        List<int[]> matchingWordIndexesAndLengths = new ArrayList<>();
-        for (int i = 0; i < mMatchingWordCharacteristics.size(); i++) {
-
-            List<Object> current_MatchingHitsCharacteristics = (List<Object>) mMatchingWordCharacteristics.get(i);
-            String romaji_value = (String) current_MatchingHitsCharacteristics.get(0);
-            String kanji_value = (String) current_MatchingHitsCharacteristics.get(1);
-
-            //Get the length of the shortest meaning containing the word, and use it to prioritize the results
-            List<Object> current_MatchingHitsCharacteristics_Meaning_Blocks = (List<Object>) current_MatchingHitsCharacteristics.get(3);
-            List<Object> current_MatchingHitsCharacteristics_Meanings_Block;
-            String currentMeaning;
-            int currentMeaningLength = 1000;
-            for (int j=0; j<current_MatchingHitsCharacteristics_Meaning_Blocks.size(); j++) {
-                current_MatchingHitsCharacteristics_Meanings_Block = (List<Object>) current_MatchingHitsCharacteristics_Meaning_Blocks.get(j);
-                currentMeaning = (String) current_MatchingHitsCharacteristics_Meanings_Block.get(0);
-                if (currentMeaning.contains(searchWord) && currentMeaning.length() <= currentMeaningLength) {
-                    currentMeaningLength = currentMeaning.length();
-                }
-            }
-
-            //Get the total length
-            int length = romaji_value.length() + kanji_value.length() + currentMeaningLength;
-
-            //If the romaji or Kanji value is an exact match to the search word, then it must appear at the start of the list
-            if (romaji_value.equals(searchWord) || kanji_value.equals(searchWord)) length = 0;
-
-            int[] currentMatchingWordIndexAndLength = new int[2];
-            currentMatchingWordIndexAndLength[0] = i;
-            currentMatchingWordIndexAndLength[1] = length;
-
-            matchingWordIndexesAndLengths.add(currentMatchingWordIndexAndLength);
-        }
-
-        //Sort the results according to total length
-        if (matchingWordIndexesAndLengths.size() != 0) {
-            matchingWordIndexesAndLengths = bubbleSortForTwoIntegerList(matchingWordIndexesAndLengths);
-        }
-
-        //Return the sorted list
-        List<Object> newMatchingWordCharacteristics = new ArrayList<>();
-        for (int i = 0; i < matchingWordIndexesAndLengths.size(); i++) {
-            int sortedIndex = matchingWordIndexesAndLengths.get(i)[0];
-            newMatchingWordCharacteristics.add(mMatchingWordCharacteristics.get(sortedIndex));
-        }
-
-        return newMatchingWordCharacteristics;
     }
     private List<Word> sortWordsAccordingToRomajiAndKanjiLengths(String searchWord, List<Word> wordsList) {
 
@@ -349,10 +287,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         return sortedWordsList;
     }
-    public void displayResults(String searchWord, List<Object> matchingWordCharacteristics, List<Word> wordsList) {
+    public void displayResults(String searchWord, List<Word> wordsList) {
 
         // Populate the list of choices for the SearchResultsChooserSpinner. Each text element of inside the idividual spinner choices corresponds to a sub-element of the choicelist
-        populateSearchResultsForDisplay(searchWord, matchingWordCharacteristics);
         createExpandableListViewContentsFromWordsList(searchWord, wordsList);
 
         if (getActivity()!=null) SharedMethods.hideSoftKeyboard(getActivity());
@@ -360,9 +297,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         // Implementing the SearchResultsChooserListView
         try {
             if (mExpandableListDataHeader != null && mExpandableListHeaderDetails != null && mExpandableListDataChild != null && getView() != null) {
-                mSearchResultsListAdapter = new GrammarExpandableListAdapter(getContext(),
+                GrammarExpandableListAdapter mSearchResultsListAdapter = new GrammarExpandableListAdapter(getContext(),
                         mExpandableListDataHeader, mExpandableListHeaderDetails, mExpandableListDataChild);
-                mSearchResultsExpandableListView = getView().findViewById(R.id.SentenceConstructionExpandableListView); //CAUSED CRASH
+                ExpandableListView mSearchResultsExpandableListView = getView().findViewById(R.id.SentenceConstructionExpandableListView);
                 mSearchResultsExpandableListView.setAdapter(mSearchResultsListAdapter);
                 mSearchResultsExpandableListView.setVisibility(View.VISIBLE);
             }
@@ -373,83 +310,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
-    }
-    private List<Object> mergeMatchingWordCharacteristics(List<Object> localMatchingWordCharacteristics, List<Object> asyncMatchingWordCharacteristics) {
-        List<Object> finalList = new ArrayList<>();
-        List<Object> finallist_element;
-        List<Object> current_async_meaning_blocks;
-        List<Object> current_local_meaning_blocks;
-        List<Object> current_async_meaning_block;
-        List<Object> current_local_meaning_block;
-        String current_local_meaning;
-        String current_async_meaning;
-        String current_async_romaji;
-        String current_async_kanji;
-        String current_local_romaji;
-        String current_local_kanji;
-        String current_local_altspellings;
-        List<Object> current_final_meaning_blocks;
-        List<Object> FinalAsyncElements = new ArrayList<>();
-        Boolean async_meaning_found_locally;
-
-        FinalAsyncElements.addAll(asyncMatchingWordCharacteristics);
-
-        for (int j = 0; j< localMatchingWordCharacteristics.size(); j++) {
-            List<Object> current_match_element = (List<Object>) localMatchingWordCharacteristics.get(j);
-            finallist_element = new ArrayList<>();
-            current_local_romaji = (String) current_match_element.get(0);
-            finallist_element.add(current_local_romaji);
-            current_local_kanji = (String) current_match_element.get(1);
-            finallist_element.add(current_local_kanji);
-            current_local_altspellings = (String) current_match_element.get(2);
-            finallist_element.add(current_local_altspellings);
-
-            current_local_meaning_blocks = (List<Object>) current_match_element.get(3);
-            current_final_meaning_blocks = new ArrayList<>();
-            current_final_meaning_blocks.addAll(current_local_meaning_blocks);
-
-            int current_index = FinalAsyncElements.size()-1;
-            while (current_index >= 0 && FinalAsyncElements.size() != 0) {
-
-                if (current_index > FinalAsyncElements.size()-1) {break;}
-                List<Object> current_async_element = (List<Object>) FinalAsyncElements.get(current_index);
-                current_async_romaji = (String) current_async_element.get(0);
-                current_async_kanji = (String) current_async_element.get(1);
-                current_async_meaning_blocks = (List<Object>) current_async_element.get(3);
-
-                if (current_async_romaji.equals(current_local_romaji) && current_async_kanji.equals(current_local_kanji)) {
-
-                    for (int m = 0; m< current_async_meaning_blocks.size(); m++) {
-                        current_async_meaning_block = (List<Object>) current_async_meaning_blocks.get(m);
-                        current_async_meaning = (String) current_async_meaning_block.get(0);
-
-                        async_meaning_found_locally = false;
-                        for (int k = 0; k< current_local_meaning_blocks.size(); k++) {
-                            current_local_meaning_block = (List<Object>) current_local_meaning_blocks.get(k);
-                            current_local_meaning = (String) current_local_meaning_block.get(0);
-
-                            if (current_local_meaning.contains(current_async_meaning)) {
-                                async_meaning_found_locally = true;
-                                break;
-                            }
-                        }
-                        if (!async_meaning_found_locally) {
-                            current_final_meaning_blocks.add(current_async_meaning_block);
-                        }
-                    }
-                    FinalAsyncElements.remove(current_index);
-                    if (current_index == 0) break;
-                }
-                else {
-                    current_index -= 1;
-                }
-            }
-            finallist_element.add(current_final_meaning_blocks);
-            finalList.add(finallist_element);
-        }
-        finalList.addAll(FinalAsyncElements);
-
-        return finalList;
     }
     private List<Word> mergeWordLists(List<Word> localWords, List<Word> asyncWords) {
 
@@ -505,170 +365,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         finalWordsList.addAll(finalAsyncWords);
 
         return finalWordsList;
-    }
-    public void populateSearchResultsForDisplay(String word, List<Object> matchingWordCharacteristics) {
-
-        //Initialization
-        mExpandableListDataHeader = new ArrayList<>();
-        mExpandableListHeaderDetails = new HashMap<>();
-        mExpandableListDataChild = new HashMap<>();
-
-        String current_explanation = "XXX";
-        String current_rule = "";
-        String example_English = "";
-        String example_Romaji = "";
-        String example_Kanji = "";
-        String current_antonym = "";
-        String current_synonym = "";
-        String altspellings = "";
-        List<List<String>> elements_of_child = new ArrayList<>();
-        List<String> texts_in_elements_of_child = new ArrayList<>();
-        List<String> texts_in_elements_of_group = new ArrayList<>();
-        String ListElement;
-        String ListElement1;
-        String ListElement2;
-        String current_meaning;
-        String current_type = "";
-        List<Object> current_MatchingHitsCharacteristics_Meanings_Block;
-
-        if (matchingWordCharacteristics.size() == 0) {
-            //Create a generic answer for the empty search
-            if (word.equals("")) {
-                ListElement1 = getResources().getString(R.string.PleaseEnterWord);
-                ListElement2 = "";
-            }
-            else {
-                ListElement1 = getResources().getString(R.string.NoMatchFound);
-                ListElement2 = "";
-            }
-            texts_in_elements_of_child.add(ListElement1);
-            texts_in_elements_of_child.add(ListElement2);
-            texts_in_elements_of_child.add("");
-            texts_in_elements_of_child.add("");
-            texts_in_elements_of_child.add("");
-            texts_in_elements_of_child.add("");
-            texts_in_elements_of_child.add("");
-            texts_in_elements_of_child.add("");
-            mExpandableListDataHeader.add(Integer.toString(0));
-            mExpandableListHeaderDetails.put(Integer.toString(0), texts_in_elements_of_child);
-
-            texts_in_elements_of_child = new ArrayList<>();
-            texts_in_elements_of_child.add("No match found.");
-            texts_in_elements_of_child.add("");
-            texts_in_elements_of_child.add("");
-            texts_in_elements_of_child.add("");
-            texts_in_elements_of_child.add("");
-            texts_in_elements_of_child.add("");
-            texts_in_elements_of_child.add("");
-            texts_in_elements_of_child.add("");
-            elements_of_child = new ArrayList<>();
-            elements_of_child.add(texts_in_elements_of_child);
-            mExpandableListDataChild.put(Integer.toString(0), elements_of_child);
-        }
-        else {
-            for (int i = 0; i< matchingWordCharacteristics.size(); i++) {
-
-                List<Object> current_MatchingHitsCharacteristics = (List<Object>) matchingWordCharacteristics.get(i);
-                String romaji_value = (String) current_MatchingHitsCharacteristics.get(0);
-                String kanji_value = (String) current_MatchingHitsCharacteristics.get(1);
-                String altspellings_value = (String) current_MatchingHitsCharacteristics.get(2);
-                List<Object> current_MatchingHitsCharacteristics_Meaning_Blocks = (List<Object>) current_MatchingHitsCharacteristics.get(3);
-
-                //Populate elements in mListDataHeader
-                if (i> MAX_NUMBER_RESULTS_SHOWN) {break;}
-
-                texts_in_elements_of_group = new ArrayList<>();
-
-                String cumulative_meaning_value = "";
-                for (int j=0; j<current_MatchingHitsCharacteristics_Meaning_Blocks.size(); j++) {
-                    current_MatchingHitsCharacteristics_Meanings_Block = (List<Object>) current_MatchingHitsCharacteristics_Meaning_Blocks.get(j);
-                    cumulative_meaning_value += (String) current_MatchingHitsCharacteristics_Meanings_Block.get(0);
-                    current_type    = (String) current_MatchingHitsCharacteristics_Meanings_Block.get(1);
-                    if (j<current_MatchingHitsCharacteristics_Meaning_Blocks.size()-1) { cumulative_meaning_value += ", "; }
-                }
-                texts_in_elements_of_group.add(romaji_value);
-                texts_in_elements_of_group.add(kanji_value);
-                texts_in_elements_of_group.add(removeDuplicatesFromCommaList(cumulative_meaning_value));
-
-                mExpandableListDataHeader.add(Integer.toString(i));
-                mExpandableListHeaderDetails.put(Integer.toString(i), texts_in_elements_of_group);
-
-                //Populate elements in mListDataChild
-                elements_of_child = new ArrayList<>();
-
-                texts_in_elements_of_child = new ArrayList<>();
-
-                texts_in_elements_of_child.add(altspellings_value);
-                texts_in_elements_of_child.add(current_type);
-                elements_of_child.add(texts_in_elements_of_child);
-
-                for (int j = 0; j< current_MatchingHitsCharacteristics_Meaning_Blocks.size(); j++) {
-                    texts_in_elements_of_child = new ArrayList<>();
-                    int element_index = 0;
-
-                    current_MatchingHitsCharacteristics_Meanings_Block = (List<Object>) current_MatchingHitsCharacteristics_Meaning_Blocks.get(j);
-                    current_meaning = (String) current_MatchingHitsCharacteristics_Meanings_Block.get(0);
-                    current_type    = (String) current_MatchingHitsCharacteristics_Meanings_Block.get(1);
-                    current_antonym = (String) current_MatchingHitsCharacteristics_Meanings_Block.get(2);
-                    current_synonym = (String) current_MatchingHitsCharacteristics_Meanings_Block.get(3);
-
-                    texts_in_elements_of_child.add(""); element_index++; //Altspellings placeholder
-                    texts_in_elements_of_child.add(current_type); element_index++;
-                    texts_in_elements_of_child.add(current_meaning); element_index++;
-                    texts_in_elements_of_child.add(current_antonym); element_index++;
-                    texts_in_elements_of_child.add(current_synonym); element_index++;
-
-                    List<Object> current_MatchingHitsCharacteristics_Explanation_Blocks = (List<Object>) current_MatchingHitsCharacteristics_Meanings_Block.get(4);
-                    for (int m=0; m<current_MatchingHitsCharacteristics_Explanation_Blocks.size(); m++) {
-                        List<String> current_MatchingHitsCharacteristics_Explanations_Block = (List<String>) current_MatchingHitsCharacteristics_Explanation_Blocks.get(m);
-                        current_explanation = current_MatchingHitsCharacteristics_Explanations_Block.get(0);
-                        current_rule = current_MatchingHitsCharacteristics_Explanations_Block.get(1);
-
-                        texts_in_elements_of_child.add("EXPL" + current_explanation);
-                        element_index++;
-
-                        texts_in_elements_of_child.add("RULE" + current_rule);
-                        element_index++;
-
-                        int number_of_examples = 0;
-                        int show_examples_element_index = 0;
-                        if (current_MatchingHitsCharacteristics_Explanations_Block.size() > 2) {
-                            number_of_examples = (current_MatchingHitsCharacteristics_Explanations_Block.size() - 2) / 3;
-
-                            texts_in_elements_of_child.add("SHOW EXAMPLES AT INDEXES:");
-                            show_examples_element_index = element_index;
-                            element_index++;
-                        }
-                        String new_show_examples_element;
-                        for (int k = 0; k < number_of_examples; k++) {
-                            example_English = current_MatchingHitsCharacteristics_Explanations_Block.get(2 + k*3);
-                            example_Romaji = current_MatchingHitsCharacteristics_Explanations_Block.get(2 + k*3 + 1);
-                            example_Kanji = current_MatchingHitsCharacteristics_Explanations_Block.get(2 + k*3 + 2);
-
-                            texts_in_elements_of_child.add("EXEN" + example_English);
-                            new_show_examples_element = texts_in_elements_of_child.get(show_examples_element_index) + element_index + ":";
-                            texts_in_elements_of_child.set(show_examples_element_index, new_show_examples_element);
-                            element_index++;
-
-                            texts_in_elements_of_child.add("EXRO" + example_Romaji);
-                            new_show_examples_element = texts_in_elements_of_child.get(show_examples_element_index) + element_index + ":";
-                            texts_in_elements_of_child.set(show_examples_element_index, new_show_examples_element);
-                            element_index++;
-
-                            texts_in_elements_of_child.add("EXKJ" + example_Kanji);
-                            new_show_examples_element = texts_in_elements_of_child.get(show_examples_element_index) + element_index + ":";
-                            texts_in_elements_of_child.set(show_examples_element_index, new_show_examples_element);
-                            element_index++;
-
-                        }
-                    }
-
-                    elements_of_child.add(texts_in_elements_of_child);
-                }
-                mExpandableListDataChild.put(Integer.toString(i), elements_of_child);
-
-            }
-        }
     }
     public void createExpandableListViewContentsFromWordsList(String searchWord, List<Word> wordsList) {
 
@@ -826,8 +522,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             int start = s.getSpanStart(this);
             int end = s.getSpanEnd(this);
 
-            //Toast.makeText(GlobalGrammarModuleFragmentView.getContext(), "Clicked", Toast.LENGTH_SHORT).show();
-
             // Instead of implementing the direct text change in the InputQueryFragment (this can cause bugs in the long run), it is sent through an interface
             //This is the code that's avoided
                     //AutoCompleteTextView queryInit = (AutoCompleteTextView)InputQueryFragment.GlobalInputQueryFragment.findViewById(R.id.inputQueryAutoCompleteTextView);
@@ -907,6 +601,15 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         }
         return output;
     }
+    public Boolean getShowOnlineResultsPreference() {
+        Boolean showOnlineResults = false;
+        if (getActivity()!=null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            showOnlineResults = sharedPreferences.getBoolean(getString(R.string.pref_complete_local_with_online_search_key),
+                    getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default));
+        }
+        return showOnlineResults;
+    }
 
     // Interface Functions
     UserWantsNewSearchForSelectedWordListener mCallbackWord;
@@ -931,9 +634,13 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         mCallbackVerb.UserWantsToConjugateFoundVerbFromGrammarModule(output);
     }
     private Boolean checkIfUserRequestedDictSearch() {
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        Boolean state = sharedPref.getBoolean(getString(R.string.requestingDictSearch), false);
-        return state;
+        Boolean state;
+        if (getActivity()!=null) {
+            SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+            state = sharedPref.getBoolean(getString(R.string.requestingDictSearch), false);
+            return state;
+        }
+        else return true;
     }
 
 	// Grammar Module Functions
@@ -958,8 +665,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         int MatchesIndexesFromSortedListSize;
         boolean found_match;
         boolean skip_this_row;
-        boolean is_verb = false;
-        boolean is_verb_and_latin = false;
+        boolean is_verb;
+        boolean is_verb_and_latin;
         int word_length = word.length();
         int match_length;
 
@@ -1041,8 +748,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             //endregion
 
             //region Search for the matches in the indexed list using a custom limit-finding binary search
-            List<String[]> SortedIndex = new ArrayList<>();
-            int[] limits = {0, 1};
+            List<String[]> SortedIndex;
+            int[] limits;
             if (TypeisLatin || TypeisKana || TypeisNumber) {
                 SortedIndex = MainActivity.GrammarDatabaseIndexedLatin;
 
@@ -1138,7 +845,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
                 //region If there is a word in the list that matches the input word, get the corresponding row index
                 match_length = 1000;
-                best_match = "";
                 MM_index = MainActivity.MainDatabase.get(rowIndex)[GlobalConstants.GrammarModule_colIndex_Meaning];
                 limits = binarySearchInLatinIndex(true, MM_index, MM_index, MainActivity.MeaningsDatabase);
                 type = "z";
@@ -1285,7 +991,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     }
     static public int[]                 binarySearchInLatinIndex(boolean TypeisLatin, String concatenated_word, String concatenated_translationLatin, List<String[]> SortedIndex) {
 
-        String prepared_word = "";
+        String prepared_word;
         // Prepare the input word to be used in the following algorithm (it must be only in latin script)
         if (TypeisLatin) { prepared_word = concatenated_word.toLowerCase(Locale.ENGLISH); }
         else { prepared_word = concatenated_translationLatin.toLowerCase(Locale.ENGLISH); }
@@ -1407,9 +1113,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             back_index--;
             if (upper_limit == lower_limit) {break;}
         }
-        int[] result = {lower_limit,upper_limit};
 
-        return result;
+        //returning result
+        return new int[]{lower_limit,upper_limit};
         }
     static public int[]                 binarySearchInUTF8Index(String concatenated_word, List<String[]> SortedIndex, int relevant_column_index) {
 
@@ -1423,8 +1129,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         int char_index;
         int list_size = SortedIndex.size();
         int mid_index;
-        String last_char_prepared_word = "";
-        String current_char_prepared_word = "";
+        String current_char_prepared_word;
         String current_char_mid;
         String current_indexed_word;
         boolean target_is_lower;
@@ -1595,22 +1300,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         }
         return prepared_word;
     }
-    public List<Object>                 getCharacteristicsForAllHits(List<Integer> matchingWordRowIndexList) {
-
-        int matchingWordRowIndex;
-
-        List<Object> setOf_matchingWordCharacteristics = new ArrayList<>();
-        List<Object> matchingWordCharacteristics;
-
-        if (matchingWordRowIndexList.size() != 0) {
-            for (int i=0; i<matchingWordRowIndexList.size(); i++) {
-                matchingWordRowIndex = matchingWordRowIndexList.get(i);
-                matchingWordCharacteristics = getCharacteristicsForEachHit(matchingWordRowIndex);
-                setOf_matchingWordCharacteristics.add(matchingWordCharacteristics);
-            }
-        }
-        return setOf_matchingWordCharacteristics;
-    }
     private List<Word>                  getWordsList(List<Integer> matchingWordRowIndexList) {
 
         int matchingWordRowIndex;
@@ -1645,9 +1334,10 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         String matchingWordAltSpellings = MainActivity.MainDatabase.get(matchingWordRowIndex)[4];
         word.setAltSpellings(matchingWordAltSpellings);
 
-        //Getting the set of Meanings
 
-        ;//Initializations
+        //regionGetting the set of Meanings
+
+        //Initializations
         String matchingWordMeaning;
         String matchingWordType;
         String matchingWordOpposite;
@@ -1795,180 +1485,11 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             meaningsList.add(meaning);
 
         }
+        //endregion
 
         word.setMeanings(meaningsList);
 
         return word;
-    }
-    public List<Object>                 getCharacteristicsForEachHit(int matchingWordRowIndex) {
-
-        // Value Initializations
-        int example_index;
-        List<String> parsed_example_list;
-        List<Object> matchingWordCharacteristics = new ArrayList<>();
-        List<Object> matchingWordMeaningBlocks = new ArrayList<>();
-
-        //Getting the Romaji value
-        String matchingWordRomaji = MainActivity.MainDatabase.get(matchingWordRowIndex)[1];
-        matchingWordCharacteristics.add(matchingWordRomaji);
-
-        //Getting the Kanji value
-        String matchingWordKanji = MainActivity.MainDatabase.get(matchingWordRowIndex)[2];
-        matchingWordCharacteristics.add(matchingWordKanji);
-
-        //Getting the AltSpellings value
-        String matchingWordAltSpellings = MainActivity.MainDatabase.get(matchingWordRowIndex)[4];
-        matchingWordCharacteristics.add(matchingWordAltSpellings);
-
-        //Getting the set of Meanings
-
-        ;//Initializations
-        String matchingWordMeaning;
-        String matchingWordType;
-        String matchingWordOpposite;
-        String matchingWordSynonym;
-        List<String> matchingWordCurrentExplanationBlock;
-        List<List<String>> matchingWordExplanationBlocks;
-        String matchingWordExplanation;
-        String matchingWordRules;
-        String matchingWordExampleList;
-        String[] current_meaning_characteristics;
-        Boolean has_multiple_explanations;
-        String ME_index;
-
-        //Finding the meanings using the supplied index
-        String MM_index = MainActivity.MainDatabase.get(matchingWordRowIndex)[3];
-        List<String> MM_index_list = Arrays.asList(MM_index.split(";"));
-        if (MM_index_list.size() == 0) { return matchingWordCharacteristics; }
-
-        List<Object> matchingWordCurrentMeaningBlock;
-        int current_MM_index;
-        for (int i=0; i< MM_index_list.size(); i++) {
-            matchingWordCurrentMeaningBlock = new ArrayList<>();
-            current_MM_index = Integer.parseInt(MM_index_list.get(i))-1;
-            current_meaning_characteristics = MainActivity.MeaningsDatabase.get(current_MM_index);
-
-            //Getting the Meaning value
-            matchingWordMeaning = MainActivity.MeaningsDatabase.get(current_MM_index)[1];
-
-            //Getting the Type value
-            matchingWordType = MainActivity.MeaningsDatabase.get(current_MM_index)[2];
-
-            //Make corrections to the meaning values if the hit is a verb
-            if (matchingWordType.contains("V") && !matchingWordType.equals("VC")) {
-                List<String> parsed_meaning = Arrays.asList(matchingWordMeaning.split(","));
-                String fixed_meaning = "";
-                String last_parsed_meaning = "";
-                boolean valueIsInParentheses = false;
-                for (int k = 0; k < parsed_meaning.size(); k++) {
-                    if (valueIsInParentheses) {
-                        fixed_meaning += parsed_meaning.get(k).trim();
-                    }
-                    else {
-                        fixed_meaning += "to " + parsed_meaning.get(k).trim();
-                    }
-
-                    if (k < parsed_meaning.size() - 1) {
-                        fixed_meaning += ", ";
-                    }
-
-                    if (parsed_meaning.get(k).contains("(") && !parsed_meaning.get(k).contains(")")) {
-                        valueIsInParentheses = true;
-                    }
-                    else if (!parsed_meaning.get(k).contains("(") && parsed_meaning.get(k).contains(")")) {
-                        valueIsInParentheses = false;
-                    }
-                }
-                matchingWordMeaning = fixed_meaning;
-            }
-
-            //Setting the Meaning and Type values in the returned list
-            matchingWordCurrentMeaningBlock.add(matchingWordMeaning);
-            matchingWordCurrentMeaningBlock.add(matchingWordType);
-
-            //Getting the Opposite value
-            matchingWordOpposite = MainActivity.MeaningsDatabase.get(current_MM_index)[6];
-            matchingWordCurrentMeaningBlock.add(matchingWordOpposite);
-
-            //Getting the Synonym value
-            matchingWordSynonym = MainActivity.MeaningsDatabase.get(current_MM_index)[7];
-            matchingWordCurrentMeaningBlock.add(matchingWordSynonym);
-
-            //Getting the set of Explanations
-            has_multiple_explanations = false;
-            ME_index = "";
-            if (current_meaning_characteristics[3].length() > 3) {
-                if (current_meaning_characteristics[3].substring(0,3).equals("ME#")) {
-                    has_multiple_explanations = true;
-                    ME_index = current_meaning_characteristics[3].substring(3,current_meaning_characteristics[3].length());
-                }
-            }
-            matchingWordExplanationBlocks = new ArrayList<>();
-            if (has_multiple_explanations) {
-                List<String> ME_index_list = Arrays.asList(ME_index.split(";"));
-                int current_ME_index;
-                for (int j=0; j<ME_index_list.size(); j++) {
-
-                    matchingWordCurrentExplanationBlock = new ArrayList<>();
-                    current_ME_index = Integer.parseInt(ME_index_list.get(j))-1;
-
-                    //Getting the Explanation value
-                    matchingWordExplanation = MainActivity.MultExplanationsDatabase.get(current_ME_index)[1];
-                    matchingWordCurrentExplanationBlock.add(matchingWordExplanation);
-
-                    //Getting the Rules value
-                    matchingWordRules = MainActivity.MultExplanationsDatabase.get(current_ME_index)[2];
-                    matchingWordCurrentExplanationBlock.add(matchingWordRules);
-
-                    //Getting the Examples
-                    matchingWordExampleList = MainActivity.MultExplanationsDatabase.get(current_ME_index)[3];
-                    if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
-                        parsed_example_list = Arrays.asList(matchingWordExampleList.split(", "));
-                        for (int t = 0; t < parsed_example_list.size(); t++) {
-                            example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
-                            matchingWordCurrentExplanationBlock.add(MainActivity.ExamplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_English]);
-                            matchingWordCurrentExplanationBlock.add(MainActivity.ExamplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Romaji]);
-                            matchingWordCurrentExplanationBlock.add(MainActivity.ExamplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Kanji]);
-                        }
-                    }
-                    matchingWordExplanationBlocks.add(matchingWordCurrentExplanationBlock);
-                }
-            }
-            else {
-
-                matchingWordCurrentExplanationBlock = new ArrayList<>();
-
-                //Getting the Explanation value
-                matchingWordExplanation = MainActivity.MeaningsDatabase.get(current_MM_index)[3];
-                matchingWordCurrentExplanationBlock.add(matchingWordExplanation);
-
-                //Getting the Rules value
-                matchingWordRules = MainActivity.MeaningsDatabase.get(current_MM_index)[4];
-                matchingWordCurrentExplanationBlock.add(matchingWordRules);
-
-                //Getting the Examples
-                matchingWordExampleList = MainActivity.MeaningsDatabase.get(current_MM_index)[5];
-                if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
-                    parsed_example_list = Arrays.asList(matchingWordExampleList.split(", "));
-                    for (int t = 0; t < parsed_example_list.size(); t++) {
-                        example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
-                        matchingWordCurrentExplanationBlock.add(MainActivity.ExamplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_English]);
-                        matchingWordCurrentExplanationBlock.add(MainActivity.ExamplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Romaji]);
-                        matchingWordCurrentExplanationBlock.add(MainActivity.ExamplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Kanji]);
-                    }
-                }
-                matchingWordExplanationBlocks.add(matchingWordCurrentExplanationBlock);
-
-            }
-            matchingWordCurrentMeaningBlock.add(matchingWordExplanationBlocks);
-
-            matchingWordMeaningBlocks.add(matchingWordCurrentMeaningBlock);
-
-        }
-
-        matchingWordCharacteristics.add(matchingWordMeaningBlocks);
-
-        return matchingWordCharacteristics;
     }
     public static String                removeApostrophe(String sentence) {
         String current_char;
@@ -2055,6 +1576,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                if (inflater==null) return null;
                 convertView = inflater.inflate(R.layout.custom_grammar_list_child_item, null);
             }
 
@@ -2062,7 +1584,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             int start_index;
             int end_index = 0;
             int number_of_hits;
-            String type = "";
+            String type;
 
             LinearLayout elements_container = convertView.findViewById(R.id.elements_container);
             elements_container.removeAllViews();
@@ -2208,126 +1730,121 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                         elements_container.addView(elements.get(i));
 
                         //Setting the explanation characteristics
-                        if (current_element.substring(0,4).equals("EXPL")) {
-                            elements.get(i).setText(current_element.substring(4,current_element.length()));
-                            elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryExplanation));
-                            elements.get(i).setPadding(0,10,0,0);
-                            elements.get(i).setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
-                        }
+                        switch (current_element.substring(0, 4)) {
+                            case "EXPL":
+                                elements.get(i).setText(current_element.substring(4, current_element.length()));
+                                elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryExplanation));
+                                elements.get(i).setPadding(0, 10, 0, 0);
+                                elements.get(i).setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
+                                break;
 
-                        //Setting the rule characteristics
-                        else if (current_element.substring(0,4).equals("RULE")) {
-                            elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryRule));
-                            elements.get(i).setPadding(0,30,0,0);
-                            elements.get(i).setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+                            //Setting the rule characteristics
+                            case "RULE":
+                                elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryRule));
+                                elements.get(i).setPadding(0, 30, 0, 0);
+                                elements.get(i).setTypeface(Typeface.DEFAULT, Typeface.BOLD);
 
-                            List<String> parsedRule = Arrays.asList(current_element.substring(4,current_element.length()).split("@"));
-                            String where = " where: ";
-                            String intro = "";
-                            if (!parsedRule.get(0).contains(":")) { intro = getResources().getString(R.string.PhraseStructure) + " "; }
-                            Spanned spanned_rule;
-
-                            if (parsedRule.size() == 1) { // If the rule doesn't have a "where" clause
-                                String htmlText = "<b>" +
-                                        "<font color='" + getResources().getColor(R.color.textColorDictionaryRulePhraseStructureClause) + "'>" +
-                                        intro +
-                                        "</font>" +
-                                        current_element.substring(4,current_element.length());
-                                spanned_rule = SharedMethods.fromHtml(htmlText);
-                                elements.get(i).setText(spanned_rule);
-                                elements.get(i).setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-                            } else {
-                                String htmlText = "<b>" +
-                                        "<font color='" + getResources().getColor(R.color.textColorDictionaryRulePhraseStructureClause) + "'>" +
-                                        intro +
-                                        "</font>" +
-                                        parsedRule.get(0) +
-                                        "</b>" + "<font color='" + getResources().getColor(R.color.textColorDictionaryRuleWhereClause) + "'>" +
-                                        where +
-                                        "</font>" +
-                                        "<b>" + parsedRule.get(1) + "</b>";
-                                spanned_rule = SharedMethods.fromHtml(htmlText);
-                                elements.get(i).setText(spanned_rule);
-                            }
-                        }
-
-                        //Setting the show/hide examples line characteristics
-                        else if (current_element.substring(0,4).equals("SHOW")) {
-
-                            //If there are no examples, hide this line
-                            if (current_element.equals("SHOW EXAMPLES AT INDEXES:")) elements.get(i).setVisibility(View.GONE);
-
-                            elements.get(i).setText(getResources().getString(R.string.ShowExamples));
-                            elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryExamples));
-                            elements.get(i).setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-                            elements.get(i).setPadding(0, 10, 0, 0);
-                            elements.get(i).setClickable(true);
-                            elements.get(i).setFocusable(false);
-
-                            final List<String> exampleSentencesIndexesForCurrentRule = Arrays.asList(current_element.split(":"));
-
-                            elements.get(i).setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    int index;
-
-                                    //Check if the example sentences are hidden and set the indicator (if the first is hidden, then so are the others)
-                                    if (exampleSentencesIndexesForCurrentRule.size()>1) {
-                                        index = Integer.parseInt(exampleSentencesIndexesForCurrentRule.get(1));
-                                        if (elements.get(index).getVisibility() == View.VISIBLE) {
-                                            elements.get(currentPosition).setText(getResources().getString(R.string.ShowExamples));
-                                        } else {
-                                            elements.get(currentPosition).setText(getResources().getString(R.string.HideExamples));
-                                        }
-                                    }
-
-                                    //In any case, reverse GONE <> VISIBLE on click
-                                    for (int j = 1; j < exampleSentencesIndexesForCurrentRule.size(); j++) {
-                                        if (!exampleSentencesIndexesForCurrentRule.get(j).equals("")) {
-                                            index = Integer.parseInt(exampleSentencesIndexesForCurrentRule.get(j));
-                                            int visibility = elements.get(index).getVisibility();
-                                            reverseVisibility(elements.get(index));
-                                        }
-                                    }
+                                List<String> parsedRule = Arrays.asList(current_element.substring(4, current_element.length()).split("@"));
+                                String where = " where: ";
+                                String intro = "";
+                                if (!parsedRule.get(0).contains(":")) {
+                                    intro = getResources().getString(R.string.PhraseStructure) + " ";
                                 }
-                            });
-                        }
+                                Spanned spanned_rule;
 
-                        //Setting the English example characteristics
-                        else if (current_element.substring(0,4).equals("EXEN")) {
-                            String example_English = current_element;
-                            if (!example_English.equals("")) {
-                                elements.get(i).setText(example_English.substring(4,example_English.length()));
+                                if (parsedRule.size() == 1) { // If the rule doesn't have a "where" clause
+                                    String htmlText = "<b>" +
+                                            "<font color='" + getResources().getColor(R.color.textColorDictionaryRulePhraseStructureClause) + "'>" +
+                                            intro +
+                                            "</font>" +
+                                            current_element.substring(4, current_element.length());
+                                    spanned_rule = SharedMethods.fromHtml(htmlText);
+                                    elements.get(i).setText(spanned_rule);
+                                    elements.get(i).setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+                                } else {
+                                    String htmlText = "<b>" +
+                                            "<font color='" + getResources().getColor(R.color.textColorDictionaryRulePhraseStructureClause) + "'>" +
+                                            intro +
+                                            "</font>" +
+                                            parsedRule.get(0) +
+                                            "</b>" + "<font color='" + getResources().getColor(R.color.textColorDictionaryRuleWhereClause) + "'>" +
+                                            where +
+                                            "</font>" +
+                                            "<b>" + parsedRule.get(1) + "</b>";
+                                    spanned_rule = SharedMethods.fromHtml(htmlText);
+                                    elements.get(i).setText(spanned_rule);
+                                }
+                                break;
+
+                            //Setting the show/hide examples line characteristics
+                            case "SHOW":
+
+                                //If there are no examples, hide this line
+                                if (current_element.equals("SHOW EXAMPLES AT INDEXES:"))
+                                    elements.get(i).setVisibility(View.GONE);
+
+                                elements.get(i).setText(getResources().getString(R.string.ShowExamples));
+                                elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryExamples));
+                                elements.get(i).setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+                                elements.get(i).setPadding(0, 10, 0, 0);
+                                elements.get(i).setClickable(true);
+                                elements.get(i).setFocusable(false);
+
+                                final List<String> exampleSentencesIndexesForCurrentRule = Arrays.asList(current_element.split(":"));
+
+                                elements.get(i).setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        int index;
+
+                                        //Check if the example sentences are hidden and set the indicator (if the first is hidden, then so are the others)
+                                        if (exampleSentencesIndexesForCurrentRule.size() > 1) {
+                                            index = Integer.parseInt(exampleSentencesIndexesForCurrentRule.get(1));
+                                            if (elements.get(index).getVisibility() == View.VISIBLE) {
+                                                elements.get(currentPosition).setText(getResources().getString(R.string.ShowExamples));
+                                            } else {
+                                                elements.get(currentPosition).setText(getResources().getString(R.string.HideExamples));
+                                            }
+                                        }
+
+                                        //In any case, reverse GONE <> VISIBLE on click
+                                        for (int j = 1; j < exampleSentencesIndexesForCurrentRule.size(); j++) {
+                                            if (!exampleSentencesIndexesForCurrentRule.get(j).equals("")) {
+                                                index = Integer.parseInt(exampleSentencesIndexesForCurrentRule.get(j));
+                                                reverseVisibility(elements.get(index));
+                                            }
+                                        }
+                                    }
+                                });
+                                break;
+
+                            //Setting the English example characteristics
+                            case "EXEN":
+                                elements.get(i).setText(current_element.substring(4, current_element.length()));
                                 elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryExampleEnglish));
                                 elements.get(i).setTextSize(14);
-                                elements.get(i).setPadding(4,15,0,0);
+                                elements.get(i).setPadding(4, 15, 0, 0);
                                 elements.get(i).setVisibility(View.GONE);
-                            }
-                        }
+                                break;
 
-                        //Setting the Romaji example characteristics
-                        else if (current_element.substring(0,4).equals("EXRO")) {
-                            String example_Romaji = current_element;
-                            if (!example_Romaji.equals("")) {
-                                elements.get(i).setText(example_Romaji.substring(4,example_Romaji.length()));
+                            //Setting the Romaji example characteristics
+                            case "EXRO":
+                                elements.get(i).setText(current_element.substring(4, current_element.length()));
                                 elements.get(i).setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
                                 elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryExampleRomaji));
                                 elements.get(i).setTextSize(14);
-                                elements.get(i).setPadding(4,0,0,0);
+                                elements.get(i).setPadding(4, 0, 0, 0);
                                 elements.get(i).setVisibility(View.GONE);
-                            }
-                        }
+                                break;
 
-                        //Setting the Kanji example characteristics
-                        else if (current_element.substring(0,4).equals("EXKJ")) {
-                            String example_Kanji = current_element;
-                            if (!example_Kanji.equals("")) {
-                                elements.get(i).setText(example_Kanji.substring(4,example_Kanji.length()));
+                            //Setting the Kanji example characteristics
+                            case "EXKJ":
+                                elements.get(i).setText(current_element.substring(4, current_element.length()));
                                 elements.get(i).setTextColor(getResources().getColor(R.color.textColorDictionaryExampleKanji));
                                 elements.get(i).setTextSize(14);
-                                elements.get(i).setPadding(4,0,0,0);
+                                elements.get(i).setPadding(4, 0, 0, 0);
                                 elements.get(i).setVisibility(View.GONE);
-                            }
+                                break;
                         }
                     }
                 }
@@ -2398,8 +1915,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             List<String> headerDetailsArray = this._listHeaderDetails.get(this._listDataHeader.get(groupPosition));
 
             if (convertView == null) {
-                LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = infalInflater.inflate(R.layout.custom_grammar_list_group_item, null);
+                LayoutInflater inflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                if (inflater ==null) return null;
+                convertView = inflater.inflate(R.layout.custom_grammar_list_group_item, null);
             }
 
             //Updating the romaji and kanji values
