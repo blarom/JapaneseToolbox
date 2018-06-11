@@ -1580,7 +1580,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 convertView = inflater.inflate(R.layout.custom_grammar_list_child_item, null);
             }
 
-            //Initialization
+            //regionInitialization
             int start_index;
             int end_index = 0;
             int number_of_hits;
@@ -1591,8 +1591,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             LinearLayout ChosenItem = convertView.findViewById(R.id.child_item_chosen_item_linearlayout);
             TextView ChosenItem_RomajiX = convertView.findViewById(R.id.child_item_chosen_item_romaji);
             TextView ChosenItem_KanjiX = convertView.findViewById(R.id.child_item_chosen_item_kanji);
+            //endregion
 
-            //Setting the alternate spellings
+            //regionSetting the alternate spellings
             if (childPosition == 0) {
                 String alternatespellings = childArray.get(0);
                 if (!alternatespellings.equals("")) {
@@ -1608,8 +1609,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     elements_container.addView(tv_alternatespellings);
                 }
             }
+            //endregion
 
-            //Setting the type and meaning
+            //regionSetting the type and meaning
             type = childArray.get(1); //make sure to adjust the type condition for the user click part
             if (childPosition > 0) {
                 String full_type = "";
@@ -1633,8 +1635,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 //tv_type_and_meaning.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
                 elements_container.addView(tv_type_and_meaning);
             }
+            //endregion
 
-            //Showing the romaji and kanji values for user click
+            //regionShowing the romaji and kanji values for user click
             if (childPosition == 0) {
 
                 ChosenItem.setVisibility(View.VISIBLE);
@@ -1650,8 +1653,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             else {
                 ChosenItem.setVisibility(View.GONE);
             }
+            //endregion
 
-            //Setting the antonym
+            //regionSetting the antonym
             if (childPosition > 0) {
                 String antonym = childArray.get(3);
                 if (!antonym.equals("")) {
@@ -1680,8 +1684,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     elements_container.addView(tv_antonym);
                 }
             }
+            //endregion
 
-            //Setting the synonym
+            //regionSetting the synonym
             if (childPosition > 0) {
                 String synonym = childArray.get(4);
                 if (!synonym.equals("")) {
@@ -1710,8 +1715,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     elements_container.addView(tv_synonym);
                 }
             }
+            //endregion
 
-            //Setting the explanation, rule show/hide line and examples
+            //regionSetting the explanation, rule show/hide line and examples
             if (childPosition > 0) {
                 String current_element;
 
@@ -1849,6 +1855,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     }
                 }
             }
+            //endregion
 
             elements_container.setFocusable(false);
             convertView.setClickable(true);
