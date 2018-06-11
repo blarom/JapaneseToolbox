@@ -10,12 +10,14 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.Html;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.japanesetoolboxapp.ConvertFragment;
 import com.japanesetoolboxapp.R;
+import com.japanesetoolboxapp.data.Word;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -369,7 +371,6 @@ public class SharedMethods {
     public static List<Object> getResultsFromJishoOnWeb(String word, final Activity activity) throws IOException {
 
         List<Object> setOf_matchingWordCharacteristics = new ArrayList<>();
-        List<Object> matchingWordCharacteristics = new ArrayList<>();
         if (word.equals("")) { return setOf_matchingWordCharacteristics; }
 
         //region Preparing the word to be included in the url
@@ -387,12 +388,737 @@ public class SharedMethods {
         }
         //endregion
 
+        //region Getting the Jisho.org ebsite code
         String website_code = getWebsiteXml(activity.getResources().getString(R.string.jisho_website_url) + prepared_word, activity);
         if ((website_code != null && website_code.equals("")) || website_code == null) return setOf_matchingWordCharacteristics;
 
-        //Extracting the definition from Jisho.org
+        if (website_code.length() == 0
+                ||website_code.contains("Sorry, couldn't find anything matching")
+                || website_code.contains("Sorry, couldn't find any words matching")
+                || (website_code.contains("Searched for") && website_code.contains("No matches for"))) {
+            return setOf_matchingWordCharacteristics;
+        }
+        //endregion
 
-        List<Object> parsed = parseJishoWebsite(website_code);
+        //region Parsing the website code to match the app's results tree
+        List<Object> parsedData = parseJishoWebsiteToTree(website_code);
+        setOf_matchingWordCharacteristics = adaptJishoTreeToResultsTree(parsedData);
+        //setOf_matchingWordCharacteristics = parseAndAdaptJishoWebsiteToResultsTree(website_code);
+        //endregion
+
+        return setOf_matchingWordCharacteristics;
+    }
+    public static List<Word> getWordsFromJishoOnWeb(String word, final Activity activity) throws IOException {
+
+        if (word.equals("")) { return new ArrayList<>(); }
+
+        //region Preparing the word to be included in the url
+        String prepared_word = "";
+        if (ConvertFragment.TextType(word).equals("kanji")) {
+            String converted_word = convertToUTF8(word);
+            converted_word = converted_word.substring(2,converted_word.length());
+            prepared_word = "";
+            for (int i = 0; i < converted_word.length() - 1; i = i + 2) {
+                prepared_word = prepared_word + "%" + converted_word.substring(i, i + 2);
+            }
+        }
+        else {
+            prepared_word = word;
+        }
+        //endregion
+
+        //Getting the Jisho.org website code
+        String website_code = getWebsiteXml(activity.getResources().getString(R.string.jisho_website_url) + prepared_word, activity);
+
+        //Returning nothing if there was a problem getting results
+        if ((website_code != null && website_code.equals(""))
+                || website_code == null
+                || website_code.length() == 0
+                || website_code.contains("Sorry, couldn't find anything matching")
+                || website_code.contains("Sorry, couldn't find any words matching")
+                || (website_code.contains("Searched for") && website_code.contains("No matches for"))) {
+            return new ArrayList<>();
+        }
+
+        //Parsing the website code and mapping it to a List<Word>
+        List<Object> parsedData = parseJishoWebsiteToTree(website_code);
+        List<Word> wordsList = adaptJishoTreeToWordsList(parsedData);
+
+        return wordsList;
+    }
+    private static String getWebsiteXml(String websiteUrl, final Activity activity) {
+
+        String responseString = "";
+        String inputLine;
+        HttpURLConnection connection = null;
+        mInternetIsAvailable = internetIsAvailableCheck(activity.getBaseContext());
+        TellUserIfThereIsNoInternetConnection(activity);
+
+        if (!mInternetIsAvailable) return responseString;
+
+        try {
+            //https://stackoverflow.com/questions/35568584/android-studio-deprecated-on-httpparams-httpconnectionparams-connmanagerparams
+            //String current_url = "https://www.google.co.il/search?dcr=0&source=hp&q=" + prepared_word;
+            URL dataUrl = new URL(websiteUrl);
+            connection = (HttpURLConnection) dataUrl.openConnection();
+            connection.setConnectTimeout(2000);
+            connection.setReadTimeout(2000);
+            connection.setInstanceFollowRedirects(true);
+            // optional default is GET
+            connection.setRequestMethod("GET");
+
+            int responseCode = connection.getResponseCode();
+            if (responseCode == 200) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                responseString = "";
+                while ((inputLine = in.readLine()) != null)
+                    responseString += inputLine + '\n';
+                in.close();
+                in = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.i("Diagnosis Time", "Failed to access online resources.");
+            if (Looper.myLooper() == null) Looper.prepare(); //Checks if the looper already exists. If this is the case, uses the old looper
+            try {
+                activity.runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(activity.getBaseContext(), "Failed to access online resources.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+            return null;
+        } finally {
+            try {
+                if (connection != null) {connection.disconnect(); connection = null; }
+            } catch (Exception e) {
+                e.printStackTrace(); //If you want further info on failure...
+            }
+        }
+        return responseString;
+    }
+    private static List<Object> parseJishoWebsiteToTree(String website_code) {
+
+        runningIndex = 0;
+        int initial_offset = 15; //Skips <!DOCTYPE html>
+        websiteCodeString = website_code.substring(initial_offset, website_code.length());
+        List<Object> parsedWebsiteTree = getChildren();
+
+        return parsedWebsiteTree;
+    }
+    private static int runningIndex = 0;
+    private static String websiteCodeString = "";
+    private static List<Object> getChildren() {
+
+        List<Object> currentParent = new ArrayList<>();
+        if (runningIndex > websiteCodeString.length()-1) {
+            currentParent.add("");
+            return currentParent;
+        }
+        String remainingwebsiteCodeString = websiteCodeString.substring(runningIndex,websiteCodeString.length());
+
+        if (!remainingwebsiteCodeString.contains("<")) {
+            currentParent.add(remainingwebsiteCodeString);
+            return currentParent;
+        }
+
+        while (0 <= runningIndex && runningIndex < websiteCodeString.length()) {
+
+            //Getting the next header characteristics
+            int nextHeaderStart = websiteCodeString.indexOf("<", runningIndex);
+            if (nextHeaderStart==-1) return currentParent;
+            int nextHeaderEnd = websiteCodeString.indexOf(">", nextHeaderStart);
+            String currentHeader = websiteCodeString.substring(nextHeaderStart + 1, nextHeaderEnd);
+
+            //Log.i("Diagnosis Time", "Current child: " + runningIndex + ", " + currentHeader);
+
+            //If there is String text before the next header, add it to the list and continue to the header
+            if (nextHeaderStart != runningIndex) {
+                String currentText = websiteCodeString.substring(runningIndex, nextHeaderStart);
+                StringBuilder validText = new StringBuilder("");
+                for (int i=0; i<currentText.length(); i++) {
+                    if (i<currentText.length()-1 && currentText.substring(i,i+1).equals("\n")) { i++; continue;}
+                    validText.append(currentText.charAt(i));
+                }
+                String validTextString = validText.toString().trim();
+//                boolean isOnlyWhiteSpace = true;
+//                for (int i=0; i<validTextString.length(); i++) {
+//                    if (!Character.isWhitespace(validTextString.charAt(i))) {isOnlyWhiteSpace = false; break;}
+//                }
+                if (!TextUtils.isEmpty(validTextString)) currentParent.add(validTextString);
+                runningIndex = nextHeaderStart;
+            }
+
+            //If the header is of type "<XXX/>" then there is no subtree. In this case add the header to the tree and move to next subtree.
+            if (websiteCodeString.substring(nextHeaderEnd - 1, nextHeaderEnd + 1).equals("/>")) {
+                currentParent.add(currentHeader);
+                runningIndex = nextHeaderEnd + 1;
+            }
+
+            //If the header is of type "<XXX>" then:
+            // - if the header is <br> there is no substree and the header should be treated as text
+            else if (currentHeader.equals("br")) {
+                currentParent.add("<br>");
+                runningIndex = nextHeaderEnd + 1;
+            }
+            // - if the header is a tail, move up the stack
+            else if (currentHeader.substring(0,1).equals("/")) {
+                int endOfTail = websiteCodeString.indexOf(">", nextHeaderStart);
+                runningIndex = endOfTail+1;
+                return currentParent;
+            }
+            // - if the header is <!-- XXX> then this is a comment and should be ignored
+            else if (currentHeader.contains("!--")) {
+                int endOfComment = websiteCodeString.indexOf("-->", runningIndex);
+                runningIndex = endOfComment+3;
+            }
+            //If the subtree is valid and is not the <head> subtree, add it to the tree
+            else if (currentHeader.equals("head")) {
+                currentParent.add(currentHeader);
+                currentParent.add("");
+                runningIndex = websiteCodeString.indexOf("</head>") + 7;
+            }
+            // - if the header is not <br> then there is a subtree and the methods recurses
+            else {
+                currentParent.add(currentHeader);
+                runningIndex = nextHeaderEnd+1;
+                List<Object> subtree = getChildren();
+                currentParent.add(subtree);
+            }
+
+        }
+
+        return currentParent;
+    }
+    private static List<Word> adaptJishoTreeToWordsList(List<Object> parsedData) {
+
+        //region Getting to the relevant tree section
+        if (parsedData.size()<1) return new ArrayList<>();
+        List<Object> htmlData = (List<Object>) parsedData.get(1);
+        List<Object> bodyData = (List<Object>) htmlData.get(3);
+        List<Object> pageContainerData = (List<Object>) getElementAtHeader(bodyData,"page_container");
+        if (pageContainerData==null) return new ArrayList<>();
+        List<Object> large12ColumnsData = (List<Object>) getElementAtHeader(pageContainerData,"large-12 columns");
+        if (large12ColumnsData==null) return new ArrayList<>();
+        List<Object> mainResultsData = (List<Object>) getElementAtHeader(large12ColumnsData,"main_results");
+        if (mainResultsData==null) return new ArrayList<>();
+        List<Object> rowData = (List<Object>) getElementAtHeader(mainResultsData,"row");
+        if (rowData==null) return new ArrayList<>();
+        List<Object> primaryData = (List<Object>) getElementAtHeader(rowData,"primary");
+        if (primaryData==null) return new ArrayList<>();
+        List<Object> exactBlockData = (List<Object>) getElementAtHeader(primaryData,"exact_block");
+        if (exactBlockData==null) return new ArrayList<>();
+        //endregion
+
+        //Extracting the list of hits
+        String kanji;
+        String romaji;
+        List<String> meaningTagsFromTree;
+        List<String> meaningsFromTree;
+        List<Word> wordsList = new ArrayList<>();
+
+        for (int i=3; i<exactBlockData.size(); i=i+2) {
+
+            Word currentWord = new Word();
+
+            List<Object> conceptLightClearFixData = (List<Object>) exactBlockData.get(i);
+
+            //region Extracting the Romaji, Kanji and Altternate Spellings
+            List<Object> conceptLightWrapperData = (List<Object>) conceptLightClearFixData.get(1);
+            List<Object> conceptLightReadingsData = (List<Object>) conceptLightWrapperData.get(1);
+            List<Object> conceptLightRepresentationData = (List<Object>) conceptLightReadingsData.get(1);
+
+            romaji = "";
+            List<Object> furiganaData = (List<Object>) conceptLightRepresentationData.get(1);
+            for (int j=1; j<furiganaData.size(); j=j+2) {
+                List<Object> kanji1UpData = (List<Object>) furiganaData.get(j);
+                if (kanji1UpData.size()>0) romaji += (String) kanji1UpData.get(0);
+            }
+
+            kanji = "";
+            List<Object> TextData = (List<Object>) getElementAtHeader(conceptLightRepresentationData,"text");
+            if (TextData!=null && TextData.size()>1) {
+                kanji = "";
+                for (int j=0; j<TextData.size(); j++) {
+                    String currentText = "";
+                    if (TextData.get(j) instanceof List) {
+                        List<Object> list = (List<Object>) TextData.get(j);
+                        currentText = (String) list.get(0);
+                    }
+                    else {
+                        currentText = (String) TextData.get(j);
+                        if (currentText.equals("span")) currentText = "";
+                    }
+                    kanji += currentText;
+                }
+            }
+            else if (TextData!=null && TextData.size()>0) kanji = (String) TextData.get(0);
+
+            if (romaji.length()!=0 &&
+                    (ConvertFragment.TextType(kanji).equals("katakana") || ConvertFragment.TextType(kanji).equals("hiragana"))) {
+                //When the word is originally katakana only, the website does not display hiragana. This is corrected here.
+                romaji = ConvertFragment.Kana_to_Romaji_to_Kana(kanji).get(0);
+            }
+
+            List<Object> conceptLightStatusData = (List<Object>) getElementAtHeader(conceptLightWrapperData,"concept_light-status");
+            if (conceptLightStatusData!=null) {
+                List<Object> ulClassData = (List<Object>) getElementAtHeader(conceptLightStatusData, "ul class");
+                if (ulClassData != null) {
+                    for (int j = 1; j < ulClassData.size(); j = j + 2) {
+                        List<Object> li = (List<Object>) ulClassData.get(j);
+                        List<Object> aRef = (List<Object>) li.get(1);
+                        String sentenceSearchFor = (String) aRef.get(0);
+                        String currentValue = "";
+                        if (sentenceSearchFor.length() > 20 && sentenceSearchFor.contains("Sentence search for")) {
+                            currentValue = sentenceSearchFor.substring(20, sentenceSearchFor.length());
+                        }
+                        if (currentValue.length() != 0 &&
+                                (ConvertFragment.TextType(currentValue).equals("katakana") || ConvertFragment.TextType(currentValue).equals("hiragana"))) {
+                            //When the word is originally katakana only, the website does not display hiragana. This is corrected here.
+                            romaji = ConvertFragment.Kana_to_Romaji_to_Kana(currentValue).get(0);
+                            break;
+                        }
+                    }
+                }
+            }
+            //If romaji data not found at the current tree node, try one node above it
+            conceptLightStatusData = (List<Object>) getElementAtHeader(conceptLightClearFixData,"concept_light-status");
+            if (conceptLightStatusData!=null) {
+                List<Object> ulClassData = (List<Object>) getElementAtHeader(conceptLightStatusData, "ul class");
+                if (ulClassData != null) {
+                    for (int j = 1; j < ulClassData.size(); j = j + 2) {
+                        List<Object> li = (List<Object>) ulClassData.get(j);
+                        List<Object> aRef = (List<Object>) li.get(1);
+                        String sentenceSearchFor = (String) aRef.get(0);
+                        String currentValue = "";
+                        if (sentenceSearchFor.length() > 20 && sentenceSearchFor.contains("Sentence search for")) {
+                            currentValue = sentenceSearchFor.substring(20, sentenceSearchFor.length());
+                        }
+                        if (currentValue.length() != 0 &&
+                                (ConvertFragment.TextType(currentValue).equals("katakana") || ConvertFragment.TextType(currentValue).equals("hiragana"))) {
+                            //When the word is originally katakana only, the website does not display hiragana. This is corrected here.
+                            romaji = ConvertFragment.Kana_to_Romaji_to_Kana(currentValue).get(0);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            currentWord.setRomaji(ConvertFragment.Kana_to_Romaji_to_Kana(romaji).get(0));
+            currentWord.setKanji(kanji);
+            currentWord.setAltSpellings(""); //Alternate spellings, left empty for now >>> TODO: add this functionality
+            //endregion
+
+            //region Extracting the meanings
+
+            List<Object> conceptLightMeaningsData = (List<Object>) getElementAtHeader(conceptLightClearFixData,"concept_light-meanings medium-9 columns");
+            List<Object> meaningsWrapperData = (List<Object>) conceptLightMeaningsData.get(1);
+
+            String currentHeader = "";
+            String meaningTag = "";
+            String meaning;
+            meaningTagsFromTree = new ArrayList<>();
+            meaningsFromTree = new ArrayList<>();
+            for (int j=0; j<meaningsWrapperData.size(); j++) {
+
+                if (j%2==0) { currentHeader = (String) meaningsWrapperData.get(j); continue;}
+
+                if (currentHeader.contains("meaning-tags")) {
+                    List<Object> meaningsTagsData = (List<Object>) meaningsWrapperData.get(j);
+                    meaningTag = "";
+                    if (meaningsTagsData.size()>0) meaningTag = (String) meaningsTagsData.get(0);
+                    if (meaningTag.contains("Wikipedia") || meaningTag.contains("Other forms") || meaningTag.contains("Notes")) break;
+                }
+                if (currentHeader.contains("meaning-wrapper")) {
+                    List<Object> meaningWrapperData = (List<Object>) meaningsWrapperData.get(j);
+                    List<Object> meaningDefinitionData = (List<Object>) meaningWrapperData.get(1);
+                    List<Object> meaningMeaningata = (List<Object>) getElementAtHeader(meaningDefinitionData,"meaning-meaning");
+                    meaningTagsFromTree.add(meaningTag);
+                    meaning = "";
+                    if (meaningMeaningata!=null && meaningMeaningata.size()>0) meaning = (String) meaningMeaningata.get(0);
+                    meaningsFromTree.add(reformatMeanings(meaning));
+                }
+            }
+
+            List<Word.Meaning> wordMeaningsList = new ArrayList<>();
+            for (int j=0; j<meaningsFromTree.size(); j++) {
+
+                Word.Meaning wordMeaning = new Word.Meaning();
+
+                //Getting the Meaning value
+                String matchingWordMeaning = meaningsFromTree.get(j);
+                wordMeaning.setMeaning(matchingWordMeaning);
+
+                //Getting the Type value
+                String matchingWordType = meaningTagsFromTree.get(j);
+                if (matchingWordType.contains("verb")) {
+                    if      (matchingWordType.contains("su ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VsuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VsuT";
+                        else matchingWordType = "VsuI";
+                    }
+                    else if (matchingWordType.contains("ku ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VkuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VkuT";
+                        else matchingWordType = "VkuI";
+                    }
+                    else if (matchingWordType.contains("gu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VguI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VguT";
+                        else matchingWordType = "VguI";
+                    }
+                    else if (matchingWordType.contains("mu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VmuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VmuT";
+                        else matchingWordType = "VmuI";
+                    }
+                    else if (matchingWordType.contains("bu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VbuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VbuT";
+                        else matchingWordType = "VbuI";
+                    }
+                    else if (matchingWordType.contains("nu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VnuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VnuT";
+                        else matchingWordType = "VnuI";
+                    }
+                    else if (matchingWordType.contains("ru ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VrugI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VrugT";
+                        else matchingWordType = "VrugI";
+                    }
+                    else if (matchingWordType.contains("tsu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VtsuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VtsuT";
+                        else matchingWordType = "VtsuI";
+                    }
+                    else if (matchingWordType.contains("u ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VuT";
+                        else matchingWordType = "VuI";
+                    }
+                    else if (matchingWordType.contains("Ichidan")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VruiI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VruiT";
+                        else matchingWordType = "VruiI";
+                    }
+                }
+                wordMeaning.setType(matchingWordType);
+
+                //Getting the Opposite value
+                String matchingWordOpposite = ""; //TODO: See if this can be extracted from the site
+                wordMeaning.setAntonym(matchingWordOpposite);
+
+                //Getting the Synonym value
+                String matchingWordSynonym = ""; //TODO: See if this can be extracted from the site
+                wordMeaning.setSynonym(matchingWordSynonym);
+
+                //Getting the set of Explanations
+                List<Word.Meaning.Explanation> explanationsList = new ArrayList<>();
+                Word.Meaning.Explanation explanation = new Word.Meaning.Explanation();
+
+                //Getting the Explanation value
+                String matchingWordExplanation = "";
+                explanation.setExplanation(matchingWordExplanation);
+
+                //Getting the Rules value
+                String matchingWordRules = "";
+                explanation.setRules(matchingWordRules);
+
+                explanationsList.add(explanation);
+
+                wordMeaning.setExplanations(explanationsList);
+                wordMeaningsList.add(wordMeaning);
+            }
+
+            currentWord.setMeanings(wordMeaningsList);
+            //endregion
+
+            wordsList.add(currentWord);
+        }
+
+        return wordsList;
+    }
+    private static List<Object> adaptJishoTreeToResultsTree(List<Object> parsedData) {
+
+        //Getting to the relevant tree section
+        if (parsedData.size()<1) return new ArrayList<>();
+        List<Object> htmlData = (List<Object>) parsedData.get(1);
+        List<Object> bodyData = (List<Object>) htmlData.get(3);
+        List<Object> pageContainerData = (List<Object>) getElementAtHeader(bodyData,"page_container");
+        if (pageContainerData==null) return new ArrayList<>();
+        List<Object> large12ColumnsData = (List<Object>) getElementAtHeader(pageContainerData,"large-12 columns");
+        if (large12ColumnsData==null) return new ArrayList<>();
+        List<Object> mainResultsData = (List<Object>) getElementAtHeader(large12ColumnsData,"main_results");
+        if (mainResultsData==null) return new ArrayList<>();
+        List<Object> rowData = (List<Object>) getElementAtHeader(mainResultsData,"row");
+        if (rowData==null) return new ArrayList<>();
+        List<Object> primaryData = (List<Object>) getElementAtHeader(rowData,"primary");
+        if (primaryData==null) return new ArrayList<>();
+        List<Object> exactBlockData = (List<Object>) getElementAtHeader(primaryData,"exact_block");
+        if (exactBlockData==null) return new ArrayList<>();
+
+        //Extracting the list of hits
+        String kanji;
+        String romaji;
+        List<String> meaningTags;
+        List<String> meanings;
+
+        List<Object> setOf_matchingWordCharacteristics = new ArrayList<>();
+
+        for (int i=3; i<exactBlockData.size(); i=i+2) {
+
+            List<Object> currentMatchingWordCharacteristics = new ArrayList<>();
+
+            List<Object> conceptLightClearFixData = (List<Object>) exactBlockData.get(i);
+
+            //Extracting the romaji and Kanji
+            List<Object> conceptLightWrapperData = (List<Object>) conceptLightClearFixData.get(1);
+
+            List<Object> conceptLightReadingsData = (List<Object>) conceptLightWrapperData.get(1);
+            List<Object> conceptLightRepresentationData = (List<Object>) conceptLightReadingsData.get(1);
+
+            romaji = "";
+            List<Object> furiganaData = (List<Object>) conceptLightRepresentationData.get(1);
+            for (int j=1; j<furiganaData.size(); j=j+2) {
+                List<Object> kanji1UpData = (List<Object>) furiganaData.get(j);
+                if (kanji1UpData.size()>0) romaji += (String) kanji1UpData.get(0);
+            }
+
+            kanji = "";
+            List<Object> TextData = (List<Object>) getElementAtHeader(conceptLightRepresentationData,"text");
+            if (TextData!=null && TextData.size()>1) {
+                kanji = "";
+                for (int j=0; j<TextData.size(); j++) {
+                    String currentText = "";
+                    if (TextData.get(j) instanceof List) {
+                        List<Object> list = (List<Object>) TextData.get(j);
+                        currentText = (String) list.get(0);
+                    }
+                    else {
+                        currentText = (String) TextData.get(j);
+                        if (currentText.equals("span")) currentText = "";
+                    }
+                    kanji += currentText;
+                }
+            }
+            else if (TextData!=null && TextData.size()>0) kanji = (String) TextData.get(0);
+
+            if (romaji.length()!=0 &&
+                    (ConvertFragment.TextType(kanji).equals("katakana") || ConvertFragment.TextType(kanji).equals("hiragana"))) {
+                //When the word is originally katakana only, the website does not display hiragana. This is corrected here.
+                romaji = ConvertFragment.Kana_to_Romaji_to_Kana(kanji).get(0);
+            }
+
+            List<Object> conceptLightStatusData = (List<Object>) getElementAtHeader(conceptLightWrapperData,"concept_light-status");
+            if (conceptLightStatusData!=null) {
+                List<Object> ulClassData = (List<Object>) getElementAtHeader(conceptLightStatusData, "ul class");
+                if (ulClassData != null) {
+                    for (int j = 1; j < ulClassData.size(); j = j + 2) {
+                        List<Object> li = (List<Object>) ulClassData.get(j);
+                        List<Object> aRef = (List<Object>) li.get(1);
+                        String sentenceSearchFor = (String) aRef.get(0);
+                        String currentValue = "";
+                        if (sentenceSearchFor.length() > 20 && sentenceSearchFor.contains("Sentence search for")) {
+                            currentValue = sentenceSearchFor.substring(20, sentenceSearchFor.length());
+                        }
+                        if (currentValue.length() != 0 &&
+                                (ConvertFragment.TextType(currentValue).equals("katakana") || ConvertFragment.TextType(currentValue).equals("hiragana"))) {
+                            //When the word is originally katakana only, the website does not display hiragana. This is corrected here.
+                            romaji = ConvertFragment.Kana_to_Romaji_to_Kana(currentValue).get(0);
+                            break;
+                        }
+                    }
+                }
+            }
+            //If romaji data not found at the current tree node, try one node above it
+            conceptLightStatusData = (List<Object>) getElementAtHeader(conceptLightClearFixData,"concept_light-status");
+            if (conceptLightStatusData!=null) {
+                List<Object> ulClassData = (List<Object>) getElementAtHeader(conceptLightStatusData, "ul class");
+                if (ulClassData != null) {
+                    for (int j = 1; j < ulClassData.size(); j = j + 2) {
+                        List<Object> li = (List<Object>) ulClassData.get(j);
+                        List<Object> aRef = (List<Object>) li.get(1);
+                        String sentenceSearchFor = (String) aRef.get(0);
+                        String currentValue = "";
+                        if (sentenceSearchFor.length() > 20 && sentenceSearchFor.contains("Sentence search for")) {
+                            currentValue = sentenceSearchFor.substring(20, sentenceSearchFor.length());
+                        }
+                        if (currentValue.length() != 0 &&
+                                (ConvertFragment.TextType(currentValue).equals("katakana") || ConvertFragment.TextType(currentValue).equals("hiragana"))) {
+                            //When the word is originally katakana only, the website does not display hiragana. This is corrected here.
+                            romaji = ConvertFragment.Kana_to_Romaji_to_Kana(currentValue).get(0);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Extracting the meanings
+
+            List<Object> conceptLightMeaningsData = (List<Object>) getElementAtHeader(conceptLightClearFixData,"concept_light-meanings medium-9 columns");
+            List<Object> meaningsWrapperData = (List<Object>) conceptLightMeaningsData.get(1);
+
+            String currentHeader = "";
+            String meaningTag = "";
+            String meaning;
+            meaningTags = new ArrayList<>();
+            meanings = new ArrayList<>();
+            for (int j=0; j<meaningsWrapperData.size(); j++) {
+
+                //currentMeaningsWrapper = (List<Object>) meaningsWrapperData.get(j);
+                //currentHeader = (String) currentMeaningsWrapper.get(j);
+                if (j%2==0) { currentHeader = (String) meaningsWrapperData.get(j); continue;}
+
+                if (currentHeader.contains("meaning-tags")) {
+                    List<Object> meaningsTagsData = (List<Object>) meaningsWrapperData.get(j);
+                    meaningTag = "";
+                    if (meaningsTagsData.size()>0) meaningTag = (String) meaningsTagsData.get(0);
+                    if (meaningTag.contains("Wikipedia") || meaningTag.contains("Other forms") || meaningTag.contains("Notes")) break;
+                }
+                if (currentHeader.contains("meaning-wrapper")) {
+                    List<Object> meaningWrapperData = (List<Object>) meaningsWrapperData.get(j);
+                    List<Object> meaningDefinitionData = (List<Object>) meaningWrapperData.get(1);
+                    List<Object> meaningMeaningata = (List<Object>) getElementAtHeader(meaningDefinitionData,"meaning-meaning");
+                    meaningTags.add(meaningTag);
+                    meaning = "";
+                    if (meaningMeaningata!=null && meaningMeaningata.size()>0) meaning = (String) meaningMeaningata.get(0);
+                    meanings.add(reformatMeanings(meaning));
+                }
+            }
+
+            currentMatchingWordCharacteristics.add(ConvertFragment.Kana_to_Romaji_to_Kana(romaji).get(0));
+            currentMatchingWordCharacteristics.add(kanji);
+            currentMatchingWordCharacteristics.add(""); //Alternate spellings, left empty for now >>> TODO: add this functionality
+
+            List<Object> matchingWordCurrentMeaningBlocks = new ArrayList<>();
+            List<Object> matchingWordCurrentMeaningsBlock;
+            List<List<String>> matchingWordExplanationBlocks = new ArrayList<>();
+            List<String> matchingWordCurrentExplanationsBlock;
+            String matchingWordMeaning;
+            String matchingWordType;
+            String matchingWordOpposite;
+            String matchingWordSynonym;
+            String matchingWordExplanation;
+            String matchingWordRules;
+            for (int j=0; j<meanings.size(); j++) {
+
+                matchingWordCurrentMeaningsBlock = new ArrayList<>();
+
+                //Getting the Meaning value
+                matchingWordMeaning = meanings.get(j);
+                matchingWordCurrentMeaningsBlock.add(matchingWordMeaning);
+
+                //Getting the Type value
+                matchingWordType = meaningTags.get(j);
+                if (matchingWordType.contains("verb")) {
+                    if      (matchingWordType.contains("su ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VsuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VsuT";
+                        else matchingWordType = "VsuI";
+                    }
+                    else if (matchingWordType.contains("ku ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VkuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VkuT";
+                        else matchingWordType = "VkuI";
+                    }
+                    else if (matchingWordType.contains("gu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VguI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VguT";
+                        else matchingWordType = "VguI";
+                    }
+                    else if (matchingWordType.contains("mu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VmuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VmuT";
+                        else matchingWordType = "VmuI";
+                    }
+                    else if (matchingWordType.contains("bu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VbuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VbuT";
+                        else matchingWordType = "VbuI";
+                    }
+                    else if (matchingWordType.contains("nu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VnuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VnuT";
+                        else matchingWordType = "VnuI";
+                    }
+                    else if (matchingWordType.contains("ru ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VrugI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VrugT";
+                        else matchingWordType = "VrugI";
+                    }
+                    else if (matchingWordType.contains("tsu ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VtsuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VtsuT";
+                        else matchingWordType = "VtsuI";
+                    }
+                    else if (matchingWordType.contains("u ending")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VuI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VuT";
+                        else matchingWordType = "VuI";
+                    }
+                    else if (matchingWordType.contains("Ichidan")) {
+                        if (matchingWordType.contains("intransitive")) matchingWordType = "VruiI";
+                        if (matchingWordType.contains("Transitive")) matchingWordType = "VruiT";
+                        else matchingWordType = "VruiI";
+                    }
+                }
+                matchingWordCurrentMeaningsBlock.add(matchingWordType);
+
+                //Getting the Opposite value
+                matchingWordOpposite = ""; //TODO: See if this can be extracted from the site
+                matchingWordCurrentMeaningsBlock.add(matchingWordOpposite);
+
+                //Getting the Synonym value
+                matchingWordSynonym = ""; //TODO: See if this can be extracted from the site
+                matchingWordCurrentMeaningsBlock.add(matchingWordSynonym);
+
+                //Getting the set of Explanations
+                matchingWordCurrentExplanationsBlock = new ArrayList<>();
+
+                //Getting the Explanation value
+                matchingWordExplanation = "";
+                matchingWordCurrentExplanationsBlock.add(matchingWordExplanation);
+
+                //Getting the Rules value
+                matchingWordRules = "";
+                matchingWordCurrentExplanationsBlock.add(matchingWordRules);
+
+                matchingWordExplanationBlocks.add(matchingWordCurrentExplanationsBlock);
+
+                matchingWordCurrentMeaningsBlock.add(matchingWordExplanationBlocks);
+                matchingWordCurrentMeaningBlocks.add(matchingWordCurrentMeaningsBlock);
+            }
+
+            currentMatchingWordCharacteristics.add(matchingWordCurrentMeaningBlocks);
+            setOf_matchingWordCharacteristics.add(currentMatchingWordCharacteristics);
+        }
+
+
+        return setOf_matchingWordCharacteristics;
+    }
+    private static Object getElementAtHeader(List<Object> list, String header) {
+        for (int i=0; i<list.size()-1; i++) {
+            if (i%2==0 && ((String)list.get(i)).contains(header)) return list.get(i+1);
+        }
+        return null;
+    }
+    private static String reformatMeanings(String meaningsOriginal) {
+        String meanings_commas = "";
+        for (int i = 0; i < meaningsOriginal.length(); i++) {
+            if (meaningsOriginal.substring(i, i + 1).equals(";")) { meanings_commas += ","; }
+            else { meanings_commas += meaningsOriginal.substring(i, i + 1); }
+        }
+        meanings_commas = SharedMethods.fromHtml(meanings_commas).toString();
+        meanings_commas = meanings_commas.replaceAll("',", "'");
+        return meanings_commas;
+    }
+    private static List<Object> parseAndAdaptJishoWebsiteToResultsTree(String website_code) {
+
+        List<Object> setOf_matchingWordCharacteristics = new ArrayList<>();
+        List<Object> matchingWordCharacteristics = new ArrayList<>();
 
         //region Initializations
         String identifier;
@@ -421,13 +1147,6 @@ public class SharedMethods {
         int current_meanings_block_start;
         int current_meanings_block_end;
         List<String> current_meanings;
-
-        if (website_code.length() == 0
-                ||website_code.contains("Sorry, couldn't find anything matching")
-                || website_code.contains("Sorry, couldn't find any words matching")
-                || (website_code.contains("Searched for") && website_code.contains("No matches for"))) {
-            return setOf_matchingWordCharacteristics;
-        }
 
         int current_index_in_site = 0;
         current_index_in_block = website_code.length()-1;
@@ -671,181 +1390,6 @@ public class SharedMethods {
 
             setOf_matchingWordCharacteristics.add(matchingWordCharacteristics);
         }
-
         return setOf_matchingWordCharacteristics;
-    }
-    private static String getWebsiteXml(String websiteUrl, final Activity activity) {
-
-        String responseString = "";
-        String inputLine;
-        HttpURLConnection connection = null;
-        mInternetIsAvailable = internetIsAvailableCheck(activity.getBaseContext());
-        TellUserIfThereIsNoInternetConnection(activity);
-
-        if (!mInternetIsAvailable) return responseString;
-
-        try {
-            //https://stackoverflow.com/questions/35568584/android-studio-deprecated-on-httpparams-httpconnectionparams-connmanagerparams
-            //String current_url = "https://www.google.co.il/search?dcr=0&source=hp&q=" + prepared_word;
-            URL dataUrl = new URL(websiteUrl);
-            connection = (HttpURLConnection) dataUrl.openConnection();
-            connection.setConnectTimeout(2000);
-            connection.setReadTimeout(2000);
-            connection.setInstanceFollowRedirects(true);
-            // optional default is GET
-            connection.setRequestMethod("GET");
-
-            int responseCode = connection.getResponseCode();
-            if (responseCode == 200) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                responseString = "";
-                while ((inputLine = in.readLine()) != null)
-                    responseString += inputLine + '\n';
-                in.close();
-                in = null;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.i("Diagnosis Time", "Failed to access online resources.");
-            if (Looper.myLooper() == null) Looper.prepare(); //Checks if the looper already exists. If this is the case, uses the old looper
-            try {
-                activity.runOnUiThread(new Runnable() {
-                    public void run() {
-                        Toast.makeText(activity.getBaseContext(), "Failed to access online resources.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            } catch (Exception e2) {
-                e2.printStackTrace();
-            }
-            return null;
-        } finally {
-            try {
-                if (connection != null) {connection.disconnect(); connection = null; }
-            } catch (Exception e) {
-                e.printStackTrace(); //If you want further info on failure...
-            }
-        }
-        return responseString;
-    }
-
-    private static List<Object> parseJishoWebsite(String website_code) {
-
-        int initial_offset = 15; //Skips <!DOCTYPE html>
-        websiteCodeString = website_code.substring(initial_offset, website_code.length());
-        List<Object> parsedWebsiteTree = getChildren();
-
-        return parsedWebsiteTree;
-    }
-    private static int runningIndex = 0;
-    private static String websiteCodeString = "";
-    private static List<Object> getChildren() {
-
-        List<Object> currentParent = new ArrayList<>();
-        String remainingwebsiteCodeString = websiteCodeString.substring(runningIndex,websiteCodeString.length());
-
-        if (!remainingwebsiteCodeString.contains("<")) {
-            currentParent.add(remainingwebsiteCodeString);
-            return currentParent;
-        }
-
-        while (0 <= runningIndex && runningIndex < websiteCodeString.length()) {
-
-            //Getting the next header characteristics
-            int nextHeaderStart = websiteCodeString.indexOf("<", runningIndex);
-            if (nextHeaderStart==-1) return currentParent;
-            int nextHeaderEnd = websiteCodeString.indexOf(">", nextHeaderStart);
-            String currentHeader = websiteCodeString.substring(nextHeaderStart + 1, nextHeaderEnd);
-
-            Log.i("Diagnosis Time", "Current child: " + runningIndex + ", " + currentHeader);
-
-            //If there is String text before the next header, add it to the list and continue to the header
-            if (nextHeaderStart != runningIndex) {
-                String currentText = websiteCodeString.substring(runningIndex, nextHeaderStart);
-                if (!currentText.contains("\n")) currentParent.add(currentText);
-                runningIndex = nextHeaderStart;
-            }
-
-            //If the header is of type "<XXX/>" then there is no subtree. In this case add the header to the tree and move to next subtree.
-            if (websiteCodeString.substring(nextHeaderEnd - 1, nextHeaderEnd + 1).equals("/>")) {
-                currentParent.add(currentHeader);
-                runningIndex = nextHeaderEnd + 1;
-            }
-
-            //If the header is of type "<XXX>" then:
-            // - if the header is <br> there is no substree and the header should be treated as text
-            else if (currentHeader.equals("br")) {
-                currentParent.add("<br>");
-                runningIndex = nextHeaderEnd + 1;
-            }
-            // - if the header is a tail, move up the stack
-            else if (currentHeader.substring(0,1).equals("/")) {
-                int endOfTail = websiteCodeString.indexOf(">", nextHeaderStart);
-                runningIndex = endOfTail+1;
-                return currentParent;
-            }
-            // - if the header is <!-- XXX> then this is a comment and should be ignored
-            else if (currentHeader.contains("!--")) {
-                int endOfComment = websiteCodeString.indexOf("-->", runningIndex);
-                runningIndex = endOfComment+3;
-            }
-            //If the subtree is valid and is not the <head> subtree, add it to the tree
-            else if (currentHeader.equals("head")) {
-                currentParent.add(currentHeader);
-                currentParent.add("");
-                runningIndex = websiteCodeString.indexOf("</head>") + 7;
-            }
-            // - if the header is not <br> then there is a subtree and the methods recurses
-            else {
-                currentParent.add(currentHeader);
-                runningIndex = nextHeaderEnd+1;
-                List<Object> subtree = getChildren();
-                currentParent.add(subtree);
-            }
-
-        }
-
-        return currentParent;
-    }
-
-    private static List<String> getParentHeaderElements(String website_code, int startIndex) {
-
-        int indexOfEnclosureHeaderStart = website_code.indexOf("<", startIndex);
-        int indexOfEnclosureHeaderEnd = website_code.indexOf(">", indexOfEnclosureHeaderStart);
-        String currentEnclosureHeader = website_code.substring(indexOfEnclosureHeaderStart +1, indexOfEnclosureHeaderEnd);
-
-        //Getting the title and parameters for the current block
-        List<String> enclosureHeaderElements = new ArrayList<>();
-        boolean isWithinQuotes = false;
-        int cutIndex = 0;
-        for (int i = 0; i< currentEnclosureHeader.length(); i++) {
-            if (currentEnclosureHeader.substring(i,i+1).equals("\"")) {
-                isWithinQuotes = !isWithinQuotes;
-            }
-            if (i< currentEnclosureHeader.length()-1 && currentEnclosureHeader.substring(i,i+1).equals(" ") && !isWithinQuotes) {
-                enclosureHeaderElements.add(currentEnclosureHeader.substring(cutIndex,i));
-                i++;
-                cutIndex = i;
-            }
-            if (i== currentEnclosureHeader.length()-1) {
-                enclosureHeaderElements.add(currentEnclosureHeader.substring(cutIndex,i));
-            }
-        }
-
-        //Getting the true end of the current block
-        int indexOfEnclosureTail1 = website_code.indexOf("</", indexOfEnclosureHeaderEnd);
-        int indexOfEnclosureTail2 = website_code.indexOf("/>", indexOfEnclosureHeaderEnd);
-
-        int indexOfEnclosureTail;
-        if (indexOfEnclosureTail2 < indexOfEnclosureTail1) {
-            indexOfEnclosureTail = indexOfEnclosureTail2+1;
-        }
-        else {
-            indexOfEnclosureTail = website_code.indexOf(">", indexOfEnclosureTail1);
-        }
-
-        enclosureHeaderElements.add(1,Integer.toString(indexOfEnclosureTail));
-        enclosureHeaderElements.add(1,Integer.toString(indexOfEnclosureHeaderEnd));
-
-        return enclosureHeaderElements;
     }
 }

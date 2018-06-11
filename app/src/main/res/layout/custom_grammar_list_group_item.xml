@@ -28,6 +28,8 @@
 		android:layout_marginBottom="2dp"
         android:textColor="@color/textColorDictionaryGroupItemMeanings"
         android:textSize="@dimen/DictionaryGroupItemMeanings"
-		android:text="@string/English" />
+		android:text="@string/English"
+        android:ellipsize="end"
+        android:maxLines="4" />
 
 </LinearLayout>

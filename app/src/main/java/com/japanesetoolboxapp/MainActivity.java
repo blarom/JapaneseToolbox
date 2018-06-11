@@ -30,32 +30,29 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//TODO when joining online results, compare verb[space]suru with verb[no space]suru, and show verb[space]suru to user
-//TODO make ranking in in dict put special concat hits at end of list or invalidate them
-//TODO add root as keyword for suru verbs
-//TODO implement short description for long definitions
-//TODO indicate if word is common in search results
-//TODO indicate source as local/jisho in search results
-//TODO not found "koto ga dekiru" & "te oku" in local db
-//TODO searching "kemuri" leads to incorrect results display
-//TODO searching "fue" leads to incorrect results display
-//TODO searching "beikoku" yields no online results
-//TODO searching for "福" through left radical yields no results, since it does not point to spirit radical, just radical variant
-//TODO "egao suru" gives no hit in DICT
-//TODO "sugee" gives incorrect transliteration when loading results from web
-//TODO searching for "ii tokoro" gives no results in jisho.org, but "iitoko" is displayed wrongly in the app as "iitokoro"
-//TODO "kamoshi" search return at least one incorrectly displayed result
-//TODO "hanashinagara" returns conjugated verb, but hiragana equivalent doesn't
-//TODO imperative display for godan verbs
-//TODO Show the adjective conjugations (it will also explain to the user why certain adjectives appear in the list, based on their conjugations)
-//TODO If the user enter "一", make sure the app gives all results with a bar
-//TODO Give the user the option to reduce/increase the number of search results (useful when there are many results)
-//TODO Display the number of results
-//TODO Add the option of selecting which databases to search in (in order to limit the number of results)
-//TODO Allow for different kanji versions of a verb by comparing the input verb's kanji to a list associated with every verb,
-//     then applying the reverse conjugation by searching using the database's kanji instead of the user's input, and also showing the other possible kanji dict. forms
-//TODO Add filtering functionality: if more than one word is entered, the results will be limited to those that include all words.
-//TODO Translate the app into other European languages, and allow the user to choose the wanted language.
+//TODO: features
+////TODO when joining online results, compare verb[space]suru with verb[no space]suru, and show verb[space]suru to user
+////TODO make ranking in in dict put special concat hits at end of list or invalidate them
+////TODO add root as keyword for suru verbs
+////TODO implement short description for long definitions
+////TODO indicate if word is common in search results
+////TODO indicate source as local/jisho in search results
+////TODO Show the adjective conjugations (it will also explain to the user why certain adjectives appear in the list, based on their conjugations)
+////TODO If the user enter "一", make sure the app gives all results with a bar
+////TODO Give the user the option to reduce/increase the number of search results (useful when there are many results)
+////TODO Add the option of selecting which databases to search in (in order to limit the number of results)
+////TODO Allow for different kanji versions of a verb by comparing the input verb's kanji to a list associated with every verb,
+////     then applying the reverse conjugation by searching using the database's kanji instead of the user's input, and also showing the other possible kanji dict. forms
+////TODO Display the number of results
+////TODO Add filtering functionality: if more than one word is entered, the results will be limited to those that include all words.
+////TODO Translate the app into other European languages, and allow the user to choose the wanted language.
+
+//TODO: bugs
+////TODO not found "koto ga dekiru" & "te oku" in local db
+////TODO searching for "福" through left radical yields no results, since it does not point to spirit radical, just radical variant
+////TODO "kamoshi" returns no josho.org results
+////TODO "hanashinagara" returns conjugated verb, but hiragana equivalent doesn't
+////TODO imperative display for godan verbs
 
 public class MainActivity extends AppCompatActivity implements InputQueryFragment.UserEnteredQueryListener,
                                             DictionaryFragment.UserWantsNewSearchForSelectedWordListener,

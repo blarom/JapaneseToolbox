@@ -74,6 +74,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
+import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.utiities.GlobalConstants;
 import com.japanesetoolboxapp.utiities.SharedMethods;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -683,7 +684,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             @Override
             public void onReceive(Context context, Intent intent) {
                 String action = intent.getAction();
-                if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action)) {
+                if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action) && downloadmanager!=null) {
                     long downloadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, 0);
                     DownloadManager.Query query = new DownloadManager.Query();
                     query.setFilterById(enqueue);
@@ -1152,19 +1153,27 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 //This method retrieves the first romaji transliteration of the kanji searched word.
 
                 List<Object> AsyncMatchingWordCharacteristics = new ArrayList<>();
+                List<Word> matchingWordsFromJisho = new ArrayList<>();
                 if (mInternetIsAvailable) {
                     try {
                         String speechRecognizerString = args.getString(SPEECH_RECOGNIZER_EXTRA);
                         AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromJishoOnWeb(speechRecognizerString, getActivity());
+                        matchingWordsFromJisho = SharedMethods.getWordsFromJishoOnWeb(speechRecognizerString, getActivity());
                     } catch (IOException e) {
                         cancelLoadInBackground();
                         //throw new RuntimeException(e);
                     }
+
                     if (AsyncMatchingWordCharacteristics.size() != 0 && requestedSpeechToText) {
                         List<String> results = (List<String>) AsyncMatchingWordCharacteristics.get(0);
                         mQueryText = results.get(0);
                         return mQueryText;
                     } else return null;
+
+//                    if (matchingWordsFromJisho.size() != 0 && requestedSpeechToText) {
+//                        mQueryText = matchingWordsFromJisho.get(0).getRomaji();
+//                        return mQueryText;
+//                    } else return null;
                 }
                 else return null;
             }

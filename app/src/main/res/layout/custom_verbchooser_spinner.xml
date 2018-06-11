@@ -49,6 +49,8 @@
         android:layout_marginStart="2dp"
         android:layout_marginBottom="2dp"
         android:text="@string/English"
+        android:ellipsize="end"
+        android:maxLines="4"
         android:textColor="@color/textColorConjugatorVerbChooserMeaning" />
 
 </LinearLayout>

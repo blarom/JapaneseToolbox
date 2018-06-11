@@ -28,6 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.utiities.GlobalConstants;
 import com.japanesetoolboxapp.utiities.SharedMethods;
 
@@ -45,15 +46,15 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     private List<Object> mLocalMatchingWordCharacteristics;
     private String mLastSearchedWord;
     private List<List<Integer>> mMatchingWordRowColIndexList;
-    private int mMaxNumberOfResultsShown = 50;
+    private final static int MAX_NUMBER_RESULTS_SHOWN = 50;
     private Activity mFragmentActivity;
 
     private Boolean mAppWasInBackground;
     private GrammarExpandableListAdapter mSearchResultsListAdapter;
     private ExpandableListView mSearchResultsExpandableListView;
-    private List<String> mListDataHeader;
-    private HashMap<String, List<String>> mListHeaderDetails;
-    private HashMap<String, List<List<String>>> mListDataChild;
+    private List<String> mExpandableListDataHeader;
+    private HashMap<String, List<String>> mExpandableListHeaderDetails;
+    private HashMap<String, List<List<String>>> mExpandableListDataChild;
     private String mSearchedWord;
     private List<Object> mAsyncMatchingWordCharacteristics;
     private Boolean mInternetIsAvailable;
@@ -62,6 +63,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     Boolean matchFound;
     Toast mShowOnlineResultsToast;
     SharedMethods mSharedMethods;
+    private List<Word> mLocalMatchingWordsList;
+    private List<Word> mAsyncMatchingWords;
 
     // Fragment Lifecycle Functions
     @Override public void onAttach(Context context) {
@@ -151,12 +154,14 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             public List<Object> loadInBackground() {
 
                 List<Object> AsyncMatchingWordCharacteristics = new ArrayList<>();
+                List<Word> matchingWordsFromJisho = new ArrayList<>();
 
                 if (mAppWasInBackground == null || !mAppWasInBackground) {
                     if (mInternetIsAvailable) {
                         try {
                             String speechRecognizerString = args.getString(JISHO_LOADER_INPUT_EXTRA);
                             AsyncMatchingWordCharacteristics = SharedMethods.getResultsFromJishoOnWeb(speechRecognizerString, getActivity());
+                            matchingWordsFromJisho = SharedMethods.getWordsFromJishoOnWeb(speechRecognizerString, getActivity());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -172,14 +177,17 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     }
     @Override public void onLoadFinished(@NonNull Loader<List<Object>> loader, List<Object> data) {
         mAsyncMatchingWordCharacteristics = data;
+        mAsyncMatchingWords = new ArrayList<>();
 
         if (mAppWasInBackground == null || !mAppWasInBackground) {
             Boolean showOnlineResults = getShowOnlineResultsPreference();
             if (mAsyncMatchingWordCharacteristics.size() != 0 && showOnlineResults) {
                 matchFound = true;
                 List<Object> totalMatchingWordCharacteristics = mergeMatchingWordCharacteristics(mLocalMatchingWordCharacteristics, mAsyncMatchingWordCharacteristics);
+                List<Word> totalWords = mergeWordLists(mLocalMatchingWordsList, mAsyncMatchingWords);
+                ////////////////// NEED TO CHANGE THE LOADER TO USE LIST<WORD>
                 totalMatchingWordCharacteristics = sortResultsAccordingToRomajiAndKanjiLengths(mSearchedWord, totalMatchingWordCharacteristics);
-                displayResults(mSearchedWord, totalMatchingWordCharacteristics);
+                displayResults(mSearchedWord, totalMatchingWordCharacteristics, mLocalMatchingWordsList);
             }
 
             //If no dictionary match was found, then this is probably a verb conjugation, so try that
@@ -212,6 +220,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         // Run the Grammar Module on the input word
         matchFound = true;
         mLocalMatchingWordCharacteristics = getCharacteristicsForAllHits(matchingWordRowIndexList);
+        mLocalMatchingWordsList = getWordsList(matchingWordRowIndexList); //*************NEW
         if (mLocalMatchingWordCharacteristics.size() == 0) matchFound = false;
 
         // If there are no results, retrieve the results from Jisho.org
@@ -235,7 +244,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         }
 
         mLocalMatchingWordCharacteristics = sortResultsAccordingToRomajiAndKanjiLengths(mSearchedWord, mLocalMatchingWordCharacteristics);
-        displayResults(mSearchedWord, mLocalMatchingWordCharacteristics);
+        mLocalMatchingWordsList = sortWordsAccordingToRomajiAndKanjiLengths(mSearchedWord, mLocalMatchingWordsList); //*************NEW
+        displayResults(mSearchedWord, mLocalMatchingWordCharacteristics, mLocalMatchingWordsList);
 
         if (!matchFound && !mSearchedWord.equals("") && !showOnlineResults) {
             if (mShowOnlineResultsToast!=null) mShowOnlineResultsToast.cancel();
@@ -292,16 +302,66 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         return newMatchingWordCharacteristics;
     }
-    public void displayResults(String word, List<Object> matchingWordCharacteristics) {
+    private List<Word> sortWordsAccordingToRomajiAndKanjiLengths(String searchWord, List<Word> wordsList) {
+
+        List<int[]> matchingWordIndexesAndLengths = new ArrayList<>();
+        for (int i = 0; i < wordsList.size(); i++) {
+
+            Word currentWord = wordsList.get(i);
+            String romaji_value = currentWord.getRomaji();
+            String kanji_value = currentWord.getKanji();
+
+            //Get the length of the shortest meaning containing the word, and use it to prioritize the results
+            List<Word.Meaning> currentMeanings = currentWord.getMeanings();
+            String currentMeaning;
+            int currentMeaningLength = 1000;
+            for (int j = 0; j< currentMeanings.size(); j++) {
+                currentMeaning = currentMeanings.get(j).getMeaning();
+                if (currentMeaning.contains(searchWord) && currentMeaning.length() <= currentMeaningLength) {
+                    currentMeaningLength = currentMeaning.length();
+                }
+            }
+
+            //Get the total length
+            int length = romaji_value.length() + kanji_value.length() + currentMeaningLength;
+
+            //If the romaji or Kanji value is an exact match to the search word, then it must appear at the start of the list
+            if (romaji_value.equals(searchWord) || kanji_value.equals(searchWord)) length = 0;
+
+            int[] currentMatchingWordIndexAndLength = new int[2];
+            currentMatchingWordIndexAndLength[0] = i;
+            currentMatchingWordIndexAndLength[1] = length;
+
+            matchingWordIndexesAndLengths.add(currentMatchingWordIndexAndLength);
+        }
+
+        //Sort the results according to total length
+        if (matchingWordIndexesAndLengths.size() != 0) {
+            matchingWordIndexesAndLengths = bubbleSortForTwoIntegerList(matchingWordIndexesAndLengths);
+        }
+
+        //Return the sorted list
+        List<Word> sortedWordsList = new ArrayList<>();
+        for (int i = 0; i < matchingWordIndexesAndLengths.size(); i++) {
+            int sortedIndex = matchingWordIndexesAndLengths.get(i)[0];
+            sortedWordsList.add(wordsList.get(sortedIndex));
+        }
+
+        return sortedWordsList;
+    }
+    public void displayResults(String searchWord, List<Object> matchingWordCharacteristics, List<Word> wordsList) {
 
         // Populate the list of choices for the SearchResultsChooserSpinner. Each text element of inside the idividual spinner choices corresponds to a sub-element of the choicelist
-        populateSearchResultsForDisplay(word, matchingWordCharacteristics);
+        populateSearchResultsForDisplay(searchWord, matchingWordCharacteristics);
+        createExpandableListViewContentsFromWordsList(searchWord, wordsList);
 
-        SharedMethods.hideSoftKeyboard(getActivity());
+        if (getActivity()!=null) SharedMethods.hideSoftKeyboard(getActivity());
+
         // Implementing the SearchResultsChooserListView
         try {
-            if (mListDataHeader != null && mListHeaderDetails != null && mListDataChild != null && getView() != null) {
-                mSearchResultsListAdapter = new GrammarExpandableListAdapter(getContext(), mListDataHeader, mListHeaderDetails, mListDataChild);
+            if (mExpandableListDataHeader != null && mExpandableListHeaderDetails != null && mExpandableListDataChild != null && getView() != null) {
+                mSearchResultsListAdapter = new GrammarExpandableListAdapter(getContext(),
+                        mExpandableListDataHeader, mExpandableListHeaderDetails, mExpandableListDataChild);
                 mSearchResultsExpandableListView = getView().findViewById(R.id.SentenceConstructionExpandableListView); //CAUSED CRASH
                 mSearchResultsExpandableListView.setAdapter(mSearchResultsListAdapter);
                 mSearchResultsExpandableListView.setVisibility(View.VISIBLE);
@@ -391,12 +451,67 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         return finalList;
     }
+    private List<Word> mergeWordLists(List<Word> localWords, List<Word> asyncWords) {
+
+        List<Word> finalWordsList = new ArrayList<>();
+        List<Word> finalAsyncWords = new ArrayList<>(asyncWords);
+        Boolean async_meaning_found_locally;
+
+        for (int j = 0; j< localWords.size(); j++) {
+            Word currentLocalWord = localWords.get(j);
+            Word finalWord = new Word();
+            finalWord.setRomaji(currentLocalWord.getRomaji());
+            finalWord.setKanji(currentLocalWord.getKanji());
+            finalWord.setAltSpellings(currentLocalWord.getAltSpellings());
+
+            List<Word.Meaning> current_local_meanings = currentLocalWord.getMeanings();
+            List<Word.Meaning> current_final_meanings = new ArrayList<>(current_local_meanings);
+
+            int current_index = finalAsyncWords.size()-1;
+            while (current_index >= 0 && finalAsyncWords.size() != 0) {
+
+                if (current_index > finalAsyncWords.size()-1) {break;}
+                Word currentAsyncWord = finalAsyncWords.get(current_index);
+                List<Word.Meaning> current_async_meanings = currentAsyncWord.getMeanings();
+
+                if (    currentAsyncWord.getRomaji().equals(currentLocalWord.getRomaji())
+                    &&  currentAsyncWord.getKanji() .equals(currentLocalWord.getKanji())   ) {
+
+                    for (int m = 0; m< current_async_meanings.size(); m++) {
+
+                        async_meaning_found_locally = false;
+                        for (int k = 0; k< current_local_meanings.size(); k++) {
+
+                            if (current_local_meanings.get(k).getMeaning()
+                                    .contains( current_async_meanings.get(m).getMeaning() ) ) {
+                                async_meaning_found_locally = true;
+                                break;
+                            }
+                        }
+                        if (!async_meaning_found_locally) {
+                            current_final_meanings.add(current_async_meanings.get(m));
+                        }
+                    }
+                    finalAsyncWords.remove(current_index);
+                    if (current_index == 0) break;
+                }
+                else {
+                    current_index -= 1;
+                }
+            }
+            finalWord.setMeanings(current_final_meanings);
+            finalWordsList.add(finalWord);
+        }
+        finalWordsList.addAll(finalAsyncWords);
+
+        return finalWordsList;
+    }
     public void populateSearchResultsForDisplay(String word, List<Object> matchingWordCharacteristics) {
 
         //Initialization
-        mListDataHeader = new ArrayList<>();
-        mListHeaderDetails = new HashMap<>();
-        mListDataChild = new HashMap<>();
+        mExpandableListDataHeader = new ArrayList<>();
+        mExpandableListHeaderDetails = new HashMap<>();
+        mExpandableListDataChild = new HashMap<>();
 
         String current_explanation = "XXX";
         String current_rule = "";
@@ -434,8 +549,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             texts_in_elements_of_child.add("");
             texts_in_elements_of_child.add("");
             texts_in_elements_of_child.add("");
-            mListDataHeader.add(Integer.toString(0));
-            mListHeaderDetails.put(Integer.toString(0), texts_in_elements_of_child);
+            mExpandableListDataHeader.add(Integer.toString(0));
+            mExpandableListHeaderDetails.put(Integer.toString(0), texts_in_elements_of_child);
 
             texts_in_elements_of_child = new ArrayList<>();
             texts_in_elements_of_child.add("No match found.");
@@ -448,7 +563,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             texts_in_elements_of_child.add("");
             elements_of_child = new ArrayList<>();
             elements_of_child.add(texts_in_elements_of_child);
-            mListDataChild.put(Integer.toString(0), elements_of_child);
+            mExpandableListDataChild.put(Integer.toString(0), elements_of_child);
         }
         else {
             for (int i = 0; i< matchingWordCharacteristics.size(); i++) {
@@ -460,7 +575,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 List<Object> current_MatchingHitsCharacteristics_Meaning_Blocks = (List<Object>) current_MatchingHitsCharacteristics.get(3);
 
                 //Populate elements in mListDataHeader
-                if (i> mMaxNumberOfResultsShown) {break;}
+                if (i> MAX_NUMBER_RESULTS_SHOWN) {break;}
 
                 texts_in_elements_of_group = new ArrayList<>();
 
@@ -475,8 +590,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 texts_in_elements_of_group.add(kanji_value);
                 texts_in_elements_of_group.add(removeDuplicatesFromCommaList(cumulative_meaning_value));
 
-                mListDataHeader.add(Integer.toString(i));
-                mListHeaderDetails.put(Integer.toString(i), texts_in_elements_of_group);
+                mExpandableListDataHeader.add(Integer.toString(i));
+                mExpandableListHeaderDetails.put(Integer.toString(i), texts_in_elements_of_group);
 
                 //Populate elements in mListDataChild
                 elements_of_child = new ArrayList<>();
@@ -550,7 +665,144 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
                     elements_of_child.add(texts_in_elements_of_child);
                 }
-                mListDataChild.put(Integer.toString(i), elements_of_child);
+                mExpandableListDataChild.put(Integer.toString(i), elements_of_child);
+
+            }
+        }
+    }
+    public void createExpandableListViewContentsFromWordsList(String searchWord, List<Word> wordsList) {
+
+        //Initialization
+        mExpandableListDataHeader = new ArrayList<>();
+        mExpandableListHeaderDetails = new HashMap<>();
+        mExpandableListDataChild = new HashMap<>();
+        List<List<String>> childElements;
+        List<String> childSubElements = new ArrayList<>();
+        List<String> headerElements;
+
+        if (wordsList.size() == 0) {
+            //Create a generic answer for the empty search
+            String ListElement1;
+            String ListElement2;
+            if (searchWord.equals("")) {
+                ListElement1 = getResources().getString(R.string.PleaseEnterWord);
+                ListElement2 = "";
+            }
+            else {
+                ListElement1 = getResources().getString(R.string.NoMatchFound);
+                ListElement2 = "";
+            }
+            childSubElements.add(ListElement1);
+            childSubElements.add(ListElement2);
+            childSubElements.add("");
+            childSubElements.add("");
+            childSubElements.add("");
+            childSubElements.add("");
+            childSubElements.add("");
+            childSubElements.add("");
+            mExpandableListDataHeader.add(Integer.toString(0));
+            mExpandableListHeaderDetails.put(Integer.toString(0), childSubElements);
+
+            childSubElements = new ArrayList<>();
+            childSubElements.add("No match found.");
+            childSubElements.add("");
+            childSubElements.add("");
+            childSubElements.add("");
+            childSubElements.add("");
+            childSubElements.add("");
+            childSubElements.add("");
+            childSubElements.add("");
+            childElements = new ArrayList<>();
+            childElements.add(childSubElements);
+            mExpandableListDataChild.put(Integer.toString(0), childElements);
+        }
+        else {
+            for (int i = 0; i< wordsList.size(); i++) {
+
+                Word currentWord = wordsList.get(i);
+                List<Word.Meaning> currentMeanings = currentWord.getMeanings();
+
+                //Populate elements in mListDataHeader
+                if (i> MAX_NUMBER_RESULTS_SHOWN) {break;}
+
+                headerElements = new ArrayList<>();
+
+                String cumulative_meaning_value = "";
+                for (int j = 0; j< currentMeanings.size(); j++) {
+                    cumulative_meaning_value += currentMeanings.get(j).getMeaning();
+                    if (j< currentMeanings.size()-1) { cumulative_meaning_value += ", "; }
+                }
+                headerElements.add(currentWord.getRomaji());
+                headerElements.add(currentWord.getKanji());
+                headerElements.add(removeDuplicatesFromCommaList(cumulative_meaning_value));
+
+                mExpandableListDataHeader.add(Integer.toString(i));
+                mExpandableListHeaderDetails.put(Integer.toString(i), headerElements);
+
+                //Populate elements in mListDataChild
+                childElements = new ArrayList<>();
+
+                childSubElements = new ArrayList<>();
+                childSubElements.add(currentWord.getAltSpellings());
+                if (currentMeanings.size()>0) {
+                    childSubElements.add(currentMeanings.get(currentMeanings.size() - 1).getType());
+                }
+                else {
+                    childSubElements.add("");
+                }
+
+                childElements.add(childSubElements);
+
+                for (int j = 0; j< currentMeanings.size(); j++) {
+                    childSubElements = new ArrayList<>();
+                    int element_index = 0;
+
+                    childSubElements.add(""); element_index++; //Altspellings placeholder
+                    childSubElements.add(currentMeanings.get(j).getType()); element_index++;
+                    childSubElements.add(currentMeanings.get(j).getMeaning()); element_index++;
+                    childSubElements.add(currentMeanings.get(j).getAntonym()); element_index++;
+                    childSubElements.add(currentMeanings.get(j).getSynonym()); element_index++;
+
+                    List<Word.Meaning.Explanation> currentExplanations = currentMeanings.get(j).getExplanations();
+                    for (int m = 0; m< currentExplanations.size(); m++) {
+
+                        childSubElements.add("EXPL" + currentExplanations.get(m).getExplanation());
+                        element_index++;
+
+                        childSubElements.add("RULE" + currentExplanations.get(m).getRules());
+                        element_index++;
+
+                        List<Word.Meaning.Explanation.Example> currentExamples = currentExplanations.get(m).getExamples();
+                        int show_examples_element_index = 0;
+                        String new_show_examples_element;
+                        if (currentExamples.size() > 0) {
+                            childSubElements.add("SHOW EXAMPLES AT INDEXES:");
+                            show_examples_element_index = element_index;
+                            element_index++;
+                        }
+
+                        for (int k = 0; k < currentExamples.size(); k++) {
+                            childSubElements.add("EXEN" + currentExamples.get(k).getEnglishSentence());
+                            new_show_examples_element = childSubElements.get(show_examples_element_index) + element_index + ":";
+                            childSubElements.set(show_examples_element_index, new_show_examples_element);
+                            element_index++;
+
+                            childSubElements.add("EXRO" + currentExamples.get(k).getRomajiSentence());
+                            new_show_examples_element = childSubElements.get(show_examples_element_index) + element_index + ":";
+                            childSubElements.set(show_examples_element_index, new_show_examples_element);
+                            element_index++;
+
+                            childSubElements.add("EXKJ" + currentExamples.get(k).getKanjiSentence());
+                            new_show_examples_element = childSubElements.get(show_examples_element_index) + element_index + ":";
+                            childSubElements.set(show_examples_element_index, new_show_examples_element);
+                            element_index++;
+                        }
+
+                    }
+
+                    childElements.add(childSubElements);
+                }
+                mExpandableListDataChild.put(Integer.toString(i), childElements);
 
             }
         }
@@ -1358,6 +1610,195 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             }
         }
         return setOf_matchingWordCharacteristics;
+    }
+    private List<Word>                  getWordsList(List<Integer> matchingWordRowIndexList) {
+
+        int matchingWordRowIndex;
+        List<Word> wordsList = new ArrayList<>();
+        Word word;
+        if (matchingWordRowIndexList.size() != 0) {
+            for (int i=0; i<matchingWordRowIndexList.size(); i++) {
+                matchingWordRowIndex = matchingWordRowIndexList.get(i);
+                word = getWord(matchingWordRowIndex);
+                wordsList.add(word);
+            }
+        }
+
+        return wordsList;
+    }
+    private Word                        getWord(int matchingWordRowIndex) {
+
+        // Value Initializations
+        int example_index;
+        Word word = new Word();
+        List<String> parsed_example_list;
+
+        //Getting the Romaji value
+        String matchingWordRomaji = MainActivity.MainDatabase.get(matchingWordRowIndex)[1];
+        word.setRomaji(matchingWordRomaji);
+
+        //Getting the Kanji value
+        String matchingWordKanji = MainActivity.MainDatabase.get(matchingWordRowIndex)[2];
+        word.setKanji(matchingWordKanji);
+
+        //Getting the AltSpellings value
+        String matchingWordAltSpellings = MainActivity.MainDatabase.get(matchingWordRowIndex)[4];
+        word.setAltSpellings(matchingWordAltSpellings);
+
+        //Getting the set of Meanings
+
+        ;//Initializations
+        String matchingWordMeaning;
+        String matchingWordType;
+        String matchingWordOpposite;
+        String matchingWordSynonym;
+        String matchingWordExplanation;
+        String matchingWordRules;
+        String matchingWordExampleList;
+        String[] current_meaning_characteristics;
+        Boolean has_multiple_explanations;
+        String ME_index;
+
+        //Finding the meanings using the supplied index
+        String MM_index = MainActivity.MainDatabase.get(matchingWordRowIndex)[3];
+        List<String> MM_index_list = Arrays.asList(MM_index.split(";"));
+        if (MM_index_list.size() == 0) { return word; }
+
+        List<Word.Meaning> meaningsList = new ArrayList<>();
+        int current_MM_index;
+        for (int i=0; i< MM_index_list.size(); i++) {
+
+            Word.Meaning meaning = new Word.Meaning();
+            current_MM_index = Integer.parseInt(MM_index_list.get(i))-1;
+            current_meaning_characteristics = MainActivity.MeaningsDatabase.get(current_MM_index);
+
+            //Getting the Meaning value
+            matchingWordMeaning = MainActivity.MeaningsDatabase.get(current_MM_index)[1];
+
+            //Getting the Type value
+            matchingWordType = MainActivity.MeaningsDatabase.get(current_MM_index)[2];
+
+            //Make corrections to the meaning values if the hit is a verb
+            if (matchingWordType.contains("V") && !matchingWordType.equals("VC")) {
+                List<String> parsed_meaning = Arrays.asList(matchingWordMeaning.split(","));
+                String fixed_meaning = "";
+                boolean valueIsInParentheses = false;
+                for (int k = 0; k < parsed_meaning.size(); k++) {
+                    if (valueIsInParentheses) {
+                        fixed_meaning += parsed_meaning.get(k).trim();
+                    }
+                    else {
+                        fixed_meaning += "to " + parsed_meaning.get(k).trim();
+                    }
+
+                    if (k < parsed_meaning.size() - 1) {
+                        fixed_meaning += ", ";
+                    }
+
+                    if (parsed_meaning.get(k).contains("(") && !parsed_meaning.get(k).contains(")")) {
+                        valueIsInParentheses = true;
+                    }
+                    else if (!parsed_meaning.get(k).contains("(") && parsed_meaning.get(k).contains(")")) {
+                        valueIsInParentheses = false;
+                    }
+                }
+                matchingWordMeaning = fixed_meaning;
+            }
+
+            //Setting the Meaning and Type values in the returned list
+            meaning.setMeaning(matchingWordMeaning);
+            meaning.setType(matchingWordType);
+
+            //Getting the Opposite value
+            matchingWordOpposite = MainActivity.MeaningsDatabase.get(current_MM_index)[6];
+            meaning.setAntonym(matchingWordOpposite);
+
+            //Getting the Synonym value
+            matchingWordSynonym = MainActivity.MeaningsDatabase.get(current_MM_index)[7];
+            meaning.setSynonym(matchingWordSynonym);
+
+            //Getting the set of Explanations
+            has_multiple_explanations = false;
+            ME_index = "";
+            if (current_meaning_characteristics[3].length() > 3) {
+                if (current_meaning_characteristics[3].substring(0,3).equals("ME#")) {
+                    has_multiple_explanations = true;
+                    ME_index = current_meaning_characteristics[3].substring(3,current_meaning_characteristics[3].length());
+                }
+            }
+
+            List<Word.Meaning.Explanation> explanationList = new ArrayList<>();
+            if (has_multiple_explanations) {
+                List<String> ME_index_list = Arrays.asList(ME_index.split(";"));
+                int current_ME_index;
+                for (int j=0; j<ME_index_list.size(); j++) {
+
+                    Word.Meaning.Explanation explanation = new Word.Meaning.Explanation();
+
+                    current_ME_index = Integer.parseInt(ME_index_list.get(j))-1;
+
+                    //Getting the Explanation value
+                    matchingWordExplanation = MainActivity.MultExplanationsDatabase.get(current_ME_index)[1];
+                    explanation.setExplanation(matchingWordExplanation);
+
+                    //Getting the Rules value
+                    matchingWordRules = MainActivity.MultExplanationsDatabase.get(current_ME_index)[2];
+                    explanation.setRules(matchingWordRules);
+
+                    //Getting the Examples
+                    matchingWordExampleList = MainActivity.MultExplanationsDatabase.get(current_ME_index)[3];
+                    List<Word.Meaning.Explanation.Example> exampleList = new ArrayList<>();
+                    if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
+                        parsed_example_list = Arrays.asList(matchingWordExampleList.split(", "));
+                        for (int t = 0; t < parsed_example_list.size(); t++) {
+                            Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
+                            example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
+                            example.setEnglishSentence(MainActivity.ExamplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_English]);
+                            example.setRomajiSentence(MainActivity.ExamplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Romaji]);
+                            example.setKanjiSentence(MainActivity.ExamplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Kanji]);
+                            exampleList.add(example);
+                        }
+                    }
+                    explanation.setExamples(exampleList);
+                    explanationList.add(explanation);
+                }
+            }
+            else {
+                Word.Meaning.Explanation explanation = new Word.Meaning.Explanation();
+
+                //Getting the Explanation value
+                matchingWordExplanation = MainActivity.MeaningsDatabase.get(current_MM_index)[3];
+                explanation.setExplanation(matchingWordExplanation);
+
+                //Getting the Rules value
+                matchingWordRules = MainActivity.MeaningsDatabase.get(current_MM_index)[4];
+                explanation.setRules(matchingWordRules);
+
+                //Getting the Examples
+                matchingWordExampleList = MainActivity.MeaningsDatabase.get(current_MM_index)[5];
+                List<Word.Meaning.Explanation.Example> exampleList = new ArrayList<>();
+                if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
+                    parsed_example_list = Arrays.asList(matchingWordExampleList.split(", "));
+                    for (int t = 0; t < parsed_example_list.size(); t++) {
+                        Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
+                        example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
+                        example.setEnglishSentence(MainActivity.ExamplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_English]);
+                        example.setRomajiSentence(MainActivity.ExamplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Romaji]);
+                        example.setKanjiSentence(MainActivity.ExamplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Kanji]);
+                        exampleList.add(example);
+                    }
+                }
+                explanation.setExamples(exampleList);
+                explanationList.add(explanation);
+            }
+            meaning.setExplanations(explanationList);
+            meaningsList.add(meaning);
+
+        }
+
+        word.setMeanings(meaningsList);
+
+        return word;
     }
     public List<Object>                 getCharacteristicsForEachHit(int matchingWordRowIndex) {
 
