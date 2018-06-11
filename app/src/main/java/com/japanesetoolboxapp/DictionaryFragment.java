@@ -149,7 +149,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             //If no dictionary match was found, then this is probably a verb conjugation, so try that
             if (!matchFound && !mSearchedWord.equals("") && getActivity() != null) {
                 if (mShowOnlineResultsToast != null) mShowOnlineResultsToast.cancel();
-                Toast.makeText(getContext(), "No match found, looking up conjugations.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "No match found, looking up conjugations.", Toast.LENGTH_SHORT).show();
                 getActivity().findViewById(R.id.button_searchVerb).performClick();
             }
         }
