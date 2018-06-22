@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
@@ -27,6 +29,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.utiities.GlobalConstants;
 import com.japanesetoolboxapp.utiities.SharedMethods;
@@ -41,6 +49,7 @@ import java.util.Locale;
 public class DictionaryFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Word>>{
 
     // Parameters
+    private static final String FIREBASE_DEBUG = "japaneseToolboxFirebase";
     private List<List<Integer>> mMatchingWordRowColIndexList;
     private final static int MAX_NUMBER_RESULTS_SHOWN = 50;
     private Activity mFragmentActivity;
@@ -57,8 +66,11 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     Toast mShowOnlineResultsToast;
     SharedMethods mSharedMethods;
     private List<Word> mLocalMatchingWordsList;
+    private DatabaseReference mFirebaseDbReference;
+    private DatabaseReference mWordReference;
+    private Word mWordFromFirebase;
 
-    // Fragment Lifecycle Functions
+    //Fragment Lifecycle methods
     @Override public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof Activity) this.mFragmentActivity = (Activity) context;
@@ -81,6 +93,8 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         mSharedMethods = new SharedMethods();
         if (getContext() != null) mInternetIsAvailable = SharedMethods.internetIsAvailableCheck(getContext());
 
+        FirebaseDatabase firebaseDb = FirebaseDatabase.getInstance();
+        mFirebaseDbReference = firebaseDb.getReference();
     }
     @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -143,6 +157,10 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 matchFound = true;
                 List<Word> totalWords = mergeWordLists(mLocalMatchingWordsList, asyncMatchingWords);
                 totalWords = sortWordsAccordingToRomajiAndKanjiLengths(mSearchedWord, totalWords);
+
+                updateFirebaseDbWithJishoWords(asyncMatchingWords);
+                setupFullWordsListListenerFromFirebase();
+
                 displayResults(mSearchedWord, totalWords);
             }
 
@@ -154,6 +172,16 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             }
         }
     }
+
+    private void updateFirebaseDbWithJishoWords(List<Word> asyncMatchingWords) {
+
+        for (int i=0; i<asyncMatchingWords.size(); i++) {
+            Word word = asyncMatchingWords.get(i);
+            if (word.getCommonStatus()==1) writeWordToFirebaseDb(word);
+        }
+
+    }
+
     @Override public void onLoaderReset(@NonNull Loader<List<Word>> loader) {}
     private static class WebResultsAsyncTaskLoader extends AsyncTaskLoader <List<Word>> {
 
@@ -187,6 +215,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                     matchingWordsFromJisho = SharedMethods.getWordsFromJishoOnWeb(speechRecognizerString, getContext());
                 } else {
                     Log.i("Diagnosis Time", "Failed to access online resources.");
+                    Looper.prepare();
                     Toast.makeText(getContext(), "Failed to connect to the Internet.", Toast.LENGTH_SHORT).show();
                     cancelLoadInBackground();
                 }
@@ -199,7 +228,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         }
     }
 
-	// Functionality Functions
+	//Functionality methods
     public void SearchInDictionary(String word) {
 
         if (mMatchingWordRowColIndexList.size() == 0 ) return;
@@ -611,7 +640,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         return showOnlineResults;
     }
 
-    // Interface Functions
+    //Interface methods
     UserWantsNewSearchForSelectedWordListener mCallbackWord;
     interface UserWantsNewSearchForSelectedWordListener {
         // Interface used to transfer the selected word to InputQueryFragment through MainActivity
@@ -643,7 +672,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         else return true;
     }
 
-	// Grammar Module Functions
+	//Grammar Module methods
     public List<List<Integer>>          FindMatchingWordIndex(String word) {
 
         //region Initializations
@@ -1322,16 +1351,30 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         Word word = new Word();
         List<String> parsed_example_list;
 
+        //Getting the index value
+        int matchingWordId = Integer.parseInt(MainActivity.MainDatabase.get(matchingWordRowIndex)[0]);
+        word.setWordId(matchingWordId);
+
+        //Getting the keywords value
+        String matchingWordKeywordsList = MainActivity.MainDatabase.get(matchingWordRowIndex)[1];
+        word.setKeywords(matchingWordKeywordsList);
+
         //Getting the Romaji value
-        String matchingWordRomaji = MainActivity.MainDatabase.get(matchingWordRowIndex)[1];
+        String matchingWordRomaji = MainActivity.MainDatabase.get(matchingWordRowIndex)[2];
         word.setRomaji(matchingWordRomaji);
 
         //Getting the Kanji value
-        String matchingWordKanji = MainActivity.MainDatabase.get(matchingWordRowIndex)[2];
+        String matchingWordKanji = MainActivity.MainDatabase.get(matchingWordRowIndex)[3];
         word.setKanji(matchingWordKanji);
 
+        //Setting the unique identifier
+        word.setUniqueIdentifier(matchingWordRomaji+"-"+matchingWordKanji);
+
+        //Setting the Common Word flag
+        word.setCommonStatus(2);
+
         //Getting the AltSpellings value
-        String matchingWordAltSpellings = MainActivity.MainDatabase.get(matchingWordRowIndex)[4];
+        String matchingWordAltSpellings = MainActivity.MainDatabase.get(matchingWordRowIndex)[5];
         word.setAltSpellings(matchingWordAltSpellings);
 
 
@@ -1350,7 +1393,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         String ME_index;
 
         //Finding the meanings using the supplied index
-        String MM_index = MainActivity.MainDatabase.get(matchingWordRowIndex)[3];
+        String MM_index = MainActivity.MainDatabase.get(matchingWordRowIndex)[4];
         List<String> MM_index_list = Arrays.asList(MM_index.split(";"));
         if (MM_index_list.size() == 0) { return word; }
 
@@ -1363,10 +1406,10 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             current_meaning_characteristics = MainActivity.MeaningsDatabase.get(current_MM_index);
 
             //Getting the Meaning value
-            matchingWordMeaning = MainActivity.MeaningsDatabase.get(current_MM_index)[1];
+            matchingWordMeaning = current_meaning_characteristics[1];
 
             //Getting the Type value
-            matchingWordType = MainActivity.MeaningsDatabase.get(current_MM_index)[2];
+            matchingWordType = current_meaning_characteristics[2];
 
             //Make corrections to the meaning values if the hit is a verb
             if (matchingWordType.contains("V") && !matchingWordType.equals("VC")) {
@@ -1400,11 +1443,11 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             meaning.setType(matchingWordType);
 
             //Getting the Opposite value
-            matchingWordOpposite = MainActivity.MeaningsDatabase.get(current_MM_index)[6];
+            matchingWordOpposite = current_meaning_characteristics[6];
             meaning.setAntonym(matchingWordOpposite);
 
             //Getting the Synonym value
-            matchingWordSynonym = MainActivity.MeaningsDatabase.get(current_MM_index)[7];
+            matchingWordSynonym = current_meaning_characteristics[7];
             meaning.setSynonym(matchingWordSynonym);
 
             //Getting the set of Explanations
@@ -1545,7 +1588,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         return final_cumulative_meaning_value.toString();
     }
 
-    // ExpandableListView Functions
+    //ExpandableListView methods
     private class GrammarExpandableListAdapter extends BaseExpandableListAdapter {
 
         private Context _context;
@@ -1953,4 +1996,131 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         }
     }
 
+    //Firebase methods
+    private void writeWordToFirebaseDb(Word word) {
+        word.setUniqueIdentifier(word.getRomaji()+"-"+word.getKanji());
+        mFirebaseDbReference.child("wordsList").child(word.getUniqueIdentifier()).setValue(word);
+
+        //To update only specific information in the child:
+        //mFirebaseDbReference.child("wordsList").child(word.getUniqueIdentifier()).child("romaji").setValue(newValue);
+    }
+    private void updateWordInFirebase(Word word, String key, String value) {
+        mFirebaseDbReference.child("wordsList")
+                .child(word.getUniqueIdentifier())
+                .child(key)
+                .setValue(value);
+    }
+    private Word setupWordListenerFromFirebase(String uniqueIdentifier) {
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference wordRef = rootRef.child("wordsList").child(uniqueIdentifier);
+
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Word> wordsList = new ArrayList<>();
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String value = ds.getValue(String.class);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+        wordRef.addListenerForSingleValueEvent(eventListener);
+
+
+//        mWordReference = FirebaseDatabase.getInstance().getReference(uniqueIdentifier);
+//        mWordFromFirebase = new Word();
+//
+//        ChildEventListener wordListener = new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                String a="";
+//                if (dataSnapshot.exists()) {
+//                    mWordFromFirebase = dataSnapshot.getValue(Word.class);
+//                }
+//            }
+//
+//            @Override
+//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                String a="";
+//                if (dataSnapshot.exists()) {
+//                    mWordFromFirebase = dataSnapshot.getValue(Word.class);
+//                }
+//            }
+//
+//            @Override
+//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                Log.w(FIREBASE_DEBUG, "Failed to get Word from database", databaseError.toException());
+//            }
+//        };
+//
+//        mWordReference.addChildEventListener(wordListener);
+
+        return mWordFromFirebase;
+    }
+    private void setupFullWordsListListenerFromFirebase() {
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference wordsListRef = rootRef.child("wordsList");
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Word> wordsList = new ArrayList<>();
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Word word = ds.getValue(Word.class);
+                    wordsList.add(word);
+                }
+                String a="";
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        };
+
+        ChildEventListener childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Word word = dataSnapshot.getValue(Word.class);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Word word = dataSnapshot.getValue(Word.class);
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(FIREBASE_DEBUG, "Failed to get Word from database", databaseError.toException());
+            }
+        };
+
+        wordsListRef.addChildEventListener(childEventListener);
+        //wordsListRef.addListenerForSingleValueEvent(eventListener);
+
+    }
+    private void deleteWordFromFirebase(Word word) {
+        mWordReference = FirebaseDatabase.getInstance().getReference(word.getUniqueIdentifier());
+    }
 }

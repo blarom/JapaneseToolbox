@@ -1,5 +1,13 @@
 package com.japanesetoolboxapp;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.japanesetoolboxapp.data.FirebaseUtilities;
 import com.japanesetoolboxapp.utiities.*;
 
 import android.content.Context;
@@ -29,6 +37,15 @@ import java.util.List;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
+
+//TODO: database upgrade
+////TODO make the LOCAL room db update itself with the list<Words> if the app has been reinstalled
+////TODO create objects for the Latin and Kanji index tables for faster loading
+////TODO adapt the code to use the LOCAL room db instead of the local List<String> objects, including index calls
+////TODO create a VBA function that updates the list of words in the excel from firebase
+////TODO query the room database to get results from the common words
+////TODO merge the results of the local database to the results
+////TODO display to user
 
 //TODO: features
 ////TODO when joining online results, compare verb[space]suru with verb[no space]suru, and show verb[space]suru to user
@@ -89,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
     int mSheetRowLength;
     Intent restartIntent;
     Toast mLastToast;
+    private FirebaseAuth mFirebaseAuth;
 
     //Preferences Globals
     public static Boolean mShowOnlineResults;
@@ -108,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         activityResumedFromSTTOrOCR = false;
 
 
-        // Start loading the database in the background
+        // Start loading the local database in the background
         if (MainDatabase == null) {
             new BackgroundDatabaseLoader().execute();
         }
@@ -117,6 +135,11 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
+        //Setting up Firebase
+        FirebaseDatabase firebaseDb = FirebaseDatabase.getInstance();
+        firebaseDb.setPersistenceEnabled(true);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseAuth.signInWithEmailAndPassword(FirebaseUtilities.firebaseEmail, FirebaseUtilities.firebasePass);
 
         //Code allowing to bypass strict mode
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -133,41 +156,11 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
             if (savedInstanceState == null) {
                 inputQueryFragment = new InputQueryFragment();
                 fragmentTransaction.add(R.id.InputQueryPlaceholder, inputQueryFragment);
-
-                //grammarModuleFragment = new DictionaryFragment();
-                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, grammarModuleFragment);
-
-                //verbModuleFragment = new ConjugatorFragment();
-                //fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, verbModuleFragment);
-
-                //conversionModuleFragment = new ConvertFragment();
-                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, conversionModuleFragment);
-
-                //ComposeKanjiFragment = new ComposeKanjiFragment();
-                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, ComposeKanjiFragment);
-
-                //DecomposeKanjiFragment = new DecomposeKanjiFragment();
-                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, DecomposeKanjiFragment);
             }
         } else {
             if (savedInstanceState == null) {
                 inputQueryFragment = new InputQueryFragment();
                 fragmentTransaction.add(R.id.InputQueryPlaceholder, inputQueryFragment);
-
-                //grammarModuleFragment = new DictionaryFragment();
-                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, grammarModuleFragment);
-
-                //verbModuleFragment = new ConjugatorFragment();
-                //fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, verbModuleFragment);
-
-                //conversionModuleFragment = new ConvertFragment();
-                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, conversionModuleFragment);
-
-                //ComposeKanjiFragment = new ComposeKanjiFragment();
-                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, ComposeKanjiFragment);
-
-                //DecomposeKanjiFragment = new DecomposeKanjiFragment();
-                //fragmentTransaction.add(R.id.FunctionFragmentsPlaceholder, DecomposeKanjiFragment);
             }
         }
 
@@ -203,6 +196,9 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         restartIntent = this.getBaseContext().getPackageManager()
                 .getLaunchIntentForPackage(this.getBaseContext().getPackageName());
 
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
+        //updateUI(currentUser);
     }
     @Override public void onSaveInstanceState(Bundle savedInstanceState) {
  		super.onSaveInstanceState(savedInstanceState);

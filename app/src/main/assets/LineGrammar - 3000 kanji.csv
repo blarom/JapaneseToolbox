@@ -1,299 +1,299 @@
-KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings|
-e, へ, to, toward|e|へ|2||
-mo, も, also, either, even|mo|も|3;4||
-mo ... mo, も...も, both ... and, neither ... nor, mo|mo ... mo|も...も|5;6||
-to, と, and, with, when, object marker, if X then Y|to|と|7;8;9;10;11||
-ya, や, and (amongst others)|ya|や|12||
-nado, 等, and so forth, and the like, etc..., et cetera|nado|等|13||
-no, の, of, made of, pronunciation of hyphen, feminine tone, question marker, noun descriptor, in fact, indeed, polite softener, noun modifier for verb, pronoun modifier|no|の|14;15;16;17;18;19;20;21;6205||
-no ga, のが, pronoun modifier and use as subject, good at, not good at, like to do/be, dislike to do/be|no ga|のが|22;23||
-no wo, のを, noun modifier and use as object|no wo|のを|24||
-n, ん, in fact, indeed, softener, emphasizer, emphasis, n da, n desu|n|ん|25;26||
-wo, を, verb object marker, gerund object marker, "leaving" verb object marker, "going through" verb object marker|wo|を|27;28;29;30||
-wa, は, subject marker, choice marker, verb object marker, verb object marker, verb object marker, as for, regarding, in relation to|wa|は|31;32;33;34;35||
-wa, わ, you know, certainly, hear me out|wa|わ|36||
-de, で, location of an activity, by means of, substance of a material, because of, due to, limits in space, limits in time, limits in price or quantity, X and Y, where, takes place|de|で|37;38;39;40;41;42;43;44||
-de wa, では, as for in, de ha|de wa|では|6147||
-datte, だって, even, too, as well, also, they say, I hear, you mean, after all, because, but|datte|だって|45;46;47;48;49||
-yo, da yo, wa yo, よ, だよ, わよ, you know, certainly, hear me out, n da yo, n desu yo|yo, da yo, wa yo|よ, だよ, わよ|50||
-yone, よね, confirmation|yone|よね|51||
-na, な, na-adjective marker, you are ordered not to do/be X|na|な|52;53||
-ka, kai, kae, か, question marker|ka, kai, kae|か|54||
-ka naa, ka shira, かなあ, かしら, don't know if yes or no, かな〜, ka na, na no ka naa, na no ka shira|ka naa, ka shira|かなあ, かしら|55|かな〜|
-ka, か, or, I don't Y if X is ...|ka|か|56;57||
-ka … ka, か...か, either or|ka … ka|か...か|58||
-ga, が, emphasis, object marker, subject marker, but, and (less common)|ga|が|59;60;61;62;63||
-ka, ga, ヶ, kanji connector|ka, ga|ヶ|64||
-ne, wa ne, ね, わね, negative question marker, opinion|ne, wa ne|ね, わね|65;66||
-kara, から, (away) from, therefore|kara|から|67;68||
-made, まで, until, by a certain time, up to|made|まで|69;70||
-nozoi, 除い, except for|nozoi|除い|71||
-maru de, 丸で, quite, entirely, completely, at all, as if, as though, just like, similar to|maru de|丸で|72;6192||
-you de, ようで, like, similar to|you de|ようで|73||
-goto, 如, like, similar to, same as|goto|如|74||
-no made, 間で, between|no made|間で|75||
-ni yotte, に因って, made by, because of, due to, by means of, depending on, according to|ni yotte|に因って|76||
-ni, に, existence at a location, performing a continuous action at a location, final location, final destination, time of an action/event, frequency or proportion of an action/event, change or resulting condition, object marker for decision verb, object marker for verb in causative active tense, object marker for giving/receiving verb, subject marker in a passive sentence, object marker for person who is allowed/made to do an action, used when comparing/differentiating/estimating, for the purpose of, made for, cause for a given situation, ability, skill, knowledge, used with adverb describing manner, lists, do Y in order to do/be X, X by means of Y, go/come to do X, adverb form|ni|に|77;78;79;80;81;82;83;84;85;86;87;88;89;90;91;92;93;94;95;96;97;98||
-ni wa, には, from the object's point of view, verb object marker, ni ha|ni wa|には|99;100||
-no wa, には, noun modifier and use as subject, no ha|no wa|には|101||
-toka …toka, とか...とか, among other things, such things as, something like that, toka|toka …toka|とか...とか|102||
-oyobi, 及び, and, as well as|oyobi|及び|103||
-wa ... ga ii desu, は...がいいです, out of X, the Y is good, wa, ga|wa ... ga ii desu|は...がいいです|104||
-wa ... ga ..., は...が..., As for X, Y is (verb), wa, ga|wa ... ga ...|は...が...|105||
-de ... en, で...円, (counter) X are worth (price) yen, de, en, worth, priced, price, money|de ... en|で...円|106||
-de utteiru, で売っています, sold at, de utteimasu|de utteiru|で売っています|107||
-ni suru, にする, I will have X, ni shimasu, will take, will order|ni suru|にする|108||
-mo sou, もそう, (I) also X so|mo sou|もそう|109||
-(...), (...), Y that X, ga|(...)|(...)|110||
-mama, まま, X just the way it is|mama|まま|111||
-touri ni, 通りに, X the way it is meant to be, douri ni|touri ni|通りに|112||
-hou ga ii da, ほうがいいです, it would be best if, hou ga ii desu, hou ga, ta hou ga|hou ga ii da|ほうがいいです|113||
-mitai, 見たい, It seems that (he) does/is X, seems that, looks like, looks as if|mitai|見たい|114||
-rashii, らしい, (He) seems to do/be X, like, as if, apparently, it seems, I heard that, sounds like|rashii|らしい|115||
-sou, そう, (He) seems to do/be X / (I've) heard that X (from what I can see), (I've) heard that (he's) not X (from what I can see), looks like, appears to be, feels like, sounds like, seems to be, sou ni, sou mo nai, da sou|sou|そう|116;117||
-tte, datte, って, だって, (I've) heard that X, it seems that X, tte, datte|tte, datte|って, だって|118||
-you, よう, (He) seems to do/be X (from what I can deduce), looks like, appears to be, feels like, sounds like, seems to be, you da, na you da, no you da|you|よう|119||
-te mo, ても, even if (he) does/is X, de mo|te mo|ても|120||
-ikura ...te mo, 幾ら...ても, no matter how much (he) does/is X, de mo|ikura ...te mo|幾ら...ても|121||
-de mo, でも, also there|de mo|でも|6128||
-ii desu ka, ikaga desu ka, いですか, いかがですか, would (you) like to/be X?|ii desu ka, ikaga desu ka|いですか, いかがですか|122||
-dearu, である, there is|dearu|である|123||
-ga tsuiteimasu, がついています, X is included|ga tsuiteimasu|がついています|124||
-ga hatteimasu, がはっています, X is included|ga hatteimasu|がはっています|125||
-X ka nanika wo, か何かを, do/be X or something|X ka nanika wo|か何かを|126||
-X ka dareka wo, か誰かを, do/be X or someone|X ka dareka wo|か誰かを|127||
-X ka dokoka wo, かどこかを, do/be X or somewhere|X ka dokoka wo|かどこかを|128||
-darou, だろう, (He) probably does/is X, (I) wonder if (he) does/is X, likely, presumptive|darou|だろう|129;130||
-deshou, でしょう, (He) probably does/is X, (I) wonder if (he) does/is X, likely, presumptive|deshou|でしょう|131;132||
-no hoka, のほか, apart from X|no hoka|のほか|133||
-sugiru, すぎる, too much X, sugimasu, suginai, sugimashita, sugita|sugiru|すぎる|134||
-baai, 場合, In case (you) do/are X, in case of, in the case that, in case that, if|baai|場合|135||
-bakari ni, ばかいに, Y only because of X, bakkari ni, bakashi ni, bakkashi ni|bakari ni|ばかいに|136||
-na n da, なんだ, It's because of X, bakkari ni, bakashi ni, bakkashi ni|na n da|なんだ|137||
-ba, ば, if X then Y, if, then, nara, naraba, kereba, if that's the case, if so, that being the case|ba|ば|138||
-nakereba, なければ, if not X then Y, kereba, denakereba, kunakereba, ba|nakereba|なければ|139||
-nakya, なきゃ, if not X then Y, kereba, denakereba, kunakereba, ba|nakya|なきゃ|140||
-ba ii da, ばいいだ, what must one do/be when X?, ba ii desu ka, dou sureba, it will be fine if, it will be enough if, you should do, ba yokatta, nakereba ii desu, nakereba yokatta desu|ba ii da|ばいいだ|141||
-shi …shi, し...し, because of X, shi ne, shi|shi …shi|し...し|142||
-tara ii da, たらいいだ, what must one do/be when X?, tara yokatta da, tara yokatta desu|tara ii da|たらいいだ|143||
-tara, たら, if X then Y, when X then Y, taraba, daraba, if, then, dattara, kattara|tara|たら|144;145||
-nakattara, なかったら, if not X then Y, when not X then Y, daraba, taraba, if, then, denakattara, kunakattara|nakattara|なかったら|146;147||
-sore de, それで, therefore, still, even so, therefore, thus, consequently, as such|sore de|それで|148;149||
-soko de, 其処で, so, accordingly, thereupon, therefore, therefore, thus, consequently, as such|soko de|其処で|150||
-yue ni, 故に, therefore, therefore, thus, consequently, as such|yue ni|故に|151||
-soshitara, そしたら, therefore, therefore, thus, consequently, as such|soshitara|そしたら|152||
-node, ので, therefore, nande, nanode, therefore, thus, consequently, as such|node|ので|153||
-nde, んで, therefore, nande, nanode, therefore, thus, consequently, as such|nde|んで|154||
-te, de, て, で, therefore, X by means of Y, is so, so much that|te, de|て, で|155;156||
-nara, なら, if X|nara|なら|157||
-kakawarazu, かかわらず, despite, in spite of, regardless of, 拘らず, 関らず, 拘わらず, 関わらず, 不抱|kakawarazu|かかわらず|158|拘らず, 関らず, 拘わらず, 関わらず, 不抱|
-igai, 以外, except for, other than, with the exception of|igai|以外|159||
-temo, demo, ても, でも, however, but, even if, nevertheless, even so, notwithstanding|temo, demo|ても, でも|160||
-soredemo, それでも, however, but, even if, nevertheless, even so, notwithstanding|soredemo|それでも|161||
-soreyori, それより, however, but, apart from that, other than that, aside from that, more than that|soreyori|それより|162||
-tadashi, 但し, but, however, provided that, nevertheless, even so, notwithstanding|tadashi|但し|163||
-kedo, けど, but, and (less common), dakedo|kedo|けど|164;165||
-keredomo, けれども, but (politer form of kedo), dakeredomo|keredomo|けれども|166||
-tokoro de, ところで, even if X|tokoro de|ところで|167||
-tatoe …temo, たとえ...ても, even if X, tatoe demo|tatoe …temo|たとえ...ても|6204||
-sore demo, それでも, still, even so|sore demo|それでも|168||
-tokoro ga, 所が, even so, however, still, whereupon, even though, nevertheless, on the contrary, as a matter of fact, despite|tokoro ga|所が|169||
-sore ni shite mo, それにしても, nevertheless, however|sore ni shite mo|それにしても|170||
-soretomo, それとも, X? or Y?, either or|soretomo|それとも|171||
-naide, ないで, don't do X but instead do Y, don't do Y without doing X, not X and then Y, do not do|naide|ないで|172;173;174||
-noni, のに, Y despite, even though X, in order to do/be X, for the purpose of doing/being X, in spite of, despite this, although, and yet, but even so, but even then, however, nevertheless, for all that, nothwithstanding that, nanoni, datta noni|noni|のに|175;176||
-shikashi, 然し, X but Y|shikashi|然し|177||
-ja nakute, じゃなくて, not X but Y instead|ja nakute|じゃなくて|178||
-mata wa, 又は, or, otherwise, mata ha|mata wa|又は|179||
-to issho ni, と一緒に, X together with Y, altogether with|to issho ni|と一緒に|180||
-sore ni, それに, besides, in addition|sore ni|それに|181||
-sono ue, その上, besides, in addition|sono ue|その上|182||
-nagara, ながら, do Y during X|nagara|ながら|183||
-shi, dashi, し, だし, X and Y (amongst other things)|shi, dashi|し, だし|184||
-X tari Y tari suru, たり, X and/or Y, tari, dattari|X tari Y tari suru|たり|185||
-toki, 時, Y happening at the same time as X, Y happened/will have happened/is agreed upon to happen at the same time as X, when, during, in case of|toki|時|186;187||
-uchi ni, 内に, Y happening while X is still happening, when, during|uchi ni|内に|188||
-no tochuu de, の途中で, action Y happening in the midst of event X, in the middle of, in the midst of, during, 途中|no tochuu de|の途中で|189||
-tochuu ni, 途中に, Y exists on the way during movement X, in the middle of, in the midst of, during, 途中|tochuu ni|途中に|190||
-tochuu de, 途中で, action Y happening on the way during movement X, in the middle of, in the midst of, during, 途中|tochuu de|途中で|191||
-ato, あと, X is true and also Y, atto|ato|あと|192||
-you ni, ように, (make an effort) in order to do X, in the hopes of something uncertain|you ni|ように|193||
-tame ni, 為に, Y for the sake of doing/being X, for the sake of something certain, in order to, for, for the sake of, in favor of, in favour of, on behalf of|tame ni|為に|194||
-no tame ni, no tame no, の為に, の為の, Y for the benefit of X, for the sake of something certain|no tame ni, no tame no|の為に, の為の|195||
-tame, 為, because of X, due to X, no tame, ta tame, da tame|tame|為|6360||
-you ni, ようにと, tell/ask to do/be X, initiator, initiates|you ni|ようにと|196||
-to ii n desu ga, といいんですが, (I) hope that X, da to ii n da, da to ii n desu, da to ii da, da to ii desu|to ii n desu ga|といいんですが|6104||
-to ii desu (ne), といいですね, (I) hope that X, da to ii n da, da to ii n desu, da to ii da, da to ii desu|to ii desu (ne)|といいですね|6148||
-to iu, to tsutaeru, と言う, と伝える, say/tell that X, da to imasu, da to iu, da to tsutaeru, da to tsutaemasu, say that, tell that, to itta, to tsutaeta, I said that, she said that|to iu, to tsutaeru|と言う, と伝える|197||
-to omou, と思う, think that X, da to omou, da to omoimasu, I think that, she thinks that,youthink that|to omou|と思う|198||
-to wa kagiranai, と, だとは限らない, is/do not always X, is not always, do not always, da to wa kagiranai, da to wa kagirimasen|to wa kagiranai|と, だとは限らない|199||
-tokoro dewa, ところでは, as far as X|tokoro dewa|ところでは|200||
-ka ...ka, か...か, do you Y if X is ...?, ka, か, know if, believe that, think that, remember that, remember if|ka ...ka|か...か|201||
-ka dou ka, かどうか, do you Y if X is ... or not?, I don't Y if X is ... or not, know if, believe that, think that|ka dou ka|かどうか|202;203||
-ka dou ka … te miru, かどうか, In order to see if X is … or not|ka dou ka … te miru|かどうか|204||
-hazu, 筈, 弭, is supposed to do/be X, is not supposed to do/be X, was certainly supposed to do/be X, was regrettably supposed to do/be X, was certainly not supposed to do/be X, expected to do, should do, expected to be, supposed to be, should be, must do, must be, sure, no hazu, na hazu|hazu|筈, 弭|205;206;207;208;209||
-ni tsuite, に就いて, concerning X, about X, relating to X, regarding X, per (e.g. 100 yen per person), for every, with regard to, with regards to, in regards to, ni tsuite no|ni tsuite|に就いて|210;6376||
-naru, なる, becomes X, became X, ni naru, you ni naru, comes to be, comes to do|naru|なる|211;212||
-you ni naritai, ようになりたい, become able to be/do X, will be be able to do, will be able to be, etai|you ni naritai|ようになりたい|213||
-you ni naru kamo shirenai, ようになるかもしれない, not become able to be/do X, will not be be able to do, will not be able to be, you ni naru kamo shiremasen|you ni naru kamo shirenai|ようになるかもしれない|214||
-onaji, 同じ, X and Y have the same (characteristic)|onaji|同じ|215||
-ni niteiru, に似ている, Y resembles X|ni niteiru|に似ている|216||
-ni tai suru, にたいする, toward, respective to|ni tai suru|にたいする|6742||
-to dochira ga, とどちが, which of X and Y is most (characteristic) ?|to dochira ga|とどちが|217||
-no naka de ... ga ichiban, の中で...が一番, out of all the X, Y is the most (characteristic)|no naka de ... ga ichiban|の中で...が一番|218||
-yori ... hou ga, より...ほうが, Y more ... than X, hou ga, yori|yori ... hou ga|より...ほうが|219||
-yori, より, X less … than Y|yori|より|220||
-noto ... noto, のと...のと, between/of X and Y, which of, decision, decide|noto ... noto|のと...のと|221||
-yori mou sukoshi ..., よりもう少し, less X and a bit more Y|yori mou sukoshi ...|よりもう少し|222||
-you ni, you na, sou na, ように, ような, そうな, X seems to be like Y, X looks like Y, appears to be, no you ni, no you na|you ni, you na, sou na|ように, ような, そうな|223||
-ato de, 後で, after X, ato, no ato de, の後で, no atto de, afterwards|ato de|後で|224||
-mae ni, 前に, before X, no mae ni, の前に|mae ni|前に|225||
-te, て, X and then Y, afterwards|te|て|226||
-sorekara, それから, X and then Y, afterwards|sorekara|それから|227||
-soshite, 然して, 然うして, X and then Y, soushite, thus|soshite|然して, 然うして|228||
-sara ni, さらに, furthermore, again, after all, more and more, moreover, even more|sara ni|さらに|229||
-shikamo, しかも, moreover, furthermore, nevertheless, and yet|shikamo|しかも|230||
-[verb]teite, ていて, でいて, X is being done (present progressive) while doing/being something, deite|[verb]teite|ていて, でいて|231|deite|
-[verb]tete, てて, でて, X is being done (present progressive) while doing/being something, dete|[verb]tete|てて, でて|232|dete|
-[verb]te iru, ている, X is being done (present progressive), X past action/event that is still relevant to the present, te imasu, de iru, de imasu|[verb]te iru|ている|233;234||
-[verb]te aru, てある, X has (already) been done, te arimasu, de aru, de arimasu|[verb]te aru|てある|235||
-[verb]te iku, て行く, X has been happening and will continue to happen, do/be X while moving away, do/be X then go somewhere, te ikimasu, de iku, de ikimasu|[verb]te iku|て行く|236;237;238||
-[verb]te oku, ておく, to do/be X preemptively, in preparation for, in advance, te okimasu, de oku, de okimasu, do preemptively, do in preparation for, do in advance|[verb]te oku|ておく|239||
-[verb]ttoku, っとく, to do/be X preemptively, in preparation for, in advance, ttokimasu, preemptively, preparation|[verb]ttoku|っとく|240||
-[verb]te kara, てから, X and then Y, de kara, then, afterwards|[verb]te kara|てから|241||
-[verb]te kuru, て来る, to come to do/be X, do/be X while approaching, do/be X then come over, te kimasu, de kuru, de kimasu|[verb]te kuru|て来る|242;243;244||
-[verb]te mo ii da, てもいいだ, X is possible, te mo ii desu, de mo ii da, de mo ii desu, alright, may, permission|[verb]te mo ii da|てもいいだ|245||
-[verb]te wa ikenai, てはいけない, X is not permitted, te wa ikemasen, de wa ikenai, de wa ikemasen, not allowed, not permitted, forbidden, may not, prohibition|[verb]te wa ikenai|てはいけない|246||
-[verb]cha ikenai, ちゃいけない, X is not permitted, te wa ikemasen, de wa ikenai, de wa ikemasen, not allowed, not permitted, forbidden, may not, prohibition|[verb]cha ikenai|ちゃいけない|247||
-[verb]te mo ii desu ka?, てもいいですか?, is it fine if (he) does/is X?, mou ii da, is it ok, is it fine, is ok, is fine, is acceptable, permission, may I, may she, may he, may they, de mo ii desu ka|[verb]te mo ii desu ka?|てもいいですか?|248||
-[verb]te ageru, て上げる, (He) does/is X as a personal favor for someone, te ageru, te agemasu, de ageru, de agemasu|[verb]te ageru|て上げる|249||
-[verb]te hoshii, てほしい, (I) want someone to do X, hope someone does X, te hoshii desu|[verb]te hoshii|てほしい|250||
-[verb]te kudasai, て下さい, please do X, to please do/be X, de kudasai|[verb]te kudasai|て下さい|251;252||
-[verb]te kurenai, て呉れない, would you please do X, de kurenai|[verb]te kurenai|て呉れない|253||
-[verb]te kuremasen ka, て呉れませんか, will you please do X, de kuremasen ka|[verb]te kuremasen ka|て呉れませんか|6125||
-[verb]te itadakemasen ka, て呉れませんか, could you please do X, de itadakemasen ka|[verb]te itadakemasen ka|て呉れませんか|6126||
-[verb]te kureru, て呉れる, (He) does/is X as a favor for me, te kuremasu, de kureru, de kuremasu|[verb]te kureru|て呉れる|254||
-[verb]te miru, て見る, do X and see what happens, te mimasu, de miru, de mimasu|[verb]te miru|て見る|255||
-[verb]te mitai da, て見たいだ, want to do X and see what happens, want to try doing X, te mitai desu, de mitai da, de mitai desu, te mitakatta, de mitakatta|[verb]te mitai da|て見たいだ|256||
-[verb]te moraeru, て貰えます, (He) can do/be X as a favor, te moraemasu, de moraeru, de moraemasu|[verb]te moraeru|て貰えます|257||
-[verb]te moraemasu ka, て貰えますか, could (you) do/be X (as a favor)?, de moraemasu ka|[verb]te moraemasu ka|て貰えますか|258||
-[verb]te moreru to, て貰えると, if someone can do/be X as a favor, de moraeru to|[verb]te moreru to|て貰えると|259||
-[verb]te itadaku, ていただく, someone does/is X as a personal favor for someone else (polite)|[verb]te itadaku|ていただく|6100||
-[verb]te goran, てご覧, please try to do/be X|[verb]te goran|てご覧|260||
-[verb]te morau, て貰う, someone does/is X as a personal favor for someone or for me, de moraimasu, de morau, de moraimasu|[verb]te morau|て貰う|261||
-[verb]te moraitai, て貰いたい, I want someone to do/be X (as a favor), de moraitai|[verb]te moraitai|て貰いたい|262||
-[verb]te sokonau, て損なう, I want someone to do/be X (as a favor), to fail to do/be X, de moraitai|[verb]te sokonau|て損なう|263;264||
-[verb]te moraitai n desu ga, て貰いたいんですが, would you please do/be X (as a favor), de moraitai no desu ga, de moraitai n desu ga, de moraitai no desu ga|[verb]te moraitai n desu ga|て貰いたいんですが|265||
-[verb]te shimau, て仕舞う, (He has) completely finished doing/being X, (He) regrets doing/being X, te shimau, te shimaimasu, de shimau, de shimaimasu|[verb]te shimau|て仕舞う|266;267||
-[verb]te shimatta, て仕舞った, did/was X and regret doing it, te shimaimashita, de shimatta, de shimaimashita|[verb]te shimatta|て仕舞った|268||
-[verb]cchimatta, っちまった, did/was X and regret doing it|[verb]cchimatta|っちまった|269||
-[verb]te sumimasen, てすみません, (He is) sorry to do/be X|[verb]te sumimasen|てすみません|270||
-[verb]te bakari iru, ばかりいる, always doing X, bakkari iru, bakashi iru, bakkashi iru, bakkari imasu, bakashi imasu, bakkashi imasu|[verb]te bakari iru|ばかりいる|271||
-[verb]te koto wa dekinai, ことはできない, (He) cannot make a X-ing, koto ha dekinai, koto ha dekimasen|[verb]te koto wa dekinai|ことはできない|272||
-[verb]te choudai, て頂戴, to do/be X as a favor for me|[verb]te choudai|て頂戴|273||
-[verb]sou ni naru, そう, (He) almost does/is X, sou ni narimasu|[verb]sou ni naru|そう|274||
-[verb]nasasou, なさそう, (He) doesn't seem to do/be X, sou, sou ni nai, sou mo nai, doesn't look like, doesn't sound like, doesn't appear to be, apparently not, doesn't seem to be|[verb]nasasou|なさそう|275||
-[verb]eru, える, to be able to do/be X|[verb]eru|える|276||
-[verb]eta, えた, to have been able to do/be X|[verb]eta|えた|277||
-[verb]saseru, させる, to make someone do/de X (causative active)|[verb]saseru|させる|278||
-[verb]koto ga dekiru, ことが出来る, to be able to do a X-ing|[verb]koto ga dekiru|ことが出来る|279||
-[verb]koto, こと, 事, A/an X-ing/X-ment, ru koto, suru koto|[verb]koto|こと, 事|280||
-[verb]koto ni kimeru, ことに決める, (He) has decided to do/be X|[verb]koto ni kimeru|ことに決める|281||
-[verb]beki, べき, should X, must X, ought to X|[verb]beki|べき|282||
-[verb]komu, 込む, to go into, to put into, to remain (seated), to be plunged into (silence), to do thoroughly, to do intently, to continue in the same state|[verb]komu|込む|283||
-[verb]hajimeru, 始める, to start to do/be|[verb]hajimeru|始める|284||
-[verb]chau, jau, ちゃう, じゃう, (He has) completely finished doing/being X|[verb]chau, jau|ちゃう, じゃう|285||
-[verb]chatta, jatta, ちゃった, じゃった, did/was X and regret doing it, te shimaimashita, de shimatta, de shimaimashita|[verb]chatta, jatta|ちゃった, じゃった|286||
-(o) [verb] ni naru, になる, to do/be X (honorific)|(o) [verb] ni naru|になる|287||
-(o) [verb] nasaru, なさる, to do/be X (honorific)|(o) [verb] nasaru|なさる|288||
-(o) [verb] suru, する, to do/be X (humble)|(o) [verb] suru|する|289||
-(o) [verb] itasu, いたす, to do/be X (humble)|(o) [verb] itasu|いたす|290||
-(o) [verb] kudasai, 下さい, to please do/be X|(o) [verb] kudasai|下さい|291||
-(o) [verb] naide kudasai, ないで下さい, to please don't do/be X|(o) [verb] naide kudasai|ないで下さい|292||
-(o) [verb] nasaimase, なさいませ, to please do/be X (honorific)|(o) [verb] nasaimase|なさいませ|293||
-(o) [verb] nasaimasu na, なさいますな, to please don't do/be X (honorific)|(o) [verb] nasaimasu na|なさいますな|294||
-[verb]nasai, なさい, you are ordered to do/be X (polite)|[verb]nasai|なさい|295||
-[verb]nasaru na, なさるな, you are ordered not to do/be X (polite)|[verb]nasaru na|なさるな|296||
-[verb]ta mama, た儘, た侭, as it is, as one likes, because, as, as long as|[verb]ta mama|た儘, た侭|297||
-[verb]naosu, 直す, to do/be X over again|[verb]naosu|直す|298||
-[verb]tai, たい, want to do/be X|[verb]tai|たい|299||
-[verb]takatta, たかった, wanted to do/be X|[verb]takatta|たかった|300||
-[verb]takunai, たくない, don't want to do/be X|[verb]takunai|たくない|301||
-[verb]takunakatta, たくなかった, didn't want to do/be X|[verb]takunakatta|たくなかった|302||
-[verb]tai desu, たいです, want to do/be X (polite)|[verb]tai desu|たいです|303||
-[verb]tai deshita, たいでした, wanted to do/be X (polite)|[verb]tai deshita|たいでした|304||
-[verb]taku arimasen, たくありません, don't want to do/be X (polite)|[verb]taku arimasen|たくありません|305||
-[verb]taku arimasen deshita, たくありませんでした, didn't want to do/be X (polite)|[verb]taku arimasen deshita|たくありませんでした|306||
-[verb]tagaru, たがる, (I understand that) he/she wants to do/be X|[verb]tagaru|たがる|307||
-[verb]yasui, やすい, easy to do/be X, easy to be|[verb]yasui|やすい|308||
-[verb]nikui, にくい, difficult to do/be X, difficult to be, difficult to do, hard to be|[verb]nikui|にくい|309||
-[verb]yagaru, やがる, to do/be X (speaker is contemptuous), difficult to be, difficult to do, hard to be|[verb]yagaru|やがる|310||
-[verb]yagare, やがる, to do/be with hatred or contempt, yagare|[verb]yagare|やがる|311||
-[verb]nu, ぬ, to not do/be X|[verb]nu|ぬ|312||
-[verb]zu, ず, to (verb) without doing/being X|[verb]zu|ず|313||
-[verb]agaru, 上がる, is done doing/being X|[verb]agaru|上がる|314||
-[verb]hodo, 程, to the point of|[verb]hodo|程|315||
-[verb]ina ka, 否か, or not|[verb]ina ka|否か|316||
-[verb]koto ni suru, ことにする, to have decided to do/be X (in the future), nai koto ni suru, nai koto ni shimasu, koto ni kimeru|[verb]koto ni suru|ことにする|317||
-[verb]koto ni shita, ことにした, we decided to do/be X|[verb]koto ni shita|ことにした|318||
-[verb]maji, まじ, cannot, should not, will not, must not, must not do/be X|[verb]maji|まじ|319||
-[verb]koto ni shiteiru, ことにしている, (I) have decided to be doing/being X|[verb]koto ni shiteiru|ことにしている|320||
-[verb]koto ni naru, ことになる, It has been decided that (he) does/be X, nai koto ni naru, nai koto ni narimasu|[verb]koto ni naru|ことになる|321||
-[verb]ga hayai ka, が早いか, as soon as (he) does/is X|[verb]ga hayai ka|が早いか|322||
-[verb]tara dou desu ka, たらどうですか, Why don't (you) do/be X? How about doing/being X?, dara dou desu, tara dou da, dara dou da|[verb]tara dou desu ka|たらどうですか|323||
-[verb]tara ii desu ka, たらいいですか, What do (you) think/suggest if (he) does/is X?, dara ii desu ka|[verb]tara ii desu ka|たらいいですか|324||
-[verb]deshou ka, でしょうか, Shouldn't (you) do/be X?|[verb]deshou ka|でしょうか|325||
-[verb]masen ka, nai ka, ませんか, ないか, Why don't (you) do/be X?|[verb]masen ka, nai ka|ませんか, ないか|326||
-[verb]mashou ka, ませんか, May (he) do/be X?|[verb]mashou ka|ませんか|327||
-[verb]dake, だけ, only do X, dake da, dake desu|[verb]dake|だけ|328||
-[verb]ta bakari, たばかり, have (just) recently done X, bakkari, bakashi, bakkashi, just done, recently done, just recently done, just did|[verb]ta bakari|たばかり|329||
-[verb]bakari, ばかり, ready to do/be X, bakkari, bakashi, bakkashi|[verb]bakari|ばかり|330||
-[verb]ta tokoro da, たところだ, to have done/been X just now, ta tokoro desu|[verb]ta tokoro da|たところだ|331||
-[verb]tokoro da, ところだ, just about to do/be X|[verb]tokoro da|ところだ|332||
-[verb]teiru tokoro da, ているところだ, to be just in the middle of X-ing, teiru tokoro desu|[verb]teiru tokoro da|ているところだ|333||
-[verb]koto ga aru, ことがある, occasionally do/be X, nai koto ga aru, nai koto ga arimasu, koto ga nai, koto ga nakatta|[verb]koto ga aru|ことがある|334||
-[verb]koto ga dearu, ことがである, allowed to do/be X, nai koto ga dearu, nai koto ga dearimasu|[verb]koto ga dearu|ことがである|335||
-[verb]ta koto ga aru, たことがある, to have experienced X-ing, have done before|[verb]ta koto ga aru|たことがある|336||
-[verb]ta koto ni naru, たことになる, to have happened to do/be X|[verb]ta koto ni naru|たことになる|337||
-[verb]koto ni natteiru, ことになっている, to be scheduled/due to do X, nai koto ni natteiru, nai koto ni natteimasu, scheduled to do, due to do|[verb]koto ni natteiru|ことになっている|338||
-[verb]ou to suru, ou to shiteiru, おうとする, おうとしている, about to do/be X, ou to shimasu, ou to shiteimasu, intend to do/be|[verb]ou to suru, ou to shiteiru|おうとする, おうとしている|339||
-[verb]ou to shita, おうとした, was just about to do X, tried to do X, ou to shimashita|[verb]ou to shita|おうとした|340||
-[verb]ou to omou, ou to omotteiru, おうと思う, plan to do/be X, intend to do/be X, ou to omoimasu, plan to be, considering to do, considering to be, ou to moimasu, ou to mou|[verb]ou to omou, ou to omotteiru|おうと思う|341||
-[verb]ou to omou, ou to omotteiru, おうと思っている, planning to do/be X, ou to omotteimasu, plan to be, considering to do, considering to be, ou to motteimasu, ou to motteiru|[verb]ou to omou, ou to omotteiru|おうと思っている|342||
-[verb]tomonaku, ともなく, not intending to do/be X, absentmindedly, without planning to, without intending to|[verb]tomonaku|ともなく|343||
-[verb]tsumori, 積もり, intend to do/be X, 積り|[verb]tsumori|積もり|344|積り|
-[verb]ba ii noni, ばいいのに, (He) should do/be X|[verb]ba ii noni|ばいいのに|345||
-[verb]ba yokatta noni, ばよかったのに, (He) should do/be X|[verb]ba yokatta noni|ばよかったのに|346||
-[verb]ba yokatta, ばよかった, (He) should have done/been X|[verb]ba yokatta|ばよかった|347||
-i, い, present tense, keiyoushi, i keiyoushi, i-adjective|i|い|348||
-i desu, いです, present tense (polite), keiyoushi, i keiyoushi, i-adjective|i desu|いです|349||
-kunai desu, くないです, present tense negative, keiyoushi, i keiyoushi, i-adjective|kunai desu|くないです|350||
-ku arimasen, くありません, present negative tense (polite), keiyoushi, i keiyoushi, i-adjective|ku arimasen|くありません|351||
-katta desu, かったです, past tense, keiyoushi, i keiyoushi, i-adjective|katta desu|かったです|352||
-kunakatta desu, くなかったです, past negative tense, keiyoushi, i keiyoushi, i-adjective|kunakatta desu|くなかったです|353||
-ku arimasen deshita, くありませんでした, past negative tense (polite), keiyoushi, i keiyoushi, i-adjective|ku arimasen deshita|くありませんでした|354||
-ku, く, adverb form, keiyoushi, i keiyoushi, i-adjective|ku|く|355||
-kute, くて, X and Y, is so X that, keiyoushi, i keiyoushi, i-adjective|kute|くて|356;357||
-kutemo, くて, even if, keiyoushi, i keiyoushi, i-adjective|kutemo|くて|6206||
-ku naru, くなる, to turn into X, keiyoushi, i keiyoushi, i-adjective|ku naru|くなる|358||
-ku suru, くする, to make X, keiyoushi, i keiyoushi, i-adjective|ku suru|くする|359||
-mi, み, noun form, keiyoushi, i keiyoushi, i-adjective|mi|み|360||
-kereba, ければ, if X, kereba desu, conditional, keiyoushi, i keiyoushi, i-adjective|kereba|ければ|361||
-karou, かろう, should be X, must be X, ought to be X, volitional, suggestive, keiyoushi, i keiyoushi, i-adjective|karou|かろう|362||
-sa, さ, level, degree of something, keiyoushi, i keiyoushi, i-adjective|sa|さ|6197||
-[root], , present tense, keiyoudoushi, na keiyoushi, na-adjective|[root]||363||
-desu, です, present tense (polite), keiyoudoushi, na keiyoushi, na-adjective|desu|です|364||
-de wa arimasen, ではありません, present negative tense (most polite), keiyoudoushi, na keiyoushi, na-adjective|de wa arimasen|ではありません|365||
-ja nai desu, じゃないです, present negative tense (polite), keiyoudoushi, na keiyoushi, na-adjective|ja nai desu|じゃないです|366||
-dewa nai, ではない, present negative tense (neutral), keiyoudoushi, na keiyoushi, na-adjective|dewa nai|ではない|367||
-ja nai, じゃない, present negative tense (impolite), keiyoudoushi, na keiyoushi, na-adjective|ja nai|じゃない|368||
-deshita, でした, past tense, keiyoudoushi, na keiyoushi, na-adjective|deshita|でした|369||
-ja arimasen deshita, じゃありませんでした, past negative tense, keiyoudoushi, na keiyoushi, na-adjective|ja arimasen deshita|じゃありませんでした|370||
-de wa arimasen deshita, じゃありませんでした, past negative tense (polite), keiyoudoushi, na keiyoushi, na-adjective|de wa arimasen deshita|じゃありませんでした|371||
-de (next adj.), で, X and Y, keiyoudoushi, na keiyoushi, na-adjective|de (next adj.)|で|372||
-demo, くて, even if, keiyoudoushi, na keiyoushi, na-adjective|demo|くて|6207||
-ni naru, になる, to turn into X , keiyoudoushi, na keiyoushi, na-adjective|ni naru|になる|373||
-ni suru, にする, to make X, keiyoudoushi, na keiyoushi, na-adjective|ni suru|にする|374||
-deareba, であれば, if X, deareba desu, conditional, keiyoudoushi, na keiyoushi, na-adjective|deareba|であれば|375||
-yotei da, 予定だ, I plan to X, to yotei da, to yotei desu|yotei da|予定だ|6149||
-ni kyoumi ga aru, に興味がある, I am interested in|ni kyoumi ga aru|に興味がある|6612||
+Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings|
+4128|e, へ, to, toward|e|へ|2||
+4129|mo, も, also, either, even|mo|も|3;4||
+4130|mo ... mo, も...も, both ... and, neither ... nor, mo|mo ... mo|も...も|5;6||
+4131|to, と, and, with, when, object marker, if X then Y|to|と|7;8;9;10;11||
+4132|ya, や, and (amongst others)|ya|や|12||
+4133|nado, 等, and so forth, and the like, etc..., et cetera|nado|等|13||
+4134|no, の, of, made of, pronunciation of hyphen, feminine tone, question marker, noun descriptor, in fact, indeed, polite softener, noun modifier for verb, pronoun modifier|no|の|14;15;16;17;18;19;20;21;6205||
+4135|no ga, のが, pronoun modifier and use as subject, good at, not good at, like to do/be, dislike to do/be|no ga|のが|22;23||
+4136|no wo, のを, noun modifier and use as object|no wo|のを|24||
+4137|n, ん, in fact, indeed, softener, emphasizer, emphasis, n da, n desu|n|ん|25;26||
+4138|wo, を, verb object marker, gerund object marker, "leaving" verb object marker, "going through" verb object marker|wo|を|27;28;29;30||
+4139|wa, は, subject marker, choice marker, verb object marker, verb object marker, verb object marker, as for, regarding, in relation to|wa|は|31;32;33;34;35||
+4140|wa, わ, you know, certainly, hear me out|wa|わ|36||
+4141|de, で, location of an activity, by means of, substance of a material, because of, due to, limits in space, limits in time, limits in price or quantity, X and Y, where, takes place|de|で|37;38;39;40;41;42;43;44||
+4142|de wa, では, as for in, de ha|de wa|では|6147||
+4143|datte, だって, even, too, as well, also, they say, I hear, you mean, after all, because, but|datte|だって|45;46;47;48;49||
+4144|yo, da yo, wa yo, よ, だよ, わよ, you know, certainly, hear me out, n da yo, n desu yo|yo, da yo, wa yo|よ, だよ, わよ|50||
+4145|yone, よね, confirmation|yone|よね|51||
+4146|na, な, na-adjective marker, you are ordered not to do/be X|na|な|52;53||
+4147|ka, kai, kae, か, question marker|ka, kai, kae|か|54||
+4148|ka naa, ka shira, かなあ, かしら, don't know if yes or no, かな〜, ka na, na no ka naa, na no ka shira|ka naa, ka shira|かなあ, かしら|55|かな〜|
+4149|ka, か, or, I don't Y if X is ...|ka|か|56;57||
+4150|ka … ka, か...か, either or|ka … ka|か...か|58||
+4151|ga, が, emphasis, object marker, subject marker, but, and (less common)|ga|が|59;60;61;62;63||
+4152|ka, ga, ヶ, kanji connector|ka, ga|ヶ|64||
+4153|ne, wa ne, ね, わね, negative question marker, opinion|ne, wa ne|ね, わね|65;66||
+4154|kara, から, (away) from, therefore|kara|から|67;68||
+4155|made, まで, until, by a certain time, up to|made|まで|69;70||
+4156|nozoi, 除い, except for|nozoi|除い|71||
+4157|maru de, 丸で, quite, entirely, completely, at all, as if, as though, just like, similar to|maru de|丸で|72;6192||
+4158|you de, ようで, like, similar to|you de|ようで|73||
+4159|goto, 如, like, similar to, same as|goto|如|74||
+4160|no made, 間で, between|no made|間で|75||
+4161|ni yotte, に因って, made by, because of, due to, by means of, depending on, according to|ni yotte|に因って|76||
+4162|ni, に, existence at a location, performing a continuous action at a location, final location, final destination, time of an action/event, frequency or proportion of an action/event, change or resulting condition, object marker for decision verb, object marker for verb in causative active tense, object marker for giving/receiving verb, subject marker in a passive sentence, object marker for person who is allowed/made to do an action, used when comparing/differentiating/estimating, for the purpose of, made for, cause for a given situation, ability, skill, knowledge, used with adverb describing manner, lists, do Y in order to do/be X, X by means of Y, go/come to do X, adverb form|ni|に|77;78;79;80;81;82;83;84;85;86;87;88;89;90;91;92;93;94;95;96;97;98||
+4163|ni wa, には, from the object's point of view, verb object marker, ni ha|ni wa|には|99;100||
+4164|no wa, には, noun modifier and use as subject, no ha|no wa|には|101||
+4165|toka …toka, とか...とか, among other things, such things as, something like that, toka|toka …toka|とか...とか|102||
+4166|oyobi, 及び, and, as well as|oyobi|及び|103||
+4167|wa ... ga ii desu, は...がいいです, out of X, the Y is good, wa, ga|wa ... ga ii desu|は...がいいです|104||
+4168|wa ... ga ..., は...が..., As for X, Y is (verb), wa, ga|wa ... ga ...|は...が...|105||
+4169|de ... en, で...円, (counter) X are worth (price) yen, de, en, worth, priced, price, money|de ... en|で...円|106||
+4170|de utteiru, で売っています, sold at, de utteimasu|de utteiru|で売っています|107||
+4171|ni suru, にする, I will have X, ni shimasu, will take, will order|ni suru|にする|108||
+4172|mo sou, もそう, (I) also X so|mo sou|もそう|109||
+4173|(...), (...), Y that X, ga|(...)|(...)|110||
+4174|mama, まま, X just the way it is|mama|まま|111||
+4175|touri ni, 通りに, X the way it is meant to be, douri ni|touri ni|通りに|112||
+4176|hou ga ii da, ほうがいいです, it would be best if, hou ga ii desu, hou ga, ta hou ga|hou ga ii da|ほうがいいです|113||
+4177|mitai, 見たい, It seems that (he) does/is X, seems that, looks like, looks as if|mitai|見たい|114||
+4178|rashii, らしい, (He) seems to do/be X, like, as if, apparently, it seems, I heard that, sounds like|rashii|らしい|115||
+4179|sou, そう, (He) seems to do/be X / (I've) heard that X (from what I can see), (I've) heard that (he's) not X (from what I can see), looks like, appears to be, feels like, sounds like, seems to be, sou ni, sou mo nai, da sou|sou|そう|116;117||
+4180|tte, datte, って, だって, (I've) heard that X, it seems that X, tte, datte|tte, datte|って, だって|118||
+4181|you, よう, (He) seems to do/be X (from what I can deduce), looks like, appears to be, feels like, sounds like, seems to be, you da, na you da, no you da|you|よう|119||
+4182|te mo, ても, even if (he) does/is X, de mo|te mo|ても|120||
+4183|ikura ...te mo, 幾ら...ても, no matter how much (he) does/is X, de mo|ikura ...te mo|幾ら...ても|121||
+4184|de mo, でも, also there|de mo|でも|6128||
+4185|ii desu ka, ikaga desu ka, いですか, いかがですか, would (you) like to/be X?|ii desu ka, ikaga desu ka|いですか, いかがですか|122||
+4186|dearu, である, there is|dearu|である|123||
+4187|ga tsuiteimasu, がついています, X is included|ga tsuiteimasu|がついています|124||
+4188|ga hatteimasu, がはっています, X is included|ga hatteimasu|がはっています|125||
+4189|X ka nanika wo, か何かを, do/be X or something|X ka nanika wo|か何かを|126||
+4190|X ka dareka wo, か誰かを, do/be X or someone|X ka dareka wo|か誰かを|127||
+4191|X ka dokoka wo, かどこかを, do/be X or somewhere|X ka dokoka wo|かどこかを|128||
+4192|darou, だろう, (He) probably does/is X, (I) wonder if (he) does/is X, likely, presumptive|darou|だろう|129;130||
+4193|deshou, でしょう, (He) probably does/is X, (I) wonder if (he) does/is X, likely, presumptive|deshou|でしょう|131;132||
+4194|no hoka, のほか, apart from X|no hoka|のほか|133||
+4195|sugiru, すぎる, too much X, sugimasu, suginai, sugimashita, sugita|sugiru|すぎる|134||
+4196|baai, 場合, In case (you) do/are X, in case of, in the case that, in case that, if|baai|場合|135||
+4197|bakari ni, ばかいに, Y only because of X, bakkari ni, bakashi ni, bakkashi ni|bakari ni|ばかいに|136||
+4198|na n da, なんだ, It's because of X, bakkari ni, bakashi ni, bakkashi ni|na n da|なんだ|137||
+4199|ba, ば, if X then Y, if, then, nara, naraba, kereba, if that's the case, if so, that being the case|ba|ば|138||
+4200|nakereba, なければ, if not X then Y, kereba, denakereba, kunakereba, ba|nakereba|なければ|139||
+4201|nakya, なきゃ, if not X then Y, kereba, denakereba, kunakereba, ba|nakya|なきゃ|140||
+4202|ba ii da, ばいいだ, what must one do/be when X?, ba ii desu ka, dou sureba, it will be fine if, it will be enough if, you should do, ba yokatta, nakereba ii desu, nakereba yokatta desu|ba ii da|ばいいだ|141||
+4203|shi …shi, し...し, because of X, shi ne, shi|shi …shi|し...し|142||
+4204|tara ii da, たらいいだ, what must one do/be when X?, tara yokatta da, tara yokatta desu|tara ii da|たらいいだ|143||
+4205|tara, たら, if X then Y, when X then Y, taraba, daraba, if, then, dattara, kattara|tara|たら|144;145||
+4206|nakattara, なかったら, if not X then Y, when not X then Y, daraba, taraba, if, then, denakattara, kunakattara|nakattara|なかったら|146;147||
+4207|sore de, それで, therefore, still, even so, therefore, thus, consequently, as such|sore de|それで|148;149||
+4208|soko de, 其処で, so, accordingly, thereupon, therefore, therefore, thus, consequently, as such|soko de|其処で|150||
+4209|yue ni, 故に, therefore, therefore, thus, consequently, as such|yue ni|故に|151||
+4210|soshitara, そしたら, therefore, therefore, thus, consequently, as such|soshitara|そしたら|152||
+4211|node, ので, therefore, nande, nanode, therefore, thus, consequently, as such|node|ので|153||
+4212|nde, んで, therefore, nande, nanode, therefore, thus, consequently, as such|nde|んで|154||
+4213|te, de, て, で, therefore, X by means of Y, is so, so much that|te, de|て, で|155;156||
+4214|nara, なら, if X|nara|なら|157||
+4215|kakawarazu, かかわらず, despite, in spite of, regardless of, 拘らず, 関らず, 拘わらず, 関わらず, 不抱|kakawarazu|かかわらず|158|拘らず, 関らず, 拘わらず, 関わらず, 不抱|
+4216|igai, 以外, except for, other than, with the exception of|igai|以外|159||
+4217|temo, demo, ても, でも, however, but, even if, nevertheless, even so, notwithstanding|temo, demo|ても, でも|160||
+4218|soredemo, それでも, however, but, even if, nevertheless, even so, notwithstanding|soredemo|それでも|161||
+4219|soreyori, それより, however, but, apart from that, other than that, aside from that, more than that|soreyori|それより|162||
+4220|tadashi, 但し, but, however, provided that, nevertheless, even so, notwithstanding|tadashi|但し|163||
+4221|kedo, けど, but, and (less common), dakedo|kedo|けど|164;165||
+4222|keredomo, けれども, but (politer form of kedo), dakeredomo|keredomo|けれども|166||
+4223|tokoro de, ところで, even if X|tokoro de|ところで|167||
+4224|tatoe …temo, たとえ...ても, even if X, tatoe demo|tatoe …temo|たとえ...ても|6204||
+4225|sore demo, それでも, still, even so|sore demo|それでも|168||
+4226|tokoro ga, 所が, even so, however, still, whereupon, even though, nevertheless, on the contrary, as a matter of fact, despite|tokoro ga|所が|169||
+4227|sore ni shite mo, それにしても, nevertheless, however|sore ni shite mo|それにしても|170||
+4228|soretomo, それとも, X? or Y?, either or|soretomo|それとも|171||
+4229|naide, ないで, don't do X but instead do Y, don't do Y without doing X, not X and then Y, do not do|naide|ないで|172;173;174||
+4230|noni, のに, Y despite, even though X, in order to do/be X, for the purpose of doing/being X, in spite of, despite this, although, and yet, but even so, but even then, however, nevertheless, for all that, nothwithstanding that, nanoni, datta noni|noni|のに|175;176||
+4231|shikashi, 然し, X but Y|shikashi|然し|177||
+4232|ja nakute, じゃなくて, not X but Y instead|ja nakute|じゃなくて|178||
+4233|mata wa, 又は, or, otherwise, mata ha|mata wa|又は|179||
+4234|to issho ni, と一緒に, X together with Y, altogether with|to issho ni|と一緒に|180||
+4235|sore ni, それに, besides, in addition|sore ni|それに|181||
+4236|sono ue, その上, besides, in addition|sono ue|その上|182||
+4237|nagara, ながら, do Y during X|nagara|ながら|183||
+4238|shi, dashi, し, だし, X and Y (amongst other things)|shi, dashi|し, だし|184||
+4239|X tari Y tari suru, たり, X and/or Y, tari, dattari|X tari Y tari suru|たり|185||
+4240|toki, 時, Y happening at the same time as X, Y happened/will have happened/is agreed upon to happen at the same time as X, when, during, in case of|toki|時|186;187||
+4241|uchi ni, 内に, Y happening while X is still happening, when, during|uchi ni|内に|188||
+4242|no tochuu de, の途中で, action Y happening in the midst of event X, in the middle of, in the midst of, during, 途中|no tochuu de|の途中で|189||
+4243|tochuu ni, 途中に, Y exists on the way during movement X, in the middle of, in the midst of, during, 途中|tochuu ni|途中に|190||
+4244|tochuu de, 途中で, action Y happening on the way during movement X, in the middle of, in the midst of, during, 途中|tochuu de|途中で|191||
+4245|ato, あと, X is true and also Y, atto|ato|あと|192||
+4246|you ni, ように, (make an effort) in order to do X, in the hopes of something uncertain|you ni|ように|193||
+4247|tame ni, 為に, Y for the sake of doing/being X, for the sake of something certain, in order to, for, for the sake of, in favor of, in favour of, on behalf of|tame ni|為に|194||
+4248|no tame ni, no tame no, の為に, の為の, Y for the benefit of X, for the sake of something certain|no tame ni, no tame no|の為に, の為の|195||
+4249|tame, 為, because of X, due to X, no tame, ta tame, da tame|tame|為|6360||
+4250|you ni, ようにと, tell/ask to do/be X, initiator, initiates|you ni|ようにと|196||
+4251|to ii n desu ga, といいんですが, (I) hope that X, da to ii n da, da to ii n desu, da to ii da, da to ii desu|to ii n desu ga|といいんですが|6104||
+4252|to ii desu (ne), といいですね, (I) hope that X, da to ii n da, da to ii n desu, da to ii da, da to ii desu|to ii desu (ne)|といいですね|6148||
+4253|to iu, to tsutaeru, と言う, と伝える, say/tell that X, da to imasu, da to iu, da to tsutaeru, da to tsutaemasu, say that, tell that, to itta, to tsutaeta, I said that, she said that|to iu, to tsutaeru|と言う, と伝える|197||
+4254|to omou, と思う, think that X, da to omou, da to omoimasu, I think that, she thinks that,youthink that|to omou|と思う|198||
+4255|to wa kagiranai, と, だとは限らない, is/do not always X, is not always, do not always, da to wa kagiranai, da to wa kagirimasen|to wa kagiranai|と, だとは限らない|199||
+4256|tokoro dewa, ところでは, as far as X|tokoro dewa|ところでは|200||
+4257|ka ...ka, か...か, do you Y if X is ...?, ka, か, know if, believe that, think that, remember that, remember if|ka ...ka|か...か|201||
+4258|ka dou ka, かどうか, do you Y if X is ... or not?, I don't Y if X is ... or not, know if, believe that, think that|ka dou ka|かどうか|202;203||
+4259|ka dou ka … te miru, かどうか, In order to see if X is … or not|ka dou ka … te miru|かどうか|204||
+4260|hazu, 筈, 弭, is supposed to do/be X, is not supposed to do/be X, was certainly supposed to do/be X, was regrettably supposed to do/be X, was certainly not supposed to do/be X, expected to do, should do, expected to be, supposed to be, should be, must do, must be, sure, no hazu, na hazu|hazu|筈, 弭|205;206;207;208;209||
+4261|ni tsuite, に就いて, concerning X, about X, relating to X, regarding X, per (e.g. 100 yen per person), for every, with regard to, with regards to, in regards to, ni tsuite no|ni tsuite|に就いて|210;6376||
+4262|naru, なる, becomes X, became X, ni naru, you ni naru, comes to be, comes to do|naru|なる|211;212||
+4263|you ni naritai, ようになりたい, become able to be/do X, will be be able to do, will be able to be, etai|you ni naritai|ようになりたい|213||
+4264|you ni naru kamo shirenai, ようになるかもしれない, not become able to be/do X, will not be be able to do, will not be able to be, you ni naru kamo shiremasen|you ni naru kamo shirenai|ようになるかもしれない|214||
+4265|onaji, 同じ, X and Y have the same (characteristic)|onaji|同じ|215||
+4266|ni niteiru, に似ている, Y resembles X|ni niteiru|に似ている|216||
+4267|ni tai suru, にたいする, toward, respective to|ni tai suru|にたいする|6742||
+4268|to dochira ga, とどちが, which of X and Y is most (characteristic) ?|to dochira ga|とどちが|217||
+4269|no naka de ... ga ichiban, の中で...が一番, out of all the X, Y is the most (characteristic)|no naka de ... ga ichiban|の中で...が一番|218||
+4270|yori ... hou ga, より...ほうが, Y more ... than X, hou ga, yori|yori ... hou ga|より...ほうが|219||
+4271|yori, より, X less … than Y|yori|より|220||
+4272|noto ... noto, のと...のと, between/of X and Y, which of, decision, decide|noto ... noto|のと...のと|221||
+4273|yori mou sukoshi ..., よりもう少し, less X and a bit more Y|yori mou sukoshi ...|よりもう少し|222||
+4274|you ni, you na, sou na, ように, ような, そうな, X seems to be like Y, X looks like Y, appears to be, no you ni, no you na|you ni, you na, sou na|ように, ような, そうな|223||
+4275|ato de, 後で, after X, ato, no ato de, の後で, no atto de, afterwards|ato de|後で|224||
+4276|mae ni, 前に, before X, no mae ni, の前に|mae ni|前に|225||
+4277|te, て, X and then Y, afterwards|te|て|226||
+4278|sorekara, それから, X and then Y, afterwards|sorekara|それから|227||
+4279|soshite, 然して, 然うして, X and then Y, soushite, thus|soshite|然して, 然うして|228||
+4280|sara ni, さらに, furthermore, again, after all, more and more, moreover, even more|sara ni|さらに|229||
+4281|shikamo, しかも, moreover, furthermore, nevertheless, and yet|shikamo|しかも|230||
+4282|[verb]teite, ていて, でいて, X is being done (present progressive) while doing/being something, deite, teite|[verb]teite|ていて, でいて|231|deite|
+4283|[verb]tete, てて, でて, X is being done (present progressive) while doing/being something, dete, tete|[verb]tete|てて, でて|232|dete|
+4284|[verb]te iru, ている, X is being done (present progressive), X past action/event that is still relevant to the present, te iru, te imasu, de iru, de imasu|[verb]te iru|ている|233;234||
+4285|[verb]te aru, てある, X has (already) been done, te aru, te arimasu, de aru, de arimasu|[verb]te aru|てある|235||
+4286|[verb]te iku, て行く, X has been happening and will continue to happen, do/be X while moving away, do/be X then go somewhere, te iku, te ikimasu, de iku, de ikimasu|[verb]te iku|て行く|236;237;238||
+4287|[verb]te oku, ておく, to do/be X preemptively, in preparation for, in advance, te oku, te okimasu, de oku, de okimasu, do preemptively, do in preparation for, do in advance|[verb]te oku|ておく|239||
+4288|[verb]ttoku, っとく, to do/be X preemptively, in preparation for, in advance, ttoku, ttokimasu, preemptively, preparation|[verb]ttoku|っとく|240||
+4289|[verb]te kara, てから, X and then Y, te kara, de kara, then, afterwards|[verb]te kara|てから|241||
+4290|[verb]te kuru, て来る, to come to do/be X, do/be X while approaching, do/be X then come over, te kuru, te kimasu, de kuru, de kimasu|[verb]te kuru|て来る|242;243;244||
+4291|[verb]te mo ii da, てもいいだ, X is possible, te mo ii da, te mo ii desu, de mo ii da, de mo ii desu, alright, may, permission|[verb]te mo ii da|てもいいだ|245||
+4292|[verb]te wa ikenai, てはいけない, X is not permitted, te wa ikenai, te wa ikemasen, de wa ikenai, de wa ikemasen, not allowed, not permitted, forbidden, may not, prohibition|[verb]te wa ikenai|てはいけない|246||
+4293|[verb]cha ikenai, ちゃいけない, X is not permitted, cha ikenai, te wa ikemasen, de wa ikenai, de wa ikemasen, not allowed, not permitted, forbidden, may not, prohibition|[verb]cha ikenai|ちゃいけない|247||
+4294|[verb]te mo ii desu ka?, てもいいですか?, is it fine if (he) does/is X?, te mo ii desu ka?, mou ii da, is it ok, is it fine, is ok, is fine, is acceptable, permission, may I, may she, may he, may they, de mo ii desu ka|[verb]te mo ii desu ka?|てもいいですか?|248||
+4295|[verb]te ageru, て上げる, (He) does/is X as a personal favor for someone, te ageru, te ageru, te agemasu, de ageru, de agemasu|[verb]te ageru|て上げる|249||
+4296|[verb]te hoshii, てほしい, (I) want someone to do X, hope someone does X, te hoshii, te hoshii desu|[verb]te hoshii|てほしい|250||
+4297|[verb]te kudasai, て下さい, please do X, to please do/be X, te kudasai, de kudasai|[verb]te kudasai|て下さい|251;252||
+4298|[verb]te kurenai, て呉れない, would you please do X, te kurenai, de kurenai|[verb]te kurenai|て呉れない|253||
+4299|[verb]te kuremasen ka, て呉れませんか, will you please do X, te kuremasen ka, de kuremasen ka|[verb]te kuremasen ka|て呉れませんか|6125||
+4300|[verb]te itadakemasen ka, て呉れませんか, could you please do X, te itadakemasen ka, de itadakemasen ka|[verb]te itadakemasen ka|て呉れませんか|6126||
+4301|[verb]te kureru, て呉れる, (He) does/is X as a favor for me, te kureru, te kuremasu, de kureru, de kuremasu|[verb]te kureru|て呉れる|254||
+4302|[verb]te miru, て見る, do X and see what happens, te miru, te mimasu, de miru, de mimasu|[verb]te miru|て見る|255||
+4303|[verb]te mitai da, て見たいだ, want to do X and see what happens, want to try doing X, te mitai da, te mitai desu, de mitai da, de mitai desu, te mitakatta, de mitakatta|[verb]te mitai da|て見たいだ|256||
+4304|[verb]te moraeru, て貰えます, (He) can do/be X as a favor, te moraeru, te moraemasu, de moraeru, de moraemasu|[verb]te moraeru|て貰えます|257||
+4305|[verb]te moraemasu ka, て貰えますか, could (you) do/be X (as a favor)?, te moraemasu ka, de moraemasu ka|[verb]te moraemasu ka|て貰えますか|258||
+4306|[verb]te moreru to, て貰えると, if someone can do/be X as a favor, te moreru to, de moraeru to|[verb]te moreru to|て貰えると|259||
+4307|[verb]te itadaku, ていただく, someone does/is X as a personal favor for someone else (polite), te itadaku|[verb]te itadaku|ていただく|6100||
+4308|[verb]te goran, てご覧, please try to do/be X, te goran|[verb]te goran|てご覧|260||
+4309|[verb]te morau, て貰う, someone does/is X as a personal favor for someone or for me, te morau, de moraimasu, de morau, de moraimasu|[verb]te morau|て貰う|261||
+4310|[verb]te moraitai, て貰いたい, I want someone to do/be X (as a favor), te moraitai, de moraitai|[verb]te moraitai|て貰いたい|262||
+4311|[verb]te sokonau, て損なう, I want someone to do/be X (as a favor), to fail to do/be X, te sokonau|[verb]te sokonau|て損なう|263;264||
+4312|[verb]te moraitai n desu ga, て貰いたいんですが, would you please do/be X (as a favor), te moraitai n desu ga, de moraitai no desu ga, de moraitai n desu ga, de moraitai no desu ga|[verb]te moraitai n desu ga|て貰いたいんですが|265||
+4313|[verb]te shimau, て仕舞う, (He has) completely finished doing/being X, (He) regrets doing/being X, te shimau, te shimau, te shimaimasu, de shimau, de shimaimasu|[verb]te shimau|て仕舞う|266;267||
+4314|[verb]te shimatta, て仕舞った, did/was X and regret doing it, te shimatta, te shimaimashita, de shimatta, de shimaimashita|[verb]te shimatta|て仕舞った|268||
+4315|[verb]cchimatta, っちまった, did/was X and regret doing it, cchimatta|[verb]cchimatta|っちまった|269||
+4316|[verb]te sumimasen, てすみません, (He is) sorry to do/be X, te sumimasen|[verb]te sumimasen|てすみません|270||
+4317|[verb]te bakari iru, ばかりいる, always doing X, te bakari iru, bakkari iru, bakashi iru, bakkashi iru, bakkari imasu, bakashi imasu, bakkashi imasu|[verb]te bakari iru|ばかりいる|271||
+4318|[verb]te koto wa dekinai, ことはできない, (He) cannot make a X-ing, te koto wa dekinai, koto ha dekinai, koto ha dekimasen|[verb]te koto wa dekinai|ことはできない|272||
+4319|[verb]te choudai, て頂戴, to do/be X as a favor for me, te choudai|[verb]te choudai|て頂戴|273||
+4320|[verb]sou ni naru, そう, (He) almost does/is X, sou ni naru, sou ni narimasu|[verb]sou ni naru|そう|274||
+4321|[verb]nasasou, なさそう, (He) doesn't seem to do/be X, nasasou, sou, sou ni nai, sou mo nai, doesn't look like, doesn't sound like, doesn't appear to be, apparently not, doesn't seem to be|[verb]nasasou|なさそう|275||
+4322|[verb]eru, える, to be able to do/be X, eru|[verb]eru|える|276||
+4323|[verb]eta, えた, to have been able to do/be X, eta|[verb]eta|えた|277||
+4324|[verb]saseru, させる, to make someone do/de X (causative active), saseru|[verb]saseru|させる|278||
+4325|[verb]koto ga dekiru, ことが出来る, to be able to do a X-ing, koto ga dekiru|[verb]koto ga dekiru|ことが出来る|279||
+4326|[verb]koto, こと, 事, A/an X-ing/X-ment, koto, ru koto, suru koto|[verb]koto|こと, 事|280||
+4327|[verb]koto ni kimeru, ことに決める, (He) has decided to do/be X, koto ni kimeru|[verb]koto ni kimeru|ことに決める|281||
+4328|[verb]beki, べき, should X, must X, ought to X, beki|[verb]beki|べき|282||
+4329|[verb]komu, 込む, to go into, to put into, to remain (seated), to be plunged into (silence), to do thoroughly, to do intently, to continue in the same state, komu|[verb]komu|込む|283||
+4330|[verb]hajimeru, 始める, to start to do/be, hajimeru|[verb]hajimeru|始める|284||
+4331|[verb]chau, jau, ちゃう, じゃう, (He has) completely finished doing/being X, chau, jau|[verb]chau, jau|ちゃう, じゃう|285||
+4332|[verb]chatta, jatta, ちゃった, じゃった, did/was X and regret doing it, chatta, jatta, te shimaimashita, de shimatta, de shimaimashita|[verb]chatta, jatta|ちゃった, じゃった|286||
+4333|(o) [verb] ni naru, になる, to do/be X (honorific), erb] ni naru|(o) [verb] ni naru|になる|287||
+4334|(o) [verb] nasaru, なさる, to do/be X (honorific), erb] nasaru|(o) [verb] nasaru|なさる|288||
+4335|(o) [verb] suru, する, to do/be X (humble), erb] suru|(o) [verb] suru|する|289||
+4336|(o) [verb] itasu, いたす, to do/be X (humble), erb] itasu|(o) [verb] itasu|いたす|290||
+4337|(o) [verb] kudasai, 下さい, to please do/be X, erb] kudasai|(o) [verb] kudasai|下さい|291||
+4338|(o) [verb] naide kudasai, ないで下さい, to please don't do/be X, erb] naide kudasai|(o) [verb] naide kudasai|ないで下さい|292||
+4339|(o) [verb] nasaimase, なさいませ, to please do/be X (honorific), erb] nasaimase|(o) [verb] nasaimase|なさいませ|293||
+4340|(o) [verb] nasaimasu na, なさいますな, to please don't do/be X (honorific), erb] nasaimasu na|(o) [verb] nasaimasu na|なさいますな|294||
+4341|[verb]nasai, なさい, you are ordered to do/be X (polite), nasai|[verb]nasai|なさい|295||
+4342|[verb]nasaru na, なさるな, you are ordered not to do/be X (polite), nasaru na|[verb]nasaru na|なさるな|296||
+4343|[verb]ta mama, た儘, た侭, as it is, as one likes, because, as, as long as, ta mama|[verb]ta mama|た儘, た侭|297||
+4344|[verb]naosu, 直す, to do/be X over again, naosu|[verb]naosu|直す|298||
+4345|[verb]tai, たい, want to do/be X, tai|[verb]tai|たい|299||
+4346|[verb]takatta, たかった, wanted to do/be X, takatta|[verb]takatta|たかった|300||
+4347|[verb]takunai, たくない, don't want to do/be X, takunai|[verb]takunai|たくない|301||
+4348|[verb]takunakatta, たくなかった, didn't want to do/be X, takunakatta|[verb]takunakatta|たくなかった|302||
+4349|[verb]tai desu, たいです, want to do/be X (polite), tai desu|[verb]tai desu|たいです|303||
+4350|[verb]tai deshita, たいでした, wanted to do/be X (polite), tai deshita|[verb]tai deshita|たいでした|304||
+4351|[verb]taku arimasen, たくありません, don't want to do/be X (polite), taku arimasen|[verb]taku arimasen|たくありません|305||
+4352|[verb]taku arimasen deshita, たくありませんでした, didn't want to do/be X (polite), taku arimasen deshita|[verb]taku arimasen deshita|たくありませんでした|306||
+4353|[verb]tagaru, たがる, (I understand that) he/she wants to do/be X, tagaru|[verb]tagaru|たがる|307||
+4354|[verb]yasui, やすい, easy to do/be X, yasui, easy to be|[verb]yasui|やすい|308||
+4355|[verb]nikui, にくい, difficult to do/be X, nikui, difficult to be, difficult to do, hard to be|[verb]nikui|にくい|309||
+4356|[verb]yagaru, やがる, to do/be X (speaker is contemptuous), yagaru, difficult to be, difficult to do, hard to be|[verb]yagaru|やがる|310||
+4357|[verb]yagare, やがる, to do/be with hatred or contempt, yagare, yagare|[verb]yagare|やがる|311||
+4358|[verb]nu, ぬ, to not do/be X, nu|[verb]nu|ぬ|312||
+4359|[verb]zu, ず, to (verb) without doing/being X, zu|[verb]zu|ず|313||
+4360|[verb]agaru, 上がる, is done doing/being X, agaru|[verb]agaru|上がる|314||
+4361|[verb]hodo, 程, to the point of, hodo|[verb]hodo|程|315||
+4362|[verb]ina ka, 否か, or not, ina ka|[verb]ina ka|否か|316||
+4363|[verb]koto ni suru, ことにする, to have decided to do/be X (in the future), koto ni suru, nai koto ni suru, nai koto ni shimasu, koto ni kimeru|[verb]koto ni suru|ことにする|317||
+4364|[verb]koto ni shita, ことにした, we decided to do/be X, koto ni shita|[verb]koto ni shita|ことにした|318||
+4365|[verb]maji, まじ, cannot, should not, will not, must not, must not do/be X, maji|[verb]maji|まじ|319||
+4366|[verb]koto ni shiteiru, ことにしている, (I) have decided to be doing/being X, koto ni shiteiru|[verb]koto ni shiteiru|ことにしている|320||
+4367|[verb]koto ni naru, ことになる, It has been decided that (he) does/be X, koto ni naru, nai koto ni naru, nai koto ni narimasu|[verb]koto ni naru|ことになる|321||
+4368|[verb]ga hayai ka, が早いか, as soon as (he) does/is X, ga hayai ka|[verb]ga hayai ka|が早いか|322||
+4369|[verb]tara dou desu ka, たらどうですか, Why don't (you) do/be X? How about doing/being X?, tara dou desu ka, dara dou desu, tara dou da, dara dou da|[verb]tara dou desu ka|たらどうですか|323||
+4370|[verb]tara ii desu ka, たらいいですか, What do (you) think/suggest if (he) does/is X?, tara ii desu ka, dara ii desu ka|[verb]tara ii desu ka|たらいいですか|324||
+4371|[verb]deshou ka, でしょうか, Shouldn't (you) do/be X?, deshou ka|[verb]deshou ka|でしょうか|325||
+4372|[verb]masen ka, nai ka, ませんか, ないか, Why don't (you) do/be X?, masen ka, nai ka|[verb]masen ka, nai ka|ませんか, ないか|326||
+4373|[verb]mashou ka, ませんか, May (he) do/be X?, mashou ka|[verb]mashou ka|ませんか|327||
+4374|[verb]dake, だけ, only do X, dake, dake da, dake desu|[verb]dake|だけ|328||
+4375|[verb]ta bakari, たばかり, have (just) recently done X, ta bakari, bakkari, bakashi, bakkashi, just done, recently done, just recently done, just did|[verb]ta bakari|たばかり|329||
+4376|[verb]bakari, ばかり, ready to do/be X, bakari, bakkari, bakashi, bakkashi|[verb]bakari|ばかり|330||
+4377|[verb]ta tokoro da, たところだ, to have done/been X just now, ta tokoro da, ta tokoro desu|[verb]ta tokoro da|たところだ|331||
+4378|[verb]tokoro da, ところだ, just about to do/be X, tokoro da|[verb]tokoro da|ところだ|332||
+4379|[verb]teiru tokoro da, ているところだ, to be just in the middle of X-ing, teiru tokoro da, teiru tokoro desu|[verb]teiru tokoro da|ているところだ|333||
+4380|[verb]koto ga aru, ことがある, occasionally do/be X, koto ga aru, nai koto ga aru, nai koto ga arimasu, koto ga nai, koto ga nakatta|[verb]koto ga aru|ことがある|334||
+4381|[verb]koto ga dearu, ことがである, allowed to do/be X, koto ga dearu, nai koto ga dearu, nai koto ga dearimasu|[verb]koto ga dearu|ことがである|335||
+4382|[verb]ta koto ga aru, たことがある, to have experienced X-ing, ta koto ga aru, have done before|[verb]ta koto ga aru|たことがある|336||
+4383|[verb]ta koto ni naru, たことになる, to have happened to do/be X, ta koto ni naru|[verb]ta koto ni naru|たことになる|337||
+4384|[verb]koto ni natteiru, ことになっている, to be scheduled/due to do X, koto ni natteiru, nai koto ni natteiru, nai koto ni natteimasu, scheduled to do, due to do|[verb]koto ni natteiru|ことになっている|338||
+4385|[verb]ou to suru, ou to shiteiru, おうとする, おうとしている, about to do/be X, ou to suru, ou to shiteiru, ou to shimasu, ou to shiteimasu, intend to do/be|[verb]ou to suru, ou to shiteiru|おうとする, おうとしている|339||
+4386|[verb]ou to shita, おうとした, was just about to do X, tried to do X, ou to shita, ou to shimashita|[verb]ou to shita|おうとした|340||
+4387|[verb]ou to omou, ou to omotteiru, おうと思う, plan to do/be X, intend to do/be X, ou to omou, ou to omotteiru, ou to omoimasu, plan to be, considering to do, considering to be, ou to moimasu, ou to mou|[verb]ou to omou, ou to omotteiru|おうと思う|341||
+4388|[verb]ou to omou, ou to omotteiru, おうと思っている, planning to do/be X, ou to omou, ou to omotteiru, ou to omotteimasu, plan to be, considering to do, considering to be, ou to motteimasu, ou to motteiru|[verb]ou to omou, ou to omotteiru|おうと思っている|342||
+4389|[verb]tomonaku, ともなく, not intending to do/be X, tomonaku, absentmindedly, without planning to, without intending to|[verb]tomonaku|ともなく|343||
+4390|[verb]tsumori, 積もり, intend to do/be X, 積り, tsumori|[verb]tsumori|積もり|344|積り|
+4391|[verb]ba ii noni, ばいいのに, (He) should do/be X, ba ii noni|[verb]ba ii noni|ばいいのに|345||
+4392|[verb]ba yokatta noni, ばよかったのに, (He) should do/be X, ba yokatta noni|[verb]ba yokatta noni|ばよかったのに|346||
+4393|[verb]ba yokatta, ばよかった, (He) should have done/been X, ba yokatta|[verb]ba yokatta|ばよかった|347||
+4394|i, い, present tense, keiyoushi, i keiyoushi, i-adjective|i|い|348||
+4395|i desu, いです, present tense (polite), keiyoushi, i keiyoushi, i-adjective|i desu|いです|349||
+4396|kunai desu, くないです, present tense negative, keiyoushi, i keiyoushi, i-adjective|kunai desu|くないです|350||
+4397|ku arimasen, くありません, present negative tense (polite), keiyoushi, i keiyoushi, i-adjective|ku arimasen|くありません|351||
+4398|katta desu, かったです, past tense, keiyoushi, i keiyoushi, i-adjective|katta desu|かったです|352||
+4399|kunakatta desu, くなかったです, past negative tense, keiyoushi, i keiyoushi, i-adjective|kunakatta desu|くなかったです|353||
+4400|ku arimasen deshita, くありませんでした, past negative tense (polite), keiyoushi, i keiyoushi, i-adjective|ku arimasen deshita|くありませんでした|354||
+4401|ku, く, adverb form, keiyoushi, i keiyoushi, i-adjective|ku|く|355||
+4402|kute, くて, X and Y, is so X that, keiyoushi, i keiyoushi, i-adjective|kute|くて|356;357||
+4403|kutemo, くて, even if, keiyoushi, i keiyoushi, i-adjective|kutemo|くて|6206||
+4404|ku naru, くなる, to turn into X, keiyoushi, i keiyoushi, i-adjective|ku naru|くなる|358||
+4405|ku suru, くする, to make X, keiyoushi, i keiyoushi, i-adjective|ku suru|くする|359||
+4406|mi, み, noun form, keiyoushi, i keiyoushi, i-adjective|mi|み|360||
+4407|kereba, ければ, if X, kereba desu, conditional, keiyoushi, i keiyoushi, i-adjective|kereba|ければ|361||
+4408|karou, かろう, should be X, must be X, ought to be X, volitional, suggestive, keiyoushi, i keiyoushi, i-adjective|karou|かろう|362||
+4409|sa, さ, level, degree of something, keiyoushi, i keiyoushi, i-adjective|sa|さ|6197||
+4410|[root], , present tense, keiyoudoushi, na keiyoushi, na-adjective|[root]||363||
+4411|desu, です, present tense (polite), keiyoudoushi, na keiyoushi, na-adjective|desu|です|364||
+4412|de wa arimasen, ではありません, present negative tense (most polite), keiyoudoushi, na keiyoushi, na-adjective|de wa arimasen|ではありません|365||
+4413|ja nai desu, じゃないです, present negative tense (polite), keiyoudoushi, na keiyoushi, na-adjective|ja nai desu|じゃないです|366||
+4414|dewa nai, ではない, present negative tense (neutral), keiyoudoushi, na keiyoushi, na-adjective|dewa nai|ではない|367||
+4415|ja nai, じゃない, present negative tense (impolite), keiyoudoushi, na keiyoushi, na-adjective|ja nai|じゃない|368||
+4416|deshita, でした, past tense, keiyoudoushi, na keiyoushi, na-adjective|deshita|でした|369||
+4417|ja arimasen deshita, じゃありませんでした, past negative tense, keiyoudoushi, na keiyoushi, na-adjective|ja arimasen deshita|じゃありませんでした|370||
+4418|de wa arimasen deshita, じゃありませんでした, past negative tense (polite), keiyoudoushi, na keiyoushi, na-adjective|de wa arimasen deshita|じゃありませんでした|371||
+4419|de (next adj.), で, X and Y, keiyoudoushi, na keiyoushi, na-adjective|de (next adj.)|で|372||
+4420|demo, くて, even if, keiyoudoushi, na keiyoushi, na-adjective|demo|くて|6207||
+4421|ni naru, になる, to turn into X , keiyoudoushi, na keiyoushi, na-adjective|ni naru|になる|373||
+4422|ni suru, にする, to make X, keiyoudoushi, na keiyoushi, na-adjective|ni suru|にする|374||
+4423|deareba, であれば, if X, deareba desu, conditional, keiyoudoushi, na keiyoushi, na-adjective|deareba|であれば|375||
+4424|yotei da, 予定だ, I plan to X, to yotei da, to yotei desu|yotei da|予定だ|6149||
+4425|ni kyoumi ga aru, に興味がある, I am interested in|ni kyoumi ga aru|に興味がある|6612||

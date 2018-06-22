@@ -668,7 +668,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 668|ough, stiff, hard|Ai||||||
 669|painful|Ai|||541, 1324|||
 670|painful, bitter, heartbreaking|Ai||||||
-671|painful;  difficult;  agonizing|Ai||||||
+671|painful, difficult, agonizing|Ai||||||
 672|painful, heartrending, trying, oppressive, suffocating, miserable|Ai||||||
 673|poor|Ai|||541|okanemochi|binbou|
 674|powerful, strong, forceful, vigorous, reassuring, encouraging|Ai||||||
@@ -687,7 +687,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 687|round, cicular, spherical|Ai|||563|||
 688|sad, sorrowful, unhappy|Ai|||543|ureshi||
 689|salty|Ai|||580|||
-690|few;  a little;  scarce;  insufficient;  seldom|Ai|||544, 1272, 1286|ooi||
+690|few, a little, scarce, insufficient, seldom|Ai|||544, 1272, 1286|ooi||
 691|scary, frightenin, eerie, dreadful|Ai|||569|||
 692|severe, strict, rigid, unsparing, relentless, stern, austere, grave, solemn, intense (e.g. cold), harsh, tough|Ai||||||
 693|shallow, superficial|Ai|||567|fukai||
@@ -738,7 +738,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 738|weak, sickly|Ai||||tsuyoi, joubu|yowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, kasuka, hijaku, yawa|
 739|weird, disgusting, sickening|Ai||||||
 740|white|Ai|||188|||
-741|wide, broad, spacious|Ai|||518|semai||
+741|wide, broad, spacious, vast|Ai|||518|semai||
 742|wise, clever, smart|Ai||||||
 743|wonderful|Ai||||||
 744|yellow|Ai|||578|||
@@ -956,7 +956,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 956|healthy, sound, wholesome|Ana||||||
 957|high, noble, refined, advanced|Ana||||||
 958|highest, supreme, the most|Ana||||||
-959|high-speed, high-gear|Ana||||||
+959|high-speed, high-gear, rapid, express|Ana||||||
 960|huge, gigantic, enormous|Ana||||||
 961|hygenic, healthy, healthful, sanitary|Ana||||fukenkou, byouki|genki, joubu|
 962|identical, same, similar, equal|Ana||||||
@@ -2285,7 +2285,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2285|hope, wish|NACF||||||
 2286|hospitalization, hospitalisation|NACF||||||
 2287|house, family|NACF||||||
-2288|house, home, family, household; one's folks, style|NACF||||||
+2288|house, home, family, household, one's folks, style|NACF||||||
 2289|housework, domestic chores, family affairs, household matters|NACF||||||
 2290|huge profit|NACF||||||
 2291|human life|NACF||||||
@@ -4096,7 +4096,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4096|Kyushu|NPl|||284|||
 4097|laboratory, seminar room, professor's office|NPl||||||
 4098|lake|NPl||||||
-4099|lane, alley|NPl||||||
+4099|mould grown on rice, barley, beans, etc. as a starter to make sake, miso, soy sauce, etc. (mold); malted rice; malt​|NPl||||||
 4100|large apartment (from mansion), apartment house, condominium, multistory appartment|NPl|Not to be confused with "mansion" (misnomer).|||||
 4101|large bookstore|NPl||||||
 4102|large public bath|NPl||||||
@@ -6199,7 +6199,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6199|now that you mention it, speaking of that…|CE||||||
 6200|seen from that light, thinking like that, from that point of view|CE||||||
 6201|if you do it that way…, if done that way…|CE||||||
-6202|if you don’t do it that way…|CE||||||
+6202|if you don't do it that way…|CE||||||
 6203|that’s too bad, I regret (to say), unfortunately|CE||||||
 6204|even if X|SSOF|"If" condition used for more "poetic" phrases.|tatoe X mo Y @ X = phrase with verb in te form, Y = second phrase|1465, 1466, 1467|||
 6205|pronoun modifier|PP||X no @ X = phrase|1479|||
@@ -6290,7 +6290,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6290|be covered (e.g. with dust, a tablecloth, etc.)|VruiT||||||
 6291|be caught in|VruiT||||||
 6292|get a call|VruiT||||||
-6293|investigator (usu. םכ criminal cases)|NPe||||||
+6293|investigator (usu. criminal cases)|NPe||||||
 6294|investigation firm|NACF||||||
 6295|institution, establishment, facility (for elderly, orphans, etc.)|NPl||||||
 6296|envoy, embassy, mission, delegate|NACF||||||
@@ -6364,9 +6364,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6364|carry out successfully (a move in sports, a pose in dance, etc.), succeed in doing|VruiT||||||
 6365|immobilize with a double-arm lock (in sumo, judo, etc.)|VruiT||||||
 6366|eat or drink something, take illegal drugs​|VruiT||||||
-6367|needy;  tight (budget);  straitened (circumstances)|Ai||||||
-6368|forced (smile, joke);  lame (excuse);  strained (interpretation)|Ai||||||
-6369|awkward (situation);  painful (position)|Ai||||||
+6367|needy, tight (budget), straitened (circumstances)|Ai||||||
+6368|forced (smile, joke), lame (excuse), strained (interpretation)|Ai||||||
+6369|awkward (situation), painful (position)|Ai||||||
 6370|the times, those days​|NACF||||||
 6371|oldness, ancientness, antiquity​|NACF||||||
 6372|antique, period piece|NACF||||||
@@ -6841,3 +6841,22 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6841|very very|CE||||||
 6842|obedient, docile, quiet​|Ai||||||
 6843|kit|NGO||||||
+6844|broadminded|Ai||||||
+6845|restrict, restrain, bind, constrain|VsuruT||||||
+6846|highway; freeway; expressway; motorway|NPl||||||
+6847|restriction; restraint; binding; constraint​|NACF||||||
+6848|school regulations​|NACF||||||
+6849|stoppage; tightness; block​|NACF||||||
+6850|infarction (e.g. cardiac)​|NMe||||||
+6851|luminous flux​|NMSE||||||
+6852|pencil (of light)​, beam (of light)|NMSE||||||
+6853|stick into (of something with a sharp point), prick, pierce, get stuck (in), lodge (in)​|VrugI||||||
+6854|swell, rise, bulge, be piled up​|VrugI||||||
+6855|rouse, get excited​|VrugI||||||
+6856|to fry, saute, stir-fry​|VruiT||||||
+6857|hurt, injure, cause pain|VruiT||||||
+6858|to harm, damage, spoil​|VruiT||||||
+6859|to worry, bother, be grieved over, afflict​|VruiT||||||
+6860|to cause financial loss, hurt one's pocket|VruiT||||||
+6861|damage, impair, spoil​|VruiT||||||
+6862|treat leather, sharkskin, etc. with glue and pound until hard​|VruiT||||||

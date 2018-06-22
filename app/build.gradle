@@ -16,6 +16,9 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+
+        buildConfigField("String", "firebaseEmail", firebaseEmail)
+        buildConfigField("String", "firebasePass", firebasePass)
     }
     buildTypes {
         release {
@@ -26,14 +29,30 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support.constraint:constraint-layout:1.1.1'
-    implementation 'com.android.support:support-v4:27.1.1'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:preference-v7:27.1.1'
-    implementation 'com.rmtheis:tess-two:8.0.0'
-    implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
+
+    //Android
+    def android_components_version = "27.1.1"
+    implementation "com.android.support:support-v4:$android_components_version"
+    implementation "com.android.support:appcompat-v7:$android_components_version"
+    implementation "com.android.support:preference-v7:$android_components_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    //Android extensions
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
+    implementation 'com.google.firebase:firebase-database:16.0.1'
+    implementation 'com.google.firebase:firebase-auth:16.0.2'
+
+    //3rd-party libraries
+    implementation 'com.rmtheis:tess-two:8.0.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
+
+    def room_version = "1.1.0"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
 }
+
+apply plugin: 'com.google.gms.google-services'

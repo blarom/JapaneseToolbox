@@ -822,6 +822,7 @@ ru godan|resound, echo, reverberate|I||あるきまわる|響き渡る|hibikiwat
 ru godan|give (someone) a treat|T|を|おごる|奢る|ogoru|奢|ogo||
 ru godan|be extravagant, live, be proud, be haughty|I||おごる|奢る|ogoru|奢|ogo||
 ru godan|swell, rise, bulge, be piled up​, rouse, get excited​|I||もりあがる|盛り上がる|moriagaru|盛り上が|moriaga||
+ru godan|stick into (of something with a sharp point), prick, pierce, get stuck (in), lodge (in)​|I||ささる|刺さる|sasaru|刺さ|sasa||
 ||||||||||
 tsu godan||||XXXつ|XXXつ|tsu|||43|
 tsu godan|stand|I||たつ|立つ|tatsu|立|ta||
@@ -1380,6 +1381,10 @@ ru ichidan|enchant, enrapture, enthrall, enthral, charm|T|を|うっとりさせ
 ru ichidan|miss (train, bus, …)|T|を|のりおくれる|乗り遅れる|noriokureru|乗り遅れ|noriokure||
 ru ichidan|divide (into), split (into), part, separate, divide up, classify, sort out, divide out​, share, distribute, deal out, dish out​, distinguish, discriminate, differentiate (between)​,  break up (a fight), mediate​, call a draw, tie​, push one's way through (a crowd)​, sell|T|を|わける|分ける|wakeru|分け|wake||
 ru ichidan|replace, move, change the position of​|T|を|おきかえる|置き換える|okikaeru|置き換え|okikae||
+ru ichidan|fry, saute, stir-fry​|T|を|いためる|炒める|itameru|炒め|itame||
+ru ichidan|hurt, injure, cause pain, to harm, damage, spoil​, to worry, bother, be grieved over, afflict​, to cause financial loss, hurt one's pocket|T|を|いためる|痛める|itameru|痛め|itame||
+ru ichidan|damage, impair, spoil​|T|を|いためる|傷める|itameru|傷め|itame||
+ru ichidan|treat leather, sharkskin, etc. with glue and pound until hard​|T|を|いためる|撓める|itameru|撓め|itame||
 ||||||||||
 desu copula|||||||||64|
 desu copula|there is|I||だ|だ|da||||
@@ -1674,4 +1679,5 @@ suru verb|be tense, be under mental strain, be nervous, be stressed|I||きんち
 suru verb|be in trouble, be in difficulty, be in pain, be anxious, be worried, be concerned, care|I||くろうする|苦労する|kurou suru|苦労|kurou ||
 suru verb|make an effort, exert oneself, endeavour, endeavor, work hard, strive|I||どりょくする|努力する|doryoku suru|努力|doryoku ||
 suru verb|work too hard, try too hard​|I||むりする|無理する|muri suru|無理|muri ||
+suru verb|restrict, restrain, bind, constrain|T|を|こうそくする|拘束する|kousoku suru|拘束|kousoku ||
 -|-|-||||||||

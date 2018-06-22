@@ -7,13 +7,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Handler;
-import android.os.Looper;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
 
 import com.japanesetoolboxapp.ConvertFragment;
 import com.japanesetoolboxapp.R;
@@ -552,7 +550,7 @@ public class SharedMethods {
 
             List<Object> conceptLightClearFixData = (List<Object>) exactBlockData.get(i);
 
-            //region Extracting the Romaji, Kanji and Altternate Spellings
+            //region Extracting the Romaji, Kanji and Alternate Spellings
             List<Object> conceptLightWrapperData = (List<Object>) conceptLightClearFixData.get(1);
             List<Object> conceptLightReadingsData = (List<Object>) conceptLightWrapperData.get(1);
             List<Object> conceptLightRepresentationData = (List<Object>) conceptLightReadingsData.get(1);
@@ -635,7 +633,21 @@ public class SharedMethods {
 
             currentWord.setRomaji(ConvertFragment.Kana_to_Romaji_to_Kana(romaji).get(0));
             currentWord.setKanji(kanji);
+            currentWord.setUniqueIdentifier(currentWord.getRomaji()+"-"+kanji);
             currentWord.setAltSpellings(""); //Alternate spellings, left empty for now >>> TODO: add this functionality
+            //endregion
+
+            //regionExtracting the Common Word status
+            List<Object> conceptLightStatus = (List<Object>) conceptLightWrapperData.get(3);
+            List<Object> conceptLightCommonSuccess = (List<Object>) getElementAtHeader(conceptLightStatus,"common success label");
+            if (conceptLightCommonSuccess!=null && conceptLightCommonSuccess.size()>0) {
+                String value = (String) conceptLightCommonSuccess.get(0);
+                if (!TextUtils.isEmpty(value) && value.equalsIgnoreCase("Common word")) {
+                    currentWord.setCommonStatus(1);
+                }
+                else currentWord.setCommonStatus(0);
+            }
+            else currentWord.setCommonStatus(0);
             //endregion
 
             //region Extracting the meanings

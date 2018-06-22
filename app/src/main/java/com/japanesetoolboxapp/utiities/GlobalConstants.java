@@ -22,22 +22,23 @@ public final class GlobalConstants {
     public final static int VerbModule_colIndex_rootLatin   = ColIndexConverter("i");
     public final static int VerbModule_colIndex_istem       = ColIndexConverter("j");
 
-	public final static int GrammarModule_colIndex_Keyword			 	= ColIndexConverter("a");
-	public final static int GrammarModule_colIndex_Romaji_construction = ColIndexConverter("b");
-	public final static int GrammarModule_colIndex_Kanji_construction  = ColIndexConverter("c");
-    public final static int GrammarModule_colIndex_Meaning				= ColIndexConverter("d");
-    public final static int GrammarModule_colIndex_Type			    = ColIndexConverter("e");
-    public final static int GrammarModule_colIndex_Categories			= ColIndexConverter("f");
-    public final static int GrammarModule_colIndex_Explanation			= ColIndexConverter("g");
-	public final static int GrammarModule_colIndex_Rules				= ColIndexConverter("h");
-	public final static int GrammarModule_colIndex_Example1			= ColIndexConverter("i");
-	public final static int GrammarModule_colIndex_Example2			= ColIndexConverter("j");
-	public final static int GrammarModule_colIndex_Example3			= ColIndexConverter("k");
+    public final static int GrammarModule_colIndex_Id			 	= ColIndexConverter("a");
+    public final static int GrammarModule_colIndex_Keyword			 	= ColIndexConverter("b");
+	public final static int GrammarModule_colIndex_Romaji_construction = ColIndexConverter("c");
+	public final static int GrammarModule_colIndex_Kanji_construction  = ColIndexConverter("d");
+    public final static int GrammarModule_colIndex_Meaning				= ColIndexConverter("e");
+    public final static int GrammarModule_colIndex_Type			    = ColIndexConverter("k");
+    public final static int GrammarModule_colIndex_Categories			= ColIndexConverter("g");
+    public final static int GrammarModule_colIndex_Explanation			= ColIndexConverter("h");
+	public final static int GrammarModule_colIndex_Rules				= ColIndexConverter("i");
+	public final static int GrammarModule_colIndex_Example1			= ColIndexConverter("j");
+	public final static int GrammarModule_colIndex_Example2			= ColIndexConverter("k");
+	public final static int GrammarModule_colIndex_Example3			= ColIndexConverter("l");
 
-	public final static int GrammarModule_colIndex_Antonym             = ColIndexConverter("l"); //true index starts at "h", but examples are inserted before
-    public final static int GrammarModule_colIndex_Synonym 			= ColIndexConverter("m");
-    public final static int GrammarModule_colIndex_ExtraKeywords    	= ColIndexConverter("n");
-    public final static int GrammarModule_colIndex_Title    	        = ColIndexConverter("o");
+	public final static int GrammarModule_colIndex_Antonym             = ColIndexConverter("m"); //true index starts at "h", but examples are inserted before
+    public final static int GrammarModule_colIndex_Synonym 			= ColIndexConverter("n");
+    public final static int GrammarModule_colIndex_ExtraKeywords    	= ColIndexConverter("o");
+    public final static int GrammarModule_colIndex_Title    	        = ColIndexConverter("p");
 
 	public final static int Examples_colIndex_Example_English 		    = ColIndexConverter("b");
 	public final static int Examples_colIndex_Example_Romaji		    = ColIndexConverter("c");
