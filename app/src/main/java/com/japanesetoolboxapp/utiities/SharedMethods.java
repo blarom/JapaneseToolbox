@@ -56,129 +56,6 @@ public class SharedMethods {
         // The directory is now empty so delete it
         return dir != null && dir.delete();
     }
-    public static List<String[]> readCSVFile(String filename, Context context) {
-
-        List<String[]> mySheet = new ArrayList<>();
-
-        // OpenCSV implementation
-        //                String next[] = null;
-        //                CSVReader reader = null;
-        //                try {
-        //                    reader = new CSVReader(new InputStreamReader(GlobalTranslatorActivity.getAssets().open(filename)));
-        //                } catch (IOException e) {
-        //                    e.printStackTrace();
-        //                }
-        //                if (reader != null) {
-        //                    for (; ; ) {
-        //                        try {
-        //                            next = reader.readNext();
-        //                        } catch (IOException e) {
-        //                            e.printStackTrace();
-        //                        }
-        //                        if (next != null) {
-        //                            mySheet.add(next);
-        //                        } else {
-        //                            break;
-        //                        }
-        //                    }
-        //                }
-        //                try {
-        //                    reader.close();
-        //                } catch (IOException e) {
-        //                    e.printStackTrace();
-        //                }
-
-        // "|" Parser implementation
-
-        BufferedReader fileReader = null;
-
-        int line_number = 0;
-        try {
-            String line;
-            fileReader = new BufferedReader(new InputStreamReader(context.getAssets().open(filename)));
-
-            while ((line = fileReader.readLine()) != null) {
-                String[] tokens = line.split("\\|",-1);
-                if (tokens.length > 0) {
-                    mySheet.add(tokens);
-                    line_number++;
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Error in CsvFileReader !!!");
-            e.printStackTrace();
-            Log.i("Diagnosis Time","Error in CsvFileReader opening Loaded DecompositionDatabase_PART4. Line number:"+line_number);
-        } finally {
-            try {
-                if (fileReader != null) {fileReader.close();}
-            } catch (IOException e) {
-                System.out.println("Error while closing fileReader !!!");
-                e.printStackTrace();
-                Log.i("Diagnosis Time","Error in CsvFileReader closing Loaded DecompositionDatabase_PART4.");
-            }
-        }
-
-        return mySheet;
-    }
-    public static List<String[]> readCSVFileFirstRow(String filename, Context context) {
-
-        List<String[]> mySheetFirstRow = new ArrayList<>();
-
-        //OpenCSV implementation
-        //				  String firstrow[] = null;
-        //                String next[] = null;
-        //                CSVReader reader = null;
-        //
-        //                try {
-        //                    reader = new CSVReader(new InputStreamReader(GlobalTranslatorActivity.getAssets().open(filename)));
-        //                } catch (IOException e) {
-        //                    e.printStackTrace();
-        //                }
-        //
-        //                if (reader != null) {
-        //                    try {
-        //                        firstrow = reader.readNext();
-        //                    } catch (IOException e) {
-        //                        e.printStackTrace();
-        //                    }
-        //                    if (firstrow != null) {
-        //                        mySheetFirstRow.add(firstrow);
-        //                    }
-        //                }
-        //
-        //                try {
-        //                    reader.close();
-        //                } catch (IOException e) {
-        //                    e.printStackTrace();
-        //                }
-
-        // "|" Parser implementation
-
-        BufferedReader fileReader = null;
-
-        try {
-            String line;
-            fileReader = new BufferedReader(new InputStreamReader(context.getAssets().open(filename)));
-
-            line = fileReader.readLine();
-            String[] tokens = line.split("\\|",-1);
-            if (tokens.length > 0) {
-                mySheetFirstRow.add(tokens);
-            }
-        } catch (Exception e) {
-            System.out.println("Error in CsvFileReader !!!");
-            e.printStackTrace();
-        } finally {
-            try {
-                if (fileReader != null) {fileReader.close();}
-            } catch (IOException e) {
-                System.out.println("Error while closing fileReader !!!");
-                e.printStackTrace();
-            }
-        }
-
-        return mySheetFirstRow;
-    }
     public void makeDelay(int milliseconds){
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -347,7 +224,7 @@ public class SharedMethods {
     }
     public static List<Word> getWordsFromJishoOnWeb(String word, final Context context) {
 
-        if (word.equals("")) { return new ArrayList<>(); }
+        if (TextUtils.isEmpty(word)) { return new ArrayList<>(); }
 
         //region Preparing the word to be included in the url
         String prepared_word;

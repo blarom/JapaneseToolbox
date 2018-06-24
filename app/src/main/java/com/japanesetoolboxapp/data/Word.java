@@ -1,6 +1,7 @@
 package com.japanesetoolboxapp.data;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
@@ -25,7 +26,6 @@ public class Word {
 
     public Word() {
     }
-
 
     @PrimaryKey()
     @ColumnInfo(index = true, name = COLUMN_ID)
@@ -101,15 +101,15 @@ public class Word {
         return meanings;
     }
 
+    //@Embedded
+    //Meaning meaning;
 
     public static class Meaning {
 
-        private String meaning;
-        private String type;
-        private String antonym;
-        private String synonym;
-        private List<Explanation> explanations;
+        //@Embedded
+        //Explanation explanation;
 
+        private String meaning;
         public void setMeaning(String meaning) {
             this.meaning = meaning;
         }
@@ -117,6 +117,7 @@ public class Word {
             return meaning;
         }
 
+        private String type;
         public void setType(String type) {
             this.type = type;
         }
@@ -124,6 +125,7 @@ public class Word {
             return type;
         }
 
+        private String antonym;
         public void setAntonym(String antonym) {
             this.antonym = antonym;
         }
@@ -131,6 +133,7 @@ public class Word {
             return antonym;
         }
 
+        private String synonym;
         public void setSynonym(String synonym) {
             this.synonym = synonym;
         }
@@ -138,6 +141,8 @@ public class Word {
             return synonym;
         }
 
+        @TypeConverters({WordDbTypeConverters.class})
+        private List<Explanation> explanations;
         public void setExplanations(List<Explanation> explanations) {
             this.explanations = explanations;
         }
@@ -148,10 +153,10 @@ public class Word {
 
         public static class Explanation {
 
-            private String explanation;
-            private String rules;
-            private List<Example> examples;
+            //@Embedded
+            //Example example;
 
+            private String explanation;
             public void setExplanation(String explanation) {
                 this.explanation = explanation;
             }
@@ -159,6 +164,7 @@ public class Word {
                 return explanation;
             }
 
+            private String rules;
             public void setRules(String rules) {
                 this.rules = rules;
             }
@@ -166,6 +172,8 @@ public class Word {
                 return rules;
             }
 
+            @TypeConverters({WordDbTypeConverters.class})
+            private List<Example> examples;
             public void setExamples(List<Example> examples) {
                 this.examples = examples;
             }
@@ -177,9 +185,6 @@ public class Word {
             public static class Example {
 
                 private String englishSentence;
-                private String romajiSentence;
-                private String kanjiSentence;
-
                 public void setEnglishSentence(String englishSentence) {
                     this.englishSentence = englishSentence;
                 }
@@ -187,6 +192,7 @@ public class Word {
                     return englishSentence;
                 }
 
+                private String romajiSentence;
                 public void setRomajiSentence(String romajiSentence) {
                     this.romajiSentence = romajiSentence;
                 }
@@ -194,6 +200,7 @@ public class Word {
                     return romajiSentence;
                 }
 
+                private String kanjiSentence;
                 public void setKanjiSentence(String kanjiSentence) {
                     this.kanjiSentence = kanjiSentence;
                 }

@@ -19,7 +19,7 @@ public class WordDbTypeConverters {
             return Collections.emptyList();
         }
 
-        Type listType = new TypeToken<List<Word>>() {}.getType();
+        Type listType = new TypeToken<List<Word.Meaning>>() {}.getType();
 
         return gson.fromJson(data, listType);
     }
@@ -35,7 +35,7 @@ public class WordDbTypeConverters {
             return Collections.emptyList();
         }
 
-        Type listType = new TypeToken<List<Word>>() {}.getType();
+        Type listType = new TypeToken<List<Word.Meaning.Explanation>>() {}.getType();
 
         return gson.fromJson(data, listType);
     }
@@ -51,7 +51,7 @@ public class WordDbTypeConverters {
             return Collections.emptyList();
         }
 
-        Type listType = new TypeToken<List<Word>>() {}.getType();
+        Type listType = new TypeToken<List<Word.Meaning.Explanation.Example>>() {}.getType();
 
         return gson.fromJson(data, listType);
     }

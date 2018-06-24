@@ -30,7 +30,11 @@ public interface WordDao {
 
     //Get a Word by Id
     @Query("SELECT * FROM " + Word.TABLE_NAME + " WHERE " + Word.COLUMN_ID + " = :id")
-    Word getWordById(long id);
+    Word getWordByWordId(long id);
+
+    //Get a Word by Id
+    @Query("SELECT * FROM " + Word.TABLE_NAME + " WHERE " + Word.COLUMN_ID + " IN (:ids)")
+    List<Word> getWordListByWordIds(List<Long> ids);
 
     //Delete a Word by Id
     @Query("DELETE FROM " + Word.TABLE_NAME + " WHERE " + Word.COLUMN_ID + " = :id")

@@ -1,13 +1,10 @@
 package com.japanesetoolboxapp;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.japanesetoolboxapp.data.FirebaseUtilities;
+import com.japanesetoolboxapp.data.DatabaseUtilities;
+import com.japanesetoolboxapp.data.Word;
+import com.japanesetoolboxapp.data.WordsRoomDatabase;
 import com.japanesetoolboxapp.utiities.*;
 
 import android.content.Context;
@@ -84,8 +81,8 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
     static List<String[]> MeaningsDatabase;
     static List<String[]> MultExplanationsDatabase;
     static List<String[]> LegendDatabase;
-    static List<String[]> GrammarDatabaseIndexedLatin;
-    static List<String[]> GrammarDatabaseIndexedKanji;
+    public static List<String[]> GrammarDatabaseIndexedLatin;
+    public static List<String[]> GrammarDatabaseIndexedKanji;
     static List<String[]> RadicalsDatabase;
     static List<String[]> CJK_Database;
     static List<String[]> VerbDatabase;
@@ -93,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
     static List<String[]> VerbKanjiConjDatabase;
     static List<String[]> KanjiDict_Database;
     static List<String[]> Components_Database;
-    static List<String[]> SimilarsDatabase;
+    public static List<String[]> SimilarsDatabase;
     static List<List<String[]>> Array_of_Components_Databases;
     static List<String[]> RadicalsOnlyDatabase;
     static Typeface CJK_typeface;
@@ -103,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
     public static long heap_size_before_decomposition_loader;
     public static long heap_size_before_searchbyradical_loader;
     public static Boolean enough_memory_for_heavy_functions;
-    int mSheetRowLength;
     Intent restartIntent;
     Toast mLastToast;
     private FirebaseAuth mFirebaseAuth;
@@ -139,19 +135,18 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         FirebaseDatabase firebaseDb = FirebaseDatabase.getInstance();
         firebaseDb.setPersistenceEnabled(true);
         mFirebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseAuth.signInWithEmailAndPassword(FirebaseUtilities.firebaseEmail, FirebaseUtilities.firebasePass);
+        mFirebaseAuth.signInWithEmailAndPassword(DatabaseUtilities.firebaseEmail, DatabaseUtilities.firebasePass);
 
         //Code allowing to bypass strict mode
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         // Start the fragment manager
-        Configuration config = getResources().getConfiguration();
-
         android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         // Load the Fragments depending on the device orientation
+        Configuration config = getResources().getConfiguration();
         if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             if (savedInstanceState == null) {
                 inputQueryFragment = new InputQueryFragment();
@@ -196,9 +191,6 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         restartIntent = this.getBaseContext().getPackageManager()
                 .getLaunchIntentForPackage(this.getBaseContext().getPackageName());
 
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mFirebaseAuth.getCurrentUser();
-        //updateUI(currentUser);
     }
     @Override public void onSaveInstanceState(Bundle savedInstanceState) {
  		super.onSaveInstanceState(savedInstanceState);
@@ -344,6 +336,9 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         }
         protected Void doInBackground(Void... params) {
 
+            WordsRoomDatabase wordsRoomDatabase = WordsRoomDatabase.getInstance(getBaseContext());
+            Word word = wordsRoomDatabase.getWordByWordId(2114);
+
             heap_size = SharedMethods.getAvailableMemory();
             enough_memory_for_heavy_functions = true;
             //Sizes based on file size, not on number of rows
@@ -363,42 +358,42 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
 
             int cumulative_progress = 0;
             showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Main Database...", applicationContext);
-            if (MainDatabase == null) { MainDatabase = getMainDatabase();}
+            if (MainDatabase == null) { MainDatabase = DatabaseUtilities.loadCentralDatabaseFromCsv(getBaseContext());}
             Log.i("Diagnosis Time","Loaded MainDatabase.");
 
-            if (ExamplesDatabase == null) { ExamplesDatabase = SharedMethods.readCSVFile("LineExamples - 3000 kanji.csv", getBaseContext()); }
+            if (ExamplesDatabase == null) { ExamplesDatabase = DatabaseUtilities.readCSVFile("LineExamples - 3000 kanji.csv", getBaseContext()); }
             Log.i("Diagnosis Time","Loaded ExamplesDatabase.");
 
-            if (MeaningsDatabase == null) { MeaningsDatabase = SharedMethods.readCSVFile("LineMeanings - 3000 kanji.csv", getBaseContext()); }
+            if (MeaningsDatabase == null) { MeaningsDatabase = DatabaseUtilities.readCSVFile("LineMeanings - 3000 kanji.csv", getBaseContext()); }
             Log.i("Diagnosis Time","Loaded MeaningsDatabase.");
 
-            if (MultExplanationsDatabase == null) { MultExplanationsDatabase = SharedMethods.readCSVFile("LineMultExplanations - 3000 kanji.csv", getBaseContext()); }
+            if (MultExplanationsDatabase == null) { MultExplanationsDatabase = DatabaseUtilities.readCSVFile("LineMultExplanations - 3000 kanji.csv", getBaseContext()); }
             Log.i("Diagnosis Time","Loaded MultExplanationsDatabase.");
 
-            if (LegendDatabase == null) { LegendDatabase = SharedMethods.readCSVFile("LineLegend - 3000 kanji.csv", getBaseContext()); }
+            if (LegendDatabase == null) { LegendDatabase = DatabaseUtilities.readCSVFile("LineLegend - 3000 kanji.csv", getBaseContext()); }
 
             cumulative_progress = cumulative_progress + MainDatabase_size;
             showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Latin Database...", applicationContext);
-            if (GrammarDatabaseIndexedLatin == null) { GrammarDatabaseIndexedLatin = SharedMethods.readCSVFile("LineGrammarSortedIndexLatin - 3000 kanji.csv", getBaseContext());}
+            if (GrammarDatabaseIndexedLatin == null) { GrammarDatabaseIndexedLatin = DatabaseUtilities.readCSVFile("LineGrammarSortedIndexLatin - 3000 kanji.csv", getBaseContext());}
             Log.i("Diagnosis Time","Loaded GrammarDatabaseIndexedLatin.");
 
             cumulative_progress = cumulative_progress + GrammarDatabaseIndexedLatin_size;
             showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Kanji Database...", applicationContext);
-            if (GrammarDatabaseIndexedKanji == null) { GrammarDatabaseIndexedKanji = SharedMethods.readCSVFile("LineGrammarSortedIndexKanji - 3000 kanji.csv", getBaseContext());}
+            if (GrammarDatabaseIndexedKanji == null) { GrammarDatabaseIndexedKanji = DatabaseUtilities.readCSVFile("LineGrammarSortedIndexKanji - 3000 kanji.csv", getBaseContext());}
             Log.i("Diagnosis Time","Loaded GrammarDatabaseIndexedKanji.");
 
             cumulative_progress = cumulative_progress + GrammarDatabaseIndexedKanji_size;
             showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Verbs Database...", applicationContext);
-            if (VerbDatabase == null || VerbDatabase.size() < 5) { VerbDatabase = SharedMethods.readCSVFile("LineVerbs - 3000 kanji.csv", getBaseContext());}
+            if (VerbDatabase == null || VerbDatabase.size() < 5) { VerbDatabase = DatabaseUtilities.readCSVFile("LineVerbs - 3000 kanji.csv", getBaseContext());}
             Log.i("Diagnosis Time","Loaded VerbDatabase.");
 
-            if (VerbLatinConjDatabase == null || VerbLatinConjDatabase.size() < 5) { VerbLatinConjDatabase = SharedMethods.readCSVFile("LineLatinConj - 3000 kanji.csv", getBaseContext());}
+            if (VerbLatinConjDatabase == null || VerbLatinConjDatabase.size() < 5) { VerbLatinConjDatabase = DatabaseUtilities.readCSVFile("LineLatinConj - 3000 kanji.csv", getBaseContext());}
             Log.i("Diagnosis Time","Loaded VerbLatinConjDatabase.");
 
-            if (VerbKanjiConjDatabase == null   || VerbKanjiConjDatabase.size() < 5)   { VerbKanjiConjDatabase = SharedMethods.readCSVFile("LineKanjiConj - 3000 kanji.csv", getBaseContext());}
+            if (VerbKanjiConjDatabase == null   || VerbKanjiConjDatabase.size() < 5)   { VerbKanjiConjDatabase = DatabaseUtilities.readCSVFile("LineKanjiConj - 3000 kanji.csv", getBaseContext());}
             Log.i("Diagnosis Time","Loaded VerbKanjiConjDatabase.");
 
-            if (SimilarsDatabase == null   || SimilarsDatabase.size() < 5)   { SimilarsDatabase = SharedMethods.readCSVFile("LineSimilars - 3000 kanji.csv", getBaseContext());}
+            if (SimilarsDatabase == null   || SimilarsDatabase.size() < 5)   { SimilarsDatabase = DatabaseUtilities.readCSVFile("LineSimilars - 3000 kanji.csv", getBaseContext());}
             Log.i("Diagnosis Time","Loaded SimilarsDatabase.");
 
             heap_size = SharedMethods.getAvailableMemory();
@@ -408,23 +403,23 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
             if (heap_size_before_decomposition_loader >= GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
 
                 showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Radicals Database...", applicationContext);
-                if (RadicalsDatabase == null) { RadicalsDatabase = SharedMethods.readCSVFile("LineRadicals - 3000 kanji.csv", getBaseContext());}
+                if (RadicalsDatabase == null) { RadicalsDatabase = DatabaseUtilities.readCSVFile("LineRadicals - 3000 kanji.csv", getBaseContext());}
                 Log.i("Diagnosis Time","Loaded RadicalsDatabase.");
 
                 cumulative_progress = cumulative_progress + RadicalsDatabase_size;
                 showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Decompositions Database...", applicationContext);
                 heap_size = SharedMethods.getAvailableMemory();
-                if (CJK_Database == null) { CJK_Database = SharedMethods.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", getBaseContext());}
+                if (CJK_Database == null) { CJK_Database = DatabaseUtilities.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", getBaseContext());}
                 Log.i("Diagnosis Time", "Loaded CJK_Database.");
 
                 cumulative_progress = cumulative_progress + CJK_Database_size;
                 showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Characters Database...", applicationContext);
                 heap_size = SharedMethods.getAvailableMemory();
-                if (KanjiDict_Database == null) { KanjiDict_Database = SharedMethods.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", getBaseContext());}
+                if (KanjiDict_Database == null) { KanjiDict_Database = DatabaseUtilities.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", getBaseContext());}
                 Log.i("Diagnosis Time", "Loaded KanjiDict_Database.");
 
                 heap_size = SharedMethods.getAvailableMemory();
-                if (RadicalsOnlyDatabase == null) { RadicalsOnlyDatabase = SharedMethods.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", getBaseContext());}
+                if (RadicalsOnlyDatabase == null) { RadicalsOnlyDatabase = DatabaseUtilities.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", getBaseContext());}
                 Log.i("Diagnosis Time", "Loaded RadicalsOnlyDatabase.");
 
                 heap_size = SharedMethods.getAvailableMemory();
@@ -436,7 +431,7 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
 
                     showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Components Database...", applicationContext);
                     if (Components_Database == null) {
-                        Components_Database = SharedMethods.readCSVFile("LineComponents - 3000 kanji.csv", getBaseContext());
+                        Components_Database = DatabaseUtilities.readCSVFile("LineComponents - 3000 kanji.csv", getBaseContext());
                         List<String[]> temp = new ArrayList<>();
                         Array_of_Components_Databases = new ArrayList<>();
                         for (int i=0; i<Components_Database.size();i++) {
@@ -474,24 +469,6 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         protected void onPostExecute() {
             Log.i("Diagnosis Time","Loadeded all databases.");
         }
-    }
-    public List<String[]> getMainDatabase() {
-
-        // Import the excel sheets (csv format)
-
-        List<String[]> LinemySheet 				= new ArrayList<>();
-        List<String[]> LinemySheetTypes 		= SharedMethods.readCSVFile("LineTypes - 3000 kanji.csv", getBaseContext());
-        List<String[]> LinemySheetGrammar 		= SharedMethods.readCSVFile("LineGrammar - 3000 kanji.csv", getBaseContext());
-        List<String[]> LinemySheetVerbs     	= SharedMethods.readCSVFile("LineVerbsForGrammar - 3000 kanji.csv", getBaseContext());
-
-        LinemySheet.addAll(LinemySheetTypes);
-        LinemySheet.addAll(LinemySheetGrammar);
-        LinemySheet.addAll(LinemySheetVerbs);
-
-        if (LinemySheet.size()>0) {
-            mSheetRowLength = LinemySheet.get(0).length;}
-
-        return LinemySheet;
     }
 
 	private String Global_Fragment_chooser_keyword;

@@ -19,6 +19,7 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.japanesetoolboxapp.utiities.GlobalConstants;
 import com.japanesetoolboxapp.utiities.SharedMethods;
 
@@ -710,15 +711,15 @@ public class ConjugatorFragment extends Fragment {
             current_length = 0;
             List<String[]> mySheetLengths = new ArrayList<>();
             if (TypeisLatin) {
-                mySheetLengths = SharedMethods.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", context);
+                mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", context);
                 current_length = concatenated_verb_length;
             }
             else if (TypeisKana) {
-                mySheetLengths = SharedMethods.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", context);
+                mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", context);
                 current_length = concatenated_translation_length;
             }
             else if (TypeisKanji) {
-                mySheetLengths = SharedMethods.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", context);
+                mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", context);
                 current_length = concatenated_verb_length;
             }
             for (int col = GlobalConstants.VerbModule_colIndex_istem; col < NumberOfSheetCols; col++) {

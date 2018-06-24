@@ -1,9 +1,11 @@
 package com.japanesetoolboxapp.utiities;
 
 
-public final class GlobalConstants {
-    // Defining the column title (and index) of each column in the excel files
+import com.japanesetoolboxapp.BuildConfig;
 
+public final class GlobalConstants {
+
+    // Defining the column title (and index) of each column in the excel files
     public static final long TOTAL_REQUIRED_MEMORY_HEAP_SIZE = 45;
     public static final long DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE = 23;
     public static final long CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE = 6;
