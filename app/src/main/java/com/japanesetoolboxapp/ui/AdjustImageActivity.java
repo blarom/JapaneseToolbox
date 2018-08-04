@@ -1,4 +1,4 @@
-package com.japanesetoolboxapp;
+package com.japanesetoolboxapp.ui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,8 +23,9 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-import com.japanesetoolboxapp.utiities.ConvolutionMatrix;
-import com.japanesetoolboxapp.utiities.SharedMethods;
+import com.japanesetoolboxapp.R;
+import com.japanesetoolboxapp.resources.ConvolutionMatrix;
+import com.japanesetoolboxapp.resources.Utilities;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -159,13 +160,13 @@ public class AdjustImageActivity extends AppCompatActivity {
         //Getting the user's chosen default values from the settings
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        float contrastValue = SharedMethods.loadOCRImageContrastFromSharedPreferences(sharedPreferences, getApplicationContext());
-        float saturationValue = SharedMethods.loadOCRImageSaturationFromSharedPreferences(sharedPreferences, getApplicationContext());
-        int brightnessValue = SharedMethods.loadOCRImageBrightnessFromSharedPreferences(sharedPreferences, getApplicationContext());
+        float contrastValue = Utilities.loadOCRImageContrastFromSharedPreferences(sharedPreferences, getApplicationContext());
+        float saturationValue = Utilities.loadOCRImageSaturationFromSharedPreferences(sharedPreferences, getApplicationContext());
+        int brightnessValue = Utilities.loadOCRImageBrightnessFromSharedPreferences(sharedPreferences, getApplicationContext());
 
-        contrastBar.setProgress(SharedMethods.convertContrastValueToProgress(contrastValue, getApplicationContext()));
-        saturationBar.setProgress(SharedMethods.convertSaturationValueToProgress(saturationValue, getApplicationContext()));
-        brightnessBar.setProgress(SharedMethods.convertBrightnessValueToProgress(brightnessValue, getApplicationContext()));
+        contrastBar.setProgress(Utilities.convertContrastValueToProgress(contrastValue, getApplicationContext()));
+        saturationBar.setProgress(Utilities.convertSaturationValueToProgress(saturationValue, getApplicationContext()));
+        brightnessBar.setProgress(Utilities.convertBrightnessValueToProgress(brightnessValue, getApplicationContext()));
     }
     private void loadBitmapAfterAdjustment() {
         if (bitmapMaster != null) {
@@ -179,9 +180,9 @@ public class AdjustImageActivity extends AppCompatActivity {
             int saturationBarValue = saturationBar.getProgress();
 
             // Preparing the values to be set in the image adjustment methods
-            float contrastValue = SharedMethods.convertContrastProgressToValue(contrastBarValue, getApplicationContext());
-            int brightnessValue = SharedMethods.convertBrightnessProgressToValue(brightnessBarValue, getApplicationContext());
-            float saturationValue = SharedMethods.convertSaturationProgressToValue(saturationBarValue, getApplicationContext());
+            float contrastValue = Utilities.convertContrastProgressToValue(contrastBarValue, getApplicationContext());
+            int brightnessValue = Utilities.convertBrightnessProgressToValue(brightnessBarValue, getApplicationContext());
+            float saturationValue = Utilities.convertSaturationProgressToValue(saturationBarValue, getApplicationContext());
 
             //float contrastDisplay = (float) progressContrast / Float.parseFloat(getResources().getString(R.string.pref_OCR_image_contrast_max_value));
             //float brightness = (float) progressBrightness / Float.parseFloat(getResources().getString(R.string.pref_OCR_image_brightness_max_value));

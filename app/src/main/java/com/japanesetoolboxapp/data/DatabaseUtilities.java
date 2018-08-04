@@ -12,10 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.japanesetoolboxapp.BuildConfig;
-import com.japanesetoolboxapp.ConvertFragment;
-import com.japanesetoolboxapp.MainActivity;
-import com.japanesetoolboxapp.utiities.GlobalConstants;
-import com.japanesetoolboxapp.utiities.SharedMethods;
+import com.japanesetoolboxapp.ui.ConvertFragment;
+import com.japanesetoolboxapp.ui.MainActivity;
+import com.japanesetoolboxapp.resources.GlobalConstants;
+import com.japanesetoolboxapp.resources.Utilities;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -50,7 +50,7 @@ public class DatabaseUtilities {
     static List<String[]> SimilarsDatabase;
     
     public static List<Object> loadAllDatabasesFromCsv(Context context) {
-        long heap_size = SharedMethods.getAvailableMemory();
+        long heap_size = Utilities.getAvailableMemory();
         boolean enough_memory_for_heavy_functions = true;
         //Sizes based on file size, not on number of rows
         int CJK_Database_size = 2051;
@@ -107,7 +107,7 @@ public class DatabaseUtilities {
         if (SimilarsDatabase == null   || SimilarsDatabase.size() < 5)   { SimilarsDatabase = DatabaseUtilities.readCSVFile("LineSimilars - 3000 kanji.csv", context);}
         Log.i("Diagnosis Time","Loaded SimilarsDatabase.");
 
-        heap_size = SharedMethods.getAvailableMemory();
+        heap_size = Utilities.getAvailableMemory();
         long heap_size_before_decomposition_loader = heap_size;
         cumulative_progress = cumulative_progress + VerbDatabase_size;
 
@@ -119,21 +119,21 @@ public class DatabaseUtilities {
 
             cumulative_progress = cumulative_progress + RadicalsDatabase_size;
             lastToast = showDatabaseLoadingToast(lastToast, "Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Decompositions Database...", context);
-            heap_size = SharedMethods.getAvailableMemory();
+            heap_size = Utilities.getAvailableMemory();
             if (CJK_Database == null) { CJK_Database = DatabaseUtilities.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", context);}
             Log.i("Diagnosis Time", "Loaded CJK_Database.");
 
             cumulative_progress = cumulative_progress + CJK_Database_size;
             lastToast = showDatabaseLoadingToast(lastToast, "Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Characters Database...", context);
-            heap_size = SharedMethods.getAvailableMemory();
+            heap_size = Utilities.getAvailableMemory();
             if (KanjiDict_Database == null) { KanjiDict_Database = DatabaseUtilities.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", context);}
             Log.i("Diagnosis Time", "Loaded KanjiDict_Database.");
 
-            heap_size = SharedMethods.getAvailableMemory();
+            heap_size = Utilities.getAvailableMemory();
             if (RadicalsOnlyDatabase == null) { RadicalsOnlyDatabase = DatabaseUtilities.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", context);}
             Log.i("Diagnosis Time", "Loaded RadicalsOnlyDatabase.");
 
-            heap_size = SharedMethods.getAvailableMemory();
+            heap_size = Utilities.getAvailableMemory();
             long heap_size_before_searchbyradical_loader = heap_size;
             enough_memory_for_heavy_functions = true;
 
@@ -169,7 +169,7 @@ public class DatabaseUtilities {
             enough_memory_for_heavy_functions = false;
             lastToast = showDatabaseLoadingToast(lastToast, "Stopped at " + Math.round(100*cumulative_progress/total_assets_size) + "% due to low memory.", context);
         }
-        heap_size = SharedMethods.getAvailableMemory();
+        heap_size = Utilities.getAvailableMemory();
 
         Log.i("Diagnosis Time","Loaded All Databases.");
         
@@ -548,7 +548,7 @@ public class DatabaseUtilities {
 
         return mySheetFirstRow;
     }
-    public static List<Long> FindMatchingWordIndex(String searchWord, WordsRoomDatabase wordsRoomDatabase) {
+    public static List<Long> FindMatchingWordIndex(String searchWord, JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase) {
 
 
         //region Initializations
@@ -630,10 +630,10 @@ public class DatabaseUtilities {
         if (!TypeisInvalid) {
 
             //region Concatenating the input word to increase the match chances
-            String concatenated_word = SharedMethods.removeSpecialCharacters(searchWord);
-            String concatenated_translationLatin = SharedMethods.removeSpecialCharacters(translationLatin);
-            String concatenated_translationHira = SharedMethods.removeSpecialCharacters(translationHira);
-            String concatenated_translationKata = SharedMethods.removeSpecialCharacters(translationKata);
+            String concatenated_word = Utilities.removeSpecialCharacters(searchWord);
+            String concatenated_translationLatin = Utilities.removeSpecialCharacters(translationLatin);
+            String concatenated_translationHira = Utilities.removeSpecialCharacters(translationHira);
+            String concatenated_translationKata = Utilities.removeSpecialCharacters(translationKata);
             int concatenated_word_length = concatenated_word.length();
             //endregion
 
@@ -705,7 +705,7 @@ public class DatabaseUtilities {
             //endregion
 
             //region Filtering the matches
-            List<Word> matchingWordList = wordsRoomDatabase.getWordListByWordIds(MatchingWordIdsFromIndex);
+            List<Word> matchingWordList = japaneseToolboxRoomDatabase.getWordListByWordIds(MatchingWordIdsFromIndex);
             for (Word word : matchingWordList) {
 
                 //region Loop initializations
@@ -745,7 +745,7 @@ public class DatabaseUtilities {
 
                     is_verb_and_latin = hit.length() > 3 && hit.substring(0, 3).equals("to ");
 
-                    concatenated_hit = SharedMethods.removeSpecialCharacters(hit);
+                    concatenated_hit = Utilities.removeSpecialCharacters(hit);
                     if (TypeisKanji && !ConvertFragment.TextType(concatenated_hit).equals("kanji") ) { continue; }
                     if (concatenated_hit.length() < concatenated_word_length) { continue; }
                     if (TypeisLatin && word_length == 2 && hit.length() > 2) { continue;}

@@ -1,4 +1,4 @@
-package com.japanesetoolboxapp;
+package com.japanesetoolboxapp.ui;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -33,8 +33,10 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.japanesetoolboxapp.utiities.GlobalConstants;
-import com.japanesetoolboxapp.utiities.SharedMethods;
+import com.japanesetoolboxapp.R;
+import com.japanesetoolboxapp.data.DatabaseUtilities;
+import com.japanesetoolboxapp.resources.GlobalConstants;
+import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -1229,8 +1231,8 @@ public class ComposeKanjiFragment extends Fragment {
 
                 //Finding the list of matches corresponding to the user's input
                 if(!elementA.equals("")) {
-                    concatenated_input = SharedMethods.removeSpecialCharacters(elementA);
-                    limits = DictionaryFragment.binarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
+                    concatenated_input = Utilities.removeSpecialCharacters(elementA);
+                    limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
 
                     if (limits[0] == limits[1] && limits[0] == -1) { }
                     else {
@@ -1245,8 +1247,8 @@ public class ComposeKanjiFragment extends Fragment {
                     }
                 }
                 if(!elementB.equals("")) {
-                    concatenated_input = SharedMethods.removeSpecialCharacters(elementB);
-                    limits = DictionaryFragment.binarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
+                    concatenated_input = Utilities.removeSpecialCharacters(elementB);
+                    limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
 
                     if (limits[0] == limits[1] && limits[0] == -1) {
                     } else {
@@ -1261,8 +1263,8 @@ public class ComposeKanjiFragment extends Fragment {
                     }
                 }
                 if(!elementC.equals("")) {
-                    concatenated_input = SharedMethods.removeSpecialCharacters(elementC);
-                    limits = DictionaryFragment.binarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
+                    concatenated_input = Utilities.removeSpecialCharacters(elementC);
+                    limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
 
                     if (limits[0] == limits[1] && limits[0] == -1) {
                     } else {
@@ -1277,8 +1279,8 @@ public class ComposeKanjiFragment extends Fragment {
                     }
                 }
                 if(!elementD.equals("")) {
-                    concatenated_input = SharedMethods.removeSpecialCharacters(elementD);
-                    limits = DictionaryFragment.binarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
+                    concatenated_input = Utilities.removeSpecialCharacters(elementD);
+                    limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
 
                     if (limits[0] == limits[1] && limits[0] == -1) {
                     } else {
@@ -1358,14 +1360,14 @@ public class ComposeKanjiFragment extends Fragment {
                     for (int i=0; i< MainActivity.Array_of_Components_Databases.get(selected_structure).size(); i++) {
                         current_array = Arrays.asList(MainActivity.Array_of_Components_Databases.get(selected_structure).get(i)[1].split(";"));
                         for (String x : current_array){
-                            if (!previous_array.contains(x)) complete_results_for_given_structure.add(DictionaryFragment.convertToUTF8(x));
+                            if (!previous_array.contains(x)) complete_results_for_given_structure.add(DatabaseUtilities.convertToUTF8(x));
                         }
                         previous_array = current_array;
                     }
                     java.util.Collections.sort(complete_results_for_given_structure);
 
                     for (String x : list_of_intersecting_results) {
-                        String converted = DictionaryFragment.convertToUTF8(x);
+                        String converted = DatabaseUtilities.convertToUTF8(x);
                         int index = java.util.Collections.binarySearch(complete_results_for_given_structure, converted);
                         if (index >= 0) { list_of_intersecting_results_and_structure.add(x); }
                     }

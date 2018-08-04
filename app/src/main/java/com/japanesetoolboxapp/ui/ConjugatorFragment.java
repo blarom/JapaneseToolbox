@@ -1,10 +1,9 @@
-package com.japanesetoolboxapp;
+package com.japanesetoolboxapp.ui;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +18,10 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.DatabaseUtilities;
-import com.japanesetoolboxapp.utiities.GlobalConstants;
-import com.japanesetoolboxapp.utiities.SharedMethods;
+import com.japanesetoolboxapp.resources.GlobalConstants;
+import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -395,7 +395,7 @@ public class ConjugatorFragment extends Fragment {
                 //Toast.makeText(GlobalTranslatorActivity.getBaseContext(), parsedPopulatedList.get(position).get(0), Toast.LENGTH_SHORT).show();
 
                 // Initialization
-                SharedMethods.hideSoftKeyboard(getActivity());
+                Utilities.hideSoftKeyboard(getActivity());
 
                 List<List<String>> chosenVerbCharacteristicsEnglish = new ArrayList<>();
                 List<List<String>> chosenVerbCharacteristicsKanji = new ArrayList<>();
@@ -672,8 +672,8 @@ public class ConjugatorFragment extends Fragment {
             //endregion
 
             //region Concatenating the verb & its translation for future use
-            String concatenated_verb = SharedMethods.removeSpecialCharacters(verb);
-            String concatenated_translation = SharedMethods.removeSpecialCharacters(translation);
+            String concatenated_verb = Utilities.removeSpecialCharacters(verb);
+            String concatenated_translation = Utilities.removeSpecialCharacters(translation);
             int concatenated_verb_length = concatenated_verb.length();
             int concatenated_translation_length = concatenated_translation.length();
             //endregion

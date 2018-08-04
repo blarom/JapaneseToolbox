@@ -1,4 +1,4 @@
-package com.japanesetoolboxapp;
+package com.japanesetoolboxapp.ui;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,7 +14,6 @@ import java.util.Locale;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.app.ProgressDialog;
@@ -74,9 +73,10 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
+import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.Word;
-import com.japanesetoolboxapp.utiities.GlobalConstants;
-import com.japanesetoolboxapp.utiities.SharedMethods;
+import com.japanesetoolboxapp.resources.GlobalConstants;
+import com.japanesetoolboxapp.resources.Utilities;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import static android.content.Context.DOWNLOAD_SERVICE;
@@ -149,7 +149,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         final View InputQueryFragment = inflater.inflate(R.layout.fragment_inputquery, container, false);
 
         // Initializations
-        mInternetIsAvailable = SharedMethods.internetIsAvailableCheck(this.getContext());
+        mInternetIsAvailable = Utilities.internetIsAvailableCheck(this.getContext());
         inputQueryAutoCompleteTextView = InputQueryFragment.findViewById(R.id.query);
         inputQueryAutoCompleteTextView.setMovementMethod(new ScrollingMovementMethod());
         inputQueryAutoCompleteTextView.setLongClickable(false);
@@ -243,7 +243,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 }.start();
             }
             registerThatUserIsRequestingDictSearch(false);
-            onVerbEntered_PerformThisFunction(SharedMethods.removeSpecialCharacters(inputVerbString));
+            onVerbEntered_PerformThisFunction(Utilities.removeSpecialCharacters(inputVerbString));
         } } );
 
         button_searchWord = InputQueryFragment.findViewById(R.id.button_searchWord);
@@ -266,7 +266,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 }.start();
             }
             registerThatUserIsRequestingDictSearch(true);
-            onWordEntered_PerformThisFunction(SharedMethods.removeSpecialCharacters(inputWordString));
+            onWordEntered_PerformThisFunction(Utilities.removeSpecialCharacters(inputWordString));
         } } );
 
         button_choose_Convert = InputQueryFragment.findViewById(R.id.button_convert);
@@ -305,7 +305,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
             }
             else {
-                onSearchByRadicalsEntered_PerformThisFunction(SharedMethods.removeSpecialCharacters(inputWordString));
+                onSearchByRadicalsEntered_PerformThisFunction(Utilities.removeSpecialCharacters(inputWordString));
             }
         } } );
 
@@ -336,7 +336,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
             }
             else {
-                onDecomposeEntered_PerformThisFunction(SharedMethods.removeSpecialCharacters(inputWordString));
+                onDecomposeEntered_PerformThisFunction(Utilities.removeSpecialCharacters(inputWordString));
             }
         } } );
 
@@ -1141,7 +1141,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
             List<Word> matchingWordsFromJisho;
             if (internetIsAvailable) {
-                matchingWordsFromJisho = SharedMethods.getWordsFromJishoOnWeb(queryText, getContext());
+                matchingWordsFromJisho = Utilities.getWordsFromJishoOnWeb(queryText, getContext());
 
                 if (matchingWordsFromJisho.size() != 0 && requestedSpeechToText) {
                     Word results = matchingWordsFromJisho.get(0);
@@ -1159,7 +1159,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
     //Query input methods
     private class QueryInputSpinnerAdapter extends ArrayAdapter<String> {
-    // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
+        // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
         QueryInputSpinnerAdapter(Context ctx, int txtViewResourceId, List<String> list) {
             super(ctx, txtViewResourceId, list);
             }
@@ -1286,7 +1286,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 public void onClick(DialogInterface dialog, int which) {
                     mTess.stop();
                     initializeTesseractAPI(mOCRLanguage);
-                    mTesseractOCRAsyncTask.cancel(true);
+                    mTesseractOCRAsyncTask.cancel(true); //TODO: this will probably crash
                     dialog.dismiss();
                 }
             });

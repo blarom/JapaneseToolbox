@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:keepScreenOn="true">
 
-    <com.japanesetoolboxapp.utiities.CameraSourcePreview
+    <com.japanesetoolboxapp.resources.CameraSourcePreview
         android:id="@+id/preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -15,6 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </com.japanesetoolboxapp.utiities.CameraSourcePreview>
+    </com.japanesetoolboxapp.resources.CameraSourcePreview>
 
 </RelativeLayout>

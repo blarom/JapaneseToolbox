@@ -1,7 +1,5 @@
-package com.japanesetoolboxapp.utiities;
+package com.japanesetoolboxapp.resources;
 
-
-import com.japanesetoolboxapp.BuildConfig;
 
 public final class GlobalConstants {
 

@@ -4,6 +4,6 @@
     android:id="@+id/activity_settings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="com.japanesetoolboxapp.SettingsFragment">
+    android:name="com.japanesetoolboxapp.ui.SettingsFragment">
 
 </fragment>

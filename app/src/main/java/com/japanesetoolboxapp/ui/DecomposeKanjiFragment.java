@@ -1,4 +1,4 @@
-package com.japanesetoolboxapp;
+package com.japanesetoolboxapp.ui;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -21,7 +21,9 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.japanesetoolboxapp.utiities.SharedMethods;
+import com.japanesetoolboxapp.R;
+import com.japanesetoolboxapp.data.DatabaseUtilities;
+import com.japanesetoolboxapp.resources.Utilities;
 
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
@@ -220,7 +222,7 @@ public class DecomposeKanjiFragment extends Fragment {
                                         tv = new TextView(getContext());
                                         tv.setLayoutParams(radical_gallery_layoutParams);
                                         display_text = decomposed_kanji.get(i).get(0);
-                                        text = SharedMethods.fromHtml("<b><font color='#800080'>" + display_text + "</font></b>");
+                                        text = Utilities.fromHtml("<b><font color='#800080'>" + display_text + "</font></b>");
                                         clickable_text = new SpannableString(text);
                                         ClickableSpan Radical_Iteration_ClickableSpan = new ClickableSpan() {
                                             @Override
@@ -885,8 +887,8 @@ public class DecomposeKanjiFragment extends Fragment {
         public List<String> KanjiDictCharacteristicsFinder(String word) {
 
             int relevant_column_index = 0;
-            String concatenated_input = SharedMethods.removeSpecialCharacters(word);
-            int[] limits = DictionaryFragment.binarySearchInUTF8Index(concatenated_input, MainActivity.KanjiDict_Database, relevant_column_index);
+            String concatenated_input = Utilities.removeSpecialCharacters(word);
+            int[] limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.KanjiDict_Database, relevant_column_index);
 
             List<String> characteristics = new ArrayList<>();
 
@@ -912,8 +914,8 @@ public class DecomposeKanjiFragment extends Fragment {
         public List<String> RadicalCharacteristicsFinder(String word) {
 
             int relevant_column_index = 0;
-            String concatenated_input = SharedMethods.removeSpecialCharacters(word);
-            int[] limits = DictionaryFragment.binarySearchInUTF8Index(concatenated_input, MainActivity.RadicalsDatabase, relevant_column_index);
+            String concatenated_input = Utilities.removeSpecialCharacters(word);
+            int[] limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.RadicalsDatabase, relevant_column_index);
 
             List<String> radical_characteristics = new ArrayList<>();
 
@@ -954,8 +956,8 @@ public class DecomposeKanjiFragment extends Fragment {
         public List<List<String>> Decomposition(String word) {
 
             int relevant_column_index = 0;
-            String concatenated_input = SharedMethods.removeSpecialCharacters(word);
-            int[] limits = DictionaryFragment.binarySearchInUTF8Index(concatenated_input, MainActivity.CJK_Database, relevant_column_index);
+            String concatenated_input = Utilities.removeSpecialCharacters(word);
+            int[] limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.CJK_Database, relevant_column_index);
 
             List<List<String>> decomposed_kanji = new ArrayList<>();
             List<String> kanji_and_its_structure = new ArrayList<>();

@@ -1,11 +1,11 @@
-package com.japanesetoolboxapp;
+package com.japanesetoolboxapp.ui;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
+import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.DatabaseUtilities;
+import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
 import com.japanesetoolboxapp.data.Word;
-import com.japanesetoolboxapp.data.WordsRoomDatabase;
-import com.japanesetoolboxapp.utiities.*;
+import com.japanesetoolboxapp.resources.*;
 
 import android.content.Context;
 import android.content.Intent;
@@ -36,15 +36,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //TODO: database upgrade
-////TODO make the LOCAL room db update itself with the list<Words> if the app has been reinstalled
-////TODO create objects for the Latin and Kanji index tables for faster loading
+////TODO make the LOCAL room db update itself with the list<Kanji/LatinIndex> if the app has been reinstalled
 ////TODO adapt the code to use the LOCAL room db instead of the local List<String> objects, including index calls
-////TODO create a VBA function that updates the list of words in the excel from firebase
-////TODO query the room database to get results from the common words
+////TODO create a python function that updates the list of words in the excel from firebase
 ////TODO merge the results of the local database to the results
 ////TODO display to user
+////TODO: Add suru verbs from list
 
 //TODO: features
+////TODO correctly implement saveinstancestate for results
 ////TODO when joining online results, compare verb[space]suru with verb[no space]suru, and show verb[space]suru to user
 ////TODO make ranking in in dict put special concat hits at end of list or invalidate them
 ////TODO add root as keyword for suru verbs
@@ -67,6 +67,7 @@ import android.widget.Toast;
 ////TODO "kamoshi" returns no josho.org results
 ////TODO "hanashinagara" returns conjugated verb, but hiragana equivalent doesn't
 ////TODO imperative display for godan verbs
+////TODO: Fix nantoka example sentences
 
 public class MainActivity extends AppCompatActivity implements InputQueryFragment.UserEnteredQueryListener,
                                             DictionaryFragment.UserWantsNewSearchForSelectedWordListener,
@@ -131,12 +132,6 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        //Setting up Firebase
-        FirebaseDatabase firebaseDb = FirebaseDatabase.getInstance();
-        firebaseDb.setPersistenceEnabled(true);
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseAuth.signInWithEmailAndPassword(DatabaseUtilities.firebaseEmail, DatabaseUtilities.firebasePass);
-
         //Code allowing to bypass strict mode
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -165,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         findViewById(android.R.id.content).setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                SharedMethods.hideSoftKeyboard(MainActivity.this);
+                Utilities.hideSoftKeyboard(MainActivity.this);
                 return false;
             }
         });
@@ -204,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
     @Override protected void onDestroy() {
         super.onDestroy();
         try {
-            SharedMethods.trimCache(this);
+            Utilities.trimCache(this);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -254,13 +249,13 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
             setOCRLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_preferred_language_value_japanese)));
         }
         else if (key.equals(getString(R.string.pref_OCR_image_saturation_key))) {
-            mOcrImageDefaultSaturation = SharedMethods.loadOCRImageSaturationFromSharedPreferences(sharedPreferences, getApplicationContext());
+            mOcrImageDefaultSaturation = Utilities.loadOCRImageSaturationFromSharedPreferences(sharedPreferences, getApplicationContext());
         }
         else if (key.equals(getString(R.string.pref_OCR_image_contrast_key))) {
-            mOcrImageDefaultContrast = SharedMethods.loadOCRImageContrastFromSharedPreferences(sharedPreferences, getApplicationContext());
+            mOcrImageDefaultContrast = Utilities.loadOCRImageContrastFromSharedPreferences(sharedPreferences, getApplicationContext());
         }
         else if (key.equals(getString(R.string.pref_OCR_image_brightness_key))) {
-            mOcrImageDefaultBrightness = SharedMethods.loadOCRImageBrightnessFromSharedPreferences(sharedPreferences, getApplicationContext());
+            mOcrImageDefaultBrightness = Utilities.loadOCRImageBrightnessFromSharedPreferences(sharedPreferences, getApplicationContext());
         }
     }
     private void setupSharedPreferences() {
@@ -270,9 +265,9 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese)));
         setTextToSpeechLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese)));
         setOCRLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_preferred_language_value_japanese)));
-        mOcrImageDefaultContrast = SharedMethods.loadOCRImageContrastFromSharedPreferences(sharedPreferences, getApplicationContext());
-        mOcrImageDefaultSaturation = SharedMethods.loadOCRImageSaturationFromSharedPreferences(sharedPreferences, getApplicationContext());
-        mOcrImageDefaultBrightness = SharedMethods.loadOCRImageBrightnessFromSharedPreferences(sharedPreferences, getApplicationContext());
+        mOcrImageDefaultContrast = Utilities.loadOCRImageContrastFromSharedPreferences(sharedPreferences, getApplicationContext());
+        mOcrImageDefaultSaturation = Utilities.loadOCRImageSaturationFromSharedPreferences(sharedPreferences, getApplicationContext());
+        mOcrImageDefaultBrightness = Utilities.loadOCRImageBrightnessFromSharedPreferences(sharedPreferences, getApplicationContext());
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
     public void setShowOnlineResults(boolean showCourse) {
@@ -336,10 +331,10 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         }
         protected Void doInBackground(Void... params) {
 
-            WordsRoomDatabase wordsRoomDatabase = WordsRoomDatabase.getInstance(getBaseContext());
-            Word word = wordsRoomDatabase.getWordByWordId(2114);
+            JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getBaseContext());
+            Word word = japaneseToolboxRoomDatabase.getWordByWordId(2114);
 
-            heap_size = SharedMethods.getAvailableMemory();
+            heap_size = Utilities.getAvailableMemory();
             enough_memory_for_heavy_functions = true;
             //Sizes based on file size, not on number of rows
             int CJK_Database_size = 2051;
@@ -357,18 +352,18 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
             Context applicationContext = getApplicationContext();
 
             int cumulative_progress = 0;
-            showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Main Database...", applicationContext);
-            if (MainDatabase == null) { MainDatabase = DatabaseUtilities.loadCentralDatabaseFromCsv(getBaseContext());}
-            Log.i("Diagnosis Time","Loaded MainDatabase.");
+            //showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Main Database...", applicationContext);
+            //if (MainDatabase == null) { MainDatabase = DatabaseUtilities.loadCentralDatabaseFromCsv(getBaseContext());}
+            //Log.i("Diagnosis Time","Loaded MainDatabase.");
 
-            if (ExamplesDatabase == null) { ExamplesDatabase = DatabaseUtilities.readCSVFile("LineExamples - 3000 kanji.csv", getBaseContext()); }
-            Log.i("Diagnosis Time","Loaded ExamplesDatabase.");
+            //if (ExamplesDatabase == null) { ExamplesDatabase = DatabaseUtilities.readCSVFile("LineExamples - 3000 kanji.csv", getBaseContext()); }
+            //Log.i("Diagnosis Time","Loaded ExamplesDatabase.");
 
-            if (MeaningsDatabase == null) { MeaningsDatabase = DatabaseUtilities.readCSVFile("LineMeanings - 3000 kanji.csv", getBaseContext()); }
-            Log.i("Diagnosis Time","Loaded MeaningsDatabase.");
+            //if (MeaningsDatabase == null) { MeaningsDatabase = DatabaseUtilities.readCSVFile("LineMeanings - 3000 kanji.csv", getBaseContext()); }
+            //Log.i("Diagnosis Time","Loaded MeaningsDatabase.");
 
-            if (MultExplanationsDatabase == null) { MultExplanationsDatabase = DatabaseUtilities.readCSVFile("LineMultExplanations - 3000 kanji.csv", getBaseContext()); }
-            Log.i("Diagnosis Time","Loaded MultExplanationsDatabase.");
+            //if (MultExplanationsDatabase == null) { MultExplanationsDatabase = DatabaseUtilities.readCSVFile("LineMultExplanations - 3000 kanji.csv", getBaseContext()); }
+            //Log.i("Diagnosis Time","Loaded MultExplanationsDatabase.");
 
             if (LegendDatabase == null) { LegendDatabase = DatabaseUtilities.readCSVFile("LineLegend - 3000 kanji.csv", getBaseContext()); }
 
@@ -396,7 +391,7 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
             if (SimilarsDatabase == null   || SimilarsDatabase.size() < 5)   { SimilarsDatabase = DatabaseUtilities.readCSVFile("LineSimilars - 3000 kanji.csv", getBaseContext());}
             Log.i("Diagnosis Time","Loaded SimilarsDatabase.");
 
-            heap_size = SharedMethods.getAvailableMemory();
+            heap_size = Utilities.getAvailableMemory();
             heap_size_before_decomposition_loader = heap_size;
             cumulative_progress = cumulative_progress + VerbDatabase_size;
 
@@ -408,21 +403,21 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
 
                 cumulative_progress = cumulative_progress + RadicalsDatabase_size;
                 showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Decompositions Database...", applicationContext);
-                heap_size = SharedMethods.getAvailableMemory();
+                heap_size = Utilities.getAvailableMemory();
                 if (CJK_Database == null) { CJK_Database = DatabaseUtilities.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", getBaseContext());}
                 Log.i("Diagnosis Time", "Loaded CJK_Database.");
 
                 cumulative_progress = cumulative_progress + CJK_Database_size;
                 showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Characters Database...", applicationContext);
-                heap_size = SharedMethods.getAvailableMemory();
+                heap_size = Utilities.getAvailableMemory();
                 if (KanjiDict_Database == null) { KanjiDict_Database = DatabaseUtilities.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", getBaseContext());}
                 Log.i("Diagnosis Time", "Loaded KanjiDict_Database.");
 
-                heap_size = SharedMethods.getAvailableMemory();
+                heap_size = Utilities.getAvailableMemory();
                 if (RadicalsOnlyDatabase == null) { RadicalsOnlyDatabase = DatabaseUtilities.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", getBaseContext());}
                 Log.i("Diagnosis Time", "Loaded RadicalsOnlyDatabase.");
 
-                heap_size = SharedMethods.getAvailableMemory();
+                heap_size = Utilities.getAvailableMemory();
                 heap_size_before_searchbyradical_loader = heap_size;
                 enough_memory_for_heavy_functions = true;
 
@@ -458,7 +453,7 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
                 enough_memory_for_heavy_functions = false;
                 showDatabaseLoadingToast("Stopped at " + Math.round(100*cumulative_progress/total_assets_size) + "% due to low memory.", applicationContext);
             }
-            heap_size = SharedMethods.getAvailableMemory();
+            heap_size = Utilities.getAvailableMemory();
 
             Log.i("Diagnosis Time","Loaded All Databases.");
             return null;

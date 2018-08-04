@@ -1,4 +1,4 @@
-package com.japanesetoolboxapp;
+package com.japanesetoolboxapp.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.japanesetoolboxapp.utiities.*;
+import com.japanesetoolboxapp.R;
+import com.japanesetoolboxapp.resources.*;
 
 public class ConvertFragment extends Fragment {
 
@@ -130,14 +131,14 @@ public class ConvertFragment extends Fragment {
 
             }
 
-            translation.set(0, SharedMethods.removeSpecialCharacters(translation_latin));
-            translation.set(1, SharedMethods.removeSpecialCharacters(translation_hiragana));
-            translation.set(2, SharedMethods.removeSpecialCharacters(translation_katakana));
+            translation.set(0, Utilities.removeSpecialCharacters(translation_latin));
+            translation.set(1, Utilities.removeSpecialCharacters(translation_hiragana));
+            translation.set(2, Utilities.removeSpecialCharacters(translation_katakana));
 			return translation;
 		}
         public static String TextType(String input_value) {
 
-            input_value = SharedMethods.removeSpecialCharacters(input_value);
+            input_value = Utilities.removeSpecialCharacters(input_value);
             String character;
             String text_type = "";
 

@@ -1,4 +1,4 @@
-package com.japanesetoolboxapp.utiities;
+package com.japanesetoolboxapp.resources;
 
 //https://xjaphx.wordpress.com/2011/06/22/image-processing-convolution-matrix/
 

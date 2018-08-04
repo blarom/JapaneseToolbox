@@ -1,7 +1,6 @@
 package com.japanesetoolboxapp.data;
 
 import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
@@ -10,19 +9,18 @@ import android.provider.BaseColumns;
 
 import java.util.List;
 
-
 @Entity(tableName = Word.TABLE_NAME, indices = {@Index("uniqueIdentifier")})
 public class Word {
 
     public static final String TABLE_NAME = "words_table";
     public static final String COLUMN_ID = BaseColumns._ID;
-    public static final String COLUMN_WORD_KEYWORDS = "keywords";
-    public static final String COLUMN_WORD_UNIQUE_ID = "uniqueIdentifier";
-    public static final String COLUMN_WORD_ROMAJI = "romaji";
-    public static final String COLUMN_WORD_KANJI = "kanji";
-    public static final String COLUMN_WORD_ALT_SPELLINGS = "altSpellings";
-    public static final String COLUMN_WORD_MEANINGS = "meanings";
-    public static final String COLUMN_WORD_COMMON_STATUS = "commonStatus";
+    static final String COLUMN_WORD_KEYWORDS = "keywords";
+    static final String COLUMN_WORD_UNIQUE_ID = "uniqueIdentifier";
+    static final String COLUMN_WORD_ROMAJI = "romaji";
+    static final String COLUMN_WORD_KANJI = "kanji";
+    static final String COLUMN_WORD_ALT_SPELLINGS = "altSpellings";
+    static final String COLUMN_WORD_MEANINGS = "meanings";
+    static final String COLUMN_WORD_COMMON_STATUS = "commonStatus";
 
     public Word() {
     }
