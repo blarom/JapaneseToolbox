@@ -3,7 +3,9 @@ package com.japanesetoolboxapp.ui;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,8 +45,13 @@ public class ConjugatorFragment extends Fragment {
     static String last_searched_verb;
 
     Boolean app_was_in_background;
+    private String mInputQuery;
 
     // Fragment Lifecycle Functions
+    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getExtras();
+    }
     @Override public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
@@ -73,24 +80,23 @@ public class ConjugatorFragment extends Fragment {
     }
     @Override public void onPause() {
         super.onPause();
-
         app_was_in_background = true;
     }
     @Override public void onResume() {
         super.onResume();
 
-        if (getArguments() != null) {
-            String outputFromInputQueryFragment = getArguments().getString("input_to_fragment");
-
-            //If the application is resumed (switched to), then display the last results instead of performing a new search on the last input
-            if (app_was_in_background == null || !app_was_in_background) {
-                SearchForConjugations(outputFromInputQueryFragment);
-            }
+        if (app_was_in_background == null || !app_was_in_background) {
+            if (!TextUtils.isEmpty(mInputQuery)) SearchForConjugations(mInputQuery);
         }
     }
 
 
 	// Functionality Functions
+    private void getExtras() {
+        if (getArguments()!=null) {
+            mInputQuery = getArguments().getString(getString(R.string.user_query_word));
+        }
+    }
     public List<List<String>>       VerbChooserSpinnerPopulater(String inputVerbString, List<List<List<String>>> verbCharacteristics, String SearchType) {
 
             List<List<String>> populatedlist = new ArrayList<>();

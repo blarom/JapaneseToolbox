@@ -92,13 +92,13 @@ public class JapaneseToolboxTest {
 
         if (button_string.equals("DICT")) {
             ViewInteraction button = onView(
-                    allOf(withId(R.id.button_searchWord), withText("DICT"), isDisplayed()));
+                    allOf(withId(R.id.button_dict), withText("DICT"), isDisplayed()));
             button.perform(click());
             //button.perform(closeSoftKeyboard()).perform(scrollTo()).perform(click());
         }
         else {
             ViewInteraction button = onView(
-                    allOf(withId(R.id.button_searchVerb), withText("CONJ"), isDisplayed()));
+                    allOf(withId(R.id.button_conj), withText("CONJ"), isDisplayed()));
             button.perform(click());
             //button.perform(closeSoftKeyboard()).perform(scrollTo()).perform(click());
         }
@@ -118,11 +118,11 @@ public class JapaneseToolboxTest {
         autoCompleteTextView3.perform(replaceText(input), closeSoftKeyboard());
 
         ViewInteraction button = onView(
-                allOf(withId(R.id.button_searchWord), withText(button_string), isDisplayed()));
+                allOf(withId(R.id.button_dict), withText(button_string), isDisplayed()));
         button.perform(click());
 
         ViewInteraction button2 = onView(
-                allOf(withId(R.id.button_searchVerb), withText("CONJ"), isDisplayed()));
+                allOf(withId(R.id.button_conj), withText("CONJ"), isDisplayed()));
         button2.perform(click());
 
 //        ViewInteraction spinner = onView(
@@ -150,7 +150,7 @@ public class JapaneseToolboxTest {
     public void TestRadicalComposition() {
 
         ViewInteraction button2 = onView(
-                allOf(withId(R.id.button_searchByRadical), isDisplayed()));
+                allOf(withId(R.id.button_search_by_radical), isDisplayed()));
         //allOf(withId(R.id.button_searchByRadical), withText("女+子 &#8658; 好"), isDisplayed()));
         button2.perform(click());
 
@@ -238,7 +238,7 @@ public class JapaneseToolboxTest {
         autoCompleteTextView2.perform(replaceText(kanji_level0), closeSoftKeyboard());
 
         ViewInteraction button2 = onView(
-                allOf(withId(R.id.button_Decompose), isDisplayed()));
+                allOf(withId(R.id.button_decompose), isDisplayed()));
         button2.perform(click());
 
         ViewInteraction textView = onView(

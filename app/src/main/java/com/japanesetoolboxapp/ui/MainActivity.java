@@ -16,6 +16,8 @@ import android.graphics.LightingColorFilter;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.StrictMode;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
@@ -34,6 +36,10 @@ import java.util.List;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 //TODO: database upgrade
 ////TODO make the LOCAL room db update itself with the list<Kanji/LatinIndex> if the app has been reinstalled
@@ -69,14 +75,18 @@ import android.widget.Toast;
 ////TODO imperative display for godan verbs
 ////TODO: Fix nantoka example sentences
 
-public class MainActivity extends AppCompatActivity implements InputQueryFragment.UserEnteredQueryListener,
-                                            DictionaryFragment.UserWantsNewSearchForSelectedWordListener,
-                                            DictionaryFragment.UserWantsToConjugateFoundVerbListener,
-                                            ComposeKanjiFragment.UserWantsNewSearchForSelectedCharacterListener,
-                                            SharedPreferences.OnSharedPreferenceChangeListener {
 
-    //Globals
-    InputQueryFragment inputQueryFragment;
+public class MainActivity extends AppCompatActivity implements
+        InputQueryFragment.InputQueryOperationsHandler,
+        DictionaryFragment.DictionaryFragmentOperationsHandler,
+        SearchByRadicalFragment.SearchByRadicalFragmentOperationsHandler,
+        SharedPreferences.OnSharedPreferenceChangeListener {
+
+
+    //region Parameters
+    @BindView(R.id.second_fragment_placeholder) FrameLayout mSecondFragmentPlaceholder;
+    private String mSecondFragmentFlag;
+    InputQueryFragment mInputQueryFragment;
     static List<String[]> MainDatabase;
     static List<String[]> ExamplesDatabase;
     static List<String[]> MeaningsDatabase;
@@ -105,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
     Toast mLastToast;
     private FirebaseAuth mFirebaseAuth;
 
-    //Preferences Globals
     public static Boolean mShowOnlineResults;
     public static String mChosenSpeechToTextLanguage;
     public static String mChosenTextToSpeechLanguage;
@@ -114,72 +123,38 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
     private float mOcrImageDefaultContrast;
     private float mOcrImageDefaultBrightness;
     private float mOcrImageDefaultSaturation;
+    private FragmentManager mFragmentManager;
+    private FragmentTransaction mFragmentTransaction;
+    private Bundle mSavedInstanceState;
+    private Unbinder mBinding;
+    //endregion
 
+
+    //Lifecycle methods
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Log.i("Diagnosis Time", "Started MainActivity.");
-        setupSharedPreferences();
-        activityResumedFromSTTOrOCR = false;
-
-
-        // Start loading the local database in the background
-        if (MainDatabase == null) {
-            new BackgroundDatabaseLoader().execute();
-        }
-
-        // Define that MainActivity is related to activity_masterframe.xml
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        //Code allowing to bypass strict mode
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+        mSavedInstanceState = savedInstanceState;
 
-        // Start the fragment manager
-        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Log.i("Diagnosis Time", "Started MainActivity.");
+        initializeParameters();
+        setupSharedPreferences();
+        if (MainDatabase == null) new BackgroundDatabaseLoader().execute(); // Start loading the local database in the background
+        setFragments();
 
-        // Load the Fragments depending on the device orientation
-        Configuration config = getResources().getConfiguration();
-        if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            if (savedInstanceState == null) {
-                inputQueryFragment = new InputQueryFragment();
-                fragmentTransaction.add(R.id.InputQueryPlaceholder, inputQueryFragment);
-            }
-        } else {
-            if (savedInstanceState == null) {
-                inputQueryFragment = new InputQueryFragment();
-                fragmentTransaction.add(R.id.InputQueryPlaceholder, inputQueryFragment);
-            }
-        }
-
-        fragmentTransaction.commit();
-
-        // Remove the software keyboard if the EditText is not in focus
-        findViewById(android.R.id.content).setOnTouchListener(new OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Utilities.hideSoftKeyboard(MainActivity.this);
-                return false;
-            }
-        });
+    }
+    @Override protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
 
         // Set the Requested Fragment if it was saved from a previous instance
-        Global_Fragment_chooser_keyword = "start";
         if (savedInstanceState != null) {
-            String savedRequestedFragment = savedInstanceState.getString("RequestedFragment");
+            String savedRequestedFragment = savedInstanceState.getString(getString(R.string.requested_second_fragment));
             if (savedRequestedFragment != null) {
-                Global_Fragment_chooser_keyword = savedRequestedFragment;
+                mSecondFragmentFlag = savedRequestedFragment;
             }
         }
-
-        //Set the typeface for Chinese/Japanese fonts
-        CJK_typeface = Typeface.DEFAULT;
-        //CJK_typeface = Typeface.createFromAsset(getAssets(), "fonts/DroidSansFallback.ttf");
-        //CJK_typeface = Typeface.createFromAsset(getAssets(), "fonts/DroidSansJapanese.ttf");
-        //see https://stackoverflow.com/questions/11786553/changing-the-android-typeface-doesnt-work
-
     }
     @Override protected void onStart() {
         super.onStart();
@@ -187,14 +162,14 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
                 .getLaunchIntentForPackage(this.getBaseContext().getPackageName());
 
     }
-    @Override public void onSaveInstanceState(Bundle savedInstanceState) {
- 		super.onSaveInstanceState(savedInstanceState);
- 		
-        savedInstanceState.putString("RequestedFragment", Global_Fragment_chooser_keyword);
- 	}
     @Override protected void onResume() {
         super.onResume();
         //activityResumedFromSTTOrOCR = false;
+    }
+    @Override public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString(getString(R.string.requested_second_fragment), mSecondFragmentFlag);
     }
     @Override protected void onDestroy() {
         super.onDestroy();
@@ -204,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
             e.printStackTrace();
         }
         PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
+        mBinding.unbind();
     }
     @Override public void onBackPressed() {
         if (getFragmentManager().getBackStackEntryCount() > 0) {
@@ -212,7 +188,6 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
             super.onBackPressed();
         }
     }
-
     @Override public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -235,6 +210,8 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         return super.onOptionsItemSelected(item);
     }
 
+
+    //Preference methods
     @Override public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals(getString(R.string.pref_complete_local_with_online_search_key))) {
             setShowOnlineResults(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default)));
@@ -298,7 +275,57 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
         }
     }
 
-    public void showDatabaseLoadingToast(final String message, final Context context) {
+
+    //Functionality methods
+    private void initializeParameters() {
+
+
+        mBinding =  ButterKnife.bind(this);
+        activityResumedFromSTTOrOCR = false;
+        mSecondFragmentFlag = "start";
+
+        //Code allowing to bypass strict mode
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        // Remove the software keyboard if the EditText is not in focus
+        findViewById(android.R.id.content).setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Utilities.hideSoftKeyboard(MainActivity.this);
+                return false;
+            }
+        });
+
+        //Set the typeface for Chinese/Japanese fonts
+        CJK_typeface = Typeface.DEFAULT;
+        //CJK_typeface = Typeface.createFromAsset(getAssets(), "fonts/DroidSansFallback.ttf");
+        //CJK_typeface = Typeface.createFromAsset(getAssets(), "fonts/DroidSansJapanese.ttf");
+        //see https://stackoverflow.com/questions/11786553/changing-the-android-typeface-doesnt-work
+    }
+    private void setFragments() {
+
+        // Get the fragment manager
+        mFragmentManager = getSupportFragmentManager();
+        mFragmentTransaction = mFragmentManager.beginTransaction();
+
+        // Load the Fragments depending on the device orientation
+        Configuration config = getResources().getConfiguration();
+        if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            if (mSavedInstanceState == null) {
+                mInputQueryFragment = new InputQueryFragment();
+                mFragmentTransaction.add(R.id.input_query_placeholder, mInputQueryFragment);
+            }
+        } else {
+            if (mSavedInstanceState == null) {
+                mInputQueryFragment = new InputQueryFragment();
+                mFragmentTransaction.add(R.id.input_query_placeholder, mInputQueryFragment);
+            }
+        }
+
+        mFragmentTransaction.commit();
+    }
+    private void showDatabaseLoadingToast(final String message, final Context context) {
         runOnUiThread(new Runnable() {
             public void run()
             {
@@ -323,7 +350,6 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
             }
         });
     }
-
     private class BackgroundDatabaseLoader extends AsyncTask<Void, Void, Void> {
         @Override protected void onPreExecute() {
             super.onPreExecute();
@@ -465,120 +491,122 @@ public class MainActivity extends AppCompatActivity implements InputQueryFragmen
             Log.i("Diagnosis Time","Loadeded all databases.");
         }
     }
+    private void updateInputQuery(String word) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-	private String Global_Fragment_chooser_keyword;
-    public void OnQueryEnteredSwitchToRelevantFragment(String[] outputFromInputQueryFragment) {
-
-        // outputFromInputQueryFragment includes: [fragment keyword, user input, additional control keyword (unused)]
-
-    	if (Global_Fragment_chooser_keyword.equals("start"))
-    			{ Global_Fragment_chooser_keyword = outputFromInputQueryFragment[0]; }
-    	else  	{ Global_Fragment_chooser_keyword = outputFromInputQueryFragment[0]; }
-
-        FrameLayout frame = findViewById(R.id.FunctionFragmentsPlaceholder);
-        frame.setVisibility(View.VISIBLE);
-        frame.bringToFront();
-
-        // Prepare the input for the fragment
-        Bundle bundle = new Bundle();
-        bundle.putString("input_to_fragment", outputFromInputQueryFragment[1]);
-
-        if (Global_Fragment_chooser_keyword.equals("verb")) {
-
-        	ConjugatorFragment conjugatorFragment = new ConjugatorFragment();
-            conjugatorFragment.setArguments(bundle);
-
-            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, conjugatorFragment);
-
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commitAllowingStateLoss ();
-        }
-        else if (Global_Fragment_chooser_keyword.equals("word")) {
-
-        	DictionaryFragment dictionaryFragment = new DictionaryFragment();
-            dictionaryFragment.setArguments(bundle);
-
-            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, dictionaryFragment);
-
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commitAllowingStateLoss ();
-        }
-        else if (Global_Fragment_chooser_keyword.equals("convert")) {
-
-            ConvertFragment convertFragment = new ConvertFragment();
-            convertFragment.setArguments(bundle);
-
-            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, convertFragment);
-
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commitAllowingStateLoss ();
-        }
-        else if (Global_Fragment_chooser_keyword.equals("radicals")  && heap_size_before_decomposition_loader >= GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-
-            ComposeKanjiFragment ComposeKanjiFragment = new ComposeKanjiFragment();
-            ComposeKanjiFragment.setArguments(bundle);
-
-            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, ComposeKanjiFragment);
-
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commitAllowingStateLoss ();
-        }
-        else if (Global_Fragment_chooser_keyword.equals("decompose")  && heap_size_before_decomposition_loader >= GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-
-            DecomposeKanjiFragment DecomposeKanjiFragment = new DecomposeKanjiFragment();
-            DecomposeKanjiFragment.setArguments(bundle);
-
-            android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, DecomposeKanjiFragment);
-
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commitAllowingStateLoss ();
-
-        }
-    }
-    public void UserWantsNewSearchForSelectedWordFromGrammarModule(String outputFromGrammarModuleFragment) {
-
-        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        //InputQueryFragment inputQueryFragment = new InputQueryFragment();
-        inputQueryFragment.setNewQuery(outputFromGrammarModuleFragment);
-        fragmentTransaction.commit();
-
-    }
-    public void UserWantsToSearchForSelectedResultFromRadicalsModule(String outputFromRadicalsModuleFragment) {
-
-        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        //InputQueryFragment inputQueryFragment = new InputQueryFragment();
-        inputQueryFragment.setNewQuery(outputFromRadicalsModuleFragment);
+        if (mInputQueryFragment!=null) mInputQueryFragment.setQuery(word);
         fragmentTransaction.commit();
     }
-    public void UserWantsToConjugateFoundVerbFromGrammarModule(String[] outputFromGrammarModuleFragment) {
+
+
+    //Communication with other classes:
+
+    //Communication with InputQueryFragment
+    @Override public void onDictRequested(String query) {
+
+        mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
+        mSecondFragmentPlaceholder.bringToFront();
+
+        DictionaryFragment dictionaryFragment = new DictionaryFragment();
 
         Bundle bundle = new Bundle();
-        bundle.putString("input_to_fragment", outputFromGrammarModuleFragment[1]);
+        bundle.putString(getString(R.string.user_query_word), query);
+        dictionaryFragment.setArguments(bundle);
 
-        ConjugatorFragment conjugatorFragment = new ConjugatorFragment();
-        conjugatorFragment.setArguments(bundle);
-
-        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
-        android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.FunctionFragmentsPlaceholder, conjugatorFragment);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, dictionaryFragment);
 
         fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commitAllowingStateLoss(); //TODO: change this?
+    }
+    @Override public void onConjRequested(String query) {
 
-        fragmentTransaction.commit();
+        mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
+        mSecondFragmentPlaceholder.bringToFront();
+
+
+        ConjugatorFragment conjugatorFragment = new ConjugatorFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putString(getString(R.string.user_query_word), query);
+        conjugatorFragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, conjugatorFragment);
+
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commitAllowingStateLoss(); //TODO: change this?
+    }
+    @Override public void onConvertRequested(String query) {
+
+        mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
+        mSecondFragmentPlaceholder.bringToFront();
+
+        ConvertFragment convertFragment = new ConvertFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putString(getString(R.string.user_query_word), query);
+        convertFragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, convertFragment);
+
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commitAllowingStateLoss ();
+    }
+    @Override public void onSearchByRadicalRequested(String query) {
+
+        mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
+        mSecondFragmentPlaceholder.bringToFront();
+
+
+        SearchByRadicalFragment SearchByRadicalFragment = new SearchByRadicalFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(getString(R.string.user_query_word), query);
+        SearchByRadicalFragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, SearchByRadicalFragment);
+
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commitAllowingStateLoss ();
+
+    }
+    @Override public void onDecomposeRequested(String query) {
+
+        mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
+        mSecondFragmentPlaceholder.bringToFront();
+
+
+        DecomposeKanjiFragment DecomposeKanjiFragment = new DecomposeKanjiFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(getString(R.string.user_query_word), query);
+        DecomposeKanjiFragment.setArguments(bundle);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, DecomposeKanjiFragment);
+
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commitAllowingStateLoss ();
+    }
+
+    //Communication with DictionaryFragment
+    @Override public void onQueryTextUpdateFromDictRequested(String word) {
+        updateInputQuery(word);
+    }
+    @Override public void onVerbConjugationFromDictRequested(String verb) {
+        onConjRequested(verb);
+    }
+
+    //Communication with SearchByRadicalFragment
+    @Override public void onQueryTextUpdateFromSearchByRadicalRequested(String word) {
+        updateInputQuery(word);
     }
 }
 

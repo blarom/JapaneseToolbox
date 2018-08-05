@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
@@ -31,8 +30,6 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.media.AudioManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -40,11 +37,10 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.StatFs;
-import android.provider.MediaStore;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
@@ -79,12 +75,23 @@ import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.Utilities;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
 import static android.content.Context.DOWNLOAD_SERVICE;
 
-public class InputQueryFragment extends Fragment implements LoaderManager.LoaderCallbacks<String>,
+public class InputQueryFragment extends Fragment implements
+        LoaderManager.LoaderCallbacks<String>,
         TextToSpeech.OnInitListener {
 
-    //Locals
+
+    //region Parameters
+    @BindView(R.id.query) AutoCompleteTextView mInputQueryAutoCompleteTextView;
+    @BindView(R.id.button_dict) Button mDictButton;
+    @BindView(R.id.button_search_by_radical) Button mSearchByRadicalButton;
+    @BindView(R.id.button_decompose) Button mDecomposeButton;
     private static final int RESULT_OK = -1;
     private static final int SPEECH_RECOGNIZER_REQUEST_CODE = 101;
     private static final int ADJUST_IMAGE_ACTIVITY_REQUEST_CODE = 201;
@@ -96,16 +103,9 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     private static final String DOWNLOAD_FILE_PREFS = "download_file_prefs";
     private static final String JPN_FILE_DOWNLOADING_FLAG = "jpn_file_downloading";
     private static final String ENG_FILE_DOWNLOADING_FLAG = "eng_file_downloading";
-    private	String[] output = {"word","","fast"};
     String[] queryHistory;
     ArrayList<String> new_queryHistory;
-    AutoCompleteTextView inputQueryAutoCompleteTextView;
-    Button button_searchVerb;
-    Button button_searchWord;
-    Button button_choose_Convert;
-    Button button_searchByRadical;
-    Button button_Decompose;
-    String mQueryText;
+    String mInputQuery;
     Bitmap mImageToBeDecoded;
     TessBaseAPI mTess;
     String mInternalStorageTesseractFolderPath = "";
@@ -140,371 +140,43 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
     private BroadcastReceiver mBroadcastReceiver;
     private boolean mRequestedSpeechToText;
     private ProgressDialog mProgressDialog;
+    private Unbinder mBinding;
+    //endregion
+
 
     //Fragment Lifecycle methods
-    @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-
-        setRetainInstance(true);
-        final View InputQueryFragment = inflater.inflate(R.layout.fragment_inputquery, container, false);
-
-        // Initializations
-        mInternetIsAvailable = Utilities.internetIsAvailableCheck(this.getContext());
-        inputQueryAutoCompleteTextView = InputQueryFragment.findViewById(R.id.query);
-        inputQueryAutoCompleteTextView.setMovementMethod(new ScrollingMovementMethod());
-        inputQueryAutoCompleteTextView.setLongClickable(false);
-        //inputQueryAutoCompleteTextView.setTextIsSelectable(true);
-        inputQueryAutoCompleteTextView.setFocusable(true);
-        inputQueryAutoCompleteTextView.setFocusableInTouchMode(true);
-        mQueryText = "";
-        mOcrResultString = "";
-        inputQueryAutoCompleteTextView.setText(mQueryText);
-        firstTimeInitializedJpn = true;
-        firstTimeInitializedEng = true;
-        mInitializedOcrApiJpn = false;
-        mInitializedOcrApiEng = false;
-        timesPressed = 0;
-        jpnOcrDataIsAvailable = false;
-        engOcrDataIsAvailable = false;
-        mRequestedSpeechToText = false;
-        mCropImageResult = null;
-
-        getOcrDataDownloadingStatus();
-
-        mDownloadType = "WifiOnly";
-        getLanguageParametersFromSettingsAndReinitializeOcrIfNecessary();
-        setupPaths();
-        setupBroadcastReceiverForDownloadedOCRData();
-        registerThatUserIsRequestingDictSearch(false);
-        tts = new TextToSpeech(getContext(), this);
-        mLanguageBeingDownloaded = "jpn";
-        ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
-        mLanguageBeingDownloaded = "eng";
-        ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
-        initializeOcrEngineForChosenLanguage();
-
-        // Restoring query history
-        if (queryHistory == null) {
-            queryHistory = new String[7];
-            for (int i=0;i<queryHistory.length;i++) { queryHistory[i] = ""; } //7 elements in the array
-        }
-        if (getContext() != null) {
-            SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.queryHistoryKey), Context.MODE_PRIVATE);
-            String queryHistoryAsString = sharedPref.getString(getString(R.string.queryHistoryKey), "");
-            if (!queryHistoryAsString.equals("")) queryHistory = TextUtils.split(queryHistoryAsString,",");
-        }
-        Log.i("Diagnosis Time", "Loaded Search History.");
-
-        // Populate the history
-        inputQueryAutoCompleteTextView.setOnTouchListener(new View.OnTouchListener(){
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                //inputQueryAutoCompleteTextView.showDropDown();
-                inputQueryAutoCompleteTextView.dismissDropDown();
-                return false;
-            }
-            });
-
-        // When Enter is clicked, do the actions described in the following function
-        inputQueryAutoCompleteTextView.setOnEditorActionListener(new EditText.OnEditorActionListener() {
-                @Override
-                public boolean onEditorAction(TextView exampleView, int actionId, KeyEvent event) {
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                String inputWordString = inputQueryAutoCompleteTextView.getText().toString();
-
-                updateQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
-                inputQueryAutoCompleteTextView.dismissDropDown();
-
-                registerThatUserIsRequestingDictSearch(true);
-                onWordEntered_PerformThisFunction(inputWordString);
-            }
-            return true;
-        } } );
-
-        // Button listeners
-        button_searchVerb = InputQueryFragment.findViewById(R.id.button_searchVerb);
-        button_searchVerb.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
-            //EditText inputVerbObject = (EditText)fragmentView.findViewById(R.id.input_verb);
-            String inputVerbString = inputQueryAutoCompleteTextView.getText().toString();
-            mQueryText = inputVerbString;
-            updateQueryHistory(inputVerbString, inputQueryAutoCompleteTextView);
-
-            // Check if the database has finished loading. If not, make the user wait.
-            while(MainActivity.VerbKanjiConjDatabase == null){
-                new CountDownTimer(500, 500) {
-                    public void onFinish() {
-                        // When timer is finished
-                        // Execute your code here
-                    }
-
-                    public void onTick(long millisUntilFinished) {
-                        // millisUntilFinished    The amount of time until finished.
-                    }
-                }.start();
-            }
-            registerThatUserIsRequestingDictSearch(false);
-            onVerbEntered_PerformThisFunction(Utilities.removeSpecialCharacters(inputVerbString));
-        } } );
-
-        button_searchWord = InputQueryFragment.findViewById(R.id.button_searchWord);
-        button_searchWord.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
-            String inputWordString = inputQueryAutoCompleteTextView.getText().toString();
-            mQueryText = inputWordString;
-            updateQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
-
-            // Check if the database has finished loading. If not, make the user wait.
-            while(MainActivity.VerbKanjiConjDatabase == null){
-                new CountDownTimer(500, 500) {
-                    public void onFinish() {
-                        // When timer is finished
-                        // Execute your code here
-                    }
-
-                    public void onTick(long millisUntilFinished) {
-                        // millisUntilFinished    The amount of time until finished.
-                    }
-                }.start();
-            }
-            registerThatUserIsRequestingDictSearch(true);
-            onWordEntered_PerformThisFunction(Utilities.removeSpecialCharacters(inputWordString));
-        } } );
-
-        button_choose_Convert = InputQueryFragment.findViewById(R.id.button_convert);
-        button_choose_Convert.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
-            String inputWordString = inputQueryAutoCompleteTextView.getText().toString();
-
-            updateQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
-
-            onConvertEntered_PerformThisFunction(inputWordString);
-        } } );
-
-        button_searchByRadical = InputQueryFragment.findViewById(R.id.button_searchByRadical);
-        button_searchByRadical.setEnabled(true);
-        button_searchByRadical.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
-            // Break up a Kanji to Radicals
-
-            String inputWordString = inputQueryAutoCompleteTextView.getText().toString();
-
-            updateQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
-
-            // Check if the database has finished loading. If not, make the user wait.
-            while(MainActivity.RadicalsOnlyDatabase == null && MainActivity.enough_memory_for_heavy_functions) {
-                new CountDownTimer(200000, 10000) {
-                    public void onFinish() {
-                    }
-                    public void onTick(long millisUntilFinished) {
-                        // millisUntilFinished    The amount of time until finished.
-                    }
-                }.start();
-                //heap_size = AvailableMemory();
-            }
-            Log.i("Diagnosis Time","Starting radical module.");
-
-            // If the app memory is too low to load the radicals and decomposition databases, make the searchByRadical and Decompose buttons inactive
-            if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
-            }
-            else {
-                onSearchByRadicalsEntered_PerformThisFunction(Utilities.removeSpecialCharacters(inputWordString));
-            }
-        } } );
-
-        button_Decompose = InputQueryFragment.findViewById(R.id.button_Decompose);
-        button_Decompose.setEnabled(true);
-        button_Decompose.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
-            // Break up a Kanji to Radicals
-
-            String inputWordString = inputQueryAutoCompleteTextView.getText().toString();
-
-            updateQueryHistory(inputWordString, inputQueryAutoCompleteTextView);
-
-            // Check if the database has finished loading. If not, make the user wait.
-            while(MainActivity.RadicalsOnlyDatabase == null && MainActivity.enough_memory_for_heavy_functions) {
-                new CountDownTimer(200000, 10000) {
-                    public void onFinish() {
-                    }
-                    public void onTick(long millisUntilFinished) {
-                        // millisUntilFinished    The amount of time until finished.
-                    }
-                }.start();
-                //heap_size = AvailableMemory();
-            }
-            Log.i("Diagnosis Time","Starting decomposition module.");
-
-            // If the app memory is too low to load the radicals and decomposition databases, make the searchByRadical and Decompose buttons inactive
-            if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
-            }
-            else {
-                onDecomposeEntered_PerformThisFunction(Utilities.removeSpecialCharacters(inputWordString));
-            }
-        } } );
-
-        final Button button_ClearQuery = InputQueryFragment.findViewById(R.id.clearQuery);
-        button_ClearQuery.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
-            inputQueryAutoCompleteTextView.setText("");
-            mQueryText = "";
-        } } );
-
-        final Button button_ShowHistory = InputQueryFragment.findViewById(R.id.showHistory);
-        button_ShowHistory.setOnClickListener( new View.OnClickListener() { public void onClick(View v) {
-
-            String queryString = inputQueryAutoCompleteTextView.getText().toString();
-            mQueryText = queryString;
-            updateQueryHistory(queryString, inputQueryAutoCompleteTextView);
-            boolean queryHistoryIsEmpty = true;
-            for (String element : queryHistory) {
-                if (!element.equals("")) { queryHistoryIsEmpty = false; }
-            }
-            if (!queryHistoryIsEmpty) inputQueryAutoCompleteTextView.showDropDown();
-        } } );
-
-        final ImageView button_Copy = InputQueryFragment.findViewById(R.id.copyQuery);
-        button_Copy.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
-            String queryString = inputQueryAutoCompleteTextView.getText().toString();
-            mQueryText = queryString;
-            if (getActivity() != null) {
-                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("Copied Text", inputQueryAutoCompleteTextView.getText().toString());
-                if (clipboard != null) clipboard.setPrimaryClip(clip);
-                Toast.makeText(getContext(), getResources().getString(R.string.copiedTextToClipboard), Toast.LENGTH_SHORT).show();
-            }
-        } } );
-
-        final ImageView button_Paste = InputQueryFragment.findViewById(R.id.pasteToQuery);
-        button_Paste.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
-
-            if (getActivity() != null) {
-                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                if (clipboard != null) {
-                    if (clipboard.hasPrimaryClip()) {
-                        android.content.ClipDescription description = clipboard.getPrimaryClipDescription();
-                        android.content.ClipData data = clipboard.getPrimaryClip();
-                        if (data != null && description != null && description.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN))
-                            inputQueryAutoCompleteTextView.setText(String.valueOf(data.getItemAt(0).getText()));
-                    }
-                }
-            }
-
-        } } );
-
-        final ImageView button_SpeechToText = InputQueryFragment.findViewById(R.id.getTextThroughSpeech);
-        button_SpeechToText.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
-
-            int maxResultsToReturn = 1;
-            try {
-                //Getting the user setting from the preferences
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                String language = sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese));
-                mChosenSpeechToTextLanguage = getSpeechToTextLanguageLocale(language);
-
-                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, maxResultsToReturn);
-                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, mChosenSpeechToTextLanguage);
-                intent.putExtra(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES, getResources().getString(R.string.languageLocaleEnglishUS));
-                if (MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
-                    intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechToTextUserPromptJapanese));
-                } else if (MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleEnglishUS))) {
-                    intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechToTextUserPromptEnglish));
-                }
-                startActivityForResult(intent, SPEECH_RECOGNIZER_REQUEST_CODE);
-            } catch (ActivityNotFoundException e) {
-                Toast.makeText(getContext(),getResources().getString(R.string.STTACtivityNotFound),Toast.LENGTH_SHORT).show();
-                String appPackageName = "com.google.android.tts";
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW,   Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName));
-                startActivity(browserIntent);
-            }
-        } } );
-
-        final ImageView button_OCR = InputQueryFragment.findViewById(R.id.getTextThroughCamera);
-        button_OCR.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
-            getOcrDataDownloadingStatus();
-            if ((mOCRLanguage.equals("eng") && mEngOcrFileIsDownloading) || (mOCRLanguage.equals("jpn") && mJpnOcrFileIsDownloading) ) {
-                Toast toast = Toast.makeText(getContext(),getResources().getString(R.string.OCR_downloading), Toast.LENGTH_SHORT);
-                toast.show();
-            }
-            else {
-                if (mInitializedOcrApiJpn && mOCRLanguage.equals("jpn")) {
-                    String toastString = "";
-                    if (firstTimeInitializedJpn) {
-                        toastString = getResources().getString(R.string.OCRinstructionsJPN);
-                        Toast toast = Toast.makeText(getActivity(), toastString, Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
-                        toast.show();
-                        firstTimeInitializedJpn = false;
-                    }
-                    timesPressed = 0;
-                    performImageCaptureAndCrop();
-                } else if (mInitializedOcrApiEng && mOCRLanguage.equals("eng")) {
-                    String toastString = "";
-                    if (firstTimeInitializedEng) {
-                        toastString = getResources().getString(R.string.OCRinstructionsENG);
-                        Toast toast = Toast.makeText(getActivity(), toastString, Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
-                        toast.show();
-                        firstTimeInitializedEng = false;
-                    }
-                    timesPressed = 0;
-                    performImageCaptureAndCrop();
-                } else {
-                    if (timesPressed <= 3) {
-                        mLanguageBeingDownloaded = "jpn";
-                        ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
-                        mLanguageBeingDownloaded = "eng";
-                        ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
-
-                        initializeOcrEngineForChosenLanguage();
-
-                        mInitializedOcrApiJpn = true;
-                        timesPressed++; //Prevents multiple clicks on the button from freezing the app
-                    }
-                    Toast toast = Toast.makeText(getContext(), getResources().getString(R.string.OCR_reinitializing), Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-            }
-        } } );
-
-        final ImageView button_TextToSpeech = InputQueryFragment.findViewById(R.id.speakQuery);
-        button_TextToSpeech.setOnClickListener(new View.OnClickListener() { public void onClick(View v) {
-            String queryString = inputQueryAutoCompleteTextView.getText().toString();
-            mQueryText = queryString;
-            speakOut(queryString);
-        } } );
-
-        return InputQueryFragment;
-    }
     @Override public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof UserEnteredQueryListener) {
-            userEnteredQueryListener = (UserEnteredQueryListener) context;
-        }
-        else {
-            throw new ClassCastException(context.toString()
-                    + " must implement InputQueryFragment.UserEnteredQueryListener");
-        }
+        inputQueryOperationsHandler = (InputQueryOperationsHandler) context;
+    }
+    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
+        initializeParameters();
+        restoreQueryHistory();
+        setupOcr();
+    }
+    @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+        final View rootView = inflater.inflate(R.layout.fragment_inputquery, container, false);
+
+        setRetainInstance(true);
+        initializeViews(rootView);
+
+        return rootView;
     }
     @Override public void onResume() {
         super.onResume();
-        inputQueryAutoCompleteTextView.setText(mQueryText);
-        inputQueryAutoCompleteTextView.clearFocus();
+
+        mInputQueryAutoCompleteTextView.setText(mInputQuery);
+        mInputQueryAutoCompleteTextView.clearFocus();
         if (getActivity() != null) getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         getLanguageParametersFromSettingsAndReinitializeOcrIfNecessary();
     }
-    @Override public void onDestroy() {
-        super.onDestroy();
-        if (mTess != null) mTess.end();
-        if (tts != null) {
-            tts.stop();
-            tts.shutdown();
-        }
-        if (getActivity() != null && mBroadcastReceiver != null) getActivity().unregisterReceiver(mBroadcastReceiver);
 
-    }
     @Override public void onPause() {
         super.onPause();
-        mQueryText = inputQueryAutoCompleteTextView.getText().toString();
+        mInputQuery = mInputQueryAutoCompleteTextView.getText().toString();
 
         //Save the query history
         if (getContext() != null) {
@@ -524,6 +196,20 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         }
         savedInstanceState.putStringArray("queryHistory", queryHistory);
     }
+    @Override public void onDestroyView() {
+        super.onDestroyView();
+        mBinding.unbind();
+    }
+    @Override public void onDestroy() {
+        super.onDestroy();
+        if (mTess != null) mTess.end();
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+        }
+        if (getActivity() != null && mBroadcastReceiver != null) getActivity().unregisterReceiver(mBroadcastReceiver);
+
+    }
     @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -532,8 +218,8 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             if (data == null) return;
             ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
-            mQueryText = results.get(0);
-            inputQueryAutoCompleteTextView.setText(mQueryText);
+            mInputQuery = results.get(0);
+            mInputQueryAutoCompleteTextView.setText(mInputQuery);
 
             //Attempting to access jisho.org to get the romaji value of the requested word, if it's a Japanese word
             if (getActivity() != null && MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
@@ -548,11 +234,11 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             }
         }
         else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            unmuteSpeaker();
+            Utilities.unmuteSpeaker(getActivity());
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 mCropImageResult = result;
-                adjustImageBeforeOCR(mCropImageResult);
+                sendImageToImageAdjuster(mCropImageResult);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
@@ -562,275 +248,10 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 Bundle extras = data.getExtras();
                 if (extras != null) {
                     Uri adjustedImageUri = Uri.parse(extras.getString("returnImageUri"));
-                    mImageToBeDecoded = getImageFromUri(adjustedImageUri);
+                    mImageToBeDecoded = Utilities.getBitmapFromUri(getActivity(), adjustedImageUri);
                     getOcrTextWithTesseractAndDisplayDialog(mImageToBeDecoded);
                 }
             }
-        }
-    }
-
-    //Image methods
-    private void adjustImageBeforeOCR(CropImage.ActivityResult result) {
-        mPhotoURI = result.getUri();
-        mImageToBeDecoded = getImageFromUri(mPhotoURI);
-
-        //Send the image Uri to the AdjustImageActivity
-        Intent intent = new Intent(getActivity(), AdjustImageActivity.class);
-        intent.putExtra("imageUri", mPhotoURI.toString());
-        startActivityForResult(intent, ADJUST_IMAGE_ACTIVITY_REQUEST_CODE);
-    }
-    private void performImageCaptureAndCrop() {
-
-        // start source picker (camera, gallery, etc..) to get image for cropping and then use the image in cropping activity
-        //CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).start(getActivity());
-        muteSpeaker();
-        if (getContext() != null) CropImage.activity().start(getContext(), this); //For FragmentActivity use
-
-    }
-    private Bitmap getImageFromUri(Uri resultUri) {
-        Bitmap imageToBeDecoded = null;
-        try {
-            //BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-            //bmOptions.inJustDecodeBounds = false;
-            //image = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-            if (getActivity() != null) imageToBeDecoded = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), resultUri);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return imageToBeDecoded;
-    }
-    private Bitmap adjustImageAfterOCR(Bitmap imageToBeDecoded) {
-        //imageToBeDecoded = adjustImageAngleAndScale(imageToBeDecoded, 0, 0.5);
-        return imageToBeDecoded;
-    }
-    private Bitmap adjustImageAngleAndScale(Bitmap source, float angle, double scaleFactor) {
-
-        int newWidth = (int) Math.floor(source.getWidth()*scaleFactor);
-        int newHeight = (int) Math.floor(source.getHeight()*scaleFactor);
-
-        Bitmap scaledBitmap = Bitmap.createScaledBitmap(source, newWidth, newHeight,true);
-
-        Matrix matrix = new Matrix();
-        matrix.postRotate(angle);
-        return Bitmap.createBitmap(scaledBitmap , 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true); //rotated Bitmap
-
-    }
-    private void muteSpeaker() {
-        if (getActivity() != null) {
-            AudioManager mgr = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
-            if (mgr != null) mgr.setStreamMute(AudioManager.STREAM_SYSTEM, true);
-        }
-    }
-    private void unmuteSpeaker() {
-        if (getActivity() != null) {
-            AudioManager mgr = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
-            if (mgr != null) mgr.setStreamMute(AudioManager.STREAM_SYSTEM, false);
-        }
-    }
-
-    //Setup methods
-    private void getOcrDataDownloadingStatus() {
-
-        if (getContext() != null) {
-            SharedPreferences sharedPreferences = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
-            mJpnOcrFileIsDownloading = sharedPreferences.getBoolean(JPN_FILE_DOWNLOADING_FLAG, false);
-            mEngOcrFileIsDownloading = sharedPreferences.getBoolean(ENG_FILE_DOWNLOADING_FLAG, false);
-        }
-    }
-    public String getOCRLanguageFromSettings() {
-        if (getActivity() != null) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            String language = sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_preferred_language_value_japanese));
-
-            if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
-                return "jpn";
-            } else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
-                return "eng";
-            } else return "jpn";
-        }
-        else return "jpn";
-    }
-    private void setupPaths() {
-        if (getActivity() != null) {
-            //mInternalStorageTesseractFolderPath = Environment.getExternalStoragePublicDirectory(Environment.).getAbsolutePath() + "/";
-            mInternalStorageTesseractFolderPath = getActivity().getFilesDir() + "/tesseract/";
-            mPhoneAppFolderTesseractDataFilepath = mInternalStorageTesseractFolderPath + "tessdata/";
-            mDownloadsFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/";
-        }
-    }
-    private void getLanguageParametersFromSettingsAndReinitializeOcrIfNecessary() {
-        String newLanguage = getOCRLanguageFromSettings();
-        if (mOCRLanguage != null && !mOCRLanguage.equals(newLanguage)) initializeTesseractAPI(newLanguage);
-        mOCRLanguage = newLanguage;
-        mOCRLanguageLabel = getLanguageLabel(mOCRLanguage);
-    }
-    public String getLanguageLabel(String language) {
-        if (language.equals("jpn")) return getResources().getString(R.string.language_label_japanese);
-        else return getResources().getString(R.string.language_label_english);
-    }
-    public void setupBroadcastReceiverForDownloadedOCRData() {
-        mBroadcastReceiver = new BroadcastReceiver() {
-            //https://stackoverflow.com/questions/38563474/how-to-store-downloaded-image-in-internal-storage-using-download-manager-in-andr
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                String action = intent.getAction();
-                if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action) && downloadmanager!=null) {
-                    long downloadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, 0);
-                    DownloadManager.Query query = new DownloadManager.Query();
-                    query.setFilterById(enqueue);
-                    Cursor c = downloadmanager.query(query);
-                    if (c.moveToFirst()) {
-                        int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_STATUS);
-                        if (DownloadManager.STATUS_SUCCESSFUL == c.getInt(columnIndex)) {
-
-                            jpnOcrFileISDownloading = false;
-                            setOcrDataIsDownloadingStatus(mLanguageBeingDownloaded+".traineddata", false);
-
-                            String uriString = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
-                            Uri a = Uri.parse(uriString);
-                            File d = new File(a.getPath());
-                            // copy file from external to internal will easily available on net use google.
-                            //String sdCard = Environment.getExternalStorageDirectory().toString();
-                            File sourceLocation = new File(mDownloadsFolder + "/" + mLanguageBeingDownloaded + ".traineddata");
-                            File targetLocation = new File(mPhoneAppFolderTesseractDataFilepath);
-                            moveFile(sourceLocation, targetLocation);
-
-                            initializeOcrEngineForChosenLanguage();
-                        }
-                    }
-                }
-            }
-        };
-        if (getActivity() != null) getActivity().registerReceiver(mBroadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
-    }
-    private void initializeOcrEngineForChosenLanguage() {
-        mOCRLanguage = getOCRLanguageFromSettings();
-        if (mOCRLanguage.equals("jpn") && jpnOcrDataIsAvailable) initializeTesseractAPI(mOCRLanguage);
-        else if (mOCRLanguage.equals("eng") && engOcrDataIsAvailable) initializeTesseractAPI(mOCRLanguage);
-    }
-    private void ifOcrDataIsNotAvailableThenMakeItAvailable(String language) {
-
-        String filename = language + ".traineddata";
-        Boolean fileExistsInAppFolder = checkIfFileExistsInSpecificFolder(new File(mPhoneAppFolderTesseractDataFilepath), filename);
-        mInitializedOcrApiJpn = false;
-        if (!fileExistsInAppFolder) {
-            hasStoragePermissions = checkStoragePermission();
-            makeOcrDataAvailableInAppFolder(language);
-        }
-        else {
-            if (language.equals("jpn")) jpnOcrDataIsAvailable = true;
-            else if (language.equals("eng")) engOcrDataIsAvailable = true;
-        }
-    }
-    public void makeOcrDataAvailableInAppFolder(String language) {
-
-        mLanguageBeingDownloadedLabel = getLanguageLabel(language);
-        String filename = language + ".traineddata";
-        Boolean fileExistsInPhoneDownloadsFolder = checkIfFileExistsInSpecificFolder(new File(mDownloadsFolder), filename);
-        if (hasStoragePermissions) {
-            if (fileExistsInPhoneDownloadsFolder) {
-                Log.e(TAG_TESSERACT, filename + " file successfully found in Downloads folder.");
-                File sourceLocation = new File(mDownloadsFolder + filename);
-                File targetLocation = new File(mPhoneAppFolderTesseractDataFilepath);
-                moveFile(sourceLocation, targetLocation);
-            } else {
-                jpnOcrDataIsAvailable = false;
-                if (!jpnOcrFileISDownloading) askForPreferredDownloadTimeAndDownload(language, filename);
-            }
-        }
-    }
-    @NonNull private Boolean checkIfFileExistsInSpecificFolder(File dir, String filename) {
-
-        if (!dir.exists()&& dir.mkdirs()){
-            return false;
-        }
-        if(dir.exists()) {
-            String datafilepath = dir + "/" + filename;
-            File datafile = new File(datafilepath);
-
-            if (!datafile.exists()) {
-                return false;
-            }
-        }
-        return true;
-    }
-    private void copyFileFromAssets(String language) {
-        try {
-            String filepath = mInternalStorageTesseractFolderPath + "/tessdata/" + language + ".traineddata";
-            AssetManager assetManager = getActivity().getAssets();
-
-            InputStream instream = assetManager.open("tessdata/" +language+ ".traineddata");
-            OutputStream outstream = new FileOutputStream(filepath);
-
-            byte[] buffer = new byte[1024];
-            int read;
-            while ((read = instream.read(buffer)) != -1) {
-                outstream.write(buffer, 0, read);
-            }
-
-            outstream.flush();
-            outstream.close();
-            instream.close();
-
-            File file = new File(filepath);
-            if (!file.exists()) {
-                throw new FileNotFoundException();
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-    }
-    private void moveFile(File file, File dir) {
-        File newFile = new File(dir, file.getName());
-        FileChannel outputChannel = null;
-        FileChannel inputChannel = null;
-        //TODO: make sure the file completely finished downloading before allowing the program to continue
-        try {
-            outputChannel = new FileOutputStream(newFile).getChannel();
-            inputChannel = new FileInputStream(file).getChannel();
-            inputChannel.transferTo(0, inputChannel.size(), outputChannel);
-            inputChannel.close();
-            jpnOcrDataIsAvailable = true;
-            Toast.makeText(getContext(),getResources().getString(R.string.OCR_copy_data), Toast.LENGTH_SHORT).show();
-            Log.v(TAG_TESSERACT, "Successfully moved data file to app folder.");
-            //file.delete();
-        } catch (IOException e) {
-            jpnOcrDataIsAvailable = false;
-            Log.v(TAG_TESSERACT, "Copy file failed.");
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (inputChannel != null) inputChannel.close();
-                if (outputChannel != null) outputChannel.close();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        }
-
-    }
-    public boolean checkStoragePermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (getActivity() != null) {
-                if (getActivity().checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                    Log.e(TAG_PERMISSIONS, "You have permission");
-                    return true;
-                } else {
-                    Log.e(TAG_PERMISSIONS, "You have asked for permission");
-                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-                    return false;
-                }
-            }
-            else return false;
-        }
-        else { //you dont need to worry about these stuff below api level 23
-            Log.e(TAG_PERMISSIONS,"You already have the permission");
-            return true;
         }
     }
     @Override public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -843,75 +264,365 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             if (!mInitializedOcrApiJpn) initializeOcrEngineForChosenLanguage();
         }
     }
-    public void askForPreferredDownloadTimeAndDownload(String language, final String filename) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.OCRDialogTitle);
-        builder.setPositiveButton(R.string.DownloadDialogWifiOnly, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                mDownloadType = "WifiOnly";
 
-                Boolean hasMemory = checkIfStorageSpaceTooLowOrShowApology();
-                Log.e(TAG_TESSERACT, "File not found in Downloads folder.");
-                //if (!fileExistsInInternalStorage) copyFileFromAssets(mOCRLanguage);
-                if (hasMemory) downloadFileToDownloadsFolder("https://github.com/tesseract-ocr/tessdata/raw/master/", filename);
-                dialog.dismiss();
+
+    //Functionality methods
+    private void initializeParameters() {
+
+        if (getContext()!=null) {
+
+            mInternetIsAvailable = Utilities.internetIsAvailableCheck(getContext());
+        }
+        mInputQuery = "";
+        mOcrResultString = "";
+        firstTimeInitializedJpn = true;
+        firstTimeInitializedEng = true;
+        mInitializedOcrApiJpn = false;
+        mInitializedOcrApiEng = false;
+        timesPressed = 0;
+        jpnOcrDataIsAvailable = false;
+        engOcrDataIsAvailable = false;
+        mRequestedSpeechToText = false;
+        mCropImageResult = null;
+
+    }
+    private void initializeViews(View rootView) {
+
+        mBinding = ButterKnife.bind(this, rootView);
+        mInputQueryAutoCompleteTextView.setMovementMethod(new ScrollingMovementMethod());
+        mInputQueryAutoCompleteTextView.setText(mInputQuery);
+
+        mInputQueryAutoCompleteTextView.setLongClickable(false);
+        //inputQueryAutoCompleteTextView.setTextIsSelectable(true);
+        mInputQueryAutoCompleteTextView.setFocusable(true);
+        mInputQueryAutoCompleteTextView.setFocusableInTouchMode(true);
+
+        mInputQueryAutoCompleteTextView.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                //inputQueryAutoCompleteTextView.showDropDown();
+                mInputQueryAutoCompleteTextView.dismissDropDown();
+                return false;
             }
+
         });
-        builder.setNegativeButton(R.string.DownloadDialogWifiAndMobile, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                mDownloadType = "WifiAndMobile";
 
-                Boolean hasMemory = checkIfStorageSpaceTooLowOrShowApology();
-                Log.e(TAG_TESSERACT, "File not found in Downloads folder.");
-                //if (!fileExistsInInternalStorage) copyFileFromAssets(mOCRLanguage);
-                if (hasMemory) downloadFileToDownloadsFolder("https://github.com/tesseract-ocr/tessdata/raw/master/", filename);
-                dialog.dismiss();
+        mInputQueryAutoCompleteTextView.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView exampleView, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    String inputWordString = mInputQueryAutoCompleteTextView.getText().toString();
+
+                    setupQueryHistory(inputWordString, mInputQueryAutoCompleteTextView);
+                    mInputQueryAutoCompleteTextView.dismissDropDown();
+
+                    registerThatUserIsRequestingDictSearch(true);
+
+                    inputQueryOperationsHandler.onDictRequested(Utilities.removeSpecialCharacters(inputWordString));
+                }
+                return true;
+            } } );
+
+
+        mSearchByRadicalButton.setEnabled(true);
+        mDecomposeButton.setEnabled(true);
+    }
+    private void restoreQueryHistory() {
+
+        if (queryHistory == null) {
+            queryHistory = new String[7]; //TODO: set constant
+            for (int i=0;i<queryHistory.length;i++) { queryHistory[i] = ""; } //7 elements in the array
+        }
+        if (getContext() != null) {
+            SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.queryHistoryKey), Context.MODE_PRIVATE);
+            String queryHistoryAsString = sharedPref.getString(getString(R.string.queryHistoryKey), "");
+            if (!queryHistoryAsString.equals("")) queryHistory = TextUtils.split(queryHistoryAsString,",");
+        }
+        Log.i("Diagnosis Time", "Loaded Search History.");
+    }
+    private void sendImageToImageAdjuster(CropImage.ActivityResult result) {
+        mPhotoURI = result.getUri();
+        mImageToBeDecoded = Utilities.getBitmapFromUri(getActivity(), mPhotoURI);
+
+        //Send the image Uri to the AdjustImageActivity
+        Intent intent = new Intent(getActivity(), AdjustImageActivity.class);
+        intent.putExtra("imageUri", mPhotoURI.toString());
+        startActivityForResult(intent, ADJUST_IMAGE_ACTIVITY_REQUEST_CODE);
+    }
+    private void performImageCaptureAndCrop() {
+
+        // start source picker (camera, gallery, etc..) to get image for cropping and then use the image in cropping activity
+        //CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).start(getActivity());
+
+        Utilities.muteSpeaker(getActivity());
+        if (getContext() != null) CropImage.activity().start(getContext(), this); //For FragmentActivity use
+
+    }
+    private Bitmap adjustImageAfterOCR(Bitmap imageToBeDecoded) {
+        //imageToBeDecoded = Utilities.adjustImageAngleAndScale(imageToBeDecoded, 0, 0.5);
+        return imageToBeDecoded;
+    }
+
+
+    //View click listeners
+    @OnClick(R.id.button_dict) public void onDictButtonClick() {
+        String inputWordString = mInputQueryAutoCompleteTextView.getText().toString();
+        mInputQuery = inputWordString;
+        setupQueryHistory(inputWordString, mInputQueryAutoCompleteTextView);
+
+        // Check if the database has finished loading. If not, make the user wait.
+        while(MainActivity.VerbKanjiConjDatabase == null){
+            new CountDownTimer(500, 500) {
+                public void onFinish() {
+                    // When timer is finished
+                    // Execute your code here
+                }
+
+                public void onTick(long millisUntilFinished) {
+                    // millisUntilFinished    The amount of time until finished.
+                }
+            }.start();
+        }
+
+        registerThatUserIsRequestingDictSearch(true); //TODO: remove this?
+
+        inputQueryOperationsHandler.onDictRequested(Utilities.removeSpecialCharacters(inputWordString));
+    }
+    @OnClick(R.id.button_conj) public void onSearchVerbButtonClick() {
+
+        //EditText inputVerbObject = (EditText)fragmentView.findViewById(R.id.input_verb);
+        String inputVerbString = mInputQueryAutoCompleteTextView.getText().toString();
+        mInputQuery = inputVerbString;
+        setupQueryHistory(inputVerbString, mInputQueryAutoCompleteTextView);
+
+        // Check if the database has finished loading. If not, make the user wait.
+        while(MainActivity.VerbKanjiConjDatabase == null){
+            new CountDownTimer(500, 500) {
+                public void onFinish() {
+                    // When timer is finished
+                    // Execute your code here
+                }
+
+                public void onTick(long millisUntilFinished) {
+                    // millisUntilFinished    The amount of time until finished.
+                }
+            }.start();
+        }
+
+        registerThatUserIsRequestingDictSearch(false); //TODO: remove this?
+
+        inputQueryOperationsHandler.onConjRequested(Utilities.removeSpecialCharacters(inputVerbString));
+
+    }
+    @OnClick(R.id.button_convert) public void onConvertButtonClick() {
+
+        String inputWordString = mInputQueryAutoCompleteTextView.getText().toString();
+        setupQueryHistory(inputWordString, mInputQueryAutoCompleteTextView);
+
+        inputQueryOperationsHandler.onConvertRequested(inputWordString);
+    }
+    @OnClick(R.id.button_search_by_radical) public void onSearchByRadicalButtonClick() {
+
+        // Break up a Kanji to Radicals
+
+        String inputWordString = mInputQueryAutoCompleteTextView.getText().toString();
+
+        setupQueryHistory(inputWordString, mInputQueryAutoCompleteTextView);
+
+        // Check if the database has finished loading. If not, make the user wait.
+        while(MainActivity.RadicalsOnlyDatabase == null && MainActivity.enough_memory_for_heavy_functions) {
+            new CountDownTimer(200000, 10000) {
+                public void onFinish() {
+                }
+                public void onTick(long millisUntilFinished) {
+                    // millisUntilFinished    The amount of time until finished.
+                }
+            }.start();
+            //heap_size = AvailableMemory();
+        }
+        Log.i("Diagnosis Time","Starting radical module.");
+
+        // If the app memory is too low to load the radicals and decomposition databases, make the searchByRadical and Decompose buttons inactive
+        if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
+            Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
+        }
+        else {
+            inputQueryOperationsHandler.onSearchByRadicalRequested(Utilities.removeSpecialCharacters(inputWordString));
+        }
+    }
+    @OnClick(R.id.button_decompose) public void onDecomposeButtonClick() {
+
+        String inputWordString = mInputQueryAutoCompleteTextView.getText().toString();
+
+        setupQueryHistory(inputWordString, mInputQueryAutoCompleteTextView);
+
+        // Check if the database has finished loading. If not, make the user wait.
+        while(MainActivity.RadicalsOnlyDatabase == null && MainActivity.enough_memory_for_heavy_functions) {
+            new CountDownTimer(200000, 10000) {
+                public void onFinish() {
+                }
+                public void onTick(long millisUntilFinished) {
+                    // millisUntilFinished    The amount of time until finished.
+                }
+            }.start();
+            //heap_size = AvailableMemory();
+        }
+        Log.i("Diagnosis Time","Starting decomposition module.");
+
+        // If the app memory is too low to load the radicals and decomposition databases, make the searchByRadical and Decompose buttons inactive
+        if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
+            Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
+        }
+        else {
+            inputQueryOperationsHandler.onDecomposeRequested(Utilities.removeSpecialCharacters(inputWordString));
+        }
+    }
+    @OnClick(R.id.button_clear_query) public void onClearQueryButtonClick() {
+
+        mInputQueryAutoCompleteTextView.setText("");
+        mInputQuery = "";
+    }
+    @OnClick(R.id.button_show_history) public void onShowHistoryButtonClick() {
+
+        String queryString = mInputQueryAutoCompleteTextView.getText().toString();
+        mInputQuery = queryString;
+        setupQueryHistory(queryString, mInputQueryAutoCompleteTextView);
+        boolean queryHistoryIsEmpty = true;
+        for (String element : queryHistory) {
+            if (!element.equals("")) { queryHistoryIsEmpty = false; }
+        }
+        if (!queryHistoryIsEmpty) mInputQueryAutoCompleteTextView.showDropDown();
+
+    }
+    @OnClick(R.id.button_copy_query) public void onCopyQueryButtonClick() {
+
+        String queryString = mInputQueryAutoCompleteTextView.getText().toString();
+        mInputQuery = queryString;
+        if (getActivity() != null) {
+            ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("Copied Text", mInputQueryAutoCompleteTextView.getText().toString());
+            if (clipboard != null) clipboard.setPrimaryClip(clip);
+            Toast.makeText(getContext(), getResources().getString(R.string.copiedTextToClipboard), Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    @OnClick(R.id.button_paste_to_query) public void onPasteToQueryButtonClick() {
+
+        if (getActivity() != null) {
+            ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+            if (clipboard != null) {
+                if (clipboard.hasPrimaryClip()) {
+                    android.content.ClipDescription description = clipboard.getPrimaryClipDescription();
+                    android.content.ClipData data = clipboard.getPrimaryClip();
+                    if (data != null && description != null && description.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN))
+                        mInputQueryAutoCompleteTextView.setText(String.valueOf(data.getItemAt(0).getText()));
+                }
             }
-        });
-        if (language.equals("jpn")) builder.setMessage(R.string.DownloadDialogMessageJPN);
-        else builder.setMessage(R.string.DownloadDialogMessageENG);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
-    public Boolean checkIfStorageSpaceTooLowOrShowApology() {
-        //https://inducesmile.com/android/how-to-get-android-ram-internal-and-external-memory-information/
-        File path = Environment.getDataDirectory();
-        StatFs stat = new StatFs(path.getPath());
-        long blockSize = stat.getBlockSize();
-        long availableBlocks = stat.getAvailableBlocks();
-        long availableMemory = availableBlocks * blockSize;
-        if (availableMemory<70000000) {
-            String toastMessage = "Sorry, you only have " + formatSize(availableMemory) + "MB left in internal memory and can't install the OCR data." +
-                    "Please clear some app data and try again.";
-            Toast.makeText(getActivity(), toastMessage, Toast.LENGTH_SHORT).show();
-            return false;
         }
-        else return true;
-    }
-    @NonNull public static String formatSize(long size) {
-        //https://inducesmile.com/android/how-to-get-android-ram-internal-and-external-memory-information/
-        String suffix = null;
 
-        if (size >= 1024) {
-            suffix = " KB";
-            size /= 1024;
-            if (size >= 1024) {
-                suffix = " MB";
-                size /= 1024;
+    }
+    @OnClick(R.id.button_speech_to_text) public void onSpeechToTextButtonClick() {
+
+        int maxResultsToReturn = 1;
+        try {
+            //Getting the user setting from the preferences
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String language = sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese));
+            mChosenSpeechToTextLanguage = getSpeechToTextLanguageLocale(language);
+
+            Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+            intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, maxResultsToReturn);
+            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, mChosenSpeechToTextLanguage);
+            intent.putExtra(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES, getResources().getString(R.string.languageLocaleEnglishUS));
+            if (MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechToTextUserPromptJapanese));
+            } else if (MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleEnglishUS))) {
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechToTextUserPromptEnglish));
+            }
+            startActivityForResult(intent, SPEECH_RECOGNIZER_REQUEST_CODE);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(getContext(),getResources().getString(R.string.STTACtivityNotFound),Toast.LENGTH_SHORT).show();
+            String appPackageName = "com.google.android.tts";
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW,   Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName));
+            startActivity(browserIntent);
+        }
+
+    }
+    @OnClick(R.id.button_ocr) public void onOcrButtonClick() {
+
+        getOcrDataDownloadingStatus();
+        if ((mOCRLanguage.equals("eng") && mEngOcrFileIsDownloading) || (mOCRLanguage.equals("jpn") && mJpnOcrFileIsDownloading) ) {
+            Toast toast = Toast.makeText(getContext(),getResources().getString(R.string.OCR_downloading), Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        else {
+            if (mInitializedOcrApiJpn && mOCRLanguage.equals("jpn")) {
+                String toastString = "";
+                if (firstTimeInitializedJpn) {
+                    toastString = getResources().getString(R.string.OCRinstructionsJPN);
+                    Toast toast = Toast.makeText(getActivity(), toastString, Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                    toast.show();
+                    firstTimeInitializedJpn = false;
+                }
+                timesPressed = 0;
+                performImageCaptureAndCrop();
+            } else if (mInitializedOcrApiEng && mOCRLanguage.equals("eng")) {
+                String toastString = "";
+                if (firstTimeInitializedEng) {
+                    toastString = getResources().getString(R.string.OCRinstructionsENG);
+                    Toast toast = Toast.makeText(getActivity(), toastString, Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                    toast.show();
+                    firstTimeInitializedEng = false;
+                }
+                timesPressed = 0;
+                performImageCaptureAndCrop();
+            } else {
+                if (timesPressed <= 3) {
+                    mLanguageBeingDownloaded = "jpn";
+                    ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
+                    mLanguageBeingDownloaded = "eng";
+                    ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
+
+                    initializeOcrEngineForChosenLanguage();
+
+                    mInitializedOcrApiJpn = true;
+                    timesPressed++; //Prevents multiple clicks on the button from freezing the app
+                }
+                Toast toast = Toast.makeText(getContext(), getResources().getString(R.string.OCR_reinitializing), Toast.LENGTH_SHORT);
+                toast.show();
             }
         }
-        StringBuilder resultBuffer = new StringBuilder(Long.toString(size));
 
-        int commaOffset = resultBuffer.length() - 3;
-        while (commaOffset > 0) {
-            resultBuffer.insert(commaOffset, ',');
-            commaOffset -= 3;
-        }
-        if (suffix != null) resultBuffer.append(suffix);
-        return resultBuffer.toString();
     }
+    @OnClick(R.id.button_text_to_speech) public void onTextToSpeechButtonClick() {
+
+        String queryString = mInputQueryAutoCompleteTextView.getText().toString();
+        mInputQuery = queryString;
+        speakOut(queryString);
+
+    }
+
 
     //Tesseract OCR methods
+    private void setupOcr() {
+
+        mDownloadType = "WifiOnly";
+
+        getOcrDataDownloadingStatus();
+        getLanguageParametersFromSettingsAndReinitializeOcrIfNecessary();
+        setupPaths();
+        setupBroadcastReceiverForDownloadedOCRData();
+        registerThatUserIsRequestingDictSearch(false);
+        tts = new TextToSpeech(getContext(), this);
+        mLanguageBeingDownloaded = "jpn";
+        ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
+        mLanguageBeingDownloaded = "eng";
+        ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
+        initializeOcrEngineForChosenLanguage();
+    }
     private void initializeTesseractAPI(String language) {
         //mImageToBeDecoded = BitmapFactory.decodeResource(getResources(), R.drawable.test_image);
 
@@ -942,7 +653,9 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
         //mTesseractOCRAsyncTask = new TesseractOCRAsyncTask(getActivity()).execute();
     }
-    private void downloadFileToDownloadsFolder(String source, String filename) {
+    private void downloadTesseractDataFileToDownloadsFolder(String source, String filename) {
+
+        if (getActivity()==null) return;
 
         setOcrDataIsDownloadingStatus(filename, true);
         Log.e(TAG_TESSERACT, "Attempting file download");
@@ -956,11 +669,13 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
         if (mDownloadType.equals("WifiOnly")) {
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI);
-            Toast.makeText(getActivity(), "Downloading the " + mLanguageBeingDownloadedLabel + " OCR data on Wifi only.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.downloading_ocr_data_first_part) + mLanguageBeingDownloadedLabel
+                    + getString(R.string.downloading_ocr_data_second_part), Toast.LENGTH_SHORT).show();
         }
         else {
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
-            Toast.makeText(getActivity(), "Attempting to download the " + mLanguageBeingDownloadedLabel + " OCR data. Please wait.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.attempting_download_first_part) + mLanguageBeingDownloadedLabel
+                    + getString(R.string.attempting_download_second_part), Toast.LENGTH_SHORT).show();
         }
         request.setAllowedOverRoaming(false);
         request.setTitle("Downloading " + filename);
@@ -970,6 +685,241 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
         //Finished download activates the broadcast receiver, that in turn initializes the Tesseract API
 
+    }
+    private void getOcrDataDownloadingStatus() {
+
+        if (getContext() != null) {
+            SharedPreferences sharedPreferences = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
+            mJpnOcrFileIsDownloading = sharedPreferences.getBoolean(JPN_FILE_DOWNLOADING_FLAG, false);
+            mEngOcrFileIsDownloading = sharedPreferences.getBoolean(ENG_FILE_DOWNLOADING_FLAG, false);
+        }
+    }
+    private String getOCRLanguageFromSettings() {
+        if (getActivity() != null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String language = sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_preferred_language_value_japanese));
+
+            if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
+                return "jpn";
+            } else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
+                return "eng";
+            } else return "jpn";
+        }
+        else return "jpn";
+    }
+    private void setupPaths() {
+        if (getActivity() != null) {
+            //mInternalStorageTesseractFolderPath = Environment.getExternalStoragePublicDirectory(Environment.).getAbsolutePath() + "/";
+            mInternalStorageTesseractFolderPath = getActivity().getFilesDir() + "/tesseract/";
+            mPhoneAppFolderTesseractDataFilepath = mInternalStorageTesseractFolderPath + "tessdata/";
+            mDownloadsFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + "/";
+        }
+    }
+    private void getLanguageParametersFromSettingsAndReinitializeOcrIfNecessary() {
+        String newLanguage = getOCRLanguageFromSettings();
+        if (mOCRLanguage != null && !mOCRLanguage.equals(newLanguage)) initializeTesseractAPI(newLanguage);
+        mOCRLanguage = newLanguage;
+        mOCRLanguageLabel = getLanguageLabel(mOCRLanguage);
+    }
+    private String getLanguageLabel(String language) {
+        if (language.equals("jpn")) return getResources().getString(R.string.language_label_japanese);
+        else return getResources().getString(R.string.language_label_english);
+    }
+    private void setupBroadcastReceiverForDownloadedOCRData() {
+        mBroadcastReceiver = new BroadcastReceiver() {
+            //https://stackoverflow.com/questions/38563474/how-to-store-downloaded-image-in-internal-storage-using-download-manager-in-andr
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String action = intent.getAction();
+                if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(action) && downloadmanager!=null) {
+                    long downloadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, 0);
+                    DownloadManager.Query query = new DownloadManager.Query();
+                    query.setFilterById(enqueue);
+                    Cursor c = downloadmanager.query(query);
+                    if (c.moveToFirst()) {
+                        int columnIndex = c.getColumnIndex(DownloadManager.COLUMN_STATUS);
+                        if (DownloadManager.STATUS_SUCCESSFUL == c.getInt(columnIndex)) {
+
+                            jpnOcrFileISDownloading = false;
+                            setOcrDataIsDownloadingStatus(mLanguageBeingDownloaded+".traineddata", false);
+
+                            String uriString = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
+                            Uri a = Uri.parse(uriString);
+                            File d = new File(a.getPath());
+                            // copy file from external to internal will easily available on net use google.
+                            //String sdCard = Environment.getExternalStorageDirectory().toString();
+                            File sourceLocation = new File(mDownloadsFolder + "/" + mLanguageBeingDownloaded + ".traineddata");
+                            File targetLocation = new File(mPhoneAppFolderTesseractDataFilepath);
+                            moveTesseractDataFile(sourceLocation, targetLocation);
+
+                            initializeOcrEngineForChosenLanguage();
+                        }
+                    }
+                }
+            }
+        };
+        if (getActivity() != null) getActivity().registerReceiver(mBroadcastReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+    }
+    private void initializeOcrEngineForChosenLanguage() {
+        mOCRLanguage = getOCRLanguageFromSettings();
+        if (mOCRLanguage.equals("jpn") && jpnOcrDataIsAvailable) initializeTesseractAPI(mOCRLanguage);
+        else if (mOCRLanguage.equals("eng") && engOcrDataIsAvailable) initializeTesseractAPI(mOCRLanguage);
+    }
+    private void ifOcrDataIsNotAvailableThenMakeItAvailable(String language) {
+
+        String filename = language + ".traineddata";
+        Boolean fileExistsInAppFolder = Utilities.checkIfFileExistsInSpecificFolder(new File(mPhoneAppFolderTesseractDataFilepath), filename);
+        mInitializedOcrApiJpn = false;
+        if (!fileExistsInAppFolder) {
+            hasStoragePermissions = Utilities.checkStoragePermission(getActivity());
+            makeOcrDataAvailableInAppFolder(language);
+        }
+        else {
+            if (language.equals("jpn")) jpnOcrDataIsAvailable = true;
+            else if (language.equals("eng")) engOcrDataIsAvailable = true;
+        }
+    }
+    private void makeOcrDataAvailableInAppFolder(String language) {
+
+        mLanguageBeingDownloadedLabel = getLanguageLabel(language);
+        String filename = language + ".traineddata";
+        Boolean fileExistsInPhoneDownloadsFolder = Utilities.checkIfFileExistsInSpecificFolder(new File(mDownloadsFolder), filename);
+        if (hasStoragePermissions) {
+            if (fileExistsInPhoneDownloadsFolder) {
+                Log.e(TAG_TESSERACT, filename + " file successfully found in Downloads folder.");
+                File sourceLocation = new File(mDownloadsFolder + filename);
+                File targetLocation = new File(mPhoneAppFolderTesseractDataFilepath);
+                moveTesseractDataFile(sourceLocation, targetLocation);
+            } else {
+                jpnOcrDataIsAvailable = false;
+                if (!jpnOcrFileISDownloading) askForPreferredDownloadTimeAndDownload(language, filename);
+            }
+        }
+    }
+    private void copyTesseractDataFileFromAssets(String language) {
+        try {
+            String filepath = mInternalStorageTesseractFolderPath + "/tessdata/" + language + ".traineddata";
+            AssetManager assetManager = getActivity().getAssets();
+
+            InputStream instream = assetManager.open("tessdata/" +language+ ".traineddata");
+            OutputStream outstream = new FileOutputStream(filepath);
+
+            byte[] buffer = new byte[1024];
+            int read;
+            while ((read = instream.read(buffer)) != -1) {
+                outstream.write(buffer, 0, read);
+            }
+
+            outstream.flush();
+            outstream.close();
+            instream.close();
+
+            File file = new File(filepath);
+            if (!file.exists()) {
+                throw new FileNotFoundException();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
+    private void moveTesseractDataFile(File file, File dir) {
+        File newFile = new File(dir, file.getName());
+        FileChannel outputChannel = null;
+        FileChannel inputChannel = null;
+        //TODO: make sure the file completely finished downloading before allowing the program to continue
+        try {
+            outputChannel = new FileOutputStream(newFile).getChannel();
+            inputChannel = new FileInputStream(file).getChannel();
+            inputChannel.transferTo(0, inputChannel.size(), outputChannel);
+            inputChannel.close();
+            jpnOcrDataIsAvailable = true;
+            Toast.makeText(getContext(),getResources().getString(R.string.OCR_copy_data), Toast.LENGTH_SHORT).show();
+            Log.v(TAG_TESSERACT, "Successfully moved data file to app folder.");
+            //file.delete();
+        } catch (IOException e) {
+            jpnOcrDataIsAvailable = false;
+            Log.v(TAG_TESSERACT, "Copy file failed.");
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (inputChannel != null) inputChannel.close();
+                if (outputChannel != null) outputChannel.close();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        }
+
+    }
+    private void askForPreferredDownloadTimeAndDownload(String language, final String filename) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(R.string.OCRDialogTitle);
+        builder.setPositiveButton(R.string.DownloadDialogWifiOnly, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                mDownloadType = "WifiOnly";
+
+                Boolean hasMemory = checkIfStorageSpaceEnoughForTesseractDataOrShowApology();
+                Log.e(TAG_TESSERACT, "File not found in Downloads folder.");
+                //if (!fileExistsInInternalStorage) copyFileFromAssets(mOCRLanguage);
+                if (hasMemory) downloadTesseractDataFileToDownloadsFolder("https://github.com/tesseract-ocr/tessdata/raw/master/", filename);
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton(R.string.DownloadDialogWifiAndMobile, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                mDownloadType = "WifiAndMobile";
+
+                Boolean hasMemory = checkIfStorageSpaceEnoughForTesseractDataOrShowApology();
+                Log.e(TAG_TESSERACT, "File not found in Downloads folder.");
+                //if (!fileExistsInInternalStorage) copyFileFromAssets(mOCRLanguage);
+                if (hasMemory) downloadTesseractDataFileToDownloadsFolder("https://github.com/tesseract-ocr/tessdata/raw/master/", filename);
+                dialog.dismiss();
+            }
+        });
+        if (language.equals("jpn")) builder.setMessage(R.string.DownloadDialogMessageJPN);
+        else builder.setMessage(R.string.DownloadDialogMessageENG);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+    private Boolean checkIfStorageSpaceEnoughForTesseractDataOrShowApology() {
+        //https://inducesmile.com/android/how-to-get-android-ram-internal-and-external-memory-information/
+        File path = Environment.getDataDirectory();
+        StatFs stat = new StatFs(path.getPath());
+        long blockSize = stat.getBlockSize();
+        long availableBlocks = stat.getAvailableBlocks();
+        long availableMemory = availableBlocks * blockSize;
+        if (availableMemory<70000000) {
+            String toastMessage = getString(R.string.sorry_only_have_first_part) + Utilities.formatSize(availableMemory)
+                    + getString(R.string.sorry_only_have_second_part);
+            Toast.makeText(getActivity(), toastMessage, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else return true;
+    }
+    private void setJpnOcrDataIsDownloadingStatus(Boolean status) {
+        if (getContext() != null) {
+            SharedPreferences sharedPref = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(JPN_FILE_DOWNLOADING_FLAG, status);
+            editor.apply();
+        }
+    }
+    private void setEngOcrDataIsDownloadingStatus(Boolean status) {
+        if (getContext() != null) {
+            SharedPreferences sharedPref = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(ENG_FILE_DOWNLOADING_FLAG, status);
+            editor.apply();
+        }
+    }
+    private void setOcrDataIsDownloadingStatus(String filename, Boolean status) {
+        if (filename.equals("jpn.traineddata")) setJpnOcrDataIsDownloadingStatus(status);
+        else if (filename.equals("eng.traineddata")) setEngOcrDataIsDownloadingStatus(status);
     }
     private static class TesseractOCRAsyncTaskLoader extends AsyncTaskLoader <String> {
 
@@ -1020,12 +970,12 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         final String ocrResultsList[] = ocrResult.split("\\r\\n|\\n|\\r");
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<> (getActivity(), android.R.layout.simple_list_item_1, ocrResultsList);
 
-        mQueryText = ocrResultsList[0];
-        inputQueryAutoCompleteTextView.setText(mQueryText);
+        mInputQuery = ocrResultsList[0];
+        mInputQueryAutoCompleteTextView.setText(mInputQuery);
         ocrResultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                inputQueryAutoCompleteTextView.setText(ocrResultsList[position]);
+                mInputQueryAutoCompleteTextView.setText(ocrResultsList[position]);
             }
         });
         ocrResultsListView.setAdapter(arrayAdapter);
@@ -1046,7 +996,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         });
         builder.setNeutralButton(R.string.readjust,new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                if (mCropImageResult != null) adjustImageBeforeOCR(mCropImageResult);
+                if (mCropImageResult != null) sendImageToImageAdjuster(mCropImageResult);
             }
         });
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -1058,6 +1008,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         //scaleImage(ocrPictureHolder, 1);
         dialog.show();
     }
+
 
     //TextToSpeech methods
     @Override public void onInit(int status) {
@@ -1101,6 +1052,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         }
         else return getResources().getString(R.string.languageLocaleEnglishUS);
     }
+
 
     //SpeechToText methods
     public String getSpeechToTextLanguageLocale(String language) {
@@ -1157,6 +1109,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
         }
     }
 
+
     //Query input methods
     private class QueryInputSpinnerAdapter extends ArrayAdapter<String> {
         // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
@@ -1184,7 +1137,7 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             else return null;
         }
     }
-    public void updateQueryHistory(String queryStr, final AutoCompleteTextView query) {
+    public void setupQueryHistory(String queryStr, final AutoCompleteTextView query) {
 
         // Implementing a FIFO array for the spinner
         // Add the entry at the beginning of the stack
@@ -1222,19 +1175,14 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
                 @Override
                 public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                     String inputWordString = query.getText().toString();
-                    onWordEntered_PerformThisFunction(inputWordString);
+
+                    inputQueryOperationsHandler.onDictRequested(Utilities.removeSpecialCharacters(inputWordString));
                 }
 
                 @Override
                 public void onNothingSelected(AdapterView<?> arg0) {
                 }
             });
-        }
-    }
-    public void setNewQuery(String outputFromGrammarModuleFragment) {
-        if (getActivity() != null) {
-            AutoCompleteTextView queryInit = getActivity().findViewById(R.id.query);
-            queryInit.setText(outputFromGrammarModuleFragment);
         }
     }
     private void registerThatUserIsRequestingDictSearch(Boolean state) {
@@ -1245,32 +1193,13 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
             editor.apply();
         }
     }
-    public void setJpnOcrDataIsDownloadingStatus(Boolean status) {
-        if (getContext() != null) {
-            SharedPreferences sharedPref = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putBoolean(JPN_FILE_DOWNLOADING_FLAG, status);
-            editor.apply();
-        }
-    }
-    public void setEngOcrDataIsDownloadingStatus(Boolean status) {
-        if (getContext() != null) {
-            SharedPreferences sharedPref = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putBoolean(ENG_FILE_DOWNLOADING_FLAG, status);
-            editor.apply();
-        }
-    }
-    public void setOcrDataIsDownloadingStatus(String filename, Boolean status) {
-        if (filename.equals("jpn.traineddata")) setJpnOcrDataIsDownloadingStatus(status);
-        else if (filename.equals("eng.traineddata")) setEngOcrDataIsDownloadingStatus(status);
-    }
+
 
     //Loader methods
     @NonNull @Override public Loader<String> onCreateLoader(int id, final Bundle args) {
 
         if (id==WEB_SEARCH_LOADER) {
-            WebCheckAsyncTaskLoader webResultsAsyncTaskLoader = new WebCheckAsyncTaskLoader(getContext(), mQueryText, mRequestedSpeechToText, mInternetIsAvailable);
+            WebCheckAsyncTaskLoader webResultsAsyncTaskLoader = new WebCheckAsyncTaskLoader(getContext(), mInputQuery, mRequestedSpeechToText, mInternetIsAvailable);
             webResultsAsyncTaskLoader.setLoaderState(true);
             return webResultsAsyncTaskLoader;
         }
@@ -1304,10 +1233,10 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
         if (loader.getId() == WEB_SEARCH_LOADER) {
             if (data != null) {
-                inputQueryAutoCompleteTextView.setText(data);
+                mInputQueryAutoCompleteTextView.setText(data);
             }
-            if (!inputQueryAutoCompleteTextView.getText().toString().equals("")) {
-                button_searchWord.performClick();
+            if (!mInputQueryAutoCompleteTextView.getText().toString().equals("")) {
+                mDictButton.performClick();
             }
         }
         else if (loader.getId() == TESSERACT_OCR_LOADER) {
@@ -1320,52 +1249,21 @@ public class InputQueryFragment extends Fragment implements LoaderManager.Loader
 
     }
 
-    //Interface methods
-    private UserEnteredQueryListener userEnteredQueryListener;
-    interface UserEnteredQueryListener {
-        // Interface used to transfer the verb to ConjugatorFragment or DictionaryFragment
-        void OnQueryEnteredSwitchToRelevantFragment(String[] output);
+
+    //Communication with other classes:
+
+    //Communication with parent activity:
+    private InputQueryOperationsHandler inputQueryOperationsHandler;
+    interface InputQueryOperationsHandler {
+        void onDictRequested(String query);
+        void onConjRequested(String query);
+        void onConvertRequested(String query);
+        void onSearchByRadicalRequested(String query);
+        void onDecomposeRequested(String query);
+    }
+    public void setQuery(String query) {
+        mInputQueryAutoCompleteTextView.setText(query);
     }
 
-    public void onVerbEntered_PerformThisFunction(String inputVerbString) {
-
-        // Send inputVerbString and SearchType to MainActivity through the interface
-        output[0] = "verb";
-        output[1] = inputVerbString;
-        output[2] = "deep";
-        userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
-    }
-    public void onWordEntered_PerformThisFunction(String inputWordString) {
-
-        // Send inputWordString and SearchType to MainActivity through the interface
-        output[0] = "word";
-        output[1] = inputWordString;
-        output[2] = "fast";
-        userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
-    }
-    public void onConvertEntered_PerformThisFunction(String inputWordString) {
-
-        // Send inputWordString and SearchType to MainActivity through the interface
-        output[0] = "convert";
-        output[1] = inputWordString;
-        output[2] = "fast";
-        userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
-    }
-    public void onSearchByRadicalsEntered_PerformThisFunction(String inputWordString) {
-
-        // Send inputWordString and SearchType to MainActivity through the interface
-        output[0] = "radicals";
-        output[1] = inputWordString;
-        output[2] = "fast";
-        userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
-    }
-    public void onDecomposeEntered_PerformThisFunction(String inputWordString) {
-
-        // Send inputWordString and SearchType to MainActivity through the interface
-        output[0] = "decompose";
-        output[1] = inputWordString;
-        output[2] = "fast";
-        userEnteredQueryListener.OnQueryEnteredSwitchToRelevantFragment(output);
-    }
 
 }

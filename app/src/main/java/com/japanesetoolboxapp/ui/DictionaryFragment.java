@@ -49,7 +49,8 @@ import java.util.List;
 
 public class DictionaryFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Word>>{
 
-    // Parameters
+
+    //region Parameters
     private static final String FIREBASE_DEBUG = "japaneseToolboxFirebase";
     private final static int MAX_NUMBER_RESULTS_SHOWN = 50;
     private Activity mFragmentActivity;
@@ -58,7 +59,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     private List<String> mExpandableListDataHeader;
     private HashMap<String, List<String>> mExpandableListHeaderDetails;
     private HashMap<String, List<List<String>>> mExpandableListDataChild;
-    private String mSearchedWord;
+    private String mInputQuery;
     private Boolean mInternetIsAvailable;
     private static final int JISHO_WEB_SEARCH_LOADER = 41;
     private static final int ROOM_DB_SEARCH_LOADER = 42;
@@ -72,27 +73,18 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     private Word mWordFromFirebase;
     JapaneseToolboxRoomDatabase mJapaneseToolboxRoomDatabase;
     private Boolean mShowOnlineResults;
+    //endregion
+
 
     //Fragment Lifecycle methods
     @Override public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Activity) this.mFragmentActivity = (Activity) context;
-
-        // This makes sure that the container activity has implemented the callback interface. If not, it throws an exception
-        try {
-            mCallbackWord = (UserWantsNewSearchForSelectedWordListener) mFragmentActivity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(mFragmentActivity.toString() + " must implement TextClicked");
-        }
-        try {
-            mCallbackVerb = (UserWantsToConjugateFoundVerbListener) mFragmentActivity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(mFragmentActivity.toString() + " must implement TextClicked");
-        }
-
+        dictionaryFragmentOperationsHandler = (DictionaryFragmentOperationsHandler) context;
    }
     @Override public void onCreate(Bundle savedInstanceState) { //instead of onActivityCreated
         super.onCreate(savedInstanceState);
+
+        getExtras();
         mUtilities = new Utilities();
         if (getContext() != null) mInternetIsAvailable = Utilities.internetIsAvailableCheck(getContext());
 
@@ -121,30 +113,23 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         Boolean userHasRequestedDictSearch = checkIfUserRequestedDictSearch();
 
         if (userHasRequestedDictSearch == null || userHasRequestedDictSearch) {
-            if (getArguments() != null) {
-                mSearchedWord = getArguments().getString("input_to_fragment");
-                registerThatUserIsRequestingDictSearch(false);
+            registerThatUserIsRequestingDictSearch(false);
 
-                //If the application is resumed (switched to), then display the last results instead of performing a new search on the last input
-                if (mAppWasInBackground == null || !mAppWasInBackground) {
-                    mAppWasInBackground = false;
+            //If the application is resumed (switched to), then display the last results instead of performing a new search on the last input
+            if (mAppWasInBackground == null || !mAppWasInBackground) {
+                mAppWasInBackground = false;
 
-                    // Get the row index of the words matching the user's entry
+                // Get the row index of the words matching the user's entry
 
-                    if (getActivity()!=null) {
-                        LoaderManager loaderManager = getActivity().getSupportLoaderManager();
-                        Loader<String> roomDbSearchLoader = loaderManager.getLoader(ROOM_DB_SEARCH_LOADER);
-                        if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_SEARCH_LOADER, null, this);
-                        else loaderManager.restartLoader(ROOM_DB_SEARCH_LOADER, null, this);
+                if (getActivity()!=null) {
+                    LoaderManager loaderManager = getActivity().getSupportLoaderManager();
+                    Loader<String> roomDbSearchLoader = loaderManager.getLoader(ROOM_DB_SEARCH_LOADER);
+                    if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_SEARCH_LOADER, null, this);
+                    else loaderManager.restartLoader(ROOM_DB_SEARCH_LOADER, null, this);
 
-                    }
                 }
             }
         }
-    }
-    @Override public void onDetach() {
-        super.onDetach();
-        this.mFragmentActivity = null;
     }
     public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
@@ -152,17 +137,21 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         // save excel results to display in spinners, load the results on activity restart
         //savedInstanceState.putStringArrayList("mGlobalGrammarSpinnerList_element0", mGlobalGrammarSpinnerList_element0);
     }
+    @Override public void onDetach() {
+        super.onDetach();
+    }
+
 
     //Asynchronous methods
     @NonNull @Override public Loader<List<Word>> onCreateLoader(int id, final Bundle args) {
 
         if (id == JISHO_WEB_SEARCH_LOADER) {
-            WebResultsAsyncTaskLoader webResultsAsyncTaskLoader = new WebResultsAsyncTaskLoader(getContext(), mSearchedWord, mAppWasInBackground, mInternetIsAvailable);
+            WebResultsAsyncTaskLoader webResultsAsyncTaskLoader = new WebResultsAsyncTaskLoader(getContext(), mInputQuery, mAppWasInBackground, mInternetIsAvailable);
             webResultsAsyncTaskLoader.setLoaderState(true);
             return webResultsAsyncTaskLoader;
         }
         else if (id == ROOM_DB_SEARCH_LOADER){
-            RoomDbSearchAsyncTaskLoader roomDbSearchLoader = new RoomDbSearchAsyncTaskLoader(getContext(), mSearchedWord);
+            RoomDbSearchAsyncTaskLoader roomDbSearchLoader = new RoomDbSearchAsyncTaskLoader(getContext(), mInputQuery);
             return roomDbSearchLoader;
         }
         else return new RoomDbSearchAsyncTaskLoader(getContext(), "");
@@ -183,25 +172,25 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 if (loaderResultWordsList.size() != 0 && showOnlineResults) {
                     matchFound = true;
                     List<Word> totalWords = mergeWordLists(mLocalMatchingWordsList, loaderResultWordsList);
-                    totalWords = sortWordsAccordingToRomajiAndKanjiLengths(mSearchedWord, totalWords);
+                    totalWords = sortWordsAccordingToRomajiAndKanjiLengths(mInputQuery, totalWords);
 
                     updateFirebaseDbWithJishoWords(loaderResultWordsList);
                     setupFullWordsListListenerFromFirebase();
 
-                    displayResults(mSearchedWord, totalWords);
+                    displayResults(mInputQuery, totalWords);
                 }
 
                 //If no dictionary match was found, then this is probably a verb conjugation, so try that
-                if (!matchFound && !mSearchedWord.equals("") && getActivity() != null) {
+                if (!matchFound && !mInputQuery.equals("") && getActivity() != null) {
                     if (mShowOnlineResultsToast != null) mShowOnlineResultsToast.cancel();
                     //Toast.makeText(getContext(), "No match found, looking up conjugations.", Toast.LENGTH_SHORT).show();
-                    getActivity().findViewById(R.id.button_searchVerb).performClick();
+                    getActivity().findViewById(R.id.button_conj).performClick();
                 }
             }
         }
         else if (loader.getId() == ROOM_DB_SEARCH_LOADER){
             mLocalMatchingWordsList = loaderResultWordsList;
-            displayWordsToUser(mSearchedWord, loaderResultWordsList);
+            displayWordsToUser(mInputQuery, loaderResultWordsList);
         }
     }
     @Override public void onLoaderReset(@NonNull Loader<List<Word>> loader) {}
@@ -278,7 +267,13 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         }
     }
 
+
 	//Functionality methods
+    private void getExtras() {
+        if (getArguments()!=null) {
+            mInputQuery = getArguments().getString(getString(R.string.user_query_word));
+        }
+    }
     private void displayWordsToUser(String word, List<Word> localMatchingWordsList) {
 
         //Displaying the local results
@@ -308,7 +303,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         //If there are no local results to display and online results are unwanted, try the reverse verb search
         if (localMatchingWordsList.size() == 0 && !searchedWord.equals("") && !mShowOnlineResults) {
             if (mShowOnlineResultsToast!=null) mShowOnlineResultsToast.cancel();
-            getActivity().findViewById(R.id.button_searchVerb).performClick();
+            getActivity().findViewById(R.id.button_conj).performClick();
         }
     }
     private List<Word> sortWordsAccordingToRomajiAndKanjiLengths(String searchWord, List<Word> wordsList) {
@@ -600,14 +595,14 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
             //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
                    try {
-                        mCallbackWord = (UserWantsNewSearchForSelectedWordListener) getActivity();
+                        dictionaryFragmentOperationsHandler = (DictionaryFragmentOperationsHandler) getActivity();
                    } catch (ClassCastException e) {
                         throw new ClassCastException(getActivity().toString() + " must implement TextClicked");
                    }
 
                 //Calling the interface
                     String outputText = text.getText().subSequence(start, end).toString();
-                    WordSelectedAction(outputText);
+                    dictionaryFragmentOperationsHandler.onQueryTextUpdateFromDictRequested(outputText);
 
        }
         @Override
@@ -634,17 +629,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             //AutoCompleteTextView queryInit = (AutoCompleteTextView)InputQueryFragment.GlobalInputQueryFragment.findViewById(R.id.inputQueryAutoCompleteTextView);
             //queryInit.setText(text.getText().subSequence(start, end));
 
-            //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
-            try {
-                mCallbackVerb = (UserWantsToConjugateFoundVerbListener) getActivity();
-            } catch (ClassCastException e) {
-                throw new ClassCastException(getActivity().toString() + " must implement TextClicked");
-            }
-
-            //Calling the interface
             String outputText = text.getText().subSequence(start, end).toString();
-            WordSelectedAction(outputText);
-            VerbSelectedAction(outputText);
+            dictionaryFragmentOperationsHandler.onQueryTextUpdateFromDictRequested(outputText);
+            dictionaryFragmentOperationsHandler.onVerbConjugationFromDictRequested(outputText);
 
         }
 
@@ -722,6 +709,15 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             if (j <final_cumulative_meaning_value_array.size()-1) final_cumulative_meaning_value.append(", ");
         }
         return final_cumulative_meaning_value.toString();
+    }
+    private Boolean checkIfUserRequestedDictSearch() {
+        Boolean state;
+        if (getActivity()!=null) {
+            SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+            state = sharedPref.getBoolean(getString(R.string.requestingDictSearch), false);
+            return state;
+        }
+        else return true;
     }
     private class GrammarExpandableListAdapter extends BaseExpandableListAdapter {
 
@@ -1130,37 +1126,6 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         }
     }
 
-    //Interface methods
-    UserWantsNewSearchForSelectedWordListener mCallbackWord;
-    interface UserWantsNewSearchForSelectedWordListener {
-        // Interface used to transfer the selected word to InputQueryFragment through MainActivity
-        void UserWantsNewSearchForSelectedWordFromGrammarModule(String selectedWordString);
-    }
-    public void WordSelectedAction(String selectedWordString) {
-
-        // Send selectedWordString to MainActivity through the interface
-        mCallbackWord.UserWantsNewSearchForSelectedWordFromGrammarModule(selectedWordString);
-    }
-
-    UserWantsToConjugateFoundVerbListener mCallbackVerb;
-    interface UserWantsToConjugateFoundVerbListener {
-        // Interface used to transfer the selected verb to ConjugatorFragment through MainActivity
-        void UserWantsToConjugateFoundVerbFromGrammarModule(String[] selectedVerbString);
-    }
-    public void VerbSelectedAction(String selectedVerbString) {
-
-        String[] output = {"verb",selectedVerbString,"fast"};
-        mCallbackVerb.UserWantsToConjugateFoundVerbFromGrammarModule(output);
-    }
-    private Boolean checkIfUserRequestedDictSearch() {
-        Boolean state;
-        if (getActivity()!=null) {
-            SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-            state = sharedPref.getBoolean(getString(R.string.requestingDictSearch), false);
-            return state;
-        }
-        else return true;
-    }
 
     //Firebase methods
     private void updateFirebaseDbWithJishoWords(List<Word> asyncMatchingWords) {
@@ -1295,5 +1260,13 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     }
     private void deleteWordFromFirebase(Word word) {
         mWordReference = FirebaseDatabase.getInstance().getReference(word.getUniqueIdentifier());
+    }
+
+
+    //Interface methods
+    private DictionaryFragmentOperationsHandler dictionaryFragmentOperationsHandler;
+    interface DictionaryFragmentOperationsHandler {
+        void onQueryTextUpdateFromDictRequested(String selectedWordString);
+        void onVerbConjugationFromDictRequested(String selectedVerbString);
     }
 }

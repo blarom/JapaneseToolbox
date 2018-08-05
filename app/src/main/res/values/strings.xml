@@ -259,4 +259,12 @@
     <string name="ocrOutputSharedPrefs" translatable="false">ocrOutputSharedPrefs</string>
     <string name="ocrOutputSharedPrefsString" translatable="false">ocrOutputSharedPrefsString</string>
     <string name="jisho_website_url">https://jisho.org/search/</string>
+    <string name="requested_second_fragment">requested_second_fragment</string>
+    <string name="user_query_word">user_query_word</string>
+    <string name="sorry_only_have_first_part">Sorry, you only have</string>
+    <string name="sorry_only_have_second_part">MB left in internal memory and can\'t install the OCR data. Please clear some app data and try again.</string>
+    <string name="downloading_ocr_data_first_part">Downloading the</string>
+    <string name="downloading_ocr_data_second_part">OCR data on Wifi only.</string>
+    <string name="attempting_download_first_part">Attempting to download the</string>
+    <string name="attempting_download_second_part">OCR data. Please wait.</string>
 </resources>
