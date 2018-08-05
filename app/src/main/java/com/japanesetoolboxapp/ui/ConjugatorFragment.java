@@ -32,7 +32,7 @@ import java.util.Locale;
 
 public class ConjugatorFragment extends Fragment {
 	
-    // Fragment Modules
+    //region Parameters
     public static List<List<String>> GlobalVerbSpinnerList;
     public static List<List<String>> GlobalConjugationsSpinnerList;
     static List<List<List<Integer>>> TitleIndexes;
@@ -46,8 +46,10 @@ public class ConjugatorFragment extends Fragment {
 
     Boolean app_was_in_background;
     private String mInputQuery;
+    //endregion
 
-    // Fragment Lifecycle Functions
+
+    //Lifecycle Functions
     @Override public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getExtras();
@@ -91,7 +93,7 @@ public class ConjugatorFragment extends Fragment {
     }
 
 
-	// Functionality Functions
+	//Functionality Functions
     private void getExtras() {
         if (getArguments()!=null) {
             mInputQuery = getArguments().getString(getString(R.string.user_query_word));
@@ -343,8 +345,6 @@ public class ConjugatorFragment extends Fragment {
             }
         }
     }
-
-    // Verb Module Functions
     public void                             SearchForConjugations(final String inputVerbString) {
 
         last_searched_verb = inputVerbString;
