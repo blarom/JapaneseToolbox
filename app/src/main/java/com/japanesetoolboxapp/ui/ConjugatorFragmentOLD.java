@@ -12,10 +12,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -33,36 +35,24 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class ConjugatorFragment extends Fragment {
+public class ConjugatorFragmentOLD extends Fragment {
 	
     //region Parameters
-    @BindView(R.id.verb_chooser_spinner) Spinner mVerbChooserSpinner;
-    @BindView(R.id.conjugations_chooser_spinner) Spinner mConjugationChooserSpinner;
-    @BindView(R.id.verb_hint) TextView mVerbHintTextView;
-    @BindView(R.id.conjugations_container) TextView mConjugationsContainerScrollView;
-    @BindView(R.id.radio_romaji_or_kanji) RadioGroup mRomajiOrKanjiRadioButton;
-    @BindView(R.id.radio_Romaji) RadioButton mRomajiRadioButton;
-    @BindView(R.id.radio_Kanji) RadioButton mKanjiRadioButton;
-
-    public static List<List<String>> mVerbListForSpinner;
-    public static List<List<String>> mVerbConjugationsListForSpinner;
-    static List<List<List<Integer>>> mTitleIndexes;
-    static List<List<List<String>>> mTitlesList;
+    @BindView(R.id.verb_chooser_spinner) ExpandableListView mVerbChooserSpinner;
+    public static List<List<String>> GlobalVerbSpinnerList;
+    public static List<List<String>> GlobalConjugationsSpinnerList;
+    static List<List<List<Integer>>> TitleIndexes;
+    static List<List<List<String>>> TitlesList;
     static int rowIndex_of_suru;
     static int rowIndex_of_kuru;
     static int rowIndex_of_suru_in_Conj;
     static String[] row_values_suru_latin;
     static String[] row_values_suru_kanji;
+    static String last_searched_verb;
     private Unbinder mBinding;
-    List<List<List<List<String>>>> mVerbCharacteristicsEnglishKanji;
-    List<List<List<String>>> mVerbCharacteristicsEnglish;
-    List<List<List<String>>> mVerbCharacteristicsKanji;
+
+    Boolean app_was_in_background;
     private String mInputQuery;
-    private List<List<Integer>> mMatchingVerbRowColIndexList;
-    private List<Integer> mMatchingVerbRowIndexList;
-    private List<Integer> mMatchingVerbColIndexList;
-    private int mRequestedConjugationSpinnerIndex;
-    private String mChosenRomajiOrKanji;
     //endregion
 
 
@@ -70,7 +60,6 @@ public class ConjugatorFragment extends Fragment {
     @Override public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getExtras();
-        initializeParameters();
     }
     @Override public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -84,7 +73,6 @@ public class ConjugatorFragment extends Fragment {
 
         if (savedInstanceState==null) {
             mVerbChooserSpinner.setVisibility(View.GONE);
-            if (!TextUtils.isEmpty(mInputQuery)) SearchForConjugations();
         }
 
         //If the fragment is being resumed, just reload the saved data
@@ -97,9 +85,14 @@ public class ConjugatorFragment extends Fragment {
     }
     @Override public void onResume() {
         super.onResume();
+
+        if (app_was_in_background == null || !app_was_in_background) {
+            if (!TextUtils.isEmpty(mInputQuery)) SearchForConjugations(mInputQuery);
+        }
     }
     @Override public void onPause() {
         super.onPause();
+        app_was_in_background = true;
     }
     @Override public void onDestroyView() {
         super.onDestroyView();
@@ -113,113 +106,486 @@ public class ConjugatorFragment extends Fragment {
             mInputQuery = getArguments().getString(getString(R.string.user_query_word));
         }
     }
-    private void initializeParameters() {
+    public List<List<String>>       VerbChooserSpinnerPopulater(String inputVerbString, List<List<List<String>>> verbCharacteristics, String SearchType) {
 
-        mVerbCharacteristicsEnglishKanji = new ArrayList<>();
-        mVerbCharacteristicsEnglish = new ArrayList<>();
-        mVerbCharacteristicsKanji = new ArrayList<>();
-    }
+            List<List<String>> populatedlist = new ArrayList<>();
+            List<String> inside_list = new ArrayList<>();
+            String SpinnerText = "";
+            String SpinnerText1 = "";
+            String SpinnerText2 = "";
 
-    public void SearchForConjugations() {
-
-        getTitlesFromSheet();
-        getIndexesOfMatchingVerbs();
-        getVerbsCharacteristics();
-        displayVerbsInVerbChooserSpinner();
-
-    }
-
-    private void getTitlesFromSheet() {
-
-        mTitleIndexes = TitleIndexesFinder(MainActivity.VerbLatinConjDatabase);
-        mTitlesList = TitlesFinder(mTitleIndexes, MainActivity.VerbLatinConjDatabase);
-    }
-    public List<List<List<String>>> TitlesFinder(List<List<List<Integer>>> TitleIndexes, List<String[]> mySheet) {
-
-        // Get the Conjugation Titles and their indexes
-        List<List<List<String>>> setOf_TitlesList = new ArrayList<>();
-        List<List<String>> TitlesList = new ArrayList<>();
-        List<String> Title_as_List = new ArrayList<>();
-        List<String> SubTitles = new ArrayList<>();
-        List<String> TitleConjugations = new ArrayList<>();
-        String Title;
-
-        for (int i=0; i<TitleIndexes.size(); i++) {
-
-            Title = mySheet.get(0)[TitleIndexes.get(i).get(0).get(0)];
-            Title_as_List.add(Title);
-
-            for (int s=0; s<TitleIndexes.get(i).get(1).size(); s++) {
-                SubTitles.add(mySheet.get(1)[TitleIndexes.get(i).get(1).get(s)]);
-                TitleConjugations.add(mySheet.get(2)[TitleIndexes.get(i).get(1).get(s)]);
-            }
-
-            TitlesList.add(Title_as_List);
-            TitlesList.add(SubTitles);
-            TitlesList.add(TitleConjugations);
-            setOf_TitlesList.add(TitlesList);
-
-            Title_as_List = new ArrayList<>();
-            SubTitles = new ArrayList<>();
-            TitleConjugations = new ArrayList<>();
-            TitlesList = new ArrayList<>();
-        }
-        return setOf_TitlesList;
-    }
-    public List<List<List<Integer>>> TitleIndexesFinder(List<String[]> mySheet) {
-
-        // This function returns a List<List<List<Integer>>> where each set of Lists contains the Title index,
-        // and the list of corresponding SubTitle and Conjugation indexes,
-        // So that their Strings may be conveniently extracted from mySheet
-
-        List<List<List<Integer>>> TitleIndexesList = new ArrayList<>();
-        List<List<Integer>> TitleIndexes = new ArrayList<>();
-        List<Integer> SubIndexes_List = new ArrayList<>();
-        List<Integer> TitleIndex_asList = new ArrayList<>();
-        String title;
-
-        int sheet_length = mySheet.get(0).length;
-        for (int t=0; t<sheet_length; t++) {
-
-            title = mySheet.get(0)[t];
-
-            if (t == 0) {
-                TitleIndex_asList.add(t);
-                SubIndexes_List.add(t);
-            }
-            else if (t == sheet_length-1) {
-                if (SubIndexes_List.size() < 2) {SubIndexes_List.add(t);}       // The if clause is necessary because it registers an extra conjugation where there is none
-                TitleIndexes.add(TitleIndex_asList); // Titles
-                TitleIndexes.add(SubIndexes_List); // Subtitles or Conjugation Titles
-                TitleIndexesList.add(TitleIndexes);
+            if (verbCharacteristics.size() == 0) {
+                if (inputVerbString.equals("")) {
+                    SpinnerText1 = getResources().getString(R.string.PleaseEnterJapVerb);
+                    SpinnerText2 = getResources().getString(R.string.CanEnterEngVerb);
+                }
+                else {
+                    SpinnerText1 = getResources().getString(R.string.NoMatchFound);
+                    SpinnerText2 = getResources().getString(R.string.SeeHints);
+                }
+                inside_list.add(SpinnerText1);
+                inside_list.add("");
+                inside_list.add(SpinnerText2);
+                inside_list.add("");
+                inside_list.add(SpinnerText);
+                inside_list.add("");
+                populatedlist.add(inside_list);
             }
             else {
-                if (!title.equals("")) {
-                    TitleIndexes.add(TitleIndex_asList); // Titles
-                    TitleIndexes.add(SubIndexes_List); // Subtitles or Conjugation Titles
-                    TitleIndexesList.add(TitleIndexes);
+                for (int i=0; i<verbCharacteristics.size(); i++) {
+                    inside_list = new ArrayList<>();
+                    if (verbCharacteristics.get(i)
+                            .get(GlobalConstants.VerbModule_Conjugations_Basics)
+                            .get(GlobalConstants.VerbModule_colIndex_prep).equals("")) { SpinnerText = ""; }
+                    else { SpinnerText =
+                            "[" +
+                            verbCharacteristics.get(i)
+                            .get(GlobalConstants.VerbModule_Conjugations_Basics)
+                            .get(GlobalConstants.VerbModule_colIndex_prep)
+                            + "] "; }
+                    inside_list.add(SpinnerText);
 
-                    TitleIndex_asList = new ArrayList<>();
-                    SubIndexes_List = new ArrayList<>();
-                    TitleIndexes = new ArrayList<>();
+                    SpinnerText =
+                        verbCharacteristics.get(i)
+                        .get(GlobalConstants.VerbModule_Conjugations_Basics)
+                        .get(GlobalConstants.VerbModule_colIndex_kanji)
+                        + " (" +
+                        verbCharacteristics.get(i)
+                        .get(GlobalConstants.VerbModule_Conjugations_Stems)
+                        .get(GlobalConstants.VerbModule_colIndex_ustem - GlobalConstants.VerbModule_colIndex_kanji - 1) // Since the Stems list is the second list, the length of the first list must be subtracted
+                        + ")"	;
+                    inside_list.add(SpinnerText);
 
-                    TitleIndex_asList.add(t);
+                    if (!verbCharacteristics.get(i)
+                        .get(GlobalConstants.VerbModule_Conjugations_Basics)
+                        .get(GlobalConstants.VerbModule_colIndex_family).equals("")) {
+                        SpinnerText = verbCharacteristics.get(i)
+                                .get(GlobalConstants.VerbModule_Conjugations_Basics)
+                                .get(GlobalConstants.VerbModule_colIndex_family);
+                        if (!verbCharacteristics.get(i)
+                            .get(GlobalConstants.VerbModule_Conjugations_Basics)
+                            .get(GlobalConstants.VerbModule_colIndex_trans).equals("")) {
+                            SpinnerText = SpinnerText + ", "
+                                    + verbCharacteristics.get(i)
+                                    .get(GlobalConstants.VerbModule_Conjugations_Basics)
+                                    .get(GlobalConstants.VerbModule_colIndex_trans);
+                            }
+                    }
+                    else {
+                        if (!verbCharacteristics.get(i)
+                            .get(GlobalConstants.VerbModule_Conjugations_Basics)
+                            .get(GlobalConstants.VerbModule_colIndex_trans).equals("")) {
+                            SpinnerText =
+                                    verbCharacteristics.get(i)
+                                    .get(GlobalConstants.VerbModule_Conjugations_Basics)
+                                    .get(GlobalConstants.VerbModule_colIndex_trans);
+                            }
+                        else { SpinnerText = ""; }
+                    }
+                    inside_list.add(SpinnerText);
+
+                    SpinnerText =
+                        verbCharacteristics.get(i)
+                        .get(GlobalConstants.VerbModule_Conjugations_Basics)
+                        .get(GlobalConstants.VerbModule_colIndex_english) ;
+                    inside_list.add(SpinnerText);
+
+                    SpinnerText ="";
+                    inside_list.add(SpinnerText);
+
+
+                    populatedlist.add(inside_list);
                 }
-                SubIndexes_List.add(t);
+            }
+        return populatedlist;
+    }
+    public List<List<String>>       ConjugationChooserSpinnerPopulater(List<List<List<String>>> TitlesList, List<List<String>> chosenVerbCharacteristics) {
+
+        List<List<String>> populatedlist = new ArrayList<>();
+        List<String> inside_list = new ArrayList<>();
+        String SpinnerText;
+        int index;
+
+        if (chosenVerbCharacteristics.size() == 0) {
+            SpinnerText = "No match found.";
+            inside_list.add(SpinnerText);
+            inside_list.add("");
+            populatedlist.add(inside_list);
+        }
+        else {
+            for (int i=1; i<TitlesList.size(); i++) {
+                inside_list = new ArrayList<>();
+                index = i;
+                SpinnerText = index + ". " + TitlesList.get(i).get(0).get(0);
+                inside_list.add(SpinnerText);
+
+                SpinnerText = chosenVerbCharacteristics.get(i).get(0); // Display the first element in the Conjugation, e.g. PrPlA in Simple Form
+                inside_list.add(SpinnerText);
+
+                populatedlist.add(inside_list);
             }
         }
+    return populatedlist;
+}
+    private class                   VerbSpinnerAdapter extends ArrayAdapter<List<String>> {
+        // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
+        VerbSpinnerAdapter(Context ctx, int txtViewResourceId, List<List<String>> list) {
+            super(ctx, txtViewResourceId, list);
+            }
+        @Override public View getDropDownView( int position, View cnvtView, ViewGroup prnt) {
+            return getCustomView(position, cnvtView, prnt);
+        }
+        @NonNull @Override public View getView(int pos, View cnvtView, ViewGroup prnt) {
+            return getCustomView(pos, cnvtView, prnt);
+        }
+        View getCustomView(int position, View convertView, ViewGroup parent) {
 
-        return TitleIndexesList;
+            LayoutInflater inflater = LayoutInflater.from(getActivity().getBaseContext());
+            View mySpinner = inflater.inflate(R.layout.custom_verbchooser_spinner, parent, false);
+            TextView verbchooser_Prep = (TextView) mySpinner.findViewById(R.id.verbchooser_Prep);
+            verbchooser_Prep.setText(GlobalVerbSpinnerList.get(position).get(0));
+            TextView verbchooser_Kanji_and_ustem = (TextView) mySpinner.findViewById(R.id.verbchooser_Kanji_and_ustem);
+            verbchooser_Kanji_and_ustem.setText(GlobalVerbSpinnerList.get(position).get(1));
+            TextView verbchooser_Characteristics = (TextView) mySpinner.findViewById(R.id.verbchooser_Characteristics);
+            verbchooser_Characteristics.setText(GlobalVerbSpinnerList.get(position).get(2));
+            TextView verbchooser_EnglishMeaning = (TextView) mySpinner.findViewById(R.id.verbchooser_EnglishMeaning);
+            verbchooser_EnglishMeaning.setText(GlobalVerbSpinnerList.get(position).get(3));
+
+            return mySpinner;
+        }
     }
+    private class                   ConjugationsSpinnerAdapter extends ArrayAdapter<List<String>> {
+        // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
+        ConjugationsSpinnerAdapter(Context ctx, int txtViewResourceId, List<List<String>> list) {
+            super(ctx, txtViewResourceId, list);
+            }
+        @Override public View getDropDownView( int position, View cnvtView, ViewGroup prnt) {
+            return getCustomView(position, cnvtView, prnt);
+        }
+        @Override public View getView(int pos, View cnvtView, ViewGroup prnt) {
+            return getCustomView(pos, cnvtView, prnt);
+        }
+        View getCustomView(int position, View convertView, ViewGroup parent) {
 
-    private void getIndexesOfMatchingVerbs() {
+            LayoutInflater inflater = LayoutInflater.from(getActivity().getBaseContext());
+            View mySpinner = inflater.inflate(R.layout.custom_conjugationchooser_spinner, parent, false);
+            TextView Upper_text = (TextView) mySpinner.findViewById(R.id.UpperPart);
+            Upper_text.setText(GlobalConjugationsSpinnerList.get(position).get(0));
+            TextView Lower_text = (TextView) mySpinner.findViewById(R.id.LowerPart);
+            Lower_text.setText(GlobalConjugationsSpinnerList.get(position).get(1));
 
-        // Get the row index of the verbs matching the user's entry
-        mMatchingVerbRowColIndexList = FindMatchingVerbIndex();
-        mMatchingVerbRowIndexList = mMatchingVerbRowColIndexList.get(0);
-        mMatchingVerbColIndexList = mMatchingVerbRowColIndexList.get(1);
+            return mySpinner;
+        }
     }
-    public List<List<Integer>> FindMatchingVerbIndex() {
+    public void                     DisplayConjugations(int position, String displayType,
+                                        List<List<String>> chosenVerbCharacteristics_Results_English,
+                                        List<List<String>> chosenVerbCharacteristics_Results_Kanji,
+                                        List<List<List<String>>> TitlesList) {
+
+        List<TextView> Tense = new ArrayList<>();
+        List<LinearLayout> TenseLayout = new ArrayList<>();
+        List<TextView> Tense_Result = new ArrayList<>();
+
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense0));
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense1));
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense2));
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense3));
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense4));
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense5));
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense6));
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense7));
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense8));
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense9));
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense10));
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense11));
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense12));
+        Tense.add((TextView) getActivity().findViewById(R.id.Tense13));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout0));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout1));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout2));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout3));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout4));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout5));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout6));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout7));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout8));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout9));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout10));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout11));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout12));
+        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout13));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense0_Result));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense1_Result));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense2_Result));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense3_Result));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense4_Result));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense5_Result));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense6_Result));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense7_Result));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense8_Result));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense9_Result));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense10_Result));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense11_Result));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense12_Result));
+        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense13_Result));
+
+        for (int i=0;i<Tense.size();i++) {
+            Tense.get(i).setText("");
+            TenseLayout.get(i).setVisibility(View.GONE);
+            Tense_Result.get(i).setText("");
+        }
+
+        String displayed_text_English;
+        String displayed_text_Kanji;
+
+        if (chosenVerbCharacteristics_Results_English.size() != 0) {
+            for (int i=0; i<TitlesList.get(position+1).get(1).size(); i++) {
+
+                displayed_text_English = chosenVerbCharacteristics_Results_English.get(position+1).get(i);
+                displayed_text_Kanji = chosenVerbCharacteristics_Results_Kanji.get(position+1).get(i);
+
+                Tense.get(i).setText(TitlesList.get(position + 1).get(1).get(i));
+                if (displayType.equals("Romaji")) { Tense_Result.get(i).setText(displayed_text_English); }
+                else 							   { Tense_Result.get(i).setText( displayed_text_Kanji ); }
+
+                TenseLayout.get(i).setVisibility(View.VISIBLE);
+            }
+        }
+    }
+    public void                             SearchForConjugations(final String inputVerbString) {
+
+        last_searched_verb = inputVerbString;
+        // Gets the output of the VerbModuleFragment_Input and makes it available to the current fragment
+        List<List<List<List<String>>>> VerbCharacteristics_English_Kanji;
+        List<List<List<String>>> verbCharacteristicsEnglish = new ArrayList<>();
+        List<List<List<String>>> verbCharacteristicsKanji = new ArrayList<>();
+
+        // Import the verbs excel sheet (csv format)
+        TitleIndexes = TitleIndexesFinder(MainActivity.VerbLatinConjDatabase);
+        TitlesList = TitlesFinder(TitleIndexes, MainActivity.VerbLatinConjDatabase);
+
+        // Run the Verb Module on the input verb, depending on which search type was chosen
+
+        ;// Get the row index of the verbs matching the user's entry
+        List<List<Integer>> matchingVerbRowColIndexList = FindMatchingVerbIndex(inputVerbString, getContext());
+        final List<Integer> matchingVerbRowIndexList = matchingVerbRowColIndexList.get(0);
+        final List<Integer> matchingVerbColIndexList = matchingVerbRowColIndexList.get(1);
+
+        // Run the verbModule on the matchingVerbRowIndexList
+        VerbCharacteristics_English_Kanji = GetSetOfVerbCharacteritics(matchingVerbRowIndexList);
+
+        // Position 0 gets the romaji conjugations, position 1 gets the Kanji conjugations
+
+        ;// Also, if there are no results, show the verbHint
+        TextView verbHint = getActivity().findViewById(R.id.verb_hint);
+        if (VerbCharacteristics_English_Kanji.size() != 0) {
+            verbCharacteristicsEnglish = VerbCharacteristics_English_Kanji.get(0);
+            verbCharacteristicsKanji = VerbCharacteristics_English_Kanji.get(1);
+
+            verbHint.setVisibility(View.GONE);
+        } else {
+            verbHint.setVisibility(View.VISIBLE);
+        }
+
+        final List<List<List<String>>> verbCharacteristicsEnglish_toSpinner = verbCharacteristicsEnglish;
+        final List<List<List<String>>> verbCharacteristicsKanji_toSpinner = verbCharacteristicsKanji;
+
+        // Populate the list of choices for the VerbChooserSpinner. Each text element of inside the individual spinner choices corresponds to a sub-element of the parsedPopulatedList
+        final List<List<String>> parsedPopulatedList = VerbChooserSpinnerPopulater(inputVerbString, verbCharacteristicsEnglish, "fast");
+
+        // Implementing the VerbChooserSpinner
+        Spinner VerbChooserSpinner = (Spinner) getActivity().findViewById(R.id.verb_chooser_spinner);
+        GlobalVerbSpinnerList = parsedPopulatedList;
+        VerbChooserSpinner.setAdapter(new VerbSpinnerAdapter(getContext(), R.layout.custom_verbchooser_spinner, parsedPopulatedList));
+
+        VerbChooserSpinner.setVisibility(View.VISIBLE);
+
+        // Action taken when choosing an option from the VerbChooserSpinner
+        VerbChooserSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+                // Unused code
+                //Toast.makeText(GlobalTranslatorActivity.getBaseContext(), parsedPopulatedList.get(position).get(0), Toast.LENGTH_SHORT).show();
+
+                // Initialization
+                Utilities.hideSoftKeyboard(getActivity());
+
+                List<List<String>> chosenVerbCharacteristicsEnglish = new ArrayList<>();
+                List<List<String>> chosenVerbCharacteristicsKanji = new ArrayList<>();
+
+                if (verbCharacteristicsEnglish_toSpinner.size() != 0) {
+
+                    chosenVerbCharacteristicsEnglish = verbCharacteristicsEnglish_toSpinner.get(position);
+                    chosenVerbCharacteristicsKanji = verbCharacteristicsKanji_toSpinner.get(position);
+                }
+
+                // Populate the list of choices for the ConjugationChooserSpinner
+                final List<List<String>> ConjugationsSpinnerList = ConjugationChooserSpinnerPopulater(TitlesList, chosenVerbCharacteristicsEnglish);
+
+                // Find the Conjugation family corresponding to the column hit from the FindMatchingVerbIndex function (relevant mostly for the Deep search)
+                int corresponding_title_index = 1;
+                int column_for_selected_row;
+                int index_counter = 0;
+                if (matchingVerbColIndexList.size() != 0) {
+                    column_for_selected_row = matchingVerbColIndexList.get(position);
+                    for (int i = 0; i < TitleIndexes.size(); i++) {
+                        for (int j = 0; j < TitleIndexes.get(i).get(1).size(); j++) {
+                            if (column_for_selected_row == index_counter) {
+                                corresponding_title_index = i;
+                            }
+                            index_counter++;
+                        }
+                    }
+                }
+                // The basics row is not relevant to the second spinner, so the Simple Form is chosen instead
+                if (corresponding_title_index == 0) {
+                    corresponding_title_index = 1;
+                }
+
+                // Implementing the ConjugationChooserSpinner
+                Spinner ConjugationChooserSpinner = getActivity().findViewById(R.id.conjugations_chooser_spinner);
+
+                GlobalConjugationsSpinnerList = ConjugationsSpinnerList;
+                ConjugationChooserSpinner.setAdapter(new ConjugationsSpinnerAdapter(getContext(), R.layout.custom_conjugationchooser_spinner, ConjugationsSpinnerList));
+
+
+                // Hide the subsequent fields of there is nothing to show
+                ScrollView scrollView1 = getActivity().findViewById(R.id.conjugations_container);
+                scrollView1.setVisibility(View.VISIBLE);
+                if (chosenVerbCharacteristicsEnglish.size() == 0) {
+                    scrollView1.setVisibility(View.GONE);
+                }
+
+                // Action taken when choosing an option from the VerbChooserSpinner
+                final List<List<String>> chosenVerbCharacteristics_Results_English = chosenVerbCharacteristicsEnglish;
+                final List<List<String>> chosenVerbCharacteristics_Results_Kanji = chosenVerbCharacteristicsKanji;
+
+                ConjugationChooserSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> arg0, View arg1, int pos, long id) {
+                        // Getting the user choice for displaying the conjugations in Romaji or Kanji
+
+                        final int position = pos;
+                        RadioGroup chosenVerbSearchType = getActivity().findViewById(R.id.radio_romaji_or_kanji);
+
+                        chosenVerbSearchType.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+                            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                                // checkedId is the RadioButton selected
+
+                                RadioButton chosenVerbSearchType = getActivity().findViewById(checkedId);
+                                // Define a boolean depending on which radio button was checked
+                                boolean checked = chosenVerbSearchType.isChecked();
+                                // Define an action depending on the given boolean, ie. depending on the checked RadioButton ID
+                                String displayType = "";
+                                switch (chosenVerbSearchType.getId()) {
+                                    case R.id.radio_Romaji:
+                                        if (checked) {
+                                            displayType = "Romaji";
+                                        }
+                                        break;
+                                    case R.id.radio_Kanji:
+                                        if (checked) {
+                                            displayType = "Kanji";
+                                        }
+                                        break;
+                                }
+
+                                DisplayConjugations(position, displayType,
+                                        chosenVerbCharacteristics_Results_English,
+                                        chosenVerbCharacteristics_Results_Kanji,
+                                        TitlesList);
+                            }
+                        });
+
+                        RadioButton displayEnglish = getActivity().findViewById(R.id.radio_Romaji);
+                        RadioButton displayKanji = getActivity().findViewById(R.id.radio_Kanji);
+
+                        List<Boolean> types = FindType(inputVerbString);
+                        boolean TypeisKanji = types.get(2);
+
+                        String displayType = "Romaji";
+                        if (TypeisKanji) {
+                            displayType = "Kanji";
+                            displayEnglish.setChecked(false);
+                            displayKanji.setChecked(true);
+                        } else {
+                            displayEnglish.setChecked(true);
+                            displayKanji.setChecked(false);
+                        }
+
+                        DisplayConjugations(position, displayType,
+                                chosenVerbCharacteristics_Results_English,
+                                chosenVerbCharacteristics_Results_Kanji,
+                                TitlesList);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+                    }
+                });
+
+                // Set the second spinner to the position in the previous instance (code does not give wanted result)
+                //if (SpinnerState == 0) { ConjugationChooserSpinner.setSelection(corresponding_title_index-1); }
+                //SpinnerState = 1;
+                ConjugationChooserSpinner.setSelection(corresponding_title_index - 1);
+//	        		    	if (SecondSpinnerPosition == 999) {
+//	        		    		if (SearchType.equals("fast")) { ConjugationChooserSpinner.setSelection(0); }
+//	        		    		else { ConjugationChooserSpinner.setSelection(corresponding_title_index-1); }
+//	        		    		SecondSpinnerPosition = ConjugationChooserSpinner.getSelectedItemPosition();
+//	        		    	}
+//	        		    	else { ConjugationChooserSpinner.setSelection(SecondSpinnerPosition); }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+    }
+    static public List<Boolean>             FindType(String verb) {
+
+        List<String> translationList = ConvertFragment.Kana_to_Romaji_to_Kana(verb);
+
+        String text_type = ConvertFragment.TextType(verb);
+
+        boolean TypeisLatin   = false;
+        boolean TypeisKana    = false;
+        boolean TypeisKanji   = false;
+        boolean TypeisInvalid = false;
+
+        if ( text_type.equals("latin") )                                     { TypeisLatin = true;}
+        if ( text_type.equals("hiragana") || text_type.equals("katakana") )  { TypeisKana = true;}
+        if ( text_type.equals("kanji") )                                     { TypeisKanji = true;}
+        if ( verb.contains("*") || verb.contains("＊") || verb.equals("") || text_type.equals("number") ) { TypeisInvalid = true;}
+
+        List<Boolean> types = new ArrayList<>();
+        types.add(TypeisLatin);
+        types.add(TypeisKana);
+        types.add(TypeisKanji);
+        types.add(TypeisInvalid);
+        return types;
+    }
+    public Boolean                          IsOfTypeIngIng(String verb) {
+        Boolean answer = false;
+        if (	verb.equals("accinging") || verb.equals("astringing") || verb.equals("befringing") || verb.equals("besinging") ||
+                verb.equals("binging") || verb.equals("boinging") || verb.equals("bowstringing") || verb.equals("bringing") ||
+                verb.equals("clinging") || verb.equals("constringing") || verb.equals("cringing") || verb.equals("dinging") ||
+                verb.equals("enringing") || verb.equals("flinging") || verb.equals("folksinging") || verb.equals("fringing") ||
+                verb.equals("gunslinging") || verb.equals("hamstringing") || verb.equals("handwringing") || verb.equals("hinging") ||
+                verb.equals("impinging") || verb.equals("inbringing") || verb.equals("infringing") || verb.equals("kinging") ||
+                verb.equals("minging") || verb.equals("mudslinging") || verb.equals("outringing") || verb.equals("outsinging") ||
+                verb.equals("outspringing") || verb.equals("outswinging") || verb.equals("outwinging") || verb.equals("overswinging") ||
+                verb.equals("overwinging") || verb.equals("perstringing") || verb.equals("pinging") || verb.equals("refringing") ||
+                verb.equals("rehinging") || verb.equals("respringing") || verb.equals("restringing") || verb.equals("ringing") ||
+                verb.equals("singing") || verb.equals("slinging") || verb.equals("springing") || verb.equals("stinging") ||
+                verb.equals("stringing") || verb.equals("swinging") || verb.equals("syringing") || verb.equals("twinging") ||
+                verb.equals("unhinging") || verb.equals("unkinging") || verb.equals("unslinging") || verb.equals("unstringing") ||
+                verb.equals("upbringing") || verb.equals("upflinging") || verb.equals("upspringing") || verb.equals("upswinging") ||
+                verb.equals("whinging") || verb.equals("winging") || verb.equals("wringing") || verb.equals("zinging") ) {
+            answer = true;
+        }
+        return answer;
+    }
+    public List<List<Integer>>              FindMatchingVerbIndex(String verb, Context context) {
 
         //region Value Initializations
         List<Integer> matchingVerbRowIndexList = new ArrayList<>();
@@ -237,7 +603,7 @@ public class ConjugatorFragment extends Fragment {
         boolean first_letter_is_identical;
         boolean value_english_is_empty;
         int NumberOfSheetCols = MainActivity.VerbLatinConjDatabase.get(0).length;
-        int verb_length = mInputQuery.length();
+        int verb_length = verb.length();
         int match_column = 0;
         int value_Exception_asInt;
         String verb2;
@@ -266,9 +632,9 @@ public class ConjugatorFragment extends Fragment {
         //endregion
 
         //region Getting the input type and its converted form (english/romaji/kanji/invalid)
-        List<String> translationList = ConvertFragment.Kana_to_Romaji_to_Kana(mInputQuery);
+        List<String> translationList = ConvertFragment.Kana_to_Romaji_to_Kana(verb);
         String translation = "";
-        String text_type = ConvertFragment.TextType(mInputQuery);
+        String text_type = ConvertFragment.TextType(verb);
 
         boolean TypeisLatin   = false;
         boolean TypeisKana    = false;
@@ -279,7 +645,7 @@ public class ConjugatorFragment extends Fragment {
         if (text_type.equals("latin") )                                     { translation = translationList.get(1); TypeisLatin = true;}
         if (text_type.equals("hiragana") || text_type.equals("katakana") )  { translation = translationList.get(0); TypeisKana = true;}
         if (text_type.equals("kanji") )                                     { translation = translationList.get(1); TypeisKanji = true;}
-        if ( mInputQuery.contains("*") || mInputQuery.contains("＊") || mInputQuery.equals("") ) { TypeisInvalid = true;}
+        if ( verb.contains("*") || verb.contains("＊") || verb.equals("") ) { TypeisInvalid = true;}
         if ( translation.contains("*") || translation.contains("＊"))        { translationIsInvalid = true; }
         //endregion
 
@@ -289,37 +655,37 @@ public class ConjugatorFragment extends Fragment {
             // 1. Initial Setup
 
             ;//Converting the word to lowercase (the algorithm is not efficient if needing to search both lower and upper case)
-            mInputQuery = mInputQuery.toLowerCase(Locale.ENGLISH);
+            verb = verb.toLowerCase(Locale.ENGLISH);
 
             // Finding the index of the last non-empty row, to make sure the algorithm does not search on empty last rows
             int lastIndex = MainActivity.VerbDatabase.size()-1;
             while (MainActivity.VerbDatabase.get(lastIndex)[0].length() == 0) { lastIndex--; }
 
             //region Removing the "ing" from the verb (if relevant)
-            if (verb_length > 2 && mInputQuery.substring(verb_length-3).equals("ing")) {
+            if (verb_length > 2 && verb.substring(verb_length-3).equals("ing")) {
 
-                if (verb_length > 5 && mInputQuery.substring(verb_length-6).equals("inging")) {
-                    if (	(mInputQuery.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(mInputQuery.substring(3,verb_length))) ||
-                            (!mInputQuery.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(mInputQuery.substring(0,verb_length)))   ) {
+                if (verb_length > 5 && verb.substring(verb_length-6).equals("inging")) {
+                    if (	(verb.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(verb.substring(3,verb_length))) ||
+                            (!verb.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(verb.substring(0,verb_length)))   ) {
                         // If the verb ends with "inging" then remove the the second "ing"
-                        mInputQuery = mInputQuery.substring(0,verb_length-3);
+                        verb = verb.substring(0,verb_length-3);
                     }
                 }
                 else {
-                    verb2 = mInputQuery + "ing";
+                    verb2 = verb + "ing";
                     if ((!verb2.substring(0, 2 + 1).equals("to ") || !IsOfTypeIngIng(verb2.substring(3, verb_length + 3))) &&
                             (verb2.substring(0, 2+1).equals("to ") || !IsOfTypeIngIng(verb2.substring(0, verb_length + 3)))) {
-                        // If the verb does not belong to the list, then remove the ending "ing" so that it can be compared later on to the verbs excel
-                        ;//If the verb is for e.g. to sing / sing (verb2 = to singing / singing), then check that verb2 (without the "to ") belongs to the list, and if it does then do nothing
+                                // If the verb does not belong to the list, then remove the ending "ing" so that it can be compared later on to the verbs excel
+                                ;//If the verb is for e.g. to sing / sing (verb2 = to singing / singing), then check that verb2 (without the "to ") belongs to the list, and if it does then do nothing
 
-                        mInputQuery = mInputQuery.substring(0,verb_length-3);
+                        verb = verb.substring(0,verb_length-3);
                     }
                 }
             }
             //endregion
 
             //region Concatenating the verb & its translation for future use
-            String concatenated_verb = Utilities.removeSpecialCharacters(mInputQuery);
+            String concatenated_verb = Utilities.removeSpecialCharacters(verb);
             String concatenated_translation = Utilities.removeSpecialCharacters(translation);
             int concatenated_verb_length = concatenated_verb.length();
             int concatenated_translation_length = concatenated_translation.length();
@@ -329,7 +695,7 @@ public class ConjugatorFragment extends Fragment {
             String[] title_row = new String[NumberOfSheetCols];
             List<String> parsedConj;
             boolean verb_is_conjoined = false;
-            verb_to_be_processed = mInputQuery;
+            verb_to_be_processed = verb;
             String current_conjugation;
             if (TypeisLatin) {
                 title_row = MainActivity.VerbLatinConjDatabase.get(2);
@@ -358,15 +724,15 @@ public class ConjugatorFragment extends Fragment {
             current_length = 0;
             List<String[]> mySheetLengths = new ArrayList<>();
             if (TypeisLatin) {
-                mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
+                mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", context);
                 current_length = concatenated_verb_length;
             }
             else if (TypeisKana) {
-                mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
+                mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", context);
                 current_length = concatenated_translation_length;
             }
             else if (TypeisKanji) {
-                mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", getContext());
+                mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", context);
                 current_length = concatenated_verb_length;
             }
             for (int col = GlobalConstants.VerbModule_colIndex_istem; col < NumberOfSheetCols; col++) {
@@ -441,7 +807,7 @@ public class ConjugatorFragment extends Fragment {
                             row_values_current_family = MainActivity.VerbKanjiConjDatabase.get(Integer.valueOf(current_row_values_kanji[GlobalConstants.VerbModule_colIndex_istem]));
                         }
                         for (int col=GlobalConstants.VerbModule_colIndex_istem; col<NumberOfSheetCols;col++) {
-                            if (mInputQuery.equals(row_values_current_family[col])) { verb_is_a_family_conjugation = true; break; }
+                            if (verb.equals(row_values_current_family[col])) { verb_is_a_family_conjugation = true; break; }
                         }
                     }
                 }
@@ -492,13 +858,13 @@ public class ConjugatorFragment extends Fragment {
                         // Registering the row
                         if (TypeisLatin) {
                             row_values_current_family = MainActivity.VerbLatinConjDatabase.get(Integer.valueOf(current_row_values_latin[GlobalConstants.VerbModule_colIndex_istem]));
-                            verb_to_be_processed = mInputQuery;
+                            verb_to_be_processed = verb;
                         } else if (TypeisKana) {
                             row_values_current_family = MainActivity.VerbLatinConjDatabase.get(Integer.valueOf(current_row_values_latin[GlobalConstants.VerbModule_colIndex_istem]));
                             verb_to_be_processed = translation;
                         } else {
                             row_values_current_family = MainActivity.VerbKanjiConjDatabase.get(Integer.valueOf(current_row_values_kanji[GlobalConstants.VerbModule_colIndex_istem]));
-                            verb_to_be_processed = mInputQuery;
+                            verb_to_be_processed = verb;
                         }
                         if (verb_is_a_family_conjugation) {
                             for (int col = GlobalConstants.VerbModule_colIndex_istem; col < NumberOfSheetCols; col++) {
@@ -543,8 +909,8 @@ public class ConjugatorFragment extends Fragment {
                     //region Preventing searches on verbs that don't have the same first kana
                     if (!value_english_is_empty) {
                         if (        TypeisLatin
-                                ||  TypeisKana  && (value_Kana.charAt(0) == mInputQuery.charAt(0))
-                                ||  TypeisKanji && value_Kanji.contains(mInputQuery.substring(0,1))
+                                ||  TypeisKana  && (value_Kana.charAt(0) == verb.charAt(0))
+                                ||  TypeisKanji && value_Kanji.contains(verb.substring(0,1))
                                 ||  value_Romaji.equals("kuru") ||  value_Romaji.equals("da"))
                         { first_letter_is_identical = true; skip_this_row = false; }
                     }
@@ -595,7 +961,7 @@ public class ConjugatorFragment extends Fragment {
 
                             // Check if there is a hit in the english column
                             if (verb_length > 3 && (value_English.contains(concatenated_verb)
-                                    || value_English.contains("to "+concatenated_verb.substring(2,concatenated_verb.length())))) {
+                                || value_English.contains("to "+concatenated_verb.substring(2,concatenated_verb.length())))) {
                                 found_match = true;
                                 match_column = GlobalConstants.VerbModule_colIndex_english;
                             }
@@ -801,66 +1167,27 @@ public class ConjugatorFragment extends Fragment {
         matchingVerbRowColIndexList.add(matchingVerbColIndexList);
         return matchingVerbRowColIndexList;
     }
-    public Boolean IsOfTypeIngIng(String verb) {
-        Boolean answer = false;
-        if (	verb.equals("accinging") || verb.equals("astringing") || verb.equals("befringing") || verb.equals("besinging") ||
-                verb.equals("binging") || verb.equals("boinging") || verb.equals("bowstringing") || verb.equals("bringing") ||
-                verb.equals("clinging") || verb.equals("constringing") || verb.equals("cringing") || verb.equals("dinging") ||
-                verb.equals("enringing") || verb.equals("flinging") || verb.equals("folksinging") || verb.equals("fringing") ||
-                verb.equals("gunslinging") || verb.equals("hamstringing") || verb.equals("handwringing") || verb.equals("hinging") ||
-                verb.equals("impinging") || verb.equals("inbringing") || verb.equals("infringing") || verb.equals("kinging") ||
-                verb.equals("minging") || verb.equals("mudslinging") || verb.equals("outringing") || verb.equals("outsinging") ||
-                verb.equals("outspringing") || verb.equals("outswinging") || verb.equals("outwinging") || verb.equals("overswinging") ||
-                verb.equals("overwinging") || verb.equals("perstringing") || verb.equals("pinging") || verb.equals("refringing") ||
-                verb.equals("rehinging") || verb.equals("respringing") || verb.equals("restringing") || verb.equals("ringing") ||
-                verb.equals("singing") || verb.equals("slinging") || verb.equals("springing") || verb.equals("stinging") ||
-                verb.equals("stringing") || verb.equals("swinging") || verb.equals("syringing") || verb.equals("twinging") ||
-                verb.equals("unhinging") || verb.equals("unkinging") || verb.equals("unslinging") || verb.equals("unstringing") ||
-                verb.equals("upbringing") || verb.equals("upflinging") || verb.equals("upspringing") || verb.equals("upswinging") ||
-                verb.equals("whinging") || verb.equals("winging") || verb.equals("wringing") || verb.equals("zinging") ) {
-            answer = true;
-        }
-        return answer;
-    }
-    public static String addToDefinition(String definition) {
-        definition = "to " + definition;
-        char current_char;
-        boolean parenthesis = false;
-        boolean double_parenthesis = false;
-        int definition_index = 0;
-        if (!definition.equals("")) {
-            for (int i=0;i<definition.length();i++) {
-                if (definition_index<definition.length()) {
-                    current_char = definition.charAt(definition_index);
-                    if (current_char == '(') {
-                        if (!double_parenthesis) {parenthesis = true;}
-                        if (parenthesis) {double_parenthesis = true;}
-                    }
-                    if (current_char == ')') {
-                        if (double_parenthesis) {double_parenthesis = false;}
-                        if (!double_parenthesis) {parenthesis = false;}
-                    }
-                    if (current_char == ',' && !parenthesis) {
-                        definition = definition.substring(0,definition_index+1) + " to" + definition.substring(definition_index+1,definition.length());
-                        definition_index = definition_index+3;
-                    }
-                }
-                definition_index++;
-            }
-        }
-        return definition;
-    }
+    public List<String>                     FindVerbCharacteristics(String[] matchingVerbRow, List<Integer> colIndexes) {
 
-    private void getVerbsCharacteristics() {
+        // Value Initializations
+        String value;
+        int current_col;
+        List<String> matchingVerbCharacteristics = new ArrayList<>();
 
-        mVerbCharacteristicsEnglishKanji = getSetOfVerbCharacteristics(mMatchingVerbRowIndexList);
 
-        if (mVerbCharacteristicsEnglishKanji.size() != 0) {
-            mVerbCharacteristicsEnglish = mVerbCharacteristicsEnglishKanji.get(0);
-            mVerbCharacteristicsKanji = mVerbCharacteristicsEnglishKanji.get(1);
+        // Set the verb's corresponding characteristics as per the wanted values in the current row
+        for (int j = 0; j < colIndexes.size(); j++) {
+
+            current_col = colIndexes.get(j);
+            value = matchingVerbRow[current_col];
+
+            // Add that value to the list of characteristics for that verb
+            matchingVerbCharacteristics.add(value);
         }
+
+        return matchingVerbCharacteristics;
     }
-    public List<List<List<List<String>>>> getSetOfVerbCharacteristics(List<Integer> matchingVerbRowIndexList) {
+    public List<List<List<List<String>>>>   GetSetOfVerbCharacteritics(List<Integer> matchingVerbRowIndexList) {
 
         // Since there may be multiple matches for a given verb (e.g. if there are multiple kanjis/meanings),
         // then the verb info is a list of lists, each one including all the verb stems & conjugations
@@ -884,8 +1211,8 @@ public class ConjugatorFragment extends Fragment {
         String[] row_values_current_exception = new String[NumberOfSheetCols];
 
         // Find the Passive tense index in order to remove passive conjugations from verbs that are intransitive
-        for (int j = 0; j< mTitleIndexes.size()-1; j++) {
-            current_title = mTitlesList.get(j).get(0).get(0);
+        for (int j = 0; j<TitleIndexes.size()-1; j++) {
+            current_title = TitlesList.get(j).get(0).get(0);
             if (current_title.contains("Passive (X is done to him)")) { PassiveTenseIndex = j; }
         }
 
@@ -972,7 +1299,7 @@ public class ConjugatorFragment extends Fragment {
 
                     // Getting the basic verb characteristics
                     int conjugation = 0;
-                    Basics = getVerbCharacteristics(matchingVerbRow, mTitleIndexes.get(conjugation).get(1));
+                    Basics = FindVerbCharacteristics(matchingVerbRow, TitleIndexes.get(conjugation).get(1));
 
                     definition = Basics.get(GlobalConstants.VerbModule_colIndex_english);
                     definition = addToDefinition(definition);
@@ -985,9 +1312,9 @@ public class ConjugatorFragment extends Fragment {
                     matchingVerbCharacteristics.add(Basics);
 
                     // Getting the verb conjugations
-                    for (int j = 0; j < mTitleIndexes.size() - 1; j++) {
+                    for (int j = 0; j < TitleIndexes.size() - 1; j++) {
                         conjugation++;
-                        current_set = getVerbCharacteristics(matchingVerbRow, mTitleIndexes.get(conjugation).get(1));
+                        current_set = FindVerbCharacteristics(matchingVerbRow, TitleIndexes.get(conjugation).get(1));
 
                         //Intransitive verbs don't have a passive tense, so the relevant entries are removed
                         if (!type.equals("T") && conjugation == PassiveTenseIndex) {
@@ -1013,418 +1340,110 @@ public class ConjugatorFragment extends Fragment {
 
         return setOf_matchingVerbCharacteristics_English_Kanji;
     }
-    public List<String> getVerbCharacteristics(String[] matchingVerbRow, List<Integer> colIndexes) {
-
-        // Value Initializations
-        String value;
-        int current_col;
-        List<String> matchingVerbCharacteristics = new ArrayList<>();
-
-
-        // Set the verb's corresponding characteristics as per the wanted values in the current row
-        for (int j = 0; j < colIndexes.size(); j++) {
-
-            current_col = colIndexes.get(j);
-            value = matchingVerbRow[current_col];
-
-            // Add that value to the list of characteristics for that verb
-            matchingVerbCharacteristics.add(value);
-        }
-
-        return matchingVerbCharacteristics;
-    }
-
-    private void displayVerbsInVerbChooserSpinner() {
-
-        if (mVerbCharacteristicsEnglishKanji.size() != 0) {
-            mVerbHintTextView.setVisibility(View.GONE);
-        } else {
-            mVerbHintTextView.setVisibility(View.VISIBLE);
-        }
-
-        // Populate the list of choices for the VerbChooserSpinner. Each text element of inside the individual spinner choices corresponds to a sub-element of the parsedPopulatedList
-        mVerbListForSpinner = createVerbChooserSpinnerList(mVerbCharacteristicsEnglish);
-        mVerbChooserSpinner.setAdapter(new VerbSpinnerAdapter(getContext(), R.layout.custom_verbchooser_spinner, mVerbListForSpinner));
-        mVerbChooserSpinner.setVisibility(View.VISIBLE);
-
-        // Action taken when choosing an option from the VerbChooserSpinner
-        mVerbChooserSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1, int verbIndex, long id) {
-                showSelectedVerbConjugations(verbIndex);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-            }
-        });
-    }
-    private void showSelectedVerbConjugations(final int verbIndex) {
-
-        if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
-        if (mVerbCharacteristicsEnglish.size() == 0) return;
-
-        mVerbConjugationsListForSpinner = createconjugationChooserSpinnerList(mTitlesList, mVerbCharacteristicsEnglish.get(verbIndex));
-        mRequestedConjugationSpinnerIndex = getIndexOfRequestedVerbConjugationCategory(verbIndex);
-
-        mConjugationChooserSpinner.setAdapter(new ConjugationsSpinnerAdapter(getContext(),
-                R.layout.custom_conjugationchooser_spinner,
-                mVerbConjugationsListForSpinner));
-
-        //Hide the subsequent fields of there is nothing to show
-        mConjugationsContainerScrollView.setVisibility(View.VISIBLE);
-        if (mVerbCharacteristicsEnglish.get(verbIndex).size() == 0) {
-            mConjugationsContainerScrollView.setVisibility(View.GONE);
-        }
-
-        mConjugationChooserSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1, final int conjugationIndex, long id) {
-                showSelectedConjugationsInCategory(verbIndex, conjugationIndex);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-            }
-        });
-
-        // Set the second spinner to the position in the previous instance (code does not give wanted result)
-        mConjugationChooserSpinner.setSelection(mRequestedConjugationSpinnerIndex - 1);
-    }
-    private void showSelectedConjugationsInCategory(final int verbIndex, final int conjugationIndex) {
-
-        // Getting the user choice for displaying the conjugations in Romaji or Kanji
-
-        mRomajiOrKanjiRadioButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (getActivity()==null) return;
-
-                RadioButton checkedRadioButton = getActivity().findViewById(checkedId);
-
-                // Define an action depending on the given boolean, ie. depending on the checked RadioButton ID
-                mChosenRomajiOrKanji = "";
-                switch (checkedRadioButton.getId()) {
-                    case R.id.radio_Romaji:
-                        if (checkedRadioButton.isChecked()) {
-                            mChosenRomajiOrKanji = "Romaji";
-                        }
-                        break;
-                    case R.id.radio_Kanji:
-                        if (checkedRadioButton.isChecked()) {
-                            mChosenRomajiOrKanji = "Kanji";
-                        }
-                        break;
-                }
-
-                displayConjugationsOfSelectedCategory(verbIndex, conjugationIndex);
-            }
-        });
-
-
-        List<Boolean> types = FindType(mInputQuery);
-        boolean TypeisKanji = types.get(2);
-
-        mChosenRomajiOrKanji = "Romaji";
-        if (TypeisKanji) {
-            mChosenRomajiOrKanji = "Kanji";
-            mRomajiRadioButton.setChecked(false);
-            mKanjiRadioButton.setChecked(true);
-        } else {
-            mRomajiRadioButton.setChecked(true);
-            mKanjiRadioButton.setChecked(false);
-        }
-
-        displayConjugationsOfSelectedCategory(verbIndex, conjugationIndex);
-    }
-    private int getIndexOfRequestedVerbConjugationCategory(int position) {
-
-        // Find the Conjugation family corresponding to the column hit from the FindMatchingVerbIndex function
-
-        int corresponding_title_index = 1;
-        int column_for_selected_row;
-        int index_counter = 0;
-        if (mMatchingVerbColIndexList.size() != 0) {
-            column_for_selected_row = mMatchingVerbColIndexList.get(position);
-            for (int i = 0; i < mTitleIndexes.size(); i++) {
-                for (int j = 0; j < mTitleIndexes.get(i).get(1).size(); j++) {
-                    if (column_for_selected_row == index_counter) {
-                        corresponding_title_index = i;
+    public static String                    addToDefinition(String definition) {
+        definition = "to " + definition;
+        char current_char;
+        boolean parenthesis = false;
+        boolean double_parenthesis = false;
+        int definition_index = 0;
+        if (!definition.equals("")) {
+            for (int i=0;i<definition.length();i++) {
+                if (definition_index<definition.length()) {
+                    current_char = definition.charAt(definition_index);
+                    if (current_char == '(') {
+                        if (!double_parenthesis) {parenthesis = true;}
+                        if (parenthesis) {double_parenthesis = true;}
                     }
-                    index_counter++;
+                    if (current_char == ')') {
+                        if (double_parenthesis) {double_parenthesis = false;}
+                        if (!double_parenthesis) {parenthesis = false;}
+                    }
+                    if (current_char == ',' && !parenthesis) {
+                        definition = definition.substring(0,definition_index+1) + " to" + definition.substring(definition_index+1,definition.length());
+                        definition_index = definition_index+3;
+                    }
                 }
+                definition_index++;
             }
         }
-        // The basics row is not relevant to the second spinner, so the Simple Form is chosen instead
-        if (corresponding_title_index == 0) {
-            corresponding_title_index = 1;
-        }
-        return corresponding_title_index;
+        return definition;
     }
-    public List<List<String>> createVerbChooserSpinnerList(List<List<List<String>>> verbCharacteristics) {
+    public List<List<List<String>>>         TitlesFinder(List<List<List<Integer>>> TitleIndexes, List<String[]> mySheet) {
 
-            List<List<String>> populatedlist = new ArrayList<>();
-            List<String> inside_list = new ArrayList<>();
-            String SpinnerText = "";
-            String SpinnerText1 = "";
-            String SpinnerText2 = "";
+        // Get the Conjugation Titles and their indexes
+        List<List<List<String>>> setOf_TitlesList = new ArrayList<>();
+        List<List<String>> TitlesList = new ArrayList<>();
+        List<String> Title_as_List = new ArrayList<>();
+        List<String> SubTitles = new ArrayList<>();
+        List<String> TitleConjugations = new ArrayList<>();
+        String Title;
 
-            if (verbCharacteristics.size() == 0) {
-                if (mInputQuery.equals("")) {
-                    SpinnerText1 = getResources().getString(R.string.PleaseEnterJapVerb);
-                    SpinnerText2 = getResources().getString(R.string.CanEnterEngVerb);
-                }
-                else {
-                    SpinnerText1 = getResources().getString(R.string.NoMatchFound);
-                    SpinnerText2 = getResources().getString(R.string.SeeHints);
-                }
-                inside_list.add(SpinnerText1);
-                inside_list.add("");
-                inside_list.add(SpinnerText2);
-                inside_list.add("");
-                inside_list.add(SpinnerText);
-                inside_list.add("");
-                populatedlist.add(inside_list);
+        for (int i=0; i<TitleIndexes.size(); i++) {
+
+            Title = mySheet.get(0)[TitleIndexes.get(i).get(0).get(0)];
+            Title_as_List.add(Title);
+
+            for (int s=0; s<TitleIndexes.get(i).get(1).size(); s++) {
+                SubTitles.add(mySheet.get(1)[TitleIndexes.get(i).get(1).get(s)]);
+                TitleConjugations.add(mySheet.get(2)[TitleIndexes.get(i).get(1).get(s)]);
+            }
+
+            TitlesList.add(Title_as_List);
+            TitlesList.add(SubTitles);
+            TitlesList.add(TitleConjugations);
+            setOf_TitlesList.add(TitlesList);
+
+            Title_as_List = new ArrayList<>();
+            SubTitles = new ArrayList<>();
+            TitleConjugations = new ArrayList<>();
+            TitlesList = new ArrayList<>();
+        }
+        return setOf_TitlesList;
+    }
+    public List<List<List<Integer>>>        TitleIndexesFinder(List<String[]> mySheet) {
+
+        // This function returns a List<List<List<Integer>>> where each set of Lists contains the Title index,
+        // and the list of corresponding SubTitle and Conjugation indexes,
+        // So that their Strings may be conveniently extracted from mySheet
+
+        List<List<List<Integer>>> TitleIndexesList = new ArrayList<>();
+        List<List<Integer>> TitleIndexes = new ArrayList<>();
+        List<Integer> SubIndexes_List = new ArrayList<>();
+        List<Integer> TitleIndex_asList = new ArrayList<>();
+        String title;
+
+        int sheet_length = mySheet.get(0).length;
+        for (int t=0; t<sheet_length; t++) {
+
+            title = mySheet.get(0)[t];
+
+            if (t == 0) {
+                TitleIndex_asList.add(t);
+                SubIndexes_List.add(t);
+            }
+            else if (t == sheet_length-1) {
+                if (SubIndexes_List.size() < 2) {SubIndexes_List.add(t);}       // The if clause is necessary because it registers an extra conjugation where there is none
+                TitleIndexes.add(TitleIndex_asList); // Titles
+                TitleIndexes.add(SubIndexes_List); // Subtitles or Conjugation Titles
+                TitleIndexesList.add(TitleIndexes);
             }
             else {
-                for (int i=0; i<verbCharacteristics.size(); i++) {
-                    inside_list = new ArrayList<>();
-                    if (verbCharacteristics.get(i)
-                            .get(GlobalConstants.VerbModule_Conjugations_Basics)
-                            .get(GlobalConstants.VerbModule_colIndex_prep).equals("")) { SpinnerText = ""; }
-                    else { SpinnerText =
-                            "[" +
-                            verbCharacteristics.get(i)
-                            .get(GlobalConstants.VerbModule_Conjugations_Basics)
-                            .get(GlobalConstants.VerbModule_colIndex_prep)
-                            + "] "; }
-                    inside_list.add(SpinnerText);
+                if (!title.equals("")) {
+                    TitleIndexes.add(TitleIndex_asList); // Titles
+                    TitleIndexes.add(SubIndexes_List); // Subtitles or Conjugation Titles
+                    TitleIndexesList.add(TitleIndexes);
 
-                    SpinnerText =
-                        verbCharacteristics.get(i)
-                        .get(GlobalConstants.VerbModule_Conjugations_Basics)
-                        .get(GlobalConstants.VerbModule_colIndex_kanji)
-                        + " (" +
-                        verbCharacteristics.get(i)
-                        .get(GlobalConstants.VerbModule_Conjugations_Stems)
-                        .get(GlobalConstants.VerbModule_colIndex_ustem - GlobalConstants.VerbModule_colIndex_kanji - 1) // Since the Stems list is the second list, the length of the first list must be subtracted
-                        + ")"	;
-                    inside_list.add(SpinnerText);
+                    TitleIndex_asList = new ArrayList<>();
+                    SubIndexes_List = new ArrayList<>();
+                    TitleIndexes = new ArrayList<>();
 
-                    if (!verbCharacteristics.get(i)
-                        .get(GlobalConstants.VerbModule_Conjugations_Basics)
-                        .get(GlobalConstants.VerbModule_colIndex_family).equals("")) {
-                        SpinnerText = verbCharacteristics.get(i)
-                                .get(GlobalConstants.VerbModule_Conjugations_Basics)
-                                .get(GlobalConstants.VerbModule_colIndex_family);
-                        if (!verbCharacteristics.get(i)
-                            .get(GlobalConstants.VerbModule_Conjugations_Basics)
-                            .get(GlobalConstants.VerbModule_colIndex_trans).equals("")) {
-                            SpinnerText = SpinnerText + ", "
-                                    + verbCharacteristics.get(i)
-                                    .get(GlobalConstants.VerbModule_Conjugations_Basics)
-                                    .get(GlobalConstants.VerbModule_colIndex_trans);
-                            }
-                    }
-                    else {
-                        if (!verbCharacteristics.get(i)
-                            .get(GlobalConstants.VerbModule_Conjugations_Basics)
-                            .get(GlobalConstants.VerbModule_colIndex_trans).equals("")) {
-                            SpinnerText =
-                                    verbCharacteristics.get(i)
-                                    .get(GlobalConstants.VerbModule_Conjugations_Basics)
-                                    .get(GlobalConstants.VerbModule_colIndex_trans);
-                            }
-                        else { SpinnerText = ""; }
-                    }
-                    inside_list.add(SpinnerText);
-
-                    SpinnerText =
-                        verbCharacteristics.get(i)
-                        .get(GlobalConstants.VerbModule_Conjugations_Basics)
-                        .get(GlobalConstants.VerbModule_colIndex_english) ;
-                    inside_list.add(SpinnerText);
-
-                    SpinnerText ="";
-                    inside_list.add(SpinnerText);
-
-
-                    populatedlist.add(inside_list);
+                    TitleIndex_asList.add(t);
                 }
-            }
-        return populatedlist;
-    }
-    public List<List<String>> createconjugationChooserSpinnerList(List<List<List<String>>> TitlesList, List<List<String>> chosenVerbCharacteristics) {
-
-        // Populate the list of choices for the ConjugationChooserSpinner
-
-        List<List<String>> populatedlist = new ArrayList<>();
-        List<String> inside_list = new ArrayList<>();
-        String SpinnerText;
-        int index;
-
-        if (chosenVerbCharacteristics.size() == 0) {
-            SpinnerText = "No match found.";
-            inside_list.add(SpinnerText);
-            inside_list.add("");
-            populatedlist.add(inside_list);
-        }
-        else {
-            for (int i=1; i<TitlesList.size(); i++) {
-                inside_list = new ArrayList<>();
-                index = i;
-                SpinnerText = index + ". " + TitlesList.get(i).get(0).get(0);
-                inside_list.add(SpinnerText);
-
-                SpinnerText = chosenVerbCharacteristics.get(i).get(0); // Display the first element in the Conjugation, e.g. PrPlA in Simple Form
-                inside_list.add(SpinnerText);
-
-                populatedlist.add(inside_list);
+                SubIndexes_List.add(t);
             }
         }
-    return populatedlist;
-}
-    public void displayConjugationsOfSelectedCategory(int verbIndex, int conjugationIndex) {
-        if (getActivity()==null) return;
 
-        List<TextView> Tense = new ArrayList<>();
-        List<LinearLayout> TenseLayout = new ArrayList<>();
-        List<TextView> Tense_Result = new ArrayList<>();
-
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense0));
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense1));
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense2));
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense3));
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense4));
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense5));
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense6));
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense7));
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense8));
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense9));
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense10));
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense11));
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense12));
-        Tense.add((TextView) getActivity().findViewById(R.id.Tense13));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout0));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout1));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout2));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout3));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout4));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout5));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout6));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout7));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout8));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout9));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout10));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout11));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout12));
-        TenseLayout.add((LinearLayout) getActivity().findViewById(R.id.TenseLayout13));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense0_Result));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense1_Result));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense2_Result));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense3_Result));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense4_Result));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense5_Result));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense6_Result));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense7_Result));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense8_Result));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense9_Result));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense10_Result));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense11_Result));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense12_Result));
-        Tense_Result.add((TextView) getActivity().findViewById(R.id.Tense13_Result));
-
-        for (int i=0;i<Tense.size();i++) {
-            Tense.get(i).setText("");
-            TenseLayout.get(i).setVisibility(View.GONE);
-            Tense_Result.get(i).setText("");
-        }
-
-        String displayed_text_English;
-        String displayed_text_Kanji;
-
-        if (mVerbCharacteristicsEnglish.get(verbIndex).size() != 0) {
-            for (int i = 0; i< mTitlesList.get(conjugationIndex +1).get(1).size(); i++) {
-
-                displayed_text_English = mVerbCharacteristicsEnglish.get(verbIndex).get(conjugationIndex +1).get(i);
-                displayed_text_Kanji = mVerbCharacteristicsKanji.get(verbIndex).get(conjugationIndex +1).get(i);
-
-                Tense.get(i).setText(mTitlesList.get(conjugationIndex + 1).get(1).get(i));
-                if (mChosenRomajiOrKanji.equals("Romaji")) Tense_Result.get(i).setText(displayed_text_English);
-                else Tense_Result.get(i).setText( displayed_text_Kanji );
-
-                TenseLayout.get(i).setVisibility(View.VISIBLE);
-            }
-        }
-    }
-    private class VerbSpinnerAdapter extends ArrayAdapter<List<String>> {
-        // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
-        VerbSpinnerAdapter(Context ctx, int txtViewResourceId, List<List<String>> list) {
-            super(ctx, txtViewResourceId, list);
-            }
-        @Override public View getDropDownView( int position, View cnvtView, ViewGroup prnt) {
-            return getCustomView(position, cnvtView, prnt);
-        }
-        @NonNull @Override public View getView(int pos, View cnvtView, ViewGroup prnt) {
-            return getCustomView(pos, cnvtView, prnt);
-        }
-        View getCustomView(int position, View convertView, ViewGroup parent) {
-
-            LayoutInflater inflater = LayoutInflater.from(getActivity().getBaseContext());
-            View mySpinner = inflater.inflate(R.layout.custom_verbchooser_spinner, parent, false);
-            TextView verbchooser_Prep = (TextView) mySpinner.findViewById(R.id.verbchooser_Prep);
-            verbchooser_Prep.setText(mVerbListForSpinner.get(position).get(0));
-            TextView verbchooser_Kanji_and_ustem = (TextView) mySpinner.findViewById(R.id.verbchooser_Kanji_and_ustem);
-            verbchooser_Kanji_and_ustem.setText(mVerbListForSpinner.get(position).get(1));
-            TextView verbchooser_Characteristics = (TextView) mySpinner.findViewById(R.id.verbchooser_Characteristics);
-            verbchooser_Characteristics.setText(mVerbListForSpinner.get(position).get(2));
-            TextView verbchooser_EnglishMeaning = (TextView) mySpinner.findViewById(R.id.verbchooser_EnglishMeaning);
-            verbchooser_EnglishMeaning.setText(mVerbListForSpinner.get(position).get(3));
-
-            return mySpinner;
-        }
-    }
-    private class ConjugationsSpinnerAdapter extends ArrayAdapter<List<String>> {
-        // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
-        ConjugationsSpinnerAdapter(Context ctx, int txtViewResourceId, List<List<String>> list) {
-            super(ctx, txtViewResourceId, list);
-            }
-        @Override public View getDropDownView( int position, View cnvtView, ViewGroup prnt) {
-            return getCustomView(position, cnvtView, prnt);
-        }
-        @Override public View getView(int pos, View cnvtView, ViewGroup prnt) {
-            return getCustomView(pos, cnvtView, prnt);
-        }
-        View getCustomView(int position, View convertView, ViewGroup parent) {
-
-            LayoutInflater inflater = LayoutInflater.from(getActivity().getBaseContext());
-            View mySpinner = inflater.inflate(R.layout.custom_conjugationchooser_spinner, parent, false);
-            TextView Upper_text = (TextView) mySpinner.findViewById(R.id.UpperPart);
-            Upper_text.setText(mVerbConjugationsListForSpinner.get(position).get(0));
-            TextView Lower_text = (TextView) mySpinner.findViewById(R.id.LowerPart);
-            Lower_text.setText(mVerbConjugationsListForSpinner.get(position).get(1));
-
-            return mySpinner;
-        }
-    }
-    static public List<Boolean> FindType(String verb) {
-        String text_type = ConvertFragment.TextType(verb);
-
-        boolean TypeisLatin   = false;
-        boolean TypeisKana    = false;
-        boolean TypeisKanji   = false;
-        boolean TypeisInvalid = false;
-
-        if ( text_type.equals("latin") )                                     { TypeisLatin = true;}
-        if ( text_type.equals("hiragana") || text_type.equals("katakana") )  { TypeisKana = true;}
-        if ( text_type.equals("kanji") )                                     { TypeisKanji = true;}
-        if ( verb.contains("*") || verb.contains("＊") || verb.equals("") || text_type.equals("number") ) { TypeisInvalid = true;}
-
-        List<Boolean> types = new ArrayList<>();
-        types.add(TypeisLatin);
-        types.add(TypeisKana);
-        types.add(TypeisKanji);
-        types.add(TypeisInvalid);
-        return types;
+        return TitleIndexesList;
     }
 
 

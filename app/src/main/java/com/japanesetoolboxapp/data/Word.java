@@ -5,12 +5,16 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.provider.BaseColumns;
+
+import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.List;
 
 @Entity(tableName = Word.TABLE_NAME, indices = {@Index("uniqueIdentifier")})
-public class Word {
+public class Word implements Parcelable {
 
     public static final String TABLE_NAME = "words_table";
     public static final String COLUMN_ID = BaseColumns._ID;
@@ -28,6 +32,29 @@ public class Word {
     @PrimaryKey()
     @ColumnInfo(index = true, name = COLUMN_ID)
     public long id;
+
+    protected Word(Parcel in) {
+        id = in.readLong();
+        keywords = in.readString();
+        uniqueIdentifier = in.readString();
+        romaji = in.readString();
+        kanji = in.readString();
+        altSpellings = in.readString();
+        commonStatus = in.readInt();
+    }
+
+    public static final Creator<Word> CREATOR = new Creator<Word>() {
+        @Override
+        public Word createFromParcel(Parcel in) {
+            return new Word(in);
+        }
+
+        @Override
+        public Word[] newArray(int size) {
+            return new Word[size];
+        }
+    };
+
     public long getWordId() {
         return id;
     }
@@ -48,6 +75,9 @@ public class Word {
     private String uniqueIdentifier;
     public void setUniqueIdentifier(String uniqueIdentifier) {
         this.uniqueIdentifier = uniqueIdentifier;
+    }
+    public void setUniqueIdentifierFromDetails() {
+        this.uniqueIdentifier = Utilities.cleanIdentifierForFirebase(romaji + "-" + kanji);
     }
     public String getUniqueIdentifier() {
         return uniqueIdentifier;
@@ -97,6 +127,22 @@ public class Word {
     }
     public List<Meaning> getMeanings() {
         return meanings;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeLong(id);
+        parcel.writeString(keywords);
+        parcel.writeString(uniqueIdentifier);
+        parcel.writeString(romaji);
+        parcel.writeString(kanji);
+        parcel.writeString(altSpellings);
+        parcel.writeInt(commonStatus);
     }
 
     //@Embedded

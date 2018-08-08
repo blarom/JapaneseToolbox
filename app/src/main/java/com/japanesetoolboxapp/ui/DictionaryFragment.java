@@ -1,19 +1,15 @@
 package com.japanesetoolboxapp.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.preference.PreferenceManager;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -30,14 +26,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.DatabaseUtilities;
+import com.japanesetoolboxapp.data.FirebaseDao;
 import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.Utilities;
@@ -47,14 +38,18 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class DictionaryFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<Word>>{
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
+public class DictionaryFragment extends Fragment implements
+        LoaderManager.LoaderCallbacks<List<Word>>,
+        FirebaseDao.FirebaseOperationsHandler {
 
 
     //region Parameters
-    private static final String FIREBASE_DEBUG = "japaneseToolboxFirebase";
+    @BindView(R.id.SentenceConstructionExpandableListView) ExpandableListView mSearchResultsExpandableListView;
     private final static int MAX_NUMBER_RESULTS_SHOWN = 50;
-    private Activity mFragmentActivity;
-
     private Boolean mAppWasInBackground;
     private List<String> mExpandableListDataHeader;
     private HashMap<String, List<String>> mExpandableListHeaderDetails;
@@ -64,15 +59,15 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     private static final int JISHO_WEB_SEARCH_LOADER = 41;
     private static final int ROOM_DB_SEARCH_LOADER = 42;
     private static final String JISHO_LOADER_INPUT_EXTRA = "input";
-    Boolean matchFound;
     Toast mShowOnlineResultsToast;
-    Utilities mUtilities;
     private List<Word> mLocalMatchingWordsList;
-    private DatabaseReference mFirebaseDbReference;
-    private DatabaseReference mWordReference;
-    private Word mWordFromFirebase;
+    private List<Word> mMergedMatchingWordsList;
     JapaneseToolboxRoomDatabase mJapaneseToolboxRoomDatabase;
     private Boolean mShowOnlineResults;
+    private FirebaseDao mFirebaseDao;
+    private Unbinder mBinding;
+    private boolean mAlreadyLoadedRoomResults;
+    private boolean mAlreadyLoadedJishoResults;
     //endregion
 
 
@@ -85,60 +80,59 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
         super.onCreate(savedInstanceState);
 
         getExtras();
-        mUtilities = new Utilities();
         if (getContext() != null) mInternetIsAvailable = Utilities.internetIsAvailableCheck(getContext());
+        initializeParameters();
 
-        FirebaseDatabase firebaseDb = FirebaseDatabase.getInstance();
-        mFirebaseDbReference = firebaseDb.getReference();
-
-        mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
-        //mWordsInRoomDatabase = mJapaneseToolboxRoomDatabase.getAllWords();
     }
     @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        // Retain this fragment (used to save user inputs on activity creation/destruction)
         setRetainInstance(true);
-        final View fragmentView = inflater.inflate(R.layout.fragment_dictionary, container, false);
-        mAppWasInBackground = false;
+        final View rootView = inflater.inflate(R.layout.fragment_dictionary, container, false);
 
-        return fragmentView;
+        mBinding = ButterKnife.bind(this, rootView);
+
+        if (savedInstanceState==null) {
+            getQuerySearchResults();
+        }
+
+        //If the fragment is being resumed, just reload the saved data
+        else {
+            mInputQuery = savedInstanceState.getString(getString(R.string.saved_input_query));
+            mLocalMatchingWordsList = savedInstanceState.getParcelableArrayList(getString(R.string.saved_local_results));
+            mMergedMatchingWordsList = savedInstanceState.getParcelableArrayList(getString(R.string.saved_merged_results));
+        }
+
+        return rootView;
     }
     @Override public void onPause() {
         super.onPause();
-        mAppWasInBackground = true;
+    }
+    @Override public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putParcelableArrayList(getString(R.string.saved_local_results), new ArrayList<>(mLocalMatchingWordsList));
+        outState.putParcelableArrayList(getString(R.string.saved_merged_results), new ArrayList<>(mMergedMatchingWordsList));
+        outState.putString(getString(R.string.saved_input_query), mInputQuery);
+
+        destroyLoaders();
+
     }
     @Override public void onResume() {
         super.onResume();
-
-        Boolean userHasRequestedDictSearch = checkIfUserRequestedDictSearch();
-
-        if (userHasRequestedDictSearch == null || userHasRequestedDictSearch) {
-            registerThatUserIsRequestingDictSearch(false);
-
-            //If the application is resumed (switched to), then display the last results instead of performing a new search on the last input
-            if (mAppWasInBackground == null || !mAppWasInBackground) {
-                mAppWasInBackground = false;
-
-                // Get the row index of the words matching the user's entry
-
-                if (getActivity()!=null) {
-                    LoaderManager loaderManager = getActivity().getSupportLoaderManager();
-                    Loader<String> roomDbSearchLoader = loaderManager.getLoader(ROOM_DB_SEARCH_LOADER);
-                    if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_SEARCH_LOADER, null, this);
-                    else loaderManager.restartLoader(ROOM_DB_SEARCH_LOADER, null, this);
-
-                }
-            }
-        }
-    }
-    public void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-
-        // save excel results to display in spinners, load the results on activity restart
-        //savedInstanceState.putStringArrayList("mGlobalGrammarSpinnerList_element0", mGlobalGrammarSpinnerList_element0);
+        if (mMergedMatchingWordsList!=null && mMergedMatchingWordsList.size()!=0) displayResultsInListView(mMergedMatchingWordsList);
+        else if (mLocalMatchingWordsList!=null && mLocalMatchingWordsList.size()!=0) displayResultsInListView(mLocalMatchingWordsList);
     }
     @Override public void onDetach() {
         super.onDetach();
+    }
+    @Override public void onDestroyView() {
+        super.onDestroyView();
+        mBinding.unbind();
+    }
+    @Override public void onDestroy() {
+        super.onDestroy();
+        mFirebaseDao.removeListeners();
+        destroyLoaders();
     }
 
 
@@ -146,9 +140,9 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     @NonNull @Override public Loader<List<Word>> onCreateLoader(int id, final Bundle args) {
 
         if (id == JISHO_WEB_SEARCH_LOADER) {
-            WebResultsAsyncTaskLoader webResultsAsyncTaskLoader = new WebResultsAsyncTaskLoader(getContext(), mInputQuery, mAppWasInBackground, mInternetIsAvailable);
-            webResultsAsyncTaskLoader.setLoaderState(true);
-            return webResultsAsyncTaskLoader;
+            JishoResultsAsyncTaskLoader jishoResultsAsyncTaskLoader = new JishoResultsAsyncTaskLoader(getContext(), mInputQuery, mInternetIsAvailable);
+            jishoResultsAsyncTaskLoader.setLoaderState(true);
+            return jishoResultsAsyncTaskLoader;
         }
         else if (id == ROOM_DB_SEARCH_LOADER){
             RoomDbSearchAsyncTaskLoader roomDbSearchLoader = new RoomDbSearchAsyncTaskLoader(getContext(), mInputQuery);
@@ -158,56 +152,67 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
     }
     @Override public void onLoadFinished(@NonNull Loader<List<Word>> loader, List<Word> loaderResultWordsList) {
 
-        if (loader.getId() == JISHO_WEB_SEARCH_LOADER) {
-            if (mAppWasInBackground == null || !mAppWasInBackground) {
+        if (loader.getId() == ROOM_DB_SEARCH_LOADER && !mAlreadyLoadedRoomResults) {
+            mAlreadyLoadedRoomResults = true;
+            mLocalMatchingWordsList = loaderResultWordsList;
 
-                //Clean up problematic words (e.g. that don't include a meaning)
-                for (Word word : loaderResultWordsList) {
-                    if (word.getMeanings().size()==0) loaderResultWordsList.remove(word);
+            //Displaying the local results
+            displayWordsToUser(mLocalMatchingWordsList);
+
+            //If wanted, update the results with words from Jisho.org
+            mShowOnlineResults = Utilities.getShowOnlineResultsPreference(getActivity());
+            if (mShowOnlineResults) startSearchingForJishoWords();
+
+            //Otherwise (if online results are unwanted), if there are no local results to display then try the reverse verb search
+            else if (mLocalMatchingWordsList.size()==0) performConjSearch();
+
+            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_SEARCH_LOADER);
+        }
+        else if (loader.getId() == JISHO_WEB_SEARCH_LOADER && !mAlreadyLoadedJishoResults) {
+            mAlreadyLoadedJishoResults = true;
+
+            List<Word> jishoWords = Utilities.cleanUpProblematicWordsFromJisho(loaderResultWordsList);
+
+            //If wanted, update the results with words from Jisho.org by merging the lists, otherwise clear the jisho results
+            Boolean showOnlineResults = Utilities.getShowOnlineResultsPreference(getActivity());
+            if (!showOnlineResults) jishoWords = new ArrayList<>();
+
+            if (jishoWords.size() != 0) {
+                mMergedMatchingWordsList = Utilities.mergeWordLists(mLocalMatchingWordsList, jishoWords);
+                mMergedMatchingWordsList = sortWordsAccordingToRomajiAndKanjiLengths(mMergedMatchingWordsList);
+                updateFirebaseDbWithJishoWords(jishoWords);
+                displayResultsInListView(mMergedMatchingWordsList);
+            }
+            else {
+                //if there are no jisho results (for whatever reason) then display only the local results
+                if (mLocalMatchingWordsList.size()!=0) {
+                    //The results should have already been displayed, therefore the following line is commented out
+                    //displayResultsInListView(mLocalMatchingWordsList);
                 }
 
-                //Merge the lists
-                Boolean showOnlineResults = getShowOnlineResultsPreference();
-                matchFound = false;
-                if (loaderResultWordsList.size() != 0 && showOnlineResults) {
-                    matchFound = true;
-                    List<Word> totalWords = mergeWordLists(mLocalMatchingWordsList, loaderResultWordsList);
-                    totalWords = sortWordsAccordingToRomajiAndKanjiLengths(mInputQuery, totalWords);
-
-                    updateFirebaseDbWithJishoWords(loaderResultWordsList);
-                    setupFullWordsListListenerFromFirebase();
-
-                    displayResults(mInputQuery, totalWords);
-                }
-
-                //If no dictionary match was found, then this is probably a verb conjugation, so try that
-                if (!matchFound && !mInputQuery.equals("") && getActivity() != null) {
-                    if (mShowOnlineResultsToast != null) mShowOnlineResultsToast.cancel();
-                    //Toast.makeText(getContext(), "No match found, looking up conjugations.", Toast.LENGTH_SHORT).show();
-                    getActivity().findViewById(R.id.button_conj).performClick();
+                //if there are no jisho results (for whatever reason) and no local results to display, then try the reverse verb search on the input
+                else {
+                    performConjSearch();
                 }
             }
+
+            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(JISHO_WEB_SEARCH_LOADER);
+
         }
-        else if (loader.getId() == ROOM_DB_SEARCH_LOADER){
-            mLocalMatchingWordsList = loaderResultWordsList;
-            displayWordsToUser(mInputQuery, loaderResultWordsList);
-        }
+
     }
     @Override public void onLoaderReset(@NonNull Loader<List<Word>> loader) {}
-    private static class WebResultsAsyncTaskLoader extends AsyncTaskLoader <List<Word>> {
+    private static class JishoResultsAsyncTaskLoader extends AsyncTaskLoader <List<Word>> {
 
-        String speechRecognizerString;
-        private boolean appWasInBackground;
+        String mQuery;
         private boolean internetIsAvailable;
         private boolean mAllowLoaderStart;
 
-        WebResultsAsyncTaskLoader(Context context,
-                                  String speechRecognizerString,
-                                  boolean appWasInBackground,
-                                  boolean internetIsAvailable) {
+        JishoResultsAsyncTaskLoader(Context context,
+                                    String query,
+                                    boolean internetIsAvailable) {
             super(context);
-            this.speechRecognizerString = speechRecognizerString;
-            this.appWasInBackground = appWasInBackground;
+            this.mQuery = query;
             this.internetIsAvailable = internetIsAvailable;
         }
 
@@ -221,15 +226,13 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
             List<Word> matchingWordsFromJisho = new ArrayList<>();
 
-            if (!appWasInBackground) {
-                if (internetIsAvailable) {
-                    matchingWordsFromJisho = Utilities.getWordsFromJishoOnWeb(speechRecognizerString, getContext());
-                } else {
-                    Log.i("Diagnosis Time", "Failed to access online resources.");
-                    Looper.prepare();
-                    Toast.makeText(getContext(), "Failed to connect to the Internet.", Toast.LENGTH_SHORT).show();
-                    cancelLoadInBackground();
-                }
+            if (internetIsAvailable && !TextUtils.isEmpty(mQuery)) {
+                matchingWordsFromJisho = Utilities.getWordsFromJishoOnWeb(mQuery, getContext());
+            } else {
+                Log.i("Diagnosis Time", "Failed to access online resources.");
+                Looper.prepare();
+                Toast.makeText(getContext(), R.string.failed_to_connect_to_internet, Toast.LENGTH_SHORT).show();
+                cancelLoadInBackground();
             }
             return matchingWordsFromJisho;
         }
@@ -250,7 +253,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         @Override
         protected void onStartLoading() {
-            forceLoad();
+            if (!TextUtils.isEmpty(mSearchWord)) forceLoad();
         }
 
         @Override
@@ -274,23 +277,52 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             mInputQuery = getArguments().getString(getString(R.string.user_query_word));
         }
     }
-    private void displayWordsToUser(String word, List<Word> localMatchingWordsList) {
+    private void initializeParameters() {
 
-        //Displaying the local results
-        String searchedWord = Utilities.removeSpecialCharacters(word);
-        localMatchingWordsList = sortWordsAccordingToRomajiAndKanjiLengths(searchedWord, localMatchingWordsList);
-        displayResults(searchedWord, localMatchingWordsList);
+        mFirebaseDao = new FirebaseDao(getContext(), this);
+        mInputQuery = Utilities.removeSpecialCharacters(mInputQuery);
 
-        //If allowed, update the results with words from Jisho.org
-        mShowOnlineResults = getShowOnlineResultsPreference();
-        if (mShowOnlineResults) {
+        mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
+        //mWordsInRoomDatabase = mJapaneseToolboxRoomDatabase.getAllWords();
+
+        mLocalMatchingWordsList = new ArrayList<>();
+        mMergedMatchingWordsList = new ArrayList<>();
+
+        mAlreadyLoadedRoomResults = false;
+        mAlreadyLoadedJishoResults = false;
+    }
+    private void getQuerySearchResults() {
+        if (!TextUtils.isEmpty(mInputQuery)) findMatchingWordsInRoomDb();
+        else showEmptySearchResults();
+    }
+    private void findMatchingWordsInRoomDb() {
+        if (getActivity()!=null) {
+            LoaderManager loaderManager = getActivity().getSupportLoaderManager();
+            Loader<String> roomDbSearchLoader = loaderManager.getLoader(ROOM_DB_SEARCH_LOADER);
+            if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_SEARCH_LOADER, null, this);
+            else loaderManager.restartLoader(ROOM_DB_SEARCH_LOADER, null, this);
+        }
+    }
+    private void showEmptySearchResults() {
+        displayResultsInListView(new ArrayList<Word>());
+    }
+    private void displayWordsToUser(List<Word> localMatchingWordsList) {
+
+        localMatchingWordsList = sortWordsAccordingToRomajiAndKanjiLengths(localMatchingWordsList);
+        displayResultsInListView(localMatchingWordsList);
+
+    }
+    private void startSearchingForJishoWords() {
+
+        if (!TextUtils.isEmpty(mInputQuery)) {
+
             mShowOnlineResultsToast = Toast.makeText(getContext(), getResources().getString(R.string.showOnlineResultsToastString), Toast.LENGTH_SHORT);
+            mShowOnlineResultsToast.show();
 
             if (getActivity() != null) {
-                if (!searchedWord.equals("")) mShowOnlineResultsToast.show();
 
                 Bundle queryBundle = new Bundle();
-                queryBundle.putString(JISHO_LOADER_INPUT_EXTRA, searchedWord);
+                queryBundle.putString(JISHO_LOADER_INPUT_EXTRA, mInputQuery);
 
                 //Attempting to access jisho.org to complete the results found in the local dictionary
                 LoaderManager loaderManager = getActivity().getSupportLoaderManager();
@@ -300,139 +332,23 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             }
         }
 
-        //If there are no local results to display and online results are unwanted, try the reverse verb search
-        if (localMatchingWordsList.size() == 0 && !searchedWord.equals("") && !mShowOnlineResults) {
+    }
+    private void performConjSearch() {
+
+        destroyLoaders();
+
+        if (!TextUtils.isEmpty(mInputQuery)) {
             if (mShowOnlineResultsToast!=null) mShowOnlineResultsToast.cancel();
-            getActivity().findViewById(R.id.button_conj).performClick();
+            dictionaryFragmentOperationsHandler.onVerbConjugationFromDictRequested(mInputQuery);
         }
     }
-    private List<Word> sortWordsAccordingToRomajiAndKanjiLengths(String searchWord, List<Word> wordsList) {
-
-        List<int[]> matchingWordIndexesAndLengths = new ArrayList<>();
-        for (int i = 0; i < wordsList.size(); i++) {
-
-            Word currentWord = wordsList.get(i);
-            String romaji_value = currentWord.getRomaji();
-            String kanji_value = currentWord.getKanji();
-
-            //Get the length of the shortest meaning containing the word, and use it to prioritize the results
-            List<Word.Meaning> currentMeanings = currentWord.getMeanings();
-            String currentMeaning;
-            int currentMeaningLength = 1000;
-            for (int j = 0; j< currentMeanings.size(); j++) {
-                currentMeaning = currentMeanings.get(j).getMeaning();
-                if (currentMeaning.contains(searchWord) && currentMeaning.length() <= currentMeaningLength) {
-                    currentMeaningLength = currentMeaning.length();
-                }
-            }
-
-            //Get the total length
-            int length = romaji_value.length() + kanji_value.length() + currentMeaningLength;
-
-            //If the romaji or Kanji value is an exact match to the search word, then it must appear at the start of the list
-            if (romaji_value.equals(searchWord) || kanji_value.equals(searchWord)) length = 0;
-
-            int[] currentMatchingWordIndexAndLength = new int[2];
-            currentMatchingWordIndexAndLength[0] = i;
-            currentMatchingWordIndexAndLength[1] = length;
-
-            matchingWordIndexesAndLengths.add(currentMatchingWordIndexAndLength);
-        }
-
-        //Sort the results according to total length
-        if (matchingWordIndexesAndLengths.size() != 0) {
-            matchingWordIndexesAndLengths = bubbleSortForTwoIntegerList(matchingWordIndexesAndLengths);
-        }
-
-        //Return the sorted list
-        List<Word> sortedWordsList = new ArrayList<>();
-        for (int i = 0; i < matchingWordIndexesAndLengths.size(); i++) {
-            int sortedIndex = matchingWordIndexesAndLengths.get(i)[0];
-            sortedWordsList.add(wordsList.get(sortedIndex));
-        }
-
-        return sortedWordsList;
-    }
-    private void displayResults(String searchWord, List<Word> wordsList) {
+    private void displayResultsInListView(List<Word> wordsList) {
 
         // Populate the list of choices for the SearchResultsChooserSpinner. Each text element of inside the idividual spinner choices corresponds to a sub-element of the choicelist
-        createExpandableListViewContentsFromWordsList(searchWord, wordsList);
-
-        if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
-
-        // Implementing the SearchResultsChooserListView
-        try {
-            if (mExpandableListDataHeader != null && mExpandableListHeaderDetails != null && mExpandableListDataChild != null && getView() != null) {
-                GrammarExpandableListAdapter mSearchResultsListAdapter = new GrammarExpandableListAdapter(getContext(),
-                        mExpandableListDataHeader, mExpandableListHeaderDetails, mExpandableListDataChild);
-                ExpandableListView mSearchResultsExpandableListView = getView().findViewById(R.id.SentenceConstructionExpandableListView);
-                mSearchResultsExpandableListView.setAdapter(mSearchResultsListAdapter);
-                mSearchResultsExpandableListView.setVisibility(View.VISIBLE);
-            }
-        }
-        catch (java.lang.NullPointerException e) {
-            //If a NullPointerException happens, restart activity since the list cannot be diplayed
-            Intent intent = new Intent(getContext(), MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        }
+        createExpandableListViewContentsFromWordsList(wordsList);
+        showExpandableListViewWithContents();
     }
-    private List<Word> mergeWordLists(List<Word> localWords, List<Word> asyncWords) {
-
-        List<Word> finalWordsList = new ArrayList<>();
-        List<Word> finalAsyncWords = new ArrayList<>(asyncWords);
-        Boolean async_meaning_found_locally;
-
-        for (int j = 0; j< localWords.size(); j++) {
-            Word currentLocalWord = localWords.get(j);
-            Word finalWord = new Word();
-            finalWord.setRomaji(currentLocalWord.getRomaji());
-            finalWord.setKanji(currentLocalWord.getKanji());
-            finalWord.setAltSpellings(currentLocalWord.getAltSpellings());
-
-            List<Word.Meaning> current_local_meanings = currentLocalWord.getMeanings();
-            List<Word.Meaning> current_final_meanings = new ArrayList<>(current_local_meanings);
-
-            int current_index = finalAsyncWords.size()-1;
-            while (current_index >= 0 && finalAsyncWords.size() != 0) {
-
-                if (current_index > finalAsyncWords.size()-1) {break;}
-                Word currentAsyncWord = finalAsyncWords.get(current_index);
-                List<Word.Meaning> current_async_meanings = currentAsyncWord.getMeanings();
-
-                if (    currentAsyncWord.getRomaji().equals(currentLocalWord.getRomaji())
-                    &&  currentAsyncWord.getKanji() .equals(currentLocalWord.getKanji())   ) {
-
-                    for (int m = 0; m< current_async_meanings.size(); m++) {
-
-                        async_meaning_found_locally = false;
-                        for (int k = 0; k< current_local_meanings.size(); k++) {
-
-                            if (current_local_meanings.get(k).getMeaning()
-                                    .contains( current_async_meanings.get(m).getMeaning() ) ) {
-                                async_meaning_found_locally = true;
-                                break;
-                            }
-                        }
-                        if (!async_meaning_found_locally) {
-                            current_final_meanings.add(current_async_meanings.get(m));
-                        }
-                    }
-                    finalAsyncWords.remove(current_index);
-                    if (current_index == 0) break;
-                }
-                else {
-                    current_index -= 1;
-                }
-            }
-            finalWord.setMeanings(current_final_meanings);
-            finalWordsList.add(finalWord);
-        }
-        finalWordsList.addAll(finalAsyncWords);
-
-        return finalWordsList;
-    }
-    private void createExpandableListViewContentsFromWordsList(String searchWord, List<Word> wordsList) {
+    private void createExpandableListViewContentsFromWordsList(List<Word> wordsList) {
 
         //Initialization
         mExpandableListDataHeader = new ArrayList<>();
@@ -446,7 +362,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             //Create a generic answer for the empty search
             String ListElement1;
             String ListElement2;
-            if (searchWord.equals("")) {
+            if (mInputQuery.equals("")) {
                 ListElement1 = getResources().getString(R.string.PleaseEnterWord);
                 ListElement2 = "";
             }
@@ -496,7 +412,7 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
                 }
                 headerElements.add(currentWord.getRomaji());
                 headerElements.add(currentWord.getKanji());
-                headerElements.add(removeDuplicatesFromCommaList(cumulative_meaning_value));
+                headerElements.add(Utilities.removeDuplicatesFromCommaList(cumulative_meaning_value));
 
                 mExpandableListDataHeader.add(Integer.toString(i));
                 mExpandableListHeaderDetails.put(Integer.toString(i), headerElements);
@@ -569,86 +485,81 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             }
         }
     }
-    private void registerThatUserIsRequestingDictSearch(Boolean state) {
-        if (getActivity() != null) {
-            SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putBoolean(getString(R.string.requestingDictSearch), state);
-            editor.apply();
+    private void showExpandableListViewWithContents() {
+
+        if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
+
+        // Implementing the SearchResultsChooserListView
+        try {
+            if (mExpandableListDataHeader != null
+                    && mExpandableListHeaderDetails != null
+                    && mExpandableListDataChild != null
+                    && getView() != null) {
+
+                GrammarExpandableListAdapter mSearchResultsListAdapter =
+                        new GrammarExpandableListAdapter(
+                                getContext(),
+                                mExpandableListDataHeader,
+                                mExpandableListHeaderDetails,
+                                mExpandableListDataChild);
+
+                mSearchResultsExpandableListView.setAdapter(mSearchResultsListAdapter);
+                mSearchResultsExpandableListView.setVisibility(View.VISIBLE);
+            }
+        }
+        catch (NullPointerException e) {
+            //If a NullPointerException happens, restart activity since the list cannot be displayed
+            Intent intent = new Intent(getContext(), MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
     }
-    private class WordClickableSpan extends ClickableSpan{
-        // code extracted from http://stackoverflow.com/questions/15475907/make-parts-of-textview-clickable-not-url
-        public void onClick(View textView) {
-            //enter the ext as input word
-            // code extracted from http://stackoverflow.com/questions/19750458/android-clickablespan-get-text-onclick
+    private List<Word> sortWordsAccordingToRomajiAndKanjiLengths(List<Word> wordsList) {
 
-            TextView text = (TextView) textView;
-            Spanned s = (Spanned) text.getText();
-            int start = s.getSpanStart(this);
-            int end = s.getSpanEnd(this);
+        List<int[]> matchingWordIndexesAndLengths = new ArrayList<>();
+        for (int i = 0; i < wordsList.size(); i++) {
 
-            // Instead of implementing the direct text change in the InputQueryFragment (this can cause bugs in the long run), it is sent through an interface
-            //This is the code that's avoided
-                    //AutoCompleteTextView queryInit = (AutoCompleteTextView)InputQueryFragment.GlobalInputQueryFragment.findViewById(R.id.inputQueryAutoCompleteTextView);
-                    //queryInit.setText(text.getText().subSequence(start, end));
+            Word currentWord = wordsList.get(i);
+            String romaji_value = currentWord.getRomaji();
+            String kanji_value = currentWord.getKanji();
 
-            //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
-                   try {
-                        dictionaryFragmentOperationsHandler = (DictionaryFragmentOperationsHandler) getActivity();
-                   } catch (ClassCastException e) {
-                        throw new ClassCastException(getActivity().toString() + " must implement TextClicked");
-                   }
+            //Get the length of the shortest meaning containing the word, and use it to prioritize the results
+            List<Word.Meaning> currentMeanings = currentWord.getMeanings();
+            String currentMeaning;
+            int currentMeaningLength = 1000;
+            for (int j = 0; j< currentMeanings.size(); j++) {
+                currentMeaning = currentMeanings.get(j).getMeaning();
+                if (currentMeaning.contains(mInputQuery) && currentMeaning.length() <= currentMeaningLength) {
+                    currentMeaningLength = currentMeaning.length();
+                }
+            }
 
-                //Calling the interface
-                    String outputText = text.getText().subSequence(start, end).toString();
-                    dictionaryFragmentOperationsHandler.onQueryTextUpdateFromDictRequested(outputText);
+            //Get the total length
+            int length = romaji_value.length() + kanji_value.length() + currentMeaningLength;
 
-       }
-        @Override
-        public void updateDrawState(TextPaint ds) {
-            ds.setColor(getResources().getColor(R.color.textColorDictionarySpanClicked));
-            ds.setUnderlineText(false);
-       }
-    }
-    private class VerbClickableSpan extends ClickableSpan {
-        // code extracted from http://stackoverflow.com/questions/15475907/make-parts-of-textview-clickable-not-url
-        public void onClick(View textView) {
-            //enter the ext as input word
-            // code extracted from http://stackoverflow.com/questions/19750458/android-clickablespan-get-text-onclick
+            //If the romaji or Kanji value is an exact match to the search word, then it must appear at the start of the list
+            if (romaji_value.equals(mInputQuery) || kanji_value.equals(mInputQuery)) length = 0;
 
-            TextView text = (TextView) textView;
-            Spanned s = (Spanned) text.getText();
-            int start = s.getSpanStart(this);
-            int end = s.getSpanEnd(this);
+            int[] currentMatchingWordIndexAndLength = new int[2];
+            currentMatchingWordIndexAndLength[0] = i;
+            currentMatchingWordIndexAndLength[1] = length;
 
-            //Toast.makeText(GlobalGrammarModuleFragmentView.getContext(), "Clicked", Toast.LENGTH_SHORT).show();
-
-            // Instead of implementing the direct text change in the InputQueryFragment (this can cause bugs in the long run), it is sent through an interface
-            //This is the code that's avoided
-            //AutoCompleteTextView queryInit = (AutoCompleteTextView)InputQueryFragment.GlobalInputQueryFragment.findViewById(R.id.inputQueryAutoCompleteTextView);
-            //queryInit.setText(text.getText().subSequence(start, end));
-
-            String outputText = text.getText().subSequence(start, end).toString();
-            dictionaryFragmentOperationsHandler.onQueryTextUpdateFromDictRequested(outputText);
-            dictionaryFragmentOperationsHandler.onVerbConjugationFromDictRequested(outputText);
-
+            matchingWordIndexesAndLengths.add(currentMatchingWordIndexAndLength);
         }
 
-        @Override
-        public void updateDrawState(TextPaint ds) {
-            ds.setColor(getResources().getColor(R.color.textColorDictionarySpanClicked));
-            ds.setUnderlineText(false);
+        //Sort the results according to total length
+        if (matchingWordIndexesAndLengths.size() != 0) {
+            matchingWordIndexesAndLengths = bubbleSortForTwoIntegerList(matchingWordIndexesAndLengths);
         }
-    }
-    private Boolean getShowOnlineResultsPreference() {
-        Boolean showOnlineResults = false;
-        if (getActivity()!=null) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            showOnlineResults = sharedPreferences.getBoolean(getString(R.string.pref_complete_local_with_online_search_key),
-                    getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default));
+
+        //Return the sorted list
+        List<Word> sortedWordsList = new ArrayList<>();
+        for (int i = 0; i < matchingWordIndexesAndLengths.size(); i++) {
+            int sortedIndex = matchingWordIndexesAndLengths.get(i)[0];
+            sortedWordsList.add(wordsList.get(sortedIndex));
         }
-        return showOnlineResults;
+
+        return sortedWordsList;
     }
     private List<int[]> bubbleSortForTwoIntegerList(List<int[]> MatchList) {
 
@@ -689,35 +600,15 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
 
         return sortedMatchList;
     }
-    private String removeDuplicatesFromCommaList(String input_list) {
-
-        Boolean is_repeated;
-        List<String> parsed_cumulative_meaning_value = Arrays.asList(input_list.split(","));
-        StringBuilder final_cumulative_meaning_value = new StringBuilder("");
-        List<String> final_cumulative_meaning_value_array = new ArrayList<>();
-        String current_value;
-        for (int j = 0; j <parsed_cumulative_meaning_value.size(); j++) {
-            is_repeated = false;
-            current_value = parsed_cumulative_meaning_value.get(j).trim();
-            for (String s : final_cumulative_meaning_value_array) {
-                if (s.equals(current_value)) { is_repeated = true; break; }
-            }
-            if (!is_repeated)  final_cumulative_meaning_value_array.add(current_value);
-        }
-        for (int j = 0; j <final_cumulative_meaning_value_array.size(); j++) {
-            final_cumulative_meaning_value.append(final_cumulative_meaning_value_array.get(j).trim());
-            if (j <final_cumulative_meaning_value_array.size()-1) final_cumulative_meaning_value.append(", ");
-        }
-        return final_cumulative_meaning_value.toString();
+    private void updateFirebaseDbWithJishoWords(List<Word> wordsList) {
+        mFirebaseDao.updateObjectsOrCreateThemInFirebaseDb(wordsList);
     }
-    private Boolean checkIfUserRequestedDictSearch() {
-        Boolean state;
-        if (getActivity()!=null) {
-            SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-            state = sharedPref.getBoolean(getString(R.string.requestingDictSearch), false);
-            return state;
+    private void destroyLoaders() {
+        LoaderManager loaderManager = getLoaderManager();
+        if (loaderManager!=null) {
+            loaderManager.destroyLoader(ROOM_DB_SEARCH_LOADER);
+            loaderManager.destroyLoader(JISHO_WEB_SEARCH_LOADER);
         }
-        else return true;
     }
     private class GrammarExpandableListAdapter extends BaseExpandableListAdapter {
 
@@ -1125,148 +1016,89 @@ public class DictionaryFragment extends Fragment implements LoaderManager.Loader
             return true;
         }
     }
+    private class WordClickableSpan extends ClickableSpan {
+        // code extracted from http://stackoverflow.com/questions/15475907/make-parts-of-textview-clickable-not-url
+        public void onClick(View textView) {
+            //enter the ext as input word
+            // code extracted from http://stackoverflow.com/questions/19750458/android-clickablespan-get-text-onclick
 
+            TextView text = (TextView) textView;
+            Spanned s = (Spanned) text.getText();
+            int start = s.getSpanStart(this);
+            int end = s.getSpanEnd(this);
 
-    //Firebase methods
-    private void updateFirebaseDbWithJishoWords(List<Word> asyncMatchingWords) {
+            // Instead of implementing the direct text change in the InputQueryFragment (this can cause bugs in the long run), it is sent through an interface
+            //This is the code that's avoided
+            //AutoCompleteTextView queryInit = (AutoCompleteTextView)InputQueryFragment.GlobalInputQueryFragment.findViewById(R.id.inputQueryAutoCompleteTextView);
+            //queryInit.setText(text.getText().subSequence(start, end));
 
-        for (int i=0; i<asyncMatchingWords.size(); i++) {
-            Word word = asyncMatchingWords.get(i);
-            if (word.getCommonStatus()==1) writeWordToFirebaseDb(word);
+            //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
+            try {
+                dictionaryFragmentOperationsHandler = (DictionaryFragmentOperationsHandler) getActivity();
+            } catch (ClassCastException e) {
+                throw new ClassCastException(getActivity().toString() + " must implement TextClicked");
+            }
+
+            //Calling the interface
+            String outputText = text.getText().subSequence(start, end).toString();
+            dictionaryFragmentOperationsHandler.onQueryTextUpdateFromDictRequested(outputText);
+
+        }
+        @Override
+        public void updateDrawState(TextPaint ds) {
+            ds.setColor(getResources().getColor(R.color.textColorDictionarySpanClicked));
+            ds.setUnderlineText(false);
+        }
+    }
+    private class VerbClickableSpan extends ClickableSpan {
+        // code extracted from http://stackoverflow.com/questions/15475907/make-parts-of-textview-clickable-not-url
+        public void onClick(View textView) {
+            //enter the ext as input word
+            // code extracted from http://stackoverflow.com/questions/19750458/android-clickablespan-get-text-onclick
+
+            TextView text = (TextView) textView;
+            Spanned s = (Spanned) text.getText();
+            int start = s.getSpanStart(this);
+            int end = s.getSpanEnd(this);
+
+            //Toast.makeText(GlobalGrammarModuleFragmentView.getContext(), "Clicked", Toast.LENGTH_SHORT).show();
+
+            // Instead of implementing the direct text change in the InputQueryFragment (this can cause bugs in the long run), it is sent through an interface
+            //This is the code that's avoided
+            //AutoCompleteTextView queryInit = (AutoCompleteTextView)InputQueryFragment.GlobalInputQueryFragment.findViewById(R.id.inputQueryAutoCompleteTextView);
+            //queryInit.setText(text.getText().subSequence(start, end));
+
+            String outputText = text.getText().subSequence(start, end).toString();
+            dictionaryFragmentOperationsHandler.onQueryTextUpdateFromDictRequested(outputText);
+            dictionaryFragmentOperationsHandler.onVerbConjugationFromDictRequested(outputText);
+
         }
 
-    }
-    private void writeWordToFirebaseDb(Word word) {
-        word.setUniqueIdentifier(word.getRomaji()+"-"+word.getKanji());
-        mFirebaseDbReference.child("wordsList").child(word.getUniqueIdentifier()).setValue(word);
-
-        //To update only specific information in the child:
-        //mFirebaseDbReference.child("wordsList").child(word.getWordIds()).child("romaji").setValue(newValue);
-    }
-    private void updateWordInFirebase(Word word, String key, String value) {
-        mFirebaseDbReference.child("wordsList")
-                .child(word.getUniqueIdentifier())
-                .child(key)
-                .setValue(value);
-    }
-    private Word setupWordListenerFromFirebase(String uniqueIdentifier) {
-
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference wordRef = rootRef.child("wordsList").child(uniqueIdentifier);
-
-        ValueEventListener eventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Word> wordsList = new ArrayList<>();
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    String value = ds.getValue(String.class);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        };
-        wordRef.addListenerForSingleValueEvent(eventListener);
-
-
-//        mWordReference = FirebaseDatabase.getInstance().getReference(uniqueIdentifier);
-//        mWordFromFirebase = new Word();
-//
-//        ChildEventListener wordListener = new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                String a="";
-//                if (dataSnapshot.exists()) {
-//                    mWordFromFirebase = dataSnapshot.getValue(Word.class);
-//                }
-//            }
-//
-//            @Override
-//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                String a="";
-//                if (dataSnapshot.exists()) {
-//                    mWordFromFirebase = dataSnapshot.getValue(Word.class);
-//                }
-//            }
-//
-//            @Override
-//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Log.w(FIREBASE_DEBUG, "Failed to get Word from database", databaseError.toException());
-//            }
-//        };
-//
-//        mWordReference.addChildEventListener(wordListener);
-
-        return mWordFromFirebase;
-    }
-    private void setupFullWordsListListenerFromFirebase() {
-
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference wordsListRef = rootRef.child("wordsList");
-        ValueEventListener eventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Word> wordsList = new ArrayList<>();
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Word word = ds.getValue(Word.class);
-                    wordsList.add(word);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        };
-
-        ChildEventListener childEventListener = new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Word word = dataSnapshot.getValue(Word.class);
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Word word = dataSnapshot.getValue(Word.class);
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(FIREBASE_DEBUG, "Failed to get Word from database", databaseError.toException());
-            }
-        };
-
-        wordsListRef.addChildEventListener(childEventListener);
-        //wordsListRef.addListenerForSingleValueEvent(eventListener);
-
-    }
-    private void deleteWordFromFirebase(Word word) {
-        mWordReference = FirebaseDatabase.getInstance().getReference(word.getUniqueIdentifier());
+        @Override
+        public void updateDrawState(TextPaint ds) {
+            ds.setColor(getResources().getColor(R.color.textColorDictionarySpanClicked));
+            ds.setUnderlineText(false);
+        }
     }
 
 
-    //Interface methods
+    //Communication with other classes
+
+    //Communication with parent activity
     private DictionaryFragmentOperationsHandler dictionaryFragmentOperationsHandler;
     interface DictionaryFragmentOperationsHandler {
         void onQueryTextUpdateFromDictRequested(String selectedWordString);
         void onVerbConjugationFromDictRequested(String selectedVerbString);
+    }
+    public void setQuery(String query) {
+        mInputQuery = query;
+        mAlreadyLoadedRoomResults = false;
+        mAlreadyLoadedJishoResults = false;
+        getQuerySearchResults();
+    }
+
+    //Communication with Firebase DAO
+    @Override public void onWordsListFound(List<Word> wordsList) {
+
     }
 }

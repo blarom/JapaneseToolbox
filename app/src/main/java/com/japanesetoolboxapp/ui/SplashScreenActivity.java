@@ -34,11 +34,6 @@ public class SplashScreenActivity extends Activity {
                 SplashScreenActivity.this.finish();
             }
         }, SPLASH_DISPLAY_LENGTH);
-        
-        //Setting up Firebase
-        FirebaseDatabase firebaseDb = FirebaseDatabase.getInstance();
-        firebaseDb.setPersistenceEnabled(true);
-        FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseAuth.signInWithEmailAndPassword(DatabaseUtilities.firebaseEmail, DatabaseUtilities.firebasePass);
+
     }
 }

@@ -16,12 +16,15 @@ import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.preference.PreferenceManager;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ListPopupWindow;
 
+import com.google.firebase.database.FirebaseDatabase;
 import com.japanesetoolboxapp.ui.ConvertFragment;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.Word;
@@ -35,12 +38,14 @@ import java.net.HttpURLConnection;
 import java.net.InetAddress;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Utilities {
 
 
     private static final String DEBUG_TAG = "JT Debug";
+    private static FirebaseDatabase mDatabase;
 
     //Activity operation utilities
     public static void trimCache(Context context) {
@@ -100,8 +105,7 @@ public class Utilities {
             if (mgr != null) mgr.setStreamMute(AudioManager.STREAM_SYSTEM, false);
         }
     }
-    @NonNull
-    public static Boolean checkIfFileExistsInSpecificFolder(File dir, String filename) {
+    @NonNull public static Boolean checkIfFileExistsInSpecificFolder(File dir, String filename) {
 
         if (!dir.exists()&& dir.mkdirs()){
             return false;
@@ -186,7 +190,7 @@ public class Utilities {
     }
 
 
-    //Character manipulations utilities
+    //String manipulations utilities
     private static String convertToUTF8(String input_string) {
 
         byte[] byteArray = {};
@@ -225,7 +229,27 @@ public class Utilities {
             return Html.fromHtml(source);
         }
     }
+    public static String removeDuplicatesFromCommaList(String input_list) {
 
+        Boolean is_repeated;
+        List<String> parsed_cumulative_meaning_value = Arrays.asList(input_list.split(","));
+        StringBuilder final_cumulative_meaning_value = new StringBuilder("");
+        List<String> final_cumulative_meaning_value_array = new ArrayList<>();
+        String current_value;
+        for (int j = 0; j <parsed_cumulative_meaning_value.size(); j++) {
+            is_repeated = false;
+            current_value = parsed_cumulative_meaning_value.get(j).trim();
+            for (String s : final_cumulative_meaning_value_array) {
+                if (s.equals(current_value)) { is_repeated = true; break; }
+            }
+            if (!is_repeated)  final_cumulative_meaning_value_array.add(current_value);
+        }
+        for (int j = 0; j <final_cumulative_meaning_value_array.size(); j++) {
+            final_cumulative_meaning_value.append(final_cumulative_meaning_value_array.get(j).trim());
+            if (j <final_cumulative_meaning_value_array.size()-1) final_cumulative_meaning_value.append(", ");
+        }
+        return final_cumulative_meaning_value.toString();
+    }
 
     //OCR utilities
     public static int loadOCRImageContrastFromSharedPreferences(SharedPreferences sharedPreferences, Context context) {
@@ -370,6 +394,14 @@ public class Utilities {
         List<Word> wordsList = adaptJishoTreeToWordsList(parsedData);
 
         return wordsList;
+    }
+    public static List<Word> cleanUpProblematicWordsFromJisho(List<Word> words) {
+
+        //Clean up problematic words (e.g. that don't include a meaning)
+        for (Word word : words) {
+            if (word.getMeanings().size()==0) words.remove(word);
+        }
+        return words;
     }
     private static String getWebsiteXml(String websiteUrl, final Context context) {
 
@@ -769,5 +801,93 @@ public class Utilities {
         meanings_commas = Utilities.fromHtml(meanings_commas).toString();
         meanings_commas = meanings_commas.replaceAll("',", "'");
         return meanings_commas;
+    }
+
+
+    //Database utilities
+    public static FirebaseDatabase getDatabase() {
+        //inspired by: https://github.com/firebase/quickstart-android/issues/15
+        if (mDatabase == null) {
+            mDatabase = FirebaseDatabase.getInstance();
+            mDatabase.setPersistenceEnabled(true);
+        }
+        return mDatabase;
+    }
+    public static String cleanIdentifierForFirebase(String string) {
+        if (TextUtils.isEmpty(string)) return "";
+        string = string.replaceAll("\\.","*");
+        string = string.replaceAll("#","*");
+        string = string.replaceAll("\\$","*");
+        string = string.replaceAll("\\[","*");
+        string = string.replaceAll("]","*");
+        //string = string.replaceAll("\\{","*");
+        //string = string.replaceAll("}","*");
+        return string;
+    }
+    public static List<Word> mergeWordLists(List<Word> localWords, List<Word> asyncWords) {
+
+        List<Word> finalWordsList = new ArrayList<>();
+        List<Word> finalAsyncWords = new ArrayList<>(asyncWords);
+        Boolean async_meaning_found_locally;
+
+        for (int j = 0; j< localWords.size(); j++) {
+            Word currentLocalWord = localWords.get(j);
+            Word finalWord = new Word();
+            finalWord.setRomaji(currentLocalWord.getRomaji());
+            finalWord.setKanji(currentLocalWord.getKanji());
+            finalWord.setAltSpellings(currentLocalWord.getAltSpellings());
+
+            List<Word.Meaning> current_local_meanings = currentLocalWord.getMeanings();
+            List<Word.Meaning> current_final_meanings = new ArrayList<>(current_local_meanings);
+
+            int current_index = finalAsyncWords.size()-1;
+            while (current_index >= 0 && finalAsyncWords.size() != 0) {
+
+                if (current_index > finalAsyncWords.size()-1) {break;}
+                Word currentAsyncWord = finalAsyncWords.get(current_index);
+                List<Word.Meaning> current_async_meanings = currentAsyncWord.getMeanings();
+
+                if (    currentAsyncWord.getRomaji().equals(currentLocalWord.getRomaji())
+                        &&  currentAsyncWord.getKanji() .equals(currentLocalWord.getKanji())   ) {
+
+                    for (int m = 0; m< current_async_meanings.size(); m++) {
+
+                        async_meaning_found_locally = false;
+                        for (int k = 0; k< current_local_meanings.size(); k++) {
+
+                            if (current_local_meanings.get(k).getMeaning()
+                                    .contains( current_async_meanings.get(m).getMeaning() ) ) {
+                                async_meaning_found_locally = true;
+                                break;
+                            }
+                        }
+                        if (!async_meaning_found_locally) {
+                            current_final_meanings.add(current_async_meanings.get(m));
+                        }
+                    }
+                    finalAsyncWords.remove(current_index);
+                    if (current_index == 0) break;
+                }
+                else {
+                    current_index -= 1;
+                }
+            }
+            finalWord.setMeanings(current_final_meanings);
+            finalWordsList.add(finalWord);
+        }
+        finalWordsList.addAll(finalAsyncWords);
+
+        return finalWordsList;
+    }
+
+    //Preference utilities
+    public static Boolean getShowOnlineResultsPreference(Activity activity) {
+        Boolean showOnlineResults = false;
+        if (activity!=null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+            showOnlineResults = sharedPreferences.getBoolean(activity.getString(R.string.pref_complete_local_with_online_search_key),
+                    activity.getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default));
+        }
+        return showOnlineResults;
     }
 }

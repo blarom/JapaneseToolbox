@@ -267,4 +267,13 @@
     <string name="downloading_ocr_data_second_part">OCR data on Wifi only.</string>
     <string name="attempting_download_first_part">Attempting to download the</string>
     <string name="attempting_download_second_part">OCR data. Please wait.</string>
+    <string name="failed_to_connect_to_internet">Failed to connect to the Internet.</string>
+    <string name="saved_local_results">saved_local_results</string>
+    <string name="saved_merged_results">saved_merged_results</string>
+    <string name="saved_input_query">saved_input_query</string>
+    <string name="dictonary_fragment_instance">dictonary_fragment_instance</string>
+    <string name="conjugator_fragment_instance">conjugator_fragment_instance</string>
+    <string name="convert_fragment_instance">convert_fragment_instance</string>
+    <string name="search_by_radical_fragment_instance">search_by_radical_fragment_instance</string>
+    <string name="decompose_fragment_instance">decompose_fragment_instance</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.japanesetoolboxapp.ui;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
@@ -113,20 +112,18 @@ public class MainActivity extends AppCompatActivity implements
     public static Boolean enough_memory_for_heavy_functions;
     Intent restartIntent;
     Toast mLastToast;
-    private FirebaseAuth mFirebaseAuth;
 
     public static Boolean mShowOnlineResults;
     public static String mChosenSpeechToTextLanguage;
     public static String mChosenTextToSpeechLanguage;
     public static String mChosenOCRLanguage;
-    public static boolean activityResumedFromSTTOrOCR;
     private float mOcrImageDefaultContrast;
     private float mOcrImageDefaultBrightness;
     private float mOcrImageDefaultSaturation;
     private FragmentManager mFragmentManager;
-    private FragmentTransaction mFragmentTransaction;
     private Bundle mSavedInstanceState;
     private Unbinder mBinding;
+    private DictionaryFragment mDictionaryFragment;
     //endregion
 
 
@@ -164,7 +161,6 @@ public class MainActivity extends AppCompatActivity implements
     }
     @Override protected void onResume() {
         super.onResume();
-        //activityResumedFromSTTOrOCR = false;
     }
     @Override public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -182,8 +178,8 @@ public class MainActivity extends AppCompatActivity implements
         mBinding.unbind();
     }
     @Override public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 0) {
-            getFragmentManager().popBackStack();
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
         } else {
             super.onBackPressed();
         }
@@ -279,9 +275,7 @@ public class MainActivity extends AppCompatActivity implements
     //Functionality methods
     private void initializeParameters() {
 
-
         mBinding =  ButterKnife.bind(this);
-        activityResumedFromSTTOrOCR = false;
         mSecondFragmentFlag = "start";
 
         //Code allowing to bypass strict mode
@@ -307,23 +301,23 @@ public class MainActivity extends AppCompatActivity implements
 
         // Get the fragment manager
         mFragmentManager = getSupportFragmentManager();
-        mFragmentTransaction = mFragmentManager.beginTransaction();
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 
         // Load the Fragments depending on the device orientation
         Configuration config = getResources().getConfiguration();
         if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             if (mSavedInstanceState == null) {
                 mInputQueryFragment = new InputQueryFragment();
-                mFragmentTransaction.add(R.id.input_query_placeholder, mInputQueryFragment);
+                fragmentTransaction.add(R.id.input_query_placeholder, mInputQueryFragment);
             }
         } else {
             if (mSavedInstanceState == null) {
                 mInputQueryFragment = new InputQueryFragment();
-                mFragmentTransaction.add(R.id.input_query_placeholder, mInputQueryFragment);
+                fragmentTransaction.add(R.id.input_query_placeholder, mInputQueryFragment);
             }
         }
 
-        mFragmentTransaction.commit();
+        fragmentTransaction.commit();
     }
     private void showDatabaseLoadingToast(final String message, final Context context) {
         runOnUiThread(new Runnable() {
@@ -498,6 +492,15 @@ public class MainActivity extends AppCompatActivity implements
         if (mInputQueryFragment!=null) mInputQueryFragment.setQuery(word);
         fragmentTransaction.commit();
     }
+    public void clearBackstack() {
+
+        mFragmentManager = getSupportFragmentManager();
+        if (mFragmentManager!=null && mFragmentManager.getBackStackEntryCount()>0) {
+            FragmentManager.BackStackEntry entry = getSupportFragmentManager().getBackStackEntryAt(0);
+            getSupportFragmentManager().popBackStack(entry.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            getSupportFragmentManager().executePendingTransactions();
+        }
+    }
 
 
     //Communication with other classes:
@@ -505,27 +508,33 @@ public class MainActivity extends AppCompatActivity implements
     //Communication with InputQueryFragment
     @Override public void onDictRequested(String query) {
 
+        clearBackstack();
+
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
 
-        DictionaryFragment dictionaryFragment = new DictionaryFragment();
+        if (mDictionaryFragment==null) {
+            mDictionaryFragment = new DictionaryFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(getString(R.string.user_query_word), query);
+            mDictionaryFragment.setArguments(bundle);
+        }
+        else {
+            mDictionaryFragment.setQuery(query);
+        }
 
-        Bundle bundle = new Bundle();
-        bundle.putString(getString(R.string.user_query_word), query);
-        dictionaryFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.second_fragment_placeholder, dictionaryFragment);
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, mDictionaryFragment, getString(R.string.dictonary_fragment_instance));
 
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commitAllowingStateLoss(); //TODO: change this?
+        fragmentTransaction.addToBackStack(getString(R.string.dictonary_fragment_instance));
+        fragmentTransaction.commit();
     }
     @Override public void onConjRequested(String query) {
 
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
-
 
         ConjugatorFragment conjugatorFragment = new ConjugatorFragment();
 
@@ -535,10 +544,10 @@ public class MainActivity extends AppCompatActivity implements
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.second_fragment_placeholder, conjugatorFragment);
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, conjugatorFragment, getString(R.string.conjugator_fragment_instance));
 
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commitAllowingStateLoss(); //TODO: change this?
+        fragmentTransaction.addToBackStack(getString(R.string.conjugator_fragment_instance));
+        fragmentTransaction.commit();
     }
     @Override public void onConvertRequested(String query) {
 
@@ -553,10 +562,10 @@ public class MainActivity extends AppCompatActivity implements
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.second_fragment_placeholder, convertFragment);
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, convertFragment, getString(R.string.convert_fragment_instance));
 
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commitAllowingStateLoss ();
+        fragmentTransaction.addToBackStack(getString(R.string.convert_fragment_instance));
+        fragmentTransaction.commit();
     }
     @Override public void onSearchByRadicalRequested(String query) {
 
@@ -571,10 +580,10 @@ public class MainActivity extends AppCompatActivity implements
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.second_fragment_placeholder, SearchByRadicalFragment);
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, SearchByRadicalFragment, getString(R.string.search_by_radical_fragment_instance));
 
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commitAllowingStateLoss ();
+        fragmentTransaction.addToBackStack(getString(R.string.search_by_radical_fragment_instance));
+        fragmentTransaction.commit();
 
     }
     @Override public void onDecomposeRequested(String query) {
@@ -590,10 +599,10 @@ public class MainActivity extends AppCompatActivity implements
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.second_fragment_placeholder, DecomposeKanjiFragment);
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, DecomposeKanjiFragment, getString(R.string.decompose_fragment_instance));
 
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commitAllowingStateLoss ();
+        fragmentTransaction.addToBackStack(getString(R.string.decompose_fragment_instance));
+        fragmentTransaction.commit();
     }
 
     //Communication with DictionaryFragment
