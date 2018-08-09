@@ -20,6 +20,8 @@ public final class GlobalConstants {
     public final static int VerbModule_colIndex_ustem       = ColIndexConverter("g");
     public final static int VerbModule_colIndex_rootKanji   = ColIndexConverter("h");
     public final static int VerbModule_colIndex_rootLatin   = ColIndexConverter("i");
+    public final static int VerbModule_colIndex_exception   = ColIndexConverter("j");
+    public final static int VerbModule_colIndex_altSpellings = ColIndexConverter("k");
     public final static int VerbModule_colIndex_istem       = ColIndexConverter("j");
 
     public final static int GrammarModule_colIndex_Id			 	= ColIndexConverter("a");
