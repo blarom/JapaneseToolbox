@@ -132,7 +132,8 @@
     <string name="Romaji">Romaji</string>
     <string name="Kanji">Kanji</string>
     <string name="verbHint">
-        \n<b>In order to keep the search time reasonable, not all verb tenses are included. As such, please observe the following rules:</b>
+        <b>Please enter a valid verb conjugation.</b>
+        \n\n<b>In order to keep the search time reasonable, not all verb tenses are included. As such, please observe the following rules:</b>
         \n\nWhen looking up less common conjugations (e.g. tabesaseta), you may have to convert the verb to present tense (tabesaseru).
         \n\nIf you\&apos;re searching for a compound verb (e.g. tabete ikimasu), you must first convert the second verb to its dictionary form (tabete iku).
         \n\nIf you\&apos;re searching for a verb addition (e.g. taberu bakari), use the &lt;DICT&gt; search on \&quot;bakari\&quot; to look up the corresponding grammar rule.
@@ -276,4 +277,5 @@
     <string name="convert_fragment_instance">convert_fragment_instance</string>
     <string name="search_by_radical_fragment_instance">search_by_radical_fragment_instance</string>
     <string name="decompose_fragment_instance">decompose_fragment_instance</string>
+    <string name="saved_matching_verbs">saved_matching_verbs</string>
 </resources>

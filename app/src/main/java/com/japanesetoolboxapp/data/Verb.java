@@ -22,7 +22,7 @@ public class Verb {
         this.altSpellings = altSpellings;
     }
 
-    private String family;
+    private String family = "";
     public String getFamily() {
         return family;
     }
@@ -30,7 +30,7 @@ public class Verb {
         this.family = family;
     }
 
-    private String meaning;
+    private String meaning = "";
     public String getMeaning() {
         return meaning;
     }
@@ -38,7 +38,7 @@ public class Verb {
         this.meaning = meaning;
     }
 
-    private String trans;
+    private String trans = "";
     public String getTrans() {
         return trans;
     }
@@ -46,7 +46,7 @@ public class Verb {
         this.trans = trans;
     }
 
-    private String preposition;
+    private String preposition = "";
     public String getPreposition() {
         return preposition;
     }
@@ -54,7 +54,7 @@ public class Verb {
         this.preposition = preposition;
     }
 
-    private String kana;
+    private String kana = "";
     public String getKana() {
         return kana;
     }
@@ -62,7 +62,7 @@ public class Verb {
         this.kana = kana;
     }
 
-    private String kanji;
+    private String kanji = "";
     public String getKanji() {
         return kanji;
     }
@@ -70,7 +70,7 @@ public class Verb {
         this.kanji = kanji;
     }
 
-    private String romaji;
+    private String romaji = "";
     public String getRomaji() {
         return romaji;
     }
@@ -78,7 +78,7 @@ public class Verb {
         this.romaji = romaji;
     }
 
-    private String kanjiRoot;
+    private String kanjiRoot = "";
     public String getKanjiRoot() {
         return kanjiRoot;
     }
@@ -86,7 +86,7 @@ public class Verb {
         this.kanjiRoot = kanjiRoot;
     }
 
-    private String latinRoot;
+    private String latinRoot = "";
     public String getLatinRoot() {
         return latinRoot;
     }
@@ -94,7 +94,7 @@ public class Verb {
         this.latinRoot = latinRoot;
     }
 
-    private String exceptionIndex;
+    private String exceptionIndex = "";
     public String getExceptionIndex() {
         return exceptionIndex;
     }
@@ -102,7 +102,7 @@ public class Verb {
         this.exceptionIndex = exceptionIndex;
     }
 
-    private String altSpellings;
+    private String altSpellings = "";
     public String getAltSpellings() {
         return altSpellings;
     }

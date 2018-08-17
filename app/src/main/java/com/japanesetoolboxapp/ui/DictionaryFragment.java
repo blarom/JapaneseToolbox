@@ -139,13 +139,18 @@ public class DictionaryFragment extends Fragment implements
     //Asynchronous methods
     @NonNull @Override public Loader<List<Word>> onCreateLoader(int id, final Bundle args) {
 
+        String inputQuery = "";
+        if (args!=null && args.getString(getString(R.string.saved_input_query))!=null) {
+            inputQuery = args.getString(getString(R.string.saved_input_query));
+        }
+
         if (id == JISHO_WEB_SEARCH_LOADER) {
-            JishoResultsAsyncTaskLoader jishoResultsAsyncTaskLoader = new JishoResultsAsyncTaskLoader(getContext(), mInputQuery, mInternetIsAvailable);
+            JishoResultsAsyncTaskLoader jishoResultsAsyncTaskLoader = new JishoResultsAsyncTaskLoader(getContext(), inputQuery, mInternetIsAvailable);
             jishoResultsAsyncTaskLoader.setLoaderState(true);
             return jishoResultsAsyncTaskLoader;
         }
         else if (id == ROOM_DB_SEARCH_LOADER){
-            RoomDbSearchAsyncTaskLoader roomDbSearchLoader = new RoomDbSearchAsyncTaskLoader(getContext(), mInputQuery);
+            RoomDbSearchAsyncTaskLoader roomDbSearchLoader = new RoomDbSearchAsyncTaskLoader(getContext(), inputQuery);
             return roomDbSearchLoader;
         }
         else return new RoomDbSearchAsyncTaskLoader(getContext(), "");
@@ -299,8 +304,10 @@ public class DictionaryFragment extends Fragment implements
         if (getActivity()!=null) {
             LoaderManager loaderManager = getActivity().getSupportLoaderManager();
             Loader<String> roomDbSearchLoader = loaderManager.getLoader(ROOM_DB_SEARCH_LOADER);
-            if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_SEARCH_LOADER, null, this);
-            else loaderManager.restartLoader(ROOM_DB_SEARCH_LOADER, null, this);
+            Bundle bundle = new Bundle();
+            bundle.putString(getString(R.string.saved_input_query), mInputQuery);
+            if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_SEARCH_LOADER, bundle, this);
+            else loaderManager.restartLoader(ROOM_DB_SEARCH_LOADER, bundle, this);
         }
     }
     private void showEmptySearchResults() {
@@ -322,7 +329,7 @@ public class DictionaryFragment extends Fragment implements
             if (getActivity() != null) {
 
                 Bundle queryBundle = new Bundle();
-                queryBundle.putString(JISHO_LOADER_INPUT_EXTRA, mInputQuery);
+                queryBundle.putString(getString(R.string.saved_input_query), mInputQuery);
 
                 //Attempting to access jisho.org to complete the results found in the local dictionary
                 LoaderManager loaderManager = getActivity().getSupportLoaderManager();
@@ -350,6 +357,8 @@ public class DictionaryFragment extends Fragment implements
     }
     private void createExpandableListViewContentsFromWordsList(List<Word> wordsList) {
 
+        if (getContext()==null) return;
+        
         //Initialization
         mExpandableListDataHeader = new ArrayList<>();
         mExpandableListHeaderDetails = new HashMap<>();

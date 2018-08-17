@@ -513,15 +513,19 @@ public class MainActivity extends AppCompatActivity implements
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
 
-        if (mDictionaryFragment==null) {
-            mDictionaryFragment = new DictionaryFragment();
-            Bundle bundle = new Bundle();
-            bundle.putString(getString(R.string.user_query_word), query);
-            mDictionaryFragment.setArguments(bundle);
-        }
-        else {
-            mDictionaryFragment.setQuery(query);
-        }
+        mDictionaryFragment = new DictionaryFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(getString(R.string.user_query_word), query);
+        mDictionaryFragment.setArguments(bundle);
+//        if (mDictionaryFragment==null) {
+//
+//        }
+//        else {
+//            mDictionaryFragment.setQuery(query);
+//            Bundle bundle = new Bundle();
+//            bundle.putString(getString(R.string.user_query_word), query);
+//            mDictionaryFragment.setArguments(bundle);
+//        }
 
 
         FragmentManager fragmentManager = getSupportFragmentManager();

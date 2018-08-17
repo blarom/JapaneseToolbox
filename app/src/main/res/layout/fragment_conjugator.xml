@@ -1,146 +1,157 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
     android:id="@+id/fragment_verbmodule"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:clickable="true"
-    android:focusableInTouchMode="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:paddingBottom="@dimen/activity_vertical_margin">
 
     <RelativeLayout
-        android:id="@+id/VerbChooserSpinnerBox"
-        android:orientation="horizontal"
+        android:id="@+id/verb_chooser_spinner_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Spinner
             android:id="@+id/verb_chooser_spinner"
             android:layout_width="match_parent"
             android:layout_height="72dp"
-            android:singleLine="false"
-            android:background="#BFFFFFFF"
+            android:layout_marginBottom="2dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="4dp"
-            android:layout_marginBottom="2dp"
-            android:layout_marginTop="0dp" />
+            android:layout_marginTop="0dp"
+            android:background="#BFFFFFFF"
+            android:singleLine="false"/>
+
         <TextView
+            android:layout_width="14dp"
+            android:layout_height="62dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="2dp"
+            android:background="#1F0000FF"
             android:gravity="center|center"
             android:text="|\n|\nV"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#000000"
-            android:textSize="14sp"
-            android:background="#1F0000FF"
-            android:layout_width="14dp"
-            android:layout_height="62dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginTop="2dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentEnd="true" />
+            android:textSize="14sp"/>
     </RelativeLayout>
+
     <TextView
         android:id="@+id/verb_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/verbHint"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="0dp"
-        android:layout_below="@+id/VerbChooserSpinnerBox"
-        android:background="#BFFFFFFF"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/verb_chooser_spinner_container"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="0dp"
+        android:background="#BFFFFFFF"
+        android:text="@string/verbHint"/>
 
     <ScrollView
         android:id="@+id/conjugations_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/VerbChooserSpinnerBox"
+        android:layout_alignStart="@+id/verb_chooser_spinner_container"
         android:layout_below="@+id/verb_hint"
         android:layout_marginBottom="0dp"
-        android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:layout_marginTop="0dp" >
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal|center_vertical"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
 
             <RelativeLayout
                 android:id="@+id/ConjugationChooserSpinnerBox"
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <Spinner
                     android:id="@+id/conjugations_chooser_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#BFFFFFFF"
-                    android:singleLine="false"
-                    android:gravity="top|left"
+                    android:layout_marginBottom="2dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="4dp"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginTop="0dp" />
+                    android:layout_marginTop="0dp"
+                    android:background="#BFFFFFFF"
+                    android:gravity="top|left"
+                    android:singleLine="false"/>
+
                 <TextView
+                    android:layout_width="14dp"
+                    android:layout_height="56dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#1F0000FF"
                     android:gravity="center|center"
                     android:text="|\n|\nV"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="#000000"
-                    android:textSize="14sp"
-                    android:background="#1F0000FF"
-                    android:layout_width="14dp"
-                    android:layout_height="56dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentEnd="true" />
+                    android:textSize="14sp"/>
             </RelativeLayout>
 
 
-		    <RadioGroup
-		        android:id="@+id/radio_romaji_or_kanji"
-		        android:layout_width="200dp"
-		        android:layout_height="wrap_content"
-		        android:orientation="horizontal" >
-		
-		        <RadioButton
-		            android:id="@+id/radio_Romaji"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:checked="true"
-		            android:text="@string/Romaji" />
-		
-		        <RadioButton
-		            android:id="@+id/radio_Kanji"
-		            android:layout_width="wrap_content"
-		        	android:layout_marginStart="15dp"
-		            android:layout_height="wrap_content"
-		            android:text="@string/Kanji" />
-		    </RadioGroup>
-	    
+            <RadioGroup
+                android:id="@+id/radio_romaji_or_kanji"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_Romaji"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/Romaji"/>
+
+                <RadioButton
+                    android:id="@+id/radio_Kanji"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/Kanji"/>
+            </RadioGroup>
+
             <LinearLayout
                 android:id="@+id/TenseLayout0"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense0"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense0_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/TenseLayout1"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense1"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense1_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
@@ -148,98 +159,116 @@
 
             <LinearLayout
                 android:id="@+id/TenseLayout2"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense2"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense2_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/TenseLayout3"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense3"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense3_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/TenseLayout4"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense4"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense4_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/TenseLayout5"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense5"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense5_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/TenseLayout6"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense6"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense6_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/TenseLayout7"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense7"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense7_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/TenseLayout8"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense8"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense8_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/TenseLayout9"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense9"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense9_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
-            
+
             <LinearLayout
                 android:id="@+id/TenseLayout10"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense10"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense10_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
@@ -247,10 +276,12 @@
 
             <LinearLayout
                 android:id="@+id/TenseLayout11"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense11"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense11_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
@@ -258,10 +289,12 @@
 
             <LinearLayout
                 android:id="@+id/TenseLayout12"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense12"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense12_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
@@ -269,17 +302,19 @@
 
             <LinearLayout
                 android:id="@+id/TenseLayout13"
-                style="@style/VerbCharacteristicsDisplayLinearLayout" >
+                style="@style/VerbCharacteristicsDisplayLinearLayout">
+
                 <TextView
                     android:id="@+id/Tense13"
-                    style="@style/VerbCharacteristicsDisplayLabel" />
+                    style="@style/VerbCharacteristicsDisplayLabel"/>
+
                 <TextView
                     android:id="@+id/Tense13_Result"
                     style="@style/VerbCharacteristicsDisplayResult"/>
             </LinearLayout>
         </LinearLayout>
-	
-	
+
+
     </ScrollView>
-    
+
 </RelativeLayout>
