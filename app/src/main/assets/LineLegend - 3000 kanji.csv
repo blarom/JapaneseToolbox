@@ -3,6 +3,7 @@ A|Adverb|
 ADc|Adverb: Declarative|
 ADg|Adverb: Degree|
 Ai|Adjective (i-keiyoushi)|
+Aj|Adjective (general)|
 AM|Adverb: Manner|
 Ana|Adjectivial Noun (na-keiyoushi)|
 AO|Adverb: Order|
@@ -45,8 +46,7 @@ NW|Noun: Weeks|
 NY|Noun: Years|
 OI|Onomatopeia & Interjections|
 P|Pronoun|
-PNA|Pre-noun adjectivial|
-PP|Particle/Preposition|
+PP|Particle/Preposition/Conjunction|
 Px|Prefix|
 Sa|Special adjective|
 SI|Special: Interrogative|
@@ -61,6 +61,7 @@ SSR|Sentence Structure: Reference|
 SSSi|Sentence Structure: Simultaneous Facts|
 SSSq|Sentence Structure: Sequential Facts|
 Sx|Suffix|
+UNC|Unclassified|
 VbuI|Verb bu godan, intrans.|
 VbuT|Verb bu godan, trans.|
 VC|Verb Conjugation|

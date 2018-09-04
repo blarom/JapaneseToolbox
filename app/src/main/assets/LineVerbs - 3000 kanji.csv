@@ -868,7 +868,7 @@ u godan|do up (hair), braid, fasten, fix|T|を|ゆう|結う|yuu|結|yu||
 u godan|congratulate, celebrate, observe (a festival)|T|を|いわう|祝う|iwau|祝|iwa||
 u godan|protect someone, take under one's wing, plead for, stick up for, cover up for someone|T|を|かばう|庇う|kabau|庇|kaba||
 u godan|mind, care (for, about), be concerned about, prepare for, interfere with, meddle in, tease|T|を|かまう|構う|kamau|構|kama||
-u godan|come true (wish), be suited to, match (implies competition), rival, bear (e.g. I can't bear the heat)|I||かなう|叶う|kanau|叶|latin||
+u godan|come true (wish), be suited to, match (implies competition), rival, bear (e.g. I can't bear the heat)|I||かなう|叶う|kanau|叶|kana||
 u godan|ridicule, tease, mock, chaff, razz, banter with, make fun of, poke fun at, make cracks about|T|を|からかう|揶揄う|karakau|揶揄|karaka||
 u godan|worry about, feel anxious about, have apprehensions of|I||きづかう|気遣う|kidukau|気遣|kiduka||
 u godan|cross each other, run counter to, differ, clash, go awry, disagree|I||くいちがう|食い違う|kuichigau|食い違|kuichiga||
@@ -1002,7 +1002,7 @@ ru ichidan|start|T|を|はじめる|始める|hajimeru|始め|hajime||
 ru ichidan|examine, inspect, investigate, check up, sense, study, inquire, search for (in a dictionary)|T|を|しらべる|調べる|shiraberu|調べ|shirabe||
 ru ichidan|bathe, take a shower, bask in (e.g. the sun), be flooded with (e.g. light), shower, suffer (an attack), draw criticism|T|を|あびる|浴びる|abiru|浴び|abi||
 ru ichidan|answer|T|を|こたえる|答える|kotaeru|答え|kotae||
-ru ichidan|know|T|を|ごぞんじる|ご存じる|(go)zonjiru|ご存じ|(go)zonji|61|
+ru ichidan|know|T|を|ぞんじる|存じる|zonjiru|存じ|zonji|61|
 ru ichidan|believe, trust|T|を|しんじる|信じる|shinjiru|信じ|shinji||
 ru ichidan|consider, think about|T|を/と|かんがえる|考える|kangaeru|考え|kangae||
 ru ichidan|become greasy|I||あぶらじみる|脂染みる|aburajimiru|脂染み|aburajimi||
@@ -1403,7 +1403,7 @@ suru verb|love|T|を|あいする|愛する|ai suru|愛|ai ||
 suru verb|attemp, challenge|T|を|ちょおせんする|挑戦する|choosen suru|挑戦|choosen ||
 suru verb|type|T|を|たいぷする|タイプする|taipu suru|タイプ|taipu ||
 suru verb|fax|T|を|ふぁあっくすする|ファックスする|faakkusu suru|ファックス|faakkusu ||
-suru verb|introduce|T|を|ごしょうかいする|ご紹介する|(go)shoukai suru|ご紹介|(go)shoukai ||
+suru verb|introduce|T|を|しょうかいする|紹介する|shoukai suru|紹介|shoukai ||
 suru verb|stay|I||たいざいする|滞在する|taizai suru|滞在|taizai ||
 suru verb|order (something)|T|を|ちゅうもんする|注文する|chuumon suru|注文|chuumon ||
 suru verb|reserve, book, order in advance|T|を|よやくする|予約する|yoyaku suru|予約|yoyaku ||
@@ -1680,4 +1680,23 @@ suru verb|be in trouble, be in difficulty, be in pain, be anxious, be worried, b
 suru verb|make an effort, exert oneself, endeavour, endeavor, work hard, strive|I||どりょくする|努力する|doryoku suru|努力|doryoku ||
 suru verb|work too hard, try too hard​|I||むりする|無理する|muri suru|無理|muri ||
 suru verb|restrict, restrain, bind, constrain|T|を|こうそくする|拘束する|kousoku suru|拘束|kousoku ||
+suru verb|inquire, enquire, query|I||しょうかいする|照会する|shoukai suru|照会|shoukai||
+suru verb|hold on tighly, hold on firmly, hold on securely, be strongly built, be solidly built, be sturdy, be steady, to work hard, be reliable, be dependable, be levelheaded, be shrewd, be wise, be clever|I||しっかりする|確りする|shikkari suru|確り|shikkari||
+suru verb|direct, instruct, order, command|T|を|さしずする|指図する|sashizu suru|指図|sashizu||
+suru verb|consent, assent, agree, understand, comprehend, grasp|T|を|なっとくする|納得する|nattoku suru|納得|nattoku||
+suru verb|be in full blossom, be in full bloom|I||まんかいする|満開する|mankai suru|満開|mankai||
+suru verb|provide a meal, provide a lunch service|I||きゅうしょくする|給食する|kyuushoku suru|給食|kyuushoku||
+suru verb|job hunt, seek employment|I||きゅうしょくする|求職する|kyuushoku suru|求職|kyuushoku||
+suru verb|retire temporarily, be suspended from office|I||きゅうしょくする|休職する|kyuushoku suru|休職|kyuushoku||
+suru verb|expect, anticipate, hope|I||きたいする|期待する|kitai suru|期待|kitai||
+suru verb|contribute, donate|I||きふする|寄付する|kifu suru|寄付|kifu||
+suru verb|lay flowers as an offering or tribute|I||けんかする|献花する|kenka suru|献花|kenka||
+suru verb|supervise, control, direct|T|を|かんとくする|監督する|kantoku suru|監督|kantoku||
+suru verb|coordinate, organize|T|を|かんじする|幹事する|kanji suru|幹事|kanji||
+suru verb|recover completely|I||かんちする|完治する|kanchi suru|完治|kanchi||
+suru verb|be confident (in oneself)|I||じしんする|自信する|jishin suru|自信|jishin||
+suru verb|pride, boast|I||じまんする|自慢する|jiman suru|自慢|jiman||
 -|-|-||||||||
+||||||||||
+||||||||||
+||||||||||

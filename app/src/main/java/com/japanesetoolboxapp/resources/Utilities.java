@@ -22,7 +22,6 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ListPopupWindow;
 
 import com.google.firebase.database.FirebaseDatabase;
 import com.japanesetoolboxapp.ui.ConvertFragment;
@@ -250,6 +249,7 @@ public class Utilities {
         }
         return final_cumulative_meaning_value.toString();
     }
+
 
     //OCR utilities
     public static int loadOCRImageContrastFromSharedPreferences(SharedPreferences sharedPreferences, Context context) {
@@ -555,20 +555,33 @@ public class Utilities {
         if (primaryData==null) return new ArrayList<>();
         List<Object> exactBlockData = (List<Object>) getElementAtHeader(primaryData,"exact_block");
         if (exactBlockData==null) return new ArrayList<>();
+        List<Object> conceptsBlockData = (List<Object>) getElementAtHeader(primaryData,"concepts");
+        if (conceptsBlockData==null) return new ArrayList<>();
         //endregion
 
         //Extracting the list of hits
+        List<Word> wordsList = new ArrayList<>();
+
+        wordsList.addAll(addWordsFromBigBlock(exactBlockData, 3));
+        wordsList.addAll(addWordsFromBigBlock(conceptsBlockData, 1));
+
+
+        return wordsList;
+    }
+    private static List<Word> addWordsFromBigBlock(List<Object> bigBlockData, int startingSubBlock) {
+
+        List<Word> wordsList = new ArrayList<>();
         String kanji;
         StringBuilder romaji;
         List<String> meaningTagsFromTree;
         List<String> meaningsFromTree;
-        List<Word> wordsList = new ArrayList<>();
-
-        for (int i=3; i<exactBlockData.size(); i=i+2) {
+        for (int i = startingSubBlock; i< bigBlockData.size(); i=i+2) {
 
             Word currentWord = new Word();
 
-            List<Object> conceptLightClearFixData = (List<Object>) exactBlockData.get(i);
+            if (!(bigBlockData.get(i) instanceof List)) break;
+            List<Object> conceptLightClearFixData = (List<Object>) bigBlockData.get(i);
+            if (!(conceptLightClearFixData.get(1) instanceof List)) break;
             List<Object> conceptLightWrapperData = (List<Object>) conceptLightClearFixData.get(1);
             List<Object> conceptLightReadingsData = (List<Object>) conceptLightWrapperData.get(1);
             List<Object> conceptLightRepresentationData = (List<Object>) conceptLightReadingsData.get(1);
@@ -824,11 +837,11 @@ public class Utilities {
         //string = string.replaceAll("}","*");
         return string;
     }
-    public static List<Word> mergeWordLists(List<Word> localWords, List<Word> asyncWords) {
+    public static List<Word> getMergedWordsList(List<Word> localWords, List<Word> asyncWords) {
 
         List<Word> finalWordsList = new ArrayList<>();
         List<Word> finalAsyncWords = new ArrayList<>(asyncWords);
-        Boolean async_meaning_found_locally;
+        boolean asyncMeaningFoundLocally;
 
         for (int j = 0; j< localWords.size(); j++) {
             Word currentLocalWord = localWords.get(j);
@@ -837,47 +850,122 @@ public class Utilities {
             finalWord.setKanji(currentLocalWord.getKanji());
             finalWord.setAltSpellings(currentLocalWord.getAltSpellings());
 
-            List<Word.Meaning> current_local_meanings = currentLocalWord.getMeanings();
-            List<Word.Meaning> current_final_meanings = new ArrayList<>(current_local_meanings);
+            List<Word.Meaning> currentLocalMeanings = currentLocalWord.getMeanings();
+            List<Word.Meaning> currentFinalMeanings = new ArrayList<>(currentLocalMeanings);
 
-            int current_index = finalAsyncWords.size()-1;
-            while (current_index >= 0 && finalAsyncWords.size() != 0) {
+            int currentIndex = finalAsyncWords.size()-1;
+            while (currentIndex >= 0 && finalAsyncWords.size() != 0) {
 
-                if (current_index > finalAsyncWords.size()-1) {break;}
-                Word currentAsyncWord = finalAsyncWords.get(current_index);
-                List<Word.Meaning> current_async_meanings = currentAsyncWord.getMeanings();
+                if (currentIndex > finalAsyncWords.size()-1) break;
+
+                Word currentAsyncWord = finalAsyncWords.get(currentIndex);
+                List<Word.Meaning> currentAsyncMeanings = currentAsyncWord.getMeanings();
 
                 if (    currentAsyncWord.getRomaji().equals(currentLocalWord.getRomaji())
-                        &&  currentAsyncWord.getKanji() .equals(currentLocalWord.getKanji())   ) {
+                        &&  currentAsyncWord.getKanji().equals(currentLocalWord.getKanji())   ) {
 
-                    for (int m = 0; m< current_async_meanings.size(); m++) {
+                    for (int m = 0; m< currentAsyncMeanings.size(); m++) {
 
-                        async_meaning_found_locally = false;
-                        for (int k = 0; k< current_local_meanings.size(); k++) {
+                        asyncMeaningFoundLocally = false;
+                        for (int k = 0; k< currentLocalMeanings.size(); k++) {
 
-                            if (current_local_meanings.get(k).getMeaning()
-                                    .contains( current_async_meanings.get(m).getMeaning() ) ) {
-                                async_meaning_found_locally = true;
+                            if (currentLocalMeanings.get(k).getMeaning()
+                                    .contains( currentAsyncMeanings.get(m).getMeaning() ) ) {
+                                asyncMeaningFoundLocally = true;
                                 break;
                             }
                         }
-                        if (!async_meaning_found_locally) {
-                            current_final_meanings.add(current_async_meanings.get(m));
+                        if (!asyncMeaningFoundLocally) {
+                            currentFinalMeanings.add(currentAsyncMeanings.get(m));
                         }
                     }
-                    finalAsyncWords.remove(current_index);
-                    if (current_index == 0) break;
+                    finalAsyncWords.remove(currentIndex);
+                    if (currentIndex == 0) break;
                 }
                 else {
-                    current_index -= 1;
+                    currentIndex -= 1;
                 }
             }
-            finalWord.setMeanings(current_final_meanings);
+            finalWord.setMeanings(currentFinalMeanings);
             finalWordsList.add(finalWord);
         }
         finalWordsList.addAll(finalAsyncWords);
 
         return finalWordsList;
+    }
+    public static List<Word> getDifferentAsyncWords(List<Word> localWords, List<Word> asyncWords) {
+
+        List<Word> differentAsyncWords = new ArrayList<>();
+        List<Word> remainingLocalWords = new ArrayList<>(localWords);
+        List<Word.Meaning> localMeanings;
+        List<Word.Meaning> asyncMeanings;
+        List<Word.Meaning> remainingLocalMeanings;
+        boolean foundMatchingLocalWord;
+        int localMeaningIndex ;
+        int localWordIndex;
+        String asyncRomaji;
+        String localRomaji;
+        String asyncKanji;
+        String localKanji;
+
+        Word localWord;
+
+        for (Word asyncWord : asyncWords) {
+
+            foundMatchingLocalWord = false;
+            localWordIndex = 0;
+            while (localWordIndex < remainingLocalWords.size()) {
+
+                localWord = remainingLocalWords.get(localWordIndex);
+                asyncRomaji = asyncWord.getRomaji();
+                localRomaji = localWord.getRomaji();
+                asyncKanji = asyncWord.getKanji();
+                localKanji = localWord.getKanji();
+
+                if ( asyncRomaji.equals(localRomaji) && asyncKanji.equals(localKanji) ) {
+
+                    foundMatchingLocalWord = true;
+
+                    localMeanings = localWord.getMeanings();
+                    remainingLocalMeanings = new ArrayList<>(localMeanings);
+                    asyncMeanings = asyncWord.getMeanings();
+
+                    for (int i=0; i<asyncMeanings.size(); i++) {
+
+                        localMeaningIndex = 0;
+                        while (localMeaningIndex < remainingLocalMeanings.size()) {
+
+                            if ( remainingLocalMeanings.get(localMeaningIndex).getMeaning().equals(asyncMeanings.get(i).getMeaning()) ) {
+                                remainingLocalMeanings.remove(localMeaningIndex);
+                            }
+                            else {
+                                localMeaningIndex++;
+                            }
+                        }
+                    }
+
+                    if (remainingLocalMeanings.size()>0) differentAsyncWords.add(asyncWord);
+
+                    remainingLocalWords.remove(localWord);
+                    break;
+                }
+                else {
+                    localWordIndex++;
+                }
+            }
+
+            if (!foundMatchingLocalWord) differentAsyncWords.add(asyncWord);
+
+        }
+
+        return differentAsyncWords;
+    }
+    public static List<Word> getCommonWords(List<Word> wordsList) {
+        List<Word> commonWords = new ArrayList<>();
+        for (Word word : wordsList) {
+            if (word.getCommonStatus()==1) commonWords.add(word);
+        }
+        return commonWords;
     }
 
     //Preference utilities
@@ -890,4 +978,5 @@ public class Utilities {
         }
         return showOnlineResults;
     }
+
 }

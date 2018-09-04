@@ -475,9 +475,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 475|approximately, about (quantity, time)|ADg|||632, 141|||
 476|approximately, about, at most|ADg|||1468, 1469, 1470|||
 477|degree, extent, bounds, limit|NACF||||||
-478|as ever, as usual, the same|ADg|Based on the "zu" conjugation of kawaru (ie. without changing).||1413|||
+478|as ever, as usual, the same, still|ADg|Based on the "zu" conjugation of kawaru (ie. without changing).||1413|||
 479|at last, at length|ADg||||||
-480|barely, narrowly, just|ADg||||||
+480|barely, narrowly, just, by the skin of one's teeth|ADg||||||
 481|heave-ho|OI||||||
 482|at least|ADg||||||
 483|by all means, certainly, without fail, why not|ADg|||1417|||
@@ -520,13 +520,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 520|ordinary, usual, general, probable|Ana|||613, 1272|||
 521|motionlessly, fixedly, patiently, firmly (e.g. hold), in a restrained manner|ADg||||||
 522|no matter what, however much|ADg||||||
-523|whatever kind of, what kind of|PNA||||||
+523|whatever kind of, what kind of|P||||||
 524|normally, generally, usually, regularly|ADg||||||
 525|general, ordinary, regular, usual fact or concept|NACF|||1255|tokubetsu||
 526|not a bit, not at all|ADg|Used in a negative phrase.|||||
 527|quite, really, very, extremely|ADg|Used in an affirmative phrase.|||||
 528|not at all|ADg|Used in a negative phrase.|||||
-529|not at all|ADg|Use in phrase with negative tense only.||682||metta ni, amari, never|
+529|not at all (with neg. verb)|ADg|Use in phrase with negative tense only.||682||metta ni, amari, never|
 530|not important, doesn't matter|ADg|||729, 730, 731|||
 531|not less than, more, more than, further, beyond, above-mentioned, foregoing, the end, this is all|ADg|||1290|||
 532|not less than, ... and more, ... and upwards, beyond ... (e.g. one's means),further (e.g. nothing further to say),more than ... (e.g. cannot pay more than that), above-mentioned, foregoing, since ..., seeing that …, this is all, that is the end, the end|NACF||||ikka||
@@ -1356,7 +1356,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1356|counter for stories|C|Used for stories, episodes of TV series, etc.|||||
 1357|counter for swings, shakes, waves|C||||||
 1358|swing, shake, wave, swinging|NAc||||||
-1359|appearance, behavior, pretense, show, posture, , lack of reservation or introduction|NACF||||||
+1359|appearance, behavior, pretense, show, posture, lack of reservation or introduction|NACF||||||
 1360|after a relatively long time interval (of waiting), after a pause|Sx|||1312, 1313|||
 1361|style, manner|Sx||||||
 1362|counter for Tatami mats|C|||1370|||
@@ -1852,7 +1852,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1852|public name, announcing publicly|NAc||||||
 1853|publication, issue|NAc||||||
 1854|purification|NAc||||||
-1855|quarrel, brawl, fight, squabble, scuffle|NAc||||||
+1855|quarrel, brawl, fight, squabble, scuffle, argument|NAc||||||
 1856|question, query|NAc||||||
 1857|quotation, citation, reference|NAc||||||
 1858|reach|NAc||||||
@@ -2019,7 +2019,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2019|body, oneself, one's place, one's position, main part|NACF||||||
 2020|body, onself, one's place, one's position, main part|NACF||||||
 2021|both sides, both parties|NACF||||||
-2022|bother, annoyance|NACF||||||
+2022|trouble, bother, annoyance, nuisance, inconvenience|NACF||||||
 2023|break-down, failure, fault, accident, out of order|NACF||||||
 2024|breakfast|NACF|||1318|||
 2025|breeding, raising, rearing|NACF||||||
@@ -2609,7 +2609,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2609|second helping|NACF|||113|||
 2610|second-year|NACF||||||
 2611|securities, bonds, certificates|NACF|||156|||
-2612|self-confidence|NACF||||||
+2612|self-confidence, confidence (in oneself)|NACF||||||
 2613|sensation, feeling, tendency, propensity|NACF||||||
 2614|sense of smell|NACF||||||
 2615|sense of taste, palate|NACF||||||
@@ -2733,7 +2733,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2733|time (of the year), season|NACF||||||
 2734|time of death|NACF||||||
 2735|time, labor, labour|NACF||||||
-2736|time, season, period|NACF||||||
+2736|time, season, period, phase, stage|NACF||||||
 2737|toast|NACF|As of when drinking alcohol|||||
 2738|together, at the same time, identical|NACF||||||
 2739|toll, fee, charge, admission-paid|NACF||||||
@@ -2957,7 +2957,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2957|alcohol|NCu|||264|||
 2958|alcoholic drinks, liquor|NCu||||||
 2959|apple|NCu|||252|||
-2960|apricot|NCu||||||
+2960|Japanese apricot (Prunus mume), Japanese plum, ume, Chinese plum|NCu||||||
 2961|baking powder|NCu||||||
 2962|banana|NCu||||||
 2963|beans, peas|NCu||||||
@@ -3230,7 +3230,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3230|potato|NFl||||||
 3231|pumpkin, squash|NFl||||||
 3232|rice field|NFl||||||
-3233|river|NFl|||427|||
+3233|river, stream|NFl|||427|||
 3234|rock, crag|NFl||||||
 3235|rose|NFl||||||
 3236|sacred tree|NFl||||||
@@ -3359,7 +3359,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3359|diary|NGO||||||
 3360|dictionary|NGO|Most commonly used by older people.||364||jisho, jiten|
 3361|dictionary|NGO|Usually implies a large dictionary.||||jisho, jibiki|
-3362|dictionary|NGO|Most commonly used in daily speech.||363||jiten, jibiki|
+3362|dictionary, lexicon|NGO|Most commonly used in daily speech.||363||jiten, jibiki|
 3363|discount coupon, discount ticket|NGO||||||
 3364|dishes, tableware|NGO||||||
 3365|dishwasher|NGO||||||
@@ -3404,7 +3404,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3404|instrument, appliance, apparatus|NGO||||||
 3405|Internet|NGO||||||
 3406|jar, pot, vase|NGO||||||
-3407|kanji|NGO|||359|||
+3407|Chinese characters, kanji|NGO|||359|||
 3408|key, lock|NGO|||351|||
 3409|kitchen knife|NGO||||||
 3410|knife|NGO|||301|||
@@ -4394,14 +4394,14 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4394|you|P|Colloquial, Singular Male/Female|||||
 4395|you|P|Plural Male/Female|||||
 4396|your, yours|P||||||
-4397|a certain, some|PNA||||||
-4398|all, every|PNA||||||
-4399|chief, main, principal, important|PNA||||||
-4400|considerable, great, important, significant, a big deal|PNA||||||
-4401|main, principal, major|PNA||||||
-4402|mere, simple, sheer|PNA||||||
-4403|somehow, how|PNA||||||
-4404|what is called, as it is called, the so-called, so to speak, also known as, aka|PNA||||||
+4397|a certain, some|P||||||
+4398|all, every|P||||||
+4399|chief, main, principal, important|P||||||
+4400|considerable, great, important, significant, a big deal|P||||||
+4401|main, principal, major|P||||||
+4402|mere, simple, sheer|P||||||
+4403|somehow, how|P||||||
+4404|what is called, as it is called, the so-called, so to speak, also known as, aka|P||||||
 4405|(I) will try to X|Px||yatte X @ X = verb (all tenses)|1391|||
 4406|again|Px||||||
 4407|big|Px||||||
@@ -4424,7 +4424,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4424|how|SI|ME#0040;0041;0042|||||
 4425|how many|SI|ME#0043;0044|||||
 4426|how many times|SI|||1427|||
-4427|how much|SI|Used mainly for money-related issues.||704|||
+4427|how much?, how many?|SI|Used mainly for money-related issues.||704|||
 4428|how much time|SI|||1429|||
 4429|name of an object or person|SI|ME#0045;0046|||||
 4430|somehow, how, in what way, why, what kind of|SI||Use "toiu" in reply to "douiu".||||
@@ -4690,7 +4690,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4690|open (e.g. eyes, mouth)|VkuT||||||
 4691|cry, weep, sob, howl|VkuI||||||
 4692|sing (bird), bark, purr, mew, moo, make a sound (animal)|VkuI||||||
-4693|be surprised|VkuI||||||
+4693|be surprised, be astonished|VkuI||||||
 4694|become dry, get dry|VkuI||||||
 4695|embrace, hold in the arms (e.g. a baby), hug, have sex with, make love to, sleep with, sit on eggs, bear (e.g. a grudge)|VkuT||||||
 4696|wipe, dry|VkuT||||||
@@ -4783,7 +4783,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4783|imagine, figure, picture, see|VkuT||||||
 4784|stumble, trip, fail|VkuI||||||
 4785|swim|VguI||||||
-4786|hurry, rush, hasten|VguI||||||
+4786|hurry, rush, hasten, make something happen sooner|VguI||||||
 4787|look up (to, at), respect, revere, ask for, seek, turn someone, depend on, drink, take|VguT||||||
 4788|earn income, labor, labour|VguI||||||
 4789|shoulder, carry on one's shoulder, deceive, take in|VguT||||||
@@ -5658,7 +5658,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5658|lead, take (a person)|VruiT||||||
 5659|catch, arrest seize|VruiT||||||
 5660|transfer (trains, bus), change one's mind, move on, change methods, change one's way of thinking|VruiT||||||
-5661|shake, sway|VruiI||||||
+5661|shake, sway, waver|VruiI||||||
 5662|look up at, raise one's eyes, look up to, admire, respect|VruiI||||||
 5663|grow, spring up, cut (teeth)|VruiI||||||
 5664|produce, yield, cause|VruiT||||||
@@ -5837,7 +5837,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5837|ask (request)|VsuruT||||||
 5838|drive|VsuruT||||||
 5839|go on a long trip, travel|VsuruI||||||
-5840|bother|VsuruT||||||
+5840|to be troubled (by), to be bothered (by), to be inconvenienced (by)|VsuruT||||||
 5841|trust|VsuruT||||||
 5842|enter school|VsuruI||||||
 5843|be present, attend|VsuruI||||||
@@ -5854,7 +5854,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5854|try something on|VsuruT||||||
 5855|study|VsuruT||||||
 5856|exchange|VsuruT||||||
-5857|eat|VsuruT||||||
+5857|to eat|VsuruT||||||
 5858|shop|VsuruI||||||
 5859|jog|VsuruI||||||
 5860|slam shut, splash|VsuruT||||||
@@ -5904,7 +5904,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5904|contact, get in touch with, communicate with, call, message|VsuruT|||1283|||
 5905|visit ill or distressed people, write get-well letters|VsuruI||||||
 5906|congratulate, celebrate|VsuruI||||||
-5907|quarrel, brawl, fight, squabble, scuffle|VsuruI||||||
+5907|quarrel, brawl, fight, squabble, scuffle, argument|VsuruI||||||
 5908|break down, fail|VsuruI||||||
 5909|heat|VsuruT||||||
 5910|inject|VsuruT||||||
@@ -6860,3 +6860,207 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6860|to cause financial loss, hurt one's pocket|VruiT||||||
 6861|damage, impair, spoil​|VruiT||||||
 6862|treat leather, sharkskin, etc. with glue and pound until hard​|VruiT||||||
+6863|famous Japanese hamster character|NPe||||||
+6864|popular name ending in Japan|NACF||||||
+6865|famous Japanese giant hamster character|NPe||||||
+6866|Ah!, Oh!, expression of surprise, recollection, etc.|UNC||||||
+6867|Hey!, used to get someone's attention|UNC||||||
+6868|that (indicating something distant from both speaker and listener (in space, time or psychologically), or something understood without naming it directly)|NACF||||||
+6869|that person (used to refer to one's equals or inferiors)|NACF||||||
+6870|down there (i.e. one's genitals)|NACF||||||
+6871|period, menses|NACF||||||
+6872|hey (expression of surprise, suspicion, etc.), huh?, eh?|NACF||||||
+6873|that (something mentioned before which is distant psychologically or in terms of time)|NACF||||||
+6874|only, merely, nothing but, no more than|PP||||||
+6875|approximately, about|PP||||||
+6876|just (finished, etc.)|PP||||||
+6877|as if to, (as though) about to|PP||||||
+6878|indicates emphasis|PP||||||
+6879|always, constantly|PP||||||
+6880|after (period of time) again (e.g. meeting again after a year), for the first time in (period of time)|Sx||||||
+6881|switchboard number, main number|NACF||||||
+6882|side (of something, or taking someone's side), part|NACF||||||
+6883|side (of something, or taking someone's side), part|Sx||||||
+6884|(watch) case|NACF||||||
+6885|(watch) case|Sx||||||
+6886|technique, skill|NACF||||||
+6887|art, craft|NACF||||||
+6888|hamster|NACF||||||
+6889|genuine article, real thing, real deal|NACF||||||
+6890|salted salmon roe (i.e. individual mature eggs)|NACF||||||
+6891|even, even if|A||||||
+6892|eat, drink|VkuT||||||
+6893|be crowned with, wear (on one's head), have (on top)|VkuT||||||
+6894|have (as one's leader), live under (a ruler), install (a president)|VkuT||||||
+6895|get somebody to do something|VkuI||||||
+6896|the next era|NACF||||||
+6897|opportunity, chance, time, occasion|NACF||||||
+6898|next term, next period|NACF||||||
+6899|next version, next release|NACF||||||
+6900|soon, in a moment, before long, shortly|Ana||||||
+6901|soon, in a moment, before long, shortly|A||||||
+6902|soon, in a moment, before long, shortly|NACF||||||
+6903|nearby, close|Ana||||||
+6904|nearby, close|A||||||
+6905|nearby, close|NACF||||||
+6906|direct|NACF||||||
+6907|spot transaction, cash transaction|NACF||||||
+6908|magnetism|NACF||||||
+6909|letter of resignation|NACF||||||
+6910|complete recovery|NACF||||||
+6911|executive secretary, coordinator, organizer, person in charge of making arrangements|NACF||||||
+6912|participation, involvement, concern|NACF||||||
+6913|related to, connected to|Sx||||||
+6914|supervision, control, superintendence, direction|NACF||||||
+6915|director, superintendent, supervisor, coach, foreman, manager, overseer, controller, boss|NACF||||||
+6916|River, the ... river|Sx||||||
+6917|Gawa|NPl||||||
+6918|skin, hide, pelt, fur|NACF||||||
+6919|rind, peel, husk, bark|NACF||||||
+6920|shell, sheath, wrapping|NACF||||||
+6921|mask (hiding one's true nature), seeming|NACF||||||
+6922|leather|NACF||||||
+6923|flower offering, floral tribute, laying flowers|NACF||||||
+6924|in the prefecture, prefectural|NACF||||||
+6925|contribution, donation|NACF||||||
+6926|Kifu|NPl||||||
+6927|eat, drink, smoke, take|VsuruT||||||
+6928|suffer (e.g. defeat), receive a blow|VsuruT||||||
+6929|fuselage, airframe|NACF||||||
+6930|gas, vapour, vapor, gaseous body|NACF||||||
+6931|stamp (postage), merchandise certificate|NACF||||||
+6932|menu, bill of fare|NACF||||||
+6933|program, programme, schedule|NACF||||||
+6934|attack, strike, offensive|NACF||||||
+6935|live, make a living, survive|VuT||||||
+6936|bite, sting (as insects do)|VuT||||||
+6937|tease, torment, taunt, make light of, make fun of|VuT||||||
+6938|encroach on, eat into, consume|VuT||||||
+6939|defeat a superior, threaten a position|VuT||||||
+6940|consume time and-or resources|VuT||||||
+6941|receive something (usu. an unfavourable event)|VuT||||||
+6942|have sexual relations with a woman, esp. for the first time|VuT||||||
+6943|swiftly, rapidly, quickly, immediately, hastily, hurriedly|A||||||
+6944|suddenly, abruptly, unexpectedly|A||||||
+6945|sharply (of a slope, bend, etc.), steeply|A||||||
+6946|vital part (of the body), tender spot, weak point, vitals|NACF||||||
+6947|key point, essential point, crux (of a problem), heart (of a matter)|NACF||||||
+6948|male crotch (as a target in fighting)|NACF||||||
+6949|temporary retirement, suspension from office|NACF||||||
+6950|job hunting, seeking employment|NACF||||||
+6951|provision of lunch (e.g. at office, school, etc.), providing a meal, lunch service|NACF||||||
+6952|serve (suit, meet) the purpose, be good enough, be enough|VuI||||||
+6953|full bloom (esp. of cherry blossom), full blossom|NACF||||||
+6954|first (of all), to start with, about, almost, anyway, well, now|A||||||
+6955|hardly (with neg. verb)|A||||||
+6956|it is assuredly that ..., can say with confidence that ...|PP||||||
+6957|did not ...|PP||||||
+6958|something, something or other, so-and-so|CE||||||
+6959|somehow, anyhow, one way or another|A||||||
+6960|fix, correct, repair|VsuT||||||
+6961|consent, assent, agreement|NACF||||||
+6962|understanding, comprehension, grasp|NACF||||||
+6963|late riser, sleepyhead|NACF||||||
+6964|leave (behind, over), bequeath, save, reserve|VsuT||||||
+6965|last, final, latest, most recent|NACF||||||
+6966|no sooner than, once, right after (often having negative consequences)|CE||||||
+6967|one's final moments|NACF||||||
+6968|one's last moment, one's death, one's end|NACF||||||
+6969|directions, instructions, orders, command|NACF||||||
+6970|tightly (holding on), firmly, securely|A||||||
+6971|strongly (built), solidly, sturdily, steadily|A||||||
+6972|properly, well, sufficiently, hard (working, etc.), fully, completely|A||||||
+6973|reliably, dependably, levelheadedly, shrewdly, wisely, cleverly|A||||||
+6974|firm, company|NACF||||||
+6975|inquiry, enquiry, query, reference|NACF||||||
+6976|or, or else|PP||||||
+6977|be transparent, be see-through|VrugI||||||
+6978|be clear (voice)|VrugI||||||
+6979|become clear (water, air, etc.), become transparent|VmuI||||||
+6980|resonate clearly (e.g. voice)|VmuI||||||
+6981|become serene, become tranquil, be free of worries|VmuI||||||
+6982|pronounce as an unvoiced sound|VmuI||||||
+6983|live on (e.g. a salary), live off, subsist on|VruiT||||||
+6984|sure, certain, positive, definite|Ana||||||
+6985|reliable, trustworthy, safe, sound, firm, accurate, correct, exact|Ana||||||
+6986|If I'm not mistaken, If I remember correctly, If I remember rightly|A||||||
+6987|job transfer, job relocation, intra-company transfer|NACF||||||
+6988|terrace|NACF||||||
+6989|Terrace|NPl||||||
+6990|compare (with), refer to|VsuT||||||
+6991|let fly, make fly, send flying, blow off (e.g. in the wind), launch, fire, hurl, shoot|VsuT||||||
+6992|skip over, leave out, omit, drop (e.g. a stitch)|VsuT||||||
+6993|run fast, drive fast, gallop|VsuT||||||
+6994|spray, splash, spatter|VsuT||||||
+6995|say without reservation, call out (e.g. a jeer), rattle of (e.g. a joke)|VsuT||||||
+6996|spread (e.g. a rumour), circulate, send out (a message), issue (e.g. an appeal)|VsuT||||||
+6997|transfer (to a less important post), send away (e.g. to a provincial branch), demote|VsuT||||||
+6998|dispatch quickly (e.g. a reporter)|VsuT||||||
+6999|get rid of, burn off (alcohol)|VsuT||||||
+7000|attack (e.g. with a leg manoeuvre)|VsuT||||||
+7001|do vigorously, do roughly, do energetically|VsuI||||||
+7002|place, spot, scene, site|NACF||||||
+7003|address|NACF||||||
+7004|district, area, locality|NACF||||||
+7005|one's house|NACF||||||
+7006|point, aspect, side, facet|NACF||||||
+7007|passage (in text), part|NACF||||||
+7008|space, room|NACF||||||
+7009|thing, matter|NACF||||||
+7010|whereupon, as a result|NACF||||||
+7011|about to, on the verge of|NACF||||||
+7012|was just doing, was in the process of doing, have just done, just finished doing|NACF||||||
+7013|take, pick up, harvest, earn, win, choose|VrugT||||||
+7014|steal|VrugT||||||
+7015|eat, have (a meal)|VrugT||||||
+7016|compete (in sumo, cards, etc.), play|VrugT||||||
+7017|transparent, clear|Ana||||||
+7018|transparent, clear|NACF||||||
+7019|(flower) bud|NACF||||||
+7020|promising young person, budding beauty|NACF||||||
+7021|you said, he said, she said, they said|PP||||||
+7022|if ... then|PP||||||
+7023|do you seriously think that|PP||||||
+7024|I already told you, you should know by now that, of course|PP||||||
+7025|the said ...|PP||||||
+7026|says that ...|PP||||||
+7027|I hear that ...|PP||||||
+7028|as for the term ...|PP||||||
+7029|as for ...|PP||||||
+7030|lowest (of a three-tier ranking system)|NACF||||||
+7031|desperation, despair, self-abandonment|NACF||||||
+7032|desperation, despair, self-abandonment|Ana||||||
+7033|mine (e.g. coal mine)|NACF||||||
+7034|heap, pile|NACF||||||
+7035|crown (of a hat), thread (of a screw), tread (of a tire), protruding part of an object|NACF||||||
+7036|climax, peak, critical point|NACF||||||
+7037|guess, speculation|NACF||||||
+7038|criminal case, crime|NACF||||||
+7039|mountain climbing, mountaineering|NACF||||||
+7040|festival float (esp. one mounted with a decorative halberd)|NACF||||||
+7041|wall, wall tile|NACF||||||
+7042|temple, temple grounds|NACF||||||
+7043|wild|Px||||||
+7044|congratulate|VbuI||||||
+7045|gratefully accept|VbuI||||||
+7046|wholly, entirely, completely|A||||||
+7047|pride, boast|VsuruI||||||
+7048|be confident (in oneself)|VsuruI||||||
+7049|recover completely|VsuruI||||||
+7050|coordinate, organize|VsuruT||||||
+7051|supervise, control, direct|VsuruT||||||
+7052|lay flowers as an offering or tribute|VsuruI||||||
+7053|contribute, donate|VsuruI||||||
+7054|expect, anticipate, hope|VsuruI||||||
+7055|retire temporarily, be suspended from office|VsuruI||||||
+7056|job hunt, seek employment|VsuruI||||||
+7057|provide a meal, provide a lunch service|VsuruI||||||
+7058|be in full blossom, be in full bloom|VsuruI||||||
+7059|consent, assent, agree|VsuruI||||||
+7060|understand, comprehend, grasp|VsuruT||||||
+7061|direct, instruct, order, command|VsuruT||||||
+7062|hold on tighly, hold on firmly, hold on securely|VsuruI||||||
+7063|be strongly built, be solidly built, be sturdy, be steady|VsuruI||||||
+7064|to work hard|VsuruI||||||
+7065|be reliable, be dependable, be levelheaded, be shrewd, be wise, be clever|VsuruI||||||
+7066|inquire, enquire, query|VsuruI||||||

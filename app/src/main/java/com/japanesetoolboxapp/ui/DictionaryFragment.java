@@ -183,9 +183,12 @@ public class DictionaryFragment extends Fragment implements
             if (!showOnlineResults) jishoWords = new ArrayList<>();
 
             if (jishoWords.size() != 0) {
-                mMergedMatchingWordsList = Utilities.mergeWordLists(mLocalMatchingWordsList, jishoWords);
+                mMergedMatchingWordsList = Utilities.getMergedWordsList(mLocalMatchingWordsList, jishoWords);
                 mMergedMatchingWordsList = sortWordsAccordingToRomajiAndKanjiLengths(mMergedMatchingWordsList);
-                updateFirebaseDbWithJishoWords(jishoWords);
+
+                List<Word> differentJishoWords = Utilities.getDifferentAsyncWords(mLocalMatchingWordsList, jishoWords);
+                updateFirebaseDbWithJishoWords(differentJishoWords);
+
                 displayResultsInListView(mMergedMatchingWordsList);
             }
             else {
@@ -213,9 +216,7 @@ public class DictionaryFragment extends Fragment implements
         private boolean internetIsAvailable;
         private boolean mAllowLoaderStart;
 
-        JishoResultsAsyncTaskLoader(Context context,
-                                    String query,
-                                    boolean internetIsAvailable) {
+        JishoResultsAsyncTaskLoader(Context context, String query, boolean internetIsAvailable) {
             super(context);
             this.mQuery = query;
             this.internetIsAvailable = internetIsAvailable;
@@ -610,7 +611,7 @@ public class DictionaryFragment extends Fragment implements
         return sortedMatchList;
     }
     private void updateFirebaseDbWithJishoWords(List<Word> wordsList) {
-        mFirebaseDao.updateObjectsOrCreateThemInFirebaseDb(wordsList);
+        mFirebaseDao.updateObjectsOrCreateThemInFirebaseDb(Utilities.getCommonWords(wordsList));
     }
     private void destroyLoaders() {
         LoaderManager loaderManager = getLoaderManager();

@@ -159,14 +159,8 @@ public class FirebaseDao {
 
         try {
             List<Object> objectsList = (List<Object>) objectsData;
-            for (int i = 0; i < objectsList.size(); i++) {
-                Object object = objectsList.get(i);
-                if (object != null) {
-                    if (object instanceof Word) {
-                        Word word = (Word) object;
-                        if (word.getCommonStatus()==1) updateObjectOrCreateItInFirebaseDb(object, true);
-                    }
-                }
+            for (Object object : objectsList) {
+                updateObjectOrCreateItInFirebaseDb(object, true);
             }
         } catch (Exception e) {
             e.printStackTrace();
