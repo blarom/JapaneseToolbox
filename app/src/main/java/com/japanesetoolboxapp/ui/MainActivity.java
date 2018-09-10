@@ -43,10 +43,8 @@ import butterknife.Unbinder;
 //TODO: database upgrade
 ////TODO make the LOCAL room db update itself with the list<Kanji/LatinIndex> if the app has been reinstalled
 ////TODO adapt the code to use the LOCAL room db instead of the local List<String> objects, including index calls
-////TODO create a python function that updates the list of words in the excel from firebase
-////TODO merge the results of the local database to the results
-////TODO display to user
 ////TODO: Add suru verbs from list
+////TODO: allow user to enter verb in gerund form (ing) and still find it
 
 //TODO: features
 ////TODO correctly implement saveinstancestate for results
@@ -67,12 +65,10 @@ import butterknife.Unbinder;
 ////TODO Translate the app into other European languages, and allow the user to choose the wanted language.
 
 //TODO: bugs
-////TODO not found "koto ga dekiru" & "te oku" in local db
 ////TODO searching for "福" through left radical yields no results, since it does not point to spirit radical, just radical variant
 ////TODO "kamoshi" returns no josho.org results
 ////TODO "hanashinagara" returns conjugated verb, but hiragana equivalent doesn't
 ////TODO imperative display for godan verbs
-////TODO: Fix nantoka example sentences
 
 
 public class MainActivity extends AppCompatActivity implements
@@ -162,6 +158,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override protected void onResume() {
         super.onResume();
     }
+
     @Override public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 

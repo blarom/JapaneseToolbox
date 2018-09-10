@@ -30,6 +30,7 @@ public class DatabaseUtilities {
 
     public static final String firebaseEmail = BuildConfig.firebaseEmail;
     public static final String firebasePass = BuildConfig.firebasePass;
+    public static final int WORD_SEARCH_CHAR_COUNT_THRESHOLD = 3;
 
     static List<List<String[]>> Array_of_Components_Databases;
     static List<String[]> RadicalsOnlyDatabase;
@@ -645,6 +646,7 @@ public class DatabaseUtilities {
 
             //region Search for the matches in the indexed list using a custom limit-finding binary search
             List<String[]> SortedIndex;
+            List<String> searchResultKeywordsArray = new ArrayList<>();
             int[] limits;
             if (TypeisLatin || TypeisKana || TypeisNumber) {
                 SortedIndex = MainActivity.GrammarDatabaseIndexedLatin;
@@ -659,13 +661,22 @@ public class DatabaseUtilities {
 
                 limits = binarySearchInLatinIndex(TypeisLatin, input_word, concatenated_translationLatin, SortedIndex);
 
-                // If the entered word is Latin and only has one character, limit the word list to be checked later
-                if (concatenated_word.length() == 1 && limits[0] != -1) {
+                if (limits[0] == -1) return matchingWordIds;
+
+                // If the entered word is Latin and only has up to WORD_SEARCH_CHAR_COUNT_THRESHOLD characters, limit the word list to be checked later
+                if (TypeisLatin && concatenated_word.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
+                        || TypeisKana && concatenated_translationLatin.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
+                        || TypeisNumber && concatenated_word.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD-1) {
                     for (int i = limits[0]; i <= limits[1]; i++) {
-                        if (SortedIndex.get(i)[0].length()>1) {
-                            limits[1] = i-1;
+                        if (SortedIndex.get(i)[0].length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD) {
+                            searchResultKeywordsArray.add(SortedIndex.get(i)[1]);
                             break;
                         }
+                    }
+                }
+                else {
+                    for (int i=limits[0] ; i <= limits[1]; i++) {
+                        searchResultKeywordsArray.add(SortedIndex.get(i)[1]);
                     }
                 }
 
@@ -673,18 +684,22 @@ public class DatabaseUtilities {
                 SortedIndex = MainActivity.GrammarDatabaseIndexedKanji;
                 int relevant_column_index = 2;
                 limits = binarySearchInUTF8Index(concatenated_word, SortedIndex, relevant_column_index);
+
+                if (limits[0] == -1) return matchingWordIds;
+
+                for (int i=limits[0] ; i<= limits[1]; i++) {
+                    searchResultKeywordsArray.add(SortedIndex.get(i)[1]);
+                }
             } else {
                 return matchingWordIds;
             }
             //endregion
 
             //region Get the indexes of all of the results that were found using the binary search
-            if (limits[0] != -1) {
-                for (int i = limits[0]; i <= limits[1]; i++) {
-                    keywordsList = Arrays.asList(SortedIndex.get(i)[1].split(";"));
-                    for (int j = 0; j < keywordsList.size(); j++) {
-                        MatchingWordIdsFromIndex.add(Long.valueOf(keywordsList.get(j)));
-                    }
+            for (String searchResultKeywords : searchResultKeywordsArray) {
+                keywordsList = Arrays.asList(searchResultKeywords.split(";"));
+                for (int j = 0; j < keywordsList.size(); j++) {
+                    MatchingWordIdsFromIndex.add(Long.valueOf(keywordsList.get(j)));
                 }
             }
             //endregion

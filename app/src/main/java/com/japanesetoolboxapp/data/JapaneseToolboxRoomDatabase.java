@@ -21,7 +21,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {Word.class, KanjiIndex.class, LatinIndex.class}, version = 10)
+@Database(entities = {Word.class, KanjiIndex.class, LatinIndex.class}, version = 13)
 public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
@@ -63,7 +63,7 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
             beginTransaction();
             try {
 
-                Looper.prepare();
+                if (Looper.myLooper() == null) Looper.prepare();
                 Toast loadingToast = showDatabaseLoadingToast("Please wait while we update the local database... Completed 0/3.", context, null);
 
                 loadCentralDatabaseIntoRoomDb(context);

@@ -397,11 +397,12 @@ public class Utilities {
     }
     public static List<Word> cleanUpProblematicWordsFromJisho(List<Word> words) {
 
+        List<Word> cleanWords = new ArrayList<>();
         //Clean up problematic words (e.g. that don't include a meaning)
         for (Word word : words) {
-            if (word.getMeanings().size()==0) words.remove(word);
+            if (word.getMeanings().size()>0) cleanWords.add(word);
         }
-        return words;
+        return cleanWords;
     }
     private static String getWebsiteXml(String websiteUrl, final Context context) {
 
@@ -593,9 +594,10 @@ public class Utilities {
                 kanji = "";
                 for (int j=0; j<TextData.size(); j++) {
                     String currentText;
+                    currentText = "";
                     if (TextData.get(j) instanceof List) {
                         List<Object> list = (List<Object>) TextData.get(j);
-                        currentText = (String) list.get(0);
+                        if (list.size()>0) currentText = (String) list.get(0);
                     }
                     else {
                         currentText = (String) TextData.get(j);
@@ -813,6 +815,7 @@ public class Utilities {
         }
         meanings_commas = Utilities.fromHtml(meanings_commas).toString();
         meanings_commas = meanings_commas.replaceAll("',", "'");
+        meanings_commas = meanings_commas.replaceAll(",0", "'0"); //Fixes number display problems
         return meanings_commas;
     }
 
@@ -967,6 +970,7 @@ public class Utilities {
         }
         return commonWords;
     }
+
 
     //Preference utilities
     public static Boolean getShowOnlineResultsPreference(Activity activity) {

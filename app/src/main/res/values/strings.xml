@@ -85,7 +85,7 @@
     <string name="LowVersionDialogMessage">Current Android version is too low</string>
     <string name="cancel">Cancel</string>
     <string name="readjust">Readjust Image</string>
-    <string name="OCR_image" translatable="false">OCR Iamge</string>
+    <string name="OCR_image" translatable="false">OCR Image</string>
     <string name="OCR_failed">OCR engine initialization failed.</string>
     <string name="OCR_reinitializing">OCR engine was not initialized. Trying again…</string>
     <string name="OCR_waitWhileProcessing">Wait while processing…</string>
@@ -102,7 +102,7 @@
     <string name="getTextThroughCamera">Optical character recognition</string>
     <string name="speakQuery">Hear user query</string>
     <string name="requestingDictSearch">requestingDictSearch</string>
-    <string name="queryHistoryKey">queryHistoryKey</string>
+    <string name="preferences_query_history_list">query_history_key</string>
     <string name="copiedTextToClipboard">Copied text to clipboard</string>
     <string name="STTACtivityNotFound">Sorry, it appears your phone does not have Speech-To-Text functionality. Redirecting to relevant resources…</string>
     <string name="DownloadDialogTitle">Download OCR data files.</string>
@@ -278,4 +278,6 @@
     <string name="search_by_radical_fragment_instance">search_by_radical_fragment_instance</string>
     <string name="decompose_fragment_instance">decompose_fragment_instance</string>
     <string name="saved_matching_verbs">saved_matching_verbs</string>
+    <string name="saved_ocr_result_state">saved_ocr_result_state</string>
+    <string name="saved_romaji_from_kanji_state">saved_romaji_from_kanji_state</string>
 </resources>

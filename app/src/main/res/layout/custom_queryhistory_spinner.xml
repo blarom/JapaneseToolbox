@@ -7,7 +7,7 @@
     android:padding="2dp" >
 
     <TextView
-		android:id="@+id/pastQuery"
+		android:id="@+id/query_value"
 		android:layout_width="wrap_content"
 	    android:layout_height="30dp"
 		android:layout_marginStart="2dp"
