@@ -925,7 +925,8 @@ public class Utilities {
                 asyncKanji = asyncWord.getKanji();
                 localKanji = localWord.getKanji();
 
-                if ( asyncRomaji.equals(localRomaji) && asyncKanji.equals(localKanji) ) {
+                if ( (asyncRomaji.equals(localRomaji) || ("[verb]"+asyncRomaji).equals(localRomaji))
+                        && asyncKanji.equals(localKanji) ) {
 
                     foundMatchingLocalWord = true;
 

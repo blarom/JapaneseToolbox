@@ -15,7 +15,12 @@ public class KanjiIndex {
     static final String WORD_IDS = "word_ids";
     static final String COLUMN_KANA_IDS = "kana_ids";
 
-    public KanjiIndex() {
+    KanjiIndex() { }
+
+    KanjiIndex(String kana, String wordIds, @NonNull String kanaIds) {
+        this.kana = kana;
+        this.wordIds = wordIds;
+        this.kanaIds = kanaIds;
     }
 
     @ColumnInfo(name = COLUMN_KANA)

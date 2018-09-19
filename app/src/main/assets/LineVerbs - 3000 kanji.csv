@@ -193,6 +193,7 @@ su godan|begin rain, start rain|I||ふりだす|降り出す|furidasu|降り出|
 su godan|shake and give, start shaking, shake out, write (draw) on a check (cheque)|T|を|ふりだす|振り出す|furidasu|振り出|furida||
 su godan|pollute, contaminate, soil, make dirty, stain, disgrace, dishonour, dishonor, defile|T|を|よごす|汚す|yogosu|汚|yogo||
 su godan|oversleep|I||ねすごす|寝過ごす|nesugosu|寝過ご|nesugo||
+su godan|keep (a person) waiting|T|を|またす|待たす|matasu|待た|mata||
 ||||||||||
 ku godan||||XXXく|XXXく|ku|||7|
 ku godan|go|I||いく|行く|iku|行|i|8|
@@ -314,6 +315,10 @@ ku godan|imagine, figure, picture, see|T|を|おもいえがく|思い描く|omo
 ku godan|stumble, trip, fail|I||つまずく|躓く|tsumazuku|躓|tsumazu||
 ku godan|blink (one's eyes), wink, bat, twinkle (e.g. stars), flicker, waver|I||まばたく|瞬く|mabataku|瞬|mabata||
 ku godan|go smoothly, turn out well, do the trick, have peaceful relations|I||うまくいく|上手く行く|umakuiku|上手く行|umakui|14|
+ku godan|catch up (with), draw level, pull even, reach, be compensated, make up for one's losses|I||おいつく|追いつく|oitsuku|追いつ|oitsu||
+ku godan|arrive at (after a struggle), finally reach, find one's way to, finally hit on (e.g. an idea)|I||たどりつく|たどり着く|tadoritsuku|たどり着|tadoritsuku||
+ku godan|discount|T|を|わりびく|割り引く|waribiku|割り引|waribi||
+ku godan|catch a cold|I||かぜをひく|風邪をひく|kazewohiku|風邪をひ|kazewohi||
 ||||||||||
 gu godan||||XXXぐ|XXXぐ|gu|||16|
 gu godan|swim|I||およぐ|泳ぐ|oyogu|泳|oyo||
@@ -458,6 +463,9 @@ mu godan|insert, put in, thrust in, plug in|T|を|さしこむ|差し込む|sash
 mu godan|have a griping pain, flow in, shine in|I||さしこむ|差し込む|sashimu|差し込|sashi||
 mu godan|shine in (light), illuminate|I||さしこむ|射し込む|sashimu|射し込|sashi||
 mu godan|insert, put in, thrust in, plug in|T|を|さしこむ|挿し込む|sashimu|挿し込|sashi||
+mu godan|be deep in talk|I||はなしこむ|話し込む|hanashikomu|話し込|hanashiko||
+mu godan|cut in, thrust oneself into, wedge oneself in, muscle in on, interrupt, disturb|T|を|わりこむ|割り込む|warikomu|割り込|wariko||
+mu godan|be enthusiastic about, be eager, be keen|I||いきごむ|意気込む|ikigomu|意気込|ikigo||
 ||||||||||
 nu godan||||XXXぬ|XXXぬ|nu|||25|
 nu godan|die|I||しぬ|死ぬ|shinu|死|shi||
@@ -823,6 +831,7 @@ ru godan|give (someone) a treat|T|を|おごる|奢る|ogoru|奢|ogo||
 ru godan|be extravagant, live, be proud, be haughty|I||おごる|奢る|ogoru|奢|ogo||
 ru godan|swell, rise, bulge, be piled up, rouse, get excited|I||もりあがる|盛り上がる|moriagaru|盛り上が|moriaga||
 ru godan|stick into (of something with a sharp point), prick, pierce, get stuck (in), lodge (in)|I||ささる|刺さる|sasaru|刺さ|sasa||
+ru godan|challenge (esp. in a lawsuit), take on an opponent (in negotiations, contest, etc.)|T|を|あいてどる|相手取る|aitedoru|相手取|aitedo||
 ||||||||||
 tsu godan||||XXXつ|XXXつ|tsu|||43|
 tsu godan|stand|I||たつ|立つ|tatsu|立|ta||
@@ -846,6 +855,7 @@ tsu godan|be helpful, be useful|I||やくにたつ|役に立つ|yakunitatsu|役�
 tsu godan|consist of, be made up of, be composed of, be practical (logical, feasible, viable), be concluded, hold true|I||なりたつ|成り立つ|naritatsu|成り立|narita||
 tsu godan|conquer (e.g. an enemy), defeat, overcome (a difficulty)|T|を|うちかつ|打ち勝つ|uchikatsu|打ち勝|uchika||
 tsu godan|keep, preserve, hold, retain, maintain, support, sustain, last, endure, keep well (food), wear well, be durable|T|を|たもつ|保つ|tamotsu|保|tamo||
+tsu godan|be useful, be helpful, serve the purpose|I||やくだつ|役立つ|yakudatsu|役立|yakuda||
 ||||||||||
 u godan||||XXXう|XXXう|u|||45|
 u godan|buy|T|を|かう|買う|kau|買|ka||
@@ -946,6 +956,10 @@ u godan|sew, stitch, weave one's way (e.g. through a crowd)|T|を|ぬう|縫う|
 u godan|harm, hurt, injure, damage|T|を|そこなう|損なう|sokonau|損な|sokona||
 u godan|strike back at, bite back, turn on, rise against, oppose, defy|I||はむかう|刃向かう|hamukau|刃向か|hamuka||
 u godan|do the dishes, wash the dishes|I||しょっきあらう|食器あらう|shokkiarau|食器あら|shokkiara||
+u godan|balance, be in harmony, be in equilibrium, suit, go well together, be a good match|T|を|つりあう|釣り合う|tsuriau|釣り合|tsuria||
+u godan|support, maintain, provide for, bring up, raise, rear, feed, adopt (a child), cultivate (a habit, a quality, etc.), develop, build up, foster, recuperate (from injury, illness, etc.)|T|を|やしなう|養う|yashinau|養|yashina||
+u godan|run along, run beside, stick to (a line), follow (a policy, plan, etc.), act in accordance with, align with|I||そう|沿う|sou|沿|so||
+u godan|meet (wishes, expectations, etc.), satisfy, comply with, live up to, accompany, go with, stay by one's side, associate with (someone), mix with, marry, wed, be added|I||そう|添う|sou|添|so||
 ||||||||||
 ru ichidan||||XXXる|XXXる|ru|||51|
 ru ichidan|keep, be doing|T|を|いる|いる|iru|い|i||
@@ -970,7 +984,7 @@ ru ichidan|get tired|I||つかれる|疲れる|tsukareru|疲れ|tsukare||
 ru ichidan|put in, let in, take in, bring in, insert, set (a jewel, etc.), ink in (e.g. a tattoo), admit, accept, employ, hire, comply, grant, adopt (a policy, etc.), take (advice, etc.), listen to, pay attention to, include, pay (one's rent, etc.), cast (a vote), turn on (a switch, etc.), send (a fax), call|T|を|いれる|入れる|ireru|入れ|ire||
 ru ichidan|be taken (photograph)|I||とれる|撮れる|toreru|撮れ|tore||
 ru ichidan|get, appropriate, obtain, procure|T|を|て に いれる|手に入れる|te ni ireru|手に入れ|te ni ire||
-ru ichidan|depart, go out, set out, start, be going out|I||でかける|出掛ける|dekakeru|出掛け|dekake||
+ru ichidan|depart, go out, set out, start, be going out|I||でかける|出かける|dekakeru|出かけ|dekake||
 ru ichidan|open|T|を|あける|開ける|akeru|開け|ake||
 ru ichidan|empty, keep the day open|T|を|あける|空ける|akeru|空け|ake||
 ru ichidan|break (ie. daybreak)|I||あける|明ける|akeru|明け|ake||
@@ -1386,6 +1400,16 @@ ru ichidan|hurt, injure, cause pain, to harm, damage, spoil, to worry, bother, b
 ru ichidan|damage, impair, spoil|T|を|いためる|傷める|itameru|傷め|itame||
 ru ichidan|treat leather, sharkskin, etc. with glue and pound until hard|T|を|いためる|撓める|itameru|撓め|itame||
 ru ichidan|forge, temper, drill, train, discipline|T|を|きたえる|鍛える|kitaeru|鍛え|kitae||
+ru ichidan|perform (a play), play (a part), act (a part), commit (a blunder)|I||えんじる|演じる|enjiru|演じ|enji||
+ru ichidan|perform, play|I||えんずる|演ずる|enzuru|演ず|enzu||
+ru ichidan|address (someone), accost a person, talk (to someone), begin to talk, start a conversation|T|を|はなしかけ|話しかける|hanashikakeru|話しかけ|hanashikake||
+ru ichidan|keep (a person) waiting|T|を|またせる|待たせる|mataseru|待たせ|matase||
+ru ichidan|start, begin, commence, challenge, pick (a fight), make (war), set (traps), plant (explosives), lay (mines), make a meld call|I||しかける|仕掛ける|shikakeru|仕掛け|shikakeru||
+ru ichidan|blame, reproach, censure, rebuke, reprove, find fault, take to task, criticize, criticise, question (a suspect), challenge, aggravate (an injury), be aggravated, get inflamed, prick (one's conscience)|T|を|とがめる|咎める|togameru|咎め|togame||
+ru ichidan|catch, capture, seize, arrest, grab, catch hold of, grasp (e.g. meaning), perceive, capture (e.g. features), captivate, move (one's heart)|T|を|とらえる|捉える|toraeru|捉え|torae||
+ru ichidan|soak, seep, dip in, pickle|T|を|つける|漬ける|tsukeru|漬け|tsuke||
+ru ichidan|assign, allot, allocate, divide among, distribute, prorate, apportion|T|を|わりあてる|割り当てる|wariateru|割り当て|wariate||
+ru godan|find a clear solution, come to a clean decision, give a clear explanation, divide|T|を|わりきる|割り切る|warikiru|割り切|wariki||
 ||||||||||
 desu copula|||||||||64|
 desu copula|there is|I||だ|だ|da||||
@@ -1396,7 +1420,7 @@ kuru verb|bring something|T|を|もってくる|持ってくる|motte kuru|持�
 kuru verb|bring someone along|T|を|つれてくる|連れてくる|tsurete kuru|連れて|tsurete ||
 ||||||||||
 suru verb|||||||||68|
-suru verb|do, wear (specifically shoes, accessories), request, make|T|を / に|する|する|suru||||
+suru verb|do, wear (specifically shoes, accessories), request, make|T|を / に|する|為る|suru||||
 suru verb|move (apartments)|I||きこする|聞する|kiko suru|聞|kiko ||
 suru verb|grow up|I||せいちょうする|成長する|seichou suru|成長|seichou ||
 suru verb|get married|I||けkこんする|結婚する|kekkon suru|結婚|kekkon ||
@@ -1731,4 +1755,85 @@ suru verb|pack, wrap|T|を|ほうそうする|包装する|housou suru|包装|ho
 suru verb|broom|T|を|ほうきする|箒する|houki suru|箒|houki||
 suru verb|report|I||ほうどうする|報道する|houdou suru|報道|houdou||
 suru verb|copy, duplicate, reproduce|T|を|ふくしゃする|複写する|fukusha suru|複写|fukusha||
+suru verb|operate slowly, operate at ease, be restful|I||ゆっくりする|ゆっくりする|yukkuri suru|ゆっくり|yukkuri||
+suru verb|estimate, make a budget|I||よさんする|予算する|yosan suru|予算|yosan||
+suru verb|apply (e.g. a technology), adopt|T|を|てきようする|適用する|tekiyou suru|適用|tekiyou||
+suru verb|complete, accomplish, attain greatness or success|T|を|たいせいする|大成する|taisei suru|大成|taisei||
+suru verb|estimate|T|を|すいけいする|推計する|suikei suru|推計|suikei||
+suru verb|steer, pilot, fly, control, operate, handle, manage, handle, control, manipulate|T|を|そうじゅうする|操縦する|soujuu suru|操縦|soujuu||
+suru verb|multiply, synergise, synergize|T|を|そうじゅうする|相乗する|soujou suru|相乗|soujou||
+suru verb|resign in mass|I||そうじしょうくする|総辞職する|soujishoku suru|総辞職|soujishoku||
+suru verb|end, close, terminate|T|を|しゅうりょうする|終了する|shuuryou suru|終了|shuuryou||
+suru verb|end, close|T|を|しゅうけつする|終結する|shuuketsu suru|終結|shuuketsu||
+suru verb|incinerate, destroy by fire|T|を|しょうきゃくする|焼却する|shoukyaku suru|焼却|shoukyaku||
+suru verb|perform new work, perform a new production|I||しんさくする|新作する|shinsaku suru|新作|shinsaku||
+suru verb|build a new building, build a new construction|I||しんちくする|新築する|shinchiku suru|新築|shinchiku||
+suru verb|intake (e.g. of salt), ingest, absorb (e.g. of new knowledge), adopt (e.g. of foreign culture), assimilate, receive and protect|T|を|せっしゅする|摂取する|sesshu suru|摂取|sesshu||
+suru verb|add up, integrate, estimate, survey a quantity|I||せきさんする|積算する|sekisan suru|積算|sekisan||
+suru verb|use, adopt, accept, appoint, employ, engage, recruit|T|を|さいようする|採用する|saiyou suru|採用|saiyou||
+suru verb|adopt, select, choose|T|を|さいたくする|採択する|saitaku suru|採択|saitaku||
+suru verb|sew, perform needlework|I||さいほうする|裁縫する|saihou suru|裁縫|saihou||
+suru verb|profit, gain, be of benefit, be of advantage, be of interest (to the public, etc.), grace (of God, Buddha, etc.) (esp. as attained through rightful actions, prayer, adherence to one's faith, etc.), bless, perform a miracle|I||りえきする|利益する|rieki suru|利益|rieki||
+suru verb|close in on (the enemy, first place, etc.), come close to, press hard, press hard (e.g. with a question), take to task, grill|T|を|にくはくする|肉薄する|nikuhaku suru|肉薄|nikuhaku||
+suru verb|contribute (furthering a goal or cause), serve (a cause)|I||こうけんする|貢献する|kouken suru|貢献|kouken||
+suru verb|guard, assist in a theatrical performance, prompt|T|を|こうけんする|後見する|kouken suru|後見|kouken||
+suru verb|declare, profess|T|を|こうげんする|公言する|kougen suru|公言|kougen||
+suru verb|enlighten, instruct|T|を|けいもうする|啓蒙する|keimou suru|啓蒙|keimou||
+suru verb|enlighten, develop, edify, make aware, illumine, educate, inspire|T|を|けいはつする|啓発する|keihatsu suru|啓発|keihatsu||
+suru verb|approve, adopt (e.g. motion, bill), pass|T|を|かけつする|可決する|kaketsu suru|可決|kaketsu||
+suru verb|execute (e.g. of a plan), carry, practice, act, implement, fulfill, realize|T|を|じっこうする|実行する|jikkou suru|実行|jikkou||
+suru verb|make a round, perform a circuit, perform a revolution, run a lap, perform a turn|I||いっしゅうする|一周する|isshuu suru|一周|isshuu||
+suru verb|value, assess, rate, estimate value, appreciate, value highly, acknowledge the value (of something)|T|を|ひょうかする|評価する|hyouka suru|評価|hyouka||
+suru verb|invent, be enlightened, have the meaning of everything become clear|I||はつめいする|発明する|hatsumei suru|発明|hatsumei||
+suru verb|discuss, confer|I||はなしあいする|話し合いする|hanashiai suru|話し合い|hanashiai||
+suru verb|approximate, provide a rough estimate|I||ふぁいさんする|概算する|gaisan suru|概算|gaisan||
+suru verb|performance in a musical|I||えんそうする|演奏する|ensou suru|演奏|ensou||
+suru verb|act, perform|I||えんぎする|演技する|engi suru|演技|engi||
+suru verb|escape, break out, prolapse, proptose|I||だっしゅつする|脱出する|dasshutsu suru|脱出|dasshutsu||
+suru verb|usurp, take back, dispossess|T|を|だっしゅする|奪取する|dasshu suru|奪取|dasshu||
+suru verb|dash|I||だっしゅする|ダッシュする|dasshu suru|ダッシュ|dasshu||
+suru verb|challenge, defy, dare, attempt, try|T|を|ちょうせんする|挑戦する|chousen suru|挑戦|chousen||
+suru verb|start work (on), undertake, start committing a crime|I||ちゃくしゅする|着手する|chakushu suru|着手|chakushu||
+suru verb|start (construction) work|I||ちゃっこうする|着工する|chakkou suru|着工|chakkou||
+suru verb|perform in a band, create a (pop) band|I||ばんどする|バンドする|bando suru|バンド|bando||
+suru verb|testify (usu. Christian religious context)|I||あかしする|証する|akashi suru|証|akashi||
+suru verb|advance, move forward, progress|I||ぜんしんする|前進する|zenshin suru|前進|zenshin||
+suru verb|approve|T|を|ようにんする|容認する|younin suru|容認|younin||
+suru verb|make advance arrangements, do a preparatory meeting, do a briefing session, overlap (of a coat, etc.), make something match exactly|T|を|うちあわせする|打ち合わせする|uchiawase suru|打ち合わせ|uchiawase||
+suru verb|arrive|I||とうちゃくする|到着する|touchaku suru|到着|touchaku||
+suru verb|be of special make, be deluxe|I||とくせいする|特製する|tokusei suru|特製|tokusei||
+suru verb|protube, project, prominate|I||とっきする|突起する|tokki suru|突起|tokki||
+suru verb|present (documents), submit (an application, report, etc.), produce (e.g. evidence), introduce (e.g. a bill), file, turn in|T|を|ていしゅつする|提出する|teishutsu suru|提出|teishutsu||
+suru verb|settle, reside permanently|I||ていじゅうする|定住する|teijuu suru|定住|teijuu||
+suru verb|present, exhibit, suggest, cite|T|を|ていじする|提示する|teiji suru|提示|teiji||
+suru verb|define|T|を|ていぎする|定義する|teigi suru|定義|teigi||
+suru verb|suffer a power outage, suffer a electricity outage, suffer a blackout, suffer a failure of electricity supply|I||ていでんする|停電する|teiden suru|停電|teiden||
+suru verb|make a  weir, make an embankment, make a levee|I||ていぼうする|堤防する|teibou suru|堤防|teibou||
+suru verb|propose, suggest|T|を|ていあんする|提案する|teian suru|提案|teian||
+suru verb|be born, be created, be formed|I||たんじょうする|誕生する|tanjou suru|誕生|tanjou||
+suru verb|inherit|I||そうぞくする|相続する|souzoku suru|相続|souzoku||
+suru verb|graduate, complete (e.g. of a course), outgrow something, move on (from)|T|を|そつぎょうする|卒業する|sotsugyou suru|卒業|sotsugyou||
+suru verb|attack, charge, raid|T|を|しゅうげきする|襲撃する|shuugeki suru|襲撃|shuugeki||
+suru verb|aggress, invade, raid|T|を|しんりゃくする|侵略する|shinryaku suru|侵略|shinryaku||
+suru verb|go left and right, influence, control, dominate|T|を|さゆうする|左右する|sayuu suru|左右|sayuu||
+suru verb|postpone|T|を|さきおくりする|先送りする|sakiokuri suru|先送り|sakiokuri||
+suru verb|be a pioneer, be a leader, take the initiative, be a forerunner, be a harbinger, be a herald, lead an attack, charge ahead of others (towards the enemy)|I||さきがけする|先駆けする|sakigake suru|先駆け|sakigake||
+suru verb|get a tax exemption, get a duty exemption|I||めんぜいする|免税する|menzei suru|免税|menzei||
+suru verb|face on, look out on to|T|を|めんする|面するする|men suru|面する|men||
+suru verb|be at an interview (e.g. for a job)|I||めんせつする|面接する|mensetsu suru|面接|mensetsu||
+suru verb|provide a license, provide a permit, provide a licence, provide a certificate|I||めんきょする|免許する|menkyo suru|免許|menkyo||
+suru verb|meet (face-to-face), interview|T|を|めんかいする|面会する|menkai suru|面会|menkai||
+suru verb|exempt, exonerate, discharge|T|を|めんじょする|免除する|menjo suru|免除|menjo||
+suru verb|breathe|I||こきゅうする|呼吸する|kokyuu suru|呼吸|kokyuu||
+suru verb|fall in love with, love|T|を|こいする|恋するする|koi suru|恋する|koi||
+suru verb|tax|T|を|かぜいする|課税する|kazei suru|課税|kazei||
+suru verb|watch a (sports) game, spectate, observe (military operations)|T|を|かんせんする|観戦する|kansen suru|観戦|kansen||
+suru verb|infect, contaminate|T|を|かんせんする|感染する|kansen suru|感染|kansen||
+suru verb|horse-ride|I||じょうばする|乗馬する|jouba suru|乗馬|jouba||
+suru verb|be lively, be vivid, be animated, be active, be energetic|I||いきいきする|生き生きする|ikiiki suru|生き生き|ikiiki||
+suru verb|abandon, desert|T|を|いきする|遺棄する|iki suru|遺棄|iki||
+suru verb|go to several places in succession (e.g. barhopping)|I||はしごする|梯子する|hashigo suru|梯子|hashigo||
+suru verb|react, respond|I||はんおうする|反応する|hannou suru|反応|hannou||
+suru verb|perceive sense, be aware of|T|を|ちかくする|知覚する|chikaku suru|知覚|chikaku||
+suru verb|go on an adventure, venture, go on a venture which is unlikely to succeed, attempt something risky, put onself in danger|I||ぼうけんする|冒険する|bouken suru|冒険|bouken||
 -|-|-||||||||

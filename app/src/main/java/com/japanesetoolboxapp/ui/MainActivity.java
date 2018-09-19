@@ -83,9 +83,6 @@ public class MainActivity extends AppCompatActivity implements
     private String mSecondFragmentFlag;
     InputQueryFragment mInputQueryFragment;
     static List<String[]> MainDatabase;
-    static List<String[]> ExamplesDatabase;
-    static List<String[]> MeaningsDatabase;
-    static List<String[]> MultExplanationsDatabase;
     static List<String[]> LegendDatabase;
     public static List<String[]> GrammarDatabaseIndexedLatin;
     public static List<String[]> GrammarDatabaseIndexedKanji;

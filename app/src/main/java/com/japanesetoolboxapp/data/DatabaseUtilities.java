@@ -835,6 +835,290 @@ public class DatabaseUtilities {
 
         return matchingWordIds;
     }
+    public static List<Long> FindMatchingWordIndexUsingRoomIndexes(String searchWord, JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase) {
+
+
+        //region Initializations
+        List<Long> matchingWordIds = new ArrayList<>();
+        List<Long> MatchingWordIdsFromIndex = new ArrayList<>();
+        List<String> keywordsList;
+        List<long[]> MatchList = new ArrayList<>();
+        String list;
+        String hit;
+        String hitFirstRelevantWord;
+        String concatenated_hit;
+        String best_match;
+        String type;
+        long[] current_match_values;
+
+        boolean found_match;
+        boolean is_verb;
+        boolean is_verb_and_latin;
+        int word_length = searchWord.length();
+        int match_length;
+        //endregion
+
+        //Fixing any invalid Kanji characters in the input
+        searchWord = replaceInvalidKanjisWithValidOnes(searchWord);
+
+        // converting the word to lowercase (the algorithm is not efficient if needing to search both lower and upper case)
+        searchWord = searchWord.toLowerCase(Locale.ENGLISH);
+
+        //region If there is an "inging" verb instance, reduce it to an "ing" instance (e.g. singing >> sing)
+        int verb_length = searchWord.length();
+        String verb = searchWord;
+        String verb2;
+        String inglessVerb = verb;
+        if (verb_length > 2 && verb.substring(verb_length-3).equals("ing")) {
+
+            if (verb_length > 5 && verb.substring(verb_length-6).equals("inging")) {
+                if (	(verb.substring(0, 2+1).equals("to ") && checkIfWordIsOfTypeIngIng(verb.substring(3,verb_length))) ||
+                        (!verb.substring(0, 2+1).equals("to ") && checkIfWordIsOfTypeIngIng(verb.substring(0,verb_length)))   ) {
+                    // If the verb ends with "inging" then remove the the second "ing"
+                    inglessVerb = verb.substring(0,verb_length-3);
+                }
+            }
+            else {
+                verb2 = verb + "ing";
+                if ((!verb2.substring(0, 2 + 1).equals("to ") || !checkIfWordIsOfTypeIngIng(verb2.substring(3, verb_length + 3))) &&
+                        (verb2.substring(0, 2+1).equals("to ") || !checkIfWordIsOfTypeIngIng(verb2.substring(0, verb_length + 3)))) {
+                    // If the verb does not belong to the list, then remove the ending "ing" so that it can be compared later on to the verbs excel
+                    //If the verb is for e.g. to sing / sing, where verb2 = to singing / singing, then check that verb2 (without the "to ") belongs to the list, and if it does then do nothing
+
+                    inglessVerb = verb.substring(0,verb_length-3);
+                }
+            }
+        }
+        int inglessVerb_length = inglessVerb.length();
+        //endregion
+
+        //region getting the input type and its converted form (english/romaji/kanji/invalid)
+        List<String> translationList = ConvertFragment.Kana_to_Romaji_to_Kana(searchWord);
+
+        String translationLatin = translationList.get(0);
+        String translationHira = translationList.get(1);
+        String translationKata = translationList.get(2);
+        String text_type = ConvertFragment.TextType(searchWord);
+
+        boolean TypeisLatin   = false;
+        boolean TypeisKana    = false;
+        boolean TypeisKanji   = false;
+        boolean TypeisNumber  = false;
+        boolean TypeisInvalid = false;
+
+        if (text_type.equals("latin") )                                     { TypeisLatin = true;}
+        if (text_type.equals("hiragana") || text_type.equals("katakana") )  { TypeisKana = true;}
+        if (text_type.equals("kanji") )                                     { TypeisKanji = true;}
+        if (text_type.equals("number") )                                    { TypeisNumber = true;}
+        if (searchWord.contains("*") || searchWord.contains("＊") || searchWord.equals("") || searchWord.equals("-") ) { TypeisInvalid = true;}
+        //endregion
+
+        // Performing the search
+        if (!TypeisInvalid) {
+
+            //region Concatenating the input word to increase the match chances
+            String concatenated_word = Utilities.removeSpecialCharacters(searchWord);
+            String concatenated_translationLatin = Utilities.removeSpecialCharacters(translationLatin);
+            String concatenated_translationHira = Utilities.removeSpecialCharacters(translationHira);
+            String concatenated_translationKata = Utilities.removeSpecialCharacters(translationKata);
+            int concatenated_word_length = concatenated_word.length();
+            //endregion
+
+            //region Removing any apostrophes to make user searches less strict
+            searchWord = removeApostrophe(searchWord);
+            concatenated_word = removeApostrophe(concatenated_word);
+            concatenated_translationLatin = removeApostrophe(concatenated_translationLatin);
+            //endregion
+
+            //region Search for the matches in the indexed list using a custom limit-finding binary search
+            List<String> searchResultKeywordsArray = new ArrayList<>();
+            List<LatinIndex> latinIndices;
+            List<KanjiIndex> kanjiIndices;
+            if (TypeisLatin || TypeisKana || TypeisNumber) {
+
+                //If the input is a verb in "to " form, remove the "to " for the search only (results will be filtered later on)
+                String input_word = concatenated_word;
+                if (searchWord.length()>3) {
+                    if (searchWord.substring(0, 3).equals("to ")) {
+                        input_word = concatenated_word.substring(2, concatenated_word.length());
+                    }
+                }
+
+                latinIndices = findQueryInLatinIndex(TypeisLatin, input_word, concatenated_translationLatin, japaneseToolboxRoomDatabase);
+
+                if (latinIndices.size()==0) return matchingWordIds;
+
+                // If the entered word is Latin and only has up to WORD_SEARCH_CHAR_COUNT_THRESHOLD characters, limit the word list to be checked later
+                if (TypeisLatin && concatenated_word.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
+                        || TypeisKana && concatenated_translationLatin.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
+                        || TypeisNumber && concatenated_word.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD-1) {
+                    for (LatinIndex latinIndex : latinIndices) {
+                        if (latinIndex.getLatin().length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD) {
+                            searchResultKeywordsArray.add(latinIndex.getWordIds());
+                            break;
+                        }
+                    }
+                }
+                else {
+                    for (LatinIndex latinIndex : latinIndices) {
+                        searchResultKeywordsArray.add(latinIndex.getWordIds());
+                    }
+                }
+
+            }
+            else if (TypeisKanji) {
+
+                kanjiIndices = findQueryInKanjiIndex(concatenated_word, japaneseToolboxRoomDatabase);
+
+                if (kanjiIndices.size()==0) return matchingWordIds;
+
+                for (KanjiIndex kanjiIndex : kanjiIndices) {
+                    searchResultKeywordsArray.add(kanjiIndex.getWordIds());
+                }
+            } else {
+                return matchingWordIds;
+            }
+            //endregion
+
+            //region Get the indexes of all of the results that were found using the binary search
+            for (String searchResultKeywords : searchResultKeywordsArray) {
+                keywordsList = Arrays.asList(searchResultKeywords.split(";"));
+                for (int j = 0; j < keywordsList.size(); j++) {
+                    MatchingWordIdsFromIndex.add(Long.valueOf(keywordsList.get(j)));
+                }
+            }
+            //endregion
+
+            //region Add search results where the "ing" is removed from an "ing" verb
+            if ((TypeisLatin || TypeisKana || TypeisNumber) && !inglessVerb.equals(searchWord)) {
+
+                latinIndices = findQueryInLatinIndex(TypeisLatin, inglessVerb, concatenated_translationLatin, japaneseToolboxRoomDatabase);
+
+                for (LatinIndex latinIndex : latinIndices) {
+                    keywordsList = Arrays.asList(latinIndex.getWordIds().split(";"));
+                    for (int j = 0; j < keywordsList.size(); j++) {
+                        MatchingWordIdsFromIndex.add(Long.valueOf(keywordsList.get(j)));
+                    }
+                }
+            }
+            //endregion
+
+            //region Filtering the matches
+            List<Word> matchingWordList = japaneseToolboxRoomDatabase.getWordListByWordIds(MatchingWordIdsFromIndex);
+            for (Word word : matchingWordList) {
+
+                //region Loop initializations
+                list = word.getKeywords();
+                if (list.equals("") || list.equals("-") || list.equals("KEYWORDS")) continue;
+                keywordsList = Arrays.asList(list.split(","));
+                found_match = false;
+                //endregion
+
+                //regionChceking is the word is a verb
+                is_verb = false;
+                for (Word.Meaning meaning : word.getMeanings()) {
+                    type = meaning.getType();
+                    is_verb = type.substring(0, 1).equals("V") && !type.equals("VC");
+                    if (is_verb) break;
+                }
+                //endregion
+
+                //region If there is a word in the list that matches the input word, get the corresponding row index
+                match_length = 1000;
+                boolean valueIsInParentheses = false;
+                for (int i = 0; i < keywordsList.size(); i++) {
+
+                    // Performing certain actions on the hit to prepare the comparison
+                    hit = keywordsList.get(i).trim(); //also trims the extra space before the word
+
+                    //region Add "to " to the hit if it's a verb (the "to " was removed to save memory in the database)
+                    if (is_verb) {
+                        //Don't add "to " if the word is an explanation in parentheses
+                        if (!valueIsInParentheses) {
+                            hit = "to " + hit;
+                        }
+                        if (hit.contains("(") && !hit.contains(")")) valueIsInParentheses = true;
+                        else if (!hit.contains("(") && hit.contains(")")) valueIsInParentheses = false;
+                    }
+                    //endregion
+
+                    is_verb_and_latin = hit.length() > 3 && hit.substring(0, 3).equals("to ");
+
+                    concatenated_hit = Utilities.removeSpecialCharacters(hit);
+                    if (TypeisKanji && !ConvertFragment.TextType(concatenated_hit).equals("kanji") ) { continue; }
+                    if (concatenated_hit.length() < concatenated_word_length) { continue; }
+                    if (TypeisLatin && word_length == 2 && hit.length() > 2) { continue;}
+                    if (TypeisLatin && hit.length() < inglessVerb_length) {continue;}
+
+                    if (TypeisLatin) {
+                        hit = hit.toLowerCase(Locale.ENGLISH);
+                        concatenated_hit = concatenated_hit.toLowerCase(Locale.ENGLISH);
+                    }
+
+                    hit = removeApostrophe(hit);
+                    concatenated_hit = removeApostrophe(concatenated_hit);
+
+                    //region Getting the first word if the hit is a sentence
+                    if (hit.length() > word_length) {
+                        List<String> parsed_hit = Arrays.asList(hit.split(" "));
+                        if (is_verb_and_latin) { hitFirstRelevantWord = parsed_hit.get(1);}
+                        else { hitFirstRelevantWord = parsed_hit.get(0); } // hitFirstWord is the first word of the hit, and shows relevance to the search priority
+                    } else {
+                        hitFirstRelevantWord = "";
+                    }
+                    //endregion
+
+                    //region Perform the comparison to the input inputQueryAutoCompleteTextView and return the length of the shortest hit
+                    // Match length is reduced every time there's a hit and the hit is shorter
+                    if (       (concatenated_hit.contains(concatenated_word)
+                            || (TypeisLatin && hit.equals("to " + inglessVerb))
+                            || (!translationLatin.equals("") && concatenated_hit.contains(translationLatin))
+                            || (!translationHira.equals("") && concatenated_hit.contains(translationHira))
+                            || (!translationKata.equals("") && concatenated_hit.contains(translationKata)))) //ie. if the hit contains the input word, then do the following:
+                    {
+                        if (concatenated_hit.equals(concatenated_word)) {
+                            best_match = concatenated_hit;
+                            found_match = true;
+                            match_length = best_match.length()-1; // -1 to make sure that it's listed first
+                            if (is_verb_and_latin) { match_length = match_length-3;}
+                            continue;
+                        }
+                        if (hitFirstRelevantWord.contains(concatenated_word) && hitFirstRelevantWord.length() <= match_length) {
+                            best_match = hitFirstRelevantWord;
+                            found_match = true;
+                            match_length = best_match.length();
+                            continue;
+                        }
+                        if (ConvertFragment.TextType(concatenated_hit).equals("latin") && hit.length() <= match_length) {
+                            best_match = hit;
+                            found_match = true;
+                            match_length = best_match.length();
+                            if (is_verb_and_latin) { match_length = match_length-3;}
+                        }
+                    }
+                    //endregion
+                    if (found_match) {
+                        break;
+                    }
+                }
+                //endregion
+
+                if (found_match) {
+                    current_match_values = new long[2];
+                    current_match_values[0] = word.getWordId();
+                    current_match_values[1] = (long) match_length;
+                    MatchList.add(current_match_values);
+                }
+            }
+
+            for (int i=0;i<MatchList.size();i++) {
+                matchingWordIds.add(MatchList.get(i)[0]);
+            }
+
+        }
+
+        return matchingWordIds;
+    }
     public static String replaceInvalidKanjisWithValidOnes(String input) {
         String output = "";
         char currentChar;
@@ -1181,6 +1465,25 @@ public class DatabaseUtilities {
         if (result[0] == result[1] && !result_string.contains(prepared_word.substring(2,prepared_word.length()).toUpperCase())) { result[0] = -1; result[1] = -1; }
 
         return result;
+    }
+    public static List<LatinIndex> findQueryInLatinIndex(boolean TypeisLatin, String concatenated_word,
+                                                         String concatenated_translationLatin, JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase) {
+
+        String prepared_word;
+        // Prepare the input word to be used in the following algorithm (it must be only in latin script)
+        if (TypeisLatin) { prepared_word = concatenated_word.toLowerCase(Locale.ENGLISH); }
+        else { prepared_word = concatenated_translationLatin.toLowerCase(Locale.ENGLISH); }
+
+        List<LatinIndex> matchingLatinIndexes = japaneseToolboxRoomDatabase.getLatinIndexesListForStartingWord(prepared_word);
+        return matchingLatinIndexes;
+    }
+    public static List<KanjiIndex> findQueryInKanjiIndex(String concatenated_word, JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase) {
+
+        // Prepare the input word to be used in the following algorithm: the word is converted to its hex utf-8 value as a string, in fractional form
+        String prepared_word = convertToUTF8(concatenated_word);
+
+        List<KanjiIndex> matchingKanjiIndexes = japaneseToolboxRoomDatabase.getKanjiIndexesListForStartingWord(prepared_word);
+        return matchingKanjiIndexes;
     }
     public static String convertToUTF8(String input_string) {
 

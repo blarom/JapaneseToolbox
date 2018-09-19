@@ -11,6 +11,7 @@ import android.graphics.LightingColorFilter;
 import android.graphics.Typeface;
 import android.os.Looper;
 import android.support.annotation.VisibleForTesting;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -21,7 +22,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {Word.class, KanjiIndex.class, LatinIndex.class}, version = 13)
+@Database(entities = {Word.class, KanjiIndex.class, LatinIndex.class}, version = 15)
 public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
@@ -69,16 +70,13 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
                 loadCentralDatabaseIntoRoomDb(context);
                 loadingToast = showDatabaseLoadingToast("Please wait while we update the local database... Completed 1/3.", context, loadingToast);
 
-                loadCentralDatabaseIndexIntoRoomDb(context);
+                loadCentralDatabaseIndexesIntoRoomDb(context);
                 loadingToast = showDatabaseLoadingToast("Please wait while we update the local database... Completed 2/3.", context, loadingToast);
 
                 setTransactionSuccessful();
             } finally {
                 endTransaction();
             }
-        }
-        else {
-            String a="";
         }
     }
     private Toast showDatabaseLoadingToast(final String message, Context context, Toast lastToast) {
@@ -115,13 +113,33 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
 
         List<Word> wordList = new ArrayList<>();
         for (int i=1; i<centralDatabase.size(); i++) {
-            com.japanesetoolboxapp.data.Word word = DatabaseUtilities.createWordFromCsvDatabases(centralDatabase, meaningsDatabase, multExplanationsDatabase, examplesDatabase, i);
+            Word word = DatabaseUtilities.createWordFromCsvDatabases(centralDatabase, meaningsDatabase, multExplanationsDatabase, examplesDatabase, i);
             wordList.add(word);
         }
         word().insertAll(wordList);
         Log.i("Diagnosis Time","Loaded MainDatabase.");
     }
-    private void loadCentralDatabaseIndexIntoRoomDb(Context context) {
+    private void loadCentralDatabaseIndexesIntoRoomDb(Context context) {
+
+        List<String[]> grammarDatabaseIndexLatin = DatabaseUtilities.readCSVFile("LineGrammarSortedIndexLatin - 3000 kanji.csv", context);
+        List<String[]> grammarDatabaseIndexedKanji = DatabaseUtilities.readCSVFile("LineGrammarSortedIndexKanji - 3000 kanji.csv", context);
+
+        List<LatinIndex> latinIndexList = new ArrayList<>();
+        for (int i=0; i<grammarDatabaseIndexLatin.size(); i++) {
+            if (TextUtils.isEmpty(grammarDatabaseIndexLatin.get(i)[0])) break;
+            LatinIndex latinIndex = new LatinIndex(grammarDatabaseIndexLatin.get(i)[0], grammarDatabaseIndexLatin.get(i)[1]);
+            latinIndexList.add(latinIndex);
+        }
+        latinIndex().insertAll(latinIndexList);
+
+        List<KanjiIndex> kanjiIndexList = new ArrayList<>();
+        for (int i=0; i<grammarDatabaseIndexedKanji.size(); i++) {
+            if (TextUtils.isEmpty(grammarDatabaseIndexedKanji.get(i)[0])) break;
+            KanjiIndex kanjiIndex = new KanjiIndex(grammarDatabaseIndexedKanji.get(i)[0], grammarDatabaseIndexedKanji.get(i)[1], grammarDatabaseIndexedKanji.get(i)[2]);
+            kanjiIndexList.add(kanjiIndex);
+        }
+        kanjiIndex().insertAll(kanjiIndexList);
+        Log.i("Diagnosis Time","Loaded Indexes.");
     }
 
     //Switches the internal implementation with an empty in-memory database
@@ -159,5 +177,12 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     }
     public int getDatabaseSize() {
         return word().count();
+    }
+
+    public List<LatinIndex> getLatinIndexesListForStartingWord(String query) {
+        return latinIndex().getLatinIndexByStartingLatinQuery(query);
+    }
+    public List<KanjiIndex> getKanjiIndexesListForStartingWord(String query) {
+        return kanjiIndex().getKanjiIndexByStartingLatinQuery(query);
     }
 }

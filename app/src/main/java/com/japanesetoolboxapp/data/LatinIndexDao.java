@@ -28,9 +28,13 @@ public interface LatinIndexDao {
     @Query("SELECT * FROM " + LatinIndex.TABLE_NAME)
     List<LatinIndex> getAllLatinIndexes();
 
-    //Get a LatinIndex by Latin
-    @Query("SELECT * FROM " + LatinIndex.TABLE_NAME + " WHERE " + LatinIndex.COLUMN_LATIN + " = :latin")
-    LatinIndex getLatinIndexByLatin(String latin);
+    //Get a LatinIndex by Exact query match
+    @Query("SELECT * FROM " + LatinIndex.TABLE_NAME + " WHERE " + LatinIndex.COLUMN_LATIN + " = :query")
+    LatinIndex getLatinIndexByExactLatinQuery(String query);
+
+    //Get a LatinIndex list by similar query match - see: https://stackoverflow.com/questions/44234644/android-rooms-search-in-string
+    @Query("SELECT * FROM " + LatinIndex.TABLE_NAME + " WHERE " + LatinIndex.COLUMN_LATIN + " LIKE :query  || '%' ")
+    List<LatinIndex> getLatinIndexByStartingLatinQuery(String query);
 
     //Delete a LatinIndex by Latin
     @Query("DELETE FROM " + LatinIndex.TABLE_NAME + " WHERE " + LatinIndex.COLUMN_LATIN + " = :latin")

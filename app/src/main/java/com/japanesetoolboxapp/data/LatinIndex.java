@@ -14,7 +14,11 @@ public class LatinIndex {
     static final String COLUMN_LATIN = "latin";
     static final String WORD_IDS = "word_ids";
 
-    public LatinIndex() {
+    LatinIndex() { }
+
+    LatinIndex(@NonNull String latin, String wordIds) {
+        this.latin = latin;
+        this.wordIds = wordIds;
     }
 
     @PrimaryKey()

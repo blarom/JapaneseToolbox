@@ -269,6 +269,7 @@ public class DictionaryFragment extends Fragment implements
             if (!TextUtils.isEmpty(mSearchWord)) {
                 JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
                 mMatchingWordIds = DatabaseUtilities.FindMatchingWordIndex(mSearchWord, japaneseToolboxRoomDatabase);
+                List<Long> roomMatchingWordIds = DatabaseUtilities.FindMatchingWordIndexUsingRoomIndexes(mSearchWord, japaneseToolboxRoomDatabase);
                 localMatchingWordsList = japaneseToolboxRoomDatabase.getWordListByWordIds(mMatchingWordIds);
             }
 
