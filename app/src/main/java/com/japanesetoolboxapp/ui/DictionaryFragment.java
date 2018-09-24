@@ -150,10 +150,10 @@ public class DictionaryFragment extends Fragment implements
             return jishoResultsAsyncTaskLoader;
         }
         else if (id == ROOM_DB_SEARCH_LOADER){
-            RoomDbSearchAsyncTaskLoader roomDbSearchLoader = new RoomDbSearchAsyncTaskLoader(getContext(), inputQuery);
+            RoomDbWordSearchAsyncTaskLoader roomDbSearchLoader = new RoomDbWordSearchAsyncTaskLoader(getContext(), inputQuery);
             return roomDbSearchLoader;
         }
-        else return new RoomDbSearchAsyncTaskLoader(getContext(), "");
+        else return new RoomDbWordSearchAsyncTaskLoader(getContext(), "");
     }
     @Override public void onLoadFinished(@NonNull Loader<List<Word>> loader, List<Word> loaderResultWordsList) {
 
@@ -247,12 +247,12 @@ public class DictionaryFragment extends Fragment implements
             mAllowLoaderStart = state;
         }
     }
-    private static class RoomDbSearchAsyncTaskLoader extends AsyncTaskLoader <List<Word>> {
+    private static class RoomDbWordSearchAsyncTaskLoader extends AsyncTaskLoader <List<Word>> {
 
         String mSearchWord;
         private List<Long> mMatchingWordIds;
 
-        RoomDbSearchAsyncTaskLoader(Context context, String searchWord) {
+        RoomDbWordSearchAsyncTaskLoader(Context context, String searchWord) {
             super(context);
             mSearchWord = searchWord;
         }
@@ -268,8 +268,7 @@ public class DictionaryFragment extends Fragment implements
             List<Word> localMatchingWordsList = new ArrayList<>();
             if (!TextUtils.isEmpty(mSearchWord)) {
                 JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
-                mMatchingWordIds = DatabaseUtilities.FindMatchingWordIndex(mSearchWord, japaneseToolboxRoomDatabase);
-                List<Long> roomMatchingWordIds = DatabaseUtilities.FindMatchingWordIndexUsingRoomIndexes(mSearchWord, japaneseToolboxRoomDatabase);
+                mMatchingWordIds = DatabaseUtilities.getMatchingWordIdsUsingRoomIndexes(mSearchWord, japaneseToolboxRoomDatabase);
                 localMatchingWordsList = japaneseToolboxRoomDatabase.getWordListByWordIds(mMatchingWordIds);
             }
 

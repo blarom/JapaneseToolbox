@@ -401,7 +401,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 401|that one (something close to the listener)|A|ME#0017;0018|||||
 402|in addition to, besides, other than, else|A|ME#0004;0005|||||
 403|me too|A||||||
-404|more|A|||646, 647|||
+404|(some) more, even more, longer, further|A|||646, 647|||
 405|more, another|A|||644, 645, 367|||
 406|yet, again, already, more|AT|||676, 677|mada||
 407|neither choice|A||||||
@@ -1602,7 +1602,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1602|I will beat you and kill you|IES|Highly vulgar if used to convey the speaker's intent.|||||
 1603|I will kill you|IES|Highly vulgar if used to convey the speaker's intent.|||||
 1604|leave me alone|IES||||||
-1605|nerd|IES||||||
+1605|geek, nerd, enthusiast, otaku|IES||||||
 1606|geek, nerd, enthusiast, otaku|NPe||||||
 1607|no good guy|IES||||||
 1608|not cool, ugly, unattractive|IES||||||
@@ -2766,7 +2766,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2766|valuables, treasures|NACF|||152|||
 2767|value, worth, price, dignity|NACF||||||
 2768|vedana|NACF|From Buddhism: sensation.|||||
-2769|vehicle|NACF||||||
+2769|vehicle, conveyance, transport|NACF||||||
 2770|verbal message, word|NACF|||1292|||
 2771|victim|NACF||||||
 2772|victim, sacrifice, scapegoat|NACF||||||
@@ -3355,7 +3355,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3355|cup|NGO||||||
 3356|curtain|NGO||||||
 3357|desk|NGO|||355|||
-3358|detergent|NGO||||||
+3358|detergent, cleanser, cleaning agent, washing material|NGO||||||
 3359|diary|NGO||||||
 3360|dictionary|NGO|Most commonly used by older people.||364||jisho, jiten|
 3361|dictionary|NGO|Usually implies a large dictionary.||||jisho, jibiki|
@@ -3416,7 +3416,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3416|luggage, baggage, burden, payload|NGO|||369, 1286, 1369|||
 3417|machine|NGO||||||
 3418|machine, mechanism, instrument, appliance, apparatus|NGO|||1414|||
-3419|magazine|NGO|||330|||
+3419|journal, magazine, periodical|NGO|||330|||
 3420|map|NGO|||334|||
 3421|marble, glass marble|NGO||||||
 3422|marbles|NGO||||||
@@ -3954,7 +3954,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3954|sumo wrestler|NPe||||||
 3955|surgeon|NPe||||||
 3956|sycophant, flatterer, ass-kisser|NPe||||||
-3957|teacher|NPe|lit. "born earlier"||397, 1355||kyoushi|
+3957|teacher, master, doctor|NPe|lit. "born earlier"||397, 1355||kyoushi|
 3958|teacher|NPe|esp. of a classroom||||sensei|
 3959|the aged, old person|NPe|||157|||
 3960|the person himself, oneself|NPe||||||
@@ -4189,7 +4189,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4189|small shrine|NPl||||||
 4190|south|NPl|||179|||
 4191|spa, hot spring, onsen|NPl||||||
-4192|stand|NPl||||||
+4192|place for boarding vehicles, bus stop, bus terminal, railway platform, taxi stand, jetty, wharf|NPl||||||
 4193|railway station, train station|NPl|As of transportation only||419, 132, 1300, 1302, 1307|||
 4194|stationary shop|NPl||||||
 4195|store|NPl|||412|||
@@ -7195,7 +7195,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7195|pass (down the line)|VrugT||||||
 7196|affix okurigana|VrugT||||||
 7197|wife, your wife, his wife, married lady, madam|NACF||||||
-7198||-||||||
+7198|work too hard, try too hard|VsuruI||||||
 7199|Japanese league, ri, old Japanese unit of distance, approx. 3.927km or 2.44 miles|NACF||||||
 7200|neighbourhood (under the ritsuryo system, orig. of 50 homes)|NACF||||||
 7201|unit of area (approx. 654m by 654m)|NACF||||||
@@ -7427,7 +7427,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7427|perfect (tense, form, aspect)|NACF||||||
 7428|bureaucrat, government official, bureaucracy|NACF||||||
 7429|matter, case, item, affair, subject|NACF||||||
-7430||-||||||
+7430|race|VsuruI||||||
 7431|cum (e.g. bedroom-cum-study), holding both roles (e.g. Prime Minister and Minister of Foreign Affairs), and, in addition, concurrently, at the same time|PP||||||
 7432|sword (originally esp. a doubled-edged sword), sabre, saber, blade|NACF||||||
 7433|bayonet|NACF||||||
@@ -8469,7 +8469,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8469|monk, priest|NACF||||||
 8470|pair|NACF||||||
 8471|pair|Sx||||||
-8472||||||||
+8472||-||||||
 8473|run along, run beside, stick to (a line)|VuI||||||
 8474|follow (a policy, plan, etc.), act in accordance with, align with|VuI||||||
 8475|meet (wishes, expectations, etc.), satisfy, comply with, live up to|VuI||||||
@@ -8703,3 +8703,437 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8703|approve|VsuruT||||||
 8704||-||||||
 8705|advance, move forward, progress|VsuruI||||||
+8706|follow in succession, happen one after another|VguI||||||
+8707|they|UNC||||||
+8708|light, well-lit, well-lighted|Ai||||||
+8709|bright (of a colour), brightly-coloured, brightly-colored|Ai||||||
+8710|cheerful, bright, spirited, sunny (e.g. disposition)|Ai||||||
+8711|encouraging (for the future of a project, etc.), promising, of fair prospects|Ai||||||
+8712|familiar (with), knowledgeable (about), well versed (in)|Ai||||||
+8713|fair (e.g. politics), clean, impartial|Ai||||||
+8714|near future|UNC||||||
+8715|hair (on one's head)|NACF||||||
+8716|mind, brains, intellect|NACF||||||
+8717|leader, chief, boss, captain|NACF||||||
+8718|top, tip|NACF||||||
+8719|beginning, start|NACF||||||
+8720|head, person|NACF||||||
+8721|top structural component of a kanji|NACF||||||
+8722|pair|NACF||||||
+8723|beach sandals, flip-flops, thongs, pluggers, jandals|NACF||||||
+8724|entity that is worn-out, ragged, tattered, battered, scruffy|NACF||||||
+8725|worn-out, ragged, tattered, battered, scruffy|Ana||||||
+8726|crumbily|A||||||
+8727|crumbling, dry and crumbly|Ana||||||
+8728|falling (in drops or clumps), scattering|A||||||
+8729|(physically or mentally) worn-out, exhausted|Ana||||||
+8730|(coming to light) one after another|A||||||
+8731|place name|NACF||||||
+8732|well-known|Ana||||||
+8733|well-known entity or person|NACF||||||
+8734|fatal wound|NACF||||||
+8735|fatal, lethal|Ana||||||
+8736|scatter, cause a shower of|VsuT||||||
+8737|resolve (a symptom, condition, etc.), relieve, get rid of, cure|VsuT||||||
+8738|distract, divert|VsuT||||||
+8739|do ... wildly (i.e. disorderly or frequently), do ... all over the place|VsuI||||||
+8740|first lieutenant, lieutenant junior grade|NACF||||||
+8741|lieutenant general, vice-admiral|NACF||||||
+8742|Chuujou|NPl||||||
+8743|lieutenant colonel, commander (navy)|NACF||||||
+8744|practice, practising|NACF||||||
+8745|exercises, manoeuvres, maneuvers|NACF||||||
+8746|seminar (student debates, presentations, etc.), practicum|NACF||||||
+8747|phon (unit of loudness)|NACF||||||
+8748|fond, (soup) stock|NACF||||||
+8749|phone|NACF||||||
+8750|lieutenant governor|NACF||||||
+8751|stop up, close up, block (up), plug up, shut up, cover (ears, eyes, etc.), close (eyes, mouth)|VguT||||||
+8752|occupy, fill up, take up|VguT||||||
+8753|perform one's role, do one's duty|VguT||||||
+8754|feel depressed, be in low spirits, mope|VguI||||||
+8755|his and hers, pair of objects, one larger (for man), one smaller (for woman)|Px||||||
+8756|function, operate, be effective, work (i.e. ... works), come into play|VkuI||||||
+8757|commit (e.g. a crime), perpetrate, do, act, practise, practice|VkuI||||||
+8758|be conjugated|VkuI||||||
+8759|ordinary, average, common|Ana||||||
+8760|the same, no different, (just) as if|Ana||||||
+8761|ordinary person, member of the general public, non-celebrity|NACF||||||
+8762|generally, in general, widely, commonly, universally|A||||||
+8763|general, popular, common, typical|Ana||||||
+8764|some, few, a number of, a little (bit)|NACF||||||
+8765|somewhat, to a certain extent|NACF||||||
+8766|many, a lot|NACF||||||
+8767|gravel, ballast, pebbles|NACF||||||
+8768|child, rugrat, ankle-biter|NACF||||||
+8769|practice (as opposed to theory), actual practice|NACF||||||
+8770|actual site, (at) the scene, (on) the spot|NACF||||||
+8771|practice, putting into practice, implementation|NACF||||||
+8772|praxis (philosophy)|NACF||||||
+8773|enforcement, implementation, putting into practice, carrying out, operation, working (e.g. working parameters), enactment|NACF||||||
+8774|practice (in the field), training (esp. practical and hands-on), practical exercise, drill|NACF||||||
+8775|practical business, practical work experience, practicum, practice|NACF||||||
+8776|condition, term, requirement, qualification, prerequisite|NACF||||||
+8777|conditionally, with conditions attached|CE||||||
+8778|common sense, good sense, common knowledge, general knowledge, common practice, accepted practice, social etiquette|NACF||||||
+8779|reorganization, reorganisation|NACF||||||
+8780|deep emotion, strong feelings|NACF||||||
+8781|calculation, computation, counting, reckoning, count|NACF||||||
+8782|bill, check, account, payment (of a bill), settlement (of an account)|NACF||||||
+8783|consideration, allowance|NACF||||||
+8784|emotion, feeling, feelings, sentiment|NACF||||||
+8785|annulation, ring-forming|NACF||||||
+8786|emotional, sentimental|Ana||||||
+8787|become firm, become certain|VrugI||||||
+8788|gather (together), assemble, huddle together|VrugI||||||
+8789|addition of points, scoring|NACF||||||
+8790|addition of marks and symbols to a classical Chinese text to aid reading in Japanese|NACF||||||
+8791|practice, practising, training, study|NACF||||||
+8792|Keiko|NPl||||||
+8793|column, beam, girder, crossbeam, spar, yard|NACF||||||
+8794|blood|NACF||||||
+8795|blood type, blood group|NACF||||||
+8796|blood test, hemanalysis|NACF||||||
+8797|captain (of an aircraft)|NACF||||||
+8798|abstention (from voting), renunciation (of a right), withdrawal (from a contest)|NACF||||||
+8799|riskiness, danger|NACF||||||
+8800|decide, choose, determine, make up one's mind, resolve, set one's heart on, settle, arrange, set, appoint, fix|VruiT||||||
+8801|always do, have made a habit of|VruiT||||||
+8802|take for granted, assume|VruiT||||||
+8803|wound, injury, cut, gash, bruise, scratch, scrape, scar|NACF||||||
+8804|flaw, defect, weakness, weak point|NACF||||||
+8805|stain (on one's reputation), disgrace, dishonor, dishonour|NACF||||||
+8806|(emotional) hurt, hurt feelings|NACF||||||
+8807|scar, cicatrix|NACF||||||
+8808|(opening of) a wound, (mouth of a) wound, cut|NACF||||||
+8809|build up, establish (one's reputation)|VruiT||||||
+8810|build, construct, erect|VkuT||||||
+8811|amass (e.g. fortune), pile up|VkuT||||||
+8812|bonds (between people), (emotional) ties, relationship, connection, link|NACF||||||
+8813|tether, fetters|NACF||||||
+8814|wound, injure|VruiT||||||
+8815|hurt someone's feelings (pride, etc.)|VruiT||||||
+8816|damage, chip, scratch|VruiT||||||
+8817|be wounded, get injured|VkuI||||||
+8818|get hurt feelings|VkuI||||||
+8819|get damaged, get chipped, get scratched|VkuI||||||
+8820|inform, give notice, tell in advance|VrugT||||||
+8821|ask leave, excuse oneself (from)|VrugT||||||
+8822|kōji, malted rice, malt, malt-like material from growing mold on rice, barley, beans, etc. (used as a starter to make sake, miso, soy sauce, etc.)|NACF||||||
+8823|excuse, pretext|NACF||||||
+8824|subtraction, deduction (e.g. tax), subsidy|NACF||||||
+8825|elevation, rise, improvement, advancement, progress|NACF||||||
+8826|calf, small cow|NACF||||||
+8827|Kouji|NPl||||||
+8828|training, drill, practice, discipline|NACF||||||
+8829|daydream, fantasy, fancy, vision|NACF||||||
+8830|cap|NACF||||||
+8831|top reporter at a newspaper's local office|NACF||||||
+8832|captain|NACF||||||
+8833|captain|NACF||||||
+8834|each time, always, often|UNC||||||
+8835|thank you for your continued patronage|UNC||||||
+8836|mile|NACF||||||
+8837|go, come, call|VrugI||||||
+8838|be defeated, collapse, die|VrugI||||||
+8839|be annoyed, be nonplussed|VrugI||||||
+8840|be madly in love|VrugI||||||
+8841|visit (shrine, grave)|VrugI||||||
+8842|mild|Ana||||||
+8843|happiness in the next world|NACF||||||
+8844|name, title, appellation, (something) nominal|NACF||||||
+8845|(under the) pretext (of), pretense|NACF||||||
+8846|Mexico|NACF||||||
+8847|Gulf of Mexico|NACF||||||
+8848|Gulf of Mexico|NPl||||||
+8849|mistake, error, failure|NACF||||||
+8850|Miss|NACF||||||
+8851|myth|NACF||||||
+8852|misprint|NACF||||||
+8853|shabby, seedy|Ai||||||
+8854|let go by, let pass, overlook, miss|VsuT||||||
+8855|attempt (e.g. at crime)|NACF||||||
+8856|attempt (e.g. at crime)|Sx||||||
+8857|before one's own eyes, from under one's very nose, without doing anything, without resistance, helplessly, negligently, knowingly|A||||||
+8858|abandon, fail, desert, forsake|VruiT||||||
+8859|mister, Mr|NACF||||||
+8860|mystery|NACF||||||
+8861|unwelcome, nerdish, unpopular|Ai||||||
+8862|under (esp. influence or guidance)|A||||||
+8863|base, basis, foundation, root|NACF||||||
+8864|cause|NACF||||||
+8865|ingredient, material|NACF||||||
+8866|(somebody's) side, (somebody's) location|NACF||||||
+8867|original cost (or capital, principal, etc.)|NACF||||||
+8868|(plant) root, (tree) trunk|NACF||||||
+8869|first section of a waka|NACF||||||
+8870|counter for blades of grass, tree trunks, etc., and for falcons (in falconry)|UNC||||||
+8871|handle (chopsticks, brush, etc.), grip|NACF||||||
+8872|request, demand|VruiT||||||
+8873|seek, search for, pursue (pleasure), hunt (a job)|VruiT||||||
+8874|purchase, buy|VruiT||||||
+8875|originally, by nature, from the start|A||||||
+8876|originalilty, naturalness|NACF||||||
+8877|from the beginning, from the first, all along, originally|A||||||
+8878|of course|A||||||
+8879|but then, although, though|PP||||||
+8880|reasonable, natural, just|Ana||||||
+8881|plausible, believable|Ai||||||
+8882|solemn, dignified, serious|Ai||||||
+8883|motto|NACF||||||
+8884|tomorrow evening|UNC||||||
+8885|tomorrow morning|UNC||||||
+8886|surname, family name|NACF||||||
+8887|Myouji|NPl||||||
+8888|next year|UNC||||||
+8889|practice, practising, experience|NACF||||||
+8890|difficult to ..., hard to ...|Aj||||||
+8891|riding, ride|NACF||||||
+8892|spread (of paints)|NACF||||||
+8893|-seater (e.g. two-seater)|Sx||||||
+8894|(getting into the) mood, (entering into the) spirit, energy, enthusiasm, rhythm, feeling|NACF||||||
+8895|nori, laver, edible seaweed, usu. Porphyra yezoensis or P. tenera, usu. dried and pressed into sheets|NACF||||||
+8896|paste, glue|NACF||||||
+8897|clothing starch|NACF||||||
+8898|set out, set sail|VsuT||||||
+8899|embark on (a new venture), set out (to achieve something)|VsuT||||||
+8900|begin to ride|VsuT||||||
+8901|transfer (trains, buses, etc.), connection, connexion|NACF||||||
+8902|switching (stock)|NACF||||||
+8903|chromosomal crossover, crossing over|NACF||||||
+8904|transfer (trains), change (bus, train)|VruiT||||||
+8905|change one's mind, move on to (e.g. a new love interest), change methods, change one's way of thinking|VruiT||||||
+8906|weather (a storm, rough seas), ride across, sail across|VrugT||||||
+8907|get through (adversity), weather, get over, tide over, overcome, survive|VrugT||||||
+8908|load completely (e.g. books on a shelf, people or luggage in a car)|VrugI||||||
+8909|board, embark on, get into (a car), man (a ship), help (someone) into|VmuI||||||
+8910|march into, enter|VmuI||||||
+8911|ride past (one's stop), overshoot|VsuT||||||
+8912|climb over, get over|VsuT||||||
+8913|overtake (in a vehicle), pass|VsuT||||||
+8914|crew|NACF||||||
+8915|drive (a car) around, ride (a bicycle) around|VsuT||||||
+8916|ride (playground, fair, carnival), playground facility|NACF||||||
+8917|miss (a train, bus, etc.)|VruiI||||||
+8918|fail to keep up with (e.g. the times), be left behind by|VruiI||||||
+8919|getting on and off (a vehicle), boarding and alighting|NACF||||||
+8920|New Mexico|NACF||||||
+8921|New Mexico|NPl||||||
+8922|calm down, compose oneself, regain presence of mind|VkuI||||||
+8923|calm down, settle down, die down, become stable, abate|VkuI||||||
+8924|settle down (in a location, job, etc.), settle in|VkuI||||||
+8925|be settled, be fixed, have been reached|VkuI||||||
+8926|harmonize with, harmonise with, match, suit, fit|VkuI||||||
+8927|be unobtrusive, be quiet, be subdued|VkuI||||||
+8928|funny, amusing, comical, laughable, ridiculous|Ai||||||
+8929|strange, odd, funny, peculiar, weird, unusual, eccentric|Ai||||||
+8930|improper, unsuitable, unbecoming|Ai||||||
+8931|suspicious|Ai||||||
+8932|practice, practising|NACF||||||
+8933|fall, decline, lowering, hanging down, drooping, slanting (downward)|NACF||||||
+8934|string apron, ornamental cords hanging from the front of a sumo wrestler's belt|NACF||||||
+8935|food offering to the gods, leftovers, hand-me-downs|NACF||||||
+8936|leaving (one's master's place for home)|NACF||||||
+8937|a little after ...|Sx||||||
+8938|a little after ...|NACF||||||
+8939|shout, scream, outcry|NACF||||||
+8940|shout, yell, scream|NACF||||||
+8941|ingredient, component, composition|NACF||||||
+8942|ship's captain, skipper|NACF||||||
+8943|length of a ship|NACF||||||
+8944|boatman|NACF||||||
+8945|(degree of) freshness|NACF||||||
+8946|guidance, leadership|NACF||||||
+8947|wartime|NACF||||||
+8948|predecessor, pioneer, ancestor|NACF||||||
+8949|vanguard, advance guard|NACF||||||
+8950|washing, cleansing, cleaning, laundering|NACF||||||
+8951|cleansing (one's mind and body)|NACF||||||
+8952|tactics|NACF||||||
+8953|previous priest or resident|NACF||||||
+8954|working exclusively for, working full-time (for)|NACF||||||
+8955|with names of teachers, etc. as an honorific|Sx||||||
+8956|previous existence|NACF||||||
+8957|potentiality, dormancy, latency|NACF||||||
+8958|squat, crouch|VmuI||||||
+8959|in three days' time, two days after tomorrow|UNC||||||
+8960|however, but|PP||||||
+8961|business practice, business method, commerce|NACF||||||
+8962|commercial law|NACF||||||
+8963|evidence, proof|NACF||||||
+8964|commerce and industry|NACF||||||
+8965|commissioned officer|NACF||||||
+8966|lull|NACF||||||
+8967|syndrome|NACF||||||
+8968|Chamber of Commerce and Industry|NACF||||||
+8969|exhaustion, consumption, using up, dissipation, waste|NACF||||||
+8970|major, lieutenant commander, wing commander|NACF||||||
+8971|ascetic practices|NACF||||||
+8972|training, practice, discipline, study|NACF||||||
+8973|commander-in-chief, (team) captain|NACF||||||
+8974|gathering, assembly, meeting|NACF||||||
+8975|set|NACF||||||
+8976|having ended, being resolved|NACF||||||
+8977|damage, injury|NACF||||||
+8978|and, and then, thus, and now, and finally|PP||||||
+8979|leaving early|NACF||||||
+8980|the whole, originally|A||||||
+8981|the whole|NACF||||||
+8982|relative|Ana||||||
+8983|print|VrugT||||||
+8984|color or pattern fabric using a wooden mold|VrugT||||||
+8985|rub, chafe, strike (match), file, frost (glass)|VrugT||||||
+8986|lose (e.g. a match), forfeit, squander one's money (e.g. through gambling, Pachinko, etc.)|VrugT||||||
+8987|should do, ought to do|CE||||||
+8988|sharp (blade), pointed|Ai||||||
+8989|sharp (pain), stabbing, cutting (remark), stinging, pointed (question or look), screeching (noise)|Ai||||||
+8990|perceptive, keen, quick (mind), astute, shrewd, discerning|Ai||||||
+8991|nimble, agile, quick|Ai||||||
+8992|thereupon, hereupon|PP||||||
+8993|ignoring, looking the other way, letting pass|NACF||||||
+8994|passing through, going through|NACF||||||
+8995|ball hit through net (in tennis)|NACF||||||
+8996|departure, setting off, start|NACF||||||
+8997|being used up, being consumed, being burnt out|NACF||||||
+8998|passage of time, lapse|NACF||||||
+8999|rehearsal|NACF||||||
+9000|leading male role in kabuki|NACF||||||
+9001|rising from a crouch to charge, initial charge, faceoff|NACF||||||
+9002|verb prefix conveying emphasis and sometimes formality|Px||||||
+9003|rising from a crouch to charge, initial charge, face-off|NACF||||||
+9004|physical condition, state of health|NACF||||||
+9005|length (of an animal), body length|NACF||||||
+9006|commanding officer|NACF||||||
+9007|captain (Army, U.S. Marine Corps, USAF), lieutenant (Navy), flight lieutenant (RAF, RAAF, RNZAF, etc.)|NACF||||||
+9008|colonel, (navy) captain|NACF||||||
+9009|shop manager|NACF||||||
+9010|counter for sets of things, counter for methods, ways, types|UNC||||||
+9011|Toori|NPl||||||
+9012|happen to pass by|VrugI||||||
+9013|go past, pass, pass by|VruiI||||||
+9014|slip on (slippers, sandals, etc.)|VruiT||||||
+9015|hit (e.g. one's leg) against, bash into|VruiT||||||
+9016|push (one's opponent) down before he stands up|VruiT||||||
+9017|be attached, be connected with, adhere, stick, cling|VkuI||||||
+9018|bear (fruit, interest, etc.)|VkuI||||||
+9019|be acquired (of a habit, ability, etc.), increase (of strength, etc.)|VkuI||||||
+9020|take root|VkuI||||||
+9021|accompany, attend, follow, study with|VkuI||||||
+9022|side with, belong to|VkuI||||||
+9023|possess, haunt|VkuI||||||
+9024|be lit, be lighted|VkuI||||||
+9025|be settled, be resolved, be decided|VkuI||||||
+9026|be given (of a name, price, etc.)|VkuI||||||
+9027|be sensed, be perceived|VkuI||||||
+9028|be lucky|VkuI||||||
+9029|become (a state, condition, etc.)|VkuI||||||
+9030|passage (of people, traffic), passing|NACF||||||
+9031|common usage|NACF||||||
+9032|closure (of a road), suspension of traffic|CE||||||
+9033|closure (of a road), suspension of traffic|NACF||||||
+9034|Road closed (on a sign), Closed to traffic, No through road|CE||||||
+9035|beach, seashore, seaside, coast|NACF||||||
+9036|transport, freight, shipping|NACF||||||
+9037|opposite, reverse, contrary|Ana||||||
+9038|opposite, reverse, contrary|NACF||||||
+9039|crouch, squat, cower|VrugI||||||
+9040|mountain road, mountain trail|NACF||||||
+9041|permit, allow, approve, consent to|VsuT||||||
+9042|forgive, pardon, excuse, tolerate|VsuT||||||
+9043|exempt (someone) from, remit, release, let off|VsuT||||||
+9044|acknowledge, admit|VsuT||||||
+9045|trust, confide in, let one's guard down|VsuT||||||
+9046|give up (points in a game, distance in a race, etc.), yield|VsuT||||||
+9047|seat, place, position|NACF||||||
+9048|seat, place, position|Sx||||||
+9049|status|NACF||||||
+9050|status|Sx||||||
+9051|gathering, group|NACF||||||
+9052|gathering, group|Sx||||||
+9053|stand, pedestal, platform|NACF||||||
+9054|stand, pedestal, platform|Sx||||||
+9055|(historical) trade guild|NACF||||||
+9056|(historical) trade guild|Sx||||||
+9057|attaches to the names of theatres, theatrical troupes, and constellations|Sx||||||
+9058|counter for theatres, deities, Buddhist images, tall mountains, and satokagura songs|Sx||||||
+9059||-||||||
+9060|zabuton (flat floor cushion used when sitting or kneeling, usu. rectangular)|NACF||||||
+9061|fortune, riches|NACF||||||
+9062|fortune, riches|Sx||||||
+9063|goods|NACF||||||
+9064|goods|Sx||||||
+9065|incorporated foundation|NACF||||||
+9066|attending (school, college, etc.), being enrolled, being a student|NACF||||||
+9067|inventory, stock, stockpile|NACF||||||
+9068|lumber, timber|NACF||||||
+9069|ingredients, material|NACF||||||
+9070|material (for a novel, experiment, etc.), subject matter, data|NACF||||||
+9071|basis (for a decision), grounds, evidence|NACF||||||
+9072|(market) factor|NACF||||||
+9073|property, fortune, assets|NACF||||||
+9074|public finance|NACF||||||
+9075|financial affairs, financial situation|NACF||||||
+9076|miscellaneous goods, general goods, sundries|NACF||||||
+9077|(bank) balance, remainder|NACF||||||
+9078|cruel, harsh|Ana||||||
+9079|cruelty, harshness|NACF||||||
+9080|deplorable, regrettable, disappointing, vexing, unfortunate|Ana||||||
+9081|seat|NACF||||||
+9082|rough, crude, sloppy, messy|Ana||||||
+9083|miscellaneous|Px||||||
+9084|miscellaneous|NACF||||||
+9085|chatting, idle talk|NACF||||||
+9086|noise (usu. unpleasant)|NACF||||||
+9087|interference (e.g. radio), static, noise|NACF||||||
+9088|gossip, irresponsible criticism|NACF||||||
+9089|zori, Japanese sandals|NACF||||||
+9090|crumble|VsuruI||||||
+9091|fall lightly (e.g. snow, petals, confetti), flutter|VsuruI||||||
+9092|flicker, twinkle, glimmer, sparkle, dazzle|VsuruI||||||
+9093|appear and disappear, catch glimpses|VsuruI||||||
+9094|glance (repeatedly)|VsuruI||||||
+9095|(hear, see) from time to time or intermittently|VsuruI||||||
+9096|practice|VsuruI||||||
+9097|exercise, manoeuvre, maneuver|VsuruI||||||
+9098|be at a seminar (student debates, presentations, etc.)|VsuruI||||||
+9099|practice, put into practice, implement|VsuruT||||||
+9100|enforce, implement, put into practice, carry out, perform an operation, work (e.g. work parameters), enactment|VsuruT||||||
+9101|practice (in the field), train (esp. practical and hands-on), exercise, drill|VsuruI||||||
+9102|reorganize, reorganise|VsuruT||||||
+9103|calculate, compute, count, reckon|VsuruT||||||
+9104|pay (a bill), settle (an account)|VsuruT||||||
+9105|consider, allow|VsuruT||||||
+9106|add points or score|VsuruI||||||
+9107|add marks and symbols to a classical Chinese text to aid reading in Japanese|VsuruI||||||
+9108|practice, train, study|VsuruI||||||
+9109|abstend (from voting), renunciate (a right), withdraw (from a contest)|VsuruI||||||
+9110|subtract, deduct (e.g. tax), subsidize|VsuruT||||||
+9111|be elevated, rise, improve, advance, progress|VsuruI||||||
+9112|daydream, fantasize, fancy|VsuruI||||||
+9113|make a mistake, be in error, fail|VsuruI||||||
+9114|join a group|VsuruT||||||
+9115|practice, experience|VsuruI||||||
+9116|transfer (trains, buses, etc.), connect|VsuruI||||||
+9117|switch (stock)|VsuruI||||||
+9118|cross over (choromosomal)|VsuruI||||||
+9119|get on and off (a vehicle), board and alight|VsuruT||||||
+9120|guide, lead|VsuruT||||||
+9121|wash, cleanse, clean, launder|VsuruT||||||
+9122|cleanse (one's mind and body)|VsuruI||||||
+9123|work exclusively for, work full-time (for)|VsuruI||||||
+9124|have potential, be dormant, be latent|VsuruI||||||
+9125|be exhausted, be consumed, be used up, dissipat, waste|VsuruI||||||
+9126|practice ascetically|VsuruI||||||
+9127|train, practice, have discipline, study|VsuruI||||||
+9128|gather, assemble, meet|VsuruI||||||
+9129|set|VsuruI||||||
+9130|end, be resolved|VsuruI||||||
+9131|damage, injure|VsuruT||||||
+9132|leave early|VsuruI||||||
+9133|ignore, look the other way, let pass|VsuruT||||||
+9134|pass through, go through|VsuruI||||||
+9135|pass|VsuruI||||||
+9136|be commonly used|VsuruI||||||
+9137|transport, ship|VsuruT||||||
+9138|attend (school, college, etc.), be enrolled, be a student|VsuruI||||||
+9139|chat, talk idly|VsuruI||||||

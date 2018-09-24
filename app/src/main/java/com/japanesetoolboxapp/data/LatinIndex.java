@@ -2,6 +2,7 @@ package com.japanesetoolboxapp.data;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ public class LatinIndex {
 
     LatinIndex() { }
 
+    @Ignore
     LatinIndex(@NonNull String latin, String wordIds) {
         this.latin = latin;
         this.wordIds = wordIds;

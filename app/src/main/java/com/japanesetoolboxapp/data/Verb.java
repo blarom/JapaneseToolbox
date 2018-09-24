@@ -1,11 +1,34 @@
 package com.japanesetoolboxapp.data;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.util.List;
 
+@Entity(tableName = Verb.TABLE_NAME)
 public class Verb {
+
+    public static final String TABLE_NAME = "verbs_table";
+    public static final String COLUMN_ID = "verb_id";
+    static final String COLUMN_VERB_FAMILY = "family";
+    static final String COLUMN_VERB_MEANING = "meaning";
+    static final String COLUMN_VERB_TRANSITIVE = "transitive";
+    static final String COLUMN_VERB_PREPOSITION = "preposition";
+    static final String COLUMN_VERB_KANA = "kana";
+    static final String COLUMN_VERB_KANJI = "kanji";
+    static final String COLUMN_VERB_ROMAJI = "romaji";
+    static final String COLUMN_VERB_KANJIROOT = "kanjiroot";
+    static final String COLUMN_VERB_LATINROOT = "latinroot";
+    static final String COLUMN_VERB_EXCEPTIONINDEX = "exceptionindex";
+    static final String COLUMN_VERB_ALTSPELLINGS = "altspellings";
+    static final String COLUMN_VERB_CONJUGATIONCATEGORIES = "conjugationcategories";
 
     public Verb() {}
 
+    @Ignore
     public Verb(String family, String meaning, String trans, String preposition,
                 String kana, String kanji, String romaji, String kanjiRoot,
                 String latinRoot, String exceptionIndex, String altSpellings) {
@@ -22,6 +45,17 @@ public class Verb {
         this.altSpellings = altSpellings;
     }
 
+    @PrimaryKey()
+    @ColumnInfo(index = true, name = COLUMN_ID)
+    public long verb_id;
+    public long getVerbId() {
+        return verb_id;
+    }
+    public void setVerbId(long verb_id) {
+        this.verb_id = verb_id;
+    }
+
+    @ColumnInfo(name = COLUMN_VERB_FAMILY)
     private String family = "";
     public String getFamily() {
         return family;
@@ -30,6 +64,7 @@ public class Verb {
         this.family = family;
     }
 
+    @ColumnInfo(name = COLUMN_VERB_MEANING)
     private String meaning = "";
     public String getMeaning() {
         return meaning;
@@ -38,6 +73,7 @@ public class Verb {
         this.meaning = meaning;
     }
 
+    @ColumnInfo(name = COLUMN_VERB_TRANSITIVE)
     private String trans = "";
     public String getTrans() {
         return trans;
@@ -46,6 +82,7 @@ public class Verb {
         this.trans = trans;
     }
 
+    @ColumnInfo(name = COLUMN_VERB_PREPOSITION)
     private String preposition = "";
     public String getPreposition() {
         return preposition;
@@ -54,6 +91,7 @@ public class Verb {
         this.preposition = preposition;
     }
 
+    @ColumnInfo(name = COLUMN_VERB_KANA)
     private String kana = "";
     public String getKana() {
         return kana;
@@ -62,6 +100,7 @@ public class Verb {
         this.kana = kana;
     }
 
+    @ColumnInfo(name = COLUMN_VERB_KANJI)
     private String kanji = "";
     public String getKanji() {
         return kanji;
@@ -70,6 +109,7 @@ public class Verb {
         this.kanji = kanji;
     }
 
+    @ColumnInfo(name = COLUMN_VERB_ROMAJI)
     private String romaji = "";
     public String getRomaji() {
         return romaji;
@@ -78,6 +118,7 @@ public class Verb {
         this.romaji = romaji;
     }
 
+    @ColumnInfo(name = COLUMN_VERB_KANJIROOT)
     private String kanjiRoot = "";
     public String getKanjiRoot() {
         return kanjiRoot;
@@ -86,6 +127,7 @@ public class Verb {
         this.kanjiRoot = kanjiRoot;
     }
 
+    @ColumnInfo(name = COLUMN_VERB_LATINROOT)
     private String latinRoot = "";
     public String getLatinRoot() {
         return latinRoot;
@@ -94,6 +136,7 @@ public class Verb {
         this.latinRoot = latinRoot;
     }
 
+    @ColumnInfo(name = COLUMN_VERB_EXCEPTIONINDEX)
     private String exceptionIndex = "";
     public String getExceptionIndex() {
         return exceptionIndex;
@@ -102,6 +145,7 @@ public class Verb {
         this.exceptionIndex = exceptionIndex;
     }
 
+    @ColumnInfo(name = COLUMN_VERB_ALTSPELLINGS)
     private String altSpellings = "";
     public String getAltSpellings() {
         return altSpellings;
@@ -110,6 +154,8 @@ public class Verb {
         this.altSpellings = altSpellings;
     }
 
+    @Ignore
+    @ColumnInfo(name = COLUMN_VERB_CONJUGATIONCATEGORIES)
     private List<ConjugationCategory> conjugationCategories;
     public List<ConjugationCategory> getConjugationCategories() {
         return conjugationCategories;

@@ -22,13 +22,14 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {Word.class, KanjiIndex.class, LatinIndex.class}, version = 15)
+@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class}, version = 19, exportSchema = false)
 public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
     //return The DAO for the tables
     @SuppressWarnings("WeakerAccess")
     public abstract WordDao word();
+    public abstract VerbDao verb();
     public abstract KanjiIndexDao kanjiIndex();
     public abstract LatinIndexDao latinIndex();
 
@@ -100,16 +101,31 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     }
     private void loadCentralDatabaseIntoRoomDb(Context context) {
 
-        List<String[]> centralDatabase = DatabaseUtilities.loadCentralDatabaseFromCsv(context);
-        List<String[]> meaningsDatabase = DatabaseUtilities.readCSVFile("LineMeanings - 3000 kanji.csv", context);
+        // Import the excel sheets (csv format)
+        List<String[]> centralDatabase 		    = new ArrayList<>();
+        List<String[]> typesDatabase            = DatabaseUtilities.readCSVFile("LineTypes - 3000 kanji.csv", context);
+        List<String[]> grammarDatabase          = DatabaseUtilities.readCSVFile("LineGrammar - 3000 kanji.csv", context);
+        List<String[]> verbsDatabase     	    = DatabaseUtilities.readCSVFile("LineVerbsForGrammar - 3000 kanji.csv", context);
+        List<String[]> meaningsDatabase         = DatabaseUtilities.readCSVFile("LineMeanings - 3000 kanji.csv", context);
         List<String[]> multExplanationsDatabase = DatabaseUtilities.readCSVFile("LineMultExplanations - 3000 kanji.csv", context);
-        List<String[]> examplesDatabase = DatabaseUtilities.readCSVFile("LineExamples - 3000 kanji.csv", context);
+        List<String[]> examplesDatabase         = DatabaseUtilities.readCSVFile("LineExamples - 3000 kanji.csv", context);
+
+        //Removing the titles row in each sheet
+        typesDatabase.remove(0);
+        grammarDatabase.remove(0);
+        verbsDatabase.remove(0);
+
+        //Adding the sheets to the central database
+        centralDatabase.addAll(typesDatabase);
+        centralDatabase.addAll(grammarDatabase);
+        centralDatabase.addAll(verbsDatabase);
 
         //Checking that there were no accidental line breaks when building the database
-        DatabaseUtilities.checkDatabaseStructure(centralDatabase, "Central Database");
-        DatabaseUtilities.checkDatabaseStructure(meaningsDatabase, "Meanings Database");
-        DatabaseUtilities.checkDatabaseStructure(multExplanationsDatabase, "Explanations Database");
-        DatabaseUtilities.checkDatabaseStructure(examplesDatabase, "Examples Database");
+        DatabaseUtilities.checkDatabaseStructure(verbsDatabase, "Verbs Database", DatabaseUtilities.NUM_COLUMNS_IN_VERBS_CSV_SHEET);
+        DatabaseUtilities.checkDatabaseStructure(centralDatabase, "Central Database", DatabaseUtilities.NUM_COLUMNS_IN_WORDS_CSV_SHEETS);
+        DatabaseUtilities.checkDatabaseStructure(meaningsDatabase, "Meanings Database", DatabaseUtilities.NUM_COLUMNS_IN_WORDS_CSV_SHEETS);
+        DatabaseUtilities.checkDatabaseStructure(multExplanationsDatabase, "Explanations Database", DatabaseUtilities.NUM_COLUMNS_IN_WORDS_CSV_SHEETS);
+        DatabaseUtilities.checkDatabaseStructure(examplesDatabase, "Examples Database", DatabaseUtilities.NUM_COLUMNS_IN_WORDS_CSV_SHEETS);
 
         List<Word> wordList = new ArrayList<>();
         for (int i=1; i<centralDatabase.size(); i++) {
@@ -117,7 +133,16 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
             wordList.add(word);
         }
         word().insertAll(wordList);
-        Log.i("Diagnosis Time","Loaded MainDatabase.");
+        Log.i("Diagnosis Time","Loaded Words Database.");
+
+        List<Verb> verbList = new ArrayList<>();
+        for (int i=1; i<verbsDatabase.size(); i++) {
+            if (verbsDatabase.get(i)[0].equals("")) break;
+            Verb verb = DatabaseUtilities.createVerbFromCsvDatabase(verbsDatabase, meaningsDatabase, i);
+            verbList.add(verb);
+        }
+        verb().insertAll(verbList);
+        Log.i("Diagnosis Time","Loaded Verbs Database.");
     }
     private void loadCentralDatabaseIndexesIntoRoomDb(Context context) {
 
@@ -184,5 +209,15 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     }
     public List<KanjiIndex> getKanjiIndexesListForStartingWord(String query) {
         return kanjiIndex().getKanjiIndexByStartingLatinQuery(query);
+    }
+
+    public Verb getVerbByVerbId(long verbId) {
+        return verb().getVerbByVerbId(verbId);
+    }
+    public List<Verb> getVerbsByRomajiQuery(String query) {
+        return verb().getVerbByExactRomajiQueryMatch(query);
+    }
+    public List<Verb> getAllVerbs() {
+        return verb().getAllVerbs();
     }
 }

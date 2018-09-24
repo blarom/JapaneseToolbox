@@ -74,7 +74,7 @@ public class DecomposeKanjiFragment extends Fragment {
 
 
         TextView decompositionsHint = getActivity().findViewById(R.id.decompositionsHint);
-        String text_type = ConvertFragment.TextType(inputQuery);
+        String text_type = ConvertFragment.getTextType(inputQuery);
         if (inputQuery.equals("") || text_type.equals("latin") || text_type.equals("number")) {
             decompositionsHint.setVisibility(View.VISIBLE);
         }

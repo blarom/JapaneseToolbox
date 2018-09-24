@@ -280,4 +280,10 @@
     <string name="saved_matching_verbs">saved_matching_verbs</string>
     <string name="saved_ocr_result_state">saved_ocr_result_state</string>
     <string name="saved_romaji_from_kanji_state">saved_romaji_from_kanji_state</string>
+    <string name="dict_fragment">saved_dict_fragment</string>
+    <string name="conj_fragment">saved_conj_fragment</string>
+    <string name="conv_fragment">saved_conv_fragment</string>
+    <string name="srad_fragment">saved_srad_fragment</string>
+    <string name="dcmp_fragment">saved_dcmp_fragment</string>
+    <string name="displayed_second_fragment">displayed_second_fragment</string>
 </resources>

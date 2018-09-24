@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
@@ -156,7 +157,6 @@ public class InputQueryFragment extends Fragment implements
         super.onCreate(savedInstanceState);
 
         initializeParameters();
-        restoreQueryHistory();
         setupOcr();
     }
     @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -164,6 +164,7 @@ public class InputQueryFragment extends Fragment implements
         final View rootView = inflater.inflate(R.layout.fragment_inputquery, container, false);
 
         setRetainInstance(true);
+        restoreQueryHistory();
         initializeViews(rootView);
 
         if (savedInstanceState!=null) {
@@ -291,9 +292,16 @@ public class InputQueryFragment extends Fragment implements
         mAlreadyGotRomajiFromKanji = false;
 
     }
-    private void initializeViews(View rootView) {
+    @SuppressLint("ClickableViewAccessibility") private void initializeViews(View rootView) {
 
         mBinding = ButterKnife.bind(this, rootView);
+
+
+        mInputQueryAutoCompleteTextView.setAdapter(new QueryInputSpinnerAdapter(
+                getContext(),
+                R.layout.custom_queryhistory_spinner,
+                mQueryHistory));
+
         mInputQueryAutoCompleteTextView.setMovementMethod(new ScrollingMovementMethod());
         mInputQueryAutoCompleteTextView.setText(mInputQuery);
 
@@ -327,7 +335,6 @@ public class InputQueryFragment extends Fragment implements
                 }
                 return true;
             } } );
-
 
         mSearchByRadicalButton.setEnabled(true);
         mDecomposeButton.setEnabled(true);
@@ -488,7 +495,7 @@ public class InputQueryFragment extends Fragment implements
         updateQueryHistory();
         boolean queryHistoryIsEmpty = true;
         for (String element : mQueryHistory) {
-            if (!element.equals("")) { queryHistoryIsEmpty = false; }
+            if (!element.equals("")) { queryHistoryIsEmpty = false; break; }
         }
         if (!queryHistoryIsEmpty) mInputQueryAutoCompleteTextView.showDropDown();
 

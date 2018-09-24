@@ -61,7 +61,7 @@ public class ConvertFragment extends Fragment {
         TextView ResultHiragana = getActivity().findViewById(R.id.Result_hiragana);
         TextView ResultKatakana = getActivity().findViewById(R.id.Result_katakana);
 
-        if (Kana_to_Romaji_to_Kana(inputQuery).get(0).equals("no_input")) {
+        if (getLatinHiraganaKatakana(inputQuery).get(0).equals("no_input")) {
             Conversion.setText(getResources().getString(R.string.EnterWord));
             ConversionLatin.setText("");
             ConversionHiragana.setText("");
@@ -75,13 +75,13 @@ public class ConvertFragment extends Fragment {
             ConversionLatin.setText(getResources().getString(R.string.ConversionLatin));
             ConversionHiragana.setText(getResources().getString(R.string.ConversionHiragana));
             ConversionKatakana.setText(getResources().getString(R.string.ConversionKatakana));
-            ResultLatin.setText(Kana_to_Romaji_to_Kana(inputQuery).get(0));
-            ResultHiragana.setText(Kana_to_Romaji_to_Kana(inputQuery).get(1));
-            ResultKatakana.setText(Kana_to_Romaji_to_Kana(inputQuery).get(2));
+            ResultLatin.setText(getLatinHiraganaKatakana(inputQuery).get(0));
+            ResultHiragana.setText(getLatinHiraganaKatakana(inputQuery).get(1));
+            ResultKatakana.setText(getLatinHiraganaKatakana(inputQuery).get(2));
 
         }
     }
-    public static List<String> Kana_to_Romaji_to_Kana(String input_value) {
+    public static List<String> getLatinHiraganaKatakana(String input_value) {
 
         List<String> translation = new ArrayList<>();
         String translation_latin = "";
@@ -125,12 +125,12 @@ public class ConvertFragment extends Fragment {
             if (i>0) { character_last = Character.toString(input_value.charAt(i-1));}
 
             // Detecting what the current character represents
-                scriptdetectorOutput = GetPhonemeBasedOnLetter(i, character, character_next, character_next2, character_last);
+                scriptdetectorOutput = getPhonemeBasedOnLetter(i, character, character_next, character_next2, character_last);
 
                 i = Integer.parseInt(scriptdetectorOutput.get(0)); added_string = scriptdetectorOutput.get(1);
 
             // Getting the current string addition
-                charFinderOutput = GetCharBasedOnPhoneme(i, added_string, character, character_next, added_string_last);
+                charFinderOutput = getCharBasedOnPhoneme(i, added_string, character, character_next, added_string_last);
                 added_string_last = added_string;
 
                 i = Integer.parseInt(charFinderOutput.get(0)); added_string_latin = charFinderOutput.get(1); added_string_hiragana = charFinderOutput.get(2); added_string_katakana = charFinderOutput.get(3);
@@ -147,7 +147,7 @@ public class ConvertFragment extends Fragment {
         translation.set(2, Utilities.removeSpecialCharacters(translation_katakana));
         return translation;
     }
-    public static String TextType(String input_value) {
+    public static String getTextType(String input_value) {
 
         input_value = Utilities.removeSpecialCharacters(input_value);
         String character;
@@ -358,7 +358,7 @@ public class ConvertFragment extends Fragment {
 
         return text_type;
     }
-    public static List<String> GetPhonemeBasedOnLetter(int i, String character, String character_next, String character_next2, String character_last) {
+    public static List<String> getPhonemeBasedOnLetter(int i, String character, String character_next, String character_next2, String character_last) {
 
         character = character.toLowerCase();
         character_next = character_next.toLowerCase();
@@ -1211,7 +1211,7 @@ public class ConvertFragment extends Fragment {
         output.add(added_string);
         return output;
     }
-    public static List<String> GetCharBasedOnPhoneme(int i, String added_string, String character, String character_next, String added_string_last) {
+    public static List<String> getCharBasedOnPhoneme(int i, String added_string, String character, String character_next, String added_string_last) {
 
         String added_string_latin = "";
         String added_string_hiragana = "";

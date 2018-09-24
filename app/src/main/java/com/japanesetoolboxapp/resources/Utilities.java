@@ -43,7 +43,7 @@ import java.util.List;
 public class Utilities {
 
 
-    private static final String DEBUG_TAG = "JT Debug";
+    public static final String DEBUG_TAG = "JT Debug";
     private static FirebaseDatabase mDatabase;
 
     //Activity operation utilities
@@ -363,7 +363,7 @@ public class Utilities {
 
         //region Preparing the word to be included in the url
         String prepared_word;
-        if (ConvertFragment.TextType(word).equals("kanji")) {
+        if (ConvertFragment.getTextType(word).equals("kanji")) {
             String converted_word = convertToUTF8(word);
             converted_word = converted_word.substring(2,converted_word.length());
             prepared_word = "";
@@ -618,9 +618,9 @@ public class Utilities {
                 if (kanji1UpData.size()>0) romaji.append((String) kanji1UpData.get(0));
             }
 
-            if (romaji.length()!=0 && (ConvertFragment.TextType(kanji).equals("katakana") || ConvertFragment.TextType(kanji).equals("hiragana"))) {
+            if (romaji.length()!=0 && (ConvertFragment.getTextType(kanji).equals("katakana") || ConvertFragment.getTextType(kanji).equals("hiragana"))) {
                 //When the word is originally katakana only, the website does not display hiragana. This is corrected here.
-                romaji = new StringBuilder(ConvertFragment.Kana_to_Romaji_to_Kana(kanji).get(0));
+                romaji = new StringBuilder(ConvertFragment.getLatinHiraganaKatakana(kanji).get(0));
             }
 
             List<Object> conceptLightStatusData = (List<Object>) getElementAtHeader(conceptLightWrapperData,"concept_light-status");
@@ -637,15 +637,15 @@ public class Utilities {
                             currentValue = sentenceSearchFor.substring(20, sentenceSearchFor.length());
                         }
                         if (currentValue.length() != 0 &&
-                                (ConvertFragment.TextType(currentValue).equals("katakana") || ConvertFragment.TextType(currentValue).equals("hiragana"))) {
+                                (ConvertFragment.getTextType(currentValue).equals("katakana") || ConvertFragment.getTextType(currentValue).equals("hiragana"))) {
                             //When the word is originally katakana only, the website does not display hiragana. This is corrected here.
-                            romaji = new StringBuilder(ConvertFragment.Kana_to_Romaji_to_Kana(currentValue).get(0));
+                            romaji = new StringBuilder(ConvertFragment.getLatinHiraganaKatakana(currentValue).get(0));
                             break;
                         }
                     }
                 }
             }
-            currentWord.setRomaji(ConvertFragment.Kana_to_Romaji_to_Kana(romaji.toString()).get(0));
+            currentWord.setRomaji(ConvertFragment.getLatinHiraganaKatakana(romaji.toString()).get(0));
             //endregion
 
             currentWord.setUniqueIdentifier(currentWord.getRomaji()+"-"+kanji);
@@ -942,13 +942,13 @@ public class Utilities {
                             if ( remainingLocalMeanings.get(localMeaningIndex).getMeaning().equals(asyncMeanings.get(i).getMeaning()) ) {
                                 remainingLocalMeanings.remove(localMeaningIndex);
                             }
-                            else {
-                                localMeaningIndex++;
-                            }
-                        }
+                    else {
+                        localMeaningIndex++;
                     }
+                }
+            }
 
-                    if (remainingLocalMeanings.size()>0) differentAsyncWords.add(asyncWord);
+            if (remainingLocalMeanings.size()>0) differentAsyncWords.add(asyncWord);
 
                     remainingLocalWords.remove(localWord);
                     break;

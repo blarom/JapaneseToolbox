@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.Loader;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,12 +27,14 @@ import android.widget.TextView;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.ConjugationTitle;
 import com.japanesetoolboxapp.data.DatabaseUtilities;
+import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
 import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -37,9 +42,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class ConjugatorFragment extends Fragment {
-	
+public class ConjugatorFragment extends Fragment implements
+        LoaderManager.LoaderCallbacks<Object> {
+
     //region Parameters
+    private static final int ROOM_DB_VERB_SEARCH_LOADER = 6542;
+
     @BindView(R.id.verb_chooser_spinner_container) RelativeLayout mVerbChooserSpinnerContainer;
     @BindView(R.id.verb_chooser_spinner) Spinner mVerbChooserSpinner;
     @BindView(R.id.conjugations_chooser_spinner) Spinner mConjugationChooserSpinner;
@@ -94,11 +102,11 @@ public class ConjugatorFragment extends Fragment {
     @BindView(R.id.Tense12_Result) TextView mConjugationDisplayTenseResult12;
     @BindView(R.id.Tense13_Result) TextView mConjugationDisplayTenseResult13;
 
-    static int rowIndex_of_suru;
-    static int rowIndex_of_kuru;
-    static int rowIndex_of_suru_in_Conj;
-    static String[] row_values_suru_latin;
-    static String[] row_values_suru_kanji;
+    private int rowIndex_of_suru;
+    private int rowIndex_of_kuru;
+    private int rowIndexOfSuruConjugationsInConjDb;
+    private String[] rowValuesSuruLatin;
+    private String[] rowValuesSuruKanji;
     private Unbinder mBinding;
     private String mInputQuery;
     private List<List<Integer>> mMatchingVerbRowColIndexList;
@@ -116,7 +124,21 @@ public class ConjugatorFragment extends Fragment {
     private boolean mInputQueryIsInvalid;
     private boolean mInputQueryTransliterationIsInvalid;
     private String mInputQueryTransliteratedToLatin;
-    private String mTransliterationRelevantForSearch;
+    private String mInputQueryTransliteratedLatinForm;
+    private String mInputQueryTransliteratedKanaForm;
+    private String mInputQueryTransliteratedKanjiForm;
+    private String mInputQueryTransliteratedLatinFormContatenated;
+    private String mInputQueryTransliteratedKanaFormContatenated;
+    private int mInputQueryTransliteratedLatinFormContatenatedLength;
+    private int mInputQueryTransliteratedKanaFormContatenatedLength;
+    private String mInputQueryKanjiFormContatenated;
+    private int mInputQueryKanjiFormContatenatedLength;
+    private int mInputQueryLength;
+    private String mInputQueryContatenated;
+    private int mInputQueryContatenatedLength;
+    private List<long[]> mMatchingVerbIdsAndCols;
+    private JapaneseToolboxRoomDatabase mJapaneseToolboxRoomDatabase;
+    private boolean mAlreadyLoadedRoomResults;
     //endregion
 
 
@@ -138,15 +160,12 @@ public class ConjugatorFragment extends Fragment {
 
         if (savedInstanceState==null) {
             if (!TextUtils.isEmpty(mInputQuery)) {
-                setInputQueryParameters();
                 SearchForConjugations();
             }
         }
 
         //If the fragment is being resumed, just reload the saved data
         else {
-            mMatchingVerbRowIndexList = savedInstanceState.getIntegerArrayList(getString(R.string.saved_matching_verbs));
-            mMatchingVerbs = getVerbs(mMatchingVerbRowIndexList);
             displayVerbsInVerbChooserSpinner();
         }
 
@@ -158,7 +177,6 @@ public class ConjugatorFragment extends Fragment {
     }
     @Override public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putIntegerArrayList(getString(R.string.saved_matching_verbs), new ArrayList<>(mMatchingVerbRowIndexList));
     }
     @Override public void onPause() {
         super.onPause();
@@ -184,8 +202,7 @@ public class ConjugatorFragment extends Fragment {
         mVerbChooserSpinnerContainer.setVisibility(View.GONE);
         mConjugationsContainerScrollView.setVisibility(View.GONE);
         mConjugationTitles = getConjugationTitles();
-        getIndexesOfMatchingVerbs();
-        mMatchingVerbs = getVerbs(mMatchingVerbRowIndexList);
+        findMatchingVerbsInRoomDb();
         displayVerbsInVerbChooserSpinner();
 
     }
@@ -238,850 +255,20 @@ public class ConjugatorFragment extends Fragment {
 
         return conjugationTitles;
     }
-    private void setInputQueryParameters() {
-
-        //Converting the word to lowercase (the search algorithm is not efficient if needing to search both lower and upper case)
-        mInputQuery = mInputQuery.toLowerCase(Locale.ENGLISH);
-
-        mInputQueryTransliterations = ConvertFragment.Kana_to_Romaji_to_Kana(mInputQuery);
-        mInputQueryTransliteratedToLatin = mInputQueryTransliterations.get(0);
-
-        String transliterationRelevantForSearch = "";
-        mInputQueryTextType = ConvertFragment.TextType(mInputQuery);
-        mInputQueryIsLatin = mInputQueryTextType.equals("latin");
-        mInputQueryIsKana = mInputQueryTextType.equals("hiragana") || mInputQueryTextType.equals("katakana");
-        mInputQueryIsKanji = mInputQueryTextType.equals("kanji");
-        mInputQueryIsInvalid =  mInputQuery.contains("*") || mInputQuery.contains("＊") || mInputQuery.equals("");
-        mInputQueryTransliterationIsInvalid =  transliterationRelevantForSearch.contains("*") || transliterationRelevantForSearch.contains("＊");
-
-        mTransliterationRelevantForSearch = "";
-        if (mInputQueryIsLatin) mTransliterationRelevantForSearch = mInputQueryTransliterations.get(1);
-        if (mInputQueryIsKana)  mTransliterationRelevantForSearch = mInputQueryTransliterations.get(0);
-        if (mInputQueryIsKanji) mTransliterationRelevantForSearch = mInputQueryTransliterations.get(1);
-    }
-    private void getIndexesOfMatchingVerbs() {
-
-        // Get the row index of the verbs matching the user's entry
-        mMatchingVerbRowColIndexList = FindMatchingVerbIndex();
-        mMatchingVerbRowIndexList = mMatchingVerbRowColIndexList.get(0);
-        mMatchingVerbColIndexList = mMatchingVerbRowColIndexList.get(1);
-    }
-    public List<List<Integer>> FindMatchingVerbIndex() {
-
-        //region Value Initializations
-        List<Integer> matchingVerbRowIndexList = new ArrayList<>();
-        List<Integer> matchingVerbColIndexList = new ArrayList<>();
-        List<Integer> ConjugationSearchMatchingVerbRowIndexList = new ArrayList<>();
-        List<Integer> ConjugationSearchMatchingVerbColIndexList = new ArrayList<>();
-        List<List<Integer>> matchingVerbRowColIndexList = new ArrayList<>();
-        List<String> suru_conjugation_verb =  new ArrayList<>();
-        boolean found_match;
-        boolean skip_this_row;
-        boolean verbIsAConjugationOfTheCurrentFamily = false;
-        boolean verb_is_suru = false;
-        boolean verb_is_a_family_conjugation = false;
-        boolean suru_conjugation_is_also_a_verb = false;
-        boolean first_letter_is_identical;
-        boolean valueEnglishIsEmpty;
-        int NumberOfSheetCols = MainActivity.VerbLatinConjDatabase.get(0).length;
-        int verb_length = mInputQuery.length();
-        int matchColumn = 0;
-        int value_Exception_asInt;
-        String verb2;
-        String verbToBeProcessed;
-        String suru_conjugation;
-        String concatenated_value;
-        String[] currentRowValuesLatin;
-        String[] currentRowValuesKanji;
-        String[] owValuesCurrentFamily = new String[NumberOfSheetCols];
-        String[] row_values_current_exceptionLatin = new String[NumberOfSheetCols];
-        String[] row_values_current_exceptionKanji = new String[NumberOfSheetCols];
-        String valueFamily;
-        String valueEnglish;
-        String value_Romaji;
-        String value_Kana;
-        String value_Kanji;
-        String value_rootLatin;
-        String value_rootKanji;
-        String value_Exception;
-        String value;
-        List<Integer> diluted_columns_true_verb = new ArrayList<>();
-        List<Integer> diluted_columns_no_conjugations = new ArrayList<>();
-        List<Integer> diluted_columns;
-        int max_length;
-        int current_length;
-        String inputQuery = mInputQuery;
-        //endregion
-
-        // Starting the algorithm
-        if (!mInputQueryIsInvalid) {
-
-            // 1. Initial Setup
-
-            ;// Finding the index of the last non-empty row, to make sure the algorithm does not search on empty last rows
-            int lastIndex = MainActivity.VerbDatabase.size()-1;
-            while (MainActivity.VerbDatabase.get(lastIndex)[0].length() == 0) { lastIndex--; }
-
-            //region Removing the "ing" from the verb (if relevant)
-            if (verb_length > 2 && inputQuery.substring(verb_length-3).equals("ing")) {
-
-                if (verb_length > 5 && inputQuery.substring(verb_length-6).equals("inging")) {
-                    if (	(inputQuery.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(inputQuery.substring(3,verb_length))) ||
-                            (!inputQuery.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(inputQuery.substring(0,verb_length)))   ) {
-                        // If the verb ends with "inging" then remove the the second "ing"
-                        inputQuery = inputQuery.substring(0,verb_length-3);
-                    }
-                }
-                else {
-                    verb2 = inputQuery + "ing";
-                    if ((!verb2.substring(0, 2 + 1).equals("to ") || !IsOfTypeIngIng(verb2.substring(3, verb_length + 3))) &&
-                            (verb2.substring(0, 2+1).equals("to ") || !IsOfTypeIngIng(verb2.substring(0, verb_length + 3)))) {
-                        // If the verb does not belong to the list, then remove the ending "ing" so that it can be compared later on to the verbs excel
-                        ;//If the verb is for e.g. to sing / sing (verb2 = to singing / singing), then check that verb2 (without the "to ") belongs to the list, and if it does then do nothing
-
-                        inputQuery = inputQuery.substring(0,verb_length-3);
-                    }
-                }
-            }
-            //endregion
-
-            //region Concatenating the verb & its translation for future use
-            String concatenated_verb = Utilities.removeSpecialCharacters(inputQuery);
-            String concatenated_translation = Utilities.removeSpecialCharacters(mTransliterationRelevantForSearch);
-            int concatenated_verb_length = concatenated_verb.length();
-            int concatenated_translation_length = concatenated_translation.length();
-            //endregion
-
-            //region Taking care of the case where the input is a basic conjugation that will cause the app to return all verbs
-            String[] title_row = new String[NumberOfSheetCols];
-            List<String> parsedConj;
-            boolean verb_is_conjoined = false;
-            verbToBeProcessed = inputQuery;
-            String current_conjugation;
-            if (mInputQueryIsLatin) {
-                title_row = MainActivity.VerbLatinConjDatabase.get(2);
-            }
-            else if (mInputQueryIsKana) {
-                title_row = MainActivity.VerbLatinConjDatabase.get(2);
-                verbToBeProcessed = mTransliterationRelevantForSearch;
-            }
-            else if (mInputQueryIsKanji) {
-                title_row = MainActivity.VerbKanjiConjDatabase.get(2);
-
-            }
-            int verb_to_be_processed_length = verbToBeProcessed.length();
-            for (int column = GlobalConstants.VerbModule_colIndex_istem; column < NumberOfSheetCols; column++) {
-                parsedConj = Arrays.asList(title_row[column].split("/"));
-                for (int i=0;i<parsedConj.size();i++) {
-                    current_conjugation = parsedConj.get(i);
-                    if (verbToBeProcessed.equals(current_conjugation) && verb_to_be_processed_length > 3) {
-                        verb_is_conjoined = true;
-                    }
-                }
-            }
-            //endregion
-
-            //region Performing column dilution in order to make the search more efficient (the diluted column ArrayList is used in the Search Algorithm)
-            current_length = 0;
-            List<String[]> mySheetLengths = new ArrayList<>();
-            if (mInputQueryIsLatin) {
-                mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
-                current_length = concatenated_verb_length;
-            }
-            else if (mInputQueryIsKana) {
-                mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
-                current_length = concatenated_translation_length;
-            }
-            else if (mInputQueryIsKanji) {
-                mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", getContext());
-                current_length = concatenated_verb_length;
-            }
-            for (int col = GlobalConstants.VerbModule_colIndex_istem; col < NumberOfSheetCols; col++) {
-                if (!mySheetLengths.get(0)[col].equals("")) { max_length = Integer.parseInt(mySheetLengths.get(0)[col]); }
-                else { max_length = 0; }
-                if (max_length >= current_length) { diluted_columns_true_verb.add(col); }
-            }
-            //endregion
-
-            //region Checking to see if the verb is suru
-            rowIndex_of_suru = 0;
-            rowIndex_of_kuru = 0;
-            for (int current_index = 3; current_index < MainActivity.VerbDatabase.size(); current_index++) {
-                value_Romaji = MainActivity.VerbDatabase.get(current_index)[GlobalConstants.VerbModule_colIndex_ustem];
-                if (value_Romaji.equals("suru")) { rowIndex_of_suru = current_index; break;}
-            }
-            rowIndex_of_suru_in_Conj = Integer.valueOf(MainActivity.VerbDatabase.get(rowIndex_of_suru-1)[GlobalConstants.VerbModule_colIndex_istem]); //The conjugations are taken from the family row
-            row_values_suru_latin = MainActivity.VerbLatinConjDatabase.get(rowIndex_of_suru_in_Conj);
-            row_values_suru_kanji = MainActivity.VerbKanjiConjDatabase.get(rowIndex_of_suru_in_Conj);
-
-            String concatenated_suru_conjugation;
-            for (int column:diluted_columns_true_verb) {
-                suru_conjugation = row_values_suru_latin[column];
-                concatenated_suru_conjugation = suru_conjugation.replace(" ", "");
-                if (concatenated_verb.equals(concatenated_suru_conjugation) || concatenated_translation.equals(concatenated_suru_conjugation)) {
-                    verb_is_suru = true;
-                    matchColumn = column;
-                    for (int row = 3; row< MainActivity.VerbDatabase.size(); row++) {
-                        currentRowValuesLatin = MainActivity.VerbDatabase.get(row);
-                        value_Romaji = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_ustem];
-                        value_Kanji = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_kanji];
-                        if (suru_conjugation.equals(value_Romaji)) {
-                            suru_conjugation_is_also_a_verb = true;
-                            suru_conjugation_verb.add(value_Kanji);
-                        }
-                    }
-                }
-            }
-            //endregion
-
-            // 2. Search algorithm
-            if (verb_is_suru) {
-                for (int currentIndex=3; currentIndex < lastIndex+1; currentIndex++) {
-                    currentRowValuesLatin = MainActivity.VerbDatabase.get(currentIndex);
-                    value_Romaji = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_ustem];
-                    if (value_Romaji.equals("suru")) {
-                        ConjugationSearchMatchingVerbRowIndexList.add(currentIndex);
-                        ConjugationSearchMatchingVerbColIndexList.add(matchColumn);
-                    }
-                }
-            }
-            if (!verb_is_suru || (verb_is_suru && suru_conjugation_is_also_a_verb)) {
-
-                currentRowValuesLatin = MainActivity.VerbLatinConjDatabase.get(MainActivity.VerbLatinConjDatabase.size()-1);
-                currentRowValuesKanji = MainActivity.VerbKanjiConjDatabase.get(MainActivity.VerbKanjiConjDatabase.size()-1);
-
-                // Checking if the verb is a family conjugation
-                for (int rowIndex = 3; rowIndex < lastIndex + 1; rowIndex++) {
-
-                    for (int p=0; p<=GlobalConstants.VerbModule_colIndex_istem; p++) { //Padding the current_row_values with the values from the current index
-                        currentRowValuesLatin[p] = MainActivity.VerbDatabase.get(rowIndex)[p];
-                        currentRowValuesKanji[p] = MainActivity.VerbDatabase.get(rowIndex)[p];
-                    }
-
-                    valueEnglish = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_english];
-                    valueFamily = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_family];
-
-                    if (!valueFamily.equals("") && valueEnglish.equals("")) {
-                        if (mInputQueryIsLatin) {
-                            owValuesCurrentFamily = MainActivity.VerbLatinConjDatabase.get(Integer.valueOf(currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_istem]));
-                        } else {
-                            owValuesCurrentFamily = MainActivity.VerbKanjiConjDatabase.get(Integer.valueOf(currentRowValuesKanji[GlobalConstants.VerbModule_colIndex_istem]));
-                        }
-                        for (int col=GlobalConstants.VerbModule_colIndex_istem; col<NumberOfSheetCols;col++) {
-                            if (inputQuery.equals(owValuesCurrentFamily[col])) { verb_is_a_family_conjugation = true; break; }
-                        }
-                    }
-                }
-
-                for (int rowIndex = 3; rowIndex < lastIndex + 1; rowIndex++) {
-
-                    //region Loop starting parameters initialization
-                    found_match = false;
-                    skip_this_row = true;
-                    first_letter_is_identical = false;
-                    valueEnglishIsEmpty = false;
-
-                    for (int p=0; p<=GlobalConstants.VerbModule_colIndex_istem; p++) { //Padding the current_row_values with the values from the current index
-                        currentRowValuesLatin[p] = MainActivity.VerbDatabase.get(rowIndex)[p];
-                        currentRowValuesKanji[p] = MainActivity.VerbDatabase.get(rowIndex)[p];
-                    }
-                    //endregion
-
-                    //region Extracting the cumulative english meanings
-                    valueEnglish = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_english];
-                    if (valueEnglish.equals("")) { valueEnglishIsEmpty = true; }
-
-                    value_Kana = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_kana];
-                    value_Kanji = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_kanji];
-                    valueFamily = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_family];
-                    value_Romaji = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_ustem];
-
-                    value_rootKanji = currentRowValuesKanji[GlobalConstants.VerbModule_colIndex_rootKanji];
-                    value_rootLatin = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_rootLatin];
-                    //endregion
-
-                    //region Add "to " to the values of valueEnglish (the "to "s were removed in the database to free space)
-                    List<String> parsed_value = Arrays.asList(valueEnglish.split(","));
-                    valueEnglish = "to ";
-                    for (int k=0; k<parsed_value.size();k++) {
-                        valueEnglish = valueEnglish + parsed_value.get(k).trim();
-                        if (k<parsed_value.size()-1) {valueEnglish = valueEnglish + ", to ";}
-                    }
-                    //endregion
-
-                    // Skipping empty/family rows
-                    if (valueFamily.equals("") || valueFamily.equals("-")) { continue; }
-
-                    //region Registering the current family row
-                    if (valueEnglishIsEmpty) {
-
-                        verbIsAConjugationOfTheCurrentFamily = false;
-                        // Registering the row
-                        if (mInputQueryIsLatin) {
-                            owValuesCurrentFamily = MainActivity.VerbLatinConjDatabase.get(Integer.valueOf(currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_istem]));
-                            verbToBeProcessed = inputQuery;
-                        } else if (mInputQueryIsKana) {
-                            owValuesCurrentFamily = MainActivity.VerbLatinConjDatabase.get(Integer.valueOf(currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_istem]));
-                            verbToBeProcessed = mTransliterationRelevantForSearch;
-                        } else {
-                            owValuesCurrentFamily = MainActivity.VerbKanjiConjDatabase.get(Integer.valueOf(currentRowValuesKanji[GlobalConstants.VerbModule_colIndex_istem]));
-                            verbToBeProcessed = inputQuery;
-                        }
-                        if (verb_is_a_family_conjugation) {
-                            for (int col = GlobalConstants.VerbModule_colIndex_istem; col < NumberOfSheetCols; col++) {
-                                if (verbToBeProcessed.equals(owValuesCurrentFamily[col])) {
-                                    verbIsAConjugationOfTheCurrentFamily = true;
-                                    matchColumn = col;
-                                    break;
-                                }
-                            }
-                        }
-
-                        // Removing the particles in the columns to reflect user error in the input verb
-                        //TODO Remove the particles in the columns to reflect user error in the input verb
-
-                        // Removing the polite "o" in the columns
-                        //TODO Remove the polite "o" in the columns
-
-                        // Family rows are not relevant for searches
-                    }
-                    //endregion
-
-                    //region If the verb appears as a conjoined verb in one of the conjugations, don't use the whole conjugations row
-                    if (!verb_is_conjoined) { diluted_columns = diluted_columns_true_verb; }
-                    else { diluted_columns = diluted_columns_no_conjugations; }
-                    //endregion
-
-                    //region Preventing conjugation searches on short verbs
-                    if ( (mInputQueryIsLatin && verb_length < 3) || (mInputQueryIsKana  && verb_length < 2) || (mInputQueryIsKanji && verb_length < 2)) {
-                        diluted_columns = diluted_columns_no_conjugations;
-                    }
-                    //endregion
-
-                    //region Getting the exception row if relevant
-                    value_Exception = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_istem];
-                    if (!value_Exception.equals("")) {
-                        value_Exception_asInt = Integer.valueOf(value_Exception);
-                        row_values_current_exceptionLatin = MainActivity.VerbLatinConjDatabase.get(value_Exception_asInt);
-                        row_values_current_exceptionKanji = MainActivity.VerbKanjiConjDatabase.get(value_Exception_asInt);
-                    }
-                    //endregion
-
-                    //region Preventing searches on verbs that don't have the same first kana
-                    if (!valueEnglishIsEmpty) {
-                        if (        mInputQueryIsLatin
-                                ||  mInputQueryIsKana  && (value_Kana.charAt(0) == inputQuery.charAt(0))
-                                ||  mInputQueryIsKanji && value_Kanji.contains(inputQuery.substring(0,1))
-                                ||  value_Romaji.equals("kuru") ||  value_Romaji.equals("da"))
-                        { first_letter_is_identical = true; skip_this_row = false; }
-                    }
-                    //endregion
-
-                    //region Including the rows for verbs starting in o or go
-                    if (!valueEnglishIsEmpty) {
-                        if (((mInputQueryIsLatin && verb_length > 2) || (mInputQueryIsKana && verb_length > 1) || (mInputQueryIsKanji && verb_length > 1))
-                                && (value_Kanji.charAt(0) == 'お' || value_Kanji.charAt(0) == 'ご' || value_Kanji.charAt(0) == '御')) {
-                            skip_this_row = false;
-                        }
-                    }
-                    //endregion
-
-                    //region If the verb is a suru conjugation but is also a valid verb, don't skip this row
-                    if (verb_is_suru && suru_conjugation_is_also_a_verb) {
-                        skip_this_row = true;
-                        for (String suru_conj_as_verb:suru_conjugation_verb)
-                            if (value_Kanji.equals(suru_conj_as_verb)) { skip_this_row = false; break;}
-                        if (skip_this_row  || value_Romaji.equals("suru")) {continue;}
-                    }
-                    //endregion
-
-                    //region If the verb is equal to a family conjugation, only roots with length 1 (ie. iru/aru/eru/oru/uru verbs only) or a verb with the exact romaji value are considered. This prevents too many results. This does not conflict with da or kuru.
-                    if (verb_is_a_family_conjugation) {
-                        if (mInputQueryIsKana || mInputQueryIsKanji) {
-                            if (value_rootKanji.length() == 1 && verbIsAConjugationOfTheCurrentFamily) {
-                                found_match = true;
-                            }
-                            if ((value_rootKanji.length() > 1 || !verbIsAConjugationOfTheCurrentFamily) && !first_letter_is_identical) {
-                                skip_this_row = true;
-                            }
-                        }
-                        else {
-                            if (value_rootLatin.length() == 1 && verbIsAConjugationOfTheCurrentFamily) {
-                                found_match = true;
-                            }
-                            if ((value_rootLatin.length() > 1 || !verbIsAConjugationOfTheCurrentFamily) && !first_letter_is_identical) {
-                                skip_this_row = true;
-                            }
-                        }
-                    }
-                    //endregion
-
-                    //region Main Comparator Algorithm
-                    if (!skip_this_row && !found_match) {
-                        if (mInputQueryIsLatin) {
-
-                            // Check if there is a hit in the english column
-                            if (verb_length > 3 && (valueEnglish.contains(concatenated_verb)
-                                    || valueEnglish.contains("to "+concatenated_verb.substring(2,concatenated_verb.length())))) {
-                                found_match = true;
-                                matchColumn = GlobalConstants.VerbModule_colIndex_english;
-                            }
-
-                            // Check if there is a hit in the romaji column
-                            concatenated_value = value_Romaji.replace(" ", "");
-                            if (concatenated_value.contains(concatenated_verb)) {
-                                found_match = true;
-                                matchColumn = GlobalConstants.VerbModule_colIndex_ustem;
-                            }
-
-                            // Otherwise, go over the rest of the conjugations
-                            if (!found_match) {
-                                if (!value_Exception.equals("")) {
-                                    for (int col : diluted_columns) {
-
-                                        // If the value at the current index has conjugation exceptions, get those from corresponding row in the Conj sheet instead of the family row
-                                        if (row_values_current_exceptionLatin[col].equals("")) {
-                                            value = value_rootLatin + owValuesCurrentFamily[col];
-                                        } else {
-                                            value = row_values_current_exceptionLatin[col];
-                                        }
-
-                                        concatenated_value = value.replace(" ", "");
-                                        if (concatenated_value.contains(concatenated_verb)) {
-                                            found_match = true;
-                                            matchColumn = col;
-                                        }
-                                        if (found_match) {
-                                            break;
-                                        }
-                                    }
-                                } else for (int col : diluted_columns) {
-
-                                    value = value_rootLatin + owValuesCurrentFamily[col];
-
-                                    concatenated_value = value.replace(" ", "");
-                                    if (concatenated_value.contains(concatenated_verb)) {
-                                        found_match = true;
-                                        matchColumn = col;
-                                    }
-                                    if (found_match) {
-                                        break;
-                                    }
-                                }
-                            }
-
-                        } else if (mInputQueryIsKana && !mInputQueryTransliterationIsInvalid) {
-
-                            // Check if there is a hit in the romaji column
-                            concatenated_value = value_Romaji.replace(" ", "");
-                            if (concatenated_value.contains(concatenated_translation)) {
-                                found_match = true;
-                                matchColumn = GlobalConstants.VerbModule_colIndex_ustem;
-                            }
-
-                            // Otherwise, go over the rest of the conjugations
-                            if (!found_match && !value_Exception.equals("")) {
-                                for (int col : diluted_columns) {
-
-                                    // If the value at the current index has conjugation exceptions, get those from corresponding row in the Conj sheet instead of the family row
-                                    if (row_values_current_exceptionLatin[col].equals("")) {
-                                        value = value_rootLatin + owValuesCurrentFamily[col];
-                                    } else {
-                                        value = row_values_current_exceptionLatin[col];
-                                    }
-
-                                    concatenated_value = value.replace(" ", "");
-                                    if (concatenated_value.contains(concatenated_translation)) {
-                                        found_match = true;
-                                        matchColumn = col;
-                                    }
-                                    if (found_match) {
-                                        break;
-                                    }
-                                }
-                            } else {
-                                for (int col : diluted_columns) {
-
-                                    value = value_rootLatin + owValuesCurrentFamily[col];
-
-                                    concatenated_value = value.replace(" ", "");
-                                    if (concatenated_value.contains(concatenated_translation)) {
-                                        found_match = true;
-                                        matchColumn = col;
-                                    }
-                                    if (found_match) {
-                                        break;
-                                    }
-                                }
-                            }
-
-                        } else if (mInputQueryIsKanji) {
-
-                            // Check if there is a hit in the Kanji column
-                            if (value_Kanji.contains(concatenated_verb)) {
-                                found_match = true;
-                                matchColumn = GlobalConstants.VerbModule_colIndex_kanji;
-                            }
-
-                            // Otherwise, go over the rest of the conjugations
-                            if (!found_match && !value_Exception.equals("")) {
-                                for (int col : diluted_columns) {
-
-                                    // If the value at the current index has conjugation exceptions, get those from corresponding row in the Conj sheet instead of the family row
-                                    if (row_values_current_exceptionKanji[col].equals("")) {
-                                        value = value_rootKanji + owValuesCurrentFamily[col];
-                                    } else {
-                                        value = row_values_current_exceptionKanji[col];
-                                    }
-
-                                    concatenated_value = value.replace(" ", "");
-                                    if (concatenated_value.contains(concatenated_verb)) {
-                                        found_match = true;
-                                        matchColumn = col;
-                                    }
-                                    if (found_match) {
-                                        break;
-                                    }
-                                }
-                            } else for (int col : diluted_columns) {
-
-                                value = value_rootKanji + owValuesCurrentFamily[col];
-
-                                concatenated_value = value.replace(" ", "");
-                                if (concatenated_value.contains(concatenated_verb)) {
-                                    found_match = true;
-                                    matchColumn = col;
-                                }
-                                if (found_match) {
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    //endregion
-
-                    if (found_match) {
-                        ConjugationSearchMatchingVerbRowIndexList.add(rowIndex);
-                        ConjugationSearchMatchingVerbColIndexList.add(matchColumn);
-                    }
-                }
-            }
-
-
-            //region 3. Sorting the results according to the length of the Kana and Kanji values
-
-            ;// 3a. Computing the value length
-            int current_row_index;
-            int current_col_index;
-            int current_romaji_length;
-            int current_kanji_length;
-            int list_size = ConjugationSearchMatchingVerbRowIndexList.size();
-            int[][] total_length = new int[list_size][3];
-            for (int i=0;i<list_size;i++) {
-                current_row_index = ConjugationSearchMatchingVerbRowIndexList.get(i);
-                current_col_index = ConjugationSearchMatchingVerbColIndexList.get(i);
-                current_romaji_length = MainActivity.VerbDatabase.get(current_row_index)[GlobalConstants.VerbModule_colIndex_ustem].length();
-                current_kanji_length = MainActivity.VerbDatabase.get(current_row_index)[GlobalConstants.VerbModule_colIndex_kanji].length();
-                total_length[i][0] = current_row_index;
-                total_length[i][1] = current_col_index;
-                total_length[i][2] = current_romaji_length+current_kanji_length;
-            }
-
-            // 3b. Sorting
-            int tempVar0;
-            int tempVar1;
-            int tempVar2;
-            for (int i=0;i<list_size;i++) { //Bubble sort
-                for (int t=1;t<list_size-i;t++) {
-                    if (total_length[t-1][2] > total_length[t][2]) {
-                        tempVar0 = total_length[t-1][0];
-                        tempVar1 = total_length[t-1][1];
-                        tempVar2 = total_length[t-1][2];
-                        total_length[t-1][0] = total_length[t][0];
-                        total_length[t-1][1] = total_length[t][1];
-                        total_length[t-1][2] = total_length[t][2];
-                        total_length[t][0] = tempVar0;
-                        total_length[t][1] = tempVar1;
-                        total_length[t][2] = tempVar2;
-                    }
-                }
-            }
-
-            // 3c. Creating an Arraylist with the sorted values
-            List<Integer> ConjugationSearchMatchingVerbRowIndexList_Sorted = new ArrayList<>();
-            List<Integer> ConjugationSearchMatchingVerbColIndexList_Sorted = new ArrayList<>();
-
-            for (int i=0;i<list_size;i++) {
-                ConjugationSearchMatchingVerbRowIndexList_Sorted.add(total_length[i][0]);
-                ConjugationSearchMatchingVerbColIndexList_Sorted.add(total_length[i][1]);
-            }
-            //endregion
-
-
-            // 4. Finalization
-            matchingVerbRowIndexList = ConjugationSearchMatchingVerbRowIndexList_Sorted;
-            matchingVerbColIndexList = ConjugationSearchMatchingVerbColIndexList_Sorted;
+    private void findMatchingVerbsInRoomDb() {
+        if (getActivity()!=null && !mInputQueryIsInvalid) {
+            LoaderManager loaderManager = getActivity().getSupportLoaderManager();
+            Loader<String> roomDbSearchLoader = loaderManager.getLoader(ROOM_DB_VERB_SEARCH_LOADER);
+            Bundle bundle = new Bundle();
+            bundle.putString(getString(R.string.saved_input_query), mInputQuery);
+            if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_VERB_SEARCH_LOADER, bundle, this);
+            else loaderManager.restartLoader(ROOM_DB_VERB_SEARCH_LOADER, bundle, this);
         }
-
-        // Returning the list of matching row indexes
-        matchingVerbRowColIndexList.add(matchingVerbRowIndexList);
-        matchingVerbRowColIndexList.add(matchingVerbColIndexList);
-        return matchingVerbRowColIndexList;
-    }
-    public Boolean IsOfTypeIngIng(String verb) {
-        Boolean answer = false;
-        if (	verb.equals("accinging") || verb.equals("astringing") || verb.equals("befringing") || verb.equals("besinging") ||
-                verb.equals("binging") || verb.equals("boinging") || verb.equals("bowstringing") || verb.equals("bringing") ||
-                verb.equals("clinging") || verb.equals("constringing") || verb.equals("cringing") || verb.equals("dinging") ||
-                verb.equals("enringing") || verb.equals("flinging") || verb.equals("folksinging") || verb.equals("fringing") ||
-                verb.equals("gunslinging") || verb.equals("hamstringing") || verb.equals("handwringing") || verb.equals("hinging") ||
-                verb.equals("impinging") || verb.equals("inbringing") || verb.equals("infringing") || verb.equals("kinging") ||
-                verb.equals("minging") || verb.equals("mudslinging") || verb.equals("outringing") || verb.equals("outsinging") ||
-                verb.equals("outspringing") || verb.equals("outswinging") || verb.equals("outwinging") || verb.equals("overswinging") ||
-                verb.equals("overwinging") || verb.equals("perstringing") || verb.equals("pinging") || verb.equals("refringing") ||
-                verb.equals("rehinging") || verb.equals("respringing") || verb.equals("restringing") || verb.equals("ringing") ||
-                verb.equals("singing") || verb.equals("slinging") || verb.equals("springing") || verb.equals("stinging") ||
-                verb.equals("stringing") || verb.equals("swinging") || verb.equals("syringing") || verb.equals("twinging") ||
-                verb.equals("unhinging") || verb.equals("unkinging") || verb.equals("unslinging") || verb.equals("unstringing") ||
-                verb.equals("upbringing") || verb.equals("upflinging") || verb.equals("upspringing") || verb.equals("upswinging") ||
-                verb.equals("whinging") || verb.equals("winging") || verb.equals("wringing") || verb.equals("zinging") ) {
-            answer = true;
-        }
-        return answer;
-    }
-    public static String insertToInMeanings(String definition) {
-        definition = "to " + definition;
-        char current_char;
-        boolean parenthesis = false;
-        boolean double_parenthesis = false;
-        int definition_index = 0;
-        if (!definition.equals("")) {
-            for (int i=0;i<definition.length();i++) {
-                if (definition_index<definition.length()) {
-                    current_char = definition.charAt(definition_index);
-                    if (current_char == '(') {
-                        if (!double_parenthesis) {parenthesis = true;}
-                        if (parenthesis) {double_parenthesis = true;}
-                    }
-                    if (current_char == ')') {
-                        if (double_parenthesis) {double_parenthesis = false;}
-                        if (!double_parenthesis) {parenthesis = false;}
-                    }
-                    if (current_char == ',' && !parenthesis) {
-                        definition = definition.substring(0,definition_index+1) + " to" + definition.substring(definition_index+1,definition.length());
-                        definition_index = definition_index+3;
-                    }
-                }
-                definition_index++;
-            }
-        }
-        return definition;
-    }
-    public List<Verb> getVerbs(List<Integer> matchingVerbRowIndexList) {
-
-        //region Find the Passive tense index in order to remove passive conjugations from verbs that are intransitive
-        String currentTitle;
-        int passiveTenseCategoryIndex = 0;
-        for (int i = 0; i < mConjugationTitles.size(); i++) {
-            currentTitle = mConjugationTitles.get(i).getTitle();
-            if (currentTitle.contains("Passive (X is done to him)")) { passiveTenseCategoryIndex = i; }
-        }
-        //endregion
-
-        //region Building the set of verb characteristics for each matching verb
-        List<Verb> verbs = new ArrayList<>();
-        if (matchingVerbRowIndexList.size() != 0) {
-
-            //region Initializations
-            int matchingVerbRowIndex;
-            int currentFamilyHeaderRowIndex = 0;
-            int conjLatinLength;
-            int conjKanjiLength;
-            List<String[]> conjugationsSheetLatin = MainActivity.VerbLatinConjDatabase;
-            List<String[]> conjugationsSheetKanji = MainActivity.VerbKanjiConjDatabase;
-            int NumberOfSheetCols = conjugationsSheetLatin.get(0).length;
-            String[] currentConjugationsRowLatin;
-            String[] currentConjugationsRowKanji;
-            String[] currentVerbRow;
-            List<Verb.ConjugationCategory> conjugationCategories;
-            Verb.ConjugationCategory conjugationCategory;
-            List<Verb.ConjugationCategory.Conjugation> conjugations;
-            Verb.ConjugationCategory.Conjugation conjugation;
-            List<String> conjugationSetLatin;
-            List<String> conjugationSetKanji;
-            List<ConjugationTitle.Subtitle> subtitles;
-            //endregion
-
-            for (int p = 0; p < matchingVerbRowIndexList.size(); p++) {
-                matchingVerbRowIndex = matchingVerbRowIndexList.get(p);
-                currentVerbRow = MainActivity.VerbDatabase.get(matchingVerbRowIndex);
-
-                //region Setting the verb's basic characteristics
-                Verb currentVerb = new Verb(
-                        currentVerbRow[GlobalConstants.VerbModule_colIndex_family],
-                        currentVerbRow[GlobalConstants.VerbModule_colIndex_english],
-                        currentVerbRow[GlobalConstants.VerbModule_colIndex_trans],
-                        currentVerbRow[GlobalConstants.VerbModule_colIndex_prep],
-                        currentVerbRow[GlobalConstants.VerbModule_colIndex_kana],
-                        currentVerbRow[GlobalConstants.VerbModule_colIndex_kanji],
-                        currentVerbRow[GlobalConstants.VerbModule_colIndex_ustem],
-                        currentVerbRow[GlobalConstants.VerbModule_colIndex_rootKanji],
-                        currentVerbRow[GlobalConstants.VerbModule_colIndex_rootLatin],
-                        currentVerbRow[GlobalConstants.VerbModule_colIndex_exception],
-                        currentVerbRow[GlobalConstants.VerbModule_colIndex_altSpellings]);
-
-
-                currentVerb.setMeaning(insertToInMeanings(currentVerb.getMeaning()));
-                switch (currentVerb.getTrans()) {
-                    case "T":
-                        currentVerb.setTrans("trans.");
-                        break;
-                    case "I":
-                        currentVerb.setTrans("intrans.");
-                        break;
-                    case "T/I":
-                        currentVerb.setTrans("trans./intrans.");
-                        break;
-                }
-                //endregion
-
-                //region Finding the conjugation family relevant to the current verb
-                for (int i = 2; i < MainActivity.VerbDatabase.size(); i++) {
-                    String[] currentRow = MainActivity.VerbDatabase.get(i);
-                    if (currentRow[GlobalConstants.VerbModule_colIndex_rootLatin].equals("")
-                            && currentRow[GlobalConstants.VerbModule_colIndex_english].equals("")
-                            && !currentRow[GlobalConstants.VerbModule_colIndex_family].equals("")) {
-
-                        if (i < matchingVerbRowIndex) {
-                            currentFamilyHeaderRowIndex = i;
-                        } else {
-                            break;
-                        }
-                    }
-                }
-
-                String[] currentFamilyHeaderInVerbDatabase = MainActivity.VerbDatabase.get(currentFamilyHeaderRowIndex);
-                int indexOfRelevantFamilyConjugations = Integer.valueOf(currentFamilyHeaderInVerbDatabase[GlobalConstants.VerbModule_colIndex_exception]);
-                currentConjugationsRowLatin = conjugationsSheetLatin.get(indexOfRelevantFamilyConjugations);
-                currentConjugationsRowKanji = conjugationsSheetKanji.get(indexOfRelevantFamilyConjugations);
-                //endregion
-
-                //region If the verb has a conjugation exceptions row, update the currentConjugationsRow with the nonempty exceptions in that row
-                boolean isAnException = false;
-                String valueExceptionIndicator = currentVerbRow[GlobalConstants.VerbModule_colIndex_exception];
-                String[] currentConjugationExceptionsRowLatin = new String[NumberOfSheetCols];
-                String[] currentConjugationExceptionsRowKanji = new String[NumberOfSheetCols];
-                if (!valueExceptionIndicator.equals("")) {
-                    int indexOfExceptionConjugations = Integer.valueOf(valueExceptionIndicator);
-                    currentConjugationExceptionsRowLatin = conjugationsSheetLatin.get(indexOfExceptionConjugations);
-                    currentConjugationExceptionsRowKanji = conjugationsSheetKanji.get(indexOfExceptionConjugations);
-                    isAnException = true;
-                    for (int col = 0; col < NumberOfSheetCols; col++) {
-
-                        String currentConjugationExceptionLatin = currentConjugationExceptionsRowLatin[col];
-                        if (!currentConjugationExceptionLatin.equals(""))
-                            currentConjugationsRowLatin[col] = currentConjugationExceptionsRowLatin[col];
-
-                        String currentConjugationExceptionKanji = currentConjugationExceptionsRowKanji[col];
-                        if (!currentConjugationExceptionKanji.equals(""))
-                            currentConjugationsRowKanji[col] = currentConjugationExceptionsRowKanji[col];
-                    }
-                }
-                //endregion
-
-                //region Getting the verb's conjugations row
-                String[] matchingVerbConjugationsRowLatin = new String[NumberOfSheetCols];
-                String[] matchingVerbConjugationsRowKanji = new String[NumberOfSheetCols];
-                for (int col = 0; col < NumberOfSheetCols; col++) {
-
-                    if (col < GlobalConstants.VerbModule_colIndex_istem) {
-                        matchingVerbConjugationsRowLatin[col] = currentVerbRow[col];
-                        matchingVerbConjugationsRowKanji[col] = currentVerbRow[col];
-                    } else {
-
-                        //If there is a conjugation exception then use it as-is, otherwise create the conjugation using the family conjugation endings
-                        if (isAnException && !currentConjugationExceptionsRowLatin[col].equals("")) {
-                            matchingVerbConjugationsRowLatin[col] = currentConjugationExceptionsRowLatin[col];
-                            matchingVerbConjugationsRowKanji[col] = currentConjugationExceptionsRowKanji[col];
-                        } else {
-                            conjLatinLength = currentConjugationsRowLatin[col].length();
-                            if (conjLatinLength > 3 && currentConjugationsRowLatin[col].substring(0, 3).equals("(o)")) {
-                                matchingVerbConjugationsRowLatin[col] = "(o)" + currentVerb.getLatinRoot() + currentConjugationsRowLatin[col].substring(3, conjLatinLength);
-                            } else
-                                matchingVerbConjugationsRowLatin[col] = currentVerb.getLatinRoot() + currentConjugationsRowLatin[col];
-
-                            conjKanjiLength = currentConjugationsRowKanji[col].length();
-                            if (conjLatinLength > 3 && currentConjugationsRowLatin[col].substring(0, 3).equals("(お)")) {
-                                matchingVerbConjugationsRowKanji[col] = "(お)" + currentVerb.getKanjiRoot() + currentConjugationsRowKanji[col].substring(3, conjKanjiLength);
-                            } else
-                                matchingVerbConjugationsRowKanji[col] = currentVerb.getKanjiRoot() + currentConjugationsRowKanji[col];
-                        }
-
-                    }
-                }
-                //endregion
-
-                //region Getting the verb conjugations and putting each conjugation of the conjugations row into its appropriate category
-                conjugationCategories = new ArrayList<>();
-                for (int categoryIndex = 1; categoryIndex < mConjugationTitles.size(); categoryIndex++) {
-
-                    //region Getting the set of Latin and Kanji conjugations according to the current category's subtitle column indexes
-                    subtitles = mConjugationTitles.get(categoryIndex).getSubtitles();
-                    int subtitleColIndex;
-                    conjugationSetLatin = new ArrayList<>();
-                    conjugationSetKanji = new ArrayList<>();
-                    for (int i=0; i<subtitles.size(); i++) {
-                        subtitleColIndex = subtitles.get(i).getSubtitleIndex();
-                        conjugationSetLatin.add(matchingVerbConjugationsRowLatin[subtitleColIndex]);
-                        conjugationSetKanji.add(matchingVerbConjugationsRowKanji[subtitleColIndex]);
-                    }
-                    //endregion
-
-                    //region Intransitive verbs don't have a passive tense, so the relevant entries are removed
-                    if (!currentVerb.getTrans().equals("T") && categoryIndex == passiveTenseCategoryIndex) {
-                        for (int conjugationIndex = 0; conjugationIndex < conjugationSetLatin.size(); conjugationIndex++) {
-                            conjugationSetLatin.set(conjugationIndex, "*");
-                            conjugationSetKanji.set(conjugationIndex, "*");
-                        }
-                    }
-                    //endregion
-
-                    //region Cleaning the entries that contain exceptions
-                    for (int conjugationIndex = 0; conjugationIndex < conjugationSetLatin.size(); conjugationIndex++) {
-                        if (conjugationSetLatin.get(conjugationIndex).contains("*"))
-                            conjugationSetLatin.set(conjugationIndex, "*");
-                        if (conjugationSetKanji.get(conjugationIndex).contains("*"))
-                            conjugationSetKanji.set(conjugationIndex, "*");
-                    }
-                    //endregion
-
-                    //region Adding the conjugations to the conjugationCategory
-                    conjugationCategory = new Verb.ConjugationCategory();
-                    conjugations = new ArrayList<>();
-                    for (int conjugationIndex = 0; conjugationIndex < conjugationSetLatin.size(); conjugationIndex++) {
-                        conjugation = new Verb.ConjugationCategory.Conjugation();
-                        conjugation.setConjugationLatin(conjugationSetLatin.get(conjugationIndex));
-                        conjugation.setConjugationKanji(conjugationSetKanji.get(conjugationIndex));
-                        conjugations.add(conjugation);
-                    }
-                    conjugationCategory.setConjugations(conjugations);
-                    //endregion
-
-                    conjugationCategories.add(conjugationCategory);
-                }
-                //endregion
-
-                currentVerb.setConjugationCategories(conjugationCategories);
-
-                verbs.add(currentVerb);
-            }
-
-        }
-
-        return verbs;
     }
 
     private void displayVerbsInVerbChooserSpinner() {
+
+        if (getActivity()==null) return;
 
         if (mMatchingVerbs.size() != 0) {
             mVerbHintTextView.setVisibility(View.GONE);
@@ -1376,7 +563,7 @@ public class ConjugatorFragment extends Fragment {
         }
     }
     static public List<Boolean> FindType(String verb) {
-        String text_type = ConvertFragment.TextType(verb);
+        String text_type = ConvertFragment.getTextType(verb);
 
         boolean mInputQueryIsLatin   = false;
         boolean mInputQueryIsKana    = false;
@@ -1396,4 +583,1600 @@ public class ConjugatorFragment extends Fragment {
         return types;
     }
 
+
+    //Asynchronous methods
+    @NonNull @Override public Loader<Object> onCreateLoader(int id, final Bundle args) {
+
+        String inputQuery = "";
+        if (args!=null && args.getString(getString(R.string.saved_input_query))!=null) {
+            inputQuery = args.getString(getString(R.string.saved_input_query));
+        }
+
+        if (id == ROOM_DB_VERB_SEARCH_LOADER){
+            RoomDbVerbSearchAsyncTaskLoader roomDbVerbSearchLoader = new RoomDbVerbSearchAsyncTaskLoader(getContext(), inputQuery, mConjugationTitles);
+            return roomDbVerbSearchLoader;
+        }
+        else return new RoomDbVerbSearchAsyncTaskLoader(getContext(), "", null);
+    }
+    @Override public void onLoadFinished(@NonNull Loader<Object> loader, Object data) {
+
+        if (loader.getId() == ROOM_DB_VERB_SEARCH_LOADER && !mAlreadyLoadedRoomResults && data!=null) {
+            mAlreadyLoadedRoomResults = true;
+            mMatchingVerbs = (List<Verb>) data;
+
+            //Displaying the local results
+            displayVerbsInVerbChooserSpinner();
+
+            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_VERB_SEARCH_LOADER);
+        }
+
+    }
+    @Override public void onLoaderReset(@NonNull Loader<Object> loader) {}
+    private static class RoomDbVerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
+
+        private int rowIndexOfSuru;
+        private int rowIndex_of_kuru;
+        private int rowIndexOfSuruConjugationsInConjDb;
+        private String[] rowValuesSuruLatin;
+        private String[] rowValuesSuruKanji;
+        private String mInputQuery;
+        private List<List<Integer>> mMatchingVerbRowColIndexList;
+        private List<Integer> mMatchingVerbRowIndexList;
+        private List<Integer> mMatchingVerbColIndexList;
+        private int mSelectedConjugationCategoryIndex;
+        private String mChosenRomajiOrKanji;
+        private List<Verb> mMatchingVerbs;
+        private List<ConjugationTitle> mConjugationTitles;
+        private String mInputQueryTextType;
+        private List<String> mInputQueryTransliterations;
+        private boolean mInputQueryIsLatin;
+        private boolean mInputQueryIsKana;
+        private boolean mInputQueryIsKanji;
+        private boolean mInputQueryIsInvalid;
+        private boolean mInputQueryTransliterationIsInvalid;
+        private String mInputQueryTransliteratedToLatin;
+        private String mInputQueryTransliteratedLatinForm;
+        private String mInputQueryTransliteratedKanaForm;
+        private String mInputQueryTransliteratedKanjiForm;
+        private String mInputQueryTransliteratedLatinFormContatenated;
+        private String mInputQueryTransliteratedKanaFormContatenated;
+        private int mInputQueryTransliteratedLatinFormContatenatedLength;
+        private int mInputQueryTransliteratedKanaFormContatenatedLength;
+        private String mInputQueryKanjiFormContatenated;
+        private int mInputQueryKanjiFormContatenatedLength;
+        private int mInputQueryLength;
+        private String mInputQueryContatenated;
+        private int mInputQueryContatenatedLength;
+        private List<long[]> mMatchingVerbIdsAndCols;
+        private JapaneseToolboxRoomDatabase mJapaneseToolboxRoomDatabase;
+        private HashMap<String, Integer> mFamilyConjugationIndexes = new HashMap<>();
+
+        RoomDbVerbSearchAsyncTaskLoader(Context context, String inputQuery, List<ConjugationTitle> conjugationTitles) {
+            super(context);
+            this.mInputQuery = inputQuery;
+            this.mConjugationTitles = conjugationTitles;
+        }
+
+        @Override
+        protected void onStartLoading() {
+            if (!TextUtils.isEmpty(mInputQuery)) forceLoad();
+        }
+
+        @Override
+        public Object loadInBackground() {
+
+            mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
+            List<Verb> mMatchingVerbs = new ArrayList<>();
+            if (!TextUtils.isEmpty(mInputQuery)) {
+                setInputQueryParameters();
+                getFamilyConjugationIndexes();
+
+                // Get the row index of the verbs matching the user's entry
+//                mMatchingVerbRowColIndexList = FindMatchingVerbIndex();
+//                mMatchingVerbRowColIndexList = SortMatchingVerbsList(mMatchingVerbRowColIndexList);
+//                mMatchingVerbRowIndexList = mMatchingVerbRowColIndexList.get(0);
+//                mMatchingVerbColIndexList = mMatchingVerbRowColIndexList.get(1);
+//                mMatchingVerbs = getVerbs(mMatchingVerbRowIndexList);
+
+                mMatchingVerbIdsAndCols = getMatchingVerbIdsAndColsUsingRoomIndexes();
+                mMatchingVerbIdsAndCols = sortMatchingVerbsListUsingRoom(mMatchingVerbIdsAndCols);
+                mMatchingVerbs = getVerbsUsingRoom(mMatchingVerbIdsAndCols);
+            }
+
+            return mMatchingVerbs;
+        }
+
+        private void setInputQueryParameters() {
+
+            //Converting the word to lowercase (the search algorithm is not efficient if needing to search both lower and upper case)
+            mInputQuery = mInputQuery.toLowerCase(Locale.ENGLISH);
+            mInputQueryLength = mInputQuery.length();
+
+            mInputQueryTransliterations = ConvertFragment.getLatinHiraganaKatakana(mInputQuery);
+
+            String transliterationRelevantForSearch = "";
+            mInputQueryTextType = ConvertFragment.getTextType(mInputQuery);
+            mInputQueryIsLatin = mInputQueryTextType.equals("latin");
+            mInputQueryIsKana = mInputQueryTextType.equals("hiragana") || mInputQueryTextType.equals("katakana");
+            mInputQueryIsKanji = mInputQueryTextType.equals("kanji");
+            mInputQueryIsInvalid =  mInputQuery.contains("*") || mInputQuery.contains("＊") || mInputQuery.equals("");
+            mInputQueryTransliterationIsInvalid =  transliterationRelevantForSearch.contains("*") || transliterationRelevantForSearch.contains("＊");
+
+            mInputQueryTransliteratedLatinForm = mInputQueryTransliterations.get(0);
+            mInputQueryTransliteratedKanaForm = mInputQueryTransliterations.get(1);
+
+            mInputQueryContatenated = Utilities.removeSpecialCharacters(mInputQuery);
+            mInputQueryContatenatedLength = mInputQueryContatenated.length();
+            mInputQueryTransliteratedLatinFormContatenated = Utilities.removeSpecialCharacters(mInputQueryTransliteratedLatinForm);
+            mInputQueryTransliteratedKanaFormContatenated = Utilities.removeSpecialCharacters(mInputQueryTransliteratedKanaForm);
+            mInputQueryTransliteratedLatinFormContatenatedLength = mInputQueryTransliteratedLatinFormContatenated.length();
+            mInputQueryTransliteratedKanaFormContatenatedLength = mInputQueryTransliteratedKanaFormContatenated.length();
+        }
+        private void getFamilyConjugationIndexes() {
+            for (int rowIndex = 3; rowIndex < MainActivity.VerbLatinConjDatabase.size(); rowIndex++) {
+
+                if (MainActivity.VerbLatinConjDatabase.get(rowIndex)[0].equals("") || !MainActivity.VerbLatinConjDatabase.get(rowIndex)[1].equals("")) continue;
+
+                switch (MainActivity.VerbLatinConjDatabase.get(rowIndex)[0]) {
+                    case "su godan": mFamilyConjugationIndexes.put("su", rowIndex);
+                    case "ku godan": mFamilyConjugationIndexes.put("ku", rowIndex);
+                    case "gu godan": mFamilyConjugationIndexes.put("gu", rowIndex);
+                    case "bu godan": mFamilyConjugationIndexes.put("bu", rowIndex);
+                    case "mu godan": mFamilyConjugationIndexes.put("mu", rowIndex);
+                    case "nu godan": mFamilyConjugationIndexes.put("nu", rowIndex);
+                    case "ru godan": mFamilyConjugationIndexes.put("rug", rowIndex);
+                    case "tsu godan": mFamilyConjugationIndexes.put("tsu", rowIndex);
+                    case "u godan": mFamilyConjugationIndexes.put("u", rowIndex);
+                    case "ru ichidan": mFamilyConjugationIndexes.put("rui", rowIndex);
+                    case "desu copula": mFamilyConjugationIndexes.put("da", rowIndex);
+                    case "kuru verb": mFamilyConjugationIndexes.put("kuru", rowIndex);
+                    case "suru verb": mFamilyConjugationIndexes.put("suru", rowIndex);
+                }
+            }
+        }
+        private List<long[]> getMatchingVerbIdsAndColsUsingRoomIndexes() {
+
+            //region Initializations
+            List<long[]> matchingVerbIdsAndCols = new ArrayList<>();
+            int NumberOfSheetCols = MainActivity.VerbLatinConjDatabase.get(0).length;
+            List<Integer> dilutedConjugationColIndexes = new ArrayList<>();
+            List<Verb> completeVerbsList = mJapaneseToolboxRoomDatabase.getAllVerbs();
+            boolean queryIsContainedInNormalFamilyConjugation = false;
+            boolean queryIsContainedInAKuruConjugation = false;
+            boolean queryIsContainedInASuruConjugation = false;
+            boolean queryIsContainedInADesuConjugation = false;
+
+            int exceptionIndex;
+            String[] currentFamilyConjugations;
+            String[] currentConjugations;
+            String family;
+            String meaning;
+            String romaji;
+            String romajiNoSpaces;
+            String hiragana;
+            String kanji;
+            String latinRoot;
+            String kanjiRoot;
+            String altSpellings;
+            String conjugationValue;
+            boolean foundMatch;
+            boolean allowExpandedConjugationsComparison;
+            int matchColumn = 0;
+            //endregion
+
+            //region Removing the "ing" from the query verb (if relevant)
+            if (mInputQueryLength > 2 && mInputQuery.substring(mInputQueryLength -3).equals("ing")) {
+
+                if (mInputQueryLength > 5 && mInputQuery.substring(mInputQueryLength -6).equals("inging")) {
+                    if (	(mInputQuery.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(mInputQuery.substring(3, mInputQueryLength))) ||
+                            (!mInputQuery.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(mInputQuery.substring(0, mInputQueryLength)))   ) {
+                        // If the verb ends with "inging" then remove the the second "ing"
+                        mInputQuery = mInputQuery.substring(0, mInputQueryLength -3);
+                    }
+                }
+                else {
+                    String verb2WithIng = mInputQuery + "ing";
+                    if ((!verb2WithIng.substring(0, 2 + 1).equals("to ") || !IsOfTypeIngIng(verb2WithIng.substring(3, mInputQueryLength + 3))) &&
+                            (verb2WithIng.substring(0, 2+1).equals("to ") || !IsOfTypeIngIng(verb2WithIng.substring(0, mInputQueryLength + 3)))) {
+                        // If the verb does not belong to the list, then remove the ending "ing" so that it can be compared later on to the verbs excel
+                        ;//If the verb is for e.g. to sing / sing (verb2 = to singing / singing), then check that verb2 (without the "to ") belongs to the list, and if it does then do nothing
+
+                        mInputQuery = mInputQuery.substring(0, mInputQueryLength -3);
+                    }
+                }
+            }
+            //endregion
+
+            //region Taking care of the case where the input is a basic conjugation that will cause the app to return too many verbs
+            queryIsContainedInNormalFamilyConjugation = false;
+            queryIsContainedInASuruConjugation = false;
+            queryIsContainedInAKuruConjugation = false;
+            queryIsContainedInADesuConjugation = false;
+            int familyIndex;
+            for (String key : mFamilyConjugationIndexes.keySet()) {
+                familyIndex = mFamilyConjugationIndexes.get(key);
+                switch (key) {
+                    case "da":
+                        currentFamilyConjugations = MainActivity.VerbLatinConjDatabase.get(familyIndex);
+                        for (int column = 1; column < NumberOfSheetCols; column++) {
+                            if (currentFamilyConjugations[column].equals(mInputQueryContatenated)
+                                    || currentFamilyConjugations[column].equals(mInputQueryTransliteratedKanaFormContatenated)) {
+                                queryIsContainedInADesuConjugation = true;
+                            }
+                        }
+                        currentFamilyConjugations = MainActivity.VerbKanjiConjDatabase.get(familyIndex);
+                        for (int column = 1; column < NumberOfSheetCols; column++) {
+                            if (currentFamilyConjugations[column].equals(mInputQueryContatenated)) {
+                                queryIsContainedInADesuConjugation = true;
+                                break;
+                            }
+                        }
+                        break;
+                    case "kuru":
+                        currentFamilyConjugations = MainActivity.VerbLatinConjDatabase.get(familyIndex);
+                        for (int column = 1; column < NumberOfSheetCols; column++) {
+                            if (currentFamilyConjugations[column].equals(mInputQueryContatenated)
+                                    || currentFamilyConjugations[column].equals(mInputQueryTransliteratedKanaFormContatenated)) {
+                                queryIsContainedInAKuruConjugation = true;
+                            }
+                        }
+                        currentFamilyConjugations = MainActivity.VerbKanjiConjDatabase.get(familyIndex);
+                        for (int column = 1; column < NumberOfSheetCols; column++) {
+                            if (currentFamilyConjugations[column].equals(mInputQueryContatenated)) {
+                                queryIsContainedInAKuruConjugation = true;
+                                break;
+                            }
+                        }
+                        break;
+                    case "suru":
+                        currentFamilyConjugations = MainActivity.VerbLatinConjDatabase.get(familyIndex);
+                        for (int column = 1; column < NumberOfSheetCols; column++) {
+                            if (currentFamilyConjugations[column].equals(mInputQueryContatenated)
+                                    || currentFamilyConjugations[column].equals(mInputQueryTransliteratedKanaFormContatenated)) {
+                                queryIsContainedInASuruConjugation = true;
+                            }
+                        }
+                        currentFamilyConjugations = MainActivity.VerbKanjiConjDatabase.get(familyIndex);
+                        for (int column = 1; column < NumberOfSheetCols; column++) {
+                            if (currentFamilyConjugations[column].equals(mInputQueryContatenated)) {
+                                queryIsContainedInASuruConjugation = true;
+                                break;
+                            }
+                        }
+                        break;
+                    default:
+                        currentFamilyConjugations = MainActivity.VerbLatinConjDatabase.get(familyIndex);
+                        for (int column = GlobalConstants.VerbModule_colIndex_istem; column < NumberOfSheetCols; column++) {
+                            if (currentFamilyConjugations[column].contains(mInputQueryContatenated)
+                                    || currentFamilyConjugations[column].contains(mInputQueryTransliteratedKanaFormContatenated)) {
+                                queryIsContainedInNormalFamilyConjugation = true;
+                                break;
+                            }
+                        }
+                        currentFamilyConjugations = MainActivity.VerbKanjiConjDatabase.get(familyIndex);
+                        for (int column = GlobalConstants.VerbModule_colIndex_istem; column < NumberOfSheetCols; column++) {
+                            if (currentFamilyConjugations[column].contains(mInputQueryContatenated)) {
+                                queryIsContainedInNormalFamilyConjugation = true;
+                                break;
+                            }
+                        }
+                        break;
+                }
+            }
+            if (queryIsContainedInASuruConjugation || queryIsContainedInAKuruConjugation || queryIsContainedInADesuConjugation) queryIsContainedInNormalFamilyConjugation = false;
+            //endregion
+
+            //region Performing column dilution in order to make the search more efficient (the diluted column ArrayList is used in the Search Algorithm)
+            int queryLengthForDilution = 0;
+            List<String[]> verbConjugationMaxLengths = new ArrayList<>();
+            int conjugationMaxLength;
+            if (mInputQueryIsLatin) {
+                verbConjugationMaxLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
+                queryLengthForDilution = mInputQueryContatenatedLength;
+            }
+            else if (mInputQueryIsKana) {
+                verbConjugationMaxLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
+                queryLengthForDilution = mInputQueryTransliteratedLatinFormContatenatedLength;
+            }
+            else if (mInputQueryIsKanji) {
+                verbConjugationMaxLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", getContext());
+                queryLengthForDilution = mInputQueryContatenatedLength;
+            }
+
+            for (int col = GlobalConstants.VerbModule_colIndex_istem; col < NumberOfSheetCols; col++) {
+                if (!verbConjugationMaxLengths.get(0)[col].equals(""))
+                    conjugationMaxLength = Integer.parseInt(verbConjugationMaxLengths.get(0)[col]);
+                else conjugationMaxLength = 0;
+
+                if (conjugationMaxLength >= queryLengthForDilution) dilutedConjugationColIndexes.add(col);
+            }
+            //endregion
+
+            for (Verb verb : completeVerbsList) {
+
+                //region Loop starting parameters initialization
+                foundMatch = false;
+                allowExpandedConjugationsComparison = true;
+                //endregion
+
+                //region Getting the verb characteristics
+                family = verb.getFamily();
+                meaning = verb.getMeaning();
+                romaji = verb.getRomaji();
+                romajiNoSpaces = romaji.replace(" ", "");
+                hiragana = verb.getKana();
+                kanji = verb.getKanji();
+                latinRoot = verb.getLatinRoot();
+                kanjiRoot = verb.getKanjiRoot();
+                altSpellings = verb.getAltSpellings();
+
+                exceptionIndex = (verb.getExceptionIndex().equals(""))? 0 : Integer.valueOf(verb.getExceptionIndex());
+                //endregion
+
+                //region Only allowing searches on verbs that satisfy the following conditions (including identical 1st char, kuru/suru/da, query length)
+                if (    !(     (mInputQueryIsLatin && (romaji.charAt(0) == mInputQueryContatenated.charAt(0)))
+                            || (mInputQueryIsKana  && (hiragana.charAt(0) == mInputQueryTransliteratedKanaForm.charAt(0)))
+                            || (mInputQueryIsKanji && kanji.contains(mInputQueryTransliteratedKanjiForm.substring(0,1)))
+                            || romaji.contains("kuru")
+                            || romaji.equals("suru")
+                            || romaji.equals("da") )
+                        || (mInputQueryIsLatin && mInputQueryContatenated.length() < 4 && !romaji.equals(mInputQueryContatenated))
+                        || (mInputQueryIsKana && mInputQueryContatenated.length() < 3 && !hiragana.equals(mInputQueryContatenated))
+                        || (mInputQueryIsKanji && mInputQueryContatenated.length() < 3 && !kanji.equals(mInputQueryContatenated))    ) {
+                    continue;
+                }
+                //endregion
+
+                //region If the verb is equal to a family conjugation, only roots with length 1 (ie. iru/aru/eru/oru/uru verbs only) or a verb with the exact romaji value are considered. This prevents too many results. This does not conflict with da or kuru.
+                if (        queryIsContainedInNormalFamilyConjugation
+                            && latinRoot.length() > 1
+                        ||  queryIsContainedInASuruConjugation
+                            && !(kanji.equals("為る"))
+                        ||  queryIsContainedInAKuruConjugation
+                            && !romaji.contains("kuru")
+                        ||  queryIsContainedInADesuConjugation
+                            && !romaji.equals("da")) {
+
+                    //If the input is suru then prevent verbs with suru in the conjugations from giving a hit, but allow other verbs with romaji suru to give a hit
+                    if (queryIsContainedInASuruConjugation) {
+                        allowExpandedConjugationsComparison = false;
+                    }
+                    //Otherwise, if the verb does not meet the above conditions, skip this verb
+                    else continue;
+                }
+                //endregion
+
+                //region Preventing expanded conjugation searches following the following conditions (including verb too short)
+                if (       (mInputQueryIsLatin && romaji.length() < 3)
+                        || (mInputQueryIsKana  && hiragana.length() < 2)
+                        || (mInputQueryIsKanji && kanji.length() == 1)
+                        ) {
+                    allowExpandedConjugationsComparison = false;
+                }
+                //endregion
+
+                //region Checking if the basic verb characteristics are a hit
+                if (altSpellings.contains(mInputQueryContatenated)) {
+                    foundMatch = true;
+                    matchColumn = GlobalConstants.VerbModule_colIndex_altSpellings;
+                }
+                if (mInputQueryIsLatin) {
+                    if (mInputQueryContatenatedLength > 3 && meaning.contains(mInputQueryContatenated) ) {
+                        foundMatch = true;
+                        matchColumn = GlobalConstants.VerbModule_colIndex_english;
+                    }
+                    if (romajiNoSpaces.contains(mInputQueryContatenated)) {
+                        foundMatch = true;
+                        matchColumn = GlobalConstants.VerbModule_colIndex_ustem;
+                    }
+                }
+                else if (mInputQueryIsKana && !mInputQueryTransliterationIsInvalid) {
+                    if (romajiNoSpaces.contains(mInputQueryTransliteratedLatinFormContatenated)) {
+                        foundMatch = true;
+                        matchColumn = GlobalConstants.VerbModule_colIndex_ustem;
+                    }
+                }
+                else if (mInputQueryIsKanji) {
+                    if (kanji.contains(mInputQueryContatenated)) {
+                        foundMatch = true;
+                        matchColumn = GlobalConstants.VerbModule_colIndex_kanji;
+                    }
+                }
+                //endregion
+
+                //region Main Comparator Algorithm
+                if (!foundMatch && allowExpandedConjugationsComparison) {
+
+                    //region Latin conjugations comparison
+                    if (mInputQueryIsLatin) {
+                        if (!mFamilyConjugationIndexes.containsKey(family)) continue;
+
+                        currentConjugations = MainActivity.VerbLatinConjDatabase.get(exceptionIndex);
+                        if (exceptionIndex != mFamilyConjugationIndexes.get(family)) {
+                            currentFamilyConjugations = MainActivity.VerbLatinConjDatabase.get(mFamilyConjugationIndexes.get(family));
+                            for (int col : dilutedConjugationColIndexes) {
+
+                                if (currentConjugations[col].equals(""))
+                                    conjugationValue = latinRoot + currentFamilyConjugations[col].replace(" ", "");
+                                else conjugationValue = currentConjugations[col].replace(" ", "");
+
+                                if (conjugationValue.contains(mInputQueryContatenated)) {
+                                    foundMatch = true;
+                                    matchColumn = col;
+                                    break;
+                                }
+                            }
+                        }
+                        else {
+                            for (int col : dilutedConjugationColIndexes) {
+                                conjugationValue = latinRoot + currentConjugations[col].replace(" ", "");
+
+                                if (conjugationValue.contains(mInputQueryContatenated)) {
+                                    foundMatch = true;
+                                    matchColumn = col;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    //endregion
+
+                    //region Kana conjugations comparison
+                    else if (mInputQueryIsKana && !mInputQueryTransliterationIsInvalid) {
+                        if (!mFamilyConjugationIndexes.containsKey(family)) continue;
+
+                        currentConjugations = MainActivity.VerbLatinConjDatabase.get(exceptionIndex);
+                        if (exceptionIndex != mFamilyConjugationIndexes.get(family)) {
+                            currentFamilyConjugations = MainActivity.VerbLatinConjDatabase.get(mFamilyConjugationIndexes.get(family));
+                            for (int col : dilutedConjugationColIndexes) {
+
+                                if (currentConjugations[col].equals(""))
+                                    conjugationValue = latinRoot + currentFamilyConjugations[col].replace(" ", "");
+                                else conjugationValue = currentConjugations[col].replace(" ", "");
+
+                                if (conjugationValue.contains(mInputQueryTransliteratedLatinFormContatenated)) {
+                                    foundMatch = true;
+                                    matchColumn = col;
+                                    break;
+                                }
+                            }
+                        }
+                        else {
+                            for (int col : dilutedConjugationColIndexes) {
+                                conjugationValue = latinRoot + currentConjugations[col].replace(" ", "");
+
+                                if (conjugationValue.contains(mInputQueryTransliteratedLatinFormContatenated)) {
+                                    foundMatch = true;
+                                    matchColumn = col;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    //endregion
+
+                    //region Kanji conjugations comparison
+                    else if (mInputQueryIsKanji) {
+                        if (!mFamilyConjugationIndexes.containsKey(family)) continue;
+
+                        currentConjugations = MainActivity.VerbKanjiConjDatabase.get(exceptionIndex);
+                        if (exceptionIndex != mFamilyConjugationIndexes.get(family)) {
+                            currentFamilyConjugations = MainActivity.VerbKanjiConjDatabase.get(mFamilyConjugationIndexes.get(family));
+                            for (int col : dilutedConjugationColIndexes) {
+
+                                if (currentConjugations[col].equals(""))
+                                    conjugationValue = kanjiRoot + currentFamilyConjugations[col].replace(" ", "");
+                                else conjugationValue = currentConjugations[col].replace(" ", "");
+
+                                if (conjugationValue.contains(mInputQueryTransliteratedLatinFormContatenated)) {
+                                    foundMatch = true;
+                                    matchColumn = col;
+                                    break;
+                                }
+                            }
+                        }
+                        else {
+                            for (int col : dilutedConjugationColIndexes) {
+                                conjugationValue = kanjiRoot + currentConjugations[col].replace(" ", "");
+
+                                if (conjugationValue.contains(mInputQueryTransliteratedLatinFormContatenated)) {
+                                    foundMatch = true;
+                                    matchColumn = col;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    //endregion
+                }
+                //endregion
+
+                if (foundMatch) {
+                    matchingVerbIdsAndCols.add(new long[]{verb.getVerbId(), matchColumn});
+                }
+            }
+
+            return matchingVerbIdsAndCols;
+        }
+        private List<long[]> sortMatchingVerbsListUsingRoom(List<long[]> ConjugationSearchMatchingVerbRowColIndexList) {
+
+            //Sorting the results according to the length of the Kana and Kanji values
+
+            ;// 3a. Computing the value length
+            long current_row_index;
+            long current_col_index;
+            int current_romaji_length;
+            int current_kanji_length;
+            int list_size = ConjugationSearchMatchingVerbRowColIndexList.size();
+            long[][] total_length = new long[list_size][3];
+            for (int i=0;i<list_size;i++) {
+                if (ConjugationSearchMatchingVerbRowColIndexList.get(i)==null) continue;
+                current_row_index = ConjugationSearchMatchingVerbRowColIndexList.get(i)[0];
+                current_col_index = ConjugationSearchMatchingVerbRowColIndexList.get(i)[1];
+                Verb verb = mJapaneseToolboxRoomDatabase.getVerbByVerbId(current_row_index);
+                current_romaji_length = verb.getRomaji().length();
+                current_kanji_length = verb.getKanji().length();
+                total_length[i][0] = current_row_index;
+                total_length[i][1] = current_col_index;
+                total_length[i][2] = current_romaji_length+current_kanji_length;
+            }
+
+            // 3b. Sorting
+            long tempVar0;
+            long tempVar1;
+            long tempVar2;
+            for (int i=0;i<list_size;i++) { //Bubble sort
+                for (int t=1;t<list_size-i;t++) {
+                    if (total_length[t-1][2] > total_length[t][2]) {
+                        tempVar0 = total_length[t-1][0];
+                        tempVar1 = total_length[t-1][1];
+                        tempVar2 = total_length[t-1][2];
+                        total_length[t-1][0] = total_length[t][0];
+                        total_length[t-1][1] = total_length[t][1];
+                        total_length[t-1][2] = total_length[t][2];
+                        total_length[t][0] = tempVar0;
+                        total_length[t][1] = tempVar1;
+                        total_length[t][2] = tempVar2;
+                    }
+                }
+            }
+
+            // 3c. Creating an Arraylist with the sorted values
+            List<long[]> ConjugationSearchMatchingVerbIdsAndColsList_Sorted = new ArrayList<>();
+
+            for (int i=0;i<list_size;i++) {
+                ConjugationSearchMatchingVerbIdsAndColsList_Sorted.add(new long[]{total_length[i][0], total_length[i][1]});
+            }
+
+            return ConjugationSearchMatchingVerbIdsAndColsList_Sorted;
+        }
+        private List<List<Integer>> FindMatchingVerbIndex() {
+
+            //region Value Initializations
+            List<Integer> matchingVerbRowIndexList = new ArrayList<>();
+            List<Integer> matchingVerbColIndexList = new ArrayList<>();
+            List<Integer> ConjugationSearchMatchingVerbRowIndexList = new ArrayList<>();
+            List<Integer> ConjugationSearchMatchingVerbColIndexList = new ArrayList<>();
+            List<List<Integer>> matchingVerbRowColIndexList = new ArrayList<>();
+            List<String> suru_conjugation_verb =  new ArrayList<>();
+            boolean found_match;
+            boolean skip_this_row;
+            boolean verbIsAConjugationOfTheCurrentFamily = false;
+            boolean verb_is_suru = false;
+            boolean verb_is_a_family_conjugation = false;
+            boolean suru_conjugation_is_also_a_verb = false;
+            boolean first_letter_is_identical;
+            boolean valueEnglishIsEmpty;
+            int NumberOfSheetCols = MainActivity.VerbLatinConjDatabase.get(0).length;
+            int verb_length = mInputQuery.length();
+            int matchColumn = 0;
+            int value_Exception_asInt;
+            String verb2;
+            String queryToBeChecked;
+            String suru_conjugation;
+            String concatenated_value;
+            String[] currentRowValuesLatin;
+            String[] currentRowValuesKanji;
+            String[] owValuesCurrentFamily = new String[NumberOfSheetCols];
+            String[] row_values_current_exceptionLatin = new String[NumberOfSheetCols];
+            String[] row_values_current_exceptionKanji = new String[NumberOfSheetCols];
+            String valueFamily;
+            String valueEnglish;
+            String value_Romaji;
+            String value_Kana;
+            String value_Kanji;
+            String value_rootLatin;
+            String value_rootKanji;
+            String value_Exception;
+            String value;
+            List<Integer> columnIndexesWithAllConjugations = new ArrayList<>();
+            List<Integer> columnIndexesWithNoConjugations = new ArrayList<>();
+            List<Integer> columnIndexesWithDilutedConjugations;
+            int max_length;
+            int current_length;
+            String inputQuery = mInputQuery;
+            //endregion
+
+            // Starting the algorithm
+            if (!mInputQueryIsInvalid) {
+
+                // 1. Initial Setup
+
+                ;// Finding the index of the last non-empty row, to make sure the algorithm does not search on empty last rows
+                int lastIndex = MainActivity.VerbDatabase.size()-1;
+                while (MainActivity.VerbDatabase.get(lastIndex)[0].length() == 0) { lastIndex--; }
+
+                //region Removing the "ing" from the verb (if relevant)
+                if (verb_length > 2 && inputQuery.substring(verb_length-3).equals("ing")) {
+
+                    if (verb_length > 5 && inputQuery.substring(verb_length-6).equals("inging")) {
+                        if (	(inputQuery.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(inputQuery.substring(3,verb_length))) ||
+                                (!inputQuery.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(inputQuery.substring(0,verb_length)))   ) {
+                            // If the verb ends with "inging" then remove the the second "ing"
+                            inputQuery = inputQuery.substring(0,verb_length-3);
+                        }
+                    }
+                    else {
+                        verb2 = inputQuery + "ing";
+                        if ((!verb2.substring(0, 2 + 1).equals("to ") || !IsOfTypeIngIng(verb2.substring(3, verb_length + 3))) &&
+                                (verb2.substring(0, 2+1).equals("to ") || !IsOfTypeIngIng(verb2.substring(0, verb_length + 3)))) {
+                            // If the verb does not belong to the list, then remove the ending "ing" so that it can be compared later on to the verbs excel
+                            ;//If the verb is for e.g. to sing / sing (verb2 = to singing / singing), then check that verb2 (without the "to ") belongs to the list, and if it does then do nothing
+
+                            inputQuery = inputQuery.substring(0,verb_length-3);
+                        }
+                    }
+                }
+                //endregion
+
+                //region Concatenating the verb & its translation for future use
+                String concatenatedQuery = Utilities.removeSpecialCharacters(inputQuery);
+                String concatenatedQueryTransliteration = Utilities.removeSpecialCharacters(mInputQueryTransliteratedLatinForm);
+                int concatenatedQuerylength = concatenatedQuery.length();
+                int concatenatedQueryTransliterationLength = concatenatedQueryTransliteration.length();
+                //endregion
+
+                //region Taking care of the case where the input is a basic conjugation that will cause the app to return all verbs
+                String[] conjugationEndingsRow = new String[NumberOfSheetCols];
+                List<String> parsedConj;
+                boolean verbIsConjoined = false;
+                queryToBeChecked = inputQuery;
+                if (mInputQueryIsLatin) {
+                    conjugationEndingsRow = MainActivity.VerbLatinConjDatabase.get(2);
+                }
+                else if (mInputQueryIsKana) {
+                    conjugationEndingsRow = MainActivity.VerbLatinConjDatabase.get(2);
+                    queryToBeChecked = mInputQueryTransliteratedLatinForm;
+                }
+                else if (mInputQueryIsKanji) {
+                    conjugationEndingsRow = MainActivity.VerbKanjiConjDatabase.get(2);
+
+                }
+                int quertToBeCheckedLength = queryToBeChecked.length();
+                for (int column = GlobalConstants.VerbModule_colIndex_istem; column < NumberOfSheetCols; column++) {
+                    parsedConj = Arrays.asList(conjugationEndingsRow[column].split("/"));
+                    for (int i=0;i<parsedConj.size();i++) {
+                        if (queryToBeChecked.equals(parsedConj.get(i)) && quertToBeCheckedLength > 3) {
+                            verbIsConjoined = true;
+                        }
+                    }
+                }
+                //endregion
+
+                //region Performing column dilution in order to make the search more efficient (the diluted column ArrayList is used in the Search Algorithm)
+                current_length = 0;
+                List<String[]> mySheetLengths = new ArrayList<>();
+                if (mInputQueryIsLatin) {
+                    mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
+                    current_length = concatenatedQuerylength;
+                }
+                else if (mInputQueryIsKana) {
+                    mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
+                    current_length = concatenatedQueryTransliterationLength;
+                }
+                else if (mInputQueryIsKanji) {
+                    mySheetLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", getContext());
+                    current_length = concatenatedQuerylength;
+                }
+                for (int col = GlobalConstants.VerbModule_colIndex_istem; col < NumberOfSheetCols; col++) {
+                    if (!mySheetLengths.get(0)[col].equals("")) { max_length = Integer.parseInt(mySheetLengths.get(0)[col]); }
+                    else { max_length = 0; }
+                    if (max_length >= current_length) { columnIndexesWithAllConjugations.add(col); }
+                }
+                //endregion
+
+                //region Checking to see if the verb is suru
+                rowIndexOfSuru = 0;
+                rowIndex_of_kuru = 0;
+                for (int current_index = 3; current_index < MainActivity.VerbDatabase.size(); current_index++) {
+                    value_Romaji = MainActivity.VerbDatabase.get(current_index)[GlobalConstants.VerbModule_colIndex_ustem];
+                    if (value_Romaji.equals("suru")) { rowIndexOfSuru = current_index; break;}
+                }
+                rowIndexOfSuruConjugationsInConjDb = Integer.valueOf(MainActivity.VerbDatabase.get(rowIndexOfSuru -1)[GlobalConstants.VerbModule_colIndex_istem]); //The conjugations are taken from the family row
+                rowValuesSuruLatin = MainActivity.VerbLatinConjDatabase.get(rowIndexOfSuruConjugationsInConjDb);
+                rowValuesSuruKanji = MainActivity.VerbKanjiConjDatabase.get(rowIndexOfSuruConjugationsInConjDb);
+
+                String concatenated_suru_conjugation;
+                for (int column: columnIndexesWithAllConjugations) {
+                    suru_conjugation = rowValuesSuruLatin[column];
+                    concatenated_suru_conjugation = suru_conjugation.replace(" ", "");
+                    if (concatenatedQuery.equals(concatenated_suru_conjugation) || concatenatedQueryTransliteration.equals(concatenated_suru_conjugation)) {
+                        verb_is_suru = true;
+                        matchColumn = column;
+                        for (int row = 3; row< MainActivity.VerbDatabase.size(); row++) {
+                            currentRowValuesLatin = MainActivity.VerbDatabase.get(row);
+                            value_Romaji = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_ustem];
+                            value_Kanji = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_kanji];
+                            if (suru_conjugation.equals(value_Romaji)) {
+                                suru_conjugation_is_also_a_verb = true;
+                                suru_conjugation_verb.add(value_Kanji);
+                            }
+                        }
+                    }
+                }
+                //endregion
+
+                // 2. Search algorithm
+                if (verb_is_suru) {
+                    for (int currentIndex=3; currentIndex < lastIndex+1; currentIndex++) {
+                        currentRowValuesLatin = MainActivity.VerbDatabase.get(currentIndex);
+                        value_Romaji = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_ustem];
+                        if (value_Romaji.equals("suru")) {
+                            ConjugationSearchMatchingVerbRowIndexList.add(currentIndex);
+                            ConjugationSearchMatchingVerbColIndexList.add(matchColumn);
+                        }
+                    }
+                }
+                if (!verb_is_suru || (verb_is_suru && suru_conjugation_is_also_a_verb)) {
+
+                    currentRowValuesLatin = MainActivity.VerbLatinConjDatabase.get(MainActivity.VerbLatinConjDatabase.size()-1);
+                    currentRowValuesKanji = MainActivity.VerbKanjiConjDatabase.get(MainActivity.VerbKanjiConjDatabase.size()-1);
+
+                    // Checking if the verb is a family conjugation
+                    for (int rowIndex = 3; rowIndex < lastIndex + 1; rowIndex++) {
+
+                        for (int p=0; p<=GlobalConstants.VerbModule_colIndex_istem; p++) { //Padding the current_row_values with the values from the current index
+                            currentRowValuesLatin[p] = MainActivity.VerbDatabase.get(rowIndex)[p];
+                            currentRowValuesKanji[p] = MainActivity.VerbDatabase.get(rowIndex)[p];
+                        }
+
+                        valueEnglish = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_english];
+                        valueFamily = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_family];
+
+                        if (!valueFamily.equals("") && valueEnglish.equals("")) {
+                            if (mInputQueryIsLatin) {
+                                owValuesCurrentFamily = MainActivity.VerbLatinConjDatabase.get(Integer.valueOf(currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_istem]));
+                            } else {
+                                owValuesCurrentFamily = MainActivity.VerbKanjiConjDatabase.get(Integer.valueOf(currentRowValuesKanji[GlobalConstants.VerbModule_colIndex_istem]));
+                            }
+                            for (int col=GlobalConstants.VerbModule_colIndex_istem; col<NumberOfSheetCols;col++) {
+                                if (inputQuery.equals(owValuesCurrentFamily[col])) { verb_is_a_family_conjugation = true; break; }
+                            }
+                        }
+                    }
+
+                    for (int rowIndex = 3; rowIndex < lastIndex + 1; rowIndex++) {
+
+                        //region Loop starting parameters initialization
+                        found_match = false;
+                        skip_this_row = true;
+                        first_letter_is_identical = false;
+                        valueEnglishIsEmpty = false;
+
+                        for (int p=0; p<=GlobalConstants.VerbModule_colIndex_istem; p++) { //Padding the current_row_values with the values from the current index
+                            currentRowValuesLatin[p] = MainActivity.VerbDatabase.get(rowIndex)[p];
+                            currentRowValuesKanji[p] = MainActivity.VerbDatabase.get(rowIndex)[p];
+                        }
+                        //endregion
+
+                        //region Extracting the cumulative english meanings
+                        valueEnglish = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_english];
+                        if (valueEnglish.equals("")) { valueEnglishIsEmpty = true; }
+
+                        value_Kana = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_kana];
+                        value_Kanji = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_kanji];
+                        valueFamily = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_family];
+                        value_Romaji = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_ustem];
+
+                        value_rootKanji = currentRowValuesKanji[GlobalConstants.VerbModule_colIndex_rootKanji];
+                        value_rootLatin = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_rootLatin];
+                        //endregion
+
+                        //region Add "to " to the values of valueEnglish (the "to "s were removed in the database to free space)
+                        List<String> parsed_value = Arrays.asList(valueEnglish.split(","));
+                        valueEnglish = "to ";
+                        for (int k=0; k<parsed_value.size();k++) {
+                            valueEnglish = valueEnglish + parsed_value.get(k).trim();
+                            if (k<parsed_value.size()-1) {valueEnglish = valueEnglish + ", to ";}
+                        }
+                        //endregion
+
+                        // Skipping empty/family rows
+                        if (valueFamily.equals("") || valueFamily.equals("-")) { continue; }
+
+                        //region Registering the current family row
+                        if (valueEnglishIsEmpty) {
+
+                            verbIsAConjugationOfTheCurrentFamily = false;
+                            // Registering the row
+                            if (mInputQueryIsLatin) {
+                                owValuesCurrentFamily = MainActivity.VerbLatinConjDatabase.get(Integer.valueOf(currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_istem]));
+                                queryToBeChecked = inputQuery;
+                            } else if (mInputQueryIsKana) {
+                                owValuesCurrentFamily = MainActivity.VerbLatinConjDatabase.get(Integer.valueOf(currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_istem]));
+                                queryToBeChecked = mInputQueryTransliteratedLatinForm;
+                            } else {
+                                owValuesCurrentFamily = MainActivity.VerbKanjiConjDatabase.get(Integer.valueOf(currentRowValuesKanji[GlobalConstants.VerbModule_colIndex_istem]));
+                                queryToBeChecked = inputQuery;
+                            }
+                            if (verb_is_a_family_conjugation) {
+                                for (int col = GlobalConstants.VerbModule_colIndex_istem; col < NumberOfSheetCols; col++) {
+                                    if (queryToBeChecked.equals(owValuesCurrentFamily[col])) {
+                                        verbIsAConjugationOfTheCurrentFamily = true;
+                                        matchColumn = col;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            // Removing the particles in the columns to reflect user error in the input verb
+                            //TODO Remove the particles in the columns to reflect user error in the input verb
+
+                            // Removing the polite "o" in the columns
+                            //TODO Remove the polite "o" in the columns
+
+                            // Family rows are not relevant for searches
+                        }
+                        //endregion
+
+                        //region If the verb appears as a conjoined verb in one of the conjugations, don't use the whole conjugations row
+                        if (!verbIsConjoined) { columnIndexesWithDilutedConjugations = columnIndexesWithAllConjugations; }
+                        else { columnIndexesWithDilutedConjugations = columnIndexesWithNoConjugations; }
+                        //endregion
+
+                        //region Preventing conjugation searches on short verbs
+                        if ( (mInputQueryIsLatin && verb_length < 3) || (mInputQueryIsKana  && verb_length < 2) || (mInputQueryIsKanji && verb_length < 2)) {
+                            columnIndexesWithDilutedConjugations = columnIndexesWithNoConjugations;
+                        }
+                        //endregion
+
+                        //region Getting the exception row if relevant
+                        value_Exception = currentRowValuesLatin[GlobalConstants.VerbModule_colIndex_istem];
+                        if (!value_Exception.equals("")) {
+                            value_Exception_asInt = Integer.valueOf(value_Exception);
+                            row_values_current_exceptionLatin = MainActivity.VerbLatinConjDatabase.get(value_Exception_asInt);
+                            row_values_current_exceptionKanji = MainActivity.VerbKanjiConjDatabase.get(value_Exception_asInt);
+                        }
+                        //endregion
+
+                        //region Preventing searches on verbs that don't have the same first kana
+                        if (!valueEnglishIsEmpty) {
+                            if (        mInputQueryIsLatin
+                                    ||  mInputQueryIsKana  && (value_Kana.charAt(0) == inputQuery.charAt(0))
+                                    ||  mInputQueryIsKanji && value_Kanji.contains(inputQuery.substring(0,1))
+                                    ||  value_Romaji.equals("kuru") ||  value_Romaji.equals("da"))
+                            { first_letter_is_identical = true; skip_this_row = false; }
+                        }
+                        //endregion
+
+                        //region Including the rows for verbs starting in o or go
+                        if (!valueEnglishIsEmpty) {
+                            if (((mInputQueryIsLatin && verb_length > 2) || (mInputQueryIsKana && verb_length > 1) || (mInputQueryIsKanji && verb_length > 1))
+                                    && (value_Kanji.charAt(0) == 'お' || value_Kanji.charAt(0) == 'ご' || value_Kanji.charAt(0) == '御')) {
+                                skip_this_row = false;
+                            }
+                        }
+                        //endregion
+
+                        //region If the verb is a suru conjugation but is also a valid verb, don't skip this row
+                        if (verb_is_suru && suru_conjugation_is_also_a_verb) {
+                            skip_this_row = true;
+                            for (String suru_conj_as_verb:suru_conjugation_verb)
+                                if (value_Kanji.equals(suru_conj_as_verb)) { skip_this_row = false; break;}
+                            if (skip_this_row  || value_Romaji.equals("suru")) {continue;}
+                        }
+                        //endregion
+
+                        //region If the verb is equal to a family conjugation, only roots with length 1 (ie. iru/aru/eru/oru/uru verbs only) or a verb with the exact romaji value are considered. This prevents too many results. This does not conflict with da or kuru.
+                        if (verb_is_a_family_conjugation) {
+                            if (mInputQueryIsKana || mInputQueryIsKanji) {
+                                if (value_rootKanji.length() == 1 && verbIsAConjugationOfTheCurrentFamily) {
+                                    found_match = true;
+                                }
+                                if ((value_rootKanji.length() > 1 || !verbIsAConjugationOfTheCurrentFamily) && !first_letter_is_identical) {
+                                    skip_this_row = true;
+                                }
+                            }
+                            else {
+                                if (value_rootLatin.length() == 1 && verbIsAConjugationOfTheCurrentFamily) {
+                                    found_match = true;
+                                }
+                                if ((value_rootLatin.length() > 1 || !verbIsAConjugationOfTheCurrentFamily) && !first_letter_is_identical) {
+                                    skip_this_row = true;
+                                }
+                            }
+                        }
+                        //endregion
+
+                        //region Main Comparator Algorithm
+                        if (!skip_this_row && !found_match) {
+                            if (mInputQueryIsLatin) {
+
+                                // Check if there is a hit in the english column
+                                if (verb_length > 3 && (valueEnglish.contains(concatenatedQuery)
+                                        || valueEnglish.contains("to "+ concatenatedQuery.substring(2, concatenatedQuery.length())))) {
+                                    found_match = true;
+                                    matchColumn = GlobalConstants.VerbModule_colIndex_english;
+                                }
+
+                                // Check if there is a hit in the romaji column
+                                concatenated_value = value_Romaji.replace(" ", "");
+                                if (concatenated_value.contains(concatenatedQuery)) {
+                                    found_match = true;
+                                    matchColumn = GlobalConstants.VerbModule_colIndex_ustem;
+                                }
+
+                                // Otherwise, go over the rest of the conjugations
+                                if (!found_match) {
+                                    if (!value_Exception.equals("")) {
+                                        for (int col : columnIndexesWithDilutedConjugations) {
+
+                                            // If the value at the current index has conjugation exceptions, get those from corresponding row in the Conj sheet instead of the family row
+                                            if (row_values_current_exceptionLatin[col].equals("")) {
+                                                value = value_rootLatin + owValuesCurrentFamily[col];
+                                            } else {
+                                                value = row_values_current_exceptionLatin[col];
+                                            }
+
+                                            concatenated_value = value.replace(" ", "");
+                                            if (concatenated_value.contains(concatenatedQuery)) {
+                                                found_match = true;
+                                                matchColumn = col;
+                                            }
+                                            if (found_match) {
+                                                break;
+                                            }
+                                        }
+                                    } else for (int col : columnIndexesWithDilutedConjugations) {
+
+                                        value = value_rootLatin + owValuesCurrentFamily[col];
+
+                                        concatenated_value = value.replace(" ", "");
+                                        if (concatenated_value.contains(concatenatedQuery)) {
+                                            found_match = true;
+                                            matchColumn = col;
+                                        }
+                                        if (found_match) {
+                                            break;
+                                        }
+                                    }
+                                }
+
+                            } else if (mInputQueryIsKana && !mInputQueryTransliterationIsInvalid) {
+
+                                // Check if there is a hit in the romaji column
+                                concatenated_value = value_Romaji.replace(" ", "");
+                                if (concatenated_value.contains(concatenatedQueryTransliteration)) {
+                                    found_match = true;
+                                    matchColumn = GlobalConstants.VerbModule_colIndex_ustem;
+                                }
+
+                                // Otherwise, go over the rest of the conjugations
+                                if (!found_match && !value_Exception.equals("")) {
+                                    for (int col : columnIndexesWithDilutedConjugations) {
+
+                                        // If the value at the current index has conjugation exceptions, get those from corresponding row in the Conj sheet instead of the family row
+                                        if (row_values_current_exceptionLatin[col].equals("")) {
+                                            value = value_rootLatin + owValuesCurrentFamily[col];
+                                        } else {
+                                            value = row_values_current_exceptionLatin[col];
+                                        }
+
+                                        concatenated_value = value.replace(" ", "");
+                                        if (concatenated_value.contains(concatenatedQueryTransliteration)) {
+                                            found_match = true;
+                                            matchColumn = col;
+                                        }
+                                        if (found_match) {
+                                            break;
+                                        }
+                                    }
+                                } else {
+                                    for (int col : columnIndexesWithDilutedConjugations) {
+
+                                        value = value_rootLatin + owValuesCurrentFamily[col];
+
+                                        concatenated_value = value.replace(" ", "");
+                                        if (concatenated_value.contains(concatenatedQueryTransliteration)) {
+                                            found_match = true;
+                                            matchColumn = col;
+                                        }
+                                        if (found_match) {
+                                            break;
+                                        }
+                                    }
+                                }
+
+                            } else if (mInputQueryIsKanji) {
+
+                                // Check if there is a hit in the Kanji column
+                                if (value_Kanji.contains(concatenatedQuery)) {
+                                    found_match = true;
+                                    matchColumn = GlobalConstants.VerbModule_colIndex_kanji;
+                                }
+
+                                // Otherwise, go over the rest of the conjugations
+                                if (!found_match && !value_Exception.equals("")) {
+                                    for (int col : columnIndexesWithDilutedConjugations) {
+
+                                        // If the value at the current index has conjugation exceptions, get those from corresponding row in the Conj sheet instead of the family row
+                                        if (row_values_current_exceptionKanji[col].equals("")) {
+                                            value = value_rootKanji + owValuesCurrentFamily[col];
+                                        } else {
+                                            value = row_values_current_exceptionKanji[col];
+                                        }
+
+                                        concatenated_value = value.replace(" ", "");
+                                        if (concatenated_value.contains(concatenatedQuery)) {
+                                            found_match = true;
+                                            matchColumn = col;
+                                        }
+                                        if (found_match) {
+                                            break;
+                                        }
+                                    }
+                                } else for (int col : columnIndexesWithDilutedConjugations) {
+
+                                    value = value_rootKanji + owValuesCurrentFamily[col];
+
+                                    concatenated_value = value.replace(" ", "");
+                                    if (concatenated_value.contains(concatenatedQuery)) {
+                                        found_match = true;
+                                        matchColumn = col;
+                                    }
+                                    if (found_match) {
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        //endregion
+
+                        if (found_match) {
+                            ConjugationSearchMatchingVerbRowIndexList.add(rowIndex);
+                            ConjugationSearchMatchingVerbColIndexList.add(matchColumn);
+                        }
+                    }
+                }
+
+
+                //region 3. Sorting the results according to the length of the Kana and Kanji values
+
+                ;// 3a. Computing the value length
+                int current_row_index;
+                int current_col_index;
+                int current_romaji_length;
+                int current_kanji_length;
+                int list_size = ConjugationSearchMatchingVerbRowIndexList.size();
+                int[][] total_length = new int[list_size][3];
+                for (int i=0;i<list_size;i++) {
+                    current_row_index = ConjugationSearchMatchingVerbRowIndexList.get(i);
+                    current_col_index = ConjugationSearchMatchingVerbColIndexList.get(i);
+                    current_romaji_length = MainActivity.VerbDatabase.get(current_row_index)[GlobalConstants.VerbModule_colIndex_ustem].length();
+                    current_kanji_length = MainActivity.VerbDatabase.get(current_row_index)[GlobalConstants.VerbModule_colIndex_kanji].length();
+                    total_length[i][0] = current_row_index;
+                    total_length[i][1] = current_col_index;
+                    total_length[i][2] = current_romaji_length+current_kanji_length;
+                }
+
+                // 3b. Sorting
+                int tempVar0;
+                int tempVar1;
+                int tempVar2;
+                for (int i=0;i<list_size;i++) { //Bubble sort
+                    for (int t=1;t<list_size-i;t++) {
+                        if (total_length[t-1][2] > total_length[t][2]) {
+                            tempVar0 = total_length[t-1][0];
+                            tempVar1 = total_length[t-1][1];
+                            tempVar2 = total_length[t-1][2];
+                            total_length[t-1][0] = total_length[t][0];
+                            total_length[t-1][1] = total_length[t][1];
+                            total_length[t-1][2] = total_length[t][2];
+                            total_length[t][0] = tempVar0;
+                            total_length[t][1] = tempVar1;
+                            total_length[t][2] = tempVar2;
+                        }
+                    }
+                }
+
+                // 3c. Creating an Arraylist with the sorted values
+                List<Integer> ConjugationSearchMatchingVerbRowIndexList_Sorted = new ArrayList<>();
+                List<Integer> ConjugationSearchMatchingVerbColIndexList_Sorted = new ArrayList<>();
+
+                for (int i=0;i<list_size;i++) {
+                    ConjugationSearchMatchingVerbRowIndexList_Sorted.add(total_length[i][0]);
+                    ConjugationSearchMatchingVerbColIndexList_Sorted.add(total_length[i][1]);
+                }
+                //endregion
+
+
+                // 4. Finalization
+                matchingVerbRowIndexList = ConjugationSearchMatchingVerbRowIndexList_Sorted;
+                matchingVerbColIndexList = ConjugationSearchMatchingVerbColIndexList_Sorted;
+            }
+
+            // Returning the list of matching row indexes
+            matchingVerbRowColIndexList.add(matchingVerbRowIndexList);
+            matchingVerbRowColIndexList.add(matchingVerbColIndexList);
+            return matchingVerbRowColIndexList;
+        }
+        private List<List<Integer>> SortMatchingVerbsList(List<List<Integer>> ConjugationSearchMatchingVerbRowColIndexList) {
+
+            //Sorting the results according to the length of the Kana and Kanji values
+
+            ;// 3a. Computing the value length
+            int current_row_index;
+            int current_col_index;
+            int current_romaji_length;
+            int current_kanji_length;
+            int list_size = ConjugationSearchMatchingVerbRowColIndexList.get(0).size();
+            int[][] total_length = new int[list_size][3];
+            for (int i=0;i<list_size;i++) {
+                current_row_index = ConjugationSearchMatchingVerbRowColIndexList.get(0).get(i);
+                current_col_index = ConjugationSearchMatchingVerbRowColIndexList.get(1).get(i);
+                current_romaji_length = MainActivity.VerbDatabase.get(current_row_index)[GlobalConstants.VerbModule_colIndex_ustem].length();
+                current_kanji_length = MainActivity.VerbDatabase.get(current_row_index)[GlobalConstants.VerbModule_colIndex_kanji].length();
+                total_length[i][0] = current_row_index;
+                total_length[i][1] = current_col_index;
+                total_length[i][2] = current_romaji_length+current_kanji_length;
+            }
+
+            // 3b. Sorting
+            int tempVar0;
+            int tempVar1;
+            int tempVar2;
+            for (int i=0;i<list_size;i++) { //Bubble sort
+                for (int t=1;t<list_size-i;t++) {
+                    if (total_length[t-1][2] > total_length[t][2]) {
+                        tempVar0 = total_length[t-1][0];
+                        tempVar1 = total_length[t-1][1];
+                        tempVar2 = total_length[t-1][2];
+                        total_length[t-1][0] = total_length[t][0];
+                        total_length[t-1][1] = total_length[t][1];
+                        total_length[t-1][2] = total_length[t][2];
+                        total_length[t][0] = tempVar0;
+                        total_length[t][1] = tempVar1;
+                        total_length[t][2] = tempVar2;
+                    }
+                }
+            }
+
+            // 3c. Creating an Arraylist with the sorted values
+            List<Integer> ConjugationSearchMatchingVerbRowIndexList_Sorted = new ArrayList<>();
+            List<Integer> ConjugationSearchMatchingVerbColIndexList_Sorted = new ArrayList<>();
+
+            for (int i=0;i<list_size;i++) {
+                ConjugationSearchMatchingVerbRowIndexList_Sorted.add(total_length[i][0]);
+                ConjugationSearchMatchingVerbColIndexList_Sorted.add(total_length[i][1]);
+            }
+
+            // Returning the list of matching row indexes
+            List<List<Integer>> matchingVerbRowColIndexList = new ArrayList<>();
+            matchingVerbRowColIndexList.add(ConjugationSearchMatchingVerbRowIndexList_Sorted);
+            matchingVerbRowColIndexList.add(ConjugationSearchMatchingVerbColIndexList_Sorted);
+            return matchingVerbRowColIndexList;
+        }
+        private List<Verb> getVerbs(List<Integer> matchingVerbRowIndexList) {
+
+            //region Find the Passive tense index in order to remove passive conjugations from verbs that are intransitive
+            String currentTitle;
+            int passiveTenseCategoryIndex = 0;
+            for (int i = 0; i < mConjugationTitles.size(); i++) {
+                currentTitle = mConjugationTitles.get(i).getTitle();
+                if (currentTitle.contains("Passive (X is done to him)")) { passiveTenseCategoryIndex = i; }
+            }
+            //endregion
+
+            //region Building the set of verb characteristics for each matching verb
+            List<Verb> verbs = new ArrayList<>();
+            if (matchingVerbRowIndexList.size() != 0) {
+
+                //region Initializations
+                int matchingVerbRowIndex;
+                int currentFamilyHeaderRowIndex = 0;
+                int conjLatinLength;
+                int conjKanjiLength;
+                List<String[]> conjugationsSheetLatin = MainActivity.VerbLatinConjDatabase;
+                List<String[]> conjugationsSheetKanji = MainActivity.VerbKanjiConjDatabase;
+                int NumberOfSheetCols = conjugationsSheetLatin.get(0).length;
+                String[] currentConjugationsRowLatin;
+                String[] currentConjugationsRowKanji;
+                String[] currentVerbRow;
+                List<Verb.ConjugationCategory> conjugationCategories;
+                Verb.ConjugationCategory conjugationCategory;
+                List<Verb.ConjugationCategory.Conjugation> conjugations;
+                Verb.ConjugationCategory.Conjugation conjugation;
+                List<String> conjugationSetLatin;
+                List<String> conjugationSetKanji;
+                List<ConjugationTitle.Subtitle> subtitles;
+                //endregion
+
+                for (int p = 0; p < matchingVerbRowIndexList.size(); p++) {
+                    matchingVerbRowIndex = matchingVerbRowIndexList.get(p);
+                    currentVerbRow = MainActivity.VerbDatabase.get(matchingVerbRowIndex);
+
+                    //region Setting the verb's basic characteristics
+                    Verb currentVerb = new Verb(
+                            currentVerbRow[GlobalConstants.VerbModule_colIndex_family],
+                            currentVerbRow[GlobalConstants.VerbModule_colIndex_english],
+                            currentVerbRow[GlobalConstants.VerbModule_colIndex_trans],
+                            currentVerbRow[GlobalConstants.VerbModule_colIndex_prep],
+                            currentVerbRow[GlobalConstants.VerbModule_colIndex_kana],
+                            currentVerbRow[GlobalConstants.VerbModule_colIndex_kanji],
+                            currentVerbRow[GlobalConstants.VerbModule_colIndex_ustem],
+                            currentVerbRow[GlobalConstants.VerbModule_colIndex_rootKanji],
+                            currentVerbRow[GlobalConstants.VerbModule_colIndex_rootLatin],
+                            currentVerbRow[GlobalConstants.VerbModule_colIndex_exception],
+                            currentVerbRow[GlobalConstants.VerbModule_colIndex_altSpellings]);
+
+
+                    currentVerb.setMeaning(insertToInMeanings(currentVerb.getMeaning()));
+                    switch (currentVerb.getTrans()) {
+                        case "T":
+                            currentVerb.setTrans("trans.");
+                            break;
+                        case "I":
+                            currentVerb.setTrans("intrans.");
+                            break;
+                        case "T/I":
+                            currentVerb.setTrans("trans./intrans.");
+                            break;
+                    }
+                    //endregion
+
+                    //region Finding the conjugation family relevant to the current verb
+                    for (int i = 2; i < MainActivity.VerbDatabase.size(); i++) {
+                        String[] currentRow = MainActivity.VerbDatabase.get(i);
+                        if (currentRow[GlobalConstants.VerbModule_colIndex_rootLatin].equals("")
+                                && currentRow[GlobalConstants.VerbModule_colIndex_english].equals("")
+                                && !currentRow[GlobalConstants.VerbModule_colIndex_family].equals("")) {
+
+                            if (i < matchingVerbRowIndex) {
+                                currentFamilyHeaderRowIndex = i;
+                            } else {
+                                break;
+                            }
+                        }
+                    }
+
+                    String[] currentFamilyHeaderInVerbDatabase = MainActivity.VerbDatabase.get(currentFamilyHeaderRowIndex);
+                    int indexOfRelevantFamilyConjugations = Integer.valueOf(currentFamilyHeaderInVerbDatabase[GlobalConstants.VerbModule_colIndex_exception]);
+                    currentConjugationsRowLatin = conjugationsSheetLatin.get(indexOfRelevantFamilyConjugations);
+                    currentConjugationsRowKanji = conjugationsSheetKanji.get(indexOfRelevantFamilyConjugations);
+                    //endregion
+
+                    //region If the verb has a conjugation exceptions row, update the currentConjugationsRow with the nonempty exceptions in that row
+                    boolean isAnException = false;
+                    String valueExceptionIndicator = currentVerbRow[GlobalConstants.VerbModule_colIndex_exception];
+                    String[] currentConjugationExceptionsRowLatin = new String[NumberOfSheetCols];
+                    String[] currentConjugationExceptionsRowKanji = new String[NumberOfSheetCols];
+                    if (!valueExceptionIndicator.equals("")) {
+                        int indexOfExceptionConjugations = Integer.valueOf(valueExceptionIndicator);
+                        currentConjugationExceptionsRowLatin = conjugationsSheetLatin.get(indexOfExceptionConjugations);
+                        currentConjugationExceptionsRowKanji = conjugationsSheetKanji.get(indexOfExceptionConjugations);
+                        isAnException = true;
+                        for (int col = 0; col < NumberOfSheetCols; col++) {
+
+                            String currentConjugationExceptionLatin = currentConjugationExceptionsRowLatin[col];
+                            if (!currentConjugationExceptionLatin.equals(""))
+                                currentConjugationsRowLatin[col] = currentConjugationExceptionsRowLatin[col];
+
+                            String currentConjugationExceptionKanji = currentConjugationExceptionsRowKanji[col];
+                            if (!currentConjugationExceptionKanji.equals(""))
+                                currentConjugationsRowKanji[col] = currentConjugationExceptionsRowKanji[col];
+                        }
+                    }
+                    //endregion
+
+                    //region Getting the verb's conjugations row
+                    String[] matchingVerbConjugationsRowLatin = new String[NumberOfSheetCols];
+                    String[] matchingVerbConjugationsRowKanji = new String[NumberOfSheetCols];
+                    for (int col = 0; col < NumberOfSheetCols; col++) {
+
+                        if (col < GlobalConstants.VerbModule_colIndex_istem) {
+                            matchingVerbConjugationsRowLatin[col] = currentVerbRow[col];
+                            matchingVerbConjugationsRowKanji[col] = currentVerbRow[col];
+                        } else {
+
+                            //If there is a conjugation exception then use it as-is, otherwise create the conjugation using the family conjugation endings
+                            if (isAnException && !currentConjugationExceptionsRowLatin[col].equals("")) {
+                                matchingVerbConjugationsRowLatin[col] = currentConjugationExceptionsRowLatin[col];
+                                matchingVerbConjugationsRowKanji[col] = currentConjugationExceptionsRowKanji[col];
+                            } else {
+                                conjLatinLength = currentConjugationsRowLatin[col].length();
+                                if (conjLatinLength > 3 && currentConjugationsRowLatin[col].substring(0, 3).equals("(o)")) {
+                                    matchingVerbConjugationsRowLatin[col] = "(o)" + currentVerb.getLatinRoot() + currentConjugationsRowLatin[col].substring(3, conjLatinLength);
+                                } else
+                                    matchingVerbConjugationsRowLatin[col] = currentVerb.getLatinRoot() + currentConjugationsRowLatin[col];
+
+                                conjKanjiLength = currentConjugationsRowKanji[col].length();
+                                if (conjLatinLength > 3 && currentConjugationsRowLatin[col].substring(0, 3).equals("(お)")) {
+                                    matchingVerbConjugationsRowKanji[col] = "(お)" + currentVerb.getKanjiRoot() + currentConjugationsRowKanji[col].substring(3, conjKanjiLength);
+                                } else
+                                    matchingVerbConjugationsRowKanji[col] = currentVerb.getKanjiRoot() + currentConjugationsRowKanji[col];
+                            }
+
+                        }
+                    }
+                    //endregion
+
+                    //region Getting the verb conjugations and putting each conjugation of the conjugations row into its appropriate category
+                    conjugationCategories = new ArrayList<>();
+                    for (int categoryIndex = 1; categoryIndex < mConjugationTitles.size(); categoryIndex++) {
+
+                        //region Getting the set of Latin and Kanji conjugations according to the current category's subtitle column indexes
+                        subtitles = mConjugationTitles.get(categoryIndex).getSubtitles();
+                        int subtitleColIndex;
+                        conjugationSetLatin = new ArrayList<>();
+                        conjugationSetKanji = new ArrayList<>();
+                        for (int i=0; i<subtitles.size(); i++) {
+                            subtitleColIndex = subtitles.get(i).getSubtitleIndex();
+                            conjugationSetLatin.add(matchingVerbConjugationsRowLatin[subtitleColIndex]);
+                            conjugationSetKanji.add(matchingVerbConjugationsRowKanji[subtitleColIndex]);
+                        }
+                        //endregion
+
+                        //region Intransitive verbs don't have a passive tense, so the relevant entries are removed
+                        if (!currentVerb.getTrans().equals("T") && categoryIndex == passiveTenseCategoryIndex) {
+                            for (int conjugationIndex = 0; conjugationIndex < conjugationSetLatin.size(); conjugationIndex++) {
+                                conjugationSetLatin.set(conjugationIndex, "*");
+                                conjugationSetKanji.set(conjugationIndex, "*");
+                            }
+                        }
+                        //endregion
+
+                        //region Cleaning the entries that contain exceptions
+                        for (int conjugationIndex = 0; conjugationIndex < conjugationSetLatin.size(); conjugationIndex++) {
+                            if (conjugationSetLatin.get(conjugationIndex).contains("*"))
+                                conjugationSetLatin.set(conjugationIndex, "*");
+                            if (conjugationSetKanji.get(conjugationIndex).contains("*"))
+                                conjugationSetKanji.set(conjugationIndex, "*");
+                        }
+                        //endregion
+
+                        //region Adding the conjugations to the conjugationCategory
+                        conjugationCategory = new Verb.ConjugationCategory();
+                        conjugations = new ArrayList<>();
+                        for (int conjugationIndex = 0; conjugationIndex < conjugationSetLatin.size(); conjugationIndex++) {
+                            conjugation = new Verb.ConjugationCategory.Conjugation();
+                            conjugation.setConjugationLatin(conjugationSetLatin.get(conjugationIndex));
+                            conjugation.setConjugationKanji(conjugationSetKanji.get(conjugationIndex));
+                            conjugations.add(conjugation);
+                        }
+                        conjugationCategory.setConjugations(conjugations);
+                        //endregion
+
+                        conjugationCategories.add(conjugationCategory);
+                    }
+                    //endregion
+
+                    currentVerb.setConjugationCategories(conjugationCategories);
+
+                    verbs.add(currentVerb);
+                }
+
+            }
+
+            return verbs;
+        }
+        private List<Verb> getVerbsUsingRoom(List<long[]> mMatchingVerbIdsAndCols) {
+
+            if (mMatchingVerbIdsAndCols.size() == 0) return new ArrayList<>();
+
+            //region Initializations
+            List<Verb> verbs = new ArrayList<>();
+            Verb currentVerb;
+            long matchingVerbId;
+            int conjLength;
+            int NumberOfSheetCols = MainActivity.VerbLatinConjDatabase.get(0).length;
+            String[] currentConjugationsRowLatin;
+            String[] currentConjugationsRowKanji;
+            List<Verb.ConjugationCategory> conjugationCategories;
+            Verb.ConjugationCategory conjugationCategory;
+            List<Verb.ConjugationCategory.Conjugation> conjugations;
+            Verb.ConjugationCategory.Conjugation conjugation;
+            List<String> conjugationSetLatin;
+            List<String> conjugationSetKanji;
+            List<ConjugationTitle.Subtitle> subtitles;
+            int currentFamilyConjugationsIndex;
+            String[] currentConjugationExceptionsRowLatin;
+            String[] currentConjugationExceptionsRowKanji;
+            //endregion
+
+            //region Finding the Passive tense index in order to remove passive conjugations from verbs that are intransitive
+            String currentTitle;
+            int passiveTenseCategoryIndex = 0;
+            for (int i = 0; i < mConjugationTitles.size(); i++) {
+                currentTitle = mConjugationTitles.get(i).getTitle();
+                if (currentTitle.contains("Passive (X is done to him)")) { passiveTenseCategoryIndex = i; }
+            }
+            //endregion
+
+            //region Updating the verbs with their conjugations
+            for (int p = 0; p < mMatchingVerbIdsAndCols.size(); p++) {
+                matchingVerbId = mMatchingVerbIdsAndCols.get(p)[0];
+                currentVerb = mJapaneseToolboxRoomDatabase.getVerbByVerbId(matchingVerbId);
+                currentFamilyConjugationsIndex = mFamilyConjugationIndexes.get(currentVerb.getFamily());
+                currentConjugationsRowLatin = Arrays.copyOf(MainActivity.VerbLatinConjDatabase.get(currentFamilyConjugationsIndex), NumberOfSheetCols);
+                currentConjugationsRowKanji = Arrays.copyOf(MainActivity.VerbKanjiConjDatabase.get(currentFamilyConjugationsIndex), NumberOfSheetCols);
+
+                //region Setting the verb's basic characteristics for display
+                switch (currentVerb.getTrans()) {
+                    case "T": currentVerb.setTrans("trans."); break;
+                    case "I": currentVerb.setTrans("intrans."); break;
+                    case "T/I": currentVerb.setTrans("trans./intrans."); break;
+                }
+                switch (currentVerb.getFamily()) {
+                    case "su": currentVerb.setFamily("su godan"); break;
+                    case "ku": currentVerb.setFamily("ku godan"); break;
+                    case "gu": currentVerb.setFamily("gu godan"); break;
+                    case "bu": currentVerb.setFamily("bu godan"); break;
+                    case "mu": currentVerb.setFamily("mu godan"); break;
+                    case "nu": currentVerb.setFamily("nu godan"); break;
+                    case "rug": currentVerb.setFamily("ru godan"); break;
+                    case "tsu": currentVerb.setFamily("tsu godan"); break;
+                    case "u": currentVerb.setFamily("u godan"); break;
+                    case "rui": currentVerb.setFamily("ru ichidan"); break;
+                    case "da": currentVerb.setFamily("desu copula"); break;
+                    case "kuru": currentVerb.setFamily("kuru verb"); break;
+                    case "suru": currentVerb.setFamily("suru verb"); break;
+                }
+                //endregion
+
+                //region Getting the conjugations row
+                currentConjugationExceptionsRowLatin = new String[NumberOfSheetCols];
+                currentConjugationExceptionsRowKanji = new String[NumberOfSheetCols];
+                int indexOfExceptionConjugations = Integer.valueOf(currentVerb.getExceptionIndex());
+
+                if (indexOfExceptionConjugations != currentFamilyConjugationsIndex) {
+                    currentConjugationExceptionsRowLatin = Arrays.copyOf(MainActivity.VerbLatinConjDatabase.get(indexOfExceptionConjugations), NumberOfSheetCols);
+                    currentConjugationExceptionsRowKanji = Arrays.copyOf(MainActivity.VerbKanjiConjDatabase.get(indexOfExceptionConjugations), NumberOfSheetCols);
+                }
+                else {
+                    Arrays.fill(currentConjugationExceptionsRowLatin, "");
+                    Arrays.fill(currentConjugationExceptionsRowKanji, "");
+                }
+
+                for (int col = GlobalConstants.VerbModule_colIndex_istem; col < NumberOfSheetCols; col++) {
+
+                    if (!currentConjugationExceptionsRowLatin[col].equals("")) currentConjugationsRowLatin[col] = currentConjugationExceptionsRowLatin[col];
+                    else {
+                        conjLength = currentConjugationsRowLatin[col].length();
+                        if (conjLength > 3 && currentConjugationsRowLatin[col].substring(0, 3).equals("(o)")) {
+                            currentConjugationsRowLatin[col] = "(o)" + currentVerb.getLatinRoot() + currentConjugationsRowLatin[col].substring(3, conjLength);
+                        } else {
+                            currentConjugationsRowLatin[col] = currentVerb.getLatinRoot() + currentConjugationsRowLatin[col];
+                        }
+                    }
+
+                    if (!currentConjugationExceptionsRowKanji[col].equals("")) currentConjugationsRowKanji[col] = currentConjugationExceptionsRowKanji[col];
+                    else {
+                        conjLength = currentConjugationsRowKanji[col].length();
+                        if (conjLength > 3 && currentConjugationsRowKanji[col].substring(0, 3).equals("(お)")) {
+                            currentConjugationsRowKanji[col] = "(お)" + currentVerb.getKanjiRoot() + currentConjugationsRowKanji[col].substring(3, conjLength);
+                        } else {
+                            currentConjugationsRowKanji[col] = currentVerb.getKanjiRoot() + currentConjugationsRowKanji[col];
+                        }
+                    }
+                }
+                //endregion
+
+                //region Getting the verb conjugations and putting each conjugation of the conjugations row into its appropriate category
+                conjugationCategories = new ArrayList<>();
+                for (int categoryIndex = 1; categoryIndex < mConjugationTitles.size(); categoryIndex++) {
+
+                    //region Getting the set of Latin and Kanji conjugations according to the current category's subtitle column indexes
+                    subtitles = mConjugationTitles.get(categoryIndex).getSubtitles();
+                    int subtitleColIndex;
+                    conjugationSetLatin = new ArrayList<>();
+                    conjugationSetKanji = new ArrayList<>();
+                    for (int i=0; i<subtitles.size(); i++) {
+                        subtitleColIndex = subtitles.get(i).getSubtitleIndex();
+                        conjugationSetLatin.add(currentConjugationsRowLatin[subtitleColIndex]);
+                        conjugationSetKanji.add(currentConjugationsRowKanji[subtitleColIndex]);
+                    }
+                    //endregion
+
+                    //region Intransitive verbs don't have a passive tense, so the relevant entries are removed
+                    if (!currentVerb.getTrans().equals("T") && categoryIndex == passiveTenseCategoryIndex) {
+                        for (int conjugationIndex = 0; conjugationIndex < conjugationSetLatin.size(); conjugationIndex++) {
+                            conjugationSetLatin.set(conjugationIndex, "*");
+                            conjugationSetKanji.set(conjugationIndex, "*");
+                        }
+                    }
+                    //endregion
+
+                    //region Cleaning the entries that contain exceptions
+                    for (int conjugationIndex = 0; conjugationIndex < conjugationSetLatin.size(); conjugationIndex++) {
+                        if (conjugationSetLatin.get(conjugationIndex).contains("*"))
+                            conjugationSetLatin.set(conjugationIndex, "*");
+                        if (conjugationSetKanji.get(conjugationIndex).contains("*"))
+                            conjugationSetKanji.set(conjugationIndex, "*");
+                    }
+                    //endregion
+
+                    //region Adding the conjugations to the conjugationCategory
+                    conjugationCategory = new Verb.ConjugationCategory();
+                    conjugations = new ArrayList<>();
+                    for (int conjugationIndex = 0; conjugationIndex < conjugationSetLatin.size(); conjugationIndex++) {
+                        conjugation = new Verb.ConjugationCategory.Conjugation();
+                        conjugation.setConjugationLatin(conjugationSetLatin.get(conjugationIndex));
+                        conjugation.setConjugationKanji(conjugationSetKanji.get(conjugationIndex));
+                        conjugations.add(conjugation);
+                    }
+                    conjugationCategory.setConjugations(conjugations);
+                    //endregion
+
+                    conjugationCategories.add(conjugationCategory);
+                }
+                //endregion
+
+                currentVerb.setConjugationCategories(conjugationCategories);
+
+                verbs.add(currentVerb);
+            }
+            //endregion
+
+            return verbs;
+        }
+        private Boolean IsOfTypeIngIng(String verb) {
+            Boolean answer = false;
+            if (	verb.equals("accinging") || verb.equals("astringing") || verb.equals("befringing") || verb.equals("besinging") ||
+                    verb.equals("binging") || verb.equals("boinging") || verb.equals("bowstringing") || verb.equals("bringing") ||
+                    verb.equals("clinging") || verb.equals("constringing") || verb.equals("cringing") || verb.equals("dinging") ||
+                    verb.equals("enringing") || verb.equals("flinging") || verb.equals("folksinging") || verb.equals("fringing") ||
+                    verb.equals("gunslinging") || verb.equals("hamstringing") || verb.equals("handwringing") || verb.equals("hinging") ||
+                    verb.equals("impinging") || verb.equals("inbringing") || verb.equals("infringing") || verb.equals("kinging") ||
+                    verb.equals("minging") || verb.equals("mudslinging") || verb.equals("outringing") || verb.equals("outsinging") ||
+                    verb.equals("outspringing") || verb.equals("outswinging") || verb.equals("outwinging") || verb.equals("overswinging") ||
+                    verb.equals("overwinging") || verb.equals("perstringing") || verb.equals("pinging") || verb.equals("refringing") ||
+                    verb.equals("rehinging") || verb.equals("respringing") || verb.equals("restringing") || verb.equals("ringing") ||
+                    verb.equals("singing") || verb.equals("slinging") || verb.equals("springing") || verb.equals("stinging") ||
+                    verb.equals("stringing") || verb.equals("swinging") || verb.equals("syringing") || verb.equals("twinging") ||
+                    verb.equals("unhinging") || verb.equals("unkinging") || verb.equals("unslinging") || verb.equals("unstringing") ||
+                    verb.equals("upbringing") || verb.equals("upflinging") || verb.equals("upspringing") || verb.equals("upswinging") ||
+                    verb.equals("whinging") || verb.equals("winging") || verb.equals("wringing") || verb.equals("zinging") ) {
+                answer = true;
+            }
+            return answer;
+        }
+        private static String insertToInMeanings(String definition) {
+            definition = "to " + definition;
+            char current_char;
+            boolean parenthesis = false;
+            boolean double_parenthesis = false;
+            int definition_index = 0;
+            if (!definition.equals("")) {
+                for (int i=0;i<definition.length();i++) {
+                    if (definition_index<definition.length()) {
+                        current_char = definition.charAt(definition_index);
+                        if (current_char == '(') {
+                            if (!double_parenthesis) {parenthesis = true;}
+                            if (parenthesis) {double_parenthesis = true;}
+                        }
+                        if (current_char == ')') {
+                            if (double_parenthesis) {double_parenthesis = false;}
+                            if (!double_parenthesis) {parenthesis = false;}
+                        }
+                        if (current_char == ',' && !parenthesis) {
+                            definition = definition.substring(0,definition_index+1) + " to" + definition.substring(definition_index+1,definition.length());
+                            definition_index = definition_index+3;
+                        }
+                    }
+                    definition_index++;
+                }
+            }
+            return definition;
+        }
+    }
 }

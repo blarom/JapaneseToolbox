@@ -3,15 +3,12 @@ package com.japanesetoolboxapp.ui;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
-import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.*;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.graphics.Color;
-import android.graphics.LightingColorFilter;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.StrictMode;
@@ -20,7 +17,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -29,11 +25,11 @@ import android.view.Window;
 import android.view.View.OnTouchListener;
 import android.widget.FrameLayout;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -84,8 +80,6 @@ public class MainActivity extends AppCompatActivity implements
     InputQueryFragment mInputQueryFragment;
     static List<String[]> MainDatabase;
     static List<String[]> LegendDatabase;
-    public static List<String[]> GrammarDatabaseIndexedLatin;
-    public static List<String[]> GrammarDatabaseIndexedKanji;
     static List<String[]> RadicalsDatabase;
     static List<String[]> CJK_Database;
     static List<String[]> VerbDatabase;
@@ -117,6 +111,11 @@ public class MainActivity extends AppCompatActivity implements
     private Bundle mSavedInstanceState;
     private Unbinder mBinding;
     private DictionaryFragment mDictionaryFragment;
+    private ConjugatorFragment mConjugatorFragment;
+    private ConvertFragment mConvertFragment;
+    private SearchByRadicalFragment mSearchByRadicalFragment;
+    private DecomposeKanjiFragment mDecomposeKanjiFragment;
+    private String mSecondFragmentCurrentlyDisplayed;
     //endregion
 
 
@@ -131,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements
         Log.i("Diagnosis Time", "Started MainActivity.");
         initializeParameters();
         setupSharedPreferences();
-        if (MainDatabase == null) new BackgroundDatabaseLoader().execute(); // Start loading the local database in the background
+        if (MainDatabase == null) new BackgroundDatabaseLoader(this).execute(); // Start loading the local database in the background
         setFragments();
 
     }
@@ -140,10 +139,36 @@ public class MainActivity extends AppCompatActivity implements
 
         // Set the Requested Fragment if it was saved from a previous instance
         if (savedInstanceState != null) {
+
             String savedRequestedFragment = savedInstanceState.getString(getString(R.string.requested_second_fragment));
             if (savedRequestedFragment != null) {
                 mSecondFragmentFlag = savedRequestedFragment;
             }
+
+            mSecondFragmentCurrentlyDisplayed = savedInstanceState.getString(getString(R.string.requested_second_fragment));
+            mDictionaryFragment = (DictionaryFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.dict_fragment));
+            mConjugatorFragment = (ConjugatorFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.conj_fragment));
+            mConvertFragment = (ConvertFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.conv_fragment));
+            mSearchByRadicalFragment = (SearchByRadicalFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.srad_fragment));
+            mDecomposeKanjiFragment = (DecomposeKanjiFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.dcmp_fragment));
+
+            //Load the second fragment
+            clearBackstack();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.dict_fragment)))
+                fragmentTransaction.replace(R.id.second_fragment_placeholder, mDictionaryFragment, getString(R.string.dict_fragment));
+            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.conj_fragment)))
+                fragmentTransaction.replace(R.id.second_fragment_placeholder, mConjugatorFragment, getString(R.string.conj_fragment));
+            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.conv_fragment)))
+                fragmentTransaction.replace(R.id.second_fragment_placeholder, mConvertFragment, getString(R.string.conv_fragment));
+            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.srad_fragment)))
+                fragmentTransaction.replace(R.id.second_fragment_placeholder, mSearchByRadicalFragment, getString(R.string.srad_fragment));
+            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.dcmp_fragment)))
+                fragmentTransaction.replace(R.id.second_fragment_placeholder, mDecomposeKanjiFragment, getString(R.string.dcmp_fragment));
+            fragmentTransaction.addToBackStack(getString(R.string.dictonary_fragment_instance));
+            fragmentTransaction.commit();
+
         }
     }
     @Override protected void onStart() {
@@ -160,6 +185,12 @@ public class MainActivity extends AppCompatActivity implements
         super.onSaveInstanceState(outState);
 
         outState.putString(getString(R.string.requested_second_fragment), mSecondFragmentFlag);
+        outState.putString(getString(R.string.displayed_second_fragment), mSecondFragmentCurrentlyDisplayed);
+        if (mDictionaryFragment!=null) getSupportFragmentManager().putFragment(outState, getString(R.string.dict_fragment), mDictionaryFragment);
+        if (mConjugatorFragment!=null) getSupportFragmentManager().putFragment(outState, getString(R.string.conj_fragment), mConjugatorFragment);
+        if (mConvertFragment!=null) getSupportFragmentManager().putFragment(outState, getString(R.string.conv_fragment), mConvertFragment);
+        if (mSearchByRadicalFragment!=null) getSupportFragmentManager().putFragment(outState, getString(R.string.srad_fragment), mSearchByRadicalFragment);
+        if (mDecomposeKanjiFragment!=null) getSupportFragmentManager().putFragment(outState, getString(R.string.dcmp_fragment), mDecomposeKanjiFragment);
     }
     @Override protected void onDestroy() {
         super.onDestroy();
@@ -313,40 +344,46 @@ public class MainActivity extends AppCompatActivity implements
 
         fragmentTransaction.commit();
     }
-    private void showDatabaseLoadingToast(final String message, final Context context) {
-        runOnUiThread(new Runnable() {
-            public void run()
-            {
-                if(mLastToast != null) {
-                    mLastToast.cancel();}
-
-                Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.BOTTOM|Gravity.FILL_HORIZONTAL, 0, 0);
-
-                View toastview = toast.getView();
-                //toastview.setBackgroundColor(Color.WHITE);
-                toastview.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.parseColor("#803582FF"))); //Light blue
-                toastview.getBackground().setAlpha(90);
-
-                TextView toastMessage = toast.getView().findViewById(android.R.id.message);
-                toastMessage.setTextColor(Color.BLACK);
-                toastMessage.setTypeface(null, Typeface.BOLD);
-                toastMessage.setTextSize(12);
-                toast.show();
-
-                mLastToast = toast;
-            }
-        });
+    private static void showDatabaseLoadingToast(final String message, final Context context) {
+//        runOnUiThread(new Runnable() {
+//            public void run()
+//            {
+//                if(mLastToast != null) {
+//                    mLastToast.cancel();}
+//
+//                Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
+//                toast.setGravity(Gravity.BOTTOM|Gravity.FILL_HORIZONTAL, 0, 0);
+//
+//                View toastview = toast.getView();
+//                //toastview.setBackgroundColor(Color.WHITE);
+//                toastview.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.parseColor("#803582FF"))); //Light blue
+//                toastview.getBackground().setAlpha(90);
+//
+//                TextView toastMessage = toast.getView().findViewById(android.R.id.message);
+//                toastMessage.setTextColor(Color.BLACK);
+//                toastMessage.setTypeface(null, Typeface.BOLD);
+//                toastMessage.setTextSize(12);
+//                toast.show();
+//
+//                mLastToast = toast;
+//            }
+//        });
     }
-    private class BackgroundDatabaseLoader extends AsyncTask<Void, Void, Void> {
+    private static class BackgroundDatabaseLoader extends AsyncTask<Void, Void, Void> {
+        private WeakReference<Context> mContext;
+
+        BackgroundDatabaseLoader(Context context) {
+            mContext = new WeakReference<>(context);
+        }
+
         @Override protected void onPreExecute() {
             super.onPreExecute();
             Log.i("Diagnosis Time","Started background database loading.");
         }
         protected Void doInBackground(Void... params) {
 
-            JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getBaseContext());
-            Word word = japaneseToolboxRoomDatabase.getWordByWordId(2114);
+            //Instantiating the database on a background thread
+            JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(mContext.get());
 
             heap_size = Utilities.getAvailableMemory();
             enough_memory_for_heavy_functions = true;
@@ -363,46 +400,24 @@ public class MainActivity extends AppCompatActivity implements
             int total_assets_size_radical_functions = CJK_Database_size+RadicalsDatabase_size+KanjiDict_Database_size+RadicalsOnlyDatabase_size;
             int total_assets_size = total_assets_size_main_functions+total_assets_size_radical_functions;
 
-            Context applicationContext = getApplicationContext();
+            Context context = mContext.get();
 
             int cumulative_progress = 0;
-            //showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Main Database...", applicationContext);
-            //if (MainDatabase == null) { MainDatabase = DatabaseUtilities.loadCentralDatabaseFromCsv(getBaseContext());}
-            //Log.i("Diagnosis Time","Loaded MainDatabase.");
 
-            //if (ExamplesDatabase == null) { ExamplesDatabase = DatabaseUtilities.readCSVFile("LineExamples - 3000 kanji.csv", getBaseContext()); }
-            //Log.i("Diagnosis Time","Loaded ExamplesDatabase.");
-
-            //if (MeaningsDatabase == null) { MeaningsDatabase = DatabaseUtilities.readCSVFile("LineMeanings - 3000 kanji.csv", getBaseContext()); }
-            //Log.i("Diagnosis Time","Loaded MeaningsDatabase.");
-
-            //if (MultExplanationsDatabase == null) { MultExplanationsDatabase = DatabaseUtilities.readCSVFile("LineMultExplanations - 3000 kanji.csv", getBaseContext()); }
-            //Log.i("Diagnosis Time","Loaded MultExplanationsDatabase.");
-
-            if (LegendDatabase == null) { LegendDatabase = DatabaseUtilities.readCSVFile("LineLegend - 3000 kanji.csv", getBaseContext()); }
-
-            cumulative_progress = cumulative_progress + MainDatabase_size;
-            showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Latin Database...", applicationContext);
-            if (GrammarDatabaseIndexedLatin == null) { GrammarDatabaseIndexedLatin = DatabaseUtilities.readCSVFile("LineGrammarSortedIndexLatin - 3000 kanji.csv", getBaseContext());}
-            Log.i("Diagnosis Time","Loaded GrammarDatabaseIndexedLatin.");
-
-            cumulative_progress = cumulative_progress + GrammarDatabaseIndexedLatin_size;
-            showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Kanji Database...", applicationContext);
-            if (GrammarDatabaseIndexedKanji == null) { GrammarDatabaseIndexedKanji = DatabaseUtilities.readCSVFile("LineGrammarSortedIndexKanji - 3000 kanji.csv", getBaseContext());}
-            Log.i("Diagnosis Time","Loaded GrammarDatabaseIndexedKanji.");
+            if (LegendDatabase == null) { LegendDatabase = DatabaseUtilities.readCSVFile("LineLegend - 3000 kanji.csv", mContext.get()); }
 
             cumulative_progress = cumulative_progress + GrammarDatabaseIndexedKanji_size;
-            showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Verbs Database...", applicationContext);
-            if (VerbDatabase == null || VerbDatabase.size() < 5) { VerbDatabase = DatabaseUtilities.readCSVFile("LineVerbs - 3000 kanji.csv", getBaseContext());}
+            showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Verbs Database...", context);
+            if (VerbDatabase == null || VerbDatabase.size() < 5) { VerbDatabase = DatabaseUtilities.readCSVFile("LineVerbs - 3000 kanji.csv", mContext.get());}
             Log.i("Diagnosis Time","Loaded VerbDatabase.");
 
-            if (VerbLatinConjDatabase == null || VerbLatinConjDatabase.size() < 5) { VerbLatinConjDatabase = DatabaseUtilities.readCSVFile("LineLatinConj - 3000 kanji.csv", getBaseContext());}
+            if (VerbLatinConjDatabase == null || VerbLatinConjDatabase.size() < 5) { VerbLatinConjDatabase = DatabaseUtilities.readCSVFile("LineLatinConj - 3000 kanji.csv", context);}
             Log.i("Diagnosis Time","Loaded VerbLatinConjDatabase.");
 
-            if (VerbKanjiConjDatabase == null   || VerbKanjiConjDatabase.size() < 5)   { VerbKanjiConjDatabase = DatabaseUtilities.readCSVFile("LineKanjiConj - 3000 kanji.csv", getBaseContext());}
+            if (VerbKanjiConjDatabase == null   || VerbKanjiConjDatabase.size() < 5)   { VerbKanjiConjDatabase = DatabaseUtilities.readCSVFile("LineKanjiConj - 3000 kanji.csv", context);}
             Log.i("Diagnosis Time","Loaded VerbKanjiConjDatabase.");
 
-            if (SimilarsDatabase == null   || SimilarsDatabase.size() < 5)   { SimilarsDatabase = DatabaseUtilities.readCSVFile("LineSimilars - 3000 kanji.csv", getBaseContext());}
+            if (SimilarsDatabase == null   || SimilarsDatabase.size() < 5)   { SimilarsDatabase = DatabaseUtilities.readCSVFile("LineSimilars - 3000 kanji.csv", context);}
             Log.i("Diagnosis Time","Loaded SimilarsDatabase.");
 
             heap_size = Utilities.getAvailableMemory();
@@ -411,24 +426,24 @@ public class MainActivity extends AppCompatActivity implements
 
             if (heap_size_before_decomposition_loader >= GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
 
-                showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Radicals Database...", applicationContext);
-                if (RadicalsDatabase == null) { RadicalsDatabase = DatabaseUtilities.readCSVFile("LineRadicals - 3000 kanji.csv", getBaseContext());}
+                showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Radicals Database...", context);
+                if (RadicalsDatabase == null) { RadicalsDatabase = DatabaseUtilities.readCSVFile("LineRadicals - 3000 kanji.csv", context);}
                 Log.i("Diagnosis Time","Loaded RadicalsDatabase.");
 
                 cumulative_progress = cumulative_progress + RadicalsDatabase_size;
-                showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Decompositions Database...", applicationContext);
+                showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Decompositions Database...", context);
                 heap_size = Utilities.getAvailableMemory();
-                if (CJK_Database == null) { CJK_Database = DatabaseUtilities.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", getBaseContext());}
+                if (CJK_Database == null) { CJK_Database = DatabaseUtilities.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", context);}
                 Log.i("Diagnosis Time", "Loaded CJK_Database.");
 
                 cumulative_progress = cumulative_progress + CJK_Database_size;
-                showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Characters Database...", applicationContext);
+                showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Characters Database...", context);
                 heap_size = Utilities.getAvailableMemory();
-                if (KanjiDict_Database == null) { KanjiDict_Database = DatabaseUtilities.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", getBaseContext());}
+                if (KanjiDict_Database == null) { KanjiDict_Database = DatabaseUtilities.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", context);}
                 Log.i("Diagnosis Time", "Loaded KanjiDict_Database.");
 
                 heap_size = Utilities.getAvailableMemory();
-                if (RadicalsOnlyDatabase == null) { RadicalsOnlyDatabase = DatabaseUtilities.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", getBaseContext());}
+                if (RadicalsOnlyDatabase == null) { RadicalsOnlyDatabase = DatabaseUtilities.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", context);}
                 Log.i("Diagnosis Time", "Loaded RadicalsOnlyDatabase.");
 
                 heap_size = Utilities.getAvailableMemory();
@@ -438,9 +453,9 @@ public class MainActivity extends AppCompatActivity implements
                 cumulative_progress = cumulative_progress + (KanjiDict_Database_size+RadicalsOnlyDatabase_size);
                 if (heap_size_before_searchbyradical_loader >= GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
 
-                    showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Components Database...", applicationContext);
+                    showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Components Database...", context);
                     if (Components_Database == null) {
-                        Components_Database = DatabaseUtilities.readCSVFile("LineComponents - 3000 kanji.csv", getBaseContext());
+                        Components_Database = DatabaseUtilities.readCSVFile("LineComponents - 3000 kanji.csv", context);
                         List<String[]> temp = new ArrayList<>();
                         Array_of_Components_Databases = new ArrayList<>();
                         for (int i=0; i<Components_Database.size();i++) {
@@ -456,16 +471,16 @@ public class MainActivity extends AppCompatActivity implements
                     }
                     Log.i("Diagnosis Time", "Loaded Components_Database.");
 
-                    showDatabaseLoadingToast("Progress: 100%. Loaded all databases.", applicationContext);
+                    showDatabaseLoadingToast("Progress: 100%. Loaded all databases.", context);
                 }
                 else {
-                    showDatabaseLoadingToast("Stopped at " + Math.round(100*cumulative_progress/total_assets_size) + "% due to low memory.", applicationContext);
+                    showDatabaseLoadingToast("Stopped at " + Math.round(100*cumulative_progress/total_assets_size) + "% due to low memory.", context);
                 }
 
             }
             else {
                 enough_memory_for_heavy_functions = false;
-                showDatabaseLoadingToast("Stopped at " + Math.round(100*cumulative_progress/total_assets_size) + "% due to low memory.", applicationContext);
+                showDatabaseLoadingToast("Stopped at " + Math.round(100*cumulative_progress/total_assets_size) + "% due to low memory.", context);
             }
             heap_size = Utilities.getAvailableMemory();
 
@@ -504,10 +519,12 @@ public class MainActivity extends AppCompatActivity implements
 
         clearBackstack();
 
+        mSecondFragmentCurrentlyDisplayed = getString(R.string.dict_fragment);
+
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
 
-        mDictionaryFragment = new DictionaryFragment();
+        if (mDictionaryFragment==null) mDictionaryFragment = new DictionaryFragment();
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
         mDictionaryFragment.setArguments(bundle);
@@ -524,61 +541,64 @@ public class MainActivity extends AppCompatActivity implements
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.second_fragment_placeholder, mDictionaryFragment, getString(R.string.dictonary_fragment_instance));
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, mDictionaryFragment, getString(R.string.dict_fragment));
 
         fragmentTransaction.addToBackStack(getString(R.string.dictonary_fragment_instance));
         fragmentTransaction.commit();
     }
     @Override public void onConjRequested(String query) {
 
+        mSecondFragmentCurrentlyDisplayed = getString(R.string.conj_fragment);
+
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
 
-        ConjugatorFragment conjugatorFragment = new ConjugatorFragment();
-
+        if (mConjugatorFragment==null) mConjugatorFragment = new ConjugatorFragment();
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
-        conjugatorFragment.setArguments(bundle);
+        mConjugatorFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.second_fragment_placeholder, conjugatorFragment, getString(R.string.conjugator_fragment_instance));
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, mConjugatorFragment, getString(R.string.conj_fragment));
 
         fragmentTransaction.addToBackStack(getString(R.string.conjugator_fragment_instance));
         fragmentTransaction.commit();
     }
     @Override public void onConvertRequested(String query) {
 
+        mSecondFragmentCurrentlyDisplayed = getString(R.string.conv_fragment);
+
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
 
-        ConvertFragment convertFragment = new ConvertFragment();
-
+        if (mConvertFragment==null) mConvertFragment = new ConvertFragment();
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
-        convertFragment.setArguments(bundle);
+        mConvertFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.second_fragment_placeholder, convertFragment, getString(R.string.convert_fragment_instance));
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, mConvertFragment, getString(R.string.conj_fragment));
 
         fragmentTransaction.addToBackStack(getString(R.string.convert_fragment_instance));
         fragmentTransaction.commit();
     }
     @Override public void onSearchByRadicalRequested(String query) {
 
+        mSecondFragmentCurrentlyDisplayed = getString(R.string.srad_fragment);
+
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
 
-
-        SearchByRadicalFragment SearchByRadicalFragment = new SearchByRadicalFragment();
+        if (mSearchByRadicalFragment==null) mSearchByRadicalFragment = new SearchByRadicalFragment();
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
-        SearchByRadicalFragment.setArguments(bundle);
+        mSearchByRadicalFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.second_fragment_placeholder, SearchByRadicalFragment, getString(R.string.search_by_radical_fragment_instance));
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, mSearchByRadicalFragment, getString(R.string.srad_fragment));
 
         fragmentTransaction.addToBackStack(getString(R.string.search_by_radical_fragment_instance));
         fragmentTransaction.commit();
@@ -586,18 +606,19 @@ public class MainActivity extends AppCompatActivity implements
     }
     @Override public void onDecomposeRequested(String query) {
 
+        mSecondFragmentCurrentlyDisplayed = getString(R.string.dcmp_fragment);
+
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
 
-
-        DecomposeKanjiFragment DecomposeKanjiFragment = new DecomposeKanjiFragment();
+        if (mDecomposeKanjiFragment==null) mDecomposeKanjiFragment = new DecomposeKanjiFragment();
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
-        DecomposeKanjiFragment.setArguments(bundle);
+        mDecomposeKanjiFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.second_fragment_placeholder, DecomposeKanjiFragment, getString(R.string.decompose_fragment_instance));
+        fragmentTransaction.replace(R.id.second_fragment_placeholder, mDecomposeKanjiFragment, getString(R.string.dcmp_fragment));
 
         fragmentTransaction.addToBackStack(getString(R.string.decompose_fragment_instance));
         fragmentTransaction.commit();

@@ -29,9 +29,6 @@ public class Word implements Parcelable {
     public Word() {
     }
 
-    @PrimaryKey()
-    @ColumnInfo(index = true, name = COLUMN_ID)
-    public long id;
 
     protected Word(Parcel in) {
         id = in.readLong();
@@ -55,6 +52,9 @@ public class Word implements Parcelable {
         }
     };
 
+    @PrimaryKey()
+    @ColumnInfo(index = true, name = COLUMN_ID)
+    public long id;
     public long getWordId() {
         return id;
     }
