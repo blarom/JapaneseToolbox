@@ -8,8 +8,8 @@ android {
         applicationId "com.japanesetoolboxapp"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 29
-        versionName "1.36"
+        versionCode 30
+        versionName "2.00"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
         // the following code makes the app only available to relevant phones, thereby reducing the apk size
         // See https://android.jlelse.eu/controlling-apk-size-when-using-native-libraries-45c6c0e5b70a
@@ -20,12 +20,39 @@ android {
         buildConfigField("String", "firebaseEmail", firebaseEmail)
         buildConfigField("String", "firebasePass", firebasePass)
     }
+    signingConfigs {
+        release {
+            storePassword "default"
+            keyAlias "default"
+            keyPassword "default"
+            storeFile file("C:/Projects/Workspace/Keystore/japanesetoolboxapp.jks")
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            debuggable false
         }
     }
+}
+
+//Signing gitignore method inspired by: https://gist.github.com/SleeplessByte/89c90f702c0f2fdc2b12
+File signingPropertiesFile = file("C:/Projects/Workspace/Keystore/signing.properties")
+if (signingPropertiesFile.exists()) {
+    Properties properties = new Properties()
+    properties.load(new FileInputStream(signingPropertiesFile))
+
+    if (properties.containsKey('STORE_PASSWORD') && properties.containsKey('KEY_ALIAS') && properties.containsKey('KEY_PASSWORD')) {
+        android.signingConfigs.config.storePassword = properties['STORE_PASSWORD']
+        android.signingConfigs.config.keyAlias = properties['KEY_ALIAS']
+        android.signingConfigs.config.keyPassword = properties['KEY_PASSWORD']
+    } else {
+        android.buildTypes.release.signingConfig = null
+    }
+} else {
+    android.buildTypes.release.signingConfig = null
 }
 
 dependencies {
