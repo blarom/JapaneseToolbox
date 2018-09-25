@@ -5,11 +5,13 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.List;
 
 @Entity(tableName = Verb.TABLE_NAME)
-public class Verb {
+public class Verb implements Parcelable {
 
     public static final String TABLE_NAME = "verbs_table";
     public static final String COLUMN_ID = "verb_id";
@@ -44,6 +46,34 @@ public class Verb {
         this.exceptionIndex = exceptionIndex;
         this.altSpellings = altSpellings;
     }
+
+
+    protected Verb(Parcel in) {
+        verb_id = in.readLong();
+        family = in.readString();
+        meaning = in.readString();
+        trans = in.readString();
+        preposition = in.readString();
+        kana = in.readString();
+        kanji = in.readString();
+        romaji = in.readString();
+        kanjiRoot = in.readString();
+        latinRoot = in.readString();
+        exceptionIndex = in.readString();
+        altSpellings = in.readString();
+    }
+
+    public static final Creator<Verb> CREATOR = new Creator<Verb>() {
+        @Override
+        public Verb createFromParcel(Parcel in) {
+            return new Verb(in);
+        }
+
+        @Override
+        public Verb[] newArray(int size) {
+            return new Verb[size];
+        }
+    };
 
     @PrimaryKey()
     @ColumnInfo(index = true, name = COLUMN_ID)
@@ -162,6 +192,27 @@ public class Verb {
     }
     public void setConjugationCategories(List<ConjugationCategory> conjugationCategories) {
         this.conjugationCategories = conjugationCategories;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeLong(verb_id);
+        parcel.writeString(family);
+        parcel.writeString(meaning);
+        parcel.writeString(trans);
+        parcel.writeString(preposition);
+        parcel.writeString(kana);
+        parcel.writeString(kanji);
+        parcel.writeString(romaji);
+        parcel.writeString(kanjiRoot);
+        parcel.writeString(latinRoot);
+        parcel.writeString(exceptionIndex);
+        parcel.writeString(altSpellings);
     }
 
     public static class ConjugationCategory {

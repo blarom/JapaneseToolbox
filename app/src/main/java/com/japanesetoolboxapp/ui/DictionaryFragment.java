@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.japanesetoolboxapp.data.FirebaseDao;
 import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
 import com.japanesetoolboxapp.data.Word;
+import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
@@ -49,8 +51,8 @@ public class DictionaryFragment extends Fragment implements
 
     //region Parameters
     @BindView(R.id.SentenceConstructionExpandableListView) ExpandableListView mSearchResultsExpandableListView;
-    private final static int MAX_NUMBER_RESULTS_SHOWN = 50;
-    private Boolean mAppWasInBackground;
+    @BindView(R.id.dict_results_loading_indicator) ProgressBar mProgressBarLoadingIndicator;
+    private static final int MAX_NUMBER_RESULTS_SHOWN = 50;
     private List<String> mExpandableListDataHeader;
     private HashMap<String, List<String>> mExpandableListHeaderDetails;
     private HashMap<String, List<List<String>>> mExpandableListDataChild;
@@ -58,7 +60,6 @@ public class DictionaryFragment extends Fragment implements
     private Boolean mInternetIsAvailable;
     private static final int JISHO_WEB_SEARCH_LOADER = 41;
     private static final int ROOM_DB_SEARCH_LOADER = 42;
-    private static final String JISHO_LOADER_INPUT_EXTRA = "input";
     Toast mShowOnlineResultsToast;
     private List<Word> mLocalMatchingWordsList;
     private List<Word> mMergedMatchingWordsList;
@@ -68,6 +69,7 @@ public class DictionaryFragment extends Fragment implements
     private Unbinder mBinding;
     private boolean mAlreadyLoadedRoomResults;
     private boolean mAlreadyLoadedJishoResults;
+    private List<String[]> mLegendDatabase;
     //endregion
 
 
@@ -86,7 +88,7 @@ public class DictionaryFragment extends Fragment implements
     }
     @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        setRetainInstance(true);
+        //setRetainInstance(true);
         final View rootView = inflater.inflate(R.layout.fragment_dictionary, container, false);
 
         mBinding = ButterKnife.bind(this, rootView);
@@ -119,11 +121,12 @@ public class DictionaryFragment extends Fragment implements
     }
     @Override public void onResume() {
         super.onResume();
-        if (mMergedMatchingWordsList!=null && mMergedMatchingWordsList.size()!=0) displayResultsInListView(mMergedMatchingWordsList);
-        else if (mLocalMatchingWordsList!=null && mLocalMatchingWordsList.size()!=0) displayResultsInListView(mLocalMatchingWordsList);
     }
     @Override public void onDetach() {
         super.onDetach();
+        destroyLoaders();
+        mFirebaseDao.removeListeners();
+        destroyLoaders();
     }
     @Override public void onDestroyView() {
         super.onDestroyView();
@@ -131,8 +134,7 @@ public class DictionaryFragment extends Fragment implements
     }
     @Override public void onDestroy() {
         super.onDestroy();
-        mFirebaseDao.removeListeners();
-        destroyLoaders();
+        if (getActivity()!=null && MainApplication.getRefWatcher(getActivity())!=null) MainApplication.getRefWatcher(getActivity()).watch(this);
     }
 
 
@@ -157,6 +159,7 @@ public class DictionaryFragment extends Fragment implements
     }
     @Override public void onLoadFinished(@NonNull Loader<List<Word>> loader, List<Word> loaderResultWordsList) {
 
+        hideLoadingIndicator();
         if (loader.getId() == ROOM_DB_SEARCH_LOADER && !mAlreadyLoadedRoomResults) {
             mAlreadyLoadedRoomResults = true;
             mLocalMatchingWordsList = loaderResultWordsList;
@@ -236,7 +239,7 @@ public class DictionaryFragment extends Fragment implements
                 matchingWordsFromJisho = Utilities.getWordsFromJishoOnWeb(mQuery, getContext());
             } else {
                 Log.i("Diagnosis Time", "Failed to access online resources.");
-                Looper.prepare();
+                if (Looper.myLooper()==null) Looper.prepare();
                 Toast.makeText(getContext(), R.string.failed_to_connect_to_internet, Toast.LENGTH_SHORT).show();
                 cancelLoadInBackground();
             }
@@ -281,6 +284,7 @@ public class DictionaryFragment extends Fragment implements
     private void getExtras() {
         if (getArguments()!=null) {
             mInputQuery = getArguments().getString(getString(R.string.user_query_word));
+            mLegendDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.legend_database));
         }
     }
     private void initializeParameters() {
@@ -303,6 +307,7 @@ public class DictionaryFragment extends Fragment implements
     }
     private void findMatchingWordsInRoomDb() {
         if (getActivity()!=null) {
+            showLoadingIndicator();
             LoaderManager loaderManager = getActivity().getSupportLoaderManager();
             Loader<String> roomDbSearchLoader = loaderManager.getLoader(ROOM_DB_SEARCH_LOADER);
             Bundle bundle = new Bundle();
@@ -620,6 +625,12 @@ public class DictionaryFragment extends Fragment implements
             loaderManager.destroyLoader(JISHO_WEB_SEARCH_LOADER);
         }
     }
+    private void showLoadingIndicator() {
+        if (mProgressBarLoadingIndicator!=null) mProgressBarLoadingIndicator.setVisibility(View.VISIBLE);
+    }
+    private void hideLoadingIndicator() {
+        if (mProgressBarLoadingIndicator!=null) mProgressBarLoadingIndicator.setVisibility(View.INVISIBLE);
+    }
     private class GrammarExpandableListAdapter extends BaseExpandableListAdapter {
 
         private Context _context;
@@ -689,8 +700,8 @@ public class DictionaryFragment extends Fragment implements
             type = childArray.get(1); //make sure to adjust the type condition for the user click part
             if (childPosition > 0) {
                 String full_type = "";
-                for (int i=0; i<MainActivity.LegendDatabase.size(); i++) {
-                    if (MainActivity.LegendDatabase.get(i)[0].equals(type)) { full_type = MainActivity.LegendDatabase.get(i)[1]; break; }
+                for (int i=0; i<mLegendDatabase.size(); i++) {
+                    if (mLegendDatabase.get(i)[0].equals(type)) { full_type = mLegendDatabase.get(i)[1]; break; }
                 }
                 if (full_type.equals("")) { full_type = type; }
                 //String type_and_meaning = "[" + full_type + "] " + childArray.get(2);

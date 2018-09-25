@@ -114,6 +114,9 @@ public class SearchByRadicalFragment extends Fragment {
     String[] user_selections;
     List<String> printable_selections;
     private String mInputQuery;
+    private List<String[]> mRadicalsOnlyDatabase;
+    private List<List<String[]>> mArrayOfComponentsDatabases;
+    private String[] radical_module_user_selections;
     //endregion
 
     //Lifecycle methods
@@ -157,6 +160,8 @@ public class SearchByRadicalFragment extends Fragment {
     private void getExtras() {
         if (getArguments()!=null) {
             mInputQuery = getArguments().getString(getString(R.string.user_query_word));
+            mRadicalsOnlyDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.rad_only_database));
+            mArrayOfComponentsDatabases = (List<List<String[]>>) getArguments().getSerializable(getString(R.string.array_components_database));
         }
     }
     public void getKanjiFromRadicals(String inputQuery) {
@@ -216,8 +221,8 @@ public class SearchByRadicalFragment extends Fragment {
 
         //Initializations
         user_selections = new String[4];
-        if (MainActivity.radical_module_user_selections != null) {
-            for (int i=0; i<4; i++) { user_selections[i] = MainActivity.radical_module_user_selections[i]; }
+        if (radical_module_user_selections != null) {
+            System.arraycopy(radical_module_user_selections, 0, user_selections, 0, 4);
         }
         else {
             for (int i=0; i<4; i++) { user_selections[i] = ""; }
@@ -595,8 +600,8 @@ public class SearchByRadicalFragment extends Fragment {
 
             List<String> parsed_list;
             String last_index = "0";
-            for (int i = 0; i < MainActivity.RadicalsOnlyDatabase.size(); i++) {
-                current_element = MainActivity.RadicalsOnlyDatabase.get(i);
+            for (int i = 0; i < mRadicalsOnlyDatabase.size(); i++) {
+                current_element = mRadicalsOnlyDatabase.get(i);
                 parsed_list = Arrays.asList(current_element[2].split(";"));
 
                 // Adding the header radical numbers to the list of radicals
@@ -630,15 +635,15 @@ public class SearchByRadicalFragment extends Fragment {
             List<String> printable_results_for_current_element = new ArrayList<>();
             Boolean contains_at_least_one_printable_glyph;
             if (chosen_components_list != -1) {
-                for (int i = 0; i < MainActivity.Array_of_Components_Databases.get(chosen_components_list).size(); i++) {
+                for (int i = 0; i < mArrayOfComponentsDatabases.get(chosen_components_list).size(); i++) {
                     current_element = new String[2];
-                    current_element[0] = MainActivity.Array_of_Components_Databases.get(chosen_components_list).get(i)[0];
-                    current_element[1] = Integer.toString(MainActivity.Array_of_Components_Databases.get(chosen_components_list).get(i)[1].length());
+                    current_element[0] = mArrayOfComponentsDatabases.get(chosen_components_list).get(i)[0];
+                    current_element[1] = Integer.toString(mArrayOfComponentsDatabases.get(chosen_components_list).get(i)[1].length());
 
                     contains_at_least_one_printable_glyph = true;
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        printable_results_for_current_element = Arrays.asList(MainActivity.Array_of_Components_Databases.get(chosen_components_list).get(i)[1].split(";"));
+                        printable_results_for_current_element = Arrays.asList(mArrayOfComponentsDatabases.get(chosen_components_list).get(i)[1].split(";"));
                         for (int j = 0; j < printable_results_for_current_element.size(); j++) {
                             contains_at_least_one_printable_glyph = false;
                             if (isPrintable(printable_results_for_current_element.get(j).substring(0, 1))) {
@@ -859,7 +864,7 @@ public class SearchByRadicalFragment extends Fragment {
 
         String tv_text = tv.getText().toString();
         tv.setHeight(grid_row_height);
-        tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
+        //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
 
         if (tv_text.contains("0") || tv_text.contains("1") || tv_text.contains("2") || tv_text.contains("3")
                 || tv_text.contains("4") || tv_text.contains("5") || tv_text.contains("6")
@@ -902,8 +907,8 @@ public class SearchByRadicalFragment extends Fragment {
                         user_selections_textviews[current_row_index] = tv;
                         tv.setTextColor(Color.parseColor("#800080"));
 
-                        MainActivity.radical_module_user_selections = new String[4];
-                        MainActivity.radical_module_user_selections = Arrays.copyOf(user_selections, 4);
+                        radical_module_user_selections = new String[4];
+                        radical_module_user_selections = Arrays.copyOf(user_selections, 4);
 
                     }
                 });
@@ -1252,64 +1257,64 @@ public class SearchByRadicalFragment extends Fragment {
         //Finding the list of matches corresponding to the user's input
         if(!elementA.equals("")) {
             concatenated_input = Utilities.removeSpecialCharacters(elementA);
-            limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
+            limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, mArrayOfComponentsDatabases.get(requested_structure), relevant_column_index);
 
             if (limits[0] == limits[1] && limits[0] == -1) { }
             else {
-                list_of_matching_results_elementA = Arrays.asList(MainActivity.Array_of_Components_Databases.get(requested_structure).get(limits[0])[1].split(";"));
+                list_of_matching_results_elementA = Arrays.asList(mArrayOfComponentsDatabases.get(requested_structure).get(limits[0])[1].split(";"));
             }
         }
         else {
-            for (int i = 0; i< MainActivity.Array_of_Components_Databases.get(requested_structure).size(); i++) {
-                local_matches = Arrays.asList(MainActivity.Array_of_Components_Databases.get(requested_structure).get(i)[1].split(";"));
+            for (int i = 0; i< mArrayOfComponentsDatabases.get(requested_structure).size(); i++) {
+                local_matches = Arrays.asList(mArrayOfComponentsDatabases.get(requested_structure).get(i)[1].split(";"));
                 list_of_matching_results_elementA.addAll(local_matches);
                 if (list_of_matching_results_elementA.size()<max_size_for_duplicate_removal) {list_of_matching_results_elementA = removeDuplicatesFromList(list_of_matching_results_elementA);}
             }
         }
         if(!elementB.equals("")) {
             concatenated_input = Utilities.removeSpecialCharacters(elementB);
-            limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
+            limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, mArrayOfComponentsDatabases.get(requested_structure), relevant_column_index);
 
             if (limits[0] == limits[1] && limits[0] == -1) {
             } else {
-                list_of_matching_results_elementB = Arrays.asList(MainActivity.Array_of_Components_Databases.get(requested_structure).get(limits[0])[1].split(";"));
+                list_of_matching_results_elementB = Arrays.asList(mArrayOfComponentsDatabases.get(requested_structure).get(limits[0])[1].split(";"));
             }
         }
         else {
-            for (int i = 0; i< MainActivity.Array_of_Components_Databases.get(requested_structure).size(); i++) {
-                local_matches = Arrays.asList(MainActivity.Array_of_Components_Databases.get(requested_structure).get(i)[1].split(";"));
+            for (int i = 0; i< mArrayOfComponentsDatabases.get(requested_structure).size(); i++) {
+                local_matches = Arrays.asList(mArrayOfComponentsDatabases.get(requested_structure).get(i)[1].split(";"));
                 list_of_matching_results_elementB.addAll(local_matches);
                 if (list_of_matching_results_elementB.size()<max_size_for_duplicate_removal) {list_of_matching_results_elementB = removeDuplicatesFromList(list_of_matching_results_elementB);}
             }
         }
         if(!elementC.equals("")) {
             concatenated_input = Utilities.removeSpecialCharacters(elementC);
-            limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
+            limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, mArrayOfComponentsDatabases.get(requested_structure), relevant_column_index);
 
             if (limits[0] == limits[1] && limits[0] == -1) {
             } else {
-                list_of_matching_results_elementC = Arrays.asList(MainActivity.Array_of_Components_Databases.get(requested_structure).get(limits[0])[1].split(";"));
+                list_of_matching_results_elementC = Arrays.asList(mArrayOfComponentsDatabases.get(requested_structure).get(limits[0])[1].split(";"));
             }
         }
         else {
-            for (int i = 0; i< MainActivity.Array_of_Components_Databases.get(requested_structure).size(); i++) {
-                local_matches = Arrays.asList(MainActivity.Array_of_Components_Databases.get(requested_structure).get(i)[1].split(";"));
+            for (int i = 0; i< mArrayOfComponentsDatabases.get(requested_structure).size(); i++) {
+                local_matches = Arrays.asList(mArrayOfComponentsDatabases.get(requested_structure).get(i)[1].split(";"));
                 list_of_matching_results_elementC.addAll(local_matches);
                 if (list_of_matching_results_elementC.size()<max_size_for_duplicate_removal) {list_of_matching_results_elementC = removeDuplicatesFromList(list_of_matching_results_elementC);}
             }
         }
         if(!elementD.equals("")) {
             concatenated_input = Utilities.removeSpecialCharacters(elementD);
-            limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.Array_of_Components_Databases.get(requested_structure), relevant_column_index);
+            limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, mArrayOfComponentsDatabases.get(requested_structure), relevant_column_index);
 
             if (limits[0] == limits[1] && limits[0] == -1) {
             } else {
-                list_of_matching_results_elementD = Arrays.asList(MainActivity.Array_of_Components_Databases.get(requested_structure).get(limits[0])[1].split(";"));
+                list_of_matching_results_elementD = Arrays.asList(mArrayOfComponentsDatabases.get(requested_structure).get(limits[0])[1].split(";"));
             }
         }
         else {
-            for (int i = 0; i< MainActivity.Array_of_Components_Databases.get(requested_structure).size(); i++) {
-                local_matches = Arrays.asList(MainActivity.Array_of_Components_Databases.get(requested_structure).get(i)[1].split(";"));
+            for (int i = 0; i< mArrayOfComponentsDatabases.get(requested_structure).size(); i++) {
+                local_matches = Arrays.asList(mArrayOfComponentsDatabases.get(requested_structure).get(i)[1].split(";"));
                 list_of_matching_results_elementD.addAll(local_matches);
                 if (list_of_matching_results_elementD.size()<max_size_for_duplicate_removal) {list_of_matching_results_elementD = removeDuplicatesFromList(list_of_matching_results_elementD);}
             }
@@ -1377,8 +1382,8 @@ public class SearchByRadicalFragment extends Fragment {
             List<String> complete_results_for_given_structure = new ArrayList<>();
             List<String> previous_array = new ArrayList<>();
             List<String> current_array = new ArrayList<>();
-            for (int i=0; i< MainActivity.Array_of_Components_Databases.get(selected_structure).size(); i++) {
-                current_array = Arrays.asList(MainActivity.Array_of_Components_Databases.get(selected_structure).get(i)[1].split(";"));
+            for (int i = 0; i< mArrayOfComponentsDatabases.get(selected_structure).size(); i++) {
+                current_array = Arrays.asList(mArrayOfComponentsDatabases.get(selected_structure).get(i)[1].split(";"));
                 for (String x : current_array){
                     if (!previous_array.contains(x)) complete_results_for_given_structure.add(DatabaseUtilities.convertToUTF8(x));
                 }
@@ -1462,7 +1467,7 @@ public class SearchByRadicalFragment extends Fragment {
                     for (int i=0; i<printable_search_results.size(); i++) {
 
                         final TextView tv = new TextView(getContext());
-                        tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
+                        //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
                         tv.setTextSize(32);
                         tv.setText(printable_search_results.get(i));
                         tv.setPadding(30,0,30,0);
@@ -1516,7 +1521,7 @@ public class SearchByRadicalFragment extends Fragment {
                     for (int i=0; i<remainder_list.size(); i++) {
 
                         final TextView tv = new TextView(getContext());
-                        tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
+                        //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
                         tv.setTextSize(32);
                         tv.setText(remainder_list.get(i));
                         tv.setPadding(30,0,30,0);
@@ -1557,7 +1562,7 @@ public class SearchByRadicalFragment extends Fragment {
                         public View getView(final int position, View convertView, ViewGroup parent) {
                             View view = super.getView(position, convertView, parent);
                             final TextView tv = (TextView) view;
-                            tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
+                            //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
                             tv.setTextSize(32);
                             tv.setText(printable_search_results.get(position));
                             tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
@@ -1765,7 +1770,7 @@ public class SearchByRadicalFragment extends Fragment {
         tv.setTypeface(null, Typeface.BOLD);
         tv.setMovementMethod(LinkMovementMethod.getInstance());
         tv.setSelected(false);
-        tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
+        //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
         tv.setBackgroundColor(getResources().getColor(R.color.White));
         tv.setAlpha((float) 0.90);
         tv.setOnTouchListener(new View.OnTouchListener() {
@@ -1855,7 +1860,7 @@ public class SearchByRadicalFragment extends Fragment {
     @TargetApi(23)
     public boolean isPrintable( String c ) {
         Paint paint=new Paint();
-        paint.setTypeface(MainActivity.CJK_typeface);
+        //paint.setTypeface(MainActivity.CJK_typeface);
         boolean hasGlyph=true;
         hasGlyph=paint.hasGlyph(c);
         return hasGlyph;

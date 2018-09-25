@@ -38,6 +38,10 @@ public class DecomposeKanjiFragment extends Fragment {
 
 
     private String mInputQuery;
+    private List<String[]> mRadicalsOnlyDatabase;
+    private List<String[]> mKanjiDictDatabase;
+    private List<String[]> mRadicalsDatabase;
+    private List<String[]> mCJKDatabase;
 
     //Lifecycle Functions
     @Override public void onCreate(Bundle savedInstanceState) { //instead of onActivityCreated
@@ -64,6 +68,10 @@ public class DecomposeKanjiFragment extends Fragment {
     private void getExtras() {
         if (getArguments()!=null) {
             mInputQuery = getArguments().getString(getString(R.string.user_query_word));
+            mRadicalsOnlyDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.rad_only_database));
+            mKanjiDictDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.kanji_dict_database));
+            mRadicalsDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.rad_database));
+            mCJKDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.cjk_database));
         }
     }
     public void getDecomposition(String inputQuery, final int radical_iteration) {
@@ -116,15 +124,15 @@ public class DecomposeKanjiFragment extends Fragment {
 
             //Find the radical index
                 int radical_index = -1;
-                for (int i = 0; i< MainActivity.RadicalsOnlyDatabase.size(); i++) {
-                    if (inputQuery.equals(MainActivity.RadicalsOnlyDatabase.get(i)[0])) {
+                for (int i = 0; i< mRadicalsOnlyDatabase.size(); i++) {
+                    if (inputQuery.equals(mRadicalsOnlyDatabase.get(i)[0])) {
                         radical_index = i;
                     }
                 }
 
                 String[] radical_row = null;
                 if (radical_index != -1) {
-                    radical_row = MainActivity.RadicalsOnlyDatabase.get(radical_index);
+                    radical_row = mRadicalsOnlyDatabase.get(radical_index);
                     character_is_radical_or_kana = true;
                 }
 
@@ -668,21 +676,21 @@ public class DecomposeKanjiFragment extends Fragment {
                                 }
                                 else {
                                     // Get the radical characteristics from the RadialsOnlyDatabase
-                                    List<String> parsed_number = Arrays.asList(MainActivity.RadicalsOnlyDatabase.get(radical_index)[2].split(";"));
+                                    List<String> parsed_number = Arrays.asList(mRadicalsOnlyDatabase.get(radical_index)[2].split(";"));
                                     Boolean found_main_radical = false;
                                     int main_radical_index = radical_index;
-                                    String[] main_radical_row = MainActivity.RadicalsOnlyDatabase.get(main_radical_index);
+                                    String[] main_radical_row = mRadicalsOnlyDatabase.get(main_radical_index);
 
                                     String strokes = " strokes.";
                                     if (main_radical_row[4].equals("1")) { strokes = " stroke.";}
 
                                     if (parsed_number.size()>1) {
                                         while (!found_main_radical) {
-                                            if (MainActivity.RadicalsOnlyDatabase.get(main_radical_index)[2].contains(";")) { main_radical_index--; }
+                                            if (mRadicalsOnlyDatabase.get(main_radical_index)[2].contains(";")) { main_radical_index--; }
                                             else { found_main_radical = true; }
                                         }
 
-                                        main_radical_row = MainActivity.RadicalsOnlyDatabase.get(main_radical_index);
+                                        main_radical_row = mRadicalsOnlyDatabase.get(main_radical_index);
                                         if (main_radical_row[4].equals("1")) { strokes = " stroke.";}
 
                                         if (parsed_number.get(1).equals("alt")) {
@@ -716,7 +724,7 @@ public class DecomposeKanjiFragment extends Fragment {
                                     tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_radical_text);
 
                                     // Get the remaining radical characteristics (readings, meanings) from the KanjiDictDatabase
-                                    String main_radical = MainActivity.RadicalsOnlyDatabase.get(main_radical_index)[0];
+                                    String main_radical = mRadicalsOnlyDatabase.get(main_radical_index)[0];
                                     if (kanjidict_characteristics.size() == 0) {
                                         kanjidict_characteristics = KanjiDictCharacteristicsFinder(main_radical);
                                     }
@@ -894,13 +902,13 @@ public class DecomposeKanjiFragment extends Fragment {
 
         int relevant_column_index = 0;
         String concatenated_input = Utilities.removeSpecialCharacters(word);
-        int[] limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.KanjiDict_Database, relevant_column_index);
+        int[] limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, mKanjiDictDatabase, relevant_column_index);
 
         List<String> characteristics = new ArrayList<>();
 
         if (limits[0]==limits[1] && limits[0]==-1) {}
         else {
-            String[] characteristics_row = MainActivity.KanjiDict_Database.get(limits[0]);
+            String[] characteristics_row = mKanjiDictDatabase.get(limits[0]);
 
             List<String> parsed_list1 = Arrays.asList(characteristics_row[1].split(";"));
             if (parsed_list1.size()==0) { parsed_list1 = new ArrayList<>(); parsed_list1.add(""); parsed_list1.add("");}
@@ -921,7 +929,7 @@ public class DecomposeKanjiFragment extends Fragment {
 
         int relevant_column_index = 0;
         String concatenated_input = Utilities.removeSpecialCharacters(word);
-        int[] limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.RadicalsDatabase, relevant_column_index);
+        int[] limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, mRadicalsDatabase, relevant_column_index);
 
         List<String> radical_characteristics = new ArrayList<>();
 
@@ -929,13 +937,13 @@ public class DecomposeKanjiFragment extends Fragment {
             radical_characteristics.add("");
         }
         else {
-            List<String> parsed_list = Arrays.asList(MainActivity.RadicalsDatabase.get(limits[0])[1].split("\\+"));
+            List<String> parsed_list = Arrays.asList(mRadicalsDatabase.get(limits[0])[1].split("\\+"));
 
             if (parsed_list.size()>1) {
                 if (!parsed_list.get(1).equals("0")) {
                     int radical_index = -1;
-                    for (int i = 0; i < MainActivity.RadicalsOnlyDatabase.size(); i++) {
-                        if (parsed_list.get(0).equals(MainActivity.RadicalsOnlyDatabase.get(i)[2])) {
+                    for (int i = 0; i < mRadicalsOnlyDatabase.size(); i++) {
+                        if (parsed_list.get(0).equals(mRadicalsOnlyDatabase.get(i)[2])) {
                             radical_index = i;
                             break;
                         }
@@ -943,7 +951,7 @@ public class DecomposeKanjiFragment extends Fragment {
                     String text = "";
                     if (radical_index != -1) {
                         text = "Character's main radical is " +
-                                MainActivity.RadicalsOnlyDatabase.get(radical_index)[0] +
+                                mRadicalsOnlyDatabase.get(radical_index)[0] +
                                 " (No. " +
                                 parsed_list.get(0) +
                                 ") with " +
@@ -963,7 +971,7 @@ public class DecomposeKanjiFragment extends Fragment {
 
         int relevant_column_index = 0;
         String concatenated_input = Utilities.removeSpecialCharacters(word);
-        int[] limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, MainActivity.CJK_Database, relevant_column_index);
+        int[] limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, mCJKDatabase, relevant_column_index);
 
         List<List<String>> decomposed_kanji = new ArrayList<>();
         List<String> kanji_and_its_structure = new ArrayList<>();
@@ -976,7 +984,7 @@ public class DecomposeKanjiFragment extends Fragment {
             decomposed_kanji.add(kanji_and_its_structure);
         }
         else {
-            String[] decomposed_row = MainActivity.CJK_Database.get(limits[0]);
+            String[] decomposed_row = mCJKDatabase.get(limits[0]);
 
             //Getting the string value from the hex index
             String string_value_of_hex = getStringFromUTF8(decomposed_row[0]);

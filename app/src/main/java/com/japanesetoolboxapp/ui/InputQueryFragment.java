@@ -70,10 +70,10 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
 import com.googlecode.tesseract.android.TessBaseAPI;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.Word;
-import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.Utilities;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -156,6 +156,7 @@ public class InputQueryFragment extends Fragment implements
     @Override public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getExtras();
         initializeParameters();
         setupOcr();
     }
@@ -225,7 +226,7 @@ public class InputQueryFragment extends Fragment implements
             mInputQueryAutoCompleteTextView.setText(mInputQuery);
 
             //Attempting to access jisho.org to get the romaji value of the requested word, if it's a Japanese word
-            if (getActivity() != null && MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
+            if (getActivity() != null && mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
                 Bundle queryBundle = new Bundle();
                 queryBundle.putString(SPEECH_RECOGNIZER_EXTRA, results.get(0));
 
@@ -271,6 +272,11 @@ public class InputQueryFragment extends Fragment implements
 
 
     //Functionality methods
+    private void getExtras() {
+        if (getArguments()!=null) {
+            mChosenSpeechToTextLanguage = getArguments().getString(getString(R.string.pref_preferred_STT_language));
+        }
+    }
     private void initializeParameters() {
 
         if (getContext()!=null) {
@@ -377,20 +383,6 @@ public class InputQueryFragment extends Fragment implements
         mInputQuery = inputWordString;
         updateQueryHistory();
 
-        // Check if the database has finished loading. If not, make the user wait.
-        while(MainActivity.VerbKanjiConjDatabase == null){
-            new CountDownTimer(500, 500) {
-                public void onFinish() {
-                    // When timer is finished
-                    // Execute your code here
-                }
-
-                public void onTick(long millisUntilFinished) {
-                    // millisUntilFinished    The amount of time until finished.
-                }
-            }.start();
-        }
-
         registerThatUserIsRequestingDictSearch(true); //TODO: remove this?
 
         inputQueryOperationsHandler.onDictRequested(Utilities.removeSpecialCharacters(inputWordString));
@@ -401,20 +393,6 @@ public class InputQueryFragment extends Fragment implements
         String inputVerbString = mInputQueryAutoCompleteTextView.getText().toString();
         mInputQuery = inputVerbString;
         updateQueryHistory();
-
-        // Check if the database has finished loading. If not, make the user wait.
-        while(MainActivity.VerbKanjiConjDatabase == null){
-            new CountDownTimer(500, 500) {
-                public void onFinish() {
-                    // When timer is finished
-                    // Execute your code here
-                }
-
-                public void onTick(long millisUntilFinished) {
-                    // millisUntilFinished    The amount of time until finished.
-                }
-            }.start();
-        }
 
         registerThatUserIsRequestingDictSearch(false); //TODO: remove this?
 
@@ -436,26 +414,7 @@ public class InputQueryFragment extends Fragment implements
 
         updateQueryHistory();
 
-        // Check if the database has finished loading. If not, make the user wait.
-        while(MainActivity.RadicalsOnlyDatabase == null && MainActivity.enough_memory_for_heavy_functions) {
-            new CountDownTimer(200000, 10000) {
-                public void onFinish() {
-                }
-                public void onTick(long millisUntilFinished) {
-                    // millisUntilFinished    The amount of time until finished.
-                }
-            }.start();
-            //heap_size = AvailableMemory();
-        }
-        Log.i("Diagnosis Time","Starting radical module.");
-
-        // If the app memory is too low to load the radicals and decomposition databases, make the searchByRadical and Decompose buttons inactive
-        if (MainActivity.heap_size_before_searchbyradical_loader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-            Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
-        }
-        else {
-            inputQueryOperationsHandler.onSearchByRadicalRequested(Utilities.removeSpecialCharacters(mInputQuery));
-        }
+        inputQueryOperationsHandler.onSearchByRadicalRequested(Utilities.removeSpecialCharacters(mInputQuery));
     }
     @OnClick(R.id.button_decompose) public void onDecomposeButtonClick() {
 
@@ -463,26 +422,7 @@ public class InputQueryFragment extends Fragment implements
 
         updateQueryHistory();
 
-        // Check if the database has finished loading. If not, make the user wait.
-        while(MainActivity.RadicalsOnlyDatabase == null && MainActivity.enough_memory_for_heavy_functions) {
-            new CountDownTimer(200000, 10000) {
-                public void onFinish() {
-                }
-                public void onTick(long millisUntilFinished) {
-                    // millisUntilFinished    The amount of time until finished.
-                }
-            }.start();
-            //heap_size = AvailableMemory();
-        }
-        Log.i("Diagnosis Time","Starting decomposition module.");
-
-        // If the app memory is too low to load the radicals and decomposition databases, make the searchByRadical and Decompose buttons inactive
-        if (MainActivity.heap_size_before_decomposition_loader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-            Toast.makeText(getActivity(), "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
-        }
-        else {
-            inputQueryOperationsHandler.onDecomposeRequested(Utilities.removeSpecialCharacters(mInputQuery));
-        }
+        inputQueryOperationsHandler.onDecomposeRequested(Utilities.removeSpecialCharacters(mInputQuery));
     }
     @OnClick(R.id.button_clear_query) public void onClearQueryButtonClick() {
 
@@ -491,7 +431,6 @@ public class InputQueryFragment extends Fragment implements
     }
     @OnClick(R.id.button_show_history) public void onShowHistoryButtonClick() {
 
-        //mInputQuery = mInputQueryAutoCompleteTextView.getText().toString();
         updateQueryHistory();
         boolean queryHistoryIsEmpty = true;
         for (String element : mQueryHistory) {
@@ -541,9 +480,9 @@ public class InputQueryFragment extends Fragment implements
             intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, maxResultsToReturn);
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, mChosenSpeechToTextLanguage);
             intent.putExtra(RecognizerIntent.EXTRA_SUPPORTED_LANGUAGES, getResources().getString(R.string.languageLocaleEnglishUS));
-            if (MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
+            if (mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
                 intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechToTextUserPromptJapanese));
-            } else if (MainActivity.mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleEnglishUS))) {
+            } else if (mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleEnglishUS))) {
                 intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechToTextUserPromptEnglish));
             }
             startActivityForResult(intent, SPEECH_RECOGNIZER_REQUEST_CODE);
@@ -930,6 +869,11 @@ public class InputQueryFragment extends Fragment implements
         if (filename.equals("jpn.traineddata")) setJpnOcrDataIsDownloadingStatus(status);
         else if (filename.equals("eng.traineddata")) setEngOcrDataIsDownloadingStatus(status);
     }
+
+    public void setSTTLanguage(String mChosenSpeechToTextLanguage) {
+        this.mChosenSpeechToTextLanguage = mChosenSpeechToTextLanguage;
+    }
+
     private static class TesseractOCRAsyncTaskLoader extends AsyncTaskLoader <String> {
 
         TessBaseAPI mTess;

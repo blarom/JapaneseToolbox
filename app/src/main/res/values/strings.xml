@@ -286,4 +286,13 @@
     <string name="srad_fragment">saved_srad_fragment</string>
     <string name="dcmp_fragment">saved_dcmp_fragment</string>
     <string name="displayed_second_fragment">displayed_second_fragment</string>
+    <string name="complete_verbs_list">complete_verbs_list</string>
+    <string name="legend_database">legend_database</string>
+    <string name="latin_conj_database">latin_conj_database</string>
+    <string name="kanji_conj_database">kanji_conj_database</string>
+    <string name="rad_only_database">rad_only_database</string>
+    <string name="kanji_dict_database">kanji_dict_database</string>
+    <string name="rad_database">rad_database</string>
+    <string name="cjk_database">cjk_database</string>
+    <string name="array_components_database">array_components_database</string>
 </resources>

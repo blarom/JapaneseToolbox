@@ -40,6 +40,10 @@ public interface VerbDao {
     @Query("SELECT * FROM " + Verb.TABLE_NAME + " WHERE " + Verb.COLUMN_VERB_ROMAJI + " = :query")
     List<Verb> getVerbByExactRomajiQueryMatch(String query);
 
+    //Get a List of Verbs by Exact query match in Romaji column
+    @Query("SELECT * FROM " + Verb.TABLE_NAME + " WHERE " + Verb.COLUMN_VERB_KANJI + " = :query")
+    List<Verb> getVerbByExactKanjiQueryMatch(String query);
+
     //Delete a Verb by Id
     @Query("DELETE FROM " + Verb.TABLE_NAME + " WHERE " + Verb.COLUMN_ID + " = :id")
     int deleteVerbById(long id);

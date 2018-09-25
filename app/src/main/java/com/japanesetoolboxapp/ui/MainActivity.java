@@ -3,6 +3,7 @@ package com.japanesetoolboxapp.ui;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
+import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.resources.*;
 
 import android.content.Context;
@@ -10,10 +11,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
-import android.os.AsyncTask;
-import android.os.StrictMode;
+import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
@@ -25,7 +29,6 @@ import android.view.Window;
 import android.view.View.OnTouchListener;
 import android.widget.FrameLayout;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,9 +40,6 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 //TODO: database upgrade
-////TODO make the LOCAL room db update itself with the list<Kanji/LatinIndex> if the app has been reinstalled
-////TODO adapt the code to use the LOCAL room db instead of the local List<String> objects, including index calls
-////TODO: Add suru verbs from list
 ////TODO: allow user to enter verb in gerund form (ing) and still find it
 
 //TODO: features
@@ -71,39 +71,36 @@ public class MainActivity extends AppCompatActivity implements
         InputQueryFragment.InputQueryOperationsHandler,
         DictionaryFragment.DictionaryFragmentOperationsHandler,
         SearchByRadicalFragment.SearchByRadicalFragmentOperationsHandler,
-        SharedPreferences.OnSharedPreferenceChangeListener {
+        SharedPreferences.OnSharedPreferenceChangeListener,
+        LoaderManager.LoaderCallbacks<Object> {
 
 
     //region Parameters
+    private static final int DATABASE_LOADER = 9512;
     @BindView(R.id.second_fragment_placeholder) FrameLayout mSecondFragmentPlaceholder;
     private String mSecondFragmentFlag;
     InputQueryFragment mInputQueryFragment;
-    static List<String[]> MainDatabase;
-    static List<String[]> LegendDatabase;
-    static List<String[]> RadicalsDatabase;
-    static List<String[]> CJK_Database;
-    static List<String[]> VerbDatabase;
-    static List<String[]> VerbLatinConjDatabase;
-    static List<String[]> VerbKanjiConjDatabase;
-    static List<String[]> KanjiDict_Database;
-    static List<String[]> Components_Database;
-    public static List<String[]> SimilarsDatabase;
-    static List<List<String[]>> Array_of_Components_Databases;
-    static List<String[]> RadicalsOnlyDatabase;
-    static Typeface CJK_typeface;
-    static String[] radical_module_user_selections;
+    List<String[]> LegendDatabase;
+    List<String[]> RadicalsDatabase;
+    List<String[]> CJKDatabase;
+    List<String[]> VerbLatinConjDatabase;
+    List<String[]> VerbKanjiConjDatabase;
+    List<String[]> KanjiDictDatabase;
+    static List<Verb> VerbsDatabase;
+    List<String[]> SimilarsDatabase;
+    List<List<String[]>> arrayOfComponentsDatabases;
+    List<String[]> RadicalsOnlyDatabase;
+    Typeface CJK_typeface;
 
-    public static long heap_size;
-    public static long heap_size_before_decomposition_loader;
-    public static long heap_size_before_searchbyradical_loader;
-    public static Boolean enough_memory_for_heavy_functions;
+    private long heapSizeBeforeDecompositionLoader;
+    private long heapSizeBeforeSearchbyradicalLoader;
+    private boolean enoughMemoryForHeavyFunctions;
     Intent restartIntent;
-    Toast mLastToast;
 
-    public static Boolean mShowOnlineResults;
-    public static String mChosenSpeechToTextLanguage;
-    public static String mChosenTextToSpeechLanguage;
-    public static String mChosenOCRLanguage;
+    public boolean mShowOnlineResults;
+    public String mChosenSpeechToTextLanguage;
+    public String mChosenTextToSpeechLanguage;
+    public String mChosenOCRLanguage;
     private float mOcrImageDefaultContrast;
     private float mOcrImageDefaultBrightness;
     private float mOcrImageDefaultSaturation;
@@ -116,6 +113,8 @@ public class MainActivity extends AppCompatActivity implements
     private SearchByRadicalFragment mSearchByRadicalFragment;
     private DecomposeKanjiFragment mDecomposeKanjiFragment;
     private String mSecondFragmentCurrentlyDisplayed;
+    private boolean mAlreadyLoadedDatabases;
+    private boolean mAllowButtonOperations;
     //endregion
 
 
@@ -130,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements
         Log.i("Diagnosis Time", "Started MainActivity.");
         initializeParameters();
         setupSharedPreferences();
-        if (MainDatabase == null) new BackgroundDatabaseLoader(this).execute(); // Start loading the local database in the background
+        if (VerbsDatabase ==null) startLoadingDatabasesInBackground();
         setFragments();
 
     }
@@ -145,31 +144,32 @@ public class MainActivity extends AppCompatActivity implements
                 mSecondFragmentFlag = savedRequestedFragment;
             }
 
-            mSecondFragmentCurrentlyDisplayed = savedInstanceState.getString(getString(R.string.requested_second_fragment));
-            mDictionaryFragment = (DictionaryFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.dict_fragment));
-            mConjugatorFragment = (ConjugatorFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.conj_fragment));
-            mConvertFragment = (ConvertFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.conv_fragment));
-            mSearchByRadicalFragment = (SearchByRadicalFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.srad_fragment));
-            mDecomposeKanjiFragment = (DecomposeKanjiFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.dcmp_fragment));
+//            mSecondFragmentCurrentlyDisplayed = savedInstanceState.getString(getString(R.string.requested_second_fragment));
+//            mDictionaryFragment = (DictionaryFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.dict_fragment));
+//            mConjugatorFragment = (ConjugatorFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.conj_fragment));
+//            mConvertFragment = (ConvertFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.conv_fragment));
+//            mSearchByRadicalFragment = (SearchByRadicalFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.srad_fragment));
+//            mDecomposeKanjiFragment = (DecomposeKanjiFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.dcmp_fragment));
 
-            //Load the second fragment
-            clearBackstack();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.dict_fragment)))
-                fragmentTransaction.replace(R.id.second_fragment_placeholder, mDictionaryFragment, getString(R.string.dict_fragment));
-            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.conj_fragment)))
-                fragmentTransaction.replace(R.id.second_fragment_placeholder, mConjugatorFragment, getString(R.string.conj_fragment));
-            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.conv_fragment)))
-                fragmentTransaction.replace(R.id.second_fragment_placeholder, mConvertFragment, getString(R.string.conv_fragment));
-            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.srad_fragment)))
-                fragmentTransaction.replace(R.id.second_fragment_placeholder, mSearchByRadicalFragment, getString(R.string.srad_fragment));
-            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.dcmp_fragment)))
-                fragmentTransaction.replace(R.id.second_fragment_placeholder, mDecomposeKanjiFragment, getString(R.string.dcmp_fragment));
-            fragmentTransaction.addToBackStack(getString(R.string.dictonary_fragment_instance));
-            fragmentTransaction.commit();
+//            //Load the second fragment
+//            clearBackstack();
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//            if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.dict_fragment)))
+//                fragmentTransaction.replace(R.id.second_fragment_placeholder, mDictionaryFragment, getString(R.string.dict_fragment));
+//            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.conj_fragment)))
+//                fragmentTransaction.replace(R.id.second_fragment_placeholder, mConjugatorFragment, getString(R.string.conj_fragment));
+//            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.conv_fragment)))
+//                fragmentTransaction.replace(R.id.second_fragment_placeholder, mConvertFragment, getString(R.string.conv_fragment));
+//            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.srad_fragment)))
+//                fragmentTransaction.replace(R.id.second_fragment_placeholder, mSearchByRadicalFragment, getString(R.string.srad_fragment));
+//            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.dcmp_fragment)))
+//                fragmentTransaction.replace(R.id.second_fragment_placeholder, mDecomposeKanjiFragment, getString(R.string.dcmp_fragment));
+//            fragmentTransaction.addToBackStack(getString(R.string.dictonary_fragment_instance));
+//            fragmentTransaction.commit();
 
         }
+        mAllowButtonOperations = true;
     }
     @Override protected void onStart() {
         super.onStart();
@@ -179,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements
     }
     @Override protected void onResume() {
         super.onResume();
+        mAllowButtonOperations = true;
     }
 
     @Override public void onSaveInstanceState(Bundle outState) {
@@ -186,11 +187,13 @@ public class MainActivity extends AppCompatActivity implements
 
         outState.putString(getString(R.string.requested_second_fragment), mSecondFragmentFlag);
         outState.putString(getString(R.string.displayed_second_fragment), mSecondFragmentCurrentlyDisplayed);
-        if (mDictionaryFragment!=null) getSupportFragmentManager().putFragment(outState, getString(R.string.dict_fragment), mDictionaryFragment);
-        if (mConjugatorFragment!=null) getSupportFragmentManager().putFragment(outState, getString(R.string.conj_fragment), mConjugatorFragment);
-        if (mConvertFragment!=null) getSupportFragmentManager().putFragment(outState, getString(R.string.conv_fragment), mConvertFragment);
-        if (mSearchByRadicalFragment!=null) getSupportFragmentManager().putFragment(outState, getString(R.string.srad_fragment), mSearchByRadicalFragment);
-        if (mDecomposeKanjiFragment!=null) getSupportFragmentManager().putFragment(outState, getString(R.string.dcmp_fragment), mDecomposeKanjiFragment);
+//        if (mDictionaryFragment!=null && mDictionaryFragment.isAdded()) getSupportFragmentManager().putFragment(outState, getString(R.string.dict_fragment), mDictionaryFragment);
+//        if (mConjugatorFragment!=null && mConjugatorFragment.isAdded()) getSupportFragmentManager().putFragment(outState, getString(R.string.conj_fragment), mConjugatorFragment);
+//        if (mConvertFragment!=null && mConvertFragment.isAdded()) getSupportFragmentManager().putFragment(outState, getString(R.string.conv_fragment), mConvertFragment);
+//        if (mSearchByRadicalFragment!=null && mSearchByRadicalFragment.isAdded()) getSupportFragmentManager().putFragment(outState, getString(R.string.srad_fragment), mSearchByRadicalFragment);
+//        if (mDecomposeKanjiFragment!=null && mDecomposeKanjiFragment.isAdded()) getSupportFragmentManager().putFragment(outState, getString(R.string.dcmp_fragment), mDecomposeKanjiFragment);
+
+        mAllowButtonOperations = false;
     }
     @Override protected void onDestroy() {
         super.onDestroy();
@@ -203,11 +206,12 @@ public class MainActivity extends AppCompatActivity implements
         mBinding.unbind();
     }
     @Override public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStack();
-        } else {
-            super.onBackPressed();
-        }
+        super.onBackPressed();
+//        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+//            getSupportFragmentManager().popBackStack();
+//        } else {
+//            super.onBackPressed();
+//        }
     }
     @Override public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -268,8 +272,8 @@ public class MainActivity extends AppCompatActivity implements
         mOcrImageDefaultBrightness = Utilities.loadOCRImageBrightnessFromSharedPreferences(sharedPreferences, getApplicationContext());
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
-    public void setShowOnlineResults(boolean showCourse) {
-        mShowOnlineResults = showCourse;
+    public void setShowOnlineResults(boolean showOnlineResults) {
+        mShowOnlineResults = showOnlineResults;
     }
     public void setSpeechToTextLanguage(String language) {
         if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
@@ -278,6 +282,7 @@ public class MainActivity extends AppCompatActivity implements
         else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
             mChosenSpeechToTextLanguage = getResources().getString(R.string.languageLocaleEnglishUS);
         }
+        if (mInputQueryFragment!=null) mInputQueryFragment.setSTTLanguage(mChosenSpeechToTextLanguage);
     }
     public void setTextToSpeechLanguage(String language) {
         if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
@@ -302,10 +307,11 @@ public class MainActivity extends AppCompatActivity implements
 
         mBinding =  ButterKnife.bind(this);
         mSecondFragmentFlag = "start";
+        mAllowButtonOperations = true;
 
         //Code allowing to bypass strict mode
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+        //StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        //StrictMode.setThreadPolicy(policy);
 
         // Remove the software keyboard if the EditText is not in focus
         findViewById(android.R.id.content).setOnTouchListener(new OnTouchListener() {
@@ -333,166 +339,20 @@ public class MainActivity extends AppCompatActivity implements
         if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             if (mSavedInstanceState == null) {
                 mInputQueryFragment = new InputQueryFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(getString(R.string.pref_preferred_STT_language), mChosenSpeechToTextLanguage);
                 fragmentTransaction.add(R.id.input_query_placeholder, mInputQueryFragment);
             }
         } else {
             if (mSavedInstanceState == null) {
                 mInputQueryFragment = new InputQueryFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(getString(R.string.pref_preferred_STT_language), mChosenSpeechToTextLanguage);
                 fragmentTransaction.add(R.id.input_query_placeholder, mInputQueryFragment);
             }
         }
 
         fragmentTransaction.commit();
-    }
-    private static void showDatabaseLoadingToast(final String message, final Context context) {
-//        runOnUiThread(new Runnable() {
-//            public void run()
-//            {
-//                if(mLastToast != null) {
-//                    mLastToast.cancel();}
-//
-//                Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
-//                toast.setGravity(Gravity.BOTTOM|Gravity.FILL_HORIZONTAL, 0, 0);
-//
-//                View toastview = toast.getView();
-//                //toastview.setBackgroundColor(Color.WHITE);
-//                toastview.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.parseColor("#803582FF"))); //Light blue
-//                toastview.getBackground().setAlpha(90);
-//
-//                TextView toastMessage = toast.getView().findViewById(android.R.id.message);
-//                toastMessage.setTextColor(Color.BLACK);
-//                toastMessage.setTypeface(null, Typeface.BOLD);
-//                toastMessage.setTextSize(12);
-//                toast.show();
-//
-//                mLastToast = toast;
-//            }
-//        });
-    }
-    private static class BackgroundDatabaseLoader extends AsyncTask<Void, Void, Void> {
-        private WeakReference<Context> mContext;
-
-        BackgroundDatabaseLoader(Context context) {
-            mContext = new WeakReference<>(context);
-        }
-
-        @Override protected void onPreExecute() {
-            super.onPreExecute();
-            Log.i("Diagnosis Time","Started background database loading.");
-        }
-        protected Void doInBackground(Void... params) {
-
-            //Instantiating the database on a background thread
-            JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(mContext.get());
-
-            heap_size = Utilities.getAvailableMemory();
-            enough_memory_for_heavy_functions = true;
-            //Sizes based on file size, not on number of rows
-            int CJK_Database_size = 2051;
-            int GrammarDatabaseIndexedLatin_size = 1755;
-            int RadicalsDatabase_size = 353;
-            int GrammarDatabaseIndexedKanji_size = 372;
-            int MainDatabase_size = 32+294+163 + 332 + 15;
-            int VerbDatabase_size = 179;
-            int KanjiDict_Database_size = 123;
-            int RadicalsOnlyDatabase_size = 16;
-            int total_assets_size_main_functions = GrammarDatabaseIndexedLatin_size+GrammarDatabaseIndexedKanji_size+MainDatabase_size+VerbDatabase_size;
-            int total_assets_size_radical_functions = CJK_Database_size+RadicalsDatabase_size+KanjiDict_Database_size+RadicalsOnlyDatabase_size;
-            int total_assets_size = total_assets_size_main_functions+total_assets_size_radical_functions;
-
-            Context context = mContext.get();
-
-            int cumulative_progress = 0;
-
-            if (LegendDatabase == null) { LegendDatabase = DatabaseUtilities.readCSVFile("LineLegend - 3000 kanji.csv", mContext.get()); }
-
-            cumulative_progress = cumulative_progress + GrammarDatabaseIndexedKanji_size;
-            showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Verbs Database...", context);
-            if (VerbDatabase == null || VerbDatabase.size() < 5) { VerbDatabase = DatabaseUtilities.readCSVFile("LineVerbs - 3000 kanji.csv", mContext.get());}
-            Log.i("Diagnosis Time","Loaded VerbDatabase.");
-
-            if (VerbLatinConjDatabase == null || VerbLatinConjDatabase.size() < 5) { VerbLatinConjDatabase = DatabaseUtilities.readCSVFile("LineLatinConj - 3000 kanji.csv", context);}
-            Log.i("Diagnosis Time","Loaded VerbLatinConjDatabase.");
-
-            if (VerbKanjiConjDatabase == null   || VerbKanjiConjDatabase.size() < 5)   { VerbKanjiConjDatabase = DatabaseUtilities.readCSVFile("LineKanjiConj - 3000 kanji.csv", context);}
-            Log.i("Diagnosis Time","Loaded VerbKanjiConjDatabase.");
-
-            if (SimilarsDatabase == null   || SimilarsDatabase.size() < 5)   { SimilarsDatabase = DatabaseUtilities.readCSVFile("LineSimilars - 3000 kanji.csv", context);}
-            Log.i("Diagnosis Time","Loaded SimilarsDatabase.");
-
-            heap_size = Utilities.getAvailableMemory();
-            heap_size_before_decomposition_loader = heap_size;
-            cumulative_progress = cumulative_progress + VerbDatabase_size;
-
-            if (heap_size_before_decomposition_loader >= GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-
-                showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Radicals Database...", context);
-                if (RadicalsDatabase == null) { RadicalsDatabase = DatabaseUtilities.readCSVFile("LineRadicals - 3000 kanji.csv", context);}
-                Log.i("Diagnosis Time","Loaded RadicalsDatabase.");
-
-                cumulative_progress = cumulative_progress + RadicalsDatabase_size;
-                showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Decompositions Database...", context);
-                heap_size = Utilities.getAvailableMemory();
-                if (CJK_Database == null) { CJK_Database = DatabaseUtilities.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", context);}
-                Log.i("Diagnosis Time", "Loaded CJK_Database.");
-
-                cumulative_progress = cumulative_progress + CJK_Database_size;
-                showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Characters Database...", context);
-                heap_size = Utilities.getAvailableMemory();
-                if (KanjiDict_Database == null) { KanjiDict_Database = DatabaseUtilities.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", context);}
-                Log.i("Diagnosis Time", "Loaded KanjiDict_Database.");
-
-                heap_size = Utilities.getAvailableMemory();
-                if (RadicalsOnlyDatabase == null) { RadicalsOnlyDatabase = DatabaseUtilities.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", context);}
-                Log.i("Diagnosis Time", "Loaded RadicalsOnlyDatabase.");
-
-                heap_size = Utilities.getAvailableMemory();
-                heap_size_before_searchbyradical_loader = heap_size;
-                enough_memory_for_heavy_functions = true;
-
-                cumulative_progress = cumulative_progress + (KanjiDict_Database_size+RadicalsOnlyDatabase_size);
-                if (heap_size_before_searchbyradical_loader >= GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-
-                    showDatabaseLoadingToast("Progress: " + Math.round(100*cumulative_progress/total_assets_size) + "%. Loading Components Database...", context);
-                    if (Components_Database == null) {
-                        Components_Database = DatabaseUtilities.readCSVFile("LineComponents - 3000 kanji.csv", context);
-                        List<String[]> temp = new ArrayList<>();
-                        Array_of_Components_Databases = new ArrayList<>();
-                        for (int i=0; i<Components_Database.size();i++) {
-                            if (!Components_Database.get(i)[0].equals("") && Components_Database.get(i)[1].equals("")) {
-                                if (i>1) {Array_of_Components_Databases.add(temp);}
-                                temp = new ArrayList<>();
-                            }
-                            if (!Components_Database.get(i)[0].equals("") && !Components_Database.get(i)[1].equals("")) {temp.add(Components_Database.get(i));}
-                        }
-                        Array_of_Components_Databases.add(temp);
-                        temp = null;
-                        Components_Database = null;
-                    }
-                    Log.i("Diagnosis Time", "Loaded Components_Database.");
-
-                    showDatabaseLoadingToast("Progress: 100%. Loaded all databases.", context);
-                }
-                else {
-                    showDatabaseLoadingToast("Stopped at " + Math.round(100*cumulative_progress/total_assets_size) + "% due to low memory.", context);
-                }
-
-            }
-            else {
-                enough_memory_for_heavy_functions = false;
-                showDatabaseLoadingToast("Stopped at " + Math.round(100*cumulative_progress/total_assets_size) + "% due to low memory.", context);
-            }
-            heap_size = Utilities.getAvailableMemory();
-
-            Log.i("Diagnosis Time","Loaded All Databases.");
-            return null;
-        }
-        protected void onProgressUpdate(Integer... progress) {
-            //setProgressPercent(progress[0]);
-        }
-        protected void onPostExecute() {
-            Log.i("Diagnosis Time","Loadeded all databases.");
-        }
     }
     private void updateInputQuery(String word) {
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -510,6 +370,191 @@ public class MainActivity extends AppCompatActivity implements
             getSupportFragmentManager().executePendingTransactions();
         }
     }
+    private void startLoadingDatabasesInBackground() {
+        if (!mAlreadyLoadedDatabases) {
+            LoaderManager loaderManager = getSupportLoaderManager();
+            Loader<String> roomDbSearchLoader = loaderManager.getLoader(DATABASE_LOADER);
+            if (roomDbSearchLoader == null) loaderManager.initLoader(DATABASE_LOADER, null, this);
+            else loaderManager.restartLoader(DATABASE_LOADER, null, this);
+        }
+    }
+
+    //Asynchronous methods
+    @NonNull @Override public Loader<Object> onCreateLoader(int id, final Bundle args) {
+
+        if (id == DATABASE_LOADER) {
+            DatabaseAsyncTaskLoader DbLoader = new DatabaseAsyncTaskLoader(this, mAlreadyLoadedDatabases);
+            return DbLoader;
+        }
+        else return new DatabaseAsyncTaskLoader(this, true);
+    }
+    @Override public void onLoadFinished(@NonNull Loader<Object> loader, Object data) {
+
+        if (loader.getId() == DATABASE_LOADER && !mAlreadyLoadedDatabases && data!=null) {
+            mAlreadyLoadedDatabases = true;
+
+            Object[] databases = (Object[]) data;
+
+            VerbsDatabase = (List<Verb>) databases[0];
+            LegendDatabase = (List<String[]>) databases[1];
+            SimilarsDatabase = (List<String[]>) databases[2];
+            VerbLatinConjDatabase = (List<String[]>) databases[3];
+            VerbKanjiConjDatabase = (List<String[]>) databases[4];
+            enoughMemoryForHeavyFunctions = (boolean) databases[5];
+            RadicalsDatabase = (List<String[]>) databases[6];
+            CJKDatabase = (List<String[]>) databases[7];
+            KanjiDictDatabase = (List<String[]>) databases[8];
+            RadicalsOnlyDatabase = (List<String[]>) databases[9];
+            arrayOfComponentsDatabases = (List<List<String[]>>) databases[10];
+            heapSizeBeforeDecompositionLoader = (long) databases[11];
+            heapSizeBeforeSearchbyradicalLoader = (long) databases[12];
+
+            if (mConjugatorFragment!=null) mConjugatorFragment.setVerbsList(VerbsDatabase);
+
+            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(DATABASE_LOADER);
+        }
+
+    }
+    @Override public void onLoaderReset(@NonNull Loader<Object> loader) {}
+    private static class DatabaseAsyncTaskLoader extends AsyncTaskLoader<Object> {
+
+        private final boolean mAlreadyLoadedVerbs;
+        private JapaneseToolboxRoomDatabase mJapaneseToolboxRoomDatabase;
+
+        DatabaseAsyncTaskLoader(Context context, boolean mAlreadyLoadedVerbs) {
+            super(context);
+            this.mAlreadyLoadedVerbs = mAlreadyLoadedVerbs;
+        }
+
+        @Override
+        protected void onStartLoading() {
+            if (!mAlreadyLoadedVerbs) forceLoad();
+        }
+
+        @Override
+        public Object loadInBackground() {
+
+            //region Initializations
+            List<String[]> LegendDatabase = null;
+            List<String[]> SimilarsDatabase = null;
+            List<String[]> VerbLatinConjDatabase = null;
+            List<String[]> VerbKanjiConjDatabase = null;
+            List<String[]> RadicalsDatabase = null;
+            List<String[]> CJK_Database = null;
+            List<String[]> KanjiDict_Database = null;
+            List<String[]> RadicalsOnlyDatabase = null;
+            List<String[]> Components_Database = null;
+            List<String[]> temp = null;
+            List<List<String[]>> arrayOfComponentsDatabases = null;
+            long heapSize ;
+            boolean enoughMemoryForHeavyFunctions = true;
+            //endregion
+
+            //region Loading the verbs list
+            mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
+            List<Verb> verbs = mJapaneseToolboxRoomDatabase.getAllVerbs();
+            //endregion
+
+            //region Loading the small databases
+            LegendDatabase = DatabaseUtilities.readCSVFile("LineLegend - 3000 kanji.csv", getContext());
+            SimilarsDatabase = DatabaseUtilities.readCSVFile("LineSimilars - 3000 kanji.csv", getContext());
+            VerbLatinConjDatabase = DatabaseUtilities.readCSVFile("LineLatinConj - 3000 kanji.csv", getContext());
+            VerbKanjiConjDatabase = DatabaseUtilities.readCSVFile("LineKanjiConj - 3000 kanji.csv", getContext());
+            Log.i("Diagnosis Time","Loaded Small Databases.");
+
+            heapSize = Utilities.getAvailableMemory();
+            long heapSizeBeforeDecompositionLoader = heapSize;
+            long heapSizeBeforeSearchbyradicalLoader = heapSize;
+
+            if (heapSizeBeforeDecompositionLoader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
+                Log.i("Diagnosis Time","Stopped database loading due to low memory.");
+
+                enoughMemoryForHeavyFunctions = false;
+                return new Object[] {
+                        verbs,
+                        LegendDatabase,
+                        SimilarsDatabase,
+                        VerbLatinConjDatabase,
+                        VerbKanjiConjDatabase,
+                        enoughMemoryForHeavyFunctions,
+                        RadicalsDatabase,
+                        CJK_Database,
+                        KanjiDict_Database,
+                        RadicalsOnlyDatabase,
+                        arrayOfComponentsDatabases,
+                        heapSizeBeforeDecompositionLoader,
+                        heapSizeBeforeSearchbyradicalLoader
+                };
+            }
+            //endregion
+
+            //region Loading the CJK databases
+            RadicalsDatabase = DatabaseUtilities.readCSVFile("LineRadicals - 3000 kanji.csv", getContext());
+            CJK_Database = DatabaseUtilities.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", getContext());
+            KanjiDict_Database = DatabaseUtilities.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", getContext());
+            RadicalsOnlyDatabase = DatabaseUtilities.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", getContext());
+            Log.i("Diagnosis Time", "Loaded CJK Databases.");
+
+            heapSize = Utilities.getAvailableMemory();
+            heapSizeBeforeSearchbyradicalLoader = heapSize;
+
+            if (heapSizeBeforeSearchbyradicalLoader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
+                Log.i("Diagnosis Time","Stopped database loading due to low memory.");
+
+                enoughMemoryForHeavyFunctions = false;
+                return new Object[] {
+                        verbs,
+                        LegendDatabase,
+                        SimilarsDatabase,
+                        VerbLatinConjDatabase,
+                        VerbKanjiConjDatabase,
+                        enoughMemoryForHeavyFunctions,
+                        RadicalsDatabase,
+                        CJK_Database,
+                        KanjiDict_Database,
+                        RadicalsOnlyDatabase,
+                        arrayOfComponentsDatabases,
+                        heapSizeBeforeDecompositionLoader,
+                        heapSizeBeforeSearchbyradicalLoader
+                };
+            }
+            //endregion
+
+            //region Loading the components databases
+            Components_Database = DatabaseUtilities.readCSVFile("LineComponents - 3000 kanji.csv", getContext());
+            temp = new ArrayList<>();
+            arrayOfComponentsDatabases = new ArrayList<>();
+            for (int i=0; i<Components_Database.size();i++) {
+                if (!Components_Database.get(i)[0].equals("") && Components_Database.get(i)[1].equals("")) {
+                    if (i>1) {arrayOfComponentsDatabases.add(temp);}
+                    temp = new ArrayList<>();
+                }
+                if (!Components_Database.get(i)[0].equals("") && !Components_Database.get(i)[1].equals("")) {temp.add(Components_Database.get(i));}
+            }
+            arrayOfComponentsDatabases.add(temp);
+
+
+            Log.i("Diagnosis Time","Loaded All Databases.");
+            enoughMemoryForHeavyFunctions = true;
+            return new Object[] {
+                    verbs,
+                    LegendDatabase,
+                    SimilarsDatabase,
+                    VerbLatinConjDatabase,
+                    VerbKanjiConjDatabase,
+                    enoughMemoryForHeavyFunctions,
+                    RadicalsDatabase,
+                    CJK_Database,
+                    KanjiDict_Database,
+                    RadicalsOnlyDatabase,
+                    arrayOfComponentsDatabases,
+                    heapSizeBeforeDecompositionLoader,
+                    heapSizeBeforeSearchbyradicalLoader
+            };
+            //endregion
+        }
+
+    }
 
 
     //Communication with other classes:
@@ -517,6 +562,12 @@ public class MainActivity extends AppCompatActivity implements
     //Communication with InputQueryFragment
     @Override public void onDictRequested(String query) {
 
+        if (!mAllowButtonOperations) return;
+        if (VerbsDatabase==null) {
+            Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        mConjugatorFragment = null;
         clearBackstack();
 
         mSecondFragmentCurrentlyDisplayed = getString(R.string.dict_fragment);
@@ -524,55 +575,60 @@ public class MainActivity extends AppCompatActivity implements
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
 
-        if (mDictionaryFragment==null) mDictionaryFragment = new DictionaryFragment();
+        query = DatabaseUtilities.replaceInvalidKanjisWithValidOnes(query, SimilarsDatabase);
+
+        mDictionaryFragment = new DictionaryFragment();
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
+        bundle.putSerializable(getString(R.string.legend_database), new ArrayList<>(LegendDatabase));
         mDictionaryFragment.setArguments(bundle);
-//        if (mDictionaryFragment==null) {
-//
-//        }
-//        else {
-//            mDictionaryFragment.setQuery(query);
-//            Bundle bundle = new Bundle();
-//            bundle.putString(getString(R.string.user_query_word), query);
-//            mDictionaryFragment.setArguments(bundle);
-//        }
-
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.second_fragment_placeholder, mDictionaryFragment, getString(R.string.dict_fragment));
 
-        fragmentTransaction.addToBackStack(getString(R.string.dictonary_fragment_instance));
+        //fragmentTransaction.addToBackStack(getString(R.string.dictonary_fragment_instance));
         fragmentTransaction.commit();
     }
     @Override public void onConjRequested(String query) {
+
+        if (!mAllowButtonOperations) return;
+        mDictionaryFragment = null;
+        clearBackstack();
+        if (VerbsDatabase==null) {
+            Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         mSecondFragmentCurrentlyDisplayed = getString(R.string.conj_fragment);
 
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
 
-        if (mConjugatorFragment==null) mConjugatorFragment = new ConjugatorFragment();
+        mConjugatorFragment = new ConjugatorFragment();
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
+        bundle.putSerializable(getString(R.string.latin_conj_database), new ArrayList<>(VerbLatinConjDatabase));
+        bundle.putSerializable(getString(R.string.kanji_conj_database), new ArrayList<>(VerbKanjiConjDatabase));
+        //bundle.putParcelableArrayList(getString(R.string.complete_verbs_list), new ArrayList<Parcelable>(VerbsDatabase));
         mConjugatorFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.second_fragment_placeholder, mConjugatorFragment, getString(R.string.conj_fragment));
 
-        fragmentTransaction.addToBackStack(getString(R.string.conjugator_fragment_instance));
+        //fragmentTransaction.addToBackStack(getString(R.string.conjugator_fragment_instance));
         fragmentTransaction.commit();
     }
     @Override public void onConvertRequested(String query) {
 
+        if (!mAllowButtonOperations) return;
         mSecondFragmentCurrentlyDisplayed = getString(R.string.conv_fragment);
 
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
 
-        if (mConvertFragment==null) mConvertFragment = new ConvertFragment();
+        mConvertFragment = new ConvertFragment();
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
         mConvertFragment.setArguments(bundle);
@@ -581,46 +637,73 @@ public class MainActivity extends AppCompatActivity implements
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.second_fragment_placeholder, mConvertFragment, getString(R.string.conj_fragment));
 
-        fragmentTransaction.addToBackStack(getString(R.string.convert_fragment_instance));
+        //fragmentTransaction.addToBackStack(getString(R.string.convert_fragment_instance));
         fragmentTransaction.commit();
     }
     @Override public void onSearchByRadicalRequested(String query) {
+
+        if (!mAllowButtonOperations) return;
+        if (heapSizeBeforeSearchbyradicalLoader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
+            Toast.makeText(this, "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (VerbsDatabase==null) {
+            Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         mSecondFragmentCurrentlyDisplayed = getString(R.string.srad_fragment);
 
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
 
-        if (mSearchByRadicalFragment==null) mSearchByRadicalFragment = new SearchByRadicalFragment();
+        mSearchByRadicalFragment = new SearchByRadicalFragment();
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
+        bundle.putSerializable(getString(R.string.rad_only_database), new ArrayList<>(RadicalsOnlyDatabase));
+        bundle.putSerializable(getString(R.string.array_components_database), new ArrayList<>(arrayOfComponentsDatabases));
         mSearchByRadicalFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.second_fragment_placeholder, mSearchByRadicalFragment, getString(R.string.srad_fragment));
 
-        fragmentTransaction.addToBackStack(getString(R.string.search_by_radical_fragment_instance));
+        //fragmentTransaction.addToBackStack(getString(R.string.search_by_radical_fragment_instance));
         fragmentTransaction.commit();
 
     }
     @Override public void onDecomposeRequested(String query) {
+
+        if (!mAllowButtonOperations) return;
+        if (heapSizeBeforeDecompositionLoader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
+            Toast.makeText(this, "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (VerbsDatabase==null) {
+            Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         mSecondFragmentCurrentlyDisplayed = getString(R.string.dcmp_fragment);
 
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
 
-        if (mDecomposeKanjiFragment==null) mDecomposeKanjiFragment = new DecomposeKanjiFragment();
+        mDecomposeKanjiFragment = new DecomposeKanjiFragment();
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
+        bundle.putSerializable(getString(R.string.rad_only_database), new ArrayList<>(RadicalsOnlyDatabase));
+        bundle.putSerializable(getString(R.string.kanji_dict_database), new ArrayList<>(KanjiDictDatabase));
+        bundle.putSerializable(getString(R.string.rad_database), new ArrayList<>(RadicalsDatabase));
+        bundle.putSerializable(getString(R.string.cjk_database), new ArrayList<>(CJKDatabase));
+
         mDecomposeKanjiFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.second_fragment_placeholder, mDecomposeKanjiFragment, getString(R.string.dcmp_fragment));
 
-        fragmentTransaction.addToBackStack(getString(R.string.decompose_fragment_instance));
+        //fragmentTransaction.addToBackStack(getString(R.string.decompose_fragment_instance));
         fragmentTransaction.commit();
     }
 

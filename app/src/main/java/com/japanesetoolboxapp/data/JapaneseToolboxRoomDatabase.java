@@ -22,7 +22,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class}, version = 19, exportSchema = false)
+@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class}, version = 20, exportSchema = false)
 public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
@@ -216,6 +216,9 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     }
     public List<Verb> getVerbsByRomajiQuery(String query) {
         return verb().getVerbByExactRomajiQueryMatch(query);
+    }
+    public List<Verb> getVerbsByKanjiQuery(String query) {
+        return verb().getVerbByExactKanjiQueryMatch(query);
     }
     public List<Verb> getAllVerbs() {
         return verb().getAllVerbs();
