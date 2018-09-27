@@ -63,7 +63,6 @@ import butterknife.Unbinder;
 //TODO: bugs
 ////TODO searching for "福" through left radical yields no results, since it does not point to spirit radical, just radical variant
 ////TODO "kamoshi" returns no josho.org results
-////TODO "hanashinagara" returns conjugated verb, but hiragana equivalent doesn't
 ////TODO imperative display for godan verbs
 
 

@@ -324,6 +324,7 @@ public class ConjugatorFragment extends Fragment implements
             conjugations = conjugationCategories.get(i).getConjugations();
             for (Verb.ConjugationCategory.Conjugation conjugation : conjugations) {
                 if (mInputQueryIsLatin && conjugation.getConjugationLatin().equals(mInputQuery)) foundMatch = true;
+                else if (mInputQueryIsKana && conjugation.getConjugationLatin().equals(mInputQueryTransliterations.get(0))) foundMatch = true;
                 else if (mInputQueryIsKanji && conjugation.getConjugationKanji().equals(mInputQuery)) foundMatch = true;
                 if (foundMatch) break;
             }
@@ -334,8 +335,6 @@ public class ConjugatorFragment extends Fragment implements
         }
         mConjugationChooserSpinner.setSelection(matchingConjugationCategoryIndex, false);
 
-        //Setting the conjugation spinner to the position that was previously selected
-        //mConjugationChooserSpinner.setSelection(mSelectedConjugationCategoryIndex, false);
     }
     private void showSelectedConjugationsInCategory(final int verbIndex, final int conjugationIndex) {
 
