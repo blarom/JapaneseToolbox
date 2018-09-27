@@ -973,8 +973,15 @@ public class Utilities {
                 }
             }
 
-            if (!foundMatchingLocalWord && asyncKanji.equals("為る")) differentAsyncWords.add(asyncWord);
+            if (!foundMatchingLocalWord) differentAsyncWords.add(asyncWord);
 
+        }
+
+        for (Word word : differentAsyncWords) {
+            if (word.getKanji().equals("為る")) {
+                differentAsyncWords.remove(word);
+                break;
+            }
         }
 
         return differentAsyncWords;

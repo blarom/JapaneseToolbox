@@ -780,23 +780,15 @@ public class ConjugatorFragment extends Fragment implements
                 }
                 else {
                     String verb2WithIng = mInputQuery + "ing";
-                    if ((!verb2WithIng.substring(0, 2 + 1).equals("to ") || !IsOfTypeIngIng(verb2WithIng.substring(3, mInputQueryLength + 3))) &&
-                            (verb2WithIng.substring(0, 2+1).equals("to ") || !IsOfTypeIngIng(verb2WithIng.substring(0, mInputQueryLength + 3)))) {
+                    if ((verb2WithIng.substring(0, 2 + 1).equals("to ") && IsOfTypeIngIng(verb2WithIng.substring(3, mInputQueryLength + 3))) ||
+                            (!verb2WithIng.substring(0, 2 + 1).equals("to ") && IsOfTypeIngIng(verb2WithIng.substring(0, mInputQueryLength + 3)))) {
+                    } else {
                         // If the verb does not belong to the list, then remove the ending "ing" so that it can be compared later on to the verbs excel
                         ;//If the verb is for e.g. to sing / sing (verb2 = to singing / singing), then check that verb2 (without the "to ") belongs to the list, and if it does then do nothing
 
                         mInputQuery = mInputQuery.substring(0, mInputQueryLength -3);
                     }
                 }
-            }
-            //endregion
-
-            //region Registering if the input query is a "to " verb
-            boolean queryIsVerbWithTo = false;
-            String queryWordWithoutTo = "";
-            if (mInputQuery.length()>3 && mInputQuery.substring(0,3).equals("to ")) {
-                queryIsVerbWithTo = true;
-                queryWordWithoutTo = mInputQuery.substring(3, mInputQuery.length());
             }
             //endregion
 
