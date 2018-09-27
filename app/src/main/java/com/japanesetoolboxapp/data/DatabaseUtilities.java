@@ -8,6 +8,7 @@ import com.japanesetoolboxapp.BuildConfig;
 import com.japanesetoolboxapp.ui.ConvertFragment;
 import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.Utilities;
+import com.japanesetoolboxapp.ui.SearchByRadicalFragment;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -106,30 +107,21 @@ public class DatabaseUtilities {
             matchingWordType = current_meaning_characteristics[2];
 
             //Make corrections to the meaning values if the hit is a verb
-            if (matchingWordType.contains("V") && !matchingWordType.equals("VC")) {
-                List<String> parsed_meaning = Arrays.asList(matchingWordMeaning.split(","));
-                String fixed_meaning = "";
+            if (matchingWordType.contains("V") && !matchingWordType.equals("VC") && !matchingWordType.equals("VdaI")) {
+
+                List<String> meaningElements = Arrays.asList(matchingWordMeaning.split(","));
+                StringBuilder meaningFixed = new StringBuilder();
                 boolean valueIsInParentheses = false;
-                for (int k = 0; k < parsed_meaning.size(); k++) {
-                    if (valueIsInParentheses) {
-                        fixed_meaning += parsed_meaning.get(k).trim();
-                    }
-                    else {
-                        fixed_meaning += "to " + parsed_meaning.get(k).trim();
-                    }
+                for (int k = 0; k < meaningElements.size(); k++) {
+                    if (valueIsInParentheses) meaningFixed.append(meaningElements.get(k).trim());
+                    else meaningFixed.append("to ").append(meaningElements.get(k).trim());
 
-                    if (k < parsed_meaning.size() - 1) {
-                        fixed_meaning += ", ";
-                    }
+                    if (k < meaningElements.size() - 1) meaningFixed.append(", ");
 
-                    if (parsed_meaning.get(k).contains("(") && !parsed_meaning.get(k).contains(")")) {
-                        valueIsInParentheses = true;
-                    }
-                    else if (!parsed_meaning.get(k).contains("(") && parsed_meaning.get(k).contains(")")) {
-                        valueIsInParentheses = false;
-                    }
+                    if (meaningElements.get(k).contains("(") && !meaningElements.get(k).contains(")")) valueIsInParentheses = true;
+                    else if (!meaningElements.get(k).contains("(") && meaningElements.get(k).contains(")")) valueIsInParentheses = false;
                 }
-                matchingWordMeaning = fixed_meaning;
+                matchingWordMeaning = meaningFixed.toString();
             }
 
             //Setting the Meaning and Type values in the returned list
@@ -232,41 +224,30 @@ public class DatabaseUtilities {
 
         // Value Initializations
         Verb verb = new Verb();
-        String meanings;
         String type;
         String[] currentMeaningCharacteristics;
 
         verb.setVerbId(Integer.parseInt(verbDatabase.get(verbDbRowIndex)[0]));
         verb.setPreposition(verbDatabase.get(verbDbRowIndex)[7]);
-        verb.setKanji(verbDatabase.get(verbDbRowIndex)[3]);
-        verb.setRomaji(verbDatabase.get(verbDbRowIndex)[2]);
         verb.setKanjiRoot(verbDatabase.get(verbDbRowIndex)[8]);
         verb.setLatinRoot(verbDatabase.get(verbDbRowIndex)[9]);
         verb.setExceptionIndex(verbDatabase.get(verbDbRowIndex)[10]);
-        verb.setAltSpellings(verbDatabase.get(verbDbRowIndex)[5]);
-        verb.setKana(ConvertFragment.getLatinHiraganaKatakana(verb.getRomaji()).get(1));
+        verb.setRomaji(verbDatabase.get(verbDbRowIndex)[2]);
+        verb.setKana(ConvertFragment.getLatinHiraganaKatakana(verb.getRomaji()).get(1).substring(0,1));
 
-        //Getting the meanings
+        //Getting the family
 
         String MM_index = verbDatabase.get(verbDbRowIndex)[4];
         List<String> MM_index_list = Arrays.asList(MM_index.split(";"));
         if (MM_index_list.size() == 0) { return verb; }
 
         int current_MM_index;
-        StringBuilder stringBuilder = new StringBuilder("");
         for (int i=0; i< MM_index_list.size(); i++) {
 
             current_MM_index = Integer.parseInt(MM_index_list.get(i)) - 1;
             currentMeaningCharacteristics = meaningsDatabase.get(current_MM_index);
 
-            //Getting the Meaning value
-            meanings = currentMeaningCharacteristics[1];
-            if (!verb.getFamily().equals("da")) 
-            if (i != 0) stringBuilder.append(", ");
-            meanings = meanings.replace(", ", ", to ");
-            stringBuilder.append(meanings);
-
-            //Getting the Type value
+            //Getting the Family value
             type = currentMeaningCharacteristics[2];
             if (i == 0 && !type.equals("")) {
                 verb.setTrans(String.valueOf(type.charAt(type.length() - 1)));
@@ -274,10 +255,10 @@ public class DatabaseUtilities {
                     Log.i(Utilities.DEBUG_TAG, "Warning! Found verb with incorrect type (Meaning index:" + Integer.toString(current_MM_index) +")");
                 }
                 verb.setFamily(type.substring(1, type.length() - 1));
+                break; //Stopping the loop at the first meaning
             }
-        }
 
-        verb.setMeaning(stringBuilder.toString());
+        }
 
         return verb;
     }
@@ -412,7 +393,7 @@ public class DatabaseUtilities {
         List<Long> MatchingWordIdsFromIndex = new ArrayList<>();
         List<String> keywordsList;
         List<long[]> MatchList = new ArrayList<>();
-        String list;
+        String keywords;
         String hit;
         String hitFirstRelevantWord;
         String concatenated_hit;
@@ -425,37 +406,43 @@ public class DatabaseUtilities {
         boolean is_verb_and_latin;
         int word_length = searchWord.length();
         int match_length;
+        boolean queryIsVerbWithTo = false;
+        String searchWordWithoutTo = "";
         //endregion
 
         // converting the word to lowercase (the algorithm is not efficient if needing to search both lower and upper case)
         searchWord = searchWord.toLowerCase(Locale.ENGLISH);
 
         //region If there is an "inging" verb instance, reduce it to an "ing" instance (e.g. singing >> sing)
-        int verb_length = searchWord.length();
-        String verb = searchWord;
         String verb2;
-        String inglessVerb = verb;
-        if (verb_length > 2 && verb.substring(verb_length-3).equals("ing")) {
+        String inglessVerb = searchWord;
+        if (searchWord.length() > 2 && searchWord.substring(searchWord.length()-3).equals("ing")) {
 
-            if (verb_length > 5 && verb.substring(verb_length-6).equals("inging")) {
-                if (	(verb.substring(0, 2+1).equals("to ") && checkIfWordIsOfTypeIngIng(verb.substring(3,verb_length))) ||
-                        (!verb.substring(0, 2+1).equals("to ") && checkIfWordIsOfTypeIngIng(verb.substring(0,verb_length)))   ) {
+            if (searchWord.length() > 5 && searchWord.substring(searchWord.length()-6).equals("inging")) {
+                if (	(searchWord.substring(0, 2+1).equals("to ") && checkIfWordIsOfTypeIngIng(searchWord.substring(3,searchWord.length()))) ||
+                        (!searchWord.substring(0, 2+1).equals("to ") && checkIfWordIsOfTypeIngIng(searchWord.substring(0,searchWord.length())))   ) {
                     // If the verb ends with "inging" then remove the the second "ing"
-                    inglessVerb = verb.substring(0,verb_length-3);
+                    inglessVerb = searchWord.substring(0,searchWord.length()-3);
                 }
             }
             else {
-                verb2 = verb + "ing";
-                if ((!verb2.substring(0, 2 + 1).equals("to ") || !checkIfWordIsOfTypeIngIng(verb2.substring(3, verb_length + 3))) &&
-                        (verb2.substring(0, 2+1).equals("to ") || !checkIfWordIsOfTypeIngIng(verb2.substring(0, verb_length + 3)))) {
-                    // If the verb does not belong to the list, then remove the ending "ing" so that it can be compared later on to the verbs excel
-                    //If the verb is for e.g. to sing / sing, where verb2 = to singing / singing, then check that verb2 (without the "to ") belongs to the list, and if it does then do nothing
-
-                    inglessVerb = verb.substring(0,verb_length-3);
-                }
+//                verb2 = searchWord + "ing";
+//                if ((!verb2.substring(0, 2+1).equals("to ") || !checkIfWordIsOfTypeIngIng(verb2.substring(3, searchWord.length() + 3))) &&
+//                        (verb2.substring(0, 2+1).equals("to ") || !checkIfWordIsOfTypeIngIng(verb2.substring(0, searchWord.length() + 3)))) {
+//                    // If the verb does not belong to the keywords, then remove the ending "ing" so that it can be compared later on to the verbs excel
+//                    //If the verb is for e.g. to sing / sing, where verb2 = to singing / singing, then check that verb2 (without the "to ") belongs to the keywords, and if it does then do nothing
+//
+//                    inglessVerb = searchWord.substring(0,searchWord.length()-3);
+//                }
             }
         }
-        int inglessVerb_length = inglessVerb.length();
+        //endregion
+
+        //region Registering if the input query is a "to " verb
+        if (searchWord.length()>3 && searchWord.substring(0,3).equals("to ")) {
+            queryIsVerbWithTo = true;
+            searchWordWithoutTo = searchWord.substring(3, searchWord.length());
+        }
         //endregion
 
         //region getting the input type and its converted form (english/romaji/kanji/invalid)
@@ -495,14 +482,14 @@ public class DatabaseUtilities {
         concatenated_translationLatin = removeApostrophe(concatenated_translationLatin);
         //endregion
 
-        //region Search for the matches in the indexed list
+        //region Search for the matches in the indexed keywords
         List<String> searchResultKeywordsArray = new ArrayList<>();
         List<LatinIndex> latinIndices;
         List<KanjiIndex> kanjiIndices;
         if (TypeisLatin || TypeisKana || TypeisNumber) {
 
             //If the input is a verb in "to " form, remove the "to " for the search only (results will be filtered later on)
-            String input_word = concatenated_word;
+            String input_word = Utilities.removeNonSpaceSpecialCharacters(searchWord);
             if (searchWord.length()>3) {
                 if (searchWord.substring(0, 3).equals("to ")) {
                     input_word = concatenated_word.substring(2, concatenated_word.length());
@@ -513,7 +500,7 @@ public class DatabaseUtilities {
 
             if (latinIndices.size()==0) return matchingWordIds;
 
-            // If the entered word is Latin and only has up to WORD_SEARCH_CHAR_COUNT_THRESHOLD characters, limit the word list to be checked later
+            // If the entered word is Latin and only has up to WORD_SEARCH_CHAR_COUNT_THRESHOLD characters, limit the word keywords to be checked later
             if (TypeisLatin && concatenated_word.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
                     || TypeisKana && concatenated_translationLatin.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
                     || TypeisNumber && concatenated_word.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD-1) {
@@ -575,18 +562,20 @@ public class DatabaseUtilities {
         List<Word> matchingWordList = japaneseToolboxRoomDatabase.getWordListByWordIds(MatchingWordIdsFromIndex);
         for (Word word : matchingWordList) {
 
-            list = word.getKeywords();
-            if (list.equals("") || list.equals("-") || list.equals("KEYWORDS")) continue;
+            keywords = word.getKeywords();
             if (onlyRetrieveShortRomajiWords && word.getRomaji().length() > 4) continue;
 
-            found_match = list.contains(searchWord);
+            found_match = keywords.contains(searchWord)
+                    || keywords.contains(concatenated_word)
+                    || keywords.contains(inglessVerb)
+                    || queryIsVerbWithTo && keywords.contains(searchWordWithoutTo);
 
 
 //            //region Loop initializations
-//            list = word.getKeywords();
-//            if (list.equals("") || list.equals("-") || list.equals("KEYWORDS")) continue;
+//            keywords = word.getKeywords();
+//            if (keywords.equals("") || keywords.equals("-") || keywords.equals("KEYWORDS")) continue;
 //            if (onlyRetrieveShortRomajiWords && word.getRomaji().length() > 4) continue;
-//            keywordsList = Arrays.asList(list.split(","));
+//            keywordsList = Arrays.asList(keywords.split(","));
 //            found_match = false;
 //            //endregion
 //
@@ -599,7 +588,7 @@ public class DatabaseUtilities {
 //            }
 //            //endregion
 //
-//            //region If there is a word in the list that matches the input word, get the corresponding row index
+//            //region If there is a word in the keywords that matches the input word, get the corresponding row index
 //            match_length = 1000;
 //            boolean valueIsInParentheses = false;
 //            for (int i = 0; i < keywordsList.size(); i++) {

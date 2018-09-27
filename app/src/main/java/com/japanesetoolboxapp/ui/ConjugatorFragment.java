@@ -30,10 +30,10 @@ import com.japanesetoolboxapp.data.ConjugationTitle;
 import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
 import com.japanesetoolboxapp.data.Verb;
+import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
-import com.squareup.haha.perflib.Main;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -123,6 +123,7 @@ public class ConjugatorFragment extends Fragment implements
     private List<Verb> mCompleteVerbsList;
     private List<String[]> mVerbLatinConjDatabase;
     private List<String[]> mVerbKanjiConjDatabase;
+    private List<Word> mWordsFromDictFragment;
     //endregion
 
 
@@ -132,9 +133,6 @@ public class ConjugatorFragment extends Fragment implements
         getExtras();
         initializeParameters();
     }
-    @Override public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
     @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         //setRetainInstance(true); //causes memory leaks
@@ -143,6 +141,7 @@ public class ConjugatorFragment extends Fragment implements
         mBinding = ButterKnife.bind(this, rootView);
 
         if (!TextUtils.isEmpty(mInputQuery)) SearchForConjugations();
+        else showHint();
 
         return rootView;
     }
@@ -172,20 +171,17 @@ public class ConjugatorFragment extends Fragment implements
             mInputQuery = getArguments().getString(getString(R.string.user_query_word));
             mVerbLatinConjDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.latin_conj_database));
             mVerbKanjiConjDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.kanji_conj_database));
-
-            //mCompleteVerbsList = getArguments().getParcelableArrayList(getString(R.string.complete_verbs_list));
-            mCompleteVerbsList = MainActivity.VerbsDatabase;
+            mWordsFromDictFragment = getArguments().getParcelableArrayList(getString(R.string.words_list));
         }
     }
     private void initializeParameters() {
 
         mMatchingVerbs = new ArrayList<>();
+        mCompleteVerbsList = new ArrayList<>();
     }
     public void SearchForConjugations() {
 
-        mVerbHintTextView.setVisibility(View.GONE);
-        mVerbChooserSpinnerContainer.setVisibility(View.GONE);
-        mConjugationsContainerScrollView.setVisibility(View.GONE);
+        hideAll();
         mConjugationTitles = getConjugationTitles();
         getInputQueryParameters();
         findMatchingVerbsInRoomDb();
@@ -271,7 +267,7 @@ public class ConjugatorFragment extends Fragment implements
 
         hideLoadingIndicator();
         if (mMatchingVerbs.size() != 0) {
-            mVerbHintTextView.setVisibility(View.GONE);
+            showResults();
             mVerbChooserSpinner.setAdapter(new VerbSpinnerAdapter(getContext(), R.layout.custom_verbchooser_spinner, mMatchingVerbs));
             mVerbChooserSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
                 @Override
@@ -283,13 +279,7 @@ public class ConjugatorFragment extends Fragment implements
                 public void onNothingSelected(AdapterView<?> arg0) {
                 }
             });
-            mVerbChooserSpinnerContainer.setVisibility(View.VISIBLE);
-            mConjugationsContainerScrollView.setVisibility(View.VISIBLE);
-        } else {
-            mVerbHintTextView.setVisibility(View.VISIBLE);
-            mVerbChooserSpinnerContainer.setVisibility(View.GONE);
-            mConjugationsContainerScrollView.setVisibility(View.GONE);
-        }
+        } else showHint();
 
     }
     private void showSelectedVerbConjugations(final int verbIndex) {
@@ -470,6 +460,21 @@ public class ConjugatorFragment extends Fragment implements
     private void hideLoadingIndicator() {
         if (mProgressBarLoadingIndicator!=null) mProgressBarLoadingIndicator.setVisibility(View.INVISIBLE);
     }
+    private void hideAll() {
+        mVerbHintTextView.setVisibility(View.GONE);
+        mVerbChooserSpinnerContainer.setVisibility(View.GONE);
+        mConjugationsContainerScrollView.setVisibility(View.GONE);
+    }
+    private void showHint() {
+        mVerbHintTextView.setVisibility(View.VISIBLE);
+        mVerbChooserSpinnerContainer.setVisibility(View.GONE);
+        mConjugationsContainerScrollView.setVisibility(View.GONE);
+    }
+    private void showResults() {
+        mVerbHintTextView.setVisibility(View.GONE);
+        mVerbChooserSpinnerContainer.setVisibility(View.VISIBLE);
+        mConjugationsContainerScrollView.setVisibility(View.VISIBLE);
+    }
 
     private class VerbSpinnerAdapter extends ArrayAdapter<Verb> {
         // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
@@ -601,10 +606,10 @@ public class ConjugatorFragment extends Fragment implements
 
         if (id == ROOM_DB_VERB_SEARCH_LOADER){
             VerbSearchAsyncTaskLoader roomDbVerbSearchLoader = new VerbSearchAsyncTaskLoader(
-                    getContext(), mCompleteVerbsList, inputQuery, mConjugationTitles, mVerbLatinConjDatabase, mVerbKanjiConjDatabase);
+                    getContext(), mCompleteVerbsList, inputQuery, mConjugationTitles, mVerbLatinConjDatabase, mVerbKanjiConjDatabase, mWordsFromDictFragment);
             return roomDbVerbSearchLoader;
         }
-        else return new VerbSearchAsyncTaskLoader(getContext(), null, "", null, null, null);
+        else return new VerbSearchAsyncTaskLoader(getContext(), null, "", null, null, null, null);
     }
     @Override public void onLoadFinished(@NonNull Loader<Object> loader, Object data) {
 
@@ -623,7 +628,8 @@ public class ConjugatorFragment extends Fragment implements
     private static class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
         //region Parameters
-        private final List<Verb> mCompleteVerbsList;
+        private List<Verb> mCompleteVerbsList;
+        private final List<Word> mWordsFromDictFragment;
         private String mInputQuery;
         private List<ConjugationTitle> mConjugationTitles;
         private String mInputQueryTextType;
@@ -652,13 +658,15 @@ public class ConjugatorFragment extends Fragment implements
         VerbSearchAsyncTaskLoader(Context context, List<Verb> completeVerbsList, String inputQuery,
                                   List<ConjugationTitle> conjugationTitles,
                                   List<String[]> mVerbLatinConjDatabase,
-                                  List<String[]> mVerbKanjiConjDatabase) {
+                                  List<String[]> mVerbKanjiConjDatabase,
+                                  List<Word> mWordsFromDictFragment) {
             super(context);
             this.mCompleteVerbsList = completeVerbsList;
             this.mInputQuery = inputQuery;
             this.mConjugationTitles = conjugationTitles;
             this.mVerbLatinConjDatabase = mVerbLatinConjDatabase;
             this.mVerbKanjiConjDatabase = mVerbKanjiConjDatabase;
+            this.mWordsFromDictFragment = mWordsFromDictFragment;
         }
 
         @Override
@@ -670,6 +678,8 @@ public class ConjugatorFragment extends Fragment implements
         public Object loadInBackground() {
 
             mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
+            if (mCompleteVerbsList.size()==0) mCompleteVerbsList = mJapaneseToolboxRoomDatabase.getAllVerbs();
+
             List<Verb> mMatchingVerbs = new ArrayList<>();
             if (!TextUtils.isEmpty(mInputQuery)) {
                 setInputQueryParameters();
@@ -677,7 +687,7 @@ public class ConjugatorFragment extends Fragment implements
 
                 mMatchingVerbIdsAndCols = getMatchingVerbIdsAndCols();
                 mMatchingVerbIdsAndCols = sortMatchingVerbsList(mMatchingVerbIdsAndCols);
-                mMatchingVerbs = getVerbsUsingRoom(mMatchingVerbIdsAndCols);
+                mMatchingVerbs = getVerbs(mMatchingVerbIdsAndCols);
             }
 
             return mMatchingVerbs;
@@ -736,7 +746,6 @@ public class ConjugatorFragment extends Fragment implements
             if (mInputQueryIsInvalid || mCompleteVerbsList==null) return new ArrayList<>();
 
             //region Initializations
-            List<long[]> matchingVerbIdsAndCols = new ArrayList<>();
             int NumberOfSheetCols = mVerbLatinConjDatabase.get(0).length;
             List<Integer> dilutedConjugationColIndexes = new ArrayList<>();
             boolean queryIsContainedInNormalFamilyConjugation = false;
@@ -748,14 +757,10 @@ public class ConjugatorFragment extends Fragment implements
             String[] currentFamilyConjugations;
             String[] currentConjugations;
             String family;
-            String meaning;
             String romaji;
-            String romajiNoSpaces;
-            String hiragana;
-            String kanji;
+            String hiraganaFirstChar;
             String latinRoot;
             String kanjiRoot;
-            String altSpellings;
             String conjugationValue;
             boolean foundMatch;
             boolean allowExpandedConjugationsComparison;
@@ -783,6 +788,15 @@ public class ConjugatorFragment extends Fragment implements
                         mInputQuery = mInputQuery.substring(0, mInputQueryLength -3);
                     }
                 }
+            }
+            //endregion
+
+            //region Registering if the input query is a "to " verb
+            boolean queryIsVerbWithTo = false;
+            String queryWordWithoutTo = "";
+            if (mInputQuery.length()>3 && mInputQuery.substring(0,3).equals("to ")) {
+                queryIsVerbWithTo = true;
+                queryWordWithoutTo = mInputQuery.substring(3, mInputQuery.length());
             }
             //endregion
 
@@ -912,8 +926,42 @@ public class ConjugatorFragment extends Fragment implements
             }
             //endregion
 
+            //region Getting the matching words from the Words database and filtering for verbs
+            List<Word> mMatchingWords;
+            if (mWordsFromDictFragment == null) {
+                List<Long> mMatchingWordIds = DatabaseUtilities.getMatchingWordIdsUsingRoomIndexes(mInputQuery, mJapaneseToolboxRoomDatabase);
+                mMatchingWords = mJapaneseToolboxRoomDatabase.getWordListByWordIds(mMatchingWordIds);
+            }
+            else {
+                mMatchingWords = mWordsFromDictFragment;
+            }
+            String type;
+            List<long[]> matchingVerbIdsAndColsFromBasicCharacteristics = new ArrayList<>();
+            for (Word word : mMatchingWords) {
+                type = word.getMeanings().get(0).getType();
+                if (type.substring(0,1).equals("V") && !type.equals("VC")) {
+                    matchingVerbIdsAndColsFromBasicCharacteristics.add(new long[]{word.getWordId(), 0});
+                }
+            }
+            //endregion
 
+            //region Getting the matching verbs according in the expanded conjugations
+            List<long[]> matchingVerbIdsAndColsFromExpandedConjugations = new ArrayList<>();
+            List<long[]> copyOfMatchingVerbIdsAndColsFromBasicCharacteristics = new ArrayList<>(matchingVerbIdsAndColsFromBasicCharacteristics);
+            boolean verbAlreadyFound;
             for (Verb verb : mCompleteVerbsList) {
+
+                //region Skipping verbs that were already found
+                verbAlreadyFound = false;
+                for (long[] idAndCol : copyOfMatchingVerbIdsAndColsFromBasicCharacteristics) {
+                    if (idAndCol[0] == verb.getVerbId()) {
+                        copyOfMatchingVerbIdsAndColsFromBasicCharacteristics.remove(idAndCol);
+                        verbAlreadyFound = true;
+                        break;
+                    }
+                }
+                if (verbAlreadyFound) continue;
+                //endregion
 
                 //region Loop starting parameters initialization
                 foundMatch = false;
@@ -922,28 +970,23 @@ public class ConjugatorFragment extends Fragment implements
 
                 //region Getting the verb characteristics
                 family = verb.getFamily();
-                meaning = verb.getMeaning();
                 romaji = verb.getRomaji();
-                romajiNoSpaces = romaji.replace(" ", "");
-                hiragana = verb.getKana();
-                kanji = verb.getKanji();
+                hiraganaFirstChar = verb.getKana();
                 latinRoot = verb.getLatinRoot();
                 kanjiRoot = verb.getKanjiRoot();
-                altSpellings = verb.getAltSpellings();
-
                 exceptionIndex = (verb.getExceptionIndex().equals(""))? 0 : Integer.valueOf(verb.getExceptionIndex());
                 //endregion
 
                 //region Only allowing searches on verbs that satisfy the following conditions (including identical 1st char, kuru/suru/da, query length)
                 if (    !(     (mInputQueryIsLatin && (romaji.charAt(0) == mInputQueryContatenated.charAt(0)))
-                            || (mInputQueryIsKana  && (hiragana.charAt(0) == mInputQueryTransliteratedKanaForm.charAt(0)))
-                            || (mInputQueryIsKanji && kanji.contains(mInputQueryContatenated.substring(0,1)))
+                            || (mInputQueryIsKana  && (hiraganaFirstChar.charAt(0) == mInputQueryTransliteratedKanaForm.charAt(0)))
+                            || (mInputQueryIsKanji && kanjiRoot.contains(mInputQueryContatenated.substring(0,1)))
                             || romaji.contains("kuru")
                             || romaji.equals("suru")
                             || romaji.equals("da") )
                         || (mInputQueryIsLatin && mInputQueryContatenated.length() < 4 && !romaji.contains(mInputQueryContatenated))
-                        || (mInputQueryIsKana && mInputQueryContatenated.length() < 3 && !hiragana.contains(mInputQueryContatenated))
-                        || (mInputQueryIsKanji && mInputQueryContatenated.length() < 3 && !kanji.contains(mInputQueryContatenated))
+                        || (mInputQueryIsKana && mInputQueryContatenated.length() < 3 && !romaji.contains(mInputQueryTransliteratedLatinFormContatenated))
+                        || (mInputQueryIsKanji && mInputQueryContatenated.length() < 3 && !mInputQueryContatenated.contains(kanjiRoot))
                         || (onlyRetrieveShortRomajiVerbs && romaji.length() > 4)     ) {
                     continue;
                 }
@@ -953,7 +996,7 @@ public class ConjugatorFragment extends Fragment implements
                 if (        queryIsContainedInNormalFamilyConjugation
                             && latinRoot.length() > 1
                         ||  queryIsContainedInASuruConjugation
-                            && !(kanji.equals("為る"))
+                            && !(kanjiRoot.equals("為"))
                         ||  queryIsContainedInAKuruConjugation
                             && !romaji.contains("kuru")
                         ||  queryIsContainedInADesuConjugation
@@ -970,46 +1013,8 @@ public class ConjugatorFragment extends Fragment implements
                 }
                 //endregion
 
-                //region Preventing expanded conjugation searches following the following conditions (including verb too short)
-                if (       (mInputQueryIsLatin && romaji.length() < 3)
-                        || (mInputQueryIsKana  && hiragana.length() < 2)
-                        || (mInputQueryIsKanji && kanji.length() == 1)
-                        ) {
-                    allowExpandedConjugationsComparison = false;
-                }
-                //endregion
-
-                //region Checking if the basic verb characteristics are a hit
-                if (altSpellings.contains(mInputQueryContatenated)) {
-                    foundMatch = true;
-                    matchColumn = GlobalConstants.VerbModule_colIndex_altSpellings;
-                }
-                if (mInputQueryIsLatin) {
-                    if (mInputQueryContatenatedLength > 3 && meaning.contains(mInputQueryContatenated) ) {
-                        foundMatch = true;
-                        matchColumn = GlobalConstants.VerbModule_colIndex_english;
-                    }
-                    if (romajiNoSpaces.contains(mInputQueryContatenated)) {
-                        foundMatch = true;
-                        matchColumn = GlobalConstants.VerbModule_colIndex_ustem;
-                    }
-                }
-                else if (mInputQueryIsKana && !mInputQueryTransliterationIsInvalid) {
-                    if (romajiNoSpaces.contains(mInputQueryTransliteratedLatinFormContatenated)) {
-                        foundMatch = true;
-                        matchColumn = GlobalConstants.VerbModule_colIndex_ustem;
-                    }
-                }
-                else if (mInputQueryIsKanji) {
-                    if (kanji.contains(mInputQueryContatenated)) {
-                        foundMatch = true;
-                        matchColumn = GlobalConstants.VerbModule_colIndex_kanji;
-                    }
-                }
-                //endregion
-
                 //region Main Comparator Algorithm
-                if (!foundMatch && allowExpandedConjugationsComparison) {
+                if (allowExpandedConjugationsComparison) {
 
                     //region Latin conjugations comparison
                     if (mInputQueryIsLatin) {
@@ -1116,70 +1121,66 @@ public class ConjugatorFragment extends Fragment implements
                 //endregion
 
                 if (foundMatch) {
-                    matchingVerbIdsAndCols.add(new long[]{verb.getVerbId(), matchColumn});
+                    matchingVerbIdsAndColsFromExpandedConjugations.add(new long[]{verb.getVerbId(), matchColumn});
                 }
             }
+            //endregion
+
+            List<long[]> matchingVerbIdsAndCols = new ArrayList<>();
+            matchingVerbIdsAndCols.addAll(matchingVerbIdsAndColsFromBasicCharacteristics);
+            matchingVerbIdsAndCols.addAll(matchingVerbIdsAndColsFromExpandedConjugations);
 
             return matchingVerbIdsAndCols;
         }
         private List<long[]> sortMatchingVerbsList(List<long[]> ConjugationSearchMatchingVerbRowColIndexList) {
 
-            //Sorting the results according to the length of the Kana and Kanji values
+            List<long[]> matchingVerbIndexesLengthsAndCols = new ArrayList<>();
 
-            ;// 3a. Computing the value length
-            long current_row_index;
-            long current_col_index;
-            int current_romaji_length;
-            int current_kanji_length;
-            int list_size = ConjugationSearchMatchingVerbRowColIndexList.size();
-            long[][] total_length = new long[list_size][3];
-            for (int i=0;i<list_size;i++) {
-                if (ConjugationSearchMatchingVerbRowColIndexList.get(i)==null) continue;
-                current_row_index = ConjugationSearchMatchingVerbRowColIndexList.get(i)[0];
-                current_col_index = ConjugationSearchMatchingVerbRowColIndexList.get(i)[1];
-                Verb verb = mJapaneseToolboxRoomDatabase.getVerbByVerbId(current_row_index);
-                current_romaji_length = verb.getRomaji().length();
-                current_kanji_length = verb.getKanji().length();
-                total_length[i][0] = current_row_index;
-                total_length[i][1] = current_col_index;
-                total_length[i][2] = current_romaji_length+current_kanji_length;
+            //region Registering if the input query is a "to " verb
+            boolean queryIsVerbWithTo = false;
+            String queryWordWithoutTo = "";
+            if (mInputQuery.length()>3 && mInputQuery.substring(0,3).equals("to ")) {
+                queryIsVerbWithTo = true;
+                queryWordWithoutTo = mInputQuery.substring(3, mInputQuery.length());
+            }
+            //endregion
+
+            for (int i = 0; i < ConjugationSearchMatchingVerbRowColIndexList.size(); i++) {
+
+                Word currentWord = mJapaneseToolboxRoomDatabase.getWordByWordId(ConjugationSearchMatchingVerbRowColIndexList.get(i)[0]);
+
+                int length = Utilities.getLengthFromWordAttributes(currentWord, mInputQuery, queryWordWithoutTo, queryIsVerbWithTo);
+
+                long[] currentMatchingWordIndexLengthAndCol = new long[3];
+                currentMatchingWordIndexLengthAndCol[0] = i;
+                currentMatchingWordIndexLengthAndCol[1] = length;
+                currentMatchingWordIndexLengthAndCol[2] = ConjugationSearchMatchingVerbRowColIndexList.get(i)[1];
+
+                matchingVerbIndexesLengthsAndCols.add(currentMatchingWordIndexLengthAndCol);
             }
 
-            // 3b. Sorting
-            long tempVar0;
-            long tempVar1;
-            long tempVar2;
-            for (int i=0;i<list_size;i++) { //Bubble sort
-                for (int t=1;t<list_size-i;t++) {
-                    if (total_length[t-1][2] > total_length[t][2]) {
-                        tempVar0 = total_length[t-1][0];
-                        tempVar1 = total_length[t-1][1];
-                        tempVar2 = total_length[t-1][2];
-                        total_length[t-1][0] = total_length[t][0];
-                        total_length[t-1][1] = total_length[t][1];
-                        total_length[t-1][2] = total_length[t][2];
-                        total_length[t][0] = tempVar0;
-                        total_length[t][1] = tempVar1;
-                        total_length[t][2] = tempVar2;
-                    }
-                }
+            //Sort the results according to total length
+            if (matchingVerbIndexesLengthsAndCols.size() != 0) {
+                matchingVerbIndexesLengthsAndCols = Utilities.bubbleSortForThreeIntegerList(matchingVerbIndexesLengthsAndCols);
             }
 
-            // 3c. Creating an Arraylist with the sorted values
-            List<long[]> ConjugationSearchMatchingVerbIdsAndColsList_Sorted = new ArrayList<>();
-
-            for (int i=0;i<list_size;i++) {
-                ConjugationSearchMatchingVerbIdsAndColsList_Sorted.add(new long[]{total_length[i][0], total_length[i][1]});
+            //Return the sorted list
+            List<long[]> sortedList = new ArrayList<>();
+            for (int i = 0; i < matchingVerbIndexesLengthsAndCols.size(); i++) {
+                long sortedIndex = matchingVerbIndexesLengthsAndCols.get(i)[0];
+                sortedList.add(ConjugationSearchMatchingVerbRowColIndexList.get((int) sortedIndex));
             }
 
-            return ConjugationSearchMatchingVerbIdsAndColsList_Sorted;
+            return sortedList;
+
         }
-        private List<Verb> getVerbsUsingRoom(List<long[]> mMatchingVerbIdsAndCols) {
+        private List<Verb> getVerbs(List<long[]> mMatchingVerbIdsAndCols) {
 
             if (mMatchingVerbIdsAndCols.size() == 0) return new ArrayList<>();
 
             //region Initializations
             List<Verb> verbs = new ArrayList<>();
+            Word currentWord;
             Verb currentVerb;
             long matchingVerbId;
             int conjLength;
@@ -1211,16 +1212,28 @@ public class ConjugatorFragment extends Fragment implements
             for (int p = 0; p < mMatchingVerbIdsAndCols.size(); p++) {
                 matchingVerbId = mMatchingVerbIdsAndCols.get(p)[0];
                 currentVerb = mJapaneseToolboxRoomDatabase.getVerbByVerbId(matchingVerbId);
+                currentWord = mJapaneseToolboxRoomDatabase.getWordByWordId(matchingVerbId);
                 currentFamilyConjugationsIndex = mFamilyConjugationIndexes.get(currentVerb.getFamily());
                 currentConjugationsRowLatin = Arrays.copyOf(mVerbLatinConjDatabase.get(currentFamilyConjugationsIndex), NumberOfSheetCols);
                 currentConjugationsRowKanji = Arrays.copyOf(mVerbKanjiConjDatabase.get(currentFamilyConjugationsIndex), NumberOfSheetCols);
 
                 //region Setting the verb's basic characteristics for display
+                currentVerb.setKanji(currentWord.getKanji());
+                currentVerb.setAltSpellings(currentWord.getAltSpellings());
+
+                StringBuilder stringBuilder = new StringBuilder("");
+                for (int i=0; i< currentWord.getMeanings().size(); i++) {
+                    if (i != 0) stringBuilder.append(", ");
+                    stringBuilder.append(currentWord.getMeanings().get(i).getMeaning());
+                }
+                currentVerb.setMeaning(stringBuilder.toString());
+
                 switch (currentVerb.getTrans()) {
                     case "T": currentVerb.setTrans("trans."); break;
                     case "I": currentVerb.setTrans("intrans."); break;
                     case "T/I": currentVerb.setTrans("trans./intrans."); break;
                 }
+
                 switch (currentVerb.getFamily()) {
                     case "su": currentVerb.setFamily("su godan"); break;
                     case "ku": currentVerb.setFamily("ku godan"); break;
@@ -1357,9 +1370,4 @@ public class ConjugatorFragment extends Fragment implements
         }
     }
 
-
-    //Communication with parent activity
-    public void setVerbsList(List<Verb> verbsList) {
-        mCompleteVerbsList = verbsList;
-    }
 }

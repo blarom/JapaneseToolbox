@@ -3171,7 +3171,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3171|crane|NFa||||||
 3172|critter, insect, bug, cricket, moth, worm|NFa||||||
 3173|crow|NFa||||||
-3174|dog|NFa|||1306|||
+3174|dog (Canis (lupus) familiaris)|NFa|||1306|||
 3175|elephant|NFa|||1296|||
 3176|fox|NFa||||||
 3177|giraffe, japanese mythological chimera|NFa|||1364|||
@@ -4400,7 +4400,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4400|considerable, great, important, significant, a big deal|P||||||
 4401|main, principal, major|P||||||
 4402|mere, simple, sheer|P||||||
-4403|somehow, how|P||||||
+4403|somehow, how, in what way, why, what kind of|P||||||
 4404|what is called, as it is called, the so-called, so to speak, also known as, aka|P||||||
 4405|(I) will try to X|Px||yatte X @ X = verb (all tenses)|1391|||
 4406|again|Px||||||
@@ -5819,7 +5819,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5819|change lower-body clothing (shoes, slippers, pants, skirt…)|VruiT||||||
 5820|enchant, to enrapture, to enthrall, to enthral, to charm|VruiT||||||
 5821|there is|VdaI||||||
-5822|come|VkuruI||||||
+5822|come (spatially or temporally), approach, arrive|VkuruI||||||
 5823|bring something|VkuruT||||||
 5824|bring someone along|VkuruT||||||
 5825|do, wear (specifically shoes, accessories), request, make|VsuruT||||||
@@ -5831,7 +5831,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5831|type|VsuruT||||||
 5832|fax|VsuruT||||||
 5833|introduce|VsuruT||||||
-5834|stay|VsuruI||||||
+5834|stay, sojourn|VsuruI||||||
 5835|order (something)|VsuruT||||||
 5836|reserve, book, order in advance|VsuruT||||||
 5837|ask (request)|VsuruT||||||
@@ -5854,7 +5854,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5854|try something on|VsuruT||||||
 5855|study|VsuruT||||||
 5856|exchange|VsuruT||||||
-5857|to eat|VsuruT||||||
+5857|eat|VsuruT||||||
 5858|shop|VsuruI||||||
 5859|jog|VsuruI||||||
 5860|slam shut, splash|VsuruT||||||
@@ -9137,3 +9137,71 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9137|transport, ship|VsuruT||||||
 9138|attend (school, college, etc.), be enrolled, be a student|VsuruI||||||
 9139|chat, talk idly|VsuruI||||||
+9140|eleventh sign of the Chinese zodiac (The Dog, 7pm-9pm, west-northwest, September)|NACF||||||
+9141|Inu|NPl||||||
+9142|snoop (i.e. a detective, a spy, etc.)|NACF||||||
+9143|loser, asshole|NACF||||||
+9144|counterfeit, inferior, useless, wasteful|Px||||||
+9145|be (of animate objects), exist|VruiI||||||
+9146|be ...-ing, have been ...-ing|VruiI||||||
+9147|be needed, be wanted|VrugI||||||
+9148|clothes, clothing, garments|NACF||||||
+9149|illumination, decorative lighting|NACF||||||
+9150|come back, do ... and come back|VkuruI||||||
+9151|come to be, become, get, grow, continue|VkuruI||||||
+9152|come from, be caused by, derive from|VkuruI||||||
+9153|come to (i.e. ",when it comes to spinach ...",)|VkuruI||||||
+9154|wheel|NACF||||||
+9155|wheelchair, folding push-chair|NACF||||||
+9156|walnut (Juglans spp., esp. Juglans regia)|NACF||||||
+9157|painful, difficult, tough, hard|Ai||||||
+9158|distressing, (psychologically) difficult, stressful, awkward (e.g. position)|Ai||||||
+9159|straitened (circumstances), tight (financial situation), needy, struggling|Ai||||||
+9160|strained (interpretation, explanation, etc.), lame (e.g. excuse), forced (e.g. smile), far-fetched|Ai||||||
+9161|hard to do, unpleasant|Aj||||||
+9162|torment, pain, inflict (physical) pain, hurt|VruiT||||||
+9163|harass, cause (emotional) pain, afflict, distress, bother, trouble, stump, baffle|VruiT||||||
+9164|pain, anguish, distress, suffering, hardship|NACF||||||
+9165|crew|NACF||||||
+9166|Crewe (Britain), Crew, Croux, Klugh|NPl||||||
+9167|get out of order, go amiss|VuI||||||
+9168|below, down, under, younger (e.g. daughter)|NACF||||||
+9169|beneath, underneath|NACF||||||
+9170|just after, right after|NACF||||||
+9171|inferiority, one's inferior (i.e. one's junior)|NACF||||||
+9172|trade-in|NACF||||||
+9173|preliminary, preparatory|Px||||||
+9174|burning low, waning, declining|NACF||||||
+9175|draft, rough copy|NACF||||||
+9176|therefore, consequently, accordingly|PP||||||
+9177|obey (an order, law, etc.), abide by (a rule, custom, etc.), follow, observe, conform to, yield to|VuI||||||
+9178|follow (a person), accompany, go with|VuI||||||
+9179|go alongside (e.g. a river), follow (e.g. a sign)|VuI||||||
+9180|serve (as), engage in (work)|VuI||||||
+9181|dead body, corpse, cadaver|NACF||||||
+9182|low-lying part of a city (usu. containing shops, factories, etc.)|NACF||||||
+9183|Shitamachi (low-lying area of eastern Tokyo near Tokyo Bay, incl. Asakusa, Shitaya, Kanda, Fukugawa, Honjo, Nihonbashi, Kyobashi and surrounds)|NACF||||||
+9184|Shitamachi|NPl||||||
+9185|preliminary inspection, having a look in advance|NACF||||||
+9186|preparatory read-through (e.g. of lesson notes)|NACF||||||
+9187|siding (on a house), clapboard, weatherboard|NACF||||||
+9188|Shitami|NPl||||||
+9189|close (e.g. friend), familiar, friendly, intimate|Ai||||||
+9190|familiar (e.g. story), well-known (to one)|Ai||||||
+9191|close (relatives), closely related|Ai||||||
+9192|intimacy, affection, familiarity|NACF||||||
+9193|preliminary investigation, preparation|NACF||||||
+9194|tailor, make (clothing)|VruiT||||||
+9195|train, bring up|VruiT||||||
+9196|make it seem like, pass off|VruiT||||||
+9197|turn into a play or movie|VruiT||||||
+9198|prepare, send, despatch|VruiT||||||
+9199|yearn for, long for, pine for, miss, love dearly, adore|VuT||||||
+9200|follow (someone)|VuT||||||
+9201|idolize (for virtue, learning, status, etc.)|VuT||||||
+9202|during a stay|NACF||||||
+9203|conceal, hide, be engulfed in, be enveloped by|VmuI||||||
+9204|make a draft, make a rough copy|VsuruI||||||
+9205|inspect, perform a preliminary inspection, have a look in advance|VsuruI||||||
+9206|perform a preparatory read-through (e.g. of lesson notes)|VsuruI||||||
+9207|perform a preliminary investigation, prepare|VsuruI||||||

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:sample="http://schemas.android.com/apk/res-auto">
+    >
 
     <CheckBoxPreference
         android:defaultValue="@bool/pref_complete_local_with_online_search_default"

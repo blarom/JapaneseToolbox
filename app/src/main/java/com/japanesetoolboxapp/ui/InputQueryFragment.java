@@ -1,18 +1,5 @@
 package com.japanesetoolboxapp.ui;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.channels.FileChannel;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -36,7 +23,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.StatFs;
 import android.speech.RecognizerIntent;
@@ -60,6 +46,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -67,15 +54,26 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Toast;
 
-import com.google.firebase.database.DatabaseReference;
 import com.googlecode.tesseract.android.TessBaseAPI;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.Utilities;
 import com.theartofdev.edmodo.cropper.CropImage;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -279,9 +277,6 @@ public class InputQueryFragment extends Fragment implements
     }
     private void initializeParameters() {
 
-        if (getContext()!=null) {
-            mInternetIsAvailable = Utilities.internetIsAvailableCheck(getContext());
-        }
         mQueryHistory = new ArrayList<>();
         mInputQuery = "";
         mOcrResultString = "";
@@ -337,7 +332,7 @@ public class InputQueryFragment extends Fragment implements
 
                     registerThatUserIsRequestingDictSearch(true);
 
-                    inputQueryOperationsHandler.onDictRequested(Utilities.removeSpecialCharacters(mInputQuery));
+                    inputQueryOperationsHandler.onDictRequested(mInputQuery);
                 }
                 return true;
             } } );
@@ -385,18 +380,17 @@ public class InputQueryFragment extends Fragment implements
 
         registerThatUserIsRequestingDictSearch(true); //TODO: remove this?
 
-        inputQueryOperationsHandler.onDictRequested(Utilities.removeSpecialCharacters(inputWordString));
+        inputQueryOperationsHandler.onDictRequested(inputWordString);
     }
     @OnClick(R.id.button_conj) public void onSearchVerbButtonClick() {
 
-        //EditText inputVerbObject = (EditText)fragmentView.findViewById(R.id.input_verb);
         String inputVerbString = mInputQueryAutoCompleteTextView.getText().toString();
         mInputQuery = inputVerbString;
         updateQueryHistory();
 
         registerThatUserIsRequestingDictSearch(false); //TODO: remove this?
 
-        inputQueryOperationsHandler.onConjRequested(Utilities.removeSpecialCharacters(inputVerbString));
+        inputQueryOperationsHandler.onConjRequested(inputVerbString);
 
     }
     @OnClick(R.id.button_convert) public void onConvertButtonClick() {
@@ -1026,8 +1020,7 @@ public class InputQueryFragment extends Fragment implements
 
         GetRomajiFromKanjiUsingJishoAsyncTaskLoader(Context context,
                                                     String queryText,
-                                                    boolean requestedSpeechToText,
-                                                    boolean internetIsAvailable) {
+                                                    boolean requestedSpeechToText) {
             super(context);
             this.queryText = queryText;
             this.requestedSpeechToText = requestedSpeechToText;
@@ -1041,6 +1034,8 @@ public class InputQueryFragment extends Fragment implements
 
         @Override
         public String loadInBackground() {
+
+            internetIsAvailable = Utilities.internetIsAvailableCheck(getContext());
 
             //This method retrieves the first romaji transliteration of the kanji searched word.
 
@@ -1137,7 +1132,7 @@ public class InputQueryFragment extends Fragment implements
                 public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                     String inputWordString = mInputQueryAutoCompleteTextView.getText().toString();
 
-                    inputQueryOperationsHandler.onDictRequested(Utilities.removeSpecialCharacters(inputWordString));
+                    inputQueryOperationsHandler.onDictRequested(inputWordString);
                 }
 
                 @Override
@@ -1160,7 +1155,7 @@ public class InputQueryFragment extends Fragment implements
     @NonNull @Override public Loader<String> onCreateLoader(int id, final Bundle args) {
 
         if (id== GET_ROMAJI_FROM_KANJI_USING_JISHO_LOADER) {
-            GetRomajiFromKanjiUsingJishoAsyncTaskLoader webResultsAsyncTaskLoader = new GetRomajiFromKanjiUsingJishoAsyncTaskLoader(getContext(), mInputQuery, mRequestedSpeechToText, mInternetIsAvailable);
+            GetRomajiFromKanjiUsingJishoAsyncTaskLoader webResultsAsyncTaskLoader = new GetRomajiFromKanjiUsingJishoAsyncTaskLoader(getContext(), mInputQuery, mRequestedSpeechToText);
             webResultsAsyncTaskLoader.setLoaderState(true);
             return webResultsAsyncTaskLoader;
         }
@@ -1187,7 +1182,7 @@ public class InputQueryFragment extends Fragment implements
             return tesseractOCRAsyncTaskLoader;
         }
         else {
-            return new GetRomajiFromKanjiUsingJishoAsyncTaskLoader(getContext(), "", false, false);
+            return new GetRomajiFromKanjiUsingJishoAsyncTaskLoader(getContext(), "", false);
         }
     }
     @Override public void onLoadFinished(@NonNull Loader<String> loader, String data) {

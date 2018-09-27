@@ -1,16 +1,11 @@
 package com.japanesetoolboxapp.ui;
 
-import com.japanesetoolboxapp.R;
-import com.japanesetoolboxapp.data.DatabaseUtilities;
-import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
-import com.japanesetoolboxapp.data.Verb;
-import com.japanesetoolboxapp.resources.*;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
@@ -25,15 +20,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnTouchListener;
+import android.view.Window;
 import android.widget.FrameLayout;
+import android.widget.Toast;
+
+import com.japanesetoolboxapp.R;
+import com.japanesetoolboxapp.data.DatabaseUtilities;
+import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
+import com.japanesetoolboxapp.data.Verb;
+import com.japanesetoolboxapp.data.Word;
+import com.japanesetoolboxapp.resources.GlobalConstants;
+import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import android.os.Bundle;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,12 +42,11 @@ import butterknife.Unbinder;
 
 //TODO: database upgrade
 ////TODO: allow user to enter verb in gerund form (ing) and still find it
+////TODO: Convert the expandable listview to a recyclerview or modify it to be easier to debug
 
 //TODO: features
-////TODO correctly implement saveinstancestate for results
 ////TODO when joining online results, compare verb[space]suru with verb[no space]suru, and show verb[space]suru to user
 ////TODO make ranking in in dict put special concat hits at end of list or invalidate them
-////TODO add root as keyword for suru verbs
 ////TODO implement short description for long definitions
 ////TODO indicate if word is common in search results
 ////TODO indicate source as local/jisho in search results
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements
     List<String[]> VerbLatinConjDatabase;
     List<String[]> VerbKanjiConjDatabase;
     List<String[]> KanjiDictDatabase;
-    static List<Verb> VerbsDatabase;
+    List<Verb> VerbsDatabase;
     List<String[]> SimilarsDatabase;
     List<List<String[]>> arrayOfComponentsDatabases;
     List<String[]> RadicalsOnlyDatabase;
@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements
     private String mSecondFragmentCurrentlyDisplayed;
     private boolean mAlreadyLoadedDatabases;
     private boolean mAllowButtonOperations;
+    private List<Word> mLocalMatchingWords;
     //endregion
 
 
@@ -395,21 +396,20 @@ public class MainActivity extends AppCompatActivity implements
 
             Object[] databases = (Object[]) data;
 
-            VerbsDatabase = (List<Verb>) databases[0];
-            LegendDatabase = (List<String[]>) databases[1];
-            SimilarsDatabase = (List<String[]>) databases[2];
-            VerbLatinConjDatabase = (List<String[]>) databases[3];
-            VerbKanjiConjDatabase = (List<String[]>) databases[4];
-            enoughMemoryForHeavyFunctions = (boolean) databases[5];
-            RadicalsDatabase = (List<String[]>) databases[6];
-            CJKDatabase = (List<String[]>) databases[7];
-            KanjiDictDatabase = (List<String[]>) databases[8];
-            RadicalsOnlyDatabase = (List<String[]>) databases[9];
-            arrayOfComponentsDatabases = (List<List<String[]>>) databases[10];
-            heapSizeBeforeDecompositionLoader = (long) databases[11];
-            heapSizeBeforeSearchbyradicalLoader = (long) databases[12];
+            LegendDatabase = new ArrayList((List<String[]>) databases[0]);
+            SimilarsDatabase = new ArrayList((List<String[]>) databases[1]);
+            VerbLatinConjDatabase = new ArrayList((List<String[]>) databases[2]);
+            VerbKanjiConjDatabase = new ArrayList((List<String[]>) databases[3]);
+            enoughMemoryForHeavyFunctions = (boolean) databases[4];
+            RadicalsDatabase = new ArrayList((List<String[]>) databases[5]);
+            CJKDatabase = new ArrayList((List<String[]>) databases[6]);
+            KanjiDictDatabase = new ArrayList((List<String[]>) databases[7]);
+            RadicalsOnlyDatabase = new ArrayList((List<String[]>) databases[8]);
+            arrayOfComponentsDatabases = new ArrayList((List<List<String[]>>) databases[9]);
+            heapSizeBeforeDecompositionLoader = (long) databases[10];
+            heapSizeBeforeSearchbyradicalLoader = (long) databases[11];
 
-            if (mConjugatorFragment!=null) mConjugatorFragment.setVerbsList(VerbsDatabase);
+            //if (mConjugatorFragment!=null) mConjugatorFragment.setVerbsList(VerbsDatabase);
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(DATABASE_LOADER);
         }
@@ -435,6 +435,7 @@ public class MainActivity extends AppCompatActivity implements
         public Object loadInBackground() {
 
             //region Initializations
+            mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext()); //Required for Room
             List<String[]> LegendDatabase = null;
             List<String[]> SimilarsDatabase = null;
             List<String[]> VerbLatinConjDatabase = null;
@@ -448,11 +449,6 @@ public class MainActivity extends AppCompatActivity implements
             List<List<String[]>> arrayOfComponentsDatabases = null;
             long heapSize ;
             boolean enoughMemoryForHeavyFunctions = true;
-            //endregion
-
-            //region Loading the verbs list
-            mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
-            List<Verb> verbs = mJapaneseToolboxRoomDatabase.getAllVerbs();
             //endregion
 
             //region Loading the small databases
@@ -471,7 +467,6 @@ public class MainActivity extends AppCompatActivity implements
 
                 enoughMemoryForHeavyFunctions = false;
                 return new Object[] {
-                        verbs,
                         LegendDatabase,
                         SimilarsDatabase,
                         VerbLatinConjDatabase,
@@ -503,7 +498,6 @@ public class MainActivity extends AppCompatActivity implements
 
                 enoughMemoryForHeavyFunctions = false;
                 return new Object[] {
-                        verbs,
                         LegendDatabase,
                         SimilarsDatabase,
                         VerbLatinConjDatabase,
@@ -537,7 +531,6 @@ public class MainActivity extends AppCompatActivity implements
             Log.i("Diagnosis Time","Loaded All Databases.");
             enoughMemoryForHeavyFunctions = true;
             return new Object[] {
-                    verbs,
                     LegendDatabase,
                     SimilarsDatabase,
                     VerbLatinConjDatabase,
@@ -563,10 +556,11 @@ public class MainActivity extends AppCompatActivity implements
     @Override public void onDictRequested(String query) {
 
         if (!mAllowButtonOperations) return;
-        if (VerbsDatabase==null) {
+        if (LegendDatabase==null) {
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
             return;
         }
+        mLocalMatchingWords = null;
         mConjugatorFragment = null;
         clearBackstack();
 
@@ -593,9 +587,10 @@ public class MainActivity extends AppCompatActivity implements
     @Override public void onConjRequested(String query) {
 
         if (!mAllowButtonOperations) return;
+        mLocalMatchingWords = null;
         mDictionaryFragment = null;
         clearBackstack();
-        if (VerbsDatabase==null) {
+        if (LegendDatabase==null) {
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -610,7 +605,7 @@ public class MainActivity extends AppCompatActivity implements
         bundle.putString(getString(R.string.user_query_word), query);
         bundle.putSerializable(getString(R.string.latin_conj_database), new ArrayList<>(VerbLatinConjDatabase));
         bundle.putSerializable(getString(R.string.kanji_conj_database), new ArrayList<>(VerbKanjiConjDatabase));
-        //bundle.putParcelableArrayList(getString(R.string.complete_verbs_list), new ArrayList<Parcelable>(VerbsDatabase));
+        if (mLocalMatchingWords!=null) bundle.putParcelableArrayList(getString(R.string.words_list), new ArrayList<>(mLocalMatchingWords));
         mConjugatorFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -647,7 +642,7 @@ public class MainActivity extends AppCompatActivity implements
             Toast.makeText(this, "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
             return;
         }
-        if (VerbsDatabase==null) {
+        if (LegendDatabase==null) {
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -679,7 +674,7 @@ public class MainActivity extends AppCompatActivity implements
             Toast.makeText(this, "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
             return;
         }
-        if (VerbsDatabase==null) {
+        if (LegendDatabase==null) {
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -713,6 +708,10 @@ public class MainActivity extends AppCompatActivity implements
     }
     @Override public void onVerbConjugationFromDictRequested(String verb) {
         onConjRequested(verb);
+    }
+
+    @Override public void onLocalMatchingWordsFound(List<Word> matchingWords) {
+        mLocalMatchingWords = matchingWords;
     }
 
     //Communication with SearchByRadicalFragment

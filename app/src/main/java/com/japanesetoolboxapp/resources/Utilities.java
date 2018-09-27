@@ -24,9 +24,9 @@ import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 
 import com.google.firebase.database.FirebaseDatabase;
-import com.japanesetoolboxapp.ui.ConvertFragment;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.Word;
+import com.japanesetoolboxapp.ui.ConvertFragment;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -204,6 +204,22 @@ public class Utilities {
         }
         return prepared_word;
     }
+    public static String removeNonSpaceSpecialCharacters(String sentence) {
+        String current_char;
+        String concatenated_sentence = "";
+        for (int index=0; index<sentence.length(); index++) {
+            current_char = Character.toString(sentence.charAt(index));
+            if (!(current_char.equals(".")
+                    || current_char.equals("-")
+                    || current_char.equals("(")
+                    || current_char.equals(")")
+                    || current_char.equals(":")
+                    || current_char.equals("/") ) ) {
+                concatenated_sentence = concatenated_sentence + current_char;
+            }
+        }
+        return concatenated_sentence;
+    }
     public static String removeSpecialCharacters(String sentence) {
         String current_char;
         String concatenated_sentence = "";
@@ -330,7 +346,6 @@ public class Utilities {
 
 
     //Internet Connectivity utilities
-    private static Boolean mInternetIsAvailable;
     public static boolean internetIsAvailableCheck(Context context) {
         //adapted from https://stackoverflow.com/questions/43315393/android-internet-connection-timeout
         final ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -354,6 +369,7 @@ public class Utilities {
             InetAddress ipAddr = InetAddress.getByName("google.com"); //You can replace it with your name
             return !ipAddr.toString().equals("");
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -377,7 +393,7 @@ public class Utilities {
         //endregion
 
         //Getting the Jisho.org website code
-        String website_code = getWebsiteXml(context.getResources().getString(R.string.jisho_website_url) + prepared_word, context);
+        String website_code = getWebsiteXml(context.getString(R.string.jisho_website_url) + prepared_word);
 
         //Returning nothing if there was a problem getting results
         if ((website_code != null && website_code.equals(""))
@@ -404,14 +420,11 @@ public class Utilities {
         }
         return cleanWords;
     }
-    private static String getWebsiteXml(String websiteUrl, final Context context) {
+    private static String getWebsiteXml(String websiteUrl) {
 
         String responseString = "";
         String inputLine;
         HttpURLConnection connection = null;
-        mInternetIsAvailable = internetIsAvailableCheck(context);
-
-        if (!mInternetIsAvailable) return responseString;
 
         try {
             //https://stackoverflow.com/questions/35568584/android-studio-deprecated-on-httpparams-httpconnectionparams-connmanagerparams
@@ -917,12 +930,14 @@ public class Utilities {
 
             foundMatchingLocalWord = false;
             localWordIndex = 0;
+
+            asyncRomaji = asyncWord.getRomaji();
+            asyncKanji = asyncWord.getKanji();
+
             while (localWordIndex < remainingLocalWords.size()) {
 
                 localWord = remainingLocalWords.get(localWordIndex);
-                asyncRomaji = asyncWord.getRomaji();
                 localRomaji = localWord.getRomaji();
-                asyncKanji = asyncWord.getKanji();
                 localKanji = localWord.getKanji();
 
                 if ( (asyncRomaji.equals(localRomaji) || ("[verb]"+asyncRomaji).equals(localRomaji))
@@ -958,7 +973,7 @@ public class Utilities {
                 }
             }
 
-            if (!foundMatchingLocalWord) differentAsyncWords.add(asyncWord);
+            if (!foundMatchingLocalWord && asyncKanji.equals("為る")) differentAsyncWords.add(asyncWord);
 
         }
 
@@ -971,7 +986,143 @@ public class Utilities {
         }
         return commonWords;
     }
+    public static List<long[]> bubbleSortForThreeIntegerList(List<long[]> MatchList) {
 
+        // Sorting the results according to the shortest keyword as found in the above search
+
+        // Computing the value length
+        int list_size = MatchList.size();
+        long[][] matches = new long[list_size][3];
+        for (int i=0;i<list_size;i++) {
+            matches[i][0] = MatchList.get(i)[0];
+            matches[i][1] = MatchList.get(i)[1];
+            matches[i][2] = MatchList.get(i)[2];
+        }
+
+        // Sorting
+        long tempVar0;
+        long tempVar1;
+        long tempVar2;
+        for (int i=0;i<list_size;i++) { //Bubble sort
+            for (int t=1;t<list_size-i;t++) {
+                if (matches[t-1][1] > matches[t][1]) {
+                    tempVar0 = matches[t-1][0];
+                    tempVar1 = matches[t-1][1];
+                    tempVar2 = matches[t-1][2];
+                    matches[t-1][0] = matches[t][0];
+                    matches[t-1][1] = matches[t][1];
+                    matches[t-1][2] = matches[t][2];
+                    matches[t][0] = tempVar0;
+                    matches[t][1] = tempVar1;
+                    matches[t][2] = tempVar2;
+                }
+            }
+        }
+
+        List<long[]> sortedMatchList = new ArrayList<>();
+        long[] element;
+        for (int i=0;i<list_size;i++) {
+            element = new long[3];
+            element[0] = matches[i][0];
+            element[1] = matches[i][1];
+            element[2] = matches[i][2];
+            sortedMatchList.add(element);
+        }
+
+        return sortedMatchList;
+    }
+    public static int getLengthFromWordAttributes(Word currentWord, String mInputQuery, String queryWordWithoutTo, boolean queryIsVerbWithTo) {
+        String romaji_value = currentWord.getRomaji();
+        String kanji_value = currentWord.getKanji();
+        String type = currentWord.getMeanings().get(0).getType();
+        boolean currentWordIsAVerb = type.substring(0,1).equals("V") && !type.equals("VC");
+
+
+        //Get the length of the shortest meaning containing the word, and use it to prioritize the results
+        List<Word.Meaning> currentMeanings = currentWord.getMeanings();
+        String currentMeaning;
+        int baseMeaningLength = 1500;
+        int currentMeaningLength = baseMeaningLength;
+        boolean foundMeaningLength;
+        int lateMeaningPenalty = 0;
+        String inputQuery;
+
+        for (int j = 0; j< currentMeanings.size(); j++) {
+            currentMeaning = currentMeanings.get(j).getMeaning();
+
+            if (!currentWordIsAVerb) {
+                foundMeaningLength = false;
+                if (!queryIsVerbWithTo) {
+                    inputQuery = mInputQuery;
+                    baseMeaningLength = 1000;
+                }
+                else {
+                    inputQuery = queryWordWithoutTo;
+                    baseMeaningLength = 1500;
+                }
+
+                String[] currentMeaningIndividualWords = currentMeaning.split(" ");
+                for (String word : currentMeaningIndividualWords) {
+                    if (word.equals(inputQuery)) {
+                        currentMeaningLength = baseMeaningLength + lateMeaningPenalty + currentMeaning.length() - 50;
+                        foundMeaningLength = true;
+                        break;
+                    }
+                }
+                if (foundMeaningLength) break;
+
+                String[] currentMeaningIndividualWordsWithoutParentheses = currentMeaning.replace("(","").replace(")","").split(" ");
+                for (String word : currentMeaningIndividualWordsWithoutParentheses) {
+                    if (word.equals(inputQuery)) {
+                        currentMeaningLength = baseMeaningLength + lateMeaningPenalty + currentMeaning.length();
+                        foundMeaningLength = true;
+                        break;
+                    }
+                }
+                if (foundMeaningLength) break;
+
+                if (currentMeaning.contains(inputQuery) && currentMeaning.length() <= currentMeaningLength) {
+                    currentMeaningLength = currentMeaningLength + currentMeaning.length();
+                }
+            }
+            else {
+                foundMeaningLength = false;
+                if (!queryIsVerbWithTo) {
+                    inputQuery = mInputQuery;
+                    baseMeaningLength = 1000;
+                }
+                else {
+                    inputQuery = mInputQuery;
+                    baseMeaningLength = 300;
+                }
+
+                String[] currentMeaningIndividualElements = currentMeaning.split(",");
+                for (String element : currentMeaningIndividualElements) {
+                    if (element.trim().equals(inputQuery)) {
+                        currentMeaningLength = baseMeaningLength + lateMeaningPenalty + currentMeaning.length() - 100;
+                        foundMeaningLength = true;
+                        break;
+                    }
+                }
+                if (foundMeaningLength) break;
+
+//                currentMeaningLength = baseMeaningLength + lateMeaningPenalty + currentMeaning.length();
+//                if (mInputQuery.equals(currentMeaning)) { currentMeaningLength -= 100; break; }
+//                else if (currentMeaning.contains(mInputQuery)) { currentMeaningLength -= 50; break; }
+
+            }
+            lateMeaningPenalty += 50;
+
+        }
+
+        //Get the total length
+        int length = romaji_value.length() + kanji_value.length() + currentMeaningLength;
+
+        //If the romaji or Kanji value is an exact match to the search word, then it must appear at the start of the list
+        if (romaji_value.equals(mInputQuery) || kanji_value.equals(mInputQuery)) length = 0;
+
+        return length;
+    }
 
     //Preference utilities
     public static Boolean getShowOnlineResultsPreference(Activity activity) {

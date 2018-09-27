@@ -82,7 +82,6 @@ public class DictionaryFragment extends Fragment implements
         super.onCreate(savedInstanceState);
 
         getExtras();
-        if (getContext() != null) mInternetIsAvailable = Utilities.internetIsAvailableCheck(getContext());
         initializeParameters();
 
     }
@@ -93,16 +92,7 @@ public class DictionaryFragment extends Fragment implements
 
         mBinding = ButterKnife.bind(this, rootView);
 
-        if (savedInstanceState==null) {
-            getQuerySearchResults();
-        }
-
-        //If the fragment is being resumed, just reload the saved data
-        else {
-            mInputQuery = savedInstanceState.getString(getString(R.string.saved_input_query));
-            mLocalMatchingWordsList = savedInstanceState.getParcelableArrayList(getString(R.string.saved_local_results));
-            mMergedMatchingWordsList = savedInstanceState.getParcelableArrayList(getString(R.string.saved_merged_results));
-        }
+        getQuerySearchResults();
 
         return rootView;
     }
@@ -147,7 +137,7 @@ public class DictionaryFragment extends Fragment implements
         }
 
         if (id == JISHO_WEB_SEARCH_LOADER) {
-            JishoResultsAsyncTaskLoader jishoResultsAsyncTaskLoader = new JishoResultsAsyncTaskLoader(getContext(), inputQuery, mInternetIsAvailable);
+            JishoResultsAsyncTaskLoader jishoResultsAsyncTaskLoader = new JishoResultsAsyncTaskLoader(getContext(), inputQuery);
             jishoResultsAsyncTaskLoader.setLoaderState(true);
             return jishoResultsAsyncTaskLoader;
         }
@@ -163,6 +153,9 @@ public class DictionaryFragment extends Fragment implements
         if (loader.getId() == ROOM_DB_SEARCH_LOADER && !mAlreadyLoadedRoomResults) {
             mAlreadyLoadedRoomResults = true;
             mLocalMatchingWordsList = loaderResultWordsList;
+
+            //Update the MainActivity with the matching words
+            dictionaryFragmentOperationsHandler.onLocalMatchingWordsFound(mLocalMatchingWordsList);
 
             //Displaying the local results
             displayWordsToUser(mLocalMatchingWordsList);
@@ -187,7 +180,7 @@ public class DictionaryFragment extends Fragment implements
 
             if (jishoWords.size() != 0) {
                 mMergedMatchingWordsList = Utilities.getMergedWordsList(mLocalMatchingWordsList, jishoWords);
-                mMergedMatchingWordsList = sortWordsAccordingToRomajiAndKanjiLengths(mMergedMatchingWordsList);
+                mMergedMatchingWordsList = sortWordsAccordingToLengths(mMergedMatchingWordsList);
 
                 List<Word> differentJishoWords = Utilities.getDifferentAsyncWords(mLocalMatchingWordsList, jishoWords);
                 updateFirebaseDbWithJishoWords(differentJishoWords);
@@ -219,7 +212,7 @@ public class DictionaryFragment extends Fragment implements
         private boolean internetIsAvailable;
         private boolean mAllowLoaderStart;
 
-        JishoResultsAsyncTaskLoader(Context context, String query, boolean internetIsAvailable) {
+        JishoResultsAsyncTaskLoader(Context context, String query) {
             super(context);
             this.mQuery = query;
             this.internetIsAvailable = internetIsAvailable;
@@ -232,6 +225,8 @@ public class DictionaryFragment extends Fragment implements
 
         @Override
         public List<Word> loadInBackground() {
+
+            internetIsAvailable = Utilities.internetIsAvailableCheck(getContext());
 
             List<Word> matchingWordsFromJisho = new ArrayList<>();
 
@@ -290,10 +285,8 @@ public class DictionaryFragment extends Fragment implements
     private void initializeParameters() {
 
         mFirebaseDao = new FirebaseDao(getContext(), this);
-        mInputQuery = Utilities.removeSpecialCharacters(mInputQuery);
 
         mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
-        //mWordsInRoomDatabase = mJapaneseToolboxRoomDatabase.getAllWords();
 
         mLocalMatchingWordsList = new ArrayList<>();
         mMergedMatchingWordsList = new ArrayList<>();
@@ -321,7 +314,7 @@ public class DictionaryFragment extends Fragment implements
     }
     private void displayWordsToUser(List<Word> localMatchingWordsList) {
 
-        localMatchingWordsList = sortWordsAccordingToRomajiAndKanjiLengths(localMatchingWordsList);
+        localMatchingWordsList = sortWordsAccordingToLengths(localMatchingWordsList);
         displayResultsInListView(localMatchingWordsList);
 
     }
@@ -357,7 +350,7 @@ public class DictionaryFragment extends Fragment implements
     }
     private void displayResultsInListView(List<Word> wordsList) {
 
-        // Populate the list of choices for the SearchResultsChooserSpinner. Each text element of inside the idividual spinner choices corresponds to a sub-element of the choicelist
+        // Populate the list of choices for the SearchResultsChooserSpinner. Each text element of inside the individual spinner choices corresponds to a sub-element of the choicelist
         createExpandableListViewContentsFromWordsList(wordsList);
         showExpandableListViewWithContents();
     }
@@ -529,91 +522,46 @@ public class DictionaryFragment extends Fragment implements
             startActivity(intent);
         }
     }
-    private List<Word> sortWordsAccordingToRomajiAndKanjiLengths(List<Word> wordsList) {
+    private List<Word> sortWordsAccordingToLengths(List<Word> wordsList) {
 
-        List<int[]> matchingWordIndexesAndLengths = new ArrayList<>();
+        List<long[]> matchingWordIndexesAndLengths = new ArrayList<>();
+
+        //region Registering if the input query is a "to " verb
+        boolean queryIsVerbWithTo = false;
+        String queryWordWithoutTo = "";
+        if (mInputQuery.length()>3 && mInputQuery.substring(0,3).equals("to ")) {
+            queryIsVerbWithTo = true;
+            queryWordWithoutTo = mInputQuery.substring(3, mInputQuery.length());
+        }
+        //endregion
+
         for (int i = 0; i < wordsList.size(); i++) {
 
             Word currentWord = wordsList.get(i);
-            String romaji_value = currentWord.getRomaji();
-            String kanji_value = currentWord.getKanji();
 
-            //Get the length of the shortest meaning containing the word, and use it to prioritize the results
-            List<Word.Meaning> currentMeanings = currentWord.getMeanings();
-            String currentMeaning;
-            int currentMeaningLength = 1000;
-            for (int j = 0; j< currentMeanings.size(); j++) {
-                currentMeaning = currentMeanings.get(j).getMeaning();
-                if (currentMeaning.contains(mInputQuery) && currentMeaning.length() <= currentMeaningLength) {
-                    currentMeaningLength = currentMeaning.length();
-                }
-            }
+            int length = Utilities.getLengthFromWordAttributes(currentWord, mInputQuery, queryWordWithoutTo, queryIsVerbWithTo);
 
-            //Get the total length
-            int length = romaji_value.length() + kanji_value.length() + currentMeaningLength;
-
-            //If the romaji or Kanji value is an exact match to the search word, then it must appear at the start of the list
-            if (romaji_value.equals(mInputQuery) || kanji_value.equals(mInputQuery)) length = 0;
-
-            int[] currentMatchingWordIndexAndLength = new int[2];
+            long[] currentMatchingWordIndexAndLength = new long[3];
             currentMatchingWordIndexAndLength[0] = i;
             currentMatchingWordIndexAndLength[1] = length;
+            currentMatchingWordIndexAndLength[2] = 0;
 
             matchingWordIndexesAndLengths.add(currentMatchingWordIndexAndLength);
         }
 
         //Sort the results according to total length
         if (matchingWordIndexesAndLengths.size() != 0) {
-            matchingWordIndexesAndLengths = bubbleSortForTwoIntegerList(matchingWordIndexesAndLengths);
+            matchingWordIndexesAndLengths = Utilities.bubbleSortForThreeIntegerList(matchingWordIndexesAndLengths);
         }
 
         //Return the sorted list
         List<Word> sortedWordsList = new ArrayList<>();
         for (int i = 0; i < matchingWordIndexesAndLengths.size(); i++) {
-            int sortedIndex = matchingWordIndexesAndLengths.get(i)[0];
-            sortedWordsList.add(wordsList.get(sortedIndex));
+            long sortedIndex = matchingWordIndexesAndLengths.get(i)[0];
+            sortedWordsList.add(wordsList.get((int) sortedIndex));
         }
 
         return sortedWordsList;
-    }
-    private List<int[]> bubbleSortForTwoIntegerList(List<int[]> MatchList) {
-
-        // Sorting the results according to the shortest keyword as found in the above search
-
-        // Computing the value length
-        int list_size = MatchList.size();
-        int[][] matches = new int[list_size][2];
-        for (int i=0;i<list_size;i++) {
-            matches[i][0] = MatchList.get(i)[0];
-            matches[i][1] = MatchList.get(i)[1];
-        }
-
-        // Sorting
-        int tempVar0;
-        int tempVar1;
-        for (int i=0;i<list_size;i++) { //Bubble sort
-            for (int t=1;t<list_size-i;t++) {
-                if (matches[t-1][1] > matches[t][1]) {
-                    tempVar0 = matches[t-1][0];
-                    tempVar1 = matches[t-1][1];
-                    matches[t-1][0] = matches[t][0];
-                    matches[t-1][1] = matches[t][1];
-                    matches[t][0] = tempVar0;
-                    matches[t][1] = tempVar1;
-                }
-            }
-        }
-
-        List<int[]> sortedMatchList = new ArrayList<>();
-        int[] element;
-        for (int i=0;i<list_size;i++) {
-            element = new int[2];
-            element[0] = matches[i][0];
-            element[1] = matches[i][1];
-            sortedMatchList.add(element);
-        }
-
-        return sortedMatchList;
     }
     private void updateFirebaseDbWithJishoWords(List<Word> wordsList) {
         mFirebaseDao.updateObjectsOrCreateThemInFirebaseDb(Utilities.getCommonWords(wordsList));
@@ -1110,6 +1058,7 @@ public class DictionaryFragment extends Fragment implements
     interface DictionaryFragmentOperationsHandler {
         void onQueryTextUpdateFromDictRequested(String selectedWordString);
         void onVerbConjugationFromDictRequested(String selectedVerbString);
+        void onLocalMatchingWordsFound(List<Word> matchingWords);
     }
     public void setQuery(String query) {
         mInputQuery = query;

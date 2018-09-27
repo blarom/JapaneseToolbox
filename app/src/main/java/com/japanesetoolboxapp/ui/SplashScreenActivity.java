@@ -6,10 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 import com.japanesetoolboxapp.R;
-import com.japanesetoolboxapp.data.DatabaseUtilities;
 
 public class SplashScreenActivity extends Activity {
 
