@@ -930,7 +930,7 @@ public class ConjugatorFragment extends Fragment implements
             List<long[]> matchingVerbIdsAndColsFromBasicCharacteristics = new ArrayList<>();
             for (Word word : mMatchingWords) {
                 type = word.getMeanings().get(0).getType();
-                if (type.substring(0,1).equals("V") && !type.equals("VC")) {
+                if (type.length() > 0 && type.substring(0,1).equals("V") && !type.equals("VC")) {
                     matchingVerbIdsAndColsFromBasicCharacteristics.add(new long[]{word.getWordId(), 0});
                 }
             }

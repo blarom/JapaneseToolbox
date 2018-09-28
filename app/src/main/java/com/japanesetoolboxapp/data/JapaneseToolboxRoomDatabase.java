@@ -21,7 +21,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class}, version = 23, exportSchema = false)
+@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class}, version = 24, exportSchema = false)
 public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
@@ -205,6 +205,9 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
 
     public List<LatinIndex> getLatinIndexesListForStartingWord(String query) {
         return latinIndex().getLatinIndexByStartingLatinQuery(query);
+    }
+    public LatinIndex getLatinIndexListForExactWord(String query) {
+        return latinIndex().getLatinIndexByExactLatinQuery(query);
     }
     public List<KanjiIndex> getKanjiIndexesListForStartingWord(String query) {
         return kanjiIndex().getKanjiIndexByStartingLatinQuery(query);

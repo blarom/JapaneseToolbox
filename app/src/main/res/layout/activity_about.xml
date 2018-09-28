@@ -89,5 +89,11 @@
             android:layout_marginTop="10dp"
             style="@style/AboutTextViewItemSubtext"
             android:text="@string/AboutText6"/>
+
+        <TextView
+            android:id="@+id/AboutTextView7"
+            android:layout_marginTop="10dp"
+            style="@style/AboutTextViewItemSubtext"
+            android:text="@string/AboutText7"/>
     </LinearLayout>
 </ScrollView>

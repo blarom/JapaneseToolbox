@@ -153,6 +153,7 @@ public class DictionaryFragment extends Fragment implements
         if (loader.getId() == ROOM_DB_SEARCH_LOADER && !mAlreadyLoadedRoomResults) {
             mAlreadyLoadedRoomResults = true;
             mLocalMatchingWordsList = loaderResultWordsList;
+            mLocalMatchingWordsList = sortWordsAccordingToLengths(mLocalMatchingWordsList);
 
             //Update the MainActivity with the matching words
             dictionaryFragmentOperationsHandler.onLocalMatchingWordsFound(mLocalMatchingWordsList);

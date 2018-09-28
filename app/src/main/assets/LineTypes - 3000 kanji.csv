@@ -78,7 +78,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 78|kudasai, 下さい, please|kudasai|下さい|448||
 79|iwaba, 言わば, so to speak, so to call it, as it were|iwaba|言わば|449||
 80|sou, そう, so, right, like that, so, really, seeming, appearing that, seeming that, looking like, having the appearance of|sou|そう|450;451;8467;8468||
-81|mashite, 況して, still more, to say nothing of, not to mention, still less (with neg. verb)|mashite|況して|452||
+81|mashite, 況して, still more, to say nothing of, not to mention, still less (with neg. verb), still less|mashite|況して|452;9236||
 82|ittai, 一体, the heck, in the world, on earth, itsutai|ittai|一体|453||
 83|ainiku, 生憎, unfortunately|ainiku|生憎|454||
 84|sezu ni, せずに, without (doing), instead of|sezu ni|せずに|455||
@@ -128,7 +128,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 128|jitto, じっと, motionlessly, fixedly, patiently, firmly (e.g. hold), in a restrained manner|jitto|じっと|521||
 129|ikana, 如何な, no matter what, however much, whatever kind of, what kind of|ikana|如何な|522;523||
 130|futsuu, 普通, normally, generally, usually, regularly, general, ordinary, regular, usual fact or concept|futsuu|普通|524;525||
-131|nantomo, 何とも, not a bit, not at all, quite, really, very, extremely|nantomo|何とも|526;527||
+131|nantomo, 何とも, nothing, not a bit, not at all, quite, really, very, extremely|nantomo|何とも|526;527||
 132|chittomo, 些とも, not at all|chittomo|些とも|528||
 133|zenzen, 全然, not at all (with neg. verb), wholly, entirely, completely|zenzen|全然|529;7046||
 134|donna ni, どんなに, not important, doesn't matter, donna|donna ni|どんなに|530||
@@ -810,7 +810,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 810|kiri, 限り, counter for thick slices, cuts (e.g. fish, meat)|kiri|限り|1363||
 811|sen, 千, counter for thousands, one thousand , zen, issen, sanzen, hassen, nanzen|sen|千|1364;1365||
 812|kai, 回, counter for times, occurences, ikkai, ikkaime, nikaime, once, twice|kai|回|1366||
-813|tabi, 度, counter for times, occurences|tabi|度|1367||
+813|tabi, 度, counter for times, occurences, time (three times, each time, etc.), times|tabi|度|1367;9278||
 814|tsu, つ, counter for undefined objects , hitotsu, futatsu, mittsu, yottsu, itsutsu, muttsu, nanatsu, yattsu, kokonotsu, tou, 一つ, 二つ, 三つ, 四つ, 五つ, 六つ, 七つ, 八つ, 九つ, 十, 1, 2, 3, 4, 5, 6, 7, 8, 9, one, two, three, four, five, six, seven, eight, nine|tsu|つ|1368||
 815|shuukan, 週間, counter for weeks, week|shuukan|週間|1369;1370||
 816|nenkan, 年間, counter for year-long periods|nenkan|年間|1371||
@@ -1792,7 +1792,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1792|seikatsu, 生活, living, livelihood, life (one's daily existence)|seikatsu|生活|2381||
 1793|tsumini, 積み荷, load, freight, cargo, 積荷|tsumini|積み荷|2382|積荷|
 1794|kashi, 貸し, loan, lending|kashi|貸し|2383||
-1795|tabi, 旅, long trip, travels|tabi|旅|2384||
+1795|tabi, 旅, long trip, travels, travel, trip, journey|tabi|旅|2384;9279||
 1796|nagaiki, 長生き, longevity, long life|nagaiki|長生き|2385||
 1797|nagamochi, 長持ち, long-lasting, long-wearing|nagamochi|長持ち|2386||
 1798|wasuremono, 忘れ物, lost article|wasuremono|忘れ物|2387||
@@ -1828,7 +1828,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1828|memo, メモ, memo, memorandum|memo|メモ|2417||
 1829|omoide, 思い出, memories, recollections, reminiscence, 想い出, 思いで, 想いで, 思出|omoide|思い出|2418|想い出, 思いで, 想いで, 思出|
 1830|messeeji, メッセージ, message|messeeji|メッセージ|2419||
-1831|houhou, 方法, method, method, process, manner, way, means, technique|houhou|方法|2420;2421||
+1831|houhou, 方法, method, process, manner, way, means, technique, method, process, manner, way, means, technique|houhou|方法|2420;2421||
 1832|mannaka, 真ん中, middle, center, mid-way, centre|mannaka|真ん中|2422||
 1833|kokoro, 心, mind, heart, core|kokoro|心|2423||
 1834|kiseki, 奇跡, miracle, wonder, marvel|kiseki|奇跡|2424||
@@ -1873,7 +1873,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1873|eiyouso, 栄養素, nutrient|eiyouso|栄養素|2464||
 1874|eiyoubun, 栄養分, nutriment, nutritious substance, nourishment|eiyoubun|栄養分|2465||
 1875|eiyou, 栄養, nutrition, nourishment, 営養|eiyou|栄養|2466|営養|
-1876|mono, 物, object, thing|mono|物|2467||
+1876|mono, 物, object, thing, thing, object, article, stuff, substance, one's things, possessions, property, belongings, things, something, anything, everything, nothing, quality, reason, the way of things, used to emphasize emotion, judgment, etc., used to indicate a common occurrence in the past (after a verb in past tense), used to indicate a general tendency, used to indicate something that should happen, item classified as ..., item related to ..., work of ..., cause of ..., cause for ..., somehow, somewhat, for some reason, really, truly|mono|物|2467;9237;9238;9239;9240;9241;9242;9243;9244;9245;9246||
 1877|nioi, 匂い, odor, odour, stench, smell, scent, whiff, 臭い|nioi|匂い|2468|臭い|
 1878|ippou, 一方, one (esp. of two), the other, one way, the other way, one direction, the other direction, one side, the other side, one party, the other party|ippou|一方|2469||
 1879|ittoku, 一得, one advantage, merit|ittoku|一得|2470||
@@ -1900,7 +1900,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1900|paatii, パーティー, party|paatii|パーティー|2491||
 1901|enkai, 宴会, party, banquet|enkai|宴会|2492||
 1902|kei, 刑, penalty, sentence, punishment|kei|刑|2493||
-1903|kanzen, 完全, perfection, completeness|kanzen|完全|2494||
+1903|kanzen, 完全, perfection, completeness, perfect, complete|kanzen|完全|2494;9224||
 1904|jidai, 時代, period, epoch, era, age, the times, those days, oldness, ancientness, antiquity, antique, period piece|jidai|時代|2495;6370;6371;6372||
 1905|kikan, 期間, period, term, interval|kikan|期間|2496||
 1906|eien, 永遠, perpetuity, eternity, immortality, permanence|eien|永遠|2497||
@@ -2355,7 +2355,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2355|arukooru, アルコール, alcohol|arukooru|アルコール|2956||
 2356|sake, 酒, alcohol, osake, お酒|sake|酒|2957|osake, お酒|
 2357|shurui, 酒類, alcoholic drinks, liquor|shurui|酒類|2958||
-2358|ringo, リンゴ, apple|ringo|リンゴ|2959||
+2358|ringo, 林檎, apple (fruit), apple tree (Malus pumila)|ringo|林檎|2959;9260||
 2359|ume, 梅, Japanese apricot (Prunus mume), Japanese plum, ume, Chinese plum, lowest (of a three-tier ranking system)|ume|梅|2960;7030||
 2360|beekingu paudaa, ベーキングパウダー, baking powder|beekingu paudaa|ベーキングパウダー|2961||
 2361|banana, バナナ, banana|banana|バナナ|2962||
@@ -2373,7 +2373,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2373|bataa, バター, butter|bataa|バター|2975||
 2374|keeki, ケーキ, cake|keeki|ケーキ|2976||
 2375|kashi, 菓子, cake, candy, sweets, confectionery, pastry, okashi, お菓子|kashi|菓子|2977|okashi, お菓子|
-2376|okashi, お菓子, candy, snack|okashi|お菓子|2978||
+2376|okashi, お菓子, candy, snack, confections, sweets, candy|okashi|お菓子|2978;9253||
 2377|ninjin, にんじん, carrot|ninjin|にんじん|2979||
 2378|chiizu, チーズ, cheese|chiizu|チーズ|2980||
 2379|toriniku, 鳥肉, chicken meat|toriniku|鳥肉|2981||
@@ -2674,7 +2674,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2674|hitorikko, 一人っ子, only child in the family|hitorikko|一人っ子|3273||
 2675|hitorigo, 一人子, only child in the family|hitorigo|一人子|3274||
 2676|oya, 親, parent, parents, art dealer, founder, pet owner, parent, parents, mother and father, dealer (in cards, mahjong, etc.), banker, founder, inventor, (pet) owner, key, parent (organization), main, ancestor, forefather|oya|親|3275;8401;8402;8403;8404;8405;8406||
-2677|kyoudai, 兄弟, sibling, brothers and sisters|kyoudai|兄弟|3276||
+2677|kyoudai, 兄弟, sibling, brothers and sisters, siblings, brothers and sisters, siblings-in-law, brothers-in-law, sisters-in-law, mate, friend|kyoudai|兄弟|3276;9229;9230;9231||
 2678|onna no kyoudai, 女の兄弟, sister|onna no kyoudai|女の兄弟|3277||
 2679|shimai, 姉妹, sisters|shimai|姉妹|3278||
 2680|okosan, お子さん, someone else's child|okosan|お子さん|3279||
@@ -3241,7 +3241,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3241|chijin, 知人, friend, acquaintance|chijin|知人|3847||
 3242|mikata, 味方, friend, ally, supporter, 身方, 御方|mikata|味方|3848|身方, 御方|
 3243|tomo, 友, friend, companion, comrade, pal|tomo|友|3849||
-3244|tensai, 天才, genius, prodigy, person with a natural gift|tensai|天才|3850||
+3244|tensai, 天才, genius, prodigy, person with a natural gift, genius, prodigy, natural gift|tensai|天才|3850;9292||
 3245|onna no ko, 女の子, girl, female child, baby girl|onna no ko|女の子|3851||
 3246|henge, 変化, goblin, ghost, apparition, bugbear|henge|変化|3852||
 3247|koumuin, 公務員, government employee, public servant, civil servant, government worker|koumuin|公務員|3853||
@@ -4887,3 +4887,42 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 4887|shitashimi, 親しみ, intimacy, affection, familiarity|shitashimi|親しみ|9192||
 4888|shitashirabe, 下調べ, preliminary investigation, preparation|shitashirabe|下調べ|9193||
 4889|taizaichuu, 滞在中, during a stay|taizaichuu|滞在中|9202||
+4890|akumademo, 飽くまでも, to the last, persistency, thoroughness|akumademo|飽くまでも|9208||
+4891|busou, 武装, arms, armament|busou|武装|9209||
+4892|dainashi, 台無し, messy, spoiled, spoilt, (come to) nothing, ruined, mess, ruin|dainashi|台無し|9210;9211||
+4893|dake, 丈, only, just, merely, simply, no more than, nothing but, alone, as (e.g. as soon as, as much as), worth|dake|丈|9212;9213;9214||
+4894|gendo, 限度, limit, bounds|gendo|限度|9215||
+4895|gendogaku, 限度額, credit limit (on a credit card)|gendogaku|限度額|9216||
+4896|gendou, 言動, speech and conduct, words and deeds|gendou|言動|9217||
+4897|gendouryoku, 原動力, motive power, driving force|gendouryoku|原動力|9218||
+4898|hitasura, 只管, intently, single‐mindedly, devotedly, solely, earnestly, with all one's heart, intense, single‐minded, devoted, sole, earnest|hitasura|只管|9219;9220||
+4899|houhouron, 方法論, methodology|houhouron|方法論|9221||
+4900|kaimu, 皆無, nonexistent, nil, nil, none, nothing (at all), bugger-all|kaimu|皆無|9222;9223||
+4901|kanzenshiai, 完全試合, perfect game|kanzenshiai|完全試合|9225||
+4902|kecchaku, 決着, conclusion, decision, end, settlement|kecchaku|決着|9226||
+4903|kyoudai, 強大, mighty, powerful, mightiness, powerfulness|kyoudai|強大|9232;9233||
+4904|mare, 稀, rare, seldom|mare|稀|9234||
+4905|mareeshia, 馬来西亜, Malaysia|mareeshia|馬来西亜|9235||
+4906|moushibunnai, 申し分無い, no objection, nothing to criticize, nothing to criticise|moushibunnai|申し分無い|9247||
+4907|nanigoto, 何事, what, something, everything, nothing (with neg. verb), something or other, unspecified matter|nanigoto|何事|9248;9249;9250||
+4908|nannimo, 何にも, nothing at all|nannimo|何にも|9251||
+4909|nasshingu, ナッシング, nothing|nasshingu|ナッシング|9252||
+4910|okashina, 可笑しな, ridiculous, odd|okashina|可笑しな|9254||
+4911|oshie, 教え, teaching, instruction, teachings, precept, lesson, doctrine|oshie|教え|9255||
+4912|oshiego, 教え子, one's student (esp. a former one), one's pupil, one's disciple|oshiego|教え子|9256||
+4913|ringoku, 隣国, neighbouring country, neighboring country, neighbouring state, neighboring state|ringoku|隣国|9261||
+4914|saigonobutai, 最後の舞台, final performance, swan song, last act|saigonobutai|最後の舞台|9262||
+4915|saigonosaigo, 最後の最後, the last moment, the very end|saigonosaigo|最後の最後|9263||
+4916|seigyo, 制御, control (of a machine, device, etc.), control (over an opponent, one's emotions, etc.), governing, management, suppression, keeping in check|seigyo|制御|9265;9266||
+4917|shouganai, 仕様がない, it can't be helped, it is inevitable, nothing can be done, there's no point (in doing something), there's no reason (to do something)|shouganai|仕様がない|9268||
+4918|shoukin, 賞金, prize, monetary award|shoukin|賞金|9270||
+4919|shoukyoku, 消極, negative, conservative, depolarization|shoukyoku|消極|9271;9272||
+4920|shoukyokuteki, 消極的, negative, passive, half-hearted, unmotivated|shoukyokuteki|消極的|9273||
+4921|shoukyuu, 昇給, salary raise|shoukyuu|昇給|9274||
+4922|sumanai, 済まない, inexcusable, unjustifiable, unpardonable, sorry, remorseful, apologetic, conscience-stricken, contrite, excuse me, (I'm) sorry, thank you|sumanai|済まない|9275;9276;9277||
+4923|tabini, 度に, each time, every time, whenever (something happens), on the occasion of|tabini|度に|9282||
+4924|tabisaki, 旅先, destination, goal (of travel), place one stays during a journey|tabisaki|旅先|9283||
+4925|tabitabi, 度々, often, again and again, over and over again, repeatedly, frequently|tabitabi|度々|9284||
+4926|taisou, 体操, gymnastics, physical exercises, calisthenics|taisou|体操|9287||
+4927|taisou, 大層, very, extremely, exceedingly, greatly, terribly, extreme, excessive, great many, large number of, splended, impressive, tremendous, immense, exaggerated|taisou|大層|9288;9289;9290;9291||
+4928|tonda, とんだ, unthinkable, unimaginable, inconceivable, unexpected, terrible, awful, serious, very|tonda|とんだ|9296;9297;9298||

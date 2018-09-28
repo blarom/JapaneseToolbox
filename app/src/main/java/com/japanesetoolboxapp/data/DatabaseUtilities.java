@@ -8,7 +8,6 @@ import com.japanesetoolboxapp.BuildConfig;
 import com.japanesetoolboxapp.ui.ConvertFragment;
 import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.Utilities;
-import com.japanesetoolboxapp.ui.SearchByRadicalFragment;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -560,10 +559,37 @@ public class DatabaseUtilities {
 
         //region Filtering the matches
         List<Word> matchingWordList = japaneseToolboxRoomDatabase.getWordListByWordIds(MatchingWordIdsFromIndex);
+        String romaji;
+        String meanings;
+        String[] meaningSet;
+        StringBuilder builder;
+        boolean isExactMeaningWordsMatch;
         for (Word word : matchingWordList) {
 
             keywords = word.getKeywords();
-            if (onlyRetrieveShortRomajiWords && word.getRomaji().length() > 4) continue;
+
+            //Filtering words if [onlyRetrieveShortRomajiWords] is true
+            if ((TypeisLatin || TypeisKana) && onlyRetrieveShortRomajiWords) {
+
+                //Checking if the word is an exact match to one of the words in the meanings
+                builder = new StringBuilder("");
+                for (Word.Meaning meaning : word.getMeanings()) {
+                    builder.append(" ");
+                    builder.append(meaning.getMeaning().replace(", ", " ").replace("(", " ").replace(")", " "));
+                }
+                meanings = builder.toString();
+                meaningSet = meanings.split(" ");
+                isExactMeaningWordsMatch = false;
+                for (String meaningSetElement : meaningSet) {
+                    if (meaningSetElement.equals(searchWord)) {
+                        isExactMeaningWordsMatch = true;
+                        break;
+                    }
+                }
+
+                romaji = word.getRomaji();
+                if (romaji.contains(searchWord) && romaji.length() > 4 || !isExactMeaningWordsMatch) continue;
+            }
 
             found_match = keywords.contains(searchWord)
                     || keywords.contains(concatenated_word)
@@ -1037,8 +1063,18 @@ public class DatabaseUtilities {
         if (TypeisLatin) { prepared_word = concatenated_word.toLowerCase(Locale.ENGLISH); }
         else { prepared_word = concatenated_translationLatin.toLowerCase(Locale.ENGLISH); }
 
-        List<LatinIndex> matchingLatinIndexes = japaneseToolboxRoomDatabase.getLatinIndexesListForStartingWord(prepared_word);
-        return matchingLatinIndexes;
+        List<LatinIndex> matchingLatinIndexes;
+        if (prepared_word.length() > 2) {
+            matchingLatinIndexes = japaneseToolboxRoomDatabase.getLatinIndexesListForStartingWord(prepared_word);
+            return matchingLatinIndexes;
+        }
+        else {
+            //Preventing the index search from returning too many results and crashing the app
+            matchingLatinIndexes = new ArrayList<>();
+            LatinIndex index = japaneseToolboxRoomDatabase.getLatinIndexListForExactWord(prepared_word);
+            matchingLatinIndexes.add(index);
+            return matchingLatinIndexes;
+        }
     }
     public static List<KanjiIndex> findQueryInKanjiIndex(String concatenated_word, JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase) {
 

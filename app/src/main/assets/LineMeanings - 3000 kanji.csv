@@ -523,7 +523,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 523|whatever kind of, what kind of|P||||||
 524|normally, generally, usually, regularly|ADg||||||
 525|general, ordinary, regular, usual fact or concept|NACF|||1255|tokubetsu||
-526|not a bit, not at all|ADg|Used in a negative phrase.|||||
+526|nothing, not a bit, not at all|ADg|Used in a negative phrase.|||||
 527|quite, really, very, extremely|ADg|Used in an affirmative phrase.|||||
 528|not at all|ADg|Used in a negative phrase.|||||
 529|not at all (with neg. verb)|ADg|Use in phrase with negative tense only.||682||metta ni, amari, never|
@@ -2417,7 +2417,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2417|memo, memorandum|NACF|||149, 1353|||
 2418|memories, recollections, reminiscence|NACF||||||
 2419|message|NACF|||1280|||
-2420|method|NACF||||||
+2420|method, process, manner, way, means, technique|NACF||||||
 2421|method, process, manner, way, means, technique|NACF||||||
 2422|middle, center, mid-way|NACF||||||
 2423|mind, heart, core|NACF|conceptual, not physical heart|||||
@@ -2956,7 +2956,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2956|alcohol|NCu|||264|||
 2957|alcohol|NCu|||264|||
 2958|alcoholic drinks, liquor|NCu||||||
-2959|apple|NCu|||252|||
+2959|apple (fruit)|NCu|||252|||
 2960|Japanese apricot (Prunus mume), Japanese plum, ume, Chinese plum|NCu||||||
 2961|baking powder|NCu||||||
 2962|banana|NCu||||||
@@ -4967,7 +4967,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4967|take (a resource, e.g. time or money)|VrugT|||1289|||
 4968|gather, collect, assemble|VrugI|||1265|||
 4969|strike against, collide with, bump into, conflict with, clash with|VrugI||||||
-4970|be silent|VrugI||||||
+4970|be silent, say nothing|VrugI||||||
 4971|fail, mess up, bungle|VrugI||||||
 4972|jabber, chatter, chat with|VrugT||||||
 4973|tear pieces, tear shreds, tear up, tear off|VrugT||||||
@@ -5442,7 +5442,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5442|start, begin, commence, initiate, originate|VruiT||||||
 5443|examine, inspect, investigate, check up, sense, study, inquire, search for (in a dictionary)|VruiT||||||
 5444|bathe, take a shower, bask in (e.g. the sun), be flooded with (e.g. light), shower, suffer (an attack), draw criticism|VruiT||||||
-5445|answer|VruiT||||||
+5445|answer, reply|VruiT||||||
 5446|know|VruiT||||||
 5447|believe, trust|VruiT||||||
 5448|consider, think about|VruiT|||1297|||
@@ -5537,7 +5537,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5537|lick, taste, experience (esp. a hardship), make fun of, make light of, put down, treat with contempt|VruiT||||||
 5538|line up, list, arrange in order, set up, enumerate, itemize|VruiT||||||
 5539|grow accustomed (to), get too familiar with, get used (to), become domesticated, become tame|VruiI||||||
-5540|knead, thicken ina paste (stirring over a flame), polish (a plan, etc.), refine, elaborate, work out, train, drill, exercise, gloss (silk), soften, degum, tan (leather), temper (steel)|VruiT||||||
+5540|knead, thicken in a paste (stirring over a flame), polish (a plan, etc.), refine, elaborate, work out, train, drill, exercise, gloss (silk), soften, degum, tan (leather), temper (steel)|VruiT||||||
 5541|boil, simmer, stew, seethe|VruiT||||||
 5542|place on (something), give (someone) a ride, give a lift, pick up, help on board, send out (on the airwaves, etc.), deceive, take for a ride, sing along with (musical accompaniment), let (someone) take part, excite (someone)|VruiT||||||
 5543|get wet|VruiI||||||
@@ -8632,7 +8632,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8632|discount|VrugT||||||
 8633|step over (a line, etc.)|VrugT||||||
 8634|town hall|NACF||||||
-8635|be useful, be helpful, serve the purpose|VsuI||||||
+8635|be useful, be helpful, serve the purpose|VtsuI||||||
 8636|role|NACF||||||
 8637|role, part, duty|NACF||||||
 8638|duty, role, function|NACF||||||
@@ -9205,3 +9205,100 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9205|inspect, perform a preliminary inspection, have a look in advance|VsuruI||||||
 9206|perform a preparatory read-through (e.g. of lesson notes)|VsuruI||||||
 9207|perform a preliminary investigation, prepare|VsuruI||||||
+9208|to the last, persistency, thoroughness|A||||||
+9209|arms, armament|NACF||||||
+9210|messy, spoiled, spoilt, (come to) nothing, ruined|Ana||||||
+9211|mess, ruin|NACF||||||
+9212|only, just, merely, simply, no more than, nothing but, alone|PP||||||
+9213|as (e.g. as soon as, as much as)|PP||||||
+9214|worth|PP||||||
+9215|limit, bounds|NACF||||||
+9216|credit limit (on a credit card)|NACF||||||
+9217|speech and conduct, words and deeds|NACF||||||
+9218|motive power, driving force|NACF||||||
+9219|intently, single‐mindedly, devotedly, solely, earnestly, with all one's heart|A||||||
+9220|intense, single‐minded, devoted, sole, earnest|Ana||||||
+9221|methodology|NACF||||||
+9222|nonexistent, nil|Ana||||||
+9223|nil, none, nothing (at all), bugger-all|NACF||||||
+9224|perfect, complete|Ana||||||
+9225|perfect game|NACF||||||
+9226|conclusion, decision, end, settlement|NACF||||||
+9227|respond, answer, meet (e.g. demands, expectations)|VruiI||||||
+9228|affect, take a toll, strike home, have an effect on, be hard on someone (e.g. heat, cold, work, illness, etc.), be a strain|VruiI||||||
+9229|siblings, brothers and sisters|NACF||||||
+9230|siblings-in-law, brothers-in-law, sisters-in-law|NACF||||||
+9231|mate, friend|NACF||||||
+9232|mighty, powerful|Ana||||||
+9233|mightiness, powerfulness|NACF||||||
+9234|rare, seldom|Ana||||||
+9235|Malaysia|NACF||||||
+9236|still less|CE||||||
+9237|thing, object, article, stuff, substance|NACF||||||
+9238|one's things, possessions, property, belongings|NACF||||||
+9239|things, something, anything, everything, nothing|NACF||||||
+9240|quality|NACF||||||
+9241|reason, the way of things|NACF||||||
+9242|used to emphasize emotion, judgment, etc., used to indicate a common occurrence in the past (after a verb in past tense), used to indicate a general tendency, used to indicate something that should happen|NACF||||||
+9243|item classified as ..., item related to ..., work of ...|Sx||||||
+9244|cause of ..., cause for ...|Sx||||||
+9245|somehow, somewhat, for some reason|Px||||||
+9246|really, truly|Px||||||
+9247|no objection, nothing to criticize, nothing to criticise|Ai||||||
+9248|what, something, everything|NACF||||||
+9249|nothing (with neg. verb)|NACF||||||
+9250|something or other, unspecified matter|NACF||||||
+9251|nothing at all|A||||||
+9252|nothing|NACF||||||
+9253|confections, sweets, candy|NACF||||||
+9254|ridiculous, odd|P||||||
+9255|teaching, instruction, teachings, precept, lesson, doctrine|NACF||||||
+9256|one's student (esp. a former one), one's pupil, one's disciple|NACF||||||
+9257|teach, instruct|VruiT||||||
+9258|tell, inform|VruiT||||||
+9259|preach|VruiT||||||
+9260|apple tree (Malus pumila)|NACF||||||
+9261|neighbouring country, neighboring country, neighbouring state, neighboring state|NACF||||||
+9262|final performance, swan song, last act|CE||||||
+9263|the last moment, the very end|CE||||||
+9264|-|-||||||
+9265|control (of a machine, device, etc.)|NACF||||||
+9266|control (over an opponent, one's emotions, etc.), governing, management, suppression, keeping in check|NACF||||||
+9267|believe, believe in, place trust in, confide in, have faith in|VruiT||||||
+9268|it can't be helped, it is inevitable, nothing can be done, there's no point (in doing something), there's no reason (to do something)|CE||||||
+9269||-||||||
+9270|prize, monetary award|NACF||||||
+9271|negative, conservative|NACF||||||
+9272|depolarization|NACF||||||
+9273|negative, passive, half-hearted, unmotivated|Ana||||||
+9274|salary raise|NACF||||||
+9275|inexcusable, unjustifiable, unpardonable|Ai||||||
+9276|sorry, remorseful, apologetic, conscience-stricken, contrite|Ai||||||
+9277|excuse me, (I'm) sorry, thank you|CE||||||
+9278|time (three times, each time, etc.), times|NACF||||||
+9279|travel, trip, journey|NACF||||||
+9280|begin a trip, depart, embark|VtsuI||||||
+9281|die, pass away, depart this life|VtsuI||||||
+9282|each time, every time, whenever (something happens), on the occasion of|A||||||
+9283|destination, goal (of travel), place one stays during a journey|NACF||||||
+9284|often, again and again, over and over again, repeatedly, frequently|A||||||
+9285|bear, stand, endure, put up with|VruiI||||||
+9286|be fit for, be equal to|VruiI||||||
+9287|gymnastics, physical exercises, calisthenics|NACF||||||
+9288|very, extremely, exceedingly, greatly, terribly|A||||||
+9289|extreme, excessive, great many, large number of|Ana||||||
+9290|splended, impressive, tremendous, immense|Ana||||||
+9291|exaggerated|Ana||||||
+9292|genius, prodigy, natural gift|NACF||||||
+9293|stop, stay (e.g. the night), cease, put an end to|VruiT||||||
+9294|contain, keep (in position, in place), limit|VruiT||||||
+9295|record (e.g. a fact), retain|VruiT||||||
+9296|unthinkable, unimaginable, inconceivable, unexpected|P||||||
+9297|terrible, awful, serious|P||||||
+9298|very|A||||||
+9299|arm oneself, be armed|VsuruI||||||
+9300|conclude, decide, end, settle|VsuruT||||||
+9301|control (a machine, device, etc.)|VsuruI||||||
+9302|control (an opponent, one's emotions, etc.), govern, manage, suppress, keep in check|VsuruT||||||
+9303|raise a salary|VsuruT||||||
+9304|do gymnastics, do physical exercises, do calisthenics|VsuruI||||||
