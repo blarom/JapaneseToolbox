@@ -415,11 +415,13 @@ public class DictionaryFragment extends Fragment implements
                 headerElements = new ArrayList<>();
 
                 String cumulative_meaning_value = "";
+                boolean typeIsVerbConjugation = false;
                 for (int j = 0; j< currentMeanings.size(); j++) {
                     cumulative_meaning_value += currentMeanings.get(j).getMeaning();
                     if (j< currentMeanings.size()-1) { cumulative_meaning_value += ", "; }
+                    if (j==0) typeIsVerbConjugation = currentMeanings.get(j).getType().equals("VC");
                 }
-                headerElements.add(currentWord.getRomaji());
+                headerElements.add((typeIsVerbConjugation)? "[verb]" + currentWord.getRomaji() : currentWord.getRomaji());
                 headerElements.add(currentWord.getKanji());
                 headerElements.add(Utilities.removeDuplicatesFromCommaList(cumulative_meaning_value));
 

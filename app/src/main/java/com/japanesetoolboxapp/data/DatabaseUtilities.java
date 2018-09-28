@@ -393,24 +393,25 @@ public class DatabaseUtilities {
         List<String> keywordsList;
         List<long[]> MatchList = new ArrayList<>();
         String keywords;
-        String hit;
-        String hitFirstRelevantWord;
-        String concatenated_hit;
-        String best_match;
-        String type;
         long[] current_match_values;
-
         boolean found_match;
-        boolean is_verb;
-        boolean is_verb_and_latin;
-        int word_length = searchWord.length();
-        int match_length;
         boolean queryIsVerbWithTo = false;
         String searchWordWithoutTo = "";
+        String searchWordNoSpaces;
         //endregion
 
-        // converting the word to lowercase (the algorithm is not efficient if needing to search both lower and upper case)
+        //region Converting the searchWord to usable forms, preventing invalid characters from influencing the search results
         searchWord = searchWord.toLowerCase(Locale.ENGLISH);
+        searchWord = removeApostrophes(searchWord);
+        searchWord = Utilities.removeNonSpaceSpecialCharacters(searchWord);
+        searchWordNoSpaces = searchWord.replace(" ", "");
+
+        //Registering if the input query is a "to " verb
+        if (searchWord.length()>3 && searchWord.substring(0,3).equals("to ")) {
+            queryIsVerbWithTo = true;
+            searchWordWithoutTo = searchWord.substring(3, searchWord.length());
+        }
+        //endregion
 
         //region If there is an "inging" verb instance, reduce it to an "ing" instance (e.g. singing >> sing)
         String verb2;
@@ -437,19 +438,12 @@ public class DatabaseUtilities {
         }
         //endregion
 
-        //region Registering if the input query is a "to " verb
-        if (searchWord.length()>3 && searchWord.substring(0,3).equals("to ")) {
-            queryIsVerbWithTo = true;
-            searchWordWithoutTo = searchWord.substring(3, searchWord.length());
-        }
-        //endregion
+        //region Getting the input type and its converted form (english/romaji/kanji/invalid)
+        List<String> translationList = ConvertFragment.getLatinHiraganaKatakana(searchWordNoSpaces);
 
-        //region getting the input type and its converted form (english/romaji/kanji/invalid)
-        List<String> translationList = ConvertFragment.getLatinHiraganaKatakana(searchWord);
-
-        String translationLatin = translationList.get(0);
-        String translationHira = translationList.get(1);
-        String translationKata = translationList.get(2);
+        String searchWordTransliteratedLatin = translationList.get(0);
+        String searchWordTransliteratedHiragana = translationList.get(1);
+        String searchWordTransliteratedKatakana = translationList.get(2);
         String text_type = ConvertFragment.getTextType(searchWord);
 
         boolean TypeisLatin   = false;
@@ -467,20 +461,6 @@ public class DatabaseUtilities {
         if (TypeisInvalid) return matchingWordIds;
         //endregion
 
-        //region Concatenating the input word to increase the match chances
-        String concatenated_word = Utilities.removeSpecialCharacters(searchWord);
-        String concatenated_translationLatin = Utilities.removeSpecialCharacters(translationLatin);
-        String concatenated_translationHira = Utilities.removeSpecialCharacters(translationHira);
-        String concatenated_translationKata = Utilities.removeSpecialCharacters(translationKata);
-        int concatenated_word_length = concatenated_word.length();
-        //endregion
-
-        //region Removing any apostrophes to make user searches less strict
-        searchWord = removeApostrophe(searchWord);
-        concatenated_word = removeApostrophe(concatenated_word);
-        concatenated_translationLatin = removeApostrophe(concatenated_translationLatin);
-        //endregion
-
         //region Search for the matches in the indexed keywords
         List<String> searchResultKeywordsArray = new ArrayList<>();
         List<LatinIndex> latinIndices;
@@ -491,18 +471,18 @@ public class DatabaseUtilities {
             String input_word = Utilities.removeNonSpaceSpecialCharacters(searchWord);
             if (searchWord.length()>3) {
                 if (searchWord.substring(0, 3).equals("to ")) {
-                    input_word = concatenated_word.substring(2, concatenated_word.length());
+                    input_word = searchWord.substring(2, searchWord.length());
                 }
             }
 
-            latinIndices = findQueryInLatinIndex(TypeisLatin, input_word, concatenated_translationLatin, japaneseToolboxRoomDatabase);
+            latinIndices = findQueryInLatinIndex(TypeisLatin, input_word, searchWordTransliteratedLatin, japaneseToolboxRoomDatabase);
 
             if (latinIndices.size()==0) return matchingWordIds;
 
             // If the entered word is Latin and only has up to WORD_SEARCH_CHAR_COUNT_THRESHOLD characters, limit the word keywords to be checked later
-            if (TypeisLatin && concatenated_word.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
-                    || TypeisKana && concatenated_translationLatin.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
-                    || TypeisNumber && concatenated_word.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD-1) {
+            if (TypeisLatin && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
+                    || TypeisKana && searchWordTransliteratedLatin.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
+                    || TypeisNumber && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD-1) {
                 for (LatinIndex latinIndex : latinIndices) {
                     if (latinIndex.getLatin().length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD) {
                         searchResultKeywordsArray.add(latinIndex.getWordIds());
@@ -517,7 +497,7 @@ public class DatabaseUtilities {
             }
 
         } else if (TypeisKanji) {
-            kanjiIndices = findQueryInKanjiIndex(concatenated_word, japaneseToolboxRoomDatabase);
+            kanjiIndices = findQueryInKanjiIndex(searchWordNoSpaces, japaneseToolboxRoomDatabase);
             if (kanjiIndices.size()==0) return matchingWordIds;
             for (KanjiIndex kanjiIndex : kanjiIndices) {
                 searchResultKeywordsArray.add(kanjiIndex.getWordIds());
@@ -539,7 +519,7 @@ public class DatabaseUtilities {
         //region Add search results where the "ing" is removed from an "ing" verb
         if ((TypeisLatin || TypeisKana || TypeisNumber) && !inglessVerb.equals(searchWord)) {
 
-            latinIndices = findQueryInLatinIndex(TypeisLatin, inglessVerb, concatenated_translationLatin, japaneseToolboxRoomDatabase);
+            latinIndices = findQueryInLatinIndex(TypeisLatin, inglessVerb, searchWordTransliteratedLatin, japaneseToolboxRoomDatabase);
 
             for (LatinIndex latinIndex : latinIndices) {
                 keywordsList = Arrays.asList(latinIndex.getWordIds().split(";"));
@@ -552,7 +532,7 @@ public class DatabaseUtilities {
 
         //region Limiting the database query if there are too many results (prevents long query times)
         boolean onlyRetrieveShortRomajiWords = false;
-        if (TypeisLatin && searchWord.length() < 4 || TypeisKana && searchWord.length() < 3) {
+        if (TypeisLatin && searchWord.length() < 3 || TypeisKana && searchWordTransliteratedLatin.length() < 3) {
             onlyRetrieveShortRomajiWords = true;
         }
         //endregion
@@ -564,11 +544,14 @@ public class DatabaseUtilities {
         String[] meaningSet;
         StringBuilder builder;
         boolean isExactMeaningWordsMatch;
+        int searchWordLength = searchWord.length();
+        int searchWordTransliteratedLatinLength = searchWordTransliteratedLatin.length();
+        int romajiLength;
         for (Word word : matchingWordList) {
 
-            keywords = word.getKeywords();
+            found_match = false;
 
-            //Filtering words if [onlyRetrieveShortRomajiWords] is true
+            //region Handling short words
             if ((TypeisLatin || TypeisKana) && onlyRetrieveShortRomajiWords) {
 
                 //Checking if the word is an exact match to one of the words in the meanings
@@ -588,13 +571,31 @@ public class DatabaseUtilities {
                 }
 
                 romaji = word.getRomaji();
-                if (romaji.contains(searchWord) && romaji.length() > 4 || !isExactMeaningWordsMatch) continue;
-            }
+                romajiLength = romaji.length();
+                if (isExactMeaningWordsMatch
+                        || TypeisLatin
+                            && searchWordLength < 3
+                            && romajiLength <= searchWordLength + 1
+                            && romaji.contains(searchWord)
+                        || TypeisKana
+                            && searchWordTransliteratedLatinLength < 3
+                            && romajiLength <= searchWordTransliteratedLatinLength + 1
+                            && romaji.contains(searchWord)) {
+                    found_match = true;
+                }
+                else continue;
 
-            found_match = keywords.contains(searchWord)
-                    || keywords.contains(concatenated_word)
-                    || keywords.contains(inglessVerb)
-                    || queryIsVerbWithTo && keywords.contains(searchWordWithoutTo);
+            }
+            //endregion
+
+            //Otherwise, handling longer words
+            if (!found_match) {
+                keywords = word.getKeywords();
+                found_match = keywords.contains(searchWord)
+                        || keywords.contains(searchWordNoSpaces)
+                        || keywords.contains(inglessVerb)
+                        || queryIsVerbWithTo && keywords.contains(searchWordWithoutTo);
+            }
 
 
 //            //region Loop initializations
@@ -661,20 +662,20 @@ public class DatabaseUtilities {
 //
 //                //region Perform the comparison to the input query and return the length of the shortest hit
 //                // Match length is reduced every time there's a hit and the hit is shorter
-//                if (       (concatenated_hit.contains(concatenated_word)
+//                if (       (concatenated_hit.contains(searchWordNoSpaces)
 //                        || (TypeisLatin && hit.equals("to " + inglessVerb))
 //                        || (!translationLatin.equals("") && concatenated_hit.contains(translationLatin))
-//                        || (!translationHira.equals("") && concatenated_hit.contains(translationHira))
-//                        || (!translationKata.equals("") && concatenated_hit.contains(translationKata)))) //ie. if the hit contains the input word, then do the following:
+//                        || (!searchWordTransliteratedHiragana.equals("") && concatenated_hit.contains(searchWordTransliteratedHiragana))
+//                        || (!searchWordTransliteratedKatakana.equals("") && concatenated_hit.contains(searchWordTransliteratedKatakana)))) //ie. if the hit contains the input word, then do the following:
 //                    {
-//                    if (concatenated_hit.equals(concatenated_word)) {
+//                    if (concatenated_hit.equals(searchWordNoSpaces)) {
 //                        best_match = concatenated_hit;
 //                        found_match = true;
 //                        match_length = best_match.length()-1; // -1 to make sure that it's listed first
 //                        if (is_verb_and_latin) { match_length = match_length-3;}
 //                        continue;
 //                    }
-//                    if (hitFirstRelevantWord.contains(concatenated_word) && hitFirstRelevantWord.length() <= match_length) {
+//                    if (hitFirstRelevantWord.contains(searchWordNoSpaces) && hitFirstRelevantWord.length() <= match_length) {
 //                        best_match = hitFirstRelevantWord;
 //                        found_match = true;
 //                        match_length = best_match.length();
@@ -747,7 +748,7 @@ public class DatabaseUtilities {
         }
         return answer;
     }
-    public static String removeApostrophe(String sentence) {
+    public static String removeApostrophes(String sentence) {
         String current_char;
         String concatenated_sentence = "";
         for (int index=0; index<sentence.length(); index++) {
@@ -1072,7 +1073,7 @@ public class DatabaseUtilities {
             //Preventing the index search from returning too many results and crashing the app
             matchingLatinIndexes = new ArrayList<>();
             LatinIndex index = japaneseToolboxRoomDatabase.getLatinIndexListForExactWord(prepared_word);
-            matchingLatinIndexes.add(index);
+            if (index!=null) matchingLatinIndexes.add(index); //Only add the index if the word was found in the index
             return matchingLatinIndexes;
         }
     }

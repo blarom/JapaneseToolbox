@@ -1039,13 +1039,13 @@ public class Utilities {
         return sortedMatchList;
     }
     public static int getLengthFromWordAttributes(Word currentWord, String mInputQuery, String queryWordWithoutTo, boolean queryIsVerbWithTo) {
+        //Get the length of the shortest meaning containing the word, and use it to prioritize the results
+
         String romaji_value = currentWord.getRomaji();
         String kanji_value = currentWord.getKanji();
         String type = currentWord.getMeanings().get(0).getType();
         boolean currentWordIsAVerb = type.length()>0 && type.substring(0,1).equals("V") && !type.equals("VC");
 
-
-        //Get the length of the shortest meaning containing the word, and use it to prioritize the results
         List<Word.Meaning> currentMeanings = currentWord.getMeanings();
         String currentMeaning;
         int baseMeaningLength = 1500;
@@ -1059,6 +1059,7 @@ public class Utilities {
         for (int j = 0; j< currentMeanings.size(); j++) {
             currentMeaning = currentMeanings.get(j).getMeaning();
 
+            //region If the current word is not a verb
             if (!currentWordIsAVerb) {
                 foundMeaningLength = false;
                 if (!queryIsVerbWithTo) {
@@ -1077,7 +1078,7 @@ public class Utilities {
                 for (String word : currentMeaningIndividualWords) {
                     cumulativeMeaningLength += word.length() + 2; //Added 2 to account for missing ", " instances in loop
                     if (word.equals(inputQuery)) {
-                        currentMeaningLength = baseMeaningLength + lateMeaningPenalty + lateHitInMeaningPenalty + cumulativeMeaningLength - 50;
+                        currentMeaningLength = baseMeaningLength + lateMeaningPenalty + lateHitInMeaningPenalty + cumulativeMeaningLength - 100;
                         foundMeaningLength = true;
                         break;
                     }
@@ -1105,12 +1106,15 @@ public class Utilities {
                     currentMeaningLength = currentMeaningLength + currentMeaning.length();
                 }
             }
+            //endregion
+
+            //region If the current word is a verb
             else {
                 foundMeaningLength = false;
 
                 String[] currentMeaningIndividualElements;
                 if (!queryIsVerbWithTo) {
-                    baseMeaningLength = 800;
+                    baseMeaningLength = 900;
 
                     //Calculate the length first by adding "to " to the input query. If it leads to a hit, that means that this verb is relevant
                     inputQuery = "to " + mInputQuery;
@@ -1168,6 +1172,8 @@ public class Utilities {
                 }
 
             }
+            //endregion
+
             lateMeaningPenalty += 100;
 
         }
