@@ -42,7 +42,6 @@ import butterknife.Unbinder;
 
 //TODO: database upgrade
 ////TODO: allow user to enter verb in gerund form (ing) and still find it
-////TODO: Convert the expandable listview to a recyclerview or modify it to be easier to debug
 
 //TODO: features
 ////TODO when joining online results, compare verb[space]suru with verb[no space]suru, and show verb[space]suru to user

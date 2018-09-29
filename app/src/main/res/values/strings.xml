@@ -112,8 +112,10 @@
     <string name="DownloadDialogWifiAndMobile">Anytime</string>
 
     <!--DictionaryFragment Strings-->
-    <string name="NoMatchFound">Not found in local dictionary. Searching in other sources…</string>
-    <string name="PleaseEnterWord">Please enter an English/Japanese word. Complete words will yield the best results, but word fragments will also do.</string>
+    <string name="no_match_found">Not found in local dictionary. Searching in other sources…</string>
+    <string name="please_enter_word"><![CDATA[<b>Please enter a valid word.</b>
+        <br /><br />Complete words will yield the best results, but word fragments will also do.
+        <br /><br />You can enter words in English, Romaji, Hiragana, Katakana or Kanji.]]></string>
     <string name="GrammarModule_Romaji_construction">Romaji:</string>
     <string name="GrammarModule_Kana_construction">Kana:</string>
     <string name="GrammarModule_English_construction">English:</string>
@@ -131,8 +133,7 @@
     <string name="English">English</string>
     <string name="Romaji">Romaji</string>
     <string name="Kanji">Kanji</string>
-    <string name="verbHint">
-        <b>Please enter a valid verb conjugation.</b>
+    <string name="verbHint"><b>Please enter a valid verb conjugation.</b>
         \n\n<b>In order to keep the search time reasonable, not all verb tenses are included. As such, please observe the following rules:</b>
         \n\nWhen looking up less common conjugations (e.g. tabesaseta), you may have to convert the verb to present tense (tabesaseru).
         \n\nIf you\&apos;re searching for a compound verb (e.g. tabete ikimasu), you must first convert the second verb to its dictionary form (tabete iku).
@@ -183,16 +184,16 @@
         The app includes the following tools:
     </string>
     <string name="AboutText2Subtext1">
-        - A local dictionary of frequent Japanese words and expressions, complete with grammar rules (DICT button). If there is Internet access then online results are added.
+        - A local dictionary of common Japanese words and expressions, complete with grammar rules (DICT button). If there is Internet access then online results are added.
     </string>
     <string name="AboutText2Subtext2">
-        - A reverse verb conjugation finder (CONJ button). If you search for a conjugation shared by many verbs (such as "saseru"), the search results will be limited to 50 verbs.
+        - A reverse verb conjugation finder (CONJ button).
     </string>
     <string name="AboutText2Subtext3">
         - A Latin-to-Kana-to-Latin script converter (あ&#8660;A button).
     </string>
     <string name="AboutText2Subtext4">
-        - A Kanji composer (女+子 &#8658; 好 button) where you can find all Kanjis based through their radicals and/or components and/or general structure. Note
+        - A Kanji composer (女+子 &#8658; 好 button) where you can find all Kanjis based on their radicals and/or components and/or general structure. Note
         that users of Android versions below Marshmallow may experience "blank symbols" instead of Japanese characters in some cases.
     </string>
     <string name="AboutText2Subtext5">
@@ -247,8 +248,8 @@
 
     <string name="AboutText7">
         *disclaimer for EDICT Japanese dictionary:\nThis package uses a modified subset of the EDICT and KANJIDIC dictionary files. These files are the property of
-        \u0020the Electronic Dictionary Research and Development Group, and are used in conformance with the Group\&apos;s licence;
-        \u0020See http://www.csse.monash.edu.au/~jwb/edict.html and http://www.edrdg.org/.
+        the Electronic Dictionary Research and Development Group, and are used in conformance with the Group\&apos;s licence;
+        See http://www.csse.monash.edu.au/~jwb/edict.html and http://www.edrdg.org/.
     </string>
 
     <!--OcrCaptureACtivity-->
