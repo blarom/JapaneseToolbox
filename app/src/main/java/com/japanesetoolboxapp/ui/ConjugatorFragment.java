@@ -320,17 +320,19 @@ public class ConjugatorFragment extends Fragment implements
         List<Verb.ConjugationCategory.Conjugation> conjugations;
         int matchingConjugationCategoryIndex = 0;
         boolean foundMatch = false;
-        for (int i=0; i<conjugationCategories.size(); i++) {
-            conjugations = conjugationCategories.get(i).getConjugations();
-            for (Verb.ConjugationCategory.Conjugation conjugation : conjugations) {
-                if (mInputQueryIsLatin && conjugation.getConjugationLatin().equals(mInputQuery)) foundMatch = true;
-                else if (mInputQueryIsKana && conjugation.getConjugationLatin().equals(mInputQueryTransliterations.get(0))) foundMatch = true;
-                else if (mInputQueryIsKanji && conjugation.getConjugationKanji().equals(mInputQuery)) foundMatch = true;
-                if (foundMatch) break;
-            }
-            if (foundMatch) {
-                matchingConjugationCategoryIndex = i;
-                break;
+        if (!mInputQuery.equals(verb.getLatinRoot()) && !mInputQuery.equals(verb.getKanjiRoot())) {
+            for (int i=0; i<conjugationCategories.size(); i++) {
+                conjugations = conjugationCategories.get(i).getConjugations();
+                for (Verb.ConjugationCategory.Conjugation conjugation : conjugations) {
+                    if (mInputQueryIsLatin && conjugation.getConjugationLatin().equals(mInputQuery)) foundMatch = true;
+                    else if (mInputQueryIsKana && conjugation.getConjugationLatin().equals(mInputQueryTransliterations.get(0))) foundMatch = true;
+                    else if (mInputQueryIsKanji && conjugation.getConjugationKanji().equals(mInputQuery)) foundMatch = true;
+                    if (foundMatch) break;
+                }
+                if (foundMatch) {
+                    matchingConjugationCategoryIndex = i;
+                    break;
+                }
             }
         }
         mConjugationChooserSpinner.setSelection(matchingConjugationCategoryIndex, false);
@@ -1088,7 +1090,7 @@ public class ConjugatorFragment extends Fragment implements
                                     conjugationValue = kanjiRoot + currentFamilyConjugations[col].replace(" ", "");
                                 else conjugationValue = currentConjugations[col].replace(" ", "");
 
-                                if (conjugationValue.contains(mInputQueryTransliteratedLatinFormContatenated)) {
+                                if (conjugationValue.contains(mInputQuery)) {
                                     foundMatch = true;
                                     matchColumn = col;
                                     break;
@@ -1099,7 +1101,7 @@ public class ConjugatorFragment extends Fragment implements
                             for (int col : dilutedConjugationColIndexes) {
                                 conjugationValue = kanjiRoot + currentConjugations[col].replace(" ", "");
 
-                                if (conjugationValue.contains(mInputQueryTransliteratedLatinFormContatenated)) {
+                                if (conjugationValue.contains(mInputQuery)) {
                                     foundMatch = true;
                                     matchColumn = col;
                                     break;
