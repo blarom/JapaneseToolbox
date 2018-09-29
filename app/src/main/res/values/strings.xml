@@ -115,7 +115,8 @@
     <string name="no_match_found">Not found in local dictionary. Searching in other sources…</string>
     <string name="please_enter_word"><![CDATA[<b>Please enter a valid word.</b>
         <br /><br />Complete words will yield the best results, but word fragments will also do.
-        <br /><br />You can enter words in English, Romaji, Hiragana, Katakana or Kanji.]]></string>
+        <br /><br />You can enter words in English, Romaji, Hiragana, Katakana or Kanji.
+        <br /><br />Also note that this app uses a variation of Kunrei-Shiki romanization, where for example \&quot;う\&quot; is always transliterated to \&quot;u\&quot;, and \&quot;づ\&quot; is always transliterated to \&quot;du\&quot;.]]></string>
     <string name="GrammarModule_Romaji_construction">Romaji:</string>
     <string name="GrammarModule_Kana_construction">Kana:</string>
     <string name="GrammarModule_English_construction">English:</string>
