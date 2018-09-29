@@ -118,7 +118,6 @@ public class InputQueryFragment extends Fragment implements
     private boolean firstTimeInitializedJpn;
     private boolean firstTimeInitializedEng;
     private TextToSpeech tts;
-    private boolean mInternetIsAvailable;
     private long enqueue;
     private DownloadManager downloadmanager;
     private boolean hasStoragePermissions;
@@ -177,8 +176,8 @@ public class InputQueryFragment extends Fragment implements
         super.onResume();
 
         mInputQueryAutoCompleteTextView.setText(mInputQuery);
-        mInputQueryAutoCompleteTextView.clearFocus();
-        if (getActivity() != null) getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        //mInputQueryAutoCompleteTextView.clearFocus();
+        //if (getActivity() != null) getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         getLanguageParametersFromSettingsAndReinitializeOcrIfNecessary();
     }
 
@@ -303,23 +302,7 @@ public class InputQueryFragment extends Fragment implements
                 R.layout.custom_queryhistory_spinner,
                 mQueryHistory));
 
-        mInputQueryAutoCompleteTextView.setMovementMethod(new ScrollingMovementMethod());
         mInputQueryAutoCompleteTextView.setText(mInputQuery);
-
-        mInputQueryAutoCompleteTextView.setLongClickable(false);
-        //inputQueryAutoCompleteTextView.setTextIsSelectable(true);
-        mInputQueryAutoCompleteTextView.setFocusable(true);
-        mInputQueryAutoCompleteTextView.setFocusableInTouchMode(true);
-
-        mInputQueryAutoCompleteTextView.setOnTouchListener(new View.OnTouchListener(){
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                //inputQueryAutoCompleteTextView.showDropDown();
-                mInputQueryAutoCompleteTextView.dismissDropDown();
-                return false;
-            }
-
-        });
 
         mInputQueryAutoCompleteTextView.setOnEditorActionListener(new EditText.OnEditorActionListener() {
             @Override
@@ -431,32 +414,6 @@ public class InputQueryFragment extends Fragment implements
             if (!element.equals("")) { queryHistoryIsEmpty = false; break; }
         }
         if (!queryHistoryIsEmpty) mInputQueryAutoCompleteTextView.showDropDown();
-
-    }
-    @OnClick(R.id.button_copy_query) public void onCopyQueryButtonClick() {
-
-        mInputQuery = mInputQueryAutoCompleteTextView.getText().toString();
-        if (getActivity() != null) {
-            ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clip = ClipData.newPlainText("Copied Text", mInputQueryAutoCompleteTextView.getText().toString());
-            if (clipboard != null) clipboard.setPrimaryClip(clip);
-            Toast.makeText(getContext(), getResources().getString(R.string.copiedTextToClipboard), Toast.LENGTH_SHORT).show();
-        }
-
-    }
-    @OnClick(R.id.button_paste_to_query) public void onPasteToQueryButtonClick() {
-
-        if (getActivity() != null) {
-            ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-            if (clipboard != null) {
-                if (clipboard.hasPrimaryClip()) {
-                    android.content.ClipDescription description = clipboard.getPrimaryClipDescription();
-                    android.content.ClipData data = clipboard.getPrimaryClip();
-                    if (data != null && description != null && description.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN))
-                        mInputQueryAutoCompleteTextView.setText(String.valueOf(data.getItemAt(0).getText()));
-                }
-            }
-        }
 
     }
     @OnClick(R.id.button_speech_to_text) public void onSpeechToTextButtonClick() {
@@ -1126,19 +1083,6 @@ public class InputQueryFragment extends Fragment implements
                     R.layout.custom_queryhistory_spinner,
                     mQueryHistory));
 
-            //For some reason the following does nothing
-            mInputQueryAutoCompleteTextView.setOnItemSelectedListener(new OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-                    String inputWordString = mInputQueryAutoCompleteTextView.getText().toString();
-
-                    inputQueryOperationsHandler.onDictRequested(inputWordString);
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> arg0) {
-                }
-            });
         }
     }
     private void registerThatUserIsRequestingDictSearch(Boolean state) {

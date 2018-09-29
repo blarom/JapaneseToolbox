@@ -6,6 +6,7 @@
     <dimen name="queryTextMarginStart">2dp</dimen>
     <dimen name="queryTextMarginEnd">2dp</dimen>
 
+    <dimen name="searchMeTextViewEndPadding">65dp</dimen>
     <dimen name="clearButtonLeftRightMargin">35dp</dimen>
     <dimen name="clearButtonWidth">30dp</dimen>
     <dimen name="histButtonLeftRightMargin">5dp</dimen>
