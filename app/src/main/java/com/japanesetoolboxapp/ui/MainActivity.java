@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -114,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements
     private boolean mAlreadyLoadedDatabases;
     private boolean mAllowButtonOperations;
     private List<Word> mLocalMatchingWords;
+    private String mInputQuery;
     //endregion
 
 
@@ -353,11 +353,11 @@ public class MainActivity extends AppCompatActivity implements
 
         fragmentTransaction.commit();
     }
-    private void updateInputQuery(String word) {
+    private void updateInputQuery(String word, boolean keepPreviousText) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        if (mInputQueryFragment!=null) mInputQueryFragment.setQuery(word);
+        if (mInputQueryFragment!=null) mInputQueryFragment.setQuery( (mInputQuery!=null && keepPreviousText)? mInputQuery + word : word);
         fragmentTransaction.commit();
     }
     public void clearBackstack() {
@@ -553,6 +553,8 @@ public class MainActivity extends AppCompatActivity implements
     //Communication with InputQueryFragment
     @Override public void onDictRequested(String query) {
 
+        mInputQuery = query;
+
         if (!mAllowButtonOperations) return;
         if (LegendDatabase==null) {
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
@@ -583,6 +585,8 @@ public class MainActivity extends AppCompatActivity implements
         fragmentTransaction.commit();
     }
     @Override public void onConjRequested(String query) {
+
+        mInputQuery = query;
 
         if (!mAllowButtonOperations) return;
         mLocalMatchingWords = null;
@@ -702,7 +706,7 @@ public class MainActivity extends AppCompatActivity implements
 
     //Communication with DictionaryFragment
     @Override public void onQueryTextUpdateFromDictRequested(String word) {
-        updateInputQuery(word);
+        updateInputQuery(word, false);
     }
     @Override public void onVerbConjugationFromDictRequested(String verb) {
         onConjRequested(verb);
@@ -714,7 +718,7 @@ public class MainActivity extends AppCompatActivity implements
 
     //Communication with SearchByRadicalFragment
     @Override public void onQueryTextUpdateFromSearchByRadicalRequested(String word) {
-        updateInputQuery(word);
+        updateInputQuery(word, true);
     }
 }
 

@@ -828,7 +828,7 @@ public class SearchByRadicalFragment extends Fragment {
                 hideSoftKeyboard();
                 hideGrid();
                 element.setText(user_selections[current_row_index]);
-                component_structures_selection_block_linearlayout.setVisibility(View.GONE);
+                if (component_structures_selection_block_linearlayout!=null) component_structures_selection_block_linearlayout.setVisibility(View.GONE);
             }
         });
         button_cancel_bottom.setOnClickListener(new View.OnClickListener() {
@@ -836,7 +836,7 @@ public class SearchByRadicalFragment extends Fragment {
             public void onClick(View v) {
                 hideSoftKeyboard();
                 hideGrid();
-                component_structures_selection_block_linearlayout.setVisibility(View.GONE);
+                if (component_structures_selection_block_linearlayout!=null) component_structures_selection_block_linearlayout.setVisibility(View.GONE);
             }
         });
     }
