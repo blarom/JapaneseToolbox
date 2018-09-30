@@ -403,11 +403,8 @@ public class MainActivity extends AppCompatActivity implements
             CJKDatabase = new ArrayList((List<String[]>) databases[6]);
             KanjiDictDatabase = new ArrayList((List<String[]>) databases[7]);
             RadicalsOnlyDatabase = new ArrayList((List<String[]>) databases[8]);
-            arrayOfComponentsDatabases = new ArrayList((List<List<String[]>>) databases[9]);
-            heapSizeBeforeDecompositionLoader = (long) databases[10];
-            heapSizeBeforeSearchbyradicalLoader = (long) databases[11];
-
-            //if (mConjugatorFragment!=null) mConjugatorFragment.setVerbsList(VerbsDatabase);
+            heapSizeBeforeDecompositionLoader = (long) databases[9];
+            heapSizeBeforeSearchbyradicalLoader = (long) databases[10];
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(DATABASE_LOADER);
         }
@@ -442,9 +439,6 @@ public class MainActivity extends AppCompatActivity implements
             List<String[]> CJK_Database = null;
             List<String[]> KanjiDict_Database = null;
             List<String[]> RadicalsOnlyDatabase = null;
-            List<String[]> Components_Database = null;
-            List<String[]> temp = null;
-            List<List<String[]>> arrayOfComponentsDatabases = null;
             long heapSize ;
             boolean enoughMemoryForHeavyFunctions = true;
             //endregion
@@ -474,7 +468,6 @@ public class MainActivity extends AppCompatActivity implements
                         CJK_Database,
                         KanjiDict_Database,
                         RadicalsOnlyDatabase,
-                        arrayOfComponentsDatabases,
                         heapSizeBeforeDecompositionLoader,
                         heapSizeBeforeSearchbyradicalLoader
                 };
@@ -483,9 +476,9 @@ public class MainActivity extends AppCompatActivity implements
 
             //region Loading the CJK databases
             RadicalsDatabase = DatabaseUtilities.readCSVFile("LineRadicals - 3000 kanji.csv", getContext());
+            RadicalsOnlyDatabase = DatabaseUtilities.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", getContext());
             CJK_Database = DatabaseUtilities.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", getContext());
             KanjiDict_Database = DatabaseUtilities.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", getContext());
-            RadicalsOnlyDatabase = DatabaseUtilities.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", getContext());
             Log.i("Diagnosis Time", "Loaded CJK Databases.");
 
             heapSize = Utilities.getAvailableMemory();
@@ -505,25 +498,11 @@ public class MainActivity extends AppCompatActivity implements
                         CJK_Database,
                         KanjiDict_Database,
                         RadicalsOnlyDatabase,
-                        arrayOfComponentsDatabases,
                         heapSizeBeforeDecompositionLoader,
                         heapSizeBeforeSearchbyradicalLoader
                 };
             }
             //endregion
-
-            //region Loading the components databases
-            Components_Database = DatabaseUtilities.readCSVFile("LineComponents - 3000 kanji.csv", getContext());
-            temp = new ArrayList<>();
-            arrayOfComponentsDatabases = new ArrayList<>();
-            for (int i=0; i<Components_Database.size();i++) {
-                if (!Components_Database.get(i)[0].equals("") && Components_Database.get(i)[1].equals("")) {
-                    if (i>1) {arrayOfComponentsDatabases.add(temp);}
-                    temp = new ArrayList<>();
-                }
-                if (!Components_Database.get(i)[0].equals("") && !Components_Database.get(i)[1].equals("")) {temp.add(Components_Database.get(i));}
-            }
-            arrayOfComponentsDatabases.add(temp);
 
 
             Log.i("Diagnosis Time","Loaded All Databases.");
@@ -538,7 +517,6 @@ public class MainActivity extends AppCompatActivity implements
                     CJK_Database,
                     KanjiDict_Database,
                     RadicalsOnlyDatabase,
-                    arrayOfComponentsDatabases,
                     heapSizeBeforeDecompositionLoader,
                     heapSizeBeforeSearchbyradicalLoader
             };
@@ -658,7 +636,6 @@ public class MainActivity extends AppCompatActivity implements
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
         bundle.putSerializable(getString(R.string.rad_only_database), new ArrayList<>(RadicalsOnlyDatabase));
-        bundle.putSerializable(getString(R.string.array_components_database), new ArrayList<>(arrayOfComponentsDatabases));
         mSearchByRadicalFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();

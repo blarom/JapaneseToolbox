@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.List;
 
-public class WordDbTypeConverters {
+public class JapaneseToolboxDbTypeConverters {
 
     static Gson gson = new Gson();
 
@@ -58,6 +58,22 @@ public class WordDbTypeConverters {
 
     @TypeConverter
     public static String wordMeaningExplanationExamplesListToString(List<Word.Meaning.Explanation.Example> list) {
+        return gson.toJson(list);
+    }
+
+    @TypeConverter
+    public static List<KanjiComponent.AssociatedComponent> stringToAssociatedComponentsList(String data) {
+        if (data == null) {
+            return Collections.emptyList();
+        }
+
+        Type listType = new TypeToken<List<KanjiComponent.AssociatedComponent>>() {}.getType();
+
+        return gson.fromJson(data, listType);
+    }
+
+    @TypeConverter
+    public static String associatedComponentsListToString(List<KanjiComponent.AssociatedComponent> list) {
         return gson.toJson(list);
     }
 }

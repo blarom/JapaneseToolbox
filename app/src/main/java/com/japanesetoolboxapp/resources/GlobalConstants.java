@@ -1,6 +1,8 @@
 package com.japanesetoolboxapp.resources;
 
 
+import java.util.HashMap;
+
 public final class GlobalConstants {
 
     // Defining the column title (and index) of each column in the excel files
@@ -72,7 +74,31 @@ public final class GlobalConstants {
     public final static int Index_bottomleftout                  		= 16;
     public final static int Index_bottomout                  		    = 17;
 
-	static int ColIndexConverter(String colIndexLetter) {
+    public final static HashMap<Integer, String> COMPONENT_STRUCTURES_MAP = createStructureMap();
+    private static HashMap<Integer, String> createStructureMap() {
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(Index_full, "full");
+        map.put(Index_across2, "across2");
+        map.put(Index_across3, "across3");
+        map.put(Index_across4, "across4");
+        map.put(Index_down2, "down2");
+        map.put(Index_down3, "down3");
+        map.put(Index_down4, "down4");
+        map.put(Index_three_repeat, "three_repeat");
+        map.put(Index_four_repeat, "four_repeat");
+        map.put(Index_foursquare, "foursquare");
+        map.put(Index_five_repeat, "five_repeat");
+        map.put(Index_topleftout, "topleftout");
+        map.put(Index_topout, "topout");
+        map.put(Index_toprightout, "toprightout");
+        map.put(Index_leftout, "leftout");
+        map.put(Index_fullout, "fullout");
+        map.put(Index_bottomleftout, "bottomleftout");
+        map.put(Index_bottomout, "bottomout");
+        return map;
+    };
+
+	private static int ColIndexConverter(String colIndexLetter) {
 	   int colIndexNumber = 0;
 	   int value;
 	   for (int i = 0; i < colIndexLetter.length(); i++) {

@@ -21,7 +21,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class}, version = 24, exportSchema = false)
+@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class, KanjiCharacter.class, KanjiComponent.class}, version = 33, exportSchema = false)
 public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
@@ -31,6 +31,8 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     public abstract VerbDao verb();
     public abstract KanjiIndexDao kanjiIndex();
     public abstract LatinIndexDao latinIndex();
+    public abstract KanjiCharacterDao kanjiCharacter();
+    public abstract KanjiComponentDao kanjiComponent();
 
 
     //Gets the singleton instance of SampleDatabase
@@ -68,10 +70,18 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
                 Toast loadingToast = showDatabaseLoadingToast("Please wait while we update the local database... Completed 0/3.", context, null);
 
                 loadCentralDatabaseIntoRoomDb(context);
+                Log.i("Diagnosis Time", "Loaded Room Central Database.");
                 loadingToast = showDatabaseLoadingToast("Please wait while we update the local database... Completed 1/3.", context, loadingToast);
 
                 loadCentralDatabaseIndexesIntoRoomDb(context);
+                Log.i("Diagnosis Time", "Loaded Room Central Indexes Database.");
                 loadingToast = showDatabaseLoadingToast("Please wait while we update the local database... Completed 2/3.", context, loadingToast);
+
+                loadKanjiCharactersIntoRoomDb(context);
+                Log.i("Diagnosis Time", "Loaded Room Kanji Characters Database.");
+
+                loadKanjiComponentsIntoRoomDb(context);
+                Log.i("Diagnosis Time", "Loaded Room Kanji Components Database.");
 
                 setTransactionSuccessful();
             } finally {
@@ -165,6 +175,78 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
         kanjiIndex().insertAll(kanjiIndexList);
         Log.i("Diagnosis Time","Loaded Indexes.");
     }
+    private void loadKanjiCharactersIntoRoomDb(Context context) {
+
+
+        List<String[]> CJK_Database = DatabaseUtilities.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", context);
+        List<String[]> KanjiDict_Database = DatabaseUtilities.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", context);
+        List<String[]> RadicalsDatabase = DatabaseUtilities.readCSVFile("LineRadicals - 3000 kanji.csv", context);
+
+        List<KanjiCharacter> kanjiCharacterList = new ArrayList<>();
+        for (int i=0; i<CJK_Database.size(); i++) {
+            if (TextUtils.isEmpty(CJK_Database.get(i)[0])) break;
+            KanjiCharacter kanjiCharacter = new KanjiCharacter(CJK_Database.get(i)[0], CJK_Database.get(i)[1], CJK_Database.get(i)[2]);
+            kanjiCharacterList.add(kanjiCharacter);
+        }
+        kanjiCharacter().insertAll(kanjiCharacterList);
+
+        for (int i=0; i<KanjiDict_Database.size(); i++) {
+            if (TextUtils.isEmpty(KanjiDict_Database.get(i)[0])) break;
+            KanjiCharacter kanjiCharacter = kanjiCharacter().getKanjiCharacterByHexId(KanjiDict_Database.get(i)[0]);
+            if (kanjiCharacter!=null) {
+                kanjiCharacter.setReadings(KanjiDict_Database.get(i)[1]);
+                kanjiCharacter.setMeanings(KanjiDict_Database.get(i)[2]);
+                kanjiCharacter().update(kanjiCharacter);
+            }
+        }
+
+        for (int i=0; i<RadicalsDatabase.size(); i++) {
+            if (TextUtils.isEmpty(RadicalsDatabase.get(i)[0])) break;
+            KanjiCharacter kanjiCharacter = kanjiCharacter().getKanjiCharacterByHexId(RadicalsDatabase.get(i)[0]);
+            if (kanjiCharacter!=null) {
+                kanjiCharacter.setRadPlusStrokes(RadicalsDatabase.get(i)[1]);
+                kanjiCharacter().update(kanjiCharacter);
+            }
+        }
+
+        Log.i("Diagnosis Time","Loaded Kanji Characters Database.");
+    }
+    private void loadKanjiComponentsIntoRoomDb(Context context) {
+
+        List<String[]> Components_Database = DatabaseUtilities.readCSVFile("LineComponents - 3000 kanji.csv", context);
+
+        KanjiComponent kanjiComponent = new KanjiComponent("full1");
+        List<KanjiComponent> kanjiComponents = new ArrayList<>();
+        List<KanjiComponent.AssociatedComponent> associatedComponents = new ArrayList<>();
+        String firstElement;
+        String secondElement;
+        for (int i=0; i<Components_Database.size();i++) {
+
+            firstElement = Components_Database.get(i)[0];
+            secondElement = Components_Database.get(i)[1];
+
+            if (TextUtils.isEmpty(firstElement)) break;
+
+            if (!firstElement.equals("") && secondElement.equals("") || i == Components_Database.size()-1 || i==3000) {
+
+                kanjiComponent.setAssociatedComponents(associatedComponents);
+                associatedComponents = new ArrayList<>();
+                if (i>1) kanjiComponents.add(kanjiComponent);
+
+                if (i==3000) kanjiComponent = new KanjiComponent("full2");
+                else if (i < Components_Database.size()-1) kanjiComponent = new KanjiComponent(firstElement);
+            }
+            if (!firstElement.equals("") && !secondElement.equals("")) {
+                KanjiComponent.AssociatedComponent associatedComponent = new KanjiComponent.AssociatedComponent();
+                associatedComponent.setComponent(firstElement);
+                associatedComponent.setAssociatedComponents(secondElement);
+                associatedComponents.add(associatedComponent);
+            }
+        }
+        kanjiComponent().insertAll(kanjiComponents);
+
+        Log.i("Diagnosis Time","Loaded Kanji Components Database.");
+    }
 
     //Switches the internal implementation with an empty in-memory database
     @VisibleForTesting
@@ -227,5 +309,19 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     }
     public List<Verb> getAllVerbs() {
         return verb().getAllVerbs();
+    }
+
+    public List<KanjiCharacter> getAllKanjiCharacters() {
+        return kanjiCharacter().getAllKanjiCharacters();
+    }
+
+    public List<KanjiComponent> getKanjiComponentsByStructureName(String structure) {
+        return kanjiComponent().getKanjiComponentsByStructure(structure);
+    }
+    public KanjiComponent getKanjiComponentsById(long id) {
+        return kanjiComponent().getKanjiComponentById(id);
+    }
+    public List<KanjiComponent> getAllKanjiComponents() {
+        return kanjiComponent().getAllKanjiComponents();
     }
 }

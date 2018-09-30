@@ -119,7 +119,7 @@ public class Word implements Parcelable {
         return commonStatus;
     }
 
-    @TypeConverters({WordDbTypeConverters.class})
+    @TypeConverters({JapaneseToolboxDbTypeConverters.class})
     @ColumnInfo(name = COLUMN_WORD_MEANINGS)
     private List<Meaning> meanings;
     public void setMeanings(List<Meaning> meanings) {
@@ -185,7 +185,7 @@ public class Word implements Parcelable {
             return synonym;
         }
 
-        @TypeConverters({WordDbTypeConverters.class})
+        @TypeConverters({JapaneseToolboxDbTypeConverters.class})
         private List<Explanation> explanations;
         public void setExplanations(List<Explanation> explanations) {
             this.explanations = explanations;
@@ -216,7 +216,7 @@ public class Word implements Parcelable {
                 return rules;
             }
 
-            @TypeConverters({WordDbTypeConverters.class})
+            @TypeConverters({JapaneseToolboxDbTypeConverters.class})
             private List<Example> examples;
             public void setExamples(List<Example> examples) {
                 this.examples = examples;
