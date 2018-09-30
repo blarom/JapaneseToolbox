@@ -21,7 +21,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class, KanjiCharacter.class, KanjiComponent.class}, version = 33, exportSchema = false)
+@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class, KanjiCharacter.class, KanjiComponent.class}, version = 34, exportSchema = false)
 public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
@@ -65,24 +65,42 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
         if (word().count() == 0) {
             beginTransaction();
             try {
-
                 if (Looper.myLooper() == null) Looper.prepare();
-                Toast loadingToast = showDatabaseLoadingToast("Please wait while we update the local database... Completed 0/3.", context, null);
-
                 loadCentralDatabaseIntoRoomDb(context);
                 Log.i("Diagnosis Time", "Loaded Room Central Database.");
-                loadingToast = showDatabaseLoadingToast("Please wait while we update the local database... Completed 1/3.", context, loadingToast);
-
+                setTransactionSuccessful();
+            } finally {
+                endTransaction();
+            }
+        }
+        if (latinIndex().count() == 0) {
+            beginTransaction();
+            try {
+                if (Looper.myLooper() == null) Looper.prepare();
                 loadCentralDatabaseIndexesIntoRoomDb(context);
                 Log.i("Diagnosis Time", "Loaded Room Central Indexes Database.");
-                loadingToast = showDatabaseLoadingToast("Please wait while we update the local database... Completed 2/3.", context, loadingToast);
-
+                setTransactionSuccessful();
+            } finally {
+                endTransaction();
+            }
+        }
+        if (kanjiCharacter().count() == 0) {
+            beginTransaction();
+            try {
+                if (Looper.myLooper() == null) Looper.prepare();
                 loadKanjiCharactersIntoRoomDb(context);
                 Log.i("Diagnosis Time", "Loaded Room Kanji Characters Database.");
-
+                setTransactionSuccessful();
+            } finally {
+                endTransaction();
+            }
+        }
+        if (kanjiComponent().count() == 0) {
+            beginTransaction();
+            try {
+                if (Looper.myLooper() == null) Looper.prepare();
                 loadKanjiComponentsIntoRoomDb(context);
                 Log.i("Diagnosis Time", "Loaded Room Kanji Components Database.");
-
                 setTransactionSuccessful();
             } finally {
                 endTransaction();
@@ -324,4 +342,5 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     public List<KanjiComponent> getAllKanjiComponents() {
         return kanjiComponent().getAllKanjiComponents();
     }
+
 }

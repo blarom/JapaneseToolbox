@@ -1956,13 +1956,13 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                 List<KanjiComponent> kanjiComponents = mJapaneseToolboxRoomDatabase.getKanjiComponentsByStructureName(componentStructure);
                 if (kanjiComponents != null && kanjiComponents.size() > 0) {
                     kanjiComponentForRequestedStructure = kanjiComponents.get(0);
-                    if (componentStructure.equals("full") && kanjiComponents.size()==2) {
+                    if (componentStructure.equals("full") && kanjiComponents.size()>1) {
                         associatedComponents = kanjiComponentForRequestedStructure.getAssociatedComponents();
                         associatedComponents.addAll(kanjiComponents.get(1).getAssociatedComponents());
                     }
                 }
             }
-            if (kanjiComponentForRequestedStructure==null) return new ArrayList<>();
+            if (kanjiComponentForRequestedStructure==null || associatedComponents==null) return new ArrayList<>();
 
             //region Finding the list of matches corresponding to the user's input
             if(!elementA.equals("")) {

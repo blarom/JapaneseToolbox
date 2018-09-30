@@ -84,10 +84,10 @@ public final class GlobalConstants {
         map.put(Index_down2, "down2");
         map.put(Index_down3, "down3");
         map.put(Index_down4, "down4");
-        map.put(Index_three_repeat, "three_repeat");
-        map.put(Index_four_repeat, "four_repeat");
+        map.put(Index_three_repeat, "repeat3special");
+        map.put(Index_four_repeat, "repeat4special");
         map.put(Index_foursquare, "foursquare");
-        map.put(Index_five_repeat, "five_repeat");
+        map.put(Index_five_repeat, "repeat5special");
         map.put(Index_topleftout, "topleftout");
         map.put(Index_topout, "topout");
         map.put(Index_toprightout, "toprightout");
@@ -96,7 +96,7 @@ public final class GlobalConstants {
         map.put(Index_bottomleftout, "bottomleftout");
         map.put(Index_bottomout, "bottomout");
         return map;
-    };
+    }
 
 	private static int ColIndexConverter(String colIndexLetter) {
 	   int colIndexNumber = 0;

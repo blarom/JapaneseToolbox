@@ -29,7 +29,6 @@ import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
 import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.data.Word;
-import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
@@ -41,6 +40,8 @@ import butterknife.Unbinder;
 
 //TODO: database upgrade
 ////TODO: allow user to enter verb in gerund form (ing) and still find it
+//splashscreen db load
+//
 
 //TODO: features
 ////TODO when joining online results, compare verb[space]suru with verb[no space]suru, and show verb[space]suru to user
@@ -73,25 +74,18 @@ public class MainActivity extends AppCompatActivity implements
 
 
     //region Parameters
-    private static final int DATABASE_LOADER = 9512;
+    private static final int SMALL_DATABASE_LOADER = 9512;
     @BindView(R.id.second_fragment_placeholder) FrameLayout mSecondFragmentPlaceholder;
     private String mSecondFragmentFlag;
     InputQueryFragment mInputQueryFragment;
     List<String[]> LegendDatabase;
-    List<String[]> RadicalsDatabase;
-    List<String[]> CJKDatabase;
     List<String[]> VerbLatinConjDatabase;
     List<String[]> VerbKanjiConjDatabase;
-    List<String[]> KanjiDictDatabase;
     List<Verb> VerbsDatabase;
     List<String[]> SimilarsDatabase;
-    List<List<String[]>> arrayOfComponentsDatabases;
     List<String[]> RadicalsOnlyDatabase;
     Typeface CJK_typeface;
 
-    private long heapSizeBeforeDecompositionLoader;
-    private long heapSizeBeforeSearchbyradicalLoader;
-    private boolean enoughMemoryForHeavyFunctions;
     Intent restartIntent;
 
     public boolean mShowOnlineResults;
@@ -110,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements
     private SearchByRadicalFragment mSearchByRadicalFragment;
     private DecomposeKanjiFragment mDecomposeKanjiFragment;
     private String mSecondFragmentCurrentlyDisplayed;
-    private boolean mAlreadyLoadedDatabases;
+    private boolean mAlreadyLoadedSmallDatabases;
     private boolean mAllowButtonOperations;
     private List<Word> mLocalMatchingWords;
     private String mInputQuery;
@@ -370,27 +364,36 @@ public class MainActivity extends AppCompatActivity implements
         }
     }
     private void startLoadingDatabasesInBackground() {
-        if (!mAlreadyLoadedDatabases) {
+        if (!mAlreadyLoadedSmallDatabases) {
             LoaderManager loaderManager = getSupportLoaderManager();
-            Loader<String> roomDbSearchLoader = loaderManager.getLoader(DATABASE_LOADER);
-            if (roomDbSearchLoader == null) loaderManager.initLoader(DATABASE_LOADER, null, this);
-            else loaderManager.restartLoader(DATABASE_LOADER, null, this);
+            Loader<String> roomDbSearchLoader = loaderManager.getLoader(SMALL_DATABASE_LOADER);
+            if (roomDbSearchLoader == null) loaderManager.initLoader(SMALL_DATABASE_LOADER, null, this);
+            else loaderManager.restartLoader(SMALL_DATABASE_LOADER, null, this);
         }
     }
+    private void cleanSavedData() {
+        mLocalMatchingWords = null;
+        mDictionaryFragment = null;
+        mConjugatorFragment = null;
+        mConvertFragment = null;
+        mSearchByRadicalFragment = null;
+        mDecomposeKanjiFragment = null;
+    }
+
 
     //Asynchronous methods
     @NonNull @Override public Loader<Object> onCreateLoader(int id, final Bundle args) {
 
-        if (id == DATABASE_LOADER) {
-            DatabaseAsyncTaskLoader DbLoader = new DatabaseAsyncTaskLoader(this, mAlreadyLoadedDatabases);
+        if (id == SMALL_DATABASE_LOADER) {
+            SmallDatabasesAsyncTaskLoader DbLoader = new SmallDatabasesAsyncTaskLoader(this, mAlreadyLoadedSmallDatabases);
             return DbLoader;
         }
-        else return new DatabaseAsyncTaskLoader(this, true);
+        else return new SmallDatabasesAsyncTaskLoader(this, true);
     }
     @Override public void onLoadFinished(@NonNull Loader<Object> loader, Object data) {
 
-        if (loader.getId() == DATABASE_LOADER && !mAlreadyLoadedDatabases && data!=null) {
-            mAlreadyLoadedDatabases = true;
+        if (loader.getId() == SMALL_DATABASE_LOADER && !mAlreadyLoadedSmallDatabases && data!=null) {
+            mAlreadyLoadedSmallDatabases = true;
 
             Object[] databases = (Object[]) data;
 
@@ -398,25 +401,18 @@ public class MainActivity extends AppCompatActivity implements
             SimilarsDatabase = new ArrayList((List<String[]>) databases[1]);
             VerbLatinConjDatabase = new ArrayList((List<String[]>) databases[2]);
             VerbKanjiConjDatabase = new ArrayList((List<String[]>) databases[3]);
-            enoughMemoryForHeavyFunctions = (boolean) databases[4];
-            RadicalsDatabase = new ArrayList((List<String[]>) databases[5]);
-            CJKDatabase = new ArrayList((List<String[]>) databases[6]);
-            KanjiDictDatabase = new ArrayList((List<String[]>) databases[7]);
-            RadicalsOnlyDatabase = new ArrayList((List<String[]>) databases[8]);
-            heapSizeBeforeDecompositionLoader = (long) databases[9];
-            heapSizeBeforeSearchbyradicalLoader = (long) databases[10];
+            RadicalsOnlyDatabase = new ArrayList((List<String[]>) databases[4]);
 
-            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(DATABASE_LOADER);
+            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(SMALL_DATABASE_LOADER);
         }
 
     }
     @Override public void onLoaderReset(@NonNull Loader<Object> loader) {}
-    private static class DatabaseAsyncTaskLoader extends AsyncTaskLoader<Object> {
+    private static class SmallDatabasesAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
         private final boolean mAlreadyLoadedVerbs;
-        private JapaneseToolboxRoomDatabase mJapaneseToolboxRoomDatabase;
 
-        DatabaseAsyncTaskLoader(Context context, boolean mAlreadyLoadedVerbs) {
+        SmallDatabasesAsyncTaskLoader(Context context, boolean mAlreadyLoadedVerbs) {
             super(context);
             this.mAlreadyLoadedVerbs = mAlreadyLoadedVerbs;
         }
@@ -429,98 +425,21 @@ public class MainActivity extends AppCompatActivity implements
         @Override
         public Object loadInBackground() {
 
-            //region Initializations
-            mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext()); //Required for Room
-            List<String[]> LegendDatabase = null;
-            List<String[]> SimilarsDatabase = null;
-            List<String[]> VerbLatinConjDatabase = null;
-            List<String[]> VerbKanjiConjDatabase = null;
-            List<String[]> RadicalsDatabase = null;
-            List<String[]> CJK_Database = null;
-            List<String[]> KanjiDict_Database = null;
-            List<String[]> RadicalsOnlyDatabase = null;
-            long heapSize ;
-            boolean enoughMemoryForHeavyFunctions = true;
-            //endregion
+            JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext()); //Required for Room
+            List<String[]> LegendDatabase = DatabaseUtilities.readCSVFile("LineLegend - 3000 kanji.csv", getContext());
+            List<String[]> SimilarsDatabase = DatabaseUtilities.readCSVFile("LineSimilars - 3000 kanji.csv", getContext());
+            List<String[]> VerbLatinConjDatabase = DatabaseUtilities.readCSVFile("LineLatinConj - 3000 kanji.csv", getContext());
+            List<String[]> VerbKanjiConjDatabase = DatabaseUtilities.readCSVFile("LineKanjiConj - 3000 kanji.csv", getContext());
+            List<String[]> RadicalsOnlyDatabase = DatabaseUtilities.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", getContext());
 
-            //region Loading the small databases
-            LegendDatabase = DatabaseUtilities.readCSVFile("LineLegend - 3000 kanji.csv", getContext());
-            SimilarsDatabase = DatabaseUtilities.readCSVFile("LineSimilars - 3000 kanji.csv", getContext());
-            VerbLatinConjDatabase = DatabaseUtilities.readCSVFile("LineLatinConj - 3000 kanji.csv", getContext());
-            VerbKanjiConjDatabase = DatabaseUtilities.readCSVFile("LineKanjiConj - 3000 kanji.csv", getContext());
-            Log.i("Diagnosis Time","Loaded Small Databases.");
-
-            heapSize = Utilities.getAvailableMemory();
-            long heapSizeBeforeDecompositionLoader = heapSize;
-            long heapSizeBeforeSearchbyradicalLoader = heapSize;
-
-            if (heapSizeBeforeDecompositionLoader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                Log.i("Diagnosis Time","Stopped database loading due to low memory.");
-
-                enoughMemoryForHeavyFunctions = false;
-                return new Object[] {
-                        LegendDatabase,
-                        SimilarsDatabase,
-                        VerbLatinConjDatabase,
-                        VerbKanjiConjDatabase,
-                        enoughMemoryForHeavyFunctions,
-                        RadicalsDatabase,
-                        CJK_Database,
-                        KanjiDict_Database,
-                        RadicalsOnlyDatabase,
-                        heapSizeBeforeDecompositionLoader,
-                        heapSizeBeforeSearchbyradicalLoader
-                };
-            }
-            //endregion
-
-            //region Loading the CJK databases
-            RadicalsDatabase = DatabaseUtilities.readCSVFile("LineRadicals - 3000 kanji.csv", getContext());
-            RadicalsOnlyDatabase = DatabaseUtilities.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", getContext());
-            CJK_Database = DatabaseUtilities.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", getContext());
-            KanjiDict_Database = DatabaseUtilities.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", getContext());
-            Log.i("Diagnosis Time", "Loaded CJK Databases.");
-
-            heapSize = Utilities.getAvailableMemory();
-            heapSizeBeforeSearchbyradicalLoader = heapSize;
-
-            if (heapSizeBeforeSearchbyradicalLoader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-                Log.i("Diagnosis Time","Stopped database loading due to low memory.");
-
-                enoughMemoryForHeavyFunctions = false;
-                return new Object[] {
-                        LegendDatabase,
-                        SimilarsDatabase,
-                        VerbLatinConjDatabase,
-                        VerbKanjiConjDatabase,
-                        enoughMemoryForHeavyFunctions,
-                        RadicalsDatabase,
-                        CJK_Database,
-                        KanjiDict_Database,
-                        RadicalsOnlyDatabase,
-                        heapSizeBeforeDecompositionLoader,
-                        heapSizeBeforeSearchbyradicalLoader
-                };
-            }
-            //endregion
-
-
-            Log.i("Diagnosis Time","Loaded All Databases.");
-            enoughMemoryForHeavyFunctions = true;
+            Log.i("Diagnosis Time","Loaded All Small Databases.");
             return new Object[] {
                     LegendDatabase,
                     SimilarsDatabase,
                     VerbLatinConjDatabase,
                     VerbKanjiConjDatabase,
-                    enoughMemoryForHeavyFunctions,
-                    RadicalsDatabase,
-                    CJK_Database,
-                    KanjiDict_Database,
                     RadicalsOnlyDatabase,
-                    heapSizeBeforeDecompositionLoader,
-                    heapSizeBeforeSearchbyradicalLoader
             };
-            //endregion
         }
 
     }
@@ -538,8 +457,7 @@ public class MainActivity extends AppCompatActivity implements
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
             return;
         }
-        mLocalMatchingWords = null;
-        mConjugatorFragment = null;
+        cleanSavedData();
         clearBackstack();
 
         mSecondFragmentCurrentlyDisplayed = getString(R.string.dict_fragment);
@@ -567,8 +485,7 @@ public class MainActivity extends AppCompatActivity implements
         mInputQuery = query;
 
         if (!mAllowButtonOperations) return;
-        mLocalMatchingWords = null;
-        mDictionaryFragment = null;
+        cleanSavedData();
         clearBackstack();
         if (LegendDatabase==null) {
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
@@ -598,6 +515,9 @@ public class MainActivity extends AppCompatActivity implements
     @Override public void onConvertRequested(String query) {
 
         if (!mAllowButtonOperations) return;
+
+        cleanSavedData();
+
         mSecondFragmentCurrentlyDisplayed = getString(R.string.conv_fragment);
 
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
@@ -618,10 +538,9 @@ public class MainActivity extends AppCompatActivity implements
     @Override public void onSearchByRadicalRequested(String query) {
 
         if (!mAllowButtonOperations) return;
-        if (heapSizeBeforeSearchbyradicalLoader < GlobalConstants.CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-            Toast.makeText(this, "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
-            return;
-        }
+
+        cleanSavedData();
+
         if (LegendDatabase==null) {
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
             return;
@@ -649,10 +568,9 @@ public class MainActivity extends AppCompatActivity implements
     @Override public void onDecomposeRequested(String query) {
 
         if (!mAllowButtonOperations) return;
-        if (heapSizeBeforeDecompositionLoader < GlobalConstants.DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE) {
-            Toast.makeText(this, "Sorry, your device does not have enough memory to run this function.", Toast.LENGTH_LONG).show();
-            return;
-        }
+
+        cleanSavedData();
+
         if (LegendDatabase==null) {
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
             return;
@@ -667,9 +585,6 @@ public class MainActivity extends AppCompatActivity implements
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
         bundle.putSerializable(getString(R.string.rad_only_database), new ArrayList<>(RadicalsOnlyDatabase));
-        bundle.putSerializable(getString(R.string.kanji_dict_database), new ArrayList<>(KanjiDictDatabase));
-        bundle.putSerializable(getString(R.string.rad_database), new ArrayList<>(RadicalsDatabase));
-        bundle.putSerializable(getString(R.string.cjk_database), new ArrayList<>(CJKDatabase));
 
         mDecomposeKanjiFragment.setArguments(bundle);
 

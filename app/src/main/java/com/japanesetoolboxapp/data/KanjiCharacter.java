@@ -2,9 +2,12 @@ package com.japanesetoolboxapp.data;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.provider.BaseColumns;
+
+import java.util.Comparator;
 
 @Entity(tableName = KanjiCharacter.TABLE_NAME, indices = {@Index("hexIdentifier")})
 public class KanjiCharacter  {
@@ -21,6 +24,12 @@ public class KanjiCharacter  {
     public KanjiCharacter() {
     }
 
+    @Ignore
+    public KanjiCharacter(String hexId) {
+        this.hexIdentifier = hexId;
+    }
+
+    @Ignore
     public KanjiCharacter(String hexId, String structure, String components) {
         this.hexIdentifier = hexId;
         this.structure = structure;
@@ -91,4 +100,10 @@ public class KanjiCharacter  {
         return radPlusStrokes;
     }
 
+    public static Comparator<KanjiCharacter> hexIdentiferComparatorAscending = new Comparator<KanjiCharacter>() {
+        public int compare(KanjiCharacter u1, KanjiCharacter u2)
+        {
+            return u1.getHexIdentifier().compareTo(u2.getHexIdentifier());
+        }
+    };
 }

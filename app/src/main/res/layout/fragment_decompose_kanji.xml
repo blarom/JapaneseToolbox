@@ -31,6 +31,14 @@
         android:layout_below="@+id/RadicalDecomp"
         android:background="#BFFFFFFF" />
 
+    <ProgressBar
+        android:id="@+id/decompositions_loading_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:visibility="invisible"/>
+
     <ScrollView
         android:id="@+id/decompositionScrollView"
         android:layout_below="@+id/decompositionsHint"
@@ -51,6 +59,7 @@
 
         </LinearLayout>
     </ScrollView>
+
 
 
 </RelativeLayout>
