@@ -44,8 +44,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-
 public class DecomposeKanjiFragment extends Fragment implements LoaderManager.LoaderCallbacks<Object>{
+
 
     //region Parameters
     @BindView(R.id.decompositionsHint) TextView mDecompositionsHint;

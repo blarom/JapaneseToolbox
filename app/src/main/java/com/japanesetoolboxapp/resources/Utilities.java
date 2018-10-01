@@ -940,30 +940,54 @@ public class Utilities {
                 localRomaji = localWord.getRomaji();
                 localKanji = localWord.getKanji();
 
-                if ( (asyncRomaji.equals(localRomaji) || ("[verb]"+asyncRomaji).equals(localRomaji))
-                        && asyncKanji.equals(localKanji) ) {
+                if ( asyncRomaji.equals(localRomaji) && asyncKanji.equals(localKanji) ) {
 
                     foundMatchingLocalWord = true;
 
                     localMeanings = localWord.getMeanings();
-                    remainingLocalMeanings = new ArrayList<>(localMeanings);
                     asyncMeanings = asyncWord.getMeanings();
 
-                    for (int i=0; i<asyncMeanings.size(); i++) {
 
-                        localMeaningIndex = 0;
-                        while (localMeaningIndex < remainingLocalMeanings.size()) {
-
-                            if ( remainingLocalMeanings.get(localMeaningIndex).getMeaning().equals(asyncMeanings.get(i).getMeaning()) ) {
-                                remainingLocalMeanings.remove(localMeaningIndex);
-                            }
-                    else {
-                        localMeaningIndex++;
+                    //If non-identical meanings remain, it is possible that a Jisho meaning was split by types in the local database, therefore check the following:
+                    StringBuilder allLocalMeanings = new StringBuilder();
+                    for (Word.Meaning meaning : localMeanings) {
+                        allLocalMeanings.append(meaning.getMeaning());
+                        allLocalMeanings.append(", ");
                     }
-                }
-            }
 
-            if (remainingLocalMeanings.size()>0) differentAsyncWords.add(asyncWord);
+                    List<String> allAsyncMeaningElements = new ArrayList<>();
+                    boolean isInParenthesis;
+                    StringBuilder currentElement;
+                    String currentAsyncMeaning;
+                    String currentAsyncMeaningChar;
+                    for (Word.Meaning asyncWordMeaning : asyncMeanings) {
+                        isInParenthesis = false;
+                        currentElement = new StringBuilder();
+                        currentAsyncMeaning = asyncWordMeaning.getMeaning();
+                        for (int i=0; i<asyncWordMeaning.getMeaning().length(); i++) {
+                            currentAsyncMeaningChar = currentAsyncMeaning.substring(i,i+1);
+                            if (currentAsyncMeaningChar.equals("(")) isInParenthesis = true;
+                            else if (currentAsyncMeaningChar.equals(")")) isInParenthesis = false;
+
+                            if (isInParenthesis || !currentAsyncMeaningChar.equals(",")) currentElement.append(currentAsyncMeaningChar);
+
+                            if (currentAsyncMeaningChar.equals(",") && !isInParenthesis || i == asyncWordMeaning.getMeaning().length()-1) {
+                                allAsyncMeaningElements.add(currentElement.toString().trim());
+                                currentElement = new StringBuilder();
+                            }
+                        }
+                    }
+
+                    String allLocalMeaningsAsString = allLocalMeanings.toString();
+                    boolean meaningNotFoundInLocalWord = false;
+                    for (String element : allAsyncMeaningElements) {
+                        if (!allLocalMeaningsAsString.contains(element)) {
+                            meaningNotFoundInLocalWord = true;
+                            break;
+                        }
+                    }
+
+                    if (meaningNotFoundInLocalWord) differentAsyncWords.add(asyncWord);
 
                     remainingLocalWords.remove(localWord);
                     break;

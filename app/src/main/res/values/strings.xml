@@ -11,7 +11,7 @@
     <!--Splashscreen-->
     <string name="splashscreen_intro_sentence">Your personal aid for deciphering\nthe Japanese language.</string>
     <string name="splashscreen_loading_database">Loading Local Database…</string>
-    <string name="Title4">This should only take a few seconds.</string>
+    <string name="splashscreen_should_take_only_a_few_seconds">This should only take a few seconds.</string>
 
     <!--Menu Strings-->
     <string name="settings">Settings</string>

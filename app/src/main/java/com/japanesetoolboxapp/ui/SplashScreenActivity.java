@@ -42,13 +42,6 @@ public class SplashScreenActivity extends Activity {
 
         mBinding =  ButterKnife.bind(this);
 
-        boolean finishedLoadingWordDatabases = Utilities.getAppPreferenceKanjiDatabaseFinishedLoadingFlag(SplashScreenActivity.this);
-        if (!finishedLoadingWordDatabases) {
-            mTimeToLoadTextView.setText(R.string.database_being_installed);
-            mLoadingDatabaseTextView.setVisibility(View.VISIBLE);
-            showLoadingIndicator();
-        }
-
         mKanjiDbTextAlreadyLoaded = false;
         mLoadingDatabaseTextView.setText(getString(R.string.loading_central_database));
         Runnable dbLoadRunnable = new Runnable() {
@@ -77,6 +70,14 @@ public class SplashScreenActivity extends Activity {
         countDownTimer = new CountDownTimer(360000, 500) {
             @Override
             public void onTick(long l) {
+
+                boolean finishedLoadingWordDatabases = Utilities.getAppPreferenceWordVerbDatabasesFinishedLoadingFlag(SplashScreenActivity.this);
+                if (!finishedLoadingWordDatabases) {
+                    mTimeToLoadTextView.setText(R.string.database_being_installed);
+                    mLoadingDatabaseTextView.setVisibility(View.VISIBLE);
+                    showLoadingIndicator();
+                }
+
                 if (mLoadedCentralDb && !mLoadedKanjiDb && !mKanjiDbTextAlreadyLoaded) {
                     mKanjiDbTextAlreadyLoaded = true;
                     mLoadingDatabaseTextView.setText(getString(R.string.loading_kanji_database));

@@ -6,7 +6,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6|neither ... nor|PP|Used in negative sentences.|X mo Y mo||||
 7|and|PP||X to|767|||
 8|with|PP||X to|768|||
-9|when|PP||X to||||
+9|if, when|PP||X to||||
 10|object marker|PP|Used in phrases such a "to imasu" or "to moshimasu".|X to||||
 11|if X then Y|SSCC|ME#0101;0102|||||
 12|and (amongst others)|PP||X ya||||
@@ -394,7 +394,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 394|everything|A||||||
 395|exactly, surely, certainly|A||||||
 396|him/her (here)|A|ME#0006;0007|||||
-397|this one|A|ME#0015;0016|||||
+397|this one (something physically close to the speaker)|A|ME#0015;0016|||||
 398|him/her (over there)|A|ME#0010;0011|||||
 399|that one over there|A|ME#0019;0020|||||
 400|him/her (there)|A|ME#0008;0009|||||
@@ -578,7 +578,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 578|beautiful|Ai||||||
 579|beautiful ,lovely|Ai|||||kirei|
 580|beautiful, lovely|Ai||||||
-581|big, large|Ai|||552|||
+581|big, large, great|Ai|||552|||
 582|bitter|Ai|||581|||
 583|black|Ai||||||
 584|blue|Ai||||||
@@ -748,7 +748,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 748|again and again, repeatedly|AM||||||
 749|alone|AM|||1286|futari de, issho ni, minna de||
 750|anyhow, at any rate, anyway, somehow or other, generally speaking, in any case|AM||||||
-751|anyhow, at any rate, anyway, somehow or other, generally speaking, in any case|AM|||1390|||
+751||-||||||
 752|arbitrarily, of its own accord, involuntarily, wilfully, willfully, as one pleases|AM||||||
 753|arduously, diligently, industriously|AM||||||
 754|bad, evil|AM||||||
@@ -929,7 +929,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 929|free (available), not busy, slow (of one's business)|Ana|||584|isogashii|jiyuu|
 930|spare time, free time, leisure, time off, day off, vacation, holiday, leave, quitting (one's job), firing someone, divorcing (one's spouse)|NACF|||74|||
 931|free (from confinement), unbound, unrestricted, in control|Ana||||不健康|hima|
-932|freedom, liberty|NACF||||||
+932|freedom, liberty, as it pleases you|NACF||||||
 933|fresh|Ana||||||
 934|full|Ana||||||
 935|full, in plently, ample|Ana||||||
@@ -1163,7 +1163,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1163|previous, prior, former, preceding, ahead, in front|AO||||tsugi||
 1164|before|Sx|e.g. renrakusaki (before making a reservation)|||||
 1165|above, over|AP||||shita||
-1166|top|NPl|||434|shita||
+1166|top, summit|NPl|||434|shita||
 1167|anywhere|AP|||740|||
 1168|behind|AP||||mae||
 1169|back|NPl|||439|mae, temae||
@@ -1182,7 +1182,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1182|nowhere|AP||Always followed by negative verb.|739|||
 1183|opposite side|AP||||||
 1184|outside, exterior|AP||||naka||
-1185|outside|NPl|||440|uchi, inai||
+1185|outside, exterior|NPl|||440|uchi, inai||
 1186|over there|AP|ME#0029;0030|||||
 1187|somewhere, someplace|AP||||||
 1188|somwhere, anywhere|AP|||738|||
@@ -3255,11 +3255,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3255|grandmother|NFy|Used when the speaker is of another family or when referring to that person within the family.||235|||
 3256|grandmother|NFy|Used when the speaker is of the same family.|||||
 3257|husband|NFy|Honorable, used when the speaker is of another family (when referring to that person within the family, their name is used instead).||222|||
-3258|husband|NFy|Used when the speaker is of the same family.|||||
+3258|your husband, her husband|NFy|Used when the speaker is of the same family.|||||
 3259|master|NPe||||||
 3260|husband|NFy||||||
 3261|mama, mother, female proprietress|NFy||||||
-3262|mother|NFy|Used when the speaker is of the same family.||219|||
+3262|mama, mamma, mom, mommy, mum, mummy, mother|NFy|Used when the speaker is of the same family.||219|||
 3263|mother|NFy||||||
 3264|my older brother|NFy|Used when the speaker is of the same family.||226|||
 3265|my older brother, my senior|NFy|Used when the speaker is of the same family.||226|||
@@ -3451,7 +3451,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3451|picture, painting|NGO|Not a photograph||348|||
 3452|picture, painting|NGO||||||
 3453|aeroplane, airplane, aircraft|NGO||||||
-3454|airplane|NGO|||336|||
+3454|aeroplane, airplane, aircraft|NGO|||336|||
 3455|plate|NGO|||344|||
 3456|pocket|NGO|||340|||
 3457|personal expenses, pocket money, spending money, incidental expenses, allowance, pin money|NGO||||||
@@ -3981,7 +3981,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3981|(one's parents') home|NPl||||||
 3982|above ground|NPl||||||
 3983|airfield, airport|NPl||||||
-3984|airport|NPl|||428|||
+3984|airfield, airport|NPl|||428|||
 3985|alcove where art or flowers are displayed|NPl||||||
 3986|amusement park|NPl||||||
 3987|another place, somewhere else, strange parts, outside (one's family or group), those people|NPl||||||
@@ -4147,7 +4147,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4147|plot of land, lot, soil|NPl||||||
 4148|point of sale, POS, sales floor, counter (in shop), booth|NPl|||1300|||
 4149|police box|NPl|||408|||
-4150|police station|NPl|||435|||
+4150|police box, small neighborhood police station|NPl|||435|||
 4151|pond|NPl|||475|||
 4152|post office|NPl|||456|||
 4153|powder room|NPl||||||
@@ -4248,7 +4248,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4248|sun, solar|NS||||||
 4249|sun, sunlight|NS||||||
 4250|sun, sunshine, sunlight|NS||||||
-4251|day|NT|||501, 502, 1314||nichi|
+4251|day, days|NT|||501, 502, 1314||nichi|
 4252|sunlight, rays of the sun|NS||||||
 4253|the Earth, the globe|NS||||||
 4254|a few minutes|NT||||||
@@ -4954,7 +4954,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4954|leave, exit|VrugI||||||
 4955|obey respectfully, humble oneself, sit straight (upright, respectfully, attentively)|VrugI||||||
 4956|be understood (used as "understand"), be comprehended, be grasped|VrugI|||1307|||
-4957|be found|VrugI||||||
+4957|become clear, be known, be discovered, be realized, be realised, be found out|VrugI||||||
 4958|be awarded, be given (something)|VrugI||||||
 4959|end, finish, close|VrugI||||||
 4960|occur, happen, be caused|VrugI||||||
@@ -5457,7 +5457,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5457|increase, multiply|VruiI||||heru||
 5458|age, grow old|VruiI||||||
 5459|get late (e.g. nighttime), advance, wear on|VruiI||||||
-5460|become ready eat (as a result of steaming)|VruiI||||||
+5460|become ready to eat (as a result of steaming)|VruiI||||||
 5461|run away (slang, e.g. from work)|VruiI||||||
 5462|touch, feel, experience, proclaim|VruiT||||||
 5463|swing, shake, wave, veer, deflect, lean towards|VruiI||||||
@@ -6745,7 +6745,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6745|be misleading, be misguiding, mislead, misguide|VrugI||||||
 6746|political opponent|NPe||||||
 6747|(relating to) gender|Ana||||||
-6748|sexual|Ana||||||
+6748|sex, sexual|Ana||||||
 6749|sex|NACF||||||
 6750|one-tenth, one percent (one-tenth of a wari), 3 mm (one-tenth of a sun), 2.4 mm (one-tenth of a mon, a traditional unit used to measure shoe sizes), 0.1 degree (one-tenth of a do, used to measure body temperature on any temperature scale)|NMSE||||||
 6751|one-quarter of a ryou (obsolete unit of currency)|NACF||||||
@@ -7518,7 +7518,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7518|serious, grave, dreadful, terrible|Ana||||||
 7519|major incident, disaster|NACF||||||
 7520|interior of the body|NACF||||||
-7521|anyhow, at any rate, anyway, somehow or other, generally speaking, in any case, at least|A||||||
+7521|anyhow, at any rate, anyway, somehow or other, generally speaking, in any case, at least|AM|||1390|||
 7522|pardon, forgiveness, tolerance, overlooking|NACF||||||
 7523|leniency, mercy, going easy (on someone)|NACF||||||
 7524|mercilessly, relentlessly, unsparingly|A||||||
@@ -9302,3 +9302,1116 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9302|control (an opponent, one's emotions, etc.), govern, manage, suppress, keep in check|VsuruT||||||
 9303|raise a salary|VsuruT||||||
 9304|do gymnastics, do physical exercises, do calisthenics|VsuruI||||||
+9305|rise, go up, come up, ascend, be raised|VrugI||||||
+9306|enter (esp. from outdoors), come in, go in|VrugI||||||
+9307|enter (a school), advance to the next grade|VrugI||||||
+9308|be adequate (to cover expenses, etc.)|VrugI||||||
+9309| rain) to stop, lift|VrugI||||||
+9310|be arrested|VrugI||||||
+9311|turn up (of evidence, etc.)|VrugI||||||
+9312|be deep fried|VrugI||||||
+9313|be offered (to the gods, etc.)|VrugI||||||
+9314|be listed (as a candidate)|VrugI||||||
+9315|be complete, finish|VrugI||||||
+9316|red, crimson, scarlet|NACF||||||
+9317|red-containing colour (e.g. brown, pink, orange)|NACF||||||
+9318|Red (i.e. communist)|NACF||||||
+9319|red light (traffic)|NACF||||||
+9320|red ink (i.e. in finance or proof-reading), (in) the red|NACF||||||
+9321|complete, total, perfect, obvious|NACF||||||
+9322|copper|NACF||||||
+9323|Aka|NPl||||||
+9324|just as one thought, as usual, sure enough|CE||||||
+9325|just as one thought, as usual, sure enough|A||||||
+9326|look up (at)|VguT||||||
+9327|look up to, respect, revere|VguT||||||
+9328|ask for (e.g. guidance), seek, turn to (someone) for|VguT||||||
+9329|depend on, rely on|VguT||||||
+9330|gulp down, quaff, drink|VguT||||||
+9331|frank, bare, plain|Ana||||||
+9332|as it is, as you are|A||||||
+9333|the truth, fact|NACF||||||
+9334|as if, as it were, as though|A||||||
+9335|right then, just then, at that moment|A||||||
+9336|down payment, deposit|NACF||||||
+9337|reaching a peak, reaching the limit, plateauing, maxing out|NACF||||||
+9338|meet, encounter, see|VuI||||||
+9339|have an accident, have a bad experience|VuI||||||
+9340|look after, take care of, keep, hold on to, keep in custody|VrugT||||||
+9341|be put in charge of, be given responsibility for, be entrusted with|VrugT||||||
+9342|withhold (an announcement), reserve (judgment), leave undecided|VrugT||||||
+9343|take upon oneself (to do), settle (a matter) oneself|VrugT||||||
+9344|big|Ana||||||
+9345||-||||||
+9346|you|UNC||||||
+9347|manservant|UNC||||||
+9348|we|P||||||
+9349|we|P||||||
+9350|partial|Ana||||||
+9351|pork|NACF||||||
+9352|tribe, clan, house|NACF||||||
+9353|per second|NACF||||||
+9354|receiving, reception, getting, being given|NACF||||||
+9355|eating, drinking, having|NACF||||||
+9356|please, please do for me|CE||||||
+9357|president (of a nation or company), chief executive|NACF||||||
+9358|only, just, merely, simply, no more than, nothing but, alone|PP||||||
+9359|withdrawal (e.g. from an organization), secession, leaving, pulling out|NACF||||||
+9360|indicates location of action, at, in|PP||||||
+9361|indicates time of action|PP||||||
+9362|indicates means of action, cause of effect, by|PP||||||
+9363|and then, so|PP||||||
+9364|indicates continuing action|PP||||||
+9365|indicates certainty, emphasis, etc.|PP||||||
+9366|coming out, going out, outflow, efflux, rising (of the sun or moon)|NACF||||||
+9367|coming out, going out, outflow, efflux, rising (of the sun or moon)|Sx||||||
+9368|attending (work), appearing (on stage), one's turn to go on|NACF||||||
+9369|attending (work), appearing (on stage), one's turn to go on|Sx||||||
+9370|start, beginning|NACF||||||
+9371|start, beginning|Sx||||||
+9372|origins, background, person (or item) originating from ..., graduate of ..., native of ..., member of ... (lineage)|NACF||||||
+9373|origins, background, person (or item) originating from ..., graduate of ..., native of ..., member of ... (lineage)|Sx||||||
+9374|architectural member that projects outward|NACF||||||
+9375|architectural member that projects outward|Sx||||||
+9376|highest point of the stern of a ship|NACF||||||
+9377|highest point of the stern of a ship|Sx||||||
+9378|amount (comprising something), amount of time or effort required to do something|NACF||||||
+9379|amount (comprising something), amount of time or effort required to do something|Sx||||||
+9380|huge, big, gargantuan|Ai||||||
+9381|go out (e.g. on an excursion or outing), leave, depart, start, set out|VruiI||||||
+9382|transfer|NACF||||||
+9383|be able (in a position) to do, be up to the task|VruiI||||||
+9384|be ready, be completed|VruiI||||||
+9385|be good at, be permitted (to do)|VruiI||||||
+9386|as much as one can, as much as possible, if at all possible|CE||||||
+9387|battery, cell|NACF||||||
+9388|utility pole, power pole, telephone pole, telegraph pole, lightpole|NACF||||||
+9389|biography, life story|NACF||||||
+9390|electricity|NACF||||||
+9391|(electric) light|NACF||||||
+9392|light bulb|NACF||||||
+9393|electromagnetic wave, radio wave, reception, signal|NACF||||||
+9394|saying strange things|NACF||||||
+9395|telegram|NACF||||||
+9396|electric power|NACF||||||
+9397|electric current|NACF||||||
+9398|tradition, legend, folklore|NACF||||||
+9399|train, electric train|NACF||||||
+9400|electron|NACF||||||
+9401|transmission (e.g. news, chemical signals, electricity), communication, delivery, conveyance, transfer, relay, propagation, conduction|NACF||||||
+9402|tradition, convention|NACF||||||
+9403|electric light|NACF||||||
+9404|telephone call, phone call|NACF||||||
+9405|telephone (device), phone|NACF||||||
+9406|leave, exit, go out, come out, get out|VruiI||||||
+9407|reading|NACF||||||
+9408|avaricious, greedy, covetous|Ana||||||
+9409|avarice, greed, covetousness|NACF||||||
+9410|desiring|Ana||||||
+9411|raga (desire)|NACF||||||
+9412|thank you, thanks|UNC||||||
+9413|much (thanks), very (sorry), quite (regret)|A||||||
+9414|quite, really, mostly|A||||||
+9415|somehow|A||||||
+9416|in spite of oneself, try as one might, no matter how hard one may try (to, not to)|A||||||
+9417|greetings, hello, goodbye|A||||||
+9418|same sex|NACF||||||
+9419|transfer, switching over, change|NACF||||||
+9420|money transfer (usu. between accounts held by the same person)|NACF||||||
+9421|postal transfer|NACF||||||
+9422|manners, customs|NACF||||||
+9423|sex service, sex industry, sex-oriented entertainment|NACF||||||
+9424|outer wall|NACF||||||
+9425|outward appearance|NACF||||||
+9426|outer surface, outward appearance, outside, exterior|NACF||||||
+9427|outside, outer, outward, exterior, external|NACF||||||
+9428|eating out, dining out|NACF||||||
+9429|going out, outing, leaving (one's home, office, etc.)|NACF||||||
+9430|Sotode|NPl||||||
+9431|prayer, wish, vow|NACF||||||
+9432|desire, wish, aspiration|NACF||||||
+9433|New Year's Day|NACF||||||
+9434|solid, firm, stout, burly, strong, sturdy|Ana||||||
+9435|solidity, firmness, stoutness, burliness, strength, sturdiness|NACF||||||
+9436|(written) application, application form, written request, written petition|NACF||||||
+9437|now, current, present, present time, as of|UNC||||||
+9438|end of the month|UNC||||||
+9439|honorific/polite/humble prefix|Px||||||
+9440|honorific suffix|Sx||||||
+9441|go, board game of capturing territory|NACF||||||
+9442|word root, word derivation, etymology|NACF||||||
+9443|afternoon, p.m.|UNC||||||
+9444|cooked rice|NACF||||||
+9445|meal|NACF||||||
+9446|vocabulary, lexicon, lexis, terminology|NACF||||||
+9447|misunderstanding|NACF||||||
+9448|see, look, watch|VrugI||||||
+9449|try to|VrugI||||||
+9450|success, passing (e.g. exam), eligibility|NACF||||||
+9451|robber, mugger|NACF||||||
+9452|morning, a.m.|UNC||||||
+9453|knowing|NACF||||||
+9454|(an) acquaintance|NACF||||||
+9455|district, county|NACF||||||
+9456|district (of 2-20 50-home neighbourhoods or townships, in the ritsuryo period)|NACF||||||
+9457|grow, spring up, sprout|VruiI||||||
+9458|cut (teeth)|VruiI||||||
+9459|fragment, broken piece, splinter, chip, shard|NACF||||||
+9460|insert, put in (such that there is a snug fit), button, put on (something that envelops, e.g. gloves, ring)|VruiT||||||
+9461|have sex, fuck|VruiT||||||
+9462|pigeonhole (into a particular category)|VruiT||||||
+9463|place a ring-shaped object around something (esp. one that restricts freedom, such as handcuffs)|VruiT||||||
+9464|entrap, set someone up (e.g. frame them for a crime, etc.)|VruiT||||||
+9465|halo|NACF||||||
+9466|hello, hallo, hullo|NACF||||||
+9467|harrow|NACF||||||
+9468|Harrow (Britain)|NPl||||||
+9469|travel (movement of vehicles), drive, flow (e.g. energy)|VrugI||||||
+9470|retreat (from battle), take flight|VrugI||||||
+9471|run away from home|VrugI||||||
+9472|tend heavily toward|VrugI||||||
+9473|flash, streak, shoot through (e.g. pain)|VrugI||||||
+9474|as was expected, just as one thought, sure enough|A||||||
+9475|really, actually, ever|A||||||
+9476|woods, forest, copse, thicket|NACF||||||
+9477|bunch, line (of something), collection|NACF||||||
+9478|no, the noes|NACF||||||
+9479|princess, consort|NACF||||||
+9480|sun, sunshine, sunlight|UNC||||||
+9481|case (esp. unfortunate), event|UNC||||||
+9482|Hi|NPl||||||
+9483|ratio, proportion|NACF||||||
+9484|ratio, proportion|Sx||||||
+9485|match, equal|NACF||||||
+9486|explicit comparison (style of the Shi Jing)|NACF||||||
+9487|Philippines|NACF||||||
+9488|in comparison with ...|Sx||||||
+9489|Hi|NPl||||||
+9490|cost, expense|Sx||||||
+9491|fault, error, mistake|NACF||||||
+9492|going poorly, being disadvantageous, being unfavorable|NACF||||||
+9493|un-, non-, an-|Px||||||
+9494|favour, favor, patronage, favouritism, favoritism, partiality|NACF||||||
+9495|favourite, favorite|NACF||||||
+9496|patron, supporter, backer|NACF||||||
+9497|pull up, drag up, lift up|VruiT||||||
+9498|increase, raise (e.g. taxes)|VruiT||||||
+9499|withdraw, leave, pull out, retire|VruiT||||||
+9500|promote (someone to a higher position)|VruiT||||||
+9501|return home|VruiI||||||
+9502|expedite the schedule|VruiT||||||
+9503|reduction, cut|NACF||||||
+9504|Hikoujou|NPl||||||
+9505|dignity, grace, nobility|NACF||||||
+9506|grade, quality, fineness, carat, karat|NACF||||||
+9507|elegance, grace, refinement, class, dignity|NACF||||||
+9508|article, item|Sx||||||
+9509||-||||||
+9510|counter for items (of food, etc.), counter for dishes or courses (at a restaurant)|C||||||
+9511|dignity, quality, grace, panache, level|NACF||||||
+9512|item, commodity, list of articles|NACF||||||
+9513|character|NACF||||||
+9514|part of speech|NACF||||||
+9515|(material) quality|NACF||||||
+9516|kind (of goods), brand|NACF||||||
+9517|(taxonomical) form|NACF||||||
+9518|breed, cultivar|NACF||||||
+9519|pull, draw, pull tight|VrugT||||||
+9520|string (lines), run (cable), stretch|VrugT||||||
+9521|pull towards oneself (e.g. someone's sleeve)|VrugT||||||
+9522|drag, haul, tow|VrugT||||||
+9523|lead (e.g. one's followers)|VrugT||||||
+9524|take someone somewhere (e.g. a suspect to the police)|VrugT||||||
+9525|tempt into joining, strongly invite to join|VrugT||||||
+9526|delay, prolong|VrugT||||||
+9527|lengthen the pronunciation (of a word)|VrugT||||||
+9528|quote, cite, reference|VrugT||||||
+9529|pull the ball|VrugT||||||
+9530|wear, put on|VrugT||||||
+9531|plaza, (public) square, piazza, forum, open space|NACF||||||
+9532|noon, midday|NACF||||||
+9533|daytime|NACF||||||
+9534|lunch|NACF||||||
+9535|necessity|NACF||||||
+9536|as much as you would like to, as much as one likes|Sx||||||
+9537|put on airs, act big, throw one's weight about, be overbearing, be domineering, be bossy, be pushy, be proud, be haughty, be arrogant, swagger, boast, brag|VrugI||||||
+9538|best|NACF||||||
+9539|first, foremost|NACF||||||
+9540|beginning, start|NACF||||||
+9541|ace (playing card)|NACF||||||
+9542|bottom string (on a shamisen, etc.)|NACF||||||
+9543|change (personnel), transfer, reshuffle|NACF||||||
+9544|movement, transfer, migration, removal, travel|NACF||||||
+9545|finger, touch, play with, fiddle with, toy with|VrugT||||||
+9546|make changes to, tinker with, tamper with|VrugT||||||
+9547|dabble in, do as a hobby, play around with|VrugT||||||
+9548|grope, feel around (in one's pocket, bag, etc.)|VrugT||||||
+9549|transfer, assignment|NACF||||||
+9550|food and drink, eating and drinking|NACF||||||
+9551|colour, color, hue, tint, tinge, shade|NACF||||||
+9552|complexion, skin colour, skin color|NACF||||||
+9553|look (on one's face), expression|NACF||||||
+9554|appearance, air, feeling|NACF||||||
+9555|personality, character|NACF||||||
+9556|tone (of one's voice, etc.), tune, sound, ring|NACF||||||
+9557|love, lust, sensuality, love affair|NACF||||||
+9558|lover, paramour|NACF||||||
+9559|beauty, sexiness, physical appeal|NACF||||||
+9560|kind, type, variety|NACF||||||
+9561|colouring, coloring, shade of colour, shade of color|NACF||||||
+9562|sex appeal (esp. women), interest in the opposite sex, sensuality, seductiveness, glamor, glamour, sexual passion|NACF||||||
+9563|romance, poetry, charm|NACF||||||
+9564|desire, interest, inclination, ambition|NACF||||||
+9565|changing household registry, transfer (e.g. of one's name in the register)|NACF||||||
+9566|transferring to a different team|NACF||||||
+9567|stone bridge|NACF||||||
+9568|stone monument bearing an inscription (esp. memorial for future generations), stele, stela|NACF||||||
+9569|transfer, transport, removal|NACF||||||
+9570|receive, get, accept, take, buy|VkuT||||||
+9571|eat, drink|VkuT||||||
+9572|moving, relocation, change of address|NACF||||||
+9573|transfer (of deeds, property, etc.), demise|NACF||||||
+9574|forever, for good, eternally, as long as one likes, indefinitely, no matter what|A||||||
+9575|say, utter, declare|VuI||||||
+9576|name, call|VuI||||||
+9577|go (e.g. ",the alarm went ping",), make a noise|VuI||||||
+9578||-||||||
+9579|still, as yet, as it has been|A||||||
+9580|children, juvenile|NACF||||||
+9581|automatic action, automation operation, self-motion|NACF||||||
+9582|intransitive verb|NACF||||||
+9583|automobile|NACF||||||
+9584|hour|NACF||||||
+9585|transfer, assignment, conveyance|NACF||||||
+9586|look back on (the past), reflect on, reminisce about|VruiT||||||
+9587|look behind (at), turn round (and look), look over one's shoulder|VruiT||||||
+9588|consider, concern oneself about, take notice of, pay attention to, take into consideration|VruiT||||||
+9589|fragment, broken piece, chip, splinter, shard|NACF||||||
+9590|ounce (of truth, conscience, etc.), trace, shred, scrap|NACF||||||
+9591|hang up (e.g. a picture on the wall), let hang, suspend (from), hoist (e.g. sail), raise (e.g. flag)|VruiT||||||
+9592|put on (e.g. a blanket), put on top of, cover|VruiT||||||
+9593|put on (glasses, etc.), wear (a necklace, etc.)|VruiT||||||
+9594|make (a call)|VruiT||||||
+9595|spend (time, money), expend, use|VruiT||||||
+9596|pour (liquid) onto, sprinkle (powder or spices) onto, splash, throw (e.g. water) onto somebody|VruiT||||||
+9597|turn on (an engine, radio, etc.), set (a dial, an alarm clock, etc.), put on (a DVD, a song, etc.)|VruiT||||||
+9598|cause (somebody inconvenience, trouble, etc.), burden (someone), impose|VruiT||||||
+9599|multiply (arithmetic operation)|VruiT||||||
+9600|secure (e.g. lock)|VruiT||||||
+9601|take a seat, sit, rest (something on something else), support (something on something else)|VruiT||||||
+9602|bind|VruiT||||||
+9603|wager, bet, risk, stake, gamble|VruiT||||||
+9604|put an effect (spell, anaesthetic, etc.) on|VruiT||||||
+9605|hold (a play, festival, etc.)|VruiT||||||
+9606|hold an emotion for (pity, hope, etc.)|VruiT||||||
+9607|argue (in court), deliberate (in a meeting), present (e.g. idea to a conference, etc.)|VruiT||||||
+9608|increase further|VruiT||||||
+9609|catch (in a trap, etc.)|VruiT||||||
+9610|set atop|VruiT||||||
+9611|erect (a makeshift building)|VruiT||||||
+9612|apply (insurance)|VruiT||||||
+9613|pun (on a word), use (a word) as a pivot word, play on words|VruiT||||||
+9614|be partway doing ..., begin (but not complete) ..., be about to ...|VruiI||||||
+9615|address (someone), direct (something, someone), do (something, someone)|VruiI||||||
+9616|be chipped, be damaged, be broken|VruiI||||||
+9617|be lacking, be missing|VruiI||||||
+9618|be insufficient, be short, be deficient, be negligent toward|VruiI||||||
+9619| the moon) to wane, go into eclipse|VruiI||||||
+9620|eating between meals, snacking|NACF||||||
+9621|cut (grass, hair, etc.), mow, clip, trim, prune, shear, reap, harvest|VrugT||||||
+9622|pile up, heap up, stack up, put on top of another|VruiT||||||
+9623|repeat many times over, go through repeatedly, accumulate|VruiT||||||
+9624|first letter of a word, capital letter (at the start of a word or sentence)|NACF||||||
+9625|initials (of one's name)|NACF||||||
+9626|form, shape, figure|NACF||||||
+9627|visage|NACF||||||
+9628|tidy up, put in order, straighten up, put away|VruiT||||||
+9629|settle (problem), clear (dispute)|VruiT||||||
+9630|cut, cutting|NACF||||||
+9631|haircut|NACF||||||
+9632|shuffle (cards), shuffling|NACF||||||
+9633|scene, shot (in a movie)|NACF||||||
+9634|deficit, shortage, loss|NACF||||||
+9635|being partially broken, being partially missing, being partially removed|NACF||||||
+9636|yellow, amber|Ana||||||
+9637|risk|NACF||||||
+9638|break, snap, be cut, split, crack|VruiI||||||
+9639|be injured|VruiI||||||
+9640|wear out, be worn out|VruiI||||||
+9641|break, burst, collapse|VruiI||||||
+9642|wear off, stop working, go dead|VruiI||||||
+9643|expire (time limit, etc.), run out, become due|VruiI||||||
+9644|run out (of stock, etc.), be exhausted, be used up, be sold out, be out of|VruiI||||||
+9645|be broken off (e.g. of a relationship), break up, have severed ties, be cut off, be disconnected|VruiI||||||
+9646|cut well, be sharp|VruiI||||||
+9647|be sharp-minded, be keen, be shrewd, be quick-witted, be able|VruiI||||||
+9648|be short of, drop under (a certain figure), beat (e.g. a record time)|VruiI||||||
+9649|dry off|VruiI||||||
+9650|curve, veer|VruiI||||||
+9651|shuffle (cards)|VruiI||||||
+9652|get angry, snap, blow one's top, lose one's temper, flip|VruiI||||||
+9653|be able to do completely|VruiI||||||
+9654|cut, cut through, perform (surgery)|VrugT||||||
+9655|sever (connections, ties)|VrugT||||||
+9656|smoking|NACF||||||
+9657|shredded tobacco, notch, nick|NACF||||||
+9658|mince, cut fine, chop up, hash, shred|VmuT||||||
+9659|carve, engrave, chisel, notch|VmuT||||||
+9660|tick away (time), beat out (e.g. rhythm), record the passing moments|VmuT||||||
+9661|etch (into one's mind), remember distinctly|VmuT||||||
+9662|have tattooed|VmuT||||||
+9663|torment|VmuT||||||
+9664|wound, injury, cut, gash, bruise, scratch, scrape, scar|NACF||||||
+9665|chip, crack, scratch, nick|NACF||||||
+9666|counter for articles|UNC||||||
+9667|counter for military units|UNC||||||
+9668|individual|UNC||||||
+9669|child|NACF||||||
+9670|child|Sx||||||
+9671|young (animal)|NACF||||||
+9672|young (animal)|Sx||||||
+9673|young woman, young geisha|NACF||||||
+9674|young woman, young geisha|Sx||||||
+9675|offshoot|NACF||||||
+9676|offshoot|Sx||||||
+9677|interest|NACF||||||
+9678|interest|Sx||||||
+9679|new shares|NACF||||||
+9680|new shares|Sx||||||
+9681|player who is not a dealer (in cards, mahjong, etc.)|NACF||||||
+9682|bird egg|NACF||||||
+9683|bird egg|Sx||||||
+9684|-er (often of young women)|Sx||||||
+9685|this way (direction close to the speaker or towards the speaker), this direction|NACF||||||
+9686|here (place close to the speaker or where the speaker is)|NACF||||||
+9687|I, me, we, us|P||||||
+9688|this person (someone physically close to the speaker and of equal or higher status)|P||||||
+9689|voice|NACF||||||
+9690|singing (of a bird), chirping (of an insect), hoot|NACF||||||
+9691|voice, opinion (as expressed in words), view, wish, attitude, will|NACF||||||
+9692|sound|NACF||||||
+9693|sense (of something's arrival), feeling|NACF||||||
+9694|voice, voiced sound|NACF||||||
+9695|flour, meal, powder, dust|NACF||||||
+9696|hello, good day, good afternoon|UNC||||||
+9697|(approximate) time, around, about, toward|NACF||||||
+9698|suitable time (or condition)|NACF||||||
+9699|time of year, season|NACF||||||
+9700|language, dialect|NACF||||||
+9701|word, words, phrase, term, expression, remark|NACF||||||
+9702|speech, (manner of) speaking|NACF||||||
+9703|learning to speak, language acquisition|NACF||||||
+9704|alternation, alternating (e.g. current)|NACF||||||
+9705|black tea|NACF||||||
+9706|(public) park|NACF||||||
+9707|crossing, intersection|NACF||||||
+9708|negotiations, discussions|NACF||||||
+9709|connection|NACF||||||
+9710|Welfare Minister|NACF||||||
+9711|be broken, break|VruiI||||||
+9712|fall through, come to nothing|VruiI||||||
+9713|break (into pieces), be broken, be smashed|VruiI||||||
+9714|collapse, crumble, decline, cool (e.g. enthusiasm), dampen (e.g. one's will to fight)|VruiI||||||
+9715|become less formal, throw off reserve, become affable|VruiI||||||
+9716|become easy to understand (e.g. a story)|VruiI||||||
+9717|be worried|VruiI||||||
+9718|draw (water), ladle, dip up, scoop up, pump|VmuT||||||
+9719|pour (into a cup), drink (together)|VmuT||||||
+9720|consider (feelings, the situation, etc.), sympathize with, intuit, understand|VmuT||||||
+9721|draw upon, inherit|VmuT||||||
+9722|black|NACF||||||
+9723|black go stone|NACF||||||
+9724|guilt, guilty person|NACF||||||
+9725|live, make a living, survive|VuT||||||
+9726|encroach on, eat into, consume|VuT||||||
+9727|add, add up, sum up, append, annex|VruiT||||||
+9728|increase, gather (e.g. speed), pick up|VruiT||||||
+9729|include, count in, let join|VruiT||||||
+9730|inflict (damage), deal, give|VruiT||||||
+9731|as it is, as one likes, because, as|NACF||||||
+9732|condition, state|NACF||||||
+9733|sic, sic erat scriptum, the quoted matter has been transcribed exactly as found in the source text|NACF||||||
+9734|soya bean (Glycine max), soybean, soy|NACF||||||
+9735|female genitalia (esp. the clitoris)|NACF||||||
+9736|kidney|NACF||||||
+9737|miniature, tiny|Px||||||
+9738|child|Px||||||
+9739|protection, defense, defence|NACF||||||
+9740|providence|NACF||||||
+9741|amulet, charm, talisman|NACF||||||
+9742|full stomach|NACF||||||
+9743|filling one's stomach, eating one's fill|Ana||||||
+9744|complete, total, full, heartfelt, sincere|NACF||||||
+9745|eat, drink|VrugT||||||
+9746|exchange glances, look at each other|VruiT||||||
+9747|postpone, put off, withhold, abandon|VruiT||||||
+9748|contrast, compare|VruiT||||||
+9749|be seen, be in sight|VruiI||||||
+9750|look, seem, appear|VruiI||||||
+9751|come|VruiI||||||
+9752|ascertain, make sure of, determine, probe, get to the bottom (of something)|VruiT||||||
+9753|look at again|VsuT||||||
+9754|re-examine (policy, estimate, plan, etc.), review|VsuT||||||
+9755|get a better opinion of, see in a more positive light|VsuT||||||
+9756|improve, recover (market, illness, etc.)|VsuI||||||
+9757|see someone off (at a station, an airport, etc.), escort (e.g. home)|VrugT||||||
+9758|follow something with one's eyes until it is out of sight|VrugT||||||
+9759|let pass, pass up (an opportunity etc.), let a pitch go by (baseball), watch a batted ball go into the stands|VrugT||||||
+9760|shelve (a plan, deliberation on a bill, etc.), postpone|VrugT||||||
+9761|have someone related or close to you die, bury someone|VrugT||||||
+9762|take care of somebody until he dies|VrugT||||||
+9763|wait and see, continue (e.g. in legal contexts)|VrugT||||||
+9764|see, look, watch, view, observe|VruiT||||||
+9765|look over, look on, assess, examine, judge|VruiT||||||
+9766|look after, keep an eye on, take care of|VruiT||||||
+9767|view (e.g. flowers, movie)|VruiT||||||
+9768|try, try out, test|VruiI||||||
+9769|see that..., find that...|VruiI||||||
+9770|miso, fermented condiment usu. made from soybeans|NACF||||||
+9771|innards (from crabs, shrimps, etc.) resembling miso|NACF||||||
+9772|key (main) point, good part (of something)|NACF||||||
+9773|weakling, weak person|NACF||||||
+9774|close thicket, dense forest, jungle|NACF||||||
+9775|amazon.com|NACF||||||
+9776|catch sight of, see, suppose, assume from appearances|VruiT||||||
+9777|look out over, survey (scene), take an extensive view of|VsuT||||||
+9778|replica firearm, realistic toy gun with no firing mechanism|NACF||||||
+9779|perhaps, possibly, maybe, by any chance, if I'm not mistaken|CE||||||
+9780||-||||||
+9781|if, in case, in the event that|CE||||||
+9782||-||||||
+9783|hello (e.g. on phone)|UNC||||||
+9784|excuse me! (when calling out to someone)|UNC||||||
+9785|facing, opposite, across the street, other side|NACF||||||
+9786|face|VuI||||||
+9787|go towards, head towards|VuI||||||
+9788|turn toward, look (up, down, etc.)|VkuI||||||
+9789|face (e.g. east), look out on|VkuI||||||
+9790|point to|VkuI||||||
+9791|be suited to, be fit for|VkuI||||||
+9792|go in the direction of, lean towards (of a feeling)|VkuI||||||
+9793|look at, gaze at, watch, stare at|VruiT||||||
+9794|look out over, get a view of, admire (e.g. the scenery)|VruiT||||||
+9795|look on (from the sidelines), stand by and watch, observe|VruiT||||||
+9796|cannot do without something, indispensable, absolutely necessary|CE||||||
+9797|have to do|CE||||||
+9798|cannot do without something, indispensable, absolutely necessary|CE||||||
+9799|have to do|CE||||||
+9800|cannot do without something, indispensable, absolutely necessary|CE||||||
+9801|have to do|CE||||||
+9802|line up, set up, arrange in a line|VruiT||||||
+9803|enumerate, itemize|VruiT||||||
+9804|be equal (to), compare well (with), be as good (as)|VruiT||||||
+9805|as much as possible, wherever practicable, if possible|A||||||
+9806|desire, wish, request, prayer, petition, application|NACF||||||
+9807|desire, wish, hope|VuT||||||
+9808|beg, request, implore, pray|VuT||||||
+9809|I pray, I wish|A||||||
+9810|secondary, subordinate|NACF||||||
+9811|rainbow|NACF||||||
+9812|run (of liquid), spread|VmuI||||||
+9813|blur, blot, be blurred|VmuI||||||
+9814|ooze, well up (of tears, etc.)|VmuI||||||
+9815|show through (of feelings, emotions, etc.), reveal itself|VmuI||||||
+9816|twentieth century|NACF||||||
+9817|double, two-fold, two layers, duplex|NACF||||||
+9818|diplo-, dipl-|Px||||||
+9819|double-edged eyelid, double eyelid, creased eyelid|NACF||||||
+9820|around-the-clock system|NACF||||||
+9821|meat eating, eating of meat, meat diet|NACF||||||
+9822|human being, person, man, mankind, humankind|NACF||||||
+9823|character (of a person)|NACF||||||
+9824|human relations|NACF||||||
+9825|living national treasure|NACF||||||
+9826|humanity, human nature|NACF||||||
+9827|human, human-like, as a person|Ana||||||
+9828|image of (an ideal) person|NACF||||||
+9829|doll, puppet, figure|NACF||||||
+9830|Ningyou|NPl||||||
+9831|resemble, look like, take after|VruiI||||||
+9832|be similar (in status, condition, etc.), be close, be alike, be like|VruiI||||||
+9833|concerning, regarding|CE||||||
+9834|per (e.g. 100 yen per person), for every|CE||||||
+9835|ascent, climbing, ascending (path), climb|NACF||||||
+9836|up-train (e.g. going to Tokyo)|NACF||||||
+9837|northward (towards Tokyo)|NACF||||||
+9838|Nobori|NPl||||||
+9839|drink, gulp, swallow, take (medicine)|VmuT||||||
+9840|smoke (tobacco)|VmuT||||||
+9841|engulf, overwhelm|VmuT||||||
+9842|keep down, suppress|VmuT||||||
+9843|accept (e.g. demand, condition)|VmuT||||||
+9844|make light of, conceal|VmuT||||||
+9845|transfer (trains, buses, etc.), connection, connexion|NACF||||||
+9846|transfer (trains), change (bus, train)|VruiT||||||
+9847|desire|VmuT||||||
+9848|wish for, expect|VmuT||||||
+9849|see, command (a view of)|VmuT||||||
+9850|look out on, overlook, front onto|VmuI||||||
+9851|face (a situation, crisis, etc.), meet (e.g. death), be confronted by|VmuI||||||
+9852|deal with (an issue)|VmuI||||||
+9853|attend (e.g. a function), appear (e.g. in court), be present at, take part in|VmuI||||||
+9854|assume the posture of praying, press the palms and fingers of both hands together, do reverence (e.g. before a statue of the Buddha), pay one's respects|VmuT||||||
+9855|beg, make a supplication|VmuT||||||
+9856|see (something or someone of high status)|VmuT||||||
+9857|get up, rise, blaze up (fire)|VruiI||||||
+9858|wake up, be awake, stay awake|VruiI||||||
+9859|occur (usu. of unfavourable incidents), happen, take place|VruiI||||||
+9860|big, large, great|Ai||||||
+9861|raise, raise up, set up, pick up|VsuT||||||
+9862|wake, wake up, waken, awaken|VsuT||||||
+9863|cause, bring about, lead to, trigger, give rise to, create, generate (e.g. heat, electricity), produce|VsuT||||||
+9864|start, begin, launch, establish, found, set up, open|VsuT||||||
+9865|plough, plow, till|VsuT||||||
+9866|fall ill with|VsuT||||||
+9867|transcribe, write down (what is spoken)|VsuT||||||
+9868|turn over (a card)|VsuT||||||
+9869|toy, plaything|NACF||||||
+9870|imagine, picture, figure, see|VkuT||||||
+9871|female, woman, female sex|NACF||||||
+9872|female lover, girlfriend, mistress, (someone's) woman|NACF||||||
+9873|big hit, big prize, bumper crop, striking it rich, right on the mark, bonanza, bull's eye, bullseye|NACF||||||
+9874|large, large-sized, large-scale, big|NACF||||||
+9875|big, large, drastic, substantial|Ana||||||
+9876|bigness, largeness, drasticness, substantialness|NACF||||||
+9877|full-width cloth (approx. 72 cm wide for traditional Japanese clothing, approx. 140 cm wide for Western clothing)|NACF||||||
+9878|loud|Ai||||||
+9879|extensive, spacious|Ai||||||
+9880|important, decisive, valuable|Ai||||||
+9881|older, grown up|Ai||||||
+9882|big, large, great|P||||||
+9883|major company, big company|NACF||||||
+9884|front castle gate|NACF||||||
+9885|force attacking the front of a castle|NACF||||||
+9886|break, be broken, snap, fracture|VruiI||||||
+9887|be folded|VruiI||||||
+9888|give in, back down, yield, submit|VruiI||||||
+9889|turn (a corner)|VruiI||||||
+9890|push in, force into, break in (e.g. into a house), intrude|VrugI||||||
+9891|press, push, force|VruiT||||||
+9892|foist on (task, responsibility), impose (one's will)|VruiT||||||
+9893|slow, time-consuming, sluggish|Ai||||||
+9894|late (in the day), towards the end (of the day or night), until a time far into the day or night|Ai||||||
+9895|later (than expected or usual), late, behind schedule, behind time, tardy, overdue, unpunctual|Ai||||||
+9896|too late, having missed the boat|Ai||||||
+9897|dull, stupid|Ai||||||
+9898|pipe, tube|NACF||||||
+9899|channels, official or otherwise, (business) connections|NACF||||||
+9900|tobacco pipe|NACF||||||
+9901|point|NACF||||||
+9902|points (of a railway), switch|NACF||||||
+9903|position|NACF||||||
+9904|pound (unit of weight)|NACF||||||
+9905|pound (currency), pound sterling|NACF||||||
+9906|pond|NACF||||||
+9907|ponytail|NACF||||||
+9908|pump|NACF||||||
+9909|porch|NACF||||||
+9910|pouch|NACF||||||
+9911|Poti (Russia)|NPl||||||
+9912|poker|NACF||||||
+9913|pole|NACF||||||
+9914|poll|NACF||||||
+9915|porter|NACF||||||
+9916|pose|NACF||||||
+9917|pause|NACF||||||
+9918|popular|Ana||||||
+9919|popularity|NACF||||||
+9920|polyp|NACF||||||
+9921||-||||||
+9922|Porsche (German car brand)|NACF||||||
+9923|Portugal|NACF||||||
+9924|poster|NACF||||||
+9925|postbox, mail box, pillar box|NACF||||||
+9926|post, position|NACF||||||
+9927|post (e.g. goalpost)|NACF||||||
+9928|post- (e.g. post-Cold War)|Px||||||
+9929|pot (esp. teapot, coffee-pot)|NACF||||||
+9930|vacuum bottle, thermos flask|NACF||||||
+9931|the forest|NACF||||||
+9932|seeming ..., appearing ...|Aj||||||
+9933|custom, practice, habit, usual|NACF||||||
+9934|instance, example, case, illustration, usage|NACF||||||
+9935|thanks, gratitude|NACF||||||
+9936|manners, etiquette|NACF||||||
+9937|zero, nought|NACF||||||
+9938|cooling, air-conditioning|NACF||||||
+9939|manners, courtesy, etiquette|NACF||||||
+9940|calmness, composure, coolness, serenity, presence of mind|NACF||||||
+9941|refrigerator|NACF||||||
+9942|love, love-making, passion, emotion, affections|NACF||||||
+9943|brick|NACF||||||
+9944|union, alliance, combination|NACF||||||
+9945|RENGO (Japanese Trade Union Confederation)|NACF||||||
+9946|Rengou|NPl||||||
+9947|commonwealth, federation of states, confederation, union|NACF||||||
+9948|to contact, to get in touch|NACF||||||
+9949|contacting, getting in touch, communication, call, message|NACF||||||
+9950|connection, coordination, junction|NACF||||||
+9951|intercalary, intercalaris, internuncial|NACF||||||
+9952|practice, practising|NACF||||||
+9953|association (of ideas), being reminded (of something), suggestion|NACF||||||
+9954|continuation, succession, series|NACF||||||
+9955|train, railway train|NACF||||||
+9956|row, line, file, column, queue, rank, procession|NACF||||||
+9957|company (of someone), group, ranks|NACF||||||
+9958|sequence|NACF||||||
+9959|counter for rows|UNC||||||
+9960|path through forest, woodland path|NACF||||||
+9961|logging road|NACF||||||
+9962|search (for something desired, needed), look for|VsuT||||||
+9963|search (for something lost), seek (a suspect in a crime)|VsuT||||||
+9964|nowadays, recently|UNC||||||
+9965|last night|UNC||||||
+9966|cut, reduction, curtailment|NACF||||||
+9967|last year|UNC||||||
+9968|previous year (fiscal, academic, etc.)|NACF||||||
+9969|since last year|NACF||||||
+9970|last spring, the spring of last year|UNC||||||
+9971|autumn of last year, fall of last year|UNC||||||
+9972|mountain forest, forest on a mountain, montane forest|NACF||||||
+9973|mountains and forest|NACF||||||
+9974|lift up, hold up, hold above eye level|VruiT||||||
+9975|give, offer, consecrate|VruiT||||||
+9976|devote, sacrifice, dedicate|VruiT||||||
+9977|sweater, jumper|NACF||||||
+9978|nature (of a person)|NACF||||||
+9979|sex|NACF||||||
+9980|gender|NACF||||||
+9981|-ty, -ity, -ness, -cy|Sx||||||
+9982|consequence, outcome, result, blame|NACF||||||
+9983|gender, distinction of sex, sex|NACF||||||
+9984|century|NACF||||||
+9985|era|NACF||||||
+9986|regular, normal, formal, legal, established, legitimate|Ana||||||
+9987|regularness, normalcy, formalily, legality, establishment, legitimacy|NACF||||||
+9988|end of a century (esp. 19th), fin-de-siècle|NACF||||||
+9989|cooperative association, co-op store|NACF||||||
+9990|success, prosperity, boom|NACF||||||
+9991|sex education|NACF||||||
+9992|hasty, impatient, impetuous, quick-tempered|Ana||||||
+9993|hastiness, impatience, impetuousness, quick-temperedness|NACF||||||
+9994|claim, demand, charge, application, request, billing (for a service)|NACF||||||
+9995|bill, job invoice|NACF||||||
+9996|(relating to) gender|Ana||||||
+9997|at the most, at best, to the utmost, as much (far) as possible|A||||||
+9998|stone implement (e.g. stone age arrowheads), stone tool|NACF||||||
+9999|getting closer, drawing nearer, approaching|NACF||||||
+10000|being not much different, being near (age, skill, etc.)|NACF||||||
+10001|becoming close (i.e. friendly), becoming intimate|NACF||||||
+10002|sex, sexual intercourse|NACF||||||
+10003|(one's) sex, gender|NACF||||||
+10004|positive, progressive|NACF||||||
+10005|positive, assertive, active, proactive, aggressive|Ana||||||
+10006|propounding, preaching, sermonizing|NACF||||||
+10007|remonstration, scolding, lecturing|NACF||||||
+10008|close up, shut up (e.g. behind doors)|VrugT||||||
+10009|cut off (e.g. because a deadline has expired), close off (e.g. subscription list)|VrugT||||||
+10010|article, item, thing, goods, stock|NACF||||||
+10011|quality|NACF||||||
+10012|flirtatiousness, coquetry|NACF||||||
+10013|out of stock, sold out|NACF||||||
+10014|goods, article, thing|NACF||||||
+10015|forest, woods|NACF||||||
+10016|examine, look up, investigate, check up, sense, study, inquire, search|VruiT||||||
+10017|white|NACF||||||
+10018|innocence, innocent person|NACF||||||
+10019|blank space|NACF||||||
+10020|white go stone|NACF||||||
+10021|white dragon tile|NACF||||||
+10022|skewered grilled pig intestine|NACF||||||
+10023|disappointed love, broken heart, unrequited love, being lovelorn|NACF||||||
+10024|dining room, dining hall, cafeteria, messroom|NACF||||||
+10025|meal|NACF||||||
+10026|eating habits|NACF||||||
+10027|little girl, maiden, young lady, female usually between 7 and 18 years old|NACF||||||
+10028|female between 17 and 20 years old (ritsuryo period)|NACF||||||
+10029|winning a lawsuit|NACF||||||
+10030|person's origin (e.g. city, country, parentage, school)|NACF||||||
+10031|getting on base, reaching first base|NACF||||||
+10032|times on base, TOB|NACF||||||
+10033|without change, as it is, as it was|A||||||
+10034|Hi!; Yo!; Hey man!; Hey dude!; greeting used between close male friends|CE||||||
+10035|just like, extremely similar|NACF||||||
+10036|immediately, just after, without a pause|A||||||
+10037|litigation, lawsuit|NACF||||||
+10038|open air|NACF||||||
+10039|external (hard drive, etc.)|NACF||||||
+10040|tip, top|NACF||||||
+10041|end, close (e.g. close of the month)|UNC||||||
+10042|youngest child|NACF||||||
+10043|descendants, offspring, posterity|NACF||||||
+10044|future|UNC||||||
+10045|finally|UNC||||||
+10046|trivialities|NACF||||||
+10047|spreading out like an open fan|NACF||||||
+10048|becoming prosperous|NACF||||||
+10049|folding fan, ceremonial folding fan|NACF||||||
+10050|youngest child|NACF||||||
+10051|finally, after, following|A||||||
+10052|at the end (of)|A||||||
+10053|deferment (e.g. of savings), leaving (a thing) as it stands|NACF||||||
+10054|unredeemed, unredeemable, irredeemable, deferred, stationary|NACF||||||
+10055|place (in position), fix, set (e.g. table), lay (foundation)|VruiT||||||
+10056|install, seat (someone)|VruiT||||||
+10057|settle (upon something), fix (e.g. one's gaze)|VruiT||||||
+10058|apply (moxa)|VruiT||||||
+10059|cigarette end, cigarette butt, tobacco ashes|NACF||||||
+10060|lovely, wonderful, nice, great, fantastic, superb, cool|Ana||||||
+10061|Sweden|NACF||||||
+10062|eat|VruiT||||||
+10063|live on (e.g. a salary), live off, subsist on|VruiT||||||
+10064|stand up, get up|VrugI||||||
+10065|rise|VrugI||||||
+10066|recover|VrugI||||||
+10067|take action, start|VrugI||||||
+10068|make the initial charge|VrugI||||||
+10069|start up, boot up|VrugI||||||
+10070|talk, dialogue, conversation|NACF||||||
+10071|external, foreign|NACF||||||
+10072|contrast, comparison|NACF||||||
+10073|extermination (e.g. of pests, demons, bandits), elimination, eradication, destruction, suppression|NACF||||||
+10074|making someone renounce worldly desires in order to concentrate on Buddha's teachings|NACF||||||
+10075|curing illness|NACF||||||
+10076|confrontation, showdown|NACF||||||
+10077|opposition, antagonism|NACF||||||
+10078|correspondence (to), equivalence|NACF||||||
+10079|suitability, coordination, matching, being appropriate (for)|NACF||||||
+10080|dealing with, coping with, response, reception, reaction|NACF||||||
+10081|compatibility (with technology, software, etc.), capability, support (for)|NACF||||||
+10082|confrontation, opposition, antagonism|NACF||||||
+10083|measure, provision, step, countermeasure, counterplan, countermove|NACF||||||
+10084|waging war, competition|NACF||||||
+10085|dealing with, coping with|NACF||||||
+10086|big prize, first prize|NACF||||||
+10087|contrast, antithesis, comparison|NACF||||||
+10088||-||||||
+10089|contrastive|Ana||||||
+10090|equality (esp. of status, on equal terms), equivalence|NACF||||||
+10091|equivalent, equal|Ana||||||
+10092|equivalent, equal|NACF||||||
+10093|dialogue, discussion, conversation, interaction|NACF||||||
+10094|store, save up, stock up on, lay in stock, set aside|VruiT||||||
+10095|accumulate (e.g. knowledge), build up (e.g. experience), develop (e.g. one's skills)|VruiT||||||
+10096|grow (a beard, moustache, etc.), wear|VruiT||||||
+10097|stand up, put up, set up, erect, raise|VruiT||||||
+10098|thrust into, bury into, dig into|VruiT||||||
+10099|make (a noise), start (a rumour), raise (a cloud of dust, etc.), cause|VruiT||||||
+10100|make, establish, set up, develop, formulate|VruiT||||||
+10101|put up (a political candidate), make (one's leader)|VruiT||||||
+10102|treat with respect, give (someone) their due, make (someone) look good, avoid embarrassing (someone)|VruiT||||||
+10103|sharpen, make clear|VruiT||||||
+10104|shut, close|VruiT||||||
+10105|make tea (matcha), perform the tea ceremony|VruiT||||||
+10106|divide by|VruiT||||||
+10107|do ... vigorously|VruiI||||||
+10108|stand, rise, stand up|VsuI||||||
+10109|find oneself (e.g. in a difficult position)|VsuI||||||
+10110|depart (on a plane, train, etc.)|VsuI||||||
+10111|ask, enquire, inquire|VruiT||||||
+10112|search, look for, look into, investigate|VruiT||||||
+10113|raising (a question), bringing up (a problem), instituting (a lawsuit), filing (a claim), submitting (a case)|NACF||||||
+10114|lifting up|NACF||||||
+10115|job transfer, job relocation, intra-company transfer|NACF||||||
+10116|transfer, redirection, transmission, forwarding (telephone call, e-mail, etc.)|NACF||||||
+10117|if, when|PP||||||
+10118|and|PP||||||
+10119|with|PP||||||
+10120|particle used for quoting (with speech, thoughts, etc.)|PP||||||
+10121||-||||||
+10122||-||||||
+10123|door (esp. Japanese-style)|NACF||||||
+10124|shutter, window shutter|NACF||||||
+10125|entrance (to a home)|NACF||||||
+10126|narrows|NACF||||||
+10127|To|NPl||||||
+10128|to, traditional unit of volume, approx. 18 litres|NACF||||||
+10129|square bearing block (at the top of a pillar)|NACF||||||
+10130|Chinese ",Dipper", constellation (one of the 28 mansions)|NACF||||||
+10131|way|NACF||||||
+10132|taper to a point, become pointed, become sharp|VrugI||||||
+10133|look displeased, look sour, be on edge, be touchy|VrugI||||||
+10134|watch, clock, timepiece|NACF||||||
+10135|be solved|VruiI||||||
+10136|loosen, come untied|VruiI||||||
+10137|be removed (e.g. restrictions), be cleared (e.g. misunderstandings), be broken (e.g. spells, curses)|VruiI||||||
+10138|melt|VruiI||||||
+10139|time, hour, moment|NACF||||||
+10140|occasion, case|NACF||||||
+10141|chance, opportunity, season|NACF||||||
+10142|the times, the age, the day|NACF||||||
+10143|tense|NACF||||||
+10144|special, particular, extraordinary, exceptional, especial|Ana||||||
+10145|wholesale store, wholesale dealer, wholesaler|NACF||||||
+10146|ton (now usu. a metric ton, i.e. 1'000kg), tonne|NACF||||||
+10147|dragonfly, damselfly|NACF||||||
+10148|unthinkable, unimaginable, inconceivable, unexpected|P||||||
+10149|unthinkable, unexpected, outrageous, offensive, terrible|Ai||||||
+10150|absolutely not!, not at all!, far from it!, impossible!, preposterous!, what a thing to say!, no way!, bullshit|CE||||||
+10151|don't mention it, you're welcome|CE||||||
+10152|tunnel|NACF||||||
+10153|letting a grounder go through one's legs|NACF||||||
+10154|take, pick up, harvest, earn, win, choose|VrugT||||||
+10155|remove (one's glasses, etc.)|VrugT||||||
+10156|year|NACF||||||
+10157|age, years|NACF||||||
+10158|past one's prime, old age|NACF||||||
+10159|town, city, municipal, urban|NACF||||||
+10160|library|NACF||||||
+10161|just (now, at the moment, etc.), just as, in the act of, as soon as, at the moment that|NACF||||||
+10162|tower, steeple, spire|NACF||||||
+10163|tower, steeple, spire|Sx||||||
+10164|stupa, pagoda, dagoba|NACF||||||
+10165|counter for large animals (e.g. head of cattle), counter for insects in a collection, counter for helmets, masks, etc.|UNC||||||
+10166|head, cranium|NACF||||||
+10167|cephalic|NACF||||||
+10168|(bank) president|NACF||||||
+10169|greenroom manager (in a theater)|NACF||||||
+10170|tofu, bean curd, beancurd|NACF||||||
+10171|Toufu|NPl||||||
+10172|capsicum (Capsicum annuum, esp. the cultivated chili peppers), chili pepper (chile, chilli), cayenne, red pepper|NACF||||||
+10173|shichimi pepper|NACF||||||
+10174|hair (of head)|NACF||||||
+10175|south-east|NACF||||||
+10176|be crushed, be smashed, be broken, collapse|VruiI||||||
+10177|become useless, cease functioning, be wasted (e.g. time)|VruiI||||||
+10178|go bankrupt, go out of business, fail|VruiI||||||
+10179|sequel, continuation, (also suffix) continuation (in time and space), second series, succession, spell|NACF||||||
+10180|sequel, continuation, (also suffix) continuation (in time and space), second series, succession, spell|Sx||||||
+10181|pair, couple, set|NACF||||||
+10182|antithesis|NACF||||||
+10183|counter for items that come in pairs|UNC||||||
+10184|counter for sets (of clothes, small furniture, utensils, etc.)|UNC||||||
+10185||-||||||
+10186|furnished with, including|Sx||||||
+10187||-||||||
+10188|attached to|Sx||||||
+10189|impression, appearance|NACF||||||
+10190||-||||||
+10191|luck|NACF||||||
+10192|sociality|NACF||||||
+10193||-||||||
+10194|under, assistant (e.g. to a manager)|Sx||||||
+10195|soup base|NACF||||||
+10196|soup base|Sx||||||
+10197|thrust, stab, lunge, pass (in fencing)|NACF||||||
+10198|tsuki, thrust to the throat (in kendo)|NACF||||||
+10199|tsuki, thrust to the chest|NACF||||||
+10200|association, socializing, socialising, fellowship|NACF||||||
+10201|end (of a street, hallway, etc.)|NACF||||||
+10202|run into, collide with, crash into, bump against|VrugI||||||
+10203|come to the end of (a street)|VrugI||||||
+10204|run into (difficulties, problems, etc.), run up against|VrugI||||||
+10205|associate with, keep company with, go out with, go steady with, get on with|VuI||||||
+10206|go along with, follow someone's lead, accompany someone, compromise|VuI||||||
+10207|every month, monthly, month by month|UNC||||||
+10208|time, years, days|NACF||||||
+10209|every month|NACF||||||
+10210|trite, commonplace, conventional, hackneyed|Ana||||||
+10211|triteness, conventionaliy|NACF||||||
+10212|be used up, be run out, be exhausted, be consumed, come to an end|VruiI||||||
+10213|stab, pierce, thrust|VsuT||||||
+10214|attendance on, attendant, escort, chaperon, retinue|NACF||||||
+10215|prick, stab|VkuT||||||
+10216|poke, prod, push, thrust, nudge, hit, strike|VkuT||||||
+10217|use (a cane), prop oneself up with, press against (the floor, etc.)|VkuT||||||
+10218|attack|VkuT||||||
+10219|brave (the rain, etc.)|VkuT||||||
+10220|desk|NACF||||||
+10221|as much as possible, as far as possible, to the best of one's ability, diligently|A||||||
+10222|passing through (a tunnel, station, town, etc.), passing by (e.g. of a typhoon), transit|NACF||||||
+10223|passage (of a bill, e.g. through parliament), carriage|NACF||||||
+10224|passing (an examination, inspection, etc.), clearing|NACF||||||
+10225|above, up, over, elder (e.g. daughter)|NACF||||||
+10226|surface, on|NACF||||||
+10227|before, previous|NACF||||||
+10228|superiority, one's superior (i.e. one's elder)|NACF||||||
+10229|on top of that, besides, what's more|NACF||||||
+10230|upon (further inspection, etc.), based on (and occurring after)|NACF||||||
+10231|matters concerning..., as concerns ...|NACF||||||
+10232|since (i.e. ",for that reason",)|NACF||||||
+10233|suffix indicating higher social standing|Sx||||||
+10234|place of one's superior (i.e. the throne)|Sx||||||
+10235|emperor, sovereign, shogun, daimyo|Sx||||||
+10236|noblewoman (esp. the wife of a nobleman)|Sx||||||
+10237|float, set afloat, launch|VruiT||||||
+10238|show on one's face (smile, sadness, etc.)|VruiT||||||
+10239|recall, call to mind, imagine, think of|VruiT||||||
+10240|lie, fib, falsehood, untruth|NACF||||||
+10241|mistake, error|NACF||||||
+10242|unwise move, bad decision|NACF||||||
+10243|No way!, Unbelievable!, Really?!|NACF||||||
+10244|liar (sometimes said with not much seriousness), fibber|NACF||||||
+10245|move (house), transfer (department)|VrugI||||||
+10246|change the target of interest or concern|VrugI||||||
+10247|elapse (passage of time)|VrugI||||||
+10248|be permeated by a colour or scent|VrugI||||||
+10249|be infected, be contagious, spread (as in fire)|VrugI||||||
+10250|change, swap, substitute, transfer|VsuT||||||
+10251|change the object of one's interest or focus|VsuT||||||
+10252|spend or take time|VsuT||||||
+10253|infect|VsuT||||||
+10254|permeate something with the smell or colour of something|VsuT||||||
+10255|move on to the next or different stage of (a plan, etc.)|VsuT||||||
+10256|lawsuit, complaint|NACF||||||
+10257|raise, bring to (someone's attention)|VruiT||||||
+10258|appeal to (reason, emotions, etc.), work on (one's emotions), play on (one's sympathies)|VruiT||||||
+10259|complain|VruiT||||||
+10260|sue (a person), take someone to court|VruiT||||||
+10261|resort to (e.g. arms, violence)|VruiT||||||
+10262|extramarital sex, affair, fooling around|NACF||||||
+10263||-||||||
+10264|infidelity, wantonness, unfaithfulness, inconstancy, fickleness, caprice|NACF||||||
+10265|infidel, wanton, unfaithful, inconstant, fickle, capricious|Ana||||||
+10266|understand, comprehend, grasp, see, get, follow|VrugI||||||
+10267|divide|VrugT||||||
+10268|cut, halve, separate, split, rip|VrugT||||||
+10269|private affairs, personal matter, secrecy|NACF||||||
+10270|selfishness|NACF||||||
+10271|ferry across (e.g. a river), carry across, traverse|VsuT||||||
+10272|lay across, build across|VsuT||||||
+10273|hand over, hand in, pass, give, transfer|VsuT||||||
+10274|forest fire (on a mountain), wildfire, bushfire|NACF||||||
+10275|staying up late, keeping late hours, sitting up late at night, nighthawk|NACF||||||
+10276|read|VmuT||||||
+10277|count|VmuT||||||
+10278|guess, predict, read (someone's thoughts), see (e.g. into someone's heart), divine|VmuT||||||
+10279|cease, desist, cut it out, lay off (an activity), drop (a subject) to abolish, resign, give up|VsuT||||||
+10280|appearing ..., looking ...|Sx||||||
+10281||-||||||
+10282|way to ..., method of ...ing|Sx||||||
+10283||-||||||
+10284||-||||||
+10285|form, style, design|NACF||||||
+10286|like, similar to|Sx||||||
+10287||-||||||
+10288|thing (thought or spoken)|NACF||||||
+10289|business, task, errand, engagement|NACF||||||
+10290|use, purpose|NACF||||||
+10291|for the use of ..., used for ..., made for ...|Sx||||||
+10292|call of nature, excretion|NACF||||||
+10293|You|NPl||||||
+10294|get drunk, become intoxicated|VuI||||||
+10295|feel sick (e.g. in a vehicle), become nauseated|VuI||||||
+10296|be elated, be exalted, be spellbound, be in raptures|VuI||||||
+10297|yang (i.e. the positive)|NACF||||||
+10298|the open (i.e. a visible place)|NACF||||||
+10299|kindergarten|NACF||||||
+10300|Western-style clothes (cf. traditional Japanese clothes)|NACF||||||
+10301|lava|NACF||||||
+10302|Yougan|NPl||||||
+10303|hot water|NACF||||||
+10304|hot bath, hot spring|NACF||||||
+10305|molten iron|NACF||||||
+10306|finger, toe, digit|NACF||||||
+10307|(finger) ring|NACF||||||
+10308|snow|NACF||||||
+10309|dream|NACF||||||
+10310|bow (and arrow)|NACF||||||
+10311|archery|NACF||||||
+10312|bow (for a violin, etc.)|NACF||||||
+10313|importation, import, introduction|NACF||||||
+10314|afferent|NACF||||||
+10315|last night, yesterday evening|UNC||||||
+10316|mail service, postal service, mail, post|NACF||||||
+10317|mail, postal matter, postal items|NACF||||||
+10318|post office|NACF||||||
+10319|amusement park|NACF||||||
+10320|Yuuenchi|NPl||||||
+10321|evening, dusk|UNC||||||
+10322|friendship, fellowship, camaraderie|NACF||||||
+10323|courage, bravery, valour, valor, nerve, boldness|NACF||||||
+10324|famous|Ana||||||
+10325|overall victory, championship|NACF||||||
+10326|yuzu (Citrus ichangensis x C. reticulata)|NACF||||||
+10327|hand over, transfer, turn over, assign, convey, bequeath|VrugT||||||
+10328|give up (e.g. one's seat), give way|VrugT||||||
+10329|yield, concede, give ground, surrender|VrugT||||||
+10330|sell|VrugT||||||
+10331|postpone, put off, defer|VrugT||||||
+10332|absolute, unconditional, unmistakable|NACF||||||
+10333|absolutely, unconditionally, never (with neg. verb)|A||||||
+10334|absolute|Ana||||||
+10335|overhead, above one's head, high in the sky|NACF||||||
+10336|head, brains|NACF||||||
+10337|intellect, understanding|NACF||||||
+10338|headache|NACF||||||
+10339|continuously in some state (for a long time, distance), throughout, all along, the whole time, all the way|A||||||
+10340|receive, get, be given|VsuruI||||||
+10341|eat, drink, have|VsuruT||||||
+10342|withdraw (e.g. from an organization), seceed, leave, pull out|VsuruI||||||
+10343|transmiit (e.g. news, chemical signals, electricity), communice, deliver, convey, transfer, relay, propagate, conduct|VsuruT||||||
+10344|read|VsuruI||||||
+10345|eat out, dine out|VsuruI||||||
+10346|go out, leave (one's home, office, etc.)|VsuruI||||||
+10347|desire, wish, aspire for|VsuruT||||||
+10348|misunderstand|VsuruI||||||
+10349|favour, favor, give patronage to, be partial to|VsuruT||||||
+10350|change (personnel), transfer, reshuffle|VsuruI||||||
+10351|move, transfer, migrate, be removed, travel|VsuruI||||||
+10352|transfer, be assigned|VsuruI||||||
+10353|eat and drink|VsuruI||||||
+10354|change household registry, transfer (e.g. one's name in the register)|VsuruI||||||
+10355|transfer to a different team|VsuruI||||||
+10356|transfer, transport, remove|VsuruT||||||
+10357|move, relocate, change address|VsuruI||||||
+10358|transfer (deeds, property, etc.)|VsuruT||||||
+10359|transfer, be assigned, be conveyed|VsuruI||||||
+10360|eat between meals, snack|VsuruI||||||
+10361|cut|VsuruT||||||
+10362|get a haircut|VsuruI||||||
+10363|shuffle (cards)|VsuruT||||||
+10364|be in deficit, be in shortage, be at loss|VsuruI||||||
+10365|be partially broken, be partially missing, be partially removed|VsuruI||||||
+10366|smoke|VsuruI||||||
+10367||-||||||
+10368|negotiate, discuss|VsuruI||||||
+10369|connect|VsuruI||||||
+10370|fill one's stomach, eat one's fill|VsuruI||||||
+10371|face on, look out on to|VsuruT||||||
+10372|eat meat|VsuruI||||||
+10373|strike it rich, be right on the mark|VsuruI||||||
+10374|point|VsuruI||||||
+10375|cool, air-condition|VsuruI||||||
+10376|love, make love|VsuruI||||||
+10377|unite, ally, combine|VsuruI||||||
+10378|associate (ideas), be reminded (of something)|VsuruI||||||
+10379|continue, succeed, be in series with|VsuruT||||||
+10380|cut, reduce, curtail|VsuruT||||||
+10381|claim, demand, charge, apply for, request, bill (for a service)|VsuruT||||||
+10382|get closer, draw nearer, approach|VsuruI||||||
+10383|be not much different, be near (age, skill, etc.)|VsuruI||||||
+10384|become close (i.e. friendly), become intimate|VsuruI||||||
+10385|have sex, perform sexual intercourse|VsuruI||||||
+10386|propound, preach, sermonize|VsuruI||||||
+10387|remonstrate, scold, lecture|VsuruT||||||
+10388|have a broken heart, be lovelorn|VsuruI||||||
+10389|win a lawsuit|VsuruI||||||
+10390|get on base, reach first base|VsuruI||||||
+10391|litigate, sue, start a lawsuit|VsuruI||||||
+10392|face on, look out on to|VsuruT||||||
+10393|talk, dialogue, converse|VsuruI||||||
+10394|contrast, compare|VsuruT||||||
+10395|confront|VsuruT||||||
+10396|oppose, antagonise|VsuruT||||||
+10397|correspond (to), be equivalent|VsuruI||||||
+10398|be suitable, be coordinated, match, be appropriate (for)|VsuruI||||||
+10399|deal with, cope with, respond, react|VsuruI||||||
+10400|be compatible (with technology, software, etc.), be capable, give support (for)|VsuruI||||||
+10401|confront, oppose, antagonise|VsuruT||||||
+10402|wage war, compete|VsuruI||||||
+10403|deal with, cope with|VsuruI||||||
+10404|be in contrast with, be in antithesis to, compare to|VsuruI||||||
+10405|dialogue, discuss, converse, interact|VsuruI||||||
+10406|raise (a question), bring up (a problem), institute (a lawsuit), file (a claim), submit (a case)|VsuruT||||||
+10407|lift up|VsuruT||||||
+10408|transfer, redirect, transmit, forward (telephone call, e-mail, etc.)|VsuruT||||||
+10409|tunnel (through a potential barrier)|VsuruI||||||
+10410|let a grounder go through one's legs|VsuruI||||||
+10411|pass through (a tunnel, station, town, etc.), pass by (e.g. of a typhoon), transit|VsuruI||||||
+10412|pass (of a bill, e.g. through parliament)|VsuruI||||||
+10413|pass (an examination, inspection, etc.), clear|VsuruI||||||
+10414|perform extramarital sex, have an affair, fool around|VsuruI||||||
+10415|be infidel, be wanton, be unfaithful, be inconstant, be fickle, be capricious|VsuruI||||||
+10416|stay up late, keep late hours, sit up late at night|VsuruI||||||
+10417|be victorious, be a champion|VsuruI||||||
