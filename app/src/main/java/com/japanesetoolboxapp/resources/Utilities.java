@@ -206,7 +206,7 @@ public class Utilities {
     }
     public static String removeNonSpaceSpecialCharacters(String sentence) {
         String current_char;
-        String concatenated_sentence = "";
+        StringBuilder concatenated_sentence = new StringBuilder();
         for (int index=0; index<sentence.length(); index++) {
             current_char = Character.toString(sentence.charAt(index));
             if (!(current_char.equals(".")
@@ -215,14 +215,14 @@ public class Utilities {
                     || current_char.equals(")")
                     || current_char.equals(":")
                     || current_char.equals("/") ) ) {
-                concatenated_sentence = concatenated_sentence + current_char;
+                concatenated_sentence.append(current_char);
             }
         }
-        return concatenated_sentence;
+        return concatenated_sentence.toString();
     }
     public static String removeSpecialCharacters(String sentence) {
         String current_char;
-        String concatenated_sentence = "";
+        StringBuilder concatenated_sentence = new StringBuilder();
         for (int index=0; index<sentence.length(); index++) {
             current_char = Character.toString(sentence.charAt(index));
             if (!( current_char.equals(" ")
@@ -232,10 +232,10 @@ public class Utilities {
                     || current_char.equals(")")
                     || current_char.equals(":")
                     || current_char.equals("/") ) ) {
-                concatenated_sentence = concatenated_sentence + current_char;
+                concatenated_sentence.append(current_char);
             }
         }
-        return concatenated_sentence;
+        return concatenated_sentence.toString();
     }
     @SuppressWarnings("deprecation") public static Spanned fromHtml(String source) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -378,17 +378,17 @@ public class Utilities {
         if (TextUtils.isEmpty(word)) { return new ArrayList<>(); }
 
         //region Preparing the word to be included in the url
-        String prepared_word;
+        StringBuilder prepared_word;
         if (ConvertFragment.getTextType(word).equals("kanji")) {
             String converted_word = convertToUTF8(word);
             converted_word = converted_word.substring(2,converted_word.length());
-            prepared_word = "";
+            prepared_word = new StringBuilder();
             for (int i = 0; i < converted_word.length() - 1; i = i + 2) {
-                prepared_word = prepared_word + "%" + converted_word.substring(i, i + 2);
+                prepared_word.append("%").append(converted_word.substring(i, i + 2));
             }
         }
         else {
-            prepared_word = word;
+            prepared_word = new StringBuilder(word);
         }
         //endregion
 
@@ -422,7 +422,7 @@ public class Utilities {
     }
     private static String getWebsiteXml(String websiteUrl) {
 
-        String responseString = "";
+        StringBuilder responseString = new StringBuilder();
         String inputLine;
         HttpURLConnection connection = null;
 
@@ -440,9 +440,9 @@ public class Utilities {
             int responseCode = connection.getResponseCode();
             if (responseCode == 200) {
                 BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                responseString = "";
+                responseString = new StringBuilder();
                 while ((inputLine = in.readLine()) != null)
-                    responseString += inputLine + '\n';
+                    responseString.append(inputLine).append('\n');
                 in.close();
             }
         } catch (Exception e) {
@@ -456,7 +456,7 @@ public class Utilities {
                 e.printStackTrace(); //If you want further info on failure...
             }
         }
-        return responseString;
+        return responseString.toString();
     }
     private static List<Object> parseJishoWebsiteToTree(String website_code) {
 
@@ -585,7 +585,7 @@ public class Utilities {
     private static List<Word> addWordsFromBigBlock(List<Object> bigBlockData, int startingSubBlock) {
 
         List<Word> wordsList = new ArrayList<>();
-        String kanji;
+        StringBuilder kanji;
         StringBuilder romaji;
         List<String> meaningTagsFromTree;
         List<String> meaningsFromTree;
@@ -601,10 +601,10 @@ public class Utilities {
             List<Object> conceptLightRepresentationData = (List<Object>) conceptLightReadingsData.get(1);
 
             //region Extracting the kanji
-            kanji = "";
+            kanji = new StringBuilder();
             List<Object> TextData = (List<Object>) getElementAtHeader(conceptLightRepresentationData,"text");
             if (TextData!=null && TextData.size()>1) {
-                kanji = "";
+                kanji = new StringBuilder();
                 for (int j=0; j<TextData.size(); j++) {
                     String currentText;
                     currentText = "";
@@ -616,11 +616,11 @@ public class Utilities {
                         currentText = (String) TextData.get(j);
                         if (currentText.equals("span")) currentText = "";
                     }
-                    kanji += currentText;
+                    kanji.append(currentText);
                 }
             }
-            else if (TextData!=null && TextData.size()>0) kanji = (String) TextData.get(0);
-            currentWord.setKanji(kanji);
+            else if (TextData!=null && TextData.size()>0) kanji = new StringBuilder((String) TextData.get(0));
+            currentWord.setKanji(kanji.toString());
             //endregion
 
             //region Extracting the romaji
@@ -631,9 +631,9 @@ public class Utilities {
                 if (kanji1UpData.size()>0) romaji.append((String) kanji1UpData.get(0));
             }
 
-            if (romaji.length()!=0 && (ConvertFragment.getTextType(kanji).equals("katakana") || ConvertFragment.getTextType(kanji).equals("hiragana"))) {
+            if (romaji.length()!=0 && (ConvertFragment.getTextType(kanji.toString()).equals("katakana") || ConvertFragment.getTextType(kanji.toString()).equals("hiragana"))) {
                 //When the word is originally katakana only, the website does not display hiragana. This is corrected here.
-                romaji = new StringBuilder(ConvertFragment.getLatinHiraganaKatakana(kanji).get(0));
+                romaji = new StringBuilder(ConvertFragment.getLatinHiraganaKatakana(kanji.toString()).get(0));
             }
 
             List<Object> conceptLightStatusData = (List<Object>) getElementAtHeader(conceptLightWrapperData,"concept_light-status");

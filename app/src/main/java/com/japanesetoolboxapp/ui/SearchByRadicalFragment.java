@@ -148,7 +148,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         getExtras();
         initializeParameters();
     }
-    @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View rootView = inflater.inflate(R.layout.fragment_search_by_radical, container, false);
 
@@ -640,6 +640,8 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
     }
     public void displayGridElements() {
 
+        if(getContext()==null) return;
+
         //Making the grid container
         LinearLayout.LayoutParams grid_container_layoutParams = new LinearLayout.LayoutParams(1000, ViewGroup.LayoutParams.WRAP_CONTENT); // (1000, 500);
         grid_container_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
@@ -654,15 +656,17 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         grid_container.removeAllViews();
 
         //If the screen is small, change the width of the container
-        WindowManager wm = (WindowManager) getContext().getSystemService(getContext().WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int width = size.x;
-        int height = size.y;
-        if (width<1000) {
-            grid_container_layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT;
-            num_columns = 5;
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        if (wm != null) {
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            int width = size.x;
+            int height = size.y;
+            if (width<1000) {
+                grid_container_layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT;
+                num_columns = 5;
+            }
         }
 
         //Setting the grid parameters
@@ -715,8 +719,9 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         }
         else if (mDisplayableComponentSelections.size() != 0) {
             ArrayAdapter gridview_adapter =  new ArrayAdapter<String>(getContext(), R.layout.custom_radical_selection_grid_element, mDisplayableComponentSelections) {
+                @NonNull
                 @Override
-                public View getView(final int position,View convertView, ViewGroup parent) {
+                public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
                     View view = super.getView(position, convertView, parent);
 
                     //Defining the font of each element depending on its characteristics
@@ -1175,206 +1180,181 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
     }
     public void createSearchResultsGrid(final List<String> printable_search_results) {
 
-                LinearLayout.LayoutParams grid_container_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                grid_container_layoutParams.height = 200;
-                grid_container_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
-                grid_container_layoutParams.setMargins(10,0,10,0);
-                int num_columns = 7;
+        if (getContext()==null) return;
 
-                //If the screen is small, change the width of the container
-                WindowManager wm = (WindowManager) getContext().getSystemService(getContext().WINDOW_SERVICE);
-                Display display = wm.getDefaultDisplay();
-                Point size = new Point();
-                display.getSize(size);
-                int width = size.x;
-                int height = size.y;
-                if (width<1000) {
-                    grid_container_layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT;
-                    num_columns = 5;
+        LinearLayout.LayoutParams grid_container_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        grid_container_layoutParams.height = 200;
+        grid_container_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
+        grid_container_layoutParams.setMargins(10,0,10,0);
+        int num_columns = 7;
+
+        //If the screen is small, change the width of the container
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        if (wm!=null) {
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            int width = size.x;
+            int height = size.y;
+            if (width < 1000) {
+                grid_container_layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT;
+                num_columns = 5;
+            }
+        }
+
+        LinearLayout grid_container = new LinearLayout(getContext());
+        grid_container.setLayoutParams(grid_container_layoutParams);
+        grid_container.setOrientation(LinearLayout.VERTICAL);
+        grid_container.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        grid_container.setSelected(false);
+
+        //Set the grid parameters
+        GridView.LayoutParams searchResultsGrid_layoutParams = new GridView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        searchResultsGrid_layoutParams.height = 200;
+
+        searchResultsGrid = new GridView(getContext());
+        searchResultsGrid.setLayoutParams(searchResultsGrid_layoutParams);
+        searchResultsGrid.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        searchResultsGrid.setSelected(false);
+        searchResultsGrid.setPadding(10,10,10,10);
+        searchResultsGrid.setNumColumns(num_columns);
+        searchResultsGrid.setMinimumHeight(110);
+        searchResultsGrid.setColumnWidth(10);
+
+        //Create the grid
+        if (0 < printable_search_results.size() && printable_search_results.size() <= num_columns) {
+
+            LinearLayout.LayoutParams searchResultsLine_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            searchResultsLine_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
+            searchResultsLine_layoutParams.setMargins(10, 10, 10, 0); // (left, top, right, bottom)
+
+            LinearLayout searchResultsLine_linearLayout = new LinearLayout(getContext());
+            searchResultsLine_linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+            searchResultsLine_linearLayout.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+            searchResultsLine_linearLayout.setLayoutParams(searchResultsLine_layoutParams);
+
+            for (int i=0; i<printable_search_results.size(); i++) {
+
+                final TextView tv = new TextView(getContext());
+                //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
+                tv.setTextSize(32);
+                tv.setText(printable_search_results.get(i));
+                tv.setPadding(30,0,30,0);
+                tv.setTextColor(Color.parseColor("#800080"));
+                tv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String outputText = tv.getText().toString();
+                        searchByRadicalFragmentOperationsHandler.onQueryTextUpdateFromSearchByRadicalRequested(outputText);
+                    }
+                });
+                searchResultsLine_linearLayout.addView(tv);
+            }
+            grid_container.addView(searchResultsLine_linearLayout);
+            search_results_block_linearLayout.addView(grid_container);
+        }
+        else if (printable_search_results.size() != 0) {
+
+            //Creating the last row in the list for centering
+            int remainder = printable_search_results.size();
+            while (remainder > num_columns-1) {
+                remainder = remainder - num_columns;
+            }
+            final List<String> remainder_list = new ArrayList<>();
+            if (remainder != 0) {
+                for (int i=0; i<remainder;i++) {
+                    remainder_list.add(printable_search_results.get(printable_search_results.size()-remainder+i));
                 }
-
-                LinearLayout grid_container = new LinearLayout(getContext());
-                grid_container.setLayoutParams(grid_container_layoutParams);
-                grid_container.setOrientation(LinearLayout.VERTICAL);
-                grid_container.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
-                grid_container.setSelected(false);
-
-                //Set the grid parameters
-                GridView.LayoutParams searchResultsGrid_layoutParams = new GridView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                searchResultsGrid_layoutParams.height = 200;
-
-                searchResultsGrid = new GridView(getContext());
-                searchResultsGrid.setLayoutParams(searchResultsGrid_layoutParams);
-                searchResultsGrid.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-                searchResultsGrid.setSelected(false);
-                searchResultsGrid.setPadding(10,10,10,10);
-                searchResultsGrid.setNumColumns(num_columns);
-                searchResultsGrid.setMinimumHeight(110);
-                searchResultsGrid.setColumnWidth(10);
-
-                //Create the grid
-                if (0 < printable_search_results.size() && printable_search_results.size() <= num_columns) {
-
-                    LinearLayout.LayoutParams searchResultsLine_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
-                    searchResultsLine_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
-                    searchResultsLine_layoutParams.setMargins(10, 10, 10, 0); // (left, top, right, bottom)
-
-                    LinearLayout searchResultsLine_linearLayout = new LinearLayout(getContext());
-                    searchResultsLine_linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-                    searchResultsLine_linearLayout.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-                    searchResultsLine_linearLayout.setLayoutParams(searchResultsLine_layoutParams);
-
-                    for (int i=0; i<printable_search_results.size(); i++) {
-
-                        final TextView tv = new TextView(getContext());
-                        //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
-                        tv.setTextSize(32);
-                        tv.setText(printable_search_results.get(i));
-                        tv.setPadding(30,0,30,0);
-                        tv.setTextColor(Color.parseColor("#800080"));
-                        tv.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
-                                try {
-                                    searchByRadicalFragmentOperationsHandler = (SearchByRadicalFragmentOperationsHandler) getActivity();
-                                } catch (ClassCastException e) {
-                                    throw new ClassCastException(getActivity().toString() + " must implement TextClicked");
-                                }
-
-                                String outputText = tv.getText().toString();
-                                searchByRadicalFragmentOperationsHandler.onQueryTextUpdateFromSearchByRadicalRequested(outputText);
-                            }
-                        });
-                        searchResultsLine_linearLayout.addView(tv);
-                    }
-                    grid_container.addView(searchResultsLine_linearLayout);
-                    search_results_block_linearLayout.addView(grid_container);
-                }
-                else if (printable_search_results.size() != 0) {
-
-                    //Creating the last row in the list for centering
-                    int remainder = printable_search_results.size();
-                    while (remainder > num_columns-1) {
-                        remainder = remainder - num_columns;
-                    }
-                    final List<String> remainder_list = new ArrayList<>();
-                    if (remainder != 0) {
-                        for (int i=0; i<remainder;i++) {
-                            remainder_list.add(printable_search_results.get(printable_search_results.size()-remainder+i));
-                        }
-                        for (int i=0; i<remainder;i++) {
-                            printable_search_results.remove(printable_search_results.size()-1);
-                        }
-                    }
-
-                    LinearLayout.LayoutParams searchResultsLine_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
-                    searchResultsLine_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
-                    searchResultsLine_layoutParams.setMargins(10, 0, 10, 0); // (left, top, right, bottom)
-
-                    LinearLayout lastSearchResultsLine_linearLayout = new LinearLayout(getContext());
-                    lastSearchResultsLine_linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-                    lastSearchResultsLine_linearLayout.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-                    lastSearchResultsLine_linearLayout.setLayoutParams(searchResultsLine_layoutParams);
-
-                    final TextView[] tv_lastline = new TextView[remainder_list.size()];
-                    for (int i=0; i<remainder_list.size(); i++) {
-
-                        final TextView tv = new TextView(getContext());
-                        //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
-                        tv.setTextSize(32);
-                        tv.setText(remainder_list.get(i));
-                        tv.setPadding(30,0,30,0);
-                        tv.setTextColor(Color.parseColor("#800080"));
-                        tv_lastline[i] = tv;
-                        tv.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-
-                                //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
-                                try {
-                                    searchByRadicalFragmentOperationsHandler = (SearchByRadicalFragmentOperationsHandler) getActivity();
-                                } catch (ClassCastException e) {
-                                    throw new ClassCastException(getActivity().toString() + " must implement TextClicked");
-                                }
-
-                                String outputText = tv.getText().toString();
-                                searchByRadicalFragmentOperationsHandler.onQueryTextUpdateFromSearchByRadicalRequested(outputText);
-
-                                int num_children = searchResultsGrid.getChildCount();
-                                TextView tv_grid;
-                                for (int i=0;i<num_children;i++) {
-                                    tv_grid = (TextView) searchResultsGrid.getChildAt(i);
-                                    tv_grid.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
-                                }
-
-                                for (int i=0; i<remainder_list.size();i++) {
-                                    tv_lastline[i].setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
-                                }
-
-                                tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementSelected));
-                            }
-                        });
-                        lastSearchResultsLine_linearLayout.addView(tv);
-                    }
-
-                    searchResultsGrid.setAdapter(new ArrayAdapter<String>(getContext(), R.layout.custom_radical_results_grid_element, printable_search_results) {
-                        public View getView(final int position, View convertView, ViewGroup parent) {
-                            View view = super.getView(position, convertView, parent);
-                            final TextView tv = (TextView) view;
-                            //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
-                            tv.setTextSize(32);
-                            tv.setText(printable_search_results.get(position));
-                            tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
-
-                            tv.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    //Getting the user selection
-                                    //selected_item_position = position;
-                                    //grid.setSelection((int) (grid.getAdapter()).getItemId(selected_item_position));
-
-                                    //The following code "initializes" the interface, since it is not necessarily called (initialized) when the grammar fragment receives the inputQueryAutoCompleteTextView and is activated
-                                    try {
-                                        searchByRadicalFragmentOperationsHandler = (SearchByRadicalFragmentOperationsHandler) getActivity();
-                                    } catch (ClassCastException e) {
-                                        throw new ClassCastException(getActivity().toString() + " must implement TextClicked");
-                                    }
-
-                                    //Calling the interface
-                                    //String outputText = printable_search_results.get(selected_item_position);
-                                    String outputText = tv.getText().toString();
-                                    searchByRadicalFragmentOperationsHandler.onQueryTextUpdateFromSearchByRadicalRequested(outputText);
-
-
-                                    int num_children = searchResultsGrid.getChildCount();
-                                    TextView tv_grid;
-                                    for (int i=0;i<num_children;i++) {
-                                        tv_grid = (TextView) searchResultsGrid.getChildAt(i);
-                                        tv_grid.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
-                                    }
-                                    for (int i=0; i<remainder_list.size();i++) {
-                                        tv_lastline[i].setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
-                                    }
-                                    tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementSelected));
-
-                                }
-                            });
-                            return tv;
-                        }
-                    });
-
-                    setDynamicHeight(searchResultsGrid, searchResultsGrid_layoutParams, grid_container, grid_container_layoutParams, num_columns);
-
-                    grid_container.addView(searchResultsGrid);
-                    search_results_block_linearLayout.addView(grid_container);
-                    search_results_block_linearLayout.addView(lastSearchResultsLine_linearLayout);
-                }
-                else {
-                    makeText("No Results Found",grid_container_layoutParams,grid_container);
-                    search_results_block_linearLayout.addView(grid_container);
+                for (int i=0; i<remainder;i++) {
+                    printable_search_results.remove(printable_search_results.size()-1);
                 }
             }
+
+            LinearLayout.LayoutParams searchResultsLine_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            searchResultsLine_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
+            searchResultsLine_layoutParams.setMargins(10, 0, 10, 0); // (left, top, right, bottom)
+
+            LinearLayout lastSearchResultsLine_linearLayout = new LinearLayout(getContext());
+            lastSearchResultsLine_linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+            lastSearchResultsLine_linearLayout.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+            lastSearchResultsLine_linearLayout.setLayoutParams(searchResultsLine_layoutParams);
+
+            final TextView[] tv_lastline = new TextView[remainder_list.size()];
+            for (int i=0; i<remainder_list.size(); i++) {
+
+                final TextView tv = new TextView(getContext());
+                //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
+                tv.setTextSize(32);
+                tv.setText(remainder_list.get(i));
+                tv.setPadding(30,0,30,0);
+                tv.setTextColor(Color.parseColor("#800080"));
+                tv_lastline[i] = tv;
+                tv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String outputText = tv.getText().toString();
+                        searchByRadicalFragmentOperationsHandler.onQueryTextUpdateFromSearchByRadicalRequested(outputText);
+
+                        int num_children = searchResultsGrid.getChildCount();
+                        TextView tv_grid;
+                        for (int i=0;i<num_children;i++) {
+                            tv_grid = (TextView) searchResultsGrid.getChildAt(i);
+                            tv_grid.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
+                        }
+
+                        for (int i=0; i<remainder_list.size();i++) {
+                            tv_lastline[i].setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
+                        }
+
+                        tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementSelected));
+                    }
+                });
+                lastSearchResultsLine_linearLayout.addView(tv);
+            }
+
+            searchResultsGrid.setAdapter(new ArrayAdapter<String>(getContext(), R.layout.custom_radical_results_grid_element, printable_search_results) {
+                @NonNull
+                public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
+                    View view = super.getView(position, convertView, parent);
+                    final TextView tv = (TextView) view;
+                    //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
+                    tv.setTextSize(32);
+                    tv.setText(printable_search_results.get(position));
+                    tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
+
+                    tv.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String outputText = tv.getText().toString();
+                            searchByRadicalFragmentOperationsHandler.onQueryTextUpdateFromSearchByRadicalRequested(outputText);
+
+                            int num_children = searchResultsGrid.getChildCount();
+                            TextView tv_grid;
+                            for (int i=0;i<num_children;i++) {
+                                tv_grid = (TextView) searchResultsGrid.getChildAt(i);
+                                tv_grid.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
+                            }
+                            for (int i=0; i<remainder_list.size();i++) {
+                                tv_lastline[i].setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
+                            }
+                            tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementSelected));
+                        }
+                    });
+                    return tv;
+                }
+            });
+
+            setDynamicHeight(searchResultsGrid, searchResultsGrid_layoutParams, grid_container, grid_container_layoutParams, num_columns);
+
+            grid_container.addView(searchResultsGrid);
+            search_results_block_linearLayout.addView(grid_container);
+            search_results_block_linearLayout.addView(lastSearchResultsLine_linearLayout);
+        }
+        else {
+            makeText("No Results Found",grid_container_layoutParams,grid_container);
+            search_results_block_linearLayout.addView(grid_container);
+        }
+    }
 
     private void showLoadingIndicator() {
         if (mProgressBarLoadingIndicator!=null) mProgressBarLoadingIndicator.setVisibility(View.VISIBLE);
@@ -1563,7 +1543,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         show_grid = false;
         grid_block_linearLayout.setVisibility((View.GONE));
     }
-    @TargetApi(23) public boolean isPrintable( String c ) {
+    @TargetApi(23) public static boolean isPrintable( String c ) {
         Paint paint=new Paint();
         //paint.setTypeface(MainActivity.CJK_typeface);
         boolean hasGlyph=true;
@@ -1581,9 +1561,9 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             return;
         }
 
-        int totalHeight = 0;
+        int totalHeight;
         int items = gridViewAdapter.getCount();
-        int rows = 0;
+        int rows;
 
         View listItem = gridViewAdapter.getView(1, null, gridView); //take the second element of the grid for measurements, since the first element is smaller
         listItem.measure(0, 0);
@@ -1850,17 +1830,6 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             quicksort(0, values.size() - 1);
             return sortedList;
         }
-        @TargetApi(23) boolean isPrintable(String c) {
-            Paint paint=new Paint();
-            //paint.setTypeface(MainActivity.CJK_typeface);
-            boolean hasGlyph=true;
-            hasGlyph=paint.hasGlyph(c);
-            return hasGlyph;
-//            Character.UnicodeBlock block = Character.UnicodeBlock.of( c );
-//            return (!Character.isISOControl(c)) &&
-//                    block != null &&
-//                    block != Character.UnicodeBlock.SPECIALS;
-        }
         private void quicksort(int low, int high) {
             int i = low, j = high;
             // Get the pivot element from the middle of the list
@@ -1910,7 +1879,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         private final String[] elements_list;
         private final int selected_structure;
         private JapaneseToolboxKanjiRoomDatabase mJapaneseToolboxKanjiRoomDatabase;
-        private int max_size_for_duplicate_removal;
+        private int maxSizeForDuplicateRemoval;
         //endregion
 
         KanjiSearchAsyncTaskLoader(Context context, String[] elements_list, int selected_structure) {
@@ -1941,13 +1910,13 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             String elementD = elements_list[3];
 
             //Initialization
-            List<String> list_of_matching_results_elementA = new ArrayList<>();
-            List<String> list_of_matching_results_elementB = new ArrayList<>();
-            List<String> list_of_matching_results_elementC = new ArrayList<>();
-            List<String> list_of_matching_results_elementD = new ArrayList<>();
-            String concatenated_input;
-            List<String> list_of_intersecting_results = new ArrayList<>();
-            max_size_for_duplicate_removal = 200;
+            List<String> listOfMatchingResultsElementA;
+            List<String> listOfMatchingResultsElementB;
+            List<String> listOfMatchingResultsElementC;
+            List<String> listOfMatchingResultsElementD;
+            String concatenatedInput;
+            List<String> listOfIntersectingResults = new ArrayList<>();
+            maxSizeForDuplicateRemoval = 200;
 
             int requested_structure;
             if (selected_structure != GlobalConstants.Index_full && (elementA.equals("") && elementB.equals("") && elementC.equals("") && elementD.equals(""))) {
@@ -1974,133 +1943,133 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
             //region Finding the list of matches corresponding to the user's input
             if(!elementA.equals("")) {
-                concatenated_input = Utilities.removeSpecialCharacters(elementA);
+                concatenatedInput = Utilities.removeSpecialCharacters(elementA);
 
-                list_of_matching_results_elementA = getMatchingResultsForSingleElementInStructure(concatenated_input, kanjiComponentForRequestedStructure);
+                listOfMatchingResultsElementA = getMatchingResultsForSingleElementInStructure(concatenatedInput, kanjiComponentForRequestedStructure);
 //
-//                limits = DatabaseUtilities.binarySearchInUTF8Index(concatenated_input, mArrayOfComponentsDatabases.get(requested_structure), relevant_column_index);
+//                limits = DatabaseUtilities.binarySearchInUTF8Index(concatenatedInput, mArrayOfComponentsDatabases.get(requested_structure), relevant_column_index);
 //
 //                if (limits[0] == limits[1] && limits[0] == -1) { }
 //                else {
-//                    list_of_matching_results_elementA = Arrays.asList(mArrayOfComponentsDatabases.get(requested_structure).get(limits[0])[1].split(";"));
+//                    listOfMatchingResultsElementA = Arrays.asList(mArrayOfComponentsDatabases.get(requested_structure).get(limits[0])[1].split(";"));
 //                }
             }
             else {
-                list_of_matching_results_elementA = getMatchingResultsForAllElementsInStructure(kanjiComponentForRequestedStructure);
+                listOfMatchingResultsElementA = getMatchingResultsForAllElementsInStructure(kanjiComponentForRequestedStructure);
 //                for (int i = 0; i< mArrayOfComponentsDatabases.get(requested_structure).size(); i++) {
 //                    local_matches = Arrays.asList(mArrayOfComponentsDatabases.get(requested_structure).get(i)[1].split(";"));
-//                    list_of_matching_results_elementA.addAll(local_matches);
-//                    if (list_of_matching_results_elementA.size()<max_size_for_duplicate_removal) {list_of_matching_results_elementA = removeDuplicatesFromList(list_of_matching_results_elementA);}
+//                    listOfMatchingResultsElementA.addAll(local_matches);
+//                    if (listOfMatchingResultsElementA.size()<max_size_for_duplicate_removal) {listOfMatchingResultsElementA = removeDuplicatesFromList(listOfMatchingResultsElementA);}
 //                }
             }
             if(!elementB.equals("")) {
-                concatenated_input = Utilities.removeSpecialCharacters(elementB);
-                list_of_matching_results_elementB = getMatchingResultsForSingleElementInStructure(concatenated_input, kanjiComponentForRequestedStructure);
+                concatenatedInput = Utilities.removeSpecialCharacters(elementB);
+                listOfMatchingResultsElementB = getMatchingResultsForSingleElementInStructure(concatenatedInput, kanjiComponentForRequestedStructure);
             }
             else {
-                list_of_matching_results_elementB = getMatchingResultsForAllElementsInStructure(kanjiComponentForRequestedStructure);
+                listOfMatchingResultsElementB = getMatchingResultsForAllElementsInStructure(kanjiComponentForRequestedStructure);
             }
             if(!elementC.equals("")) {
-                concatenated_input = Utilities.removeSpecialCharacters(elementC);
-                list_of_matching_results_elementC = getMatchingResultsForSingleElementInStructure(concatenated_input, kanjiComponentForRequestedStructure);
+                concatenatedInput = Utilities.removeSpecialCharacters(elementC);
+                listOfMatchingResultsElementC = getMatchingResultsForSingleElementInStructure(concatenatedInput, kanjiComponentForRequestedStructure);
             }
             else {
-                list_of_matching_results_elementC = getMatchingResultsForAllElementsInStructure(kanjiComponentForRequestedStructure);
+                listOfMatchingResultsElementC = getMatchingResultsForAllElementsInStructure(kanjiComponentForRequestedStructure);
             }
             if(!elementD.equals("")) {
-                concatenated_input = Utilities.removeSpecialCharacters(elementD);
-                list_of_matching_results_elementD = getMatchingResultsForSingleElementInStructure(concatenated_input, kanjiComponentForRequestedStructure);
+                concatenatedInput = Utilities.removeSpecialCharacters(elementD);
+                listOfMatchingResultsElementD = getMatchingResultsForSingleElementInStructure(concatenatedInput, kanjiComponentForRequestedStructure);
             }
             else {
-                list_of_matching_results_elementD = getMatchingResultsForAllElementsInStructure(kanjiComponentForRequestedStructure);
+                listOfMatchingResultsElementD = getMatchingResultsForAllElementsInStructure(kanjiComponentForRequestedStructure);
             }
             //endregion
 
             //region Getting the match intersections
             if      ( elementA.equals("") &&  elementB.equals("") &&  elementC.equals("") &&  elementD.equals("")) {
-                list_of_intersecting_results.addAll(list_of_matching_results_elementA);
+                listOfIntersectingResults.addAll(listOfMatchingResultsElementA);
             }
             else if ( elementA.equals("") &&  elementB.equals("") &&  elementC.equals("") && !elementD.equals("")) {
-                list_of_intersecting_results.addAll(list_of_matching_results_elementD);
+                listOfIntersectingResults.addAll(listOfMatchingResultsElementD);
             }
             else if ( elementA.equals("") &&  elementB.equals("") && !elementC.equals("") &&  elementC.equals("")) {
-                list_of_intersecting_results.addAll(list_of_matching_results_elementC);
+                listOfIntersectingResults.addAll(listOfMatchingResultsElementC);
             }
             else if ( elementA.equals("") &&  elementB.equals("") && !elementC.equals("") && !elementD.equals("")) {
-                list_of_intersecting_results = getIntersectionOfLists(list_of_matching_results_elementC, list_of_matching_results_elementD);
+                listOfIntersectingResults = getIntersectionOfLists(listOfMatchingResultsElementC, listOfMatchingResultsElementD);
             }
             else if ( elementA.equals("") && !elementB.equals("") &&  elementC.equals("") &&  elementD.equals("")) {
-                list_of_intersecting_results.addAll(list_of_matching_results_elementB);
+                listOfIntersectingResults.addAll(listOfMatchingResultsElementB);
             }
             else if ( elementA.equals("") && !elementB.equals("") &&  elementC.equals("") && !elementD.equals("")) {
-                list_of_intersecting_results = getIntersectionOfLists(list_of_matching_results_elementB, list_of_matching_results_elementD);
+                listOfIntersectingResults = getIntersectionOfLists(listOfMatchingResultsElementB, listOfMatchingResultsElementD);
             }
             else if ( elementA.equals("") && !elementB.equals("") && !elementC.equals("") &&  elementD.equals("")) {
-                list_of_intersecting_results = getIntersectionOfLists(list_of_matching_results_elementB, list_of_matching_results_elementC);
+                listOfIntersectingResults = getIntersectionOfLists(listOfMatchingResultsElementB, listOfMatchingResultsElementC);
             }
             else if ( elementA.equals("") && !elementB.equals("") && !elementC.equals("") && !elementD.equals("")) {
-                list_of_intersecting_results = getIntersectionOfLists(list_of_matching_results_elementB, list_of_matching_results_elementC);
-                list_of_intersecting_results = getIntersectionOfLists(list_of_intersecting_results, list_of_matching_results_elementD);
+                listOfIntersectingResults = getIntersectionOfLists(listOfMatchingResultsElementB, listOfMatchingResultsElementC);
+                listOfIntersectingResults = getIntersectionOfLists(listOfIntersectingResults, listOfMatchingResultsElementD);
             }
             else if (!elementA.equals("") &&  elementB.equals("") &&  elementC.equals("") &&  elementD.equals("")) {
-                list_of_intersecting_results.addAll(list_of_matching_results_elementA);
+                listOfIntersectingResults.addAll(listOfMatchingResultsElementA);
             }
             else if (!elementA.equals("") &&  elementB.equals("") &&  elementC.equals("") && !elementD.equals("")) {
-                list_of_intersecting_results = getIntersectionOfLists(list_of_matching_results_elementA, list_of_matching_results_elementD);
+                listOfIntersectingResults = getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementD);
             }
             else if (!elementA.equals("") &&  elementB.equals("") && !elementC.equals("") &&  elementD.equals("")) {
-                list_of_intersecting_results = getIntersectionOfLists(list_of_matching_results_elementA, list_of_matching_results_elementC);
+                listOfIntersectingResults = getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementC);
             }
             else if (!elementA.equals("") &&  elementB.equals("") && !elementC.equals("") && !elementD.equals("")) {
-                list_of_intersecting_results = getIntersectionOfLists(list_of_matching_results_elementA, list_of_matching_results_elementC);
-                list_of_intersecting_results = getIntersectionOfLists(list_of_intersecting_results, list_of_matching_results_elementD);
+                listOfIntersectingResults = getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementC);
+                listOfIntersectingResults = getIntersectionOfLists(listOfIntersectingResults, listOfMatchingResultsElementD);
             }
             else if (!elementA.equals("") && !elementB.equals("") &&  elementC.equals("") &&  elementD.equals("")) {
-                list_of_intersecting_results = getIntersectionOfLists(list_of_matching_results_elementA, list_of_matching_results_elementB);
+                listOfIntersectingResults = getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementB);
             }
             else if (!elementA.equals("") && !elementB.equals("") &&  elementC.equals("") && !elementD.equals("")) {
-                list_of_intersecting_results = getIntersectionOfLists(list_of_matching_results_elementA, list_of_matching_results_elementB);
-                list_of_intersecting_results = getIntersectionOfLists(list_of_intersecting_results, list_of_matching_results_elementD);
+                listOfIntersectingResults = getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementB);
+                listOfIntersectingResults = getIntersectionOfLists(listOfIntersectingResults, listOfMatchingResultsElementD);
             }
             else if (!elementA.equals("") && !elementB.equals("") && !elementC.equals("") &&  elementD.equals("")) {
-                list_of_intersecting_results = getIntersectionOfLists(list_of_matching_results_elementA, list_of_matching_results_elementB);
-                list_of_intersecting_results = getIntersectionOfLists(list_of_intersecting_results, list_of_matching_results_elementC);
+                listOfIntersectingResults = getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementB);
+                listOfIntersectingResults = getIntersectionOfLists(listOfIntersectingResults, listOfMatchingResultsElementC);
             }
             else if (!elementA.equals("") && !elementB.equals("") && !elementC.equals("") && !elementD.equals("")) {
-                list_of_intersecting_results = getIntersectionOfLists(list_of_matching_results_elementA, list_of_matching_results_elementB);
-                list_of_intersecting_results = getIntersectionOfLists(list_of_intersecting_results, list_of_matching_results_elementC);
-                list_of_intersecting_results = getIntersectionOfLists(list_of_intersecting_results, list_of_matching_results_elementD);
+                listOfIntersectingResults = getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementB);
+                listOfIntersectingResults = getIntersectionOfLists(listOfIntersectingResults, listOfMatchingResultsElementC);
+                listOfIntersectingResults = getIntersectionOfLists(listOfIntersectingResults, listOfMatchingResultsElementD);
             }
             //endregion
 
             //Returning only the structures that match the user's selected_structure
-            List<String> list_of_intersecting_results_and_structure = new ArrayList<>();
+            List<String> listOfIntersectingResultsAndStructure = new ArrayList<>();
             if (selected_structure != GlobalConstants.Index_full && !(elementA.equals("") && elementB.equals("") && elementC.equals("") && elementD.equals(""))) {
-                List<String> complete_results_for_given_structure = new ArrayList<>();
-                List<String> previous_array = new ArrayList<>();
-                List<String> current_array = new ArrayList<>();
+                List<String> completeResultsForGivenStructure = new ArrayList<>();
+                List<String> previousArray = new ArrayList<>();
+                List<String> currentArray;
 
                 for (int i = 0; i < associatedComponents.size(); i++) {
-                    current_array = Arrays.asList(associatedComponents.get(i).getAssociatedComponents().split(";"));
-                    for (String x : current_array){
-                        if (!previous_array.contains(x)) complete_results_for_given_structure.add(DatabaseUtilities.convertToUTF8(x));
+                    currentArray = Arrays.asList(associatedComponents.get(i).getAssociatedComponents().split(";"));
+                    for (String x : currentArray){
+                        if (!previousArray.contains(x)) completeResultsForGivenStructure.add(DatabaseUtilities.convertToUTF8(x));
                     }
-                    previous_array = current_array;
+                    previousArray = currentArray;
                 }
 
-                java.util.Collections.sort(complete_results_for_given_structure);
+                java.util.Collections.sort(completeResultsForGivenStructure);
 
-                for (String x : list_of_intersecting_results) {
+                for (String x : listOfIntersectingResults) {
                     String converted = DatabaseUtilities.convertToUTF8(x);
-                    int index = java.util.Collections.binarySearch(complete_results_for_given_structure, converted);
-                    if (index >= 0) { list_of_intersecting_results_and_structure.add(x); }
+                    int index = java.util.Collections.binarySearch(completeResultsForGivenStructure, converted);
+                    if (index >= 0) { listOfIntersectingResultsAndStructure.add(x); }
                 }
             }
             else {
-                list_of_intersecting_results_and_structure = list_of_intersecting_results;
+                listOfIntersectingResultsAndStructure = listOfIntersectingResults;
             }
 
-            return list_of_intersecting_results_and_structure;
+            return listOfIntersectingResultsAndStructure;
         }
         List<String> getIntersectionOfLists(List<String> A, List<String> B) {
             //https://stackoverflow.com/questions/2400838/efficient-intersection-of-component_substructures[2]-liststring-in-java
@@ -2162,7 +2131,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             List<String> list_of_matching_results_for_element = new ArrayList<>();
             for (KanjiComponent.AssociatedComponent associatedComponent : associatedComponents) {
                 list_of_matching_results_for_element.addAll(Arrays.asList(associatedComponent.getAssociatedComponents().split(";")));
-                if (list_of_matching_results_for_element.size()<max_size_for_duplicate_removal) {
+                if (list_of_matching_results_for_element.size()< maxSizeForDuplicateRemoval) {
                     list_of_matching_results_for_element = removeDuplicatesFromList(list_of_matching_results_for_element);
                 }
             }

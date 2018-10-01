@@ -47,7 +47,7 @@ import butterknife.Unbinder;
 
 public class DecomposeKanjiFragment extends Fragment implements LoaderManager.LoaderCallbacks<Object>{
 
-
+    //region Parameters
     @BindView(R.id.decompositionsHint) TextView mDecompositionsHint;
     @BindView(R.id.decompositionScrollView) ScrollView mDecompositionScrollView;
     @BindView(R.id.overall_block_container) LinearLayout mOverallBlockContainer;
@@ -57,8 +57,8 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
     private static final int ROOM_DB_KANJI_CHARACTER_LOADER = 4732;
     private String mInputQuery;
     private List<String[]> mRadicalsOnlyDatabase;
-    //private List<KanjiCharacter> mKanjiCharacters;
     private boolean mAlreadyGotFirstQuery;
+    //endregion
 
 
     //Lifecycle Functions

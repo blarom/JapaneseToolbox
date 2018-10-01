@@ -133,7 +133,7 @@ public class ConjugatorFragment extends Fragment implements
         getExtras();
         initializeParameters();
     }
-    @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         //setRetainInstance(true); //causes memory leaks
         View rootView = inflater.inflate(R.layout.fragment_conjugator, container, false);

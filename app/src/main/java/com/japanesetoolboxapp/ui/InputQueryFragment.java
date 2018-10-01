@@ -454,10 +454,8 @@ public class InputQueryFragment extends Fragment implements
         }
         else {
             if (mInitializedOcrApiJpn && mOCRLanguage.equals("jpn")) {
-                String toastString = "";
                 if (firstTimeInitializedJpn) {
-                    toastString = getResources().getString(R.string.OCRinstructionsJPN);
-                    Toast toast = Toast.makeText(getActivity(), toastString, Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.OCRinstructionsJPN), Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
                     toast.show();
                     firstTimeInitializedJpn = false;
@@ -465,10 +463,8 @@ public class InputQueryFragment extends Fragment implements
                 timesPressed = 0;
                 performImageCaptureAndCrop();
             } else if (mInitializedOcrApiEng && mOCRLanguage.equals("eng")) {
-                String toastString = "";
                 if (firstTimeInitializedEng) {
-                    toastString = getResources().getString(R.string.OCRinstructionsENG);
-                    Toast toast = Toast.makeText(getActivity(), toastString, Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.OCRinstructionsENG), Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
                     toast.show();
                     firstTimeInitializedEng = false;
@@ -698,6 +694,8 @@ public class InputQueryFragment extends Fragment implements
     private void copyTesseractDataFileFromAssets(String language) {
         try {
             String filepath = mInternalStorageTesseractFolderPath + "/tessdata/" + language + ".traineddata";
+
+            if (getActivity()==null) return;
             AssetManager assetManager = getActivity().getAssets();
 
             InputStream instream = assetManager.open("tessdata/" +language+ ".traineddata");
@@ -981,7 +979,6 @@ public class InputQueryFragment extends Fragment implements
             super(context);
             this.queryText = queryText;
             this.requestedSpeechToText = requestedSpeechToText;
-            this.internetIsAvailable = internetIsAvailable;
         }
 
         @Override
@@ -1022,7 +1019,7 @@ public class InputQueryFragment extends Fragment implements
             super(ctx, txtViewResourceId, list);
             }
         @Override
-        public View getDropDownView( int position, View cnvtView, ViewGroup prnt) {
+        public View getDropDownView(int position, View cnvtView, @NonNull ViewGroup prnt) {
             return getCustomView(position, cnvtView, prnt);
         }
         @NonNull
