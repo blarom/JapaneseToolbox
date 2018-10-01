@@ -332,6 +332,9 @@ public abstract class JapaneseToolboxRoomDatabase extends RoomDatabase {
     public List<KanjiCharacter> getAllKanjiCharacters() {
         return kanjiCharacter().getAllKanjiCharacters();
     }
+    public KanjiCharacter getKanjiCharactersByHexId(String queryHex) {
+        return kanjiCharacter().getKanjiCharacterByHexId(queryHex);
+    }
 
     public List<KanjiComponent> getKanjiComponentsByStructureName(String structure) {
         return kanjiComponent().getKanjiComponentsByStructure(structure);

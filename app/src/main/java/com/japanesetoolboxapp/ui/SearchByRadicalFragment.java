@@ -163,7 +163,6 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
     @Override public void onStart() {
         super.onStart();
 
-        //TODO: insert the input query into the fields of the kanji finder
         getKanjiFromRadicals(mInputQuery);
     }
     @Override public void onDetach() {
@@ -203,7 +202,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         mOverallBlockContainerLinearLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 return false;
             }
         });
@@ -223,7 +222,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         userselections_block_linearLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 return false;
             }
         });
@@ -232,15 +231,15 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
         makeText(getResources().getString(R.string.ChooseTheStructure), userselections_overall_block_layoutParams, userselections_block_linearLayout);
 
-        createUserInputFields();
+        createUserInputFields(inputQuery);
 
         createSearchResultsBlock();
     }
 
     ////User Interface functions
-    public void createUserInputFields() {
+    public void createUserInputFields(String inputQuery) {
 
-        //Initializations
+        //Creating the user selections list
         user_selections = new String[4];
         if (radical_module_user_selections != null) {
             System.arraycopy(radical_module_user_selections, 0, user_selections, 0, 4);
@@ -249,21 +248,40 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             for (int i=0; i<4; i++) { user_selections[i] = ""; }
         }
 
-        elements = new EditText[4];
-        radicals = new Button[4];
-        components = new Button[4];
-        elements[0] = makeEditText(user_selections[0], "Element 1");
-        elements[1] = makeEditText(user_selections[1], "Element 2");
-        elements[2] = makeEditText(user_selections[2], "Element 3");
-        elements[3] = makeEditText(user_selections[3], "Element 4");
-        radicals[0] = makeCharacterSelectionButton("radical", 0);
-        radicals[1] = makeCharacterSelectionButton("radical", 0);
-        radicals[2] = makeCharacterSelectionButton("radical", 0);
-        radicals[3] = makeCharacterSelectionButton("radical", 0);
-        components[0] = makeCharacterSelectionButton("component", 0);
-        components[1] = makeCharacterSelectionButton("component", 0);
-        components[2] = makeCharacterSelectionButton("component", 0);
-        components[3] = makeCharacterSelectionButton("component", 0);
+        inputQuery = Utilities.removeSpecialCharacters(inputQuery);
+        int userSelectionIndex = 0;
+        String currentChar;
+        String text_type;
+        for (int i=0; i<inputQuery.length(); i++) {
+            currentChar = mInputQuery.substring(i,i+1);
+            text_type = ConvertFragment.getTextType(currentChar);
+            if (text_type.equals("kanji")) {
+                user_selections[userSelectionIndex] = currentChar;
+                userSelectionIndex++;
+            }
+            if (userSelectionIndex==4) break;
+        }
+
+        //Creating the views
+        elements = new EditText[]{
+            makeEditText(user_selections[0], "Element 1"),
+            makeEditText(user_selections[1], "Element 2"),
+            makeEditText(user_selections[2], "Element 3"),
+            makeEditText(user_selections[3], "Element 4")
+        };
+        radicals = new Button[]{
+            makeCharacterSelectionButton("radical", 0),
+            makeCharacterSelectionButton("radical", 0),
+            makeCharacterSelectionButton("radical", 0),
+            makeCharacterSelectionButton("radical", 0)
+        };
+        components = new Button[]{
+            makeCharacterSelectionButton("component", 0),
+            makeCharacterSelectionButton("component", 0),
+            makeCharacterSelectionButton("component", 0),
+            makeCharacterSelectionButton("component", 0)
+        };
+
         selected_substructures = new ImageView[9];
         for (int i=0;i<9;i++) { selected_substructures[i] = null; }
         component_substructures = new ImageView[9];
@@ -321,7 +339,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         selected_category_chooser_row_Layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 return false;
             }
         });
@@ -372,7 +390,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             @Override
             public void onClick(View view) {
                 chosen_selected_category_index = 0;
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 resetLinearLayoutViews(selected_structures_selection_block_linearlayout,1);
                 selected_structure = setCategoryBasedOnUserSelection(chosen_selected_category_index, 0);
                 setStructureColorFilterToGreen(selected_structure_overlapping, selected_substructures[0]);
@@ -391,7 +409,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                         0,
                         0,
                         0};
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 resetLinearLayoutViews(selected_structures_selection_block_linearlayout,1);
                 createSelectedSubStructuresLayoutUponStructureSelection(selected_structure_across, structure);
                 setStructureColorFilterToGreen(selected_structure_across, selected_substructures[0]);
@@ -410,7 +428,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                         0,
                         0,
                         0};
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 resetLinearLayoutViews(selected_structures_selection_block_linearlayout,1);
                 createSelectedSubStructuresLayoutUponStructureSelection(selected_structure_down, structure);
                 setStructureColorFilterToGreen(selected_structure_down, selected_substructures[0]);
@@ -429,10 +447,10 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                         R.drawable.colored_structure_2_enclosing_bottomleft_to_topright,
                         R.drawable.colored_structure_2_enclosing_bottom_to_top,
                         0,0};
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 resetLinearLayoutViews(selected_structures_selection_block_linearlayout,1);
                 createSelectedSubStructuresLayoutUponStructureSelection(selected_structure_enclosure, structure);
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 setStructureColorFilterToGreen(selected_structure_enclosure, selected_substructures[0]);
             }
         });
@@ -450,7 +468,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                         0,
                         0,
                         0};
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 resetLinearLayoutViews(selected_structures_selection_block_linearlayout,1);
                 createSelectedSubStructuresLayoutUponStructureSelection(selected_structure_multiple, structure);
                 setStructureColorFilterToGreen(selected_structure_multiple, selected_substructures[0]);
@@ -544,7 +562,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             element.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                     if (event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
-                        hideSoftKeyboard();
+                        if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                     }
                     return false;
                 }
@@ -553,7 +571,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     elements[current_row_index].selectAll();
-                    hideSoftKeyboard();
+                    if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
 
                 }
             });
@@ -561,7 +579,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             radical.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    hideSoftKeyboard();
+                    if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
 
                     for (int i=0;i<4;i++) {
 
@@ -584,7 +602,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                 @Override
                 public void onClick(View view) {
 
-                    hideSoftKeyboard();
+                    if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                     resetLinearLayoutViews(userselections_block_linearLayout, number_of_default_views_in_selection_block);
                     number_of_views_added_in_block = 1;
 
@@ -735,7 +753,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         button_enter_top.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 hideGrid();
                 element.setText(user_selections[current_row_index]);
                 if (component_structures_selection_block_linearlayout != null) { component_structures_selection_block_linearlayout.setVisibility(View.GONE);}
@@ -744,7 +762,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         button_cancel_top.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 hideGrid();
                 if (component_structures_selection_block_linearlayout != null) { component_structures_selection_block_linearlayout.setVisibility(View.GONE); }
             }
@@ -759,7 +777,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         button_enter_bottom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 hideGrid();
                 element.setText(user_selections[current_row_index]);
                 if (component_structures_selection_block_linearlayout!=null) component_structures_selection_block_linearlayout.setVisibility(View.GONE);
@@ -768,7 +786,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         button_cancel_bottom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 hideGrid();
                 if (component_structures_selection_block_linearlayout!=null) component_structures_selection_block_linearlayout.setVisibility(View.GONE);
             }
@@ -879,7 +897,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         category_chooser_row_Layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 return false;
             }
         });
@@ -934,7 +952,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                         0,
                         0,
                         0};
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 resetLinearLayoutViews(userselections_block_linearLayout, number_of_default_views_in_selection_block + number_of_views_added_in_block);
                 resetLinearLayoutViews(component_structures_selection_block_linearlayout, 1);
                 createComponentSubStructuresLayoutUponStructureSelection(component_structure_across, structure, element);
@@ -955,7 +973,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                         0,
                         0,
                         0};
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 resetLinearLayoutViews(userselections_block_linearLayout, number_of_default_views_in_selection_block + number_of_views_added_in_block);
                 resetLinearLayoutViews(component_structures_selection_block_linearlayout, 1);
                 createComponentSubStructuresLayoutUponStructureSelection(component_structure_down, structure, element);
@@ -976,11 +994,11 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                         R.drawable.colored_structure_2_enclosing_bottomleft_to_topright,
                         R.drawable.colored_structure_2_enclosing_bottom_to_top,
                         0,0};
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 resetLinearLayoutViews(userselections_block_linearLayout, number_of_default_views_in_selection_block + number_of_views_added_in_block);
                 resetLinearLayoutViews(component_structures_selection_block_linearlayout, 1);
                 createComponentSubStructuresLayoutUponStructureSelection(component_structure_enclosure, structure, element);
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 setStructureColorFilterToGreen(component_structure_enclosure, component_substructures[0]);
                 if (component_substructures[0]!=null) component_substructures[0].performClick();
             }
@@ -999,7 +1017,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                         0,
                         0,
                         0};
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 resetLinearLayoutViews(userselections_block_linearLayout, number_of_default_views_in_selection_block + number_of_views_added_in_block);
                 resetLinearLayoutViews(component_structures_selection_block_linearlayout, 1);
                 createComponentSubStructuresLayoutUponStructureSelection(component_structure_multiple, structure, element);
@@ -1474,7 +1492,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         tv.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                hideSoftKeyboard();
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
                 return false;
             }
         });
@@ -1542,13 +1560,6 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         //autocomplete_input.setSelectAllOnFocus(true);
 
         return autocomplete_input;
-    }
-    public void hideSoftKeyboard() {
-        InputMethodManager inputMethodManager =(InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
-        if (getActivity().getCurrentFocus() != null) {
-            inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
-            //inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-        }
     }
     public void hideGrid() {
         show_grid = false;

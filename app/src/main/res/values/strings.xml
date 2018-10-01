@@ -305,4 +305,6 @@
     <string name="array_components_database">array_components_database</string>
     <string name="words_list">words_list</string>
     <string name="search_by_radical_elements_list">search_by_radical_elements_list</string>
+    <string name="decomposition_query">decomposition_query</string>
+    <string name="decomposition_radical_iteration">decomposition_radical_iteration</string>
 </resources>
