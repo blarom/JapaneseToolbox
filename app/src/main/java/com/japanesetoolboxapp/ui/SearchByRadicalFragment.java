@@ -1,7 +1,6 @@
 package com.japanesetoolboxapp.ui;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
@@ -27,7 +26,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,7 +40,7 @@ import android.widget.TextView;
 
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.DatabaseUtilities;
-import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
+import com.japanesetoolboxapp.data.JapaneseToolboxKanjiRoomDatabase;
 import com.japanesetoolboxapp.data.KanjiComponent;
 import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.MainApplication;
@@ -236,7 +234,8 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         createSearchResultsBlock();
     }
 
-    ////User Interface functions
+
+    //User Interface functions
     public void createUserInputFields(String inputQuery) {
 
         //Creating the user selections list
@@ -1385,8 +1384,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
     }
 
 
-
-    // Layout Subfunctions
+    //Layout Subfunctions
     public ImageView makeConstructionImage(int image_descriptor, LinearLayout.LayoutParams layoutParams, LinearLayout linearLayout) {
 
         ImageView img = new ImageView(getContext());
@@ -1565,7 +1563,6 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         show_grid = false;
         grid_block_linearLayout.setVisibility((View.GONE));
     }
-
     @TargetApi(23) public boolean isPrintable( String c ) {
         Paint paint=new Paint();
         //paint.setTypeface(MainActivity.CJK_typeface);
@@ -1695,7 +1692,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         private final List<String[]> mRadicalsOnlyDatabase;
         private final int chosen_components_list;
         private List<String[]> sortedList;
-        private JapaneseToolboxRoomDatabase mJapaneseToolboxRoomDatabase;
+        private JapaneseToolboxKanjiRoomDatabase mJapaneseToolboxKanjiRoomDatabase;
         //endregion
 
         ComponentGridCreationAsyncTaskLoader(Context context,
@@ -1716,7 +1713,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         @Override
         public Object loadInBackground() {
 
-            mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
+            mJapaneseToolboxKanjiRoomDatabase = JapaneseToolboxKanjiRoomDatabase.getInstance(getContext());
             List<String> mDisplayableComponentSelections = getSelectionGridElements();
 
             return mDisplayableComponentSelections;
@@ -1776,7 +1773,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                 String componentStructure = GlobalConstants.COMPONENT_STRUCTURES_MAP.get(chosen_components_list);
                 if (!TextUtils.isEmpty(componentStructure)) {
 
-                    List<KanjiComponent> kanjiComponents = mJapaneseToolboxRoomDatabase.getKanjiComponentsByStructureName(componentStructure);
+                    List<KanjiComponent> kanjiComponents = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName(componentStructure);
                     if (kanjiComponents != null && kanjiComponents.size()>0) {
                         KanjiComponent kanjiComponent = kanjiComponents.get(0);
                         List<KanjiComponent.AssociatedComponent> associatedComponents = kanjiComponent.getAssociatedComponents();
@@ -1912,7 +1909,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         //region Parameters
         private final String[] elements_list;
         private final int selected_structure;
-        private JapaneseToolboxRoomDatabase mJapaneseToolboxRoomDatabase;
+        private JapaneseToolboxKanjiRoomDatabase mJapaneseToolboxKanjiRoomDatabase;
         private int max_size_for_duplicate_removal;
         //endregion
 
@@ -1930,7 +1927,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         @Override
         public Object loadInBackground() {
 
-            mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
+            mJapaneseToolboxKanjiRoomDatabase = JapaneseToolboxKanjiRoomDatabase.getInstance(getContext());
             List<String> result = findSearchResults();
 
             return result;
@@ -1964,7 +1961,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             List<KanjiComponent.AssociatedComponent> associatedComponents = null;
             String componentStructure = GlobalConstants.COMPONENT_STRUCTURES_MAP.get(requested_structure);
             if (!TextUtils.isEmpty(componentStructure)) {
-                List<KanjiComponent> kanjiComponents = mJapaneseToolboxRoomDatabase.getKanjiComponentsByStructureName(componentStructure);
+                List<KanjiComponent> kanjiComponents = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName(componentStructure);
                 if (kanjiComponents != null && kanjiComponents.size() > 0) {
                     kanjiComponentForRequestedStructure = kanjiComponents.get(0);
                     if (componentStructure.equals("full") && kanjiComponents.size()>1) {

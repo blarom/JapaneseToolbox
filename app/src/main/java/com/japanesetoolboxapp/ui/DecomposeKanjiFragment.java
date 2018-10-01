@@ -28,7 +28,7 @@ import android.widget.TextView;
 
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.DatabaseUtilities;
-import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
+import com.japanesetoolboxapp.data.JapaneseToolboxKanjiRoomDatabase;
 import com.japanesetoolboxapp.data.KanjiCharacter;
 import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
@@ -66,7 +66,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         super.onCreate(savedInstanceState);
         getExtras();
     }
-    @Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View rootView = inflater.inflate(R.layout.fragment_decompose_kanji, container, false);
 
@@ -136,7 +136,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         LinearLayout.LayoutParams params;
         RelativeLayout.LayoutParams tv1_layoutParams;
         RelativeLayout.LayoutParams tv2_layoutParams;
-        String display_text = "";
+        String display_text;
         String[] structure_info;
 
         if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
@@ -330,7 +330,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         //region Configure the elements of explanation_row
         //region Get Structure
         tv1 = new TextView(getContext());
-        tv1.setText("Structure: ");
+        tv1.setText(R.string.structure_);
         tv1.setTextSize(14);
         tv1.setTextColor(Color.parseColor("#800080"));
         tv1.setTextIsSelectable(false);
@@ -371,7 +371,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             //region Display Characteristics: Meaning of non-Japanese or uncommon Japanese character
 
             tv1 = new TextView(getContext());
-            tv1.setText("Characteristics: ");
+            tv1.setText(R.string.characteristics_);
             tv1.setTextSize(14);
             tv1.setTextColor(Color.parseColor("#800080"));
             tv1.setTextIsSelectable(false);
@@ -386,7 +386,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             explanation_block.addView(tv1,tv1_layoutParams);
 
             tv2 = new TextView(getContext());
-            tv2.setText("This component is a CJK Character.");
+            tv2.setText(R.string.this_component_is_a_CJK_character);
             tv2.setTextSize(14);
             tv2.setBackgroundColor(Color.parseColor("#ffffff"));
             tv2.setAlpha((float) 0.90);
@@ -409,7 +409,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             //region Display Main Radical Info only (not readings or meanings)
 
             tv1 = new TextView(getContext());
-            tv1.setText("Radical: ");
+            tv1.setText(R.string.radical_);
             tv1.setTextSize(14);
             tv1.setTextColor(Color.parseColor("#800080"));
             tv1.setTextIsSelectable(false);
@@ -450,7 +450,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             if (!currentKanjiMainRadicalInfo.get(0).equals("")) {
 
                 tv1 = new TextView(getContext());
-                tv1.setText("Radical: ");
+                tv1.setText(getString(R.string.radical_));
                 tv1.setTextSize(14);
                 tv1.setTextColor(Color.parseColor("#800080"));
                 tv1.setTextIsSelectable(false);
@@ -654,7 +654,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         else if (character_is_radical_or_kana) {
             //region Display Radical or Kana Meanings/Readings
             tv1 = new TextView(getContext());
-            tv1.setText("Radical: ");
+            tv1.setText(getString(R.string.radical_));
             tv1.setTextSize(14);
             tv1.setTextColor(Color.parseColor("#800080"));
             tv1.setTextIsSelectable(false);
@@ -1128,7 +1128,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
     private static class KanjiCharacterDecompositionAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
         //region Parameters
-        private JapaneseToolboxRoomDatabase mJapaneseToolboxRoomDatabase;
+        private JapaneseToolboxKanjiRoomDatabase mJapaneseToolboxKanjiRoomDatabase;
         private final String inputQuery;
         private KanjiCharacter mCurrentKanjiCharacter;
         private final List<String[]> mRadicalsOnlyDatabase;
@@ -1150,7 +1150,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         @Override
         public Object loadInBackground() {
 
-            mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
+            mJapaneseToolboxKanjiRoomDatabase = JapaneseToolboxKanjiRoomDatabase.getInstance(getContext());
 
             // Search for the input in the database and retrieve the result's characteristics
 
@@ -1175,7 +1175,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
             String concatenated_input = Utilities.removeSpecialCharacters(word);
             String inputHexIdentifier = DatabaseUtilities.convertToUTF8(concatenated_input).toUpperCase();
-            mCurrentKanjiCharacter = mJapaneseToolboxRoomDatabase.getKanjiCharactersByHexId(inputHexIdentifier);
+            mCurrentKanjiCharacter = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByHexId(inputHexIdentifier);
             //mCurrentKanjiIndex = Collections.binarySearch(mKanjiCharacters, new KanjiCharacter(inputHexIdentifier), KanjiCharacter.hexIdentiferComparatorAscending);
 
             List<List<String>> decomposedKanji = new ArrayList<>();
@@ -1332,7 +1332,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 //Get the remaining radical characteristics (readings, meanings) from the KanjiDictDatabase
                 String mainRadical = mRadicalsOnlyDatabase.get(mainRadicalIndex)[0];
                 String radicalHexIdentifier = DatabaseUtilities.convertToUTF8(mainRadical).toUpperCase();
-                KanjiCharacter kanjiCharacter = mJapaneseToolboxRoomDatabase.getKanjiCharactersByHexId(radicalHexIdentifier);
+                KanjiCharacter kanjiCharacter = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByHexId(radicalHexIdentifier);
                 currentMainRadicalDetailedCharacteristics = getKanjiDetailedCharacteristics(kanjiCharacter);
 
             }

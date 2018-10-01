@@ -10,7 +10,6 @@ import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -24,13 +23,12 @@ import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.adapters.DictionaryRecyclerViewAdapter;
 import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.japanesetoolboxapp.data.FirebaseDao;
-import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
+import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -53,7 +51,7 @@ public class DictionaryFragment extends Fragment implements
     Toast mShowOnlineResultsToast;
     private List<Word> mLocalMatchingWordsList;
     private List<Word> mMergedMatchingWordsList;
-    JapaneseToolboxRoomDatabase mJapaneseToolboxRoomDatabase;
+    JapaneseToolboxCentralRoomDatabase mJapaneseToolboxCentralRoomDatabase;
     private Boolean mShowOnlineResults;
     private FirebaseDao mFirebaseDao;
     private Unbinder mBinding;
@@ -175,6 +173,7 @@ public class DictionaryFragment extends Fragment implements
                 mMergedMatchingWordsList = sortWordsAccordingToLengths(mMergedMatchingWordsList);
 
                 List<Word> differentJishoWords = Utilities.getDifferentAsyncWords(mLocalMatchingWordsList, jishoWords);
+                if (differentJishoWords.size()==0) Toast.makeText(getContext(), R.string.no_new_words_or_meanings_found_online, Toast.LENGTH_SHORT).show();
                 updateFirebaseDbWithJishoWords(differentJishoWords);
 
                 displayResults(mMergedMatchingWordsList);
@@ -188,6 +187,7 @@ public class DictionaryFragment extends Fragment implements
 
                 //if there are no jisho results (for whatever reason) and no local results to display, then try the reverse verb search on the input
                 else {
+                    Toast.makeText(getContext(), R.string.no_matching_words_online, Toast.LENGTH_SHORT).show();
                     performConjSearch();
                 }
             }
@@ -198,8 +198,6 @@ public class DictionaryFragment extends Fragment implements
 
     }
     @Override public void onLoaderReset(@NonNull Loader<List<Word>> loader) {}
-
-
     private static class JishoResultsAsyncTaskLoader extends AsyncTaskLoader <List<Word>> {
 
         String mQuery;
@@ -259,9 +257,9 @@ public class DictionaryFragment extends Fragment implements
 
             List<Word> localMatchingWordsList = new ArrayList<>();
             if (!TextUtils.isEmpty(mSearchWord)) {
-                JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
-                mMatchingWordIds = DatabaseUtilities.getMatchingWordIdsUsingRoomIndexes(mSearchWord, japaneseToolboxRoomDatabase);
-                localMatchingWordsList = japaneseToolboxRoomDatabase.getWordListByWordIds(mMatchingWordIds);
+                JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase = JapaneseToolboxCentralRoomDatabase.getInstance(getContext());
+                mMatchingWordIds = DatabaseUtilities.getMatchingWordIdsUsingRoomIndexes(mSearchWord, japaneseToolboxCentralRoomDatabase);
+                localMatchingWordsList = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(mMatchingWordIds);
             }
 
             return localMatchingWordsList;
@@ -280,7 +278,7 @@ public class DictionaryFragment extends Fragment implements
 
         mFirebaseDao = new FirebaseDao(getContext(), this);
 
-        mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
+        mJapaneseToolboxCentralRoomDatabase = JapaneseToolboxCentralRoomDatabase.getInstance(getContext());
 
         mLocalMatchingWordsList = new ArrayList<>();
         mMergedMatchingWordsList = new ArrayList<>();

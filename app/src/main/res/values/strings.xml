@@ -7,13 +7,10 @@
     <string name="app_name" translatable="false">Japanese Toolbox</string>
     <string name="EmptyResult" translatable="false">…</string>
     <string name="NoText" translatable="false"></string>
-    <string name="userInput" translatable="false">userInput</string>
-    <string name="applicationPreferences" translatable="false">ApplicationPrefs</string>
 
     <!--Splashscreen-->
-    <string name="Title1">Your personal aid for deciphering</string>
-    <string name="Title2">the Japanese language.</string>
-    <string name="Title3">Loading Local Database…</string>
+    <string name="splashscreen_intro_sentence">Your personal aid for deciphering\nthe Japanese language.</string>
+    <string name="splashscreen_loading_database">Loading Local Database…</string>
     <string name="Title4">This should only take a few seconds.</string>
 
     <!--Menu Strings-->
@@ -257,7 +254,6 @@
     <string name="ok">OK</string>
     <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
-    <string name="low_storage_error">Ocr dependencies cannot be downloaded due to low device storage</string>
     <string name="ocr_header">Click &quot;Detect Text&quot; to detect text</string>
     <string name="read_text">Detect Text</string>
     <string name="auto_focus">Auto Focus</string>
@@ -280,12 +276,7 @@
     <string name="saved_local_results">saved_local_results</string>
     <string name="saved_merged_results">saved_merged_results</string>
     <string name="saved_input_query">saved_input_query</string>
-    <string name="dictonary_fragment_instance">dictonary_fragment_instance</string>
-    <string name="conjugator_fragment_instance">conjugator_fragment_instance</string>
-    <string name="convert_fragment_instance">convert_fragment_instance</string>
     <string name="search_by_radical_fragment_instance">search_by_radical_fragment_instance</string>
-    <string name="decompose_fragment_instance">decompose_fragment_instance</string>
-    <string name="saved_matching_verbs">saved_matching_verbs</string>
     <string name="saved_ocr_result_state">saved_ocr_result_state</string>
     <string name="saved_romaji_from_kanji_state">saved_romaji_from_kanji_state</string>
     <string name="dict_fragment">saved_dict_fragment</string>
@@ -294,17 +285,27 @@
     <string name="srad_fragment">saved_srad_fragment</string>
     <string name="dcmp_fragment">saved_dcmp_fragment</string>
     <string name="displayed_second_fragment">displayed_second_fragment</string>
-    <string name="complete_verbs_list">complete_verbs_list</string>
     <string name="legend_database">legend_database</string>
     <string name="latin_conj_database">latin_conj_database</string>
     <string name="kanji_conj_database">kanji_conj_database</string>
     <string name="rad_only_database">rad_only_database</string>
-    <string name="kanji_dict_database">kanji_dict_database</string>
-    <string name="rad_database">rad_database</string>
-    <string name="cjk_database">cjk_database</string>
-    <string name="array_components_database">array_components_database</string>
     <string name="words_list">words_list</string>
     <string name="search_by_radical_elements_list">search_by_radical_elements_list</string>
     <string name="decomposition_query">decomposition_query</string>
     <string name="decomposition_radical_iteration">decomposition_radical_iteration</string>
+    <string name="database_finished_loading_flag">database_finished_loading_flag</string>
+    <string name="app_preferences">app_preferences</string>
+    <string name="loading_central_database">Installing the central words database.\n~ May take up to one minute ~</string>
+    <string name="loading_kanji_database">Finished installing the central database.\nCurrently installing the Kanji database.\n~ May take up to 3-5 minutes ~</string>
+    <string name="finished_loading_databases">Finished loading the databases.</string>
+    <string name="word_and_verb_database_finished_loading_flag">word_and_verb_database_finished_loading_flag</string>
+    <string name="database_being_installed">The database is currently being installed.\nThis may take a few minutes.\nThis delay only occurs when installing or upgrading the app.</string>
+    <string name="sure_you_want_to_exit">Are you sure you want to exit the app?</string>
+    <string name="yes">Yes</string>
+    <string name="no_matching_words_online">No matching words found online.</string>
+    <string name="no_new_words_or_meanings_found_online">No new words or meanings found online.</string>
+    <string name="structure_">Structure:\u0020</string>
+    <string name="characteristics_">Characteristics:\u0020</string>
+    <string name="this_component_is_a_CJK_character">This component is a CJK Character.</string>
+    <string name="radical_">Radical:\u0020</string>
 </resources>

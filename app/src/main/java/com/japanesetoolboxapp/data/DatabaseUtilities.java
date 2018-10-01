@@ -22,7 +22,7 @@ public class DatabaseUtilities {
 
     public static final String firebaseEmail = BuildConfig.firebaseEmail;
     public static final String firebasePass = BuildConfig.firebasePass;
-    public static final int WORD_SEARCH_CHAR_COUNT_THRESHOLD = 3;
+    private static final int WORD_SEARCH_CHAR_COUNT_THRESHOLD = 3;
     public static final int NUM_COLUMNS_IN_WORDS_CSV_SHEETS = 7;
     public static final int NUM_COLUMNS_IN_VERBS_CSV_SHEET = 11;
 
@@ -384,7 +384,7 @@ public class DatabaseUtilities {
 
         return mySheetFirstRow;
     }
-    public static List<Long> getMatchingWordIdsUsingRoomIndexes(String searchWord, JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase) {
+    public static List<Long> getMatchingWordIdsUsingRoomIndexes(String searchWord, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
 
         //region Initializations
@@ -475,7 +475,7 @@ public class DatabaseUtilities {
                 }
             }
 
-            latinIndices = findQueryInLatinIndex(TypeisLatin, input_word, searchWordTransliteratedLatin, japaneseToolboxRoomDatabase);
+            latinIndices = findQueryInLatinIndex(TypeisLatin, input_word, searchWordTransliteratedLatin, japaneseToolboxCentralRoomDatabase);
 
             if (latinIndices.size()==0) return matchingWordIds;
 
@@ -497,7 +497,7 @@ public class DatabaseUtilities {
             }
 
         } else if (TypeisKanji) {
-            kanjiIndices = findQueryInKanjiIndex(searchWordNoSpaces, japaneseToolboxRoomDatabase);
+            kanjiIndices = findQueryInKanjiIndex(searchWordNoSpaces, japaneseToolboxCentralRoomDatabase);
             if (kanjiIndices.size()==0) return matchingWordIds;
             for (KanjiIndex kanjiIndex : kanjiIndices) {
                 searchResultKeywordsArray.add(kanjiIndex.getWordIds());
@@ -519,7 +519,7 @@ public class DatabaseUtilities {
         //region Add search results where the "ing" is removed from an "ing" verb
         if ((TypeisLatin || TypeisKana || TypeisNumber) && !inglessVerb.equals(searchWord)) {
 
-            latinIndices = findQueryInLatinIndex(TypeisLatin, inglessVerb, searchWordTransliteratedLatin, japaneseToolboxRoomDatabase);
+            latinIndices = findQueryInLatinIndex(TypeisLatin, inglessVerb, searchWordTransliteratedLatin, japaneseToolboxCentralRoomDatabase);
 
             for (LatinIndex latinIndex : latinIndices) {
                 keywordsList = Arrays.asList(latinIndex.getWordIds().split(";"));
@@ -538,7 +538,7 @@ public class DatabaseUtilities {
         //endregion
 
         //region Filtering the matches
-        List<Word> matchingWordList = japaneseToolboxRoomDatabase.getWordListByWordIds(MatchingWordIdsFromIndex);
+        List<Word> matchingWordList = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(MatchingWordIdsFromIndex);
         String romaji;
         String meanings;
         String[] meaningSet;
@@ -727,7 +727,7 @@ public class DatabaseUtilities {
         }
         return output;
     }
-    public static Boolean checkIfWordIsOfTypeIngIng(String verb) {
+    private static Boolean checkIfWordIsOfTypeIngIng(String verb) {
         Boolean answer = false;
         if (	verb.equals("accinging") || verb.equals("astringing") || verb.equals("befringing") || verb.equals("besinging") ||
                 verb.equals("binging") || verb.equals("boinging") || verb.equals("bowstringing") || verb.equals("bringing") ||
@@ -748,7 +748,7 @@ public class DatabaseUtilities {
         }
         return answer;
     }
-    public static String removeApostrophes(String sentence) {
+    private static String removeApostrophes(String sentence) {
         String current_char;
         String concatenated_sentence = "";
         for (int index=0; index<sentence.length(); index++) {
@@ -759,305 +759,8 @@ public class DatabaseUtilities {
         }
         return concatenated_sentence;
     }
-    public static int[] binarySearchInLatinIndex(boolean TypeisLatin, String concatenated_word, String concatenated_translationLatin, List<String[]> SortedIndex) {
-
-        String prepared_word;
-        // Prepare the input word to be used in the following algorithm (it must be only in latin script)
-        if (TypeisLatin) { prepared_word = concatenated_word.toLowerCase(Locale.ENGLISH); }
-        else { prepared_word = concatenated_translationLatin.toLowerCase(Locale.ENGLISH); }
-
-        // Find the upper an lower limits of the range of words that start with the current word, using a binary search pattern
-        int back_index = prepared_word.length();
-        int char_index;
-        int list_size = SortedIndex.size();
-        int mid_index;
-        String current_char_prepared_word;
-        String current_char_mid;
-        String current_indexed_word;
-        boolean target_is_lower;
-        boolean target_is_higher;
-        boolean found_lower_limit;
-        boolean found_upper_limit;
-
-        int lower_limit = 0;
-        int upper_limit = list_size-1;
-        int lower_bound_of_lower_limit;
-        int upper_bound_of_lower_limit;
-        int lower_bound_of_upper_limit;
-        int upper_bound_of_upper_limit;
-        int divider;
-
-        while (back_index > 0) {
-
-            char_index = prepared_word.length()-back_index;
-            current_char_prepared_word = String.valueOf(prepared_word.charAt(char_index));
-
-            lower_bound_of_lower_limit = lower_limit;
-            upper_bound_of_lower_limit = upper_limit;
-            found_lower_limit = false;
-            while (!found_lower_limit) {
-                target_is_lower = false;
-                target_is_higher = false;
-                if (current_char_prepared_word.equals("a")) { break; }  // Since there is no letter lower than a, no lower limit needs to be found
-                mid_index = (int) Math.floor(lower_bound_of_lower_limit + (upper_bound_of_lower_limit-lower_bound_of_lower_limit)/2);
-
-                current_indexed_word = String.valueOf(SortedIndex.get(mid_index)[0]);
-                if (char_index >= current_indexed_word.length()) { current_char_mid = "a"; } //Prevents words shorter than the input word from crashing the algorithm
-                else { current_char_mid = String.valueOf(SortedIndex.get(mid_index)[0].charAt(char_index)).toLowerCase(Locale.ENGLISH); }
-
-                if      (current_char_prepared_word.compareTo(current_char_mid) < 0) { target_is_lower = true; }
-                else if (current_char_prepared_word.compareTo(current_char_mid) > 0) { target_is_higher = true; }
-
-                if      (target_is_lower)   { upper_bound_of_lower_limit = mid_index; }
-                else if (target_is_higher)  {
-                    if (lower_bound_of_lower_limit == mid_index) {lower_bound_of_lower_limit = mid_index+1;}
-                    else {lower_bound_of_lower_limit = mid_index;}
-                }
-                else {
-                    divider = 1;
-                    while(current_char_prepared_word.compareTo(current_char_mid) == 0) {
-
-                        upper_bound_of_lower_limit = mid_index;
-                        mid_index = (int) Math.floor(lower_bound_of_lower_limit + (mid_index-lower_bound_of_lower_limit)/2^divider);
-                        if (upper_bound_of_lower_limit <= mid_index) {
-                            //lower_bound_of_lower_limit = lower_limit;
-                            break;
-                        }
-
-                        current_indexed_word = String.valueOf(SortedIndex.get(mid_index)[0]);
-                        if (char_index >= current_indexed_word.length()) { current_char_mid = "a"; } //Prevents words shorter than the input word from crashing the algorithm
-                        else { current_char_mid = String.valueOf(SortedIndex.get(mid_index)[0].charAt(char_index)); }
-
-                        divider++;
-                    }
-                }
-                if (upper_bound_of_lower_limit <= lower_bound_of_lower_limit) {
-                    lower_limit = lower_bound_of_lower_limit;
-                    found_lower_limit = true;
-                }
-            }
-
-            lower_bound_of_upper_limit = lower_limit;
-            upper_bound_of_upper_limit = upper_limit;
-            found_upper_limit = false;
-            while (!found_upper_limit) {
-
-                target_is_lower = false;
-                target_is_higher = false;
-                if (current_char_prepared_word.equals("z")) { break; }  // Since there is no letter higher than z, no upper limit can be found
-                mid_index = (int) Math.floor(upper_bound_of_upper_limit - (upper_bound_of_upper_limit-lower_bound_of_upper_limit)/2);
-
-                current_indexed_word = String.valueOf(SortedIndex.get(mid_index)[0]);
-                if (char_index >= current_indexed_word.length()) { current_char_mid = "a"; } //Prevents words shorter than the input word from crashing the algorithm
-                else { current_char_mid = String.valueOf(SortedIndex.get(mid_index)[0].charAt(char_index)).toLowerCase(Locale.ENGLISH); }
-
-                if      (current_char_prepared_word.compareTo(current_char_mid) < 0) { target_is_lower = true; }
-                else if (current_char_prepared_word.compareTo(current_char_mid) > 0) { target_is_higher = true; }
-
-                if (target_is_lower)   {
-                    if (upper_bound_of_upper_limit == mid_index) {upper_bound_of_upper_limit = mid_index-1;}
-                    else {upper_bound_of_upper_limit = mid_index;}
-                }
-                else if (target_is_higher)  { lower_bound_of_upper_limit = mid_index; }
-                else {
-                    divider = 1;
-                    while(current_char_prepared_word.compareTo(current_char_mid) == 0) {
-                        lower_bound_of_upper_limit = mid_index;
-                        mid_index = (int) Math.floor(upper_bound_of_upper_limit - (upper_bound_of_upper_limit-mid_index)/2^divider);
-                        if (mid_index > upper_limit) { upper_bound_of_upper_limit = upper_limit; break;}
-                        else if (lower_bound_of_upper_limit >= mid_index) { upper_bound_of_upper_limit = upper_limit; break;}
-
-                        current_indexed_word = String.valueOf(SortedIndex.get(mid_index)[0]);
-
-                        if (char_index >= current_indexed_word.length()) { current_char_mid = "a"; } //Prevents words shorter than the input word from crashing the algorithm
-                        else { current_char_mid = String.valueOf(SortedIndex.get(mid_index)[0].charAt(char_index)).toLowerCase(Locale.ENGLISH); }
-
-                        divider++;
-                    }
-                }
-                if (upper_bound_of_upper_limit <= lower_bound_of_upper_limit) {
-                    upper_limit = upper_bound_of_upper_limit;
-                    found_upper_limit = true;
-                }
-            }
-            back_index--;
-            if (upper_limit == lower_limit) {break;}
-        }
-
-        //returning result
-        return new int[]{lower_limit,upper_limit};
-    }
-    public static int[] binarySearchInUTF8Index(String concatenated_word, List<String[]> SortedIndex, int relevant_column_index) {
-
-        // Prepare the input word to be used in the following algorithm: the word is converted to its hex utf-8 value as a string, in fractional form
-        String prepared_word = convertToUTF8(concatenated_word);
-
-        // Find the upper an lower limits of the range of words that start with the current word, using a binary search pattern
-        int back_index = (prepared_word.length()-2)/2; // because each hex = 2 characters, 2+ because of the "1."
-
-        //Initialization
-        int char_index;
-        int list_size = SortedIndex.size();
-        int mid_index;
-        String current_char_prepared_word;
-        String current_char_mid;
-        String current_indexed_word;
-        boolean target_is_lower;
-        boolean target_is_higher;
-        boolean found_lower_limit;
-        boolean found_upper_limit;
-
-        int lower_limit = 0;
-        int upper_limit = list_size-1;
-        int lower_bound_of_lower_limit;
-        int upper_bound_of_lower_limit;
-        int lower_bound_of_upper_limit;
-        int upper_bound_of_upper_limit;
-        int divider;
-        int decoded_current_char_prepared_word;
-        String current_value;
-
-        while (back_index > 0) {
-            char_index = prepared_word.length()-2*back_index; // because each hex = 2 characters, 2+ because of the "1."
-            current_char_prepared_word = String.valueOf(prepared_word.substring(char_index, char_index+2));
-            decoded_current_char_prepared_word = Integer.decode("0x" + current_char_prepared_word);
-
-            lower_bound_of_lower_limit = lower_limit;
-            upper_bound_of_lower_limit = upper_limit;
-            found_lower_limit = false;
-            while (!found_lower_limit) {
-                target_is_lower = false;
-                target_is_higher = false;
-
-                if (current_char_prepared_word.equals("00")) { break; }  // Since there is no letter lower than 00, no lower limit needs to be found
-                mid_index = (int) Math.floor(lower_bound_of_lower_limit + (upper_bound_of_lower_limit-lower_bound_of_lower_limit)/2);
-
-                current_value = SortedIndex.get(mid_index)[relevant_column_index];
-                if (!current_value.substring(0,1).equals("1")) {current_value = convertToUTF8(current_value);}
-
-                current_indexed_word = String.valueOf(current_value);
-                if (char_index >= current_indexed_word.length()) { current_char_mid = "00"; } //Prevents words shorter than the input word from crashing the algorithm
-                else {
-                    current_char_mid = SortedIndex.get(mid_index)[relevant_column_index];
-                    if (!current_char_mid.substring(0,1).equals("1")) {current_char_mid = convertToUTF8(current_char_mid);}
-                    current_char_mid = String.valueOf(current_char_mid.substring(char_index, char_index + 2));
-                }
-
-                if      (decoded_current_char_prepared_word - Integer.decode("0x" + current_char_mid) < 0) { target_is_lower = true; }
-                else if (decoded_current_char_prepared_word - Integer.decode("0x" + current_char_mid) > 0) { target_is_higher = true; }
-
-                if      (target_is_lower)   { upper_bound_of_lower_limit = mid_index; }
-                else if (target_is_higher)  {
-                    if (lower_bound_of_lower_limit == mid_index) {lower_bound_of_lower_limit = mid_index+1;}
-                    else {lower_bound_of_lower_limit = mid_index;}
-                }
-                else {
-                    divider = 1;
-                    while(decoded_current_char_prepared_word - Integer.decode("0x" + current_char_mid) == 0) {
-
-                        upper_bound_of_lower_limit = mid_index;
-                        mid_index = (int) Math.floor(lower_bound_of_lower_limit + (mid_index-lower_bound_of_lower_limit)/2^divider);
-                        if (upper_bound_of_lower_limit <= mid_index) {
-                            //lower_bound_of_lower_limit = lower_limit;
-                            break;
-                        }
-
-                        current_indexed_word = String.valueOf(SortedIndex.get(mid_index)[relevant_column_index]);
-                        if (!current_indexed_word.substring(0,1).equals("1")) {current_indexed_word = convertToUTF8(current_indexed_word);}
-
-                        if (char_index >= current_indexed_word.length()) { current_char_mid = "00"; } //Prevents words shorter than the input word from crashing the algorithm
-                        else {
-                            current_char_mid = SortedIndex.get(mid_index)[relevant_column_index];
-                            if (!current_char_mid.substring(0,1).equals("1")) {current_char_mid = convertToUTF8(current_char_mid);}
-                            current_char_mid = String.valueOf(current_char_mid.substring(char_index, char_index + 2));
-                        }
-
-                        divider++;
-                    }
-                }
-                if (upper_bound_of_lower_limit == 0) {
-                    lower_limit = upper_bound_of_lower_limit;
-                    found_lower_limit = true;
-                }
-                else if (upper_bound_of_lower_limit <= lower_bound_of_lower_limit) {
-                    lower_limit = lower_bound_of_lower_limit;
-                    found_lower_limit = true;
-                }
-            }
-
-            lower_bound_of_upper_limit = lower_limit;
-            upper_bound_of_upper_limit = upper_limit;
-            found_upper_limit = false;
-            while (!found_upper_limit) {
-                target_is_lower = false;
-                target_is_higher = false;
-                if (current_char_prepared_word.equals("FF")) { break; }  // Since there is no letter higher than FFFF, no upper limit can be found
-                mid_index = (int) Math.floor(upper_bound_of_upper_limit - (upper_bound_of_upper_limit-lower_bound_of_upper_limit)/2);
-
-                current_indexed_word = String.valueOf(SortedIndex.get(mid_index)[relevant_column_index]);
-                if (!current_indexed_word.substring(0,1).equals("1")) {current_indexed_word = convertToUTF8(current_indexed_word);}
-
-                if (char_index >= current_indexed_word.length()) { current_char_mid = "00"; } //Prevents words shorter than the input word from crashing the algorithm
-                else {
-                    current_char_mid = SortedIndex.get(mid_index)[relevant_column_index];
-                    if (!current_char_mid.substring(0,1).equals("1")) {current_char_mid = convertToUTF8(current_char_mid);}
-                    current_char_mid = String.valueOf(current_char_mid.substring(char_index, char_index + 2));
-                }
-
-                if      (decoded_current_char_prepared_word - Integer.decode("0x" + current_char_mid) < 0) { target_is_lower = true; }
-                else if (decoded_current_char_prepared_word - Integer.decode("0x" + current_char_mid) > 0) { target_is_higher = true; }
-
-                if (target_is_lower)   {
-                    if (upper_bound_of_upper_limit == mid_index) {upper_bound_of_upper_limit = mid_index-1;}
-                    else {upper_bound_of_upper_limit = mid_index;}
-                }
-                else if (target_is_higher)  { lower_bound_of_upper_limit = mid_index; }
-                else {
-                    divider = 1;
-                    while(decoded_current_char_prepared_word - Integer.decode("0x" + current_char_mid) == 0) {
-                        lower_bound_of_upper_limit = mid_index;
-
-                        mid_index = (int) Math.floor(upper_bound_of_upper_limit - (upper_bound_of_upper_limit-mid_index)/2^divider);
-                        if (mid_index > upper_limit) { upper_bound_of_upper_limit = upper_limit; break;}
-                        else if (lower_bound_of_upper_limit >= mid_index || SortedIndex.get(mid_index).length<relevant_column_index-1) { upper_bound_of_upper_limit = upper_limit; break;}
-
-                        current_indexed_word = String.valueOf(SortedIndex.get(mid_index)[relevant_column_index]);
-                        if (!current_indexed_word.substring(0,1).equals("1")) {current_indexed_word = convertToUTF8(current_indexed_word);}
-
-                        if (char_index >= current_indexed_word.length()) { current_char_mid = "00"; } //Prevents words shorter than the input word from crashing the algorithm
-                        else {
-                            current_char_mid = SortedIndex.get(mid_index)[relevant_column_index];
-                            if (!current_char_mid.substring(0,1).equals("1")) {current_char_mid = convertToUTF8(current_char_mid);}
-                            current_char_mid = String.valueOf(current_char_mid.substring(char_index, char_index + 2));
-                        }
-
-                        divider++;
-                    }
-                }
-                if (lower_bound_of_upper_limit == list_size) {
-                    upper_limit = lower_bound_of_upper_limit;
-                    found_upper_limit = true;
-                }
-                else if (upper_bound_of_upper_limit <= lower_bound_of_upper_limit) {
-                    upper_limit = upper_bound_of_upper_limit;
-                    found_upper_limit = true;
-                }
-            }
-            back_index--;
-            if (upper_limit == lower_limit) {break;}
-        }
-        int[] result = {lower_limit,upper_limit};
-
-        String result_string = SortedIndex.get(result[0])[relevant_column_index];
-        if (!result_string.substring(0,1).equals("1")) {result_string = convertToUTF8(result_string).toUpperCase();}
-
-        //Sanity check - if this fails, return -1 as a failed search
-        if (result[0] == result[1] && !result_string.contains(prepared_word.substring(2,prepared_word.length()).toUpperCase())) { result[0] = -1; result[1] = -1; }
-
-        return result;
-    }
-    public static List<LatinIndex> findQueryInLatinIndex(boolean TypeisLatin, String concatenated_word,
-                                                         String concatenated_translationLatin, JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase) {
+    private static List<LatinIndex> findQueryInLatinIndex(boolean TypeisLatin, String concatenated_word,
+                                                         String concatenated_translationLatin, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
         String prepared_word;
         // Prepare the input word to be used in the following algorithm (it must be only in latin script)
@@ -1066,23 +769,23 @@ public class DatabaseUtilities {
 
         List<LatinIndex> matchingLatinIndexes;
         if (prepared_word.length() > 2) {
-            matchingLatinIndexes = japaneseToolboxRoomDatabase.getLatinIndexesListForStartingWord(prepared_word);
+            matchingLatinIndexes = japaneseToolboxCentralRoomDatabase.getLatinIndexesListForStartingWord(prepared_word);
             return matchingLatinIndexes;
         }
         else {
             //Preventing the index search from returning too many results and crashing the app
             matchingLatinIndexes = new ArrayList<>();
-            LatinIndex index = japaneseToolboxRoomDatabase.getLatinIndexListForExactWord(prepared_word);
+            LatinIndex index = japaneseToolboxCentralRoomDatabase.getLatinIndexListForExactWord(prepared_word);
             if (index!=null) matchingLatinIndexes.add(index); //Only add the index if the word was found in the index
             return matchingLatinIndexes;
         }
     }
-    public static List<KanjiIndex> findQueryInKanjiIndex(String concatenated_word, JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase) {
+    private static List<KanjiIndex> findQueryInKanjiIndex(String concatenated_word, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
         // Prepare the input word to be used in the following algorithm: the word is converted to its hex utf-8 value as a string, in fractional form
         String prepared_word = convertToUTF8(concatenated_word);
 
-        List<KanjiIndex> matchingKanjiIndexes = japaneseToolboxRoomDatabase.getKanjiIndexesListForStartingWord(prepared_word);
+        List<KanjiIndex> matchingKanjiIndexes = japaneseToolboxCentralRoomDatabase.getKanjiIndexesListForStartingWord(prepared_word);
         return matchingKanjiIndexes;
     }
     public static String convertToUTF8(String input_string) {

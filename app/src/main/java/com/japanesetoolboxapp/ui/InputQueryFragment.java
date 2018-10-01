@@ -1169,6 +1169,11 @@ public class InputQueryFragment extends Fragment implements
     public void setQuery(String query) {
         mInputQueryAutoCompleteTextView.setText(query);
     }
+    public void setAppendedQuery(String addedText) {
+        mInputQuery = mInputQueryAutoCompleteTextView.getText().toString();
+        String newQuery = mInputQuery + addedText;
+        mInputQueryAutoCompleteTextView.setText(newQuery);
+    }
 
 
 }

@@ -1,6 +1,7 @@
 package com.japanesetoolboxapp.ui;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -12,6 +13,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
@@ -26,8 +28,6 @@ import android.widget.Toast;
 
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.DatabaseUtilities;
-import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
-import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.Utilities;
 
@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements
     List<String[]> LegendDatabase;
     List<String[]> VerbLatinConjDatabase;
     List<String[]> VerbKanjiConjDatabase;
-    List<Verb> VerbsDatabase;
     List<String[]> SimilarsDatabase;
     List<String[]> RadicalsOnlyDatabase;
     Typeface CJK_typeface;
@@ -122,7 +121,8 @@ public class MainActivity extends AppCompatActivity implements
         Log.i("Diagnosis Time", "Started MainActivity.");
         initializeParameters();
         setupSharedPreferences();
-        if (VerbsDatabase ==null) startLoadingDatabasesInBackground();
+        startLoadingDatabasesInBackground();
+
         setFragments();
 
     }
@@ -199,7 +199,25 @@ public class MainActivity extends AppCompatActivity implements
         mBinding.unbind();
     }
     @Override public void onBackPressed() {
-        super.onBackPressed();
+
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setMessage(getString(R.string.sure_you_want_to_exit));
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.yes),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+
+        //super.onBackPressed();
 //        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
 //            getSupportFragmentManager().popBackStack();
 //        } else {
@@ -351,7 +369,11 @@ public class MainActivity extends AppCompatActivity implements
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        if (mInputQueryFragment!=null) mInputQueryFragment.setQuery( (mInputQuery!=null && keepPreviousText)? mInputQuery + word : word);
+        if (mInputQueryFragment!=null) {
+            if (keepPreviousText) mInputQueryFragment.setAppendedQuery(word);
+            else mInputQueryFragment.setQuery(word);
+        }
+
         fragmentTransaction.commit();
     }
     public void clearBackstack() {
@@ -425,7 +447,7 @@ public class MainActivity extends AppCompatActivity implements
         @Override
         public Object loadInBackground() {
 
-            JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext()); //Required for Room
+            //JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext()); //Required for Room
             List<String[]> LegendDatabase = DatabaseUtilities.readCSVFile("LineLegend - 3000 kanji.csv", getContext());
             List<String[]> SimilarsDatabase = DatabaseUtilities.readCSVFile("LineSimilars - 3000 kanji.csv", getContext());
             List<String[]> VerbLatinConjDatabase = DatabaseUtilities.readCSVFile("LineLatinConj - 3000 kanji.csv", getContext());

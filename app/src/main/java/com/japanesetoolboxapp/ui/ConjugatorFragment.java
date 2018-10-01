@@ -28,7 +28,7 @@ import android.widget.TextView;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.ConjugationTitle;
 import com.japanesetoolboxapp.data.DatabaseUtilities;
-import com.japanesetoolboxapp.data.JapaneseToolboxRoomDatabase;
+import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
 import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.GlobalConstants;
@@ -648,7 +648,7 @@ public class ConjugatorFragment extends Fragment implements
         private String mInputQueryContatenated;
         private int mInputQueryContatenatedLength;
         private List<long[]> mMatchingVerbIdsAndCols;
-        private JapaneseToolboxRoomDatabase mJapaneseToolboxRoomDatabase;
+        private JapaneseToolboxCentralRoomDatabase mJapaneseToolboxCentralRoomDatabase;
         private HashMap<String, Integer> mFamilyConjugationIndexes = new HashMap<>();
         private boolean mInputQueryIsInvalid;
         private int mInputQueryTransliteratedKanaFormContatenatedLength;
@@ -678,8 +678,8 @@ public class ConjugatorFragment extends Fragment implements
         @Override
         public Object loadInBackground() {
 
-            mJapaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext());
-            if (mCompleteVerbsList.size()==0) mCompleteVerbsList = mJapaneseToolboxRoomDatabase.getAllVerbs();
+            mJapaneseToolboxCentralRoomDatabase = JapaneseToolboxCentralRoomDatabase.getInstance(getContext());
+            if (mCompleteVerbsList.size()==0) mCompleteVerbsList = mJapaneseToolboxCentralRoomDatabase.getAllVerbs();
 
             List<Verb> mMatchingVerbs = new ArrayList<>();
             if (!TextUtils.isEmpty(mInputQuery)) {
@@ -922,8 +922,8 @@ public class ConjugatorFragment extends Fragment implements
             //region Getting the matching words from the Words database and filtering for verbs
             List<Word> mMatchingWords;
             if (mWordsFromDictFragment == null) {
-                List<Long> mMatchingWordIds = DatabaseUtilities.getMatchingWordIdsUsingRoomIndexes(mInputQuery, mJapaneseToolboxRoomDatabase);
-                mMatchingWords = mJapaneseToolboxRoomDatabase.getWordListByWordIds(mMatchingWordIds);
+                List<Long> mMatchingWordIds = DatabaseUtilities.getMatchingWordIdsUsingRoomIndexes(mInputQuery, mJapaneseToolboxCentralRoomDatabase);
+                mMatchingWords = mJapaneseToolboxCentralRoomDatabase.getWordListByWordIds(mMatchingWordIds);
             }
             else {
                 mMatchingWords = mWordsFromDictFragment;
@@ -1140,7 +1140,7 @@ public class ConjugatorFragment extends Fragment implements
 
             for (int i = 0; i < ConjugationSearchMatchingVerbRowColIndexList.size(); i++) {
 
-                Word currentWord = mJapaneseToolboxRoomDatabase.getWordByWordId(ConjugationSearchMatchingVerbRowColIndexList.get(i)[0]);
+                Word currentWord = mJapaneseToolboxCentralRoomDatabase.getWordByWordId(ConjugationSearchMatchingVerbRowColIndexList.get(i)[0]);
 
                 int length = Utilities.getLengthFromWordAttributes(currentWord, mInputQuery, queryWordWithoutTo, queryIsVerbWithTo);
 
@@ -1204,8 +1204,8 @@ public class ConjugatorFragment extends Fragment implements
             //region Updating the verbs with their conjugations
             for (int p = 0; p < mMatchingVerbIdsAndCols.size(); p++) {
                 matchingVerbId = mMatchingVerbIdsAndCols.get(p)[0];
-                currentVerb = mJapaneseToolboxRoomDatabase.getVerbByVerbId(matchingVerbId);
-                currentWord = mJapaneseToolboxRoomDatabase.getWordByWordId(matchingVerbId);
+                currentVerb = mJapaneseToolboxCentralRoomDatabase.getVerbByVerbId(matchingVerbId);
+                currentWord = mJapaneseToolboxCentralRoomDatabase.getWordByWordId(matchingVerbId);
                 currentFamilyConjugationsIndex = mFamilyConjugationIndexes.get(currentVerb.getFamily());
                 currentConjugationsRowLatin = Arrays.copyOf(mVerbLatinConjDatabase.get(currentFamilyConjugationsIndex), NumberOfSheetCols);
                 currentConjugationsRowKanji = Arrays.copyOf(mVerbKanjiConjDatabase.get(currentFamilyConjugationsIndex), NumberOfSheetCols);

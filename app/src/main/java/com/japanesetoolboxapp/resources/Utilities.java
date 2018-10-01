@@ -1197,5 +1197,29 @@ public class Utilities {
         }
         return showOnlineResults;
     }
+    public static void setAppPreferenceKanjiDatabaseFinishedLoadingFlag(Context context, boolean flag) {
+        if (context != null) {
+            SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.app_preferences), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(context.getString(R.string.database_finished_loading_flag), flag);
+            editor.apply();
+        }
+    }
+    public static boolean getAppPreferenceKanjiDatabaseFinishedLoadingFlag(Context context) {
+        SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.app_preferences), Context.MODE_PRIVATE);
+        return sharedPref.getBoolean(context.getString(R.string.database_finished_loading_flag), false);
+    }
+    public static void setAppPreferenceWordVerbDatabasesFinishedLoadingFlag(Context context, boolean flag) {
+        if (context != null) {
+            SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.app_preferences), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putBoolean(context.getString(R.string.word_and_verb_database_finished_loading_flag), flag);
+            editor.apply();
+        }
+    }
+    public static boolean getAppPreferenceWordVerbDatabasesFinishedLoadingFlag(Context context) {
+        SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.app_preferences), Context.MODE_PRIVATE);
+        return sharedPref.getBoolean(context.getString(R.string.word_and_verb_database_finished_loading_flag), false);
+    }
 
 }
