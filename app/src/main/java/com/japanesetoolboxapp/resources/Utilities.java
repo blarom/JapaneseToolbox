@@ -198,11 +198,11 @@ public class Utilities {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        String prepared_word = "1.";
+        StringBuilder prepared_word = new StringBuilder("1.");
         for (byte b : byteArray) {
-            prepared_word = prepared_word + Integer.toHexString(b & 0xFF);
+            prepared_word.append(Integer.toHexString(b & 0xFF));
         }
-        return prepared_word;
+        return prepared_word.toString();
     }
     public static String removeNonSpaceSpecialCharacters(String sentence) {
         String current_char;
