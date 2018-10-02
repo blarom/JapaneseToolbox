@@ -155,8 +155,9 @@
         \n\nAlso note that this app uses a variation of Kunrei-Shiki romanization, where for example \&quot;う\&quot; is always transliterated to \&quot;u\&quot;, and \&quot;づ\&quot; is always transliterated to \&quot;du\&quot;.</string>
 
     <!--ComposeKanjiFragment Strings-->
-    <string name="CharConstr">Kanji Finder</string>
-    <string name="ChooseTheStructure">Choose The Structure</string>
+    <string name="search_by_radical_kanji_finder">Kanji Finder</string>
+    <string name="search_by_radical_select_structure">1. Select your wanted Kanji\&apos;s overall structure</string>
+    <string name="search_by_radical_select_elements">2. Select your wanted Kanji\&apos;s elements</string>
 
     <!--DecomposeKanjiFragment Strings-->
     <string name="RadicalDecomp">Kanji Decomposition</string>
@@ -308,4 +309,6 @@
     <string name="characteristics_">Characteristics:\u0020</string>
     <string name="this_component_is_a_CJK_character">This component is a CJK Character.</string>
     <string name="radical_">Radical:\u0020</string>
+    <string name="search_for_radical_search_too_broad">Your search is too broad. Please select another structure or select Kanji radicals to narrow the search.</string>
+    <string name="search_by_radical_no_results_found">No results found for your selections.</string>
 </resources>

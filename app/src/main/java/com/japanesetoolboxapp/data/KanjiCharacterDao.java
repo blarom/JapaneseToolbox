@@ -36,6 +36,10 @@ public interface KanjiCharacterDao {
     @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_KANJI_HEX_ID + " = :hexId")
     KanjiCharacter getKanjiCharacterByHexId(String hexId);
 
+    //Get a KanjiCharacter list by Ids
+    @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_KANJI_HEX_ID + " IN (:hexIdList)")
+    List<KanjiCharacter> getKanjiCharactersByHexIdList(List<String> hexIdList);
+
     //Delete a KanjiCharacter by Id
     @Query("DELETE FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_ID + " = :id")
     int deleteKanjiCharacterById(long id);

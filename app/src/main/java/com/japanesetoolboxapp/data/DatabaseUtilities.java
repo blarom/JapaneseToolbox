@@ -13,6 +13,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -777,12 +780,12 @@ public class DatabaseUtilities {
     private static List<KanjiIndex> findQueryInKanjiIndex(String concatenated_word, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
         // Prepare the input word to be used in the following algorithm: the word is converted to its hex utf-8 value as a string, in fractional form
-        String prepared_word = convertToUTF8(concatenated_word);
+        String prepared_word = convertToUTF8Index(concatenated_word);
 
         List<KanjiIndex> matchingKanjiIndexes = japaneseToolboxCentralRoomDatabase.getKanjiIndexesListForStartingWord(prepared_word);
         return matchingKanjiIndexes;
     }
-    public static String convertToUTF8(String input_string) {
+    public static String convertToUTF8Index(String input_string) {
 
         byte[] byteArray = {};
         try {
@@ -790,10 +793,28 @@ public class DatabaseUtilities {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        String prepared_word = "1.";
+        StringBuilder prepared_word = new StringBuilder("1.");
         for (byte b : byteArray) {
-            prepared_word = prepared_word + Integer.toHexString(b & 0xFF);
+            prepared_word.append(Integer.toHexString(b & 0xFF));
         }
-        return prepared_word;
+        return prepared_word.toString();
+    }
+    public static String convertFromUTF8Index(String inputHex) {
+
+        //inspired by: https://stackoverflow.com/questions/15749475/java-string-hex-to-string-ascii-with-accentuation
+        if(inputHex.length()<4) return "";
+        inputHex = inputHex.toLowerCase().substring(2,inputHex.length());
+
+        ByteBuffer buff = ByteBuffer.allocate(inputHex.length()/2);
+        for (int i = 0; i < inputHex.length(); i+=2) {
+            buff.put((byte)Integer.parseInt(inputHex.substring(i, i+2), 16));
+        }
+        buff.rewind();
+        Charset cs = Charset.forName("UTF-8");
+        CharBuffer cb = cs.decode(buff);
+
+        String result = cb.toString();
+
+        return result;
     }
 }

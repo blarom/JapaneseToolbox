@@ -97,6 +97,74 @@ public final class GlobalConstants {
         map.put(Index_bottomout, "bottomout");
         return map;
     }
+    public static String getKanjiStructureEquivalent(String componentDecompositionStructure) {
+        switch (componentDecompositionStructure) {
+            case "c":
+            case "refh":
+            case "refr":
+            case "refv":
+            case "rot":
+            case "w":
+            case "wa":
+            case "wb":
+            case "wbl":
+            case "wtr":
+            case "wtl":
+            case "wbr":
+                return "full";
+            case "a2":
+            case "a2m":
+            case "a2t":
+            case "rrefl":
+            case "rrefr":
+            case "rrotr":
+                return "across2";
+            case "d2":
+            case "d2m":
+            case "d2t":
+            case "rrefd":
+            case "rrotd":
+            case "rrotu":
+                return "down2";
+            case "a3":
+                return "across3";
+            case "a4":
+                return "across4";
+            case "d3":
+                return "down3";
+            case "d4":
+                return "down4";
+            case "r3gw":
+            case "r3tr":
+                return "repeat3special";
+            case "4sq":
+                return "foursquare";
+            case "r4sq":
+                return "repeat4special";
+            case "r5":
+                return "repeat5special";
+            case "s":
+                return "fullout";
+            case "sb":
+                return "bottomout";
+            case "sbl":
+            case "sbr":
+                return "bottomleftout";
+            case "sl":
+            case "sr":
+                return "leftout";
+            case "st":
+            case "r3st":
+                return "topout";
+            case "stl":
+            case "r3stl":
+                return "topleftout";
+            case "str":
+            case "r3str":
+                return "toprightout";
+        }
+        return "";
+    }
 
 	private static int ColIndexConverter(String colIndexLetter) {
 	   int colIndexNumber = 0;

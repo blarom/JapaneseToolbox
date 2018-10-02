@@ -172,10 +172,14 @@ public abstract class JapaneseToolboxKanjiRoomDatabase extends RoomDatabase {
         sInstance = null;
     }
 
+    public List<KanjiCharacter> getKanjiCharactersByHexIdList(List<String> queryHexList) {
+        return kanjiCharacter().getKanjiCharactersByHexIdList(queryHexList);
+    }
+
     public List<KanjiCharacter> getAllKanjiCharacters() {
         return kanjiCharacter().getAllKanjiCharacters();
     }
-    public KanjiCharacter getKanjiCharactersByHexId(String queryHex) {
+    public KanjiCharacter getKanjiCharacterByHexId(String queryHex) {
         return kanjiCharacter().getKanjiCharacterByHexId(queryHex);
     }
 

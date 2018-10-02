@@ -39,7 +39,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.japanesetoolboxapp.R;
-import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.japanesetoolboxapp.data.JapaneseToolboxKanjiRoomDatabase;
 import com.japanesetoolboxapp.data.KanjiComponent;
 import com.japanesetoolboxapp.resources.GlobalConstants;
@@ -87,8 +86,6 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
     Button search_for_char;
     Button[] radicals;
     Button[] components;
-
-    LinearLayout.LayoutParams overall_block_container_layoutParams;
 
     LinearLayout userselections_block_linearLayout;
     LinearLayout.LayoutParams userselections_overall_block_layoutParams;
@@ -156,12 +153,12 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
         mBinding = ButterKnife.bind(this, rootView);
 
+        getKanjiFromRadicals(mInputQuery);
         return rootView;
     }
     @Override public void onStart() {
         super.onStart();
 
-        getKanjiFromRadicals(mInputQuery);
     }
     @Override public void onDetach() {
         super.onDetach();
@@ -227,8 +224,6 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
         userselections_block_linearLayout.removeAllViews();
 
-        makeText(getResources().getString(R.string.ChooseTheStructure), userselections_overall_block_layoutParams, userselections_block_linearLayout);
-
         createUserInputFields(inputQuery);
 
         createSearchResultsBlock();
@@ -236,7 +231,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
 
     //User Interface functions
-    public void createUserInputFields(String inputQuery) {
+    private void createUserInputFields(String inputQuery) {
 
         //Creating the user selections list
         user_selections = new String[4];
@@ -288,7 +283,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
 
         show_grid = false;
-        number_of_default_views_in_selection_block = 6;
+        number_of_default_views_in_selection_block = 7;
         user_selection_is_highlighted = new Boolean[4];
         user_selections_radical_positions = new int[4];
         user_selections_component_positions = new int[4];
@@ -302,16 +297,16 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         current_row_index = 0;
 
         //Creating the user structure preference block
+        makeText(getResources().getString(R.string.search_by_radical_select_structure), userselections_overall_block_layoutParams, userselections_block_linearLayout);
         createSelectedStructureSelectionBlock();
 
         //Creating the user text input rows
+        makeText(getResources().getString(R.string.search_by_radical_select_elements), userselections_overall_block_layoutParams, userselections_block_linearLayout);
         for (int i=0;i<4;i++) { createInputFieldsRow(elements[i], radicals[i], components[i]); }
-
-        //Setting click listeners for the rows
         for (int i=0;i<4;i++) { setClickListenersForRow(elements[i], radicals[i], components[i]); }
 
     }
-    public void createSelectedStructureSelectionBlock() {
+    private void createSelectedStructureSelectionBlock() {
 
         // Creating the structure and substrucutre selection block
         selected_structures_selection_block_layoutparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -476,7 +471,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
         selected_structure_overlapping.performClick();
     }
-    public void createSelectedSubStructuresLayoutUponStructureSelection(final ImageView chosen_selected_structure, int[] structure) {
+    private void createSelectedSubStructuresLayoutUponStructureSelection(final ImageView chosen_selected_structure, int[] structure) {
 
         // Configuring the layout of the container View
         LinearLayout.LayoutParams local_row_container_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -537,7 +532,41 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         selected_structures_selection_block_linearlayout.addView(local_row_container_Layout);
 
     }
-    public void createInputFieldsRow(final EditText element, final Button radical, final Button component) {
+    private int setCategoryBasedOnUserSelection(int chosen_category_index, int chosen_subcategory_index){
+
+        //Getting the search category based on the user selection
+        int returned_components_list = 0;
+        if (chosen_category_index == 0) { returned_components_list = GlobalConstants.Index_full; }
+        if (chosen_category_index == 1) {
+            if      (chosen_subcategory_index == 0) { returned_components_list = GlobalConstants.Index_across2; }
+            else if (chosen_subcategory_index == 1) { returned_components_list = GlobalConstants.Index_across3; }
+            else if (chosen_subcategory_index == 2) { returned_components_list = GlobalConstants.Index_across4; }
+        }
+        else if (chosen_category_index == 2) {
+            if      (chosen_subcategory_index == 0) { returned_components_list = GlobalConstants.Index_down2; }
+            else if (chosen_subcategory_index == 1) { returned_components_list = GlobalConstants.Index_down3; }
+            else if (chosen_subcategory_index == 2) { returned_components_list = GlobalConstants.Index_down4; }
+        }
+        else if (chosen_category_index == 3) {
+            if      (chosen_subcategory_index == 0)       { returned_components_list = GlobalConstants.Index_topleftout;}
+            else if (chosen_subcategory_index == 1)       { returned_components_list = GlobalConstants.Index_topout;}
+            else if (chosen_subcategory_index == 2)       { returned_components_list = GlobalConstants.Index_toprightout;}
+            else if (chosen_subcategory_index == 3)       { returned_components_list = GlobalConstants.Index_leftout;}
+            else if (chosen_subcategory_index == 4)       { returned_components_list = GlobalConstants.Index_fullout;}
+            else if (chosen_subcategory_index == 5)       { returned_components_list = GlobalConstants.Index_bottomleftout;}
+            else if (chosen_subcategory_index == 6)       { returned_components_list = GlobalConstants.Index_bottomout;}
+        }
+        else if (chosen_category_index == 4) {
+            if      (chosen_subcategory_index == 0)       { returned_components_list = GlobalConstants.Index_three_repeat; }
+            else if (chosen_subcategory_index == 1)       { returned_components_list = GlobalConstants.Index_foursquare; }
+            else if (chosen_subcategory_index == 2)       { returned_components_list = GlobalConstants.Index_four_repeat; }
+            else if (chosen_subcategory_index == 3)       { returned_components_list = GlobalConstants.Index_five_repeat; }
+        }
+
+        return returned_components_list;
+    }
+
+    private void createInputFieldsRow(final EditText element, final Button radical, final Button component) {
 
         LinearLayout.LayoutParams row_layout_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         row_layout_layoutParams.gravity = Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL;
@@ -547,6 +576,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         row_layout_linearLayout.setOrientation(LinearLayout.HORIZONTAL);
         row_layout_linearLayout.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
         row_layout_linearLayout.setLayoutParams(row_layout_layoutParams);
+        row_layout_linearLayout.setFocusableInTouchMode(true);
 
         row_layout_linearLayout.addView(element);
         row_layout_linearLayout.addView(radical);
@@ -557,7 +587,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         userselections_block_linearLayout.addView(row_layout_linearLayout);
 
     }
-    public void setClickListenersForRow(final EditText element, final Button radical, final Button component) {
+    private void setClickListenersForRow(final EditText element, final Button radical, final Button component) {
             element.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                     if (event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
@@ -593,7 +623,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                     resetLinearLayoutViews(userselections_block_linearLayout, number_of_default_views_in_selection_block);
                     number_of_views_added_in_block = 1;
                     mComponentSelectionType = "radical";
-                    createSelectionGridBlock(element);
+                    createComponentKanjiSelectionGridBlock(element);
 
                 }
             });
@@ -620,258 +650,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             });
         }
 
-    public void createSelectionGridBlock(EditText element) {
-
-        show_grid = false;
-        createGridBlock();
-        createEnterCancelRow_Top(element);
-        createEnterCancelRow_Bottom(element);
-        startCreatingSelectionGridElementsAsynchronously();
-
-    }
-    private void startCreatingSelectionGridElementsAsynchronously() {
-        if (getActivity()!=null) {
-            showLoadingIndicator();
-            LoaderManager loaderManager = getActivity().getSupportLoaderManager();
-            Loader<String> roomDbSearchLoader = loaderManager.getLoader(ROOM_DB_COMPONENT_GRID_LOADER);
-            if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_COMPONENT_GRID_LOADER, null, this);
-            else loaderManager.restartLoader(ROOM_DB_COMPONENT_GRID_LOADER, null, this);
-        }
-    }
-    public void displayGridElements() {
-
-        if(getContext()==null) return;
-
-        //Making the grid container
-        LinearLayout.LayoutParams grid_container_layoutParams = new LinearLayout.LayoutParams(1000, ViewGroup.LayoutParams.WRAP_CONTENT); // (1000, 500);
-        grid_container_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
-        int num_columns = 7;
-        grid_container_layoutParams.setMargins(10,0,10,0);
-        final LinearLayout grid_container = new LinearLayout(getContext());
-        grid_container.setLayoutParams(grid_container_layoutParams);
-        grid_container.setOrientation(LinearLayout.HORIZONTAL);
-        grid_container.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
-        grid_container.setSelected(false);
-
-        grid_container.removeAllViews();
-
-        //If the screen is small, change the width of the container
-        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-        if (wm != null) {
-            Display display = wm.getDefaultDisplay();
-            Point size = new Point();
-            display.getSize(size);
-            int width = size.x;
-            int height = size.y;
-            if (width<1000) {
-                grid_container_layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT;
-                num_columns = 5;
-            }
-        }
-
-        //Setting the grid parameters
-        GridView.LayoutParams grid_layoutParams = new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        grid_layoutParams.height = GridLayout.LayoutParams.MATCH_PARENT;
-        grid_layoutParams.width  = GridLayout.LayoutParams.MATCH_PARENT;
-
-        grid = new GridView(getContext());
-        grid.setLayoutParams(grid_layoutParams);
-        grid.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-        grid.setSelected(false);
-        grid.setPadding(10,10,10,10);
-        grid.setNumColumns(num_columns);
-        grid.setMinimumHeight(100);
-        grid.setColumnWidth(10);
-
-        final float density = getContext().getResources().getDisplayMetrics().density;
-        grid_row_height = (int) (40 * density + 0.5f);
-
-        //Setting the grid
-        if (0 < mDisplayableComponentSelections.size() && mDisplayableComponentSelections.size() < num_columns) {
-
-            //Setting the layout
-            LinearLayout.LayoutParams selectionsLine_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-            selectionsLine_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
-            selectionsLine_layoutParams.setMargins(10, 10, 10, 0); // (left, top, right, bottom)
-
-            LinearLayout selectionsLine_linearLayout = new LinearLayout(getContext());
-            selectionsLine_linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-            selectionsLine_linearLayout.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
-            selectionsLine_linearLayout.setLayoutParams(selectionsLine_layoutParams);
-
-            //Updating the textviews in the layout
-            for (int i = 0; i< mDisplayableComponentSelections.size(); i++) {
-
-                TextView tv = new TextView(getContext());
-                tv.setText(mDisplayableComponentSelections.get(i));
-                setDefaultGridElementTextCharacteristics(tv);
-                setActionPerformedOnGridElementTextClick(tv, i);
-                selectionsLine_linearLayout.addView(tv);
-
-                tv = new TextView(getContext());
-                tv.setText("   ");
-                if (i < mDisplayableComponentSelections.size()) {selectionsLine_linearLayout.addView(tv);}
-            }
-
-            grid_container.addView(selectionsLine_linearLayout);
-            grid_container_layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT;
-            grid_container_layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        }
-        else if (mDisplayableComponentSelections.size() != 0) {
-            ArrayAdapter gridview_adapter =  new ArrayAdapter<String>(getContext(), R.layout.custom_radical_selection_grid_element, mDisplayableComponentSelections) {
-                @NonNull
-                @Override
-                public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
-                    View view = super.getView(position, convertView, parent);
-
-                    //Defining the font of each element depending on its characteristics
-                    final TextView tv = (TextView) view;
-                    setDefaultGridElementTextCharacteristics(tv);
-
-                    //Defining what happens when a user clicks on an element
-                    setActionPerformedOnGridElementTextClick(tv, position);
-
-                    return tv;
-                }
-            };
-            grid.setAdapter(gridview_adapter);
-            setDynamicHeight(grid, grid_layoutParams, grid_container, grid_container_layoutParams, num_columns);
-            grid_container.addView(grid);
-        }
-        else {
-            makeText("No Grid Elements Found", grid_container_layoutParams, grid_container);
-        }
-
-
-        if (mDisplayableComponentSelections.size() != 0) { grid_block_linearLayout.addView(grid_container); }
-    }
-    public void createEnterCancelRow_Top(final EditText element) {
-
-        Button button_enter_top = makeCharacterSelectionButton("enter", 0);
-        Button button_cancel_top = makeCharacterSelectionButton("cancel", 0);
-        input_row_enter_cancel_top = makeInputRow(button_enter_top, button_cancel_top);
-
-        grid_block_linearLayout.addView(input_row_enter_cancel_top);
-        grid_block_layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT;
-
-        button_enter_top.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
-                hideGrid();
-                element.setText(user_selections[current_row_index]);
-                if (component_structures_selection_block_linearlayout != null) { component_structures_selection_block_linearlayout.setVisibility(View.GONE);}
-            }
-        });
-        button_cancel_top.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
-                hideGrid();
-                if (component_structures_selection_block_linearlayout != null) { component_structures_selection_block_linearlayout.setVisibility(View.GONE); }
-            }
-        });
-    }
-    public void createEnterCancelRow_Bottom(final EditText element) {
-
-        Button button_enter_bottom = makeCharacterSelectionButton("enter", 0);
-        Button button_cancel_bottom = makeCharacterSelectionButton("cancel",0);
-        input_row_enter_cancel_bottom = makeInputRow(button_enter_bottom, button_cancel_bottom);
-
-        button_enter_bottom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
-                hideGrid();
-                element.setText(user_selections[current_row_index]);
-                if (component_structures_selection_block_linearlayout!=null) component_structures_selection_block_linearlayout.setVisibility(View.GONE);
-            }
-        });
-        button_cancel_bottom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
-                hideGrid();
-                if (component_structures_selection_block_linearlayout!=null) component_structures_selection_block_linearlayout.setVisibility(View.GONE);
-            }
-        });
-    }
-    public void createGridBlock() {
-
-        if (grid_block_linearLayout != null) { grid_block_linearLayout.removeAllViews(); }
-
-        grid_block_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-        grid_block_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
-        grid_block_layoutParams.setMargins(10, 5, 10, 0); // (left, top, right, bottom)
-
-        grid_block_linearLayout = new LinearLayout(getContext());
-        grid_block_linearLayout.setOrientation(LinearLayout.VERTICAL);
-        grid_block_linearLayout.setLayoutParams(grid_block_layoutParams);
-        grid_block_linearLayout.setFocusable(true);
-        grid_block_linearLayout.setClickable(true);
-
-        grid_block_linearLayout.removeAllViews();
-
-        userselections_block_linearLayout.addView(grid_block_linearLayout);
-    }
-    public void setDefaultGridElementTextCharacteristics(TextView tv) {
-
-        //No layout params are to be set for the tv textview, this will cause a crash in the gridview due to params conflict
-
-        String tv_text = tv.getText().toString();
-        tv.setHeight(grid_row_height);
-        //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
-
-        if (tv_text.contains("0") || tv_text.contains("1") || tv_text.contains("2") || tv_text.contains("3")
-                || tv_text.contains("4") || tv_text.contains("5") || tv_text.contains("6")
-                || tv_text.contains("7") || tv_text.contains("8") || tv_text.contains("9")) {
-            tv.setTextSize(24);
-            tv.setTypeface(null, Typeface.BOLD);
-            tv.setTextColor(Color.RED);
-        }
-        else if (tv_text.contains("variant")) {
-            tv.setTextSize(28);
-            tv.setText(tv_text.substring(0,1));
-            tv.setTextColor(Color.GREEN);
-        }
-        else {
-            tv.setTextSize(28);
-            tv.setText(tv_text);
-            tv.setTextColor(Color.BLUE);
-            //tv.setTextColor(Color.parseColor("#800080"));
-        }
-    }
-    public void setActionPerformedOnGridElementTextClick(final TextView tv, final int position) {
-            String tv_text = tv.getText().toString();
-            if (!(tv_text.contains("0") || tv_text.contains("1") || tv_text.contains("2") || tv_text.contains("3")
-                    || tv_text.contains("4") || tv_text.contains("5") || tv_text.contains("6")
-                    || tv_text.contains("7") || tv_text.contains("8") || tv_text.contains("9"))) {
-                tv.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //Getting the user selection
-
-                        //Removing the highlight from the previously selected textview
-                        if (user_selections_textviews[current_row_index] != null){
-                            setDefaultGridElementTextCharacteristics(user_selections_textviews[current_row_index]);
-                        }
-
-                        //Updating the user selected textviews with the new user choice and highlighting it
-                        user_selections[current_row_index] = tv.getText().toString();
-                        if (mComponentSelectionType.contains("radical")) { user_selections_radical_positions[current_row_index] = position;}
-                        else { user_selections_component_positions[current_row_index] = position;}
-                        user_selections_textviews[current_row_index] = tv;
-                        tv.setTextColor(Color.parseColor("#800080"));
-
-                        radical_module_user_selections = new String[4];
-                        radical_module_user_selections = Arrays.copyOf(user_selections, 4);
-
-                    }
-                });
-            }
-        }
-
-    public void createComponentStructuresSelectionBlock(final EditText element) {
+    private void createComponentStructuresSelectionBlock(final EditText element) {
 
         //Creating the structure and substructure selection block
         component_structures_selection_block_layoutparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -1034,7 +813,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
 
     }
-    public void createComponentSubStructuresLayoutUponStructureSelection(final ImageView chosen_component_structure, int[] structure, final EditText element) {
+    private void createComponentSubStructuresLayoutUponStructureSelection(final ImageView chosen_component_structure, int[] structure, final EditText element) {
 
         // Configuring the layout of the container View
         LinearLayout.LayoutParams local_row_container_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -1083,7 +862,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                         resetLinearLayoutViews(userselections_block_linearLayout, number_of_default_views_in_selection_block + number_of_views_added_in_block);
                         setStructureColorFilterToGreen(chosen_component_structure, component_substructures[index]);
                         chosen_components_list = setCategoryBasedOnUserSelection(chosen_component_category_index, chosen_component_subcategory_index);
-                        createSelectionGridBlock(element);
+                        createComponentKanjiSelectionGridBlock(element);
 
                     }
                 });
@@ -1096,41 +875,261 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         component_structures_selection_block_linearlayout.addView(local_row_container_Layout);
 
     }
-    public int setCategoryBasedOnUserSelection(int chosen_category_index, int chosen_subcategory_index){
 
-            //Getting the search category based on the user selection
-            int returned_components_list = 0;
-            if (chosen_category_index == 0) { returned_components_list = GlobalConstants.Index_full; }
-            if (chosen_category_index == 1) {
-                if      (chosen_subcategory_index == 0) { returned_components_list = GlobalConstants.Index_across2; }
-                else if (chosen_subcategory_index == 1) { returned_components_list = GlobalConstants.Index_across3; }
-                else if (chosen_subcategory_index == 2) { returned_components_list = GlobalConstants.Index_across4; }
-            }
-            else if (chosen_category_index == 2) {
-                if      (chosen_subcategory_index == 0) { returned_components_list = GlobalConstants.Index_down2; }
-                else if (chosen_subcategory_index == 1) { returned_components_list = GlobalConstants.Index_down3; }
-                else if (chosen_subcategory_index == 2) { returned_components_list = GlobalConstants.Index_down4; }
-            }
-            else if (chosen_category_index == 3) {
-                if      (chosen_subcategory_index == 0)       { returned_components_list = GlobalConstants.Index_topleftout;}
-                else if (chosen_subcategory_index == 1)       { returned_components_list = GlobalConstants.Index_topout;}
-                else if (chosen_subcategory_index == 2)       { returned_components_list = GlobalConstants.Index_toprightout;}
-                else if (chosen_subcategory_index == 3)       { returned_components_list = GlobalConstants.Index_leftout;}
-                else if (chosen_subcategory_index == 4)       { returned_components_list = GlobalConstants.Index_fullout;}
-                else if (chosen_subcategory_index == 5)       { returned_components_list = GlobalConstants.Index_bottomleftout;}
-                else if (chosen_subcategory_index == 6)       { returned_components_list = GlobalConstants.Index_bottomout;}
-            }
-            else if (chosen_category_index == 4) {
-                if      (chosen_subcategory_index == 0)       { returned_components_list = GlobalConstants.Index_three_repeat; }
-                else if (chosen_subcategory_index == 1)       { returned_components_list = GlobalConstants.Index_foursquare; }
-                else if (chosen_subcategory_index == 2)       { returned_components_list = GlobalConstants.Index_four_repeat; }
-                else if (chosen_subcategory_index == 3)       { returned_components_list = GlobalConstants.Index_five_repeat; }
-            }
+    private void createComponentKanjiSelectionGridBlock(EditText element) {
 
-            return returned_components_list;
+        show_grid = false;
+        createComponentKanjiSelectionGrid();
+        createComponentEnterCancelRow_Top(element);
+        createComponentEnterCancelRow_Bottom(element);
+        startCreatingComponentKanjiGridElementsAsynchronously();
+
+    }
+    private void createComponentKanjiSelectionGrid() {
+
+        if (grid_block_linearLayout != null) { grid_block_linearLayout.removeAllViews(); }
+
+        grid_block_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        grid_block_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
+        grid_block_layoutParams.setMargins(10, 5, 10, 0); // (left, top, right, bottom)
+
+        grid_block_linearLayout = new LinearLayout(getContext());
+        grid_block_linearLayout.setOrientation(LinearLayout.VERTICAL);
+        grid_block_linearLayout.setLayoutParams(grid_block_layoutParams);
+        grid_block_linearLayout.setFocusable(true);
+        grid_block_linearLayout.setClickable(true);
+
+        grid_block_linearLayout.removeAllViews();
+
+        userselections_block_linearLayout.addView(grid_block_linearLayout);
+    }
+    private void createComponentEnterCancelRow_Top(final EditText element) {
+
+        Button button_enter_top = makeCharacterSelectionButton("enter", 0);
+        Button button_cancel_top = makeCharacterSelectionButton("cancel", 0);
+        input_row_enter_cancel_top = makeInputRow(button_enter_top, button_cancel_top);
+
+        grid_block_linearLayout.addView(input_row_enter_cancel_top);
+        grid_block_layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT;
+
+        button_enter_top.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
+                hideGrid();
+                element.setText(user_selections[current_row_index]);
+                if (component_structures_selection_block_linearlayout != null) { component_structures_selection_block_linearlayout.setVisibility(View.GONE);}
+            }
+        });
+        button_cancel_top.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
+                hideGrid();
+                if (component_structures_selection_block_linearlayout != null) { component_structures_selection_block_linearlayout.setVisibility(View.GONE); }
+            }
+        });
+    }
+    private void createComponentEnterCancelRow_Bottom(final EditText element) {
+
+        Button button_enter_bottom = makeCharacterSelectionButton("enter", 0);
+        Button button_cancel_bottom = makeCharacterSelectionButton("cancel",0);
+        input_row_enter_cancel_bottom = makeInputRow(button_enter_bottom, button_cancel_bottom);
+
+        button_enter_bottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
+                hideGrid();
+                element.setText(user_selections[current_row_index]);
+                if (component_structures_selection_block_linearlayout!=null) component_structures_selection_block_linearlayout.setVisibility(View.GONE);
+            }
+        });
+        button_cancel_bottom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
+                hideGrid();
+                if (component_structures_selection_block_linearlayout!=null) component_structures_selection_block_linearlayout.setVisibility(View.GONE);
+            }
+        });
+    }
+    private void startCreatingComponentKanjiGridElementsAsynchronously() {
+        if (getActivity()!=null) {
+            showLoadingIndicator();
+            LoaderManager loaderManager = getActivity().getSupportLoaderManager();
+            Loader<String> roomDbSearchLoader = loaderManager.getLoader(ROOM_DB_COMPONENT_GRID_LOADER);
+            if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_COMPONENT_GRID_LOADER, null, this);
+            else loaderManager.restartLoader(ROOM_DB_COMPONENT_GRID_LOADER, null, this);
+        }
+    }
+
+    private void displayComponentKanjiSelectionGridElements() {
+
+        if(getContext()==null) return;
+
+        //Making the grid container
+        LinearLayout.LayoutParams grid_container_layoutParams = new LinearLayout.LayoutParams(1000, ViewGroup.LayoutParams.WRAP_CONTENT); // (1000, 500);
+        grid_container_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
+        int num_columns = 7;
+        grid_container_layoutParams.setMargins(10,0,10,0);
+        final LinearLayout grid_container = new LinearLayout(getContext());
+        grid_container.setLayoutParams(grid_container_layoutParams);
+        grid_container.setOrientation(LinearLayout.HORIZONTAL);
+        grid_container.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL);
+        grid_container.setSelected(false);
+
+        grid_container.removeAllViews();
+
+        //If the screen is small, change the width of the container
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        if (wm != null) {
+            Display display = wm.getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            int width = size.x;
+            int height = size.y;
+            if (width<1000) {
+                grid_container_layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT;
+                num_columns = 5;
+            }
         }
 
-    public void createSearchResultsBlock() {
+        //Setting the grid parameters
+        GridView.LayoutParams grid_layoutParams = new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        grid_layoutParams.height = GridLayout.LayoutParams.MATCH_PARENT;
+        grid_layoutParams.width  = GridLayout.LayoutParams.MATCH_PARENT;
+
+        grid = new GridView(getContext());
+        grid.setLayoutParams(grid_layoutParams);
+        grid.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        grid.setSelected(false);
+        grid.setPadding(10,10,10,10);
+        grid.setNumColumns(num_columns);
+        grid.setMinimumHeight(100);
+        grid.setColumnWidth(10);
+
+        final float density = getContext().getResources().getDisplayMetrics().density;
+        grid_row_height = (int) (40 * density + 0.5f);
+
+        //Setting the grid
+        if (0 < mDisplayableComponentSelections.size() && mDisplayableComponentSelections.size() < num_columns) {
+
+            //Setting the layout
+            LinearLayout.LayoutParams selectionsLine_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            selectionsLine_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
+            selectionsLine_layoutParams.setMargins(10, 10, 10, 0); // (left, top, right, bottom)
+
+            LinearLayout selectionsLine_linearLayout = new LinearLayout(getContext());
+            selectionsLine_linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+            selectionsLine_linearLayout.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+            selectionsLine_linearLayout.setLayoutParams(selectionsLine_layoutParams);
+
+            //Updating the textviews in the layout
+            for (int i = 0; i< mDisplayableComponentSelections.size(); i++) {
+
+                TextView tv = new TextView(getContext());
+                tv.setText(mDisplayableComponentSelections.get(i));
+                setDefaultGridElementTextCharacteristics(tv);
+                setActionPerformedOnGridElementTextClick(tv, i);
+                selectionsLine_linearLayout.addView(tv);
+
+                tv = new TextView(getContext());
+                tv.setText("   ");
+                if (i < mDisplayableComponentSelections.size()) {selectionsLine_linearLayout.addView(tv);}
+            }
+
+            grid_container.addView(selectionsLine_linearLayout);
+            grid_container_layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT;
+            grid_container_layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        }
+        else if (mDisplayableComponentSelections.size() != 0) {
+            ArrayAdapter gridview_adapter =  new ArrayAdapter<String>(getContext(), R.layout.custom_radical_selection_grid_element, mDisplayableComponentSelections) {
+                @NonNull
+                @Override
+                public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
+                    View view = super.getView(position, convertView, parent);
+
+                    //Defining the font of each element depending on its characteristics
+                    final TextView tv = (TextView) view;
+                    setDefaultGridElementTextCharacteristics(tv);
+
+                    //Defining what happens when a user clicks on an element
+                    setActionPerformedOnGridElementTextClick(tv, position);
+
+                    return tv;
+                }
+            };
+            grid.setAdapter(gridview_adapter);
+            setDynamicHeight(grid, grid_layoutParams, grid_container, grid_container_layoutParams, num_columns);
+            grid_container.addView(grid);
+        }
+        else {
+            makeText("No Grid Elements Found", grid_container_layoutParams, grid_container);
+        }
+
+
+        if (mDisplayableComponentSelections.size() != 0) { grid_block_linearLayout.addView(grid_container); }
+    }
+    private void setDefaultGridElementTextCharacteristics(TextView tv) {
+
+        //No layout params are to be set for the tv textview, this will cause a crash in the gridview due to params conflict
+
+        String tv_text = tv.getText().toString();
+        tv.setHeight(grid_row_height);
+        //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
+
+        if (tv_text.contains("0") || tv_text.contains("1") || tv_text.contains("2") || tv_text.contains("3")
+                || tv_text.contains("4") || tv_text.contains("5") || tv_text.contains("6")
+                || tv_text.contains("7") || tv_text.contains("8") || tv_text.contains("9")) {
+            tv.setTextSize(24);
+            tv.setTypeface(null, Typeface.BOLD);
+            tv.setTextColor(Color.RED);
+        }
+        else if (tv_text.contains("variant")) {
+            tv.setTextSize(28);
+            tv.setText(tv_text.substring(0,1));
+            tv.setTextColor(Color.GREEN);
+        }
+        else {
+            tv.setTextSize(28);
+            tv.setText(tv_text);
+            tv.setTextColor(Color.BLUE);
+            //tv.setTextColor(Color.parseColor("#800080"));
+        }
+    }
+    private void setActionPerformedOnGridElementTextClick(final TextView tv, final int position) {
+            String tv_text = tv.getText().toString();
+            if (!(tv_text.contains("0") || tv_text.contains("1") || tv_text.contains("2") || tv_text.contains("3")
+                    || tv_text.contains("4") || tv_text.contains("5") || tv_text.contains("6")
+                    || tv_text.contains("7") || tv_text.contains("8") || tv_text.contains("9"))) {
+                tv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //Getting the user selection
+
+                        //Removing the highlight from the previously selected textview
+                        if (user_selections_textviews[current_row_index] != null){
+                            setDefaultGridElementTextCharacteristics(user_selections_textviews[current_row_index]);
+                        }
+
+                        //Updating the user selected textviews with the new user choice and highlighting it
+                        user_selections[current_row_index] = tv.getText().toString();
+                        if (mComponentSelectionType.contains("radical")) { user_selections_radical_positions[current_row_index] = position;}
+                        else { user_selections_component_positions[current_row_index] = position;}
+                        user_selections_textviews[current_row_index] = tv;
+                        tv.setTextColor(Color.parseColor("#800080"));
+
+                        radical_module_user_selections = new String[4];
+                        radical_module_user_selections = Arrays.copyOf(user_selections, 4);
+
+                    }
+                });
+            }
+        }
+
+
+    private void createSearchResultsBlock() {
 
         //Creating the layout
         search_results_block_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
@@ -1178,7 +1177,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             else loaderManager.restartLoader(ROOM_DB_KANJI_SEARCH_LOADER, bundle, this);
         }
     }
-    public void createSearchResultsGrid(final List<String> printable_search_results) {
+    private void createSearchResultsGrid(final List<String> printable_search_results, boolean searchTooBroad) {
 
         if (getContext()==null) return;
 
@@ -1222,7 +1221,11 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         searchResultsGrid.setColumnWidth(10);
 
         //Create the grid
-        if (0 < printable_search_results.size() && printable_search_results.size() <= num_columns) {
+        if (searchTooBroad) {
+            makeText(getString(R.string.search_for_radical_search_too_broad),grid_container_layoutParams,grid_container);
+            search_results_block_linearLayout.addView(grid_container);
+        }
+        else if (0 < printable_search_results.size() && printable_search_results.size() <= num_columns) {
 
             LinearLayout.LayoutParams searchResultsLine_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
             searchResultsLine_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
@@ -1351,7 +1354,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             search_results_block_linearLayout.addView(lastSearchResultsLine_linearLayout);
         }
         else {
-            makeText("No Results Found",grid_container_layoutParams,grid_container);
+            makeText(getString(R.string.search_by_radical_no_results_found),grid_container_layoutParams,grid_container);
             search_results_block_linearLayout.addView(grid_container);
         }
     }
@@ -1365,7 +1368,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
 
     //Layout Subfunctions
-    public ImageView makeConstructionImage(int image_descriptor, LinearLayout.LayoutParams layoutParams, LinearLayout linearLayout) {
+    private ImageView makeConstructionImage(int image_descriptor, LinearLayout.LayoutParams layoutParams, LinearLayout linearLayout) {
 
         ImageView img = new ImageView(getContext());
         img.setLayoutParams(layoutParams);
@@ -1380,7 +1383,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         linearLayout.addView(img);
         return img;
     }
-    public void resetLinearLayoutViews(LinearLayout linearLayout, int number_of_wanted_leftover_children_views) {
+    private void resetLinearLayoutViews(LinearLayout linearLayout, int number_of_wanted_leftover_children_views) {
 
         int childCount = linearLayout.getChildCount();
         if (childCount > number_of_wanted_leftover_children_views) {
@@ -1391,7 +1394,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         }
 
     }
-    public void setStructureColorFilterToGreen(ImageView chosen_structure, ImageView chosen_substructure) {
+    private void setStructureColorFilterToGreen(ImageView chosen_structure, ImageView chosen_substructure) {
 
         if (selected_structure_overlapping != null) {selected_structure_overlapping.clearColorFilter();}
         if (selected_structure_across != null)      {selected_structure_across.clearColorFilter();}
@@ -1441,7 +1444,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             highlightSubStructure(selected_substructures, chosen_substructure);
         }
     }
-    public void highlightSubStructure(ImageView[] substructures, ImageView chosen_substructure) {
+    private void highlightSubStructure(ImageView[] substructures, ImageView chosen_substructure) {
         for (int i=0; i<9; i++) {
             if (substructures[i] != null) {
                 if (chosen_substructure.getId() == substructures[i].getId()) {
@@ -1452,7 +1455,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             }
         }
     }
-    public void makeText(String text, LinearLayout.LayoutParams layoutParams, LinearLayout linearLayout) {
+    private void makeText(String text, LinearLayout.LayoutParams layoutParams, LinearLayout linearLayout) {
         TextView tv = new TextView(getContext());
         tv.setLayoutParams(layoutParams);
         tv.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -1476,7 +1479,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         });
         linearLayout.addView(tv);
     }
-    public LinearLayout makeInputRow(View view1, View view2) {
+    private LinearLayout makeInputRow(View view1, View view2) {
 
         LinearLayout.LayoutParams row_layout_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         row_layout_layoutParams.gravity = Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL;
@@ -1495,7 +1498,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         return row_layout_linearLayout;
 
     }
-    public Button makeCharacterSelectionButton(String text, int width) {
+    private Button makeCharacterSelectionButton(String text, int width) {
 
         //Setting the layout params here prevents the button from adopting the layout params of its enclosing view
         LinearLayout.LayoutParams character_chooser_params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -1517,7 +1520,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
         return character_chooser;
     }
-    public EditText makeEditText(String text, String ghost_text) {
+    private EditText makeEditText(String text, String ghost_text) {
 
         EditText autocomplete_input = new EditText(getContext());
         autocomplete_input.setLayoutParams(userselections_overall_block_layoutParams);
@@ -1539,11 +1542,11 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
         return autocomplete_input;
     }
-    public void hideGrid() {
+    private void hideGrid() {
         show_grid = false;
         grid_block_linearLayout.setVisibility((View.GONE));
     }
-    @TargetApi(23) public static boolean isPrintable( String c ) {
+    @TargetApi(23) private static boolean isPrintable( String c ) {
         Paint paint=new Paint();
         //paint.setTypeface(MainActivity.CJK_typeface);
         boolean hasGlyph=true;
@@ -1624,15 +1627,18 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             mDisplayableComponentSelections = (List<String>) data;
 
             hideLoadingIndicator();
-            displayGridElements();
+            displayComponentKanjiSelectionGridElements();
             grid_block_linearLayout.addView(input_row_enter_cancel_bottom);
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_COMPONENT_GRID_LOADER);
         }
-        if (loader.getId() == ROOM_DB_KANJI_SEARCH_LOADER && !mAlreadyLoadedKanjiSearchResults && data!=null) {
+        else if (loader.getId() == ROOM_DB_KANJI_SEARCH_LOADER && !mAlreadyLoadedKanjiSearchResults && data!=null) {
             mAlreadyLoadedKanjiSearchResults = true;
 
-            List<String> search_results = (List<String>) data;
+            Object[] dataElements = (Object[]) data;
+
+            List<String> search_results = (List<String>) dataElements[0];
+            boolean searchTooBroad = (boolean) dataElements[1];
 
             hideLoadingIndicator();
 
@@ -1660,7 +1666,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             }
             printable_search_results = selections;
 
-            createSearchResultsGrid(printable_search_results);
+            createSearchResultsGrid(printable_search_results, searchTooBroad);
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_COMPONENT_GRID_LOADER);
         }
     }
@@ -1877,15 +1883,16 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
         //region Parameters
         private final String[] elements_list;
-        private final int selected_structure;
+        private final int mSelectedStructure;
         private JapaneseToolboxKanjiRoomDatabase mJapaneseToolboxKanjiRoomDatabase;
-        private int maxSizeForDuplicateRemoval;
+        private int mMaxSizeForDuplicateRemoval;
+        private boolean mSearchTooBroad;
         //endregion
 
-        KanjiSearchAsyncTaskLoader(Context context, String[] elements_list, int selected_structure) {
+        KanjiSearchAsyncTaskLoader(Context context, String[] elements_list, int mSelectedStructure) {
             super(context);
             this.elements_list = elements_list;
-            this.selected_structure = selected_structure;
+            this.mSelectedStructure = mSelectedStructure;
         }
 
         @Override
@@ -1899,93 +1906,86 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             mJapaneseToolboxKanjiRoomDatabase = JapaneseToolboxKanjiRoomDatabase.getInstance(getContext());
             List<String> result = findSearchResults();
 
-            return result;
+            return new Object[] {result, mSearchTooBroad};
         }
 
         private List<String> findSearchResults() {
 
+            //region Initialization
+            mMaxSizeForDuplicateRemoval = 200;
             String elementA = elements_list[0];
             String elementB = elements_list[1];
             String elementC = elements_list[2];
             String elementD = elements_list[3];
 
-            //Initialization
-            List<String> listOfMatchingResultsElementA;
-            List<String> listOfMatchingResultsElementB;
-            List<String> listOfMatchingResultsElementC;
-            List<String> listOfMatchingResultsElementD;
-            String concatenatedInput;
-            List<String> listOfIntersectingResults = new ArrayList<>();
-            maxSizeForDuplicateRemoval = 200;
-
-            int requested_structure;
-            if (selected_structure != GlobalConstants.Index_full && (elementA.equals("") && elementB.equals("") && elementC.equals("") && elementD.equals(""))) {
-                requested_structure = selected_structure;
-            }
-            else {
-                requested_structure = GlobalConstants.Index_full;
-            }
-
-            KanjiComponent kanjiComponentForRequestedStructure = null;
-            List<KanjiComponent.AssociatedComponent> associatedComponents = null;
-            String componentStructure = GlobalConstants.COMPONENT_STRUCTURES_MAP.get(requested_structure);
-            if (!TextUtils.isEmpty(componentStructure)) {
-                List<KanjiComponent> kanjiComponents = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName(componentStructure);
-                if (kanjiComponents != null && kanjiComponents.size() > 0) {
-                    kanjiComponentForRequestedStructure = kanjiComponents.get(0);
-                    if (componentStructure.equals("full") && kanjiComponents.size()>1) {
-                        associatedComponents = kanjiComponentForRequestedStructure.getAssociatedComponents();
-                        associatedComponents.addAll(kanjiComponents.get(1).getAssociatedComponents());
-                    }
-                }
-            }
-            if (kanjiComponentForRequestedStructure==null || associatedComponents==null) return new ArrayList<>();
-
-            //region Finding the list of matches corresponding to the user's input
-            if(!elementA.equals("")) {
-                concatenatedInput = Utilities.removeSpecialCharacters(elementA);
-
-                listOfMatchingResultsElementA = getMatchingResultsForSingleElementInStructure(concatenatedInput, kanjiComponentForRequestedStructure);
-//
-//                limits = DatabaseUtilities.binarySearchInUTF8Index(concatenatedInput, mArrayOfComponentsDatabases.get(requested_structure), relevant_column_index);
-//
-//                if (limits[0] == limits[1] && limits[0] == -1) { }
-//                else {
-//                    listOfMatchingResultsElementA = Arrays.asList(mArrayOfComponentsDatabases.get(requested_structure).get(limits[0])[1].split(";"));
-//                }
-            }
-            else {
-                listOfMatchingResultsElementA = getMatchingResultsForAllElementsInStructure(kanjiComponentForRequestedStructure);
-//                for (int i = 0; i< mArrayOfComponentsDatabases.get(requested_structure).size(); i++) {
-//                    local_matches = Arrays.asList(mArrayOfComponentsDatabases.get(requested_structure).get(i)[1].split(";"));
-//                    listOfMatchingResultsElementA.addAll(local_matches);
-//                    if (listOfMatchingResultsElementA.size()<max_size_for_duplicate_removal) {listOfMatchingResultsElementA = removeDuplicatesFromList(listOfMatchingResultsElementA);}
-//                }
-            }
-            if(!elementB.equals("")) {
-                concatenatedInput = Utilities.removeSpecialCharacters(elementB);
-                listOfMatchingResultsElementB = getMatchingResultsForSingleElementInStructure(concatenatedInput, kanjiComponentForRequestedStructure);
-            }
-            else {
-                listOfMatchingResultsElementB = getMatchingResultsForAllElementsInStructure(kanjiComponentForRequestedStructure);
-            }
-            if(!elementC.equals("")) {
-                concatenatedInput = Utilities.removeSpecialCharacters(elementC);
-                listOfMatchingResultsElementC = getMatchingResultsForSingleElementInStructure(concatenatedInput, kanjiComponentForRequestedStructure);
-            }
-            else {
-                listOfMatchingResultsElementC = getMatchingResultsForAllElementsInStructure(kanjiComponentForRequestedStructure);
-            }
-            if(!elementD.equals("")) {
-                concatenatedInput = Utilities.removeSpecialCharacters(elementD);
-                listOfMatchingResultsElementD = getMatchingResultsForSingleElementInStructure(concatenatedInput, kanjiComponentForRequestedStructure);
-            }
-            else {
-                listOfMatchingResultsElementD = getMatchingResultsForAllElementsInStructure(kanjiComponentForRequestedStructure);
+            if (    (mSelectedStructure == GlobalConstants.Index_full
+                    || mSelectedStructure == GlobalConstants.Index_across2
+                    || mSelectedStructure == GlobalConstants.Index_down2
+                    || mSelectedStructure == GlobalConstants.Index_across3
+                    || mSelectedStructure == GlobalConstants.Index_down3)
+                    && (elementA.equals("") && elementB.equals("") && elementC.equals("") && elementD.equals(""))) {
+                mSearchTooBroad = true;
+                return new ArrayList<>();
             }
             //endregion
 
-            //region Getting the match intersections
+            //region Finding the list of matches in the Full components list, that correspond to the user's input
+            KanjiComponent kanjiComponentFull = null;
+            List<KanjiComponent.AssociatedComponent> associatedComponents = null;
+            List<KanjiComponent> kanjiComponents = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName("full");
+            if (kanjiComponents != null && kanjiComponents.size() > 0) {
+                kanjiComponentFull= kanjiComponents.get(0);
+                associatedComponents = kanjiComponentFull.getAssociatedComponents();
+                if (kanjiComponents.size()>1) {
+                    associatedComponents.addAll(kanjiComponents.get(1).getAssociatedComponents());
+                }
+            }
+
+            elementA = Utilities.removeSpecialCharacters(elementA);
+            elementB = Utilities.removeSpecialCharacters(elementB);
+            elementC = Utilities.removeSpecialCharacters(elementC);
+            elementD = Utilities.removeSpecialCharacters(elementD);
+            boolean checkForExactMatchesOfElementA = !elementA.equals("");
+            boolean checkForExactMatchesOfElementB = !elementB.equals("");
+            boolean checkForExactMatchesOfElementC = !elementC.equals("");
+            boolean checkForExactMatchesOfElementD = !elementD.equals("");
+            List<String> listOfMatchingResultsElementA = new ArrayList<>();
+            List<String> listOfMatchingResultsElementB = new ArrayList<>();
+            List<String> listOfMatchingResultsElementC = new ArrayList<>();
+            List<String> listOfMatchingResultsElementD = new ArrayList<>();
+
+            List<String> listOfMatchingResultsForAllComponentsInStructure = new ArrayList<>();
+            if (!checkForExactMatchesOfElementA || !checkForExactMatchesOfElementB || !checkForExactMatchesOfElementC || !checkForExactMatchesOfElementD) {
+                listOfMatchingResultsForAllComponentsInStructure = getMatchingResultsForAllComponentsInStructure(associatedComponents);
+            }
+            if (!checkForExactMatchesOfElementA) listOfMatchingResultsElementA = listOfMatchingResultsForAllComponentsInStructure;
+            if (!checkForExactMatchesOfElementB) listOfMatchingResultsElementB = listOfMatchingResultsForAllComponentsInStructure;
+            if (!checkForExactMatchesOfElementC) listOfMatchingResultsElementC = listOfMatchingResultsForAllComponentsInStructure;
+            if (!checkForExactMatchesOfElementD) listOfMatchingResultsElementD = listOfMatchingResultsForAllComponentsInStructure;
+
+            for (KanjiComponent.AssociatedComponent associatedComponent : associatedComponents) {
+                if (checkForExactMatchesOfElementA && associatedComponent.getComponent().equals(elementA)) {
+                    listOfMatchingResultsElementA = Arrays.asList(associatedComponent.getAssociatedComponents().split(";"));
+                    checkForExactMatchesOfElementA = false;
+                }
+                if (checkForExactMatchesOfElementB && associatedComponent.getComponent().equals(elementB)) {
+                    listOfMatchingResultsElementB = Arrays.asList(associatedComponent.getAssociatedComponents().split(";"));
+                    checkForExactMatchesOfElementB = false;
+                }
+                if (checkForExactMatchesOfElementC && associatedComponent.getComponent().equals(elementC)) {
+                    listOfMatchingResultsElementC = Arrays.asList(associatedComponent.getAssociatedComponents().split(";"));
+                    checkForExactMatchesOfElementC = false;
+                }
+                if (checkForExactMatchesOfElementD && associatedComponent.getComponent().equals(elementD)) {
+                    listOfMatchingResultsElementD = Arrays.asList(associatedComponent.getAssociatedComponents().split(";"));
+                    checkForExactMatchesOfElementD = false;
+                }
+                if (!checkForExactMatchesOfElementA && !checkForExactMatchesOfElementB &&!checkForExactMatchesOfElementC && !checkForExactMatchesOfElementD) break;
+            }
+            //endregion
+
+            //region Getting the match intersections in the Full list
+            List<String> listOfIntersectingResults = new ArrayList<>();
             if      ( elementA.equals("") &&  elementB.equals("") &&  elementC.equals("") &&  elementD.equals("")) {
                 listOfIntersectingResults.addAll(listOfMatchingResultsElementA);
             }
@@ -2042,34 +2042,39 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             }
             //endregion
 
-            //Returning only the structures that match the user's selected_structure
-            List<String> listOfIntersectingResultsAndStructure = new ArrayList<>();
-            if (selected_structure != GlobalConstants.Index_full && !(elementA.equals("") && elementB.equals("") && elementC.equals("") && elementD.equals(""))) {
-                List<String> completeResultsForGivenStructure = new ArrayList<>();
-                List<String> previousArray = new ArrayList<>();
-                List<String> currentArray;
+            //region Getting the subset of characters match the user's selected structure
+            List<String> listOfResultsRelevantToRequestedStructure = new ArrayList<>();
+            if (mSelectedStructure != GlobalConstants.Index_full) {
 
-                for (int i = 0; i < associatedComponents.size(); i++) {
-                    currentArray = Arrays.asList(associatedComponents.get(i).getAssociatedComponents().split(";"));
-                    for (String x : currentArray){
-                        if (!previousArray.contains(x)) completeResultsForGivenStructure.add(DatabaseUtilities.convertToUTF8(x));
+                //Getting the components list relevant to the requested structure
+                KanjiComponent kanjiComponentForRequestedStructure = null;
+                String componentStructure = GlobalConstants.COMPONENT_STRUCTURES_MAP.get(mSelectedStructure);
+                if (!TextUtils.isEmpty(componentStructure)) {
+                    kanjiComponents = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName(componentStructure);
+                    if (kanjiComponents != null && kanjiComponents.size() > 0) {
+                        kanjiComponentForRequestedStructure = kanjiComponents.get(0);
+                        associatedComponents = kanjiComponentForRequestedStructure.getAssociatedComponents();
                     }
-                    previousArray = currentArray;
                 }
+                if (kanjiComponentForRequestedStructure==null || associatedComponents==null) return new ArrayList<>();
 
-                java.util.Collections.sort(completeResultsForGivenStructure);
-
-                for (String x : listOfIntersectingResults) {
-                    String converted = DatabaseUtilities.convertToUTF8(x);
-                    int index = java.util.Collections.binarySearch(completeResultsForGivenStructure, converted);
-                    if (index >= 0) { listOfIntersectingResultsAndStructure.add(x); }
+                //Looping over all the structure's components and adding only the ones that appear in listOfIntersectingResults
+                List<String> structureComponents;
+                List<String> currentIntersections;
+                for (KanjiComponent.AssociatedComponent associatedComponent : associatedComponents) {
+                    structureComponents = Arrays.asList(associatedComponent.getAssociatedComponents().split(";"));
+                    currentIntersections = getIntersectionOfLists(listOfIntersectingResults, structureComponents);
+                    listOfResultsRelevantToRequestedStructure.addAll(currentIntersections);
                 }
+                listOfResultsRelevantToRequestedStructure = removeDuplicatesFromList(listOfResultsRelevantToRequestedStructure);
+
             }
             else {
-                listOfIntersectingResultsAndStructure = listOfIntersectingResults;
+                listOfResultsRelevantToRequestedStructure = listOfIntersectingResults;
             }
+            //endregion
 
-            return listOfIntersectingResultsAndStructure;
+            return listOfResultsRelevantToRequestedStructure;
         }
         List<String> getIntersectionOfLists(List<String> A, List<String> B) {
             //https://stackoverflow.com/questions/2400838/efficient-intersection-of-component_substructures[2]-liststring-in-java
@@ -2113,25 +2118,12 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
             return new ArrayList<>(set);
         }
-        List<String> getMatchingResultsForSingleElementInStructure(String concatenated_input, KanjiComponent kanjiComponent) {
-
-            List<KanjiComponent.AssociatedComponent> associatedComponents = kanjiComponent.getAssociatedComponents();
-
-            for (KanjiComponent.AssociatedComponent associatedComponent : associatedComponents) {
-                if (associatedComponent.getComponent().equals(concatenated_input)) {
-                    return Arrays.asList(associatedComponent.getAssociatedComponents().split(";"));
-                }
-            }
-            return new ArrayList<>();
-        }
-        List<String> getMatchingResultsForAllElementsInStructure(KanjiComponent kanjiComponent) {
-
-            List<KanjiComponent.AssociatedComponent> associatedComponents = kanjiComponent.getAssociatedComponents();
+        List<String> getMatchingResultsForAllComponentsInStructure(List<KanjiComponent.AssociatedComponent> associatedComponents) {
 
             List<String> list_of_matching_results_for_element = new ArrayList<>();
             for (KanjiComponent.AssociatedComponent associatedComponent : associatedComponents) {
                 list_of_matching_results_for_element.addAll(Arrays.asList(associatedComponent.getAssociatedComponents().split(";")));
-                if (list_of_matching_results_for_element.size()< maxSizeForDuplicateRemoval) {
+                if (list_of_matching_results_for_element.size() < mMaxSizeForDuplicateRemoval) {
                     list_of_matching_results_for_element = removeDuplicatesFromList(list_of_matching_results_for_element);
                 }
             }

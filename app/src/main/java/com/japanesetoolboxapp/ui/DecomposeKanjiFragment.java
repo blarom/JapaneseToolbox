@@ -1011,9 +1011,13 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             structureText = "Component is repeated three times in a triangle pointing upwards.";
             structureImage = R.drawable.colored_structure_3_upwards_triangle;
         }
+        else if (requested_structure.equals("4sq")) {
+            structureText = "Component is arranged in a square";
+            structureImage = R.drawable.colored_structure_4_square;
+        }
         else if (requested_structure.equals("r4sq")) {
             structureText = "Component is repeated four times in a square or losange";
-            structureImage = R.drawable.colored_structure_4_square;
+            structureImage = R.drawable.colored_structure_4_square_repeat;
         }
         else if (requested_structure.equals("r5")) {
             structureText = "Component is repeated five times.";
@@ -1174,8 +1178,8 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         List<List<String>> Decomposition(String word) {
 
             String concatenated_input = Utilities.removeSpecialCharacters(word);
-            String inputHexIdentifier = DatabaseUtilities.convertToUTF8(concatenated_input).toUpperCase();
-            mCurrentKanjiCharacter = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByHexId(inputHexIdentifier);
+            String inputHexIdentifier = DatabaseUtilities.convertToUTF8Index(concatenated_input).toUpperCase();
+            mCurrentKanjiCharacter = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharacterByHexId(inputHexIdentifier);
             //mCurrentKanjiIndex = Collections.binarySearch(mKanjiCharacters, new KanjiCharacter(inputHexIdentifier), KanjiCharacter.hexIdentiferComparatorAscending);
 
             List<List<String>> decomposedKanji = new ArrayList<>();
@@ -1331,8 +1335,8 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
                 //Get the remaining radical characteristics (readings, meanings) from the KanjiDictDatabase
                 String mainRadical = mRadicalsOnlyDatabase.get(mainRadicalIndex)[0];
-                String radicalHexIdentifier = DatabaseUtilities.convertToUTF8(mainRadical).toUpperCase();
-                KanjiCharacter kanjiCharacter = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByHexId(radicalHexIdentifier);
+                String radicalHexIdentifier = DatabaseUtilities.convertToUTF8Index(mainRadical).toUpperCase();
+                KanjiCharacter kanjiCharacter = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharacterByHexId(radicalHexIdentifier);
                 currentMainRadicalDetailedCharacteristics = getKanjiDetailedCharacteristics(kanjiCharacter);
 
             }

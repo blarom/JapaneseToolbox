@@ -32,7 +32,7 @@ public interface WordDao {
     @Query("SELECT * FROM " + Word.TABLE_NAME + " WHERE " + Word.COLUMN_ID + " = :id")
     Word getWordByWordId(long id);
 
-    //Get a Word by Id
+    //Get a Word list by Ids
     @Query("SELECT * FROM " + Word.TABLE_NAME + " WHERE " + Word.COLUMN_ID + " IN (:ids)")
     List<Word> getWordListByWordIds(List<Long> ids);
 
