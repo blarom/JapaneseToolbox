@@ -1165,7 +1165,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1165|above, over|AP||||shita||
 1166|top, summit|NPl|||434|shita||
 1167|anywhere|AP|||740|||
-1168|behind|AP||||mae||
+1168|back, behind, rear|AP||||mae||
 1169|back|NPl|||439|mae, temae||
 1170|below, under|AP||Also used with "no".|655|ue||
 1171|bottom|NPl||||ue||
@@ -1861,7 +1861,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1861|rebirth, reincarnation|NAc||||||
 1862|reconsideration|NAc||||||
 1863|recovery (from an illness), recuperation, convalescence|NAc||||||
-1864|regret, repentance|NAc||||||
+1864|regret, repentance, remorse|NAc||||||
 1865|remittance, sending money, money transfer|NAc||||||
 1866|remote control|NAc||||||
 1867|repairs, maintenance, tending, trimming, grooming, crackdown, police raid|NAc||||||
@@ -2904,7 +2904,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2904|headband|NAt||||||
 2905|helmet|NAt||||||
 2906|jeans|NAt|||1384|||
-2907|kimono|NAt||||||
+2907|kimono (or other trad. Japanese clothing)|NAt||||||
 2908|laundry, washing|NAt|||194|||
 2909|mask|NAt||||||
 2910|muffler, winter scarf|NAt||||||
@@ -4446,7 +4446,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4446|why, what for, how come|SI|||707|||
 4447|a number of|Sx||Use "ssu" or "zu" in some cases (e.g. ninzu 人数).|1107, 1108, 1109, 1285|||
 4448|after|Sx|e.g. shuudengo (after the last train)|||||
-4449|arriving at|Sx||||||
+4449|arriving at ...|Sx||||||
 4450|characteristic of someone/something|Sx|||1104|||
 4451|field of expertise, sphere, area of specialization|Sx|||||shuudengo|
 4452|fractional part of|Sx|||1111|||
@@ -4771,7 +4771,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4771|notice, recognize, recognise, become aware of, perceive, realize, realise|VkuT||||||
 4772|peek (though a keyhole, gap, etc.), look down in(a ravine, etc.), peek in(a shop, bookstore, etc.), sneak a look at, take a quick look at, peep (through a telescope, microscope, etc.)|VkuT||||||
 4773|stick out (a scarf from a collar, etc.), peek through (sky through a forest canopy, etc.)|VkuI||||||
-4774|nod, bow one's head in assent|VkuI||||頷く||
+4774|nod, bow one's head in assent, agree|VkuI||||頷く||
 4775|grumble, complain|VkuI||||||
 4776|go through, pierce, penetrate, persist, stick to|VkuT||||||
 4777|chip, nick, break, crack, lack|VkuT||||||
@@ -5297,7 +5297,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5297|pay, sweep, wipe, pay attention|VuI||||||
 5298|meet|VuI|ME#0243;0244|||||
 5299|do ... each other|VuT|||1249|||
-5300|receive|VuT||||||
+5300|receive, take, accept|VuT||||||
 5301|say, express|VuT||||||
 5302|differ, be wrong|VuI|||1250, 1309, 1310, 1311|||
 5303|use (a thing, method, person, time, money, language), make use of, put use, employ, handle, operate, manage, manipulate, spend, consume, speak|VuT|||1251, 1272, 1291|||
@@ -5982,7 +5982,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5982|complain (about various things)|VsuruI||||||
 5983|laugh foolishly, smile thoughtlessly, talk indiscreetly, speak carelessly, flare up, burst inflames|VsuruI||||||
 5984|decline, refuse, reject, turn down (polite)|VsuruI||||||
-5985|regret, repent|VsuruT||||||
+5985|regret, repentance, remorse|VsuruT||||||
 5986|sail, voyage, travel|VsuruI||||||
 5987|open the public, exhibit|VsuruI||||||
 5988|read aloud, read out loud|VsuruT||||||
@@ -8059,7 +8059,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8059|perform in a band, create a (pop) band|VsuruI||||||
 8060|start (construction) work|VsuruI||||||
 8061|start work (on), undertake|VsuruI||||||
-8062|start committing a crime|VsuruI||||||
+8062|to start committing a crime|VsuruI||||||
 8063|challenge, defy, dare, attempt, try|VsuruT||||||
 8064|dash|VsuruI||||||
 8065|usurp, take back, dispossess|VsuruT||||||
@@ -10415,3 +10415,187 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 10415|be infidel, be wanton, be unfaithful, be inconstant, be fickle, be capricious|VsuruI||||||
 10416|stay up late, keep late hours, sit up late at night|VsuruI||||||
 10417|be victorious, be a champion|VsuruI||||||
+10418|behind, rear|NACF||||||
+10419|after, later|NACF||||||
+10420|after one's death|NACF||||||
+10421|remainder, the rest|NACF||||||
+10422|descendant, successor, heir|NACF||||||
+10423|more (e.g. five more minutes), left|NACF||||||
+10424|also, in addition|NACF||||||
+10425|past, previous|NACF||||||
+10426|putting off, postponing|NACF||||||
+10427|pushing, backing, boosting, supporting|NACF||||||
+10428|pushing from behind (a cart, etc.), pusher|NACF||||||
+10429|settlement (of affairs), remedial measures, cleaning up afterwards|NACF||||||
+10430|fear, doubt, have misgivings about, worry about, be anxious about, be apprehensive about|VmuI||||||
+10431|in danger, in jeopardy, critical, grave, at risk|Ai||||||
+10432|uncertain, unreliable, insecure, unsteady, doubtful|Ai||||||
+10433|close (i.e. a close call), narrow|Ai||||||
+10434|barely, narrowly|A||||||
+10435|almost, nearly|A||||||
+10436|should, must, that one ought to, to be done|PP||||||
+10437|-able|PP||||||
+10438|probably, likely|PP||||||
+10439|counter for suits of clothing|UNC||||||
+10440|steadily|AM||||||
+10441|landing|NACF||||||
+10442|steady, sound, solid, reliable, trustworthy|Ana||||||
+10443|steadiness, soundness, solidity, reliability, trustworthiness|NACF||||||
+10444|landing, alighting, touch down|NACF||||||
+10445|taking a seat, sitting down (in one's seat)|NACF||||||
+10446|wearing (e.g. uniform, seat belt), having on|NACF||||||
+10447|put on (or wear) lower-body clothing (i.e. pants, skirt, etc.), put on (or wear) footwear|VkuT||||||
+10448|affix a sword to one's hip|VkuT||||||
+10449|affix a bowstring to a bow|VkuT||||||
+10450|propriety, right and wrong, advisability, possibility|NACF||||||
+10451|pro and con, ayes and noes|NACF||||||
+10452|combustibles, inflammables, flammables, burnables|NACF||||||
+10453|torso, trunk|NACF||||||
+10454|build, physique, constitution|NACF||||||
+10455|health|NACF||||||
+10456|corpse, dead body|NACF||||||
+10457|love, cherish, be affectionate to, treat tenderly, dote on|VrugT||||||
+10458|show favouritism to, be partial to|VrugT||||||
+10459|fondle, caress, pet|VrugT||||||
+10460|cute, adorable, charming, lovely, pretty|Ai||||||
+10461|dear, precious, darling, pet|Ai||||||
+10462|innocent, childlike, childish, lovable|Ai||||||
+10463|dainty, cute little, tiny|Ai||||||
+10464|poor, pitiable, pathetic, pitiful|Ana||||||
+10465|poverty, pitifulness, patheticness|NACF||||||
+10466|prefectural, under prefectural management|NACF||||||
+10467|prefectural governor|NACF||||||
+10468|prefectural office|NACF||||||
+10469|Kenchou|NPl||||||
+10470|prefectural road|NACF||||||
+10471|outside the prefecture|NACF||||||
+10472|prefectural assembly|NACF||||||
+10473|prefectural police|NACF||||||
+10474|citizen of a prefecture, prefectural citizen|NACF||||||
+10475|within the prefecture|NACF||||||
+10476|prefectural (institution)|NACF||||||
+10477|changing clothes, change of clothes|NACF||||||
+10478|injury, harm, danger|NACF||||||
+10479|apprehensions, misgivings, uneasiness, anxiety, fear|NACF||||||
+10480|dress up|VrugT||||||
+10481|crisis, critical situation, emergency, pinch|NACF||||||
+10482|you, buddy, pal|P||||||
+10483|monarch, ruler, sovereign, (one's) master|NACF||||||
+10484|Imperial reign|NACF||||||
+10485|Kimigayo (Japanese national anthem)|NACF||||||
+10486|you (plural), all of you, you all|P||||||
+10487|clothing, clothes|NACF||||||
+10488|wear (in modern Japanese, from the shoulders down), put on|VruiT||||||
+10489|bear (guilt, etc.)|VruiT||||||
+10490|critical condition, being on the verge of death|NACF||||||
+10491|rear, stern|NACF||||||
+10492|support, backing|NACF||||||
+10493|junior (at work, school, etc.), younger people, younger student|NACF||||||
+10494|second half, latter half|NACF||||||
+10495|behind, in the rear, in back|NACF||||||
+10496|posterity, future life, life to come|NACF||||||
+10497|retreat, falling back, moving backwards, reversing, retrogression, retraction|NACF||||||
+10498|recession, waning|NACF||||||
+10499|backspace (key)|NACF||||||
+10500|head|NACF||||||
+10501|dismissal, discharge, firing (from a job)|NACF||||||
+10502|Mr (junior), master, boy|NACF||||||
+10503|Mr (junior)|Sx||||||
+10504|reigning, controlling|NACF||||||
+10505|man of virtue, wise man, (true) gentleman|NACF||||||
+10506|person of high rank|NACF||||||
+10507|the four gentlemen (plum, chrysanthemum, orchid, and bamboo)|NACF||||||
+10508|ruler, monarch, sovereign|NACF||||||
+10509|get somebody to do something|VuI||||||
+10510|elder sister|NACF||||||
+10511|young lady|NACF||||||
+10512|miss|NACF||||||
+10513|ma'am|NACF||||||
+10514|later, afterwards, since|NACF||||||
+10515|future|NACF||||||
+10516|after one's death|NACF||||||
+10517|descendant|NACF||||||
+10518|body, physical system, person|NACF||||||
+10519|buttocks, behind, rump, bottom|NACF||||||
+10520|undersurface, bottom|NACF||||||
+10521|last place, end|NACF||||||
+10522|consequence|NACF||||||
+10523|first place, head position, leading position|NACF||||||
+10524|head, leader, top|NACF||||||
+10525|important part|NACF||||||
+10526|head, chief|NACF||||||
+10527|chairman, governor, president|NACF||||||
+10528|top student, head of the class|NACF||||||
+10529|top seat, first desk (in orchestra)|NACF||||||
+10530|Prime Minister, Chancellor (Germany, Austria, etc.), Premier|NACF||||||
+10531|the capital city (often Tokyo) area (typically within 50 km of city's centre) (center)|NACF||||||
+10532|If that's the case ..., If so ..., That being the case ...|PP||||||
+10533|character, qualities, genius, the makings of|NACF||||||
+10534|great victory, crushing victory|NACF||||||
+10535|general, admiral|NACF||||||
+10536|head, chief, leader, boss, kingpin|NACF||||||
+10537|old chap, mate, boss, chief, man|NACF||||||
+10538|athlete who competes in the last match of a team competition (kendo, judo, etc.)|NACF||||||
+10539|Taishō era (1912.7.30-1926.12.25), Taisho era|NACF||||||
+10540|symmetry|NACF||||||
+10541|second person|NACF||||||
+10542|symptomatic therapy, makeshift solution|NACF||||||
+10543|breathe out, breathe|VkuT||||||
+10544|tell (a lie), use (foul language)|VkuT||||||
+10545|vomit, throw up, spit up|VkuT||||||
+10546|take (seat, position, course, office, etc.), assume, be hired, be employed|VkuI||||||
+10547|start (on a journey), commence, depart|VkuI||||||
+10548|study (under teacher), be an apprentice|VkuI||||||
+10549|be lit (e.g. electricity comes on), be lighted|VkuI||||||
+10550|catch fire|VkuI||||||
+10551|deeply, keenly, severely, completely, utterly|AM||||||
+10552|intently, carefully, closely, attentively|AM||||||
+10553|making, producing, manufacturing, building, construction, make, structure|NACF||||||
+10554|appearance (attire, make-up, etc.)|NACF||||||
+10555|build, physique|NACF||||||
+10556|sashimi|NACF||||||
+10557|forced (smile, etc.)|Px||||||
+10558|make-up, structure, physique|NACF||||||
+10559|build up, complete, construct, create, put together|VruiT||||||
+10560|make up, fabricate, invent, cook up|VruiT||||||
+10561|fiction, made-up story, fable, fabrication, myth|NACF||||||
+10562|forced laugh, forced smile|NACF||||||
+10563|mend, patch up, repair, fix, darn|VuT||||||
+10564|fix (hair, clothes, appearance etc.), adjust, tidy up, groom|VuT||||||
+10565|keep up appearances, cover up (e.g. a mistake), gloss over|VuT||||||
+10566|treat (illness, injury, etc.)|VuT||||||
+10567|make, produce, manufacture, build, construct|VrugT||||||
+10568|prepare (food), brew (alcohol)|VrugT||||||
+10569|raise, grow, cultivate, train|VrugT||||||
+10570|till|VrugT||||||
+10571|draw up (a document), make out, prepare, write|VrugT||||||
+10572|create (an artistic work, etc.), compose|VrugT||||||
+10573|coin (a phrase), organize, organise, establish, found|VrugT||||||
+10574|have (a child)|VrugT||||||
+10575|make up (one's face, etc.)|VrugT||||||
+10576|fabricate (an excuse, etc.)|VrugT||||||
+10577|give a (false) appearance, feign (a smile, etc.), put on a show of emotion|VrugT||||||
+10578|form (a line, etc.)|VrugT||||||
+10579|set (a record)|VrugT||||||
+10580|commit (a sin, etc.)|VrugT||||||
+10581|exhaust, run out|VsuI||||||
+10582|devote, serve (a person), befriend|VsuI||||||
+10583|back-facing, backwards|Ana||||||
+10584|backwardness|NACF||||||
+10585|backward-looking, retrogressive, reactionary, retrospective, negative|Ana||||||
+10586|retrogressiveness, reactionariness, retrospectiveness, negativity|NACF||||||
+10587|push, back, boost, support|VsuruT||||||
+10588|push from behind (a cart, etc.)|VsuruT||||||
+10589|settle (affairs), remedie measures, clean up afterwards|VsuruT||||||
+10590|land|VsuruI||||||
+10591|land, alight, touch down|VsuruI||||||
+10592|take a seat, sit down (in one's seat)|VsuruI||||||
+10593|wear (e.g. uniform, seat belt), have on|VsuruI||||||
+10594|change clothes|VsuruI||||||
+10595|have apprehensions, have misgivings, be uneasy, be anxious, fear|VsuruI||||||
+10596|support, back|VsuruI||||||
+10597|retreat, fall back, move backwards, reverse, retrogress, retract|VsuruI||||||
+10598|recede, wane|VsuruI||||||
+10599|reign, dictate, control|VsuruI||||||
+10600|be victorious|VsuruI||||||
+10601|laugh forcedly, smile forcedly|VsuruI||||||
