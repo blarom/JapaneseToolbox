@@ -1138,11 +1138,20 @@ public class ConjugatorFragment extends Fragment implements
             }
             //endregion
 
+            //region Replacing the Kana input word by its romaji equivalent
+            String inputQuery = mInputQuery;
+            String text_type = ConvertFragment.getTextType(inputQuery);
+            if (text_type.equals("hiragana") || text_type.equals("katakana")) {
+                List<String> translationList = ConvertFragment.getLatinHiraganaKatakana(inputQuery.replace(" ", ""));
+                inputQuery = translationList.get(0);
+            }
+            //endregion
+
             for (int i = 0; i < ConjugationSearchMatchingVerbRowColIndexList.size(); i++) {
 
                 Word currentWord = mJapaneseToolboxCentralRoomDatabase.getWordByWordId(ConjugationSearchMatchingVerbRowColIndexList.get(i)[0]);
 
-                int length = Utilities.getLengthFromWordAttributes(currentWord, mInputQuery, queryWordWithoutTo, queryIsVerbWithTo);
+                int length = Utilities.getLengthFromWordAttributes(currentWord, inputQuery, queryWordWithoutTo, queryIsVerbWithTo);
 
                 long[] currentMatchingWordIndexLengthAndCol = new long[3];
                 currentMatchingWordIndexLengthAndCol[0] = i;

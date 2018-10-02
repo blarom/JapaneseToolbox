@@ -461,6 +461,13 @@ public class DatabaseUtilities {
         if (TypeisInvalid) return matchingWordIds;
         //endregion
 
+        //region Replacing a Kana input by its Romaji form
+        if (TypeisKana) {
+            searchWord = searchWordTransliteratedLatin;
+            searchWordNoSpaces = searchWordTransliteratedLatin;
+        }
+        //endregion
+
         //region Search for the matches in the indexed keywords
         List<String> searchResultKeywordsArray = new ArrayList<>();
         List<LatinIndex> latinIndices;
@@ -475,13 +482,12 @@ public class DatabaseUtilities {
                 }
             }
 
-            latinIndices = findQueryInLatinIndex(TypeisLatin, input_word, searchWordTransliteratedLatin, japaneseToolboxCentralRoomDatabase);
+            latinIndices = findQueryInLatinIndex(TypeisLatin, input_word, japaneseToolboxCentralRoomDatabase);
 
             if (latinIndices.size()==0) return matchingWordIds;
 
             // If the entered word is Latin and only has up to WORD_SEARCH_CHAR_COUNT_THRESHOLD characters, limit the word keywords to be checked later
-            if (TypeisLatin && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
-                    || TypeisKana && searchWordTransliteratedLatin.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
+            if ((TypeisLatin || TypeisKana) && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
                     || TypeisNumber && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD-1) {
                 for (LatinIndex latinIndex : latinIndices) {
                     if (latinIndex.getLatin().length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD) {
@@ -519,7 +525,7 @@ public class DatabaseUtilities {
         //region Add search results where the "ing" is removed from an "ing" verb
         if ((TypeisLatin || TypeisKana || TypeisNumber) && !inglessVerb.equals(searchWord)) {
 
-            latinIndices = findQueryInLatinIndex(TypeisLatin, inglessVerb, searchWordTransliteratedLatin, japaneseToolboxCentralRoomDatabase);
+            latinIndices = findQueryInLatinIndex(TypeisLatin, inglessVerb, japaneseToolboxCentralRoomDatabase);
 
             for (LatinIndex latinIndex : latinIndices) {
                 keywordsList = Arrays.asList(latinIndex.getWordIds().split(";"));
@@ -532,7 +538,7 @@ public class DatabaseUtilities {
 
         //region Limiting the database query if there are too many results (prevents long query times)
         boolean onlyRetrieveShortRomajiWords = false;
-        if (TypeisLatin && searchWord.length() < 3 || TypeisKana && searchWordTransliteratedLatin.length() < 3) {
+        if ((TypeisLatin || TypeisKana) && searchWord.length() < 3) {
             onlyRetrieveShortRomajiWords = true;
         }
         //endregion
@@ -545,7 +551,6 @@ public class DatabaseUtilities {
         StringBuilder builder;
         boolean isExactMeaningWordsMatch;
         int searchWordLength = searchWord.length();
-        int searchWordTransliteratedLatinLength = searchWordTransliteratedLatin.length();
         int romajiLength;
         for (Word word : matchingWordList) {
 
@@ -573,13 +578,8 @@ public class DatabaseUtilities {
                 romaji = word.getRomaji();
                 romajiLength = romaji.length();
                 if (isExactMeaningWordsMatch
-                        || TypeisLatin
-                            && searchWordLength < 3
+                        || searchWordLength < 3
                             && romajiLength <= searchWordLength + 1
-                            && romaji.contains(searchWord)
-                        || TypeisKana
-                            && searchWordTransliteratedLatinLength < 3
-                            && romajiLength <= searchWordTransliteratedLatinLength + 1
                             && romaji.contains(searchWord)) {
                     found_match = true;
                 }
@@ -759,23 +759,17 @@ public class DatabaseUtilities {
         }
         return concatenated_sentence;
     }
-    private static List<LatinIndex> findQueryInLatinIndex(boolean TypeisLatin, String concatenated_word,
-                                                         String concatenated_translationLatin, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
-
-        String prepared_word;
-        // Prepare the input word to be used in the following algorithm (it must be only in latin script)
-        if (TypeisLatin) { prepared_word = concatenated_word.toLowerCase(Locale.ENGLISH); }
-        else { prepared_word = concatenated_translationLatin.toLowerCase(Locale.ENGLISH); }
+    private static List<LatinIndex> findQueryInLatinIndex(boolean TypeisLatin, String concatenated_word, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
         List<LatinIndex> matchingLatinIndexes;
-        if (prepared_word.length() > 2) {
-            matchingLatinIndexes = japaneseToolboxCentralRoomDatabase.getLatinIndexesListForStartingWord(prepared_word);
+        if (concatenated_word.length() > 2) {
+            matchingLatinIndexes = japaneseToolboxCentralRoomDatabase.getLatinIndexesListForStartingWord(concatenated_word);
             return matchingLatinIndexes;
         }
         else {
             //Preventing the index search from returning too many results and crashing the app
             matchingLatinIndexes = new ArrayList<>();
-            LatinIndex index = japaneseToolboxCentralRoomDatabase.getLatinIndexListForExactWord(prepared_word);
+            LatinIndex index = japaneseToolboxCentralRoomDatabase.getLatinIndexListForExactWord(concatenated_word);
             if (index!=null) matchingLatinIndexes.add(index); //Only add the index if the word was found in the index
             return matchingLatinIndexes;
         }

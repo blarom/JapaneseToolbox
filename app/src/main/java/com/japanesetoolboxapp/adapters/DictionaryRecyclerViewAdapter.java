@@ -65,6 +65,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
         StringBuilder cumulative_meaning_value = new StringBuilder();
         boolean typeIsVerbConjugation = false;
+        boolean typeIsiAdjectiveConjugation = false;
+        boolean typeIsnaAdjectiveConjugation = false;
         boolean typeIsVerb = false;
         for (int j = 0; j< meanings.size(); j++) {
             cumulative_meaning_value.append(meanings.get(j).getMeaning());
@@ -72,13 +74,20 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             if (j==0) {
                 type = meanings.get(j).getType();
                 typeIsVerbConjugation = type.equals("VC");
+                typeIsiAdjectiveConjugation = type.equals("iAC");
+                typeIsnaAdjectiveConjugation = type.equals("naAC");
                 typeIsVerb = type.contains("V") && !type.equals("VC");
             }
         }
         //endregion
 
         //region Updating the parent values
-        String parentRomaji = (typeIsVerbConjugation)? "[verb]" + romaji : romaji;
+        String parentRomaji;
+        if (typeIsVerbConjugation && romaji.length()>3 && romaji.substring(0,3).equals("(o)")) parentRomaji = "(o)[verb]" + romaji.substring(3,romaji.length());
+        else if (typeIsVerbConjugation && romaji.length()>3 && !romaji.substring(0,3).equals("(o)")) parentRomaji = "[verb]" + romaji;
+        else if (typeIsiAdjectiveConjugation) parentRomaji = "[i-adj.]" + romaji;
+        else if (typeIsnaAdjectiveConjugation) parentRomaji = "[na-adj.]" + romaji;
+        else parentRomaji = romaji;
         String romajiAndKanji =  parentRomaji + " (" + kanji + ")";
         if (kanji.equals("")) { romajiAndKanji = romaji; }
         holder.romajiAndKanjiTextView.setText(romajiAndKanji);
@@ -194,10 +203,10 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 String fullSynonym = "Synonyms: " + synonym;
                 SpannableString fullSynonymSpannable = new SpannableString(fullSynonym);
 
-                String[] synonymsList = antonym.split(",");
+                String[] synonymsList = synonym.split(",");
                 for (int i = 0; i < synonymsList.length; i++) {
                     if (i == 0) {
-                        startIndex = 10; // Start after "Antonyms: "
+                        startIndex = 10; // Start after "Synonyms: "
                         endIndex = startIndex + synonymsList[i].length();
                     } else {
                         startIndex = endIndex + 2;
