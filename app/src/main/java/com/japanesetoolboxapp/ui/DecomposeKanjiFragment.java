@@ -27,7 +27,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.japanesetoolboxapp.R;
-import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.japanesetoolboxapp.data.JapaneseToolboxKanjiRoomDatabase;
 import com.japanesetoolboxapp.data.KanjiCharacter;
 import com.japanesetoolboxapp.resources.MainApplication;
@@ -1178,7 +1177,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         List<List<String>> Decomposition(String word) {
 
             String concatenated_input = Utilities.removeSpecialCharacters(word);
-            String inputHexIdentifier = DatabaseUtilities.convertToUTF8Index(concatenated_input).toUpperCase();
+            String inputHexIdentifier = Utilities.convertToUTF8Index(concatenated_input).toUpperCase();
             mCurrentKanjiCharacter = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharacterByHexId(inputHexIdentifier);
             //mCurrentKanjiIndex = Collections.binarySearch(mKanjiCharacters, new KanjiCharacter(inputHexIdentifier), KanjiCharacter.hexIdentiferComparatorAscending);
 
@@ -1335,7 +1334,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
                 //Get the remaining radical characteristics (readings, meanings) from the KanjiDictDatabase
                 String mainRadical = mRadicalsOnlyDatabase.get(mainRadicalIndex)[0];
-                String radicalHexIdentifier = DatabaseUtilities.convertToUTF8Index(mainRadical).toUpperCase();
+                String radicalHexIdentifier = Utilities.convertToUTF8Index(mainRadical).toUpperCase();
                 KanjiCharacter kanjiCharacter = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharacterByHexId(radicalHexIdentifier);
                 currentMainRadicalDetailedCharacteristics = getKanjiDetailedCharacteristics(kanjiCharacter);
 

@@ -27,7 +27,6 @@ import android.widget.TextView;
 
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.ConjugationTitle;
-import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
 import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.data.Word;
@@ -898,15 +897,15 @@ public class ConjugatorFragment extends Fragment implements
             List<String[]> verbConjugationMaxLengths = new ArrayList<>();
             int conjugationMaxLength;
             if (mInputQueryIsLatin) {
-                verbConjugationMaxLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
+                verbConjugationMaxLengths = Utilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
                 queryLengthForDilution = mInputQueryContatenatedLength;
             }
             else if (mInputQueryIsKana) {
-                verbConjugationMaxLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
+                verbConjugationMaxLengths = Utilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
                 queryLengthForDilution = mInputQueryTransliteratedLatinFormContatenatedLength;
             }
             else if (mInputQueryIsKanji) {
-                verbConjugationMaxLengths = DatabaseUtilities.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", getContext());
+                verbConjugationMaxLengths = Utilities.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", getContext());
                 queryLengthForDilution = mInputQueryContatenatedLength;
             }
 
@@ -922,7 +921,7 @@ public class ConjugatorFragment extends Fragment implements
             //region Getting the matching words from the Words database and filtering for verbs
             List<Word> mMatchingWords;
             if (mWordsFromDictFragment == null) {
-                List<Long> mMatchingWordIds = DatabaseUtilities.getMatchingWordIdsUsingRoomIndexes(mInputQuery, mJapaneseToolboxCentralRoomDatabase);
+                List<Long> mMatchingWordIds = Utilities.getMatchingWordIdsUsingRoomIndexes(mInputQuery, mJapaneseToolboxCentralRoomDatabase);
                 mMatchingWords = mJapaneseToolboxCentralRoomDatabase.getWordListByWordIds(mMatchingWordIds);
             }
             else {
@@ -1223,7 +1222,7 @@ public class ConjugatorFragment extends Fragment implements
                 currentVerb.setKanji(currentWord.getKanji());
                 currentVerb.setAltSpellings(currentWord.getAltSpellings());
 
-                StringBuilder stringBuilder = new StringBuilder("");
+                StringBuilder stringBuilder = new StringBuilder();
                 for (int i=0; i< currentWord.getMeanings().size(); i++) {
                     if (i != 0) stringBuilder.append(", ");
                     stringBuilder.append(currentWord.getMeanings().get(i).getMeaning());

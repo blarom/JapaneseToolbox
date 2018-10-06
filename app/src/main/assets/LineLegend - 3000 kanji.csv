@@ -11,6 +11,11 @@ AP|Adverb: Place|
 AT|Adverb: Time|
 C|Counter|
 CE|Common Expression|
+CEA|Common Expression - Adverb|
+CEN|Common Expression - Noun|
+CEP|Common Expression - Particle|
+CES|Common Expression - Idiom|
+CEV|Common Expression - Verb|
 iAC|i-Adjective (i-keiyoushi) Conjugation |
 IES|Impolite Expressions & Swearwords|
 naAC|na-Adjective (na-keiyoushi) Conjugation |
@@ -47,7 +52,9 @@ NY|Noun: Years|
 OI|Onomatopeia & Interjections|
 P|Pronoun|
 PP|Particle/Preposition/Conjunction|
+PPS|Particle / Suffix|
 Px|Prefix|
+PxN|Noun / Prefix|
 Sa|Special adjective|
 SI|Special: Interrogative|
 SSC|Sentence Structure: Comparison|
@@ -61,6 +68,7 @@ SSR|Sentence Structure: Reference|
 SSSi|Sentence Structure: Simultaneous Facts|
 SSSq|Sentence Structure: Sequential Facts|
 Sx|Suffix|
+SxN|Noun / Suffix|
 UNC|Unclassified|
 VbuI|Verb bu godan, intrans.|
 VbuT|Verb bu godan, trans.|

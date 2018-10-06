@@ -27,7 +27,6 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.japanesetoolboxapp.R;
-import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.Utilities;
 
@@ -40,8 +39,6 @@ import butterknife.Unbinder;
 
 //TODO: database upgrade
 ////TODO: allow user to enter verb in gerund form (ing) and still find it
-//splashscreen db load
-//
 
 //TODO: features
 ////TODO when joining online results, compare verb[space]suru with verb[no space]suru, and show verb[space]suru to user
@@ -200,22 +197,7 @@ public class MainActivity extends AppCompatActivity implements
     }
     @Override public void onBackPressed() {
 
-        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-        alertDialog.setMessage(getString(R.string.sure_you_want_to_exit));
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.yes),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.cancel),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
+        showExitAppDialog();
 
         //super.onBackPressed();
 //        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
@@ -310,6 +292,24 @@ public class MainActivity extends AppCompatActivity implements
         else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
             mChosenOCRLanguage = getResources().getString(R.string.languageLocaleEnglishUS);
         }
+    }
+    public void showExitAppDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setMessage(getString(R.string.sure_you_want_to_exit));
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.yes),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 
 
@@ -448,11 +448,11 @@ public class MainActivity extends AppCompatActivity implements
         public Object loadInBackground() {
 
             //JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext()); //Required for Room
-            List<String[]> LegendDatabase = DatabaseUtilities.readCSVFile("LineLegend - 3000 kanji.csv", getContext());
-            List<String[]> SimilarsDatabase = DatabaseUtilities.readCSVFile("LineSimilars - 3000 kanji.csv", getContext());
-            List<String[]> VerbLatinConjDatabase = DatabaseUtilities.readCSVFile("LineLatinConj - 3000 kanji.csv", getContext());
-            List<String[]> VerbKanjiConjDatabase = DatabaseUtilities.readCSVFile("LineKanjiConj - 3000 kanji.csv", getContext());
-            List<String[]> RadicalsOnlyDatabase = DatabaseUtilities.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", getContext());
+            List<String[]> LegendDatabase = Utilities.readCSVFile("LineLegend - 3000 kanji.csv", getContext());
+            List<String[]> SimilarsDatabase = Utilities.readCSVFile("LineSimilars - 3000 kanji.csv", getContext());
+            List<String[]> VerbLatinConjDatabase = Utilities.readCSVFile("LineLatinConj - 3000 kanji.csv", getContext());
+            List<String[]> VerbKanjiConjDatabase = Utilities.readCSVFile("LineKanjiConj - 3000 kanji.csv", getContext());
+            List<String[]> RadicalsOnlyDatabase = Utilities.readCSVFile("LineRadicalsOnly - 3000 kanji.csv", getContext());
 
             Log.i("Diagnosis Time","Loaded All Small Databases.");
             return new Object[] {
@@ -487,7 +487,7 @@ public class MainActivity extends AppCompatActivity implements
         mSecondFragmentPlaceholder.setVisibility(View.VISIBLE);
         mSecondFragmentPlaceholder.bringToFront();
 
-        query = DatabaseUtilities.replaceInvalidKanjisWithValidOnes(query, SimilarsDatabase);
+        query = Utilities.replaceInvalidKanjisWithValidOnes(query, SimilarsDatabase);
 
         mDictionaryFragment = new DictionaryFragment();
         Bundle bundle = new Bundle();

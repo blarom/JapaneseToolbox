@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.livefront.bridge.Bridge;
 import com.livefront.bridge.SavedStateHandler;
 import com.squareup.leakcanary.LeakCanary;
@@ -68,7 +67,7 @@ public class MainApplication extends Application {
         //FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseAuth.signInWithEmailAndPassword(DatabaseUtilities.firebaseEmail, DatabaseUtilities.firebasePass);
+        mFirebaseAuth.signInWithEmailAndPassword(Utilities.firebaseEmail, Utilities.firebasePass);
 
         /*Note: two ways are demonstrated here to set the persistence of Firebase without problems: as a singleton (Utilities) or using an activity that loads before all others*/
     }

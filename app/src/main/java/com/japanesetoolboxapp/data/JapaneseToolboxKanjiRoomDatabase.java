@@ -16,7 +16,7 @@ import com.japanesetoolboxapp.resources.Utilities;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {KanjiCharacter.class, KanjiComponent.class}, version = 2, exportSchema = false)
+@Database(entities = {KanjiCharacter.class, KanjiComponent.class}, version = 3, exportSchema = false)
 public abstract class JapaneseToolboxKanjiRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
@@ -84,9 +84,9 @@ public abstract class JapaneseToolboxKanjiRoomDatabase extends RoomDatabase {
     private void loadKanjiCharactersIntoRoomDb(Context context) {
 
 
-        List<String[]> CJK_Database = DatabaseUtilities.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", context);
-        List<String[]> KanjiDict_Database = DatabaseUtilities.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", context);
-        List<String[]> RadicalsDatabase = DatabaseUtilities.readCSVFile("LineRadicals - 3000 kanji.csv", context);
+        List<String[]> CJK_Database = Utilities.readCSVFile("LineCJK_Decomposition - 3000 kanji.csv", context);
+        List<String[]> KanjiDict_Database = Utilities.readCSVFile("LineKanjiDictionary - 3000 kanji.csv", context);
+        List<String[]> RadicalsDatabase = Utilities.readCSVFile("LineRadicals - 3000 kanji.csv", context);
 
         List<KanjiCharacter> kanjiCharacterList = new ArrayList<>();
         for (int i=0; i<CJK_Database.size(); i++) {
@@ -119,7 +119,7 @@ public abstract class JapaneseToolboxKanjiRoomDatabase extends RoomDatabase {
     }
     private void loadKanjiComponentsIntoRoomDb(Context context) {
 
-        List<String[]> Components_Database = DatabaseUtilities.readCSVFile("LineComponents - 3000 kanji.csv", context);
+        List<String[]> Components_Database = Utilities.readCSVFile("LineComponents - 3000 kanji.csv", context);
 
         KanjiComponent kanjiComponent = new KanjiComponent("full1");
         List<KanjiComponent> kanjiComponents = new ArrayList<>();

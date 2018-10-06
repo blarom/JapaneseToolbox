@@ -2,6 +2,7 @@ package com.japanesetoolboxapp.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -21,7 +22,6 @@ import android.widget.Toast;
 
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.adapters.DictionaryRecyclerViewAdapter;
-import com.japanesetoolboxapp.data.DatabaseUtilities;
 import com.japanesetoolboxapp.data.FirebaseDao;
 import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
 import com.japanesetoolboxapp.data.Word;
@@ -258,7 +258,7 @@ public class DictionaryFragment extends Fragment implements
             List<Word> localMatchingWordsList = new ArrayList<>();
             if (!TextUtils.isEmpty(mSearchWord)) {
                 JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase = JapaneseToolboxCentralRoomDatabase.getInstance(getContext());
-                mMatchingWordIds = DatabaseUtilities.getMatchingWordIdsUsingRoomIndexes(mSearchWord, japaneseToolboxCentralRoomDatabase);
+                mMatchingWordIds = Utilities.getMatchingWordIdsUsingRoomIndexes(mSearchWord, japaneseToolboxCentralRoomDatabase);
                 localMatchingWordsList = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(mMatchingWordIds);
             }
 
@@ -277,8 +277,6 @@ public class DictionaryFragment extends Fragment implements
     private void initializeParameters() {
 
         mFirebaseDao = new FirebaseDao(getContext(), this);
-
-        mJapaneseToolboxCentralRoomDatabase = JapaneseToolboxCentralRoomDatabase.getInstance(getContext());
 
         mLocalMatchingWordsList = new ArrayList<>();
         mMergedMatchingWordsList = new ArrayList<>();
