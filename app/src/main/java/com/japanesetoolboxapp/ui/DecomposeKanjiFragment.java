@@ -770,7 +770,8 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 explanation_block.addView(tv1,tv1_layoutParams);
 
                 tv2 = new TextView(getContext());
-                if (currentKanjiDetailedCharacteristics.get(0).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(0));}
+                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(0).equals("")) { tv2.setText("-");}
+                else { tv2.setText(currentKanjiDetailedCharacteristics.get(0));}
                 tv2.setTextSize(14);
                 tv2.setTextColor(Color.parseColor("#800080"));
                 tv2.setTextIsSelectable(false);
@@ -808,7 +809,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 explanation_block.addView(tv1,tv1_layoutParams);
 
                 tv2 = new TextView(getContext());
-                if (currentKanjiDetailedCharacteristics.get(2).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(2));}
+                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(2).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(2));}
                 tv2.setTextSize(14);
                 tv2.setTextColor(Color.parseColor("#800080"));
                 tv2.setTextIsSelectable(false);
@@ -846,7 +847,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 explanation_block.addView(tv1,tv1_layoutParams);
 
                 tv2 = new TextView(getContext());
-                if (currentKanjiDetailedCharacteristics.get(1).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(1));}
+                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(1).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(1));}
                 tv2.setTextSize(14);
                 tv2.setTextColor(Color.parseColor("#800080"));
                 tv2.setTextIsSelectable(false);
@@ -884,7 +885,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 explanation_block.addView(tv1,tv1_layoutParams);
 
                 tv2 = new TextView(getContext());
-                if (currentKanjiDetailedCharacteristics.get(3).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(3));}
+                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(3).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(3));}
                 tv2.setTextSize(14);
                 tv2.setTextColor(Color.parseColor("#800080"));
                 tv2.setTextIsSelectable(false);

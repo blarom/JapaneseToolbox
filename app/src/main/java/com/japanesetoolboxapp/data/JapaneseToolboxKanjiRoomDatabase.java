@@ -175,6 +175,9 @@ public abstract class JapaneseToolboxKanjiRoomDatabase extends RoomDatabase {
     public List<KanjiCharacter> getKanjiCharactersByHexIdList(List<String> queryHexList) {
         return kanjiCharacter().getKanjiCharactersByHexIdList(queryHexList);
     }
+    public List<KanjiCharacter> getKanjiCharactersByDescriptor(String query) {
+        return kanjiCharacter().getKanjiCharactersByDescriptor(query);
+    }
 
     public List<KanjiCharacter> getAllKanjiCharacters() {
         return kanjiCharacter().getAllKanjiCharacters();

@@ -577,6 +577,7 @@ public class MainActivity extends AppCompatActivity implements
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
         bundle.putSerializable(getString(R.string.rad_only_database), new ArrayList<>(RadicalsOnlyDatabase));
+        bundle.putSerializable(getString(R.string.similars_database), new ArrayList<>(SimilarsDatabase));
         mSearchByRadicalFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -597,6 +598,8 @@ public class MainActivity extends AppCompatActivity implements
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        query = Utilities.replaceInvalidKanjisWithValidOnes(query, SimilarsDatabase);
 
         mSecondFragmentCurrentlyDisplayed = getString(R.string.dcmp_fragment);
 

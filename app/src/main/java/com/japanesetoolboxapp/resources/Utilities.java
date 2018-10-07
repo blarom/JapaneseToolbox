@@ -21,6 +21,7 @@ import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.google.firebase.database.FirebaseDatabase;
@@ -46,6 +47,7 @@ import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
@@ -108,6 +110,7 @@ public final class Utilities {
         if (inputMethodManager != null && activity.getCurrentFocus() != null) {
             inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
         }
+        activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
     public static void muteSpeaker(Activity activity) {
         if (activity != null) {
@@ -282,7 +285,16 @@ public final class Utilities {
         }
         return final_cumulative_meaning_value.toString();
     }
-
+    public static List<String> getIntersectionOfLists(List<String> A, List<String> B) {
+        //https://stackoverflow.com/questions/2400838/efficient-intersection-of-component_substructures[2]-liststring-in-java
+        List<String> rtnList = new LinkedList<>();
+        for(String dto : A) {
+            if(B.contains(dto)) {
+                rtnList.add(dto);
+            }
+        }
+        return rtnList;
+    }
 
     //OCR utilities
     public static int loadOCRImageContrastFromSharedPreferences(SharedPreferences sharedPreferences, Context context) {
@@ -841,13 +853,11 @@ public final class Utilities {
         return null;
     }
     private static String reformatMeanings(String meaningsOriginal) {
-        String meanings_commas = "";
-        for (int i = 0; i < meaningsOriginal.length(); i++) {
-            if (meaningsOriginal.substring(i, i + 1).equals(";")) { meanings_commas += ","; }
-            else { meanings_commas += meaningsOriginal.substring(i, i + 1); }
-        }
+
+        String meanings_commas = meaningsOriginal.replace(";",",");
         meanings_commas = Utilities.fromHtml(meanings_commas).toString();
         meanings_commas = meanings_commas.replaceAll("',", "'");
+        meanings_commas = meanings_commas.replaceAll("\",", "\"");
         meanings_commas = meanings_commas.replaceAll(",0", "'0"); //Fixes number display problems
         return meanings_commas;
     }

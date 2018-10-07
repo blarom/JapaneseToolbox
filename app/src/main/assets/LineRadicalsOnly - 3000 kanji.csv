@@ -61,8 +61,8 @@
 ⺍|1.E2BA8D|42;variant||3|
 尢|1.E5B0A2|43|lame|3|
 尣|1.E5B0A3|43;variant||3|
-⺑|1.E2BA91|43;variant||3|
-⺎|1.E2BA8E|43;variant||3|
+⺑|1.E2BA91|43;variant;not found in decompositions||3|
+⺎|1.E2BA8E|43;variant;not found in decompositions||3|
 尸|1.E5B0B8|44|corpse|3|
 屮|1.E5B1AE|45|sprout|3|
 山|1.E5B1B1|46|mountain|3|
@@ -71,7 +71,7 @@
 川|1.E5B79D|47;variant||3|
 工|1.E5B7A5|48|work|3|
 己|1.E5B7B1|49|oneself|3|
-已 |1.E5B7B220|49;variant||3|
+已 |1.E5B7B220|49;variant;not found in decompositions||3|
 巳|1.E5B7B3|49;variant||3|
 巾|1.E5B7BE|50|turban|3|
 干|1.E5B9B2|51|dry|3|
@@ -100,7 +100,7 @@
 才|1.E6898D|64;variant||4|
 支|1.E694AF|65|branch|4|
 攴|1.E694B4|66|rap/tap|4|
-攵|1.E694B5|66;variant||4|
+攵|1.E694B5|66;variant;not found in decompositions||4|
 ⺙|1.E2BA99|66;variant||4|
 文|1.E69687|67|script|4|
 斗|1.E69697|68|dipper|4|
@@ -108,13 +108,13 @@
 ⽅|1.E2BD85|70|square|4|
 ⽆|1.E2BD86|71|not|4|
 旡|1.E697A1|71;variant||4|
-⺛|1.E2BA9B|71;variant||4|
+⺛|1.E2BA9B|71;variant;not found in decompositions||4|
 日|1.E697A5|72|sun|4|
-⺜|1.E2BA9C|72;variant||4|
+⺜|1.E2BA9C|72;variant;not found in decompositions||4|
 曰|1.E69BB0|73|say|4|
 月|1.E69C88|74|moon|4|
 木|1.E69CA8|75|tree|4|
-⺦|1.E2BAA6|75;variant||4|
+⺦|1.E2BAA6|75;variant;not found in decompositions||4|
 朩|1.E69CA9|75;variant||4|
 欠|1.E6ACA0|76|lack|4|
 止|1.E6ADA2|77|stop|4|
@@ -131,7 +131,7 @@
 水|1.E6B0B4|85|water|4|
 氵|1.E6B0B5|85;variant||4|
 氺|1.E6B0BA|85;variant||4|
-⺢|1.E2BAA2|85;variant||4|
+⺢|1.E2BAA2|85;variant;not found in decompositions||4|
 火|1.E781AB|86|fire|4|
 灬|1.E781AC|86;variant||4|
 爪|1.E788AA|87|claw|4|
@@ -150,7 +150,7 @@
 玄|1.E78E84|95|profound|5|
 玉|1.E78E89|96|jade|5|
 王|1.E78E8B|96;variant||5|
-玊|1.E78E8A|96;variant||5|
+玊|1.E78E8A|96;variant;not found in decompositions||5|
 瓜|1.E7939C|97|melon|5|
 瓦|1.E793A6|98|tile|5|
 甘|1.E79498|99|sweet|5|
@@ -189,16 +189,16 @@
 缶|1.E7BCB6|121|jar|6|
 网|1.E7BD91|122|net|6|
 罒|1.E7BD92|122;variant||6|
-罓|1.E7BD93|122;variant||6|
+罓|1.E7BD93|122;variant;not found in decompositions||6|
 ⺳|1.E2BAB3|122;variant||6|
-⺴|1.E2BAB4|122;variant||6|
-⺲|1.E2BAB2|122;variant||6|
-𦉰|1.F0A689B0|122;variant||6|
-⺵|1.E2BAB5|122;variant||6|
+⺴|1.E2BAB4|122;variant;not found in decompositions||6|
+⺲|1.E2BAB2|122;variant;not found in decompositions||6|
+𦉰|1.F0A689B0|122;variant;not found in decompositions||6|
+⺵|1.E2BAB5|122;variant;not found in decompositions||6|
 羊|1.E7BE8A|123|sheep|6|
 ⺶|1.E2BAB6|123;variant||6|
-⺷|1.E2BAB7|123;variant||6|
-⺸|1.E2BAB8|123;variant||6|
+⺷|1.E2BAB7|123;variant;not found in decompositions||6|
+⺸|1.E2BAB8|123;variant;not found in decompositions||6|
 羽|1.E7BEBD|124|feather|6|
 羽|1.EFA89E|124;variant||6|
 老|1.E88081|125|old|6|
@@ -217,7 +217,7 @@
 自|1.E887AA|132|self|6|
 至|1.E887B3|133|arrive|6|
 臼|1.E887BC|134|mortar|6|
-⺽|1.E2BABD|134;variant||6|
+⺽|1.E2BABD|134;variant;not found in decompositions||6|
 舌|1.E8888C|135|tongue|6|
 舛|1.E8889B|136|oppose|6|
 舟|1.E8889F|137|boat|6|
@@ -239,12 +239,12 @@
 西|1.E8A5BF|146;variant||6|
 覀|1.E8A680|146;variant||6|
 見|1.E8A68B|147|see|7|
-⻅|1.E2BB85|147;variant||7|
+⻅|1.E2BB85|147;variant;not found in decompositions||7|
 角|1.E8A792|148|horn|7|
-⻆|1.E2BB86|148;variant||7|
-⻇|1.E2BB87|148;variant||7|
+⻆|1.E2BB86|148;variant;not found in decompositions||7|
+⻇|1.E2BB87|148;variant;not found in decompositions||7|
 言|1.E8A880|149|speech|7|
-訁|1.E8A881|149;variant||7|
+訁|1.E8A881|149;variant;not found in decompositions||7|
 讠|1.E8AEA0|149;variant||7|
 谷|1.E8B0B7|150|valley|7|
 豆|1.E8B186|151|bean|7|
@@ -254,7 +254,7 @@
 贝|1.E8B49D|154;variant||7|
 赤|1.E8B5A4|155|red|7|
 走|1.E8B5B0|156|run|7|
-赱|1.E8B5B1|156;variant||7|
+赱|1.E8B5B1|156;variant;not found in decompositions||7|
 足|1.E8B6B3|157|foot|7|
 ⻊|1.E2BB8A|157;variant||7|
 身|1.E8BAAB|158|body|7|
@@ -279,17 +279,17 @@
 門|1.E99680|169|gate|8|
 门|1.E997A8|169;simplification||8|
 阜|1.E9989C|170|mound|8|
-⻕|1.E2BB95|170;variant||8|
+⻕|1.E2BB95|170;variant;not found in decompositions||8|
 阝|1.E9989D|170;variant||8|
 隶|1.E99AB6|171|slave|8|
 隹|1.E99AB9|172|short-tailed bird|8|
 雨|1.E99BA8|173|rain|8|
-⻗|1.E2BB97|173;variant||8|
+⻗|1.E2BB97|173;variant;not found in decompositions||8|
 青|1.E99D92|174|blue|8|
 靑|1.E99D91|174;variant||8|
 非|1.E99D9E|175|wrong|8|
 面|1.E99DA2|176|face|9|
-靣|1.E99DA3|176;variant||9|
+靣|1.E99DA3|176;variant;not found in decompositions||9|
 革|1.E99DA9|177|leather|9|
 韋|1.E99F8B|178|tanned leather|9|
 韦|1.E99FA6|178;variant||9|
@@ -307,7 +307,7 @@
 飠|1.E9A3A0|184;variant||9|
 饣|1.E9A5A3|184;variant||9|
 首|1.E9A696|185|head|9|
-⻡|1.E2BBA1|185;variant||9|
+⻡|1.E2BBA1|185;variant;not found in decompositions||9|
 香|1.E9A699|186|fragrant|9|
 馬|1.E9A6AC|187|horse|10|
 马|1.E9A9AC|187;variant||10|
@@ -339,7 +339,7 @@
 黾|1.E9BBBE|205;variant||13|
 鼎|1.E9BC8E|206|tripod|13|
 鼓|1.E9BC93|207|drum|13|
-鼔|1.E9BC94|207;variant||13|
+鼔|1.E9BC94|207;variant;not found in decompositions||13|
 鼠|1.E9BCA0|208|rat|13|
 鼻|1.E9BCBB|209|nose|14|
 齊|1.E9BD8A|210|even|14|

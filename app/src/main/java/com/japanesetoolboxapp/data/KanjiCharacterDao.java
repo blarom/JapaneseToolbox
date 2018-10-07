@@ -40,6 +40,18 @@ public interface KanjiCharacterDao {
     @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_KANJI_HEX_ID + " IN (:hexIdList)")
     List<KanjiCharacter> getKanjiCharactersByHexIdList(List<String> hexIdList);
 
+    //Get a KanjiCharacter list by Meaning
+    @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE "
+            + KanjiCharacter.COLUMN_KANJI_MEANINGS + " LIKE  '%' || :query || '%' OR "
+            + KanjiCharacter.COLUMN_KANJI_READINGS + " LIKE  '%' || :query || '%' OR "
+            + KanjiCharacter.COLUMN_KANJI_RADICAL_PLUS_STROKES + " =  :query OR "
+            + KanjiCharacter.COLUMN_KANJI_RADICAL_PLUS_STROKES + " LIKE  '%' || :query || '+%'")
+    List<KanjiCharacter> getKanjiCharactersByDescriptor(String query);
+
+    //Get a KanjiCharacter list by Meaning
+    @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_KANJI_MEANINGS + " LIKE  '%' || :query || '%'")
+    List<KanjiCharacter> getKanjiCharactersByReading(String query);
+
     //Delete a KanjiCharacter by Id
     @Query("DELETE FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_ID + " = :id")
     int deleteKanjiCharacterById(long id);

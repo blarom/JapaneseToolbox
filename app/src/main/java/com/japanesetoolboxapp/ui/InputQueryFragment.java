@@ -178,8 +178,6 @@ public class InputQueryFragment extends Fragment implements
         mInputQueryAutoCompleteTextView.setText(mInputQuery);
         if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
 
-        //mInputQueryAutoCompleteTextView.clearFocus();
-        //if (getActivity() != null) getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         getLanguageParametersFromSettingsAndReinitializeOcrIfNecessary();
     }
 
