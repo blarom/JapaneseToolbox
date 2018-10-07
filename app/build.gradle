@@ -8,15 +8,15 @@ android {
         applicationId "com.japanesetoolboxapp"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 37
-        versionName "2.19"
+        versionCode 38
+        versionName "2.21"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
         // the following code makes the app only available to relevant phones, thereby reducing the apk size
         // See https://android.jlelse.eu/controlling-apk-size-when-using-native-libraries-45c6c0e5b70a
-        ndk {
-
-            abiFilters "armeabi-v7a", "x86"
-        }
+//        ndk {
+//
+//            abiFilters "armeabi-v7a", "x86"
+//        }
 
         buildConfigField("String", "firebaseEmail", firebaseEmail)
         buildConfigField("String", "firebasePass", firebasePass)

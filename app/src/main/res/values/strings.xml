@@ -157,7 +157,7 @@
     <!--ComposeKanjiFragment Strings-->
     <string name="search_by_radical_kanji_finder">Kanji Finder</string>
     <string name="search_by_radical_select_structure">1. Select your wanted Kanji\&apos;s overall structure</string>
-    <string name="search_by_radical_select_elements">2. Select your wanted Kanji\&apos;s elements</string>
+    <string name="search_by_radical_select_radicals">2. Select your wanted Kanji\&apos;s radicals</string>
 
     <!--DecomposeKanjiFragment Strings-->
     <string name="RadicalDecomp">Kanji Decomposition</string>

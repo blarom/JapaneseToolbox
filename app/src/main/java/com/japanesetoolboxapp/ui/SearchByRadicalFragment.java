@@ -140,6 +140,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
     private int mNumberOfComponentGridColumns;
     private List<String> mUnfilteredDisplayableComponentSelections;
     private List<String[]> mSimilarsDatabase;
+    private int mSelectedEditTextId;
     //endregion
 
     //Lifecycle methods
@@ -164,6 +165,10 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
         getKanjiFromRadicals(mInputQuery);
         return rootView;
+    }
+    @Override public void onResume() {
+        super.onResume();
+        if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
     }
     @Override public void onStart() {
         super.onStart();
@@ -219,8 +224,8 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         mUserselectionsBlockLinearLayout = new LinearLayout(getContext());
         mUserselectionsBlockLinearLayout.setOrientation(LinearLayout.VERTICAL);
         mUserselectionsBlockLinearLayout.setLayoutParams(mUserselectionsOverallBlockLayoutParams);
-        mUserselectionsBlockLinearLayout.setFocusable(true);
-        mUserselectionsBlockLinearLayout.setClickable(true);
+        //mUserselectionsBlockLinearLayout.setFocusable(true);
+        //mUserselectionsBlockLinearLayout.setClickable(true);
 
         mOverallBlockContainerLinearLayout.addView(mUserselectionsBlockLinearLayout);
 
@@ -267,7 +272,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         }
 
         //Creating the views
-        elements = new EditText[]{
+        elements = new EditText[] {
             makeEditText(user_selections[0], "Element 1"),
             makeEditText(user_selections[1], "Element 2"),
             makeEditText(user_selections[2], "Element 3"),
@@ -293,7 +298,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
 
         show_grid = false;
-        mNumberOfDefaultViewsInComponentSelectionBlock = 8;
+        mNumberOfDefaultViewsInComponentSelectionBlock = 7;
         user_selection_is_highlighted = new Boolean[4];
         user_selections_radical_positions = new int[4];
         user_selections_component_positions = new int[4];
@@ -311,9 +316,13 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         createSelectedStructureSelectionBlock();
 
         //Creating the user text input rows
-        makeText(getResources().getString(R.string.search_by_radical_select_elements), mUserselectionsOverallBlockLayoutParams, mUserselectionsBlockLinearLayout);
-        for (int i=0;i<4;i++) { createInputFieldsRow(elements[i], radicals[i], components[i]); }
-        for (int i=0;i<4;i++) { setClickListenersForRow(elements[i], radicals[i], components[i]); }
+        makeText(getResources().getString(R.string.search_by_radical_select_radicals), mUserselectionsOverallBlockLayoutParams, mUserselectionsBlockLinearLayout);
+
+        createCharacterInputEditTextsRow();
+        createRadicalAndComponentButtonsRow();
+
+        //for (int i=0;i<4;i++) { createInputFieldsRow(elements[i], radicals[i], components[i]); }
+        //for (int i=0;i<4;i++) { setClickListenersForRow(elements[i], radicals[i], components[i]); }
 
     }
     private void createSelectedStructureSelectionBlock() {
@@ -576,7 +585,59 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         return returned_components_list;
     }
 
-    private void createInputFieldsRow(final EditText element, final Button radical, final Button component) {
+    private void createCharacterInputEditTextsRow() {
+
+        LinearLayout.LayoutParams row_layout_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        row_layout_layoutParams.gravity = Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL;
+        row_layout_layoutParams.setMargins(0, 0, 0, 0); // (left, top, right, bottom)
+
+        LinearLayout row_layout_linearLayout = new LinearLayout(getContext());
+        row_layout_linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+        row_layout_linearLayout.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+        row_layout_linearLayout.setLayoutParams(row_layout_layoutParams);
+        //row_layout_linearLayout.setFocusableInTouchMode(true);
+
+        makeText("Write the radicals: ", row_layout_layoutParams, row_layout_linearLayout);
+
+        elements = new EditText[] {
+                makeEditText(user_selections[0], "   A   "),
+                makeEditText(user_selections[1], "   B   "),
+                makeEditText(user_selections[2], "   C   "),
+                makeEditText(user_selections[3], "   D   ")
+        };
+        for (int i=0;i<4;i++) {
+            final EditText currentElement = elements[i];
+            currentElement.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
+                    if (hasFocus) mSelectedEditTextId = currentElement.getId();
+                }
+            });
+            currentElement.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mSelectedEditTextId = currentElement.getId();
+                }
+            });
+            currentElement.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                    if (event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                        if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
+                    }
+                    return false;
+                }
+            });
+            row_layout_linearLayout.addView(currentElement);
+        }
+        mSelectedEditTextId = elements[0].getId();
+
+        row_layout_layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT;
+
+        mUserselectionsBlockLinearLayout.addView(row_layout_linearLayout);
+
+    }
+    private void createRadicalAndComponentButtonsRow() {
 
         LinearLayout.LayoutParams row_layout_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         row_layout_layoutParams.gravity = Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL;
@@ -588,81 +649,60 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         row_layout_linearLayout.setLayoutParams(row_layout_layoutParams);
         row_layout_linearLayout.setFocusableInTouchMode(true);
 
-        row_layout_linearLayout.addView(element);
-        row_layout_linearLayout.addView(radical);
-        row_layout_linearLayout.addView(component);
+        makeText("Or select them: ", row_layout_layoutParams, row_layout_linearLayout);
+
+        Button radicalButton = makeCharacterSelectionButton("radical", 0);
+        radicalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
+
+                resetLinearLayoutViews(mUserselectionsBlockLinearLayout, mNumberOfDefaultViewsInComponentSelectionBlock);
+                number_of_views_added_in_block = 1;
+                mComponentSelectionType = "radical";
+
+                if (getView()!=null) {
+                    EditText element = getView().findViewById(mSelectedEditTextId);
+                    createComponentKanjiSelectionGridBlock(element);
+                }
+
+            }
+        });
+        row_layout_linearLayout.addView(radicalButton);
+
+        Button componentButton = makeCharacterSelectionButton("component", 0);
+        componentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
+                resetLinearLayoutViews(mUserselectionsBlockLinearLayout, mNumberOfDefaultViewsInComponentSelectionBlock);
+                number_of_views_added_in_block = 2;
+
+                mComponentSelectionType = "component";
+
+                if (getView()!=null) {
+                    EditText element = getView().findViewById(mSelectedEditTextId);
+                    createComponentStructuresSelectionBlock(element);
+                }
+
+            }
+        });
+        row_layout_linearLayout.addView(componentButton);
 
         row_layout_layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT;
 
         mUserselectionsBlockLinearLayout.addView(row_layout_linearLayout);
-
     }
-    private void setClickListenersForRow(final EditText element, final Button radical, final Button component) {
-            element.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if (event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
-                        if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
-                    }
-                    return false;
-                }
-            });
-            element.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    elements[current_row_index].selectAll();
-                    if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
-
-                }
-            });
-
-            radical.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
-
-                    for (int i=0;i<4;i++) {
-
-                        components[i].getBackground().clearColorFilter();
-                        radicals[i].getBackground().clearColorFilter();
-                        if (radical.getId() == radicals[i].getId()) {
-                            current_row_index = i;
-                            radical.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.GREEN));
-                        }
-                    }
-
-                    resetLinearLayoutViews(mUserselectionsBlockLinearLayout, mNumberOfDefaultViewsInComponentSelectionBlock);
-                    number_of_views_added_in_block = 1;
-                    mComponentSelectionType = "radical";
-                    createComponentKanjiSelectionGridBlock(element);
-
-                }
-            });
-            component.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
-                    resetLinearLayoutViews(mUserselectionsBlockLinearLayout, mNumberOfDefaultViewsInComponentSelectionBlock);
-                    number_of_views_added_in_block = 1;
-
-                    for (int i=0;i<4;i++) {
-                        components[i].getBackground().clearColorFilter();
-                        radicals[i].getBackground().clearColorFilter();
-                        if (component.getId() == components[i].getId()) {
-                            current_row_index = i;
-                            component.getBackground().setColorFilter(new LightingColorFilter(0xFFFFFFFF, Color.GREEN));
-                        }
-                    }
-                    mComponentSelectionType = "component";
-                    createComponentStructuresSelectionBlock(element);
-
-                }
-            });
-        }
 
     private void createComponentStructuresSelectionBlock(final EditText element) {
 
-        //Creating the structure and substructure selection block
+        resetLinearLayoutViews(mUserselectionsBlockLinearLayout, mNumberOfDefaultViewsInComponentSelectionBlock + number_of_views_added_in_block);
+
+        //Adding the title
+        makeText("Select the structure shape corresponding to your wanted component.", mUserselectionsOverallBlockLayoutParams, mUserselectionsBlockLinearLayout);
+
+        //region Creating the structure and substructure selection block
         mComponentStructuresSelectionBlockLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         mComponentStructuresSelectionBlockLayoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
         mComponentStructuresSelectionBlockLayoutParams.setMargins(30, 5, 30, 0); // (left, top, right, bottom)
@@ -675,8 +715,9 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         mComponentStructuresSelectionBlockLinearlayout.setVisibility(View.VISIBLE);
 
         mComponentStructuresSelectionBlockLinearlayout.removeAllViews();
+        //endregion
 
-        // Configuring the layout of category_chooser_row
+        //region Configuring the layout of category_chooser_row
         LinearLayout.LayoutParams category_chooser_row_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         category_chooser_row_layoutParams.setMargins(10, 20, 10, 10); // (left, top, right, bottom)
         category_chooser_row_layoutParams.gravity = Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL;
@@ -694,8 +735,6 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                 return false;
             }
         });
-
-        resetLinearLayoutViews(mUserselectionsBlockLinearLayout, mNumberOfDefaultViewsInComponentSelectionBlock + number_of_views_added_in_block);
 
         mComponentStructuresSelectionBlockLinearlayout.addView(category_chooser_row_Layout);
         mUserselectionsBlockLinearLayout.addView(mComponentStructuresSelectionBlockLinearlayout);
@@ -730,8 +769,9 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         component_structure_multiple.setClickable(true);
         component_structure_multiple.setId(View.generateViewId());
         category_chooser_row_Layout.addView(component_structure_multiple);
+        //endregion
 
-        // Setting the click listeners
+        //region Setting the click listeners
         component_structure_across.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -820,6 +860,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         });
 
         component_structure_across.performClick();
+        //endregion
 
 
     }
@@ -1178,11 +1219,11 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
         mSearchResultsBlockLinearLayout = new LinearLayout(getContext());
         mSearchResultsBlockLinearLayout.setOrientation(LinearLayout.VERTICAL);
         mSearchResultsBlockLinearLayout.setLayoutParams(mSearchResultsBlockLayoutParams);
-        mSearchResultsBlockLinearLayout.setFocusable(true);
-        mSearchResultsBlockLinearLayout.setClickable(true);
+        //mSearchResultsBlockLinearLayout.setFocusable(true);
+        //mSearchResultsBlockLinearLayout.setClickable(true);
 
         //Creating the search button and Getting the search results when the user presses it
-        search_for_char = makeCharacterSelectionButton("Search", 400);
+        search_for_char = makeCharacterSelectionButton("Go!", 400);
         mSearchResultsBlockLinearLayout.addView(search_for_char);
 
         mOverallBlockContainerLinearLayout.addView(mSearchResultsBlockLinearLayout);
@@ -1497,14 +1538,14 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
     private void makeText(String text, LinearLayout.LayoutParams layoutParams, LinearLayout linearLayout) {
         TextView tv = new TextView(getContext());
         tv.setLayoutParams(layoutParams);
-        tv.setGravity(Gravity.CENTER_HORIZONTAL);
+        tv.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
         tv.setText(text);
         tv.setTextSize(16);
         //tv.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
         tv.setTextColor(getResources().getColor(R.color.colorPrimaryLight));
         tv.setTextIsSelectable(false);
         tv.setTypeface(null, Typeface.BOLD);
-        tv.setMovementMethod(LinkMovementMethod.getInstance());
+        //tv.setMovementMethod(LinkMovementMethod.getInstance());
         tv.setSelected(false);
         //tv.setTypeface(MainActivity.CJK_typeface, Typeface.NORMAL);
         tv.setBackgroundColor(getResources().getColor(R.color.White));
@@ -1561,18 +1602,23 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
     }
     private EditText makeEditText(String text, String ghost_text) {
 
+        LinearLayout.LayoutParams editTextLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        editTextLayoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL;
+        editTextLayoutParams.setMargins(10, 5, 10, 0); // (left, top, right, bottom)
+
         EditText inputEditText = new EditText(getContext());
-        inputEditText.setLayoutParams(mUserselectionsOverallBlockLayoutParams);
+        inputEditText.setLayoutParams(editTextLayoutParams);
         inputEditText.setText(text);
         inputEditText.setHeight(6);
         inputEditText.setSingleLine(true);
         inputEditText.setHint(ghost_text);
         inputEditText.setTextSize(16);
         inputEditText.setTextColor(getResources().getColor(R.color.textColorCompositionGridElementDefault));
-        inputEditText.setTextIsSelectable(false);
+        //inputEditText.setTextIsSelectable(false);
         inputEditText.setTypeface(null, Typeface.BOLD);
-        inputEditText.setMovementMethod(LinkMovementMethod.getInstance());
-        inputEditText.setSelected(false);
+        //inputEditText.setMovementMethod(LinkMovementMethod.getInstance());
+        //inputEditText.setSelected(false);
+        inputEditText.setFocusable(true);
         inputEditText.setBackgroundColor(getResources().getColor(R.color.White));
         inputEditText.setAlpha((float) 0.90);
         inputEditText.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
@@ -1676,6 +1722,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
 
 
             //region Populating the ComponentsGridBlockLinearLayout with its elements
+            makeText("Select the your component and press ENTER.", mComponentsGridBlockContainerLayoutParams, mComponentsGridBlockContainer);
             mComponentsGridBlockContainer.addView(mInputRowEnterCancelTop);
             mComponentsGridBlockContainer.addView(mInputRowNameFilter);
             mComponentsGridBlockContainerLayoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT;
