@@ -3,7 +3,6 @@ package com.japanesetoolboxapp.ui;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.LightingColorFilter;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
@@ -16,7 +15,6 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.text.TextUtils;
-import android.text.method.LinkMovementMethod;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.Gravity;
@@ -1794,6 +1792,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
     @Override public void onLoaderReset(@NonNull Loader<Object> loader) {}
     private static class ComponentGridCreationAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
+        private static final int CHARACTER_RESULTS_GRID_MAX_NUMBER = 400;
         //region Parameters
         private final String mComponentSelectionType;
         private final List<String[]> mRadicalsOnlyDatabase;
@@ -1838,7 +1837,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             List<String> selections = new ArrayList<>();
             String[] currentElement;
 
-            //If the user clicks on the radical button, then a radical selection grid is shown
+            //region If the user clicks on the radical button, then a radical selection grid is shown
             if (mComponentSelectionType.contains("radical")) {
 
                 String[] parsed_list;
@@ -1876,8 +1875,9 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                     }
                 }
             }
+            //endregion
 
-            //If the user clicks on the component button, then then the components grid is extracted from Room
+            //region If the user clicks on the component button, then then the components grid is extracted from Room
             else {
                 List<String[]> fullList = new ArrayList<>();
                 String[] printableResultsForCurrentElement;
@@ -1926,8 +1926,9 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                     selections.add(sortedList.get(sortedList.size()-1-i)[0]);
                 }
             }
+            //endregion
 
-            //Displaying only the search results that have a glyph in the font
+            //region Displaying only the search results that have a glyph in the font
             List<String> displayableComponentSelections = new ArrayList<>();
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -1940,15 +1941,16 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             else {
                 displayableComponentSelections = selections;
             }
+            //endregion
 
-            //Displaying only the first XX values to prevent overload
-            int display_limit = 400;
+            //region Displaying only the first XX values to prevent overload
             selections = new ArrayList<>();
             for (int i = 0; i < displayableComponentSelections.size(); i++) {
                 selections.add(displayableComponentSelections.get(i));
-                if (i>display_limit) {break;}
+                if (i>CHARACTER_RESULTS_GRID_MAX_NUMBER) {break;}
             }
             displayableComponentSelections = selections;
+            //endregion
 
 
             return displayableComponentSelections;
@@ -2199,20 +2201,15 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             }
             //endregion
 
-            //region
-
-            //endregion
-
             //region Finding the list of matches in the Full components list, that correspond to the user's input
-            KanjiComponent kanjiComponentFull = null;
             List<KanjiComponent.AssociatedComponent> associatedComponents = null;
-            List<KanjiComponent> kanjiComponents = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName("full");
-            if (kanjiComponents != null && kanjiComponents.size() > 0) {
-                kanjiComponentFull= kanjiComponents.get(0);
-                associatedComponents = kanjiComponentFull.getAssociatedComponents();
-                if (kanjiComponents.size()>1) {
-                    associatedComponents.addAll(kanjiComponents.get(1).getAssociatedComponents());
-                }
+            List<KanjiComponent> kanjiComponentsFull1 = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName("full1");
+            List<KanjiComponent> kanjiComponentsFull2 = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName("full2");
+            if (kanjiComponentsFull1 != null && kanjiComponentsFull1.size() > 0) {
+                associatedComponents = kanjiComponentsFull1.get(0).getAssociatedComponents();
+            }
+            if (kanjiComponentsFull2 != null && kanjiComponentsFull2.size() > 0) {
+                associatedComponents.addAll(kanjiComponentsFull2.get(0).getAssociatedComponents());
             }
 
             elementA = Utilities.removeSpecialCharacters(elementA);
@@ -2228,14 +2225,13 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             List<String> listOfMatchingResultsElementC = new ArrayList<>();
             List<String> listOfMatchingResultsElementD = new ArrayList<>();
 
-            List<String> listOfMatchingResultsForAllComponentsInStructure = new ArrayList<>();
             if (!checkForExactMatchesOfElementA || !checkForExactMatchesOfElementB || !checkForExactMatchesOfElementC || !checkForExactMatchesOfElementD) {
-                listOfMatchingResultsForAllComponentsInStructure = getMatchingResultsForAllComponentsInStructure(associatedComponents);
+                List<String> listOfAllKanjis = mJapaneseToolboxKanjiRoomDatabase.getAllKanjis();
+                if (!checkForExactMatchesOfElementA) listOfMatchingResultsElementA = listOfAllKanjis;
+                if (!checkForExactMatchesOfElementB) listOfMatchingResultsElementB = listOfAllKanjis;
+                if (!checkForExactMatchesOfElementC) listOfMatchingResultsElementC = listOfAllKanjis;
+                if (!checkForExactMatchesOfElementD) listOfMatchingResultsElementD = listOfAllKanjis;
             }
-            if (!checkForExactMatchesOfElementA) listOfMatchingResultsElementA = listOfMatchingResultsForAllComponentsInStructure;
-            if (!checkForExactMatchesOfElementB) listOfMatchingResultsElementB = listOfMatchingResultsForAllComponentsInStructure;
-            if (!checkForExactMatchesOfElementC) listOfMatchingResultsElementC = listOfMatchingResultsForAllComponentsInStructure;
-            if (!checkForExactMatchesOfElementD) listOfMatchingResultsElementD = listOfMatchingResultsForAllComponentsInStructure;
 
             for (KanjiComponent.AssociatedComponent associatedComponent : associatedComponents) {
                 if (checkForExactMatchesOfElementA && associatedComponent.getComponent().equals(elementA)) {
@@ -2324,7 +2320,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                 KanjiComponent kanjiComponentForRequestedStructure = null;
                 String componentStructure = GlobalConstants.COMPONENT_STRUCTURES_MAP.get(mSelectedStructure);
                 if (!TextUtils.isEmpty(componentStructure)) {
-                    kanjiComponents = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName(componentStructure);
+                    List<KanjiComponent> kanjiComponents = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName(componentStructure);
                     if (kanjiComponents != null && kanjiComponents.size() > 0) {
                         kanjiComponentForRequestedStructure = kanjiComponents.get(0);
                         associatedComponents = kanjiComponentForRequestedStructure.getAssociatedComponents();
@@ -2340,7 +2336,7 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
                     currentIntersections = Utilities.getIntersectionOfLists(listOfIntersectingResults, structureComponents);
                     listOfResultsRelevantToRequestedStructure.addAll(currentIntersections);
                 }
-                listOfResultsRelevantToRequestedStructure = removeDuplicatesFromList(listOfResultsRelevantToRequestedStructure);
+                listOfResultsRelevantToRequestedStructure = Utilities.removeDuplicatesFromList(listOfResultsRelevantToRequestedStructure);
 
             }
             else {
@@ -2349,49 +2345,6 @@ public class SearchByRadicalFragment extends Fragment implements LoaderManager.L
             //endregion
 
             return listOfResultsRelevantToRequestedStructure;
-        }
-        List<String> removeDuplicatesFromList(List<String> list) {
-
-            /*
-            int end_index = list_of_intersecting_results_temp.size();
-            String current_value;
-            for (int i=0; i<end_index; i++) {
-                current_value = list_of_intersecting_results_temp.get(i);
-                for (int j=end_index; j>i; j--) {
-                    if (current_value.equals(list_of_intersecting_results_temp.get(j))) {
-                        list_of_intersecting_results_temp.remove(j);
-                    }
-                }
-            }
-            list_of_intersecting_results = list_of_intersecting_results_temp;
-            */
-
-            //https://stackoverflow.com/questions/14040331/remove-duplicate-strings-in-a-list-in-java
-
-            Set<String> set = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
-            Iterator<String> i = list.iterator();
-            while (i.hasNext()) {
-                String s = i.next();
-                if (set.contains(s)) {
-                    i.remove();
-                }
-                else {
-                    set.add(s);
-                }
-            }
-
-            return new ArrayList<>(set);
-        }
-        List<String> getMatchingResultsForAllComponentsInStructure(List<KanjiComponent.AssociatedComponent> associatedComponents) {
-
-            List<String> list_of_matching_results_for_element = new ArrayList<>();
-            for (KanjiComponent.AssociatedComponent associatedComponent : associatedComponents) {
-                list_of_matching_results_for_element.addAll(Arrays.asList(associatedComponent.getAssociatedComponents().split(";")));
-                if (list_of_matching_results_for_element.size() < mMaxSizeForDuplicateRemoval) {
-                    list_of_matching_results_for_element = removeDuplicatesFromList(list_of_matching_results_for_element);
-                }
-            }
-            return list_of_matching_results_for_element;
         }
 
     }

@@ -72,7 +72,8 @@ public class SplashScreenActivity extends Activity {
             public void onTick(long l) {
 
                 boolean finishedLoadingWordDatabases = Utilities.getAppPreferenceWordVerbDatabasesFinishedLoadingFlag(SplashScreenActivity.this);
-                if (!finishedLoadingWordDatabases) {
+                boolean finishedLoadingKanjiDatabases = Utilities.getAppPreferenceKanjiDatabaseFinishedLoadingFlag(SplashScreenActivity.this);
+                if (!finishedLoadingWordDatabases || !finishedLoadingKanjiDatabases) {
                     mTimeToLoadTextView.setText(R.string.database_being_installed);
                     mLoadingDatabaseTextView.setVisibility(View.VISIBLE);
                     showLoadingIndicator();

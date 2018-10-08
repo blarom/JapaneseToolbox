@@ -14,6 +14,7 @@ public class KanjiCharacter  {
 
     public static final String TABLE_NAME = "kanji_characters_table";
     public static final String COLUMN_ID = BaseColumns._ID;
+    static final String COLUMN_KANJI = "kanji";
     static final String COLUMN_KANJI_HEX_ID = "hexIdentifier";
     static final String COLUMN_KANJI_STRUCTURE = "structure";
     static final String COLUMN_KANJI_COMPONENTS = "components";
@@ -44,6 +45,15 @@ public class KanjiCharacter  {
     }
     public void setKanjiCharacterId(long id) {
         this.id = id;
+    }
+
+    @ColumnInfo(name = COLUMN_KANJI)
+    private String kanji;
+    public String getKanji() {
+        return kanji;
+    }
+    public void setKanji(String kanji) {
+        this.kanji = kanji;
     }
 
     @ColumnInfo(name = COLUMN_KANJI_HEX_ID)

@@ -32,6 +32,14 @@ public interface KanjiCharacterDao {
     @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_ID + " = :id")
     KanjiCharacter getKanjiCharacterById(long id);
 
+    //Get all Kanji Hex Ids
+    @Query("SELECT " + KanjiCharacter.COLUMN_KANJI_HEX_ID + " FROM " + KanjiCharacter.TABLE_NAME)
+    List<String> getAllKanjiHexIds();
+
+    //Get all Kanjis
+    @Query("SELECT " + KanjiCharacter.COLUMN_KANJI + " FROM " + KanjiCharacter.TABLE_NAME)
+    List<String> getAllKanjis();
+
     //Get a KanjiCharacter by Id
     @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_KANJI_HEX_ID + " = :hexId")
     KanjiCharacter getKanjiCharacterByHexId(String hexId);

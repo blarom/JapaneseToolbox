@@ -29,7 +29,7 @@ public interface KanjiComponentDao {
     List<KanjiComponent> getAllKanjiComponents();
 
     //Get a List of KanjiComponents by Exact structure match
-    @Query("SELECT * FROM " + KanjiComponent.TABLE_NAME + " WHERE " + KanjiComponent.COLUMN_COMPONENT_STRUCTURE + " LIKE '%' || :query || '%'")
+    @Query("SELECT * FROM " + KanjiComponent.TABLE_NAME + " WHERE " + KanjiComponent.COLUMN_COMPONENT_STRUCTURE + " = :query")
     List<KanjiComponent> getKanjiComponentsByStructure(String query);
 
     //Get a KanjiComponent by Id

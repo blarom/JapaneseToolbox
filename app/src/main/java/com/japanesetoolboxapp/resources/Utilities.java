@@ -47,9 +47,12 @@ import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
+import java.util.TreeSet;
 
 public final class Utilities {
 
@@ -294,6 +297,38 @@ public final class Utilities {
             }
         }
         return rtnList;
+    }
+    public static List<String> removeDuplicatesFromList(List<String> list) {
+
+            /*
+            int end_index = list_of_intersecting_results_temp.size();
+            String current_value;
+            for (int i=0; i<end_index; i++) {
+                current_value = list_of_intersecting_results_temp.get(i);
+                for (int j=end_index; j>i; j--) {
+                    if (current_value.equals(list_of_intersecting_results_temp.get(j))) {
+                        list_of_intersecting_results_temp.remove(j);
+                    }
+                }
+            }
+            list_of_intersecting_results = list_of_intersecting_results_temp;
+            */
+
+        //https://stackoverflow.com/questions/14040331/remove-duplicate-strings-in-a-list-in-java
+
+        Set<String> set = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
+        Iterator<String> i = list.iterator();
+        while (i.hasNext()) {
+            String s = i.next();
+            if (set.contains(s)) {
+                i.remove();
+            }
+            else {
+                set.add(s);
+            }
+        }
+
+        return new ArrayList<>(set);
     }
 
     //OCR utilities

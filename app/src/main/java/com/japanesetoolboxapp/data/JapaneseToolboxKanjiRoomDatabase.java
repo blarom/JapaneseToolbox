@@ -16,7 +16,7 @@ import com.japanesetoolboxapp.resources.Utilities;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {KanjiCharacter.class, KanjiComponent.class}, version = 3, exportSchema = false)
+@Database(entities = {KanjiCharacter.class, KanjiComponent.class}, version = 4, exportSchema = false)
 public abstract class JapaneseToolboxKanjiRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
@@ -92,6 +92,7 @@ public abstract class JapaneseToolboxKanjiRoomDatabase extends RoomDatabase {
         for (int i=0; i<CJK_Database.size(); i++) {
             if (TextUtils.isEmpty(CJK_Database.get(i)[0])) break;
             KanjiCharacter kanjiCharacter = new KanjiCharacter(CJK_Database.get(i)[0], CJK_Database.get(i)[1], CJK_Database.get(i)[2]);
+            kanjiCharacter.setKanji(Utilities.convertFromUTF8Index(kanjiCharacter.getHexIdentifier()));
             kanjiCharacterList.add(kanjiCharacter);
         }
         kanjiCharacter().insertAll(kanjiCharacterList);
@@ -177,6 +178,9 @@ public abstract class JapaneseToolboxKanjiRoomDatabase extends RoomDatabase {
     }
     public List<KanjiCharacter> getKanjiCharactersByDescriptor(String query) {
         return kanjiCharacter().getKanjiCharactersByDescriptor(query);
+    }
+    public List<String> getAllKanjis() {
+        return kanjiCharacter().getAllKanjis();
     }
 
     public List<KanjiCharacter> getAllKanjiCharacters() {
