@@ -306,7 +306,7 @@
     <string name="no_matching_words_online">No matching words found online.</string>
     <string name="no_new_words_or_meanings_found_online">No new words or meanings found online.</string>
     <string name="structure_">Structure:\u0020</string>
-    <string name="characteristics_">Characteristics:\u0020</string>
+    <string name="properties_">Properties:\u0020</string>
     <string name="this_component_is_a_CJK_character">This component is a CJK Character.</string>
     <string name="radical_">Radical:\u0020</string>
     <string name="search_for_radical_search_too_broad">Your search is too broad. Please select another structure or select Kanji radicals to narrow the search.</string>

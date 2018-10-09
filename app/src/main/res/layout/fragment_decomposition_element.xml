@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/fragment_decomposition_element"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="4dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_background_full_white"
+        android:alpha="0.9"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/decomposition_element_kanji"
+            style="@style/DecomposeTopRowTextStyle"
+            android:text="A"
+            android:textIsSelectable="true"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_separator1"
+            style="@style/DecomposeTopRowTextStyle"
+            android:paddingBottom="4dp"
+            android:text="|"
+            android:textIsSelectable="false"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="@+id/decomposition_element_kanji"
+            app:layout_constraintStart_toEndOf="@id/decomposition_element_kanji"
+            app:layout_constraintTop_toTopOf="@+id/decomposition_element_kanji"/>
+
+        <ImageView
+            android:id="@+id/decomposition_element_structure_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/colored_structure_2_overlapping"
+            app:layout_constraintBottom_toBottomOf="@+id/decomposition_element_kanji"
+            app:layout_constraintStart_toEndOf="@id/decomposition_element_separator1"
+            app:layout_constraintTop_toTopOf="@+id/decomposition_element_kanji"
+            android:contentDescription="kanji structure"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_separator2"
+            style="@style/DecomposeTopRowTextStyle"
+            android:paddingBottom="4dp"
+            android:text="|"
+            android:textIsSelectable="false"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="@+id/decomposition_element_kanji"
+            app:layout_constraintStart_toEndOf="@id/decomposition_element_structure_image"
+            app:layout_constraintTop_toTopOf="@+id/decomposition_element_kanji"/>
+
+        <LinearLayout
+            android:id="@+id/decomposition_element_radical_gallery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical|start"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/decomposition_element_kanji"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/decomposition_element_separator2"
+            app:layout_constraintTop_toTopOf="@+id/decomposition_element_kanji"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_structure_title"
+            style="@style/DecomposeTitleStyle"
+            android:text="Structure:"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_kanji"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_structure_value"
+            style="@style/DecomposeValueStyle"
+            android:text="-"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_kanji"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_radical_title"
+            style="@style/DecomposeTitleStyle"
+            android:text="Radical:"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_structure_value"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_radical_value"
+            style="@style/DecomposeValueStyle"
+            android:text="-"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_structure_value"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_on_readings_title"
+            style="@style/DecomposeTitleStyle"
+            android:text="On reading:"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_radical_value"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_on_readings_value"
+            style="@style/DecomposeValueStyle"
+            android:text="-"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_radical_value"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_on_meanings_title"
+            style="@style/DecomposeTitleStyle"
+            android:text="On meaning:"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_on_readings_value"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_on_meanings_value"
+            style="@style/DecomposeValueStyle"
+            android:text="-"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_on_readings_value"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_kun_readings_title"
+            style="@style/DecomposeTitleStyle"
+            android:text="Kun reading:"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_on_meanings_value"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_kun_readings_value"
+            style="@style/DecomposeValueStyle"
+            android:text="-"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_on_meanings_value"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_kun_meanings_title"
+            style="@style/DecomposeTitleStyle"
+            android:text="Kun meaning:"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_kun_readings_value"/>
+
+        <TextView
+            android:id="@+id/decomposition_element_kun__meanings_value"
+            style="@style/DecomposeValueStyle"
+            android:text="-"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_kun_readings_value"/>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3"/>
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

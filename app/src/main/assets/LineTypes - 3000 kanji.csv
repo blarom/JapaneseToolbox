@@ -570,7 +570,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 570|shingai, 心外, regrettable, vexing, upsetting, unthinkable, wholly unexpected, shingaini|shingai|心外|1060||
 571|hanpa, 半端, remaining, fraction of, incomplete, remnant, fragment, incomplete set, fraction, odd sum, incompleteness, hanpani|hanpa|半端|1061;1062||
 572|daihouteki, 代表的, representative, exemplary, model, daihoutekini|daihouteki|代表的|1063||
-573|okanemochi, お金持ち, rich, rich person, kanemochi, okanemochini|okanemochi|お金持ち|1064;3930|kanemochi|
+573|okanemochi, お金持ち, rich, rich person, kanemochi, okanemochini|kanemochi|金持ち|1064;3930|okanemochi, お金持ち|
 574|shitsurei, 失礼, ride, impolite, discourteous, impoliteness, rudeness, discourtesy, shitsureini|shitsurei|失礼|1065;1066||
 575|shikkei, 失敬, rude, impolite, disrespectful, impertinent, rudeness, impoliteness, disrespect, impertinence, shikkeini|shikkei|失敬|1067;1068||
 576|daijoubu, 大丈夫, safe, all right, okay, OK, safe, secure, sound, problem-free, without fear, all right, alright, OK, okay, certainly, surely, undoubtedly, no thanks, I'm good, that's alright, great man, fine figure of a man, daijoubuni|daijoubu|大丈夫|1069;8139;8140;8141;8142||
@@ -1620,7 +1620,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1620|kimochi, 気持ち, feeling, sensation, mood, preparedness, readiness, attitude, thanks, solicitude, sympathy, just a little, somewhat, slightly|kimochi|気持ち|2205;6373;6374;6375||
 1621|kanji, 感じ, feeling, sense, impression|kanji|感じ|2206||
 1622|onna, 女, female, female, woman, female sex, female lover, girlfriend, mistress, (someone's) woman|onna|女|2207;9871;9872||
-1623|omatsuri, お祭り, festival|omatsuri|お祭り|2208||
+1623|omatsuri, お祭り, festival|matsuri|祭り|2208|omatsuri, お祭り|
 1624|netsu, 熱, fever, temperature, heat, zeal, passion, enthusiasm, mania, craze, rage|netsu|熱|2209;6265;6266;6267||
 1625|bunya, 分野, field, sphere, realm, division, branch|bunya|分野|2210||
 1626|sugata, 姿, figure, form, shape, appearance, dress, guise, state, condition, picture, image, form, appearance, dress, guise, state, condition, picture, image, form (of a waka), dressed in ..., wearing ...|sugata|姿|2211;7954;7955;7956;7957||
@@ -2009,7 +2009,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2009|fuu, 封, seal|fuu|封|2606||
 2010|kisetsu, 季節, season|kisetsu|季節|2607||
 2011|seki, 席, seat, location (of a gathering, etc.), place, position, post|seki|席|2608;11856;11857||
-2012|okawari, お変わり, second helping|okawari|お変わり|2609||
+2012|okawari, お変わり, second helping|okawari|お代わり|2609||
 2013|ninen, 二年生, second-year|ninen|二年生|2610||
 2014|shouken, 証券, securities, bonds, certificates|shouken|証券|2611||
 2015|jishin, 自信, self-confidence, confidence (in oneself)|jishin|自信|2612||
@@ -2228,7 +2228,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2228|kosshi, 骨子, bones, marrow, essentials|kosshi|骨子|2829||
 2229|nou, 脳, brain, mind, brains, mind|nou|脳|2830;8379||
 2230|chichi, 乳, breasts, milk|chichi|乳|2831||
-2231|oshiri, お尻, buttocks, 御尻|oshiri|お尻|2832|御尻|
+2231|oshiri, お尻, buttocks, 御尻|shiri|尻|2832|oshiri, お尻, 御尻|
 2232|mune, 胸, chest, breast, bosom, bust|mune|胸|2833||
 2233|ago, 顎, chin, jaw, 齶, 頤, 顋|ago|顎|2835|齶, 頤, 顋|
 2234|shitai, 死体, corpse, cadaver, dead body, dead body, corpse, cadaver|shitai|死体|2836;9181||
@@ -2271,7 +2271,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2271|uroko, 鱗, scale (of fish)|uroko|鱗|2874||
 2272|kata, 肩, shoulder|kata|肩|2875||
 2273|ashi no ura, 足の裏, sole of foot|ashi no ura|足の裏|2876||
-2274|onaka, お腹, stomach|onaka|お腹|2877||
+2274|onaka, お腹, stomach|naka|腹|2877|onaka, お腹|
 2275|i, 胃, stomach|i|胃|2878||
 2276|kintama, 金玉, testicles, testes|kintama|金玉|2879||
 2277|nikutai, 肉体, the body, the flesh|nikutai|肉体|2880||
@@ -2370,7 +2370,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2370|bataa, バター, butter|bataa|バター|2975||
 2371|keeki, ケーキ, cake|keeki|ケーキ|2976||
 2372|kashi, 菓子, cake, candy, sweets, confectionery, pastry, okashi, お菓子|kashi|菓子|2977|okashi, お菓子|
-2373|okashi, お菓子, candy, snack, confections, sweets, candy|okashi|お菓子|2978;9253||
+2373|okashi, お菓子, candy, snack, confections, sweets, candy|kashi|菓子|2978;9253|okashi, お菓子|
 2374|ninjin, にんじん, carrot|ninjin|にんじん|2979||
 2375|chiizu, チーズ, cheese|chiizu|チーズ|2980||
 2376|toriniku, 鳥肉, chicken meat|toriniku|鳥肉|2981||
@@ -2451,14 +2451,14 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2451|jagaimo, ジャガイモ, potato|jagaimo|ジャガイモ|3058||
 2452|imo, 芋, potato|imo|芋|3059||
 2453|katakuriko, 片栗粉, potato starch|katakuriko|片栗粉|3060||
-2454|omochi, お餅, pounded rice cake|omochi|お餅|3061||
+2454|omochi, お餅, pounded rice cake|mochi|餅|3061|omochi, お餅|
 2455|maccha, 抹茶, powdered green tea|maccha|抹茶|3062||
 2456|konzatou, 紺砂糖, powdered sugar|konzatou|紺砂糖|3063||
 2457|musenmai, 無洗米, pre-washed rice|musenmai|無洗米|3064||
 2458|raamen, ラーメン, ramen, noddles|raamen|ラーメン|3065||
 2459|natane abura, 菜種油, rapeseed oil|natane abura|菜種油|3066||
 2460|kurozatou, 黒砂糖, raw sugar, brown sugar|kurozatou|黒砂糖|3067||
-2461|onigiri, おにぎり, rice ball|onigiri|おにぎり|3068||
+2461|onigiri, おにぎり, rice ball|onigiri|お握り|3068||
 2462|komezu, 米酢, rice vinegar|komezu|米酢|3069||
 2463|gohan, ご飯, rice, meal, cooked rice, meal|gohan|ご飯|3070;9444;9445||
 2464|houjicha, ほうじ茶, roasted green tea|houjicha|ほうじ茶|3071||
@@ -2490,7 +2490,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2490|nonshugaa, ノンシュガー, sugarless|nonshugaa|ノンシュガー|3096||
 2491|sushi, 寿司, sushi, osushi, お寿司|sushi|寿司|3097|osushi, お寿司|
 2492|mochigome, 模試米, sweet rice|mochigome|模試米|3098||
-2493|ocha, お茶, tea|ocha|お茶|3099||
+2493|ocha, お茶, tea|cha|茶|3099|ocha, お茶|
 2494|tenpura, 天ぷら, tempura, deep-fried fish and vegetables in a light batter|tenpura|天ぷら|3100||
 2495|tenpura abura, てんぷら油, tempura oil|tenpura abura|てんぷら油|3101||
 2496|tenpurako, てんぷら粉, tempura powder|tenpurako|てんぷら粉|3102||
@@ -2740,7 +2740,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2740|hoshousho, 保証書, certificate, written guarantee, warrantee|hoshousho|保証書|3339||
 2741|kusari, 鎖, chains|kusari|鎖|3340||
 2742|isu, 椅子, chair, chair|isu|椅子|3341;3342||
-2743|otsuri, おつり, change|otsuri|おつり|3343||
+2743|otsuri, おつり, change|otsuri|釣り|3343||
 2744|kogitte, 小切手, cheque, bank check|kogitte|小切手|3344||
 2745|tansui, 箪笥, chest of drawers, bureau, cabinet, dresser|tansui|箪笥|3345||
 2746|hashi, 箸, chopsticks|hashi|箸|3346||
@@ -2822,7 +2822,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2822|bidama, 美球, marbles|bidama|美球|3422||
 2823|kamen, 仮面, mask, disguise|kamen|仮面|3423||
 2824|denshirenshi, 電子連氏, microwave oven|denshirenshi|電子連氏|3424||
-2825|okane, お金, money|okane|お金|3425||
+2825|okane, お金, money|kane|金|3425|okane, お金|
 2826|kenrikin, 権利金, money|kenrikin|権利金|3426||
 2827|gakki, 楽器, musical instrument|gakki|楽器|3427||
 2828|kokutetsu, 国鉄, national railway, Japan National Railways|kokutetsu|国鉄|3428||
@@ -3098,7 +3098,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3098|chiri, 塵, dust, dirt|chiri|塵|3704||
 3099|denki, 電気, electricity, electricity, (electric) light|denki|電気|3705;9390;9391||
 3100|kuu, 空, empty air, sky|kuu|空|3706||
-3101|onara, おなら, fart, flatulence, gas|onara|おなら|3707||
+3101|onara, おなら, fart, flatulence, gas|onara|屁|3707||
 3102|hi, 火, fire, flame, blaze|hi|火|3708||
 3103|takigi, 薪, firewood, kindling, fuel|takigi|薪|3709||
 3104|kiri, 霧, fog, mist, spray|kiri|霧|3710||

@@ -1,7 +1,6 @@
 package com.japanesetoolboxapp.ui;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -73,6 +71,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
         mBinding = ButterKnife.bind(this, rootView);
 
+
         getDecomposition();
 
         return rootView;
@@ -119,22 +118,26 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                                       int radicalIndexOriginal,
                                       List<String> currentMainRadicalDetailedCharacteristics) {
 
+        //region Setting up the view
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View decompositionContainer = inflater.inflate(R.layout.fragment_decomposition_element, null);
+        final TextView kanjiTV = decompositionContainer.findViewById(R.id.decomposition_element_kanji);
+        final ImageView structureIV = decompositionContainer.findViewById(R.id.decomposition_element_structure_image);
+        final LinearLayout radicalGalleryLL = decompositionContainer.findViewById(R.id.decomposition_element_radical_gallery);
+        final TextView structureTV = decompositionContainer.findViewById(R.id.decomposition_element_structure_value);
+        final TextView radicalTitleTV = decompositionContainer.findViewById(R.id.decomposition_element_radical_title);
+        final TextView radicalTV = decompositionContainer.findViewById(R.id.decomposition_element_radical_value);
+        final TextView onReadingTV = decompositionContainer.findViewById(R.id.decomposition_element_on_readings_value);
+        final TextView kunReadingTV = decompositionContainer.findViewById(R.id.decomposition_element_kun_readings_value);
+        final TextView onMeaningTV = decompositionContainer.findViewById(R.id.decomposition_element_on_meanings_value);
+        final TextView kunMeaningTV = decompositionContainer.findViewById(R.id.decomposition_element_kun__meanings_value);
+        //endregion
+
+
         //region Initilization
         SpannableString clickable_text;
         Spanned text;
         TextView tv;
-        TextView tv1;
-        TextView tv2;
-        ImageView img;
-        LinearLayout overall_block_linearLayout;
-        LinearLayout overall_row_linearLayout;
-        LinearLayout radical_gallery_linearLayout;
-        LinearLayout.LayoutParams overall_block_layoutParams;
-        LinearLayout.LayoutParams overall_row_layoutParams;
-        LinearLayout.LayoutParams radical_gallery_layoutParams;
-        LinearLayout.LayoutParams params;
-        RelativeLayout.LayoutParams tv1_layoutParams;
-        RelativeLayout.LayoutParams tv2_layoutParams;
         String display_text;
         String[] structure_info;
 
@@ -153,104 +156,20 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         }
         //endregion
 
-        //region overall_block_container configuration
-
         // If the user clicks on a component further up in the overall_block_container chain, remove the following views
         int childCount = mOverallBlockContainer.getChildCount();
         for (int i=radical_iteration;i<childCount;i++) {
             mOverallBlockContainer.removeViewAt(radical_iteration);
         }
 
-        //region overall_block_container > overall block configuration
-        //region overall_block_container > overall block container layout configuration
-        overall_block_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        overall_block_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.LEFT;
-        overall_block_layoutParams.setMargins(10, 20, 10, 0); // (left, top, right, bottom)
-
-        overall_block_linearLayout = new LinearLayout(getContext());
-        overall_block_linearLayout.setOrientation(LinearLayout.VERTICAL);
-        overall_block_linearLayout.setLayoutParams(overall_block_layoutParams);
-        //endregion
-
-        //region overall_block_container > overall block > overall_row configuration
-        //region Layout configuration
-        overall_row_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        overall_row_layoutParams.gravity = Gravity.BOTTOM|Gravity.LEFT;
-        overall_row_layoutParams.setMargins(10, 0, 10, 0); // (left, top, right, bottom)
-
-        overall_row_linearLayout = new LinearLayout(getContext());
-        overall_row_linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-        overall_row_linearLayout.setLayoutParams(overall_row_layoutParams);
-        //endregion
-
-        //region Configure the elements of overall_row
-        //region Input value
-        tv = new TextView(getContext());
-        tv.setLayoutParams(overall_row_layoutParams);
-        tv.setText(decomposedKanji.get(0).get(0));
-        tv.setTextSize(30);
-        //tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/updatedunicodefont.ttf");
-        //tv.setTypeface(tf);
-        tv.setTextColor(Color.parseColor("#0000FF"));
-        tv.setTextIsSelectable(true);
-        tv.setTypeface(null, Typeface.BOLD);
-        tv.setMovementMethod(LinkMovementMethod.getInstance());
-        tv.setSelected(false);
-        overall_row_linearLayout.addView(tv);
-        //endregion
-
-        //region Separator
-        tv = new TextView(getContext());
-        tv.setLayoutParams(overall_row_layoutParams);
-        tv.setText("|");
-        tv.setTextSize(36);
-        tv.setPadding(0,0,0,20);
-        tv.setTextColor(Color.parseColor("#0000FF"));
-        tv.setTextIsSelectable(false);
-        tv.setTypeface(null, Typeface.BOLD);
-        tv.setMovementMethod(LinkMovementMethod.getInstance());
-        tv.setSelected(false);
-        overall_row_linearLayout.addView(tv);
-        //endregion
-
-        //region Structure mImageToBeDecoded
-        img = new ImageView(getContext());
-        img.setLayoutParams(overall_row_layoutParams);
-        img.setPadding(0,10,0,0);
+        kanjiTV.setText(decomposedKanji.get(0).get(0));
         structure_info = getStructureInfo(decomposedKanji.get(0).get(1));
-        img.setImageResource(Integer.parseInt(structure_info[1]));
-
-        params = (LinearLayout.LayoutParams) img.getLayoutParams();
-        params.gravity = Gravity.CENTER_VERTICAL;
-        overall_row_linearLayout.addView(img);
-        //endregion
-
-        //region Separator
-        tv = new TextView(getContext());
-        tv.setLayoutParams(overall_row_layoutParams);
-        tv.setText("|");
-        tv.setTextSize(36);
-        tv.setPadding(0,0,0,20);
-        tv.setTextColor(Color.parseColor("#0000FF"));
-        tv.setTextIsSelectable(false);
-        tv.setTypeface(null, Typeface.BOLD);
-        tv.setMovementMethod(LinkMovementMethod.getInstance());
-        tv.setSelected(false);
-        overall_row_linearLayout.addView(tv);
-        //endregion
+        structureIV.setBackgroundResource(Integer.parseInt(structure_info[1]));
 
         //region Radical gallery
-        //region Layout parameters
-        radical_gallery_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        radical_gallery_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.LEFT;
-        radical_gallery_layoutParams.setMargins(10, 0, 10, 0); // (left, top, right, bottom)
-        //endregion
-
-        //region Populating the gallery
-        radical_gallery_linearLayout = new LinearLayout(getContext());
-        radical_gallery_linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-        radical_gallery_linearLayout.setLayoutParams(radical_gallery_layoutParams);
-
+        LinearLayout.LayoutParams radical_gallery_layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        radical_gallery_layoutParams.gravity = Gravity.CENTER_VERTICAL|Gravity.START;
+        radical_gallery_layoutParams.setMargins(10, 0, 10, 0);
         for (int i = 1; i < decomposedKanji.size(); i++) {
 
             if (decomposedKanji.get(i).get(0).equals("")) {break;}
@@ -281,16 +200,11 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             };
             clickable_text.setSpan(Radical_Iteration_ClickableSpan, 0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-            //tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/updatedunicodefont.ttf");
-            //tv.setTypeface(tf);
             tv.setText(clickable_text);
             tv.setTextSize(26);
             tv.setPadding(10,0,10,0);
             tv.setMovementMethod(LinkMovementMethod.getInstance());
-            tv.setSelected(false);
-            tv.setBackgroundColor(Color.parseColor("#ffffff"));
-            tv.setAlpha((float) 0.90);
-            radical_gallery_linearLayout.addView(tv);
+            radicalGalleryLL.addView(tv);
 
             if (i < decomposedKanji.size()-1) {
                 tv = new TextView(getContext());
@@ -298,413 +212,55 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 tv.setPadding(10,0,10,0);
                 tv.setTextSize(30);
                 tv.setTypeface(null, Typeface.BOLD);
-                tv.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv.setAlpha((float) 0.90);
-                radical_gallery_linearLayout.addView(tv);
+                radicalGalleryLL.addView(tv);
             }
 
         }
         //endregion
 
-        overall_row_linearLayout.addView(radical_gallery_linearLayout);
-        //endregion
-        //endregion
-
-        //region Add the overall_row to the overall_block
-        overall_block_linearLayout.addView(overall_row_linearLayout);
-        //endregion
-        //endregion
-
-        //region overall_block_container > overall block > explanation_row configuration
-        //region Configure Layout parameters
-        RelativeLayout.LayoutParams explanation_block_layoutParams = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        explanation_block_layoutParams.setMargins(10, 0, 10, 0); // (left, top, right, bottom)
-        explanation_block_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        explanation_block_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-
-        RelativeLayout explanation_block = new RelativeLayout(getContext());
-        explanation_block.setLayoutParams(explanation_block_layoutParams);
-        //endregion
-
-        //region Configure the elements of explanation_row
-        //region Get Structure
-        tv1 = new TextView(getContext());
-        tv1.setText(R.string.structure_);
-        tv1.setTextSize(14);
-        tv1.setTextColor(Color.parseColor("#800080"));
-        tv1.setTextIsSelectable(false);
-        tv1.setTypeface(null, Typeface.BOLD);
-        tv1.setMovementMethod(LinkMovementMethod.getInstance());
-        tv1.setSelected(false);
-        tv1.setBackgroundColor(Color.parseColor("#ffffff"));
-        tv1.setAlpha((float) 0.90);
-        tv1.setPadding(0,0,80,0);
-
-        tv1.setId(R.id.decomposition_structure);
-        tv1_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-        explanation_block.addView(tv1,tv1_layoutParams);
-
-        tv2 = new TextView(getContext());
-        tv2.setText(structure_info[0]);
-        tv2.setTextSize(14);
-        tv2.setTextColor(Color.parseColor("#800080"));
-        tv2.setTextIsSelectable(false);
-        tv2.setTypeface(null, Typeface.NORMAL);
-        tv2.setMovementMethod(LinkMovementMethod.getInstance());
-        tv2.setSelected(false);
-        tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-        tv2.setAlpha((float) 0.90);
-
-        tv2.setId(R.id.decomposition_structure_text);
-        tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_structure);
-        tv2_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-        explanation_block.addView(tv2,tv2_layoutParams);
-        tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_structure_text);
-        //endregion
+        structureTV.setText(structure_info[0]);
 
         //region Get Meanings and Readings
         if (!character_is_radical_or_kana && character_not_found_in_KanjiDictDatabase && currentKanjiMainRadicalInfo.get(0).equals("")) {
-            //region Display Characteristics: Meaning of non-Japanese or uncommon Japanese character
-
-            tv1 = new TextView(getContext());
-            tv1.setText(R.string.characteristics_);
-            tv1.setTextSize(14);
-            tv1.setTextColor(Color.parseColor("#800080"));
-            tv1.setTextIsSelectable(false);
-            tv1.setTypeface(null, Typeface.BOLD);
-            tv1.setMovementMethod(LinkMovementMethod.getInstance());
-            tv1.setSelected(false);
-
-            tv1.setId(R.id.decomposition_on_meaning);
-            tv1_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            tv1_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_structure);
-            explanation_block.addView(tv1,tv1_layoutParams);
-
-            tv2 = new TextView(getContext());
-            tv2.setText(R.string.this_component_is_a_CJK_character);
-            tv2.setTextSize(14);
-            tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-            tv2.setAlpha((float) 0.90);
-            tv2.setTextColor(Color.parseColor("#800080"));
-            tv2.setTextIsSelectable(false);
-            tv2.setTypeface(null, Typeface.NORMAL);
-            tv2.setMovementMethod(LinkMovementMethod.getInstance());
-            tv2.setSelected(false);
-
-            tv2.setId(R.id.decomposition_on_meaning_text);
-            tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_on_meaning);
-            tv2_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_structure_text);
-            tv2_layoutParams.addRule(RelativeLayout.ALIGN_LEFT,R.id.decomposition_structure_text);
-            explanation_block.addView(tv2,tv2_layoutParams);
-            tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_on_meaning_text);
-            //endregion
+            //Display Characteristics: Meaning of non-Japanese or uncommon Japanese character
+            radicalTitleTV.setText(R.string.properties_);
+            radicalTV.setText(R.string.this_component_is_a_CJK_character);
         }
         else if (!character_is_radical_or_kana && character_not_found_in_KanjiDictDatabase && !currentKanjiMainRadicalInfo.get(0).equals("")) {
-            //region Display Main Radical Info only (not readings or meanings)
-
-            tv1 = new TextView(getContext());
-            tv1.setText(R.string.radical_);
-            tv1.setTextSize(14);
-            tv1.setTextColor(Color.parseColor("#800080"));
-            tv1.setTextIsSelectable(false);
-            tv1.setTypeface(null, Typeface.BOLD);
-            tv1.setMovementMethod(LinkMovementMethod.getInstance());
-            tv1.setSelected(false);
-            tv1.setBackgroundColor(Color.parseColor("#ffffff"));
-            tv1.setAlpha((float) 0.90);
-
-            tv1.setId(R.id.decomposition_radical);
-            tv1_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            tv1_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_structure);
-            explanation_block.addView(tv1,tv1_layoutParams);
-
-            tv2 = new TextView(getContext());
-            tv2.setText(currentKanjiMainRadicalInfo.get(0));
-            tv2.setTextSize(14);
-            tv2.setTextColor(Color.parseColor("#800080"));
-            tv2.setTextIsSelectable(false);
-            tv2.setTypeface(null, Typeface.NORMAL);
-            tv2.setMovementMethod(LinkMovementMethod.getInstance());
-            tv2.setSelected(false);
-            tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-            tv2.setAlpha((float) 0.90);
-
-            tv2.setId(R.id.decomposition_radical_text);
-            tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_radical);
-            tv2_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_structure_text);
-            tv2_layoutParams.addRule(RelativeLayout.ALIGN_LEFT,R.id.decomposition_structure_text);
-            explanation_block.addView(tv2,tv2_layoutParams);
-            tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_radical_text);
-            //endregion
+            //Display Main Radical Info only (not readings or meanings)
+            radicalTitleTV.setText(R.string.radical_);
+            radicalTV.setText(currentKanjiMainRadicalInfo.get(0));
         }
         else if (!character_is_radical_or_kana && !character_not_found_in_KanjiDictDatabase) {
-            //region Display Main Radical Info (if available)
+            //Display Main Radical Info (if available)
             if (!currentKanjiMainRadicalInfo.get(0).equals("")) {
-
-                tv1 = new TextView(getContext());
-                tv1.setText(getString(R.string.radical_));
-                tv1.setTextSize(14);
-                tv1.setTextColor(Color.parseColor("#800080"));
-                tv1.setTextIsSelectable(false);
-                tv1.setTypeface(null, Typeface.BOLD);
-                tv1.setMovementMethod(LinkMovementMethod.getInstance());
-                tv1.setSelected(false);
-                tv1.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv1.setAlpha((float) 0.90);
-
-                tv1.setId(R.id.decomposition_radical);
-                tv1_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-                tv1_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_structure);
-                explanation_block.addView(tv1,tv1_layoutParams);
-
-                tv2 = new TextView(getContext());
-                tv2.setText(currentKanjiMainRadicalInfo.get(0));
-                tv2.setTextSize(14);
-                tv2.setTextColor(Color.parseColor("#800080"));
-                tv2.setTextIsSelectable(false);
-                tv2.setTypeface(null, Typeface.NORMAL);
-                tv2.setMovementMethod(LinkMovementMethod.getInstance());
-                tv2.setSelected(false);
-                tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv2.setAlpha((float) 0.90);
-
-                tv2.setId(R.id.decomposition_radical_text);
-                tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_radical);
-                tv2_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_structure_text);
-                tv2_layoutParams.addRule(RelativeLayout.ALIGN_LEFT,R.id.decomposition_structure_text);
-                explanation_block.addView(tv2,tv2_layoutParams);
-                tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_radical_text);
-
-            }
-            //endregion
-
-            //region Display On Reading of common Japanese character
-            tv1 = new TextView(getContext());
-            tv1.setText(getResources().getString(R.string.QueryOnReadings));
-            tv1.setTextSize(14);
-            tv1.setTextColor(Color.parseColor("#800080"));
-            tv1.setTextIsSelectable(false);
-            tv1.setTypeface(null, Typeface.BOLD);
-            tv1.setMovementMethod(LinkMovementMethod.getInstance());
-            tv1.setSelected(false);
-            tv1.setBackgroundColor(Color.parseColor("#ffffff"));
-            tv1.setAlpha((float) 0.90);
-
-            tv1.setId(R.id.decomposition_on_reading);
-            tv1_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            if (currentKanjiMainRadicalInfo.get(0).equals("")) {
-                tv1_layoutParams.addRule(RelativeLayout.BELOW, R.id.decomposition_structure);
+                radicalTitleTV.setText(getString(R.string.radical_));
+                radicalTV.setText(currentKanjiMainRadicalInfo.get(0));
             }
             else {
-                tv1_layoutParams.addRule(RelativeLayout.BELOW, R.id.decomposition_radical);
+                radicalTitleTV.setVisibility(View.GONE);
+                radicalTV.setVisibility(View.GONE);
             }
-            explanation_block.addView(tv1,tv1_layoutParams);
 
-            tv2 = new TextView(getContext());
-            if (currentKanjiDetailedCharacteristics.get(0).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(0));}
-            tv2.setTextSize(14);
-            tv2.setTextColor(Color.parseColor("#800080"));
-            tv2.setTextIsSelectable(false);
-            tv2.setTypeface(null, Typeface.NORMAL);
-            tv2.setMovementMethod(LinkMovementMethod.getInstance());
-            tv2.setSelected(false);
-            tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-            tv2.setAlpha((float) 0.90);
+            //Display On Reading of common Japanese character
+            if (currentKanjiDetailedCharacteristics.get(0).equals("")) { onReadingTV.setText("-");} else { onReadingTV.setText(currentKanjiDetailedCharacteristics.get(0));}
 
-            tv2.setId(R.id.decomposition_on_reading_text);
-            tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_on_reading);
-            if (currentKanjiMainRadicalInfo.get(0).equals("")) {
-                tv2_layoutParams.addRule(RelativeLayout.BELOW, R.id.decomposition_structure_text);
-                tv2_layoutParams.addRule(RelativeLayout.ALIGN_LEFT,R.id.decomposition_structure_text);
-            }
-            else {
-                tv2_layoutParams.addRule(RelativeLayout.BELOW, R.id.decomposition_radical_text);
-                tv2_layoutParams.addRule(RelativeLayout.ALIGN_LEFT,R.id.decomposition_structure_text);
-            }
-            explanation_block.addView(tv2,tv2_layoutParams);
-            tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_on_reading_text);
-            //endregion
+            //Display On Meaning of common Japanese character
+            if (currentKanjiDetailedCharacteristics.get(2).equals("")) { onMeaningTV.setText("-");} else { onMeaningTV.setText(currentKanjiDetailedCharacteristics.get(2));}
 
-            //region Display On Meaning of common Japanese character
-            tv1 = new TextView(getContext());
-            tv1.setText(getResources().getString(R.string.QueryOnMeaning));
-            tv1.setTextSize(14);
-            tv1.setTextColor(Color.parseColor("#800080"));
-            tv1.setTextIsSelectable(false);
-            tv1.setTypeface(null, Typeface.BOLD);
-            tv1.setMovementMethod(LinkMovementMethod.getInstance());
-            tv1.setSelected(false);
-            tv1.setBackgroundColor(Color.parseColor("#ffffff"));
-            tv1.setAlpha((float) 0.90);
-
-            tv1.setId(R.id.decomposition_on_meaning);
-            tv1_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            tv1_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_on_reading);
-            explanation_block.addView(tv1,tv1_layoutParams);
-
-            tv2 = new TextView(getContext());
-            if (currentKanjiDetailedCharacteristics.get(2).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(2));}
-            tv2.setTextSize(14);
-            tv2.setTextColor(Color.parseColor("#800080"));
-            tv2.setTextIsSelectable(false);
-            tv2.setTypeface(null, Typeface.NORMAL);
-            tv2.setMovementMethod(LinkMovementMethod.getInstance());
-            tv2.setSelected(false);
-            tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-            tv2.setAlpha((float) 0.90);
-
-            tv2.setId(R.id.decomposition_on_meaning_text);
-            tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_on_meaning);
-            tv2_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_on_reading_text);
-            tv2_layoutParams.addRule(RelativeLayout.ALIGN_LEFT,R.id.decomposition_structure_text);
-            explanation_block.addView(tv2,tv2_layoutParams);
-            tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_on_meaning_text);
-            //endregion
-
-            //region Display Kun Reading of common Japanese character
-            tv1 = new TextView(getContext());
-            tv1.setText(getResources().getString(R.string.QueryKunReadings));
-            tv1.setTextSize(14);
-            tv1.setTextColor(Color.parseColor("#800080"));
-            tv1.setTextIsSelectable(false);
-            tv1.setTypeface(null, Typeface.BOLD);
-            tv1.setMovementMethod(LinkMovementMethod.getInstance());
-            tv1.setSelected(false);
-            tv1.setBackgroundColor(Color.parseColor("#ffffff"));
-            tv1.setAlpha((float) 0.90);
-
-            tv1.setId(R.id.decomposition_kun_reading);
-            tv1_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            tv1_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_on_meaning);
-            explanation_block.addView(tv1,tv1_layoutParams);
-
-            tv2 = new TextView(getContext());
-            if (currentKanjiDetailedCharacteristics.get(1).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(1));}
-            tv2.setTextSize(14);
-            tv2.setTextColor(Color.parseColor("#800080"));
-            tv2.setTextIsSelectable(false);
-            tv2.setTypeface(null, Typeface.NORMAL);
-            tv2.setMovementMethod(LinkMovementMethod.getInstance());
-            tv2.setSelected(false);
-            tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-            tv2.setAlpha((float) 0.90);
-
-            tv2.setId(R.id.decomposition_kun_reading_text);
-            tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_kun_reading);
-            tv2_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_on_meaning_text);
-            tv2_layoutParams.addRule(RelativeLayout.ALIGN_LEFT,R.id.decomposition_structure_text);
-            explanation_block.addView(tv2,tv2_layoutParams);
-            tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_kun_reading_text);
-            //endregion
+            //Display Kun Reading of common Japanese character
+            if (currentKanjiDetailedCharacteristics.get(1).equals("")) { kunReadingTV.setText("-");} else { kunReadingTV.setText(currentKanjiDetailedCharacteristics.get(1));}
 
             //region Display Kun Meaning of common Japanese character
-            tv1 = new TextView(getContext());
-            tv1.setText(getResources().getString(R.string.QueryKunMeaning));
-            tv1.setTextSize(14);
-            tv1.setTextColor(Color.parseColor("#800080"));
-            tv1.setTextIsSelectable(false);
-            tv1.setTypeface(null, Typeface.BOLD);
-            tv1.setMovementMethod(LinkMovementMethod.getInstance());
-            tv1.setSelected(false);
-            tv1.setBackgroundColor(Color.parseColor("#ffffff"));
-            tv1.setAlpha((float) 0.90);
-
-            tv1.setId(R.id.decomposition_kun_meaning);
-            tv1_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            tv1_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_kun_reading);
-            explanation_block.addView(tv1,tv1_layoutParams);
-
-            tv2 = new TextView(getContext());
-            if (currentKanjiDetailedCharacteristics.get(3).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(3));}
-            tv2.setTextSize(14);
-            tv2.setTextColor(Color.parseColor("#800080"));
-            tv2.setTextIsSelectable(false);
-            tv2.setTypeface(null, Typeface.NORMAL);
-            tv2.setMovementMethod(LinkMovementMethod.getInstance());
-            tv2.setSelected(false);
-            tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-            tv2.setAlpha((float) 0.90);
-
-            tv2.setId(R.id.decomposition_kun_meaning_text);
-            tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_kun_meaning);
-            tv2_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_kun_reading_text);
-            tv2_layoutParams.addRule(RelativeLayout.ALIGN_LEFT,R.id.decomposition_structure_text);
-            explanation_block.addView(tv2,tv2_layoutParams);
-            tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_kun_meaning_text);
-            //endregion
+            if (currentKanjiDetailedCharacteristics.get(3).equals("")) { kunMeaningTV.setText("-");} else { kunMeaningTV.setText(currentKanjiDetailedCharacteristics.get(3));}
         }
         else if (character_is_radical_or_kana) {
             //region Display Radical or Kana Meanings/Readings
-            tv1 = new TextView(getContext());
-            tv1.setText(getString(R.string.radical_));
-            tv1.setTextSize(14);
-            tv1.setTextColor(Color.parseColor("#800080"));
-            tv1.setTextIsSelectable(false);
-            tv1.setTypeface(null, Typeface.BOLD);
-            tv1.setMovementMethod(LinkMovementMethod.getInstance());
-            tv1.setSelected(false);
-            tv1.setBackgroundColor(Color.parseColor("#ffffff"));
-            tv1.setAlpha((float) 0.90);
-
-            tv1.setId(R.id.decomposition_radical);
-            tv1_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-            tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            tv1_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_structure);
-            explanation_block.addView(tv1,tv1_layoutParams);
-
-            tv2 = new TextView(getContext());
             if (radical_row[2].equals("Hiragana") || radical_row[2].equals("Katakana")) {
-                tv2.setText(radical_row[2] + " " + radical_row[3] + ".");
-                tv2.setTextSize(14);
-                tv2.setTextColor(Color.parseColor("#800080"));
-                tv2.setTextIsSelectable(false);
-                tv2.setTypeface(null, Typeface.NORMAL);
-                tv2.setMovementMethod(LinkMovementMethod.getInstance());
-                tv2.setSelected(false);
-                tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv2.setAlpha((float) 0.90);
-
-                tv2.setId(R.id.decomposition_radical_text);
-                tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_radical);
-                tv2_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_structure_text);
-                explanation_block.addView(tv2,tv2_layoutParams);
-                tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_radical_text);
+                radicalTV.setText(radical_row[2] + " " + radical_row[3] + ".");
             }
             else if (radical_row[2].equals("Special")){
-                tv2.setText("Special symbol with meaning '" + radical_row[3] + "'.");
-                tv2.setTextSize(14);
-                tv2.setTextColor(Color.parseColor("#800080"));
-                tv2.setTextIsSelectable(false);
-                tv2.setTypeface(null, Typeface.NORMAL);
-                tv2.setMovementMethod(LinkMovementMethod.getInstance());
-                tv2.setSelected(false);
-                tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv2.setAlpha((float) 0.90);
-
-                tv2.setId(R.id.decomposition_radical_text);
-                tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_radical);
-                tv2_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_structure_text);
-                explanation_block.addView(tv2,tv2_layoutParams);
-                tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_radical_text);
+                radicalTV.setText("Special symbol with meaning '" + radical_row[3] + "'.");
             }
             else {
                 //region Get the radical characteristics from the RadialsOnlyDatabase
@@ -716,34 +272,18 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
                 if (parsed_number.size()>1) {
                     if (parsed_number.get(1).equals("alt")) {
-                        tv2.setText("\""+ main_radical_row[3] + "\""+ " (Radical No. " + parsed_number.get(0) + "), " + main_radical_row[4] + strokes);
+                        radicalTV.setText("\""+ main_radical_row[3] + "\""+ " (Radical No. " + parsed_number.get(0) + "), " + main_radical_row[4] + strokes);
                     }
                     else if (parsed_number.get(1).equals("variant")) {
-                        tv2.setText("\"" + main_radical_row[3] + "\" radical variant" + " (Radical No. " + parsed_number.get(0) + ").");
+                        radicalTV.setText("\"" + main_radical_row[3] + "\" radical variant" + " (Radical No. " + parsed_number.get(0) + ").");
                     }
                     else if (parsed_number.get(1).equals("simplification")) {
-                        tv2.setText("\"" + main_radical_row[3] + "\" (Radical No. " + parsed_number.get(0) + " simplification).");
+                        radicalTV.setText("\"" + main_radical_row[3] + "\" (Radical No. " + parsed_number.get(0) + " simplification).");
                     }
                 }
                 else {
-                    tv2.setText("\""+ main_radical_row[3] + "\""+ " (Radical No. " + parsed_number.get(0) + "), " + main_radical_row[4] + strokes);
+                    radicalTV.setText("\""+ main_radical_row[3] + "\""+ " (Radical No. " + parsed_number.get(0) + "), " + main_radical_row[4] + strokes);
                 }
-                tv2.setTextSize(14);
-                tv2.setTextColor(Color.parseColor("#800080"));
-                tv2.setTextIsSelectable(false);
-                tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv2.setAlpha((float) 0.90);
-                tv2.setTypeface(null, Typeface.NORMAL);
-                tv2.setMovementMethod(LinkMovementMethod.getInstance());
-                tv2.setSelected(false);
-
-                tv2.setId(R.id.decomposition_radical_text);
-                tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_radical);
-                tv2_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_structure_text);
-                tv2_layoutParams.addRule(RelativeLayout.ALIGN_LEFT,R.id.decomposition_structure_text);
-                explanation_block.addView(tv2,tv2_layoutParams);
-                tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_radical_text);
                 //endregion
 
                 //region Get the remaining radical characteristics (readings, meanings) from the KanjiDictDatabase
@@ -751,172 +291,29 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                     currentKanjiDetailedCharacteristics = currentMainRadicalDetailedCharacteristics;
                 }
 
-                //region On Reading of radical
-                tv1 = new TextView(getContext());
-                tv1.setText(getResources().getString(R.string.QueryOnReadings));
-                tv1.setTextSize(14);
-                tv1.setTextColor(Color.parseColor("#800080"));
-                tv1.setTextIsSelectable(false);
-                tv1.setTypeface(null, Typeface.BOLD);
-                tv1.setMovementMethod(LinkMovementMethod.getInstance());
-                tv1.setSelected(false);
-                tv1.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv1.setAlpha((float) 0.90);
+                //On Reading of radical
+                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(0).equals("")) { onReadingTV.setText("-");}
+                else { onReadingTV.setText(currentKanjiDetailedCharacteristics.get(0));}
 
-                tv1.setId(R.id.decomposition_on_reading);
-                tv1_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-                tv1_layoutParams.addRule(RelativeLayout.BELOW, R.id.decomposition_radical);
-                explanation_block.addView(tv1,tv1_layoutParams);
+                //On Meaning of radical
+                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(2).equals("")) { onMeaningTV.setText("-");}
+                else { onMeaningTV.setText(currentKanjiDetailedCharacteristics.get(2));}
 
-                tv2 = new TextView(getContext());
-                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(0).equals("")) { tv2.setText("-");}
-                else { tv2.setText(currentKanjiDetailedCharacteristics.get(0));}
-                tv2.setTextSize(14);
-                tv2.setTextColor(Color.parseColor("#800080"));
-                tv2.setTextIsSelectable(false);
-                tv2.setTypeface(null, Typeface.NORMAL);
-                tv2.setMovementMethod(LinkMovementMethod.getInstance());
-                tv2.setSelected(false);
-                tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv2.setAlpha((float) 0.90);
+                //Kun Reading of radical
+                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(1).equals("")) { kunReadingTV.setText("-");}
+                else { kunReadingTV.setText(currentKanjiDetailedCharacteristics.get(1));}
 
-                tv2.setId(R.id.decomposition_on_reading_text);
-                tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_on_reading);
-                tv2_layoutParams.addRule(RelativeLayout.BELOW, R.id.decomposition_radical_text);
-                tv2_layoutParams.addRule(RelativeLayout.ALIGN_LEFT,R.id.decomposition_structure_text);
-                explanation_block.addView(tv2,tv2_layoutParams);
-                tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_on_reading_text);
-                //endregion
-
-                //region On Meaning of radical
-                tv1 = new TextView(getContext());
-                tv1.setText(getResources().getString(R.string.QueryOnMeaning));
-                tv1.setTextSize(14);
-                tv1.setTextColor(Color.parseColor("#800080"));
-                tv1.setTextIsSelectable(false);
-                tv1.setTypeface(null, Typeface.BOLD);
-                tv1.setMovementMethod(LinkMovementMethod.getInstance());
-                tv1.setSelected(false);
-                tv1.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv1.setAlpha((float) 0.90);
-
-                tv1.setId(R.id.decomposition_on_meaning);
-                tv1_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-                tv1_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_on_reading);
-                explanation_block.addView(tv1,tv1_layoutParams);
-
-                tv2 = new TextView(getContext());
-                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(2).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(2));}
-                tv2.setTextSize(14);
-                tv2.setTextColor(Color.parseColor("#800080"));
-                tv2.setTextIsSelectable(false);
-                tv2.setTypeface(null, Typeface.NORMAL);
-                tv2.setMovementMethod(LinkMovementMethod.getInstance());
-                tv2.setSelected(false);
-                tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv2.setAlpha((float) 0.90);
-
-                tv2.setId(R.id.decomposition_on_meaning_text);
-                tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_on_meaning);
-                tv2_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_on_reading_text);
-                tv2_layoutParams.addRule(RelativeLayout.ALIGN_LEFT,R.id.decomposition_structure_text);
-                explanation_block.addView(tv2,tv2_layoutParams);
-                tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_on_meaning_text);
-                //endregion
-
-                //region Kun Reading of radical
-                tv1 = new TextView(getContext());
-                tv1.setText(getResources().getString(R.string.QueryKunReadings));
-                tv1.setTextSize(14);
-                tv1.setTextColor(Color.parseColor("#800080"));
-                tv1.setTextIsSelectable(false);
-                tv1.setTypeface(null, Typeface.BOLD);
-                tv1.setMovementMethod(LinkMovementMethod.getInstance());
-                tv1.setSelected(false);
-                tv1.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv1.setAlpha((float) 0.90);
-
-                tv1.setId(R.id.decomposition_kun_reading);
-                tv1_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-                tv1_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_on_meaning);
-                explanation_block.addView(tv1,tv1_layoutParams);
-
-                tv2 = new TextView(getContext());
-                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(1).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(1));}
-                tv2.setTextSize(14);
-                tv2.setTextColor(Color.parseColor("#800080"));
-                tv2.setTextIsSelectable(false);
-                tv2.setTypeface(null, Typeface.NORMAL);
-                tv2.setMovementMethod(LinkMovementMethod.getInstance());
-                tv2.setSelected(false);
-                tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv2.setAlpha((float) 0.90);
-
-                tv2.setId(R.id.decomposition_kun_reading_text);
-                tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_kun_reading);
-                tv2_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_on_meaning_text);
-                tv2_layoutParams.addRule(RelativeLayout.ALIGN_LEFT,R.id.decomposition_structure_text);
-                explanation_block.addView(tv2,tv2_layoutParams);
-                tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_kun_reading_text);
-                //endregion
-
-                //region Kun Meaning of radical
-                tv1 = new TextView(getContext());
-                tv1.setText(getResources().getString(R.string.QueryKunMeaning));
-                tv1.setTextSize(14);
-                tv1.setTextColor(Color.parseColor("#800080"));
-                tv1.setTextIsSelectable(false);
-                tv1.setTypeface(null, Typeface.BOLD);
-                tv1.setMovementMethod(LinkMovementMethod.getInstance());
-                tv1.setSelected(false);
-                tv1.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv1.setAlpha((float) 0.90);
-
-                tv1.setId(R.id.decomposition_kun_meaning);
-                tv1_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                tv1_layoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-                tv1_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_kun_reading);
-                explanation_block.addView(tv1,tv1_layoutParams);
-
-                tv2 = new TextView(getContext());
-                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(3).equals("")) { tv2.setText("-");} else { tv2.setText(currentKanjiDetailedCharacteristics.get(3));}
-                tv2.setTextSize(14);
-                tv2.setTextColor(Color.parseColor("#800080"));
-                tv2.setTextIsSelectable(false);
-                tv2.setTypeface(null, Typeface.NORMAL);
-                tv2.setMovementMethod(LinkMovementMethod.getInstance());
-                tv2.setSelected(false);
-                tv2.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv2.setAlpha((float) 0.90);
-
-                tv2.setId(R.id.decomposition_kun_meaning_text);
-                tv2_layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                tv2_layoutParams.addRule(RelativeLayout.RIGHT_OF,R.id.decomposition_kun_meaning);
-                tv2_layoutParams.addRule(RelativeLayout.BELOW,R.id.decomposition_kun_reading_text);
-                tv2_layoutParams.addRule(RelativeLayout.ALIGN_LEFT,R.id.decomposition_structure_text);
-                explanation_block.addView(tv2,tv2_layoutParams);
-                tv1_layoutParams.addRule(RelativeLayout.ALIGN_TOP,R.id.decomposition_kun_meaning_text);
-                //endregion
+                //Kun Meaning of radical
+                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(3).equals("")) { kunMeaningTV.setText("-");}
+                else { kunMeaningTV.setText(currentKanjiDetailedCharacteristics.get(3));}
 
                 //endregion
             }
             //endregion
         }
         //endregion
-        //endregion
-        //endregion
 
-        overall_block_linearLayout.addView(explanation_block);
-        //endregion
-
-        mOverallBlockContainer.addView(overall_block_linearLayout);
-        //endregion
+        mOverallBlockContainer.addView(decompositionContainer);
 
         mDecompositionScrollView.fullScroll(View.FOCUS_DOWN);
         mDecompositionScrollView.post(new Runnable() {

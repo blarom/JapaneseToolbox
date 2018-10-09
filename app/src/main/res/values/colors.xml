@@ -8,8 +8,10 @@
     <color name="colorAccentLight">#666ad1</color>
     <color name="textColorPrimary">@color/colorPrimaryDark</color>
     <color name="textColorSecondary">@color/colorAccent</color>
-    <color name="Black">#000000</color>
-    <color name="White">#ffffff</color>
+    <color name="Black">#FF000000</color>
+    <color name="White">#FFffffff</color>
+    <color name="Blue">#FF0000ff</color>
+    <color name="Purple">#FF800080</color>
     <color name="Transparent">#80FFFFFF</color>
 
     <!--InputQueryFragment colors-->

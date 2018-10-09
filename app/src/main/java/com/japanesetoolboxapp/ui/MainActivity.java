@@ -626,6 +626,7 @@ public class MainActivity extends AppCompatActivity implements
         updateInputQuery(word, false);
     }
     @Override public void onVerbConjugationFromDictRequested(String verb) {
+        mInputQueryFragment.setConjButtonSelected();
         onConjRequested(verb);
     }
 

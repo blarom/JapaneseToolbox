@@ -64,4 +64,53 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textIsSelectable">true</item>
     </style>
+
+    <style name="SearchByRadicalTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorPrimaryLight</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">text</item>
+        <item name="android:textIsSelectable">false</item>
+    </style>
+
+    <style name="SearchByRadicalDialogTextStyle" parent="SearchByRadicalTextStyle" >
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="SearchByRadicalElementStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textColorCompositionGridElementDefault</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="DecomposeValueStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center_horizontal|start</item>
+        <item name="android:textColor">@color/Purple</item>
+    </style>
+
+    <style name="DecomposeTitleStyle" parent="DecomposeValueStyle">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DecomposeTopRowTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/Blue</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

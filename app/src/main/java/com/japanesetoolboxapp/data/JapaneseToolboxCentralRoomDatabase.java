@@ -16,7 +16,7 @@ import com.japanesetoolboxapp.resources.Utilities;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class}, version = 7, exportSchema = false)
+@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class}, version = 8, exportSchema = false)
 public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
@@ -112,6 +112,7 @@ public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
 
         List<Word> wordList = new ArrayList<>();
         for (int i=1; i<centralDatabase.size(); i++) {
+            if (centralDatabase.get(i)[0].equals("")) break;
             Word word = Utilities.createWordFromCsvDatabases(centralDatabase, meaningsDatabase, multExplanationsDatabase, examplesDatabase, i);
             wordList.add(word);
         }

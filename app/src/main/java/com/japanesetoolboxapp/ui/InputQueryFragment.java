@@ -90,6 +90,8 @@ public class InputQueryFragment extends Fragment implements
     //region Parameters
     @BindView(R.id.query) AutoCompleteTextView mInputQueryAutoCompleteTextView;
     @BindView(R.id.button_dict) Button mDictButton;
+    @BindView(R.id.button_conj) Button mConjButton;
+    @BindView(R.id.button_convert) Button mConvertButton;
     @BindView(R.id.button_search_by_radical) Button mSearchByRadicalButton;
     @BindView(R.id.button_decompose) Button mDecomposeButton;
     private static final int QUERY_HISTORY_MAX_SIZE = 7;
@@ -315,6 +317,7 @@ public class InputQueryFragment extends Fragment implements
 
                     registerThatUserIsRequestingDictSearch(true);
 
+                    drawBorderAroundThisButton(mDictButton);
                     inputQueryOperationsHandler.onDictRequested(mInputQuery);
                 }
                 return true;
@@ -353,6 +356,22 @@ public class InputQueryFragment extends Fragment implements
         //imageToBeDecoded = Utilities.adjustImageAngleAndScale(imageToBeDecoded, 0, 0.5);
         return imageToBeDecoded;
     }
+    private void drawBorderAroundThisButton(Button button) {
+
+        if (mDictButton==null) return;
+
+        mDictButton.setBackgroundResource(0);
+        mConjButton.setBackgroundResource(0);
+        mConvertButton.setBackgroundResource(0);
+        mSearchByRadicalButton.setBackgroundResource(0);
+        mDecomposeButton.setBackgroundResource(0);
+
+        if (button.getId() == mDictButton.getId()) mDictButton.setBackgroundResource(R.drawable.border_background);
+        else if (button.getId() == mConjButton.getId()) mConjButton.setBackgroundResource(R.drawable.border_background);
+        else if (button.getId() == mConvertButton.getId()) mConvertButton.setBackgroundResource(R.drawable.border_background);
+        else if (button.getId() == mSearchByRadicalButton.getId()) mSearchByRadicalButton.setBackgroundResource(R.drawable.border_background);
+        else if (button.getId() == mDecomposeButton.getId()) mDecomposeButton.setBackgroundResource(R.drawable.border_background);
+    }
 
 
     //View click listeners
@@ -362,6 +381,7 @@ public class InputQueryFragment extends Fragment implements
         updateQueryHistory();
 
         registerThatUserIsRequestingDictSearch(true); //TODO: remove this?
+        drawBorderAroundThisButton(mDictButton);
 
         inputQueryOperationsHandler.onDictRequested(inputWordString);
     }
@@ -373,6 +393,7 @@ public class InputQueryFragment extends Fragment implements
 
         registerThatUserIsRequestingDictSearch(false); //TODO: remove this?
 
+        drawBorderAroundThisButton(mConjButton);
         inputQueryOperationsHandler.onConjRequested(inputVerbString);
 
     }
@@ -381,6 +402,7 @@ public class InputQueryFragment extends Fragment implements
         mInputQuery = mInputQueryAutoCompleteTextView.getText().toString();
         updateQueryHistory();
 
+        drawBorderAroundThisButton(mConvertButton);
         inputQueryOperationsHandler.onConvertRequested(mInputQuery);
     }
     @OnClick(R.id.button_search_by_radical) public void onSearchByRadicalButtonClick() {
@@ -391,6 +413,7 @@ public class InputQueryFragment extends Fragment implements
 
         updateQueryHistory();
 
+        drawBorderAroundThisButton(mSearchByRadicalButton);
         inputQueryOperationsHandler.onSearchByRadicalRequested(Utilities.removeSpecialCharacters(mInputQuery));
     }
     @OnClick(R.id.button_decompose) public void onDecomposeButtonClick() {
@@ -399,6 +422,7 @@ public class InputQueryFragment extends Fragment implements
 
         updateQueryHistory();
 
+        drawBorderAroundThisButton(mDecomposeButton);
         inputQueryOperationsHandler.onDecomposeRequested(Utilities.removeSpecialCharacters(mInputQuery));
     }
     @OnClick(R.id.button_clear_query) public void onClearQueryButtonClick() {
@@ -1170,6 +1194,9 @@ public class InputQueryFragment extends Fragment implements
         mInputQuery = mInputQueryAutoCompleteTextView.getText().toString();
         String newQuery = mInputQuery + addedText;
         mInputQueryAutoCompleteTextView.setText(newQuery);
+    }
+    public void setConjButtonSelected() {
+        drawBorderAroundThisButton(mConjButton);
     }
 
 
