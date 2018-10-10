@@ -1149,6 +1149,9 @@ public class ConjugatorFragment extends Fragment implements
             for (int i = 0; i < ConjugationSearchMatchingVerbRowColIndexList.size(); i++) {
 
                 Word currentWord = mJapaneseToolboxCentralRoomDatabase.getWordByWordId(ConjugationSearchMatchingVerbRowColIndexList.get(i)[0]);
+                if (currentWord==null) {
+                    String a="";
+                }
 
                 int length = Utilities.getLengthFromWordAttributes(currentWord, inputQuery, queryWordWithoutTo, queryIsVerbWithTo);
 

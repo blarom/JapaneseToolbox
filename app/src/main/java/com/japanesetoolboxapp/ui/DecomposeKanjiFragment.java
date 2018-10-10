@@ -242,25 +242,30 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 radicalTV.setVisibility(View.GONE);
             }
 
-            //Display On Reading of common Japanese character
-            if (currentKanjiDetailedCharacteristics.get(0).equals("")) { onReadingTV.setText("-");} else { onReadingTV.setText(currentKanjiDetailedCharacteristics.get(0));}
-
-            //Display On Meaning of common Japanese character
-            if (currentKanjiDetailedCharacteristics.get(2).equals("")) { onMeaningTV.setText("-");} else { onMeaningTV.setText(currentKanjiDetailedCharacteristics.get(2));}
-
-            //Display Kun Reading of common Japanese character
-            if (currentKanjiDetailedCharacteristics.get(1).equals("")) { kunReadingTV.setText("-");} else { kunReadingTV.setText(currentKanjiDetailedCharacteristics.get(1));}
-
-            //region Display Kun Meaning of common Japanese character
-            if (currentKanjiDetailedCharacteristics.get(3).equals("")) { kunMeaningTV.setText("-");} else { kunMeaningTV.setText(currentKanjiDetailedCharacteristics.get(3));}
+            if (currentKanjiDetailedCharacteristics.size() == 0
+                    || currentKanjiDetailedCharacteristics.get(0).equals("")) {
+                onReadingTV.setText("-");
+                onMeaningTV.setText("-");
+                kunReadingTV.setText("-");
+                kunMeaningTV.setText("-");
+            }
+            else {
+                onReadingTV.setText(currentKanjiDetailedCharacteristics.get(0).equals("")? "-" : currentKanjiDetailedCharacteristics.get(0));
+                onMeaningTV.setText(currentKanjiDetailedCharacteristics.get(2).equals("")? "-" : currentKanjiDetailedCharacteristics.get(2));
+                kunReadingTV.setText(currentKanjiDetailedCharacteristics.get(1).equals("")? "-" : currentKanjiDetailedCharacteristics.get(1));
+                kunMeaningTV.setText(currentKanjiDetailedCharacteristics.get(3).equals("")? "-" : currentKanjiDetailedCharacteristics.get(3));
+            }
         }
         else if (character_is_radical_or_kana) {
             //region Display Radical or Kana Meanings/Readings
+            String radicalValue;
             if (radical_row[2].equals("Hiragana") || radical_row[2].equals("Katakana")) {
-                radicalTV.setText(radical_row[2] + " " + radical_row[3] + ".");
+                radicalValue = radical_row[2] + " " + radical_row[3] + ".";
+                radicalTV.setText(radicalValue);
             }
             else if (radical_row[2].equals("Special")){
-                radicalTV.setText("Special symbol with meaning '" + radical_row[3] + "'.");
+                radicalValue = "Special symbol with meaning '" + radical_row[3] + "'.";
+                radicalTV.setText(radicalValue);
             }
             else {
                 //region Get the radical characteristics from the RadialsOnlyDatabase
@@ -270,20 +275,24 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 String strokes = " strokes.";
                 if (main_radical_row[4].equals("1")) { strokes = " stroke.";}
 
+                radicalValue = "";
                 if (parsed_number.size()>1) {
-                    if (parsed_number.get(1).equals("alt")) {
-                        radicalTV.setText("\""+ main_radical_row[3] + "\""+ " (Radical No. " + parsed_number.get(0) + "), " + main_radical_row[4] + strokes);
-                    }
-                    else if (parsed_number.get(1).equals("variant")) {
-                        radicalTV.setText("\"" + main_radical_row[3] + "\" radical variant" + " (Radical No. " + parsed_number.get(0) + ").");
-                    }
-                    else if (parsed_number.get(1).equals("simplification")) {
-                        radicalTV.setText("\"" + main_radical_row[3] + "\" (Radical No. " + parsed_number.get(0) + " simplification).");
+                    switch (parsed_number.get(1)) {
+                        case "alt":
+                            radicalValue = "\"" + main_radical_row[3] + "\"" + " (Radical No. " + parsed_number.get(0) + "), " + main_radical_row[4] + strokes;
+                            break;
+                        case "variant":
+                            radicalValue = "\"" + main_radical_row[3] + "\" radical variant" + " (Radical No. " + parsed_number.get(0) + ").";
+                            break;
+                        case "simplification":
+                            radicalValue = "\"" + main_radical_row[3] + "\" (Radical No. " + parsed_number.get(0) + " simplification).";
+                            break;
                     }
                 }
                 else {
-                    radicalTV.setText("\""+ main_radical_row[3] + "\""+ " (Radical No. " + parsed_number.get(0) + "), " + main_radical_row[4] + strokes);
+                    radicalValue = "\""+ main_radical_row[3] + "\""+ " (Radical No. " + parsed_number.get(0) + "), " + main_radical_row[4] + strokes;
                 }
+                radicalTV.setText(radicalValue);
                 //endregion
 
                 //region Get the remaining radical characteristics (readings, meanings) from the KanjiDictDatabase
@@ -291,22 +300,20 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                     currentKanjiDetailedCharacteristics = currentMainRadicalDetailedCharacteristics;
                 }
 
-                //On Reading of radical
-                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(0).equals("")) { onReadingTV.setText("-");}
-                else { onReadingTV.setText(currentKanjiDetailedCharacteristics.get(0));}
-
-                //On Meaning of radical
-                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(2).equals("")) { onMeaningTV.setText("-");}
-                else { onMeaningTV.setText(currentKanjiDetailedCharacteristics.get(2));}
-
-                //Kun Reading of radical
-                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(1).equals("")) { kunReadingTV.setText("-");}
-                else { kunReadingTV.setText(currentKanjiDetailedCharacteristics.get(1));}
-
-                //Kun Meaning of radical
-                if (currentKanjiDetailedCharacteristics==null || currentKanjiDetailedCharacteristics.get(3).equals("")) { kunMeaningTV.setText("-");}
-                else { kunMeaningTV.setText(currentKanjiDetailedCharacteristics.get(3));}
-
+                if (currentKanjiDetailedCharacteristics==null
+                        || currentKanjiDetailedCharacteristics.size() == 0
+                        || currentKanjiDetailedCharacteristics.get(0).equals("")) {
+                    onReadingTV.setText("-");
+                    onMeaningTV.setText("-");
+                    kunReadingTV.setText("-");
+                    kunMeaningTV.setText("-");
+                }
+                else {
+                    onReadingTV.setText(currentKanjiDetailedCharacteristics.get(0).equals("")? "-" : currentKanjiDetailedCharacteristics.get(0));
+                    onMeaningTV.setText(currentKanjiDetailedCharacteristics.get(2).equals("")? "-" : currentKanjiDetailedCharacteristics.get(2));
+                    kunReadingTV.setText(currentKanjiDetailedCharacteristics.get(1).equals("")? "-" : currentKanjiDetailedCharacteristics.get(1));
+                    kunMeaningTV.setText(currentKanjiDetailedCharacteristics.get(3).equals("")? "-" : currentKanjiDetailedCharacteristics.get(3));
+                }
                 //endregion
             }
             //endregion

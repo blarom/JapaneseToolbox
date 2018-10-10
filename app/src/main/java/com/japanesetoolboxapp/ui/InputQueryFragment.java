@@ -7,9 +7,6 @@ import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
-import android.content.ClipData;
-import android.content.ClipDescription;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -35,18 +32,14 @@ import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -366,11 +359,11 @@ public class InputQueryFragment extends Fragment implements
         mSearchByRadicalButton.setBackgroundResource(0);
         mDecomposeButton.setBackgroundResource(0);
 
-        if (button.getId() == mDictButton.getId()) mDictButton.setBackgroundResource(R.drawable.border_background);
-        else if (button.getId() == mConjButton.getId()) mConjButton.setBackgroundResource(R.drawable.border_background);
-        else if (button.getId() == mConvertButton.getId()) mConvertButton.setBackgroundResource(R.drawable.border_background);
-        else if (button.getId() == mSearchByRadicalButton.getId()) mSearchByRadicalButton.setBackgroundResource(R.drawable.border_background);
-        else if (button.getId() == mDecomposeButton.getId()) mDecomposeButton.setBackgroundResource(R.drawable.border_background);
+        if (button.getId() == mDictButton.getId()) mDictButton.setBackgroundResource(R.drawable.border_background_accent_color);
+        else if (button.getId() == mConjButton.getId()) mConjButton.setBackgroundResource(R.drawable.border_background_accent_color);
+        else if (button.getId() == mConvertButton.getId()) mConvertButton.setBackgroundResource(R.drawable.border_background_accent_color);
+        else if (button.getId() == mSearchByRadicalButton.getId()) mSearchByRadicalButton.setBackgroundResource(R.drawable.border_background_accent_color);
+        else if (button.getId() == mDecomposeButton.getId()) mDecomposeButton.setBackgroundResource(R.drawable.border_background_accent_color);
     }
 
 

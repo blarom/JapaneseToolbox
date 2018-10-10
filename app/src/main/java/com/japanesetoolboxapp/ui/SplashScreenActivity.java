@@ -73,12 +73,12 @@ public class SplashScreenActivity extends Activity {
 
                 boolean finishedLoadingWordDatabases = Utilities.getAppPreferenceWordVerbDatabasesFinishedLoadingFlag(SplashScreenActivity.this);
                 boolean finishedLoadingKanjiDatabases = Utilities.getAppPreferenceKanjiDatabaseFinishedLoadingFlag(SplashScreenActivity.this);
-                if (!finishedLoadingWordDatabases) {
+                if (!finishedLoadingWordDatabases || !finishedLoadingKanjiDatabases) {
                     mTimeToLoadTextView.setText(R.string.database_being_installed);
                     mLoadingDatabaseTextView.setVisibility(View.VISIBLE);
                     showLoadingIndicator();
                 }
-                else if (finishedLoadingWordDatabases && finishedLoadingKanjiDatabases) {
+                else {
                     mTimeToLoadTextView.setText(R.string.splashscreen_should_take_only_a_few_seconds);
                     hideLoadingIndicator();
                     mLoadingDatabaseTextView.setVisibility(View.GONE);

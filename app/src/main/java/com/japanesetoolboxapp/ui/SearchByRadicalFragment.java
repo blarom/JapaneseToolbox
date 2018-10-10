@@ -24,9 +24,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -64,9 +66,14 @@ public class SearchByRadicalFragment extends Fragment implements
     @BindView(R.id.search_by_radical_elementB) EditText mElementBEditText;
     @BindView(R.id.search_by_radical_elementC) EditText mElementCEditText;
     @BindView(R.id.search_by_radical_elementD) EditText mElementDEditText;
+    @BindView(R.id.search_by_radical_elementA_container) FrameLayout mElementAEditTextContainer;
+    @BindView(R.id.search_by_radical_elementB_container) FrameLayout mElementBEditTextContainer;
+    @BindView(R.id.search_by_radical_elementC_container) FrameLayout mElementCEditTextContainer;
+    @BindView(R.id.search_by_radical_elementD_container) FrameLayout mElementDEditTextContainer;
     @BindView(R.id.search_by_radical_selection_grid_container) LinearLayout mSelectionGridContainerLinearLayout;
     @BindView(R.id.search_by_radical_character_descriptor) EditText mCharacterDescriptorEditText;
     @BindView(R.id.search_by_radical_requested_component_structure) Button mComponentStructureButton;
+    @BindView(R.id.search_by_radical_selection_grid_title) TextView mSelectionGridTitleTextView;
     @BindView(R.id.search_by_radical_selection_grid) RecyclerView mSelectionGridRecyclerView;
     @BindView(R.id.search_by_radical_selection_grid_no_elements_textview) TextView mNoSelectionElementsTextView;
     @BindView(R.id.search_by_radical_results_grid_container) LinearLayout mResultsGridContainerLinearLayout;
@@ -288,22 +295,34 @@ public class SearchByRadicalFragment extends Fragment implements
         mSelectedComponentStructure = setCategoryBasedOnSelectedStructureId(R.drawable.colored_structure_2_left_right);
         //endregion
 
-        //Setting the recyclerview height depending on the devcies'display density
+        //region Setting the filter listener
+        mCharacterDescriptorEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    filterComponentKanjiGridElements();
+                }
+                return false;
+            }
+        });
+        //endregion
+
+        //Setting the recyclerview height depending on the device's display density
         mMaxRecyclerViewHeightPixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, MAX_RECYCLERVIEW_HEIGHT_DP, getResources().getDisplayMetrics());
     }
     private void drawBorderAroundThisEditText(EditText editText) {
 
         if (mElementAEditText==null || mElementBEditText==null || mElementCEditText==null || mElementDEditText==null) return;
 
-        mElementAEditText.setBackgroundResource(0);
-        mElementBEditText.setBackgroundResource(0);
-        mElementCEditText.setBackgroundResource(0);
-        mElementDEditText.setBackgroundResource(0);
+        mElementAEditTextContainer.setBackgroundResource(0);
+        mElementBEditTextContainer.setBackgroundResource(0);
+        mElementCEditTextContainer.setBackgroundResource(0);
+        mElementDEditTextContainer.setBackgroundResource(0);
 
-        if (editText.getId() == mElementAEditText.getId()) mElementAEditText.setBackgroundResource(R.drawable.border_background);
-        else if (editText.getId() == mElementBEditText.getId()) mElementBEditText.setBackgroundResource(R.drawable.border_background);
-        else if (editText.getId() == mElementCEditText.getId()) mElementCEditText.setBackgroundResource(R.drawable.border_background);
-        else if (editText.getId() == mElementDEditText.getId()) mElementDEditText.setBackgroundResource(R.drawable.border_background);
+        if (editText.getId() == mElementAEditText.getId()) mElementAEditTextContainer.setBackgroundResource(R.drawable.border_background_three_sided);
+        else if (editText.getId() == mElementBEditText.getId()) mElementBEditTextContainer.setBackgroundResource(R.drawable.border_background_three_sided);
+        else if (editText.getId() == mElementCEditText.getId()) mElementCEditTextContainer.setBackgroundResource(R.drawable.border_background_three_sided);
+        else if (editText.getId() == mElementDEditText.getId()) mElementDEditTextContainer.setBackgroundResource(R.drawable.border_background_three_sided);
     }
     private void updateInputElements(String inputQuery) {
 
@@ -489,7 +508,7 @@ public class SearchByRadicalFragment extends Fragment implements
         mNoResultsTextView.setVisibility(View.VISIBLE);
         mNoResultsTextView.setText(text);
     }
-    private void showComponentsGrid() {
+    private void createComponentsGrid() {
         //mNumberOfResultGridColumns = 7;
 
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), mNumberOfComponentGridColumns);
@@ -510,7 +529,7 @@ public class SearchByRadicalFragment extends Fragment implements
         mSelectionGridRecyclerView.setVisibility(View.VISIBLE);
         mNoSelectionElementsTextView.setVisibility(View.GONE);
     }
-    private void showResultsGrid() {
+    private void createResultsGrid() {
         //mNumberOfResultGridColumns = 7;
 
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), mNumberOfResultGridColumns);
@@ -571,6 +590,11 @@ public class SearchByRadicalFragment extends Fragment implements
             else loaderManager.restartLoader(ROOM_DB_KANJI_SEARCH_LOADER, bundle, this);
         }
     }
+    private void filterComponentKanjiGridElements() {
+        if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
+        mKanjiCharacterNameForFilter = mCharacterDescriptorEditText.getText().toString();
+        startFilteringComponentKanjiGridElementsAsynchronously();
+    }
 
 
     @OnClick (R.id.search_by_radical_overall_structure_button) public void onRequestedStructureButtonClick() {
@@ -581,6 +605,7 @@ public class SearchByRadicalFragment extends Fragment implements
 
         mSelectedComponent = "";
         mComponentSelectionType = "radical";
+        mSelectionGridTitleTextView.setText("Select the Radical");
         showComponentsSelectionSection();
 
         startCreatingComponentKanjiGridElementsAsynchronously();
@@ -590,6 +615,7 @@ public class SearchByRadicalFragment extends Fragment implements
 
         mSelectedComponent = "";
         mComponentSelectionType = "component";
+        mSelectionGridTitleTextView.setText("Select the Component");
         showComponentsSelectionSection();
 
         startCreatingComponentKanjiGridElementsAsynchronously();
@@ -610,9 +636,7 @@ public class SearchByRadicalFragment extends Fragment implements
         showStructuresDialog("component");
     }
     @OnClick (R.id.search_by_radical_button_filter) public void onFilterButtonClick() {
-        if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
-        mKanjiCharacterNameForFilter = mCharacterDescriptorEditText.getText().toString();
-        startFilteringComponentKanjiGridElementsAsynchronously();
+        filterComponentKanjiGridElements();
     }
     @OnClick (R.id.search_by_radical_button_selection_grid_cancel_top) public void onCancelTopButtonClick() {
         handleComponentSelection(false);
@@ -640,7 +664,7 @@ public class SearchByRadicalFragment extends Fragment implements
         if (id == ROOM_DB_COMPONENT_GRID_LOADER) {
             mAlreadyLoadedSelectionGrid = false;
             ComponentGridCreationAsyncTaskLoader gridCreationLoader = new ComponentGridCreationAsyncTaskLoader(
-                    getContext(), mComponentSelectionType, mRadicalsOnlyDatabase, mSelectedComponentStructure, mKanjiCharacterNameForFilter);
+                    getContext(), mComponentSelectionType, mRadicalsOnlyDatabase, mSelectedComponentStructure);
             return gridCreationLoader;
         }
         else if (id == ROOM_DB_COMPONENT_GRID_FILTER_LOADER) {
@@ -656,7 +680,7 @@ public class SearchByRadicalFragment extends Fragment implements
                     getContext(), elements_list, mSelectedOverallStructure, mSimilarsDatabase);
             return kanjiSearchLoader;
         }
-        else return new ComponentGridCreationAsyncTaskLoader(getContext(), "", null, 0, "");
+        else return new ComponentGridCreationAsyncTaskLoader(getContext(), "", null, 0);
     }
     @Override public void onLoadFinished(@NonNull Loader<Object> loader, Object data) {
 
@@ -670,9 +694,12 @@ public class SearchByRadicalFragment extends Fragment implements
             mDisplayableComponentSelections = (List<String>) new ArrayList(mUnfilteredDisplayableComponentSelections);
 
             hideLoadingIndicator();
-
-            if (mDisplayableComponentSelections.size() != 0) showComponentsGrid();
-            else showNoComponentsTextInsteadOfComponentsGrid();
+            mKanjiCharacterNameForFilter = mCharacterDescriptorEditText.getText().toString();
+            if (TextUtils.isEmpty(mKanjiCharacterNameForFilter)) {
+                if (mDisplayableComponentSelections.size() != 0) createComponentsGrid();
+                else showNoComponentsTextInsteadOfComponentsGrid();
+            }
+            else startFilteringComponentKanjiGridElementsAsynchronously();
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_COMPONENT_GRID_LOADER);
         }
@@ -686,7 +713,7 @@ public class SearchByRadicalFragment extends Fragment implements
 
             hideLoadingIndicator();
 
-            if (mDisplayableComponentSelections.size() != 0) showComponentsGrid();
+            if (mDisplayableComponentSelections.size() != 0) createComponentsGrid();
             else showNoComponentsTextInsteadOfComponentsGrid();
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_COMPONENT_GRID_FILTER_LOADER);
@@ -727,9 +754,9 @@ public class SearchByRadicalFragment extends Fragment implements
             mPrintableSearchResults = selections;
 
             //Displaying the results grid
-            if (searchTooBroad) showNoResultsTextInsteadOfResultsGrid("Search too broad.");
-            else if (mPrintableSearchResults.size() != 0) showResultsGrid();
-            else showNoResultsTextInsteadOfResultsGrid("No results found.");
+            if (searchTooBroad) showNoResultsTextInsteadOfResultsGrid(getString(R.string.search_for_radical_search_too_broad));
+            else if (mPrintableSearchResults.size() != 0) createResultsGrid();
+            else showNoResultsTextInsteadOfResultsGrid(getString(R.string.search_by_radical_no_results_found));
 
             //createSearchResultsGrid(printable_search_results, searchTooBroad);
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_COMPONENT_GRID_LOADER);
@@ -744,7 +771,6 @@ public class SearchByRadicalFragment extends Fragment implements
         private final String mComponentSelectionType;
         private final List<String[]> mRadicalsOnlyDatabase;
         private final int chosen_components_list;
-        private final String mKanjiCharacterNameForFilter;
         private List<String[]> sortedList;
         private JapaneseToolboxKanjiRoomDatabase mJapaneseToolboxKanjiRoomDatabase;
         //endregion
@@ -752,13 +778,11 @@ public class SearchByRadicalFragment extends Fragment implements
         ComponentGridCreationAsyncTaskLoader(Context context,
                                              String mComponentSelectionType,
                                              List<String[]> mRadicalsOnlyDatabase,
-                                             int chosen_components_list,
-                                             String mKanjiCharacterNameForFilter) {
+                                             int chosen_components_list) {
             super(context);
             this.mComponentSelectionType = mComponentSelectionType;
             this.mRadicalsOnlyDatabase = mRadicalsOnlyDatabase;
             this.chosen_components_list = chosen_components_list;
-            this.mKanjiCharacterNameForFilter = mKanjiCharacterNameForFilter;
         }
 
         @Override
@@ -771,7 +795,6 @@ public class SearchByRadicalFragment extends Fragment implements
 
             mJapaneseToolboxKanjiRoomDatabase = JapaneseToolboxKanjiRoomDatabase.getInstance(getContext());
             List<String> displayableComponentSelections = getSelectionGridElements();
-            displayableComponentSelections = filterGridElementsAccordingToDescriptor(displayableComponentSelections);
 
             return displayableComponentSelections;
         }
@@ -901,49 +924,6 @@ public class SearchByRadicalFragment extends Fragment implements
 
 
             return displayableComponentSelections;
-        }
-        List<String> filterGridElementsAccordingToDescriptor(List<String> displayableComponentSelections) {
-
-            if (displayableComponentSelections ==null) return new ArrayList<>();
-            else if (TextUtils.isEmpty(mKanjiCharacterNameForFilter)) return displayableComponentSelections;
-
-            List<String> intersectionWithMatchingDescriptors;
-            if (mComponentSelectionType.contains("radical")) {
-                List<String> matchingRadicals = new ArrayList<>();
-                String radical;
-                String radicalNumber;
-                String radicalNumberFirstElement;
-                String radicalName;
-                String numberStrokes;
-                for (int i = 0; i < mRadicalsOnlyDatabase.size(); i++) {
-                    radical = mRadicalsOnlyDatabase.get(i)[0];
-                    radicalNumber = mRadicalsOnlyDatabase.get(i)[2];
-                    radicalNumberFirstElement = radicalNumber.split(";")[0];
-                    radicalName = mRadicalsOnlyDatabase.get(i)[3];
-                    numberStrokes = mRadicalsOnlyDatabase.get(i)[4];
-                    if (radical.equals(mKanjiCharacterNameForFilter)
-                            || radicalNumberFirstElement.equals(mKanjiCharacterNameForFilter)
-                            || radicalName.contains(mKanjiCharacterNameForFilter)
-                            || numberStrokes.equals(mKanjiCharacterNameForFilter)) {
-                        matchingRadicals.add(mRadicalsOnlyDatabase.get(i)[0]);
-                    }
-                }
-
-                intersectionWithMatchingDescriptors = Utilities.getIntersectionOfLists(displayableComponentSelections, matchingRadicals);
-            }
-            else {
-                List<KanjiCharacter> matchingKanjiCharactersByDescriptor = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByDescriptor(mKanjiCharacterNameForFilter);
-
-                List<String> matchingCharacters = new ArrayList<>();
-                for (KanjiCharacter kanjiCharacter : matchingKanjiCharactersByDescriptor) {
-                    matchingCharacters.add(Utilities.convertFromUTF8Index(kanjiCharacter.getHexIdentifier()));
-                }
-
-                intersectionWithMatchingDescriptors = Utilities.getIntersectionOfLists(displayableComponentSelections, matchingCharacters);
-            }
-
-            return intersectionWithMatchingDescriptors;
-
         }
 
         // QuickSort Algorithm (adapted from http://www.vogella.com/tutorials/JavaAlgorithmsQuicksort/article.html)

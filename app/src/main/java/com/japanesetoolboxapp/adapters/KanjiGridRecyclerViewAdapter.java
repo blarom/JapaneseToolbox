@@ -45,7 +45,7 @@ public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGrid
         String kanji = mKanjis.get(position);
         final TextView tv = holder.kanjiTextView;
 
-        if (mKanjiIsSelected[position]) tv.setBackgroundResource(R.drawable.border_background);
+        if (mKanjiIsSelected[position]) tv.setBackgroundResource(R.drawable.border_background_accent_color);
         else tv.setBackgroundResource(0);
 
         tv.setText(kanji);
@@ -93,7 +93,7 @@ public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGrid
         }
         else {
             createSelectedArray();
-            tv.setBackgroundResource(R.drawable.border_background);
+            tv.setBackgroundResource(R.drawable.border_background_accent_color);
             mKanjiIsSelected[position] = true;
         }
     }
