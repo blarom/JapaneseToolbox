@@ -1061,7 +1061,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1061|remaining, fraction of, incomplete|Ana||||||
 1062|remnant, fragment, incomplete set, fraction, odd sum, incompleteness|NACF||||||
 1063|representative, exemplary, model|Ana||||||
-1064|rich|Ana|||466|mazushii, binbou||
+1064|rich person|Ana|||466|mazushii, binbou||
 1065|ride, impolite, discourteous|Ana|||614|teinei||
 1066|impoliteness, rudeness, discourtesy|NACF|||112|||
 1067|rude, impolite, disrespectful, impertinent|Ana||||||
@@ -2941,7 +2941,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2941|brown|NCo|||212|||
 2942|chestnut|NCo||||||
 2943|color|NCo|||210|||
-2944|golden|NCo||||||
+2944|golden (colour, color)|NCo||||||
 2945|green|NCo||||||
 2946|green|NCo||||||
 2947|grey|NCo||||||
@@ -3677,7 +3677,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3677|sixty|NN||||||
 3678|sixty thousand|NN|||15|||
 3679|ten|NN|||7|||
-3680|ten thousand|NN|||10|||
+3680|10'000, ten thousand|NN|||10|||
 3681|tens of thousands|NN||||||
 3682|thirteen|NN||||||
 3683|thirty|NN||||||
@@ -3896,7 +3896,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3896|painter, artist|NPe||||||
 3897|patient|NPe||||||
 3898|pedestrian|NPe||||||
-3899|person|NPe|Honorific reference.||389||hito|
+3899|person, lady, gentleman|NPe|Honorific reference.||389||hito|
 3900|method of, manner of, way of, how to|Sx|||1115, 1116, 1307, 1477, 1478|||
 3901|person|NPe|Rarely used without a qualifier.||390|||
 3902|person on duty|NPe||||||
@@ -4436,7 +4436,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4436|what month|SI||||||
 4437|what week|SI||||||
 4438|what year|SI||||||
-4439|when|SI|||701||nanji, nanyoubi, nanshuu, nangetsu, nantoshi, nannichi|
+4439|when, how soon|SI|||701||nanji, nanyoubi, nanshuu, nangetsu, nantoshi, nannichi|
 4440|where|SI|ME#0038;0039|||||
 4441|which|SI|ME#0035;0036;0037|||||
 4442|who|SI|ME#0033;0034|||||
@@ -8648,8 +8648,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8648|in order to (e.g. meet goal), so that, take care (so as)|CE||||||
 8649|hoping or wishing for something|CE||||||
 8650|approval|NACF||||||
-8651|reach the point that, come to be that, turn into|VrugI||||||
-8652|(following a verb) to be sure to, to do (something) so that ..., to make sure to, to try to|CE||||||
+8651|reach the point that, come to be that, turn into|CEV||||||
+8652|(following a verb) to be sure to, to do (something) so that ..., to make sure to, to try to|CEV||||||
 8653|whole (body), full-length (e.g. portrait)|NACF||||||
 8654|antecedents, ancestor, previous position, previous existence, predecessor organization, predecessor organisation|NACF||||||
 8655|advance, moving forward, progress|NACF||||||
@@ -12158,7 +12158,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12158|dissolve (diet, parliament, etc.)|VsuruT||||||
 12159|revise, amend, alter|VsuruT||||||
 12160|explain, comment, expose, elucidate|VsuruT||||||
-12161|explane, interpret|VsuruT||||||
+12161|explain, interpret|VsuruT||||||
 12162|cancel, liquidate, resolve, reduce (e.g. stress)|VsuruT||||||
 12163|answer, solve|VsuruT||||||
 12164|become a member, join, enter, be admitted, subscribe, affiliate with, adhere, sign|VsuruI||||||
@@ -12231,3 +12231,196 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12231|promote, increase, advance|VsuruT||||||
 12232|rise (of river, lake, etc.), swell (water), increase (water)|VsuruI||||||
 12233|increase (tax)|VsuruI||||||
+12234|greeting, greetings, salutation, salute, polite set phrase used when meeting or parting from somebody|NACF||||||
+12235|polite set phrase used to express apology, sympathy, congratulations, etc.|NACF||||||
+12236|speech (congratulatory or appreciative), address|NACF||||||
+12237|revenge, retaliation|NACF||||||
+12238|a fine thing to say|CE||||||
+12239|dialoging (with another Zen practitioner to ascertain their level of enlightenment)|CE||||||
+12240|relationship (between people), connection|NACF||||||
+12241|intervention, mediation, mediator|NACF||||||
+12242|if ... then, when|PP||||||
+12243|and|PP||||||
+12244|why don't you...?|PP||||||
+12245|the more (one does something)|PP||||||
+12246|because, since|PP||||||
+12247|all, everything|NACF||||||
+12248|all countries, the whole world, universal, all nations|NACF||||||
+12249|all people, everybody|NACF||||||
+12250|ten thousand people|NACF||||||
+12251|all-purpose, utility, universal|NACF||||||
+12252|all-powerful, almighty, omnipotent, all-round (e.g. athlete)|NACF||||||
+12253|Mannou|NPl||||||
+12254|crying "banzai" (or raising one's hands in the banzai gesture)|NACF||||||
+12255|something worthy of celebration|NACF||||||
+12256|giving up|NACF||||||
+12257|long time|NACF||||||
+12258|eternal life (and prosperity)|NACF||||||
+12259|banzai (a celebratory cheer), hurrah (hooray, hurray)|NACF||||||
+12260|perfection, flawlessness|NACF||||||
+12261|perfect, flawless|Ana||||||
+12262|anyone, anybody, everyone, everybody, whoever|CE||||||
+12263|someone, somebody|P||||||
+12264|everyone, anyone|P||||||
+12265|no-one|P||||||
+12266|anyone, anybody, everyone, whoever|CE||||||
+12267||-||||||
+12268|anybody and everybody, with the best of them, as the next fellow|A||||||
+12269|deep pool, deep water, abyss|NACF||||||
+12270|depths (e.g. of despair, etc.), grip (e.g. of death)|NACF||||||
+12271|surface mail (ship), sea mail|NACF||||||
+12272|ferry service, steamer service|NACF||||||
+12273|commitment, pledge, promise|NACF||||||
+12274|reference, allusion|NACF||||||
+12275|feel when biting|NACF||||||
+12276|manner of enunciation|NACF||||||
+12277|embarrassing, embarrassed, ashamed, humiliated, shy|Ai||||||
+12278|bounce, spring, rebound|NACF||||||
+12279|momentum, impetus, impulse, stimulus, inertia|NACF||||||
+12280|moment, instant, impulse, chance|NACF||||||
+12281|spring, bound, bounce|VmuI||||||
+12282|be stimulated, be encouraged, get lively|VmuI||||||
+12283|treat oneself to, splurge on|VmuT||||||
+12284|breathe hard, pant, be out of breath|VmuI||||||
+12285|remove, take off, detach, unfasten, undo|VsuT||||||
+12286|drop (e.g. from a team), remove (from a position), exclude, expel|VsuT||||||
+12287|leave (e.g. one's seat), go away from, step out, slip away|VsuT||||||
+12288|dodge (a question, blow, etc.), evade, sidestep, avoid (e.g. peak season)|VsuT||||||
+12289|miss (a target, chance, punch, etc.)|VsuT||||||
+12290|here and there, this way and that way, everywhere, all over|NACF||||||
+12291|had better|CEAi||||||
+12292||-||||||
+12293|had better not|CEAi||||||
+12294||-||||||
+12295|direction, way|NACF||||||
+12296|point of the compass, cardinal direction, bearing|NACF||||||
+12297|method, means, approach|NACF||||||
+12298|direction, district, area|SxN||||||
+12299||-||||||
+12300|field (e.g. of study), sphere, quarter, aspect, angle|NACF||||||
+12301|plan, policy|NACF||||||
+12302|form, method, system, formula|NACF||||||
+12303|policy, plan, course, principle, objective|NACF||||||
+12304|magnetic needle|NACF||||||
+12305|law, rule|NACF||||||
+12306|equation, formula|NACF||||||
+12307|method for solving a problem, set way of achieving a particular result|NACF||||||
+12308|one's say, one's point|NACF||||||
+12309|complaint, grievance, objection, excuse|NACF||||||
+12310|begin to say, start talking, broach (a matter), bring up, come out with|VsuT||||||
+12311|be the first to say, suggest (doing), propose|VsuT||||||
+12312|way of talking, speaking style|NACF||||||
+12313|declare, assert, state definitively|VrugT||||||
+12314|finish saying, say it all, finish one's sentence|VrugT||||||
+12315|expression, phraseology|NACF||||||
+12316|excuse|NACF||||||
+12317|explanation|NACF||||||
+12318|announce, tell, sentence, order|VsuT||||||
+12319|about when, how soon|UNC||||||
+12320|it goes without saying, there is no need to say so, but of course, it is needless to say, it need scarcely be said|CEAi||||||
+12321||-||||||
+12322|wire netting, wire mesh, wire screen, chain-link mesh|NACF||||||
+12323|hammer|NACF||||||
+12324|hopeless swimmer, complete beginner at swimming, someone who sinks like a stone|NACF||||||
+12325|metal|NACF||||||
+12326|direction, way|NACF||||||
+12327|care of ...|Sx||||||
+12328|person in charge of ...|Sx||||||
+12329|side (e.g. "on my mother's side")|Sx||||||
+12330|they (of people), gentlemen (of the ...)|NACF||||||
+12331|you (usu. plural)|NACF||||||
+12332|various|A||||||
+12333|Friday|NACF||||||
+12334||-||||||
+12335|finance, financing, credit transacting, loaning of money, circulation of money|NACF||||||
+12336|monetary, financial, credit|NACF||||||
+12337|financial institutions, banking facilities|NACF||||||
+12338|gold (Au), golden (color), gold (medal, cup)|SxN||||||
+12339||-||||||
+12340|valuable, of highest value|NACF||||||
+12341|money, gold coin|NACF||||||
+12342|Friday|NACF||||||
+12343|metal (fourth of the five elements)|NACF||||||
+12344|Jin (dynasty of China, 1115-1234 CE)|NACF||||||
+12345|gold general|SxN||||||
+12346||-||||||
+12347|testicles|NACF||||||
+12348|karat, carat|SxN||||||
+12349||-||||||
+12350|gold coin|NACF||||||
+12351|interest rate, interest|NACF||||||
+12352|money, cash|NACF||||||
+12353|canary (esp. the island canary, Serinus canaria)|NACF||||||
+12354|metal|NACF||||||
+12355|Kinzoku|NPl||||||
+12356|paulownia tree, Paulownia tomentosa|NACF||||||
+12357|trump card|NACF||||||
+12358|ace up one's sleeve, secret weapon|NACF||||||
+12359|endless, boundless, innumerable|CEAi||||||
+12360||-||||||
+12361|endless, never-ending, going on forever|CEAi||||||
+12362||-||||||
+12363|giraffe (Giraffa camelopardalis)|NACF||||||
+12364|qilin (Chinese unicorn)|NACF||||||
+12365|Kirin (brand of beer)|NACF||||||
+12366|horse that can ride 1000 ri in a day|NACF||||||
+12367|clipping (of newspaper article, etc.), cutting, scrap (for a scrapbook)|NACF||||||
+12368|cut-out (picture, coloured paper, etc.)|NACF||||||
+12369|cut down, slay|VruiT||||||
+12370|truncate, round down, round off|VruiT||||||
+12371|omit, discard, cast away|VruiT||||||
+12372|Christ|NACF||||||
+12373|order, observance, discipline|NACF||||||
+12374|rules, law, regulations|NACF||||||
+12375|willpower, energy, vitality|NACF||||||
+12376|and yet, though, when, in spite of|PP||||||
+12377||-||||||
+12378|emergency, unlikely event|NACF||||||
+12379|by some chance, by some possibility|A||||||
+12380|myriad|NACF||||||
+12381|everything, all|NACF||||||
+12382|various|NACF||||||
+12383|shoplifting, shoplifter|NACF||||||
+12384|if by any chance, just in case, in the worst case, in the unlikely event that, 10000 to 1|CEA||||||
+12385||-||||||
+12386|fountain pen|NACF||||||
+12387|(not) altogether, (not) wholly|A||||||
+12388|ditch, drain, gutter, trench|NACF||||||
+12389|groove, tread|NACF||||||
+12390|gap (between people, countries, etc.), gulf|NACF||||||
+12391|counter for questions|Sx||||||
+12392||-||||||
+12393|the problem (at issue), the point at issue, problematic issue, problem|NACF||||||
+12394|questions and answers, dialogue|NACF||||||
+12395|blame, censure, reproof, reprimand, rebuke|NACF||||||
+12396|when it becomes, when it comes to|CE||||||
+12397|be truant, play hooky, skip school, skip out, be idle, sabotage by slowness|VrugI||||||
+12398|erosion control|NACF||||||
+12399|Mr., Mrs., Miss, Ms.|Sx||||||
+12400|makes words more polite (usu. in fixed expressions)|Sx||||||
+12401|state, situation, appearance|NACF||||||
+12402|mountains and rivers|NACF||||||
+12403|indicates supposition, if ... then, when, after|PP||||||
+12404||-||||||
+12405|(typically after someone's name) indicates exasperation|PP||||||
+12406|particle used for quoting (with speech, thoughts, etc.)|PP||||||
+12407||-||||||
+12408|enquiry, inquiry, query, interrogation, ENQ|NACF||||||
+12409|ask, inquire|VuT||||||
+12410|blame (someone) for, accuse of, pursue (question of responsibility), charge with|VuT||||||
+12411|care about, regard as important|VuT||||||
+12412|call into question, doubt, question|VuT||||||
+12413|that is to say, that is, in other words, I mean, that (this, it) means|A||||||
+12414|in short, in brief, to sum up, ultimately, in the end, in the long run, when all is said and done, what it all comes down to, when you get right down to it, basically|A||||||
+12415|clogging, obstruction, stuffing, (degree of) blockage|NACF||||||
+12416|shrinkage|NACF||||||
+12417|end, conclusion|NACF||||||
+12418|dead end, corner|NACF||||||
+12419|distress, being at the end of one's rope|NACF||||||
+12420|larva, grub, maggot|NACF||||||
+12421|refer, allude|VsuruI||||||
+12422|give an excuse|VsuruI||||||
+12423|explain|VsuruI||||||
+12424|shoplift|VsuruI||||||
+12425|provide questions and answers, engage in dialogue|VsuruI||||||
+12426|blame, censure, reproof, reprimand, rebuke|VsuruT||||||

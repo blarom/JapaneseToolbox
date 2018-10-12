@@ -1350,6 +1350,7 @@ public final class Utilities {
 
             //Getting the Meaning value
             matchingWordMeaning = current_meaning_characteristics[1];
+            if (matchingWordMeaning.equals("")) continue;
 
             //Getting the Type value
             matchingWordType = current_meaning_characteristics[2];
