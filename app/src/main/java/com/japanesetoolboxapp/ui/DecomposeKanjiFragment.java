@@ -658,17 +658,29 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             List<String> characteristics = new ArrayList<>();
             if (kanjiCharacter ==null || kanjiCharacter.getReadings()==null) return characteristics;
 
-            List<String> parsed_list1 = Arrays.asList(kanjiCharacter.getReadings().split(";"));
-            if (parsed_list1.size()==0) { parsed_list1 = new ArrayList<>(); parsed_list1.add(""); parsed_list1.add("");}
-            characteristics.add(parsed_list1.get(0));
-            characteristics.add(parsed_list1.get(1));
+            characteristics = addElementsToCharacteristics(characteristics, kanjiCharacter.getReadings());
+            characteristics = addElementsToCharacteristics(characteristics, kanjiCharacter.getMeanings());
 
-            List<String> parsed_list2 = Arrays.asList(kanjiCharacter.getMeanings().split(";"));
-            if (parsed_list2.size()==0) { parsed_list2 = new ArrayList<>(); parsed_list2.add(""); parsed_list2.add("");}
-            else if (parsed_list2.size()==1) { parsed_list2 = new ArrayList<>(); parsed_list2.add(""); parsed_list2.add(""); }
-            characteristics.add(parsed_list2.get(0));
-            if (parsed_list2.size()==2 && parsed_list2.get(1).equals("IDEM")) { parsed_list2.set(1,parsed_list2.get(0)); }
-            characteristics.add(parsed_list2.get(1));
+            return characteristics;
+        }
+        List<String> addElementsToCharacteristics(List<String> characteristics, String list) {
+            if (list.equals("") || list.equals(";")) {
+                characteristics.add("-");
+                characteristics.add("-");
+            }
+            else if (list.substring(0,1).equals(";")) {
+                characteristics.add("-");
+                characteristics.add(list.substring(1,list.length()));
+            }
+            else if (list.substring(list.length()-1).equals(";") || !list.contains(";")) {
+                characteristics.add(list.substring(0,list.length()-1));
+                characteristics.add("-");
+            }
+            else {
+                String[] parsed_list = list.split(";");
+                characteristics.add(parsed_list[0]);
+                characteristics.add(parsed_list[1].equals("IDEM")? parsed_list[0] : parsed_list[1]);
+            }
             return characteristics;
         }
         List<String> getKanjiRadicalCharacteristics(KanjiCharacter kanjiCharacter) {
