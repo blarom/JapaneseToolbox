@@ -271,7 +271,7 @@
     <string name="sorry_only_have_second_part">MB left in internal memory and can\'t install the OCR data. Please clear some app data and try again.</string>
     <string name="downloading_ocr_data_first_part">Downloading the</string>
     <string name="downloading_ocr_data_second_part">OCR data on Wifi only.</string>
-    <string name="attempting_download_first_part">Attempting to download the</string>
+    <string name="attempting_download_first_part">Attempting to download the\u0020</string>
     <string name="attempting_download_second_part">OCR data. Please wait.</string>
     <string name="failed_to_connect_to_internet">Failed to connect to the Internet.</string>
     <string name="saved_local_results">saved_local_results</string>
@@ -309,7 +309,7 @@
     <string name="properties_">Properties:\u0020</string>
     <string name="this_component_is_a_CJK_character">This component is a CJK Character.</string>
     <string name="radical_">Radical:\u0020</string>
-    <string name="search_for_radical_search_too_broad">Your search is too broad. Please select another structure or select Kanji radicals to narrow the search.</string>
+    <string name="search_for_radical_search_too_broad">Your search is too broad. Please select another structure or select Kanji elements to narrow the search.</string>
     <string name="search_by_radical_no_results_found">No results found for your selections.</string>
     <string name="similars_database">similars_database</string>
 </resources>

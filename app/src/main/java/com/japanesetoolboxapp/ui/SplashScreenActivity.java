@@ -74,19 +74,19 @@ public class SplashScreenActivity extends Activity {
                 boolean finishedLoadingWordDatabases = Utilities.getAppPreferenceWordVerbDatabasesFinishedLoadingFlag(SplashScreenActivity.this);
                 boolean finishedLoadingKanjiDatabases = Utilities.getAppPreferenceKanjiDatabaseFinishedLoadingFlag(SplashScreenActivity.this);
                 if (!finishedLoadingWordDatabases || !finishedLoadingKanjiDatabases) {
-                    mTimeToLoadTextView.setText(R.string.database_being_installed);
-                    mLoadingDatabaseTextView.setVisibility(View.VISIBLE);
+                    if (mTimeToLoadTextView!=null) mTimeToLoadTextView.setText(R.string.database_being_installed);
+                    if (mLoadingDatabaseTextView!=null) mLoadingDatabaseTextView.setVisibility(View.VISIBLE);
                     showLoadingIndicator();
                 }
                 else {
-                    mTimeToLoadTextView.setText(R.string.splashscreen_should_take_only_a_few_seconds);
+                    if (mTimeToLoadTextView!=null) mTimeToLoadTextView.setText(R.string.splashscreen_should_take_only_a_few_seconds);
                     hideLoadingIndicator();
-                    mLoadingDatabaseTextView.setVisibility(View.GONE);
+                    if (mLoadingDatabaseTextView!=null) mLoadingDatabaseTextView.setVisibility(View.GONE);
                 }
 
                 if (mLoadedCentralDb && !mLoadedKanjiDb && !mKanjiDbTextAlreadyLoaded) {
                     mKanjiDbTextAlreadyLoaded = true;
-                    mLoadingDatabaseTextView.setText(getString(R.string.loading_kanji_database));
+                    if (mLoadingDatabaseTextView!=null) mLoadingDatabaseTextView.setText(getString(R.string.loading_kanji_database));
                 }
                 else if (mLoadedCentralDb && mLoadedKanjiDb) {
                     countDownTimer.onFinish();
@@ -108,6 +108,7 @@ public class SplashScreenActivity extends Activity {
     @Override protected void onDestroy() {
         super.onDestroy();
         mBinding.unbind();
+        countDownTimer.cancel();
     }
 
     private void startMainActivity() {

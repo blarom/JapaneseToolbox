@@ -1,6 +1,7 @@
 package com.japanesetoolboxapp.adapters;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
@@ -15,6 +16,7 @@ import com.japanesetoolboxapp.R;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +24,7 @@ import butterknife.ButterKnife;
 public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGridRecyclerViewAdapter.ComponentViewHolder> {
 
     private final Context mContext;
+    private final Typeface mDroidSansJapaneseTypeface;
     private List<String> mKanjis;
     final private ComponentClickHandler mOnItemClickHandler;
     private boolean[] mKanjiIsSelected;
@@ -33,6 +36,10 @@ public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGrid
         this.mOnItemClickHandler = listener;
         this.isResultsGrid = isResultsGrid;
         createSelectedArray();
+
+        //Setting the Typeface
+        AssetManager am = mContext.getApplicationContext().getAssets();
+        mDroidSansJapaneseTypeface = Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf"));
     }
 
     @NonNull @Override public ComponentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {LayoutInflater inflater = LayoutInflater.from(mContext);
@@ -49,6 +56,8 @@ public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGrid
         else tv.setBackgroundResource(0);
 
         tv.setText(kanji);
+        tv.setTextLocale(Locale.JAPAN);
+        tv.setTypeface(mDroidSansJapaneseTypeface);
 
         if (kanji.contains("0") || kanji.contains("1") || kanji.contains("2") || kanji.contains("3")
                 || kanji.contains("4") || kanji.contains("5") || kanji.contains("6")

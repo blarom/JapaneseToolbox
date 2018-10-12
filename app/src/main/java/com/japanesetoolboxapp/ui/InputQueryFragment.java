@@ -16,6 +16,7 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -137,6 +138,7 @@ public class InputQueryFragment extends Fragment implements
     private Unbinder mBinding;
     private boolean mAlreadyGotOcrResult;
     private boolean mAlreadyGotRomajiFromKanji;
+    private Typeface mDroidSansJapaneseTypeface;
     //endregion
 
 
@@ -289,8 +291,9 @@ public class InputQueryFragment extends Fragment implements
     }
     @SuppressLint("ClickableViewAccessibility") private void initializeViews(View rootView) {
 
-        mBinding = ButterKnife.bind(this, rootView);
+        if (getContext()==null) return;
 
+        mBinding = ButterKnife.bind(this, rootView);
 
         mInputQueryAutoCompleteTextView.setAdapter(new QueryInputSpinnerAdapter(
                 getContext(),
@@ -318,6 +321,11 @@ public class InputQueryFragment extends Fragment implements
 
         mSearchByRadicalButton.setEnabled(true);
         mDecomposeButton.setEnabled(true);
+
+        //Setting the Typeface
+        AssetManager am = getContext().getApplicationContext().getAssets();
+        mDroidSansJapaneseTypeface = Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf"));
+        mInputQueryAutoCompleteTextView.setTypeface(mDroidSansJapaneseTypeface);
     }
     private void restoreQueryHistory() {
 
@@ -1051,6 +1059,7 @@ public class InputQueryFragment extends Fragment implements
                 View layout = inflater.inflate(R.layout.custom_queryhistory_spinner, parent, false);
                 TextView pastquery = layout.findViewById(R.id.query_value);
                 pastquery.setText(mQueryHistory.get(position));
+                pastquery.setTypeface(mDroidSansJapaneseTypeface);
                 return layout;
             }
             else return null;

@@ -1,6 +1,7 @@
 package com.japanesetoolboxapp.ui;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -36,6 +37,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,6 +57,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
     private String mInputQuery;
     private List<String[]> mRadicalsOnlyDatabase;
     private boolean mAlreadyGotFirstQuery;
+    private Typeface mDroidSansJapaneseTypeface;
     //endregion
 
 
@@ -68,9 +71,13 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         final View rootView = inflater.inflate(R.layout.fragment_decompose_kanji, container, false);
 
         //setRetainInstance(true);
+        if (getContext()==null) return rootView;
 
         mBinding = ButterKnife.bind(this, rootView);
 
+        //Setting the Typeface
+        AssetManager am = getContext().getApplicationContext().getAssets();
+        mDroidSansJapaneseTypeface = Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf"));
 
         getDecomposition();
 
@@ -134,7 +141,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         //endregion
 
 
-        //region Initilization
+        //region Initialization
         SpannableString clickable_text;
         Spanned text;
         TextView tv;
@@ -163,6 +170,8 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         }
 
         kanjiTV.setText(decomposedKanji.get(0).get(0));
+        kanjiTV.setTypeface(mDroidSansJapaneseTypeface);
+        kanjiTV.setTextLocale(Locale.JAPAN);
         structure_info = getStructureInfo(decomposedKanji.get(0).get(1));
         structureIV.setBackgroundResource(Integer.parseInt(structure_info[1]));
 
@@ -201,6 +210,8 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             clickable_text.setSpan(Radical_Iteration_ClickableSpan, 0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
             tv.setText(clickable_text);
+            tv.setTypeface(mDroidSansJapaneseTypeface);
+            tv.setTextLocale(Locale.JAPAN);
             tv.setTextSize(26);
             tv.setPadding(10,0,10,0);
             tv.setMovementMethod(LinkMovementMethod.getInstance());
