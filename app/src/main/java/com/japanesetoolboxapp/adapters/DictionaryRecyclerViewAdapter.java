@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -56,7 +57,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         String romaji = mWordsList.get(position).getRomaji();
         String kanji = mWordsList.get(position).getKanji();
         String alternatespellings = mWordsList.get(position).getAltSpellings();
-        String type;
+        String type = "";
         String fullType;
         String meaning;
         String antonym;
@@ -79,6 +80,16 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 typeIsVerb = type.contains("V") && !type.equals("VC");
             }
         }
+        //endregion
+
+        //region Setting the special text
+//        if (type.equals("PC") || type.equals("CO")) {
+//            holder.parentContainer.setBackgroundColor(mContext.getResources().getColor(R.color.list_item_selection_highlight));
+//        }
+//        else if (type.equals("VC")) {
+//            holder.parentContainer.setBackgroundColor(mContext.getResources().getColor(R.color.list_item_selection_highlight));
+//        }
+//        else holder.parentContainer.setBackgroundColor(Color.TRANSPARENT);
         //endregion
 
         //region Updating the parent values
@@ -132,8 +143,10 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         }
         //endregion
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT, 2 );
-        params.setMargins(0, 8, 0, 4);
+        LinearLayout.LayoutParams childLineParams = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT, 2 );
+        childLineParams.setMargins(0, 16, 0, 16);
+        LinearLayout.LayoutParams subChildLineParams = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT, 2 );
+        subChildLineParams.setMargins(128, 16, 128, 4);
         View line;
 
         //region Setting the wordMeaning elements
@@ -144,7 +157,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             synonym = wordMeaning.getSynonym();
 
             line = new View(mContext);
-            line.setLayoutParams(params);
+            line.setLayoutParams(childLineParams);
             line.setBackgroundColor(Color.WHITE);
             holder.childElementsLinearLayout.addView(line);
 
@@ -167,6 +180,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             typeAndMeaningTextView.setText(type_and_meaning);
             typeAndMeaningTextView.setTextColor(mContext.getResources().getColor(R.color.textColorDictionaryTypeMeaning2));
             typeAndMeaningTextView.setTextSize(15);
+            typeAndMeaningTextView.setPadding(0, 16, 0, 16);
             holder.childElementsLinearLayout.addView(typeAndMeaningTextView);
             //endregion
 
@@ -233,21 +247,24 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
             for (int i = 0; i < currentExplanations.size(); i++) {
 
+                //region Adding the explanation
                 explanation = currentExplanations.get(i).getExplanation();
                 if (!explanation.equals("")) {
                     TextView explanationTextView = new TextView(mContext);
                     explanationTextView.setText(explanation);
                     explanationTextView.setTextColor(mContext.getResources().getColor(R.color.textColorDictionaryExplanation));
-                    explanationTextView.setPadding(0, 10, 0, 0);
+                    explanationTextView.setPadding(0, 8, 0, 0);
                     explanationTextView.setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
                     holder.childElementsLinearLayout.addView(explanationTextView);
                 }
+                //endregion
 
+                //region Adding the rules
                 rules = currentExplanations.get(i).getRules();
                 if (!rules.equals("")) {
                     TextView rulesTextView = new TextView(mContext);
                     rulesTextView.setTextColor(mContext.getResources().getColor(R.color.textColorDictionaryRule));
-                    rulesTextView.setPadding(0, 30, 0, 0);
+                    rulesTextView.setPadding(0, 8, 0, 0);
                     rulesTextView.setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
 
                     String[] parsedRule = rules.split("@");
@@ -283,7 +300,9 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
                     holder.childElementsLinearLayout.addView(rulesTextView);
                 }
+                //endregion
 
+                //region Adding the examples
                 examplesList = currentExplanations.get(i).getExamples();
                 if (examplesList.size()>0) {
 
@@ -293,7 +312,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     examplesShowTextView.setText(mContext.getResources().getString(R.string.ShowExamples));
                     examplesShowTextView.setTextColor(mContext.getResources().getColor(R.color.textColorDictionaryExamples));
                     examplesShowTextView.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-                    examplesShowTextView.setPadding(0, 10, 0, 0);
+                    examplesShowTextView.setPadding(0, 0, 0, 8);
                     examplesShowTextView.setClickable(true);
                     examplesShowTextView.setFocusable(false);
                     examplesShowTextView.setOnClickListener(new View.OnClickListener() {
@@ -324,7 +343,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         englishExampleTextView.setText(examplesList.get(j).getEnglishSentence());
                         englishExampleTextView.setTextColor(mContext.getResources().getColor(R.color.textColorDictionaryExampleEnglish));
                         englishExampleTextView.setTextSize(14);
-                        englishExampleTextView.setPadding(4, 15, 0, 0);
+                        englishExampleTextView.setPadding(4, 8, 0, 0);
                         englishExampleTextView.setVisibility(View.GONE);
                         examplesTextViews.add(englishExampleTextView);
                         holder.childElementsLinearLayout.addView(englishExampleTextView);
@@ -345,13 +364,23 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         kanjiExampleTextView.setText(examplesList.get(j).getKanjiSentence());
                         kanjiExampleTextView.setTextColor(mContext.getResources().getColor(R.color.textColorDictionaryExampleKanji));
                         kanjiExampleTextView.setTextSize(14);
-                        kanjiExampleTextView.setPadding(4, 0, 0, 0);
+                        kanjiExampleTextView.setPadding(4, 0, 0, 16);
                         kanjiExampleTextView.setVisibility(View.GONE);
                         examplesTextViews.add(kanjiExampleTextView);
                         holder.childElementsLinearLayout.addView(kanjiExampleTextView);
                     }
 
                 }
+                //endregion
+
+                //region Adding the separator line between explanations
+                if (!rules.equals("")) {
+                    line = new View(mContext);
+                    line.setLayoutParams(subChildLineParams);
+                    line.setBackgroundColor(mContext.getResources().getColor(R.color.colorPrimaryLight));
+                    holder.childElementsLinearLayout.addView(line);
+                }
+                //endregion
             }
             //endregion
 
@@ -444,6 +473,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
     public class DictItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        @BindView(R.id.list_item_parent_container) ConstraintLayout parentContainer;
         @BindView(R.id.list_item_romaji_and_kanji) TextView romajiAndKanjiTextView;
         @BindView(R.id.list_item_meanings) TextView meaningsTextView;
         @BindView(R.id.list_item_child_linearlayout) LinearLayout childLinearLayout;

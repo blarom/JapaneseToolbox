@@ -32,6 +32,14 @@ public interface WordDao {
     @Query("SELECT * FROM " + Word.TABLE_NAME + " WHERE " + Word.COLUMN_ID + " = :id")
     Word getWordByWordId(long id);
 
+    //Get a Word by exact romaji and kanji match
+    @Query("SELECT * FROM " + Word.TABLE_NAME + " WHERE " + Word.COLUMN_WORD_ROMAJI + " = :romaji AND " + Word.COLUMN_WORD_KANJI + " = :kanji")
+    List<Word> getWordsByExactRomajiAndKanjiMatch(String romaji, String kanji);
+
+    //Get a Word containing romaji
+    @Query("SELECT * FROM " + Word.TABLE_NAME + " WHERE " + Word.COLUMN_WORD_ROMAJI + " LIKE '%' || :romaji || '%' ")
+    List<Word> getWordsContainingRomajiMatch(String romaji);
+
     //Get a Word list by Ids
     @Query("SELECT * FROM " + Word.TABLE_NAME + " WHERE " + Word.COLUMN_ID + " IN (:ids)")
     List<Word> getWordListByWordIds(List<Long> ids);

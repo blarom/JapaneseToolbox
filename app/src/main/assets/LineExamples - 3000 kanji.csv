@@ -859,8 +859,8 @@ ID|Example English|Example Roumaji|Example Kanji|
 859|To stay young.|wakai mama.|若いまま。|
 860|To remain inconvenient.|fuben na mama.|不便なまま。|
 861|Just like this is the way it is.|kono mama.|このまま。|
-862|If you do it just like the manual says, it'll work.|manuaru ni kaitearu toori ni sureba, umaku ikimasu.|マニュアルに書いてあるとおりにすれば、旨くいきます。|
-863|Didn't it come out to be the way I said?|watashi ga itta tori ni natta deshou?|私が言った通りになったでしょう？|
+862|If you do it just like the manual says, it'll work.|manuaru ni kaitearu touri ni sureba, umaku ikimasu.|マニュアルに書いてあるとおりにすれば、旨くいきます。|
+863|Didn't it come out to be the way I said?|watashi ga itta touri ni natta deshou?|私が言った通りになったでしょう？|
 864|That question has answers in three ways.|sono mondai niwa san touri no kotae ga arimasu.|その問題には三通りの答えがあります。|
 865|It would be best if you drank.|nonda hou ga ii desu.|飲んだほうがいいです。|
 866|It is best not to smoke tobacco.|tabako wo suwanai hou ga ii desu.|タバコを吸わないほうがいいです。|
@@ -1493,3 +1493,9 @@ ID|Example English|Example Roumaji|Example Kanji|
 1493|I'm coughing.|seki ga deru.|咳が出る。|
 1494|Because of the accident.|jiko no tame.|事故の為。|
 1495|Because there was an accident.|jiko ga atta tame.|事故があったため。|
+1496|I am a cat.|wagahai wa neko dearu.|吾輩は猫である。|
+1497|(He) is not a student.|gakusei dewa nai.|学生ではない。|
+1498|(He) was a student.|gakusei deatta.|学生であった。|
+1499|(He) was not a student.|gakusei dewa nakatta.|学生ではなかった。|
+1500|Just as you said, it was an easy plan.|anata ga itta toori, kantan na keikaku datta.|あなたが言ったとおり、簡単な計画だった。|
+1501|We’ll proceed as planned.|keikaku no toori ni susumeru.|計画のとおりに進める。|

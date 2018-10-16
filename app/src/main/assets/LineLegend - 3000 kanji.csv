@@ -18,6 +18,7 @@ CEN|Common Expression - Noun|
 CEP|Common Expression - Particle|
 CES|Common Expression - Idiom|
 CEV|Common Expression - Verb|
+CO|Sentence Conjunction|
 iAC|i-Adjective (i-keiyoushi) Conjugation |
 IES|Impolite Expressions & Swearwords|
 naAC|na-Adjective (na-keiyoushi) Conjugation |
@@ -53,22 +54,13 @@ NW|Noun: Weeks|
 NY|Noun: Years|
 OI|Onomatopeia & Interjections|
 P|Pronoun|
-PP|Particle/Preposition/Conjunction|
+PC|Phrase Construction|
+PP|Particle/Preposition|
 PPS|Particle / Suffix|
 Px|Prefix|
 PxN|Noun / Prefix|
 Sa|Special adjective|
 SI|Special: Interrogative|
-SSC|Sentence Structure: Comparison|
-SSCC|Sentence Structure: Cause-Consequence|
-SSD|Sentence Structure: Declaration|
-SSM|Sentence Structure: Means|
-SSOF|Sentence Structure: Opposing Facts|
-SSOF|Sentence Structure: Objective|
-SSP|Sentence Structure: Process|
-SSR|Sentence Structure: Reference|
-SSSi|Sentence Structure: Simultaneous Facts|
-SSSq|Sentence Structure: Sequential Facts|
 Sx|Suffix|
 SxN|Noun / Suffix|
 UNC|Unclassified|

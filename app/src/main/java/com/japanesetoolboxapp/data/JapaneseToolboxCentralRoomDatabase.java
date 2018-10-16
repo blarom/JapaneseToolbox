@@ -16,7 +16,7 @@ import com.japanesetoolboxapp.resources.Utilities;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class}, version = 10, exportSchema = false)
+@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class}, version = 12, exportSchema = false)
 public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
@@ -178,6 +178,12 @@ public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
     public Word getWordByWordId(long wordId) {
         return word().getWordByWordId(wordId);
     }
+    public List<Word> getWordsByExactRomajiAndKanjiMatch(String romaji, String kanji) {
+        return word().getWordsByExactRomajiAndKanjiMatch(romaji, kanji);
+    }
+    public List<Word> getWordsContainingRomajiMatch(String romaji) {
+        return word().getWordsContainingRomajiMatch(romaji);
+    }
     public List<Word> getWordListByWordIds(List<Long> wordIds) {
         return word().getWordListByWordIds(wordIds);
     }
@@ -204,8 +210,8 @@ public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
     public Verb getVerbByVerbId(long verbId) {
         return verb().getVerbByVerbId(verbId);
     }
-    public List<Verb> getVerbsByRomajiQuery(String query) {
-        return verb().getVerbByExactRomajiQueryMatch(query);
+    public List<Verb> getVerbsByExactRomajiMatch(String query) {
+        return verb().getVerbByExactRomajiMatch(query);
     }
     public List<Verb> getVerbsByKanjiQuery(String query) {
         return verb().getVerbByExactKanjiQueryMatch(query);

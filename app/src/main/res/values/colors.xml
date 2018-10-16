@@ -13,6 +13,7 @@
     <color name="Blue">#FF0000ff</color>
     <color name="Purple">#FF800080</color>
     <color name="Transparent">#80FFFFFF</color>
+    <color name="list_item_selection_highlight">#80E1F5FE</color>
 
     <!--InputQueryFragment colors-->
     <color name="textColorSearch">@color/colorPrimaryDark</color>

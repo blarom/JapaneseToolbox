@@ -58,8 +58,8 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 58|mochiron, 勿論, of course, certainly|mochiron|勿論|426||
 59|muron, 無論, certainly, of course|muron|無論|427||
 60|desae, でさえ, even|desae|でさえ|428||
-61|sura, すら, even, if only, if just, as long as|sura|すら|429||
-62|sae, さえ, even, if only, if just, as long as|sae|さえ|429||
+61|sura, すら, even, if only, if just, as long as, the only thing needed|sura|すら|429||
+62|sae, さえ, even, if only, if just, as long as, the only thing needed|sae|さえ|429||
 63|moshi, もし, if|moshi|もし|430||
 64|tashika ni, 確か, if I'm not mistaken, if I remember correctly|tashika ni|確か|431||
 65|tsugou, 都合, in all, in total, all told, circumstances, condition, convenience|tsugou|都合|432;433||
@@ -156,185 +156,185 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 156|anna ni, あんなに, to that extent, to that degree|anna ni|あんなに|559||
 157|tomo ni, 共に, together, jointly, along with, both|tomo ni|共に|560||
 158|issho ni, 一緒に, together, with|issho ni|一緒に|561||
-159|totemo, 迚も, very, tottemo|totemo|迚も|562|tottemo|
+159|totemo, 迚も, very, awfully, exceedingly, (not) at all, by no means, simply (cannot), tottemo|totemo|迚も|562;12606|tottemo|
 160|sore wa, それは, very, extremely, that is…, sorya, soryaa, sore ha|sore wa|それは|563;564|sorya, soryaa|
 161|zuibun, 随分, very, extremely, surprisingly, considerably, awfully, terribly, terrible, horrid, contemptible, reprehensible, remarkable, extraordinary|zuibun|随分|565;566;12117||
 162|taihen, 大変, very, greatly, terribly, awfully, immense, enournous, great, serious, grave, stressful, terrible, dreadful, difficult, hard, immense, enormous, great, serious, grave, dreadful, terrible, major incident, disaster|taihen|大変|567;568;7517;7518;7519||
 163|oi ni, 大いに, very, much, greatly, a lot of|oi ni|大いに|569||
 164|morenaku, 漏れなく, without omissin, in full, fully|morenaku|漏れなく|570||
-165|airashii, 愛らしい, adorable, airashi, airashikunai, airashikatta, airashikunakatta, airashikute, airashimi, airashikereba, airashikarou|airashii|愛らしい|571||
-166|sugoi, 凄い, amazing, great, wonderful, terrific, impressive, vast, extensive, sugo, sugokunai, sugokatta, sugokunakatta, sugokute, sugomi, sugokereba, sugokarou|sugoi|凄い|572||
-167|kassai, 喝采, applauded (to applaud), kassa, kassakunai, kassakatta, kassakunakatta, kassakute, kassami, kassakereba, kassakarou|kassai|喝采|573||
-168|fusawashii, 相応しい, appropriate, adequate, suitable, fusawashi, fusawashikunai, fusawashikatta, fusawashikunakatta, fusawashikute, fusawashimi, fusawashikereba, fusawashikarou|fusawashii|相応しい|574||
-169|hazukashii, 恥ずかしい, shy, ashamed, embarrassed, disgraceful, shameful, embarrassing, embarrassed, ashamed, humiliated, shy, hazukashi, hazukashikunai, hazukashikatta, hazukashikunakatta, hazukashikute, hazukashimi, hazukashikereba, hazukashikarou|hazukashii|恥ずかしい|575;6310;12277||
-170|hidoi, 酷い, awful, terrible, hidee, 非道い, hido, hidokunai, hidokatta, hidokunakatta, hidokute, hidomi, hidokereba, hidokarou|hidoi|酷い|576|hidee, 非道い|
-171|warui, 悪い, bad, poor, inferior, evil, sinful, unprofitable, unbeneficial, at fault, to blame, in the wrong, sorry, waru, warukunai, warukatta, warukunakatta, warukute, warumi, warukereba, warukarou|warui|悪い|577;11242;11243;11244;11245||
-172|utsukoshii, 美しい, beautiful, utsukoshi, utsukoshikunai, utsukoshikatta, utsukoshikunakatta, utsukoshikute, utsukoshimi, utsukoshikereba, utsukoshikarou|utsukoshii|美しい|578||
-173|utsukushii, 美しい, beautiful ,lovely, utsukushi, utsukushikunai, utsukushikatta, utsukushikunakatta, utsukushikute, utsukushimi, utsukushikereba, utsukushikarou|utsukushii|美しい|579||
-174|ustsukushii, 美しい, beautiful, lovely, ustsukushi, ustsukushikunai, ustsukushikatta, ustsukushikunakatta, ustsukushikute, ustsukushimi, ustsukushikereba, ustsukushikarou|ustsukushii|美しい|580||
-175|ookii, 大きい, big, large, great, loud, extensive, spacious, important, decisive, valuable, older, grown up, ooki, ookikunai, ookikatta, ookikunakatta, ookikute, ookimi, ookikereba, ookikarou|ookii|大きい|581;9878;9879;9880;9881||
-176|nigai, 苦い, bitter, niga, nigakunai, nigakatta, nigakunakatta, nigakute, nigami, nigakereba, nigakarou, taste|nigai|苦い|582||
-177|kuroi, 黒い, black, kuro, kurokunai, kurokatta, kurokunakatta, kurokute, kuromi, kurokereba, kurokarou, color, colour|kuroi|黒い|583||
-178|aoi, 青い, blue, ao, aokunai, aokatta, aokunakatta, aokute, aomi, aokereba, aokarou, color, colour|aoi|青い|584||
-179|tsumaranai, 詰らない, boring, uninteresing, 詰まらない, tsumarana, tsumaranakunai, tsumaranakatta, tsumaranakunakatta, tsumaranakute, tsumaranami, tsumaranakereba, tsumaranakarou|tsumaranai|詰らない|585|詰まらない|
-180|mendoukusai, 面倒臭い, bothersome, troublesome, tiresome, annoying, 面倒くさい, mendoukusa, mendoukusakunai, mendoukusakatta, mendoukusakunakatta, mendoukusakute, mendoukusami, mendoukusakereba, mendoukusakarou|mendoukusai|面倒臭い|586|面倒くさい|
-181|akarui, 明るい, bright, colorful, cheerful, light, well-lit, well-lighted, bright (of a colour), brightly-coloured, brightly-colored, cheerful, bright, spirited, sunny (e.g. disposition), encouraging (for the future of a project, etc.), promising, of fair prospects, familiar (with), knowledgeable (about), well versed (in), fair (e.g. politics), clean, impartial, akaru, akarukunai, akarukatta, akarukunakatta, akarukute, akarumi, akarukereba, akarukarou|akarui|明るい|587;8708;8709;8710;8711;8712;8713||
-182|chairoi, 茶色い, brown, chairo, chairokunai, chairokatta, chairokunakatta, chairokute, chairomi, chairokereba, chairokarou, color, colour|chairoi|茶色い|588||
-183|isogashii, 忙しい, busy, isogashi, isogashikunai, isogashikatta, isogashikunakatta, isogashikute, isogashimi, isogashikereba, isogashikarou|isogashii|忙しい|589||
-184|sosokkashii, そそかしい, careless, thoughtless, sosokkashi, sosokkashikunai, sosokkashikatta, sosokkashikunakatta, sosokkashikute, sosokkashimi, sosokkashikereba, sosokkashikarou|sosokkashii|そそかしい|590||
-185|ayashii, 妖しい, charming, bewitching, mysterious, ayashi, ayashikunai, ayashikatta, ayashikunakatta, ayashikute, ayashimi, ayashikereba, ayashikarou|ayashii|妖しい|591||
-186|yasui, 安い, cheap, inexpensive, calm, peaceful, quiet, yasu, yasukunai, yasukatta, yasukunakatta, yasukute, yasumi, yasukereba, yasukarou|yasui|安い|592;12079||
-187|tsumetai, 冷たい, cold (object), tsumeta, tsumetakunai, tsumetakatta, tsumetakunakatta, tsumetakute, tsumetami, tsumetakereba, tsumetakarou|tsumetai|冷たい|593||
-188|samui, 寒い, cold (ambient temperature), samu, samukunai, samukatta, samukunakatta, samukute, samumi, samukereba, samukarou|samui|寒い|594||
-189|tsugouyoi, 都合よい, convenient, tsugouyo, tsugouyokunai, tsugouyokatta, tsugouyokunakatta, tsugouyokute, tsugouyomi, tsugouyokereba, tsugouyokarou|tsugouyoi|都合よい|595||
-190|suzushii, 涼しい, cool, refreshing, suzushi, suzushikunai, suzushikatta, suzushikunakatta, suzushikute, suzushimi, suzushikereba, suzushikarou|suzushii|涼しい|596||
-191|arai, 粗い, corase, rough, ara, arakunai, arakatta, arakunakatta, arakute, arami, arakereba, arakarou|arai|粗い|597||
-192|yabai, やばい, dangerous, risky, awful, terrible, crap, terrific, amazing, cool, yaba, yabakunai, yabakatta, yabakunakatta, yabakute, yabami, yabakereba, yabakarou|yabai|やばい|598||
-193|ayaui, 危うい, dangerous, risky, hazardous, perilous, precarious, in danger, in jeopardy, critical, grave, at risk, uncertain, unreliable, insecure, unsteady, doubtful, in danger, in jeopardy, critical, grave, at risk, uncertain, unreliable, insecure, unsteady, doubtful, close (i.e. a close call), narrow, ayau, ayaukunai, ayaukatta, ayaukunakatta, ayaukute, ayaumi, ayaukereba, ayaukarou|ayaui|危うい|599;10431;10432;10433||
-194|abunai, 危ない, dangerous, risky, hazardous, perilous, precarious, unreliable, insecure, in danger, in jeopardy, critical, grave, at risk, uncertain, unreliable, insecure, unsteady, doubtful, close (i.e. a close call), narrow, abuna, abunakunai, abunakatta, abunakunakatta, abunakute, abunami, abunakereba, abunakarou|abunai|危ない|600;7347;7348;7349||
-195|kurai, 暗い, dark, gloomy, dull, depressed, despirited, sorowful, bitter, unclear, unfamiliar, unknown, dark, gloomy, murky, depressed, dispirited, down in the dumps, dark (mood), dark (in colour), dull, ill-boding, dark (e.g. past), suspicious, unlikely (to succeed), hopeless, unpromising, unfamiliar (with), ignorant (of), kura, kurakunai, kurakatta, kurakunakatta, kurakute, kurami, kurakereba, kurakarou|kurai|暗い|601;10888;10889;10890;10891;10892;10893||
-196|natsukashii, 懐かしい, dear, desired, missed, natsukashi, natsukashikunai, natsukashikatta, natsukashikunakatta, natsukashikute, natsukashimi, natsukashikereba, natsukashikarou|natsukashii|懐かしい|602||
-197|koi, 濃い, deep (colour), dark, strong (flavour, smell, etc), thick (consistency), dense, strong (flavour, smell, etc.), thick (consistency), dense, strong (possibility, etc.), thick (i.e. "as thick as thieves"), close, deep (love, etc.), ko, kokunai, kokatta, kokunakatta, kokute, komi, kokereba, kokarou|koi|濃い|603;8303;8304;8305;8306||
-198|fukai, 深い, deep, profound, dense, thick, close (relationship), intense, strong, late, fuka, fukakunai, fukakatta, fukakunakatta, fukakute, fukami, fukakereba, fukakarou|fukai|深い|604;6636;6637;6638;6639;6640||
-199|umai, 美味い, delicious, appetizing, appetising, uma, umakunai, umakatta, umakunakatta, umakute, umami, umakereba, umakarou|umai|美味い|605||
-200|hitoke no nai, 人気のない, deserted, empty of people, hitoke no na, hitoke no nakunai, hitoke no nakatta, hitoke no nakunakatta, hitoke no nakute, hitoke no nami, hitoke no nakereba, hitoke no nakarou|hitoke no nai|人気のない|606||
-201|kuwashii, 詳しい, detailed, full, accurate, knowing very well, well-acquainted, well-informed, 精しい, 委しい, kuwashi, kuwashikunai, kuwashikatta, kuwashikunakatta, kuwashikute, kuwashimi, kuwashikereba, kuwashikarou|kuwashii|詳しい|607|精しい, 委しい|
-202|nikui, 難い, difficult, hard, difficult, hard to do ..., difficult to ..., hard to ..., niku, nikukunai, nikukatta, nikukunakatta, nikukute, nikumi, nikukereba, nikukarou, katai, gatai|nikui|難い|608;609;8890||
-203|muzukashii, 難しい, difficult, hard, complicated, troublesome, difficult, hard, troublesome, complicated, serious (disease, problem, etc.), fussy, particular, fastidious, hard to please, displeased, gloomy, glum, sullen, serious (look), dirty, unclean, filthy, detestable, unpleasant, uncomfortable, creepy, spooky, muzukashi, muzukashikunai, muzukashikatta, muzukashikunakatta, muzukashikute, muzukashimi, muzukashikereba, muzukashikarou|muzukashii|難しい|610;10995;10996;10997;10998;10999||
-204|usugurai, 薄暗い, dim, gloomy, usugura, usugurakunai, usugurakatta, usugurakunakatta, usugurakute, usugurami, usugurakereba, usugurakarou|usugurai|薄暗い|611||
-205|kitanai, 汚い, dirty, foul, messy, filthy, dirty, filthy, foul, unclean, disordered, messy, untidy, poor (e.g. handwriting), indecent (language, etc.), dirty, vulgar, coarse, dastardly, mean, base, underhanded, stingy, greedy, kitana, kitanakunai, kitanakatta, kitanakunakatta, kitanakute, kitanami, kitanakereba, kitanakarou|kitanai|汚い|612;7449;7450;7451;7452;7453||
-206|erai, 偉い, distinguished, great, era, erakunai, erakatta, erakunakatta, erakute, erami, erakereba, erakarou|erai|偉い|613||
-207|kougoushii, 神々しい, divine, sublime, solemn, 神神しい, kougoushi, kougoushikunai, kougoushikatta, kougoushikunakatta, kougoushikute, kougoushimi, kougoushikereba, kougoushikarou|kougoushii|神々しい|614|神神しい|
-208|nibui, 鈍い, dull (e.g. knife, sound), blunt, dim, slow, sluggish, inert, lethargic, nibu, nibukunai, nibukatta, nibukunakatta, nibukute, nibumi, nibukereba, nibukarou|nibui|鈍い|615||
-209|hayai, 早い, early, easy, simple, haya, hayakunai, hayakatta, hayakunakatta, hayakute, hayami, hayakereba, hayakarou|hayai|早い|616||
-210|monosugoi, 物凄い, earth-shattering, staggering, to a very great extent, terrible, frightful, horrible, monosugo, monosugokunai, monosugokatta, monosugokunakatta, monosugokute, monosugomi, monosugokereba, monosugokarou|monosugoi|物凄い|617||
-211|yasui, 易い, easy, yasu, yasukunai, yasukatta, yasukunakatta, yasukute, yasumi, yasukereba, yasukarou|yasui|易い|618||
-212|yasashii, 易しい, easy, plain, simple, yasashi, yasashikunai, yasashikatta, yasashikunakatta, yasashikute, yasashimi, yasashikereba, yasashikarou|yasashii|易しい|619||
-213|tayasui, 容易い, easy, simple, light, tayasu, tayasukunai, tayasukatta, tayasukunakatta, tayasukute, tayasumi, tayasukereba, tayasukarou|tayasui|容易い|620||
-214|urayamashii, 羨ましい, envious, jealous, enviable, urayamashi, urayamashikunai, urayamashikatta, urayamashikunakatta, urayamashikute, urayamashimi, urayamashikereba, urayamashikarou|urayamashii|羨ましい|621||
-215|hitoshii, 等しい, equal, similar, like, equivalent, hitoshi, hitoshikunai, hitoshikatta, hitoshikunakatta, hitoshikute, hitoshimi, hitoshikereba, hitoshikarou|hitoshii|等しい|622||
-216|takai, 高い, expensive, tall (object), high, taka, takakunai, takakatta, takakunakatta, takakute, takami, takakereba, takakarou|takai|高い|623;624||
-217|tooi, 遠い, far, distant, too, tookunai, tookatta, tookunakatta, tookute, toomi, tookereba, tookarou|tooi|遠い|625||
-218|umai, 旨い, fortunate, splendid, promising, uma, umakunai, umakatta, umakunakatta, umakute, umami, umakereba, umakarou|umai|旨い|626||
-219|yasashii, 優しい, friendly, tender, kind, gentle, graceful, affectionate, amiable, suave, sweet, yasashi, yasashikunai, yasashikatta, yasashikunakatta, yasashikute, yasashimi, yasashikereba, yasashikarou|yasashii|優しい|627||
-220|tanoshii, 楽しい, fun, enjoyable, pleasant, tanoshi, tanoshikunai, tanoshikatta, tanoshikunakatta, tanoshikute, tanoshimi, tanoshikereba, tanoshikarou|tanoshii|楽しい|628||
-221|okashii, 可笑しい, funny, amuzing, comical, laughable, ridiculous, strange, odd, peculiar, weird, funny, amusing, comical, laughable, ridiculous, strange, odd, funny, peculiar, weird, unusual, eccentric, improper, unsuitable, unbecoming, suspicious, okashi, okashikunai, okashikatta, okashikunakatta, okashikute, okashimi, okashikereba, okashikarou|okashii|可笑しい|629;8928;8929;8930;8931||
-222|ii, 良い, good, ok, all right, fine, yoi, yo, yokunai, yokatta, yokunakatta, yokute, yomi, yokereba, yokarou|ii|良い|630|yoi|
-223|yoroshii, 宜しい, good, ok, all right, fine, yoroshi, yoroshikunai, yoroshikatta, yoroshikunakatta, yoroshikute, yoroshimi, yoroshikereba, yoroshikarou|yoroshii|宜しい|631||
-224|kudaranai, 下らない, good-for-nothing, stupid, trivial, worthless, kudarana, kudaranakunai, kudaranakatta, kudaranakunakatta, kudaranakute, kudaranami, kudaranakereba, kudaranakarou|kudaranai|下らない|632||
-225|arigatai, 有難い, grateful, thankful, welcome, appreciated, 有り難い, arigata, arigatakunai, arigatakatta, arigatakunakatta, arigatakute, arigatami, arigatakereba, arigatakarou|arigatai|有難い|633|有り難い|
-226|medetai, 目出度い, happy, auspicious, propitious, joyous, naïve, naive, medeta, medetakunai, medetakatta, medetakunakatta, medetakute, medetami, medetakereba, medetakarou|medetai|目出度い|634;10939||
-227|ureshii, 嬉しい, happy, glad, pleased, happy, glad, pleasant, ureshi, ureshikunai, ureshikatta, ureshikunakatta, ureshikute, ureshimi, ureshikereba, ureshikarou|ureshii|嬉しい|635;8592||
-228|katai, 硬い, hard, solid, tough, stiff, tight, wooden, unpolished (e.g. writing), strong, firm (not viscous or easily moved), safe, steady, honest, steadfast, obstinate, stubborn, bookish, formal, stuffy, kata, katakunai, katakatta, katakunakatta, katakute, katami, katakereba, katakarou|katai|硬い|636;10806;10807;10808;10809;10810||
-229|omoi, 重い, heavy, weighty, massive, heavy (feeling), depressed, gloomy, blue, uneasy, slow, sluggish, lumbering, ponderous, clumsy, important, serious, grave, serious, severe, critical, solid, established, dignified, sensible, omo, omokunai, omokatta, omokunakatta, omokute, omomi, omokereba, omokarou|omoi|重い|637;11053;11054;11055;11056;11057||
-230|omokurushii, 重苦しい, heavy, gloomy, awkward, cumbruous, appressive, leaden, omokurushi, omokurushikunai, omokurushikatta, omokurushikunakatta, omokurushikute, omokurushimi, omokurushikereba, omokurushikarou|omokurushii|重苦しい|638||
-231|omotai, 重たい, heavy, massive, serious, important, severe, oppressed, omota, omotakunai, omotakatta, omotakunakatta, omotakute, omotami, omotakereba, omotakarou|omotai|重たい|639||
-232|memagurushii, 目まぐるしい, hectic, bewildering, bustling, dizzy, memagurushi, memagurushikunai, memagurushikatta, memagurushikunakatta, memagurushikute, memagurushimi, memagurushikereba, memagurushikarou|memagurushii|目まぐるしい|640||
-233|atsui, 熱い, hot (object), hot (thing), passionate (feelings, etc.), ardent, hot (e.g. gaze), hot (e.g. temper), zealous, enthusiastic, fired up, intense, severe, extreme, hot (topic), of interest, atsu, atsukunai, atsukatta, atsukunakatta, atsukute, atsumi, atsukereba, atsukarou|atsui|熱い|641;10625;10626;10627;10628;10629;10630||
-234|mushiatsui, 蒸し暑い, hot and humid, sultry, 蒸暑い, mushiatsu, mushiatsukunai, mushiatsukatta, mushiatsukunakatta, mushiatsukute, mushiatsumi, mushiatsukereba, mushiatsukarou, 蒸暑い|mushiatsui|蒸し暑い|642|蒸暑い|
-235|dekai, でかい, huge, big, gargantuan, deka, dekakunai, dekakatta, dekakunakatta, dekakute, dekami, dekakereba, dekakarou, dekkai|dekai|でかい|9380||
-236|mottainai, 勿体ない, impious, profane, sacrilegious, unworthy, wasteful, 勿体無い, 物体ない, 物体無い, mottaina, mottainakunai, mottainakatta, mottainakunakatta, mottainakute, mottainami, mottainakereba, mottainakarou|mottainai|勿体ない|644|勿体無い, 物体ない, 物体無い|
-237|shitsukoi, しつこい, insistent, obstinate, persistent, tenacious, too rich (e.g. in taste), fatty, heavy, greasy, shitsuko, shitsukokunai, shitsukokatta, shitsukokunakatta, shitsukokute, shitsukomi, shitsukokereba, shitsukokarou, shitsukkoi|shitsukoi|しつこい|645||
-238|omoshiroi, 面白い, interesting, funny, amusing, omoshiro, omoshirokunai, omoshirokatta, omoshirokunakatta, omoshirokute, omoshiromi, omoshirokereba, omoshirokarou|omoshiroi|面白い|646||
-239|shitashii, 親しい, intimate, close (e.g. friend), close (e.g. friend), familiar, friendly, intimate, familiar (e.g. story), well-known (to one), close (relatives), closely related, shitashi, shitashikunai, shitashikatta, shitashikunakatta, shitashikute, shitashimi, shitashikereba, shitashikarou|shitashii|親しい|647;9189;9190;9191||
-240|tamaranai, 堪らない, intolerable, unbearable, unendurable, irresistible, tremendous, out of this world, tamarana, tamaranakunai, tamaranakatta, tamaranakunakatta, tamaranakute, tamaranami, tamaranakereba, tamaranakarou|tamaranai|堪らない|648||
-241|imoshinai, 居もしない, invisible, unseen, vague, mysterious, imaginary, imoshina, imoshinakunai, imoshinakatta, imoshinakunakatta, imoshinakute, imoshinami, imoshinakereba, imoshinakarou|imoshinai|居もしない|649||
-242|kayui, 痒い, itchy, iching, kayu, kayukunai, kayukatta, kayukunakatta, kayukute, kayumi, kayukereba, kayukarou|kayui|痒い|650||
-243|awai, 淡い, light, faint, pale, fleeting, awa, awakunai, awakatta, awakunakatta, awakute, awami, awakereba, awakarou|awai|淡い|651||
-244|karui, 軽い, light, nimble, agile, minor, unimportant, trivial, karu, karukunai, karukatta, karukunakatta, karukute, karumi, karukereba, karukarou|karui|軽い|652||
-245|sabishii, 寂しい, lonely, lonesome, solitary, desolate, 淋しい, sabishi, sabishikunai, sabishikatta, sabishikunakatta, sabishikute, sabishimi, sabishikereba, sabishikarou|sabishii|寂しい|653|淋しい|
-246|nagai, 長い, long (distance), long (time), lengthy, naga, nagakunai, nagakatta, nagakunakatta, nagakute, nagami, nagakereba, nagakarou|nagai|長い|654;11767||
-247|yurui, 緩い, loose, lenient, lax, gentle (e.g. curve, slope), slow, weak, soft, yuru, yurukunai, yurukatta, yurukunakatta, yurukute, yurumi, yurukereba, yurukarou|yurui|緩い|655||
-248|urusai, 煩い, loud, noisy, annoying, troublesome, urusa, urusakunai, urusakatta, urusakunakatta, urusakute, urusami, urusakereba, urusakarou|urusai|煩い|656||
-249|kawairashii, 可愛らしい, lovely, sweet, kawairashi, kawairashikunai, kawairashikatta, kawairashikunakatta, kawairashikute, kawairashimi, kawairashikereba, kawairashikarou|kawairashii|可愛らしい|657||
-250|hikui, 低い, low, hiku, hikukunai, hikukatta, hikukunakatta, hikukute, hikumi, hikukereba, hikukarou|hikui|低い|658||
-251|nurui, 温い, lukewarm, tepid, lenient, slow, stupid, nuru, nurukunai, nurukatta, nurukunakatta, nurukute, nurumi, nurukereba, nurukarou|nurui|温い|659;6377;6378||
-252|semai, 狭い, narrow, confined, not spacious, sema, semakunai, semakatta, semakunakatta, semakute, semami, semakereba, semakarou|semai|狭い|660||
-253|ikesukanai, いけ好かない, nasty, disgusting, disagreeable, creepy, ikesukana, ikesukanakunai, ikesukanakatta, ikesukanakunakatta, ikesukanakute, ikesukanami, ikesukanakereba, ikesukanakarou|ikesukanai|いけ好かない|661||
-254|chikai, 近い, nearby, chika, chikakunai, chikakatta, chikakunakatta, chikakute, chikami, chikakereba, chikakarou|chikai|近い|662||
-255|atarashii, 新しい, new, fresh, new, novel, fresh, recent, latest, up-to-date, modern, atarashi, atarashikunai, atarashikatta, atarashikunakatta, atarashikute, atarashimi, atarashikereba, atarashikarou|atarashii|新しい|663;7550||
-256|konomashii, 好ましい, nice, likeable, desirable, konomashi, konomashikunai, konomashikatta, konomashikunakatta, konomashikute, konomashimi, konomashikereba, konomashikarou|konomashii|好ましい|664||
-257|kanawanai, 敵わない, no match for, unbearable, unable, can't do, beyond one's power, kanawana, kanawanakunai, kanawanakatta, kanawanakunakatta, kanawanakute, kanawanami, kanawanakereba, kanawanakarou|kanawanai|敵わない|665||
-258|yakamashii, 喧しい, noisy, boisterous, strict, fault-finding, carping, fussy, yakamashi, yakamashikunai, yakamashikatta, yakamashikunakatta, yakamashikute, yakamashimi, yakamashikereba, yakamashikarou|yakamashii|喧しい|666||
-259|furui, 古い, old, not fresh, late, furu, furukunai, furukatta, furukunakatta, furukute, furumi, furukereba, furukarou|furui|古い|667||
-260|kowai, 強い, ough, stiff, hard, kowa, kowakunai, kowakatta, kowakunakatta, kowakute, kowami, kowakereba, kowakarou|kowai|強い|668||
-261|itai, 痛い, painful, ita, itakunai, itakatta, itakunakatta, itakute, itami, itakereba, itakarou|itai|痛い|669||
-262|tsurai, 辛い, painful, bitter, heartbreaking, tsura, tsurakunai, tsurakatta, tsurakunakatta, tsurakute, tsurami, tsurakereba, tsurakarou|tsurai|辛い|670||
-263|kurushii, 苦しい, painful, difficult, agonizing, needy, tight (budget), straitened (circumstances), forced (smile, joke), lame (excuse), strained (interpretation), awkward (situation), painful (position), painful, difficult, tough, hard, distressing, (psychologically) difficult, stressful, awkward (e.g. position), straitened (circumstances), tight (financial situation), needy, struggling, strained (interpretation, explanation, etc.), lame (e.g. excuse), forced (e.g. smile), far-fetched, hard to do, unpleasant, kurushi, kurushikunai, kurushikatta, kurushikunakatta, kurushikute, kurushimi, kurushikereba, kurushikarou|kurushii|苦しい|671;6367;6368;6369;9157;9158;9159;9160;9161||
-264|setsunai, 切ない, painful, heartrending, trying, oppressive, suffocating, miserable, setsuna, setsunakunai, setsunakatta, setsunakunakatta, setsunakute, setsunami, setsunakereba, setsunakarou|setsunai|切ない|672||
-265|mazushii, 貧しい, poor, mazushi, mazushikunai, mazushikatta, mazushikunakatta, mazushikute, mazushimi, mazushikereba, mazushikarou|mazushii|貧しい|673||
-266|chikaraduyoi, 力強い, powerful, strong, forceful, vigorous, reassuring, encouraging, chikaraduyo, chikaraduyokunai, chikaraduyokatta, chikaraduyokunakatta, chikaraduyokute, chikaraduyomi, chikaraduyokereba, chikaraduyokarou|chikaraduyoi|力強い|674||
-267|toutoi, 尊い, precious, valuable, priceless, noble, exalted, sacred, 貴い, touto, toutokunai, toutokatta, toutokunakatta, toutokute, toutomi, toutokereba, toutokarou|toutoi|尊い|675|貴い|
-268|kawaii, 可愛い, pretty, cute, cute, adorable, charming, lovely, pretty, dear, precious, darling, pet, innocent, childlike, childish, lovable, dainty, cute little, tiny, kawai, kawaikunai, kawaikatta, kawaikunakatta, kawaikute, kawaimi, kawaikereba, kawaikarou|kawaii|可愛い|676;10460;10461;10462;10463||
-269|hokorashii, 誇らしい, proud, haughty, arrogant, splendid, magnificent, hokorashi, hokorashikunai, hokorashikatta, hokorashikunakatta, hokorashikute, hokorashimi, hokorashikereba, hokorashikarou|hokorashii|誇らしい|677||
-270|yayakoshii, ややこしい, puzzling, tangled, complicated, complex, yayakoshi, yayakoshikunai, yayakoshikatta, yayakoshikunakatta, yayakoshikute, yayakoshimi, yayakoshikereba, yayakoshikarou|yayakoshii|ややこしい|678||
-271|hayai, 速い, quick, fast, haya, hayakunai, hayakatta, hayakunakatta, hayakute, hayami, hayakereba, hayakarou|hayai|速い|679||
-272|akai, 赤い, red, aka, akakunai, akakatta, akakunakatta, akakute, akami, akakereba, akakarou, color, colour|akai|赤い|680||
-273|mirengamashii, 未練がましい, regretful, irresolute, stubborn (not giving up), mirengamashi, mirengamashikunai, mirengamashikatta, mirengamashikunakatta, mirengamashikute, mirengamashimi, mirengamashikereba, mirengamashikarou|mirengamashii|未練がましい|681||
-274|oshii, 惜しい, regrettable, disappointing, precious, dear, valuable, too good for, deserving better, almost but not quite, oshi, oshikunai, oshikatta, oshikunakatta, oshikute, oshimi, oshikereba, oshikarou|oshii|惜しい|682||
-275|kiyasui, 気安い, relaxed, familiar, easy to access, friendly, kiyasu, kiyasukunai, kiyasukatta, kiyasukunakatta, kiyasukute, kiyasumi, kiyasukereba, kiyasukarou|kiyasui|気安い|683||
-276|tanomoshii, 頼もしい, reliable, trustworthy, hopeful, promising, tanomoshi, tanomoshikunai, tanomoshikatta, tanomoshikunakatta, tanomoshikute, tanomoshimi, tanomoshikereba, tanomoshikarou|tanomoshii|頼もしい|684||
-277|tadashii, 正しい, right, just, correct, righteous, honest, truthful, proper, strightforward, perfect, tadashi, tadashikunai, tadashikatta, tadashikunakatta, tadashikute, tadashimi, tadashikereba, tadashikarou|tadashii|正しい|685||
-278|arai, 荒い, rough, wild, ara, arakunai, arakatta, arakunakatta, arakute, arami, arakereba, arakarou|arai|荒い|686||
-279|marui, 丸い, round, cicular, spherical, maru, marukunai, marukatta, marukunakatta, marukute, marumi, marukereba, marukarou|marui|丸い|687||
-280|kanashii, 悲しい, sad, sorrowful, unhappy, kanashi, kanashikunai, kanashikatta, kanashikunakatta, kanashikute, kanashimi, kanashikereba, kanashikarou|kanashii|悲しい|688||
-281|shoppai, 塩っぱい, salty, shoppa, shoppakunai, shoppakatta, shoppakunakatta, shoppakute, shoppami, shoppakereba, shoppakarou, taste|shoppai|塩っぱい|689||
-282|sukunai, 少ない, few, a little, scarce, insufficient, seldom, sukuna, sukunakunai, sukunakatta, sukunakunakatta, sukunakute, sukunami, sukunakereba, sukunakarou|sukunai|少ない|690||
-283|kowai, 怖い, scary, frightening, eerie, dreadful, (I'm) afraid, 恐い, kowa, kowakunai, kowakatta, kowakunakatta, kowakute, kowami, kowakereba, kowakarou|kowai|怖い|691;11657|恐い|
-284|kibishii, 厳しい, severe, strict, rigid, unsparing, relentless, stern, austere, grave, solemn, intense (e.g. cold), harsh, tough, kibishi, kibishikunai, kibishikatta, kibishikunakatta, kibishikute, kibishimi, kibishikereba, kibishikarou|kibishii|厳しい|692||
-285|asai, 浅い, shallow, superficial, asa, asakunai, asakatta, asakunakatta, asakute, asami, asakereba, asakarou|asai|浅い|693||
-286|mijikai, 短い, short, mijika, mijikakunai, mijikakatta, mijikakunakatta, mijikakute, mijikami, mijikakereba, mijikakarou|mijikai|短い|694||
-287|akkenai, 呆気ない, short & simple, akkena, akkenakunai, akkenakatta, akkenakunakatta, akkenakute, akkenami, akkenakereba, akkenakarou|akkenai|呆気ない|695||
-288|se ga hikui, 背が低い, short (person), se ga hiku, se ga hikukunai, se ga hikukatta, se ga hikukunakatta, se ga hikukute, se ga hikumi, se ga hikukereba, se ga hikukarou|se ga hikui|背が低い|696||
-289|umai, 上手い, skillful, clever, expert, wise, successful, 巧い, uma, umakunai, umakatta, umakunakatta, umakute, umami, umakereba, umakarou|umai|上手い|697|巧い|
-290|nemui, 眠い, sleepy, drowsy, somnolent, nemu, nemukunai, nemukatta, nemukunakatta, nemukute, nemumi, nemukereba, nemukarou|nemui|眠い|698||
-291|osoi, 遅い, slow, late, slow, time-consuming, sluggish, late (in the day), towards the end (of the day or night), until a time far into the day or night, later (than expected or usual), late, behind schedule, behind time, tardy, overdue, unpunctual, too late, having missed the boat, dull, stupid, oso, osokunai, osokatta, osokunakatta, osokute, osomi, osokereba, osokarou|osoi|遅い|699;9893;9894;9895;9896;9897||
-292|chiisai, 小さい, small, chiisa, chiisakunai, chiisakatta, chiisakunakatta, chiisakute, chiisami, chiisakereba, chiisakarou|chiisai|小さい|700||
-293|komakai, 細かい, small, fine, minute, minor, trivial, sensitive, attentive, komaka, komakakunai, komakakatta, komakakunakatta, komakakute, komakami, komakakereba, komakakarou|komakai|細かい|701||
-294|namagusai, 神々しい, smelling of fish or blood, fishy, bloody, depraved, corrupt, fallen, worldly, mundane, secular, common, ordinary, suspicious, questionable, namagusa, namagusakunai, namagusakatta, namagusakunakatta, namagusakute, namagusami, namagusakereba, namagusakarou|namagusai|神々しい|702||
-295|yawarakai, 柔らかい, soft, tender, limp, soft, tender, pliant, supple, limber, limp, gentle, mild, mellow, informal, light, flexible (e.g. thinking), yawaraka, yawarakakunai, yawarakakatta, yawarakakunakatta, yawarakakute, yawarakami, yawarakakereba, yawarakakarou|yawarakai|柔らかい|703;12090;12091;12092||
-296|yawai, 柔い, soft, weak, yawa, yawakunai, yawakatta, yawakunakatta, yawakute, yawami, yawakereba, yawakarou|yawai|柔い|704||
-297|suppai, 酸っぱい, sour, suppa, suppakunai, suppakatta, suppakunakatta, suppakute, suppami, suppakereba, suppakarou, taste|suppai|酸っぱい|705||
-298|karai, 辛い, spicy, hot, kara, karakunai, karakatta, karakunakatta, karakute, karami, karakereba, karakarou, taste|karai|辛い|706||
-299|katai, 固い, stiff, tight, wooden, formal, bookish, kata, katakunai, katakatta, katakunakatta, katakute, katami, katakereba, katakarou|katai|固い|707||
-300|kusai, 臭い, stinky, smelly, suspicious, fishy, kusa, kusakunai, kusakatta, kusakunakatta, kusakute, kusami, kusakereba, kusakarou|kusai|臭い|708||
-301|tsuyoi, 強い, strong, potent, competent, domineering, tough, strong, brawny, powerful, healthy, rugged, good (at), skilled, knowledgeable, being able to handle, know how to deal (with), durable (against), resistant (to), resilient, firm, rigid, solid, intense, strong, fierce, high, tsuyo, tsuyokunai, tsuyokatta, tsuyokunakatta, tsuyokute, tsuyomi, tsuyokereba, tsuyokarou|tsuyoi|強い|709;6615;6616;6617;6618;6619||
-302|katai, 堅い, strong, firm, tough, kata, katakunai, katakatta, katakunakatta, katakute, katami, katakereba, katakarou|katai|堅い|710||
-303|ayashii, 怪しい, suspicious, dubious, doubtful, dodgy, dangerous, ominous, strange, shady, fishy, ayashi, ayashikunai, ayashikatta, ayashikunakatta, ayashikute, ayashimi, ayashikereba, ayashikarou|ayashii|怪しい|711||
-304|amai, 甘い, sweet, ama, amakunai, amakatta, amakunakatta, amakute, amami, amakereba, amakarou, taste|amai|甘い|712||
-305|se ga takai, 背が高い, tall (person), se ga taka, se ga takakunai, se ga takakatta, se ga takakunakatta, se ga takakute, se ga takami, se ga takakereba, se ga takakarou|se ga takai|背が高い|713||
-306|mazui, 不味い, tasteless, nasty, tasting bad, disgusting, unappetising, unappetizing, unsavoury, unsavory, unpleasant, unskillful, unskilful, bungling, clumsy, poor, ugly, unattractive, homely, plain, awkward, problematic, troublesome, unfavorable, unfavourable, unwise, mazu, mazukunai, mazukatta, mazukunakatta, mazukute, mazumi, mazukereba, mazukarou|mazui|不味い|714;10922;10923;10924;10925||
-307|oishii, 美味しい, tasty, delicious, oishi, oishikunai, oishikatta, oishikunakatta, oishikute, oishimi, oishikereba, oishikarou|oishii|美味しい|715||
-308|osoroshii, 恐ろしい, terrible, dreadful, terrifying, frightening, frightened, surprising, startling, tremendous, amazing, osoroshi, osoroshikunai, osoroshikatta, osoroshikunakatta, osoroshikute, osoroshimi, osoroshikereba, osoroshikarou|osoroshii|恐ろしい|716||
-309|atsui, 厚い, thick, abundant, atsu, atsukunai, atsukatta, atsukunakatta, atsukute, atsumi, atsukereba, atsukarou|atsui|厚い|717||
-310|futoi, 太い, thick, fat, futo, futokunai, futokatta, futokunakatta, futokute, futomi, futokereba, futokarou|futoi|太い|718||
-311|noroi, 鈍い, thickheaded, obtuse, stupid, indulgent (esp. to the opposite sex), doting, noro, norokunai, norokatta, norokunakatta, norokute, noromi, norokereba, norokarou|noroi|鈍い|719||
-312|usui, 薄い, thin, pale light, dilute, weak (e.g. taste), usu, usukunai, usukatta, usukunakatta, usukute, usumi, usukereba, usukarou|usui|薄い|720||
-313|hosoi, 細い, thin, slender, fine, hoso, hosokunai, hosokatta, hosokunakatta, hosokute, hosomi, hosokereba, hosokarou|hosoi|細い|721||
-314|kitsui, きつい, tight, kitsu, kitsukunai, kitsukatta, kitsukunakatta, kitsukute, kitsumi, kitsukereba, kitsukarou|kitsui|きつい|722||
-315|minikui, 醜い, ugly, hard on the eyes, miniku, minikukunai, minikukatta, minikukunakatta, minikukute, minikumi, minikukereba, minikukarou|minikui|醜い|723||
-316|ochisukanai, 落ち着かない, uncomfortable, ochisukana, ochisukanakunai, ochisukanakatta, ochisukanakunakatta, ochisukanakute, ochisukanami, ochisukanakereba, ochisukanakarou|ochisukanai|落ち着かない|724||
-317|tondemonai, とんでもない, unthinkable, unexpected, outrageous, offensive, absolutely not, not at all, far from it, impossible, preposterous, bullshit, no way, tondemona, tondemonakunai, tondemonakatta, tondemonakunakatta, tondemonakute, tondemonami, tondemonakereba, tondemonakarou|tondemonai|とんでもない|725;726||
-318|mezurashii, 珍しい, unusual, rare, curious, weird, new, novel, fine (e.g. gift), mezurashi, mezurashikunai, mezurashikatta, mezurashikunakatta, mezurashikute, mezurashimi, mezurashikereba, mezurashikarou|mezurashii|珍しい|727;7828;7829||
-319|munashii, 空しい, vacant, futile, vain, void, empty, ineffective, lifeless, 虚しい, munashi, munashikunai, munashikatta, munashikunakatta, munashikute, munashimi, munashikereba, munashikarou|munashii|空しい|728|虚しい|
-320|kuyashii, 悔しい, vexing, annoying, frustrating, regrettable, mortifying, kuyashi, kuyashikunai, kuyashikatta, kuyashikunakatta, kuyashikute, kuyashimi, kuyashikereba, kuyashikarou|kuyashii|悔しい|729||
-321|hageshii, 激しい, violent, vehement, intense, furious, tempestuous, hageshi, hageshikunai, hageshikatta, hageshikunakatta, hageshikute, hageshimi, hageshikereba, hageshikarou|hageshii|激しい|730||
-322|miyasui, 見やすい, visible, understandable, easy on the eyes, easy to see, beautiful, pretty, miyasu, miyasukunai, miyasukatta, miyasukunakatta, miyasukute, miyasumi, miyasukereba, miyasukarou|miyasui|見やすい|731||
-323|hoshii, 欲しい, wanted (to want), hoshi, hoshikunai, hoshikatta, hoshikunakatta, hoshikute, hoshimi, hoshikereba, hoshikarou|hoshii|欲しい|732||
-324|atatakai, 暖かい, warm, 温かい, atataka, atatakakunai, atatakakatta, atatakakunakatta, atatakakute, atatakami, atatakakereba, atatakakarou|atatakai|暖かい|733|温かい|
-325|atsui, 暑い, warm (weather), hot (weather), hot, warm, sultry, heated, passionate, impassioned, burning (desire, etc.), on everybody's mind, on the radar, du jour, interested (gaze, etc.), atsu, atsukunai, atsukatta, atsukunakatta, atsukute, atsumi, atsukereba, atsukarou|atsui|暑い|734;8117;8118;8119||
-326|yowacchii, 弱っちい, weak, feeble, yowacchi, yowacchikunai, yowacchikatta, yowacchikunakatta, yowacchikute, yowacchimi, yowacchikereba, yowacchikarou|yowacchii|弱っちい|735||
-327|yowai, 弱い, weak, frail, delicate, tender, unskilled, yowa, yowakunai, yowakatta, yowakunakatta, yowakute, yowami, yowakereba, yowakarou|yowai|弱い|736||
-328|nayocchii, なよっちい, weak, frail, slender, feminine, nayocchi, nayocchikunai, nayocchikatta, nayocchikunakatta, nayocchikute, nayocchimi, nayocchikereba, nayocchikarou|nayocchii|なよっちい|737||
-329|hiyowai, ひ弱い, weak, sickly, hiyowa, hiyowakunai, hiyowakatta, hiyowakunakatta, hiyowakute, hiyowami, hiyowakereba, hiyowakarou|hiyowai|ひ弱い|738||
-330|kishokuwarui, 気色悪い, weird, disgusting, sickening, kishokuwaru, kishokuwarukunai, kishokuwarukatta, kishokuwarukunakatta, kishokuwarukute, kishokuwarumi, kishokuwarukereba, kishokuwarukarou|kishokuwarui|気色悪い|739||
-331|shiroi, 白い, white, shiro, shirokunai, shirokatta, shirokunakatta, shirokute, shiromi, shirokereba, shirokarou, color, colour|shiroi|白い|740||
-332|hiroi, 広い, wide, broad, spacious, vast, hiro, hirokunai, hirokatta, hirokunakatta, hirokute, hiromi, hirokereba, hirokarou|hiroi|広い|741||
-333|hiroi, 寛い, broadminded, hiro, hirokunai, hirokatta, hirokunakatta, hirokute, hiromi, hirokereba, hirokarou|hiroi|寛い|6844||
-334|kashikoi, 賢い, wise, clever, smart, 畏い, kashiko, kashikokunai, kashikokatta, kashikokunakatta, kashikokute, kashikomi, kashikokereba, kashikokarou|kashikoi|賢い|742|畏い|
-335|subarashii, 素晴らしい, wonderful, subarashi, subarashikunai, subarashikatta, subarashikunakatta, subarashikute, subarashimi, subarashikereba, subarashikarou|subarashii|素晴らしい|743||
-336|kiiroi, 黄色い, yellow, kiiro, kiirokunai, kiirokatta, kiirokunakatta, kiirokute, kiiromi, kiirokereba, kiirokarou, color, colour|kiiroi|黄色い|744||
-337|wakai, 若い, young, youthful, immature, green, low (number), small, waka, wakakunai, wakakatta, wakakunakatta, wakakute, wakami, wakakereba, wakakarou|wakai|若い|745;6613;6614||
+165|airashii, 愛らしい, adorable|airashii|愛らしい|571||
+166|sugoi, 凄い, amazing, great, wonderful, terrific, impressive, vast, extensive|sugoi|凄い|572||
+167|kassai, 喝采, applauded (to applaud)|kassai|喝采|573||
+168|fusawashii, 相応しい, appropriate, adequate, suitable|fusawashii|相応しい|574||
+169|hazukashii, 恥ずかしい, shy, ashamed, embarrassed, disgraceful, shameful, embarrassing, embarrassed, ashamed, humiliated, shy|hazukashii|恥ずかしい|575;6310;12277||
+170|hidoi, 酷い, awful, terrible, hidee, 非道い|hidoi|酷い|576|hidee, 非道い|
+171|warui, 悪い, bad, poor, inferior, evil, sinful, unprofitable, unbeneficial, at fault, to blame, in the wrong, sorry|warui|悪い|577;11242;11243;11244;11245||
+172|utsukoshii, 美しい, beautiful|utsukoshii|美しい|578||
+173|utsukushii, 美しい, beautiful ,lovely|utsukushii|美しい|579||
+174|ustsukushii, 美しい, beautiful, lovely|ustsukushii|美しい|580||
+175|ookii, 大きい, big, large, great, loud, extensive, spacious, important, decisive, valuable, older, grown up|ookii|大きい|581;9878;9879;9880;9881||
+176|nigai, 苦い, bitter, taste|nigai|苦い|582||
+177|kuroi, 黒い, black, color, colour|kuroi|黒い|583||
+178|aoi, 青い, blue, color, colour|aoi|青い|584||
+179|tsumaranai, 詰らない, boring, uninteresing, 詰まらない|tsumaranai|詰らない|585|詰まらない|
+180|mendoukusai, 面倒臭い, bothersome, troublesome, tiresome, annoying, 面倒くさい|mendoukusai|面倒臭い|586|面倒くさい|
+181|akarui, 明るい, bright, colorful, cheerful, light, well-lit, well-lighted, bright (of a colour), brightly-coloured, brightly-colored, cheerful, bright, spirited, sunny (e.g. disposition), encouraging (for the future of a project, etc.), promising, of fair prospects, familiar (with), knowledgeable (about), well versed (in), fair (e.g. politics), clean, impartial|akarui|明るい|587;8708;8709;8710;8711;8712;8713||
+182|chairoi, 茶色い, brown, color, colour|chairoi|茶色い|588||
+183|isogashii, 忙しい, busy|isogashii|忙しい|589||
+184|sosokkashii, そそかしい, careless, thoughtless|sosokkashii|そそかしい|590||
+185|ayashii, 妖しい, charming, bewitching, mysterious|ayashii|妖しい|591||
+186|yasui, 安い, cheap, inexpensive, calm, peaceful, quiet|yasui|安い|592;12079||
+187|tsumetai, 冷たい, cold (object)|tsumetai|冷たい|593||
+188|samui, 寒い, cold (ambient temperature)|samui|寒い|594||
+189|tsugouyoi, 都合よい, convenient|tsugouyoi|都合よい|595||
+190|suzushii, 涼しい, cool, refreshing|suzushii|涼しい|596||
+191|arai, 粗い, corase, rough|arai|粗い|597||
+192|yabai, やばい, dangerous, risky, awful, terrible, crap, terrific, amazing, cool|yabai|やばい|598||
+193|ayaui, 危うい, dangerous, risky, hazardous, perilous, precarious, in danger, in jeopardy, critical, grave, at risk, uncertain, unreliable, insecure, unsteady, doubtful, in danger, in jeopardy, critical, grave, at risk, uncertain, unreliable, insecure, unsteady, doubtful, close (i.e. a close call), narrow|ayaui|危うい|599;10431;10432;10433||
+194|abunai, 危ない, dangerous, risky, hazardous, perilous, precarious, unreliable, insecure, in danger, in jeopardy, critical, grave, at risk, uncertain, unreliable, insecure, unsteady, doubtful, close (i.e. a close call), narrow|abunai|危ない|600;7347;7348;7349||
+195|kurai, 暗い, dark, gloomy, dull, depressed, despirited, sorowful, bitter, unclear, unfamiliar, unknown, dark, gloomy, murky, depressed, dispirited, down in the dumps, dark (mood), dark (in colour), dull, ill-boding, dark (e.g. past), suspicious, unlikely (to succeed), hopeless, unpromising, unfamiliar (with), ignorant (of)|kurai|暗い|601;10888;10889;10890;10891;10892;10893||
+196|natsukashii, 懐かしい, dear, desired, missed|natsukashii|懐かしい|602||
+197|koi, 濃い, deep (colour), dark, strong (flavour, smell, etc), thick (consistency), dense, strong (flavour, smell, etc.), thick (consistency), dense, strong (possibility, etc.), thick (i.e. "as thick as thieves"), close, deep (love, etc.)|koi|濃い|603;8303;8304;8305;8306||
+198|fukai, 深い, deep, profound, dense, thick, close (relationship), intense, strong, late|fukai|深い|604;6636;6637;6638;6639;6640||
+199|umai, 美味い, delicious, appetizing, appetising|umai|美味い|605||
+200|hitoke no nai, 人気のない, deserted, empty of people|hitoke no nai|人気のない|606||
+201|kuwashii, 詳しい, detailed, full, accurate, knowing very well, well-acquainted, well-informed, 精しい, 委しい|kuwashii|詳しい|607|精しい, 委しい|
+202|nikui, 難い, difficult, hard, difficult, hard to do ..., difficult to ..., hard to ..., katai, gatai|nikui|難い|608;609;8890||
+203|muzukashii, 難しい, difficult, hard, complicated, troublesome, difficult, hard, troublesome, complicated, serious (disease, problem, etc.), fussy, particular, fastidious, hard to please, displeased, gloomy, glum, sullen, serious (look), dirty, unclean, filthy, detestable, unpleasant, uncomfortable, creepy, spooky|muzukashii|難しい|610;10995;10996;10997;10998;10999||
+204|usugurai, 薄暗い, dim, gloomy|usugurai|薄暗い|611||
+205|kitanai, 汚い, dirty, foul, messy, filthy, dirty, filthy, foul, unclean, disordered, messy, untidy, poor (e.g. handwriting), indecent (language, etc.), dirty, vulgar, coarse, dastardly, mean, base, underhanded, stingy, greedy|kitanai|汚い|612;7449;7450;7451;7452;7453||
+206|erai, 偉い, distinguished, great|erai|偉い|613||
+207|kougoushii, 神々しい, divine, sublime, solemn, 神神しい|kougoushii|神々しい|614|神神しい|
+208|nibui, 鈍い, dull (e.g. knife, sound), blunt, dim, slow, sluggish, inert, lethargic|nibui|鈍い|615||
+209|hayai, 早い, early, easy, simple|hayai|早い|616||
+210|monosugoi, 物凄い, earth-shattering, staggering, to a very great extent, terrible, frightful, horrible|monosugoi|物凄い|617||
+211|yasui, 易い, easy|yasui|易い|618||
+212|yasashii, 易しい, easy, plain, simple|yasashii|易しい|619||
+213|tayasui, 容易い, easy, simple, light|tayasui|容易い|620||
+214|urayamashii, 羨ましい, envious, jealous, enviable|urayamashii|羨ましい|621||
+215|hitoshii, 等しい, equal, similar, like, equivalent|hitoshii|等しい|622||
+216|takai, 高い, expensive, tall (object), high|takai|高い|623;624||
+217|tooi, 遠い, far, distant|tooi|遠い|625||
+218|umai, 旨い, fortunate, splendid, promising|umai|旨い|626||
+219|yasashii, 優しい, friendly, tender, kind, gentle, graceful, affectionate, amiable, suave, sweet|yasashii|優しい|627||
+220|tanoshii, 楽しい, fun, enjoyable, pleasant, enjoyable, fun, pleasant, happy, delightful|tanoshii|楽しい|628;12590||
+221|okashii, 可笑しい, funny, amuzing, comical, laughable, ridiculous, strange, odd, peculiar, weird, funny, amusing, comical, laughable, ridiculous, strange, odd, funny, peculiar, weird, unusual, eccentric, improper, unsuitable, unbecoming, suspicious|okashii|可笑しい|629;8928;8929;8930;8931||
+222|ii, 良い, good, ok, all right, fine, yoi, yo, yokunai, yokatta, yokunakatta, yokute, yomi, yokereba, yokarou, 良, 良くない, 良かった, 良くなかった, 良くて, 良み, 良けえば, 良かろう|ii|良い|630|yoi|
+223|yoroshii, 宜しい, good, ok, all right, fine|yoroshii|宜しい|631||
+224|kudaranai, 下らない, good-for-nothing, stupid, trivial, worthless|kudaranai|下らない|632||
+225|arigatai, 有難い, grateful, thankful, welcome, appreciated, 有り難い|arigatai|有難い|633|有り難い|
+226|medetai, 目出度い, happy, auspicious, propitious, joyous, naïve, naive|medetai|目出度い|634;10939||
+227|ureshii, 嬉しい, happy, glad, pleased, happy, glad, pleasant|ureshii|嬉しい|635;8592||
+228|katai, 硬い, hard, solid, tough, stiff, tight, wooden, unpolished (e.g. writing), strong, firm (not viscous or easily moved), safe, steady, honest, steadfast, obstinate, stubborn, bookish, formal, stuffy|katai|硬い|636;10806;10807;10808;10809;10810||
+229|omoi, 重い, heavy, weighty, massive, heavy (feeling), depressed, gloomy, blue, uneasy, slow, sluggish, lumbering, ponderous, clumsy, important, serious, grave, serious, severe, critical, solid, established, dignified, sensible|omoi|重い|637;11053;11054;11055;11056;11057||
+230|omokurushii, 重苦しい, heavy, gloomy, awkward, cumbruous, appressive, leaden|omokurushii|重苦しい|638||
+231|omotai, 重たい, heavy, massive, serious, important, severe, oppressed|omotai|重たい|639||
+232|memagurushii, 目まぐるしい, hectic, bewildering, bustling, dizzy|memagurushii|目まぐるしい|640||
+233|atsui, 熱い, hot (object), hot (thing), passionate (feelings, etc.), ardent, hot (e.g. gaze), hot (e.g. temper), zealous, enthusiastic, fired up, intense, severe, extreme, hot (topic), of interest|atsui|熱い|641;10625;10626;10627;10628;10629;10630||
+234|mushiatsui, 蒸し暑い, hot and humid, sultry, 蒸暑い|mushiatsui|蒸し暑い|642|蒸暑い|
+235|dekai, でかい, huge, big, gargantuan, dekkai|dekai|でかい|9380||
+236|mottainai, 勿体ない, impious, profane, sacrilegious, unworthy, wasteful, 勿体無い, 物体ない, 物体無い|mottainai|勿体ない|644|勿体無い, 物体ない, 物体無い|
+237|shitsukoi, しつこい, insistent, obstinate, persistent, tenacious, too rich (e.g. in taste), fatty, heavy, greasy, shitsukkoi|shitsukoi|しつこい|645||
+238|omoshiroi, 面白い, interesting, funny, amusing, interesting, fascinating, intriguing, enthralling, amusing, funny, comical, pleasant, enjoyable, agreeable, fun|omoshiroi|面白い|646;12556;12557;12558||
+239|shitashii, 親しい, intimate, close (e.g. friend), close (e.g. friend), familiar, friendly, intimate, familiar (e.g. story), well-known (to one), close (relatives), closely related|shitashii|親しい|647;9189;9190;9191||
+240|tamaranai, 堪らない, intolerable, unbearable, unendurable, irresistible, tremendous, out of this world|tamaranai|堪らない|648||
+241|imoshinai, 居もしない, invisible, unseen, vague, mysterious, imaginary|imoshinai|居もしない|649||
+242|kayui, 痒い, itchy, iching|kayui|痒い|650||
+243|awai, 淡い, light, faint, pale, fleeting|awai|淡い|651||
+244|karui, 軽い, light, nimble, agile, minor, unimportant, trivial|karui|軽い|652||
+245|sabishii, 寂しい, lonely, lonesome, solitary, desolate, 淋しい|sabishii|寂しい|653|淋しい|
+246|nagai, 長い, long (distance), long (time), lengthy|nagai|長い|654;11767||
+247|yurui, 緩い, loose, lenient, lax, gentle (e.g. curve, slope), slow, weak, soft|yurui|緩い|655||
+248|urusai, 煩い, loud, noisy, annoying, troublesome|urusai|煩い|656||
+249|kawairashii, 可愛らしい, lovely, sweet|kawairashii|可愛らしい|657||
+250|hikui, 低い, low|hikui|低い|658||
+251|nurui, 温い, lukewarm, tepid, lenient, slow, stupid|nurui|温い|659;6377;6378||
+252|semai, 狭い, narrow, confined, not spacious|semai|狭い|660||
+253|ikesukanai, いけ好かない, nasty, disgusting, disagreeable, creepy|ikesukanai|いけ好かない|661||
+254|chikai, 近い, nearby|chikai|近い|662||
+255|atarashii, 新しい, new, fresh, new, novel, fresh, recent, latest, up-to-date, modern|atarashii|新しい|663;7550||
+256|konomashii, 好ましい, nice, likeable, desirable|konomashii|好ましい|664||
+257|kanawanai, 敵わない, no match for, unbearable, unable, can't do, beyond one's power|kanawanai|敵わない|665||
+258|yakamashii, 喧しい, noisy, boisterous, strict, fault-finding, carping, fussy|yakamashii|喧しい|666||
+259|furui, 古い, old, not fresh, late|furui|古い|667||
+260|kowai, 強い, ough, stiff, hard|kowai|強い|668||
+261|itai, 痛い, painful|itai|痛い|669||
+262|tsurai, 辛い, painful, bitter, heartbreaking|tsurai|辛い|670||
+263|kurushii, 苦しい, painful, difficult, agonizing, needy, tight (budget), straitened (circumstances), forced (smile, joke), lame (excuse), strained (interpretation), awkward (situation), painful (position), painful, difficult, tough, hard, distressing, (psychologically) difficult, stressful, awkward (e.g. position), straitened (circumstances), tight (financial situation), needy, struggling, strained (interpretation, explanation, etc.), lame (e.g. excuse), forced (e.g. smile), far-fetched, hard to do, unpleasant|kurushii|苦しい|671;6367;6368;6369;9157;9158;9159;9160;9161||
+264|setsunai, 切ない, painful, heartrending, trying, oppressive, suffocating, miserable|setsunai|切ない|672||
+265|mazushii, 貧しい, poor|mazushii|貧しい|673||
+266|chikaraduyoi, 力強い, powerful, strong, forceful, vigorous, reassuring, encouraging|chikaraduyoi|力強い|674||
+267|toutoi, 尊い, precious, valuable, priceless, noble, exalted, sacred, 貴い|toutoi|尊い|675|貴い|
+268|kawaii, 可愛い, pretty, cute, cute, adorable, charming, lovely, pretty, dear, precious, darling, pet, innocent, childlike, childish, lovable, dainty, cute little, tiny|kawaii|可愛い|676;10460;10461;10462;10463||
+269|hokorashii, 誇らしい, proud, haughty, arrogant, splendid, magnificent|hokorashii|誇らしい|677||
+270|yayakoshii, ややこしい, puzzling, tangled, complicated, complex|yayakoshii|ややこしい|678||
+271|hayai, 速い, quick, fast|hayai|速い|679||
+272|akai, 赤い, red, color, colour|akai|赤い|680||
+273|mirengamashii, 未練がましい, regretful, irresolute, stubborn (not giving up)|mirengamashii|未練がましい|681||
+274|oshii, 惜しい, regrettable, disappointing, precious, dear, valuable, too good for, deserving better, almost but not quite|oshii|惜しい|682||
+275|kiyasui, 気安い, relaxed, familiar, easy to access, friendly|kiyasui|気安い|683||
+276|tanomoshii, 頼もしい, reliable, trustworthy, hopeful, promising|tanomoshii|頼もしい|684||
+277|tadashii, 正しい, right, just, correct, righteous, honest, truthful, proper, strightforward, perfect|tadashii|正しい|685||
+278|arai, 荒い, rough, wild|arai|荒い|686||
+279|marui, 丸い, round, cicular, spherical|marui|丸い|687||
+280|kanashii, 悲しい, sad, sorrowful, unhappy|kanashii|悲しい|688||
+281|shoppai, 塩っぱい, salty, taste|shoppai|塩っぱい|689||
+282|sukunai, 少ない, few, a little, scarce, insufficient, seldom|sukunai|少ない|690||
+283|kowai, 怖い, scary, frightening, eerie, dreadful, (I'm) afraid, 恐い|kowai|怖い|691;11657|恐い|
+284|kibishii, 厳しい, severe, strict, rigid, unsparing, relentless, stern, austere, grave, solemn, intense (e.g. cold), harsh, tough|kibishii|厳しい|692||
+285|asai, 浅い, shallow, superficial|asai|浅い|693||
+286|mijikai, 短い, short|mijikai|短い|694||
+287|akkenai, 呆気ない, short & simple|akkenai|呆気ない|695||
+288|se ga hikui, 背が低い, short (person)|se ga hikui|背が低い|696||
+289|umai, 上手い, skillful, clever, expert, wise, successful, skillful, skilful, clever, expert, wise, successful, delicious, appetizing, appetising, tasty, fortunate, splendid, promising, 巧い|umai|上手い|697;12620;12621;12622|巧い|
+290|nemui, 眠い, sleepy, drowsy, somnolent|nemui|眠い|698||
+291|osoi, 遅い, slow, late, slow, time-consuming, sluggish, late (in the day), towards the end (of the day or night), until a time far into the day or night, later (than expected or usual), late, behind schedule, behind time, tardy, overdue, unpunctual, too late, having missed the boat, dull, stupid|osoi|遅い|699;9893;9894;9895;9896;9897||
+292|chiisai, 小さい, small|chiisai|小さい|700||
+293|komakai, 細かい, small, fine, minute, minor, trivial, sensitive, attentive|komakai|細かい|701||
+294|namagusai, 神々しい, smelling of fish or blood, fishy, bloody, depraved, corrupt, fallen, worldly, mundane, secular, common, ordinary, suspicious, questionable|namagusai|神々しい|702||
+295|yawarakai, 柔らかい, soft, tender, limp, soft, tender, pliant, supple, limber, limp, gentle, mild, mellow, informal, light, flexible (e.g. thinking)|yawarakai|柔らかい|703;12090;12091;12092||
+296|yawai, 柔い, soft, weak|yawai|柔い|704||
+297|suppai, 酸っぱい, sour, taste|suppai|酸っぱい|705||
+298|karai, 辛い, spicy, hot, taste|karai|辛い|706||
+299|katai, 固い, stiff, tight, wooden, formal, bookish|katai|固い|707||
+300|kusai, 臭い, stinky, smelly, suspicious, fishy|kusai|臭い|708||
+301|tsuyoi, 強い, strong, potent, competent, domineering, tough, strong, brawny, powerful, healthy, rugged, good (at), skilled, knowledgeable, being able to handle, know how to deal (with), durable (against), resistant (to), resilient, firm, rigid, solid, intense, strong, fierce, high|tsuyoi|強い|709;6615;6616;6617;6618;6619||
+302|katai, 堅い, strong, firm, tough|katai|堅い|710||
+303|ayashii, 怪しい, suspicious, dubious, doubtful, dodgy, dangerous, ominous, strange, shady, fishy|ayashii|怪しい|711||
+304|amai, 甘い, sweet, taste|amai|甘い|712||
+305|se ga takai, 背が高い, tall (person)|se ga takai|背が高い|713||
+306|mazui, 不味い, tasteless, nasty, tasting bad, disgusting, unappetising, unappetizing, unsavoury, unsavory, unpleasant, unskillful, unskilful, bungling, clumsy, poor, ugly, unattractive, homely, plain, awkward, problematic, troublesome, unfavorable, unfavourable, unwise|mazui|不味い|714;10922;10923;10924;10925||
+307|oishii, 美味しい, tasty, delicious, delicious, tasty, sweet, attractive, appealing, convenient, favorable, desirable, profitable|oishii|美味しい|715;12554;12555||
+308|osoroshii, 恐ろしい, terrible, dreadful, terrifying, frightening, frightened, surprising, startling, tremendous, amazing|osoroshii|恐ろしい|716||
+309|atsui, 厚い, thick, abundant|atsui|厚い|717||
+310|futoi, 太い, thick, fat|futoi|太い|718||
+311|noroi, 鈍い, thickheaded, obtuse, stupid, indulgent (esp. to the opposite sex), doting|noroi|鈍い|719||
+312|usui, 薄い, thin, pale light, dilute, weak (e.g. taste)|usui|薄い|720||
+313|hosoi, 細い, thin, slender, fine|hosoi|細い|721||
+314|kitsui, きつい, tight|kitsui|きつい|722||
+315|minikui, 醜い, ugly, hard on the eyes|minikui|醜い|723||
+316|ochisukanai, 落ち着かない, uncomfortable|ochisukanai|落ち着かない|724||
+317|tondemonai, とんでもない, unthinkable, unexpected, outrageous, offensive, absolutely not, not at all, far from it, impossible, preposterous, bullshit, no way|tondemonai|とんでもない|725;726||
+318|mezurashii, 珍しい, unusual, rare, curious, weird, new, novel, fine (e.g. gift)|mezurashii|珍しい|727;7828;7829||
+319|munashii, 空しい, vacant, futile, vain, void, empty, ineffective, lifeless, 虚しい|munashii|空しい|728|虚しい|
+320|kuyashii, 悔しい, vexing, annoying, frustrating, regrettable, mortifying|kuyashii|悔しい|729||
+321|hageshii, 激しい, violent, vehement, intense, furious, tempestuous|hageshii|激しい|730||
+322|miyasui, 見やすい, visible, understandable, easy on the eyes, easy to see, beautiful, pretty|miyasui|見やすい|731||
+323|hoshii, 欲しい, wanted (to want)|hoshii|欲しい|732||
+324|atatakai, 暖かい, warm, 温かい|atatakai|暖かい|733|温かい|
+325|atsui, 暑い, warm (weather), hot (weather), hot, warm, sultry, heated, passionate, impassioned, burning (desire, etc.), on everybody's mind, on the radar, du jour, interested (gaze, etc.)|atsui|暑い|734;8117;8118;8119||
+326|yowacchii, 弱っちい, weak, feeble|yowacchii|弱っちい|735||
+327|yowai, 弱い, weak, frail, delicate, tender, unskilled|yowai|弱い|736||
+328|nayocchii, なよっちい, weak, frail, slender, feminine|nayocchii|なよっちい|737||
+329|hiyowai, ひ弱い, weak, sickly|hiyowai|ひ弱い|738||
+330|kishokuwarui, 気色悪い, weird, disgusting, sickening|kishokuwarui|気色悪い|739||
+331|shiroi, 白い, white, color, colour|shiroi|白い|740||
+332|hiroi, 広い, wide, broad, spacious, vast|hiroi|広い|741||
+333|hiroi, 寛い, broadminded|hiroi|寛い|6844||
+334|kashikoi, 賢い, wise, clever, smart, 畏い|kashikoi|賢い|742|畏い|
+335|subarashii, 素晴らしい, wonderful|subarashii|素晴らしい|743||
+336|kiiroi, 黄色い, yellow, color, colour|kiiroi|黄色い|744||
+337|wakai, 若い, young, youthful, immature, green, low (number), small|wakai|若い|745;6613;6614||
 338|fukafuka, ふかふか, absent-mindedly, soft, fluffy|fukafuka|ふかふか|746;747||
 339|saisan, 再三, again and again, repeatedly|saisan|再三|748||
 340|hitori de, 一人で, alone|hitori de|一人で|749||
@@ -426,214 +426,214 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 426|yoku, 良く, well, skillfully, properly, often, much, frequently, nicely, properly, well, skillfully, skilfully, frequently, often|yoku|良く|854;855;12093;12094||
 427|kononde, 好んで, willingly|kononde|好んで|856||
 428|sekkaku, 折角, with trouble, at great pains, long-awaited|sekkaku|折角|857||
-429|teokure, 手遅れ, (too) late, belated treatment, being (too) late, belated treatment, teokureni|teokure|手遅れ|858;859||
-430|zettaiteki, 絶対的, absolute, absolute, zettaitekini|zettaiteki|絶対的|860;10334||
-431|mucha, 無茶, absurd, unreasonable, excessive, rash, nonsensical, absurdity, nonsense, muchani, muchiya|mucha|無茶|861;862||
-432|seikaku, 正確, accurate, punctual, exact, authentic, veracious, seikakuni|seikaku|正確|863||
-433|koudo, 高度, advanced, high-grade, strong, koudoni|koudo|高度|864||
-434|fuan, 不安, anxious, insecure, uneasy, in suspense, anxiety, uneasiness, insecurity, suspense, fuanni|fuan|不安|865;866||
-435|arige, 有り気, apprearing like, seeming to be, being pregnant with, あり気, 有りげ, arigeni|arige|有り気|867|あり気, 有りげ|
-436|tekitou, 適当, appropriate, suitable, proper, adequate, fit, noncommital, vague, equivocal, unserious, irresponsible, tekitouni|tekitou|適当|868||
-437|katte, 勝手, at one's own convenience, in one's own way, one's own convenience, one's way, selfishness, surroundings, environment, way of doing things, convenience, ease of use, financial circumstances, living, livelihood, kitchen, right hand (in archery), hand that pulls the bowstring, unauthorised (e.g. phone app, WWW site), unofficial, Katte, katteni|katte|勝手|869;10812;10813;10814;10815;10816;10817;10818;10819||
-438|jidouteki, 自動的, automatic, jidoutekini|jidouteki|自動的|870||
-439|furyou, 不良, bad, inferior, delinquent, failing, defective, badness, inferiority, delinquency, failure, defect, blemish, furyouni|furyou|不良|871;872||
-440|hadashi, 裸足, barefoot, superior to (a professional, etc. in ability or achievement), 跣足, hadashini|hadashi|裸足|873;8177|跣足|
-441|ooki, 大き, big, great, grand, large, greater, upper, senior, ookini|ooki|大き|874||
-442|chimamire, 血まみれ, bloodstained, bloody, 血塗れ, chimamireni|chimamire|血まみれ|875|血塗れ|
-443|makka, 真っ赤, bright red, deep red, flushed (of face), downright (e.g. lie), complete, utter, bright red, deep red, makkani|makka|真っ赤|876;877||
-444|kigaru, 気軽, carefree, buoyant, lighthearted, sprightly, ease, kigaruni|kigaru|気軽|878;879||
-445|ukatsu, 迂闊, careless, stupid, thoughless, heedles, unobservant, inadvertant, incautious, ukatsuni|ukatsu|迂闊|880||
-446|kakujitsu, 確実, certain, reliable, sound, certainty, reliability, soundness, kakujitsuni|kakujitsu|確実|881;882||
-447|tashika, 確か, certain, sure, definite, I'm quite sure that, if I'm not mistaken, if I remember correctly, certainty, sure fact, sure, certain, positive, definite, reliable, trustworthy, safe, sound, firm, accurate, correct, exact, If I'm not mistaken, If I remember correctly, If I remember rightly, tashikani|tashika|確か|883;884;885;6984;6985;6986||
-448|seiketsu, 清潔, clean, hygenic, sanitary, pure, virtuous, immaculate, seiketsuni|seiketsu|清潔|886||
-449|mushoku, 無色, colourless, colorless, achromatic, mushokuni|mushoku|無色|887||
-450|fukuzatsu, 複雑, complex, complicated, mixed (feelings), fukuzatsuni|fukuzatsu|複雑|888||
-451|benri, 便利, convenient, useful, comfortable, handy, benrini|benri|便利|889||
-452|kiken, 危険, dangerous, risky, hazardous, perilous, precarious, danger, peril, hazard, risk, kikenni|kiken|危険|890;891;9637||
-453|muchuu, 夢中, dazzling, ecstatic, delirious, engrossing, dreamy, daze, trance, ecstasy, delirium, engrossment, dreamlike state, absorbed in, immersed in, crazy about, obsessed with, devoted to, forgetting oneself, daze, trance, ecstasy, delirium, within a dream, while dreaming, muchuuni|muchuu|夢中|892;893;10991;10992;10993||
-454|kangaimuryou, 感慨無量, deeply emotional, deep emotion, one's mind is filled with thousand emotions, kangaimuryouni|kangaimuryou|感慨無量|894;895||
-455|zannen, 残念, deplorable, unlucky, regretful, disappointing, bad luck, regret, disappointment, deplorable, regrettable, disappointing, vexing, unfortunate, zannenni|zannen|残念|896;897;9080||
-456|zetsubouteki, 絶望的, desperate, hopeless, zetsuboutekini|zetsubouteki|絶望的|898||
-457|majime, 真面目, diligent, serious, honest, sober, grave, earnest, steady, majimeni|majime|真面目|899||
-458|kirai, 嫌い, disliked, least favorite, hated, unfond, kiraini|kirai|嫌い|900||
-459|kenmei, 懸命, eager, earnest, risking one's life, eagerness, earnestness, risking one's life, kenmeini|kenmei|懸命|901;902||
-460|raku, 楽, easy, comfortable, comfort, ease, rakuni|raku|楽|903;904||
-461|gokaku, 互角, equal, even, on par, matched, equality, evenness, par, good match, gokakuni|gokaku|互角|905;906||
-462|byoudou, 平等, equal, impartial, even, equality, impartiality, evenness, byoudouni|byoudou|平等|907;908||
-463|choudo, ちょうど, exactly, just, right, choudoni|choudo|ちょうど|909||
-464|zetsumyou, 絶妙, exquisite, superb, perfect, miraculous, exquisiteness, superbness, perfectness, miraculousness, zetsumyouni|zetsumyou|絶妙|910;911||
-465|kasuka, 微か, faint, dim, weak, indistinct, hazy, poor, wretched, faint, dim, weak, slight, vague, indistinct, hazy, poor, wretched, meagre, meager, scanty, kasukani|kasuka|微か|912;11584;11585||
-466|kouhei, 公平, fair, impartial, just, fairness, impartiality, justice, kouheini|kouhei|公平|913;914||
-467|yuumei, 有名, famous, fame, famous, yuumeini|yuumei|有名|915;916;10324||
-468|hijaku, 微弱, feeble, faint, weak, hijakuni|hijaku|微弱|917||
-469|kakko, 確固たる, firm, unshakeable, resolute, kakkoni|kakko|確固たる|918||
-470|ittei, 一定, fixed, settled, constant, definite, uniform, regularized, regularised, defined, standardized, standardised, certain, prescribed, constance, certainty, standard, itteini|ittei|一定|919;920||
-471|pakapaka, ぱかぱか, fluttery, clip-clop, clippety-clop, pakapakani|pakapaka|ぱかぱか|921;922||
-472|oroka, 愚か, foolish, stupid, foolishness, stupidity, orokani|oroka|愚か|923;924||
-473|baka, 馬鹿, foolish, stupid, idiotic, absurd, ridiculous, dull, trivial, fool, idiot, バカ, bakani|baka|馬鹿|925;926|バカ|
-474|hisshi, 必死, frantic, desperate, inevitable death, brinkmate (inevitable checkmate), hisshini|hisshi|必死|927;928||
-475|hima, 暇, free (available), not busy, slow (of one's business), spare time, free time, leisure, time off, day off, vacation, holiday, leave, quitting (one's job), firing someone, divorcing (one's spouse), himani|hima|暇|929;930||
-476|jiyuu, 自由, free (from confinement), unbound, unrestricted, in control, freedom, liberty, as it pleases you, jiyuuni|jiyuu|自由|931;932||
-477|shinsen, 新鮮, fresh, shinsenni|shinsen|新鮮|933||
-478|michi, 満ち, full, michini|michi|満ち|934||
-479|tappuri, たっぷり, full, in plently, ample, tappurini|tappuri|たっぷり|935||
-480|ippai, 一杯, full, to capacity, ippaini|ippai|一杯|936||
-481|okashi, おかし, funny, amusing, comical, laughable, ridiculous, strange, odd, peculiar, weird, unusual, eccentric, improper, unsuitable, unbecoming, suspicious, okashini|okashi|おかし|937||
-482|muda, 無駄, futile, useless, pointless, futility, uselessness, pointlessness, futility, waste, uselessness, pointlessness, idleness, mudani|muda|無駄|938;939;11740||
-483|ippan, 一般, general, universal, ordinary, average, common, ordinary, average, common, the same, no different, (just) as if, ippanni|ippan|一般|940;8759;8760||
-484|seisan, 凄惨, ghastly, gruesome, appalling, lurid, seisanni|seisan|凄惨|941||
-485|pikapika, ぴかぴか, glittering, sparkling, glitter, sparkle, pikapikani|pikapika|ぴかぴか|942;943||
-486|idai, 偉大, great, grand, magnificent, outstanding, mighty, greatness, idaini|idai|偉大|944;945||
-487|midori, 緑, green, midorini, color, colour|midori|緑|946||
-488|reigen, 冷厳, grim, stern, stark, heartless, reigenni|reigen|冷厳|947||
-489|hansamu, ハンサム, handsome, hansamuni|hansamu|ハンサム|948||
-490|kanben, 簡便, handy, simple and easy, kanbenni|kanben|簡便|949||
-491|shiawase, 幸せ, happy, fortunate, lucky, blessed, happiness, good fortune, luck, blessing, shiawaseni|shiawase|幸せ|950;951||
-492|iya, 嫌, hateful, unlikable, unpleasant, detestable, disagreeable, reluctant, disgusting, disagreeable, detestable, unpleasant, reluctant, iyani|iya|嫌|952;11501||
-493|genki, 元気, healthy, fine, all right, energetic, energy, stamina, vitality, vim, spirit, courage, pep, vigor, vigour, health, lively, full of spirit, energetic, vigorous, vital, spirited, healthy, well, fit, in good health, genkini|genki|元気|953;954;10719;10720||
-494|joubu, 丈夫, healthy, robust, strong, solid, durable, firm, joubuni|joubu|丈夫|955||
-495|kenzen, 健全, healthy, sound, wholesome, kenzenni|kenzen|健全|956||
-496|koushou, 高尚, high, noble, refined, advanced, koushouni|koushou|高尚|957||
-497|saikou, 最高, highest, supreme, the most, most, highest, maximum, uppermost, supreme, best, wonderful, finest, saikouni|saikou|最高|958;11084;11085||
-498|kousoku, 高速, high-speed, high-gear, rapid, express, kousokuni|kousoku|高速|959||
-499|kyodai, 巨大, huge, gigantic, enormous, kyodaini|kyodai|巨大|960||
-500|kenkouteki, 健康的, hygenic, healthy, healthful, sanitary, kenkoutekini|kenkouteki|健康的|961||
-501|douitsu, 同一, identical, same, similar, equal, identity, sameness, similarity, equality, fairness, douitsuni|douitsu|同一|962;963||
-502|sugu, 直ぐ, immediate, direct, soon, in a short time, before long, shortly, immediately, right away, fast, suguni|sugu|直ぐ|964;965||
-503|juuyou, 重要, important, momentous, essential, principal, major, juuyouni|juuyou|重要|966||
-504|taisetsu, 大切, important, valuable, taisetsuni|taisetsu|大切|967||
-505|daiji, 大事, important, valuable, serious, important, serious, crucial, valuable, precious, serious matter, major incident, matter of grave concern, crisis, great undertaking, great enterprise, great thing, safe, OK, daijini|daiji|大事|968;8133;8134;8135;8136;8137||
-506|fukanou, 不可能, impossible, fukanouni|fukanou|不可能|969||
-507|tanryo, 短慮, imprudent, quick tempered, imprudence, quick temper, tanryoni|tanryo|短慮|970;971||
-508|gokigen, ご機嫌, in a good mood, in high spirits, happy, cheerful, merry, chipper, humour, humor, temper, mood, spirits, safety, health, well-being, one's situation, gokigenni|gokigen|ご機嫌|972;973||
-509|norinori, 乗り乗り, in high spirits, norinorini|norinori|乗り乗り|974||
-510|fuguai, 不具合, inconvenient, fuguaini|fuguai|不具合|975||
-511|fuben, 不便, inconvenient, inexpedient, unhandy, inconvenience, inexpediency, unhandiness, fubenni|fuben|不便|976;977||
-512|musabetsu, 無差別, indiscriminate, indiscrimination, musabetsuni|musabetsu|無差別|978;979||
-513|youchi, 幼稚, infantile, childish, infancy, infantility, youchini|youchi|幼稚|980;981||
-514|ki ga hen, 気が変, insane, mad, crazy, light in the head, ki ga henni|ki ga hen|気が変|982||
-515|muteki, 無敵, invincible, unrivaled, unrivalled, mutekini|muteki|無敵|983||
-516|fukisoku, 不規則, irregular, unsteady, disorderly, irregularity, unsteadiness, disorder, fukisokuni|fukisoku|不規則|984;985||
-517|wafuu, 和風, japanese-style, wafuuni|wafuu|和風|986||
-518|shinsetsu, 親切, kind, gentle, kindness, gentleness, shinsetsuni|shinsetsu|親切|987;988||
-519|ootsubu, 大粒, large (grain, drop), large grain, large drop, ootsubuni|ootsubu|大粒|989;990||
-520|karuyaka, 軽やか, light, easy, not serious, minor, karuyakani|karuyaka|軽やか|991||
-521|suki, 好き, liked, fond, sukini|suki|好き|992||
-522|nigiyaka, 賑やか, lively, bustling, busy, nigiyakani|nigiyaka|賑やか|993||
-523|hisashiburi, 久しぶり, long (time since the last time), a long time (since the last time), it's been a while (since I last saw, mailed, etc., you), hisashiburini|hisashiburi|久しぶり|994;995||
-524|choukiteki, 長期的, long-term, choukitekini|choukiteki|長期的|996||
-525|suteki, 素敵, lovely, dreamy, beautiful, great, fantatic, superb, cool, capital, lovely, wonderful, nice, great, fantastic, superb, cool, 素適, 素的, sutekini|suteki|素敵|997;10060|素適, 素的|
-526|zeitaku, 贅沢, luxurious, extravagant, luxury, extravagance, zeitakuni|zeitaku|贅沢|998;999||
-527|rippa, 立派, magnificent, splendid, fine, handsome, elegant, imposing, prominent, legal, legitimate, rippani|rippa|立派|1000||
-528|ijiwaru, 意地悪, malicious, ill-tempered, unkind, ijiwaruni|ijiwaru|意地悪|1001||
-529|kyokudo, 極度, maximum, extreme, utmost, curvature, kyokudoni|kyokudo|極度|1002;1003||
-530|modan, モダン, modern, modanni|modan|モダン|1004||
-531|fukakai, 不可解, mysterious, baffling, inexplicable, incomprehensible, puzzling, mystery, inexplicable fact, incomprehensible fact, fukakaini|fukakai|不可解|1005;1006||
-532|fushigi, 不思議, mysterious, puzzling, strange, wonder, miracle, mystery, marvel, curiosity, wonderful, marvelous, strange, incredible, amazing, curious, miraculous, mysterious, fushigini|fushigi|不思議|1007;1008;7627||
-533|kokuritsu, 国立, national, kokuritsuni|kokuritsu|国立|1009||
-534|touzen, 当然, natural, as a matter of course, touzenni|touzen|当然|1010||
-535|atarimae, 当たり前, natural, reasonable, obvous, usual, common, ordinary, atarimaeni|atarimae|当たり前|1011||
-536|hitsuyou, 必要, necessary, needed, essential, indispensable, necessity, need, requirement, hitsuyouni|hitsuyou|必要|1012;1013||
-537|dame, 駄目, no good, not serving its purpose, useless, broken, hopeless, wasted, in vain, purposeless, cannot, must not, not allowed, ダメ, dameni|dame|駄目|1014;6610;6611|ダメ|
-538|seishiki, 正式, of due form, official, formal, due form, officiality, formality, seishikini|seishiki|正式|1015;1016||
-539|wazuka, 僅か, only, merely, (a) little, small quantity, wazukani|wazuka|僅か|1017;1018||
-540|oobaa, オーバー, over, exceeding, beyond, overcoat, oobaani|oobaa|オーバー|1021;1022||
-541|kajuu, 過重, overweight, fat, obese, kajuuni|kajuu|過重|1023||
-542|attouteki, 圧倒的, overwhelming, attoutekini|attouteki|圧倒的|1024||
-543|kutsuu, 苦痛, painful, agonizing, bitter, pain, agony, bitterness, kutsuuni|kutsuu|苦痛|1025;1026||
-544|yasuraka, 安らか, peaceful, tranquil, calm, restful, yasurakani|yasuraka|安らか|1027||
-545|kanpeki, 完璧, perfect, complete, flawless, kanpekini|kanpeki|完璧|1028||
-546|seiriteki, 生理的, physiological, physiologic, seiritekini|seiriteki|生理的|1029||
-547|akarasama, あからさま, plain, frank, candid, open, direct, straightforward, unabashed, blatant, flagrant, akarasamani|akarasama|あからさま|1030||
-548|kaiteki, 快適, pleasant, agreeable, comfortable, kaitekini|kaiteki|快適|1031||
-549|yukai, 愉快, pleasant, happy, yukaini|yukai|愉快|1032||
-550|teinei, 丁寧, polite, courteous, careful, kind, thorough, conscientious, polite, courteous, civil, careful, close, thorough, conscientious, teineini|teinei|丁寧|1033;8528;8529||
-551|seijiteki, 政治的, political, seijitekini|seijiteki|政治的|1034||
-552|nigate, 苦手, poor at, weak in, not very good at, dislike, nigateni|nigate|苦手|1035;1036||
-553|binbou, 貧乏, poor, destitute, poor person, poverty, destitution, binbouni|binbou|貧乏|1037;1038;1039||
-554|yawa, 柔, poorly-built, weak, insubstantial, yawani|yawa|柔|1040||
-555|ninki, 人気, popular, popularity, popular feeling, business conditions, ninkini|ninki|人気|1041;1042||
-556|sakan, 盛ん, popular, prosperous, enthusiastic, energetic, vigorous, sakanni|sakan|盛ん|1043||
-557|kanou, 可能, possible, potential, feasible, practicable, kanouni|kanou|可能|1044||
-558|fukigen, 不機嫌, pouty, unpleasant, sullen, moody, displeasure, ill humor, ill humour, sullenness, fukigenni|fukigen|不機嫌|1045;1046||
-559|kyouryoku, 強力, powerful, strong, kyouryokuni|kyouryoku|強力|1047||
-560|tekikaku, 的確, precise, accurate, 適格, tekikakuni|tekikaku|的確|1048|適格|
-561|kirei, 奇麗, pretty, lovely, beautiful, fair, clean, clear, pure, tidy, neat, kireini|kirei|奇麗|1049||
-562|guchagucha, グチャグチャ, pulpy, soppy, sloppy, guchaguchani|guchagucha|グチャグチャ|1050||
-563|ayashige, 怪しげ, questionable, doubtful, suspicious, 妖しげ, ayashigeni|ayashige|怪しげ|1051|妖しげ|
-564|shizuka, 静か, quiet, peaceful, shizukani|shizuka|静か|1052||
-565|mottomo, 尤も, quite right, plausible, natural, believable, but then, although, though, reasonable, natural, just, mottomoni|mottomo|尤も|1053;8879;8880||
-566|kyuusoku, 急速, rapid, kyuusokuni|kyuusoku|急速|1054||
-567|chin, 珍, rare, curious, strange, chinni|chin|珍|1055||
-568|nama, 生, raw, fresh, uncooked, natural, unprocessed, unprotected (ie. Not wearing a condom), live (not recorded), inexperienced, unpolished, green, crude, unpasteurized, raw, uncooked, fresh, natural, as is, unedited, unprocessed, live (ie. not recorded), inexperienced, unpolished, green, crude, unpasteurized, just a little, somehow, vaguely, partially, somewhat, half-, semi-, irresponsibly, half-baked, namani|nama|生|1056;1057;1058||
-569|ikan, いかん, regrettable, unsatisfactory, ikanni|ikan|いかん|1059||
-570|shingai, 心外, regrettable, vexing, upsetting, unthinkable, wholly unexpected, shingaini|shingai|心外|1060||
-571|hanpa, 半端, remaining, fraction of, incomplete, remnant, fragment, incomplete set, fraction, odd sum, incompleteness, hanpani|hanpa|半端|1061;1062||
-572|daihouteki, 代表的, representative, exemplary, model, daihoutekini|daihouteki|代表的|1063||
-573|kanemochi, 金持ち, rich person, rich person, okanemochi, お金持ち, okanemochini|kanemochi|金持ち|1064;3930|okanemochi, お金持ち|
-574|shitsurei, 失礼, ride, impolite, discourteous, impoliteness, rudeness, discourtesy, shitsureini|shitsurei|失礼|1065;1066||
-575|shikkei, 失敬, rude, impolite, disrespectful, impertinent, rudeness, impoliteness, disrespect, impertinence, shikkeini|shikkei|失敬|1067;1068||
-576|daijoubu, 大丈夫, safe, all right, okay, OK, safe, secure, sound, problem-free, without fear, all right, alright, OK, okay, certainly, surely, undoubtedly, no thanks, I'm good, that's alright, great man, fine figure of a man, daijoubuni|daijoubu|大丈夫|1069;8139;8140;8141;8142||
-577|anzen, 安全, safe, secure, safety, security, anzenni|anzen|安全|1070;1071||
-578|onaji, 同じ, same, identical, equal, uniform, equivalent, similar, common (origin), changeless, alike, toonaji, と同じ, onaji, toonajini|onaji|同じ|1072|toonaji, と同じ|
-579|manzoku, 満足, satisfied, satisfaction, sufficiency, manzokuni|manzoku|満足|1073;1074;1075||
-580|maji, マジ, serious, majini|maji|マジ|1076||
-581|juudai, 重大, serious, important, significant, grave, weighty, juudaini|juudai|重大|1077||
-582|mitai, 見たい, similar, mitaini|mitai|見たい|1078||
-583|kan'i, 簡易, simple, convenient, easy, simplicity, convenience, easiness, quasi-, kan'ini|kan'i|簡易|1079;1080||
-584|kantan, 簡単, simple, easy, straightforward, uncomplicated, brief, quick, light, kantanni|kantan|簡単|1081;1082||
-585|jouzu, 上手, skilled, skillful, proficient, skill, dexterity, jouzuni|jouzu|上手|1083;1084||
-586|yasegisu, 痩せぎす, skinny, yasegisuni|yasegisu|痩せぎす|1085||
-587|keibi, 軽微, slight, little, insignificant, keibini|keibi|軽微|1086||
-588|chiisa, 小さ, small, little, tiny, chiisani|chiisa|小さ|1087||
-589|aji, 味, smart, clever, witty, strange, flavor, flavour, taste, charm, style, experience, ajini|aji|味|1088;1089||
-590|sofuto, ソフト, soft, sofutoni|sofuto|ソフト|1090||
-591|maamaa, まあまあ, so-so, maamaani|maamaa|まあまあ|1091||
-592|tokubetsu, 特別, special, specialness, special, particular, extraordinary, exceptional, especial, tokubetsuni|tokubetsu|特別|1092;1093;10144||
-593|reiteki, 霊的, spiritual, incorporeal, reitekini|reiteki|霊的|1094||
-594|migoto, 見事, splendid, magnificent, beautiful, admirable, praiseworthy, praiseworthy act, feat, commendable deed, migotoni|migoto|見事|1095;1096||
-595|kechi, けち, stingy, miserly, penny-pinching, cheesparing, shabby, cheap, mangy, poor, petty, narrow-minded, quibbling, mean-spirited, miser, pinchpenny, skinflint, cheapskate, tightwad, niggard, bad luck, ill omen, glitch, kechini|kechi|けち|1097;1098||
-596|massugu, 真っ直ぐ, straight (ahead), direct, upright, erect, straightforward, honest, frank, massuguni|massugu|真っ直ぐ|1099||
-597|ijou, 異常, strange, abnormal, disorderly, strangeness, abnormality, disorder, ijouni|ijou|異常|1100;1101||
-598|hen, 変, strange, odd, peculiar, weird, curious, queer, eccentric, funny, suspicious, fishy, unexpected, weird, unexpected, change, incident, disturbance, disaster, accident, flat, henni|hen|変|1102;1103;10733;10734;10735;10736||
-599|ki, 奇, strange, unusual, unconventional, weird, something strange, something unusual, kini|ki|奇|1104;1105||
-600|kimyou, 奇妙, strange, unusual, unconventional, weird, qeer, curious, strange, queer, curious, kimyouni|kimyou|奇妙|1106;8299||
-601|myou, 妙, strange, unusual, unconventional, weird, superb, excellent, something superb, something excellent, strange, weird, odd, curious, wonder, mystery, miracle, excellence, cleverness, adroitness, knack, skill, myouni|myou|妙|1107;1108;7843;7844;7845||
-602|umami, 旨味, tastful, delicious, umami, umamini, taste|umami|旨味|1109||
-603|taikutsu, 退屈, tedious, boring, tedium, boredom, taikutsuni|taikutsu|退屈|1110;1111||
-604|kansha, 感謝, thankful, grateful, thanks, gratitude, kanshani|kansha|感謝|1112;1113||
-605|herahera, ヘラヘラ, thin (of paper, cloth, etc), weak-bodied, heraherani|herahera|ヘラヘラ|1114||
-606|chiccha, 小っちゃ, tiny, little, wee, chicchani|chiccha|小っちゃ|1115||
-607|dentouteki, 伝統的, traditional, conventional, dentoutekini|dentouteki|伝統的|1116||
-608|nodoka, 長閑, tranquil, calm, quiet, peaceful, nodokani|nodoka|長閑|1117||
-609|zetsudai, 絶大, tremendous, immense, enormous, zetsudaini|zetsudai|絶大|1118||
-610|kyuukyoku, 究極, ultimate, extreme, final, eventual, kyuukyokuni|kyuukyoku|究極|1119||
-611|mushoku, 無職, unemployed, without an occupation, mushokuni|mushoku|無職|1120||
-612|igai, 意外, unexpected, surprising, igaini|igai|意外|1121||
-613|fukenkou, 不健康, unhealthy, poor health, ill health, fukenkouni|fukenkou|不健康|1122;1123||
-614|fusei, 不正, unjust, unfair, unequal, improper, irregular, dishonest, illegal, fraudulent, injustice, unfairness, wrongdoing, iniquity, impropriety, irregularity, dishonesty, illegality, fraud, fuseini|fusei|不正|1124;1125||
-615|fushinsetsu, 不親切, unkind, unfriendly, unkindness, unfriendliness, fushinsetsuni|fushinsetsu|不親切|1126;1127||
-616|fuun, 不運, unlucky, unfortunate, bad luck, misfortune, fate, fuunni|fuun|不運|1128;1129||
-617|fukai, 不快, unpleasant, uncomfortable, displeasure, discomfort, unpleasantness, indisposition, ailment, indisposed, ailing, fukaini|fukai|不快|1130;1131;6806;6807||
-618|muri, 無理, unreasonable, unnatural, unjustifiable, impossible, forcible, forced, compulsory, excessive (work, etc.), immoderate, irrational, no way, not a chance, never, dream on, murini|muri|無理|1132;6817;6818;6819;6820;6821||
-619|rifujin, 理不尽, unreasonable, irrational, outrageous, absurd, rifujinni|rifujin|理不尽|1133||
-620|mukankei, 無関係, unrelated, mukankeini|mukankei|無関係|1134||
-621|heta, 下手, unskilled, unskillful, poor, lack of skill, awkwardness, poor skill, unskillful, poor, awkward, imprudent, untactful, hetani|heta|下手|1135;1136;11453;11454||
-622|futekisetsu, 不適切, unsuitable, inappropriate, improper, futekisetsuni|futekisetsu|不適切|1137||
-623|heppoko, へっぽこ, untrained, hack, quack (fake or untrained doctor), heppokoni|heppoko|へっぽこ|1138;1139||
-624|kinkyuu, 緊急, urgent, pressing, emergency, kinkyuuni|kinkyuu|緊急|1140;1141||
-625|kyuu, 急, urgent, sudden, abrupt, sharp, steep, precipitous, rapid, swift, fast, sudden, abrupt, unexpected, urgent, pressing, steep, sharp, precipitous, emergency, crisis, danger, urgency, hurrying, haste, (in gagaku or noh) end of a song, kyuuni|kyuu|急|1142;11684;11685;11686;11687;11688;11689||
-626|iroiro, 色々, various, iroironi, iroirona|iroiro|色々|1143||
-627|iron, 色ん, various, iron, ironna|iron|色ん|1143||
-628|daikirai, 大嫌い, very disliked (to dislike very much), hated, daikiraini|daikirai|大嫌い|1144||
-629|daisuki, 大好き, very liked (to like very much), loved, loveable, very likeable, like very much, daisukini|daisuki|大好き|1145;8146||
-630|jakutai, 弱体, weak (organization), jakutaini|jakutai|弱体|1146||
-631|hiyowa, ひ弱い, weak, delicate, sickly, hiyowani|hiyowa|ひ弱い|1147||
-632|yokoshima, 邪, wicked, evil, yokoshimani|yokoshima|邪|1148||
-633|gokudou, 極道, wicked, evil, profligate, immoral, gokudouni|gokudou|極道|1149||
-634|kenmei, 賢明, wise, intelligent, prudent, wisdom, intelligence, prudence, kenmeini|kenmei|賢明|1150;1151||
-635|shinpai, 心配, worried, concerned, anxious, worry, concern, anxiety, care, help, aid, assistance, caring, helpful, assistive, shinpaini|shinpai|心配|1152;1153;6411;6412||
-636|nesshin, 熱心, zealous, enthusiastic, enthusiasm, zeal, nesshinni|nesshin|熱心|1154;1155||
+429|teokure, 手遅れ, (too) late, belated treatment, being (too) late, belated treatment|teokure|手遅れ|858;859||
+430|zettaiteki, 絶対的, absolute, absolute|zettaiteki|絶対的|860;10334||
+431|mucha, 無茶, absurd, unreasonable, excessive, rash, nonsensical, absurdity, nonsense, muchiya|mucha|無茶|861;862||
+432|seikaku, 正確, accurate, punctual, exact, authentic, veracious|seikaku|正確|863||
+433|koudo, 高度, advanced, high-grade, strong|koudo|高度|864||
+434|fuan, 不安, anxious, insecure, uneasy, in suspense, anxiety, uneasiness, insecurity, suspense|fuan|不安|865;866||
+435|arige, 有り気, apprearing like, seeming to be, being pregnant with, あり気, 有りげ|arige|有り気|867|あり気, 有りげ|
+436|tekitou, 適当, appropriate, suitable, proper, adequate, fit, noncommital, vague, equivocal, unserious, irresponsible|tekitou|適当|868||
+437|katte, 勝手, at one's own convenience, in one's own way, one's own convenience, one's way, selfishness, surroundings, environment, way of doing things, convenience, ease of use, financial circumstances, living, livelihood, kitchen, right hand (in archery), hand that pulls the bowstring, unauthorised (e.g. phone app, WWW site), unofficial, Katte|katte|勝手|869;10812;10813;10814;10815;10816;10817;10818;10819||
+438|jidouteki, 自動的, automatic|jidouteki|自動的|870||
+439|furyou, 不良, bad, inferior, delinquent, failing, defective, badness, inferiority, delinquency, failure, defect, blemish|furyou|不良|871;872||
+440|hadashi, 裸足, barefoot, superior to (a professional, etc. in ability or achievement), 跣足|hadashi|裸足|873;8177|跣足|
+441|ooki, 大き, big, great, grand, large, greater, upper, senior|ooki|大き|874||
+442|chimamire, 血まみれ, bloodstained, bloody, 血塗れ|chimamire|血まみれ|875|血塗れ|
+443|makka, 真っ赤, bright red, deep red, flushed (of face), downright (e.g. lie), complete, utter, bright red, deep red|makka|真っ赤|876;877||
+444|kigaru, 気軽, carefree, buoyant, lighthearted, sprightly, ease|kigaru|気軽|878;879||
+445|ukatsu, 迂闊, careless, stupid, thoughless, heedles, unobservant, inadvertant, incautious|ukatsu|迂闊|880||
+446|kakujitsu, 確実, certain, reliable, sound, certainty, reliability, soundness|kakujitsu|確実|881;882||
+447|tashika, 確か, certain, sure, definite, I'm quite sure that, if I'm not mistaken, if I remember correctly, certainty, sure fact, sure, certain, positive, definite, reliable, trustworthy, safe, sound, firm, accurate, correct, exact, If I'm not mistaken, If I remember correctly, If I remember rightly|tashika|確か|883;884;885;6984;6985;6986||
+448|seiketsu, 清潔, clean, hygenic, sanitary, pure, virtuous, immaculate|seiketsu|清潔|886||
+449|mushoku, 無色, colourless, colorless, achromatic|mushoku|無色|887||
+450|fukuzatsu, 複雑, complex, complicated, mixed (feelings)|fukuzatsu|複雑|888||
+451|benri, 便利, convenient, useful, comfortable, handy|benri|便利|889||
+452|kiken, 危険, dangerous, risky, hazardous, perilous, precarious, danger, peril, hazard, risk|kiken|危険|890;891;9637||
+453|muchuu, 夢中, dazzling, ecstatic, delirious, engrossing, dreamy, daze, trance, ecstasy, delirium, engrossment, dreamlike state, absorbed in, immersed in, crazy about, obsessed with, devoted to, forgetting oneself, daze, trance, ecstasy, delirium, within a dream, while dreaming|muchuu|夢中|892;893;10991;10992;10993||
+454|kangaimuryou, 感慨無量, deeply emotional, deep emotion, one's mind is filled with thousand emotions|kangaimuryou|感慨無量|894;895||
+455|zannen, 残念, deplorable, unlucky, regretful, disappointing, bad luck, regret, disappointment, deplorable, regrettable, disappointing, vexing, unfortunate|zannen|残念|896;897;9080||
+456|zetsubouteki, 絶望的, desperate, hopeless|zetsubouteki|絶望的|898||
+457|majime, 真面目, diligent, serious, honest, sober, grave, earnest, steady|majime|真面目|899||
+458|kirai, 嫌い, disliked, least favorite, hated, unfond|kirai|嫌い|900||
+459|kenmei, 懸命, eager, earnest, risking one's life, eagerness, earnestness, risking one's life|kenmei|懸命|901;902||
+460|raku, 楽, easy, comfortable, comfort, ease|raku|楽|903;904||
+461|gokaku, 互角, equal, even, on par, matched, equality, evenness, par, good match|gokaku|互角|905;906||
+462|byoudou, 平等, equal, impartial, even, equality, impartiality, evenness|byoudou|平等|907;908||
+463|choudo, ちょうど, exactly, just, right|choudo|ちょうど|909||
+464|zetsumyou, 絶妙, exquisite, superb, perfect, miraculous, exquisiteness, superbness, perfectness, miraculousness|zetsumyou|絶妙|910;911||
+465|kasuka, 微か, faint, dim, weak, indistinct, hazy, poor, wretched, faint, dim, weak, slight, vague, indistinct, hazy, poor, wretched, meagre, meager, scanty|kasuka|微か|912;11584;11585||
+466|kouhei, 公平, fair, impartial, just, fairness, impartiality, justice|kouhei|公平|913;914||
+467|yuumei, 有名, famous, fame, famous|yuumei|有名|915;916;10324||
+468|hijaku, 微弱, feeble, faint, weak|hijaku|微弱|917||
+469|kakko, 確固たる, firm, unshakeable, resolute|kakko|確固たる|918||
+470|ittei, 一定, fixed, settled, constant, definite, uniform, regularized, regularised, defined, standardized, standardised, certain, prescribed, constance, certainty, standard|ittei|一定|919;920||
+471|pakapaka, ぱかぱか, fluttery, clip-clop, clippety-clop|pakapaka|ぱかぱか|921;922||
+472|oroka, 愚か, foolish, stupid, foolishness, stupidity|oroka|愚か|923;924||
+473|baka, 馬鹿, foolish, stupid, idiotic, absurd, ridiculous, dull, trivial, fool, idiot, バカ|baka|馬鹿|925;926|バカ|
+474|hisshi, 必死, frantic, desperate, inevitable death, brinkmate (inevitable checkmate)|hisshi|必死|927;928||
+475|hima, 暇, free (available), not busy, slow (of one's business), spare time, free time, leisure, time off, day off, vacation, holiday, leave, quitting (one's job), firing someone, divorcing (one's spouse)|hima|暇|929;930||
+476|jiyuu, 自由, free (from confinement), unbound, unrestricted, in control, freedom, liberty, as it pleases you|jiyuu|自由|931;932||
+477|shinsen, 新鮮, fresh|shinsen|新鮮|933||
+478|michi, 満ち, full|michi|満ち|934||
+479|tappuri, たっぷり, full, in plently, ample|tappuri|たっぷり|935||
+480|ippai, 一杯, full, to capacity|ippai|一杯|936||
+481|okashi, おかし, funny, amusing, comical, laughable, ridiculous, strange, odd, peculiar, weird, unusual, eccentric, improper, unsuitable, unbecoming, suspicious|okashi|おかし|937||
+482|muda, 無駄, futile, useless, pointless, futility, uselessness, pointlessness, futility, waste, uselessness, pointlessness, idleness|muda|無駄|938;939;11740||
+483|ippan, 一般, general, universal, ordinary, average, common, ordinary, average, common, the same, no different, (just) as if|ippan|一般|940;8759;8760||
+484|seisan, 凄惨, ghastly, gruesome, appalling, lurid|seisan|凄惨|941||
+485|pikapika, ぴかぴか, glittering, sparkling, glitter, sparkle|pikapika|ぴかぴか|942;943||
+486|idai, 偉大, great, grand, magnificent, outstanding, mighty, greatness|idai|偉大|944;945||
+487|midori, 緑, green, color, colour|midori|緑|946||
+488|reigen, 冷厳, grim, stern, stark, heartless|reigen|冷厳|947||
+489|hansamu, ハンサム, handsome|hansamu|ハンサム|948||
+490|kanben, 簡便, handy, simple and easy|kanben|簡便|949||
+491|shiawase, 幸せ, happy, fortunate, lucky, blessed, happiness, good fortune, luck, blessing|shiawase|幸せ|950;951||
+492|iya, 嫌, hateful, unlikable, unpleasant, detestable, disagreeable, reluctant, disgusting, disagreeable, detestable, unpleasant, reluctant|iya|嫌|952;11501||
+493|genki, 元気, healthy, fine, all right, energetic, energy, stamina, vitality, vim, spirit, courage, pep, vigor, vigour, health, lively, full of spirit, energetic, vigorous, vital, spirited, healthy, well, fit, in good health|genki|元気|953;954;10719;10720||
+494|joubu, 丈夫, healthy, robust, strong, solid, durable, firm|joubu|丈夫|955||
+495|kenzen, 健全, healthy, sound, wholesome|kenzen|健全|956||
+496|koushou, 高尚, high, noble, refined, advanced|koushou|高尚|957||
+497|saikou, 最高, highest, supreme, the most, most, highest, maximum, uppermost, supreme, best, wonderful, finest|saikou|最高|958;11084;11085||
+498|kousoku, 高速, high-speed, high-gear, rapid, express|kousoku|高速|959||
+499|kyodai, 巨大, huge, gigantic, enormous|kyodai|巨大|960||
+500|kenkouteki, 健康的, hygenic, healthy, healthful, sanitary|kenkouteki|健康的|961||
+501|douitsu, 同一, identical, same, similar, equal, identity, sameness, similarity, equality, fairness|douitsu|同一|962;963||
+502|sugu, 直ぐ, immediate, direct, soon, in a short time, before long, shortly, immediately, right away, fast|sugu|直ぐ|964;965||
+503|juuyou, 重要, important, momentous, essential, principal, major|juuyou|重要|966||
+504|taisetsu, 大切, important, valuable|taisetsu|大切|967||
+505|daiji, 大事, important, valuable, serious, important, serious, crucial, valuable, precious, serious matter, major incident, matter of grave concern, crisis, great undertaking, great enterprise, great thing, safe, OK|daiji|大事|968;8133;8134;8135;8136;8137||
+506|fukanou, 不可能, impossible|fukanou|不可能|969||
+507|tanryo, 短慮, imprudent, quick tempered, imprudence, quick temper|tanryo|短慮|970;971||
+508|gokigen, ご機嫌, in a good mood, in high spirits, happy, cheerful, merry, chipper, humour, humor, temper, mood, spirits, safety, health, well-being, one's situation|gokigen|ご機嫌|972;973||
+509|norinori, 乗り乗り, in high spirits|norinori|乗り乗り|974||
+510|fuguai, 不具合, inconvenient|fuguai|不具合|975||
+511|fuben, 不便, inconvenient, inexpedient, unhandy, inconvenience, inexpediency, unhandiness|fuben|不便|976;977||
+512|musabetsu, 無差別, indiscriminate, indiscrimination|musabetsu|無差別|978;979||
+513|youchi, 幼稚, infantile, childish, infancy, infantility|youchi|幼稚|980;981||
+514|ki ga hen, 気が変, insane, mad, crazy, light in the head|ki ga hen|気が変|982||
+515|muteki, 無敵, invincible, unrivaled, unrivalled|muteki|無敵|983||
+516|fukisoku, 不規則, irregular, unsteady, disorderly, irregularity, unsteadiness, disorder|fukisoku|不規則|984;985||
+517|wafuu, 和風, japanese-style|wafuu|和風|986||
+518|shinsetsu, 親切, kind, gentle, kindness, gentleness|shinsetsu|親切|987;988||
+519|ootsubu, 大粒, large (grain, drop), large grain, large drop|ootsubu|大粒|989;990||
+520|karuyaka, 軽やか, light, easy, not serious, minor|karuyaka|軽やか|991||
+521|suki, 好き, liked, fond|suki|好き|992||
+522|nigiyaka, 賑やか, lively, bustling, busy|nigiyaka|賑やか|993||
+523|hisashiburi, 久しぶり, long (time since the last time), a long time (since the last time), it's been a while (since I last saw, mailed, etc., you)|hisashiburi|久しぶり|994;995||
+524|choukiteki, 長期的, long-term|choukiteki|長期的|996||
+525|suteki, 素敵, lovely, dreamy, beautiful, great, fantatic, superb, cool, capital, lovely, wonderful, nice, great, fantastic, superb, cool, 素適, 素的|suteki|素敵|997;10060|素適, 素的|
+526|zeitaku, 贅沢, luxurious, extravagant, luxury, extravagance|zeitaku|贅沢|998;999||
+527|rippa, 立派, magnificent, splendid, fine, handsome, elegant, imposing, prominent, legal, legitimate|rippa|立派|1000||
+528|ijiwaru, 意地悪, malicious, ill-tempered, unkind|ijiwaru|意地悪|1001||
+529|kyokudo, 極度, maximum, extreme, utmost, curvature|kyokudo|極度|1002;1003||
+530|modan, モダン, modern|modan|モダン|1004||
+531|fukakai, 不可解, mysterious, baffling, inexplicable, incomprehensible, puzzling, mystery, inexplicable fact, incomprehensible fact|fukakai|不可解|1005;1006||
+532|fushigi, 不思議, mysterious, puzzling, strange, wonder, miracle, mystery, marvel, curiosity, wonderful, marvelous, strange, incredible, amazing, curious, miraculous, mysterious|fushigi|不思議|1007;1008;7627||
+533|kokuritsu, 国立, national|kokuritsu|国立|1009||
+534|touzen, 当然, natural, as a matter of course|touzen|当然|1010||
+535|atarimae, 当たり前, natural, reasonable, obvous, usual, common, ordinary|atarimae|当たり前|1011||
+536|hitsuyou, 必要, necessary, needed, essential, indispensable, necessity, need, requirement|hitsuyou|必要|1012;1013||
+537|dame, 駄目, no good, not serving its purpose, useless, broken, hopeless, wasted, in vain, purposeless, cannot, must not, not allowed, ダメ|dame|駄目|1014;6610;6611|ダメ|
+538|seishiki, 正式, of due form, official, formal, due form, officiality, formality|seishiki|正式|1015;1016||
+539|wazuka, 僅か, only, merely, (a) little, small quantity|wazuka|僅か|1017;1018||
+540|oobaa, オーバー, over, exceeding, beyond, overcoat|oobaa|オーバー|1021;1022||
+541|kajuu, 過重, overweight, fat, obese|kajuu|過重|1023||
+542|attouteki, 圧倒的, overwhelming|attouteki|圧倒的|1024||
+543|kutsuu, 苦痛, painful, agonizing, bitter, pain, agony, bitterness|kutsuu|苦痛|1025;1026||
+544|yasuraka, 安らか, peaceful, tranquil, calm, restful|yasuraka|安らか|1027||
+545|kanpeki, 完璧, perfect, complete, flawless|kanpeki|完璧|1028||
+546|seiriteki, 生理的, physiological, physiologic|seiriteki|生理的|1029||
+547|akarasama, あからさま, plain, frank, candid, open, direct, straightforward, unabashed, blatant, flagrant|akarasama|あからさま|1030||
+548|kaiteki, 快適, pleasant, agreeable, comfortable|kaiteki|快適|1031||
+549|yukai, 愉快, pleasant, happy, pleasant, delightful, enjoyable, joyful, cheerful, amusing, happy|yukai|愉快|1032;12626||
+550|teinei, 丁寧, polite, courteous, careful, kind, thorough, conscientious, polite, courteous, civil, careful, close, thorough, conscientious|teinei|丁寧|1033;8528;8529||
+551|seijiteki, 政治的, political|seijiteki|政治的|1034||
+552|nigate, 苦手, poor at, weak in, not very good at, dislike|nigate|苦手|1035;1036||
+553|binbou, 貧乏, poor, destitute, poor person, poverty, destitution|binbou|貧乏|1037;1038;1039||
+554|yawa, 柔, poorly-built, weak, insubstantial|yawa|柔|1040||
+555|ninki, 人気, popular, popularity, popular feeling, business conditions|ninki|人気|1041;1042||
+556|sakan, 盛ん, popular, prosperous, enthusiastic, energetic, vigorous|sakan|盛ん|1043||
+557|kanou, 可能, possible, potential, feasible, practicable|kanou|可能|1044||
+558|fukigen, 不機嫌, pouty, unpleasant, sullen, moody, displeasure, ill humor, ill humour, sullenness|fukigen|不機嫌|1045;1046||
+559|kyouryoku, 強力, powerful, strong|kyouryoku|強力|1047||
+560|tekikaku, 的確, precise, accurate, 適格|tekikaku|的確|1048|適格|
+561|kirei, 奇麗, pretty, lovely, beautiful, fair, clean, clear, pure, tidy, neat|kirei|奇麗|1049||
+562|guchagucha, グチャグチャ, pulpy, soppy, sloppy|guchagucha|グチャグチャ|1050||
+563|ayashige, 怪しげ, questionable, doubtful, suspicious, 妖しげ|ayashige|怪しげ|1051|妖しげ|
+564|shizuka, 静か, quiet, peaceful|shizuka|静か|1052||
+565|mottomo, 尤も, quite right, plausible, natural, believable, but then, although, though, reasonable, natural, just|mottomo|尤も|1053;8879;8880||
+566|kyuusoku, 急速, rapid|kyuusoku|急速|1054||
+567|chin, 珍, rare, curious, strange|chin|珍|1055||
+568|nama, 生, raw, fresh, uncooked, natural, unprocessed, unprotected (ie. Not wearing a condom), live (not recorded), inexperienced, unpolished, green, crude, unpasteurized, raw, uncooked, fresh, natural, as is, unedited, unprocessed, live (ie. not recorded), inexperienced, unpolished, green, crude, unpasteurized, just a little, somehow, vaguely, partially, somewhat, half-, semi-, irresponsibly, half-baked|nama|生|1056;1057;1058||
+569|ikan, いかん, regrettable, unsatisfactory|ikan|いかん|1059||
+570|shingai, 心外, regrettable, vexing, upsetting, unthinkable, wholly unexpected|shingai|心外|1060||
+571|hanpa, 半端, remaining, fraction of, incomplete, remnant, fragment, incomplete set, fraction, odd sum, incompleteness|hanpa|半端|1061;1062||
+572|daihouteki, 代表的, representative, exemplary, model|daihouteki|代表的|1063||
+573|kanemochi, 金持ち, rich person, rich person, okanemochi, お金持ち|kanemochi|金持ち|1064;3930|okanemochi, お金持ち|
+574|shitsurei, 失礼, ride, impolite, discourteous, impoliteness, rudeness, discourtesy|shitsurei|失礼|1065;1066||
+575|shikkei, 失敬, rude, impolite, disrespectful, impertinent, rudeness, impoliteness, disrespect, impertinence|shikkei|失敬|1067;1068||
+576|daijoubu, 大丈夫, safe, all right, okay, OK, safe, secure, sound, problem-free, without fear, all right, alright, OK, okay, certainly, surely, undoubtedly, no thanks, I'm good, that's alright, great man, fine figure of a man|daijoubu|大丈夫|1069;8139;8140;8141;8142||
+577|anzen, 安全, safe, secure, safety, security|anzen|安全|1070;1071||
+578|onaji, 同じ, same, identical, equal, uniform, equivalent, similar, common (origin), changeless, alike, toonaji, と同じ|onaji|同じ|1072|toonaji, と同じ|
+579|manzoku, 満足, satisfied, satisfaction, sufficiency|manzoku|満足|1073;1074;1075||
+580|maji, マジ, serious|maji|マジ|1076||
+581|juudai, 重大, serious, important, significant, grave, weighty|juudai|重大|1077||
+582|mitai, 見たい, similar|mitai|見たい|1078||
+583|kan'i, 簡易, simple, convenient, easy, simplicity, convenience, easiness, quasi-|kan'i|簡易|1079;1080||
+584|kantan, 簡単, simple, easy, straightforward, uncomplicated, brief, quick, light|kantan|簡単|1081;1082||
+585|jouzu, 上手, skilled, skillful, proficient, skill, dexterity|jouzu|上手|1083;1084||
+586|yasegisu, 痩せぎす, skinny|yasegisu|痩せぎす|1085||
+587|keibi, 軽微, slight, little, insignificant|keibi|軽微|1086||
+588|chiisa, 小さ, small, little, tiny|chiisa|小さ|1087||
+589|aji, 味, smart, clever, witty, strange, flavor, flavour, taste, charm, style, experience|aji|味|1088;1089||
+590|sofuto, ソフト, soft|sofuto|ソフト|1090||
+591|maamaa, まあまあ, so-so|maamaa|まあまあ|1091||
+592|tokubetsu, 特別, special, specialness, special, particular, extraordinary, exceptional, especial|tokubetsu|特別|1092;1093;10144||
+593|reiteki, 霊的, spiritual, incorporeal|reiteki|霊的|1094||
+594|migoto, 見事, splendid, magnificent, beautiful, admirable, praiseworthy, praiseworthy act, feat, commendable deed|migoto|見事|1095;1096||
+595|kechi, けち, stingy, miserly, penny-pinching, cheesparing, shabby, cheap, mangy, poor, petty, narrow-minded, quibbling, mean-spirited, miser, pinchpenny, skinflint, cheapskate, tightwad, niggard, bad luck, ill omen, glitch|kechi|けち|1097;1098||
+596|massugu, 真っ直ぐ, straight (ahead), direct, upright, erect, straightforward, honest, frank|massugu|真っ直ぐ|1099||
+597|ijou, 異常, strange, abnormal, disorderly, strangeness, abnormality, disorder|ijou|異常|1100;1101||
+598|hen, 変, strange, odd, peculiar, weird, curious, queer, eccentric, funny, suspicious, fishy, unexpected, weird, unexpected, change, incident, disturbance, disaster, accident, flat|hen|変|1102;1103;10733;10734;10735;10736||
+599|ki, 奇, strange, unusual, unconventional, weird, something strange, something unusual|ki|奇|1104;1105||
+600|kimyou, 奇妙, strange, unusual, unconventional, weird, qeer, curious, strange, queer, curious|kimyou|奇妙|1106;8299||
+601|myou, 妙, strange, unusual, unconventional, weird, superb, excellent, something superb, something excellent, strange, weird, odd, curious, wonder, mystery, miracle, excellence, cleverness, adroitness, knack, skill|myou|妙|1107;1108;7843;7844;7845||
+602|umami, 旨味, tastful, delicious, umami, taste|umami|旨味|1109||
+603|taikutsu, 退屈, tedious, boring, tedium, boredom|taikutsu|退屈|1110;1111||
+604|kansha, 感謝, thankful, grateful, thanks, gratitude|kansha|感謝|1112;1113||
+605|herahera, ヘラヘラ, thin (of paper, cloth, etc), weak-bodied|herahera|ヘラヘラ|1114||
+606|chiccha, 小っちゃ, tiny, little, wee|chiccha|小っちゃ|1115||
+607|dentouteki, 伝統的, traditional, conventional|dentouteki|伝統的|1116||
+608|nodoka, 長閑, tranquil, calm, quiet, peaceful|nodoka|長閑|1117||
+609|zetsudai, 絶大, tremendous, immense, enormous|zetsudai|絶大|1118||
+610|kyuukyoku, 究極, ultimate, extreme, final, eventual|kyuukyoku|究極|1119||
+611|mushoku, 無職, unemployed, without an occupation|mushoku|無職|1120||
+612|igai, 意外, unexpected, surprising|igai|意外|1121||
+613|fukenkou, 不健康, unhealthy, poor health, ill health|fukenkou|不健康|1122;1123||
+614|fusei, 不正, unjust, unfair, unequal, improper, irregular, dishonest, illegal, fraudulent, injustice, unfairness, wrongdoing, iniquity, impropriety, irregularity, dishonesty, illegality, fraud|fusei|不正|1124;1125||
+615|fushinsetsu, 不親切, unkind, unfriendly, unkindness, unfriendliness|fushinsetsu|不親切|1126;1127||
+616|fuun, 不運, unlucky, unfortunate, bad luck, misfortune, fate|fuun|不運|1128;1129||
+617|fukai, 不快, unpleasant, uncomfortable, displeasure, discomfort, unpleasantness, indisposition, ailment, indisposed, ailing|fukai|不快|1130;1131;6806;6807||
+618|muri, 無理, unreasonable, unnatural, unjustifiable, impossible, forcible, forced, compulsory, excessive (work, etc.), immoderate, irrational, no way, not a chance, never, dream on|muri|無理|1132;6817;6818;6819;6820;6821||
+619|rifujin, 理不尽, unreasonable, irrational, outrageous, absurd|rifujin|理不尽|1133||
+620|mukankei, 無関係, unrelated|mukankei|無関係|1134||
+621|heta, 下手, unskilled, unskillful, poor, lack of skill, awkwardness, poor skill, unskillful, poor, awkward, imprudent, untactful|heta|下手|1135;1136;11453;11454||
+622|futekisetsu, 不適切, unsuitable, inappropriate, improper|futekisetsu|不適切|1137||
+623|heppoko, へっぽこ, untrained, hack, quack (fake or untrained doctor)|heppoko|へっぽこ|1138;1139||
+624|kinkyuu, 緊急, urgent, pressing, emergency|kinkyuu|緊急|1140;1141||
+625|kyuu, 急, urgent, sudden, abrupt, sharp, steep, precipitous, rapid, swift, fast, sudden, abrupt, unexpected, urgent, pressing, steep, sharp, precipitous, emergency, crisis, danger, urgency, hurrying, haste, (in gagaku or noh) end of a song|kyuu|急|1142;11684;11685;11686;11687;11688;11689||
+626|iroiro, 色々, various|iroiro|色々|1143||
+627|iron, 色ん, various|iron|色ん|1143||
+628|daikirai, 大嫌い, very disliked (to dislike very much), hated|daikirai|大嫌い|1144||
+629|daisuki, 大好き, very liked (to like very much), loved, loveable, very likeable, like very much|daisuki|大好き|1145;8146||
+630|jakutai, 弱体, weak (organization)|jakutai|弱体|1146||
+631|hiyowa, ひ弱い, weak, delicate, sickly|hiyowa|ひ弱い|1147||
+632|yokoshima, 邪, wicked, evil|yokoshima|邪|1148||
+633|gokudou, 極道, wicked, evil, profligate, immoral|gokudou|極道|1149||
+634|kenmei, 賢明, wise, intelligent, prudent, wisdom, intelligence, prudence|kenmei|賢明|1150;1151||
+635|shinpai, 心配, worried, concerned, anxious, worry, concern, anxiety, care, help, aid, assistance, caring, helpful, assistive|shinpai|心配|1152;1153;6411;6412||
+636|nesshin, 熱心, zealous, enthusiastic, enthusiasm, zeal|nesshin|熱心|1154;1155||
 637|hajime wa, 始めは, at the beginning (of an event), 初めは, at the start, first of all|hajime wa|始めは|1156|初めは|
 638|hajime ni, 始めに, first action, initial action, 初めに|hajime ni|始めに|1157|初めに|
 639|mazu, 先ず, first of all, to start with, first (of all), to start with, about, almost, anyway, well, now, hardly (with neg. verb), at the beginning|mazu|先ず|1158;6954;6955||
@@ -1200,7 +1200,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1200|chuusha, 注射, injection|chuusha|注射|1766||
 1201|kensa, 検査, inspection (e.g. customs, factory), examination, scan (e.g. MRI, PET, etc.), check|kensa|検査|1767||
 1202|etsuran, 閲覧, inspection, reading|etsuran|閲覧|1768||
-1203|tsuuyaku, 通訳, interpretation, interpretation, oral translation|tsuuyaku|通訳|1769;1770||
+1203|tsuuyaku, 通訳, interpretation (i.e. oral translation), interpreter, interpretation, oral translation|tsuuyaku|通訳|1769;1770||
 1204|mensetsu, 面接, interview (e.g. for a job), job interview|mensetsu|面接|1771||
 1205|shoukai, 紹介, introduction, presentation, referral, listing, ご紹介|shoukai|紹介|1772|ご紹介|
 1206|zengo, 前後, inversion, reversion, getting out of order, co-occuring, front and back, front and rear, before and behind, before and after, order, context, consequences, around, approximately, about, nearly|zengo|前後|1773;1774;1775||
@@ -1490,7 +1490,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1490|shouken, 商権, commercial rights|shouken|商権|2072||
 1491|iinkai, 委員会, committee, commission, board, panel, committee meeting|iinkai|委員会|2073||
 1492|shouhin, 商品, commodity, article of commerce, goods,stock, merchandise|shouhin|商品|2074||
-1493|tsuujou, 通常, common, general, normal, usual|tsuujou|通常|2075||
+1493|tsuujou, 通常, common, general, normal, usual, usual, ordinary, normal, regular, general, common|tsuujou|通常|2075;12614||
 1494|renpou, 連邦, commonwealth, federation of states, confederation, union, commonwealth, federation of states, confederation, union|renpou|連邦|2076;9947||
 1495|renraku, 連絡, communication, call, message, connection, contact, coordination, junction, to contact, to get in touch, contacting, getting in touch, communication, call, message, connection, coordination, junction, intercalary, intercalaris, internuncial, 聯絡|renraku|連絡|2077;9948;9949;9950;9951|聯絡|
 1496|kaisha, 会社, company, work|kaisha|会社|2078||
@@ -1538,7 +1538,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1538|kazari, 飾り, decorations|kazari|飾り|2123||
 1539|kazaritsuke, 飾り付け, decorations, arrangement|kazaritsuke|飾り付け|2124||
 1540|teido, 程度, degree, amount, grade, standard, of the order of (following a number), about, approximately|teido|程度|2125||
-1541|oni, 鬼, demon|oni|鬼|2126||
+1541|oni, 鬼, oni, ogre, demon, spirit of a deceased person, ogre-like person (i.e. fierce, relentless, merciless, etc.), it (in a game of tag, hide-and-seek, etc.), Chinese "ghost" constellation (one of the 28 mansions), very, extremely, super-|oni|鬼|2126;12559;12560;12561;12562;12563||
 1542|mamono, 魔物, demon, devil, evil spirit, monster, golin, apparition|mamono|魔物|2127||
 1543|gakubu, 学部, department (of a university), undergraduate (course, program)|gakubu|学部|2128||
 1544|shikikin, 敷金, deposit|shikikin|敷金|2129||
@@ -1630,7 +1630,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1630|kaji, 火事, fire, conflagration|kaji|火事|2215||
 1631|ichiryuu, 一流, first-class, top grade, foremost, top-notch, leading, characteristic, peculiar, unique|ichiryuu|一流|2216||
 1632|shonen, 初年生, first-year|shonen|初年生|2217||
-1633|ajiwai, 味わい, flavour, flavor, meaning, significance|ajiwai|味わい|2218||
+1633|ajiwai, 味わい, flavour, flavor, meaning, significance, flavour, flavor, taste, charm, appeal, interest, meaning, significance|ajiwai|味わい|2218;12444;12445||
 1634|bin, 便, flight, trip, service, mail, post, letter, opportunity, chance|bin|便|2219||
 1635|mukashi banashi, 昔話, folklore, legend, reminiscence|mukashi banashi|昔話|2220||
 1636|shokuhin, 食品, foodstuff|shokuhin|食品|2221||
@@ -1934,7 +1934,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1934|ejiki, 餌食, prey, victim|ejiki|餌食|2529||
 1935|nedan, 値段, price|nedan|値段|2530||
 1936|bukka, 物価, price of commodities, cost-of-living, consumer price|bukka|物価|2531||
-1937|daikin, 代金, price, payment, cost, charge, money, bill|daikin|代金|2532||
+1937|daikin, 代金, price, payment, cost, charge, money, bill, price, cost, charge, payment, bill, fee|daikin|代金|2532;12468||
 1938|jiman, 自慢, pride, boast|jiman|自慢|2533||
 1939|shou, 賞, prize, award|shou|賞|2534||
 1940|mondai, 問題, question (e.g. on a test), problem, problem (e.g. societal, political), question, issue, subject (e.g. of research), case, matter, question (i.e. doubt), public discussion, controversy, trouble, problem, inconvenience, difficulty|mondai|問題|2535;6630;6631;6632;6633||
@@ -2153,7 +2153,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2153|mendou, 遠藤, trouble, difficulty, care, attention|mendou|遠藤|2753||
 2154|nayami, 悩み, troubles, worry, distress, sorrows, anguish, agony, problems, worries, agonies|nayami|悩み|2754||
 2155|hontou, 本当, truth|hontou|本当|2755||
-2156|kyoku, 曲, tune, piece of music|kyoku|曲|2756||
+2156|kyoku, 曲, tune, piece of music, composition, piece of music, song, track (on a record), tune, melody, air, enjoyment, fun, interest, pleasure|kyoku|曲|2756;12530;12531;12532||
 2157|bai, 倍, twice, double|bai|倍|2757||
 2158|taipo, タイプ, type, kind, sort, style|taipo|タイプ|2758||
 2159|iken, 違憲, unconstitutionality|iken|違憲|2759||
@@ -2272,7 +2272,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2272|kata, 肩, shoulder|kata|肩|2875||
 2273|ashi no ura, 足の裏, sole of foot|ashi no ura|足の裏|2876||
 2274|naka, 腹, stomach, onaka, お腹|naka|腹|2877|onaka, お腹|
-2275|i, 胃, stomach|i|胃|2878||
+2275|i, 胃, stomach, Chinese "stomach" constellation (one of the 28 mansions)|i|胃|2878;12490||
 2276|kintama, 金玉, testicles, testes|kintama|金玉|2879||
 2277|nikutai, 肉体, the body, the flesh|nikutai|肉体|2880||
 2278|nodo, 喉, throat, singing voice|nodo|喉|2881;11808||
@@ -2283,7 +2283,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2283|shitai, 四体, whole body|shitai|四体|2886||
 2284|shikyuu, 子宮, womb, uterus|shikyuu|子宮|2887||
 2285|tekubi, 手首, wrist|tekubi|手首|2888||
-2286|mizugi, 水着, bathing suit, swimsuit|mizugi|水着|2889||
+2286|mizugi, 水着, bathing suit, swimsuit, swimmers|mizugi|水着|2889||
 2287|beruto, ベルト, belt, belt|beruto|ベルト|2890;2891||
 2288|buraakutai, ブラックタイ, black tie|buraakutai|ブラックタイ|2892||
 2289|burausu, ブラウス, blouse|burausu|ブラウス|2893||
@@ -2294,7 +2294,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2294|uwagi, 上着, coat, jacket, outerwear|uwagi|上着|2898||
 2295|kontakutorenzu, コンタクトレンズ, contact lens|kontakutorenzu|コンタクトレンズ|2899||
 2296|bousaizukin, 防災頭巾, disaster hood, protective hood worn during earthquakes and other disasters (e.g. to protect from falling objects)|bousaizukin|防災頭巾|2900||
-2297|megane, 眼鏡, glasses, gankyou|megane|眼鏡|2901|gankyou|
+2297|megane, 眼鏡, glasses, eyeglasses, spectacles, judgment, judgement, discrimination, discernment, insight, Megane, gankyou|megane|眼鏡|2901;12535;12536|gankyou|
 2298|tebukuro, 手袋, glove, mitten, mitt|tebukuro|手袋|2902||
 2299|boushi, 帽子, hat, cap|boushi|帽子|2903||
 2300|hachimaki, 鉢巻, headband|hachimaki|鉢巻|2904||
@@ -2382,7 +2382,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2382|aibikiniku, 合挽肉, combined minced meat (beed and pork)|aibikiniku|合挽肉|2988||
 2383|kondensu miruku, コンデンスミルク, condensed milk|kondensu miruku|コンデンスミルク|2989||
 2384|konsome, コンソメ, consomme|konsome|コンソメ|2990||
-2385|meshi, 飯, cooked rice, meal, food, one's livelihood|meshi|飯|2991||
+2385|meshi, 飯, cooked rice, meal, food, one's livelihood, meal, food, one's livelihood|meshi|飯|2991;12547;12548||
 2386|koonsutaachi, コーンスターチ, cornstarch|koonsutaachi|コーンスターチ|2992||
 2387|momendoufu, 木綿豆腐, cotton tofu|momendoufu|木綿豆腐|2993||
 2388|gyuunyuu, 牛乳, cow milk|gyuunyuu|牛乳|2994||
@@ -2434,7 +2434,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2434|niku, 肉, meat|niku|肉|3041||
 2435|hikiniku, ひき肉, minced meat|hikiniku|ひき肉|3042||
 2436|miso, 味噌, miso, bean paste, key (main) point, good part (of something), miso, fermented condiment usu. made from soybeans, innards (from crabs, shrimps, etc.) resembling miso, key (main) point, good part (of something), weakling, weak person|miso|味噌|3043;9770;9771;9772;9773||
-2437|ajinomoto, 味の素, MSG, monosodium glutamate|ajinomoto|味の素|3044||
+2437|ajinomoto, 味の素, MSG, monosodium glutamate, Ajinomoto, brand name of monosodium glutamate (MSG)|ajinomoto|味の素|3044;12442||
 2438|natto, 納豆, natto|natto|納豆|3045||
 2439|udon, 饂飩, noodles|udon|饂飩|3046||
 2440|oden, おでん, oden, soy-flavored dashi stew with various ingredients, オデン|oden|おでん|3047|オデン|
@@ -2558,7 +2558,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2558|tori, 鳥, bird|tori|鳥|3164||
 2559|chou, 蝶, butterfly|chou|蝶|3165||
 2560|neko, 猫, cat|neko|猫|3166||
-2561|ushi, 牛, cattle, ow, ox, oxen|ushi|牛|3167||
+2561|ushi, 牛, cattle, ow, ox, oxen, cattle (Bos taurus), cow, bull, ox, calf, beef, Chinese "Ox" constellation (one of the 28 mansions)|ushi|牛|3167;12623;12624;12625||
 2562|mukade, 百足, centipede|mukade|百足|3168||
 2563|gokiburi, ゴキブリ, cockroach|gokiburi|ゴキブリ|3169||
 2564|kani, 蟹, crab|kani|蟹|3170||
@@ -2920,26 +2920,26 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2920|beeru, ベール, veil|beeru|ベール|3524||
 2921|jidouhanbaiki, 自動販売機, vending machine|jidouhanbaiki|自動販売機|3525||
 2922|biza, ビザ, visa|biza|ビザ|3526||
-2923|kabe, 壁, wall, barrier, wall, barrier, heki|kabe|壁|3527;3528|heki|
+2923|kabe, 壁, wall, barrier, wall, barrier, wall, partition, barrier, obstacle, Chinese "Wall" constellation (one of the 28 mansions), heki|kabe|壁|3527;3528;12505;12506;12507|heki|
 2924|saifu, 財布, wallet, handbag, purse, purse, handbag, wallet|saifu|財布|3529;11081||
 2925|sentakuki, 洗濯機, washing mashine|sentakuki|洗濯機|3530||
 2926|tokei, 時計, watch, clock, watch, clock, timepiece|tokei|時計|3531;10134||
 2927|mado, 窓, window|mado|窓|3532||
 2928|waapuro, ワープロ, word processor|waapuro|ワープロ|3533||
-2929|asuka jidai, 飛鳥時代, Asuka period, era, period|asuka jidai|飛鳥時代|3534||
-2930|azuchi momoyama jidai, 安土桃山時代, Azuchi-Momoyama period, era, period|azuchi momoyama jidai|安土桃山時代|3535||
-2931|edo jidai, 江戸時代, Edo period, era, period|edo jidai|江戸時代|3536||
-2932|heian jidai, 平安時代, Heian period, era, period|heian jidai|平安時代|3537||
-2933|heisei, 平成, Heisei era, era, period|heisei|平成|3538||
-2934|kamakura jidai, 鎌倉時代, Kamakura period, era, period|kamakura jidai|鎌倉時代|3539||
-2935|kofun jidai, 古墳時代, Kofun period, era, period|kofun jidai|古墳時代|3540||
-2936|meiji, 明治, Meiji era, era, period|meiji|明治|3541||
-2937|muromachi jidai, 室町時代, Muromachi period, era, period|muromachi jidai|室町時代|3542||
-2938|nanboku chou jidai, 南北朝時代, Nanboku-cho period, era, period|nanboku chou jidai|南北朝時代|3543||
-2939|nara jidai, 奈良時代, Nara period, era, period|nara jidai|奈良時代|3544||
-2940|shouwa, 正和, Showa era, era, period|shouwa|正和|3545||
-2941|taishou, 大正, Taisho emperor era, Taishō era (1912.7.30-1926.12.25), Taisho era, era, period|taishou|大正|3546;10539||
-2942|yamato jidai, 大和時代, Yamato period, era, period|yamato jidai|大和時代|3547||
+2929|asuka jidai, 飛鳥時代, Asuka period, japanese era|asuka jidai|飛鳥時代|3534||
+2930|azuchi momoyama jidai, 安土桃山時代, Azuchi-Momoyama period, japanese era|azuchi momoyama jidai|安土桃山時代|3535||
+2931|edo jidai, 江戸時代, Edo period, japanese era|edo jidai|江戸時代|3536||
+2932|heian jidai, 平安時代, Heian period, japanese era|heian jidai|平安時代|3537||
+2933|heisei, 平成, Heisei era, japanese era|heisei|平成|3538||
+2934|kamakura jidai, 鎌倉時代, Kamakura period, japanese era|kamakura jidai|鎌倉時代|3539||
+2935|kofun jidai, 古墳時代, Kofun period, japanese era|kofun jidai|古墳時代|3540||
+2936|meiji, 明治, Meiji era, japanese era|meiji|明治|3541||
+2937|muromachi jidai, 室町時代, Muromachi period, japanese era|muromachi jidai|室町時代|3542||
+2938|nanboku chou jidai, 南北朝時代, Nanboku-cho period, japanese era|nanboku chou jidai|南北朝時代|3543||
+2939|nara jidai, 奈良時代, Nara period, japanese era|nara jidai|奈良時代|3544||
+2940|shouwa, 正和, Showa era, japanese era|shouwa|正和|3545||
+2941|taishou, 大正, Taisho emperor era, Taishō era (1912.7.30-1926.12.25), Taisho era, japanese era|taishou|大正|3546;10539||
+2942|yamato jidai, 大和時代, Yamato period, japanese era|yamato jidai|大和時代|3547||
 2943|haiku, 俳句, Haiku, haiku, 17-mora poem, usu. in 3 lines of 5, 7 and 5 morae|haiku|俳句|3548;7639||
 2944|jazu, ジャズ, Jazz|jazu|ジャズ|3549||
 2945|ongaku, 音楽, music|ongaku|音楽|3550||
@@ -3157,7 +3157,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3157|igirisu, イギリス, United Kingdom, England|igirisu|イギリス|3763||
 3158|amerika, アメリカ, United States of America, USA|amerika|アメリカ|3764||
 3159|zumiai, 組合, association, union|zumiai|組合|3765||
-3160|bunmei, 文明, civilization, civilisation, culture|bunmei|文明|3766||
+3160|bunmei, 文明, civilization, civilisation, culture, Bunmei era (1469.4.28-1487.7.20)|bunmei|文明|3766;12459||
 3161|koutousaibansho, 高等裁判所, High Court, kousai, 高裁|koutousaibansho|高等裁判所|3767|kousai, 高裁|
 3162|san'in, 参院, House of Councillors, sangiin, 参議院|san'in|参院|3768|sangiin, 参議院|
 3163|seizan denwakyoku, 青山電話局, Seizan phone company|seizan denwakyoku|青山電話局|3769||
@@ -3644,7 +3644,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3644|ban, 晩, evening, night|ban|晩|4261||
 3645|sanjuupun, 三十分, half an hour, han ji, ji han, half hour|sanjuupun|三十分|4262||
 3646|aima, 合間, interlude|aima|合間|4263||
-3647|isshou, 一生, lifetime, generation, age, era|isshou|一生|4264||
+3647|isshou, 一生, lifetime, generation, age, era, whole life, a lifetime, all through life, one existence, a generation, an age, the whole world, the era, (the only, the greatest, etc.) of one's life|isshou|一生|4264;12496;12497||
 3648|chouki, 長期, long time period, long term|chouki|長期|4265||
 3649|yonaka, 夜中, midnight, middle of the night, dead of night|yonaka|夜中|4266||
 3650|fun, 分, minute, pun|fun|分|4267|pun|
@@ -4686,7 +4686,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 4686|tokorode, 所で, by the way, incidentally, even if, no matter (who, what, when, where, why, how)|tokorode|所で|8539;8540||
 4687|tokorodokoro, 所々, here and there, some parts (of something), several places|tokorodokoro|所々|8541||
 4688|tokoroga, 所が, even so, however, still, whereupon, even though, nevertheless, on the contrary, as a matter of fact, despite|tokoroga|所が|8542||
-4689|tokorowo, ところを, although (it is a certain time or something is in a certain condition), although (it is a certain time or something is in a certain condition)|tokorowo|ところを|8543;8544||
+4689|tokorowo, ところを, although (it is a certain time or something is in a certain condition)|tokorowo|ところを|8543||
 4690|tokusei, 特性, special characteristic, special quality, trait, idiosyncrasy, peculiarity|tokusei|特性|8545||
 4691|tokusei, 特製, special make, deluxe|tokusei|特製|8546||
 4692|touchaku, 到着, arrival|touchaku|到着|8547||
@@ -5835,3 +5835,81 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 5835|sansen, 山川, mountains and rivers|sansen|山川|12402||
 5836|toiawase, 問い合わせ, enquiry, inquiry, query, interrogation, ENQ|toiawase|問い合わせ|12408||
 5837|youchuu, 幼虫, larva, grub, maggot|youchuu|幼虫|12420||
+5838|aichaku, 愛着, attachment, love, covetous affection|aichaku|愛着|12427||
+5839|aidoku, 愛読, reading with pleasure|aidoku|愛読|12428||
+5840|aijin, 愛人, lover, mistress|aijin|愛人|12429||
+5841|aiken, 愛犬, pet dog, beloved dog|aiken|愛犬|12430||
+5842|aikoku, 愛国, love of (one's) country, patriotism, Aikoku|aikoku|愛国|12431;12432||
+5843|aikou, 愛好, love, adoration|aikou|愛好|12433||
+5844|aishou, 愛称, pet name, nickname, name used to indicate affection, intimacy, informality, etc.|aishou|愛称|12434||
+5845|aiso, 愛想, amiability, friendliness, affability, sociability, fondness (of someone), affection, liking, compliments, civilities, courtesies, flattery, hospitality, special treatment, entertainment, bill (at a restaurant), check|aiso|愛想|12435;12436;12437;12438;12439||
+5846|aiyou, 愛用, favorite, favourite, habitual use|aiyou|愛用|12440||
+5847|ajikenai, 味気ない, wearisome, insipid, dull, irksome, wretched, vain|ajikenai|味気ない|12441||
+5848|ajitsuke, 味付け, seasoning, flavour, flavor|ajitsuke|味付け|12443||
+5849|ase, 汗, sweat, perspiration, moisture, condensation|ase|汗|12449;12450||
+5850|bari, 張り, in the style of (esp. literary, artistic, etc. works), reminiscent of, attached or stretched on|bari|張り|12457;12458||
+5851|chouhonnin, 張本人, ringleader, originator, perpetrator|chouhonnin|張本人|12460||
+5852|daiben, 代弁, speaking by proxy, speaking for (someone else), acting as spokesman (for), representing (the views, feelings, etc. of), payment by proxy, compensation by proxy, paying on behalf (of), acting for (someone else), carrying out (on someone's behalf)|daiben|代弁|12461;12462;12463||
+5853|daida, 代打, pinch-hitting|daida|代打|12464||
+5854|daidai, 代々, for generations, hereditary, generation after generation|daidai|代々|12465||
+5855|daigishi, 代議士, parliamentarian, member of a congress|daigishi|代議士|12466||
+5856|daihyouteki, 代表的, representative, exemplary, model|daihyouteki|代表的|12467||
+5857|dairiten, 代理店, agent, agency|dairiten|代理店|12469||
+5858|daishou, 代償, compensation, indemnification, reparation, consideration|daishou|代償|12470||
+5859|daitai, 代替, substitution, alternation|daitai|代替|12471||
+5860|daiyou, 代用, substitution|daiyou|代用|12472||
+5861|doukyuu, 同級, the same grade, same class|doukyuu|同級|12473||
+5862|enjoi, エンジョイ, enjoy|enjoi|エンジョイ|12474||
+5863|futatsu, 二つ, two|futatsu|二つ|12475||
+5864|harigami, 張り紙, paper patch, paper backing, poster, sticker, label|harigami|張り紙|12478||
+5865|isshoku, 一色, monochrome, one color, one colour, one article, same tendency, everyone being caught up in the same thing|isshoku|一色|12491;12492;12493;12494||
+5866|isshoni, 一緒に, together (with), at the same time, in a lump|isshoni|一緒に|12495||
+5867|itoshii, 愛しい, lovely, dear, beloved, darling, dearest, pitiable, pitiful|itoshii|愛しい|12498;12499||
+5868|joshidai, 女子大, women's college, women's university|joshidai|女子大|12500||
+5869|joshikou, 女子高, girls' high school|joshikou|女子高|12501||
+5870|joshikousei, 女子高生, female high-school student|joshikousei|女子高生|12502||
+5871|juku, 塾, coaching school, cramming school, juku|juku|塾|12503||
+5872|jukuchou, 塾長, principal of a private school|jukuchou|塾長|12504||
+5873|kanashimi, 悲しみ, sadness, sorrow, grief, affection, love|kanashimi|悲しみ|12510;12511||
+5874|kawarugawaru, 代わる代わる, alternately, by turns|kawarugawaru|代わる代わる|12514||
+5875|kinosei, 気のせい, in one's imagination|kinosei|気のせい|12519||
+5876|kotei, 固定, fixing (in place), securing, anchoring, fastening down, fixing (e.g. salary, capital), keeping the same, fixation (histology), user name (on an online forum like 2ch where the majority of users post anonymously), user who uses a online handle (instead of posting anonymously)|kotei|固定|12521;12522;12523;12524;12525||
+5877|koukan, 交換, exchange, interchange, switching, reciprocity, barter, substitution, replacement, clearing (of checks, cheques)|koukan|交換|12526||
+5878|kowadaka, 声高, loud (of a voice)|kowadaka|声高|12527||
+5879|kurooru, クロール, crawl (swimming), front crawl, forward crawl, web crawling|kurooru|クロール|12528;12529||
+5880|kyouju, 享受, reception, acceptance, enjoyment, being given|kyouju|享受|12533||
+5881|me, 芽, sprout|me|芽|12534||
+5882|meibutsu, 名物, famous product, special product, speciality, specialty|meibutsu|名物|12537||
+5883|meirei, 命令, order, command, decree, directive, (software) instruction, statement|meirei|命令|12538;12539||
+5884|meishi, 名詞, noun|meishi|名詞|12540||
+5885|meishin, 迷信, superstition, superstitious belief|meishin|迷信|12541||
+5886|meisho, 名所, famous place, name of a part (of an instrument, etc.), name and address|meisho|名所|12542;12543;12544||
+5887|meiyo, 名誉, honorable, honourable, prestigious, honor, honour, credit, prestige|meiyo|名誉|12545;12546||
+5888|misoshiru, 味噌汁, miso soup|misoshiru|味噌汁|12549||
+5889|nandaka, 何だか, (a) little, somewhat, somehow|nandaka|何だか|12551||
+5890|nandakanda, 何だかんだ, something or other, one thing or another, this or that|nandakanda|何だかんだ|12552||
+5891|nanodesu, なのです, it is assuredly that ..., can say with confidence that ...|nanodesu|なのです|12553||
+5892|seien, 声援, (shout of) encouragement, cheering, rooting, support|seien|声援|12571||
+5893|seigaku, 声楽, vocal music|seigaku|声楽|12572||
+5894|seijin, 成人, adult (esp. person 20 years old or over), grownup, becoming an adult, coming of age, growing up (to be a man, woman)|seijin|成人|12573;12574||
+5895|seimei, 声明, declaration, statement, proclamation|seimei|声明|12575||
+5896|suraidaa, スライダー, slider, slider (e.g. volume control), slide (e.g. water slide, playground slide), slider (sandwich)|suraidaa|スライダー|12576;12577;12578;12579||
+5897|suraidingu, スライディング, sliding|suraidingu|スライディング|12580||
+5898|suraido, スライド, slide, change (in value or situation), proportional change|suraido|スライド|12581;12582||
+5899|suraisu, スライス, slice|suraisu|スライス|12583||
+5900|surakku, スラック, slack|surakku|スラック|12584||
+5901|surakkusu, スラックス, slacks|surakkusu|スラックス|12585||
+5902|suranpu, スランプ, slump|suranpu|スランプ|12586||
+5903|suraroomu, スラローム, slalom|suraroomu|スラローム|12587||
+5904|surasura, スラスラ, smoothly, easily, readily|surasura|スラスラ|12588||
+5905|tebikisho, 手引書, handbook, manual, guide, primer|tebikisho|手引書|12591||
+5906|tsubasa, 翼, wing, Chinese "Wings" constellation (one of the 28 mansions), counter for birds or bird wings|tsubasa|翼|12607;12608;12609||
+5907|tsuu, 通, connoisseur, authority, counter for letters, notes, documents, etc.|tsuu|通|12612;12613||
+5908|tsuuka, 通貨, currency|tsuuka|通貨|12615||
+5909|tsuukin, 通勤, commuting to work|tsuukin|通勤|12616||
+5910|tsuuro, 通路, passage, pathway, roadway, avenue, aisle|tsuuro|通路|12617||
+5911|tsuushin, 通信, correspondence, communication, transmission, news, signal, telecommunications|tsuushin|通信|12618||
+5912|tsuushinhanbai, 通信販売, mail order, mail-order sales, shop-by-mail service, on-line shopping service (with delivery by mail)|tsuushinhanbai|通信販売|12619||
+5913|yuuwaku, 誘惑, temptation, allurement, lure, enticement, seduction|yuuwaku|誘惑|12627||
+5914|wagahai, 我輩, I, me, myself, we, us, ourselves, 吾輩|wagahai|我輩|7437;7438|吾輩|
+5915|sara ni, さらに, furthermore, again, after all, more and more, moreover, even more|sara ni|さらに|229||

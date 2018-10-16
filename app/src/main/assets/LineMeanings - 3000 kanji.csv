@@ -8,7 +8,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8|with|PP||X to|768|||
 9|if, when|PP||X to||||
 10|object marker|PP|Used in phrases such a "to imasu" or "to moshimasu".|X to||||
-11|if X then Y|SSCC|ME#0101;0102|||||
+11|if X then Y|CO|ME#0101;0102|||||
 12|and (amongst others)|PP||X ya||||
 13|and so forth, and the like, etc...|PP||X nado|769, 1291|||
 14|of, made of|PP|Possessive marker.|X no|770|||
@@ -20,7 +20,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20|polite softener|PP|Used as a softener to the sentence, politer than "n".|X no @ X = verb|778, 779|||
 21|noun modifier for verb|VC|Used to make a noun out of a verb (all plain tenses), similar in function to "koto" in forming a verb gerund.|X no @ X = verb plain form|867, 1387, 1388, 1389|||
 22|pronoun modifier and use as subject|PP|This is a combination of two prepositions: a possessive marker "no" and a subject indicator "ga". It transforms the phrase (adverb, adjective, verb) into a noun for use as the subject of an enclosing phrase. The enclosing phrase in turn requires the "ga" subject marker due to the grammar rules governing it.|X no ga|771, 1453, 1480|||
-23|good at, not good at, like to do/be, dislike to do/be|SSD||X no ga Y da @ X = verb plain form, Y = suki, kirai, ii, warui, jouzu, etc..|1387|||
+23|[description Y/opinion Y] of an action X|CO|Conveys a speaker' s opinion on an action. The "no" transforms the relevan verb into a noun, the "ga" indicates the object verb, and the "Y da" corresponds to the describing state of being (to like, to be good at, etc..).|X no ga Y da @ X = verb plain form, Y = suki, kirai, ii, warui, jouzu, etc..|1387|||
 24|noun modifier and use as object|PP|This is a combination of two prepositions: a possessive marker "no" and an object indicator "wo". It transforms the phrase (adverb, adjective, verb) into a noun for use as the object of an enclosing phrase. The enclosing phrase in turn requires the "wo" subject marker due to the grammar rules governing it.|X no wo|1455|||
 25|in fact, indeed|PP|Used to provide emphasis to the sentence, casual form of "no".|X n @ X = verb|780, 781, 782|||
 26|softener, emphasizer|PP|Used as a softener/emphasizer to the sentence, casual form of "no".|X n @ X = verb|783, 784, 1481, 1482|||
@@ -41,12 +41,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 41|limits in space|PP||X de|802|||
 42|limits in time|PP||X de|803|||
 43|limits in price or quantity|PP||X de|804|||
-44|X and Y|SSSi||X de Y|977|||
+44|X and Y|CO||X de Y|977|||
 45|even|PP||X datte||||
 46|too, as well, also|PP||X datte||||
 47|they say, I hear, you mean|PP||X datte||||
-48|after all, because|SSD|Used colloquially (casual speech) only.|datte X @ X = phrase||||
-49|but|SSOF|Used colloquially (casual speech) only.|datte X @ X = phrase||||
+48|it is X after all, because X|PC|Used colloquially at the end of a phrase, is used by the speaker to indicate that the phrase is the cause or root of another.|datte X @ X = phrase||||
+49|but X|PC|Used colloquially (casual speech) only.|datte X @ X = phrase||||
 50|you know, certainly, hear me out|PP|ME#0051;0052|||||
 51|confirmation|PP|Used at the end of sentence.|X yone|806|||
 52|na-adjective marker|PP|Equivalent to "no" used to describe nouns.|X na @ X = na-adj.|807|||
@@ -54,18 +54,18 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 54|question marker|PP|ME#0053;0054;0055|||||
 55|don't know if yes or no|PP|ME#0056;0057;0058|||||
 56|or|PP|X or Y.|X ka Y @ X/Y = noun|810|||
-57|I don't Y if X is ...|SSR||X ka Y @ X = question, Y = know/think/believe/etc..|1015|||
+57|I don't Y if X is ...|PC||X ka Y @ X = question, Y = know/think/believe/etc..|1015|||
 58|either or|PP|either X or Y.|X ka Y ka|811|||
 59|emphasis|PP|Used at the end of a sentence to emphasize it.|X ga|812|||
 60|object marker|PP|ME#0059;0060;0061;0062;0063|||||
 61|subject marker|PP|ME#0064;0065;0066;0067;0068|||||
-62|but|SSOF|ME#0144;0145|||||
-63|and (less common)|SSOF|ME#0146;0147;0148|||||
+62|X but Y|CO|ME#0144;0145|||||
+63|X and Y|CO|ME#0146;0147;0148|||||
 64|kanji connector|PP|Used to join two kanjis when forming a noun.|X ka/ga Y @ X = kanji, Y = kanji||||
 65|negative question marker|PP|Use "ne" and "wa ne" for male and female colloquial speech respectively.|X ne? / X wa ne?|819|||
 66|opinion|PP|Use "ne" and "wa ne" for male and female colloquial speech respectively.|X ne? / X wa ne?|820|||
 67|(away) from|PP||X kara|821|||
-68|therefore|SSCC|ME#0132;0133|||||
+68|X therefore Y|CO|ME#0132;0133|||||
 69|until, by a certain time|PP||X made|822|||
 70|up to|PP||X made||||
 71|except for|PP||X nozoi||||
@@ -92,141 +92,141 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 92|ability, skill, knowledge|PP||X ni|838|||
 93|used with adverb describing manner|PP||X ni|839|||
 94|lists|PP|Seldom used.|X ni|840|||
-95|do Y in order to do/be X|SSOF||X ni Y @ X = action verb i-stem, Y = verb|982|||
-96|X by means of Y|SSM||X ni Y @ X/Y = action verb||||
-97|go/come to do X|SSSq||X ni Y @ X = action verb, Y = kuru/iku/kaeru, no object in between|1064, 1065|||
+95|do Y in order to do/be X|CO||X ni Y @ X = action verb i-stem, Y = verb|982|||
+96|X by means of Y|CO||X ni Y @ X/Y = action verb||||
+97|go/come to do X|CO||X ni Y @ X = action verb, Y = kuru/iku/kaeru, no object in between|1064, 1065|||
 98|adverb form|naAC||Adjective conjuation: [root] + ni|1092, 1093|||
 99|from the object's point of view|PP||X ni wa|841, 842, 1269|||
 100|verb object marker|PP|Used for verbs taking "ni" in a compound sentence.|X ni wa Y @ X = object, Y = verb taking "ni" as object marker (e.g. au)|843|||
 101|noun modifier and use as subject|PP|This is a combination of two prepositions: a possessive marker "no" and a subject indicator "wa". It transforms the phrase (adverb, adjective, verb) into a noun for use as the subject of an enclosing phrase. The enclosing phrase in turn requires the "wa" subject marker according to the grammar rules governing it. For example, "eat food" is modified to "the eating of food" and is used as the subject of the phrase "the eating of food is good".|X no wa Y @ X = object, Y =phrase|1329, 1330, 1451, 1452, 1454|||
 102|among other things, such things as, something like that|PP|Similar to "ya… nado", emphasis on providing a list of examples.|X toka Y toka @ X/Y = noun, verb in plain form or adjective|1296, 1297, 1298|||
 103|and, as well as|PP||||||
-104|out of X, the Y is good|SSD||X wa Y ga ii desu @ X = noun describing a set of objects, Y = noun as subset of X|844|||
-105|As for X, Y is (verb)|SSD||X wa Y ga (verb) @ X = subject 1, Y = subject 2|845, 846|||
-106|(counter) X are worth (price) yen|SSD||X (counter) de (price) en|847|||
-107|sold at|SSD||Use "utteiru" instead of passive tense for "sold at".||||
-108|I will have X|SSD||X ni suru @ X = noun|848, 1471, 1472|||
-109|(I) also X so|SSD||mo sou X @ X = verb|849|||
-110|Y that X|SSD|An action used to describe the subject of a sentence. Note that if the said action originally includes "wa", it is changed to "ga" so as to avoid to "wa" markers in the sentence.|X Y @ X = phrase in simple form, Y = action|850, 851, 852, 853|||
-111|X just the way it is|SSD|ME#0071;0072;0073|||||
-112|X the way it is meant to be|SSD|ME#0074;0075|||||
-113|it would be best if|SSD|ME#0076;0077|||||
-114|It seems that (he) does/is X|SSD|ME#0078;0079|||||
-115|(He) seems to do/be X|SSD||X rashii da @ X = verb plain form, noun|870|||
-116|(He) seems to do/be X / (I've) heard that X (from what I can see)|SSD|ME#0080;0081;0082;0083;0084|||||
-117|(I've) heard that (he's) not X (from what I can see)|SSD||X ja/dewa nasasou @ X = noun|880|||
-118|(I've) heard that X, it seems that X|SSD|ME#0085;0086;0087;0088||||sou, to iu|
-119|(He) seems to do/be X (from what I can deduce)|SSD|ME#0089;0090;0091|||||
-120|even if (he) does/is X|SSD|ME#0092;0093;0094|||||
-121|no matter how much (he) does/is X|SSD||ikura X mo @ X = verb te form||||
-122|would (you) like to/be X?|SSD||X ii desu ka @ X = phrase in plain form||||
-123|there is|SSD|formal and literary form of "desu".|||||
-124|X is included|SSD||X ga tsuiteimasu|302|||
-125|X is included|SSD||X ga hatteimasu|129|||
-126|do/be X or something|SSD||||||
-127|do/be X or someone|SSD||||||
-128|do/be X or somewhere|SSD||||||
-129|(He) probably does/is X|SSD|Presumptive tense.|X darou @ X = verb plain form, i-adj., na-adj., noun|1357|||
-130|(I) wonder if (he) does/is X|SSD||X darou @ X = question word (doko, dare, etc)||||
-131|(He) probably does/is X|SSD|Presumptive tense, polite form.|X deshou @ X = verb plain form, i-adj., na-adj., noun|1356, 1358, 1359, 1360|||
-132|(I) wonder if (he) does/is X|SSD||X deshou @ X = question word (doko, dare, etc)||||
-133|apart from X|SSD||X no hoka @ X = phrase||||
-134|too much X|SSD|ME#0095;0096;0097|||||
-135|In case (you) do/are X|SSCC|ME#0098;0099;0100|||||
-136|Y only because of X|SSCC||Y bakari ni X|903|||
-137|It's because of X|SSCC|"nanda" at end of sentence. Used colloquially.|X nanda||||
-138|if X then Y|SSCC|ME#0103;0104;0105;0106|||||
-139|if not X then Y|SSCC|ME#0107;0108;0109;0110|||||
-140|if not X then Y|SSCC|ME#0111;0112;0113;0114|||||
-141|what must one do/be when X?|SSCC||X ii desu ka? (answer with "Y ii desu") @ X/Y = verb ba form|915|||
-142|because of X|SSCC|ME#0115;0116;0117;0118|||||
-143|what must one do/be when X?|SSCC||X ii desu ka? (answer with "Y ii desu") @ X/Y = verb tara form||||
-144|if X then Y|SSCC|ME#0119;0120;0121;0122|||||
-145|when X then Y|SSCC|ME#0123;0124;0125|||||
-146|if not X then Y|SSCC|ME#0126;0127;0128|||||
-147|when not X then Y|SSCC|ME#0129;0130;0131|||||
-148|therefore|SSCC|Therefore Y.|sore de Y, equiv. of "and then" in speech, starts a sentence, usually spoken only||||
-149|still, even so|SSOF||||||
-150|so, accordingly, thereupon, therefore|SSCC|X therefore Y.|X soko de Y, can be used to start a sentence||||
-151|therefore|SSCC|X therefore Y.|X yue ni Y, can be used to start a sentence||||
-152|therefore|SSCC|X therefore Y.|soshitara X, can be used to start a sentence||||
-153|therefore|SSCC|ME#0134;0135|||||
-154|therefore|SSCC|ME#0136;0137|||||
-155|therefore|SSCC|ME#0138;0139;0140;0141|||||
-156|X by means of Y|SSM||X te/de Y @ X = action verb te-form, Y = action verb|1044|||
-157|if X|SSCC||X nara @ X = phrase||||
-158|despite, in spite of, regardless of|SSOF||X kakawarazu||||
-159|except for, other than, with the exception of|SSOF||X igai||||
-160|however, but, even if, nevertheless, even so, notwithstanding|SSOF|ME#0142;0143|||||
-161|however, but, even if, nevertheless, even so, notwithstanding|SSOF||X soredemo Y @ X/Y = phrase|795|||
-162|however, but, apart from that, other than that, aside from that, more than that|SSOF||soreyori Y @ Y = phrase||||
-163|but, however, provided that|SSOF||tadashi X||||
-164|but|SSOF|ME#0149;0150|||||
-165|and (less common)|SSOF|ME#0151;0152|||||
-166|but (politer form of kedo)|SSOF|ME#0153;0154|||||
-167|even if X|SSOF||X tokoro de|948|||
-168|still, even so|SSOF||||||
-169|even so, however, still, whereupon, even though, nevertheless, on the contrary, as a matter of fact, despite|SSOF||||||
-170|nevertheless, however|SSOF||||||
-171|X? or Y?|SSOF||X? soretomo Y?|948, 949|||
-172|don't do X but instead do Y|SSOF||X naide Y @ X/Y = action verb|950|||
-173|don't do Y without doing X|SSSi||X naide Y @ X naide = verb naide form, Y = sentence||||
-174|not X and then Y|SSSq||X naide Y @ X/Y = action verb|1068|||
-175|Y despite, even though X|SSOF|ME#0155;0156;0157|||||
+104|out of X, the Y is good|PC|Used by the speaker to single out a good item out of a set of items.|X wa Y ga ii desu @ X = noun describing a set of objects, Y = noun as subset of X|844|||
+105|As for X, Y is [verb]|PC|Used by the speaker to describe an aspect [verb] of an item Y in an object/set X.|X wa Y ga (verb) @ X = subject 1, Y = subject 2|845, 846|||
+106|[counter] X are worth [price] yen|PC|Used to give the price of a number of counted items.|X [counter] de [price] en|847|||
+107|Y (is/are being) sold at X|PC|To indicate that an item is sold at a certain location, the progressive form "utteiru" of the verb "uru" (to sell) is used instead its passive form.|Y ga X de utteiru @ X = noun, Y = subject||||
+108|I will have X|PC|Used when requesting an item from a list, e.g. when ordering food at a restaurant.|X ni suru @ X = noun|848, 1471, 1472|||
+109|X also Y so|PC|Used to express the speaker's point of view regarding a certain object/concept mentioned by another speaker.|X mo sou Y @ X = pronoun, Y = think, believe, observe, etc..|849|||
+110|X that Y|CO|Describes an action Y that the subject X is performing, or a state of being Y of a subject X. If this phrase is used as the subect of a sentence, then any "wa" subject markers are changed to "ga" to prevent confusion on the sentence's main subject.|Y X @ X = phrase, Y = action/state of being describing that phrase|850, 851, 852, 853|||
+111|X just the way it is|PC|ME#0071;0072;0073|||||
+112|X the way it is meant to be, X as planned, just as X|PC|ME#0074;0075|||||
+113|it would be best if X|PC|ME#0076;0077|||||
+114|It seems that (he) does/is X|PC|ME#0078;0079|||||
+115|(He) seems to do/be X|PC||X rashii da @ X = verb plain form, noun|870|||
+116|(He) seems to do/be X / (I've) heard that X (from what I can see)|PC|ME#0080;0081;0082;0083;0084|||||
+117|(I've) heard that (he's/it's) not X (from what I can see)|PC||X ja/dewa nasasou @ X = noun|880|||
+118|(I've) heard that X, it seems that X|PC|ME#0085;0086;0087;0088||||sou, to iu|
+119|(He) seems to do/be X (from what I can deduce)|PC|ME#0089;0090;0091|||||
+120|even if (he) does/is X|PC|ME#0092;0093;0094|||||
+121|no matter how much (he) does/is X|PC||ikura X mo @ X = verb te form||||
+122|would (you) like to do/be X?|PC||X ii desu ka @ X = phrase in plain form||||
+123|is X, am X|PC|Expresses a state of being. Formal and literary form of "desu".|X dearu @ X = phrase|1496|||
+124|X is included|PC||X ga tsuiteimasu|302|||
+125|X is included|PC||X ga hatteimasu|129|||
+126|do/be X or something|PC||||||
+127|do/be X or someone|PC||||||
+128|do/be X or somewhere|PC||||||
+129|(He) probably does/is X|PC|Presumptive tense.|X darou @ X = verb plain form, i-adj., na-adj., noun|1357|||
+130|(I) wonder if (he) does/is X|PC||X darou @ X = question word (doko, dare, etc)||||
+131|(He) probably does/is X|PC|Presumptive tense, polite form.|X deshou @ X = verb plain form, i-adj., na-adj., noun|1356, 1358, 1359, 1360|||
+132|(I) wonder if (he) does/is X|PC||X deshou @ X = question word (doko, dare, etc)||||
+133|apart from X|PC||X no hoka @ X = phrase||||
+134|too much X|PC|ME#0095;0096;0097|||||
+135|In case (you) do/are X|PC|ME#0098;0099;0100|||||
+136|Y only because of X|CO||Y bakari ni X|903|||
+137|it's because of X|PC|Use "nanda" at the end of a phrase. Used colloquially.|X nanda||||
+138|if X then Y|PC|ME#0103;0104;0105;0106|||||
+139|if not X then Y|PC|ME#0107;0108;0109;0110|||||
+140|if not X then Y|PC|ME#0111;0112;0113;0114|||||
+141|what must one do/be when X?|PC||X ii desu ka? (answer with "Y ii desu") @ X/Y = verb ba form|915|||
+142|because of X|PC|ME#0115;0116;0117;0118|||||
+143|what must one do/be when X?|PC|Answer with "Y ii desu".|X ii desu ka? @ X/Y = verb tara form||||
+144|if X then Y|PC|ME#0119;0120;0121;0122|||||
+145|when X then Y|PC|ME#0123;0124;0125|||||
+146|if not X then Y|PC|ME#0126;0127;0128|||||
+147|when not X then Y|PC|ME#0129;0130;0131|||||
+148|X therefore Y|CO|Equivalent of "and then" in speech, starts a sentence, usually spoken only.|sore de Y @ Y = phrase||||
+149|Y still, Y even so|CO||||||
+150|X so Y, X and Y accordingly, X thereupon Y, X therefore Y|CO|Can be used to start a sentence.|X soko de Y||||
+151|X therefore Y|CO|Can be used to start a sentence.|X yue ni Y||||
+152|X therefore Y|CO|Can be used to start a sentence.|soshitara X @ X = phrase||||
+153|X therefore Y|CO|ME#0134;0135|||||
+154|X therefore Y|CO|ME#0136;0137|||||
+155|X therefore Y|CO|ME#0138;0139;0140;0141|||||
+156|X by means of Y|CO||X te/de Y @ X = action verb te-form, Y = action verb|1044|||
+157|if X|PC||X nara @ X = phrase||||
+158|despite X, in spite of X, regardless of X|PC||X kakawarazu @ X = phrase||||
+159|except for X, other than X, with the exception of X|PC||X igai @ X = phrase||||
+160|X however Y, X but Y, Y even if X, X nevertheless Y, X even so Y, Y notwithstanding X|CO|ME#0142;0143|||||
+161|X however Y, X but Y, Y even if X, X nevertheless Y, X even so Y, Y notwithstanding X|CO||X soredemo Y @ X/Y = phrase|795|||
+162|X however Y, X but Y, Y apart from X, Y other than X, Y aside from X, Y more than X|CO||X. soreyori Y @ X/Y = phrase||||
+163|X but Y, X however Y, Y provided that X|CO||X. tadashi Y @ X/Y = phrase||||
+164|X but Y|CO|ME#0149;0150|||||
+165|X and Y|CO|ME#0151;0152|||||
+166|X but Y|CO|ME#0153;0154|||||
+167|Y even if X|CO||X tokoro de, Y @ X/Y = phrase|948|||
+168|X still, X even so|CO||sore demo X @ X = phrase||||
+169|Y even so, X however Y, Y still, X whereupon Y, Y even though X, X nevertheless Y, Y on the contrary, Y as a matter of fact, Y despite X|CO||X tokoro ga Y @ X/Y = phrase||||
+170|X nevertheless Y, X however Y|CO||X. sore ni shite mo Y @ Y = phrase||||
+171|X? or Y?|CO||X? soretomo Y? @ X/Y = phrase|948, 949|||
+172|don't do X but instead do Y|CO||X naide Y @ X/Y = action verb|950|||
+173|don't do Y without doing X|CO||X naide Y @ X naide = verb naide form, Y = sentence||||
+174|not X and then Y|CO||X naide Y @ X/Y = action verb|1068|||
+175|Y despite X, Y even though X|CO|ME#0155;0156;0157|||||
 176|in order to do/be X, for the purpose of doing/being X|VC|Similar to converting the verb to its gerund ("koto") form.|X no ni @ X = verb dict. form|983, 1274|||
-177|X but Y|SSOF||X shikashi Y (usually starts a phrase with a problematic, conflicting topic)|957|||
-178|not X but Y instead|SSOF||X ja nakute Y|958, 337|||
-179|or, otherwise|SSOF||X mataha Y||||
-180|X together with Y|SSSi||X to issho ni Y||||
-181|besides, in addition|SSSi||sore ni X|1275|||
-182|besides, in addition|SSSi||sono ue X||||
-183|do Y during X|SSSi||X nagara Y @ X = verb nagara form, Y = action verb teimasu form. Note: the sentence order is important.|959, 960|||
-184|X and Y (amongst other things)|SSSi|ME#0158;0159|||||
-185|X and/or Y|SSSi|ME#0160;0161;0162|||||
-186|Y happening at the same time as X|SSSi|ME#0163;0164;0165|||||
-187|Y happened/will have happened/is agreed upon to happen at the same time as X|SSSi|ME#0166;0167;0168|||||
-188|Y happening while X is still happening|SSSi|ME#0169;0170;0171|||||
-189|action Y happening in the midst of event X|SSSi||X no tochuu de Y|978|||
-190|Y exists on the way during movement X|SSSi||X tochuu ni Y|979|||
-191|action Y happening on the way during movement X|SSSi||X tochuu de Y @ X = movement|980, 981|||
-192|X is true and also Y|SSSi||X. ato Y|129|||
-193|(make an effort) in order to do X, in the hopes of something uncertain|SSOF||X you ni to suru @ X = action|984||tame ni|
-194|Y for the sake of doing/being X, for the sake of something certain|SSOF||X tame ni Y @ X = verb, Y = verb|991||you ni|
-195|Y for the benefit of X, for the sake of something certain|SSOF|ME#0172;0173|||||
-196|tell/ask to do/be X|SSR||X you ni to Y @ X = action, Y = iu, tsutaeru|994, 995|||
-197|say/tell that X|SSR|ME#0174;0175|||||
-198|think that X|SSR|ME#0176;0177|||||
-199|is/do not always X|SSR|ME#0178;0179|||||
-200|as far as X|SSR||X tokoro dewa|1009|||
-201|do you Y if X is ...?|SSR||X ka Y ka? @ X = question, Y = know/think/believe/etc..|1010, 1011, 1012, 1013, 1014|||
-202|do you Y if X is ... or not?|SSR||X ka dou ka Y ka? @ X = question, Y = know/think/believe/etc..|1016, 1017|||
-203|I don't Y if X is ... or not|SSR|ME#0180;0181;0182|||||
-204|In order to see if X is … or not|SSR||X ka dou ka Y miru @ X = phrase, Y = verb in te-form|1349, 1350|||
-205|is supposed to do/be X|SSR|ME#0183;0184;0185;0186;0187;0188;0189|||||
-206|is not supposed to do/be X|SSR|ME#0190;0191;0192;0193;0194;0195;0196|||||
-207|was certainly supposed to do/be X|SSR|ME#0197;0198;0199|||||
-208|was regrettably supposed to do/be X|SSR|ME#0200;0201;0202|||||
-209|was certainly not supposed to do/be X|SSR|ME#0203;0204;0205|||||
-210|concerning X, about X, relating to X, regarding X|SSR|ME#0206;0207|||||
-211|becomes X|SSP|ME#0208;0209;0210;0211|||||
-212|became X|SSP|ME#0212;0213;0214|||||
-213|become able to be/do X|SSP|Replaces the invalid "eru + tai" construction.|X you ni naritai @ X = verb in eru (can do/be) form||||
-214|not become able to be/do X|SSP|Replaces the invalid "eru + tai" construction.|X you ni naru kamo shirenai @ X = verb in eru (can do/be) form||||
-215|X and Y have the same (characteristic)|SSC||X to Y onaji (characteristic)|1049|||
-216|Y resembles X|SSC||X wa Y ni niteiru @ X = noun|1361|||
-217|which of X and Y is most (characteristic) ?|SSC||X to Y to dochira ga (characteristic)|767|||
-218|out of all the X, Y is the most (characteristic)|SSC||X no naka de Y ga ichiban (characteristic) |1050, 1487|||
-219|Y more ... than X|SSC|ME#0215;0216;0217|||||
-220|X less … than Y|SSC|ME#0218;0219|||||
-221|between/of X and Y|SSC|ME#0220;0221|||||
-222|less X and a bit more Y|SSC||X yori mou sukoshi Y @ Y = adj.|1057|||
-223|X seems to be like Y, X looks like Y|SSC|ME#0222;0223;0224;0225;0226;0227|||||
-224|after X|SSSq|ME#0228;0229;0230|||||
-225|before X|SSSq|ME#0231;0232|||||
-226|X and then Y|SSSq|ME#0233;0234|||||
-227|X and then Y|SSSq||X sorekara Y|1073, 1074|||
-228|X and then Y|SSSq|Used after an adverb, adjective or copula.|X soshite Y|1075|||
-229|furthermore, again, after all, more and more, moreover, even more|SSSq||||||
+177|X but Y|CO|Usually starts a phrase with a problematic, conflicting topic.|X shikashi Y @ X/Y = phrase|957|||
+178|not X but Y instead|CO||X ja nakute Y @ X/Y = phrase|958, 337|||
+179|X or Y, X otherwise Y|CO||X mata wa Y @ X/Y = phrase||||
+180|X together with Y|CO||X to issho ni Y @ X/Y = phrase||||
+181|Y besides X, Y in addition to X|CO||X. sore ni Y|1275|||
+182|Y besides X, Y in addition to X|CO||X. sono ue Y||||
+183|do Y during X|CO||X nagara Y @ X = verb nagara form, Y = action verb teimasu form. Note: the sentence order is important.|959, 960|||
+184|X and Y (amongst other things)|PC|ME#0158;0159|||||
+185|X and/or Y|PC|ME#0160;0161;0162|||||
+186|Y happening at the same time as X|CO|ME#0163;0164;0165|||||
+187|Y happened/will have happened/is agreed upon to happen at the same time as X|CO|ME#0166;0167;0168|||||
+188|Y happening while X is still happening|CO|ME#0169;0170;0171|||||
+189|action Y happening in the midst of event X|CO||X no tochuu de Y|978|||
+190|Y exists on the way during movement X|CO||X tochuu ni Y|979|||
+191|action Y happening on the way during movement X|CO||X tochuu de Y @ X = movement|980, 981|||
+192|X is true and also Y|CO||X. ato Y|129|||
+193|(make an effort) in order to do X, in the hopes of something uncertain|PC||X you ni to suru @ X = action|984||tame ni|
+194|Y for the sake of doing/being X, for the sake of something certain|CO||X tame ni Y @ X = verb, Y = verb|991||you ni|
+195|Y for the benefit of X, for the sake of something certain|CO|ME#0172;0173|||||
+196|tell/ask to do/be X|PC||X you ni to Y @ X = action, Y = iu, tsutaeru|994, 995|||
+197|say/tell that X|PC|ME#0174;0175|||||
+198|think that X|PC|ME#0176;0177|||||
+199|is/do not always X|PC|ME#0178;0179|||||
+200|as far as X|PC||X tokoro dewa|1009|||
+201|do you Y if X is ...?|PC||X ka Y ka? @ X = question, Y = know/think/believe/etc..|1010, 1011, 1012, 1013, 1014|||
+202|do you Y if X is ... or not?|PC||X ka dou ka Y ka? @ X = question, Y = know/think/believe/etc..|1016, 1017|||
+203|I don't Y if X is ... or not|PC|ME#0180;0181;0182|||||
+204|In order to see if X is … or not|PC||X ka dou ka Y miru @ X = phrase, Y = verb in te-form|1349, 1350|||
+205|is supposed to do/be X|PC|ME#0183;0184;0185;0186;0187;0188;0189|||||
+206|is not supposed to do/be X|PC|ME#0190;0191;0192;0193;0194;0195;0196|||||
+207|was certainly supposed to do/be X|PC|ME#0197;0198;0199|||||
+208|was regrettably supposed to do/be X|PC|ME#0200;0201;0202|||||
+209|was certainly not supposed to do/be X|PC|ME#0203;0204;0205|||||
+210|concerning X, about X, relating to X, regarding X|PC|ME#0206;0207|||||
+211|becomes X|PC|ME#0208;0209;0210;0211|||||
+212|became X|PC|ME#0212;0213;0214|||||
+213|become able to be/do X|PC|Replaces the invalid "eru + tai" construction.|X you ni naritai @ X = verb in eru (can do/be) form||||
+214|not become able to be/do X|PC|Replaces the invalid "eru + tai" construction.|X you ni naru kamo shirenai @ X = verb in eru (can do/be) form||||
+215|X and Y have the same (characteristic)|PC||X to Y onaji (characteristic)|1049|||
+216|Y resembles X|PC||X wa Y ni niteiru @ X = noun|1361|||
+217|which of X and Y is most (characteristic) ?|PC||X to Y to dochira ga (characteristic)|767|||
+218|out of all the X, Y is the most (characteristic)|PC||X no naka de Y ga ichiban (characteristic) |1050, 1487|||
+219|Y more ... than X|PC|ME#0215;0216;0217|||||
+220|X less … than Y|PC|ME#0218;0219|||||
+221|between/of X and Y|PC|ME#0220;0221|||||
+222|less X and a bit more Y|PC||X yori mou sukoshi Y @ Y = adj.|1057|||
+223|X seems to be like Y, X looks like Y|PC|ME#0222;0223;0224;0225;0226;0227|||||
+224|after X|CO|ME#0228;0229;0230|||||
+225|before X|CO|ME#0231;0232|||||
+226|X and then Y|CO|ME#0233;0234|||||
+227|X and then Y|CO||X sorekara Y|1073, 1074|||
+228|X and then Y|CO|Used after an adverb, adjective or copula.|X soshite Y|1075|||
+229|furthermore, again, after all, more and more, moreover, even more|A||||||
 230|inflict, impose (a fine, etc.)|VsuruT||||||
 231|X is being done (present progressive) while doing/being something|VC||X ite @ X = verb te form||||
 232|X is being done (present progressive) while doing/being something|VC|Colloquial form of "teite/deite".|X te @ X = verb te form||||
@@ -345,13 +345,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 345|(He) should do/be X|VC||X ii noni @ X = verb ba form||||
 346|(He) should do/be X|VC||X yokatta noni @ X = verb ba form||||
 347|(He) should have done/been X|VC||X yokatta @ X = verb ba form||||
-348|present tense|iAC||Adjective conjuation: [root] + i||||
-349|present tense (polite)|iAC||Adjective conjuation: [root] + i desu||||
-350|present tense negative|iAC||Adjective conjuation: [root] + kunai desu||||
-351|present negative tense (polite)|iAC||Adjective conjuation: [root] + ku arimasen||||
-352|past tense|iAC||Adjective conjuation: [root] + katta desu||||
-353|past negative tense|iAC||Adjective conjuation: [root] + kunakatta desu||||
-354|past negative tense (polite)|iAC||Adjective conjuation: [root] + ku arimasen deshita||||
+348|am, is, present tense|iAC||Adjective conjuation: [root] + i||||
+349|am, is, present tense (polite)|iAC||Adjective conjuation: [root] + i desu||||
+350|am not, is not, present negative tense|iAC||Adjective conjuation: [root] + kunai desu||||
+351|am not, is not, present negative tense (polite)|iAC||Adjective conjuation: [root] + ku arimasen||||
+352|was, past tense|iAC||Adjective conjuation: [root] + katta desu||||
+353|was not, past negative tense|iAC||Adjective conjuation: [root] + kunakatta desu||||
+354|was not, past negative tense (polite)|iAC||Adjective conjuation: [root] + ku arimasen deshita||||
 355|adverb form|iAC||Adjective conjuation: [root] + ku|1082, 1083, 1084|||
 356|X and Y|iAC|Used to adjoin more than two adjective to a noun.|Adjective conjuation: [root] + kute + next adj.|1085|||
 357|is so X that|iAC||Adjective conjuation: [root] + kute|1262|||
@@ -360,15 +360,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 360|noun form|iAC||Adjective conjuation: [root] + mi|1089|||
 361|if X|iAC||Adjective conjuation: [root] + kereba||||
 362|should be X, must be X, ought to be X|iAC||Adjective conjuation: [root] + karou||||
-363|present tense|naAC||Adjective conjuation: [root] + ||||
-364|present tense (polite)|naAC||Adjective conjuation: [root] + desu||||
-365|present negative tense (most polite)|naAC||Adjective conjuation: [root] + de wa arimasen||||
-366|present negative tense (polite)|naAC||Adjective conjuation: [root] + ja nai desu||||
-367|present negative tense (neutral)|naAC||Adjective conjuation: [root] + dewa nai|1091|||
-368|present negative tense (impolite)|naAC||Adjective conjuation: [root] + ja nai|108|||
-369|past tense|naAC||Adjective conjuation: [root] + deshita||||
-370|past negative tense|naAC||Adjective conjuation: [root] + ja arimasen deshita||||
-371|past negative tense (polite)|naAC||Adjective conjuation: [root] + de wa arimasen deshita||||
+363|am, is, present tense|naAC||Adjective conjuation: [root] + ||||
+364|am, is, present tense (polite)|naAC||Adjective conjuation: [root] + desu||||
+365|am not, is not, present negative tense (most polite)|naAC||Adjective conjuation: [root] + de wa arimasen||||
+366|am not, is not, present negative tense (polite)|naAC||Adjective conjuation: [root] + ja nai desu||||
+367|am not, is not, present negative tense (neutral)|naAC||Adjective conjuation: [root] + dewa nai|1091|||
+368|am not, is not, present negative tense (impolite)|naAC||Adjective conjuation: [root] + ja nai|108|||
+369|was, past tense|naAC||Adjective conjuation: [root] + deshita||||
+370|was not, past negative tense|naAC||Adjective conjuation: [root] + ja arimasen deshita||||
+371|was not, past negative tense (polite)|naAC||Adjective conjuation: [root] + de wa arimasen deshita||||
 372|X and Y|naAC|Used to adjoin more than two adjective to a noun.|Adjective conjuation: [root] + de + [next adj.]||||
 373|to turn into X |naAC||Adjective conjuation: [root] + ni naru|1094, 1095|||
 374|to make X|naAC||Adjective conjuation: [root] + ni suru|323|||
@@ -426,7 +426,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 426|of course, certainly|ADc|||624|||
 427|certainly, of course|ADc||||||
 428|even|ADc||||||
-429|even, if only, if just, as long as|ADc||||||
+429|even, if only, if just, as long as, the only thing needed|ADc||||||
 430|if|ADc|||623|||
 431|if I'm not mistaken, if I remember correctly|ADc||||||
 432|in all, in total, all told|ADc||||||
@@ -559,7 +559,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 559|to that extent, to that degree|ADg|||728|||
 560|together, jointly, along with, both|ADg||||||
 561|together, with|ADg|||636|hitori de|minna de, futari de|
-562|very|ADg|"tottemo" is usually used in a more expressive context than "totemo".||637, 1275|||
+562|very, awfully, exceedingly|ADg|"tottemo" is usually used in a more expressive context than "totemo".||637, 1275|||
 563|very, extremely|ADg||||||
 564|that is…|CE||||||
 565|very, extremely, surprisingly, considerably, awfully, terribly|ADg|||1342|||
@@ -640,7 +640,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 640|hectic, bewildering, bustling, dizzy|Ai||||||
 641|hot (object)|Ai|Used for objects.||558|||
 642|hot and humid, sultry|Ai|||564, 1359|||
-643||-||||||
+643|am/is not X|PC||X dewa nai @ X = phrase|1497|||
 644|impious, profane, sacrilegious, unworthy, wasteful|Ai||||||
 645|insistent, obstinate, persistent, tenacious, too rich (e.g. in taste), fatty, heavy, greasy|Ai||||||
 646|interesting, funny, amusing|Ai|||298|tsumaranai||
@@ -748,7 +748,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 748|again and again, repeatedly|AM||||||
 749|alone|AM|||1286|futari de, issho ni, minna de||
 750|anyhow, at any rate, anyway, somehow or other, generally speaking, in any case|AM||||||
-751||-||||||
+751|was X|PC||X deatta @ X = phrase||||
 752|arbitrarily, of its own accord, involuntarily, wilfully, willfully, as one pleases|AM||||||
 753|arduously, diligently, industriously|AM||||||
 754|bad, evil|AM||||||
@@ -1766,7 +1766,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1766|injection|NAc||||||
 1767|inspection (e.g. customs, factory), examination, scan (e.g. MRI, PET, etc.), check|NAc||||||
 1768|inspection, reading|NAc||||||
-1769|interpretation|NAc||||||
+1769|interpretation (i.e. oral translation), interpreter|NAc||||||
 1770|interpretation, oral translation|NACF|||||hon'yaku|
 1771|interview (e.g. for a job), job interview|NAc|||1384|||
 1772|introduction, presentation, referral, listing|NAc||||||
@@ -2123,7 +2123,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2123|decorations|NACF||||||
 2124|decorations, arrangement|NACF||||||
 2125|degree, amount, grade, standard, of the order of (following a number), about, approximately|NACF||||||
-2126|demon|NACF||||||
+2126|oni, ogre, demon|NACF||||||
 2127|demon, devil, evil spirit, monster, golin, apparition|NACF||||||
 2128|department (of a university), undergraduate (course, program)|NACF||||||
 2129|deposit|NACF||||||
@@ -2886,7 +2886,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2886|whole body|NAn|The four parts of the body - head, trunk, arms and legs|||||
 2887|womb, uterus|NAn||||||
 2888|wrist|NAn||||||
-2889|bathing suit, swimsuit|NAt|||204|||
+2889|bathing suit, swimsuit, swimmers|NAt|||204|||
 2890|belt|NAt||||||
 2891|belt|NAt||||||
 2892|black tie|NAt|As of the event||206|||
@@ -2898,7 +2898,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2898|coat, jacket, outerwear|NAt|||208|||
 2899|contact lens|NAt||||||
 2900|disaster hood, protective hood worn during earthquakes and other disasters (e.g. to protect from falling objects)|NAt||||||
-2901|glasses|NAt|||203|||
+2901|glasses, eyeglasses, spectacles|NAt|||203|||
 2902|glove, mitten, mitt|NAt||||||
 2903|hat, cap|NAt|||191|||
 2904|headband|NAt||||||
@@ -5927,7 +5927,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5927|be stressed, be nervous, be irritated|VsuruI||||||
 5928|be tense, be nervous, be strained|VsuruI||||||
 5929|guide, show, conduct|VsuruT||||||
-5930|interpret|VsuruI||||||
+5930|interpretation (i.e. oral translation), interpreter|VsuruI||||||
 5931|breed, raise, rear|VsuruT||||||
 5932|inspect, read|VsuruT||||||
 5933|starve death|VsuruI||||||
@@ -6101,7 +6101,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6101|hedgehog|NFa||||||
 6102|dark gray, dark grey, slate|NCo||||||
 6103|I have a problem|CE||||||
-6104|(I) hope that X|SSD|ME#0245;0246|||||
+6104|(I) hope that X|PC|ME#0245;0246|||||
 6105|(it's) well made|CE||||||
 6106|do the dishes|VuI||||||
 6107|divide (into), split (into), part, separate, divide up, classify, sort out, divide out|VruiT||||||
@@ -6145,8 +6145,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6145|ancient times|NACF||||||
 6146|folklore demons of the Oga Peninsula (villagers dress up as namahage on New Year's Eve and frighten children)|NPe||||||
 6147|as for in|PP|||1444|||
-6148|(I) hope that X|SSD|ME#0247;0248|||||
-6149|I plan to X|SSD||X wo yotei da|1448|||
+6148|(I) hope that X|PC|ME#0247;0248|||||
+6149|I plan to X|PC||X wo yotei da|1448|||
 6150|scholarship, stipend, bursary|NACF||||||
 6151|student loan|NACF|||1450|||
 6152|miserable, pitiable, shameful, deplorable, pathetic|Ai|Also used as an insult in a condescending setting.|||||
@@ -6201,7 +6201,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6201|if you do it that way…, if done that way…|CE||||||
 6202|if you don't do it that way…|CE||||||
 6203|that’s too bad, I regret (to say), unfortunately|CE||||||
-6204|even if X|SSOF|"If" condition used for more "poetic" phrases.|tatoe X mo Y @ X = phrase with verb in te form, Y = second phrase|1465, 1466, 1467|||
+6204|Y even if X|CO|"if" condition used for more "poetic" phrases.|tatoe X mo Y @ X = phrase with verb in te form, Y = phrase|1465, 1466, 1467|||
 6205|pronoun modifier|PP||X no @ X = phrase|1479|||
 6206|even if|iAC||X temo @ X = i-adj. root|1490|||
 6207|even if|iAC||X demo @ X = na-adj. root||||
@@ -6357,7 +6357,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6357|to accept (e.g. as a member of a group or family)|VruiT||||||
 6358|to call for, to summon, to invite|VruiT||||||
 6359|to approach (a certain time, a point in one's life, etc.)|VruiT||||||
-6360|because of X, due to X|SSCC|ME#0249;0250|||||
+6360|because of X, due to X|CO|ME#0249;0250|||||
 6361|clinch (a victory), decide (the outcome of a match)|VruiT||||||
 6362|persist in doing, go through with, always do, have made a habit of, take for granted, assume|VruiT||||||
 6363|dress up, dress to kill, dress to the nines, dress fancily|VruiT||||||
@@ -6609,7 +6609,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6609|study, research, investigate|VsuruT||||||
 6610|hopeless, wasted, in vain, purposeless|Ana||||||
 6611|cannot, must not, not allowed|Ana||||||
-6612|I am interested in|SSD||||||
+6612|I am interested in X|PC||X ni kyoumi ga aru @ X = phrase||||
 6613|immature, green|Ai||||||
 6614|low (number), small|Ai||||||
 6615|strong, brawny, powerful, healthy, rugged|Ai||||||
@@ -6739,7 +6739,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6739|astonishment, being appalled|NACF||||||
 6740|be astonished, be appalled|VsuruI||||||
 6741|torment, tease, be rough with|VrugT||||||
-6742|toward, respective to|SSP||||||
+6742|toward, respective to|PC||X ni tai suru @ X = phrase||||
 6743|convention, rule|NACF||||||
 6744|destiny, fate|NACF||||||
 6745|be misleading, be misguiding, mislead, misguide|VrugI||||||
@@ -6880,7 +6880,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6880|after (period of time) again (e.g. meeting again after a year), for the first time in (period of time)|Sx||||||
 6881|switchboard number, main number|NACF||||||
 6882|side (of something, or taking someone's side), part|SxN||||||
-6883||-||||||
+6883|was not X|PC||X dewa nakatta @ X = phrase||||
 6884||-||||||
 6885|(watch) case|SxN||||||
 6886||-||||||
@@ -7434,8 +7434,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7434|swordsmanship|NACF||||||
 7435|stinger, ovipositor, dart|NACF||||||
 7436|right (to do something)|SxN||||||
-7437||-||||||
-7438||-||||||
+7437|I, me, myself|P||||||
+7438|we, us, ourselves|P||||||
 7439|authority, power|SxN||||||
 7440|county (of China)|NACF||||||
 7441|Northern Ireland|NACF||||||
@@ -8541,7 +8541,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8541|here and there, some parts (of something), several places|UNC||||||
 8542|even so, however, still, whereupon, even though, nevertheless, on the contrary, as a matter of fact, despite|PP||||||
 8543|although (it is a certain time or something is in a certain condition)|PP||||||
-8544|although (it is a certain time or something is in a certain condition)|PP||||||
+8544||-||||||
 8545|special characteristic, special quality, trait, idiosyncrasy, peculiarity|NACF||||||
 8546|special make, deluxe|NACF||||||
 8547|arrival|NACF||||||
@@ -10339,7 +10339,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 10339|continuously in some state (for a long time, distance), throughout, all along, the whole time, all the way|A||||||
 10340|receive, get, be given|VsuruI||||||
 10341|eat, drink, have|VsuruT||||||
-10342|withdraw (e.g. from an organization), seceed, leave, pull out|VsuruI||||||
+10342|withdraw (e.g. from an organization), secede, leave, pull out|VsuruI||||||
 10343|transmiit (e.g. news, chemical signals, electricity), communice, deliver, convey, transfer, relay, propagate, conduct|VsuruT||||||
 10344|read|VsuruI||||||
 10345|eat out, dine out|VsuruI||||||
@@ -12424,3 +12424,237 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12424|shoplift|VsuruI||||||
 12425|provide questions and answers, engage in dialogue|VsuruI||||||
 12426|blame, censure, reproof, reprimand, rebuke|VsuruT||||||
+12427|attachment, love, covetous affection|NACF||||||
+12428|reading with pleasure|NACF||||||
+12429|lover, mistress|NACF||||||
+12430|pet dog, beloved dog|NACF||||||
+12431|love of (one's) country, patriotism|NACF||||||
+12432|Aikoku|NPl||||||
+12433|love, adoration|NACF||||||
+12434|pet name, nickname, name used to indicate affection, intimacy, informality, etc.|NACF||||||
+12435|amiability, friendliness, affability, sociability|NACF||||||
+12436|fondness (of someone), affection, liking|NACF||||||
+12437|compliments, civilities, courtesies, flattery|NACF||||||
+12438|hospitality, special treatment, entertainment|NACF||||||
+12439|bill (at a restaurant), check|NACF||||||
+12440|favorite, favourite, habitual use|NACF||||||
+12441|wearisome, insipid, dull, irksome, wretched, vain|Ai||||||
+12442|Ajinomoto, brand name of monosodium glutamate (MSG)|NACF||||||
+12443|seasoning, flavour, flavor|NACF||||||
+12444|flavour, flavor, taste|NACF||||||
+12445|charm, appeal, interest, meaning, significance|NACF||||||
+12446|taste, savor, savour, relish|VuT||||||
+12447|appreciate, enjoy, relish, digest|VuT||||||
+12448|experience, go through, taste (e.g. victory), know (e.g. pain)|VuT||||||
+12449|sweat, perspiration|NACF||||||
+12450|moisture, condensation|NACF||||||
+12451|play, enjoy oneself, have a good time|VbuI||||||
+12452|mess about (with alcohol, gambling, philandery, etc.)|VbuI||||||
+12453|go to (for pleasure or for study)|VbuI||||||
+12454|intentionally throw a ball to lower the batter's concentration|VbuI||||||
+12455|commiserate, pity, have mercy on, sympathize with, sympathise with|VmuT||||||
+12456|enjoy the beauty of, appreciate (e.g. the moon, flowers)|VmuT||||||
+12457|in the style of (esp. literary, artistic, etc. works), reminiscent of|Sx||||||
+12458|attached or stretched on|Sx||||||
+12459|Bunmei era (1469.4.28-1487.7.20)|NACF||||||
+12460|ringleader, originator, perpetrator|NACF||||||
+12461|speaking by proxy, speaking for (someone else), acting as spokesman (for), representing (the views, feelings, etc. of)|NACF||||||
+12462|payment by proxy, compensation by proxy, paying on behalf (of)|NACF||||||
+12463|acting for (someone else), carrying out (on someone's behalf)|NACF||||||
+12464|pinch-hitting|NACF||||||
+12465|for generations, hereditary, generation after generation|UNC||||||
+12466|parliamentarian, member of a congress|NACF||||||
+12467|representative, exemplary, model|Ana||||||
+12468|price, cost, charge, payment, bill, fee|NACF||||||
+12469|agent, agency|NACF||||||
+12470|compensation, indemnification, reparation, consideration|NACF||||||
+12471|substitution, alternation|NACF||||||
+12472|substitution|NACF||||||
+12473|the same grade, same class|NACF||||||
+12474|enjoy|NACF||||||
+12475|two|NNe||||||
+12476|project, overhang, stick out, jut out, overlie|VsuI||||||
+12477|put up (a notice), post|VsuT||||||
+12478|paper patch, paper backing, poster, sticker, label|NACF||||||
+12479|be in high spirits, be full of vigor (vigour), be enthusiastic, be eager, stretch to breaking point|VrugI||||||
+12480|paste, stick, affix|VruiT||||||
+12481|station, post|VruiT||||||
+12482|stretch, spread, strain, tighten, put up (tent)|VrugI||||||
+12483|form (e.g. ice on a pond)|VrugI||||||
+12484|fill, swell|VrugI||||||
+12485|stick out, put, slap|VrugT||||||
+12486|be expensive|VrugI||||||
+12487|keep a watch on, be on the lookout|VrugT||||||
+12488|become one tile away from completion|VrugI||||||
+12489|span, generate|VrugT||||||
+12490|Chinese "stomach" constellation (one of the 28 mansions)|NACF||||||
+12491|monochrome|Ana||||||
+12492|one color, one colour, one article|NACF||||||
+12493|same tendency|Ana||||||
+12494|everyone being caught up in the same thing|NACF||||||
+12495|together (with), at the same time, in a lump|A||||||
+12496|whole life, a lifetime, all through life, one existence, a generation, an age, the whole world, the era|UNC||||||
+12497|(the only, the greatest, etc.) of one's life|NACF||||||
+12498|lovely, dear, beloved, darling, dearest|Ai||||||
+12499|pitiable, pitiful|Ai||||||
+12500|women's college, women's university|NACF||||||
+12501|girls' high school|NACF||||||
+12502|female high-school student|NACF||||||
+12503|coaching school, cramming school, juku|NACF||||||
+12504|principal of a private school|NACF||||||
+12505|wall, partition|NACF||||||
+12506|barrier, obstacle|NACF||||||
+12507|Chinese "Wall" constellation (one of the 28 mansions)|NACF||||||
+12508|replace|VruiT||||||
+12509|substitute|VruiT||||||
+12510|sadness, sorrow, grief|NACF||||||
+12511|affection, love|NACF||||||
+12512|take the place of, substitute for, take over for, represent, hand over (telephone)|VrugI||||||
+12513|be exchanged, change (places with), switch|VrugI||||||
+12514|alternately, by turns|A||||||
+12515|go to and from (a place), go back and forth between, run between (e.g. bus, train, etc.), ply between|VuI||||||
+12516|go to (school, work, etc.), attend, commute, frequent|VuI||||||
+12517|circulate (e.g. blood, electricity), be communicated (e.g. thought)|VuI||||||
+12518|resemble|VuI||||||
+12519|in one's imagination|CEN||||||
+12520||-||||||
+12521|fixing (in place), securing, anchoring, fastening down|NACF||||||
+12522|fixing (e.g. salary, capital), keeping the same|NACF||||||
+12523|fixation (histology)|NACF||||||
+12524|user name (on an online forum like 2ch where the majority of users post anonymously)|NACF||||||
+12525|user who uses a online handle (instead of posting anonymously)|NACF||||||
+12526|exchange, interchange, switching, reciprocity, barter, substitution, replacement, clearing (of checks, cheques)|NACF||||||
+12527|loud (of a voice)|Ana||||||
+12528|crawl (swimming), front crawl, forward crawl|NACF||||||
+12529|web crawling|NACF||||||
+12530|composition, piece of music, song, track (on a record)|NACF||||||
+12531|tune, melody, air|NACF||||||
+12532|enjoyment, fun, interest, pleasure|NACF||||||
+12533|reception, acceptance, enjoyment, being given|NACF||||||
+12534|sprout|NACF||||||
+12535|judgment, judgement, discrimination, discernment, insight|NACF||||||
+12536|Megane|NPl||||||
+12537|famous product, special product, speciality, specialty|NACF||||||
+12538|order, command, decree, directive|NACF||||||
+12539|(software) instruction, statement|NACF||||||
+12540|noun|NACF||||||
+12541|superstition, superstitious belief|NACF||||||
+12542|famous place|NACF||||||
+12543|name of a part (of an instrument, etc.)|NACF||||||
+12544|name and address|NACF||||||
+12545|honorable, honourable, prestigious|Ana||||||
+12546|honor, honour, credit, prestige|NACF||||||
+12547|meal, food|NACF||||||
+12548|one's livelihood|NACF||||||
+12549|miso soup|NACF||||||
+12550|crowd, flock, swarm|VruiI||||||
+12551|(a) little, somewhat, somehow|A||||||
+12552|something or other, one thing or another, this or that|A||||||
+12553|it is assuredly that ..., can say with confidence that ...|PP||||||
+12554|delicious, tasty, sweet|Ai||||||
+12555|attractive, appealing, convenient, favorable, desirable, profitable|Ai||||||
+12556|interesting, fascinating, intriguing, enthralling|Ai||||||
+12557|amusing, funny, comical|Ai||||||
+12558|pleasant, enjoyable, agreeable, fun|Ai||||||
+12559|spirit of a deceased person|NACF||||||
+12560|ogre-like person (i.e. fierce, relentless, merciless, etc.)|NACF||||||
+12561|it (in a game of tag, hide-and-seek, etc.)|NACF||||||
+12562|Chinese "ghost" constellation (one of the 28 mansions)|NACF||||||
+12563|very, extremely, super-|Px||||||
+12564|value, hold dear|VmuT||||||
+12565|regret (e.g. a loss), feel sorry (for)|VmuT||||||
+12566|be unwilling, be reluctant|VmuT||||||
+12567|investigate, probe into, spy on, sound out|VrugT||||||
+12568|explore (parts unknown), enjoy (natural beauty)|VrugT||||||
+12569|be done (to someone)|VruiI||||||
+12570|do, be doing|VruiI||||||
+12571|(shout of) encouragement, cheering, rooting, support|NACF||||||
+12572|vocal music|NACF||||||
+12573|adult (esp. person 20 years old or over), grownup|NACF||||||
+12574|becoming an adult, coming of age, growing up (to be a man, woman)|NACF||||||
+12575|declaration, statement, proclamation|NACF||||||
+12576|slider|NACF||||||
+12577|slider (e.g. volume control)|NACF||||||
+12578|slide (e.g. water slide, playground slide)|NACF||||||
+12579|slider (sandwich)|NACF||||||
+12580|sliding|NACF||||||
+12581|slide|NACF||||||
+12582|change (in value or situation), proportional change|NACF||||||
+12583|slice|NACF||||||
+12584|slack|NACF||||||
+12585|slacks|NACF||||||
+12586|slump|NACF||||||
+12587|slalom|NACF||||||
+12588|smoothly, easily, readily|A||||||
+12589|cool oneself, cool off, enjoy the cool air|VmuI||||||
+12590|enjoyable, fun, pleasant, happy, delightful|Ai||||||
+12591|handbook, manual, guide, primer|NACF||||||
+12592|spread throughout, thoroughly diffuse|VsuT||||||
+12593|make a path between two points|VsuT||||||
+12594|proceed in a logical manner|VsuT||||||
+12595|let pass, allow through|VsuT||||||
+12596|lead (someone) into (a house, room, etc.), show in|VsuT||||||
+12597|go through (a middleman)|VsuT||||||
+12598|(look, listen) through (a window, wall, etc.)|VsuT||||||
+12599|pass (a law, applicant, etc.)|VsuT||||||
+12600|force to accept, force agreement|VsuT||||||
+12601|continue (in a state), persist in|VsuT||||||
+12602|do to the entirety of, cover all of, span the whole ...|VsuT||||||
+12603|do from beginning to end without a break|VsuT||||||
+12604|convey (one's ideas, etc.) to the other party|VsuT||||||
+12605|do to the end, carry through, complete|VsuT||||||
+12606|(not) at all, by no means, simply (cannot)|A||||||
+12607|wing|NACF||||||
+12608|Chinese "Wings" constellation (one of the 28 mansions)|NACF||||||
+12609|counter for birds or bird wings|C||||||
+12610||-||||||
+12611||-||||||
+12612|connoisseur, authority|SxN||||||
+12613|counter for letters, notes, documents, etc.|UNC||||||
+12614|usual, ordinary, normal, regular, general, common|UNC||||||
+12615|currency|NACF||||||
+12616|commuting to work|NACF||||||
+12617|passage, pathway, roadway, avenue, aisle|NACF||||||
+12618|correspondence, communication, transmission, news, signal, telecommunications|NACF||||||
+12619|mail order, mail-order sales, shop-by-mail service, on-line shopping service (with delivery by mail)|NACF||||||
+12620|skillful, skilful, clever, expert, wise, successful|Ai||||||
+12621|delicious, appetizing, appetising, tasty|Ai||||||
+12622|fortunate, splendid, promising|Ai||||||
+12623|cattle (Bos taurus), cow, bull, ox, calf|NACF||||||
+12624|beef|NACF||||||
+12625|Chinese "Ox" constellation (one of the 28 mansions)|NACF||||||
+12626|pleasant, delightful, enjoyable, joyful, cheerful, amusing, happy|Ana||||||
+12627|temptation, allurement, lure, enticement, seduction|NACF||||||
+12628|be attached, love, have covetous affection|VsuruI||||||
+12629|read with pleasure|VsuruI||||||
+12630|love, adore|VsuruI||||||
+12631|be a favorite, be a favourite, be used habitually|VsuruI||||||
+12632|have seasoning, have flavour, have flavor|VsuruI||||||
+12633|speak by proxy, speak for (someone else), act as spokesman (for), represent (the views, feelings, etc. of)|VsuruI||||||
+12634|pay by proxy, compensate by proxy, pay on behalf (of)|VsuruI||||||
+12635|act for (someone else), carry out (on someone's behalf)|VsuruI||||||
+12636|represent, proxy, substitute|VsuruT||||||
+12637|substitute|VsuruT||||||
+12638|substitute|VsuruT||||||
+12639|enjoy|VsuruI||||||
+12640|fix (in place), secure, anchoring, fasten down|VsuruT||||||
+12641|fix (e.g. salary, capital), keep the same|VsuruT||||||
+12642||-||||||
+12643|exchange, interchange, switching, reciprocity, barter, substitution, replacement, clearing (of checks, cheques)|VsuruT||||||
+12644|crawl the web|VsuruI||||||
+12645|receive, accept, enjoy, be given|VsuruI||||||
+12646|order, command, decree|VsuruI||||||
+12647|perform an instruction (software), carry out a statement|VsuruI||||||
+12648|believe in a superstition|VsuruI||||||
+12649|shout encouragement, cheer, root, support|VsuruI||||||
+12650|become an adult, come of age, grow up (to be a man, woman)|VsuruI||||||
+12651|declare, make a statement, proclame|VsuruI||||||
+12652|slide|VsuruI||||||
+12653|slide, slip|VsuruI||||||
+12654|change (in value, e.g. with a sliding scale), change (in situation)|VsuruI||||||
+12655|slice|VsuruT||||||
+12656|commute to work|VsuruI||||||
+12657|correspond, communicate, transmit|VsuruI||||||
+12658||-||||||
+12659|pass as, pass for|VsuruI||||||
+12660|tempt, allure, lure, entice, seduce|VsuruT||||||

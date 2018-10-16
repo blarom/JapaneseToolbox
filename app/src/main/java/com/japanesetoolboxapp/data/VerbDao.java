@@ -38,7 +38,7 @@ public interface VerbDao {
 
     //Get a List of Verbs by Exact query match in Romaji column
     @Query("SELECT * FROM " + Verb.TABLE_NAME + " WHERE " + Verb.COLUMN_VERB_ROMAJI + " = :query")
-    List<Verb> getVerbByExactRomajiQueryMatch(String query);
+    List<Verb> getVerbByExactRomajiMatch(String query);
 
     //Get a List of Verbs by Exact query match in Romaji column
     @Query("SELECT * FROM " + Verb.TABLE_NAME + " WHERE " + Verb.COLUMN_VERB_KANJI + " = :query")

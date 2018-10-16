@@ -373,6 +373,8 @@ public class DictionaryFragment extends Fragment implements
     }
     private List<Word> sortWordsAccordingToLengths(List<Word> wordsList) {
 
+        if (wordsList == null || wordsList.size()==0) return new ArrayList<>();
+
         List<long[]> matchingWordIndexesAndLengths = new ArrayList<>();
 
         //region Registering if the input query is a "to " verb
@@ -396,6 +398,7 @@ public class DictionaryFragment extends Fragment implements
         for (int i = 0; i < wordsList.size(); i++) {
 
             Word currentWord = wordsList.get(i);
+            if (currentWord==null) continue;
 
             int length = Utilities.getLengthFromWordAttributes(currentWord, inputQuery, queryWordWithoutTo, queryIsVerbWithTo);
 

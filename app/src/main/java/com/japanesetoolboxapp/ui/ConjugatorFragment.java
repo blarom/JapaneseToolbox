@@ -937,6 +937,17 @@ public class ConjugatorFragment extends Fragment implements
             }
             //endregion
 
+            //region Adding the suru verb if the query is contained in the suru conjugations
+            if (queryIsContainedInASuruConjugation) {
+                Word suruVerb = mJapaneseToolboxCentralRoomDatabase.getWordsByExactRomajiAndKanjiMatch("suru", "為る").get(0);
+                boolean alreadyInList = false;
+                for (long[] idAndCol : matchingVerbIdsAndColsFromBasicCharacteristics) {
+                    if (idAndCol[0] == suruVerb.getWordId()) alreadyInList = true;
+                }
+                if (!alreadyInList) matchingVerbIdsAndColsFromBasicCharacteristics.add(new long[]{suruVerb.getWordId(), 0});
+            }
+            //endregion
+
             //region Getting the matching verbs according in the expanded conjugations
             List<long[]> matchingVerbIdsAndColsFromExpandedConjugations = new ArrayList<>();
             List<long[]> copyOfMatchingVerbIdsAndColsFromBasicCharacteristics = new ArrayList<>(matchingVerbIdsAndColsFromBasicCharacteristics);
@@ -997,7 +1008,7 @@ public class ConjugatorFragment extends Fragment implements
                             && !romaji.equals("iru")) {
 
                     //If the input is suru then prevent verbs with suru in the conjugations from giving a hit, but allow other verbs with romaji suru to give a hit
-                    if (queryIsContainedInASuruConjugation) {
+                    if (romaji.contains(" suru")) {
                         allowExpandedConjugationsComparison = false;
                     }
                     //Otherwise, if the verb does not meet the above conditions, skip this verb
@@ -1149,9 +1160,7 @@ public class ConjugatorFragment extends Fragment implements
             for (int i = 0; i < ConjugationSearchMatchingVerbRowColIndexList.size(); i++) {
 
                 Word currentWord = mJapaneseToolboxCentralRoomDatabase.getWordByWordId(ConjugationSearchMatchingVerbRowColIndexList.get(i)[0]);
-                if (currentWord==null) {
-                    String a="";
-                }
+                if (currentWord==null) continue;
 
                 int length = Utilities.getLengthFromWordAttributes(currentWord, inputQuery, queryWordWithoutTo, queryIsVerbWithTo);
 

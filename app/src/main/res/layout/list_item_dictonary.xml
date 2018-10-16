@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/list_item_parent_container"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -21,8 +22,9 @@
         android:text="@string/Kanji"
         android:textColor="@color/textColorDictionaryGroupItemRomajiAndKanji"
         android:textSize="@dimen/DictionaryGroupItemRomajiKanji"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:textStyle="bold" />
-
 
     <TextView
         android:id="@+id/list_item_meanings"
@@ -34,8 +36,11 @@
         android:textColor="@color/textColorDictionaryGroupItemMeanings"
         android:textSize="@dimen/DictionaryGroupItemMeanings"
         android:text="@string/English"
+        app:layout_constraintTop_toBottomOf="@id/list_item_romaji_and_kanji"
+        app:layout_constraintStart_toStartOf="parent"
         android:ellipsize="end"
         android:maxLines="4" />
+
 
     <LinearLayout
         android:id="@+id/list_item_child_linearlayout"
@@ -44,6 +49,8 @@
         android:visibility="gone"
         android:orientation="vertical"
         android:background="#edf8ff"
+        app:layout_constraintTop_toBottomOf="@id/list_item_meanings"
+        app:layout_constraintStart_toStartOf="parent"
         android:padding="6dp" >
 
         <LinearLayout
@@ -89,4 +96,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

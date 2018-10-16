@@ -1636,18 +1636,11 @@ public final class Utilities {
     }
     public static List<Long> getMatchingWordIdsUsingRoomIndexes(String searchWord, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
-
         //region Initializations
         List<Long> matchingWordIds = new ArrayList<>();
-        List<Long> MatchingWordIdsFromIndex = new ArrayList<>();
-        List<String> keywordsList;
-        List<long[]> MatchList = new ArrayList<>();
-        String keywords;
-        long[] current_match_values;
-        boolean found_match;
+        String searchWordNoSpaces;
         boolean queryIsVerbWithTo = false;
         String searchWordWithoutTo = "";
-        String searchWordNoSpaces;
         //endregion
 
         //region Converting the searchWord to usable forms, preventing invalid characters from influencing the search results
@@ -1718,8 +1711,30 @@ public final class Utilities {
         }
         //endregion
 
+        //region Getting the matches
+        matchingWordIds = addNormalMatchesToMatchesList(searchWord, searchWordNoSpaces, inglessVerb, searchWordWithoutTo,
+                queryIsVerbWithTo, TypeisLatin, TypeisKana, TypeisKanji, TypeisNumber, matchingWordIds, japaneseToolboxCentralRoomDatabase);
+
+        matchingWordIds = addConjugatedAdjectivesToMatchesList(searchWord, TypeisLatin, TypeisKana, TypeisKanji, matchingWordIds, japaneseToolboxCentralRoomDatabase);
+        //endregion
+
+        return matchingWordIds;
+    }
+    private static List<Long> addNormalMatchesToMatchesList(String searchWord, String searchWordNoSpaces, String inglessVerb, String searchWordWithoutTo,
+                                                            boolean queryIsVerbWithTo, boolean TypeisLatin, boolean TypeisKana, boolean TypeisKanji, boolean TypeisNumber,
+                                                            List<Long> matchingWordIds,
+                                                            JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+
+        //region Initializations
+        List<Long> matchingWordIdsFromIndex = new ArrayList<>();
+        List<long[]> MatchList = new ArrayList<>();
+        String keywords;
+        long[] current_match_values;
+        boolean found_match;
+        //endregion
+
         //region Search for the matches in the indexed keywords
-        List<String> searchResultKeywordsArray = new ArrayList<>();
+        List<String> searchResultIndexesArray = new ArrayList<>();
         List<LatinIndex> latinIndices;
         List<KanjiIndex> kanjiIndices;
         if (TypeisLatin || TypeisKana || TypeisNumber) {
@@ -1732,7 +1747,7 @@ public final class Utilities {
                 }
             }
 
-            latinIndices = findQueryInLatinIndex(TypeisLatin, input_word, japaneseToolboxCentralRoomDatabase);
+            latinIndices = findQueryInLatinIndex(input_word, japaneseToolboxCentralRoomDatabase);
 
             if (latinIndices.size()==0) return matchingWordIds;
 
@@ -1741,14 +1756,14 @@ public final class Utilities {
                     || TypeisNumber && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD-1) {
                 for (LatinIndex latinIndex : latinIndices) {
                     if (latinIndex.getLatin().length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD) {
-                        searchResultKeywordsArray.add(latinIndex.getWordIds());
+                        searchResultIndexesArray.add(latinIndex.getWordIds());
                         break;
                     }
                 }
             }
             else {
                 for (LatinIndex latinIndex : latinIndices) {
-                    searchResultKeywordsArray.add(latinIndex.getWordIds());
+                    searchResultIndexesArray.add(latinIndex.getWordIds());
                 }
             }
 
@@ -1756,7 +1771,7 @@ public final class Utilities {
             kanjiIndices = findQueryInKanjiIndex(searchWordNoSpaces, japaneseToolboxCentralRoomDatabase);
             if (kanjiIndices.size()==0) return matchingWordIds;
             for (KanjiIndex kanjiIndex : kanjiIndices) {
-                searchResultKeywordsArray.add(kanjiIndex.getWordIds());
+                searchResultIndexesArray.add(kanjiIndex.getWordIds());
             }
         } else {
             return matchingWordIds;
@@ -1764,10 +1779,11 @@ public final class Utilities {
         //endregion
 
         //region Get the indexes of all of the results that were found
-        for (String searchResultKeywords : searchResultKeywordsArray) {
-            keywordsList = Arrays.asList(searchResultKeywords.split(";"));
-            for (int j = 0; j < keywordsList.size(); j++) {
-                MatchingWordIdsFromIndex.add(Long.valueOf(keywordsList.get(j)));
+        List<String> indexList;
+        for (String searchResultIndexes : searchResultIndexesArray) {
+            indexList = Arrays.asList(searchResultIndexes.split(";"));
+            for (int j = 0; j < indexList.size(); j++) {
+                matchingWordIdsFromIndex.add(Long.valueOf(indexList.get(j)));
             }
         }
         //endregion
@@ -1775,12 +1791,12 @@ public final class Utilities {
         //region Add search results where the "ing" is removed from an "ing" verb
         if ((TypeisLatin || TypeisKana || TypeisNumber) && !inglessVerb.equals(searchWord)) {
 
-            latinIndices = findQueryInLatinIndex(TypeisLatin, inglessVerb, japaneseToolboxCentralRoomDatabase);
+            latinIndices = findQueryInLatinIndex(inglessVerb, japaneseToolboxCentralRoomDatabase);
 
             for (LatinIndex latinIndex : latinIndices) {
-                keywordsList = Arrays.asList(latinIndex.getWordIds().split(";"));
-                for (int j = 0; j < keywordsList.size(); j++) {
-                    MatchingWordIdsFromIndex.add(Long.valueOf(keywordsList.get(j)));
+                indexList = Arrays.asList(latinIndex.getWordIds().split(";"));
+                for (int j = 0; j < indexList.size(); j++) {
+                    matchingWordIdsFromIndex.add(Long.valueOf(indexList.get(j)));
                 }
             }
         }
@@ -1794,7 +1810,7 @@ public final class Utilities {
         //endregion
 
         //region Filtering the matches
-        List<Word> matchingWordList = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(MatchingWordIdsFromIndex);
+        List<Word> matchingWordList = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(matchingWordIdsFromIndex);
         String romaji;
         String meanings;
         String[] meaningSet;
@@ -1956,6 +1972,137 @@ public final class Utilities {
         for (int i=0;i<MatchList.size();i++) {
             matchingWordIds.add(MatchList.get(i)[0]);
         }
+        //endregion
+
+        return matchingWordIds;
+    }
+    private static List<Long> addConjugatedAdjectivesToMatchesList(String searchWord, boolean TypeisLatin, boolean TypeisKana, boolean TypeisKanji, List<Long> matchingWordIds,
+                                                                  JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+
+        //Adding relevant adjectives to the list of matches if the input query is an adjective conjugation
+        String input_word = Utilities.removeNonSpaceSpecialCharacters(searchWord);
+        String adjectiveConjugation = "";
+        String baseAdjective = "";
+        boolean isPotentialAdjective = false;
+        List<String> searchResultIndexesArray = new ArrayList<>();
+        List<Long> matchingWordIdsFromIndex = new ArrayList<>();
+
+        if (TypeisLatin || TypeisKana) {
+
+            if (input_word.length()>9) {
+                adjectiveConjugation = input_word.substring(input_word.length()-9, input_word.length());
+                baseAdjective = input_word.substring(0, input_word.length()-9) + "i";
+                if (adjectiveConjugation.equals("kunakatta")) isPotentialAdjective = true;
+            }
+            else if (input_word.length()>6) {
+                adjectiveConjugation = input_word.substring(input_word.length()-6, input_word.length());
+                baseAdjective = input_word.substring(0, input_word.length()-6) + "i";
+                if (adjectiveConjugation.equals("kereba")) isPotentialAdjective = true;
+            }
+            else if (input_word.length()>5) {
+                adjectiveConjugation = input_word.substring(input_word.length()-5, input_word.length());
+                baseAdjective = input_word.substring(0, input_word.length()-5) + "i";
+                if (adjectiveConjugation.equals("kunai")
+                        || adjectiveConjugation.equals("katta")
+                        || adjectiveConjugation.equals("karou")) isPotentialAdjective = true;
+            }
+            else if (input_word.length()>4) {
+                adjectiveConjugation = input_word.substring(input_word.length()-4, input_word.length());
+                baseAdjective = input_word.substring(0, input_word.length()-4) + "i";
+                if (adjectiveConjugation.equals("kute")) isPotentialAdjective = true;
+            }
+            else if (input_word.length()>2) {
+                adjectiveConjugation = input_word.substring(input_word.length()-2, input_word.length());
+                if (adjectiveConjugation.equals("mi") || adjectiveConjugation.equals("ku")) {
+                    isPotentialAdjective = true;
+                    baseAdjective = input_word.substring(0, input_word.length()-2) + "i";
+                }
+                else if (adjectiveConjugation.equals("ni")) {
+                    isPotentialAdjective = true;
+                    baseAdjective = input_word.substring(0, input_word.length()-2);
+                }
+            }
+
+            if (!isPotentialAdjective) return matchingWordIds;
+
+            List<LatinIndex> latinIndicesForAdjective = findQueryInLatinIndex(baseAdjective, japaneseToolboxCentralRoomDatabase);
+
+            if (latinIndicesForAdjective.size()==0) return matchingWordIds;
+
+            for (LatinIndex latinIndex : latinIndicesForAdjective) {
+                searchResultIndexesArray.add(latinIndex.getWordIds());
+            }
+
+        } else if (TypeisKanji) {
+
+            if (input_word.length()>5) {
+                adjectiveConjugation = input_word.substring(input_word.length()-5, input_word.length());
+                baseAdjective = input_word.substring(0, input_word.length()-5) + "い";
+                if (adjectiveConjugation.equals("くなかった")) isPotentialAdjective = true;
+            }
+            else if (input_word.length()>3) {
+                adjectiveConjugation = input_word.substring(input_word.length()-3, input_word.length());
+                baseAdjective = input_word.substring(0, input_word.length()-3) + "い";
+                if (adjectiveConjugation.equals("くない")
+                        || adjectiveConjugation.equals("ければ")
+                        || adjectiveConjugation.equals("かった")
+                        || adjectiveConjugation.equals("かろう")) isPotentialAdjective = true;
+            }
+            else if (input_word.length()>2) {
+                adjectiveConjugation = input_word.substring(input_word.length()-2, input_word.length());
+                baseAdjective = input_word.substring(0, input_word.length()-2) + "い";
+                if (adjectiveConjugation.equals("くて")) isPotentialAdjective = true;
+            }
+            else if (input_word.length()>1) {
+                adjectiveConjugation = input_word.substring(input_word.length()-1, input_word.length());
+                if (adjectiveConjugation.equals("み") || adjectiveConjugation.equals("く")) {
+                    isPotentialAdjective = true;
+                    baseAdjective = input_word.substring(0, input_word.length()-1) + "";
+                }
+                else if (adjectiveConjugation.equals("に")) {
+                    isPotentialAdjective = true;
+                    baseAdjective = input_word.substring(0, input_word.length()-1);
+                }
+            }
+
+            if (!isPotentialAdjective) return matchingWordIds;
+
+            List<KanjiIndex> kanjiIndicesForAdjective = findQueryInKanjiIndex(baseAdjective, japaneseToolboxCentralRoomDatabase);
+
+            if (kanjiIndicesForAdjective.size()==0) return matchingWordIds;
+
+            for (KanjiIndex kanjiIndex : kanjiIndicesForAdjective) {
+                searchResultIndexesArray.add(kanjiIndex.getWordIds());
+            }
+
+        } else {
+            return matchingWordIds;
+        }
+
+        List<String> indexList;
+        for (String searchResultIndexes : searchResultIndexesArray) {
+            indexList = Arrays.asList(searchResultIndexes.split(";"));
+            for (int j = 0; j < indexList.size(); j++) {
+                matchingWordIdsFromIndex.add(Long.valueOf(indexList.get(j)));
+            }
+        }
+
+        List<Word> matchingPotentialAdjectives = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(matchingWordIdsFromIndex);
+        boolean isAlreadyInList;
+        for (Word word : matchingPotentialAdjectives) {
+            isAlreadyInList = false;
+            List<Word.Meaning> meaningsList = word.getMeanings();
+            if (meaningsList.size()>0 &&
+                    (meaningsList.get(0).getType().equals("Ai") || meaningsList.get(0).getType().equals("Ana")) ) {
+                for (long id : matchingWordIds) {
+                    if (id == word.getWordId()) {
+                        isAlreadyInList = true;
+                        break;
+                    }
+                }
+                if (!isAlreadyInList) matchingWordIds.add(word.getWordId());
+            }
+        }
 
         return matchingWordIds;
     }
@@ -2009,7 +2156,7 @@ public final class Utilities {
         }
         return concatenated_sentence;
     }
-    private static List<LatinIndex> findQueryInLatinIndex(boolean TypeisLatin, String concatenated_word, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+    private static List<LatinIndex> findQueryInLatinIndex(String concatenated_word, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
         List<LatinIndex> matchingLatinIndexes;
         if (concatenated_word.length() > 2) {
