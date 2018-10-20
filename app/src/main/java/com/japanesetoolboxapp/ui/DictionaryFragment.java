@@ -2,7 +2,6 @@ package com.japanesetoolboxapp.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -25,6 +24,7 @@ import com.japanesetoolboxapp.adapters.DictionaryRecyclerViewAdapter;
 import com.japanesetoolboxapp.data.FirebaseDao;
 import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
 import com.japanesetoolboxapp.data.Word;
+import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
@@ -174,6 +174,8 @@ public class DictionaryFragment extends Fragment implements
 
                 List<Word> differentJishoWords = Utilities.getDifferentAsyncWords(mLocalMatchingWordsList, jishoWords);
                 if (differentJishoWords.size()==0) Toast.makeText(getContext(), R.string.no_new_words_or_meanings_found_online, Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getContext(), R.string.updated_list_with_online_words_andMeanings, Toast.LENGTH_SHORT).show();
+
                 updateFirebaseDbWithJishoWords(differentJishoWords);
 
                 displayResults(mMergedMatchingWordsList);
@@ -388,8 +390,8 @@ public class DictionaryFragment extends Fragment implements
 
         //region Replacing the Kana input word by its romaji equivalent
         String inputQuery = mInputQuery;
-        String text_type = ConvertFragment.getTextType(inputQuery);
-        if (text_type.equals("hiragana") || text_type.equals("katakana")) {
+        int inputTextType = ConvertFragment.getTextType(inputQuery);
+        if (inputTextType == GlobalConstants.VALUE_HIRAGANA || inputTextType == GlobalConstants.VALUE_KATAKANA) {
             List<String> translationList = ConvertFragment.getLatinHiraganaKatakana(inputQuery.replace(" ", ""));
             inputQuery = translationList.get(0);
         }

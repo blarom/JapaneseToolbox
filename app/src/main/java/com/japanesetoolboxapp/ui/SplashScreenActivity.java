@@ -31,6 +31,7 @@ public class SplashScreenActivity extends Activity {
     private boolean mLoadedKanjiDb;
     private boolean mKanjiDbTextAlreadyLoaded;
     private CountDownTimer countDownTimer;
+    private boolean mFirstTick;
 
     @Override protected void onCreate(Bundle savedInstanceState) {
 
@@ -66,10 +67,19 @@ public class SplashScreenActivity extends Activity {
         dbLoadThread = new Thread(dbLoadRunnable);
         dbLoadThread.start();
 
+        mFirstTick = true;
 
         countDownTimer = new CountDownTimer(360000, 500) {
             @Override
             public void onTick(long l) {
+
+                if (mFirstTick) {
+                    mFirstTick = false;
+                    if (mTimeToLoadTextView!=null) mTimeToLoadTextView.setText(R.string.splashscreen_should_take_only_a_few_seconds);
+                    hideLoadingIndicator();
+                    if (mLoadingDatabaseTextView!=null) mLoadingDatabaseTextView.setVisibility(View.GONE);
+                    return;
+                }
 
                 boolean finishedLoadingWordDatabases = Utilities.getAppPreferenceWordVerbDatabasesFinishedLoadingFlag(SplashScreenActivity.this);
                 boolean finishedLoadingKanjiDatabases = Utilities.getAppPreferenceKanjiDatabaseFinishedLoadingFlag(SplashScreenActivity.this);

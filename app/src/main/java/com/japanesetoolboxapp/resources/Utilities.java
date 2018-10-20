@@ -213,7 +213,7 @@ public final class Utilities {
 
 
     //String manipulations utilities
-    private static String convertToUTF8(String input_string) {
+    public static String convertToUTF8Index(String input_string) {
 
         byte[] byteArray = {};
         try {
@@ -226,6 +226,24 @@ public final class Utilities {
             prepared_word.append(Integer.toHexString(b & 0xFF));
         }
         return prepared_word.toString();
+    }
+    public static String convertFromUTF8Index(String inputHex) {
+
+        //inspired by: https://stackoverflow.com/questions/15749475/java-string-hex-to-string-ascii-with-accentuation
+        if(inputHex.length()<4) return "";
+        inputHex = inputHex.toLowerCase().substring(2,inputHex.length());
+
+        ByteBuffer buff = ByteBuffer.allocate(inputHex.length()/2);
+        for (int i = 0; i < inputHex.length(); i+=2) {
+            buff.put((byte)Integer.parseInt(inputHex.substring(i, i+2), 16));
+        }
+        buff.rewind();
+        Charset cs = Charset.forName("UTF-8");
+        CharBuffer cb = cs.decode(buff);
+
+        String result = cb.toString();
+
+        return result;
     }
     public static String removeNonSpaceSpecialCharacters(String sentence) {
         String current_char;
@@ -330,6 +348,7 @@ public final class Utilities {
 
         return new ArrayList<>(set);
     }
+
 
     //OCR utilities
     public static int loadOCRImageContrastFromSharedPreferences(SharedPreferences sharedPreferences, Context context) {
@@ -443,12 +462,12 @@ public final class Utilities {
 
         //region Preparing the word to be included in the url
         StringBuilder prepared_word;
-        if (ConvertFragment.getTextType(word).equals("kanji")) {
-            String converted_word = convertToUTF8(word);
+        if (ConvertFragment.getTextType(word) == GlobalConstants.VALUE_KANJI) {
+            String converted_word = convertToUTF8Index(word);
             converted_word = converted_word.substring(2,converted_word.length());
             prepared_word = new StringBuilder();
             for (int i = 0; i < converted_word.length() - 1; i = i + 2) {
-                prepared_word.append("%").append(converted_word.substring(i, i + 2));
+                prepared_word.append("%").append(converted_word, i, i + 2);
             }
         }
         else {
@@ -535,15 +554,18 @@ public final class Utilities {
     private static String websiteCodeString = "";
     private static List<Object> getChildren() {
 
+        if (runningIndex < 0) return new ArrayList<>();
+
         List<Object> currentParent = new ArrayList<>();
+
         if (runningIndex > websiteCodeString.length()-1) {
             currentParent.add("");
             return currentParent;
         }
-        String remainingwebsiteCodeString = websiteCodeString.substring(runningIndex,websiteCodeString.length());
+        String remainingWebsiteCodeString = websiteCodeString.substring(runningIndex,websiteCodeString.length());
 
-        if (!remainingwebsiteCodeString.contains("<")) {
-            currentParent.add(remainingwebsiteCodeString);
+        if (!remainingWebsiteCodeString.contains("<")) {
+            currentParent.add(remainingWebsiteCodeString);
             return currentParent;
         }
 
@@ -698,7 +720,8 @@ public final class Utilities {
                 if (kanji1UpData.size()>0) romaji.append((String) kanji1UpData.get(0));
             }
 
-            if (romaji.length()!=0 && (ConvertFragment.getTextType(kanji.toString()).equals("katakana") || ConvertFragment.getTextType(kanji.toString()).equals("hiragana"))) {
+            int textType = ConvertFragment.getTextType(kanji.toString());
+            if (romaji.length()!=0 && (textType == GlobalConstants.VALUE_HIRAGANA || textType == GlobalConstants.VALUE_KATAKANA)) {
                 //When the word is originally katakana only, the website does not display hiragana. This is corrected here.
                 romaji = new StringBuilder(ConvertFragment.getLatinHiraganaKatakana(kanji.toString()).get(0));
             }
@@ -716,8 +739,10 @@ public final class Utilities {
                         if (sentenceSearchFor.length() > 20 && sentenceSearchFor.contains("Sentence search for")) {
                             currentValue = sentenceSearchFor.substring(20, sentenceSearchFor.length());
                         }
+
+                        textType = ConvertFragment.getTextType(currentValue);
                         if (currentValue.length() != 0 &&
-                                (ConvertFragment.getTextType(currentValue).equals("katakana") || ConvertFragment.getTextType(currentValue).equals("hiragana"))) {
+                                (textType == GlobalConstants.VALUE_HIRAGANA || textType == GlobalConstants.VALUE_KATAKANA)) {
                             //When the word is originally katakana only, the website does not display hiragana. This is corrected here.
                             romaji = new StringBuilder(ConvertFragment.getLatinHiraganaKatakana(currentValue).get(0));
                             break;
@@ -898,7 +923,133 @@ public final class Utilities {
     }
 
 
-    //Database utilities
+    //IO utilities
+    public static List<String[]> readCSVFile(String filename, Context context) {
+
+        List<String[]> mySheet = new ArrayList<>();
+
+        // OpenCSV implementation
+        //                String next[] = null;
+        //                CSVReader reader = null;
+        //                try {
+        //                    reader = new CSVReader(new InputStreamReader(GlobalTranslatorActivity.getAssets().open(filename)));
+        //                } catch (IOException e) {
+        //                    e.printStackTrace();
+        //                }
+        //                if (reader != null) {
+        //                    for (; ; ) {
+        //                        try {
+        //                            next = reader.readNext();
+        //                        } catch (IOException e) {
+        //                            e.printStackTrace();
+        //                        }
+        //                        if (next != null) {
+        //                            mySheet.add(next);
+        //                        } else {
+        //                            break;
+        //                        }
+        //                    }
+        //                }
+        //                try {
+        //                    reader.close();
+        //                } catch (IOException e) {
+        //                    e.printStackTrace();
+        //                }
+
+        // "|" Parser implementation
+
+        BufferedReader fileReader = null;
+
+        int line_number = 0;
+        try {
+            String line;
+            fileReader = new BufferedReader(new InputStreamReader(context.getAssets().open(filename)));
+
+            while ((line = fileReader.readLine()) != null) {
+                String[] tokens = line.split("\\|",-1);
+                if (tokens.length > 0) {
+                    mySheet.add(tokens);
+                    line_number++;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error in CsvFileReader !!!");
+            e.printStackTrace();
+            Log.i("Diagnosis Time","Error in CsvFileReader opening Loaded DecompositionDatabase_PART4. Line number:"+line_number);
+        } finally {
+            try {
+                if (fileReader != null) {fileReader.close();}
+            } catch (IOException e) {
+                System.out.println("Error while closing fileReader !!!");
+                e.printStackTrace();
+                Log.i("Diagnosis Time","Error in CsvFileReader closing Loaded DecompositionDatabase_PART4.");
+            }
+        }
+
+        return mySheet;
+    }
+    public static List<String[]> readCSVFileFirstRow(String filename, Context context) {
+
+        List<String[]> mySheetFirstRow = new ArrayList<>();
+
+        //OpenCSV implementation
+        //				  String firstrow[] = null;
+        //                String next[] = null;
+        //                CSVReader reader = null;
+        //
+        //                try {
+        //                    reader = new CSVReader(new InputStreamReader(GlobalTranslatorActivity.getAssets().open(filename)));
+        //                } catch (IOException e) {
+        //                    e.printStackTrace();
+        //                }
+        //
+        //                if (reader != null) {
+        //                    try {
+        //                        firstrow = reader.readNext();
+        //                    } catch (IOException e) {
+        //                        e.printStackTrace();
+        //                    }
+        //                    if (firstrow != null) {
+        //                        mySheetFirstRow.add(firstrow);
+        //                    }
+        //                }
+        //
+        //                try {
+        //                    reader.close();
+        //                } catch (IOException e) {
+        //                    e.printStackTrace();
+        //                }
+
+        // "|" Parser implementation
+
+        BufferedReader fileReader = null;
+
+        try {
+            String line;
+            fileReader = new BufferedReader(new InputStreamReader(context.getAssets().open(filename)));
+
+            line = fileReader.readLine();
+            String[] tokens = line.split("\\|",-1);
+            if (tokens.length > 0) {
+                mySheetFirstRow.add(tokens);
+            }
+        } catch (Exception e) {
+            System.out.println("Error in CsvFileReader !!!");
+            e.printStackTrace();
+        } finally {
+            try {
+                if (fileReader != null) {fileReader.close();}
+            } catch (IOException e) {
+                System.out.println("Error while closing fileReader !!!");
+                e.printStackTrace();
+            }
+        }
+
+        return mySheetFirstRow;
+    }
+
+
+    //Database creation utilities
     public static FirebaseDatabase getDatabase() {
         //inspired by: https://github.com/firebase/quickstart-android/issues/15
         if (mDatabase == null) {
@@ -918,6 +1069,242 @@ public final class Utilities {
         //string = string.replaceAll("}","*");
         return string;
     }
+    public static void checkDatabaseStructure(List<String[]> databaseFromCsv, String databaseName, int numColumns) {
+        for (String[] line : databaseFromCsv) {
+            if (line.length < numColumns) {
+                Log.v("JapaneseToolbox","Serious error in row [" + line[0] + "] in " + databaseName + ": CSV file row has less columns than expected! Check for accidental line breaks.");
+                break;
+            }
+        }
+    }
+    public static Word createWordFromCsvDatabases(List<String[]> centralDatabase, List<String[]> meaningsDatabase, List<String[]> multExplanationsDatabase,
+                                                  List<String[]> examplesDatabase, int centralDbRowIndex) {
+
+        // Value Initializations
+        int example_index;
+        Word word = new Word();
+        List<String> parsed_example_list;
+
+        //Getting the index value
+        int matchingWordId = Integer.parseInt(centralDatabase.get(centralDbRowIndex)[0]);
+        word.setWordId(matchingWordId);
+
+        //Getting the keywords value
+        String matchingWordKeywordsList = centralDatabase.get(centralDbRowIndex)[1];
+        word.setKeywords(matchingWordKeywordsList);
+
+        //Getting the Romaji value
+        String matchingWordRomaji = centralDatabase.get(centralDbRowIndex)[2];
+        word.setRomaji(matchingWordRomaji);
+
+        //Getting the Kanji value
+        String matchingWordKanji = centralDatabase.get(centralDbRowIndex)[3];
+        word.setKanji(matchingWordKanji);
+
+        //Setting the unique identifier
+        word.setUniqueIdentifier(matchingWordRomaji+"-"+matchingWordKanji);
+
+        //Setting the Common Word flag
+        word.setCommonStatus(2);
+
+        //Getting the AltSpellings value
+        String matchingWordAltSpellings = centralDatabase.get(centralDbRowIndex)[5];
+        word.setAltSpellings(matchingWordAltSpellings);
+
+
+        //regionGetting the set of Meanings
+
+        //Initializations
+        String matchingWordMeaning;
+        String matchingWordType;
+        String matchingWordOpposite;
+        String matchingWordSynonym;
+        String matchingWordExplanation;
+        String matchingWordRules;
+        String matchingWordExampleList;
+        String[] current_meaning_characteristics;
+        Boolean has_multiple_explanations;
+        String ME_index;
+
+        //Finding the meanings using the supplied index
+        String MM_index = centralDatabase.get(centralDbRowIndex)[4];
+        List<String> MM_index_list = Arrays.asList(MM_index.split(";"));
+        if (MM_index_list.size() == 0) { return word; }
+
+        List<Word.Meaning> meaningsList = new ArrayList<>();
+        int current_MM_index;
+        for (int i=0; i< MM_index_list.size(); i++) {
+
+            Word.Meaning meaning = new Word.Meaning();
+            current_MM_index = Integer.parseInt(MM_index_list.get(i))-1;
+            current_meaning_characteristics = meaningsDatabase.get(current_MM_index);
+
+            //Getting the Meaning value
+            matchingWordMeaning = current_meaning_characteristics[1];
+            if (matchingWordMeaning.equals("")) continue;
+
+            //Getting the Type value
+            matchingWordType = current_meaning_characteristics[2];
+
+            //Make corrections to the meaning values if the hit is a verb
+            if (matchingWordType.contains("V") && !matchingWordType.equals("VC") && !matchingWordType.equals("VdaI")) {
+
+                List<String> meaningElements = Arrays.asList(matchingWordMeaning.split(","));
+                StringBuilder meaningFixed = new StringBuilder();
+                boolean valueIsInParentheses = false;
+                for (int k = 0; k < meaningElements.size(); k++) {
+                    if (valueIsInParentheses) meaningFixed.append(meaningElements.get(k).trim());
+                    else meaningFixed.append("to ").append(meaningElements.get(k).trim());
+
+                    if (k < meaningElements.size() - 1) meaningFixed.append(", ");
+
+                    if (meaningElements.get(k).contains("(") && !meaningElements.get(k).contains(")")) valueIsInParentheses = true;
+                    else if (!meaningElements.get(k).contains("(") && meaningElements.get(k).contains(")")) valueIsInParentheses = false;
+                }
+                matchingWordMeaning = meaningFixed.toString();
+            }
+
+            //Setting the Meaning and Type values in the returned list
+            meaning.setMeaning(matchingWordMeaning);
+            meaning.setType(matchingWordType);
+
+            //Getting the Opposite value
+            matchingWordOpposite = current_meaning_characteristics[6];
+            meaning.setAntonym(matchingWordOpposite);
+
+            //Getting the Synonym value
+            matchingWordSynonym = current_meaning_characteristics[7];
+            meaning.setSynonym(matchingWordSynonym);
+
+            //Getting the set of Explanations
+            has_multiple_explanations = false;
+            ME_index = "";
+            if (current_meaning_characteristics[3].length() > 3) {
+                if (current_meaning_characteristics[3].substring(0,3).equals("ME#")) {
+                    has_multiple_explanations = true;
+                    ME_index = current_meaning_characteristics[3].substring(3,current_meaning_characteristics[3].length());
+                }
+            }
+
+            List<Word.Meaning.Explanation> explanationList = new ArrayList<>();
+            if (has_multiple_explanations) {
+                List<String> ME_index_list = Arrays.asList(ME_index.split(";"));
+                int current_ME_index;
+                for (int j=0; j<ME_index_list.size(); j++) {
+
+                    Word.Meaning.Explanation explanation = new Word.Meaning.Explanation();
+
+                    current_ME_index = Integer.parseInt(ME_index_list.get(j))-1;
+
+                    //Getting the Explanation value
+                    matchingWordExplanation = multExplanationsDatabase.get(current_ME_index)[1];
+                    explanation.setExplanation(matchingWordExplanation);
+
+                    //Getting the Rules value
+                    matchingWordRules = multExplanationsDatabase.get(current_ME_index)[2];
+                    explanation.setRules(matchingWordRules);
+
+                    //Getting the Examples
+                    matchingWordExampleList = multExplanationsDatabase.get(current_ME_index)[3];
+                    List<Word.Meaning.Explanation.Example> exampleList = new ArrayList<>();
+                    if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
+                        parsed_example_list = Arrays.asList(matchingWordExampleList.split(", "));
+                        for (int t = 0; t < parsed_example_list.size(); t++) {
+                            Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
+                            example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
+                            example.setEnglishSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_English]);
+                            example.setRomajiSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Romaji]);
+                            example.setKanjiSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Kanji]);
+                            exampleList.add(example);
+                        }
+                    }
+                    explanation.setExamples(exampleList);
+                    explanationList.add(explanation);
+                }
+            }
+            else {
+                Word.Meaning.Explanation explanation = new Word.Meaning.Explanation();
+
+                //Getting the Explanation value
+                matchingWordExplanation = meaningsDatabase.get(current_MM_index)[3];
+                explanation.setExplanation(matchingWordExplanation);
+
+                //Getting the Rules value
+                matchingWordRules = meaningsDatabase.get(current_MM_index)[4];
+                explanation.setRules(matchingWordRules);
+
+                //Getting the Examples
+                matchingWordExampleList = meaningsDatabase.get(current_MM_index)[5];
+                List<Word.Meaning.Explanation.Example> exampleList = new ArrayList<>();
+                if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
+                    parsed_example_list = Arrays.asList(matchingWordExampleList.split(", "));
+                    for (int t = 0; t < parsed_example_list.size(); t++) {
+                        Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
+                        example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
+                        example.setEnglishSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_English]);
+                        example.setRomajiSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Romaji]);
+                        example.setKanjiSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Kanji]);
+                        exampleList.add(example);
+                    }
+                }
+                explanation.setExamples(exampleList);
+                explanationList.add(explanation);
+            }
+            meaning.setExplanations(explanationList);
+            meaningsList.add(meaning);
+
+        }
+        //endregion
+
+        word.setMeanings(meaningsList);
+
+        return word;
+    }
+    public static Verb createVerbFromCsvDatabase(List<String[]> verbDatabase, List<String[]> meaningsDatabase, int verbDbRowIndex) {
+
+        // Value Initializations
+        Verb verb = new Verb();
+        String type;
+        String[] currentMeaningCharacteristics;
+
+        verb.setVerbId(Integer.parseInt(verbDatabase.get(verbDbRowIndex)[0]));
+        verb.setPreposition(verbDatabase.get(verbDbRowIndex)[7]);
+        verb.setKanjiRoot(verbDatabase.get(verbDbRowIndex)[8]);
+        verb.setLatinRoot(verbDatabase.get(verbDbRowIndex)[9]);
+        verb.setExceptionIndex(verbDatabase.get(verbDbRowIndex)[10]);
+        verb.setRomaji(verbDatabase.get(verbDbRowIndex)[2]);
+        verb.setKana(ConvertFragment.getLatinHiraganaKatakana(verb.getRomaji()).get(1).substring(0,1));
+
+        //Getting the family
+
+        String MM_index = verbDatabase.get(verbDbRowIndex)[4];
+        List<String> MM_index_list = Arrays.asList(MM_index.split(";"));
+        if (MM_index_list.size() == 0) { return verb; }
+
+        int current_MM_index;
+        for (int i=0; i< MM_index_list.size(); i++) {
+
+            current_MM_index = Integer.parseInt(MM_index_list.get(i)) - 1;
+            currentMeaningCharacteristics = meaningsDatabase.get(current_MM_index);
+
+            //Getting the Family value
+            type = currentMeaningCharacteristics[2];
+            if (i == 0 && !type.equals("")) {
+                verb.setTrans(String.valueOf(type.charAt(type.length() - 1)));
+                if (!type.substring(0,1).equals("V")) {
+                    Log.i(DEBUG_TAG, "Warning! Found verb with incorrect type (Meaning index:" + Integer.toString(current_MM_index) +")");
+                }
+                verb.setFamily(type.substring(1, type.length() - 1));
+                break; //Stopping the loop at the first meaning
+            }
+
+        }
+
+        return verb;
+    }
+
+
+    //Database operations utilities
     public static List<Word> getMergedWordsList(List<Word> localWords, List<Word> asyncWords) {
 
         List<Word> finalWordsList = new ArrayList<>();
@@ -1275,378 +1662,21 @@ public final class Utilities {
 
         return length;
     }
-    public static void checkDatabaseStructure(List<String[]> databaseFromCsv, String databaseName, int numColumns) {
-        for (String[] line : databaseFromCsv) {
-            if (line.length < numColumns) {
-                Log.v("JapaneseToolbox","Serious error in row [" + line[0] + "] in " + databaseName + ": CSV file row has less columns than expected! Check for accidental line breaks.");
-                break;
-            }
-        }
-    }
-    public static Word createWordFromCsvDatabases(List<String[]> centralDatabase,
-                                                  List<String[]> meaningsDatabase,
-                                                  List<String[]> multExplanationsDatabase,
-                                                  List<String[]> examplesDatabase,
-                                                  int centralDbRowIndex) {
-
-        // Value Initializations
-        int example_index;
-        Word word = new Word();
-        List<String> parsed_example_list;
-
-        //Getting the index value
-        int matchingWordId = Integer.parseInt(centralDatabase.get(centralDbRowIndex)[0]);
-        word.setWordId(matchingWordId);
-
-        //Getting the keywords value
-        String matchingWordKeywordsList = centralDatabase.get(centralDbRowIndex)[1];
-        word.setKeywords(matchingWordKeywordsList);
-
-        //Getting the Romaji value
-        String matchingWordRomaji = centralDatabase.get(centralDbRowIndex)[2];
-        word.setRomaji(matchingWordRomaji);
-
-        //Getting the Kanji value
-        String matchingWordKanji = centralDatabase.get(centralDbRowIndex)[3];
-        word.setKanji(matchingWordKanji);
-
-        //Setting the unique identifier
-        word.setUniqueIdentifier(matchingWordRomaji+"-"+matchingWordKanji);
-
-        //Setting the Common Word flag
-        word.setCommonStatus(2);
-
-        //Getting the AltSpellings value
-        String matchingWordAltSpellings = centralDatabase.get(centralDbRowIndex)[5];
-        word.setAltSpellings(matchingWordAltSpellings);
-
-
-        //regionGetting the set of Meanings
-
-        //Initializations
-        String matchingWordMeaning;
-        String matchingWordType;
-        String matchingWordOpposite;
-        String matchingWordSynonym;
-        String matchingWordExplanation;
-        String matchingWordRules;
-        String matchingWordExampleList;
-        String[] current_meaning_characteristics;
-        Boolean has_multiple_explanations;
-        String ME_index;
-
-        //Finding the meanings using the supplied index
-        String MM_index = centralDatabase.get(centralDbRowIndex)[4];
-        List<String> MM_index_list = Arrays.asList(MM_index.split(";"));
-        if (MM_index_list.size() == 0) { return word; }
-
-        List<Word.Meaning> meaningsList = new ArrayList<>();
-        int current_MM_index;
-        for (int i=0; i< MM_index_list.size(); i++) {
-
-            Word.Meaning meaning = new Word.Meaning();
-            current_MM_index = Integer.parseInt(MM_index_list.get(i))-1;
-            current_meaning_characteristics = meaningsDatabase.get(current_MM_index);
-
-            //Getting the Meaning value
-            matchingWordMeaning = current_meaning_characteristics[1];
-            if (matchingWordMeaning.equals("")) continue;
-
-            //Getting the Type value
-            matchingWordType = current_meaning_characteristics[2];
-
-            //Make corrections to the meaning values if the hit is a verb
-            if (matchingWordType.contains("V") && !matchingWordType.equals("VC") && !matchingWordType.equals("VdaI")) {
-
-                List<String> meaningElements = Arrays.asList(matchingWordMeaning.split(","));
-                StringBuilder meaningFixed = new StringBuilder();
-                boolean valueIsInParentheses = false;
-                for (int k = 0; k < meaningElements.size(); k++) {
-                    if (valueIsInParentheses) meaningFixed.append(meaningElements.get(k).trim());
-                    else meaningFixed.append("to ").append(meaningElements.get(k).trim());
-
-                    if (k < meaningElements.size() - 1) meaningFixed.append(", ");
-
-                    if (meaningElements.get(k).contains("(") && !meaningElements.get(k).contains(")")) valueIsInParentheses = true;
-                    else if (!meaningElements.get(k).contains("(") && meaningElements.get(k).contains(")")) valueIsInParentheses = false;
-                }
-                matchingWordMeaning = meaningFixed.toString();
-            }
-
-            //Setting the Meaning and Type values in the returned list
-            meaning.setMeaning(matchingWordMeaning);
-            meaning.setType(matchingWordType);
-
-            //Getting the Opposite value
-            matchingWordOpposite = current_meaning_characteristics[6];
-            meaning.setAntonym(matchingWordOpposite);
-
-            //Getting the Synonym value
-            matchingWordSynonym = current_meaning_characteristics[7];
-            meaning.setSynonym(matchingWordSynonym);
-
-            //Getting the set of Explanations
-            has_multiple_explanations = false;
-            ME_index = "";
-            if (current_meaning_characteristics[3].length() > 3) {
-                if (current_meaning_characteristics[3].substring(0,3).equals("ME#")) {
-                    has_multiple_explanations = true;
-                    ME_index = current_meaning_characteristics[3].substring(3,current_meaning_characteristics[3].length());
-                }
-            }
-
-            List<Word.Meaning.Explanation> explanationList = new ArrayList<>();
-            if (has_multiple_explanations) {
-                List<String> ME_index_list = Arrays.asList(ME_index.split(";"));
-                int current_ME_index;
-                for (int j=0; j<ME_index_list.size(); j++) {
-
-                    Word.Meaning.Explanation explanation = new Word.Meaning.Explanation();
-
-                    current_ME_index = Integer.parseInt(ME_index_list.get(j))-1;
-
-                    //Getting the Explanation value
-                    matchingWordExplanation = multExplanationsDatabase.get(current_ME_index)[1];
-                    explanation.setExplanation(matchingWordExplanation);
-
-                    //Getting the Rules value
-                    matchingWordRules = multExplanationsDatabase.get(current_ME_index)[2];
-                    explanation.setRules(matchingWordRules);
-
-                    //Getting the Examples
-                    matchingWordExampleList = multExplanationsDatabase.get(current_ME_index)[3];
-                    List<Word.Meaning.Explanation.Example> exampleList = new ArrayList<>();
-                    if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
-                        parsed_example_list = Arrays.asList(matchingWordExampleList.split(", "));
-                        for (int t = 0; t < parsed_example_list.size(); t++) {
-                            Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
-                            example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
-                            example.setEnglishSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_English]);
-                            example.setRomajiSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Romaji]);
-                            example.setKanjiSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Kanji]);
-                            exampleList.add(example);
-                        }
-                    }
-                    explanation.setExamples(exampleList);
-                    explanationList.add(explanation);
-                }
-            }
-            else {
-                Word.Meaning.Explanation explanation = new Word.Meaning.Explanation();
-
-                //Getting the Explanation value
-                matchingWordExplanation = meaningsDatabase.get(current_MM_index)[3];
-                explanation.setExplanation(matchingWordExplanation);
-
-                //Getting the Rules value
-                matchingWordRules = meaningsDatabase.get(current_MM_index)[4];
-                explanation.setRules(matchingWordRules);
-
-                //Getting the Examples
-                matchingWordExampleList = meaningsDatabase.get(current_MM_index)[5];
-                List<Word.Meaning.Explanation.Example> exampleList = new ArrayList<>();
-                if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
-                    parsed_example_list = Arrays.asList(matchingWordExampleList.split(", "));
-                    for (int t = 0; t < parsed_example_list.size(); t++) {
-                        Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
-                        example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
-                        example.setEnglishSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_English]);
-                        example.setRomajiSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Romaji]);
-                        example.setKanjiSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Kanji]);
-                        exampleList.add(example);
-                    }
-                }
-                explanation.setExamples(exampleList);
-                explanationList.add(explanation);
-            }
-            meaning.setExplanations(explanationList);
-            meaningsList.add(meaning);
-
-        }
-        //endregion
-
-        word.setMeanings(meaningsList);
-
-        return word;
-    }
-    public static Verb createVerbFromCsvDatabase(List<String[]> verbDatabase, List<String[]> meaningsDatabase, int verbDbRowIndex) {
-
-        // Value Initializations
-        Verb verb = new Verb();
-        String type;
-        String[] currentMeaningCharacteristics;
-
-        verb.setVerbId(Integer.parseInt(verbDatabase.get(verbDbRowIndex)[0]));
-        verb.setPreposition(verbDatabase.get(verbDbRowIndex)[7]);
-        verb.setKanjiRoot(verbDatabase.get(verbDbRowIndex)[8]);
-        verb.setLatinRoot(verbDatabase.get(verbDbRowIndex)[9]);
-        verb.setExceptionIndex(verbDatabase.get(verbDbRowIndex)[10]);
-        verb.setRomaji(verbDatabase.get(verbDbRowIndex)[2]);
-        verb.setKana(ConvertFragment.getLatinHiraganaKatakana(verb.getRomaji()).get(1).substring(0,1));
-
-        //Getting the family
-
-        String MM_index = verbDatabase.get(verbDbRowIndex)[4];
-        List<String> MM_index_list = Arrays.asList(MM_index.split(";"));
-        if (MM_index_list.size() == 0) { return verb; }
-
-        int current_MM_index;
-        for (int i=0; i< MM_index_list.size(); i++) {
-
-            current_MM_index = Integer.parseInt(MM_index_list.get(i)) - 1;
-            currentMeaningCharacteristics = meaningsDatabase.get(current_MM_index);
-
-            //Getting the Family value
-            type = currentMeaningCharacteristics[2];
-            if (i == 0 && !type.equals("")) {
-                verb.setTrans(String.valueOf(type.charAt(type.length() - 1)));
-                if (!type.substring(0,1).equals("V")) {
-                    Log.i(DEBUG_TAG, "Warning! Found verb with incorrect type (Meaning index:" + Integer.toString(current_MM_index) +")");
-                }
-                verb.setFamily(type.substring(1, type.length() - 1));
-                break; //Stopping the loop at the first meaning
-            }
-
-        }
-
-        return verb;
-    }
-    public static List<String[]> readCSVFile(String filename, Context context) {
-
-        List<String[]> mySheet = new ArrayList<>();
-
-        // OpenCSV implementation
-        //                String next[] = null;
-        //                CSVReader reader = null;
-        //                try {
-        //                    reader = new CSVReader(new InputStreamReader(GlobalTranslatorActivity.getAssets().open(filename)));
-        //                } catch (IOException e) {
-        //                    e.printStackTrace();
-        //                }
-        //                if (reader != null) {
-        //                    for (; ; ) {
-        //                        try {
-        //                            next = reader.readNext();
-        //                        } catch (IOException e) {
-        //                            e.printStackTrace();
-        //                        }
-        //                        if (next != null) {
-        //                            mySheet.add(next);
-        //                        } else {
-        //                            break;
-        //                        }
-        //                    }
-        //                }
-        //                try {
-        //                    reader.close();
-        //                } catch (IOException e) {
-        //                    e.printStackTrace();
-        //                }
-
-        // "|" Parser implementation
-
-        BufferedReader fileReader = null;
-
-        int line_number = 0;
-        try {
-            String line;
-            fileReader = new BufferedReader(new InputStreamReader(context.getAssets().open(filename)));
-
-            while ((line = fileReader.readLine()) != null) {
-                String[] tokens = line.split("\\|",-1);
-                if (tokens.length > 0) {
-                    mySheet.add(tokens);
-                    line_number++;
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Error in CsvFileReader !!!");
-            e.printStackTrace();
-            Log.i("Diagnosis Time","Error in CsvFileReader opening Loaded DecompositionDatabase_PART4. Line number:"+line_number);
-        } finally {
-            try {
-                if (fileReader != null) {fileReader.close();}
-            } catch (IOException e) {
-                System.out.println("Error while closing fileReader !!!");
-                e.printStackTrace();
-                Log.i("Diagnosis Time","Error in CsvFileReader closing Loaded DecompositionDatabase_PART4.");
-            }
-        }
-
-        return mySheet;
-    }
-    public static List<String[]> readCSVFileFirstRow(String filename, Context context) {
-
-        List<String[]> mySheetFirstRow = new ArrayList<>();
-
-        //OpenCSV implementation
-        //				  String firstrow[] = null;
-        //                String next[] = null;
-        //                CSVReader reader = null;
-        //
-        //                try {
-        //                    reader = new CSVReader(new InputStreamReader(GlobalTranslatorActivity.getAssets().open(filename)));
-        //                } catch (IOException e) {
-        //                    e.printStackTrace();
-        //                }
-        //
-        //                if (reader != null) {
-        //                    try {
-        //                        firstrow = reader.readNext();
-        //                    } catch (IOException e) {
-        //                        e.printStackTrace();
-        //                    }
-        //                    if (firstrow != null) {
-        //                        mySheetFirstRow.add(firstrow);
-        //                    }
-        //                }
-        //
-        //                try {
-        //                    reader.close();
-        //                } catch (IOException e) {
-        //                    e.printStackTrace();
-        //                }
-
-        // "|" Parser implementation
-
-        BufferedReader fileReader = null;
-
-        try {
-            String line;
-            fileReader = new BufferedReader(new InputStreamReader(context.getAssets().open(filename)));
-
-            line = fileReader.readLine();
-            String[] tokens = line.split("\\|",-1);
-            if (tokens.length > 0) {
-                mySheetFirstRow.add(tokens);
-            }
-        } catch (Exception e) {
-            System.out.println("Error in CsvFileReader !!!");
-            e.printStackTrace();
-        } finally {
-            try {
-                if (fileReader != null) {fileReader.close();}
-            } catch (IOException e) {
-                System.out.println("Error while closing fileReader !!!");
-                e.printStackTrace();
-            }
-        }
-
-        return mySheetFirstRow;
-    }
-    public static List<Long> getMatchingWordIdsUsingRoomIndexes(String searchWord, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+    public static List<Long> getMatchingWordIdsUsingRoomIndexes(String inputWord, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
         //region Initializations
         List<Long> matchingWordIds = new ArrayList<>();
         String searchWordNoSpaces;
         boolean queryIsVerbWithTo = false;
         String searchWordWithoutTo = "";
+        String searchWord;
         //endregion
 
         //region Converting the searchWord to usable forms, preventing invalid characters from influencing the search results
-        searchWord = searchWord.toLowerCase(Locale.ENGLISH);
-        searchWord = removeApostrophes(searchWord);
-        searchWord = Utilities.removeNonSpaceSpecialCharacters(searchWord);
+        inputWord = inputWord.toLowerCase(Locale.ENGLISH);
+        inputWord = removeApostrophes(inputWord);
+        inputWord = Utilities.removeNonSpaceSpecialCharacters(inputWord);
+        searchWord = inputWord;
         searchWordNoSpaces = searchWord.replace(" ", "");
 
         //Registering if the input query is a "to " verb
@@ -1662,8 +1692,8 @@ public final class Utilities {
         if (searchWord.length() > 2 && searchWord.substring(searchWord.length()-3).equals("ing")) {
 
             if (searchWord.length() > 5 && searchWord.substring(searchWord.length()-6).equals("inging")) {
-                if (	(searchWord.substring(0, 2+1).equals("to ") && checkIfWordIsOfTypeIngIng(searchWord.substring(3,searchWord.length()))) ||
-                        (!searchWord.substring(0, 2+1).equals("to ") && checkIfWordIsOfTypeIngIng(searchWord.substring(0,searchWord.length())))   ) {
+                if (	(searchWord.substring(0, 3).equals("to ") && isOfTypeIngIng(searchWord.substring(3,searchWord.length()))) ||
+                        (!searchWord.substring(0, 3).equals("to ") && isOfTypeIngIng(searchWord))   ) {
                     // If the verb ends with "inging" then remove the the second "ing"
                     inglessVerb = searchWord.substring(0,searchWord.length()-3);
                 }
@@ -1684,28 +1714,16 @@ public final class Utilities {
         //region Getting the input type and its converted form (english/romaji/kanji/invalid)
         List<String> translationList = ConvertFragment.getLatinHiraganaKatakana(searchWordNoSpaces);
 
-        String searchWordTransliteratedLatin = translationList.get(0);
-        String searchWordTransliteratedHiragana = translationList.get(1);
-        String searchWordTransliteratedKatakana = translationList.get(2);
-        String text_type = ConvertFragment.getTextType(searchWord);
+        String searchWordTransliteratedLatin = translationList.get(GlobalConstants.VALUE_LATIN);
+        String searchWordTransliteratedHiragana = translationList.get(GlobalConstants.VALUE_HIRAGANA);
+        String searchWordTransliteratedKatakana = translationList.get(GlobalConstants.VALUE_KATAKANA);
+        int inputTextType = ConvertFragment.getTextType(searchWord);
 
-        boolean TypeisLatin   = false;
-        boolean TypeisKana    = false;
-        boolean TypeisKanji   = false;
-        boolean TypeisNumber  = false;
-        boolean TypeisInvalid = false;
-
-        if (text_type.equals("latin") )                                     { TypeisLatin = true;}
-        if (text_type.equals("hiragana") || text_type.equals("katakana") )  { TypeisKana = true;}
-        if (text_type.equals("kanji") )                                     { TypeisKanji = true;}
-        if (text_type.equals("number") )                                    { TypeisNumber = true;}
-        if (searchWord.contains("*") || searchWord.contains("＊") || searchWord.equals("") || searchWord.equals("-") ) { TypeisInvalid = true;}
-
-        if (TypeisInvalid) return matchingWordIds;
+        if (inputTextType == GlobalConstants.VALUE_INVALID) return matchingWordIds;
         //endregion
 
         //region Replacing a Kana input by its Romaji form
-        if (TypeisKana) {
+        if (inputTextType == GlobalConstants.VALUE_HIRAGANA || inputTextType == GlobalConstants.VALUE_KATAKANA) {
             searchWord = searchWordTransliteratedLatin;
             searchWordNoSpaces = searchWordTransliteratedLatin;
         }
@@ -1713,31 +1731,24 @@ public final class Utilities {
 
         //region Getting the matches
         matchingWordIds = addNormalMatchesToMatchesList(searchWord, searchWordNoSpaces, inglessVerb, searchWordWithoutTo,
-                queryIsVerbWithTo, TypeisLatin, TypeisKana, TypeisKanji, TypeisNumber, matchingWordIds, japaneseToolboxCentralRoomDatabase);
+                queryIsVerbWithTo, inputTextType, matchingWordIds, japaneseToolboxCentralRoomDatabase);
 
-        matchingWordIds = addConjugatedAdjectivesToMatchesList(searchWord, TypeisLatin, TypeisKana, TypeisKanji, matchingWordIds, japaneseToolboxCentralRoomDatabase);
+        matchingWordIds = addConjugatedAdjectivesToMatchesList(searchWord, inputTextType, matchingWordIds, japaneseToolboxCentralRoomDatabase);
         //endregion
 
         return matchingWordIds;
     }
-    private static List<Long> addNormalMatchesToMatchesList(String searchWord, String searchWordNoSpaces, String inglessVerb, String searchWordWithoutTo,
-                                                            boolean queryIsVerbWithTo, boolean TypeisLatin, boolean TypeisKana, boolean TypeisKanji, boolean TypeisNumber,
-                                                            List<Long> matchingWordIds,
-                                                            JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+    private static List<Long> getMatchingWordIdsFromIndexListForNormalInput(boolean forceExactSearch, int inputTextType, String searchWord, String searchWordNoSpaces,
+                                                                            JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
-        //region Initializations
         List<Long> matchingWordIdsFromIndex = new ArrayList<>();
-        List<long[]> MatchList = new ArrayList<>();
-        String keywords;
-        long[] current_match_values;
-        boolean found_match;
-        //endregion
 
         //region Search for the matches in the indexed keywords
         List<String> searchResultIndexesArray = new ArrayList<>();
         List<LatinIndex> latinIndices;
         List<KanjiIndex> kanjiIndices;
-        if (TypeisLatin || TypeisKana || TypeisNumber) {
+        if (inputTextType == GlobalConstants.VALUE_LATIN || inputTextType == GlobalConstants.VALUE_HIRAGANA
+                || inputTextType == GlobalConstants.VALUE_KATAKANA || inputTextType == GlobalConstants.VALUE_NUMBER) {
 
             //If the input is a verb in "to " form, remove the "to " for the search only (results will be filtered later on)
             String input_word = Utilities.removeNonSpaceSpecialCharacters(searchWord);
@@ -1747,13 +1758,16 @@ public final class Utilities {
                 }
             }
 
-            latinIndices = findQueryInLatinIndex(input_word, japaneseToolboxCentralRoomDatabase);
+            boolean exactSearch = input_word.length() < 3 || forceExactSearch;
+            latinIndices = findQueryInLatinIndex(input_word, exactSearch, japaneseToolboxCentralRoomDatabase);
 
-            if (latinIndices.size()==0) return matchingWordIds;
+            if (latinIndices.size()==0) return matchingWordIdsFromIndex;
 
             // If the entered word is Latin and only has up to WORD_SEARCH_CHAR_COUNT_THRESHOLD characters, limit the word keywords to be checked later
-            if ((TypeisLatin || TypeisKana) && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
-                    || TypeisNumber && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD-1) {
+            if ((inputTextType == GlobalConstants.VALUE_LATIN || inputTextType == GlobalConstants.VALUE_HIRAGANA
+                    || inputTextType == GlobalConstants.VALUE_KATAKANA)
+                    && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
+                    || inputTextType == GlobalConstants.VALUE_NUMBER && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD-1) {
                 for (LatinIndex latinIndex : latinIndices) {
                     if (latinIndex.getLatin().length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD) {
                         searchResultIndexesArray.add(latinIndex.getWordIds());
@@ -1767,14 +1781,14 @@ public final class Utilities {
                 }
             }
 
-        } else if (TypeisKanji) {
+        } else if (inputTextType == GlobalConstants.VALUE_KANJI) {
             kanjiIndices = findQueryInKanjiIndex(searchWordNoSpaces, japaneseToolboxCentralRoomDatabase);
-            if (kanjiIndices.size()==0) return matchingWordIds;
+            if (kanjiIndices.size()==0) return matchingWordIdsFromIndex;
             for (KanjiIndex kanjiIndex : kanjiIndices) {
                 searchResultIndexesArray.add(kanjiIndex.getWordIds());
             }
         } else {
-            return matchingWordIds;
+            return matchingWordIdsFromIndex;
         }
         //endregion
 
@@ -1788,23 +1802,74 @@ public final class Utilities {
         }
         //endregion
 
+        return matchingWordIdsFromIndex;
+    }
+    private static List<Long> getMatchingWordIdsFromIndexListForInglessVerb(boolean forceExactSearch, List<Long> matchingWordIdsFromIndex, String inglessVerb,
+                                                                            JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+
+        List<Long> newMatchingWordIdsFromIndex = new ArrayList<>(matchingWordIdsFromIndex);
+
+        boolean exactSearch = inglessVerb.length() < 3 || forceExactSearch;
+        List<LatinIndex> latinIndices = findQueryInLatinIndex(inglessVerb, exactSearch, japaneseToolboxCentralRoomDatabase);
+
+        for (LatinIndex latinIndex : latinIndices) {
+            List<String> indexList = Arrays.asList(latinIndex.getWordIds().split(";"));
+            for (int j = 0; j < indexList.size(); j++) {
+                newMatchingWordIdsFromIndex.add(Long.valueOf(indexList.get(j)));
+            }
+        }
+
+        return newMatchingWordIdsFromIndex;
+    }
+    private static List<Long> getMatchingWordIdsFromIndexList(int inputTextType, String searchWord, String searchWordNoSpaces, String inglessVerb,
+                                                              JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+
+        List<Long> matchingWordIdsFromIndex = getMatchingWordIdsFromIndexListForNormalInput(false, inputTextType,
+                searchWord, searchWordNoSpaces, japaneseToolboxCentralRoomDatabase);
+
+        //If the number of matching ids is larger than MAX_SQL_VARIABLES_FOR_QUERY, perform an exact search
+        if (matchingWordIdsFromIndex.size() > GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
+            matchingWordIdsFromIndex = getMatchingWordIdsFromIndexListForNormalInput(true, inputTextType,
+                    searchWord, searchWordNoSpaces, japaneseToolboxCentralRoomDatabase);
+        }
+
         //region Add search results where the "ing" is removed from an "ing" verb
-        if ((TypeisLatin || TypeisKana || TypeisNumber) && !inglessVerb.equals(searchWord)) {
+        if ((inputTextType == GlobalConstants.VALUE_LATIN || inputTextType == GlobalConstants.VALUE_HIRAGANA
+                || inputTextType == GlobalConstants.VALUE_KATAKANA || inputTextType == GlobalConstants.VALUE_NUMBER) && !inglessVerb.equals(searchWord)) {
 
-            latinIndices = findQueryInLatinIndex(inglessVerb, japaneseToolboxCentralRoomDatabase);
+            List<Long> newMatchingWordIdsFromIndex = getMatchingWordIdsFromIndexListForInglessVerb(false,
+                    matchingWordIdsFromIndex, inglessVerb, japaneseToolboxCentralRoomDatabase);
 
-            for (LatinIndex latinIndex : latinIndices) {
-                indexList = Arrays.asList(latinIndex.getWordIds().split(";"));
-                for (int j = 0; j < indexList.size(); j++) {
-                    matchingWordIdsFromIndex.add(Long.valueOf(indexList.get(j)));
-                }
+            if (newMatchingWordIdsFromIndex.size() > GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
+                newMatchingWordIdsFromIndex = getMatchingWordIdsFromIndexListForInglessVerb(true,
+                        matchingWordIdsFromIndex, inglessVerb, japaneseToolboxCentralRoomDatabase);
+            }
+
+            if (newMatchingWordIdsFromIndex.size() <= GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
+                matchingWordIdsFromIndex = new ArrayList<>(newMatchingWordIdsFromIndex);
             }
         }
         //endregion
 
+        return matchingWordIdsFromIndex;
+    }
+    private static List<Long> addNormalMatchesToMatchesList(String searchWord, String searchWordNoSpaces, String inglessVerb, String searchWordWithoutTo,
+                                                            boolean queryIsVerbWithTo, int inputTextType, List<Long> matchingWordIds,
+                                                            JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+
+        //region Initializations
+        List<long[]> MatchList = new ArrayList<>();
+        String keywords;
+        long[] current_match_values;
+        boolean found_match;
+        //endregion
+
+        List<Long> matchingWordIdsFromIndex = getMatchingWordIdsFromIndexList(inputTextType, searchWord, searchWordNoSpaces, inglessVerb, japaneseToolboxCentralRoomDatabase);
+
         //region Limiting the database query if there are too many results (prevents long query times)
         boolean onlyRetrieveShortRomajiWords = false;
-        if ((TypeisLatin || TypeisKana) && searchWord.length() < 3) {
+        if ((inputTextType == GlobalConstants.VALUE_LATIN || inputTextType == GlobalConstants.VALUE_HIRAGANA
+                || inputTextType == GlobalConstants.VALUE_KATAKANA) && searchWord.length() < 3) {
             onlyRetrieveShortRomajiWords = true;
         }
         //endregion
@@ -1823,7 +1888,8 @@ public final class Utilities {
             found_match = false;
 
             //region Handling short words
-            if ((TypeisLatin || TypeisKana) && onlyRetrieveShortRomajiWords) {
+            if ((inputTextType == GlobalConstants.VALUE_LATIN || inputTextType == GlobalConstants.VALUE_HIRAGANA
+                    || inputTextType == GlobalConstants.VALUE_KATAKANA) && onlyRetrieveShortRomajiWords) {
 
                 //Checking if the word is an exact match to one of the words in the meanings
                 builder = new StringBuilder("");
@@ -1976,7 +2042,7 @@ public final class Utilities {
 
         return matchingWordIds;
     }
-    private static List<Long> addConjugatedAdjectivesToMatchesList(String searchWord, boolean TypeisLatin, boolean TypeisKana, boolean TypeisKanji, List<Long> matchingWordIds,
+    private static List<Long> addConjugatedAdjectivesToMatchesList(String searchWord, int inputTextType, List<Long> matchingWordIds,
                                                                   JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
         //Adding relevant adjectives to the list of matches if the input query is an adjective conjugation
@@ -1987,7 +2053,7 @@ public final class Utilities {
         List<String> searchResultIndexesArray = new ArrayList<>();
         List<Long> matchingWordIdsFromIndex = new ArrayList<>();
 
-        if (TypeisLatin || TypeisKana) {
+        if (inputTextType == GlobalConstants.VALUE_LATIN || inputTextType == GlobalConstants.VALUE_HIRAGANA ||inputTextType == GlobalConstants.VALUE_KATAKANA) {
 
             if (input_word.length()>9) {
                 adjectiveConjugation = input_word.substring(input_word.length()-9, input_word.length());
@@ -2025,7 +2091,8 @@ public final class Utilities {
 
             if (!isPotentialAdjective) return matchingWordIds;
 
-            List<LatinIndex> latinIndicesForAdjective = findQueryInLatinIndex(baseAdjective, japaneseToolboxCentralRoomDatabase);
+            boolean exactSearch = baseAdjective.length() < 3;
+            List<LatinIndex> latinIndicesForAdjective = findQueryInLatinIndex(baseAdjective, exactSearch, japaneseToolboxCentralRoomDatabase);
 
             if (latinIndicesForAdjective.size()==0) return matchingWordIds;
 
@@ -2033,7 +2100,7 @@ public final class Utilities {
                 searchResultIndexesArray.add(latinIndex.getWordIds());
             }
 
-        } else if (TypeisKanji) {
+        } else if (inputTextType == GlobalConstants.VALUE_KANJI) {
 
             if (input_word.length()>5) {
                 adjectiveConjugation = input_word.substring(input_word.length()-5, input_word.length());
@@ -2124,7 +2191,7 @@ public final class Utilities {
         }
         return output;
     }
-    private static Boolean checkIfWordIsOfTypeIngIng(String verb) {
+    private static Boolean isOfTypeIngIng(String verb) {
         Boolean answer = false;
         if (	verb.equals("accinging") || verb.equals("astringing") || verb.equals("befringing") || verb.equals("besinging") ||
                 verb.equals("binging") || verb.equals("boinging") || verb.equals("bowstringing") || verb.equals("bringing") ||
@@ -2156,18 +2223,17 @@ public final class Utilities {
         }
         return concatenated_sentence;
     }
-    private static List<LatinIndex> findQueryInLatinIndex(String concatenated_word, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+    private static List<LatinIndex> findQueryInLatinIndex(String concatenated_word, boolean exactSearch, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
         List<LatinIndex> matchingLatinIndexes;
-        if (concatenated_word.length() > 2) {
-            matchingLatinIndexes = japaneseToolboxCentralRoomDatabase.getLatinIndexesListForStartingWord(concatenated_word);
-            return matchingLatinIndexes;
-        }
-        else {
+        if (exactSearch) {
             //Preventing the index search from returning too many results and crashing the app
             matchingLatinIndexes = new ArrayList<>();
             LatinIndex index = japaneseToolboxCentralRoomDatabase.getLatinIndexListForExactWord(concatenated_word);
             if (index!=null) matchingLatinIndexes.add(index); //Only add the index if the word was found in the index
+            return matchingLatinIndexes;
+        } else {
+            matchingLatinIndexes = japaneseToolboxCentralRoomDatabase.getLatinIndexesListForStartingWord(concatenated_word);
             return matchingLatinIndexes;
         }
     }
@@ -2178,38 +2244,6 @@ public final class Utilities {
 
         List<KanjiIndex> matchingKanjiIndexes = japaneseToolboxCentralRoomDatabase.getKanjiIndexesListForStartingWord(prepared_word);
         return matchingKanjiIndexes;
-    }
-    public static String convertToUTF8Index(String input_string) {
-
-        byte[] byteArray = {};
-        try {
-            byteArray = input_string.getBytes("UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-        StringBuilder prepared_word = new StringBuilder("1.");
-        for (byte b : byteArray) {
-            prepared_word.append(Integer.toHexString(b & 0xFF));
-        }
-        return prepared_word.toString();
-    }
-    public static String convertFromUTF8Index(String inputHex) {
-
-        //inspired by: https://stackoverflow.com/questions/15749475/java-string-hex-to-string-ascii-with-accentuation
-        if(inputHex.length()<4) return "";
-        inputHex = inputHex.toLowerCase().substring(2,inputHex.length());
-
-        ByteBuffer buff = ByteBuffer.allocate(inputHex.length()/2);
-        for (int i = 0; i < inputHex.length(); i+=2) {
-            buff.put((byte)Integer.parseInt(inputHex.substring(i, i+2), 16));
-        }
-        buff.rewind();
-        Charset cs = Charset.forName("UTF-8");
-        CharBuffer cb = cs.decode(buff);
-
-        String result = cb.toString();
-
-        return result;
     }
 
 

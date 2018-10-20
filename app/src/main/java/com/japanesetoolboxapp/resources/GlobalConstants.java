@@ -6,9 +6,6 @@ import java.util.HashMap;
 public final class GlobalConstants {
 
     // Defining the column title (and index) of each column in the excel files
-    public static final long TOTAL_REQUIRED_MEMORY_HEAP_SIZE = 45;
-    public static final long DECOMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE = 23;
-    public static final long CHAR_COMPOSITION_FUNCTION_REQUIRED_MEMORY_HEAP_SIZE = 6;
 
 	public final static int VerbModule_Conjugations_Basics   = 0;
     public final static int VerbModule_Conjugations_Stems   = 1;
@@ -49,32 +46,36 @@ public final class GlobalConstants {
 	public final static int Examples_colIndex_Example_Kanji 		    = ColIndexConverter("d");
 
 
-    public final static int Index_full                                 = 0;
-
-    public final static int Index_across2                  		    = 1;
-    public final static int Index_across3                  		    = 2;
-    public final static int Index_across4                  		    = 3;
-
-    public final static int Index_down2                  		        = 4;
-    public final static int Index_down3                  		        = 5;
-    public final static int Index_down4                  		        = 6;
-
-    public final static int Index_three_repeat                  	    = 7;
-    public final static int Index_four_repeat           		        = 8;
-    public final static int Index_foursquare                  		    = 9;
-    public final static int Index_five_repeat                  		= 10;
-
-    public final static int Index_topleftout                  		    = 11;
-    public final static int Index_topout                  		        = 12;
-    public final static int Index_toprightout                  		= 13;
-
-    public final static int Index_leftout                  		    = 14;
-    public final static int Index_fullout                  		    = 15;
-    
-    public final static int Index_bottomleftout                  		= 16;
-    public final static int Index_bottomout                  		    = 17;
+    public final static int Index_full = 0;
+    public final static int Index_across2 = 1;
+    public final static int Index_across3 = 2;
+    public final static int Index_across4 = 3;
+    public final static int Index_down2 = 4;
+    public final static int Index_down3 = 5;
+    public final static int Index_down4 = 6;
+    public final static int Index_three_repeat = 7;
+    public final static int Index_four_repeat = 8;
+    public final static int Index_foursquare = 9;
+    public final static int Index_five_repeat = 10;
+    public final static int Index_topleftout = 11;
+    public final static int Index_topout = 12;
+    public final static int Index_toprightout = 13;
+    public final static int Index_leftout = 14;
+    public final static int Index_fullout = 15;
+    public final static int Index_bottomleftout = 16;
+    public final static int Index_bottomout = 17;
 
     public final static HashMap<Integer, String> COMPONENT_STRUCTURES_MAP = createStructureMap();
+
+    public static final int VALUE_LATIN = 0;
+    public static final int VALUE_HIRAGANA = 1;
+    public static final int VALUE_KATAKANA = 2;
+    public static final int VALUE_KANJI = 3;
+    public static final int VALUE_NUMBER = 4;
+    public static final int VALUE_INVALID = 5;
+
+    public static final int MAX_SQL_VARIABLES_FOR_QUERY = 500;
+
     private static HashMap<Integer, String> createStructureMap() {
         HashMap<Integer, String> map = new HashMap<>();
         map.put(Index_full, "full");

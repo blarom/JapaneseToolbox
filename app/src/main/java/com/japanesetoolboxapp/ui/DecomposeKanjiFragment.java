@@ -28,6 +28,7 @@ import android.widget.TextView;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.JapaneseToolboxKanjiRoomDatabase;
 import com.japanesetoolboxapp.data.KanjiCharacter;
+import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
@@ -105,9 +106,9 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
         // Check that the input is valid. If not, return no result.
 
-        String text_type = ConvertFragment.getTextType(mInputQuery);
+        int textType = ConvertFragment.getTextType(mInputQuery);
 
-        if (!TextUtils.isEmpty(mInputQuery) && !text_type.equals("latin") && !text_type.equals("number")) {
+        if (!TextUtils.isEmpty(mInputQuery) && textType != GlobalConstants.VALUE_LATIN && textType != GlobalConstants.VALUE_NUMBER) {
             mDecompositionsHint.setVisibility(View.GONE);
             startGettingDecompositionAsynchronously(mInputQuery.substring(0,1), 0);
         }

@@ -112,11 +112,8 @@ public class ConjugatorFragment extends Fragment implements
     private String mChosenRomajiOrKanji;
     private List<Verb> mMatchingVerbs;
     private List<ConjugationTitle> mConjugationTitles;
-    private String mInputQueryTextType;
+    private int mInputQueryTextType;
     private List<String> mInputQueryTransliterations;
-    private boolean mInputQueryIsLatin;
-    private boolean mInputQueryIsKana;
-    private boolean mInputQueryIsKanji;
     private boolean mInputQueryIsInvalid;
     private boolean mAlreadyLoadedRoomResults;
     private List<Verb> mCompleteVerbsList;
@@ -254,11 +251,6 @@ public class ConjugatorFragment extends Fragment implements
         mInputQueryTransliterations = ConvertFragment.getLatinHiraganaKatakana(mInputQuery);
 
         mInputQueryTextType = ConvertFragment.getTextType(mInputQuery);
-        mInputQueryIsLatin = mInputQueryTextType.equals("latin");
-        mInputQueryIsKana = mInputQueryTextType.equals("hiragana") || mInputQueryTextType.equals("katakana");
-        mInputQueryIsKanji = mInputQueryTextType.equals("kanji");
-        mInputQueryIsInvalid =  mInputQuery.contains("*") || mInputQuery.contains("＊") || mInputQuery.equals("");
-
     }
     private void displayVerbsInVerbChooserSpinner() {
 
@@ -323,9 +315,19 @@ public class ConjugatorFragment extends Fragment implements
             for (int i=0; i<conjugationCategories.size(); i++) {
                 conjugations = conjugationCategories.get(i).getConjugations();
                 for (Verb.ConjugationCategory.Conjugation conjugation : conjugations) {
-                    if (mInputQueryIsLatin && conjugation.getConjugationLatin().equals(mInputQuery)) foundMatch = true;
-                    else if (mInputQueryIsKana && conjugation.getConjugationLatin().equals(mInputQueryTransliterations.get(0))) foundMatch = true;
-                    else if (mInputQueryIsKanji && conjugation.getConjugationKanji().equals(mInputQuery)) foundMatch = true;
+                    
+                    if (mInputQueryTextType == GlobalConstants.VALUE_LATIN && conjugation.getConjugationLatin().equals(mInputQuery)) {
+                        foundMatch = true;
+                    }
+                    else if ((mInputQueryTextType == GlobalConstants.VALUE_HIRAGANA || mInputQueryTextType == GlobalConstants.VALUE_KATAKANA)
+                        && conjugation.getConjugationLatin().equals(mInputQueryTransliterations.get(0))) {
+                        foundMatch = true;
+                    }
+                    else if (mInputQueryTextType == GlobalConstants.VALUE_KANJI
+                        && conjugation.getConjugationKanji().equals(mInputQuery)) {
+                        foundMatch = true;
+                    }
+
                     if (foundMatch) break;
                 }
                 if (foundMatch) {
@@ -366,12 +368,8 @@ public class ConjugatorFragment extends Fragment implements
             }
         });
 
-
-        List<Boolean> types = FindType(mInputQuery);
-        boolean mInputQueryIsKanji = types.get(2);
-
         mChosenRomajiOrKanji = "Romaji";
-        if (mInputQueryIsKanji) {
+        if (ConvertFragment.getTextType(mInputQuery) == GlobalConstants.VALUE_KANJI) {
             mChosenRomajiOrKanji = "Kanji";
             mRomajiRadioButton.setChecked(false);
             mKanjiRadioButton.setChecked(true);
@@ -574,26 +572,6 @@ public class ConjugatorFragment extends Fragment implements
             return mySpinner;
         }
     }
-    private List<Boolean> FindType(String verb) {
-        String text_type = ConvertFragment.getTextType(verb);
-
-        boolean mInputQueryIsLatin   = false;
-        boolean mInputQueryIsKana    = false;
-        boolean mInputQueryIsKanji   = false;
-        boolean mInputQueryIsInvalid = false;
-
-        if ( text_type.equals("latin") )                                     { mInputQueryIsLatin = true;}
-        if ( text_type.equals("hiragana") || text_type.equals("katakana") )  { mInputQueryIsKana = true;}
-        if ( text_type.equals("kanji") )                                     { mInputQueryIsKanji = true;}
-        if ( verb.contains("*") || verb.contains("＊") || verb.equals("") || text_type.equals("number") ) { mInputQueryIsInvalid = true;}
-
-        List<Boolean> types = new ArrayList<>();
-        types.add(mInputQueryIsLatin);
-        types.add(mInputQueryIsKana);
-        types.add(mInputQueryIsKanji);
-        types.add(mInputQueryIsInvalid);
-        return types;
-    }
 
 
     //Asynchronous methods
@@ -632,11 +610,8 @@ public class ConjugatorFragment extends Fragment implements
         private final List<Word> mWordsFromDictFragment;
         private String mInputQuery;
         private List<ConjugationTitle> mConjugationTitles;
-        private String mInputQueryTextType;
+        private int mInputQueryTextType;
         private List<String> mInputQueryTransliterations;
-        private boolean mInputQueryIsLatin;
-        private boolean mInputQueryIsKana;
-        private boolean mInputQueryIsKanji;
         private boolean mInputQueryTransliterationIsInvalid;
         private String mInputQueryTransliteratedLatinForm;
         private String mInputQueryTransliteratedKanaForm;
@@ -649,7 +624,6 @@ public class ConjugatorFragment extends Fragment implements
         private List<long[]> mMatchingVerbIdsAndCols;
         private JapaneseToolboxCentralRoomDatabase mJapaneseToolboxCentralRoomDatabase;
         private HashMap<String, Integer> mFamilyConjugationIndexes = new HashMap<>();
-        private boolean mInputQueryIsInvalid;
         private int mInputQueryTransliteratedKanaFormContatenatedLength;
         private List<String[]> mVerbLatinConjDatabase;
         private List<String[]> mVerbKanjiConjDatabase;
@@ -703,10 +677,6 @@ public class ConjugatorFragment extends Fragment implements
 
             String transliterationRelevantForSearch = "";
             mInputQueryTextType = ConvertFragment.getTextType(mInputQuery);
-            mInputQueryIsLatin = mInputQueryTextType.equals("latin");
-            mInputQueryIsKana = mInputQueryTextType.equals("hiragana") || mInputQueryTextType.equals("katakana");
-            mInputQueryIsKanji = mInputQueryTextType.equals("kanji");
-            mInputQueryIsInvalid =  mInputQuery.contains("*") || mInputQuery.contains("＊") || mInputQuery.equals("");
             mInputQueryTransliterationIsInvalid =  transliterationRelevantForSearch.contains("*") || transliterationRelevantForSearch.contains("＊");
 
             mInputQueryTransliteratedLatinForm = mInputQueryTransliterations.get(0);
@@ -743,7 +713,7 @@ public class ConjugatorFragment extends Fragment implements
         }
         private List<long[]> getMatchingVerbIdsAndCols() {
 
-            if (mInputQueryIsInvalid || mCompleteVerbsList==null) return new ArrayList<>();
+            if (mInputQueryTextType == GlobalConstants.VALUE_INVALID || mCompleteVerbsList==null) return new ArrayList<>();
 
             //region Initializations
             int NumberOfSheetCols = mVerbLatinConjDatabase.get(0).length;
@@ -875,7 +845,9 @@ public class ConjugatorFragment extends Fragment implements
             }
             if (queryIsContainedInASuruConjugation || queryIsContainedInAKuruConjugation || queryIsContainedInADesuConjugation) queryIsContainedInNormalFamilyConjugation = false;
 
-            if (mInputQueryIsLatin && mInputQueryContatenated.length() < 4 || mInputQueryIsKana && mInputQueryContatenated.length() < 3) {
+            if (mInputQueryTextType == GlobalConstants.VALUE_LATIN && mInputQueryContatenated.length() < 4
+                    || (mInputQueryTextType == GlobalConstants.VALUE_HIRAGANA || mInputQueryTextType == GlobalConstants.VALUE_KATAKANA)
+                    && mInputQueryContatenated.length() < 3) {
                 onlyRetrieveShortRomajiVerbs = true;
             }
 
@@ -896,15 +868,15 @@ public class ConjugatorFragment extends Fragment implements
             int queryLengthForDilution = 0;
             List<String[]> verbConjugationMaxLengths = new ArrayList<>();
             int conjugationMaxLength;
-            if (mInputQueryIsLatin) {
+            if (mInputQueryTextType == GlobalConstants.VALUE_LATIN) {
                 verbConjugationMaxLengths = Utilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
                 queryLengthForDilution = mInputQueryContatenatedLength;
             }
-            else if (mInputQueryIsKana) {
+            else if (mInputQueryTextType == GlobalConstants.VALUE_HIRAGANA || mInputQueryTextType == GlobalConstants.VALUE_KATAKANA) {
                 verbConjugationMaxLengths = Utilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
                 queryLengthForDilution = mInputQueryTransliteratedLatinFormContatenatedLength;
             }
-            else if (mInputQueryIsKanji) {
+            else if (mInputQueryTextType == GlobalConstants.VALUE_KANJI) {
                 verbConjugationMaxLengths = Utilities.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", getContext());
                 queryLengthForDilution = mInputQueryContatenatedLength;
             }
@@ -981,15 +953,17 @@ public class ConjugatorFragment extends Fragment implements
                 //endregion
 
                 //region Only allowing searches on verbs that satisfy the following conditions (including identical 1st char, kuru/suru/da, query length)
-                if (    !(     (mInputQueryIsLatin && (romaji.charAt(0) == mInputQueryContatenated.charAt(0)))
-                            || (mInputQueryIsKana  && (hiraganaFirstChar.charAt(0) == mInputQueryTransliteratedKanaForm.charAt(0)))
-                            || (mInputQueryIsKanji && kanjiRoot.contains(mInputQueryContatenated.substring(0,1)))
+                if (    !(     (mInputQueryTextType == GlobalConstants.VALUE_LATIN && (romaji.charAt(0) == mInputQueryContatenated.charAt(0)))
+                            || ((mInputQueryTextType == GlobalConstants.VALUE_HIRAGANA || mInputQueryTextType == GlobalConstants.VALUE_KATAKANA)
+                                && (hiraganaFirstChar.charAt(0) == mInputQueryTransliteratedKanaForm.charAt(0)))
+                            || (mInputQueryTextType == GlobalConstants.VALUE_KANJI && kanjiRoot.contains(mInputQueryContatenated.substring(0,1)))
                             || romaji.contains("kuru")
                             || romaji.equals("suru")
                             || romaji.equals("da") )
-                        || (mInputQueryIsLatin && mInputQueryContatenated.length() < 4 && !romaji.contains(mInputQueryContatenated))
-                        || (mInputQueryIsKana && mInputQueryContatenated.length() < 3 && !romaji.contains(mInputQueryTransliteratedLatinFormContatenated))
-                        || (mInputQueryIsKanji && mInputQueryContatenated.length() < 3 && !mInputQueryContatenated.contains(kanjiRoot))
+                        || (mInputQueryTextType == GlobalConstants.VALUE_LATIN && mInputQueryContatenated.length() < 4 && !romaji.contains(mInputQueryContatenated))
+                        || ((mInputQueryTextType == GlobalConstants.VALUE_HIRAGANA || mInputQueryTextType == GlobalConstants.VALUE_KATAKANA)
+                            && mInputQueryContatenated.length() < 3 && !romaji.contains(mInputQueryTransliteratedLatinFormContatenated))
+                        || (mInputQueryTextType == GlobalConstants.VALUE_KANJI && mInputQueryContatenated.length() < 3 && !mInputQueryContatenated.contains(kanjiRoot))
                         || (onlyRetrieveShortRomajiVerbs && romaji.length() > 4)     ) {
                     continue;
                 }
@@ -1020,7 +994,7 @@ public class ConjugatorFragment extends Fragment implements
                 if (allowExpandedConjugationsComparison) {
 
                     //region Latin conjugations comparison
-                    if (mInputQueryIsLatin) {
+                    if (mInputQueryTextType == GlobalConstants.VALUE_LATIN) {
                         if (!mFamilyConjugationIndexes.containsKey(family)) continue;
 
                         currentConjugations = Arrays.copyOf(mVerbLatinConjDatabase.get(exceptionIndex), NumberOfSheetCols);
@@ -1054,7 +1028,7 @@ public class ConjugatorFragment extends Fragment implements
                     //endregion
 
                     //region Kana conjugations comparison
-                    else if (mInputQueryIsKana && !mInputQueryTransliterationIsInvalid) {
+                    else if ((mInputQueryTextType == GlobalConstants.VALUE_HIRAGANA || mInputQueryTextType == GlobalConstants.VALUE_KATAKANA) && !mInputQueryTransliterationIsInvalid) {
                         if (!mFamilyConjugationIndexes.containsKey(family)) continue;
 
                         currentConjugations = Arrays.copyOf(mVerbLatinConjDatabase.get(exceptionIndex), NumberOfSheetCols);
@@ -1088,7 +1062,7 @@ public class ConjugatorFragment extends Fragment implements
                     //endregion
 
                     //region Kanji conjugations comparison
-                    else if (mInputQueryIsKanji) {
+                    else if (mInputQueryTextType == GlobalConstants.VALUE_KANJI) {
                         if (!mFamilyConjugationIndexes.containsKey(family)) continue;
 
                         currentConjugations = Arrays.copyOf(mVerbKanjiConjDatabase.get(exceptionIndex), NumberOfSheetCols);
@@ -1150,8 +1124,8 @@ public class ConjugatorFragment extends Fragment implements
 
             //region Replacing the Kana input word by its romaji equivalent
             String inputQuery = mInputQuery;
-            String text_type = ConvertFragment.getTextType(inputQuery);
-            if (text_type.equals("hiragana") || text_type.equals("katakana")) {
+            int textType = ConvertFragment.getTextType(inputQuery);
+            if (textType == GlobalConstants.VALUE_HIRAGANA || textType == GlobalConstants.VALUE_KATAKANA) {
                 List<String> translationList = ConvertFragment.getLatinHiraganaKatakana(inputQuery.replace(" ", ""));
                 inputQuery = translationList.get(0);
             }

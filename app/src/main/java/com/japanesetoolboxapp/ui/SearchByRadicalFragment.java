@@ -333,11 +333,11 @@ public class SearchByRadicalFragment extends Fragment implements
         inputQuery = Utilities.removeSpecialCharacters(inputQuery);
         int userSelectionIndex = 0;
         String currentChar;
-        String text_type;
+        int text_type;
         for (int i=0; i<inputQuery.length(); i++) {
             currentChar = mInputQuery.substring(i,i+1);
             text_type = ConvertFragment.getTextType(currentChar);
-            if (text_type.equals("kanji")) {
+            if (text_type == GlobalConstants.VALUE_KANJI) {
                 user_selections[userSelectionIndex] = currentChar;
                 userSelectionIndex++;
             }
@@ -1284,7 +1284,7 @@ public class SearchByRadicalFragment extends Fragment implements
 
     //Communication with KanjiComponentsGridRecyclerViewAdapter
     @Override public void onComponentClicked(int clickedPosition) {
-        mSelectedComponent = mDisplayableComponentSelections.get(clickedPosition);
+        mSelectedComponent = mDisplayableComponentSelections.get(clickedPosition).substring(0,1);
     }
     @Override public void onSearchResultClicked(int clickedPosition) {
         searchByRadicalFragmentOperationsHandler.onQueryTextUpdateFromSearchByRadicalRequested(mPrintableSearchResults.get(clickedPosition));
