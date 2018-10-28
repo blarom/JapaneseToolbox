@@ -1,6 +1,8 @@
 package com.japanesetoolboxapp.ui;
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -51,7 +53,6 @@ public class ConjugatorFragment extends Fragment implements
     //region Parameters
     private static final int ROOM_DB_VERB_SEARCH_LOADER = 6542;
 
-    @BindView(R.id.verb_chooser_spinner_container) RelativeLayout mVerbChooserSpinnerContainer;
     @BindView(R.id.verb_chooser_spinner) Spinner mVerbChooserSpinner;
     @BindView(R.id.conjugations_chooser_spinner) Spinner mConjugationChooserSpinner;
     @BindView(R.id.verb_hint) TextView mVerbHintTextView;
@@ -120,6 +121,7 @@ public class ConjugatorFragment extends Fragment implements
     private List<String[]> mVerbLatinConjDatabase;
     private List<String[]> mVerbKanjiConjDatabase;
     private List<Word> mWordsFromDictFragment;
+    private Typeface mDroidSansJapaneseTypeface;
     //endregion
 
 
@@ -138,6 +140,11 @@ public class ConjugatorFragment extends Fragment implements
 
         if (!TextUtils.isEmpty(mInputQuery)) SearchForConjugations();
         else showHint();
+
+        if (getContext()!=null) {
+            AssetManager am = getContext().getApplicationContext().getAssets();
+            mDroidSansJapaneseTypeface = Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf"));
+        }
 
         return rootView;
     }
@@ -434,8 +441,13 @@ public class ConjugatorFragment extends Fragment implements
 
         for (int i=0;i<Tense.size();i++) {
             Tense.get(i).setText("");
+            Tense.get(i).setPadding(0,8,0,0);
             TenseLayout.get(i).setVisibility(View.GONE);
             Tense_Result.get(i).setText("");
+            if (mChosenRomajiOrKanji.equals("Romaji")) Tense_Result.get(i).setTypeface(null, Typeface.BOLD);
+            else if (mDroidSansJapaneseTypeface!=null) {
+                Tense_Result.get(i).setTypeface(mDroidSansJapaneseTypeface);
+            }
         }
 
         Verb verb = mMatchingVerbs.get(verbIndex);
@@ -460,17 +472,17 @@ public class ConjugatorFragment extends Fragment implements
     }
     private void hideAll() {
         mVerbHintTextView.setVisibility(View.GONE);
-        mVerbChooserSpinnerContainer.setVisibility(View.GONE);
+        mVerbChooserSpinner.setVisibility(View.GONE);
         mConjugationsContainerScrollView.setVisibility(View.GONE);
     }
     private void showHint() {
         mVerbHintTextView.setVisibility(View.VISIBLE);
-        mVerbChooserSpinnerContainer.setVisibility(View.GONE);
+        mVerbChooserSpinner.setVisibility(View.GONE);
         mConjugationsContainerScrollView.setVisibility(View.GONE);
     }
     private void showResults() {
         mVerbHintTextView.setVisibility(View.GONE);
-        mVerbChooserSpinnerContainer.setVisibility(View.VISIBLE);
+        mVerbChooserSpinner.setVisibility(View.VISIBLE);
         mConjugationsContainerScrollView.setVisibility(View.VISIBLE);
     }
 
@@ -563,6 +575,7 @@ public class ConjugatorFragment extends Fragment implements
             SpinnerText = shownPosition + ". " + conjugationTitles.get(position).getTitle();
             TextView Upper_text = mySpinner.findViewById(R.id.UpperPart);
             Upper_text.setText(SpinnerText);
+            Upper_text.setTypeface(mDroidSansJapaneseTypeface, Typeface.BOLD);
 
             //Displaying the first element in the Conjugation, e.g. PrPlA in Simple Form
             SpinnerText = conjugationCategory.getConjugations().get(0).getConjugationLatin();

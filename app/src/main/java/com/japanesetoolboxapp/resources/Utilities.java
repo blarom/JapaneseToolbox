@@ -1751,15 +1751,16 @@ public final class Utilities {
                 || inputTextType == GlobalConstants.VALUE_KATAKANA || inputTextType == GlobalConstants.VALUE_NUMBER) {
 
             //If the input is a verb in "to " form, remove the "to " for the search only (results will be filtered later on)
-            String input_word = Utilities.removeNonSpaceSpecialCharacters(searchWord);
+            String inputWord = Utilities.removeNonSpaceSpecialCharacters(searchWord);
             if (searchWord.length()>3) {
                 if (searchWord.substring(0, 3).equals("to ")) {
-                    input_word = searchWord.substring(2, searchWord.length());
+                    inputWord = searchWordNoSpaces.substring(2, searchWordNoSpaces.length());
                 }
             }
+            String inputWordNoSpaces = Utilities.removeSpecialCharacters(inputWord);
 
-            boolean exactSearch = input_word.length() < 3 || forceExactSearch;
-            latinIndices = findQueryInLatinIndex(input_word, exactSearch, japaneseToolboxCentralRoomDatabase);
+            boolean exactSearch = inputWordNoSpaces.length() < 3 || forceExactSearch;
+            latinIndices = findQueryInLatinIndex(inputWordNoSpaces, exactSearch, japaneseToolboxCentralRoomDatabase);
 
             if (latinIndices.size()==0) return matchingWordIdsFromIndex;
 

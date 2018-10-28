@@ -55,6 +55,7 @@ import butterknife.Unbinder;
 ////TODO Display the number of results
 ////TODO Add filtering functionality: if more than one word is entered, the results will be limited to those that include all words.
 ////TODO Translate the app into other European languages, and allow the user to choose the wanted language.
+////TODO make the DICT return kanjis having the same romaji value as that of the entered kanji, similar to the way jisho.org works
 
 //TODO: bugs
 ////TODO searching for "福" through left radical yields no results, since it does not point to spirit radical, just radical variant

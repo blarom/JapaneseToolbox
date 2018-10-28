@@ -1,6 +1,7 @@
 package com.japanesetoolboxapp.adapters;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.japanesetoolboxapp.resources.Utilities;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,6 +37,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     private boolean[] mChildIsVisible;
     private List<Word> mWordsList;
     final private DictionaryItemClickHandler mOnItemClickHandler;
+    private final Typeface mDroidSansJapaneseTypeface;
 
     public DictionaryRecyclerViewAdapter(Context context, DictionaryItemClickHandler listener , List<Word> wordsList, List<String[]> legendDatabase) {
         this.mContext = context;
@@ -42,6 +45,9 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         this.mLegendDatabase = legendDatabase;
         this.mOnItemClickHandler = listener;
         createVisibilityArray();
+
+        AssetManager am = mContext.getApplicationContext().getAssets();
+        mDroidSansJapaneseTypeface = Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf"));
     }
 
     @NonNull @Override public DictItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {LayoutInflater inflater = LayoutInflater.from(mContext);
@@ -102,6 +108,9 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         String romajiAndKanji =  parentRomaji + " (" + kanji + ")";
         if (kanji.equals("")) { romajiAndKanji = romaji; }
         holder.romajiAndKanjiTextView.setText(romajiAndKanji);
+        holder.romajiAndKanjiTextView.setTypeface(mDroidSansJapaneseTypeface, Typeface.BOLD);
+        holder.romajiAndKanjiTextView.setPadding(0,16,0,0);
+
 
         if (romaji.equals("")) { holder.romajiAndKanjiTextView.setVisibility(View.GONE); }
         else { holder.romajiAndKanjiTextView.setVisibility(View.VISIBLE); }
@@ -139,6 +148,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             tv_alternatespellings.setTextSize(14);
             tv_alternatespellings.setTextIsSelectable(true);
             tv_alternatespellings.setClickable(true);
+            tv_alternatespellings.setTypeface(mDroidSansJapaneseTypeface, Typeface.BOLD);
+            tv_alternatespellings.setPadding(0,4,0,0);
             holder.childElementsLinearLayout.addView(tv_alternatespellings);
         }
         //endregion
@@ -206,6 +217,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 antonymSpannable.setMovementMethod(LinkMovementMethod.getInstance());
                 antonymSpannable.setTextColor(mContext.getResources().getColor(R.color.textColorDictionaryAntonymSynonym));
                 antonymSpannable.setTextSize(14);
+                antonymSpannable.setTypeface(mDroidSansJapaneseTypeface);
                 antonymSpannable.setTextIsSelectable(true);
                 holder.childElementsLinearLayout.addView(antonymSpannable);
             }
@@ -235,6 +247,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 synonymTextView.setTextColor(mContext.getResources().getColor(R.color.textColorDictionaryAntonymSynonym));
                 synonymTextView.setTextSize(14);
                 synonymTextView.setTextIsSelectable(true);
+                synonymTextView.setTypeface(mDroidSansJapaneseTypeface);
                 holder.childElementsLinearLayout.addView(synonymTextView);
             }
             //endregion
@@ -364,8 +377,9 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         kanjiExampleTextView.setText(examplesList.get(j).getKanjiSentence());
                         kanjiExampleTextView.setTextColor(mContext.getResources().getColor(R.color.textColorDictionaryExampleKanji));
                         kanjiExampleTextView.setTextSize(14);
-                        kanjiExampleTextView.setPadding(4, 0, 0, 16);
                         kanjiExampleTextView.setVisibility(View.GONE);
+                        kanjiExampleTextView.setTypeface(mDroidSansJapaneseTypeface);
+                        kanjiExampleTextView.setPadding(4, 12, 0, 16);
                         examplesTextViews.add(kanjiExampleTextView);
                         holder.childElementsLinearLayout.addView(kanjiExampleTextView);
                     }

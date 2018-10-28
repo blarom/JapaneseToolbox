@@ -24,7 +24,7 @@
 1.E4B8BF|hetsu;ei, you|;bend, possessive particle no||
 1.E4B985|kyuu, ku;hisa(shii)|long, long continued;IDEM||
 1.E4B98F|bou;tobo(shii)|meager, scarce, limited, destitute;IDEM||
-1.E4B997|jou;no(ru), no(seru)|ride, get up on, power (in math), multiplication, vehicle,;ride, get up on, place, put||
+1.E4B997|jou;no(ru), no(seru)|ride, get up on, power (in math), multiplication, vehicle,ride, get up on, place, put||
 1.E4B999|otsu, itsu;oto, kinoto|2nd calendar sign, 2nd, the latter, quaint;||
 1.E4B99D|kyuu, ku;kokono, kokono(tsu)|nine;IDEM||
 1.E4B9B1|ran;mida(reru), mida(su)|be out of order, be confused, war;be out of order, be confused||
@@ -67,7 +67,7 @@
 1.E4BC8F|fuku;fu(seru), fu(su)|lay face down, cover, hide, lie prostrate, yield to;lay face down, cover, hide, lie prostrate||
 1.E4BC90|batsu;|strike, attack, punish, cut;||
 1.E4BC91|kyuu;yasu(mu), yasu(maru), yasu(meru)|rest, take a day off, be absent, sleep;rest, take a day off, be absent, sleep, feel at ease, let idle||
-1.E4BC9A|kai, e;a(u)|meeting, party, assembly, association, understanding,;meet, interview||
+1.E4BC9A|kai, e;a(u)|meeting, party, assembly, association, understanding,meet, interview||
 1.E4BC9D|den;tsuta(waru), tsuta(eru), tsuta(u)|be transmitted, report, go along, teach, legend, biography;be transmitted, report, go along, teach||
 1.E4BCAF|haku;|earl, eldest brother, uncle;||
 1.E4BCB4|han, ban;tomona(u)|accompany, bring with;IDEM||
@@ -136,7 +136,7 @@
 1.E58395|boku;|manservant, I;||
 1.E5839A|ryou;|official, companion;||
 1.E583A7|sou;|monk, priest;||
-1.E58480|gi;|rule, ceremony, case, affair,;||
+1.E58480|gi;|rule, ceremony, case, affair,||
 1.E58484|oku;|100000000;||
 1.E58492|ju;|Confucianism, Chinese scholar;||
 1.E5849F|shou;tsugu(nau)|make up for, recompense, redeem (one's faults);IDEM||
@@ -236,7 +236,7 @@
 1.E58B9F|bo;tsuno(ru)|gather (contributions), campaign (for students);gather (contributions), campaign (for students), grow violent||
 1.E58BA2|sei;ikio(i)|force, energy, authority, impetus, course (of events), tendency;IDEM||
 1.E58BA4|kin, gon;tsuto(meru), tsuto(maru)|work, function, properly;serve, exert oneself, work, be fit for||
-1.E58BA7|kan;susu(meru)|recommend, advise, offer,;IDEM||
+1.E58BA7|kan;susu(meru)|recommend, advise, offer,IDEM||
 1.E58BB2|kun;|merit, order of merit;||
 1.E58BB9|hou;tsutsu|;embrace, wrap frame||
 1.E58BBA|shaku;|one-tenth of a go, ladle;||
@@ -323,7 +323,7 @@
 1.E591A8|shuu;mawa(ri)|circuit, lap, circumference;circumference, surroundings||
 1.E591B3|mi;aji, aji(wau)|taste, appreciate, zest;IDEM||
 1.E591BC|ko;yo(bu)|call, invoke, summon, name, breathe out;call, invoke, summon, name||
-1.E591BD|mei, myou;inochi|command, destiny, life,;life||
+1.E591BD|mei, myou;inochi|command, destiny, life,life||
 1.E5928C|wa, o;yawa(ragu), yawa(rageru), nago(mu), nago(yaka)|sum, peace, soften, moderate, relax, get quiet, genial;soften, moderate, relax, get quiet, genial||
 1.E592B2|;sa(ku)|;bloom, blossom||
 1.E59380|ai;awa(re), awa(remu)|pity, have mercy on, sympathize with;pity, have mercy on, grief, compassion, pathos||
@@ -468,7 +468,7 @@
 1.E5A9BF|sei;muko|son-in-law;IDEM||
 1.E5AA92|bai;|go-between;||
 1.E5AB81|ka;yome, totsu(gu)|marry (a man), blame;bride, daughter-in law, marry off||
-1.E5AB8C|ken, gen;kira(u), iya|dislike, hate, disagreeable, be unwilling (to do something),;dislike, hate, disagreeable, be unwilling (to do something)||
+1.E5AB8C|ken, gen;kira(u), iya|dislike, hate, disagreeable, be unwilling (to do something),dislike, hate, disagreeable, be unwilling (to do something)||
 1.E5ABA1|chaku;|legitimacy, legitimate child, legitimate wife, direct descent;||
 1.E5ACA2|jou;|girl, daughter, young lady, Miss.;||
 1.E5AD90|shi, su, tsu;ko, ne|child, offspring, seed;child, offspring, the (young of animals)||
@@ -512,7 +512,7 @@
 1.E5AF9B|kan;|leniency, generosity;||
 1.E5AF9D|shin;ne(ru), ne(kasu)|sleep, lie down, put to sleep;sleep, lie down, put to sleep, let lie idle||
 1.E5AF9F|satsu;|presume, judge, understand, imagine;||
-1.E5AFA1|ka;|minority, few, widow,;||
+1.E5AFA1|ka;|minority, few, widow,||
 1.E5AFA7|nei;|peaceful, quiet;||
 1.E5AFA9|shin;|investigate, judge, accurate;||
 1.E5AFAE|ryou;|hostel, dormitory, villa;||
@@ -521,7 +521,7 @@
 1.E5AFBE|tai, tsui;|face, confront, be opposite, in answer to, pair, set;||
 1.E5AFBF|ju;kotobuki|age, longevity;long life, congratulations||
 1.E5B081|fuu, hou;|seal, close up, blockade, fief;||
-1.E5B082|sen;moppa(ra)|mainly, sorely,;IDEM||
+1.E5B082|sen;moppa(ra)|mainly, sorely,IDEM||
 1.E5B084|sha;i(ru)|shoot;IDEM||
 1.E5B086|shou;|commander, general, admiral;||
 1.E5B089|i;|rank, company officer;||
@@ -583,7 +583,7 @@
 1.E5B89D|tei;|emperor, the god of heaven;||
 1.E5B8A5|sui;|leading (troops);||
 1.E5B8AB|shi;|teacher, exemplary person;||
-1.E5B8AD|seki;|seat, mat, a place,;||
+1.E5B8AD|seki;|seat, mat, a place,||
 1.E5B8AF|tai;o(biru), obi|belt, carry, wear, zone, region;wear, be armed with, assume, belt||
 1.E5B8B0|ki;kae(ru), kae(su)|return, take one's leave, come around (time), end in, be due to;return, take one's leave, send (someone) back||
 1.E5B8B3|chou;|notebook, account book, album, curtain dividing a room;||
@@ -639,7 +639,7 @@
 1.E5BCB1|jaku;yowa(i), yowa(ru), yowa(maru), yowa(meru)|weakness, the weak;weak, unskilled, weaken, be perplexed||
 1.E5BCB5|chou;ha(ru)|stretch, tighten, strain, insist on (one's own way);IDEM||
 1.E5BCB7|kyou, gou;tsuyo(i), tsuyo(maru), tsuyo(meru), shi(iru)|strength, strong person, force;strong, get strong, force||
-1.E5BCBE|dan;hi(ku), hazu(mu), tama|spring, bound, bullet, play on,;IDEM||
+1.E5BCBE|dan;hi(ku), hazu(mu), tama|spring, bound, bullet, play on,IDEM||
 1.E5BD90|kei;|;||
 1.E5BD93|tou;a, masa|right, appropriateness, hit, strike, guess right, apply, succeed;hit, strike, guess right, apply, succeed||
 1.E5BDA1|san, sen;|;||
@@ -713,7 +713,7 @@
 1.E68481|shuu;ure(eru), ure(i)|grieve, lament, sad, gloomy;IDEM||
 1.E68489|yu;|rejoice, pleasure, amusement;||
 1.E6848F|i;|mind, thought, intention, meaning, significance;||
-1.E6849A|gu;oro(ka)|folly, fool,;foolish, stupid, dull||
+1.E6849A|gu;oro(ka)|folly, fool,foolish, stupid, dull||
 1.E6849B|ai;|love, affetion, favorite, admire, appreciate;||
 1.E6849F|kan;|feeling, sense, emotion, impression, intuition;||
 1.E68588|ji;itsuku(shimu)|love, be affectionate to;IDEM||
@@ -831,7 +831,7 @@
 1.E69283|geki;u(tsu)|attack, defeat, destroy, conquer;shoot||
 1.E692A4|tetsu;|withdraw, remove, reject, exclude;||
 1.E692AE|satsu;to(ru)|take (pictures);IDEM||
-1.E692B2|boku;|strike, hit, beat,;||
+1.E692B2|boku;|strike, hit, beat,||
 1.E69381|you;|embrace, hug, protect;||
 1.E6938D|sou;misao, ayatsu(ru)|manipulate, operate;manipulate, operate, chastity, virginity||
 1.E693A6|satsu;su(ru), su(reru)|rub, scratch, scrape;IDEM||
@@ -879,10 +879,10 @@
 1.E69886|kon;|many, descendants, elder brother;||
 1.E69887|shou;nobo(ru)|rise, ascend, climb;IDEM||
 1.E6988E|mei, myou;a(kari), aka(rui), aka(rumu), aka(ramu), aki(raka), a(keru), a(ku), a(kuru), a(kasu)|light, bright, clear, dawn, divulge;IDEM||
-1.E69893|i, eki;yasa(shii)|easiness, simple, exchange, divination,;easy||
+1.E69893|i, eki;yasa(shii)|easiness, simple, exchange, divination,easy||
 1.E69894|seki, shaku;mukashi|antiquity, old times;IDEM||
 1.E6989F|sei, shou;hoshi|star;star, spot, one's fortune, point||
-1.E698A0|ei;utsu(ru), utsu(su), ha(eru)|reflecting, projection, shine on,;be reflected, copy, picture, shine, match||
+1.E698A0|ei;utsu(ru), utsu(su), ha(eru)|reflecting, projection, shine on,be reflected, copy, picture, shine, match||
 1.E698A5|shun;haru|spring, Springtime;IDEM||
 1.E698A8|saku;|the past, yesterday, last (year);||
 1.E698AD|shou;|clear, bright;||
@@ -1104,7 +1104,7 @@
 1.E6B8AC|soku;haka(ru)|measure, fathom;IDEM||
 1.E6B8AF|kou;minato|port, harbor;IDEM||
 1.E6B996|ko;mizuumi|lake;IDEM||
-1.E6B9AF|tou;yu|hot water,;hot water, hot bath, hot spring||
+1.E6B9AF|tou;yu|hot water,hot water, hot bath, hot spring||
 1.E6B9BE|wan;|gulf, bay, inlet;||
 1.E6B9BF|shitsu;shime(ru), shime(su)|dampness, moisture;get damp, wet, moisten||
 1.E6BA80|man;mi(chiru), mi(tasu)|fullness, enough, satisfy;be full, fill, satisfy||
@@ -1174,7 +1174,7 @@
 1.E78999|ga, ge;kiba, ha|;||
 1.E7899B|gyuu;ushi|beef, cattle, cow, bull, ox;cattle, cow, bull, ox||
 1.E789A7|boku;maki|shepherd, feed;pasture||
-1.E789A9|butsu, motsu;mono|thing, object, matter, something,;IDEM||
+1.E789A9|butsu, motsu;mono|thing, object, matter, something,IDEM||
 1.E789B2|sei;|sacrifice, offering;||
 1.E789B9|toku;|special;||
 1.E78AA0|gi;|sacrifice;||
@@ -1204,7 +1204,7 @@
 1.E78FBE|gen;arawa(reru), arawa(su)|appear, present, exciting, actual;appear, be revealed, show, represent||
 1.E79083|kyuu;tama|globe, sphere, ball, bulb;ball, bulb||
 1.E79086|ri;|reason, truth, principle;||
-1.E790B4|kin;koto|harp,;long horizontal Japanese harp, lyre||
+1.E790B4|kin;koto|harp,long horizontal Japanese harp, lyre||
 1.E792B0|kan;|ring, circle;||
 1.E792BD|ji;|emperor's seal;||
 1.E7939C|ka, ke;uri|;||
@@ -1276,7 +1276,7 @@
 1.E79C9F|shin;ma|truth, reality, genuineness, just, right, pure, true;IDEM||
 1.E79CA0|min;nemu(ru), nemu(i)|sleep, die;sleep, die, sleepy||
 1.E79CBA|chou;naga(meru)|watch, look at, see, scrutinize;IDEM||
-1.E79CBC|gan, gen;manako|eye,;eye||
+1.E79CBC|gan, gen;manako|eye,eye||
 1.E79D80|chaku, jaku;ki(ru), k(seru), tsu(ku), tsu(keru)|put on, wear, arrive at, attain to;IDEM||
 1.E79DA1|sui;|sleep, doze;||
 1.E79DA3|toku;|command, lead, supervise, urge;||
@@ -1308,7 +1308,7 @@
 1.E7A588|ki;ino(ru)|pray, wish;IDEM||
 1.E7A589|shi;|happiness, fortune;||
 1.E7A596|so;|ancestor, founder, originator;||
-1.E7A59D|shuku, shuu;iwa(u)|celebration, congratulations,;congratulate, celebrate, commemorate||
+1.E7A59D|shuku, shuu;iwa(u)|celebration, congratulations,congratulate, celebrate, commemorate||
 1.E7A59E|shin, jin;kami, kan, koo|god, deity, mind, soul;God, god, Allah, venerable||
 1.E7A5A5|shou;|happiness;||
 1.E7A5A8|hyou;|label, ballot, ticket, sign;||
@@ -1350,7 +1350,7 @@
 1.E7AA93|sou;mado|window;IDEM||
 1.E7AAAE|kyuu;kiwa(meru), kiwa(maru)|carry to extreme, be destitude, suffer, be perplexed, be cornered;investigate thoroly, carry to extremes, be in a dilemma||
 1.E7AAAF|you;kama|kiln, oven, furnace;IDEM||
-1.E7AB8B|ritsu, ryuu, rittoru;ta, da, tate|stand, rise, set up, establish;IDEM||
+1.E7AB8B|ritsu, ryuu, rittoru;ta, da, tate|stand, rise, set up, establish, erect;IDEM||
 1.E7ABA0|shou;|chapter, composition, mark;||
 1.E7ABA5|dou;warabe|child;IDEM||
 1.E7ABAF|tan;hashi, ha, hata|origin, end, tip, edge, correct;end, tip, edge||
@@ -1374,7 +1374,7 @@
 1.E7AF84|han;|example, model, pattern, limit;||
 1.E7AF89|chiku;kizu(ku)|build, construct;IDEM||
 1.E7AFA4|toku;|kind, cordial, fervent, serious (illness);||
-1.E7B0A1|kan;|brevity, simplicity, letter,;||
+1.E7B0A1|kan;|brevity, simplicity, letter,||
 1.E7B0BF|bo;|record, book;||
 1.E7B18D|seki;|books, domiciliary register, membership;||
 1.E7B1B3|bei, mai;kome|rice, U.S.A.;rice||
@@ -1498,7 +1498,7 @@
 1.E8838E|tai;|womb, uterus;||
 1.E8839E|hou;|theca, sac;||
 1.E883B4|dou;|torso, trunk (of a body);||
-1.E883B8|kyou;mune, muna|chest, heart,;IDEM||
+1.E883B8|kyou;mune, muna|chest, heart,IDEM||
 1.E883BD|nou;|ability, talent, capacity;||
 1.E88482|shi;abura|fat, rouge;fat, grease, tallow||
 1.E88485|kyou;obiya(kasu), odo(su), odo(kasu)|threaten, coerce;IDEM||
@@ -1521,7 +1521,7 @@
 1.E887AA|ji, shi;mizuka, ono|oneself, personally;IDEM||
 1.E887AD|shuu;kusa(i)|ill-smelling, odor, savor;ill-smelling, suspicious-looking||
 1.E887B3|shi;ita|go, arrive, result in;IDEM||
-1.E887B4|chi;ita(su)|send, incur, do, cause,;do, cause, ||
+1.E887B4|chi;ita(su)|send, incur, do, cause,do, cause, ||
 1.E887BC|kyuu, gu;usu, usudu|;||
 1.E88888|kou, kyou;oko(ru), oko(su)|rise, flourish, revive, interest, entertainment, pleasure;rise, flourish, revive||
 1.E8888C|zetsu;shita|tongue, reed, clapper, words;IDEM||
@@ -1533,7 +1533,7 @@
 1.E888AA|kou;|navigation, cross over;||
 1.E888AC|han;|situation, appearance;||
 1.E888B6|haku;|ship;||
-1.E888B9|sen;fune, funa|boat, ship,;IDEM||
+1.E888B9|sen;fune, funa|boat, ship,IDEM||
 1.E88987|tei;|small boat;||
 1.E889A6|kan;|warship;||
 1.E889AE|kon, gon;ushitora|;||
@@ -1553,9 +1553,9 @@
 1.E88C82|mo;shige(ru)|grow thick, be overgrown, be luxuriant;IDEM||
 1.E88C8E|kei;kuki|stem, stalk;IDEM||
 1.E88CB6|cha, sa;|tea, tea leaves, light brown;||
-1.E88D89|sou;kusa|grass, weeds, plants, draft,;grass, weeds, plants||
+1.E88D89|sou;kusa|grass, weeds, plants, draft,grass, weeds, plants||
 1.E88D92|kou;ara(i), a(reru), a(rasu)|rough, rude, wild, violent;rough, wild, be ruined, lay waste||
-1.E88D98|sou;|villa, inn, solemn, gravity,;||
+1.E88D98|sou;|villa, inn, solemn, gravity,||
 1.E88DB7|ka;ni|shoulder-pole load;load, baggage, burden||
 1.E88F8A|kiku;|chrysanthemum;||
 1.E88F8C|kin;|fungus, germ, bacteria;||
@@ -1631,7 +1631,7 @@
 1.E8A7A6|shoku;fu(reru), sawa(ru)|touch, feel, be contrary to;touch, announce, feel, be contrary to||
 1.E8A880|gen, gon;i, koto|word, phrase, speech, statement;say, declare, call, word ||
 1.E8A882|tei;|correct;||
-1.E8A888|kei;haka(ru), haka(rau)|measure, compute, plan, scheme, total, meter,;measure, fathom, compute, manage, scheme||
+1.E8A888|kei;haka(ru), haka(rau)|measure, compute, plan, scheme, total, meter,measure, fathom, compute, manage, scheme||
 1.E8A88E|tou;u(tsu)|attack, defeat, destroy, conquer;IDEM||
 1.E8A893|kun;|lesson, rule, Japanese reading (of a character);||
 1.E8A897|taku;|entrust with, pretend;||
@@ -1639,7 +1639,7 @@
 1.E8A89F|shou;|accuse;||
 1.E8A8AA|hou;otozu(reru), tazu(neru)|visit, call on;IDEM||
 1.E8A8AD|setsu;moo(keru)|prepare, establish, organize, enact;IDEM||
-1.E8A8B1|kyo;yuru(su)|permit, authorize, acknowledge, forgive,;IDEM||
+1.E8A8B1|kyo;yuru(su)|permit, authorize, acknowledge, forgive,IDEM||
 1.E8A8B3|yaku;wake|translation;meaning, reason||
 1.E8A8B4|so;utta(eru)|sue, complain of (pain), appeal to;IDEM||
 1.E8A8BA|shin;mi(ru)|diagnose, examine;IDEM||
@@ -1733,7 +1733,7 @@
 1.E8B5A6|sha;|forgiveness;||
 1.E8B5B0|sou;hashi|run, turn to, go to excess;IDEM||
 1.E8B5B4|fu;omomu(ku)|proceed to, get become, tend toward;IDEM||
-1.E8B5B7|ki;o(kiru), o(koru), o(kosu)|get up, rise, awake, occur,;get up, rise, awake, occur, happen, raise up||
+1.E8B5B7|ki;o(kiru), o(koru), o(kosu)|get up, rise, awake, occur,get up, rise, awake, occur, happen, raise up||
 1.E8B685|chou;ko(eru), ko(su)|exceed, surpass, go beyond;exceed, surpass, go beyond, cross, pass||
 1.E8B68A|etsu;ko(su), ko(eru)|exceed, cross, pass, go;go beyond, spend, surpass, cross||
 1.E8B6A3|shu;omomuki|tone, aspect;tone, aspect, import, contents||
@@ -1771,7 +1771,7 @@
 1.E8BEBA|hen;ata(ri), be|side, boundary, vicinity;IDEM||
 1.E8BEBC|;ko(mu), ko(meru)|;be crowded, include, concentrate on||
 1.E8BF85|jin;|fast;||
-1.E8BF8E|gei;muka(eru)|meet, welcome, invite,;IDEM||
+1.E8BF8E|gei;muka(eru)|meet, welcome, invite,IDEM||
 1.E8BF91|kin;chika(i)|early, near, akin to, friendly;IDEM||
 1.E8BF94|hen;kae(su), kae(ru)|answer, return, go back;IDEM||
 1.E8BFAB|haku;sema(ru)|press for, urge, force;IDEM||
@@ -1848,7 +1848,7 @@
 1.E9878D|juu, chou;e, omo(i), kasa(neru), kasa(naru)|heavy, serious, pile up, nest of boxes;heavy, serious, pile up||
 1.E9878E|ya;no|field, the Opposition, rustic;field, plain||
 1.E9878F|ryou;haka(ru)|quantity, magnanimity;weigh||
-1.E98791|kin, kon, gon;kane, kana, gane|gold, money, Friday,;money, metal||
+1.E98791|kin, kon, gon;kane, kana, gane|gold, money, Friday,money, metal||
 1.E9879D|shin;hari|needle, pin, staple;IDEM||
 1.E987A3|chou;tsu(ru)|angle, fish, catch;angle, fish, catch, decoy||
 1.E9888D|don;nibu(i), nibu(ru)|dull, slow, fool;dull, slow, fool, weaken||
@@ -1876,7 +1876,7 @@
 1.E98EAE|chin;shizu(meru), shizu(maru)|supress, get quiet, subside, calm down;IDEM||
 1.E98FA1|kyou;kagami|mirror, speculum;mirror, speculum, barrelhead, round rice-cake offering||
 1.E99098|shou;kane|bell, gong, chimes, carillon;IDEM||
-1.E99191|kan;|mirror, take warning from,;||
+1.E99191|kan;|mirror, take warning from,||
 1.E995B7|chou;naga, osa|head, chief, merit, long, lengthy;long, lengthy||
 1.E99680|mon;kado|gate, gateway, private school;gate, door||
 1.E99689|hei;to(jiru), to(zasu), shi(meru), shi(maru)|shut, close, lock;IDEM||
@@ -1984,7 +1984,7 @@
 1.E9A493|ga;|be hungry, starve;||
 1.E9A4A8|kan;|mansion, large building, hall;||
 1.E9A696|shu;kubi|head, neck, beginning, the first;neck, head, be dismissed||
-1.E9A699|kou, kyou;ka, kao|incense, fragrance, odor,;incense, fragrance, odor||
+1.E9A699|kou, kyou;ka, kao|incense, fragrance, odor,incense, fragrance, odor||
 1.E9A6AC|ba;uma, ma|horse;horse, stepladder||
 1.E9A784|da;|horse load, pack horse, poor, worthless;||
 1.E9A785|eki;|post town, stage, station;||

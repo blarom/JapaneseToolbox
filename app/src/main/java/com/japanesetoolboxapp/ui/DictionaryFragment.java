@@ -138,6 +138,8 @@ public class DictionaryFragment extends Fragment implements
     }
     @Override public void onLoadFinished(@NonNull Loader<List<Word>> loader, List<Word> loaderResultWordsList) {
 
+        if (getContext() == null) return;
+
         hideLoadingIndicator();
         if (loader.getId() == ROOM_DB_SEARCH_LOADER && !mAlreadyLoadedRoomResults) {
             mAlreadyLoadedRoomResults = true;
