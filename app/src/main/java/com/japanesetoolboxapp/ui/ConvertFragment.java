@@ -862,7 +862,7 @@ public class ConvertFragment extends Fragment {
                         case "ョ": added_string = "*"; i++; break;
                         case "ァ": added_string = "*"; i++; break;
                         case "ィ": added_string = "wi"; i++; break;
-                        case "ォ": added_string = "*"; i++; break;
+                        case "ォ": added_string = "vo"; i++; break;
                         default: added_string = "u"; break;
                     }
                 } break;

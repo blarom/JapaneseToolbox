@@ -80,16 +80,19 @@ public class JapaneseToolboxDictionaryFiller {
     private List<String> findWords(List<String> words) {
 
         List<String> wordsWithDeletions = new ArrayList<>(words);
-        for (int i=0; i<100; i++) {
+        int i = 0;
+        while (i<100) {
 
-            TestInputStringAndButton("DICT", words.get(i));
-            wordsWithDeletions.remove(i);
+            TestInputStringAndButton("DICT", wordsWithDeletions.get(0));
+            wordsWithDeletions.remove(0);
 
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+            i++;
         }
 
         return wordsWithDeletions;
