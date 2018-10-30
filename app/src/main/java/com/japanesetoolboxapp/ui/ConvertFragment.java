@@ -386,10 +386,10 @@ public class ConvertFragment extends Fragment {
             case "か": added_string = "ka"; break;
             case "き":
                 switch (character_next) {
-                    case "ゃ":     added_string = "kya";     i++;     break;
-                    case "ゅ":     added_string = "kyu";     i++;     break;
-                    case "ょ":     added_string = "kyo";     i++;     break;
-                    default:     added_string = "ki";     break;
+                    case "ゃ": added_string = "kya"; i++; break;
+                    case "ゅ": added_string = "kyu"; i++; break;
+                    case "ょ": added_string = "kyo"; i++; break;
+                    default: added_string = "ki"; break;
                 } break;
             case "く": added_string = "ku"; break;
             case "け": added_string = "ke"; break;
@@ -397,10 +397,10 @@ public class ConvertFragment extends Fragment {
             case "が": added_string = "ga"; break;
             case "ぎ":
                 switch (character_next) {
-                    case "ゃ":     added_string = "gya";     i++;     break;
-                    case "ゅ":     added_string = "gyu";     i++;     break;
-                    case "ょ":     added_string = "gyo";     i++;     break;
-                    default:     added_string = "gi";     break;
+                    case "ゃ": added_string = "gya"; i++; break;
+                    case "ゅ": added_string = "gyu"; i++; break;
+                    case "ょ": added_string = "gyo"; i++; break;
+                    default: added_string = "gi"; break;
                 } break;
             case "ぐ": added_string = "gu"; break;
             case "げ": added_string = "ge"; break;
@@ -415,19 +415,19 @@ public class ConvertFragment extends Fragment {
             case "ぞ": added_string = "zo"; break;
             case "し":
                 switch (character_next) {
-                    case "ゃ":     added_string = "sha";     i++;     break;
-                    case "ゅ":     added_string = "shu";     i++;     break;
-                    case "ぇ":     added_string = "she";     i++;     break;
-                    case "ょ":     added_string = "sho";     i++;     break;
-                    default:     added_string = "shi";     break;
+                    case "ゃ": added_string = "sha"; i++; break;
+                    case "ゅ": added_string = "shu"; i++; break;
+                    case "ぇ": added_string = "she"; i++; break;
+                    case "ょ": added_string = "sho"; i++; break;
+                    default: added_string = "shi"; break;
                 } break;
             case "じ":
                 switch (character_next) {
-                    case "ゃ":     added_string = "ja";     i++;     break;
-                    case "ゅ":     added_string = "ju";     i++;     break;
-                    case "ぇ":     added_string = "je";     i++;     break;
-                    case "ょ":     added_string = "jo";     i++;     break;
-                    default:     added_string = "ji";     break;
+                    case "ゃ": added_string = "ja"; i++; break;
+                    case "ゅ": added_string = "ju"; i++; break;
+                    case "ぇ": added_string = "je"; i++; break;
+                    case "ょ": added_string = "jo"; i++; break;
+                    default: added_string = "ji"; break;
                 } break;
             case "た": added_string = "ta"; break;
             case "て": added_string = "te"; break;
@@ -437,35 +437,35 @@ public class ConvertFragment extends Fragment {
             case "ど": added_string = "do"; break;
             case "ち":
                 switch (character_next) {
-                    case "ゃ":     added_string = "cha";     i++;     break;
-                    case "ゅ":     added_string = "chu";     i++;     break;
-                    case "ぇ":     added_string = "che";     i++;     break;
-                    case "ょ":     added_string = "cho";     i++;     break;
-                    default:     added_string = "chi";     break;
+                    case "ゃ": added_string = "cha"; i++; break;
+                    case "ゅ": added_string = "chu"; i++; break;
+                    case "ぇ": added_string = "che"; i++; break;
+                    case "ょ": added_string = "cho"; i++; break;
+                    default: added_string = "chi"; break;
                 } break;
             case "ぢ":
                 switch (character_next) {
-                    case "ゃ":     added_string = "*";     i++;     break;
-                    case "ゅ":     added_string = "*";     i++;     break;
-                    case "ぇ":     added_string = "*";     i++;     break;
-                    case "ょ":     added_string = "*";     i++;     break;
-                    default:     added_string = "di";     break;
+                    case "ゃ": added_string = "*"; i++; break;
+                    case "ゅ": added_string = "*"; i++; break;
+                    case "ぇ": added_string = "*"; i++; break;
+                    case "ょ": added_string = "*"; i++; break;
+                    default: added_string = "di"; break;
                 } break;
             case "つ":
                 switch (character_next) {
-                    case "ぁ":     added_string = "tsa";     i++;     break;
-                    case "ぃ":     added_string = "tsi";     i++;     break;
-                    case "ぇ":     added_string = "tse";     i++;     break;
-                    case "ぉ":     added_string = "tso";     i++;     break;
-                    default:     added_string = "tsu";     break;
+                    case "ぁ": added_string = "tsa"; i++; break;
+                    case "ぃ": added_string = "tsi"; i++; break;
+                    case "ぇ": added_string = "tse"; i++; break;
+                    case "ぉ": added_string = "tso"; i++; break;
+                    default: added_string = "tsu"; break;
                 } break;
             case "づ":
                 switch (character_next) {
-                    case "ぁ":     added_string = "da";     i++;     break;
-                    case "ぃ":     added_string = "di";     i++;     break;
-                    case "ぇ":     added_string = "de";     i++;     break;
-                    case "ぉ":     added_string = "do";     i++;     break;
-                    default:     added_string = "du";     break;
+                    case "ぁ": added_string = "da"; i++; break;
+                    case "ぃ": added_string = "di"; i++; break;
+                    case "ぇ": added_string = "de"; i++; break;
+                    case "ぉ": added_string = "do"; i++; break;
+                    default: added_string = "du"; break;
                 } break;
             case "な": added_string = "na"; break;
             case "ぬ": added_string = "nu"; break;
@@ -473,42 +473,42 @@ public class ConvertFragment extends Fragment {
             case "の": added_string = "no"; break;
             case "ん":
                 switch (character_next) {
-                    case "あ":     added_string = "n'";     break;
-                    case "え":     added_string = "n'";     break;
-                    case "い":     added_string = "n'";     break;
-                    case "お":     added_string = "n'";     break;
-                    case "う":     added_string = "n'";     break;
-                    case "や":     added_string = "n'";     break;
-                    case "よ":     added_string = "n'";     break;
-                    case "ゆ":     added_string = "n'";     break;
-                    default:     added_string = "n";     break;
+                    case "あ": added_string = "n'"; break;
+                    case "え": added_string = "n'"; break;
+                    case "い": added_string = "n'"; break;
+                    case "お": added_string = "n'"; break;
+                    case "う": added_string = "n'"; break;
+                    case "や": added_string = "n'"; break;
+                    case "よ": added_string = "n'"; break;
+                    case "ゆ": added_string = "n'"; break;
+                    default: added_string = "n"; break;
                 } break;
             case "に":
                 switch (character_next) {
-                    case "ゃ":     added_string = "nya";     i++;     break;
-                    case "ゅ":     added_string = "nyu";     i++;     break;
-                    case "ぇ":     added_string = "nye";     i++;     break;
-                    case "ょ":     added_string = "nyo";     i++;     break;
-                    default:     added_string = "ni";     break;
+                    case "ゃ": added_string = "nya"; i++; break;
+                    case "ゅ": added_string = "nyu"; i++; break;
+                    case "ぇ": added_string = "nye"; i++; break;
+                    case "ょ": added_string = "nyo"; i++; break;
+                    default: added_string = "ni"; break;
                 } break;
             case "は": added_string = "ha"; break;
             case "ひ":
                 switch (character_next) {
-                    case "ゃ":     added_string = "hya";     i++;     break;
-                    case "ゅ":     added_string = "hyu";     i++;     break;
-                    case "ぇ":     added_string = "hye";     i++;     break;
-                    case "ょ":     added_string = "hyo";     i++;     break;
-                    default:     added_string = "hi";     break;
+                    case "ゃ": added_string = "hya"; i++; break;
+                    case "ゅ": added_string = "hyu"; i++; break;
+                    case "ぇ": added_string = "hye"; i++; break;
+                    case "ょ": added_string = "hyo"; i++; break;
+                    default: added_string = "hi"; break;
                 } break;
             case "へ": added_string = "he"; break;
             case "ほ": added_string = "ho"; break;
             case "ば": added_string = "ba"; break;
             case "び":
-                switch (character_next) { case "ゃ":     added_string = "bya";     i++;     break;
-                    case "ゅ":     added_string = "byu";     i++;     break;
-                    case "ぇ":     added_string = "bye";     i++;     break;
-                    case "ょ":     added_string = "byo";     i++;     break;
-                    default:     added_string = "bi";     break;
+                switch (character_next) { case "ゃ": added_string = "bya"; i++; break;
+                    case "ゅ": added_string = "byu"; i++; break;
+                    case "ぇ": added_string = "bye"; i++; break;
+                    case "ょ": added_string = "byo"; i++; break;
+                    default: added_string = "bi"; break;
                 } break;
             case "べ": added_string = "be"; break;
             case "ぼ": added_string = "bo"; break;
@@ -516,34 +516,34 @@ public class ConvertFragment extends Fragment {
             case "ぱ": added_string = "pa"; break;
             case "ぴ":
                 switch (character_next) {
-                    case "ゃ":     added_string = "pya";     i++;     break;
-                    case "ゅ":     added_string = "pyu";     i++;     break;
-                    case "ぇ":     added_string = "pye";     i++;     break;
-                    case "ょ":     added_string = "pyo";     i++;     break;
-                    default:     added_string = "pi";     break;
+                    case "ゃ": added_string = "pya"; i++; break;
+                    case "ゅ": added_string = "pyu"; i++; break;
+                    case "ぇ": added_string = "pye"; i++; break;
+                    case "ょ": added_string = "pyo"; i++; break;
+                    default: added_string = "pi"; break;
                 } break;
             case "ぺ": added_string = "pe"; break;
             case "ぽ": added_string = "po"; break;
             case "ぷ": added_string = "pu"; break;
             case "ふ":
                 switch (character_next) {
-                    case "ぁ":     added_string = "fa";     i++;     break;
-                    case "ぃ":     added_string = "fi";     i++;     break;
-                    case "ぇ":     added_string = "fe";     i++;     break;
-                    case "ぉ":     added_string = "fo";     i++;     break;
-                    case "ゃ":     added_string = "fya";     i++;     break;
-                    case "ゅ":     added_string = "fyu";     i++;     break;
-                    case "ょ":     added_string = "fyo";     i++;     break;
-                    default:     added_string = "fu";     break;
+                    case "ぁ": added_string = "fa"; i++; break;
+                    case "ぃ": added_string = "fi"; i++; break;
+                    case "ぇ": added_string = "fe"; i++; break;
+                    case "ぉ": added_string = "fo"; i++; break;
+                    case "ゃ": added_string = "fya"; i++; break;
+                    case "ゅ": added_string = "fyu"; i++; break;
+                    case "ょ": added_string = "fyo"; i++; break;
+                    default: added_string = "fu"; break;
                 } break;
             case "ま": added_string = "ma"; break;
             case "み":
                 switch (character_next) {
-                    case "ゃ":     added_string = "mya";     i++;     break;
-                    case "ゅ":     added_string = "myu";     i++;     break;
-                    case "ぇ":     added_string = "mye";     i++;     break;
-                    case "ょ":     added_string = "myo";     i++;     break;
-                    default:     added_string = "mi";     break;
+                    case "ゃ": added_string = "mya"; i++; break;
+                    case "ゅ": added_string = "myu"; i++; break;
+                    case "ぇ": added_string = "mye"; i++; break;
+                    case "ょ": added_string = "myo"; i++; break;
+                    default: added_string = "mi"; break;
                 } break;
             case "む": added_string = "mu"; break;
             case "め": added_string = "me"; break;
@@ -554,11 +554,11 @@ public class ConvertFragment extends Fragment {
             case "ら": added_string = "ra"; break;
             case "り":
                 switch (character_next) {
-                    case "ゃ":     added_string = "rya";     i++;     break;
-                    case "ゅ":     added_string = "ryu";     i++;     break;
-                    case "ぇ":     added_string = "rye";     i++;     break;
-                    case "ょ":     added_string = "ryo";     i++;     break;
-                    default:     added_string = "ri";     break;
+                    case "ゃ": added_string = "rya"; i++; break;
+                    case "ゅ": added_string = "ryu"; i++; break;
+                    case "ぇ": added_string = "rye"; i++; break;
+                    case "ょ": added_string = "ryo"; i++; break;
+                    default: added_string = "ri"; break;
                 } break;
             case "る": added_string = "ru"; break;
             case "れ": added_string = "re"; break;
@@ -576,11 +576,11 @@ public class ConvertFragment extends Fragment {
             case "を": added_string = "wo"; break;
             case "ゔ":
                 switch (character_next) {
-                    case "ぁ":     added_string = "va";     i++;     break;
-                    case "ぃ":     added_string = "vi";     i++;     break;
-                    case "ぇ":     added_string = "ve";     i++;     break;
-                    case "ぉ":     added_string = "vo";     i++;     break;
-                    default:     added_string = "vu";     break;
+                    case "ぁ": added_string = "va"; i++; break;
+                    case "ぃ": added_string = "vi"; i++; break;
+                    case "ぇ": added_string = "ve"; i++; break;
+                    case "ぉ": added_string = "vo"; i++; break;
+                    default: added_string = "vu"; break;
                 } break;
             case "ゐ": added_string = "xwi"; break;
             case "ゑ": added_string = "xwe"; break;
@@ -606,14 +606,14 @@ public class ConvertFragment extends Fragment {
             case "カ": added_string = "ka"; break;
             case "キ":
                 switch (character_next) {
-                    case "ャ":     added_string = "kya";     i++;     break;
-                    case "ュ":     added_string = "kyu";     i++;     break;
-                    case "ェ":     added_string = "kye";     i++;     break;
-                    case "ョ":     added_string = "kyo";     i++;     break;
-                    case "ァ":     added_string = "*";     i++;     break;
-                    case "ィ":     added_string = "kyi";     i++;     break;
-                    case "ォ":     added_string = "*";     i++;     break;
-                    default:     added_string = "ki";     break;
+                    case "ャ": added_string = "kya"; i++; break;
+                    case "ュ": added_string = "kyu"; i++; break;
+                    case "ェ": added_string = "kye"; i++; break;
+                    case "ョ": added_string = "kyo"; i++; break;
+                    case "ァ": added_string = "*"; i++; break;
+                    case "ィ": added_string = "kyi"; i++; break;
+                    case "ォ": added_string = "*"; i++; break;
+                    default: added_string = "ki"; break;
                 } break;
             case "ク": added_string = "ku"; break;
             case "ケ": added_string = "ke"; break;
@@ -621,14 +621,14 @@ public class ConvertFragment extends Fragment {
             case "ガ": added_string = "ga"; break;
             case "ギ":
                 switch (character_next) {
-                    case "ャ":     added_string = "gya";     i++;     break;
-                    case "ュ":     added_string = "gyu";     i++;     break;
-                    case "ェ":     added_string = "gye";     i++;     break;
-                    case "ョ":     added_string = "gyo";     i++;     break;
-                    case "ァ":     added_string = "*";     i++;     break;
-                    case "ィ":     added_string = "gyi";     i++;     break;
-                    case "ォ":     added_string = "*";     i++;     break;
-                    default:     added_string = "gi";     break;
+                    case "ャ": added_string = "gya"; i++; break;
+                    case "ュ": added_string = "gyu"; i++; break;
+                    case "ェ": added_string = "gye"; i++; break;
+                    case "ョ": added_string = "gyo"; i++; break;
+                    case "ァ": added_string = "*"; i++; break;
+                    case "ィ": added_string = "gyi"; i++; break;
+                    case "ォ": added_string = "*"; i++; break;
+                    default: added_string = "gi"; break;
                 } break;
             case "グ": added_string = "gu"; break;
             case "ゲ": added_string = "ge"; break;
@@ -828,7 +828,7 @@ public class ConvertFragment extends Fragment {
                     case "ァ": added_string = "*"; i++; break;
                     case "ィ": added_string = "*"; i++; break;
                     case "ォ": added_string = "*"; i++; break;
-                    default: added_string = "mi"; i++; break;
+                    default: added_string = "mi"; break;
                 } break;
             case "ム": added_string = "mu"; break;
             case "メ": added_string = "me"; break;
