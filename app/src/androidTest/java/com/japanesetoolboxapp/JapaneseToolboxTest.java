@@ -79,7 +79,7 @@ public class JapaneseToolboxTest {
 
     }
 
-    public void TestInputStringAndButton(String button_string, String input) {
+    private void TestInputStringAndButton(String button_string, String input) {
 
         ViewInteraction autoCompleteTextView = onView(
                 allOf(withId(R.id.query), isDisplayed()));
@@ -102,7 +102,7 @@ public class JapaneseToolboxTest {
             //button.perform(closeSoftKeyboard()).perform(scrollTo()).perform(click());
         }
     }
-    public void TestSpinnerLink(String button_string, String input) {
+    private void TestSpinnerLink(String button_string, String input) {
 
         ViewInteraction autoCompleteTextView = onView(
                 allOf(withId(R.id.query), isDisplayed()));
@@ -131,7 +131,7 @@ public class JapaneseToolboxTest {
 //                        isDisplayed()));
 //        spinner.perform(click());
     }
-    public void TestTransliterator(String input) {
+    private void TestTransliterator(String input) {
 
 //        ViewInteraction autoCompleteTextView = onView(
 //                allOf(withId(R.id.inputQueryAutoCompleteTextView), isDisplayed()));
@@ -146,7 +146,7 @@ public class JapaneseToolboxTest {
         button.perform(click());
 
     }
-    public void TestRadicalComposition() {
+    private void TestRadicalComposition() {
 
         ViewInteraction button2 = onView(
                 allOf(withId(R.id.button_search_by_radical), isDisplayed()));
@@ -230,7 +230,7 @@ public class JapaneseToolboxTest {
 //                withText("Search"));
 //        button11.perform(scrollTo(), click());
     }
-    public void TestKanjiDecomposition(String kanji_level0, String kanji_level1) {
+    private void TestKanjiDecomposition(String kanji_level0, String kanji_level1) {
 
         ViewInteraction autoCompleteTextView2 = onView(
                 allOf(withId(R.id.query), isDisplayed()));
