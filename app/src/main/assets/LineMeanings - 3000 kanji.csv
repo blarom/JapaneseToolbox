@@ -445,7 +445,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 445|perhaps, possibly, if I'm not wrong|ADc||||||
 446|please|ADc||||||
 447|please|ADc|Dialect.|||||
-448|please|ADc||||||
+448|please give me|ADc||||||
 449|so to speak, so to call it, as it were|ADc||||||
 450|so, right|ADc||||||
 451|like that|AM||||||
@@ -911,7 +911,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 911|exquisiteness, superbness, perfectness, miraculousness|NACF||||||
 912|faint, dim, weak, indistinct, hazy, poor, wretched|Ana||||tsuyoi, joubu|yowai, hiyowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, hijaku, yawa|
 913|fair, impartial, just|Ana||||||
-914|fairness, impartiality, justice|NACF||||||
+914|fairness, impartiality, justice, objectivity|NACF||||||
 915|famous|Ana|||420, 1360|||
 916|fame|NACF||||||
 917|feeble, faint, weak|Ana||||tsuyoi, joubu|yowai, hiyowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, kasuka, yawa|
@@ -1071,7 +1071,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1071|safety, security|NACF||||||
 1072|same, identical, equal, uniform, equivalent, similar, common (origin), changeless, alike|Ana|||606|||
 1073|satisfied|Ana||||||
-1074|satisfaction|NACF||||||
+1074|satisfaction, contentment, complacency|NACF||||||
 1075|sufficiency|NMSE||||||
 1076|serious|Ana||||||
 1077|serious, important, significant, grave, weighty|Ana||||||
@@ -1140,7 +1140,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1140|urgent, pressing|Ana||||||
 1141|emergency|NACF||||||
 1142|urgent, sudden, abrupt, sharp, steep, precipitous, rapid, swift, fast|Ana||||||
-1143|various|Ana|||603, 1296, 1298|||
+1143|various, all sorts of, variety of|Ana|||603, 1296, 1298|||
 1144|very disliked (to dislike very much), hated|Ana|Verb-based, linked to object by "ga" when used with desu verb.|||suki, daisuki|kirai|
 1145|very liked (to like very much), loved|Ana|Verb-based, linked to object by "ga" when used with desu verb.||619|kirai, daikirai|suki|
 1146|weak (organization)|Ana||||||
@@ -1171,7 +1171,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1171|bottom|NPl||||ue||
 1172|everywhere|AP||Always followed by affirmative verb.||||
 1173|from afar, over a great distance, all the way|AP||||||
-1174|here|AP|ME#0025;0026|||||
+1174|here (place physically close to the speaker, place pointed by the speaker while explaining), this place|AP|ME#0025;0026|||||
 1175|in front (of), before (e.g. the house)|AP||||ushiro||
 1176|before, previously, ago|AT|||667|||
 1177|head (of a line), front (e.g. of a bus), fore part|NPl|||435|ushiro|temae|
@@ -1186,7 +1186,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1186|there (place physically distant from both speaker and listener), over there, that place, yonder, you-know-where|AP|ME#0029;0030|||||
 1187|somewhere, someplace|AP||||||
 1188|somwhere, anywhere|AP|||738|||
-1189|there|AP|ME#0027;0028|||||
+1189|there (place relatively near listener)|AP|ME#0027;0028|||||
 1190|a few times|AT||||||
 1191|a long time ago|AT||||||
 1192|olden days, former|NT|||1263|||
@@ -1734,7 +1734,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1734|examination, consideration, test, quiz|NAc||||||
 1735|excitement, stimulation, agitation, arousal|NAc||||||
 1736|exclusion, removal, rejection, elimination, abatement, lifting (sanctions, etc..)|NAc||||||
-1737|exhibit|NAc||||||
+1737|opening to the public, making available to the public, putting on display, exhibiting, showing (play, movie, etc.), holding (interview, etc.), open, public|NAc||||||
 1738|exhibition|NAc||||||
 1739|exhibition, display|NAc||||||
 1740|existence, being|NAc||||||
@@ -1967,7 +1967,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1967|ago, since, before, previous|NACF||||||
 1968|agriculture|NACF||||||
 1969|aim|NACF||||||
-1970|air mail|NACF|||143|||
+1970|airmail, air mail|NACF|||143|||
 1971|airforce|NACF||||||
 1972|alarm, warning|NACF||||||
 1973|all members (unanimity), all hands, the whole crew, everyone, everybody|NACF||||||
@@ -2457,7 +2457,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2457|notice, attention, observation|NACF||||||
 2458|novice, greenhorn|NACF||||||
 2459|now, current, present, present time, as of|NACF||||||
-2460|number|NACF|||84|||
+2460|number, series of digits|NACF|||84|||
 2461|number of times, frequency, count|NACF||||||
 2462|number, amount, quantity|NACF||||||
 2463|number|NMSE||||||
@@ -2533,7 +2533,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2533|pride, boast|NACF||||||
 2534|prize, award|NACF||||||
 2535|question (e.g. on a test), problem|NACF|||159|||
-2536|procedure|NACF||||||
+2536|procedure, process, proceedings, formalities|NACF||||||
 2537|produce, crops|NACF||||||
 2538|production, literary creation, work|NACF||||||
 2539|program (e.g. TV), programme|NACF|||1409|||
@@ -2851,7 +2851,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2851|guts, bowels, intestines|NAn||||||
 2852|hair (on the head)|NAn||||||
 2853|hair, fur|NAn||||||
-2854|hand|NAn|||178|||
+2854|hand, arm|NAn|||178|||
 2855|head|NAn|||187|||
 2856|head of a sleeping person|NAn||||||
 2857|heart|NAn||||||
@@ -3235,7 +3235,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3235|rose|NFl||||||
 3236|sacred tree|NFl||||||
 3237|seaweed|NFl||||||
-3238|tree|NFl|||479|||
+3238|tree, shrub, bush|NFl|||479|||
 3239|water plant|NFl||||||
 3240|Western pear|NFl||||||
 3241|wheat|NFl||||||
@@ -3431,7 +3431,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3431|newspaper|NGO|||337, 1302|||
 3432|note left by dead person, suicide note, testamentary letter, will, testament, posthumous work|NGO||||||
 3433|notebook|NGO|||332|||
-3434|notebook, memo pad|NGO|Also used as an abbreviation for a certificate or identification card.|||||
+3434|notebook, memo pad, (pocket) diary|NGO|Also used as an abbreviation for a certificate or identification card.|||||
 3435|novel|NGO|||324|||
 3436|nylon|NGO||||||
 3437|one letter|NGO||||||
@@ -3509,7 +3509,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3509|ticket|NGO||||||
 3510|ticket|NGO|||333, 1255, 1325|||
 3511|ticket, coupon, bond, certificate|NGO||||||
-3512|ticket|NGO||||||
+3512|airline ticket, plane ticket, air ticket|NGO||||||
 3513|ticket sold in advance|NGO|||335, 1301|||
 3514|tie|NGO||||||
 3515|tissue|NGO|||306|||
@@ -3594,7 +3594,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3594|email|NMSE||||||
 3595|geometrically opposite side|NMSE||||||
 3596|gram|NMSE||||||
-3597|gravity|NMSE||||||
+3597|gravity, gravitation, gravitational pull|NMSE||||||
 3598|height|NMSE|Used only for objects.||1371|||
 3599|hydrocyanic (prussic) acid|NMSE||||||
 3600|kg, kilogram|NMSE|||1369|||
@@ -3699,7 +3699,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3699|cloudiness, cloudy weather, shadow|NNE|||297|||
 3700|coal|NNE||||||
 3701|copper (Cu)|NNE||||||
-3702|cotton|NNE||||||
+3702|cotton (material)|NNE||||||
 3703|diamond|NNE||||||
 3704|dust, dirt|NNE||||||
 3705|electricity|NNE|||294|||
@@ -3727,7 +3727,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3727|Picasso|NNe||||||
 3728|rain|NNE|||291, 1342|||
 3729|sand, grit|NNE||||||
-3730|sea|NNE||||||
+3730|sea, ocean, waters|NNE||||||
 3731|seawater, salt water, ocean water|NNE||||||
 3732|sky, the air, the heavens|NNE|||293, 1383|||
 3733|sky, heavens|NNE||||||
@@ -3740,7 +3740,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3740|Tanaka|NNe|Japanese person's name.||277|||
 3741|typhoon, hurricane|NNE||||||
 3742|vapor, vapour, gas|NNE||||||
-3743|water|NNE|||290|||
+3743|water (esp. cool, fresh water, e.g. drinking water)|NNE|||290|||
 3744|wind, breeze, draught, draft|NNE|||296|||
 3745|wood|NNE||||||
 3746|Yamada|NNe|Japanese person's name.|||||
@@ -3774,7 +3774,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3774|actor, performer, player|NPe||||||
 3775|actress|NPe|||1360||haiyuu|
 3776|adult|NPe|||402|||
-3777|alumnus|NPe||||||
+3777|graduate, alumnus|NPe||||||
 3778|angel|NPe||||||
 3779|another person, other people, others, unrelated person (by blood), outsider, stranger|NPe||||||
 3780|apostle|NPe||||||
@@ -3825,7 +3825,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3825|diving, diver|NPe||||||
 3826|doctor|NPe|||405|||
 3827|doctor, physician, health expert|NPe||||||
-3828|driver|NPe|||1277|||
+3828|driver, chauffeur|NPe|||1277|||
 3829|embassador|NPe||||||
 3830|emperor, imperial residence, mikado|NPe||||||
 3831|employee|NPe||||||
@@ -4022,7 +4022,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4022|centre, center, middle, heart|NPl|||406|||
 4023|center, centre, middle, heart, core, focus, pivot, emphasis, balance|NPl|||276, 447|||
 4024|-centered, -centred, -focussed, -oriented, centered on, focussed on|Sx||||||
-4025|church|NPl||||||
+4025|church, congregation|NPl||||||
 4026|city|NPl|||472|||
 4027|city|NPl||||||
 4028|city|NPl||||||
@@ -4092,7 +4092,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4092|kitchen|NPl||||||
 4093|kitchen|NPl|||410|||
 4094|Kobayashi|NPl|||282|||
-4095|Kyoto|NPl|Literally "old city".||279, 1316|||
+4095|Kyoto (city)|NPl|Literally "old city".||279, 1316|||
 4096|Kyushu|NPl|||284|||
 4097|laboratory, seminar room, professor's office|NPl||||||
 4098|lake|NPl||||||
@@ -4153,7 +4153,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4153|powder room|NPl||||||
 4154|prefecture (of Japan), county (of China)|NPl||||||
 4155|primary school, elementary school, grade school|NPl|||400|||
-4156|private room|NPl||||||
+4156|private room, single (room), room for one, one's own room|NPl||||||
 4157|railway crossing, railroad crossing, train crossing, level crossing|NPl||||||
 4158|reception|NPl|||1278|||
 4159|region, limits, stage level|NPl||||||
@@ -4172,13 +4172,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4172|school|NPl|||119|||
 4173|seashore, coast, beach|NPl|||1334|||
 4174|securities company|NPl|||156|||
-4175|senior high school|NPl||||||
+4175|senior high school, high school|NPl||||||
 4176|shelf, shelves, ledge, rack|NPl|||378|||
 4177|Shibuya|NPl||||||
 4178|Shinjuku|NPl|||285, 1413|||
 4179|Shinkansen|NPl|||283, 1372|||
 4180|Shinto shrine|NPl||||||
-4181|shop|NPl||||||
+4181|store, shop, establishment, restaurant|NPl||||||
 4182|shop, stand, kiosk|NPl|||1302|||
 4183|shower|NPl|||416|||
 4184|sick room, hospital room|NPl||||||
@@ -4199,7 +4199,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4199|underground train, subway|NPl|||132|||
 4200|sushi restaurant|NPl|||411|||
 4201|swimming pool|NPl|||417|||
-4202|temple|NPl|||1293|||
+4202|temple (Buddhist)|NPl|||1293|||
 4203|temple, shrine, chapel|NPl||||||
 4204|terminal|NPl|||472|||
 4205|the Middle East|NPl||||||
@@ -4271,7 +4271,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4271|night, evening|NT|||493||ban, yuugata|
 4272|noon, daytime|NT|||490|||
 4273|season|NT||||||
-4274|several years|NT||||||
+4274|several years, a few years|NT||||||
 4275|spring, springtime|NT|||485|||
 4276|summer|NT|||486|||
 4277|the day before yesterday|NT|||497|||
@@ -4735,7 +4735,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4735|tear up, tear off, split|VkuT||||||
 4736|grow hot (of water, etc), boil, be in a state of excitement, get excited, take place energetically|VkuT||||||
 4737|face, turn toward, be suited to, be fit for|VkuI||||||
-4738|wind, coil, roll|VkuT||||||
+4738|wind, coil, roll, wear (e.g. turban, scarf)|VkuT||||||
 4739|remove, exclude, except|VkuT||||||
 4740|omit, leave out, exclude, eliminate, curtail, save, cut down, economize, economise|VkuT||||||
 4741|resound, be heard far away, reverberate, shake, vibrate|VkuI||||||
@@ -5387,7 +5387,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5387|abide (by the rules), obey, follow, accompany|VuI||||||
 5388|swear, vow, take an oath, pledge|VuT||||||
 5389|sew, stitch, weave one's way (e.g. through a crowd)|VuT||||||
-5390|harm, hurt, injure, damage|VuT||||||
+5390|harm, hurt, injure, damage, spoil, mar|VuT||||||
 5391|strike back at, bite back, turn on, rise against, oppose, defy|VuI||||||
 5392|keep, be doing|VruiT||||||
 5393|exist, have (when noun in position of direct object is animate), stay|VruiI||||||
@@ -5397,7 +5397,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5397|be scattered|VruiI||||||
 5398|go, come (polite, humble)|VruiI||||||
 5399|leave, exit, get to, produce, appear|VruiI||Use "wo" instead of "kara" with this verb.|1253|dasu||
-5400||||||||
+5400||-||||||
 5401|eat|VruiT||||||
 5402|be expressed (as in a facial expression)|VruiI||||||
 5403|close, shut|VruiT||||shimaru||
@@ -6173,7 +6173,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6173|take a nap|VsuruI||||||
 6174|sports ground, playing field, playground|NPl||||||
 6175|manner of doing, way, method, means|NACF||||||
-6176|group|NACF||||||
+6176|group (usu. of people)|NACF||||||
 6177|how, by what means|AM||||||
 6178|attractive, good-looking, handsome, stylish, cool, smooth, neat, with-it, groovy|Ai||||||
 6179|attractive, good-looking, handsome, stylish, cool, smooth, neat, with-it, groovy|Ai||||||
@@ -6227,7 +6227,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6227|100,000,000 yen|NACF||||||
 6228|army, force, troops|NACF||||||
 6229|group (of people, animals, etc.)|NACF||||||
-6230|group|NMSE||||||
+6230|group, bunch, crowd, throng, swarm, band|NMSE||||||
 6231|district, county|NPl||||||
 6232|gun, rifle, small arms|NGO||||||
 6233|gun, cannon, artillery, ordnance|NGO||||||
@@ -7585,7 +7585,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7585|prolapse, proptosis|NACF||||||
 7586|go out (e.g. on an excursion or outing), leave, depart, start, set out|VruiI||||||
 7587|be about to leave, be just going out|VruiI||||||
-7588||||||||
+7588||-||||||
 7589|leave (on a journey), depart, start out, set out|VruiI||||||
 7590|move forward|VruiI||||||
 7591|come to, get to, lead to, reach|VruiI||||||
@@ -10059,8 +10059,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 10059|cigarette end, cigarette butt, tobacco ashes|NACF||||||
 10060|lovely, wonderful, nice, great, fantastic, superb, cool|Ana||||||
 10061|Sweden|NACF||||||
-10062||||||||
-10063||||||||
+10062||-||||||
+10063||-||||||
 10064|stand up, get up|VrugI||||||
 10065|rise|VrugI||||||
 10066|recover|VrugI||||||
@@ -14348,15 +14348,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14348|no. of copies, circulation|NACF||||||
 14349|Busuu|NPl||||||
 14350|earth, ground, land, soil|SxN||||||
-14351||||||||
+14351||-||||||
 14352|place|SxN||||||
-14353||||||||
+14353||-||||||
 14354|territory|SxN||||||
-14355||||||||
+14355||-||||||
 14356|bottom (of a package, book, etc.)|SxN||||||
-14357||||||||
+14357||-||||||
 14358|earth (one of the five elements)|SxN||||||
-14359||||||||
+14359||-||||||
 14360|horizon (related to land)|NACF||||||
 14361|(social) position, status|NACF||||||
 14362|area, region|NACF||||||
@@ -14410,7 +14410,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14410|democracy|NACF||||||
 14411|democrat|NACF||||||
 14412|it is not (like that), used to explicitly deny one thing while also implicitly denying other things|CEAi||||||
-14413||||||||
+14413||-||||||
 14414|demonstration, protest|NACF||||||
 14415|(giving a) demo, demonstration, presentation|NACF||||||
 14416|demonstrators|NACF||||||
@@ -14539,7 +14539,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14539|(of one's time) free, (of one's business) slow|Ana||||||
 14540|leaving, departing|NACF||||||
 14541|busy, having no (free) time|CEAi||||||
-14542||||||||
+14542||-||||||
 14543|corpulence, fatness, obesity|NACF||||||
 14544|day by day|A||||||
 14545|waste of time, killing time|NACF||||||
@@ -14634,13 +14634,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14634|aboard (a ship or vehicle), on top of, on, above|Sx||||||
 14635|first volume (e.g. book)|NACF||||||
 14636|superior quality, best, top, high class|PxN||||||
-14637||||||||
+14637||-||||||
 14638|going up|PxN||||||
-14639||||||||
+14639||-||||||
 14640|governmental, imperial|PxN||||||
-14641||||||||
+14641||-||||||
 14642|presenting, showing|PxN||||||
-14643||||||||
+14643||-||||||
 14644|ana- (medical, biol.)|Px||||||
 14645|performance (of a play, opera, etc.), staging, presentation|NACF||||||
 14646|outside the hall (or stadium, market, etc.), off the grounds, off the premises, off-track|NACF||||||
@@ -14655,7 +14655,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14655|superior, first-class, excellent, top quality|Ana||||||
 14656|superiority, excellence|NACF||||||
 14657|(that's) just fine!, bring it on!|CES||||||
-14658||||||||
+14658||-||||||
 14659|skillful, skilled, proficient, good (at), adept, clever|Ana||||||
 14660|flattery|NACF||||||
 14661|through, throughout, in the course of|Sx||||||
@@ -14858,7 +14858,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14858|collector|NACF||||||
 14859|corrector|NACF||||||
 14860|so far, up to now, hitherto|CEN||||||
-14861||||||||
+14861||-||||||
 14862|that's enough (for today), it ends here|CE||||||
 14863|these|P||||||
 14864|cholera|NACF||||||
@@ -14886,7 +14886,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14886|mowing, mower|NACF||||||
 14887|plants, vegetation|NACF||||||
 14888|grassroots, rank and file, the roots of grass|CEN||||||
-14889||||||||
+14889||-||||||
 14890|Kusari|NPl||||||
 14891|pathfinder, trailblazer, early settler|NACF||||||
 14892|pioneer, founder, originator, groundbreaker|NACF||||||
@@ -14914,7 +14914,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14914|to (an extent), up to, so far as, even|PP||||||
 14915|only, merely|PP||||||
 14916|doesn't amount to doing (something), not significant enough to require (something), unnecessary|CEAi||||||
-14917||||||||
+14917||-||||||
 14918|up to ... (e.g. items), until ... (times), as far as|CE||||||
 14919|exactly, surely, certainly, just|A||||||
 14920|right then, just then, at that moment|A||||||
@@ -14986,9 +14986,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14986|not ...|Aj||||||
 14987|to not be..., to have not ...|Aj||||||
 14988|have to (verb), must (verb)|CEAi||||||
-14989||||||||
+14989||-||||||
 14990|is indispensable, absolutely necessary|CEAi||||||
-14991||||||||
+14991||-||||||
 14992|among, within|NACF||||||
 14993|center (centre), middle|NACF||||||
 14994|during, while|NACF||||||
@@ -15001,7 +15001,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15001|adopt as one's name, take (a name)|VrugT||||||
 15002|call out the goods one is selling|VrugI||||||
 15003|I see, that's right, indeed|CEA||||||
-15004||||||||
+15004||-||||||
 15005|accomplish, finish, fulfill|VruiT||||||
 15006|knead, thicken into a paste (stirring over a flame)|VrugT||||||
 15007|train, drill, exercise|VrugT||||||
@@ -15101,7 +15101,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15101|masturbate (of a male), ejaculate (while masturbating)|VkuI||||||
 15102|take (a photo), record (video)|VkuI||||||
 15103|marsh, swamp, wetland, bog, pond|SxN||||||
-15104||||||||
+15104||-||||||
 15105|bujian (spade-shaped bronze coin of ancient China)|NACF||||||
 15106|wet, moisten, dampen, soak, dip|VsuT||||||
 15107|stealing|NACF||||||
@@ -15217,7 +15217,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15217|last place, end|NACF||||||
 15218|consequence|NACF||||||
 15219|series|SxN||||||
-15220||||||||
+15220||-||||||
 15221|notice, feel|VrugT||||||
 15222|understand, comprehend, grasp|VrugT||||||
 15223|remember, be acquainted with (a procedure)|VrugT||||||
@@ -15260,15 +15260,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15260|state capital, provincial capital, county town|NACF||||||
 15261|etc., otherwise, besides, in addition, the rest, the others, and so forth|NACF||||||
 15262|etc., otherwise, besides, in addition, the rest, the others, and so forth|PP||||||
-15263||||||||
+15263||-||||||
 15264|the very thing, itself|SxN||||||
-15265||||||||
+15265||-||||||
 15266|before very long, soon, someday, one of these days, sooner or later|CEA||||||
-15267||||||||
+15267||-||||||
 15268|of the previously mentioned, of that number, among them, among others|CEA||||||
-15269||||||||
+15269||-||||||
 15270|before very long, soon, someday, one of these days, sooner or later|CEA||||||
-15271||||||||
+15271||-||||||
 15272|in addition, furthermore|PP||||||
 15273|above (which), on top of (which)|PP||||||
 15274|soap|NACF||||||
@@ -15290,7 +15290,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15290|turn away, bear off, veer away, swerve from, miss (e.g. a target)|VruiI||||||
 15291|deviate (e.g. of a conversation), digress, to go astray, wander|VruiI||||||
 15292|each, respectively|NACF||||||
-15293||||||||
+15293||-||||||
 15294|grass-covered plain, grasslands, meadows, savannah, prairie, steppe|NACF||||||
 15295|gap, space|NACF||||||
 15296|break, interlude, interval|NACF||||||
@@ -15419,7 +15419,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15419|push one's opponent while holding their belt|VrugI||||||
 15420|decide on a price and come to a deal|VrugI||||||
 15421|be swayed by (a person), yield to|VrugI||||||
-15422||||||||
+15422||-||||||
 15423|Jordan|NPl||||||
 15424|spare energy, time or money, remaining strength, reserve power, money to spare|NACF||||||
 15425|Korean living in Japan|NACF||||||
@@ -15432,7 +15432,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15432|take on one's share (e.g. of work), divide (work, expenses, etc.) between, apportion, allot, allocate, assign|VsuruT||||||
 15433|dangle heavily, sway to and fro, swing|VsuruI||||||
 15434|stroll, ramble, roam, wander|VsuruI||||||
-15435||||||||
+15435||-||||||
 15436|persist (of an illness)|VsuruI||||||
 15437|be at one's post, be at one's station|VsuruI||||||
 15438|study, learn|VsuruI||||||
@@ -15529,3 +15529,1158 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15529|drop in on the way, stop off at, make a side trip|VsuruI||||||
 15530|go the long way round, make a detour|VsuruI||||||
 15531|be a resident in Japan (of a foreigner), be situated in Japan (e.g. of an embassy)|VsuruI||||||
+15532|animated film, animated cartoon, anime (when referring to Japanese cartoons)|NACF||||||
+15533|animation|NACF||||||
+15534||-||||||
+15535|animated film, animated cartoon|NACF||||||
+15536|early morning, early hours, toward morning|NACF||||||
+15537|first thing in the morning|NACF||||||
+15538|breakfast|NACF||||||
+15539|morning and evening, from morning until night, constantly|UNC||||||
+15540|give (esp. to someone of lower status), bestow, grant, confer, present, award|VruiT||||||
+15541|assign|VruiT||||||
+15542|cause|VruiT||||||
+15543|pass (a variable to a function)|VruiT||||||
+15544|match (rhythm, speed, etc.)|VruiT||||||
+15545|face, be opposite (someone)|VruiT||||||
+15546|compare, check with|VruiT||||||
+15547|cause to meet (e.g. an unpleasant fate)|VruiT||||||
+15548|place together, connect, overlap|VruiT||||||
+15549|mix, combine|VruiT||||||
+15550|put blade to blade, fight|VruiT||||||
+15551|number (in a series)|NACF||||||
+15552|(one's) turn|NACF||||||
+15553|watch, guard, lookout|NACF||||||
+15554|bout, match|NACF||||||
+15555|ranked list (entertainers, sumo wrestlers, millionaires, etc.)|NACF||||||
+15556|program (e.g. theatre)|NACF||||||
+15557|indicates position in a sequence|UNC||||||
+15558|divisions of a kabuki performance|NACF||||||
+15559|(yarn) count|NACF||||||
+15560|n-th place (e.g. in a race), n-th in position (e.g. a starting lineup)|Sx||||||
+15561|bath|NACF||||||
+15562|bass|NACF||||||
+15563|Bath (Britain), Basse, Buss|NPl||||||
+15564|basket|NACF||||||
+15565|basketball|NACF||||||
+15566|basket cloth|NACF||||||
+15567|Basque|NACF||||||
+15568|bask|NACF||||||
+15569|Basque (Spain), Busk|NPl||||||
+15570|bathroom|NACF||||||
+15571|fake bunt, slash bunt|NACF||||||
+15572|bust (measurement)|NACF||||||
+15573|breasts, bosom|NACF||||||
+15574|upper half of the body (esp. statue or portrait), bust|NACF||||||
+15575|Vasto (Italy)|NPl||||||
+15576|bus tour|NACF||||||
+15577|cooked rice|NACF||||||
+15578|an American|NACF||||||
+15579|rice price|NACF||||||
+15580|martial arts, military arts, Bushido|NACF||||||
+15581|weapon, arms, ordnance|NACF||||||
+15582|weapon (something used to gain an advantage), asset|NACF||||||
+15583|prices of commodities, prices (in general), cost-of-living|NACF||||||
+15584|(Japanese) Agency for Cultural Affairs|NACF||||||
+15585|person of culture, cultured person|NACF||||||
+15586|Order of Culture, Order of Cultural Merit|NACF||||||
+15587|cultural|Ana||||||
+15588|cultural assets, cultural property|NACF||||||
+15589|armed might, military power, the sword, force|NACF||||||
+15590|military commander|NACF||||||
+15591|goods, materials, commodities, resources, supplies|NACF||||||
+15592|dangerous, unsettled, troubled, disturbed, insecure|Ana||||||
+15593|danger, trouble, disturbance|NACF||||||
+15594|public discussion, public criticism, controversy|NACF||||||
+15595|physics, law of nature|NACF||||||
+15596|physics|NACF||||||
+15597|body, object|NACF||||||
+15598|decentralization of power, decentralisation of power|NACF||||||
+15599|local assembly|NACF||||||
+15600|local administration|NACF||||||
+15601|local (governmental) autonomy|NACF||||||
+15602|local authority, local government, locality, local self-governing body, municipality|NACF||||||
+15603|local public body|NACF||||||
+15604|local government employee|NACF||||||
+15605|local tax, council tax|NACF||||||
+15606|convenient, useful, handy, helpful|Ana||||||
+15607|convenience, usefulness, handiness, helpfulness|NACF||||||
+15608|priceless treasure|NACF||||||
+15609|valuing highly, prizing|NACF||||||
+15610|morning newspaper|NACF||||||
+15611|Korea|NACF||||||
+15612|Chousen|NPl||||||
+15613||-||||||
+15614|Korean Peninsula|NPl||||||
+15615||-||||||
+15616|Democratic People's Republic of Korea (North Korea), DPRK|NPl||||||
+15617|Chūgoku region of western Honshu (incl. Okayama, Hiroshima, Shimane, Tottori and Yamaguchi prefectures)|NACF||||||
+15618|central part of a country, main region|NACF||||||
+15619|province of the second lowest rank (ritsuryo system)|NACF||||||
+15620|Chuugoku|NPl||||||
+15621|Chinese (language)|NACF||||||
+15622|Chinese person|NACF||||||
+15623|centralized authoritarian rule, centralised authoritarian rule|NACF||||||
+15624|stand, rack, table, bench, podium, pedestal, platform, stage|NACF||||||
+15625|support, holder, rack|NACF||||||
+15626|setting (e.g. in jewellery)|NACF||||||
+15627|level (e.g. price level), range (e.g. after physical units), period (of time, e.g. a decade of one's life)|NACF||||||
+15628|elevated area|NACF||||||
+15629|viewing platform|NACF||||||
+15630|dish tray|NACF||||||
+15631|meal|NACF||||||
+15632|tall building, tower|NACF||||||
+15633|plateau, tableland, eminence|NACF||||||
+15634|account book, ledger, register|NACF||||||
+15635|script, libretto, scenario|NACF||||||
+15636|platform truck, hand truck, trolley, dolly, cart|NACF||||||
+15637|(railway) truck, bogie, flatcar, wagon, waggon|NACF||||||
+15638|group member|NACF||||||
+15639|multi-unit apartments, apartment complex|NACF||||||
+15640|leader of a delegation (body, party)|NACF||||||
+15641|mass, lump|NACF||||||
+15642|baby boom generation (of 1947-1949), babyboomer (born between 1947-1949)|NACF||||||
+15643|unity, union, solidarity, combination, teaming up|NACF||||||
+15644|Dantai|NPl||||||
+15645|debut|NACF||||||
+15646|independent, self-supporting|Ana||||||
+15647|independence (e.g. Independence Day), self-support|NACF||||||
+15648|independent state or nation|NACF||||||
+15649|drama|NACF||||||
+15650|TV drama, teledrama, play|NACF||||||
+15651|Dhrama (Greece)|NPl||||||
+15652|drummer|NACF||||||
+15653|dramatic|Ana||||||
+15654|identical, equal to, same (kind), like, similarity|Ana||||||
+15655|Edo (old name of Tokyo)|NACF||||||
+15656|Edo River|NACF||||||
+15657|Edo period (1603-1868 CE)|NACF||||||
+15658|true Tokyoite, person born and raised in Edo|NACF||||||
+15659|English (language)|NACF||||||
+15660|influence, clout, leverage|NACF||||||
+15661|engine|NACF||||||
+15662|collar, lapel, neckband, neck|NACF||||||
+15663|nape of the neck, scruff of the neck|NACF||||||
+15664|guardians, parents|NACF||||||
+15665|father and older brother|NACF||||||
+15666|setting sail, putting out to sea|NACF||||||
+15667|starting anew, embarking on something new|NACF||||||
+15668|home town, birthplace, native place, one's old home|NACF||||||
+15669|ruins, historic remains|NACF||||||
+15670|father and child, father and son, father and daughter|NACF||||||
+15671|outside of, not covered by|Sx||||||
+15672|foreigner (esp. one of European ancestry), gaijin|NACF||||||
+15673|outsider|NACF||||||
+15674|foreign currency, foreign money, foreign exchange|NACF||||||
+15675|foreign goods, imported goods|NACF||||||
+15676|outward appearance, exterior appearance, outward show, looks|NACF||||||
+15677|Ministry of Foreign Affairs|NOI||||||
+15678||-||||||
+15679|foreign, imported|NACF||||||
+15680|outpatient, outpatient care, outpatient clinic, outpatient ward|NACF||||||
+15681|Foreign Minister|NACF||||||
+15682|surgery|NACF||||||
+15683|department of surgery (hospital, etc.)|NACF||||||
+15684|active duty, active service|NACF||||||
+15685|student taking (university) entrance exams while still enrolled in school, student who passed their university entrance exams on the first try|NACF||||||
+15686|crude oil|NACF||||||
+15687|actual spot, scene, scene of the crime, site, location, setting|NACF||||||
+15688|shop floor, factory floor, (on) site|NACF||||||
+15689|atomic bomb, A-bomb|NACF||||||
+15690|the text, original|NACF||||||
+15691|actual article or goods|NACF||||||
+15692|spots (stocks, foreign exchange, commodities, etc.)|NACF||||||
+15693|(in) kind (income, benefit, rent, taxes, investment, etc.)|NACF||||||
+15694|actual place, local, on-site|NACF||||||
+15695|nowadays, modern era, modern times, present-day|NACF||||||
+15696|modernistic|Ana||||||
+15697|original form, base form|NACF||||||
+15698|mercenary, self-interested, calculating|Ana||||||
+15699|manuscript, copy, draft, notes, contribution|NACF||||||
+15700|present, current, in operation|NACF||||||
+15701|flagrante delicto, caught red-handed|NACF||||||
+15702|principle, theory, fundamental truth|NACF||||||
+15703|raw materials|NACF||||||
+15704|original work|NACF||||||
+15705|origin, beginning, genesis|NACF||||||
+15706|primeval, primordial, primitive|NACF||||||
+15707|atom|NACF||||||
+15708|atomic energy, nuclear power|NACF||||||
+15709|original document (not a copy or adaptation), book in its original language (esp. a European language)|NACF||||||
+15710|present post, current office, (an) incumbent|NACF||||||
+15711|principle, general rule|NACF||||||
+15712|raw materials|NACF||||||
+15713|developing (film)|NACF||||||
+15714|diarrhoea, diarrhea|NACF||||||
+15715|alighting (from train, bus, etc.), getting off|NACF||||||
+15716|geta, Japanese wooden clogs|NACF||||||
+15717|turn (in set-type proofing), upside-down character|NACF||||||
+15718|mother-in-law|NACF||||||
+15719|foster mother|NACF||||||
+15720|step mother|NACF||||||
+15721|gidayū (type of reciting used in the puppet theater)|NACF||||||
+15722|donation money (esp. disaster relief or charity), contribution|NACF||||||
+15723|father-in-law|NACF||||||
+15724|foster father|NACF||||||
+15725|stepfather|NACF||||||
+15726|member of an assembly, member of the Diet, member of parliament, member of Congress|NACF||||||
+15727|private school|NACF||||||
+15728|engineer, technical expert, technician, craftsperson|NACF||||||
+15729|technical, practical|Ana||||||
+15730|obligation|NACF||||||
+15731|compulsory education|NACF||||||
+15732|duty, sense of duty, honor, honour, decency, courtesy, debt of gratitude, social obligation|NACF||||||
+15733|in-law, relation by marriage|NACF||||||
+15734|heroism, loyalty and courage|NACF||||||
+15735|rural districts, counties|NACF||||||
+15736|group (of people), crowd, horde, throng, mob, multitude|NACF||||||
+15737|crowd, community, group, herd, gathering, assembly|NACF||||||
+15738|island group, archipelago|NACF||||||
+15739|lively group (usu. young people), dynamic bunch|NACF||||||
+15740|sculptured group (art)|NACF||||||
+15741|group home|NACF||||||
+15742|abolition, repeal|NACF||||||
+15743|first (in line, etc.)|NACF||||||
+15744|origin|NACF||||||
+15745|such as ..., not to mention ...|NACF||||||
+15746|first, firstly, first of all, to begin with, in the beginning, at the beginning|CE||||||
+15747|Introduction, Preface|CE||||||
+15748|for the first time|A||||||
+15749||-||||||
+15750|only after ... is it ..., only when ... do you ...|A||||||
+15751|feudal domain (Edo and early Meiji periods, precursor to current prefectures), fiefdom, province, clan|SxN||||||
+15752||-||||||
+15753|talk, speak, converse, chat|VsuT||||||
+15754|tell, explain, narrate, mention, describe, discuss|VsuT||||||
+15755|speak (a language)|VsuT||||||
+15756|sales, selling, marketing|NACF||||||
+15757|sales staff, salesperson|NACF||||||
+15758|feudal lord, daimyo|NACF||||||
+15759|field, plain, prairie, tundra, moor, wilderness|NACF||||||
+15760|bridge building, mediation, go-between, intermediary, (through the) good offices (of someone)|NACF||||||
+15761|debut, initial stage appearance|NACF||||||
+15762|first love, puppy love|NACF||||||
+15763|first shrine visit of New Year|NACF||||||
+15764|composition, formation, organization, organisation, compilation|NACF||||||
+15765|pass, elapse, go by|VruiI||||||
+15766|pass through, go through|VruiI||||||
+15767|experience, go through, undergo|VruiI||||||
+15768|illumination, ray, beam, gleam, glow|NACF||||||
+15769|happiness, hope|NACF||||||
+15770|influence, power|NACF||||||
+15771|vision, eyesight|NACF||||||
+15772|other people's affairs, somebody else's problem|NACF||||||
+15773|Director General of Hokkaido Development Agency|NACF||||||
+15774|home|NACF||||||
+15775|(TV) drama of family life, soap opera|NACF||||||
+15776|home ground|NACF||||||
+15777|caregiver, care worker, carer|NACF||||||
+15778|getting home|NACF||||||
+15779|web site, website, web page, webpage, home page, homepage|NACF||||||
+15780|home run|NACF||||||
+15781|homeroom, form room, form class|NACF||||||
+15782|home security system|NACF||||||
+15783|homesick|NACF||||||
+15784|homestay|NACF||||||
+15785|home terminal|NACF||||||
+15786|not exceeding, and downward, ... and below|NACF||||||
+15787|below (e.g. standard), under (e.g. a level)|NACF||||||
+15788|the below-mentioned, the following, the rest|NACF||||||
+15789|on and after, as from, hereafter, thereafter, since|UNC||||||
+15790|member|NACF||||||
+15791|director|NACF||||||
+15792|numbers of members (things, people)|NACF||||||
+15793|on the one hand, on the other hand|PP||||||
+15794|whereas, although, but at the same time, meanwhile, in turn|PP||||||
+15795|just keeps, being inclined to ..., tending to be ..., tending to do ..., continuously ..., just keeps on ...ing, only|Sx||||||
+15796|Ippou|NPl||||||
+15797|one-sided, unilateral, arbitrary|Ana||||||
+15798|one-way traffic|NACF||||||
+15799|hue, tinge, tint|NACF||||||
+15800|coloring, colouring, coloration, colouration, assortment, color scheme, colour scheme, makeup|NACF||||||
+15801|various colors (colours)|NACF||||||
+15802|various|P||||||
+15803|stone wall|NACF||||||
+15804|Italy|NACF||||||
+15805|everywhere, all over, throughout|A||||||
+15806|practical|Ana||||||
+15807|by myself, in person, by oneself|CE||||||
+15808|oneself, myself|P||||||
+15809|plant, enterprise place, office|NACF||||||
+15810|temple|NACF||||||
+15811|premature|Ana||||||
+15812|prematureness|NACF||||||
+15813|practically|A||||||
+15814|practicality|NACF||||||
+15815|in reality, actually|A||||||
+15816|reality, actuality, actual conditions|NACF||||||
+15817||-||||||
+15818|bhutakoti (limit of reality)|NACF||||||
+15819|in fact, actually, to tell the truth|CEA||||||
+15820||-||||||
+15821|inside of a castle|NACF||||||
+15822|area surrounded by castle walls|NACF||||||
+15823|winning (a prize)|NACF||||||
+15824|award ceremony|NACF||||||
+15825|weight|NACF||||||
+15826|heavyweight boxer|NACF||||||
+15827|regarding as important, attaching importance to, taking a serious view of, putting emphasis on|NACF||||||
+15828|seriously ill, serious condition, critical state|Ana||||||
+15829|important point, emphasis, stress, importance, priority|NACF||||||
+15830|iteration mark|NACF||||||
+15831|colon (punctuation)|NACF||||||
+15832|(company) director, executive, top management|NACF||||||
+15833|important post, role with heavy responsibilities|NACF||||||
+15834|important cultural property, important cultural asset|NACF||||||
+15835|importance, gravity|NACF||||||
+15836|regarding highly, attaching importance to|NACF||||||
+15837|kabuki, Japanese classical drama|NACF||||||
+15838|Kabuki|NPl||||||
+15839|science and technology|NACF||||||
+15840|scientific technique|NACF||||||
+15841|Science and Technology Agency (1956-2001)|NACF||||||
+15842|scientist|NACF||||||
+15843|scientific|Ana||||||
+15844|opera|NACF||||||
+15845|height above sea level|NACF||||||
+15846|navy|NACF||||||
+15847|Marine Corps, Royal Marines|NACF||||||
+15848|channel (e.g. between two land masses), strait|NACF||||||
+15849|sea level, (surface of) sea|NACF||||||
+15850|ocean current|NACF||||||
+15851|seawater, saltwater|NACF||||||
+15852|swimming in the ocean, sea bathing, seawater bath, going for a dip in the ocean|NACF||||||
+15853|swimming area (in the ocean), swimming beach, seawater baths|NACF||||||
+15854|bottom of the ocean, seafloor, seabed|NACF||||||
+15855|maritime, marine transportation|NACF||||||
+15856|Kaiun|NPl||||||
+15857|ocean|NACF||||||
+15858|Kaiyou|NPl||||||
+15859|poet (of tanka poems)|NACF||||||
+15860|acquisition, possession|NACF||||||
+15861|melody, tune, song|NACF||||||
+15862|god, deity, divinity, spirit, kami|NACF||||||
+15863|incredible, fantastic|PxN||||||
+15864||-||||||
+15865|emperor of Japan|NACF||||||
+15866|thunder|NACF||||||
+15867|God, god|NACF||||||
+15868|ace, king, superior person, god (amongst men)|NACF||||||
+15869|warship|SxN||||||
+15870||-||||||
+15871|end of a book|NACF||||||
+15872|control, management (e.g. of a business)|NACF||||||
+15873|manager, landlord, warden, superintendent, supervisor, custodian|NACF||||||
+15874|root (user)|NACF||||||
+15875|management, managerial position, administrative post, person in a managerial position|NACF||||||
+15876|(naval) fleet, armada|NACF||||||
+15877|military vessel, war fleet|NACF||||||
+15878|be piled up, lie on top of one another|VrugI||||||
+15879|come one after another, happen over and over, pile up (e.g. stress), accumulate|VrugI||||||
+15880|overlap (each other), occur at the same time, happen simultaneously|VrugI||||||
+15881|song lyrics, words of a song, libretto|NACF||||||
+15882|passage, place, point, part|NACF||||||
+15883|passage, place, point, part|C||||||
+15884|song, singing|NACF||||||
+15885|anthology, book of poetry|NACF||||||
+15886|memento, keepsake, souvenir|NACF||||||
+15887|song, ballad|NACF||||||
+15888|kayōkyoku, form of Japanese popular music that developed during the Showa era|NACF||||||
+15889|(Western) pop song|NACF||||||
+15890|many, numerous, various, large number of|NACF||||||
+15891||-||||||
+15892|in great numbers|CEA||||||
+15893||-||||||
+15894|great numbers|NACF||||||
+15895|planned, scheduled, systematic|Ana||||||
+15896|condition, situation, prospects|NACF||||||
+15897|formation, molding, making up, taking form, giving form to|NACF||||||
+15898|repair (e.g. plastic surgery), replacement, -plasty|NACF||||||
+15899|traces, evidence|NACF||||||
+15900|form (as opposed to substance), formality|NACF||||||
+15901|method, system, style|NACF||||||
+15902|format, mode, appearance, form (something takes)|NACF||||||
+15903|math expression|NACF||||||
+15904|form, shape, figure|NACF||||||
+15905|(written) contract, agreement|NACF||||||
+15906|adjective, i-adjective (in Japanese)|NACF||||||
+15907|economic blockade, embargo|NACF||||||
+15908|economics|NACF||||||
+15909|economic world, financial circles, business community|NACF||||||
+15910|economic, economical, financial|Ana||||||
+15911|construction, establishment|NACF||||||
+15912|Ministry of Construction|NOI||||||
+15913||-||||||
+15914|constructive|Ana||||||
+15915|wood, timber|NACF||||||
+15916|(many) trees, every tree, all kinds of trees|NACF||||||
+15917|enterprise, business, company, corporation|NACF||||||
+15918|industrialist, entrepreneur|NACF||||||
+15919|basic rate (i.e. excluding optional service fees, usage charges, etc.), basic charge, base cost, base price|NACF||||||
+15920|high-pitched (voice), shrill|Ai||||||
+15921|bulletin, (party) organ|NACF||||||
+15922|disposition, temperament, nature, mentality, spirit, character, trait, turn of mind|SxN||||||
+15923||-||||||
+15924|particular case, discrete, individual, separate|NACF||||||
+15925|customer satisfaction|NACF||||||
+15926|mincing, chopping finely|NACF||||||
+15927|minced, chopped finely|Ana||||||
+15928|short and repeated (movements) (e.g. trembling, stepping quickly)|Ana||||||
+15929|short and repeated movements|NACF||||||
+15930|gradual, bit by bit, little by little|Ana||||||
+15931|gradualness|NACF||||||
+15932|these last (followed by a duration noun and a past sentence: time period before the present time of the speaker)|NACF||||||
+15933|these next ... (followed by a duration noun and a non past sentence: time period after the present time of the speaker), the next ...|NACF||||||
+15934|feeling, sensation, mood|NACF||||||
+15935|sensation of doing|Sx||||||
+15936|one's native land|NACF||||||
+15937|ancient and modern times, all ages, past and present|NACF||||||
+15938|koku, traditional unit of volume, approx. 180.4 litres|NACF||||||
+15939|measure of a Japanese-style boat's loading capacity (approx. 278.26 liters)|NACF||||||
+15940|Koku|NPl||||||
+15941|customer, client, patron|NACF||||||
+15942|(husked grains of) rice|NACF||||||
+15943|88 years old|NACF||||||
+15944|individuality, personality, idiosyncrasy, character, individual characteristic|NACF||||||
+15945|individual, distinctive, unique, characteristic, personal, idiosyncratic|Ana||||||
+15946|(toilet) stall|NACF||||||
+15947|individual, specimen|NACF||||||
+15948|Kobe (city)|NACF||||||
+15949|public corporation|NACF||||||
+15950|public housing|NACF||||||
+15951|honour, honor, glory, privilege|NACF||||||
+15952|honourable, honorable, glorious, privileged|Ana||||||
+15953|public performance|NACF||||||
+15954|exhibition in a foreign country|NACF||||||
+15955|pollution, public nuisance, contamination|NACF||||||
+15956|optics|NACF||||||
+15957|optical character recognition, OCR|NACF||||||
+15958|official announcement, proclamation|NACF||||||
+15959|scene, spectacle, sight, view|NACF||||||
+15960|Koukou|NPl||||||
+15961|aviation, flying|NACF||||||
+15962|air service, air transport (of goods)|NACF||||||
+15963|airline company|NACF||||||
+15964|Japan Air Self-Defense Force, JASDF|NACF||||||
+15965|Air Self-Defense Force, ASDF|UNC||||||
+15966|aircraft|NACF||||||
+15967|public, community, public service, society, communal|NACF||||||
+15968|bright light|NACF||||||
+15969|hope, bright future|NACF||||||
+15970|light emanating from a buddha or bodhisattva, symbolizing their wisdom and compassion|NACF||||||
+15971|cost of fuel and lighting, cost of heat and electricity, energy bill, utility cost|NACF||||||
+15972|public (institution)|NACF||||||
+15973|organization, organisation, configuration, composition|NACF||||||
+15974|beam, light ray|NACF||||||
+15975|formal, official|NACF||||||
+15976|formula (e.g. mathematical)|NACF||||||
+15977|the public, general public|NACF||||||
+15978|public telephone, pay phone|NACF||||||
+15979|brilliance, polish, lustre, luster, glossy finish (of photographs)|NACF||||||
+15980|high class, high grade|Ana||||||
+15981|high class, high grade|NACF||||||
+15982|senior high school, high school|NACF||||||
+15983|traveling expenses, travelling expenses, carfare|NACF||||||
+15984|transportation facilities|NACF||||||
+15985|transportation network, transport network, traffic network|NACF||||||
+15986|government business, official business|NACF||||||
+15987|public, official, governmental|NACF||||||
+15988|openness, publicness, officialness, overtness|NACF||||||
+15989|open, public, official, overt|Aj||||||
+15990|structure, construction, makeup, framework, organization, pattern|NACF||||||
+15991|structure|NACF||||||
+15992|division, section, demarcation, partition, segmentation, subdivision, (traffic) lane, compartment, classification, sorting|NACF||||||
+15993|head of a ward, mayor of a ward, chief administrator of a ward|NACF||||||
+15994|down-train (going away from Tokyo)|SxN||||||
+15995||-||||||
+15996|down-slope, downward going|SxN||||||
+15997||-||||||
+15998|southbound|NACF||||||
+15999|be handed down (of an order, judgment, etc.)|VrugI||||||
+16000|pass (of time)|VrugI||||||
+16001|surrender, capitulate|VrugI||||||
+16002|be less than, be inferior to|VrugI||||||
+16003|have the runs, have diarrhea|VrugI||||||
+16004|pass (in stool), be discharged from the body|VrugI||||||
+16005|depreciate oneself, be humble|VrugI||||||
+16006|please do for me|CE||||||
+16007|ward assemblyman|NACF||||||
+16008|punctuation, pause, juncture|NACF||||||
+16009|end, (place to) stop|NACF||||||
+16010|punctuate, put an end to (e.g. a sentence), insert pauses or breaks (e.g. when reading aloud)|VrugT||||||
+16011|area (e.g. in programming languages)|NACF||||||
+16012|section (of track, etc.), segment, dimension|SxN||||||
+16013||-||||||
+16014|interval|SxN||||||
+16015||-||||||
+16016|group (of people), class (of students), company (esp. construction), family (i.e. mafia), team|NACF||||||
+16017|typesetting, composition|NACF||||||
+16018|association, union, guild|NACF||||||
+16019|combination, assortment, set|NACF||||||
+16020|matching (in a contest), pairing|NACF||||||
+16021|combination|NACF||||||
+16022|boss (esp. yakuza), foreman|NACF||||||
+16023|insert, include, incorporate, cut in (printing)|VmuT||||||
+16024|musical suite, musical selection|NACF||||||
+16025|ward residents|NACF||||||
+16026|construction, framework, erection, assembly, organization, organisation|NACF||||||
+16027|put together, construct, assemble, produce (e.g. TV program)|VmuI||||||
+16028|braid, plait|VmuI||||||
+16029|grapple, wrestle|VmuI||||||
+16030|unite, join, link up, form an alliance|VmuI||||||
+16031|set (e.g. type)|VmuI||||||
+16032|issue (e.g. money order)|VmuI||||||
+16033|in the ward or borough|NACF||||||
+16034|nightclub|NACF||||||
+16035|clubs (card suit)|NACF||||||
+16036|crab|NACF||||||
+16037|golf club|NACF||||||
+16038|club activities (usu. clubs in association with a school), extracurricular activities|NACF||||||
+16039|established by the ward|NACF||||||
+16040|Kuwait|NACF||||||
+16041|ward office, council (regional)|NACF||||||
+16042|character, personality, disposition|NACF||||||
+16043|character (in a film, novel, comic, etc.)|NACF||||||
+16044|letter, character, symbol|NACF||||||
+16045|education, schooling, training, instruction, teaching, upbringing|NACF||||||
+16046|culture, cultivation, education|NACF||||||
+16047|Board of Education|NACF||||||
+16048|educator, teacher, educationalist|NACF||||||
+16049|educational, instructive|Ana||||||
+16050|professor|NACF||||||
+16051|teaching, instruction|NACF||||||
+16052|association, society, organization, organisation|NACF||||||
+16053|bridge pier, pontoon bridge|NACF||||||
+16054|several, various, divergent, conflicting, different, diverse|Ana||||||
+16055|variousness, divergence, difference, diversity|NACF||||||
+16056|roll (e.g. of cloth)|NACF||||||
+16057|winding|NACF||||||
+16058|volume (of book)|NACF||||||
+16059|tape measure|NACF||||||
+16060|rally, recovery, rollback, rewind|NACF||||||
+16061|getting mixed up in, getting embroiled in, involvement, entanglement, by-blow|NACF||||||
+16062|envelope, shroud|VkuT||||||
+16063|outflank, skirt|VkuT||||||
+16064|link (verse)|VkuT||||||
+16065|move ahead (three hours, etc.), move up|VkuI||||||
+16066|full house, no vacancy, sold out, standing room only, full (of people), crowded|NACF||||||
+16067|cartoonist, manga artist|NACF||||||
+16068|full moon|NACF||||||
+16069|whole house, whole audience|NACF||||||
+16070|unanimity|NACF||||||
+16071|having enough of (food, drink, etc.), having one's fill|NACF||||||
+16072|fully enjoying|NACF||||||
+16073|full of, brimming with|Ana||||||
+16074|fully, brimmingly|A||||||
+16075|fill|NACF||||||
+16076|(the) whole face|UNC||||||
+16077|bases loaded|NACF||||||
+16078|full house, all seats occupied, fully occupied|NACF||||||
+16079|perfect score, full marks|NACF||||||
+16080|extremely, very, quite|NACF||||||
+16081|sufficient, enough, adequate, proper|Ana||||||
+16082|feeling of satisfaction|NACF||||||
+16083|metre, meter|NACF||||||
+16084|meter, gauge|NACF||||||
+16085|interview|NACF||||||
+16086|starting a business|NACF||||||
+16087|opening a store (for the day)|NACF||||||
+16088|storefront, shopfront|NACF||||||
+16089|deem, judge, assess|VruiT||||||
+16090|approve, deem acceptable, allow|VruiT||||||
+16091|admit, accept, confess (to a charge)|VruiT||||||
+16092|watch steadily, observe carefully|VruiT||||||
+16093|renown, give renown to, appreciate, acknowledge|VruiT||||||
+16094|fluid (esp. in an animal tissue), liquid|NACF||||||
+16095|flood, floodwaters|NACF||||||
+16096|water offered to wrestlers just prior to a bout|NACF||||||
+16097|break granted to wrestlers engaged in a prolonged bout|NACF||||||
+16098|alcohol (usu. whiskey or shochu) diluted with water|NACF||||||
+16099|watered|NACF||||||
+16100|model, dummy, mock-up|NACF||||||
+16101|model (profession), fashion model|NACF||||||
+16102|model (of a car, etc.), make, version|NACF||||||
+16103|model, example, template, standard|NACF||||||
+16104|model (in model theory), theory|NACF||||||
+16105|person a fictional character was modeled on, inspiration|NACF||||||
+16106|model case|NACF||||||
+16107|woodworking, woodworker, carpenter|NACF||||||
+16108|Jupiter (planet)|NACF||||||
+16109|wooden, made of wood|NACF||||||
+16110|Thursday|NACF||||||
+16111|wooden, made of wood, wooden construction|NACF||||||
+16112|red silk-cotton tree (Bombax ceiba)|NACF||||||
+16113|too good, more than one deserves, unworthy of|Ai||||||
+16114|wasteful|Ai||||||
+16115|group, crowd, flock, herd, bevy, school, swarm, cluster (e.g. of stars), clump, pack (e.g. of dogs)|NACF||||||
+16116|Muromachi (era 1392-1573, or 1333-1573, or 1336-1573)|NACF||||||
+16117|warrior|NACF||||||
+16118|long time, long interval|CEN||||||
+16119|for quite some time|AT||||||
+16120|while, during, as|PP||||||
+16121|while, although, though, despite, in spite of, notwithstanding|PP||||||
+16122|all, both|PP||||||
+16123|as (e.g. "as always", "as long ago"), in (e.g. "in tears")|PP||||||
+16124|long, (for a) long time|A||||||
+16125|though, notwithstanding, although|PP||||||
+16126|contents, content, substance, matter, detail, import|NACF||||||
+16127|indicates location of action, at, in|PP||||||
+16128|field, plain, prairie, moor|NACF||||||
+16129|hills and fields, hill and dale|NACF||||||
+16130|face, looks, vestiges, trace|NACF||||||
+16131|load, heavy burden, encumbrance, heavy freight, heavy responsibility|NACF||||||
+16132|respect, honor, honour, esteem, prize|VruiT||||||
+16133|face|NACF||||||
+16134|surface|NACF||||||
+16135|mask (esp. a noh or kyogen mask)|NACF||||||
+16136|to one's heart's content|CEA||||||
+16137||-||||||
+16138|official, governmental, formal|NACF||||||
+16139|public (use, facility, etc.), common|NACF||||||
+16140|public (matter, place, etc.), (out in the) open|NACF||||||
+16141|descend (e.g. a mountain), go down, come down|VruiI||||||
+16142|step down, retire, give up, quit|VruiI||||||
+16143|be granted, be issued, be given|VruiI||||||
+16144|form (of frost, dew, mist, etc.)|VruiI||||||
+16145|be passed (from the body, e.g. of a roundworm)|VruiI||||||
+16146|take down (e.g. flag), launch (e.g. boat), drop, lower (e.g. ladder), let (a person) off, unload, discharge|VsuT||||||
+16147|drop off (a passenger from a vehicle), let (a person) off|VsuT||||||
+16148|withdraw (cash)|VsuT||||||
+16149|wear (clothing) for the first time|VsuT||||||
+16150|fillet (e.g. a fish)|VsuT||||||
+16151|production|NACF||||||
+16152|product|NACF||||||
+16153|professional|Ana||||||
+16154|professionality|NACF||||||
+16155|profile|NACF||||||
+16156|program, programme|NACF||||||
+16157|project|NACF||||||
+16158|(marriage) proposal|NACF||||||
+16159|professional wrestling|NACF||||||
+16160|process|NACF||||||
+16161|protestant|NACF||||||
+16162|professional baseball|NACF||||||
+16163|historic, historical, traditional|Ana||||||
+16164|association, federation|NACF||||||
+16165|army|NACF||||||
+16166|release|NACF||||||
+16167|route map (buses, trains, etc.)|NACF||||||
+16168|Russia|NACF||||||
+16169|dominion, territory, possession|NACF||||||
+16170|mass marketer, emporium, volume retailer|NACF||||||
+16171|area, domain, territory, field, range, region, regime|NACF||||||
+16172|consul|NACF||||||
+16173|consulate|NACF||||||
+16174|comprehension, consent, understanding, agreement|NACF||||||
+16175|OK, roger (on two-way radio)|NACF||||||
+16176|territorial waters|NACF||||||
+16177|judge's sentence, assessment of a case|NACF||||||
+16178|territorial airspace|NACF||||||
+16179|(within a) territory, domains|NACF||||||
+16180|mass production|NACF||||||
+16181|acknowledgement, acknowledgment, understanding (e.g. "please be understanding of the mess during our renovation"), noting, acceptance|NACF||||||
+16182|receipt (of money), receiving|NACF||||||
+16183|leader, chief, boss|NACF||||||
+16184|simplified receipt with a blank line to be filled out with the customer's name (used specifically for claiming expenses)|NACF||||||
+16185|quantitative|Ana||||||
+16186|possession (esp. of a territory)|NACF||||||
+16187|come down, go down, fall, drop, sink, get lower|VrugI||||||
+16188|hang, dangle|VrugI||||||
+16189|move back, step back, withdraw, retire|VrugI||||||
+16190|deteriorate, fall off, be downgraded|VrugI||||||
+16191|get closer to the present day|VrugI||||||
+16192|go south|VrugI||||||
+16193|biggest, greatest, largest, maximum|NACF||||||
+16194|end of a line (queue)|NACF||||||
+16195|seersucker|NACF||||||
+16196|warrior (esp. of military retainers of daimyos in the Edo period), samurai|NACF||||||
+16197|man in attendance (on a person of high standing), retainer|NACF||||||
+16198|gaining total control (of people or counties), suppression, oppression, control, mastery, ascendancy, supremacy|NACF||||||
+16199|system, institution, organization, organisation|NACF||||||
+16200|uniform|NACF||||||
+16201|restriction, restraint, limitation, limit|NACF||||||
+16202|conquest, domination, mastery|NACF||||||
+16203|political offense, political offence, political crime|NACF||||||
+16204|political offender, political prisoner, prisoner of conscience|NACF||||||
+16205|politician, statesman|NACF||||||
+16206|political strength|NACF||||||
+16207|success, hit|NACF||||||
+16208|(pitcher's) control|NACF||||||
+16209|work (film, book)|NACF||||||
+16210|production, creation, turning (something) out, development|NACF||||||
+16211|manufacture, production|NACF||||||
+16212|manufacturing cost, production cost|NACF||||||
+16213|productivity|NACF||||||
+16214|manufacturer, producer|NACF||||||
+16215|control, check, restraint, inhibition|NACF||||||
+16216|enactment, establishment, creation|NACF||||||
+16217|limitation, restriction, condition, constraints|NACF||||||
+16218|manufacture, production|NACF||||||
+16219|lime, quicklime, caustic lime|NACF||||||
+16220|plan, design, layout|NACF||||||
+16221|sailor|NACF||||||
+16222|election|NACF||||||
+16223|suffrage, the right to vote|NACF||||||
+16224|qualified voter|NACF||||||
+16225|election campaign|NACF||||||
+16226|election campaign, political campaign, campaigning, electioneering, canvassing|NACF||||||
+16227|medical specialist|NACF||||||
+16228|speciality, specialty, subject of study, expert, area of expertise|NACF||||||
+16229|vocational school, technical school|NACF||||||
+16230|technical (e.g. discussion), exclusive, professional|Ana||||||
+16231|specialist shops|NACF||||||
+16232|vessel, ship, shipping, seacraft|NACF||||||
+16233|shipowner|NACF||||||
+16234|centre, center|NACF||||||
+16235|Senta|NPl||||||
+16236|hull|NACF||||||
+16237|establishment, founding, incorporation (of a business)|NACF||||||
+16238|establishment, creation, posing (a problem), setting (movie, novel, etc.), scene|NACF||||||
+16239|options setting, preference settings, configuration, setup|NACF||||||
+16240|configurableness|NACF||||||
+16241|configurable|Ana||||||
+16242|rehabilitation (in society)|NACF||||||
+16243|working adult, full-fledged member of society|NACF||||||
+16244|social studies|NACF||||||
+16245|social education|NACF||||||
+16246|social page (of newspaper), local news page|NACF||||||
+16247|social capital, SOC|NACF||||||
+16248|often, again and again, frequently, repeatedly|A||||||
+16249|mayor|NACF||||||
+16250|in the city|NACF||||||
+16251|municipal management (transport, housing, etc.), city facility management|NACF||||||
+16252|outside the city area, suburbs|NACF||||||
+16253|urban areas, the streets, town, city|NACF||||||
+16254|Shigai|NPl||||||
+16255|town area, urban area, metropolitan area, built-up area|NACF||||||
+16256|Shigaichi|NPl||||||
+16257|city council|NACF||||||
+16258|selling on the market (in the marketplace, in stores, etc.), making something commercially available|NACF||||||
+16259|commercial (e.g. software), over-the-counter, off-the-shelf, store-bought|NACF||||||
+16260|force, compel, coerce|VruiT||||||
+16261|by force|A||||||
+16262|(the) market (as a concept)|NACF||||||
+16263|market research|NACF||||||
+16264|officer|NACF||||||
+16265|color tone, colour tone|NACF||||||
+16266|colour, color, hue, tints|NACF||||||
+16267|(musical) conductor|NACF||||||
+16268|commander, leader, director|NACF||||||
+16269|(take out and) show, demonstrate, tell, exemplify, make apparent|VsuT||||||
+16270|point out (finger, clock hand, needle, etc.)|VsuT||||||
+16271|indicate, show, represent, signify, display|VsuT||||||
+16272|citizen, citizenry, public|NACF||||||
+16273|city inhabitant, townspeople|NACF||||||
+16274|bourgeoisie, middle class|NACF||||||
+16275|citizenship, civic rights, civil rights|NACF||||||
+16276|widespread acceptance, social recognition, common use|NACF||||||
+16277|confidence, trust, faith, reputation|NACF||||||
+16278|credit (finance)|NACF||||||
+16279|honesty, sincerity, fidelity|NACF||||||
+16280|trust, reliance, confidence|NACF||||||
+16281|(religious) faith, devotion|NACF||||||
+16282|counter for received messages|UNC||||||
+16283|(within a) city, local|NACF||||||
+16284|temple, sacred place, shrine, sanctuary, tabernacle|NACF||||||
+16285|theology|NACF||||||
+16286|signal, signalling, signaling|NACF||||||
+16287|traffic light, traffic signal|NACF||||||
+16288|traffic light|NACF||||||
+16289|signalling mechanism, semaphore (apparatus)|NACF||||||
+16290|single|NACF||||||
+16291|single bed, hotel room with a single bed|NACF||||||
+16292|single-breasted|NACF||||||
+16293|single-cuffed|NACF||||||
+16294|single width (of cloth, usu. 0.71 meters)|NACF||||||
+16295|singles (e.g. in tennis)|NACF||||||
+16296|single|NACF||||||
+16297|single-figure handicap (in golf)|NACF||||||
+16298|shingle|NACF||||||
+16299|singles|NACF||||||
+16300|believer, adherent, devotee|NACF||||||
+16301|creed, belief, conviction, article of faith|NACF||||||
+16302|nerve|NACF||||||
+16303|nerves, sensitivity|NACF||||||
+16304|nervous, highly strung, sensitive|Ana||||||
+16305|nervousnes, strungness, sensitivity|NACF||||||
+16306|fussy, worried about petty things|Ana||||||
+16307|fuss, worry about petty things|NACF||||||
+16308|(religious) faith, belief, creed|NACF||||||
+16309|belief, faith, conviction|NACF||||||
+16310|trust, confidence, credence|NACF||||||
+16311|credit company|NACF||||||
+16312|mystery, mysteriousness, secret|NACF||||||
+16313|mysterious, secret|Ana||||||
+16314|mysterious, mystical|Ana||||||
+16315|reliance, trust, faith, confidence|NACF||||||
+16316|credibility, authenticity, confidence, reliability|NACF||||||
+16317|holiness, sacredness, sanctity, dignity|NACF||||||
+16318|holy, sacred, sanct, dignified|Ana||||||
+16319|Shinto, Shintoism|NACF||||||
+16320|myth, legend|NACF||||||
+16321|essence, quintessence, spirit, soul, heart, pith, pith and marrow|NACF||||||
+16322|believe, believe in, place trust in, confide in, have faith in|VruiT||||||
+16323|municipal, city|NACF||||||
+16324|castle|NACF||||||
+16325|municipal government|NACF||||||
+16326|system|NACF||||||
+16327|systems|NACF||||||
+16328|designation, specification, assignment, appointment, pointing at|NACF||||||
+16329|room|SxN||||||
+16330||-||||||
+16331|wife (of someone of high rank)|SxN||||||
+16332||-||||||
+16333|scabbard|SxN||||||
+16334||-||||||
+16335|Chinese "Encampment" constellation (one of the 28 mansions)|SxN||||||
+16336||-||||||
+16337|section chief, laboratory manager, office head, room monitor|NACF||||||
+16338|indoor, inside the room|NACF||||||
+16339|chamber music|NACF||||||
+16340|municipal office, council, city hall|NACF||||||
+16341|first generation, founder|NACF||||||
+16342|first edition|NACF||||||
+16343|early (days), initial stage|NACF||||||
+16344|initial|NACF||||||
+16345|elementary level, beginner level|NACF||||||
+16346|first day, opening day|UNC||||||
+16347|past middle-aged, aging, ageing, elderly|NACF||||||
+16348|age 40|NACF||||||
+16349|originally intended, initially resolved|Ana||||||
+16350|original intention, initial resolution|NACF||||||
+16351|beginner|NACF||||||
+16352|first meeting, first interview with|NACF||||||
+16353|ministries and government offices, the authorities|NACF||||||
+16354|energy conservation, economical use of energy, energy-saving|NACF||||||
+16355|ministerial ordinance|NACF||||||
+16356|omission, abbreviation, abridgment, abridgement|NACF||||||
+16357|labor saving, reduction of labor|NACF||||||
+16358|classification, assortment|NACF||||||
+16359|advocate (of a theory or principle), ideologist, ideologue|NACF||||||
+16360|-ist (i.e. adherent to a belief system)|Sx||||||
+16361|socialist, communist, anarchist|NACF||||||
+16362|publication|NACF||||||
+16363|publisher, publishing house, publishing company|NACF||||||
+16364|counter for different sorts of things|UNC||||||
+16365|variety, diversity|NACF||||||
+16366|rich in variety, diverse, wide-ranging, multifarious|Ana||||||
+16367|seed, pit|NACF||||||
+16368|performance, appearance (in a stage, film, TV show, etc.)|NACF||||||
+16369|assumption (of office), taking up (a post), inauguration, installation|NACF||||||
+16370|compilation, editing|NACF||||||
+16371|recording|NACF||||||
+16372|after the end (of something), post-|UNC||||||
+16373|race, tribe, ethnic group|NACF||||||
+16374|species, genus, family|NACF||||||
+16375|stellar population (i.e. population I, II and III)|NACF||||||
+16376|formation of a cabinet|NACF||||||
+16377|there (place just mentioned), that place|NACF||||||
+16378|then (of some incident just spoken of), that (of point just raised)|NACF||||||
+16379|you|P|Archaic|||||
+16380|bottom, sole|NACF||||||
+16381|hidden reserves of strength, latent energy, potentiality, real strength|NACF||||||
+16382|fail to ..., miss one's opportunity to ...|VuI||||||
+16383|bottom price|NACF||||||
+16384|harm, hurt, injure, wreck|VruiT||||||
+16385|hereabouts, around there, that area|NACF||||||
+16386|crude steel|NACF||||||
+16387|bottoming out|NACF||||||
+16388|organization, organisation, formation|NACF||||||
+16389|structure, construction, setup, constitution|NACF||||||
+16390|system (e.g. railroad, transport, party, etc.)|NACF||||||
+16391|tissue|NACF||||||
+16392|texture (of a rock)|NACF||||||
+16393|weave (of a fabric)|NACF||||||
+16394|systematic, organized, organizational|Ana||||||
+16395|after graduation|UNC||||||
+16396|graduation ceremony, commencement|NACF||||||
+16397|water, liquid, fluid, moisture, humidity, sap, juice|NACF||||||
+16398|water supply, water service, waterworks|NACF||||||
+16399|channel, strait|NACF||||||
+16400|water course, waterway|NACF||||||
+16401|Suidou|NPl||||||
+16402|source of river, fountainhead|NACF||||||
+16403|Suigen|NPl||||||
+16404|horizontal, level, even|Ana||||||
+16405|horizontalness, levelness, evenness|NACF||||||
+16406|horizon (related to sea or lakes)|NACF||||||
+16407|water vapour, water vapor, steam|NACF||||||
+16408|level, standard|NACF||||||
+16409|water level|NACF||||||
+16410|water's surface|NACF||||||
+16411|waterway, canal, channel, watercourse, aqueduct|NACF||||||
+16412|swimming pool lane|NACF||||||
+16413|hydrogen (H)|NACF||||||
+16414|drop of water|NACF||||||
+16415|vessel for replenishing inkstone water|NACF||||||
+16416|canteen, flask, water bottle, thermos|NACF||||||
+16417|Wednesday|NACF||||||
+16418|aquarium|NACF||||||
+16419|Suizokukan|NPl||||||
+16420||-||||||
+16421|Stockholm (Sweden)|NPl||||||
+16422|several, a number of|Px||||||
+16423|quantity, amount|SxN||||||
+16424||-||||||
+16425|counting, figures, numbers|NACF||||||
+16426|number, numeral, figure|NACF||||||
+16427|grammatical number|NACF||||||
+16428|destiny, fate, course of events, trend|NACF||||||
+16429|numerical value, numerics|NACF||||||
+16430|reading (on a meter, etc.)|NACF||||||
+16431|several minutes, a few minutes|NACF||||||
+16432|several hundreds|NACF||||||
+16433|numeral, figure, digit, numeric character|NACF||||||
+16434|a few hours|NACF||||||
+16435|few days|NACF||||||
+16436|dozens, scores of, decades|NACF||||||
+16437|few times, several times, between two and six times|NACF||||||
+16438|several (objects, usu. from two to six)|NACF||||||
+16439|several people, a few people|NACF||||||
+16440|troops, group members, team members|NACF||||||
+16441|rise (e.g. of a movement), emergence, rearing one's head, gaining prominence, coming to the fore, gaining power, gathering strength|NACF||||||
+16442||-||||||
+16443|Taiwan|NPl||||||
+16444|seed (e.g. of a plant), pip, kind, variety, quality, tone|NACF||||||
+16445|material (e.g. for an article), matter (e.g. of a story), subject, theme, (news) copy|NACF||||||
+16446|ingredient, leaven (bread), main ingredient of a sushi|NACF||||||
+16447|cause, source|NACF||||||
+16448|trick, secret, magician's trick, inside story|NACF||||||
+16449|paternal blood, lineage|NACF||||||
+16450|breed (of a stock), sperm, semen|NACF||||||
+16451|being in charge (of an area of responsibility), being responsible (for a work role, etc.)|NACF||||||
+16452|person in charge (of an area of work), person responsible, contact (person)|NACF||||||
+16453|forepaw, foreleg|NACF||||||
+16454|handle|NACF||||||
+16455|hand, worker, help|NACF||||||
+16456|trouble, care, effort|NACF||||||
+16457|means, way, trick, move, technique, workmanship|NACF||||||
+16458|hand, handwriting|NACF||||||
+16459|kind, type, sort|NACF||||||
+16460|one's hands, one's possession|NACF||||||
+16461|ability to cope|NACF||||||
+16462|hand (of cards)|NACF||||||
+16463|direction|NACF||||||
+16464|move (in go, shogi, etc.)|NACF||||||
+16465|Te|NPl||||||
+16466|washing one's hands, water (or basin, etc.) for washing one's hands|NACF||||||
+16467|restroom, lavatory, toilet|NACF||||||
+16468|hand-washing (laundry, etc.)|NACF||||||
+16469|certificate|NACF||||||
+16470|identification card|NACF||||||
+16471|moderate, handy, convenient, reasonable|Ana||||||
+16472|moderateness, handiness, convenience, reasonableness|NACF||||||
+16473|empire|NACF||||||
+16474|imperial|NACF||||||
+16475|imperialism|NACF||||||
+16476|care, looking after, repair, maintenance, tending, trimming, grooming|NACF||||||
+16477|(police) raid, crackdown|NACF||||||
+16478|magic (illusion), conjuring, magic trick, conjuring trick, sleight of hand|NACF||||||
+16479|handcuffs, manacles|NACF||||||
+16480|before, this side|NACF||||||
+16481|one's standpoint, one's appearance|NACF||||||
+16482|we|P||||||
+16483|you|P||||||
+16484|at hand, on hand, nearby, close at hand|A||||||
+16485|way of moving one's arms, skill|NACF||||||
+16486|money at hand, pocket money|NACF||||||
+16487|grip, handle|NACF||||||
+16488|Temoto|NPl||||||
+16489|shop assistant, employee, clerk, salesperson|NACF||||||
+16490|heaven|NACF||||||
+16491|svarga (heaven-like realm visited as a stage of death and rebirth)|NACF||||||
+16492|deva (divine being of Buddhism)|NACF||||||
+16493|-store, -shop|Sx||||||
+16494|paradise, heaven, Kingdom of Heaven|NACF||||||
+16495|ceiling price, (price) ceiling|NACF||||||
+16496|the whole world|NACF||||||
+16497|the whole country|NACF||||||
+16498|society, the public|NACF||||||
+16499|supremacy over a nation, government of a country, the ruling power|NACF||||||
+16500|having one's own way, doing as one pleases|NACF||||||
+16501|peerless, incomparable, superlative, world-famous|NACF||||||
+16502|shogun (Edo period)|NACF||||||
+16503|weather|NACF||||||
+16504|astronomy|NACF||||||
+16505|Tenmon|NPl||||||
+16506|astronomical observatory|NACF||||||
+16507|astronomy|NACF||||||
+16508|store interior|NACF||||||
+16509|nature, spontaneity|NACF||||||
+16510|natural airhead|NACF||||||
+16511|Emperor of Japan|NACF||||||
+16512|Tennou|NPl||||||
+16513|shop, store|NACF||||||
+16514|shopkeeper|NACF||||||
+16515|heavenly body, celestial body, astronomical object|NACF||||||
+16516|shopfront, storefront, shopwindow, (near the) shop entrance|NACF||||||
+16517|over-the-counter|NACF||||||
+16518|helper, assistant|NACF||||||
+16519|help|NACF||||||
+16520|help, assist, aid|VuT||||||
+16521|contribute to, be a factor in|VuT||||||
+16522|special ward (esp. of Tokyo)|NACF||||||
+16523|special economic zone (China)|NACF||||||
+16524|special administrative region of China (e.g. Hong Kong)|NACF||||||
+16525|accompany, go hand in hand with, be consequent upon|VuI||||||
+16526|be accompanied by, bring with, take with, be involved in|VuT||||||
+16527|party (political)|SxN||||||
+16528||-||||||
+16529|faction, -ite|SxN||||||
+16530||-||||||
+16531|party council, party conference|NACF||||||
+16532|faction|NACF||||||
+16533|party member|NACF||||||
+16534|party business|NACF||||||
+16535|party-internal|NACF||||||
+16536|party interests|NACF||||||
+16537|party politics (tactics)|NACF||||||
+16538|loading (on board), equipping|NACF||||||
+16539|father, dad, papa, pa, pop, daddy, dada|NACF||||||
+16540|strength of a party|NACF||||||
+16541|party register, membership in a party|NACF||||||
+16542|at first, at the beginning, initially, originally|UNC||||||
+16543|party leader|NACF||||||
+16544|continue (without a break), be unbroken|VkuI||||||
+16545|occur again and again|VkuI||||||
+16546|lead to, connect to, adjoin|VkuI||||||
+16547|come after, follow, succeed, rank next to|VkuI||||||
+16548|hold out, keep, last|VkuI||||||
+16549|tsunami, tidal wave|NACF||||||
+16550|Tsunami|NPl||||||
+16551|face, mug|NACF||||||
+16552|surface|NACF||||||
+16553|cheek meat|NACF||||||
+16554|cheek, cheeks|NACF||||||
+16555|surrounding area|NACF||||||
+16556|dependable, trustworthy|Ai||||||
+16557|one's first campaign, one's first battle|NACF||||||
+16558|lack of physical exercise, insufficient exercise, inactivity|NACF||||||
+16559|Undoujou|NPl||||||
+16560|athletic meet, sports day|NACF||||||
+16561|service (bus, train), operation|NACF||||||
+16562|motion, revolution, movement|NACF||||||
+16563|operation (of a machine, etc.), operating, running, run|NACF||||||
+16564|working (capital, etc.)|NACF||||||
+16565|driver's license, driver's licence|NACF||||||
+16566|(professional) driver (of a taxi, train, etc.), motorman|NACF||||||
+16567|mate (on a ship), officer|NACF||||||
+16568|classical Japanese poetry (esp. tanka)|NACF||||||
+16569|modern poetry|NACF||||||
+16570|poetry contest|NACF||||||
+16571|singing voice, (sound of) singing|NACF||||||
+16572|sing (one's praises in a poem, etc.), compose a poem, recite a poem|VuT||||||
+16573|extend, cover, range, span|VrugI||||||
+16574|savage, barbarous, barbaric, uncivilized, uncivilised|Ana||||||
+16575|savageness, barbarity|NACF||||||
+16576|boorish, unsophisticated, unrefined, uncouth, tasteless, insensitive, thoughtless, dumb|Ana||||||
+16577|boorishness, unsophisticatedness, lack of refinement, uncouthness, tastelessness, insensitiveness, thoughtlessness, dumbness|NACF||||||
+16578|wild bird|NACF||||||
+16579|outdoors, outside, open air|NACF||||||
+16580|fields, outskirts, suburbs|NACF||||||
+16581|baseball club (at a university, corporation, etc.), baseball team|NACF||||||
+16582|wildness (plants, animals, etc.), uncouth, rough, unpolished|NACF||||||
+16583|wild, growing wild, living in the wild|NACF||||||
+16584|I|P||||||
+16585|ambition, aspiration|NACF||||||
+16586|sinister designs, treachery|NACF||||||
+16587|opposition party, political opposition, opposition|NACF||||||
+16588||-||||||
+16589|Europe|NPl||||||
+16590|countrywide, nationwide, whole country, national|NACF||||||
+16591|nation-wide|Ana||||||
+16592|value highly, prize|VsuruT||||||
+16593|unite, combine, team up|VsuruI||||||
+16594|debut|VsuruI||||||
+16595|achieve independence, be self-supporting|VsuruI||||||
+16596|set sail, put out to sea|VsuruI||||||
+16597|start anew, embark on something new|VsuruI||||||
+16598|develop (film)|VsuruT||||||
+16599|have diarrhoea, have diarrhea|VsuruI||||||
+16600|alight (from train, bus, etc.), get off|VsuruI||||||
+16601|crowd, herd, gather, assemble|VsuruI||||||
+16602|abolish, repeal|VsuruT||||||
+16603|sell, market|VsuruT||||||
+16604|build a bridge, mediate, go between|VsuruT||||||
+16605|compose, forme, organize, organise, compile|VsuruT||||||
+16606|get home|VsuruI||||||
+16607|color, colour, assort, scheme, makeup|VsuruT||||||
+16608|win (a prize)|VsuruI||||||
+16609|regard as important, attach importance to, take a serious view of, put emphasis on|VsuruT||||||
+16610|regard highly, attach importance to|VsuruT||||||
+16611|acquire, possess|VsuruT||||||
+16612|control, manage (e.g. a business)|VsuruT||||||
+16613|concern, be related to|VsuruT||||||
+16614|sing|VsuruI||||||
+16615|form, mold, make up, take form, give form to|VsuruT||||||
+16616|construct, establish|VsuruT||||||
+16617|perform publicly|VsuruI||||||
+16618|exhibit in a foreign country|VsuruT||||||
+16619|make an official announcement, proclaim|VsuruI||||||
+16620|organize, organise, configure, compose|VsuruT||||||
+16621|divide, section, demarcate, partition, segmentate, subdivide, compartmentalize, classify, sort|VsuruT||||||
+16622|be educated, be schooled, train, be instructed, be taught, be brought up|VsuruI||||||
+16623|have culture, be cultivated, be educated|VsuruI||||||
+16624|teach, instruct|VsuruT||||||
+16625|have enough of (food, drink, etc.), have one's fill|VsuruI||||||
+16626|fully enjoy|VsuruT||||||
+16627|be satisfied, be content, be complacent|VsuruI||||||
+16628|interview|VsuruT||||||
+16629|start a business|VsuruI||||||
+16630|open a store (for the day)|VsuruI||||||
+16631|program|VsuruT||||||
+16632|propose marriage|VsuruI||||||
+16633|release|VsuruT||||||
+16634|comprehend, consent, understand, agree|VsuruI||||||
+16635|acquiesce|VsuruI||||||
+16636|hand out a sentence, assess a case|VsuruI||||||
+16637|mass produce|VsuruT||||||
+16638|acknowledge, understand, note, accept|VsuruT||||||
+16639|receive (money)|VsuruT||||||
+16640|possess (esp. a territory)|VsuruT||||||
+16641|gain total control (of people or counties), suppress, oppress, control, master|VsuruT||||||
+16642|restrict, restrain, limit|VsuruT||||||
+16643|conquer, dominate, master|VsuruT||||||
+16644|be successful, be a hit|VsuruI||||||
+16645||-||||||
+16646|produce, create, turn (something) out, develop|VsuruT||||||
+16647|manufacture, produce|VsuruT||||||
+16648|control, check, restrain, inhibit|VsuruT||||||
+16649|hold back (e.g. emotions), rein in (e.g. a horse, unruly people), bridle|VsuruT||||||
+16650|get the better of|VsuruT||||||
+16651|control, command|VsuruT||||||
+16652|enact, establish, create|VsuruT||||||
+16653|limit, restrict, condition, constrain|VsuruT||||||
+16654|manufacture, produce|VsuruT||||||
+16655|plan, design, lay out|VsuruT||||||
+16656|elect|VsuruT||||||
+16657|go on an election campaign, go on a political campaign, campaign, electioneer, canvass|VsuruI||||||
+16658|establish, found, incorporate (a business)|VsuruT||||||
+16659|rehabilitation (in society)|VsuruI||||||
+16660|sell on the market (in the marketplace, in stores, etc.), make something commercially available|VsuruT||||||
+16661|have confidence, have trust, have faith|VsuruI||||||
+16662|signal|VsuruI||||||
+16663|have faith, believe, have creed|VsuruI||||||
+16664|trust, be confiding|VsuruI||||||
+16665|rely on, trust, have faith in, have confidence in|VsuruT||||||
+16666|designate, specify, assign, appoint, point at|VsuruT||||||
+16667|omit, abbreviate, abridge|VsuruT||||||
+16668|save labor, reduce labor|VsuruI||||||
+16669|classify, assort|VsuruT||||||
+16670|perform, appear (in a stage, film, TV show, etc.)|VsuruI||||||
+16671|assume (office), take up (a post), be inaugurated, be installed|VsuruI||||||
+16672|compile, edit|VsuruT||||||
+16673|record|VsuruT||||||
+16674|form of a cabinet|VsuruI||||||
+16675|organize, organise, form|VsuruT||||||
+16676|construct, setup, constitute|VsuruT||||||
+16677|weave (a fabric)|VsuruT||||||
+16678|rise (e.g. of a movement), emerge, rear one's head, gain prominence, come to the fore, gain power, gather strength|VsuruI||||||
+16679|be in charge (of an area of responsibility), be responsible (for a work role, etc.)|VsuruI||||||
+16680|care, look after, repair, maintain, tend, trim, groom|VsuruT||||||
+16681|raid, crack down|VsuruT||||||
+16682|perform a procedure, perform proceedings, perform formalities|VsuruI||||||
+16683|load (on board), equip|VsuruT||||||
+16684|be in service (bus, train), operate|VsuruI||||||
+16685|move, revolve|VsuruI||||||
+16686|be wild, grow wild, live in the wild|VsuruI||||||

@@ -7,11 +7,11 @@ import android.graphics.Color;
 
 public class ConvolutionMatrix
 {
-    public static final int SIZE = 3;
+    private static final int SIZE = 3;
 
-    public double[][] Matrix;
+    private double[][] Matrix;
     public double Factor = 1;
-    public double Offset = 1;
+    private double Offset = 1;
 
     public ConvolutionMatrix(int size) {
         Matrix = new double[size][size];

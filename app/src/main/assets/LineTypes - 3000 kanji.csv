@@ -75,7 +75,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 75|moshi kashite, 若しかして, perhaps, possibly, if I'm not wrong|moshi kashite|若しかして|445||
 76|douzo, どうぞ, please|douzo|どうぞ|446||
 77|na, な, please, don't, hey, listen, you, now, ..., well, ..., I tell you!, you know, wow, ooh|na|な|447;11756;11757;11758;11759||
-78|kudasai, 下さい, please|kudasai|下さい|448||
+78|kudasai, 下さい, please give me, please do for me|kudasai|下さい|448;16006||
 79|iwaba, 言わば, so to speak, so to call it, as it were|iwaba|言わば|449||
 80|sou, そう, (He) seems to do/be X / (I've) heard that X (from what I can see), (I've) heard that (he's/it's) not X (from what I can see), so, right, like that, so, really, seeming, appearing that, seeming that, looking like, having the appearance of, looks like, appears to be, feels like, sounds like, seems to be, sou ni, sou mo nai, da sou|sou|そう|116;117;450;451;8467;8468||
 81|mashite, 況して, still more, to say nothing of, not to mention, still less (with neg. verb), still less|mashite|況して|452;9236||
@@ -233,7 +233,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 233|atsui, 熱い, hot (object), hot (thing), passionate (feelings, etc.), ardent, hot (e.g. gaze), hot (e.g. temper), zealous, enthusiastic, fired up, intense, severe, extreme, hot (topic), of interest|atsui|熱い|641;10625;10626;10627;10628;10629;10630||
 234|mushiatsui, 蒸し暑い, hot and humid, sultry, 蒸暑い|mushiatsui|蒸し暑い|642|蒸暑い|
 235|dekai, でかい, huge, big, gargantuan, dekkai|dekai|でかい|9380||
-236|mottainai, 勿体ない, impious, profane, sacrilegious, unworthy, wasteful, 勿体無い, 物体ない, 物体無い|mottainai|勿体ない|644|勿体無い, 物体ない, 物体無い|
+236|mottainai, 勿体ない, impious, profane, sacrilegious, unworthy, wasteful, too good, more than one deserves, unworthy of, wasteful, 勿体無い, 物体ない, 物体無い|mottainai|勿体ない|644;16113;16114|勿体無い, 物体ない, 物体無い|
 237|shitsukoi, しつこい, insistent, obstinate, persistent, tenacious, too rich (e.g. in taste), fatty, heavy, greasy, shitsukkoi|shitsukoi|しつこい|645||
 238|omoshiroi, 面白い, interesting, funny, amusing, interesting, fascinating, intriguing, enthralling, amusing, funny, comical, pleasant, enjoyable, agreeable, fun|omoshiroi|面白い|646;12556;12557;12558||
 239|shitashii, 親しい, intimate, close (e.g. friend), close (e.g. friend), familiar, friendly, intimate, familiar (e.g. story), well-known (to one), close (relatives), closely related|shitashii|親しい|647;9189;9190;9191||
@@ -298,7 +298,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 298|karai, 辛い, spicy, hot, salty, harsh (criticism), severe (punishment), strict, painful, bitter, difficult, tough, taste|karai|辛い|706;12979;12980;12981||
 299|katai, 固い, stiff, tight, wooden, formal, bookish|katai|固い|707||
 300|kusai, 臭い, stinky, smelly, suspicious, fishy, stinking, smelly, clumsy, unskilled, smelling of, looking like, appearing like, smacking of, -ish|kusai|臭い|708;14882;14883;14884;14885||
-301|tsuyoi, 強い, strong, potent, competent, domineering, tough, strong, brawny, powerful, healthy, rugged, good (at), skilled, knowledgeable, being able to handle, know how to deal (with), durable (against), resistant (to), resilient, firm, rigid, solid, intense, strong, fierce, high|tsuyoi|強い|709;6615;6616;6617;6618;6619||
+301|tsuyoi, 強い, strong, potent, competent, domineering, tough, strong, brawny, powerful, healthy, rugged, good (at), skilled, knowledgeable, being able to handle, know how to deal (with), durable (against), resistant (to), resilient, firm, rigid, solid, intense, strong, fierce, high, dependable, trustworthy|tsuyoi|強い|709;6615;6616;6617;6618;6619;16556||
 302|katai, 堅い, strong, firm, tough|katai|堅い|710||
 303|ayashii, 怪しい, suspicious, dubious, doubtful, dodgy, dangerous, ominous, strange, shady, fishy|ayashii|怪しい|711||
 304|amai, 甘い, sweet, taste|amai|甘い|712||
@@ -333,7 +333,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 333|hiroi, 寛い, broadminded|hiroi|寛い|6844||
 334|kashikoi, 賢い, wise, clever, smart, 畏い|kashikoi|賢い|742|畏い|
 335|subarashii, 素晴らしい, wonderful|subarashii|素晴らしい|743||
-336|kiiroi, 黄色い, yellow, color, colour|kiiroi|黄色い|744||
+336|kiiroi, 黄色い, yellow, high-pitched (voice), shrill, color, colour|kiiroi|黄色い|744;15920||
 337|wakai, 若い, young, youthful, immature, green, low (number), small|wakai|若い|745;6613;6614||
 338|fukafuka, ふかふか, absent-mindedly, soft, fluffy|fukafuka|ふかふか|746;747||
 339|saisan, 再三, again and again, repeatedly|saisan|再三|748||
@@ -463,7 +463,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 463|choudo, ちょうど, exactly, just, right|choudo|ちょうど|909||
 464|zetsumyou, 絶妙, exquisite, superb, perfect, miraculous, exquisiteness, superbness, perfectness, miraculousness|zetsumyou|絶妙|910;911||
 465|kasuka, 微か, faint, dim, weak, indistinct, hazy, poor, wretched, faint, dim, weak, slight, vague, indistinct, hazy, poor, wretched, meagre, meager, scanty|kasuka|微か|912;11584;11585||
-466|kouhei, 公平, fair, impartial, just, fairness, impartiality, justice|kouhei|公平|913;914||
+466|kouhei, 公平, fair, impartial, just, fairness, impartiality, justice, objectivity|kouhei|公平|913;914||
 467|yuumei, 有名, famous, fame, famous|yuumei|有名|915;916;10324||
 468|hijaku, 微弱, feeble, faint, weak|hijaku|微弱|917||
 469|kakko, 確固たる, firm, unshakeable, resolute|kakko|確固たる|918||
@@ -575,7 +575,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 575|shikkei, 失敬, rude, impolite, disrespectful, impertinent, rudeness, impoliteness, disrespect, impertinence|shikkei|失敬|1067;1068||
 576|daijoubu, 大丈夫, safe, all right, okay, OK, safe, secure, sound, problem-free, without fear, all right, alright, OK, okay, certainly, surely, undoubtedly, no thanks, I'm good, that's alright, great man, fine figure of a man|daijoubu|大丈夫|1069;8139;8140;8141;8142||
 577|anzen, 安全, safe, secure, safety, security|anzen|安全|1070;1071||
-578|manzoku, 満足, satisfied, satisfaction, sufficiency|manzoku|満足|1073;1074;1075||
+578|manzoku, 満足, satisfied, satisfaction, contentment, complacency, sufficiency, sufficient, enough, adequate, proper|manzoku|満足|1073;1074;1075;16081||
 579|maji, マジ, serious|maji|マジ|1076||
 580|juudai, 重大, serious, important, significant, grave, weighty|juudai|重大|1077||
 581|kan'i, 簡易, simple, convenient, easy, simplicity, convenience, easiness, quasi-|kan'i|簡易|1079;1080||
@@ -621,8 +621,8 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 621|heppoko, へっぽこ, untrained, hack, quack (fake or untrained doctor)|heppoko|へっぽこ|1138;1139||
 622|kinkyuu, 緊急, urgent, pressing, emergency|kinkyuu|緊急|1140;1141||
 623|kyuu, 急, urgent, sudden, abrupt, sharp, steep, precipitous, rapid, swift, fast, sudden, abrupt, unexpected, urgent, pressing, steep, sharp, precipitous, emergency, crisis, danger, urgency, hurrying, haste, (in gagaku or noh) end of a song|kyuu|急|1142;11684;11685;11686;11687;11688;11689||
-624|iroiro, 色々, various|iroiro|色々|1143||
-625|iron, 色ん, various|iron|色ん|1143||
+624|iroiro, 色々, various, all sorts of, variety of, various colors (colours)|iroiro|色々|1143;15801||
+625|iron, 色ん, various, all sorts of, variety of|iron|色ん|1143||
 626|daikirai, 大嫌い, very disliked (to dislike very much), hated|daikirai|大嫌い|1144||
 627|daisuki, 大好き, very liked (to like very much), loved, loveable, very likeable, like very much|daisuki|大好き|1145;8146||
 628|jakutai, 弱体, weak (organization), weak (organization, organisation)|jakutai|弱体|1146;13705||
@@ -645,8 +645,8 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 645|shita, 下, below, under, bottom, below, down, under, younger (e.g. daughter), beneath, underneath, just after, right after, inferiority, one's inferior (i.e. one's junior), trade-in, preliminary, preparatory|shita|下|1170;1171;9168;9169;9170;9171;9172;9173||
 646|dokomo, どこも, everywhere|dokomo|どこも|1172||
 647|harubaru, 遥々, from afar, over a great distance, all the way, 遙々, 遙遙, 遥遥|harubaru|遥々|1173|遙々, 遙遙, 遥遥|
-648|kochira, 此方, here, kocchi|kochira|此方|1174|kocchi|
-649|koko, 此処, here|koko|此処|1174||
+648|kochira, 此方, here (place physically close to the speaker, place pointed by the speaker while explaining), this place, kocchi|kochira|此方|1174|kocchi|
+649|koko, 此処, here (place physically close to the speaker, place pointed by the speaker while explaining), this place, these last (followed by a duration noun and a past sentence: time period before the present time of the speaker), these next ... (followed by a duration noun and a non past sentence: time period after the present time of the speaker), the next ...|koko|此処|1174;15932;15933||
 650|mae, 前, in front (of), before (e.g. the house), before, previously, ago, head (of a line), front (e.g. of a bus), fore part, ago, before (some event), previously, (minutes) to (the hour), in the presence of, helping, portion, privates, private parts|mae|前|1175;1176;1177;13790;13791;13792;13793||
 651|naka, 中, inside, in, inside, center, among, within, center (centre), middle, during, while|naka|中|1178;1179;14992;14993;14994||
 652|tonari, 隣, next to, neighbor|tonari|隣|1180;1181||
@@ -659,8 +659,8 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 659|arutokoro, あるところ, somewhere, someplace|arutokoro|あるところ|1187||
 660|izukoka, 何処か, somewhere, someplace|izukoka|何処か|1187||
 661|dokoka, どこか, somwhere, anywhere, dokka|dokoka|どこか|1188|dokka|
-662|soko, 其処, there|soko|其処|1189||
-663|sochira, 其方, there, socchi|sochira|其方|1189|socchi|
+662|soko, 其処, there (place relatively near listener), there (place just mentioned), that place, then (of some incident just spoken of), that (of point just raised), you|soko|其処|1189;16377;16378;16379||
+663|sochira, 其方, there (place relatively near listener), socchi|sochira|其方|1189|socchi|
 664|nankaika, 何回か, a few times, nankai|nankaika|何回か|1190||
 665|mukashi, 昔, a long time ago, olden days, former|mukashi|昔|1191;1192||
 666|totsuzen, 突然, abruptly, suddenly, unexpectedly, all at once, abrupt, sudden, unexpected|totsuzen|突然|1193;13395||
@@ -785,11 +785,11 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 785|banchi, 番地, counter for house number, house number, address|banchi|番地|1332;13557||
 786|tou, 頭, counter for large animals, counter for large animals (e.g. head of cattle), counter for insects in a collection, counter for helmets, masks, etc.|tou|頭|1333;10165||
 787|hon, 本, counter for long narrow objects, book, volume, script, this, present, main, head, real, regular, counter for long cylindrical things, counter for films, TV shows, etc., counter for goals, home runs, etc., counter for telephone calls, bon, pon, nanbon, ippon, sanbon, roppon, happon, juppon|hon|本|1335;1336;12887;12888;12889;12890||
-788|dai, 台, counter for machines, incl. vehicles|dai|台|1337||
+788|dai, 台, counter for machines, incl. vehicles, stand, rack, table, bench, podium, pedestal, platform, stage, support, holder, rack, setting (e.g. in jewellery), level (e.g. price level), range (e.g. after physical units), period (of time, e.g. a decade of one's life), elevated area, viewing platform, dish tray, meal, tall building, tower|dai|台|1337;15624;15625;15626;15627;15628;15629;15630;15631;15632||
 789|kagetsu, ヶ月, counter for month-long periods, tsuki, kagetsukan, 月, か月, 箇月, nikagetsu, ikkagetsu, hitotsuki, rokkagetsu, hachikagetsu, hakkagetsu, jikkagetsu, jukkagetsu|kagetsu|ヶ月|1338|tsuki, kagetsukan, 月, か月, 箇月|
 790|hai, 倍, counter for multiples, bai, pai, ippai, sanbai, roppai, happai, jubbai, folds, times|hai|倍|1339||
 791|haku, 泊, counter for nights of a stay, paku, ippaku, nihaku, sampaku, yonhaku, yompaku, gohaku , roppaku, nanahaku, happaku, kyûhaku, zyuppaku|haku|泊|1340||
-792|ban, 番, counter for number |ban|番|1341||
+792|ban, 番, counter for number , number (in a series), (one's) turn, watch, guard, lookout, bout, match|ban|番|1341;15551;15552;15553;15554||
 793|ji, 時, o'clock, counter for hours, hour, moment, hour, o'clock, (specified) time, when ..., during ..., yoji, shichiji, kuji|ji|時|1342;1343;14587;14588||
 794|nin, 人, counter for people, person, hitori, futari, yonnin, shichinin, juuyonin, nijuuyonin|nin|人|1344;15048||
 795|mei, 名, counter for people|mei|名|1345||
@@ -798,7 +798,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 798|byou, 秒, counter for seconds|byou|秒|1348||
 799|mai, 枚, counter for sheets, thin flat objects|mai|枚|1349||
 800|ko, 個, counter for small round objects, counter for articles, counter for military units, individual, 箇, 个, ヶ, ikko, rokko, hakko, jukko, nanko|ko|個|1350;9666;9667;9668|箇, 个, ヶ|
-801|shurui, 種類, counter for sorts of things, number of varieties, categories, species, variety, kind, type, category, species, sort|shurui|種類|1351;1352||
+801|shurui, 種類, counter for sorts of things, number of varieties, categories, species, variety, kind, type, category, species, sort, counter for different sorts of things|shurui|種類|1351;1352;16364||
 802|han, 番, -st/nd/rd/th (number)|han|番|1353||
 803|gatsu, 月, -st/nd/rd/th month of the year (ie. Jan...dec), month|gatsu|月|1354;1355||
 804|wa, 話, counter for stories|wa|話|1356||
@@ -1106,12 +1106,12 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1106|tsuugaku, 通学, commuting to school, school commute|tsuugaku|通学|1673||
 1107|kyousou, 競争, competition, contest, rivalry, race, competition (between organisms or species)|kyousou|競争|1674;6382||
 1108|kansei, 完成, completion, perfection, accomplishment|kansei|完成|1675||
-1109|ryoukai, 了解, comprehension, consent, understanding, roger|ryoukai|了解|1676||
+1109|ryoukai, 了解, comprehension, consent, understanding, roger, comprehension, consent, understanding, agreement, OK, roger (on two-way radio)|ryoukai|了解|1676;16174;16175||
 1110|shuuchuu, 集中, concentration, convergence, centralization, integration, gathering together|shuuchuu|集中|1677||
 1111|ninshin, 妊娠, conception, pregnancy|ninshin|妊娠|1678||
 1112|kaigi, 会議, conference, meeting, meeting, conference, session, assembly, council, convention, congress|kaigi|会議|1679;14683||
 1113|taiji, 対峙, confrontation|taiji|対峙|1680||
-1114|seifuku, 制服, conquest, subjugation, overcoming|seifuku|制服|1681||
+1114|seifuku, 制服, conquest, subjugation, overcoming, uniform|seifuku|制服|1681;16200||
 1115|soudan, 相談, consultation, discussion|soudan|相談|1682||
 1116|shouhi, 消費, consumption, expenditure|shouhi|消費|1683||
 1117|keiyaku, 契約, contract, compact, agreement|keiyaku|契約|1684||
@@ -1157,7 +1157,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1157|tsukai, 使い, errand, mission, going as envoy, use, usage, messenger, bearer, errand oy, errand girl, familiar spirit, messenger, bearer, errand boy, errand girl, use, usage, user, trainer, tamer, charmer|tsukai|使い|1725;1726;12032;12033||
 1158|funka, 噴火, eruption|funka|噴火|1727||
 1159|risshou, 立証, establishing of proof, demonstration, substantiation|risshou|立証|1728||
-1160|settei, 設定, establishment, creation, posing (of a problem), setting (of a movie, scene, options …), configuration, assignment|settei|設定|1729||
+1160|settei, 設定, establishment, creation, posing (of a problem), setting (of a movie, scene, options …), configuration, assignment, establishment, creation, posing (a problem), setting (movie, novel, etc.), scene, options setting, preference settings, configuration, setup|settei|設定|1729;16238;16239||
 1161|sogai, 疎外, estrangement, neglect, alienation, casting out|sogai|疎外|1730||
 1162|hinan, 避難, evacuation, escape, taking refuge, finding shelter|hinan|避難|1731||
 1163|shougen, 証言, evidence, testimony, testimony, (verbal) evidence|shougen|証言|1732;13337||
@@ -1165,7 +1165,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1165|kousa, 考査, examination, consideration, test, quiz|kousa|考査|1734||
 1166|koufun, 興奮, excitement, stimulation, agitation, arousal, 昂奮, 亢奮|koufun|興奮|1735|昂奮, 亢奮|
 1167|haijo, 排除, exclusion, removal, rejection, elimination, abatement, lifting (sanctions, etc..)|haijo|排除|1736||
-1168|koukai, 公開, exhibit|koukai|公開|1737||
+1168|koukai, 公開, opening to the public, making available to the public, putting on display, exhibiting, showing (play, movie, etc.), holding (interview, etc.), open, public|koukai|公開|1737||
 1169|tenrankai, 展覧会, exhibition|tenrankai|展覧会|1738||
 1170|tenji, 展示, exhibition, display|tenji|展示|1739||
 1171|sonzai, 存在, existence, being|sonzai|存在|1740||
@@ -1241,7 +1241,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1241|shokugyou, 職業, occupaton, business|shokugyou|職業|1815||
 1242|osonae, お供え, offering, 御供え|osonae|お供え|1816|御供え|
 1243|sousa, 操作, operation, management, processing, manipulation (to one's benefit)|sousa|操作|1817||
-1244|unten, 運転, operation, motion, driving|unten|運転|1818||
+1244|unten, 運転, operation, motion, driving, operation (of a machine, etc.), operating, running, run, working (capital, etc.)|unten|運転|1818;16563;16564||
 1245|shirei, 指令, orders, instructions, directive, commands|shirei|指令|1819||
 1246|kaigai shucchou, 海外出張, overseas business trip|kaigai shucchou|海外出張|1820||
 1247|gomen, 御免, pardon, dismissal, declination, permission|gomen|御免|1821||
@@ -1287,7 +1287,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1287|koukai, 後悔, regret, repentance, remorse|koukai|後悔|1864||
 1288|soukin, 送金, remittance, sending money, money transfer|soukin|送金|1865||
 1289|rimocon, リモコン, remote control|rimocon|リモコン|1866||
-1290|teire, 手入れ, repairs, maintenance, tending, trimming, grooming, crackdown, police raid|teire|手入れ|1867||
+1290|teire, 手入れ, repairs, maintenance, tending, trimming, grooming, crackdown, police raid, care, looking after, repair, maintenance, tending, trimming, grooming, (police) raid, crackdown|teire|手入れ|1867;16476;16477||
 1291|henji, 返事, reply, answer, response|henji|返事|1868||
 1292|yoyaku, 予約, reservation, booking|yoyaku|予約|1869||
 1293|kyuusoku, 休息, rest, relief, relaxation, 休足|kyuusoku|休息|1870|休足|
@@ -1319,7 +1319,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1319|yurayura, 揺ら揺ら, slow swaying, rolling from side to side, swinging, wobbling, shake, swing, waver, roll, rock, tremble, vibration, flicker|yurayura|揺ら揺ら|1896||
 1320|kitsuen, 喫煙, smoking, smoking|kitsuen|喫煙|1897;9656||
 1321|kushami, 嚏, sneeze, spoken twice in response to someone sneezing as a charm against an early death, 嚔|kushami|嚏|1898;14896|嚔|
-1322|sakkaa, サッカー, soccer, football|sakkaa|サッカー|1899||
+1322|sakkaa, サッカー, soccer, football, seersucker|sakkaa|サッカー|1899;16195||
 1323|seiri, 整理, sorting, arrangement, organization, putting in order, adjustment, regulation, liquidation, liquidation, settlement, consolidation, clearance (e.g. debt), paying off, retrenchment, curtailment, cutting down, disposal|seiri|整理|1900;7204;7205||
 1324|tokushin, 特進, special promotion (in rank or grade)|tokushin|特進|1901||
 1325|tokkun, 特訓, special training, intensive training, crash course, totsukun|tokkun|特訓|1902||
@@ -1344,7 +1344,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1344|odoshi, 脅し, threat|odoshi|脅し|1921||
 1345|tawake, 戯け, tomfoolery, foolish act, nonsense|tawake|戯け|1922||
 1346|shoubai, 商売, trade, business, commerce, transation, occupation|shoubai|商売|1923||
-1347|kyouiku, 教育, training, education|kyouiku|教育|1924||
+1347|kyouiku, 教育, training, education, education, schooling, training, instruction, teaching, upbringing, culture, cultivation, education|kyouiku|教育|1924;16045;16046||
 1348|norikae, 乗り換え, transfer (e.g. trains), transfer (trains, buses, etc.), connection, connexion, switching (stock), chromosomal crossover, crossing over, transfer (trains, buses, etc.), connection, connexion|norikae|乗り換え|1925;8901;8902;8903;9845||
 1349|hentai, 変態, transformation, metamorphosis, abnormality, pervert|hentai|変態|1926||
 1350|yuragi, 揺らぎ, tremor, fluctuation|yuragi|揺らぎ|1927||
@@ -1391,7 +1391,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1391|izen, 以前, ago, since, before, previous|izen|以前|1967||
 1392|nougaku, 農学, agriculture|nougaku|農学|1968||
 1393|nerai, 狙い, aim|nerai|狙い|1969||
-1394|koukuubin, 航空便, air mail|koukuubin|航空便|1970||
+1394|koukuubin, 航空便, airmail, air mail, air service, air transport (of goods)|koukuubin|航空便|1970;15962||
 1395|kuugun, 空軍, airforce, air force, kugun|kuugun|空軍|1971;11665||
 1396|keihou, 警報, alarm, warning|keihou|警報|1972||
 1397|zen'in, 全員, all members (unanimity), all hands, the whole crew, everyone, everybody, zennin, zenin|zen'in|全員|1973||
@@ -1426,8 +1426,8 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1426|moto, 基, base, basis, foundation, root, (plant) root, (tree) trunk|moto|基|2003||
 1427|tatakai, 戦い, battle, fight, struggle, conflict|tatakai|戦い|2004||
 1428|saisho, 最初, beginning, outset, first, onset, start|saisho|最初|2005||
-1429|hajime, 始め, beginning, start, outset, opening|hajime|始め|2006||
-1430|ika, 以下, below-mentioned, following, rest (of a statement), not exceeding, and downwards, and below, under, less than|ika|以下|2007;2008||
+1429|hajime, 始め, beginning, start, outset, opening, first (in line, etc.), origin, such as ..., not to mention ...|hajime|始め|2006;15743;15744;15745||
+1430|ika, 以下, below-mentioned, following, rest (of a statement), not exceeding, and downwards, and below, under, less than, not exceeding, and downward, ... and below, below (e.g. standard), under (e.g. a level), the below-mentioned, the following, the rest|ika|以下|2007;2008;15786;15787;15788||
 1431|ichiban, 一番, best, first, number one, most|ichiban|一番|2009||
 1432|seinengappi, 生年月日, birth date, date of birth, DOB|seinengappi|生年月日|2010||
 1433|seinen, 生年月日, birth year|seinen|生年月日|2011||
@@ -1444,7 +1444,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1444|choushoku, 朝食, breakfast|choushoku|朝食|2024||
 1445|shiiku, 飼育, breeding, raising, rearing|shiiku|飼育|2025||
 1446|kyoku, 局, bureau, department, office, affair, situation, office (e.g. post, telephone), broadcasting station (e.g. television, radio), channel, exchange, affair, situation, game (of go, shogi, etc.)|kyoku|局|2026;14897;14898;14899||
-1447|basu, バス, bus|basu|バス|2027||
+1447|basu, バス, bus, bath, bass, Bath (Britain), Basse, Buss|basu|バス|2027;15561;15562;15563||
 1448|basugaisha, バス会社, bus agency, bus company|basugaisha|バス会社|2028||
 1449|basu dai, バス代, bus fare|basu dai|バス代|2029||
 1450|uchiawase, 打ち合わせ, business meeting, previous arrangement, appointment, preparatory meeting, overlap (of a coat, etc), advance arrangements, preparatory meeting, briefing session, overlap (of a coat, etc.), making something match exactly, 打ち合せ, 打合せ, 打合わせ|uchiawase|打ち合わせ|2030;8560;8561;8562|打ち合せ, 打合せ, 打合わせ|
@@ -1455,7 +1455,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1455|miyako, 都, capital, metropolis, 京|miyako|都|2035|京|
 1456|youjin, 用心, care, precaution, guarding, caution, 要心|youjin|用心|2036|要心|
 1457|baai, 場合, in case (you) do/are X, case, situation, in case of, in the case that, in case that, if|baai|場合|135;2037||
-1458|genkin, 現金, cash, ready money, money on hand, currency|genkin|現金|2038||
+1458|genkin, 現金, cash, ready money, money on hand, currency, mercenary, self-interested, calculating|genkin|現金|2038;15698||
 1459|inga, 因果, cause and effect, karma, fate|inga|因果|2039||
 1460|gen'in, 原因, cause, origin, source, genin|gen'in|原因|2040||
 1461|shiki, 式, ceremony, style, equation, formula, expression|shiki|式|2041;2042||
@@ -1467,7 +1467,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1467|ji, 字, character, handwriting, penmanship, letter, character (of a word)|ji|字|2050;2051||
 1468|seikaku, 性格, character, personality, disposition, nature|seikaku|性格|2052||
 1469|hanami, 花見, cherry blossom viewing, flower viewing|hanami|花見|2053||
-1470|chuugokugo, 中国語, Chinese language|chuugokugo|中国語|2054||
+1470|chuugokugo, 中国語, Chinese language, Chinese (language)|chuugokugo|中国語|2054;15621||
 1471|sentaku, 選択, choice, selection|sentaku|選択|2055||
 1472|ten matsu, てんまつ, circumstance|ten matsu|てんまつ|2056||
 1473|jijou, 事情, circumstances, considerations, conditions, situation, reasons, circumstances, conditions, situation, reasons, state of affairs|jijou|事情|2057;11508||
@@ -1479,7 +1479,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1479|souji, 掃除, cleaning, sweeping, dusting, scrubbing|souji|掃除|2063||
 1480|ha, 歯, clique, fashion, school (e.g. of style), tooth, teeth|ha|歯|2064;2065||
 1481|kiji, 生地, cloth, material, texture, one's true character, unglazed pottery, uncooked dough, batter, cloth, fabric, material, texture, inherent quality, one's true character, one's true colours, unglazed pottery, skin with no make-up|kiji|生地|2066;13001;13002;13003;13004||
-1482|kurabu, クラブ, club, students'society|kurabu|クラブ|2067||
+1482|kurabu, クラブ, club, students'society, nightclub, clubs (card suit), crab, golf club|kurabu|クラブ|2067;16034;16035;16036;16037||
 1483|tegakari, 手掛かり, clue, key, trail, scent, track, contact, handhold, on hand, 手がかり|tegakari|手掛かり|2068||
 1484|anshou, 暗証, code, cipher, password|anshou|暗証|2069||
 1485|kaze, 風邪, common cold, cold, influenza, flu, ague|kaze|風邪|2070||
@@ -1497,7 +1497,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1497|wake, 訳, conclusion, judgement, reason, cause, meaning, circumstances, situation, conclusion from reasoning, judgement or calculation based on something read or heard, reason, cause, meaning, circumstances, situation|wake|訳|2082;11241||
 1498|mama, 儘, X just the way it is, condition, state, as it is, as one likes, because, as, condition, state, sic, sic erat scriptum, the quoted matter has been transcribed exactly as found in the source text, 侭|mama|儘|111;2083;9731;9732;9733|侭|
 1499|seisan, 成算, confidence in success|seisan|成算|2084||
-1500|juutai, 重体, congestion (e.g. traffic), congestion, stagnation, jutai|juutai|重体|2085||
+1500|juutai, 重体, congestion (e.g. traffic), congestion, stagnation, seriously ill, serious condition, critical state, jutai|juutai|重体|2085;15828||
 1501|iwai, 祝い, congratulations, celebration, festival, congratulatory gift, oiwai, お祝い|iwai|祝い|2086|oiwai, お祝い|
 1502|jou, 定, constant, tei|jou|定|2087|tei|
 1503|taishitsu, 体質, constitution (physical), genetic make-up, predisposition (to disease)|taishitsu|体質|2088||
@@ -1579,7 +1579,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1579|tekizen, 敵前, enemy presence|tekizen|敵前|2167||
 1580|kakki, 活気, energy, liveliness|kakki|活気|2168||
 1581|kougaku, 工学, engineering|kougaku|工学|2169||
-1582|eigo, 英語, English language|eigo|英語|2170||
+1582|eigo, 英語, English language, English (language)|eigo|英語|2170;15659||
 1583|eiwa, 英和, english to japanese|eiwa|英和|2171||
 1584|kinyuu, 記入, entry, filling of forms|kinyuu|記入|2172||
 1585|kankyou, 環境, environment, circumstances|kankyou|環境|2173||
@@ -1660,7 +1660,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1660|umami, 急, good flavor (flavour), good taste, deliciousness|umami|急|2248||
 1661|shinamono, 品物, goods, article, thing, goods, article, thing|shinamono|品物|2250;10014||
 1662|chou, 庁, government office, agency, board|chou|庁|2251||
-1663|sotsugyoushiki, 卒業式, graduation ceremony, graduation excercises|sotsugyoushiki|卒業式|2252||
+1663|sotsugyoushiki, 卒業式, graduation ceremony, graduation excercises, graduation ceremony, commencement|sotsugyoushiki|卒業式|2252;16396||
 1664|bunpou, 文法, grammar, syntax|bunpou|文法|2253||
 1665|rei, 礼, thanks, gratitude, manners, etiquette, bow, reward, gift, ceremony, ritual, thanks, gratitude, manners, etiquette, orei, お礼|rei|礼|2254;7481;7482;7483;7484;9935;9936|orei, お礼|
 1666|ooyorokobi, 大喜び, great joy, 大歓び|ooyorokobi|大喜び|2255|大歓び|
@@ -1701,7 +1701,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1701|jinsei, 人生, human life, (human) life (i.e. conception to death)|jinsei|人生|2291;14620||
 1702|shitate, 下手, humble position, inferiority|shitate|下手|2292||
 1703|i keiyoushi, イ形容詞, i-adjective|i keiyoushi|イ形容詞|2293||
-1704|douyou, 同様, identity, similarity|douyou|同様|2294||
+1704|douyou, 同様, identity, similarity, identical, equal to, same (kind), like, similarity|douyou|同様|2294;15654||
 1705|yamai, 病, illness, disease|yamai|病|2295||
 1706|byouki, 病気, illness, disease, sick|byouki|病気|2296;2297||
 1707|shoumei, 照明, illumination, lighting, artificial light|shoumei|照明|2298||
@@ -1772,7 +1772,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1772|seimei, 生命, life, existence|seimei|生命|2368||
 1773|kurashi, 暮らし, life, living, livelihood, life circumstances, 暮し, gurashi|kurashi|暮らし|2369|暮し|
 1774|seimeitai, 生命体, life-form|seimeitai|生命体|2370||
-1775|hikari, 光, light|hikari|光|2371||
+1775|hikari, 光, light, illumination, ray, beam, gleam, glow, happiness, hope, influence, power, vision, eyesight|hikari|光|2371;15768;15769;15770;15771||
 1776|akari, 明かり, light, illumination, glow, beam, light, illumination, glow, gleam, lamp, light, 明り, 灯かり, 灯り, 灯, 灯火|akari|明かり|2372;12661;12662|明り, 灯かり, 灯り, 灯, 灯火|
 1777|gotoki, 如き, like, as if, the same as|gotoki|如き|2373||
 1778|sukikirai, 好き嫌い, likes and dislikes, pickiness (about food), choosiness, fussiness, tastes, preferences|sukikirai|好き嫌い|2374||
@@ -1828,7 +1828,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1828|reigen, 霊験, miraculous efficacy, miracle, miraculous virtue|reigen|霊験|2425||
 1829|kanchigai, 勘違い, misunderstanding, wrong guess|kanchigai|勘違い|2426||
 1830|gendaigo, 現代語, modern English language|gendaigo|現代語|2427||
-1831|gendai, 現代, modern era, nowadays, modern times, present day|gendai|現代|2428||
+1831|gendai, 現代, modern era, nowadays, modern times, present day, nowadays, modern era, modern times, present-day|gendai|現代|2428;15695||
 1832|genkoku, 現国, modern Japanese (esp. as a school subject)|genkoku|現国|2429||
 1833|toshitsuki, 年月, months and years|toshitsuki|年月|2430||
 1834|kishoku, 気色, mood, humor, humour, looks, countenance|kishoku|気色|2431||
@@ -1860,7 +1860,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1860|chuumoku, 注目, notice, attention, observation|chuumoku|注目|2457||
 1861|henachoko, ヘナチョコ, novice, greenhorn, 埴猪口|henachoko|ヘナチョコ|2458|埴猪口|
 1862|genzai, 現在, now, current, present, present time, as of, now, current, present, present time, as of|genzai|現在|2459;9437||
-1863|bangou, 番号, number|bangou|番号|2460||
+1863|bangou, 番号, number, series of digits|bangou|番号|2460||
 1864|kaisuu, 回数, number of times, frequency, count|kaisuu|回数|2461||
 1865|kazu, 数, number, amount, quantity, number|kazu|数|2462;2463||
 1866|eiyouso, 栄養素, nutrient|eiyouso|栄養素|2464||
@@ -1868,7 +1868,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1868|eiyou, 栄養, nutrition, nourishment, 営養|eiyou|栄養|2466|営養|
 1869|mono, 物, object, thing, thing, object, article, stuff, substance, one's things, possessions, property, belongings, things, something, anything, everything, nothing, quality, reason, the way of things, used to emphasize emotion, judgment, etc., used to indicate a common occurrence in the past (after a verb in past tense), used to indicate a general tendency, used to indicate something that should happen, item classified as ..., item related to ..., work of ..., cause of ..., cause for ..., somehow, somewhat, for some reason, really, truly|mono|物|2467;9237;9238;9239;9240;9241;9242;9243;9244;9245;9246||
 1870|nioi, 匂い, odor, odour, stench, smell, scent, whiff, odour, odor, scent, smell, stench, aura, whiff, smacks of ..., sense, flavour, flavor, 臭い|nioi|匂い|2468;11041;11042|臭い|
-1871|ippou, 一方, one (esp. of two), the other, one way, the other way, one direction, the other direction, one side, the other side, one party, the other party|ippou|一方|2469||
+1871|ippou, 一方, one (esp. of two), the other, one way, the other way, one direction, the other direction, one side, the other side, one party, the other party, on the one hand, on the other hand, whereas, although, but at the same time, meanwhile, in turn, just keeps, being inclined to ..., tending to be ..., tending to do ..., continuously ..., just keeps on ...ing, only, Ippou|ippou|一方|2469;15793;15794;15795;15796||
 1872|ittoku, 一得, one advantage, merit|ittoku|一得|2470||
 1873|ippatsu, 一発, one shot, one round, one charge|ippatsu|一発|2471||
 1874|wagaya, 我が家, one's home, one's house, one's family|wagaya|我が家|2472||
@@ -1916,7 +1916,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1916|keisatsu, 警察, police, police officer, police station|keisatsu|警察|2515;10825;10826||
 1917|seikai, 政界, political world|seikai|政界|2516||
 1918|seiji, 政治, politics, government|seiji|政治|2517||
-1919|seijihan, 政治犯, poltical offense, political offence, political offender|seijihan|政治犯|2518||
+1919|seijihan, 政治犯, poltical offense, political offence, political offender, political offense, political offence, political crime, political offender, political prisoner, prisoner of conscience|seijihan|政治犯|2518;16203;16204||
 1920|tsuuyou, 通用, popular use, circulation|tsuuyou|通用|2519||
 1921|jinkou, 人口, population, common talk|jinkou|人口|2520||
 1922|bubun, 部分, portion, section, part|bubun|部分|2521||
@@ -1929,12 +1929,12 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 1929|youi, 用意, preparation, arrangements, provision, getting ready, laying out (e.g. a meal)|youi|用意|2528||
 1930|ejiki, 餌食, prey, victim|ejiki|餌食|2529||
 1931|nedan, 値段, price|nedan|値段|2530||
-1932|bukka, 物価, price of commodities, cost-of-living, consumer price|bukka|物価|2531||
+1932|bukka, 物価, price of commodities, cost-of-living, consumer price, prices of commodities, prices (in general), cost-of-living|bukka|物価|2531;15583||
 1933|daikin, 代金, price, payment, cost, charge, money, bill, price, cost, charge, payment, bill, fee|daikin|代金|2532;12468||
 1934|jiman, 自慢, pride, boast|jiman|自慢|2533||
 1935|shou, 賞, prize, award|shou|賞|2534||
 1936|mondai, 問題, question (e.g. on a test), problem, problem (e.g. societal, political), question, issue, subject (e.g. of research), case, matter, question (i.e. doubt), public discussion, controversy, trouble, problem, inconvenience, difficulty|mondai|問題|2535;6630;6631;6632;6633||
-1937|tetsuduki, 手続き, procedure|tetsuduki|手続き|2536||
+1937|tetsuduki, 手続き, procedure, process, proceedings, formalities|tetsuduki|手続き|2536||
 1938|sakumotsu, 作物, produce, crops, produce (e.g. agricultural), crops|sakumotsu|作物|2537;13928||
 1939|sousaku, 創作, production, literary creation, work|sousaku|創作|2538||
 1940|bangumi, 番組, program (e.g. TV), programme, Bangumi|bangumi|番組|2539;14310||
@@ -2017,7 +2017,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2017|hooshi, 頬氏, service|hooshi|頬氏|2618||
 2018|saabisu, サービス, service, support system|saabisu|サービス|2619||
 2019|setto, セット, set|setto|セット|2620||
-2020|kumi, 組, set (of items), group (of people), class (of students), company, family, team|kumi|組|2621||
+2020|kumi, 組, set (of items), group (of people), class (of students), company, family, team, group (of people), class (of students), company (esp. construction), family (i.e. mafia), team, typesetting, composition|kumi|組|2621;16016;16017||
 2021|jou, 状, shape|jou|状|2622||
 2022|kakkou, 格好, shape, form, posture, appearance, manner, suitability, moderateness (in price), shape, form, figure, posture, pose, state, situation, suitable, fit, reasonable, about, 恰好|kakkou|格好|2623;10800;10801;10802;10803|恰好|
 2023|funabin, 船便, shipped mail, surface mail (ship), sea mail, ferry service, steamer service|funabin|船便|2624;12271;12272||
@@ -2041,7 +2041,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2041|yononaka, 世の中, society, the world, the times|yononaka|世の中|2643||
 2042|gokko, ゴッコ, something done together, game of make-believe|gokko|ゴッコ|2644||
 2043|ayakashi, あやかし, something strange or suspicious, ghost at sea, idiot, fool|ayakashi|あやかし|2645||
-2044|uta, 歌, song|uta|歌|2646||
+2044|uta, 歌, song, classical Japanese poetry (esp. tanka), modern poetry|uta|歌|2646;16568;16569||
 2045|madou, 魔道, sorcery, magic, heresy|madou|魔道|2647||
 2046|tama, 魂, soul, spirit, tamashii, 霊, damashii|tama|魂|2648|tamashii, 霊|
 2047|reikon, 霊魂, soul, spirit|reikon|霊魂|2649||
@@ -2054,7 +2054,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2054|aida, 間, space, gap, interval, pause, break, span, stretch, period, relationship|aida|間|2656||
 2055|ma, 間, space, room, time, pause|ma|間|2657||
 2056|tokugi, 特技, special skill|tokugi|特技|2658||
-2057|senmon, 専門, speciality, specialty, subject of study, expertise, 專門|senmon|専門|2659|專門|
+2057|senmon, 専門, speciality, specialty, subject of study, expertise, speciality, specialty, subject of study, expert, area of expertise, 專門|senmon|専門|2659;16228|專門|
 2058|supiichi, スピーチ, speech|supiichi|スピーチ|2660||
 2059|seifu, 台詞, speech, words, one's lines, remarks, 科白|seifu|台詞|2661|科白|
 2060|reitai, 霊体, spirit body|reitai|霊体|2662||
@@ -2138,7 +2138,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2138|tsuaa, ツアー, tour|tsuaa|ツアー|2743||
 2139|shiai, 試合, tournament, match, game, bout, contest|shiai|試合|2744||
 2140|ato, 跡, trace tracks, mark, sign, remains, ruins, 迹, 址|ato|跡|2745|迹, 址|
-2141|shingou, 信号, traffic lights, signal, semaphore|shingou|信号|2746||
+2141|shingou, 信号, traffic lights, signal, semaphore, signal, signalling, signaling, traffic light, traffic signal|shingou|信号|2746;16286;16287||
 2142|koutsuu, 交通, traffic, transportation, communication, exchange (of ideas, etc.), intercourse|koutsuu|交通|2747||
 2143|tadoushi, 他動詞, transitive verb|tadoushi|他動詞|2748||
 2144|ryokou gaisha, 旅行会社, travel agency|ryokou gaisha|旅行会社|2749||
@@ -2176,7 +2176,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2176|senran, 戦乱, wars, disturbances|senran|戦乱|2781||
 2177|senjou, 洗浄, washing, cleaning, laundering, washing, cleansing, cleaning, laundering, cleansing (one's mind and body)|senjou|洗浄|2782;8950;8951||
 2178|kuzu, 屑, waste, scrap, garbage|kuzu|屑|2783||
-2179|suidou, 水道, water service, water supply|suidou|水道|2784||
+2179|suidou, 水道, water service, water supply, water supply, water service, waterworks, channel, strait, water course, waterway, Suidou|suidou|水道|2784;16398;16399;16400;16401||
 2180|riyouhou, 利用法, way of using, method of using|riyouhou|利用法|2785||
 2181|itashikata, 致し方, way, method|itashikata|致し方|2786||
 2182|sube, 術, way, method, means|sube|術|2787||
@@ -2192,7 +2192,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2192|oroshi, 卸, wholesale, 卸し|oroshi|卸|2797|卸し|
 2193|ishi, 意志, will, volition, intention, intent, determination|ishi|意志|2798||
 2194|chiryoku, 知力, wisdom, intellectual power, mental capacity, brains|chiryoku|知力|2799||
-2195|shinai, 市内, within the city, local|shinai|市内|2800||
+2195|shinai, 市内, within the city, local, (within a) city, local|shinai|市内|2800;16283||
 2196|tango, 単語, word, vocabulary, (usually) single-character word, word, vocabulary|tango|単語|2801;2802||
 2197|gen, 言, word, remark, statement, koto|gen|言|2803|koto|
 2198|sakuhin, 作品, work (e.g. book, film, composition, etc.), opus, performance, production|sakuhin|作品|2804||
@@ -2243,7 +2243,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2243|chou, 腸, guts, bowels, intestines|chou|腸|2851||
 2244|kami, 髪, hair (on the head), 髮|kami|髪|2852|髮|
 2245|ke, 毛, hair, fur, fur, wool, down, plumage, feathers|ke|毛|2853;10823;10824||
-2246|te, 手, hand|te|手|2854||
+2246|te, 手, hand, arm, forepaw, foreleg, handle, hand, worker, help, trouble, care, effort, means, way, trick, move, technique, workmanship, hand, handwriting, kind, type, sort, one's hands, one's possession, ability to cope, hand (of cards), direction, move (in go, shogi, etc.), Te|te|手|2854;16453;16454;16455;16456;16457;16458;16459;16460;16461;16462;16463;16464;16465||
 2247|atama, 頭, head, hair (on one's head), mind, brains, intellect, leader, chief, boss, captain, top, tip, beginning, start, head, person, top structural component of a kanji, pair|atama|頭|2855;8715;8716;8717;8718;8719;8720;8721;8722||
 2248|nekubi, 寝首, head of a sleeping person|nekubi|寝首|2856||
 2249|shinzou, 心臓, heart|shinzou|心臓|2857||
@@ -2494,7 +2494,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2494|tsukemono, 漬物, tsukemono, 漬け物|tsukemono|漬物|3105|漬け物|
 2495|maguro, マグロ, tuna|maguro|マグロ|3106||
 2496|shii chikin, シーチキン, tuna flakes (lit. sea chicken)|shii chikin|シーチキン|3107||
-2497|kome, 米, uncooked rice|kome|米|3108||
+2497|kome, 米, uncooked rice, (husked grains of) rice, 88 years old|kome|米|3108;15942;15943||
 2498|muen bataa, 無塩バター, unsalted butter|muen bataa|無塩バター|3109||
 2499|banira essensu, バニラエッセンス, vanilla essence|banira essensu|バニラエッセンス|3110||
 2500|banira oiru, バニラオイル, vanilla oil|banira oiru|バニラオイル|3111||
@@ -2607,7 +2607,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2607|hana, 花, flower, blossom, bloom, petal, cherry blossom, beauty, blooming (esp. of cherry blossoms), ikebana, hanafuda, (the) best, glorious, lovely|hana|花|3216;14488;14489;14490;14491;14492;14493;14494||
 2608|mori, 森, forest, shrine grove|mori|森|3217;11711||
 2609|kudamono, 果物, fruit|kudamono|果物|3218||
-2610|budou, 武道, grape, grapevine|budou|武道|3219||
+2610|budou, 武道, grape, grapevine, martial arts, military arts, Bushido|budou|武道|3219;15580||
 2611|shibafu, 芝生, grass|shibafu|芝生|3220||
 2612|shoobu, 勝負, iris|shoobu|勝負|3221||
 2613|ha, 葉, leaf, leaves, leaf, blade (of grass), (pine) needle|ha|葉|3222;14470||
@@ -2626,7 +2626,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2626|bara, バラ, rose|bara|バラ|3235||
 2627|(go)shinboku, 御神木, sacred tree|(go)shinboku|御神木|3236||
 2628|kaisou, 海藻, seaweed|kaisou|海藻|3237||
-2629|ki, 木, tree, moku|ki|木|3238|moku|
+2629|ki, 木, tree, shrub, bush, wood, timber, moku|ki|木|3238;15915|moku|
 2630|suisou, 水草, water plant|suisou|水草|3239||
 2631|younashi, 洋梨, Western pear|younashi|洋梨|3240||
 2632|komugi, 小麦, wheat|komugi|小麦|3241||
@@ -2826,7 +2826,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2826|shinbun, 新聞, newspaper|shinbun|新聞|3431||
 2827|isho, 遺書, note left by dead person, suicide note, testamentary letter, will, testament, posthumous work|isho|遺書|3432||
 2828|nooto, ノート, notebook|nooto|ノート|3433||
-2829|techou, 手帳, notebook, memo pad, 手帖|techou|手帳|3434|手帖|
+2829|techou, 手帳, notebook, memo pad, (pocket) diary, certificate, identification card, 手帖|techou|手帳|3434;16469;16470|手帖|
 2830|shousetsu, 小説, novel|shousetsu|小説|3435||
 2831|viniiru, ビニール, nylon|viniiru|ビニール|3436||
 2832|ittsuu, 一通, one letter|ittsuu|一通|3437||
@@ -2900,7 +2900,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2900|chiketto, チケット, ticket|chiketto|チケット|3509||
 2901|kippu, 切符, ticket|kippu|切符|3510||
 2902|ken, 券, ticket, coupon, bond, certificate|ken|券|3511||
-2903|koukuuken, 航空券, ticket|koukuuken|航空券|3512||
+2903|koukuuken, 航空券, airline ticket, plane ticket, air ticket|koukuuken|航空券|3512||
 2904|maeuriken, 前売り券, ticket sold in advance|maeuriken|前売り券|3513||
 2905|shibari, 縛り, tie, oshibari, お縛り|shibari|縛り|3514|oshibari, お縛り|
 2906|tisshupeepaa, ティッシュペーパー, tissue|tisshupeepaa|ティッシュペーパー|3515||
@@ -2955,7 +2955,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2955|naika, 内科, internal medicine (ie. non-surgical)|naika|内科|3565||
 2956|taionkei, 体温計, medical thermometer|taionkei|体温計|3566||
 2957|hasshin, 発疹, rash, eruption|hasshin|発疹|3567||
-2958|geka, 外科, sugical deparmtent|geka|外科|3568||
+2958|geka, 外科, sugical deparmtent, surgery, department of surgery (hospital, etc.)|geka|外科|3568;15682;15683||
 2959|wakuchin, ワクチン, vaccine|wakuchin|ワクチン|3569||
 2960|rentogen, レントゲン, X-ray, Xray, rentgen|rentogen|レントゲン|3570||
 2961|shigatsu, 四月, April, yogatsu, 4月|shigatsu|四月|3571||
@@ -2984,13 +2984,13 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 2984|denshi meeru, 電子メール, email|denshi meeru|電子メール|3594||
 2985|taihen, 対辺, geometrically opposite side|taihen|対辺|3595||
 2986|guramu, グラム, gram|guramu|グラム|3596||
-2987|juuryoku, 重力, gravity|juuryoku|重力|3597||
+2987|juuryoku, 重力, gravity, gravitation, gravitational pull|juuryoku|重力|3597||
 2988|takasa, 高さ, height|takasa|高さ|3598||
 2989|seisan, 青酸, hydrocyanic (prussic) acid|seisan|青酸|3599||
 2990|kiroguramu, キログラム, kg, kilogram, kiro, キロ|kiroguramu|キログラム|3600|kiro, キロ|
 2991|kiromeetoru, キロメートル, km, kilometer, kiro, キロ|kiromeetoru|キロメートル|3601|kiro, キロ|
 2992|nagasa, 長さ, length|nagasa|長さ|3602||
-2993|kuiki, 区域, limits, boundary, domain, zone, sphere, territory, area|kuiki|区域|3603||
+2993|kuiki, 区域, limits, boundary, domain, zone, sphere, territory, area, area (e.g. in programming languages)|kuiki|区域|3603;16011||
 2994|sei, 正, logical true, regular, 10^40, positive, greater than zero, (logical) true, regular, 10^40, ten thousand undecillion, original|sei|正|3604;11138;11139;11140||
 2995|suugaku, 数学, mathematics, arithmetic|suugaku|数学|3605||
 2996|meetoru, メートル, meter|meetoru|メートル|3606||
@@ -3088,7 +3088,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3088|kumori, 曇り, cloudiness, cloudy weather, shadow|kumori|曇り|3699||
 3089|sekitan, 石炭, coal|sekitan|石炭|3700||
 3090|dou, 銅, copper (Cu), bronze (medal), akagane|dou|銅|3701;10665|akagane|
-3091|momen, 木綿, cotton|momen|木綿|3702||
+3091|momen, 木綿, cotton (material), red silk-cotton tree (Bombax ceiba)|momen|木綿|3702;16112||
 3092|diamondo, ダイアモンド, diamond|diamondo|ダイアモンド|3703||
 3093|chiri, 塵, dust, dirt|chiri|塵|3704||
 3094|denki, 電気, electricity, electricity, (electric) light|denki|電気|3705;9390;9391||
@@ -3116,10 +3116,10 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3116|pikaso, ピカソ, Picasso|pikaso|ピカソ|3727||
 3117|ame, 雨, rain|ame|雨|3728||
 3118|suna, 砂, sand, grit|suna|砂|3729||
-3119|umi, 海, sea|umi|海|3730||
-3120|kaisui, 海水, seawater, salt water, ocean water|kaisui|海水|3731||
+3119|umi, 海, sea, ocean, waters|umi|海|3730||
+3120|kaisui, 海水, seawater, salt water, ocean water, seawater, saltwater|kaisui|海水|3731;15851||
 3121|sora, 空, sky, the air, the heavens, weather, far-off place, distant place, state of mind, feeling, (from) memory, (by) heart, falsehood, lie, somehow, vaguely, fake|sora|空|3732;11921;11922;11923;11924;11925;11926;11927||
-3122|ten, 天, sky, heavens|ten|天|3733||
+3122|ten, 天, sky, heavens, heaven, svarga (heaven-like realm visited as a stage of death and rebirth), deva (divine being of Buddhism)|ten|天|3733;16490;16491;16492||
 3123|sumisu, スミス, Smith|sumisu|スミス|3734||
 3124|kemuri, 煙, smoke, fumes|kemuri|煙|3735||
 3125|yuki, 雪, snow, snow|yuki|雪|3736;10308||
@@ -3129,14 +3129,14 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3129|tanaka, 田中, Tanaka|tanaka|田中|3740||
 3130|taifuu, 台風, typhoon, hurricane|taifuu|台風|3741||
 3131|kitai, 気体, vapor, vapour, gas, gas, vapour, vapor, gaseous body|kitai|気体|3742;6930||
-3132|mizu, 水, water, omizu, お水|mizu|水|3743|omizu, お水|
+3132|mizu, 水, water (esp. cool, fresh water, e.g. drinking water), fluid (esp. in an animal tissue), liquid, flood, floodwaters, water offered to wrestlers just prior to a bout, break granted to wrestlers engaged in a prolonged bout, omizu, お水|mizu|水|3743;16094;16095;16096;16097|omizu, お水|
 3133|kaze, 風, wind, breeze, draught, draft, manner, behaviour, behavior, cold, influenza|kaze|風|3744;7300;7301||
 3134|moku, 木, wood|moku|木|3745||
 3135|yamada, 山田, Yamada|yamada|山田|3746||
 3136|yamaguchi, 山口, Yamaguchi|yamaguchi|山口|3747||
 3137|sengoku, 戦国, blligerent country, country in civil war, warring states|sengoku|戦国|3748||
 3138|kanada, カナダ, Canada|kanada|カナダ|3749||
-3139|chuugoku, 中国, China|chuugoku|中国|3750||
+3139|chuugoku, 中国, China, Chūgoku region of western Honshu (incl. Okayama, Hiroshima, Shimane, Tottori and Yamaguchi prefectures), central part of a country, main region, province of the second lowest rank (ritsuryo system), Chuugoku|chuugoku|中国|3750;15617;15618;15619;15620||
 3140|kuni, 国, country, nation, country, state, region, national government, central government, home (i.e. hometown, home country), province (of Japan), land, earth, okuni, お国|kuni|国|3751;14870;14871;14872;14873;14874;14875|okuni, お国|
 3141|oubei, 欧米, Europe and America,the West|oubei|欧米|3752||
 3142|gaikoku, 外国, foreign country|gaikoku|外国|3753||
@@ -3162,7 +3162,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3162|haiyuu, 俳優, actor, actress, player, performer, actor, performer, player|haiyuu|俳優|3773;3774||
 3163|joyuu, 女優, actress|joyuu|女優|3775||
 3164|otona, 大人, adult|otona|大人|3776||
-3165|sotsugyousei, 卒業生, alumnus|sotsugyousei|卒業生|3777||
+3165|sotsugyousei, 卒業生, graduate, alumnus|sotsugyousei|卒業生|3777||
 3166|tenshi, 天使, angel|tenshi|天使|3778||
 3167|tanin, 他人, another person, other people, others, unrelated person (by blood), outsider, stranger, unrelated person (i.e. not related by blood), outsider, stranger|tanin|他人|3779;14015;14016||
 3168|chito, 使徒, apostle|chito|使徒|3780||
@@ -3188,7 +3188,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3188|shochou, 所長, chief, head (of an office, laboratory), chief, head (of an office, of a laboratory)|shochou|所長|3801;13331||
 3189|kodomo, 子供, child|kodomo|子供|3802||
 3190|jidou, 児童, child, children, juvenile, children, juvenile|jidou|児童|3803;9580||
-3191|shimin, 市民, citizen, townsperson, townspeople|shimin|市民|3804||
+3191|shimin, 市民, citizen, townsperson, townspeople, citizen, citizenry, public, city inhabitant, townspeople, bourgeoisie, middle class|shimin|市民|3804;16272;16273;16274||
 3192|doukyuusei, 同級生, classmate|doukyuusei|同級生|3805||
 3193|shin'yuu, 親友, close friend, bosom (old, intimate) friend, buddy, crony, chum, shinyuu|shin'yuu|親友|3806||
 3194|douryou, 同僚, colleague, dorio|douryou|同僚|3807||
@@ -3211,12 +3211,12 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3211|moguri, 潜り, diving, diver|moguri|潜り|3825||
 3212|isha, 医者, doctor, oishasan, お医者さん|isha|医者|3826|oishasan, お医者さん|
 3213|ishi, 医師, doctor, physician, health expert|ishi|医師|3827||
-3214|untenshu, 運転手, driver|untenshu|運転手|3828||
+3214|untenshu, 運転手, driver, chauffeur|untenshu|運転手|3828||
 3215|taishi, 大使, embassador, ambassador|taishi|大使|3829;8498||
 3216|mikado, 帝, emperor, imperial residence, mikado, 御門|mikado|帝|3830|御門|
-3217|in, 員, employee|in|員|3831||
+3217|in, 員, employee, member|in|員|3831;15790||
 3218|enjinia, エンジニア, engineer|enjinia|エンジニア|3832||
-3219|gijutsusha, 技術者, engineer, technical expert, tecnician, crafts-person|gijutsusha|技術者|3833||
+3219|gijutsusha, 技術者, engineer, technical expert, tecnician, crafts-person, engineer, technical expert, technician, craftsperson|gijutsusha|技術者|3833;15728||
 3220|gishi, 技師, engineer, technician|gishi|技師|3834||
 3221|kazoku, 家族, family|kazoku|家族|3835||
 3222|doushi, 同士, fellow, companion, comrade, mutual|doushi|同士|3836||
@@ -3292,7 +3292,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3292|omawari san, お巡りさん, policeman|omawari san|お巡りさん|3907||
 3293|keikan, 警官, policeman|keikan|警官|3908||
 3294|keisatsukan, 警察官, policeman, policemen, police officer|keisatsukan|警察官|3909||
-3295|seijika, 政治家, poltician, statesman|seijika|政治家|3910||
+3295|seijika, 政治家, poltician, statesman, politician, statesman|seijika|政治家|3910;16205||
 3296|chiji, 知事, prefectural governor, prefectural governor|chiji|知事|3911;3912||
 3297|sousai, 総裁, president|sousai|総裁|3913||
 3298|kaichou, 会長, president (of a society), chairman|kaichou|会長|3914||
@@ -3330,7 +3330,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3330|heitai, 兵隊, soldier, sailor|heitai|兵隊|3947||
 3331|tsuwamono, 強者, soldier, warrior, strong man, exceptional person, man of courage, つわ者, 兵|tsuwamono|強者|3948|つわ者, 兵|
 3332|uchuujin, 宇宙人, space alien, uchujin|uchuujin|宇宙人|3949||
-3333|ten'in, 店員, store employee|ten'in|店員|3950||
+3333|ten'in, 店員, store employee, shop assistant, employee, clerk, salesperson|ten'in|店員|3950;16489||
 3334|gakusei, 学生, student (esp. a university student)|gakusei|学生|3951||
 3335|ryuugakusei, 留学生, student studying abroad, overseas student, exchange student|ryuugakusei|留学生|3952;13915||
 3336|buka, 部下, subordinate person, employee|buka|部下|3953||
@@ -3348,7 +3348,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3348|daigakusei, 大学生, university student, college student|daigakusei|大学生|3965||
 3349|hikiomori, ひきこもり, very antisocial adolescent|hikiomori|ひきこもり|3966||
 3350|akuyaku, 悪役, villain, baddie|akuyaku|悪役|3967||
-3351|samurai, 侍, warrior, samurai, 士|samurai|侍|3968|士|
+3351|samurai, 侍, warrior, samurai, warrior (esp. of military retainers of daimyos in the Edo period), samurai, man in attendance (on a person of high standing), retainer, 士|samurai|侍|3968;16196;16197|士|
 3352|bushi, 武士, warrior, samurai, Mononofu, 士|bushi|武士|3969;14346|士|
 3353|saishi, 妻子, wife and children|saishi|妻子|3970||
 3354|onna no hito, 女の人, woman|onna no hito|女の人|3971||
@@ -3400,10 +3400,10 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3400|tatemono, 建物, building|tatemono|建物|4018||
 3401|shokudou, 食堂, cafeteria, dining room, dining hall, messroom, restaurant, snack bar, diner, dining room, dining hall, cafeteria, messroom, restaurant, eatery, snack bar, diner, dining room, dining hall, cafeteria, messroom|shokudou|食堂|4019;7940;7941;10024||
 3402|shuto, 首都, capital city, metropolis|shuto|首都|4020||
-3403|tenjou, 天井, ceiling|tenjou|天井|4021||
+3403|tenjou, 天井, ceiling, ceiling price, (price) ceiling|tenjou|天井|4021;16495||
 3404|chuuou, 中央, centre, center, middle, heart, metropolis, capital city, central government, Chuuou|chuuou|中央|4022;14387;14388||
 3405|chuushin, 中心, center, centre, middle, heart, core, focus, pivot, emphasis, balance, -centered, -centred, -focussed, -oriented, centered on, focussed on|chuushin|中心|4023;4024||
-3406|kyoukai, 教会, church|kyoukai|教会|4025||
+3406|kyoukai, 教会, church, congregation|kyoukai|教会|4025||
 3407|shiti, シティ, city|shiti|シティ|4026||
 3408|shi, 市, city|shi|市|4027||
 3409|tokai, 都会, city, Tokyo Metropolitan Assembly|tokai|都会|4028;11221||
@@ -3436,14 +3436,14 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3436|hatake, 畑, field, cultivated land, vegetable plot, kitchen garden, plantation, specialization, sphere, 畠|hatake|畑|4055|畠|
 3437|yuka, 床, floor, stage|yuka|床|4056||
 3438|houdou, 歩道, footpath, walkway, sidewalk|houdou|歩道|4057||
-3439|temae, 手前, front, juxtaposed to|temae|手前|4058||
+3439|temae, 手前, front, juxtaposed to, before, this side, one's standpoint, one's appearance, we, you|temae|手前|4058;16480;16481;16482;16483||
 3440|niwa, 庭, garden, yard, courtyard, field (of action), area|niwa|庭|4059;13854||
 3441|yaoya, 八百屋, greengrocer, vegetable store|yaoya|八百屋|4060||
 3442|taiikukan, 体育館, gymnasium|taiikukan|体育館|4061||
 3443|hawai, ハワイ, Hawaii|hawai|ハワイ|4062||
 3444|honsha, 輔車, headquarters|honsha|輔車|4063||
 3445|hiitaa, ヒーター, heater|hiitaa|ヒーター|4064||
-3446|tengoku, 天国, heaven, paradise|tengoku|天国|4065||
+3446|tengoku, 天国, heaven, paradise, paradise, heaven, Kingdom of Heaven|tengoku|天国|4065;16494||
 3447|ikegaki, 生垣, hedge, 生け垣|ikegaki|生垣|4066|生け垣|
 3448|jigoku, 地獄, hell, Jigoku|jigoku|地獄|4067;14596||
 3449|kouza, 高山, high mountain, alpine|kouza|高山|4068||
@@ -3473,7 +3473,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3473|kitchin, キチン, kitchen|kitchin|キチン|4092||
 3474|daidokoro, 台所, kitchen, financial situation|daidokoro|台所|4093;14394||
 3475|kobayashi, 小林, Kobayashi|kobayashi|小林|4094||
-3476|kyouto, 京都, Kyoto|kyouto|京都|4095||
+3476|kyouto, 京都, Kyoto (city)|kyouto|京都|4095||
 3477|kyuushuu, 九州, Kyushu|kyuushuu|九州|4096||
 3478|kenkyuushitsu, 研究室, laboratory, seminar room, professor's office, seminar room, professor's office|kenkyuushitsu|研究室|4097;10833;10834||
 3479|mizuumi, 湖, lake|mizuumi|湖|4098||
@@ -3523,7 +3523,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3523|firipin, フィリピン, Phillippines|firipin|フィリピン|4141||
 3524|suri, 掏摸, pickpocket, 掏り|suri|掏摸|4142|掏り|
 3525|tokoro, 所, place, location, place, spot, scene, site, address, district, area, locality, one's house, point, aspect, side, facet, passage (in text), part, space, room, thing, matter, whereupon, as a result, about to, on the verge of, was just doing, was in the process of doing, have just done, just finished doing, toko|tokoro|所|4143;7002;7003;7004;7005;7006;7007;7008;7009;7010;7011;7012|toko|
-3526|hoomu, ホーム, platform|hoomu|ホーム|4144||
+3526|hoomu, ホーム, platform, home|hoomu|ホーム|4144;15774||
 3527|kouza, 高座, platform, stage, upper seat, pulpit|kouza|高座|4145||
 3528|hiroba, 広場, plaza, (public) square, piazza, forum, open space, plaza, (public) square, piazza, forum, open space|hiroba|広場|4146;9531||
 3529|tochi, 土地, plot of land, lot, soil|tochi|土地|4147||
@@ -3535,7 +3535,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3535|keshou shitsu, 化粧室, powder room|keshou shitsu|化粧室|4153||
 3536|ken, 県, prefecture (of Japan), county (of China), county (of China), gen|ken|県|4154;7440|gen|
 3537|shougakkou, 小学校, primary school, elementary school, grade school|shougakkou|小学校|4155||
-3538|koshitsu, 個室, private room|koshitsu|個室|4156||
+3538|koshitsu, 個室, private room, single (room), room for one, one's own room, (toilet) stall|koshitsu|個室|4156;15946||
 3539|fumikiri, 踏切, railway crossing, railroad crossing, train crossing, level crossing, 踏切り, 踏み切り, 踏み切|fumikiri|踏切|4157|踏切り, 踏み切り, 踏み切|
 3540|uketsuke, 受付, reception|uketsuke|受付|4158||
 3541|iki, 域, region, limits, stage level|iki|域|4159||
@@ -3554,13 +3554,13 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3554|gakkou, 学校, school, Gakkou|gakkou|学校|4172;12795||
 3555|kaigan, 海岸, seashore, coast, beach, Kaigan|kaigan|海岸|4173;10796||
 3556|shouken gaisha, 証券会社, securities company|shouken gaisha|証券会社|4174||
-3557|koukou, 高校, senior high school|koukou|高校|4175||
+3557|koukou, 高校, senior high school, high school, Koukou|koukou|高校|4175;15960||
 3558|tana, 棚, shelf, shelves, ledge, rack, trellis, dana|tana|棚|4176;11946||
 3559|shibuya, 渋谷, Shibuya|shibuya|渋谷|4177||
 3560|shinjuku, 新宿, Shinjuku|shinjuku|新宿|4178||
 3561|shinkansen, 新幹線, Shinkansen|shinkansen|新幹線|4179||
 3562|jinja, 神社, Shinto shrine, uchi|jinja|神社|4180|uchi|
-3563|mise, 店, shop|mise|店|4181||
+3563|mise, 店, store, shop, establishment, restaurant|mise|店|4181||
 3564|baiten, 売店, shop, stand, kiosk|baiten|売店|4182||
 3565|shawaa, シャワー, shower|shawaa|シャワー|4183||
 3566|byoushitsu, 病室, sick room, hospital room|byoushitsu|病室|4184||
@@ -3581,7 +3581,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3581|chikatetsu, 地下鉄, underground train, subway|chikatetsu|地下鉄|4199||
 3582|sushiya, 寿司屋, sushi restaurant|sushiya|寿司屋|4200||
 3583|puuru, プール, swimming pool|puuru|プール|4201||
-3584|tera, 寺, temple, otera, お寺|tera|寺|4202|otera, お寺|
+3584|tera, 寺, temple (Buddhist), otera, お寺|tera|寺|4202|otera, お寺|
 3585|dou, 堂, temple, shrine, chapel, hall, company, front room|dou|堂|4203;10659;10660;10661||
 3586|taaminaru, ターミナル, terminal|taaminaru|ターミナル|4204||
 3587|chuutou, 中東, the Middle East|chuutou|中東|4205||
@@ -3649,7 +3649,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3649|yoru, 夜, night, evening|yoru|夜|4271||
 3650|hiru, 昼, noon, daytime, noon, midday, daytime, lunch|hiru|昼|4272;9532;9533;9534||
 3651|teiki, 定期, season|teiki|定期|4273||
-3652|suunen, 数年, several years|suunen|数年|4274||
+3652|suunen, 数年, several years, a few years|suunen|数年|4274||
 3653|haru, 春, spring, springtime, New Year, prime (of one's life, etc.), adolescence, puberty, sexuality|haru|春|4275;14516;14517;14518;14519||
 3654|natsu, 夏, summer|natsu|夏|4276||
 3655|ototoi, 一昨日, the day before yesterday|ototoi|一昨日|4277||
@@ -3848,7 +3848,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3848|sama, 様, polite humble person indicator (Mr, Ms, Mrs), Mr., Mrs., Miss, Ms., makes words more polite (usu. in fixed expressions), state, situation, appearance|sama|様|4467;12399;12400;12401||
 3849|san, さん, polite neutral person indicator (Mr, Ms, Mrs)|san|さん|4468||
 3850|ya, 屋, store, shop|ya|屋|4469||
-3851|ten, 店, store, shop|ten|店|4470||
+3851|ten, 店, store, shop, -store, -shop|ten|店|4470;16493||
 3852|ryuu, 流, style of, method of, manner of|ryuu|流|4471||
 3853|juu, 中, through, throughout, during all of, in the course of, all of, all over, through, throughout, in the course of, all over or throughout (e.g. a place)|juu|中|4472;14661;14662||
 3854|teki, 的, typical of, similar to, like|teki|的|4473||
@@ -3902,9 +3902,9 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3902|goku, 獄, jail, gaol, prison|goku|獄|6167||
 3903|nettofikkusu, ネットフリックス, Netflix|nettofikkusu|ネットフリックス|6168||
 3904|hirune, 昼寝, nap (afternoon), siesta, Hirune|hirune|昼寝|6171;6172||
-3905|undoujou, 運動場, sports ground, playing field, playground|undoujou|運動場|6174||
+3905|undoujou, 運動場, sports ground, playing field, playground, Undoujou|undoujou|運動場|6174;16559||
 3906|yarikata, やり方, manner of doing, way, method, means|yarikata|やり方|6175||
-3907|guruupu, グループ, group|guruupu|グループ|6176||
+3907|guruupu, グループ, group (usu. of people)|guruupu|グループ|6176||
 3908|kakkoii, 格好いい, attractive, good-looking, handsome, stylish, cool, smooth, neat, with-it, groovy|kakkoii|格好いい|6178||
 3909|kakkoyoi, 格好よい, attractive, good-looking, handsome, stylish, cool, smooth, neat, with-it, groovy|kakkoyoi|格好よい|6179||
 3910|sekushii, セクシー, sexy, セクスィ, セクシィ, セクシィー, セクスィー|sekushii|セクシー|6180|セクスィ, セクシィ, セクシィー, セクスィー|
@@ -3936,7 +3936,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 3936|utagai, 疑い, doubt, question, uncertainty, skepticism, scepticism, suspicion, distrust|utagai|疑い|6226||
 3937|okuen, 億円, 100,000,000 yen|okuen|億円|6227||
 3938|gun, 軍, army, force, troops|gun|軍|6228||
-3939|gun, 群, group (of people, animals, etc.), group|gun|群|6229;6230||
+3939|gun, 群, group (of people, animals, etc.), group, bunch, crowd, throng, swarm, band|gun|群|6229;6230||
 3940|gun, 郡, district, county, district, county, district (of 2-20 50-home neighbourhoods or townships, in the ritsuryo period)|gun|郡|6231;9455;9456||
 3941|juu, 銃, gun, rifle, small arms|juu|銃|6232||
 3942|hou, 砲, gun, cannon, artillery, ordnance|hou|砲|6233||
@@ -4083,7 +4083,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 4083|kaizokuban, 海賊版, pirated edition, bootleg|kaizokuban|海賊版|6680||
 4084|kyoka, 許可, permission, approval, authorization, license|kyoka|許可|6681||
 4085|setsuzoku, 接続, connection, attachment, union, join, joint, link, changing trains|setsuzoku|接続|6682;6683||
-4086|dantai, 団体, organization, organisation, association|dantai|団体|6685||
+4086|dantai, 団体, organization, organisation, association, Dantai|dantai|団体|6685;15644||
 4087|renkyuu, 連休, consecutive holidays|renkyuu|連休|6686||
 4088|heiwa, 平和, peace, harmony, peaceful, harmonious|heiwa|平和|6687;6688||
 4089|egao, 笑顔, smiling face, smile|egao|笑顔|6689||
@@ -7098,3 +7098,600 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 7098|yorudan, ヨルダン, Jordan|yorudan|ヨルダン|15423||
 7099|yoryoku, 余力, spare energy, time or money, remaining strength, reserve power, money to spare|yoryoku|余力|15424||
 7100|zainichi, 在日, Korean living in Japan|zainichi|在日|15425||
+7101|anime, アニメ, animated film, animated cartoon, anime (when referring to Japanese cartoons), animation|anime|アニメ|15532;15533||
+7102|animeeshon, アニメーション, animated film, animated cartoon|animeeshon|アニメーション|15535||
+7103|asagata, 朝方, early morning, early hours, toward morning|asagata|朝方|15536||
+7104|asaichiban, 朝一番, first thing in the morning|asaichiban|朝一番|15537||
+7105|asameshi, 朝飯, breakfast|asameshi|朝飯|15538||
+7106|asayuu, 朝夕, morning and evening, from morning until night, constantly|asayuu|朝夕|15539||
+7107|banduke, 番付, ranked list (entertainers, sumo wrestlers, millionaires, etc.), program (e.g. theatre)|banduke|番付|15555;15556||
+7108|banme, 番目, indicates position in a sequence, divisions of a kabuki performance|banme|番目|15557;15558||
+7109|bante, 番手, (yarn) count, n-th place (e.g. in a race), n-th in position (e.g. a starting lineup)|bante|番手|15559;15560||
+7110|basuketto, バスケット, basket, basketball, basket cloth|basuketto|バスケット|15564;15565;15566||
+7111|basuku, バスク, Basque, bask, Basque (Spain), Busk|basuku|バスク|15567;15568;15569||
+7112|basuruumu, バスルーム, bathroom|basuruumu|バスルーム|15570||
+7113|basutaa, バスター, fake bunt, slash bunt|basutaa|バスター|15571||
+7114|basuto, バスト, bust (measurement), breasts, bosom, upper half of the body (esp. statue or portrait), bust, Vasto (Italy)|basuto|バスト|15572;15573;15574;15575||
+7115|basutsuaa, バスツアー, bus tour|basutsuaa|バスツアー|15576||
+7116|beihan, 米飯, cooked rice|beihan|米飯|15577||
+7117|beijin, 米人, an American|beijin|米人|15578||
+7118|beika, 米価, rice price|beika|米価|15579||
+7119|buki, 武器, weapon, arms, ordnance, weapon (something used to gain an advantage), asset|buki|武器|15581;15582||
+7120|bunkachou, 文化庁, (Japanese) Agency for Cultural Affairs|bunkachou|文化庁|15584||
+7121|bunkajin, 文化人, person of culture, cultured person|bunkajin|文化人|15585||
+7122|bunkakunshou, 文化勲章, Order of Culture, Order of Cultural Merit|bunkakunshou|文化勲章|15586||
+7123|bunkateki, 文化的, cultural|bunkateki|文化的|15587||
+7124|bunkazai, 文化財, cultural assets, cultural property|bunkazai|文化財|15588||
+7125|buryoku, 武力, armed might, military power, the sword, force|buryoku|武力|15589||
+7126|bushou, 武将, military commander|bushou|武将|15590||
+7127|busshi, 物資, goods, materials, commodities, resources, supplies|busshi|物資|15591||
+7128|bussou, 物騒, dangerous, unsettled, troubled, disturbed, insecure, danger, trouble, disturbance|bussou|物騒|15592;15593||
+7129|butsugi, 物議, public discussion, public criticism, controversy|butsugi|物議|15594||
+7130|butsuri, 物理, physics, law of nature|butsuri|物理|15595||
+7131|butsurigaku, 物理学, physics|butsurigaku|物理学|15596||
+7132|buttai, 物体, body, object|buttai|物体|15597||
+7133|chihoubunken, 地方分権, decentralization of power, decentralisation of power|chihoubunken|地方分権|15598||
+7134|chihougikai, 地方議会, local assembly|chihougikai|地方議会|15599||
+7135|chihougyousei, 地方行政, local administration|chihougyousei|地方行政|15600||
+7136|chihoujichi, 地方自治, local (governmental) autonomy|chihoujichi|地方自治|15601||
+7137|chihoujichitai, 地方自治体, local authority, local government, locality, local self-governing body, municipality|chihoujichitai|地方自治体|15602||
+7138|chihoukoukyoudantai, 地方公共団体, local public body|chihoukoukyoudantai|地方公共団体|15603||
+7139|chihoukoumuin, 地方公務員, local government employee|chihoukoumuin|地方公務員|15604||
+7140|chihouzei, 地方税, local tax, council tax|chihouzei|地方税|15605||
+7141|chouhou, 重宝, convenient, useful, handy, helpful, convenience, usefulness, handiness, helpfulness, priceless treasure, valuing highly, prizing|chouhou|重宝|15606;15607;15608;15609||
+7142|choukan, 朝刊, morning newspaper|choukan|朝刊|15610||
+7143|chousen, 朝鮮, Korea, Chousen|chousen|朝鮮|15611;15612||
+7144|chousenhantou, 朝鮮半島, Korean Peninsula|chousenhantou|朝鮮半島|15614||
+7145|chousenminshushugijinminkyouwakoku, 朝鮮民主主義人民共和国, Democratic People's Republic of Korea (North Korea), DPRK|chousenminshushugijinminkyouwakoku|朝鮮民主主義人民共和国|15616||
+7146|chuugokujin, 中国人, Chinese person|chuugokujin|中国人|15622||
+7147|chuuoushuuken, 中央集権, centralized authoritarian rule, centralised authoritarian rule|chuuoushuuken|中央集権|15623||
+7148|daichi, 台地, plateau, tableland, eminence|daichi|台地|15633||
+7149|daichou, 台帳, account book, ledger, register|daichou|台帳|15634||
+7150|daihon, 台本, script, libretto, scenario|daihon|台本|15635||
+7151|daisha, 台車, platform truck, hand truck, trolley, dolly, cart, (railway) truck, bogie, flatcar, wagon, waggon|daisha|台車|15636;15637||
+7152|dan'in, 団員, group member|dan'in|団員|15638||
+7153|danchi, 団地, multi-unit apartments, apartment complex|danchi|団地|15639||
+7154|danchou, 団長, leader of a delegation (body, party)|danchou|団長|15640||
+7155|dankai, 団塊, mass, lump, baby boom generation (of 1947-1949), babyboomer (born between 1947-1949)|dankai|団塊|15641;15642||
+7156|danketsu, 団結, unity, union, solidarity, combination, teaming up|danketsu|団結|15643||
+7157|debyuu, デビュー, debut|debyuu|デビュー|15645||
+7158|dokuritsu, 独立, independent, self-supporting, independence (e.g. Independence Day), self-support|dokuritsu|独立|15646;15647||
+7159|dokuritsukoku, 独立国, independent state or nation|dokuritsukoku|独立国|15648||
+7160|dorama, ドラマ, drama, TV drama, teledrama, play, Dhrama (Greece)|dorama|ドラマ|15649;15650;15651||
+7161|doramaa, ドラマー, drummer|doramaa|ドラマー|15652||
+7162|doramachikku, ドラマチック, dramatic|doramachikku|ドラマチック|15653||
+7163|edo, 江戸, Edo (old name of Tokyo)|edo|江戸|15655||
+7164|edogawa, 江戸川, Edo River|edogawa|江戸川|15656||
+7165|edojidai, 江戸時代, Edo period (1603-1868 CE)|edojidai|江戸時代|15657||
+7166|edokko, 江戸っ子, true Tokyoite, person born and raised in Edo|edokko|江戸っ子|15658||
+7167|eikyouryoku, 影響力, influence, clout, leverage|eikyouryoku|影響力|15660||
+7168|enjin, エンジン, engine|enjin|エンジン|15661||
+7169|eri, 襟, collar, lapel, neckband, neck, nape of the neck, scruff of the neck|eri|襟|15662;15663||
+7170|fukei, 父兄, guardians, parents, father and older brother|fukei|父兄|15664;15665||
+7171|funade, 船出, setting sail, putting out to sea, starting anew, embarking on something new|funade|船出|15666;15667||
+7172|furusato, 故郷, home town, birthplace, native place, one's old home, ruins, historic remains|furusato|故郷|15668;15669||
+7173|fushi, 父子, father and child, father and son, father and daughter|fushi|父子|15670||
+7174|gai, 外, outside of, not covered by|gai|外|15671||
+7175|gaijin, 外人, foreigner (esp. one of European ancestry), gaijin, outsider|gaijin|外人|15672;15673||
+7176|gaika, 外貨, foreign currency, foreign money, foreign exchange, foreign goods, imported goods|gaika|外貨|15674;15675||
+7177|gaikan, 外観, outward appearance, exterior appearance, outward show, looks|gaikan|外観|15676||
+7178|gaimushou, 外務省, Ministry of Foreign Affairs|gaimushou|外務省|15677||
+7179|gairai, 外来, foreign, imported, outpatient, outpatient care, outpatient clinic, outpatient ward|gairai|外来|15679;15680||
+7180|gaishou, 外相, Foreign Minister|gaishou|外相|15681||
+7181|gen'eki, 現役, active duty, active service, student taking (university) entrance exams while still enrolled in school, student who passed their university entrance exams on the first try|gen'eki|現役|15684;15685||
+7182|gen'yu, 原油, crude oil|gen'yu|原油|15686||
+7183|genba, 現場, actual spot, scene, scene of the crime, site, location, setting, shop floor, factory floor, (on) site|genba|現場|15687;15688||
+7184|genbaku, 原爆, atomic bomb, A-bomb|genbaku|原爆|15689||
+7185|genbun, 原文, the text, original|genbun|原文|15690||
+7186|genbutsu, 現物, actual article or goods, spots (stocks, foreign exchange, commodities, etc.), (in) kind (income, benefit, rent, taxes, investment, etc.)|genbutsu|現物|15691;15692;15693||
+7187|genchi, 現地, actual place, local, on-site|genchi|現地|15694||
+7188|gendaiteki, 現代的, modernistic|gendaiteki|現代的|15696||
+7189|genkei, 原形, original form, base form|genkei|原形|15697||
+7190|genkou, 原稿, manuscript, copy, draft, notes, contribution|genkou|原稿|15699||
+7191|genkou, 現行, present, current, in operation|genkou|現行|15700||
+7192|genkouhan, 現行犯, flagrante delicto, caught red-handed|genkouhan|現行犯|15701||
+7193|genri, 原理, principle, theory, fundamental truth|genri|原理|15702||
+7194|genryou, 原料, raw materials|genryou|原料|15703||
+7195|gensaku, 原作, original work|gensaku|原作|15704||
+7196|genshi, 原始, origin, beginning, genesis, primeval, primordial, primitive|genshi|原始|15705;15706||
+7197|genshi, 原子, atom|genshi|原子|15707||
+7198|genshiryoku, 原子力, atomic energy, nuclear power|genshiryoku|原子力|15708||
+7199|gensho, 原書, original document (not a copy or adaptation), book in its original language (esp. a European language)|gensho|原書|15709||
+7200|genshoku, 現職, present post, current office, (an) incumbent|genshoku|現職|15710||
+7201|gensoku, 原則, principle, general rule|gensoku|原則|15711||
+7202|genzairyou, 原材料, raw materials|genzairyou|原材料|15712||
+7203|genzou, 現像, developing (film)|genzou|現像|15713||
+7204|geri, 下痢, diarrhoea, diarrhea|geri|下痢|15714||
+7205|gesha, 下車, alighting (from train, bus, etc.), getting off|gesha|下車|15715||
+7206|geta, 下駄, geta, Japanese wooden clogs, turn (in set-type proofing), upside-down character|geta|下駄|15716;15717||
+7207|gibo, 義母, mother-in-law, foster mother, step mother|gibo|義母|15718;15719;15720||
+7208|gidayuu, 義太夫, gidayū (type of reciting used in the puppet theater)|gidayuu|義太夫|15721||
+7209|gienkin, 義援金, donation money (esp. disaster relief or charity), contribution|gienkin|義援金|15722||
+7210|gifu, 義父, father-in-law, foster father, stepfather|gifu|義父|15723;15724;15725||
+7211|giin, 議員, member of an assembly, member of the Diet, member of parliament, member of Congress|giin|議員|15726||
+7212|gijuku, 義塾, private school|gijuku|義塾|15727||
+7213|gijutsuteki, 技術的, technical, practical|gijutsuteki|技術的|15729||
+7214|gimuduke, 義務付け, obligation|gimuduke|義務付け|15730||
+7215|gimukyouiku, 義務教育, compulsory education|gimukyouiku|義務教育|15731||
+7216|giri, 義理, duty, sense of duty, honor, honour, decency, courtesy, debt of gratitude, social obligation, in-law, relation by marriage|giri|義理|15732;15733||
+7217|giyuu, 義勇, heroism, loyalty and courage|giyuu|義勇|15734||
+7218|gunbu, 郡部, rural districts, counties|gunbu|郡部|15735||
+7219|gunshuu, 群衆, group (of people), crowd, horde, throng, mob, multitude|gunshuu|群衆|15736||
+7220|gunshuu, 群集, crowd, community, group, herd, gathering, assembly|gunshuu|群集|15737||
+7221|guntou, 群島, island group, archipelago|guntou|群島|15738||
+7222|gunzou, 群像, lively group (usu. young people), dynamic bunch, sculptured group (art)|gunzou|群像|15739;15740||
+7223|guruupuhoomu, グループホーム, group home|guruupuhoomu|グループホーム|15741||
+7224|haishi, 廃止, abolition, repeal|haishi|廃止|15742||
+7225|hajimeni, 初めに, first, firstly, first of all, to begin with, in the beginning, at the beginning, Introduction, Preface|hajimeni|初めに|15746;15747||
+7226|hajimete, 初めて, for the first time, only after ... is it ..., only when ... do you ...|hajimete|初めて|15748;15750||
+7227|han, 藩, feudal domain (Edo and early Meiji periods, precursor to current prefectures), fiefdom, province, clan|han|藩|15751||
+7228|hanbai, 販売, sales, selling, marketing|hanbai|販売|15756||
+7229|hanbaiin, 販売員, sales staff, salesperson|hanbaiin|販売員|15757||
+7230|hanshu, 藩主, feudal lord, daimyo|hanshu|藩主|15758||
+7231|hara, 原, field, plain, prairie, tundra, moor, wilderness|hara|原|15759||
+7232|hashiwatashi, 橋渡し, bridge building, mediation, go-between, intermediary, (through the) good offices (of someone)|hashiwatashi|橋渡し|15760||
+7233|hatsubutai, 初舞台, debut, initial stage appearance|hatsubutai|初舞台|15761||
+7234|hatsukoi, 初恋, first love, puppy love|hatsukoi|初恋|15762||
+7235|hatsumoude, 初詣, first shrine visit of New Year|hatsumoude|初詣|15763||
+7236|hensei, 編成, composition, formation, organization, organisation, compilation|hensei|編成|15764||
+7237|hitogoto, 人事, other people's affairs, somebody else's problem|hitogoto|人事|15772||
+7238|hokkaidoukaihatsuchouchoukan, 北海道開発庁長官, Director General of Hokkaido Development Agency|hokkaidoukaihatsuchouchoukan|北海道開発庁長官|15773||
+7239|hoomudorama, ホームドラマ, (TV) drama of family life, soap opera|hoomudorama|ホームドラマ|15775||
+7240|hoomuguraundo, ホームグラウンド, home ground|hoomuguraundo|ホームグラウンド|15776||
+7241|hoomuherupaa, ホームヘルパー, caregiver, care worker, carer|hoomuherupaa|ホームヘルパー|15777||
+7242|hoomuin, ホームイン, getting home|hoomuin|ホームイン|15778||
+7243|hoomupeeji, ホームページ, web site, website, web page, webpage, home page, homepage|hoomupeeji|ホームページ|15779||
+7244|hoomuran, ホームラン, home run|hoomuran|ホームラン|15780||
+7245|hoomuruumu, ホームルーム, homeroom, form room, form class|hoomuruumu|ホームルーム|15781||
+7246|hoomusekyurishisutemu, ホームセキュリティーシステム, home security system|hoomusekyurishisutemu|ホームセキュリティーシステム|15782||
+7247|hoomushikku, ホームシック, homesick|hoomushikku|ホームシック|15783||
+7248|hoomusutei, ホームステイ, homestay|hoomusutei|ホームステイ|15784||
+7249|hoomutaaminaru, ホームターミナル, home terminal|hoomutaaminaru|ホームターミナル|15785||
+7250|ikou, 以降, on and after, as from, hereafter, thereafter, since|ikou|以降|15789||
+7251|inchou, 院長, director|inchou|院長|15791||
+7252|inzuu, 員数, numbers of members (things, people)|inzuu|員数|15792||
+7253|ippouteki, 一方的, one-sided, unilateral, arbitrary|ippouteki|一方的|15797||
+7254|ippoutsuukou, 一方通行, one-way traffic|ippoutsuukou|一方通行|15798||
+7255|iroai, 色合い, hue, tinge, tint|iroai|色合い|15799||
+7256|irodori, 彩り, coloring, colouring, coloration, colouration, assortment, color scheme, colour scheme, makeup|irodori|彩り|15800||
+7257|ironna, 色んな, various|ironna|色んな|15802||
+7258|ishigaki, 石垣, stone wall|ishigaki|石垣|15803||
+7259|itaria, 伊太利, Italy|itaria|伊太利|15804||
+7260|itarutokoro, 至る所, everywhere, all over, throughout, practical|itarutokoro|至る所|15805;15806||
+7261|jibunde, 自分で, by myself, in person, by oneself|jibunde|自分で|15807||
+7262|jibunjishin, 自分自身, oneself, myself|jibunjishin|自分自身|15808||
+7263|jigyousho, 事業所, plant, enterprise place, office|jigyousho|事業所|15809||
+7264|jiin, 寺院, temple|jiin|寺院|15810||
+7265|jikishousou, 時期尚早, premature, prematureness|jikishousou|時期尚早|15811;15812||
+7266|jissai, 実際, practically, practicality, practical, in reality, actually, reality, actuality, actual conditions, bhutakoti (limit of reality)|jissai|実際|15813;15814;15806;15815;15816;15818||
+7267|jissaiha, 実際は, in fact, actually, to tell the truth|jissaiha|実際は|15819||
+7268|jounai, 城内, inside of a castle, area surrounded by castle walls|jounai|城内|15821;15822||
+7269|jushou, 受賞, winning (a prize)|jushou|受賞|15823||
+7270|jushoushiki, 授賞式, award ceremony|jushoushiki|授賞式|15824||
+7271|juuryou, 重量, weight, heavyweight boxer|juuryou|重量|15825;15826||
+7272|juushi, 重視, regarding as important, attaching importance to, taking a serious view of, putting emphasis on|juushi|重視|15827||
+7273|juuten, 重点, important point, emphasis, stress, importance, priority, iteration mark, colon (punctuation)|juuten|重点|15829;15830;15831||
+7274|juuyaku, 重役, (company) director, executive, top management, important post, role with heavy responsibilities|juuyaku|重役|15832;15833||
+7275|juuyoubunkazai, 重要文化財, important cultural property, important cultural asset|juuyoubunkazai|重要文化財|15834||
+7276|juuyousei, 重要性, importance, gravity|juuyousei|重要性|15835||
+7277|juuyoushi, 重要視, regarding highly, attaching importance to|juuyoushi|重要視|15836||
+7278|kabuki, 歌舞伎, kabuki, Japanese classical drama, Kabuki|kabuki|歌舞伎|15837;15838||
+7279|kagakugijutsu, 科学技術, science and technology, scientific technique|kagakugijutsu|科学技術|15839;15840||
+7280|kagakugijutsuchou, 科学技術庁, Science and Technology Agency (1956-2001)|kagakugijutsuchou|科学技術庁|15841||
+7281|kagakusha, 科学者, scientist|kagakusha|科学者|15842||
+7282|kagakuteki, 科学的, scientific|kagakuteki|科学的|15843||
+7283|kageki, 歌劇, opera|kageki|歌劇|15844||
+7284|kaibatsu, 海抜, height above sea level|kaibatsu|海抜|15845||
+7285|kaigun, 海軍, navy|kaigun|海軍|15846||
+7286|kaiheitai, 海兵隊, Marine Corps, Royal Marines|kaiheitai|海兵隊|15847||
+7287|kaikyou, 海峡, channel (e.g. between two land masses), strait|kaikyou|海峡|15848||
+7288|kaimen, 海面, sea level, (surface of) sea|kaimen|海面|15849||
+7289|kairyuu, 海流, ocean current|kairyuu|海流|15850||
+7290|kaisuiyoku, 海水浴, swimming in the ocean, sea bathing, seawater bath, going for a dip in the ocean|kaisuiyoku|海水浴|15852||
+7291|kaisuiyokujou, 海水浴場, swimming area (in the ocean), swimming beach, seawater baths|kaisuiyokujou|海水浴場|15853||
+7292|kaitei, 海底, bottom of the ocean, seafloor, seabed|kaitei|海底|15854||
+7293|kaiun, 海運, maritime, marine transportation, Kaiun|kaiun|海運|15855;15856||
+7294|kaiyou, 海洋, ocean, Kaiyou|kaiyou|海洋|15857;15858||
+7295|kajin, 歌人, poet (of tanka poems)|kajin|歌人|15859||
+7296|kakutoku, 獲得, acquisition, possession|kakutoku|獲得|15860||
+7297|kakyoku, 歌曲, melody, tune, song|kakyoku|歌曲|15861||
+7298|kami, 神, god, deity, divinity, spirit, kami, incredible, fantastic, emperor of Japan, thunder|kami|神|15862;15863;15865;15866||
+7299|kamisama, 神様, God, god, ace, king, superior person, god (amongst men)|kamisama|神様|15867;15868||
+7300|kan, 艦, warship|kan|艦|15869||
+7301|kanmatsu, 巻末, end of a book|kanmatsu|巻末|15871||
+7302|kanri, 管理, control, management (e.g. of a business)|kanri|管理|15872||
+7303|kanrisha, 管理者, manager, landlord, warden, superintendent, supervisor, custodian, root (user)|kanrisha|管理者|15873;15874||
+7304|kanrishoku, 管理職, management, managerial position, administrative post, person in a managerial position|kanrishoku|管理職|15875||
+7305|kantai, 艦隊, (naval) fleet, armada|kantai|艦隊|15876||
+7306|kantei, 艦艇, military vessel, war fleet|kantei|艦艇|15877||
+7307|kashi, 歌詞, song lyrics, words of a song, libretto|kashi|歌詞|15881||
+7308|kasho, 箇所, passage, place, point, part, passage, place, point, part|kasho|箇所|15882;15883||
+7309|kashou, 歌唱, song, singing|kashou|歌唱|15884||
+7310|kashuu, 歌集, anthology, book of poetry|kashuu|歌集|15885||
+7311|katami, 形見, memento, keepsake, souvenir|katami|形見|15886||
+7312|kayou, 歌謡, song, ballad|kayou|歌謡|15887||
+7313|kayoukyoku, 歌謡曲, kayōkyoku, form of Japanese popular music that developed during the Showa era, (Western) pop song|kayoukyoku|歌謡曲|15888;15889||
+7314|kazukazu, 数々, many, numerous, various, large number of|kazukazu|数々|15890||
+7315|kazuooku, 数多く, in great numbers, great numbers|kazuooku|数多く|15892;15894||
+7316|keikakuteki, 計画的, planned, scheduled, systematic|keikakuteki|計画的|15895||
+7317|keisei, 形勢, condition, situation, prospects|keisei|形勢|15896||
+7318|keisei, 形成, formation, molding, making up, taking form, giving form to, repair (e.g. plastic surgery), replacement, -plasty|keisei|形成|15897;15898||
+7319|keiseki, 形跡, traces, evidence|keiseki|形跡|15899||
+7320|keishiki, 形式, form (as opposed to substance), formality, method, system, style, format, mode, appearance, form (something takes), math expression|keishiki|形式|15900;15901;15902;15903||
+7321|keitai, 形態, form, shape, figure|keitai|形態|15904||
+7322|keiyakusho, 契約書, (written) contract, agreement|keiyakusho|契約書|15905||
+7323|keiyoushi, 形容詞, adjective, i-adjective (in Japanese)|keiyoushi|形容詞|15906||
+7324|keizaifuusa, 経済封鎖, economic blockade, embargo|keizaifuusa|経済封鎖|15907||
+7325|keizaigaku, 経済学, economics|keizaigaku|経済学|15908||
+7326|keizaikai, 経済界, economic world, financial circles, business community|keizaikai|経済界|15909||
+7327|keizaiteki, 経済的, economic, economical, financial|keizaiteki|経済的|15910||
+7328|kensetsu, 建設, construction, establishment|kensetsu|建設|15911||
+7329|kensetsushou, 建設省, Ministry of Construction|kensetsushou|建設省|15912||
+7330|kensetsuteki, 建設的, constructive|kensetsuteki|建設的|15914||
+7331|kigi, 木々, (many) trees, every tree, all kinds of trees|kigi|木々|15916||
+7332|kigyou, 企業, enterprise, business, company, corporation|kigyou|企業|15917||
+7333|kigyouka, 企業家, industrialist, entrepreneur|kigyouka|企業家|15918||
+7334|kihonryoukin, 基本料金, basic rate (i.e. excluding optional service fees, usage charges, etc.), basic charge, base cost, base price|kihonryoukin|基本料金|15919||
+7335|kikanshi, 機関紙, bulletin, (party) organ|kikanshi|機関紙|15921||
+7336|kishitsu, 気質, disposition, temperament, nature, mentality, spirit, character, trait, turn of mind|kishitsu|気質|15922||
+7337|kobetsu, 個別, particular case, discrete, individual, separate|kobetsu|個別|15924||
+7338|kokakumanzoku, 顧客満足, customer satisfaction|kokakumanzoku|顧客満足|15925||
+7339|kokizami, 小刻み, mincing, chopping finely, minced, chopped finely, short and repeated (movements) (e.g. trembling, stepping quickly), short and repeated movements, gradual, bit by bit, little by little, gradualness|kokizami|小刻み|15926;15927;15928;15929;15930;15931||
+7340|kokochi, 心地, feeling, sensation, mood, sensation of doing|kokochi|心地|15934;15935||
+7341|kokoku, 故国, one's native land|kokoku|故国|15936||
+7342|kokon, 古今, ancient and modern times, all ages, past and present|kokon|古今|15937||
+7343|koku, 石, koku, traditional unit of volume, approx. 180.4 litres, measure of a Japanese-style boat's loading capacity (approx. 278.26 liters), Koku|koku|石|15938;15939;15940||
+7344|kokyaku, 顧客, customer, client, patron|kokyaku|顧客|15941||
+7345|kosei, 個性, individuality, personality, idiosyncrasy, character, individual characteristic|kosei|個性|15944||
+7346|koseiteki, 個性的, individual, distinctive, unique, characteristic, personal, idiosyncratic|koseiteki|個性的|15945||
+7347|kotai, 個体, individual, specimen|kotai|個体|15947||
+7348|koube, 神戸, Kobe (city)|koube|神戸|15948||
+7349|koudan, 公団, public corporation, public housing|koudan|公団|15949;15950||
+7350|kouei, 光栄, honour, honor, glory, privilege, honourable, honorable, glorious, privileged|kouei|光栄|15951;15952||
+7351|kouen, 公演, public performance, exhibition in a foreign country|kouen|公演|15953;15954||
+7352|kougai, 公害, pollution, public nuisance, contamination|kougai|公害|15955||
+7353|kougaku, 光学, optics|kougaku|光学|15956||
+7354|kougakushikimojininshiki, 光学式文字認識, optical character recognition, OCR|kougakushikimojininshiki|光学式文字認識|15957||
+7355|kouhyou, 公表, official announcement, proclamation|kouhyou|公表|15958||
+7356|koukei, 光景, scene, spectacle, sight, view|koukei|光景|15959||
+7357|koukuu, 航空, aviation, flying|koukuu|航空|15961||
+7358|koukuugaisha, 航空会社, airline company|koukuugaisha|航空会社|15963||
+7359|koukuujieitai, 航空自衛隊, Japan Air Self-Defense Force, JASDF, Air Self-Defense Force, ASDF|koukuujieitai|航空自衛隊|15964;15965||
+7360|koukuuki, 航空機, aircraft|koukuuki|航空機|15966||
+7361|koukyou, 公共, public, community, public service, society, communal|koukyou|公共|15967||
+7362|koumyou, 光明, bright light, hope, bright future, light emanating from a buddha or bodhisattva, symbolizing their wisdom and compassion|koumyou|光明|15968;15969;15970||
+7363|kounetsuhi, 光熱費, cost of fuel and lighting, cost of heat and electricity, energy bill, utility cost|kounetsuhi|光熱費|15971||
+7364|kouritsu, 公立, public (institution)|kouritsu|公立|15972||
+7365|kousei, 構成, organization, organisation, configuration, composition|kousei|構成|15973||
+7366|kousen, 光線, beam, light ray|kousen|光線|15974||
+7367|koushiki, 公式, formal, official, formula (e.g. mathematical)|koushiki|公式|15975;15976||
+7368|koushuu, 公衆, the public, general public|koushuu|公衆|15977||
+7369|koushuudenwa, 公衆電話, public telephone, pay phone|koushuudenwa|公衆電話|15978||
+7370|koutaku, 光沢, brilliance, polish, lustre, luster, glossy finish (of photographs)|koutaku|光沢|15979||
+7371|koutou, 高等, high class, high grade, high class, high grade|koutou|高等|15980;15981||
+7372|koutougakkou, 高等学校, senior high school, high school|koutougakkou|高等学校|15982||
+7373|koutsuuhi, 交通費, traveling expenses, travelling expenses, carfare|koutsuuhi|交通費|15983||
+7374|koutsuukikan, 交通機関, transportation facilities|koutsuukikan|交通機関|15984||
+7375|koutsuumou, 交通網, transportation network, transport network, traffic network|koutsuumou|交通網|15985||
+7376|kouyou, 公用, government business, official business, public, official, governmental|kouyou|公用|15986;15987||
+7377|kouzen, 公然, openness, publicness, officialness, overtness, open, public, official, overt|kouzen|公然|15988;15989||
+7378|kouzou, 構造, structure, construction, makeup, framework, organization, pattern|kouzou|構造|15990||
+7379|kouzoubutsu, 構造物, structure|kouzoubutsu|構造物|15991||
+7380|kubun, 区分, division, section, demarcation, partition, segmentation, subdivision, (traffic) lane, compartment, classification, sorting|kubun|区分|15992||
+7381|kuchou, 区長, head of a ward, mayor of a ward, chief administrator of a ward|kuchou|区長|15993||
+7382|kudari, 下り, down-train (going away from Tokyo), down-slope, downward going, southbound|kudari|下り|15994;15996;15998||
+7383|kugi, 区議, ward assemblyman|kugi|区議|16007||
+7384|kugiri, 区切り, punctuation, pause, juncture, end, (place to) stop|kugiri|区切り|16008;16009||
+7385|kukan, 区間, section (of track, etc.), segment, dimension, interval|kukan|区間|16012;16014||
+7386|kumiai, 組合, association, union, guild|kumiai|組合|16018||
+7387|kumiawase, 組み合わせ, combination, assortment, set, matching (in a contest), pairing, combination|kumiawase|組み合わせ|16019;16020;16021||
+7388|kumichou, 組長, boss (esp. yakuza), foreman|kumichou|組長|16022||
+7389|kumikyoku, 組曲, musical suite, musical selection|kumikyoku|組曲|16024||
+7390|kumin, 区民, ward residents|kumin|区民|16025||
+7391|kumitate, 組み立て, construction, framework, erection, assembly, organization, organisation|kumitate|組み立て|16026||
+7392|kunai, 区内, in the ward or borough|kunai|区内|16033||
+7393|kurabukatsudou, クラブ活動, club activities (usu. clubs in association with a school), extracurricular activities|kurabukatsudou|クラブ活動|16038||
+7394|kuritsu, 区立, established by the ward|kuritsu|区立|16039||
+7395|kuweeto, 科威都, Kuwait|kuweeto|科威都|16040||
+7396|kuyakusho, 区役所, ward office, council (regional)|kuyakusho|区役所|16041||
+7397|kyarakutaa, キャラクター, character, personality, disposition, character (in a film, novel, comic, etc.), letter, character, symbol|kyarakutaa|キャラクター|16042;16043;16044||
+7398|kyouikuiinkai, 教育委員会, Board of Education|kyouikuiinkai|教育委員会|16047||
+7399|kyouikusha, 教育者, educator, teacher, educationalist|kyouikusha|教育者|16048||
+7400|kyouikuteki, 教育的, educational, instructive|kyouikuteki|教育的|16049||
+7401|kyouju, 教授, professor, teaching, instruction|kyouju|教授|16050;16051||
+7402|kyoukai, 協会, association, society, organization, organisation|kyoukai|協会|16052||
+7403|kyoukyaku, 橋脚, bridge pier, pontoon bridge|kyoukyaku|橋脚|16053||
+7404|machimachi, 区々, several, various, divergent, conflicting, different, diverse, variousness, divergence, difference, diversity|machimachi|区々|16054;16055||
+7405|maki, 巻, roll (e.g. of cloth), winding, volume (of book)|maki|巻|16056;16057;16058||
+7406|makijaku, 巻尺, tape measure|makijaku|巻尺|16059||
+7407|makikaeshi, 巻き返し, rally, recovery, rollback, rewind|makikaeshi|巻き返し|16060||
+7408|makizoe, 巻き添え, getting mixed up in, getting embroiled in, involvement, entanglement, by-blow|makizoe|巻き添え|16061||
+7409|man'in, 満員, full house, no vacancy, sold out, standing room only, full (of people), crowded|man'in|満員|16066||
+7410|mangaka, 漫画家, cartoonist, manga artist|mangaka|漫画家|16067||
+7411|mangetsu, 満月, full moon|mangetsu|満月|16068||
+7412|manjou, 満場, whole house, whole audience|manjou|満場|16069||
+7413|manjouicchi, 満場一致, unanimity|manjouicchi|満場一致|16070||
+7414|mankitsu, 満喫, having enough of (food, drink, etc.), having one's fill, fully enjoying|mankitsu|満喫|16071;16072||
+7415|manman, 満々, full of, brimming with, fully, brimmingly, fill|manman|満々|16073;16074;16075||
+7416|manmen, 満面, (the) whole face|manmen|満面|16076||
+7417|manrui, 満塁, bases loaded|manrui|満塁|16077||
+7418|manseki, 満席, full house, all seats occupied, fully occupied|manseki|満席|16078||
+7419|manten, 満点, perfect score, full marks, extremely, very, quite|manten|満点|16079;16080||
+7420|manzokukan, 満足感, feeling of satisfaction|manzokukan|満足感|16082||
+7421|meetoru, 米, metre, meter, meter, gauge|meetoru|米|16083;16084||
+7422|mendan, 面談, interview|mendan|面談|16085||
+7423|misebiraki, 店開き, starting a business, opening a store (for the day)|misebiraki|店開き|16086;16087||
+7424|misesaki, 店先, storefront, shopfront|misesaki|店先|16088||
+7425|mizuwari, 水割り, alcohol (usu. whiskey or shochu) diluted with water, watered|mizuwari|水割り|16098;16099||
+7426|moderu, モデル, model, dummy, mock-up, model (profession), fashion model, model (of a car, etc.), make, version, model, example, template, standard, model (in model theory), theory, person a fictional character was modeled on, inspiration|moderu|モデル|16100;16101;16102;16103;16104;16105||
+7427|moderukeesu, モデルケース, model case|moderukeesu|モデルケース|16106||
+7428|mokkou, 木工, woodworking, woodworker, carpenter|mokkou|木工|16107||
+7429|mokusei, 木星, Jupiter (planet)|mokusei|木星|16108||
+7430|mokusei, 木製, wooden, made of wood|mokusei|木製|16109||
+7431|mokuyou, 木曜, Thursday|mokuyou|木曜|16110||
+7432|mokuzou, 木造, wooden, made of wood, wooden construction|mokuzou|木造|16111||
+7433|mure, 群れ, group, crowd, flock, herd, bevy, school, swarm, cluster (e.g. of stars), clump, pack (e.g. of dogs)|mure|群れ|16115||
+7434|muromachi, 室町, Muromachi (era 1392-1573, or 1333-1573, or 1336-1573)|muromachi|室町|16116||
+7435|musha, 武者, warrior|musha|武者|16117||
+7436|nagaiaida, 長い間, long time, long interval, for quite some time|nagaiaida|長い間|16118;16119||
+7437|nagara, 乍ら, while, during, as, while, although, though, despite, in spite of, notwithstanding, all, both, as (e.g. "as always", "as long ago"), in (e.g. "in tears")|nagara|乍ら|16120;16121;16122;16123||
+7438|nagaraku, 長らく, long, (for a) long time|nagaraku|長らく|16124||
+7439|nagaramo, 乍らも, though, notwithstanding, although|nagaramo|乍らも|16125||
+7440|naiyou, 内容, contents, content, substance, matter, detail, import|naiyou|内容|16126||
+7441|nite, にて, indicates location of action, at, in|nite|にて|16127||
+7442|nohara, 野原, field, plain, prairie, moor|nohara|野原|16128||
+7443|noyama, 野山, hills and fields, hill and dale|noyama|野山|16129||
+7444|omokage, 面影, face, looks, vestiges, trace|omokage|面影|16130||
+7445|omoni, 重荷, load, heavy burden, encumbrance, heavy freight, heavy responsibility|omoni|重荷|16131||
+7446|omote, 面, face, surface, mask (esp. a noh or kyogen mask)|omote|面|16133;16134;16135||
+7447|omouzonbun, 思う存分, to one's heart's content|omouzonbun|思う存分|16136||
+7448|ooyake, 公, official, governmental, formal, public (use, facility, etc.), common, public (matter, place, etc.), (out in the) open|ooyake|公|16138;16139;16140||
+7449|purodakushon, プロダクション, production|purodakushon|プロダクション|16151||
+7450|purodakuto, プロダクト, product|purodakuto|プロダクト|16152||
+7451|purofesshonaru, プロフェッショナル, professional, professionality|purofesshonaru|プロフェッショナル|16153;16154||
+7452|purofiiru, プロフィール, profile|purofiiru|プロフィール|16155||
+7453|puroguramu, プログラム, program, programme|puroguramu|プログラム|16156||
+7454|purojekuto, プロジェクト, project|purojekuto|プロジェクト|16157||
+7455|puropoozu, プロポーズ, (marriage) proposal|puropoozu|プロポーズ|16158||
+7456|puroresu, プロレス, professional wrestling|puroresu|プロレス|16159||
+7457|purosesu, プロセス, process|purosesu|プロセス|16160||
+7458|purotesutanto, プロテスタント, protestant|purotesutanto|プロテスタント|16161||
+7459|puroyakyuu, プロ野球, professional baseball|puroyakyuu|プロ野球|16162||
+7460|rekishiteki, 歴史的, historic, historical, traditional|rekishiteki|歴史的|16163||
+7461|rengoukai, 連合会, association, federation|rengoukai|連合会|16164||
+7462|rikugun, 陸軍, army|rikugun|陸軍|16165||
+7463|ririisu, リリース, release|ririisu|リリース|16166||
+7464|rosenzu, 路線図, route map (buses, trains, etc.)|rosenzu|路線図|16167||
+7465|roshia, 露西亜, Russia|roshia|露西亜|16168||
+7466|ryoudo, 領土, dominion, territory, possession|ryoudo|領土|16169||
+7467|ryouhanten, 量販店, mass marketer, emporium, volume retailer|ryouhanten|量販店|16170||
+7468|ryouiki, 領域, area, domain, territory, field, range, region, regime|ryouiki|領域|16171||
+7469|ryouji, 領事, consul|ryouji|領事|16172||
+7470|ryoujikan, 領事館, consulate|ryoujikan|領事館|16173||
+7471|ryoukai, 領海, territorial waters|ryoukai|領海|16176||
+7472|ryoukei, 量刑, judge's sentence, assessment of a case|ryoukei|量刑|16177||
+7473|ryoukuu, 領空, territorial airspace|ryoukuu|領空|16178||
+7474|ryounai, 領内, (within a) territory, domains|ryounai|領内|16179||
+7475|ryousan, 量産, mass production|ryousan|量産|16180||
+7476|ryoushou, 了承, acknowledgement, acknowledgment, understanding (e.g. "please be understanding of the mess during our renovation"), noting, acceptance|ryoushou|了承|16181||
+7477|ryoushuu, 領収, receipt (of money), receiving|ryoushuu|領収|16182||
+7478|ryoushuu, 領袖, leader, chief, boss|ryoushuu|領袖|16183||
+7479|ryoushuusho, 領収書, simplified receipt with a blank line to be filled out with the customer's name (used specifically for claiming expenses)|ryoushuusho|領収書|16184||
+7480|ryouteki, 量的, quantitative|ryouteki|量的|16185||
+7481|ryouyuu, 領有, possession (esp. of a territory)|ryouyuu|領有|16186||
+7482|saidai, 最大, biggest, greatest, largest, maximum|saidai|最大|16193||
+7483|saikoubi, 最後尾, end of a line (queue)|saikoubi|最後尾|16194||
+7484|seiatsu, 制圧, gaining total control (of people or counties), suppression, oppression, control, mastery, ascendancy, supremacy|seiatsu|制圧|16198||
+7485|seido, 制度, system, institution, organization, organisation|seido|制度|16199||
+7486|seigen, 制限, restriction, restraint, limitation, limit|seigen|制限|16201||
+7487|seiha, 制覇, conquest, domination, mastery|seiha|制覇|16202||
+7488|seijiryoku, 政治力, political strength|seijiryoku|政治力|16206||
+7489|seikou, 成功, success, hit|seikou|成功|16207||
+7490|seikyuu, 制球, (pitcher's) control|seikyuu|制球|16208||
+7491|seisaku, 制作, work (film, book), production, creation, turning (something) out, development|seisaku|制作|16209;16210||
+7492|seisaku, 製作, manufacture, production|seisaku|製作|16211||
+7493|seisakuhi, 製作費, manufacturing cost, production cost|seisakuhi|製作費|16212||
+7494|seisansei, 生産性, productivity|seisansei|生産性|16213||
+7495|seisansha, 生産者, manufacturer, producer|seisansha|生産者|16214||
+7496|seishi, 制止, control, check, restraint, inhibition|seishi|制止|16215||
+7497|seitei, 制定, enactment, establishment, creation|seitei|制定|16216||
+7498|seiyaku, 制約, limitation, restriction, condition, constraints|seiyaku|制約|16217||
+7499|seizou, 製造, manufacture, production|seizou|製造|16218||
+7500|sekkai, 石灰, lime, quicklime, caustic lime|sekkai|石灰|16219||
+7501|sekkei, 設計, plan, design, layout|sekkei|設計|16220||
+7502|sen'in, 船員, sailor|sen'in|船員|16221||
+7503|senkyo, 選挙, election|senkyo|選挙|16222||
+7504|senkyoken, 選挙権, suffrage, the right to vote|senkyoken|選挙権|16223||
+7505|senkyonin, 選挙人, qualified voter|senkyonin|選挙人|16224||
+7506|senkyosen, 選挙戦, election campaign|senkyosen|選挙戦|16225||
+7507|senkyoundou, 選挙運動, election campaign, political campaign, campaigning, electioneering, canvassing|senkyoundou|選挙運動|16226||
+7508|senmon'i, 専門医, medical specialist|senmon'i|専門医|16227||
+7509|senmongakkou, 専門学校, vocational school, technical school|senmongakkou|専門学校|16229||
+7510|senmonteki, 専門的, technical (e.g. discussion), exclusive, professional|senmonteki|専門的|16230||
+7511|senmonten, 専門店, specialist shops|senmonten|専門店|16231||
+7512|senpaku, 船舶, vessel, ship, shipping, seacraft|senpaku|船舶|16232||
+7513|senshu, 船主, shipowner|senshu|船主|16233||
+7514|sentaa, センター, centre, center, Senta|sentaa|センター|16234;16235||
+7515|sentai, 船体, hull|sentai|船体|16236||
+7516|setsuritsu, 設立, establishment, founding, incorporation (of a business)|setsuritsu|設立|16237||
+7517|setteikanou, 設定可能, configurableness, configurable|setteikanou|設定可能|16240;16241||
+7518|shakaifukki, 社会復帰, rehabilitation (in society)|shakaifukki|社会復帰|16242||
+7519|shakaijin, 社会人, working adult, full-fledged member of society|shakaijin|社会人|16243||
+7520|shakaika, 社会科, social studies|shakaika|社会科|16244||
+7521|shakaikyouiku, 社会教育, social education|shakaikyouiku|社会教育|16245||
+7522|shakaimen, 社会面, social page (of newspaper), local news page|shakaimen|社会面|16246||
+7523|shakaishihon, 社会資本, social capital, SOC|shakaishihon|社会資本|16247||
+7524|shibashiba, 屡々, often, again and again, frequently, repeatedly|shibashiba|屡々|16248||
+7525|shichou, 市長, mayor|shichou|市長|16249||
+7526|shichuu, 市中, in the city|shichuu|市中|16250||
+7527|shiei, 市営, municipal management (transport, housing, etc.), city facility management|shiei|市営|16251||
+7528|shigai, 市外, outside the city area, suburbs|shigai|市外|16252||
+7529|shigai, 市街, urban areas, the streets, town, city, Shigai|shigai|市街|16253;16254||
+7530|shigaichi, 市街地, town area, urban area, metropolitan area, built-up area, Shigaichi|shigaichi|市街地|16255;16256||
+7531|shigikai, 市議会, city council|shigikai|市議会|16257||
+7532|shihan, 市販, selling on the market (in the marketplace, in stores, etc.), making something commercially available, commercial (e.g. software), over-the-counter, off-the-shelf, store-bought|shihan|市販|16258;16259||
+7533|shiite, 強いて, by force|shiite|強いて|16261||
+7534|shijou, 市場, (the) market (as a concept)|shijou|市場|16262||
+7535|shijouchousa, 市場調査, market research|shijouchousa|市場調査|16263||
+7536|shikan, 士官, officer|shikan|士官|16264||
+7537|shikichou, 色調, color tone, colour tone|shikichou|色調|16265||
+7538|shikisai, 色彩, colour, color, hue, tints|shikisai|色彩|16266||
+7539|shikisha, 指揮者, (musical) conductor, commander, leader, director|shikisha|指揮者|16267;16268||
+7540|shiminken, 市民権, citizenship, civic rights, civil rights, widespread acceptance, social recognition, common use|shiminken|市民権|16275;16276||
+7541|shin'you, 信用, confidence, trust, faith, reputation, credit (finance)|shin'you|信用|16277;16278||
+7542|shin, 信, honesty, sincerity, fidelity, trust, reliance, confidence, (religious) faith, devotion, counter for received messages|shin|信|16279;16280;16281;16282||
+7543|shinden, 神殿, temple, sacred place, shrine, sanctuary, tabernacle|shinden|神殿|16284||
+7544|shingaku, 神学, theology|shingaku|神学|16285||
+7545|shingouki, 信号機, traffic light, signalling mechanism, semaphore (apparatus)|shingouki|信号機|16288;16289||
+7546|shinguru, シングル, single, single bed, hotel room with a single bed, single-breasted, single-cuffed, single width (of cloth, usu. 0.71 meters), singles (e.g. in tennis), single, single-figure handicap (in golf), shingle|shinguru|シングル|16290;16291;16292;16293;16294;16295;16296;16297;16298||
+7547|shingurusu, シングルス, singles|shingurusu|シングルス|16299||
+7548|shinja, 信者, believer, adherent, devotee|shinja|信者|16300||
+7549|shinjou, 信条, creed, belief, conviction, article of faith|shinjou|信条|16301||
+7550|shinkei, 神経, nerve, nerves, sensitivity|shinkei|神経|16302;16303||
+7551|shinkeishitsu, 神経質, nervous, highly strung, sensitive, nervousnes, strungness, sensitivity, fussy, worried about petty things, fuss, worry about petty things|shinkeishitsu|神経質|16304;16305;16306;16307||
+7552|shinkou, 信仰, (religious) faith, belief, creed|shinkou|信仰|16308||
+7553|shinnen, 信念, belief, faith, conviction|shinnen|信念|16309||
+7554|shinnin, 信任, trust, confidence, credence|shinnin|信任|16310||
+7555|shinpangaisha, 信販会社, credit company|shinpangaisha|信販会社|16311||
+7556|shinpi, 神秘, mystery, mysteriousness, secret, mysterious, secret|shinpi|神秘|16312;16313||
+7557|shinpiteki, 神秘的, mysterious, mystical|shinpiteki|神秘的|16314||
+7558|shinrai, 信頼, reliance, trust, faith, confidence|shinrai|信頼|16315||
+7559|shinraisei, 信頼性, credibility, authenticity, confidence, reliability|shinraisei|信頼性|16316||
+7560|shinsei, 神聖, holiness, sacredness, sanctity, dignity, holy, sacred, sanct, dignified|shinsei|神聖|16317;16318||
+7561|shintou, 神道, Shinto, Shintoism|shintou|神道|16319||
+7562|shinwa, 神話, myth, legend|shinwa|神話|16320||
+7563|shinzui, 神髄, essence, quintessence, spirit, soul, heart, pith, pith and marrow|shinzui|神髄|16321||
+7564|shiritsu, 市立, municipal, city|shiritsu|市立|16323||
+7565|shiro, 城, castle|shiro|城|16324||
+7566|shisei, 市政, municipal government|shisei|市政|16325||
+7567|shisutemu, システム, system|shisutemu|システム|16326||
+7568|shisutemuzu, システムズ, systems|shisutemuzu|システムズ|16327||
+7569|shitei, 指定, designation, specification, assignment, appointment, pointing at|shitei|指定|16328||
+7570|shitsu, 室, room, wife (of someone of high rank), scabbard, Chinese "Encampment" constellation (one of the 28 mansions)|shitsu|室|16329;16331;16333;16335||
+7571|shitsuchou, 室長, section chief, laboratory manager, office head, room monitor|shitsuchou|室長|16337||
+7572|shitsunai, 室内, indoor, inside the room|shitsunai|室内|16338||
+7573|shitsunaigaku, 室内楽, chamber music|shitsunaigaku|室内楽|16339||
+7574|shiyakusho, 市役所, municipal office, council, city hall|shiyakusho|市役所|16340||
+7575|shodai, 初代, first generation, founder|shodai|初代|16341||
+7576|shohan, 初版, first edition|shohan|初版|16342||
+7577|shoki, 初期, early (days), initial stage, initial|shoki|初期|16343;16344||
+7578|shokyuu, 初級, elementary level, beginner level|shokyuu|初級|16345||
+7579|shonichi, 初日, first day, opening day|shonichi|初日|16346||
+7580|shorou, 初老, past middle-aged, aging, ageing, elderly, age 40|shorou|初老|16347;16348||
+7581|shoshin, 初心, originally intended, initially resolved, original intention, initial resolution|shoshin|初心|16349;16350||
+7582|shoshinsha, 初心者, beginner|shoshinsha|初心者|16351||
+7583|shotaimen, 初対面, first meeting, first interview with|shotaimen|初対面|16352||
+7584|shouchou, 省庁, ministries and government offices, the authorities|shouchou|省庁|16353||
+7585|shouenerugii, 省エネルギー, energy conservation, economical use of energy, energy-saving|shouenerugii|省エネルギー|16354||
+7586|shourei, 省令, ministerial ordinance|shourei|省令|16355||
+7587|shouryaku, 省略, omission, abbreviation, abridgment, abridgement|shouryaku|省略|16356||
+7588|shouryoku, 省力, labor saving, reduction of labor|shouryoku|省力|16357||
+7589|shubetsu, 種別, classification, assortment|shubetsu|種別|16358||
+7590|shugisha, 主義者, advocate (of a theory or principle), ideologist, ideologue, -ist (i.e. adherent to a belief system), socialist, communist, anarchist|shugisha|主義者|16359;16360;16361||
+7591|shuppanbutsu, 出版物, publication|shuppanbutsu|出版物|16362||
+7592|shuppansha, 出版社, publisher, publishing house, publishing company|shuppansha|出版社|16363||
+7593|shuruihoufu, 種類豊富, variety, diversity, rich in variety, diverse, wide-ranging, multifarious|shuruihoufu|種類豊富|16365;16366||
+7594|shushi, 種子, seed, pit|shushi|種子|16367||
+7595|shutsuen, 出演, performance, appearance (in a stage, film, TV show, etc.)|shutsuen|出演|16368||
+7596|shuunin, 就任, assumption (of office), taking up (a post), inauguration, installation|shuunin|就任|16369||
+7597|shuuroku, 収録, compilation, editing, recording|shuuroku|収録|16370;16371||
+7598|shuuryougo, 終了後, after the end (of something), post-|shuuryougo|終了後|16372||
+7599|shuzoku, 種族, race, tribe, ethnic group, species, genus, family, stellar population (i.e. population I, II and III)|shuzoku|種族|16373;16374;16375||
+7600|sokaku, 組閣, formation of a cabinet|sokaku|組閣|16376||
+7601|soko, 底, bottom, sole|soko|底|16380||
+7602|sokodikara, 底力, hidden reserves of strength, latent energy, potentiality, real strength|sokodikara|底力|16381||
+7603|sokone, 底値, bottom price|sokone|底値|16383||
+7604|sokorahen, そこら辺, hereabouts, around there, that area|sokorahen|そこら辺|16385||
+7605|sokou, 粗鋼, crude steel|sokou|粗鋼|16386||
+7606|sokouchi, 底打ち, bottoming out|sokouchi|底打ち|16387||
+7607|soshiki, 組織, organization, organisation, formation, structure, construction, setup, constitution, system (e.g. railroad, transport, party, etc.), tissue, texture (of a rock), weave (of a fabric)|soshiki|組織|16388;16389;16390;16391;16392;16393||
+7608|soshikiteki, 組織的, systematic, organized, organizational|soshikiteki|組織的|16394||
+7609|sotsugyougo, 卒業後, after graduation|sotsugyougo|卒業後|16395||
+7610|suibun, 水分, water, liquid, fluid, moisture, humidity, sap, juice|suibun|水分|16397||
+7611|suigen, 水源, source of river, fountainhead, Suigen|suigen|水源|16402;16403||
+7612|suihei, 水平, horizontal, level, even, horizontalness, levelness, evenness|suihei|水平|16404;16405||
+7613|suiheisen, 水平線, horizon (related to sea or lakes)|suiheisen|水平線|16406||
+7614|suijouki, 水蒸気, water vapour, water vapor, steam|suijouki|水蒸気|16407||
+7615|suijun, 水準, level, standard, water level|suijun|水準|16408;16409||
+7616|suimen, 水面, water's surface|suimen|水面|16410||
+7617|suiro, 水路, waterway, canal, channel, watercourse, aqueduct, swimming pool lane|suiro|水路|16411;16412||
+7618|suiso, 水素, hydrogen (H)|suiso|水素|16413||
+7619|suiteki, 水滴, drop of water, vessel for replenishing inkstone water|suiteki|水滴|16414;16415||
+7620|suitou, 水筒, canteen, flask, water bottle, thermos|suitou|水筒|16416||
+7621|suiyou, 水曜, Wednesday|suiyou|水曜|16417||
+7622|suizokukan, 水族館, aquarium, Suizokukan|suizokukan|水族館|16418;16419||
+7623|sutokkuhorumu, 士篤恒, Stockholm (Sweden)|sutokkuhorumu|士篤恒|16421||
+7624|suu, 数, several, a number of, quantity, amount, counting, figures, numbers, number, numeral, figure, grammatical number, destiny, fate, course of events, trend|suu|数|16422;16423;16425;16426;16427;16428||
+7625|suuchi, 数値, numerical value, numerics, reading (on a meter, etc.)|suuchi|数値|16429;16430||
+7626|suufun, 数分, several minutes, a few minutes|suufun|数分|16431||
+7627|suuhyaku, 数百, several hundreds|suuhyaku|数百|16432||
+7628|suuji, 数字, numeral, figure, digit, numeric character|suuji|数字|16433||
+7629|suujikan, 数時間, a few hours|suujikan|数時間|16434||
+7630|suujitsu, 数日, few days|suujitsu|数日|16435||
+7631|suujuu, 数十, dozens, scores of, decades|suujuu|数十|16436||
+7632|suukai, 数回, few times, several times, between two and six times|suukai|数回|16437||
+7633|suuko, 数個, several (objects, usu. from two to six)|suuko|数個|16438||
+7634|suunin, 数人, several people, a few people|suunin|数人|16439||
+7635|taiin, 隊員, troops, group members, team members|taiin|隊員|16440||
+7636|taitou, 台頭, rise (e.g. of a movement), emergence, rearing one's head, gaining prominence, coming to the fore, gaining power, gathering strength|taitou|台頭|16441||
+7637|taiwan, 台湾, Taiwan|taiwan|台湾|16443||
+7638|tane, 種, seed (e.g. of a plant), pip, kind, variety, quality, tone, material (e.g. for an article), matter (e.g. of a story), subject, theme, (news) copy, ingredient, leaven (bread), main ingredient of a sushi, cause, source, trick, secret, magician's trick, inside story, paternal blood, lineage, breed (of a stock), sperm, semen|tane|種|16444;16445;16446;16447;16448;16449;16450||
+7639|tantou, 担当, being in charge (of an area of responsibility), being responsible (for a work role, etc.)|tantou|担当|16451||
+7640|tantousha, 担当者, person in charge (of an area of work), person responsible, contact (person)|tantousha|担当者|16452||
+7641|tearai, 手洗い, washing one's hands, water (or basin, etc.) for washing one's hands, restroom, lavatory, toilet, hand-washing (laundry, etc.)|tearai|手洗い|16466;16467;16468||
+7642|tegoro, 手ごろ, moderate, handy, convenient, reasonable, moderateness, handiness, convenience, reasonableness|tegoro|手ごろ|16471;16472||
+7643|teikoku, 帝国, empire, imperial|teikoku|帝国|16473;16474||
+7644|teikokushugi, 帝国主義, imperialism|teikokushugi|帝国主義|16475||
+7645|tejina, 手品, magic (illusion), conjuring, magic trick, conjuring trick, sleight of hand|tejina|手品|16478||
+7646|tejou, 手錠, handcuffs, manacles|tejou|手錠|16479||
+7647|temoto, 手元, at hand, on hand, nearby, close at hand, way of moving one's arms, skill, money at hand, pocket money, grip, handle, Temoto|temoto|手元|16484;16485;16486;16487;16488||
+7648|tenka, 天下, the whole world, the whole country, society, the public, supremacy over a nation, government of a country, the ruling power, having one's own way, doing as one pleases, peerless, incomparable, superlative, world-famous, shogun (Edo period)|tenka|天下|16496;16497;16498;16499;16500;16501;16502||
+7649|tenkou, 天候, weather|tenkou|天候|16503||
+7650|tenmon, 天文, astronomy, Tenmon|tenmon|天文|16504;16505||
+7651|tenmondai, 天文台, astronomical observatory|tenmondai|天文台|16506||
+7652|tenmongaku, 天文学, astronomy|tenmongaku|天文学|16507||
+7653|tennai, 店内, store interior|tennai|店内|16508||
+7654|tennen, 天然, nature, spontaneity, natural airhead|tennen|天然|16509;16510||
+7655|tennou, 天皇, Emperor of Japan, Tennou|tennou|天皇|16511;16512||
+7656|tenpo, 店舗, shop, store|tenpo|店舗|16513||
+7657|tenshu, 店主, shopkeeper|tenshu|店主|16514||
+7658|tentai, 天体, heavenly body, celestial body, astronomical object|tentai|天体|16515||
+7659|tentou, 店頭, shopfront, storefront, shopwindow, (near the) shop entrance, over-the-counter|tentou|店頭|16516;16517||
+7660|tetsudai, 手伝い, helper, assistant, help|tetsudai|手伝い|16518;16519||
+7661|tokubetsuku, 特別区, special ward (esp. of Tokyo), special economic zone (China), special administrative region of China (e.g. Hong Kong)|tokubetsuku|特別区|16522;16523;16524||
+7662|tou, 党, party (political), faction, -ite|tou|党|16527;16529||
+7663|tougi, 党議, party council, party conference|tougi|党議|16531||
+7664|touha, 党派, faction|touha|党派|16532||
+7665|touin, 党員, party member|touin|党員|16533||
+7666|toumu, 党務, party business|toumu|党務|16534||
+7667|tounai, 党内, party-internal|tounai|党内|16535||
+7668|touri, 党利, party interests|touri|党利|16536||
+7669|touryaku, 党略, party politics (tactics)|touryaku|党略|16537||
+7670|tousai, 搭載, loading (on board), equipping|tousai|搭載|16538||
+7671|tousan, 父さん, father, dad, papa, pa, pop, daddy, dada|tousan|父さん|16539||
+7672|tousei, 党勢, strength of a party|tousei|党勢|16540||
+7673|touseki, 党籍, party register, membership in a party|touseki|党籍|16541||
+7674|tousho, 当初, at first, at the beginning, initially, originally|tousho|当初|16542||
+7675|toushu, 党首, party leader|toushu|党首|16543||
+7676|tsunami, 津波, tsunami, tidal wave, Tsunami|tsunami|津波|16549;16550||
+7677|tsura, 面, face, mug, surface, cheek meat, cheek, cheeks, surrounding area|tsura|面|16551;16552;16553;16554;16555||
+7678|uijin, 初陣, one's first campaign, one's first battle|uijin|初陣|16557||
+7679|undoubusoku, 運動不足, lack of physical exercise, insufficient exercise, inactivity|undoubusoku|運動不足|16558||
+7680|undoukai, 運動会, athletic meet, sports day|undoukai|運動会|16560||
+7681|unkou, 運行, service (bus, train), operation, motion, revolution, movement|unkou|運行|16561;16562||
+7682|untenmenkyo, 運転免許, driver's license, driver's licence|untenmenkyo|運転免許|16565||
+7683|untenshi, 運転士, (professional) driver (of a taxi, train, etc.), motorman, mate (on a ship), officer|untenshi|運転士|16566;16567||
+7684|utaawase, 歌合, poetry contest|utaawase|歌合|16570||
+7685|utagoe, 歌声, singing voice, (sound of) singing|utagoe|歌声|16571||
+7686|yaban, 野蛮, savage, barbarous, barbaric, uncivilized, uncivilised, savageness, barbarity|yaban|野蛮|16574;16575||
+7687|yabo, 野暮, boorish, unsophisticated, unrefined, uncouth, tasteless, insensitive, thoughtless, dumb, boorishness, unsophisticatedness, lack of refinement, uncouthness, tastelessness, insensitiveness, thoughtlessness, dumbness|yabo|野暮|16576;16577||
+7688|yachou, 野鳥, wild bird|yachou|野鳥|16578||
+7689|yagai, 野外, outdoors, outside, open air, fields, outskirts, suburbs|yagai|野外|16579;16580||
+7690|yakyuubu, 野球部, baseball club (at a university, corporation, etc.), baseball team|yakyuubu|野球部|16581||
+7691|yasei, 野性, wildness (plants, animals, etc.), uncouth, rough, unpolished|yasei|野性|16582||
+7692|yasei, 野生, wild, growing wild, living in the wild, I|yasei|野生|16583;16584||
+7693|yashin, 野心, ambition, aspiration, sinister designs, treachery|yashin|野心|16585;16586||
+7694|yatou, 野党, opposition party, political opposition, opposition|yatou|野党|16587||
+7695|yooroppa, 欧羅巴, Europe|yooroppa|欧羅巴|16589||
+7696|zenkoku, 全国, countrywide, nationwide, whole country, national|zenkoku|全国|16590||
+7697|zenkokuteki, 全国的, nation-wide|zenkokuteki|全国的|16591||
