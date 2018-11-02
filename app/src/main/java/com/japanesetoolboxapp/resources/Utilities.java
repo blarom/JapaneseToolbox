@@ -1147,7 +1147,7 @@ public final class Utilities {
             matchingWordType = current_meaning_characteristics[2];
 
             //Make corrections to the meaning values if the hit is a verb
-            if (matchingWordType.contains("V") && !matchingWordType.equals("VC") && !matchingWordType.equals("VdaI")) {
+            if (matchingWordType.contains("V") && !matchingWordType.equals("VC") && !matchingWordType.equals("NV") && !matchingWordType.equals("VdaI")) {
 
                 List<String> meaningElements = Arrays.asList(matchingWordMeaning.split(","));
                 StringBuilder meaningFixed = new StringBuilder();
@@ -1520,7 +1520,7 @@ public final class Utilities {
         String romaji_value = currentWord.getRomaji();
         String kanji_value = currentWord.getKanji();
         String type = currentWord.getMeanings().get(0).getType();
-        boolean currentWordIsAVerb = type.length()>0 && type.substring(0,1).equals("V") && !type.equals("VC");
+        boolean currentWordIsAVerb = type.length()>0 && type.substring(0,1).equals("V") && !type.equals("VC") && !type.equals("NV");
 
         List<Word.Meaning> currentMeanings = currentWord.getMeanings();
         String currentMeaning;
@@ -1538,42 +1538,45 @@ public final class Utilities {
             //region If the current word is not a verb
             if (!currentWordIsAVerb) {
                 foundMeaningLength = false;
-                if (!queryIsVerbWithTo) {
-                    inputQuery = mInputQuery;
-                    baseMeaningLength = 1000;
-                }
-                else {
-                    inputQuery = queryWordWithoutTo;
-                    baseMeaningLength = 1500;
-                }
+
+                inputQuery = mInputQuery;
+                baseMeaningLength = 1000; //was 1500
 
                 //If meaning has the exact word, get the length as follows
-                String[] currentMeaningIndividualWords = currentMeaning.split(" ");
+                String[] currentMeaningIndividualElements = currentMeaning.split(",");
                 lateHitInMeaningPenalty = 0;
                 cumulativeMeaningLength = 0;
-                for (String word : currentMeaningIndividualWords) {
-                    cumulativeMeaningLength += word.length() + 2; //Added 2 to account for missing ", " instances in loop
-                    if (word.equals(inputQuery)) {
-                        currentMeaningLength = baseMeaningLength + lateMeaningPenalty + lateHitInMeaningPenalty + cumulativeMeaningLength - 100;
-                        foundMeaningLength = true;
-                        break;
-                    }
-                    lateHitInMeaningPenalty += 25;
-                }
-                if (foundMeaningLength) break;
+                for (String currentMeaningElement : currentMeaningIndividualElements) {
 
-                //If meaning has the exact word but maybe in parentheses, get the length as follows
-                String[] currentMeaningIndividualWordsWithoutParentheses = currentMeaning.replace("(","").replace(")","").split(" ");
-                lateHitInMeaningPenalty = 0;
-                cumulativeMeaningLength = 0;
-                for (String word : currentMeaningIndividualWordsWithoutParentheses) {
-                    cumulativeMeaningLength += word.length() + 2; //Added 2 to account for missing ", " instances in loop
-                    if (word.equals(inputQuery)) {
-                        currentMeaningLength = baseMeaningLength + lateMeaningPenalty + lateHitInMeaningPenalty + cumulativeMeaningLength;
-                        foundMeaningLength = true;
-                        break;
+                    String[] currentMeaningIndividualWords = currentMeaningElement.trim().split(" ");
+                    for (String word : currentMeaningIndividualWords) {
+                        cumulativeMeaningLength += word.length() + 2; //Added 2 to account for missing ", " instances in loop
+                        if (word.equals(inputQuery)) {
+                            currentMeaningLength = baseMeaningLength + lateMeaningPenalty + lateHitInMeaningPenalty + cumulativeMeaningLength - 100;
+                            foundMeaningLength = true;
+                            break;
+                        }
+                        lateHitInMeaningPenalty += 25;
                     }
-                    lateHitInMeaningPenalty += 25;
+                    if (foundMeaningLength) break;
+
+                    //If meaning has the exact word but maybe in parentheses, get the length as follows
+                    String[] currentMeaningIndividualWordsWithoutParentheses = currentMeaningElement.trim()
+                            .replace("(","").replace(")","").split(" ");
+                    lateHitInMeaningPenalty = 0;
+                    cumulativeMeaningLength = 0;
+                    for (String word : currentMeaningIndividualWordsWithoutParentheses) {
+                        cumulativeMeaningLength += word.length() + 2; //Added 2 to account for missing ", " instances in loop
+                        if (word.equals(inputQuery)) {
+                            currentMeaningLength = baseMeaningLength + lateMeaningPenalty + lateHitInMeaningPenalty + cumulativeMeaningLength;
+                            foundMeaningLength = true;
+                            break;
+                        }
+                        lateHitInMeaningPenalty += 25;
+                    }
+                    if (foundMeaningLength) break;
+
+                    lateHitInMeaningPenalty += 50;
                 }
                 if (foundMeaningLength) break;
 
@@ -1590,7 +1593,7 @@ public final class Utilities {
 
                 String[] currentMeaningIndividualElements;
                 if (!queryIsVerbWithTo) {
-                    baseMeaningLength = 900;
+                    baseMeaningLength = 1000;
 
                     //Calculate the length first by adding "to " to the input query. If it leads to a hit, that means that this verb is relevant
                     inputQuery = "to " + mInputQuery;
@@ -1600,7 +1603,8 @@ public final class Utilities {
                     cumulativeMeaningLength = 0;
                     for (String element : currentMeaningIndividualElements) {
                         cumulativeMeaningLength += element.length() + 2; //Added 2 to account for missing ", " instances in loop
-                        if (element.trim().equals(inputQuery)) {
+                        String trimmedElement = element.trim();
+                        if (trimmedElement.equals(inputQuery)) {
                             currentMeaningLength = baseMeaningLength + lateMeaningPenalty + lateHitInMeaningPenalty + cumulativeMeaningLength - 100;
                             foundMeaningLength = true;
                             break;
@@ -1617,7 +1621,8 @@ public final class Utilities {
                     lateHitInMeaningPenalty = 0;
                     cumulativeMeaningLength = 0;
                     for (String element : currentMeaningIndividualElements) {
-                        if (element.trim().equals(inputQuery)) {
+                        String trimmedElement = element.trim();
+                        if (trimmedElement.equals(inputQuery)) {
                             currentMeaningLength = baseMeaningLength + lateMeaningPenalty + lateHitInMeaningPenalty + cumulativeMeaningLength - 100;
                             foundMeaningLength = true;
                             break;
@@ -1637,7 +1642,8 @@ public final class Utilities {
                     cumulativeMeaningLength = 0;
                     for (String element : currentMeaningIndividualElements) {
                         cumulativeMeaningLength += element.length() + 2; //Added 2 to account for missing ", " instances in loop
-                        if (element.trim().equals(inputQuery)) {
+                        String trimmedElement = element.trim();
+                        if (trimmedElement.equals(inputQuery)) {
                             currentMeaningLength = baseMeaningLength + lateMeaningPenalty + lateHitInMeaningPenalty + cumulativeMeaningLength - 100;
                             foundMeaningLength = true;
                             break;

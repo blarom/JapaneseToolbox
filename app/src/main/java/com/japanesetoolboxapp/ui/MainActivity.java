@@ -39,6 +39,7 @@ import butterknife.Unbinder;
 
 //TODO: database upgrade
 ////TODO: allow user to enter verb in gerund form (ing) and still find it
+//// Test app ranking algorithm using the following words: eat, car
 
 //TODO: features
 ////TODO when joining online results, compare verb[space]suru with verb[no space]suru, and show verb[space]suru to user

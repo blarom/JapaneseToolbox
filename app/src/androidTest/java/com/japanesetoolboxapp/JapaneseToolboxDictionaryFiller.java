@@ -81,7 +81,7 @@ public class JapaneseToolboxDictionaryFiller {
 
         List<String> wordsWithDeletions = new ArrayList<>(words);
         int i = 0;
-        while (i<100) {
+        while (i<500) {
 
             TestInputStringAndButton("DICT", wordsWithDeletions.get(0));
             wordsWithDeletions.remove(0);

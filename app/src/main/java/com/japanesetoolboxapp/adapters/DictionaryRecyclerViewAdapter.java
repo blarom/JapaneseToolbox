@@ -83,7 +83,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 typeIsVerbConjugation = type.equals("VC");
                 typeIsiAdjectiveConjugation = type.equals("iAC");
                 typeIsnaAdjectiveConjugation = type.equals("naAC");
-                typeIsVerb = type.contains("V") && !type.equals("VC");
+                typeIsVerb = type.contains("V") && !type.equals("VC") && !type.equals("NV");
             }
         }
         //endregion
