@@ -6,6 +6,7 @@ import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
+import android.util.Log;
 
 import com.japanesetoolboxapp.ui.SplashScreenActivity;
 
@@ -53,7 +54,6 @@ public class JapaneseToolboxDictionaryFiller {
         List<String> words = getFrequentWordsFromFile();
         List<String> wordsWithDeletions = findWords(words);
         updateWordsFile(wordsWithDeletions);
-
     }
 
     private List<String> getFrequentWordsFromFile() {
@@ -83,7 +83,10 @@ public class JapaneseToolboxDictionaryFiller {
         int i = 0;
         while (i<500) {
 
+            if (i%50 == 0) updateWordsFile(wordsWithDeletions);
+
             TestInputStringAndButton("DICT", wordsWithDeletions.get(0));
+            Log.i("DictFiller", "Searched for word No. " + Integer.toString(i) + " in list: "+ wordsWithDeletions.get(0) + ".");
             wordsWithDeletions.remove(0);
 
             try {
