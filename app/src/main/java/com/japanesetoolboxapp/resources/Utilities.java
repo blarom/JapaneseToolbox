@@ -1,12 +1,14 @@
 package com.japanesetoolboxapp.resources;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -210,7 +212,17 @@ public final class Utilities {
         return Bitmap.createBitmap(scaledBitmap , 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true); //rotated Bitmap
 
     }
-
+    @TargetApi(23) public static boolean isPrintable(String c ) {
+        Paint paint=new Paint();
+        //paint.setTypeface(MainActivity.CJK_typeface);
+        boolean hasGlyph=true;
+        hasGlyph=paint.hasGlyph(c);
+        return hasGlyph;
+//            Character.UnicodeBlock block = Character.UnicodeBlock.of( c );
+//            return (!Character.isISOControl(c)) &&
+//                    block != null &&
+//                    block != Character.UnicodeBlock.SPECIALS;
+    }
 
     //String manipulations utilities
     public static String convertToUTF8Index(String input_string) {

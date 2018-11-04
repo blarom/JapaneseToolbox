@@ -3,6 +3,7 @@ package com.japanesetoolboxapp.ui;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -117,9 +118,32 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         }
 
     }
+    private void setPrintableKanji(TextView tv, Object text) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (text instanceof SpannableString) {
+                SpannableString span = (SpannableString) text;
+                if (Utilities.isPrintable(span.toString())) {
+                    tv.setText(span);
+                }
+                else {
+                    tv.setText(" X");
+                }
+            }
+            else {
+                String string = (String) text;
+                if (Utilities.isPrintable(string)) {
+                    tv.setText(string);
+                }
+                else {
+                    tv.setText(" X");
+                }
+            }
+        }
+    }
     private void displayDecomposition(String inputQuery,
                                       final int radical_iteration,
-                                      List<List<String>> decomposedKanji,
+                                      final List<List<String>> decomposedKanji,
                                       List<String> currentKanjiDetailedCharacteristics,
                                       List<String> currentKanjiMainRadicalInfo,
                                       int radicalIndex,
@@ -145,9 +169,9 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         //region Initialization
         SpannableString clickable_text;
         Spanned text;
-        TextView tv;
         String display_text;
         String[] structure_info;
+        String mainKanji = decomposedKanji.get(0).get(0);
 
         if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
 
@@ -170,9 +194,10 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             mOverallBlockContainer.removeViewAt(radical_iteration);
         }
 
-        kanjiTV.setText(decomposedKanji.get(0).get(0));
         kanjiTV.setTypeface(mDroidSansJapaneseTypeface);
         kanjiTV.setTextLocale(Locale.JAPAN);
+        setPrintableKanji(kanjiTV, mainKanji);
+        kanjiTV.setHint(mainKanji);
         structure_info = getStructureInfo(decomposedKanji.get(0).get(1));
         structureIV.setBackgroundResource(Integer.parseInt(structure_info[1]));
 
@@ -185,46 +210,34 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             if (decomposedKanji.get(i).get(0).equals("")) {break;}
 
             // Add the component to the layout
-            tv = new TextView(getContext());
+            final TextView tv = new TextView(getContext());
             tv.setLayoutParams(radical_gallery_layoutParams);
             display_text = decomposedKanji.get(i).get(0);
             text = Utilities.fromHtml("<b><font color='#800080'>" + display_text + "</font></b>");
             clickable_text = new SpannableString(text);
-            ClickableSpan Radical_Iteration_ClickableSpan = new ClickableSpan() {
-                @Override
-                public void onClick(View textView) {
 
-                    TextView tv = (TextView) textView;
-                    String text = tv.getText().toString();
-                    Spanned s = (Spanned) tv.getText();
-                    int start = s.getSpanStart(this);
-                    int end = s.getSpanEnd(this);
-
-                    startGettingDecompositionAsynchronously(text, radical_iteration+1);
-                }
-                @Override
-                public void updateDrawState(TextPaint ds) {
-                    super.updateDrawState(ds);
-                    ds.setUnderlineText(false);
-                }
-            };
-            clickable_text.setSpan(Radical_Iteration_ClickableSpan, 0, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-            tv.setText(clickable_text);
             tv.setTypeface(mDroidSansJapaneseTypeface);
             tv.setTextLocale(Locale.JAPAN);
+            setPrintableKanji(tv, clickable_text);
+            tv.setHint(decomposedKanji.get(i).get(0));
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startGettingDecompositionAsynchronously(tv.getHint().toString(), radical_iteration+1);
+                }
+            });
             tv.setTextSize(26);
             tv.setPadding(10,0,10,0);
             tv.setMovementMethod(LinkMovementMethod.getInstance());
             radicalGalleryLL.addView(tv);
 
             if (i < decomposedKanji.size()-1) {
-                tv = new TextView(getContext());
-                tv.setText("\u00B7");
-                tv.setPadding(10,0,10,0);
-                tv.setTextSize(30);
-                tv.setTypeface(null, Typeface.BOLD);
-                radicalGalleryLL.addView(tv);
+                TextView separatorTV = new TextView(getContext());
+                separatorTV.setText("\u00B7");
+                separatorTV.setPadding(10,0,10,0);
+                separatorTV.setTextSize(30);
+                separatorTV.setTypeface(null, Typeface.BOLD);
+                radicalGalleryLL.addView(separatorTV);
             }
 
         }
@@ -574,7 +587,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
             // Search for the input in the database and retrieve the result's characteristics
 
-            List<List<String>> decomposedKanji = Decomposition(inputQuery.substring(0,1));
+            List<List<String>> decomposedKanji = Decomposition(inputQuery);
             List<String> currentKanjiDetailedCharacteristics = getKanjiDetailedCharacteristics(mCurrentKanjiCharacter);
             List<String> currentKanjiMainRadicalInfo = getKanjiRadicalCharacteristics(mCurrentKanjiCharacter);
             Object[] radicalInfo = getRadicalInfo();
