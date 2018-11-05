@@ -165,7 +165,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 165|X and Y|CO|ME#0151;0152|||||
 166|X but Y|CO|ME#0153;0154|||||
 167|Y even if X|CO||X tokoro de, Y @ X/Y = phrase|504|||
-168|totteringly, staggeringly, unsteadily​|AM||||||
+168|totteringly, staggeringly, unsteadily|AM||||||
 169|lanky, spindly, slender, frail|Ana||||||
 170|X nevertheless Y, X however Y|CO||X. sore ni shite mo Y @ Y = phrase||||
 171|X? or Y?|PC||X? soretomo Y? @ X/Y = phrase|948, 949|||
@@ -402,8 +402,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 402|in addition to, besides, other than, else|A|ME#0004;0005|||||
 403|me too|A||||||
 404|(some) more, even more, longer, further|A|||646, 647|||
-405|monotone, monotonic, dull|Ana||||||
-406|monotony, dullness​|NACF||||||
+405|monotonic|Ana||||||
+406|monotony, dullness|NACF||||||
 407|neither choice|A||||||
 408|none|A||||||
 409|noone, nobody|A|||710|||
@@ -897,8 +897,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 897|bad luck, regret, disappointment|NACF||||||
 898|desperate, hopeless|Ana||||||
 899|diligent, serious, honest, sober, grave, earnest, steady|Ana||||||
-900|disliked, least favorite, hated, unfond|Ana|Verb-based, linked to object by "ga" when used with desu verb.||618|suki, daisuki|daikirai|
-901|eager, earnest, risking one's life|Ana|||504|||
+900|least favorite, unfond|Ana|Verb-based, linked to object by "ga" when used with desu verb.||618|suki, daisuki|daikirai|
+901||-|||504|||
 902|earnestness, eagerness, risking one's life|NACF||||||
 903|easy, comfortable|Ana|||593|taihen, muzukashii, nukui|yasashii|
 904|comfort, ease|NACF||||||
@@ -1301,7 +1301,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1301|very seldom, almost never, rarely|AT|Use in phrase with negative tense only.||679, 134||amari, zenzen|
 1302|very soon, before long, in a moment|AT|||665, 666|||
 1303|X in addition to, besides Y|AT||hoka ni X Y, WHERE: X = characteristic, Y = time||||
-1304|yesterday |AT|||746|||
+1304||-|||746|||
 1305|yesterday|NT|||||yuube|
 1306|counter for small animals|C|Used for small animals, insects, fish, reptiles, amphibians, oni (demons/ogres). Usage: (1) ippiki, (2) nihiki), (3) sanbiki, (4) yonhiki, (5) gohiki, (6) roppiki, (7) nanahiki, (8) hachihiki, (9) kyuuhiki, (10) juppiki|||||
 1307||-||||||
@@ -1893,7 +1893,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1893|sightseeing|NAc|||1273|||
 1894|sightseeing, sightseer, watching, watcher|NAc||||||
 1895|signature|NAc||||||
-1896|slow swaying, rolling from side to side, swinging, wobbling, shake, swing, waver, roll, rock, tremble, vibration, flicker|NAc||||||
+1896|slow swaying, rolling from side to side, wobbling, shake, roll, tremble, vibration|NAc||||||
 1897||-||||||
 1898|sneeze|NAc|Used in formal speech.|||||
 1899|soccer, football|NAc|||175|||
@@ -2181,7 +2181,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2181|examination taking|NACF|Especially referring to school and university entrance examinations.|||||
 2182|instance, example, case, illustration, usage|NACF|||125|||
 2183|exchange|NACF||||||
-2184|excitement, passion, deep emotion, impression, inspiration|NACF||||||
+2184||-||||||
 2185|exercise|NACF|||71|||
 2186|existence or nonexistence, presence or absence, consent or refusal, yes or no|NACF||||||
 2187|exorcism|NACF||||||
@@ -2297,7 +2297,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2297|sick|Sa|"kare wa byouki-na hito desu" is an incorrect sentence, use "kare wa byouki desu" instead||1385|genki, kenkouteki, joubu||
 2298|illumination, lighting, artificial light|NACF||||||
 2299|means|NACF||||||
-2300|impressions, thoughts|NACF||||||
+2300|impressions, thoughts, feelings, reactions|NACF||||||
 2301|in two equal parts|NACF||||||
 2302|incident, affair, happening, event|NACF||||||
 2303|indication, sign, hint, presence, trend, quaotation (stock market)|NACF||||||
@@ -2487,7 +2487,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2487|outside the country|NACF||||||
 2488|pace|NACF||||||
 2489|pain|NACF|||1284|||
-2490|parenthesis, brackets|NACF||||||
+2490|parenthesis|NACF||||||
 2491|party|NACF|||88|||
 2492|party, banquet, reception, feast, dinner|NACF|||1272|||
 2493|penalty, sentence, punishment|NACF||||||
@@ -3834,7 +3834,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3834|engineer, technician|NPe||||||
 3835|family, members of a family|NPe|||401|||
 3836|fellow, companion, comrade, mutual|NPe||||||
-3837|fellow, guy, chap, thing, object|NPe|Colloquialism.|||||
+3837|fellow, guy, chap|NPe|Colloquialism.|||||
 3838|female nurse|NPe||||||
 3839|fetus, foetus, embryo, unborn child|NPe||||||
 3840|first-year student, freshman|NPe||||||
@@ -5268,7 +5268,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5268|be arrested, turn up (of evidence, etc.), be listed (as a candidate)|VrugI||||||
 5269|obtain, come possess, get hold of, get one's hands on|VrugT||||||
 5270|form, shape, make, mold, build up|VrugT||||||
-5271|shake, jolt, rock, cradle, swing|VrugT||||||
+5271||-||||||
 5272|mouse, rat|NFa||||||
 5273||-||||||
 5274||-||||||
@@ -5759,8 +5759,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5759|garnish, accompany (as a card does a gift), add as support, prop up, accompany (as an aid, guide, translator, etc.), mimic, imitate (archaic), draw something near oneself, approach nearby (archaic)|VruiT||||||
 5760||-||||||
 5761|be good (at), go well, look good, taste good|VruiI||||||
-5762|pin something down, hold something down, hold something back, stop, restrain, curb, seize, grasp, arrest, catch happening, determine (important points), find (proof), understand|VruiT||||||
-5763|gain control of something, govern, keep down (e.g. information), suppress|VruiT||||||
+5762||-||||||
+5763|gain control of something, govern, keep down (e.g. information)|VruiT||||||
 5764|become thin, lose weight, reduce (one's) weight, slim, be barren, be infertile, be sterile|VruiI||||||
 5765|chase, run after, pursue|VruiT||||||
 5766|rebuke, scold harshly|VruiT||||||
@@ -7585,7 +7585,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7585|prolapse, proptosis|NACF||||||
 7586|go out (e.g. on an excursion or outing), leave, depart, start, set out|VruiI||||||
 7587|be about to leave, be just going out|VruiI||||||
-7588|leave, exit, go out, come out, get out​|VruiI||Use "wo" instead of "kara" with this verb.|1253|dasu||
+7588|leave, exit, go out, come out, get out|VruiI||Use "wo" instead of "kara" with this verb.|1253|dasu||
 7589|leave (on a journey), depart, start out, set out|VruiI||||||
 7590|move forward|VruiI||||||
 7591|come to, get to, lead to, reach|VruiI||||||
@@ -18481,3 +18481,86 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18481|translate a foreign language into Japanese|VsuruI||||||
 18482|completely recover one's health|VsuruI||||||
 18483|annihilate, destroy totally, destroy completely, defeat crushingly|VsuruT||||||
+18484|sensitive, alert, aware, susceptible|Ana||||||
+18485|sensitivity, alertness, awareness, susceptibility|NACF||||||
+18486|slave, servant|NACF||||||
+18487|slavery|NACF||||||
+18488|gyaru, (young) woman adhering to a fashion trend usually marked by brown or blond-dyed hair, gaudy clothes and accessories|NACF||||||
+18489|gal|NACF||||||
+18490|(male) waiter|NACF||||||
+18491|boy (in hotel), bell-boy|NACF||||||
+18492|Garzon, Garcon|NPl||||||
+18493|harassment, pestering|NACF||||||
+18494|disgusting, filthy, repulsive, detestable, unpleasant, disagreeable|Ai||||||
+18495|lewd, lascivious, indecent, obscene, filthy, dirty|Ai||||||
+18496|parentheses, brackets|NACF||||||
+18497|firm, unshakeable, resolute|Aj||||||
+18498|each nation|NACF||||||
+18499|many nations, many countries|NACF||||||
+18500|descent (esp. in skiing), sliding down|NACF||||||
+18501|being deeply moved emotionally, excitement, passion, inspiration, deep emotion, strong impression|NACF||||||
+18502|deep emotion, impression, inspiration|NACF||||||
+18503|perceive, sense, take in, grasp, feel|VrugT||||||
+18504|deep impression|NACF||||||
+18505|sensitivity, sensitiveness, sense (of ...)|NACF||||||
+18506|feel (i.e. tactile sensation), touch, feeling, sensation, texture (e.g. food, cloth)|NACF||||||
+18507|admiration, wonder, astonishment|NACF||||||
+18508|feel, sense|VruiI||||||
+18509|disgust, hate, repugnance|NACF||||||
+18510|unpleasant feelings (e.g. hatred, disgust, revulsion, fear)|NACF||||||
+18511|suspicion|NACF||||||
+18512|disliked, hated, disagreeable|Ana||||||
+18513|tendency, smack (of), touch (of)|NACF||||||
+18514|distinction, discrimination|NACF||||||
+18515|enhancement, exaltation, promotion, uplift|NACF||||||
+18516|pure white|Ana||||||
+18517|pure white|NACF||||||
+18518|blank (e.g. mind, paper)|Ana||||||
+18519|blankness (e.g. mind, paper)|NACF||||||
+18520|keep within limits (e.g. spending), restrain (e.g. emotions), control, curb, hold in check|VruiT||||||
+18521|hold back (e.g. an enemy), check, curb, contain, quell, subdue, suppress, repress|VruiT||||||
+18522|pin down, hold down, press down|VruiT||||||
+18523|cover (esp. a part of one's body with one's hand), clutch (a body part in pain), press (a body part)|VruiT||||||
+18524|get a hold of, obtain, seize, catch, arrest|VruiT||||||
+18525|grasp (a point), comprehend|VruiT||||||
+18526|quell, subdue, suppress, repress, hold back, check, curb, contain|VruiT||||||
+18527|set meal, combo-meal, combo, combination meal|NACF||||||
+18528|hairdo|NACF||||||
+18529|Sete|NPl||||||
+18530|monotony, monotone, dullness|Ana||||||
+18531|minor key|NACF||||||
+18532|sequel, continuation, (also suffix) continuation (in time and space), second series, succession, spell|NACF||||||
+18533|go smoothly, turn out well, do the trick, have peaceful relations|VkuI||||||
+18534||-||||||
+18535|overhand throw|NACF||||||
+18536|a throw using the outside of the arm|NACF||||||
+18537|thing, object|P||||||
+18538|he, she, him, her|P||||||
+18539|swaying, swinging, rocking, shaking, wavering, flickering|A||||||
+18540|cradle|NACF||||||
+18541|shake, jolt, rock (cradle), swing|VrugT||||||
+18542|shake, swing, sway, shock|VsuT||||||
+18543|shaking, jolting|NACF||||||
+18544|shaking up (e.g. one's adversary), flustering (someone)|NACF||||||
+18545|shake, jolt, rock, swing, sway|VrugT||||||
+18546|shake (e.g. the political world), disturb, shock, upset|VrugT||||||
+18547|put off a batter (by varying one's type of pitch)|VrugT||||||
+18548|continuation, continuance, going on, resuming|NACF||||||
+18549|continuation, sequel|NACF||||||
+18550|continuous rise (in market price)|NACF||||||
+18551|appearance one after another|NACF||||||
+18552|successively, one after another|A||||||
+18553|be in parentheses, be in brackets|VsuruI||||||
+18554|descend (esp. in skiing), slide down|VsuruI||||||
+18555|feel deep emotions, be impressed, be inspired|VsuruI||||||
+18556|be deeply impressed|VsuruI||||||
+18557|feel (i.e. tactile sensation), touch|VsuruT||||||
+18558|have admiration, wonder, be astonished|VsuruI||||||
+18559|be disgusted, hate, be repugned|VsuruI||||||
+18560|be enhanced, be exaltated, be promoted, be uplifted|VsuruI||||||
+18561|have a set meal, have a combo-meal, have a combo, have a combination meal|VsuruI||||||
+18562|do (one's) hair|VsuruI||||||
+18563|sway, swing, rock, shake, waver, flicker|VsuruI||||||
+18564|continue, go on, resume|VsuruI||||||
+18565|rise continuously (in market price)|VsuruI||||||
+18566|appear one after another|VsuruI||||||
