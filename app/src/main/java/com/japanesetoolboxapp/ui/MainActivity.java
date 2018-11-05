@@ -43,8 +43,6 @@ import butterknife.Unbinder;
 
 //TODO: features
 ////TODO when joining online results, compare verb[space]suru with verb[no space]suru, and show verb[space]suru to user
-////TODO make ranking in in dict put special concat hits at end of list or invalidate them
-////TODO implement short description for long definitions
 ////TODO indicate if word is common in search results
 ////TODO indicate source as local/jisho in search results
 ////TODO Show the adjective conjugations (it will also explain to the user why certain adjectives appear in the list, based on their conjugations)
@@ -59,7 +57,6 @@ import butterknife.Unbinder;
 ////TODO make the DICT return kanjis having the same romaji value as that of the entered kanji, similar to the way jisho.org works
 
 //TODO: bugs
-////TODO searching for "福" through left radical yields no results, since it does not point to spirit radical, just radical variant
 ////TODO "kamoshi" returns no josho.org results
 ////TODO imperative display for godan verbs
 

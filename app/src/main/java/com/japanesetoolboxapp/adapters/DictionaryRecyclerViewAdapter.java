@@ -105,14 +105,18 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         else if (typeIsiAdjectiveConjugation) parentRomaji = "[i-adj.]" + romaji;
         else if (typeIsnaAdjectiveConjugation) parentRomaji = "[na-adj.]" + romaji;
         else parentRomaji = romaji;
-        String romajiAndKanji =  parentRomaji + " (" + kanji + ")";
-        if (kanji.equals("")) { romajiAndKanji = romaji; }
+
+        String romajiAndKanji;
+        if (romaji.equals("")) romajiAndKanji = kanji;
+        else if (kanji.equals("")) romajiAndKanji = romaji;
+        else romajiAndKanji = parentRomaji + " (" + kanji + ")";
+
         holder.romajiAndKanjiTextView.setText(romajiAndKanji);
         holder.romajiAndKanjiTextView.setTypeface(mDroidSansJapaneseTypeface, Typeface.BOLD);
         holder.romajiAndKanjiTextView.setPadding(0,16,0,0);
 
 
-        if (romaji.equals("")) { holder.romajiAndKanjiTextView.setVisibility(View.GONE); }
+        if (romaji.equals("") && kanji.equals("")) { holder.romajiAndKanjiTextView.setVisibility(View.GONE); }
         else { holder.romajiAndKanjiTextView.setVisibility(View.VISIBLE); }
 
         holder.meaningsTextView.setText(Utilities.removeDuplicatesFromCommaList(cumulative_meaning_value.toString()));
@@ -128,12 +132,20 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         //endregion
 
         //region Showing the romaji and kanji values for user click
-        if (typeIsVerb) {
-            setHyperlinksInCopyToInputLine("verb", holder.romajiChildTextView, "Conjugate ", romaji, " ");
-            setHyperlinksInCopyToInputLine("verb", holder.kanjiChildTextView, "(", kanji, ").");
-        } else {
-            setHyperlinksInCopyToInputLine("word", holder.romajiChildTextView, "Copy ", romaji, " ");
-            setHyperlinksInCopyToInputLine("word", holder.kanjiChildTextView, "(", kanji, ") to input.");
+        if (romaji.length()>0 && kanji.length()>0) {
+            if (typeIsVerb) {
+                setHyperlinksInCopyToInputLine("verb", holder.romajiChildTextView, "Conjugate ", romaji, " ");
+                setHyperlinksInCopyToInputLine("verb", holder.kanjiChildTextView, "(", kanji, ").");
+            } else {
+                setHyperlinksInCopyToInputLine("word", holder.romajiChildTextView, "Copy ", romaji, " ");
+                setHyperlinksInCopyToInputLine("word", holder.kanjiChildTextView, "(", kanji, ") to input.");
+            }
+        }
+        else if (romaji.length()==0) {
+            setHyperlinksInCopyToInputLine("word", holder.romajiChildTextView, "Copy ", kanji, " to input.");
+        }
+        else {
+            setHyperlinksInCopyToInputLine("word", holder.romajiChildTextView, "Copy ", romaji, " to input.");
         }
         //endregion
 
