@@ -861,9 +861,9 @@ public final class Utilities {
                     meaningTag = "";
                     if (meaningsTagsData.size()>0) meaningTag = (String) meaningsTagsData.get(0);
                 }
+                if (meaningTag.contains("Wikipedia") || meaningTag.contains("Notes")) break;
                 if (currentHeader.contains("meaning-wrapper")) {
-                    if (meaningTag.contains("Wikipedia") || meaningTag.contains("Notes")) break;
-                    else if (meaningTag.contains("Other forms")) {
+                    if (meaningTag.contains("Other forms")) {
                         List<Object> meaningWrapperData = (List<Object>) meaningsWrapperData.get(j);
                         List<Object> meaningDefinitionData = (List<Object>) meaningWrapperData.get(1);
                         List<Object> meaningMeaningData = (List<Object>) getElementAtHeader(meaningDefinitionData,"meaning-meaning");
@@ -882,9 +882,11 @@ public final class Utilities {
 
                         //Extracting the altSpellings
                         List<String> altSpellings = new ArrayList<>();
-                        Matcher m = Pattern.compile("\\b(\\w+)\\s【").matcher(altSpellingsContainer.toString());
+                        Matcher m = Pattern.compile("\\b(\\w+)\\s【(\\w+)】").matcher(altSpellingsContainer.toString());
                         while (m.find()) {
-                            altSpellings.add(m.group(1));
+                            if (!m.group(1).equals(currentWord.getKanji())) altSpellings.add(m.group(1));
+                            String convertedMatch = ConvertFragment.getLatinHiraganaKatakana(m.group(2)).get(GlobalConstants.TYPE_LATIN);
+                            if (!convertedMatch.equals(currentWord.getRomaji())) altSpellings.add(convertedMatch);
                         }
                         currentWord.setAltSpellings(TextUtils.join(", ", altSpellings));
                         break;
