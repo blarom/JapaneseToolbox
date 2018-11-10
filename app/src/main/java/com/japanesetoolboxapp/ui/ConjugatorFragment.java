@@ -1405,12 +1405,12 @@ public class ConjugatorFragment extends Fragment implements
                     //endregion
 
                     //region Intransitive verbs don't have a passive tense, so the relevant entries are removed
-                    if (!currentVerb.getTrans().equals("T") && categoryIndex == passiveTenseCategoryIndex) {
-                        for (int conjugationIndex = 0; conjugationIndex < conjugationSetLatin.size(); conjugationIndex++) {
-                            conjugationSetLatin.set(conjugationIndex, "*");
-                            conjugationSetKanji.set(conjugationIndex, "*");
-                        }
-                    }
+//                    if (!currentVerb.getTrans().equals("T") && categoryIndex == passiveTenseCategoryIndex) {
+//                        for (int conjugationIndex = 0; conjugationIndex < conjugationSetLatin.size(); conjugationIndex++) {
+//                            conjugationSetLatin.set(conjugationIndex, "*");
+//                            conjugationSetKanji.set(conjugationIndex, "*");
+//                        }
+//                    }
                     //endregion
 
                     //region Cleaning the entries that contain exceptions

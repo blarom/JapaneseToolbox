@@ -60,20 +60,27 @@
             app:layout_constraintStart_toEndOf="@id/decomposition_element_structure_image"
             app:layout_constraintTop_toTopOf="@+id/decomposition_element_kanji"/>
 
-        <LinearLayout
-            android:id="@+id/decomposition_element_radical_gallery"
+        <ScrollView
+            android:id="@+id/decomposition_element_radical_gallery_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginBottom="4dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
-            android:gravity="center_vertical|start"
-            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="@+id/decomposition_element_kanji"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/decomposition_element_separator2"
-            app:layout_constraintTop_toTopOf="@+id/decomposition_element_kanji"/>
+            app:layout_constraintTop_toTopOf="@+id/decomposition_element_kanji">
+
+            <LinearLayout
+                android:id="@+id/decomposition_element_radical_gallery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|start"
+                android:orientation="horizontal"/>
+        </ScrollView>
 
         <TextView
             android:id="@+id/decomposition_element_structure_title"
