@@ -51,6 +51,14 @@ public interface VerbDao {
     @Delete
     void deleteVerbs(Verb... Verbs);
 
+    //Update specific parameters of the verb (not working correctly for some reason - therefore not used in code)
+    @Query("UPDATE " + Verb.TABLE_NAME + " SET "
+                     + Verb.COLUMN_VERB_ACTIVE_LATINROOT + " = :activeLatinRoot "
+            + "AND " + Verb.COLUMN_VERB_ACTIVE_KANJIROOT + " = :activeKanjiRoot "
+            + "AND " + Verb.COLUMN_VERB_ACTIVE_ALTSPELLING + " = :activeAltSpelling "
+            + "WHERE " + Verb.COLUMN_ID + " = :id")
+    void updateVerbByVerbIdWithParameters(long id, String activeLatinRoot, String activeKanjiRoot, String activeAltSpelling);
+
     //Update a Verb by Id
     @Update
     int update(Verb Verb);

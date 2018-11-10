@@ -262,7 +262,7 @@ public class DictionaryFragment extends Fragment implements
             List<Word> localMatchingWordsList = new ArrayList<>();
             if (!TextUtils.isEmpty(mSearchWord)) {
                 JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase = JapaneseToolboxCentralRoomDatabase.getInstance(getContext());
-                mMatchingWordIds = Utilities.getMatchingWordIdsUsingRoomIndexes(mSearchWord, japaneseToolboxCentralRoomDatabase);
+                mMatchingWordIds = Utilities.getMatchingWordIdsAndDoBasicFiltering(mSearchWord, japaneseToolboxCentralRoomDatabase);
                 localMatchingWordsList = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(mMatchingWordIds);
             }
 
@@ -393,7 +393,7 @@ public class DictionaryFragment extends Fragment implements
         //region Replacing the Kana input word by its romaji equivalent
         String inputQuery = mInputQuery;
         int inputTextType = ConvertFragment.getTextType(inputQuery);
-        if (inputTextType == GlobalConstants.VALUE_HIRAGANA || inputTextType == GlobalConstants.VALUE_KATAKANA) {
+        if (inputTextType == GlobalConstants.TYPE_HIRAGANA || inputTextType == GlobalConstants.TYPE_KATAKANA) {
             List<String> translationList = ConvertFragment.getLatinHiraganaKatakana(inputQuery.replace(" ", ""));
             inputQuery = translationList.get(0);
         }

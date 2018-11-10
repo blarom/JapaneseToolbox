@@ -143,23 +143,23 @@ public class ConvertFragment extends Fragment {
 
         }
 
-        translation.set(GlobalConstants.VALUE_LATIN, Utilities.removeSpecialCharacters(translation_latin));
-        translation.set(GlobalConstants.VALUE_HIRAGANA, Utilities.removeSpecialCharacters(translation_hiragana));
-        translation.set(GlobalConstants.VALUE_KATAKANA, Utilities.removeSpecialCharacters(translation_katakana));
+        translation.set(GlobalConstants.TYPE_LATIN, Utilities.removeSpecialCharacters(translation_latin));
+        translation.set(GlobalConstants.TYPE_HIRAGANA, Utilities.removeSpecialCharacters(translation_hiragana));
+        translation.set(GlobalConstants.TYPE_KATAKANA, Utilities.removeSpecialCharacters(translation_katakana));
         return translation;
     }
     public static int getTextType(String input_value) {
 
-        if (input_value.contains("*") || input_value.contains("＊") || input_value.equals("") || input_value.equals("-") ) { return GlobalConstants.VALUE_INVALID;}
+        if (input_value.contains("*") || input_value.contains("＊") || input_value.equals("") || input_value.equals("-") ) { return GlobalConstants.TYPE_INVALID;}
 
         input_value = Utilities.removeSpecialCharacters(input_value);
         String character;
-        int text_type = GlobalConstants.VALUE_INVALID;
+        int text_type = GlobalConstants.TYPE_INVALID;
 
         if (!input_value.equals("")) {
             for (int i=0; i<input_value.length();i++) {
 
-                if (text_type == GlobalConstants.VALUE_KANJI) { break;}
+                if (text_type == GlobalConstants.TYPE_KANJI) { break;}
 
                 character = Character.toString(input_value.charAt(i));
 
@@ -246,7 +246,7 @@ public class ConvertFragment extends Fragment {
                         || character.equals("ぉ")
                         || character.equals("ぇ")
                         || character.equals("ぃ")) {
-                    text_type = GlobalConstants.VALUE_HIRAGANA;
+                    text_type = GlobalConstants.TYPE_HIRAGANA;
                 } else if (character.equals("ア")
                         || character.equals("イ")
                         || character.equals("ウ")
@@ -330,7 +330,7 @@ public class ConvertFragment extends Fragment {
                         || character.equals("ョ")
                         || character.equals("ェ")
                         || character.equals("ィ")) {
-                    text_type = GlobalConstants.VALUE_KATAKANA;
+                    text_type = GlobalConstants.TYPE_KATAKANA;
                 } else if (character.equalsIgnoreCase("a") || character.equalsIgnoreCase("b")
                         || character.equalsIgnoreCase("c") || character.equalsIgnoreCase("d")
                         || character.equalsIgnoreCase("e") || character.equalsIgnoreCase("f")
@@ -344,7 +344,7 @@ public class ConvertFragment extends Fragment {
                         || character.equalsIgnoreCase("u") || character.equalsIgnoreCase("v")
                         || character.equalsIgnoreCase("w") || character.equalsIgnoreCase("x")
                         || character.equalsIgnoreCase("y") || character.equalsIgnoreCase("z")) {
-                    text_type = GlobalConstants.VALUE_LATIN;
+                    text_type = GlobalConstants.TYPE_LATIN;
                 } else if (character.equalsIgnoreCase("0") || character.equalsIgnoreCase("1")
                         || character.equalsIgnoreCase("2") || character.equalsIgnoreCase("3")
                         || character.equalsIgnoreCase("4") || character.equalsIgnoreCase("5")
@@ -352,7 +352,7 @@ public class ConvertFragment extends Fragment {
                         || character.equalsIgnoreCase("8") || character.equalsIgnoreCase("9")) {
                     text_type = GlobalConstants.VALUE_NUMBER;
                 } else {
-                    text_type = GlobalConstants.VALUE_KANJI;
+                    text_type = GlobalConstants.TYPE_KANJI;
                 }
             }
         } else {

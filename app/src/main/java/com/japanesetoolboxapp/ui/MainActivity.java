@@ -38,19 +38,16 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 //TODO: database upgrade
-////TODO: allow user to enter verb in gerund form (ing) and still find it
 //// Test app ranking algorithm using the following words: eat, car
 
 //TODO: features
+////TODO: allow user to enter verb in gerund form (ing) and still find it
 ////TODO when joining online results, compare verb[space]suru with verb[no space]suru, and show verb[space]suru to user
 ////TODO indicate if word is common in search results
 ////TODO indicate source as local/jisho in search results
 ////TODO Show the adjective conjugations (it will also explain to the user why certain adjectives appear in the list, based on their conjugations)
-////TODO If the user enter "一", make sure the app gives all results with a bar
 ////TODO Give the user the option to reduce/increase the number of search results (useful when there are many results)
 ////TODO Add the option of selecting which databases to search in (in order to limit the number of results)
-////TODO Allow for different kanji versions of a verb by comparing the input verb's kanji to a list associated with every verb,
-////     then applying the reverse conjugation by searching using the database's kanji instead of the user's input, and also showing the other possible kanji dict. forms
 ////TODO Display the number of results
 ////TODO Add filtering functionality: if more than one word is entered, the results will be limited to those that include all words.
 ////TODO Translate the app into other European languages, and allow the user to choose the wanted language.

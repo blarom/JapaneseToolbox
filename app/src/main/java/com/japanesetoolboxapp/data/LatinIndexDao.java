@@ -32,7 +32,7 @@ public interface LatinIndexDao {
     @Query("SELECT * FROM " + LatinIndex.TABLE_NAME + " WHERE " + LatinIndex.COLUMN_LATIN + " = :query")
     LatinIndex getLatinIndexByExactLatinQuery(String query);
 
-    //Get a LatinIndex list by similar query match - see: https://stackoverflow.com/questions/44234644/android-rooms-search-in-string
+    //Get a LatinIndex list by similar latin index query match - see: https://stackoverflow.com/questions/44234644/android-rooms-search-in-string
     @Query("SELECT * FROM " + LatinIndex.TABLE_NAME + " WHERE " + LatinIndex.COLUMN_LATIN + " LIKE :query  || '%' ")
     List<LatinIndex> getLatinIndexByStartingLatinQuery(String query);
 

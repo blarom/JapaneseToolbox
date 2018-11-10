@@ -88,7 +88,7 @@ public class InputQueryFragment extends Fragment implements
     @BindView(R.id.button_convert) Button mConvertButton;
     @BindView(R.id.button_search_by_radical) Button mSearchByRadicalButton;
     @BindView(R.id.button_decompose) Button mDecomposeButton;
-    private static final int QUERY_HISTORY_MAX_SIZE = 7;
+    private static final int QUERY_HISTORY_MAX_SIZE = 20;
     private static final int RESULT_OK = -1;
     private static final int SPEECH_RECOGNIZER_REQUEST_CODE = 101;
     private static final int ADJUST_IMAGE_ACTIVITY_REQUEST_CODE = 201;

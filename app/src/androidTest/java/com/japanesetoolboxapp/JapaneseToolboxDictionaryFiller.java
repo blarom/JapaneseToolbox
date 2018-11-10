@@ -86,7 +86,7 @@ public class JapaneseToolboxDictionaryFiller {
             if (i%50 == 0) updateWordsFile(wordsWithDeletions);
 
             TestInputStringAndButton("DICT", wordsWithDeletions.get(0));
-            Log.i("DictFiller", "Searched for word No. " + Integer.toString(i) + " in list: "+ wordsWithDeletions.get(0) + ".");
+            Log.i("DictFiller", "Searched for word No. " + Integer.toString(i) + "/"+ words.size() +" in list: "+ wordsWithDeletions.get(0) + ".");
             wordsWithDeletions.remove(0);
 
             try {

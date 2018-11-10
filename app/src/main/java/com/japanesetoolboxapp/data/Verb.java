@@ -18,7 +18,7 @@ public class Verb implements Parcelable {
     static final String COLUMN_VERB_MEANING = "meaning";
     static final String COLUMN_VERB_TRANSITIVE = "transitive";
     static final String COLUMN_VERB_PREPOSITION = "preposition";
-    static final String COLUMN_VERB_KANA = "kana";
+    static final String COLUMN_VERB_HIRAGANA_FIRST_CHAR = "hiraganafirstchar";
     static final String COLUMN_VERB_KANJI = "kanji";
     static final String COLUMN_VERB_ROMAJI = "romaji";
     static final String COLUMN_VERB_KANJIROOT = "kanjiroot";
@@ -26,18 +26,21 @@ public class Verb implements Parcelable {
     static final String COLUMN_VERB_EXCEPTIONINDEX = "exceptionindex";
     static final String COLUMN_VERB_ALTSPELLINGS = "altspellings";
     static final String COLUMN_VERB_CONJUGATIONCATEGORIES = "conjugationcategories";
+    static final String COLUMN_VERB_ACTIVE_KANJIROOT = "activekanjiroot";
+    static final String COLUMN_VERB_ACTIVE_LATINROOT = "activelatinroot";
+    static final String COLUMN_VERB_ACTIVE_ALTSPELLING = "activealtspellings";
 
     public Verb() {}
 
     @Ignore
     public Verb(String family, String meaning, String trans, String preposition,
-                String kana, String kanji, String romaji, String kanjiRoot,
+                String hiraganaFirstChar, String kanji, String romaji, String kanjiRoot,
                 String latinRoot, String exceptionIndex, String altSpellings) {
         this.family = family;
         this.meaning = meaning;
         this.trans = trans;
         this.preposition = preposition;
-        this.kana = kana;
+        this.hiraganaFirstChar = hiraganaFirstChar;
         this.kanji = kanji;
         this.romaji = romaji;
         this.kanjiRoot = kanjiRoot;
@@ -53,7 +56,7 @@ public class Verb implements Parcelable {
         meaning = in.readString();
         trans = in.readString();
         preposition = in.readString();
-        kana = in.readString();
+        hiraganaFirstChar = in.readString();
         kanji = in.readString();
         romaji = in.readString();
         kanjiRoot = in.readString();
@@ -120,13 +123,13 @@ public class Verb implements Parcelable {
         this.preposition = preposition;
     }
 
-    @ColumnInfo(name = COLUMN_VERB_KANA)
-    private String kana = "";
-    public String getKana() {
-        return kana;
+    @ColumnInfo(name = COLUMN_VERB_HIRAGANA_FIRST_CHAR)
+    private String hiraganaFirstChar = "";
+    public String getHiraganaFirstChar() {
+        return hiraganaFirstChar;
     }
-    public void setKana(String kana) {
-        this.kana = kana;
+    public void setHiraganaFirstChar(String hiraganaFirstChar) {
+        this.hiraganaFirstChar = hiraganaFirstChar;
     }
 
     @ColumnInfo(name = COLUMN_VERB_KANJI)
@@ -183,6 +186,33 @@ public class Verb implements Parcelable {
         this.altSpellings = altSpellings;
     }
 
+    @ColumnInfo(name = COLUMN_VERB_ACTIVE_KANJIROOT)
+    private String activeKanjiRoot = "";
+    public String getActiveKanjiRoot() {
+        return activeKanjiRoot;
+    }
+    public void setActiveKanjiRoot(String activeKanjiRoot) {
+        this.activeKanjiRoot = activeKanjiRoot;
+    }
+
+    @ColumnInfo(name = COLUMN_VERB_ACTIVE_LATINROOT)
+    private String activeLatinRoot = "";
+    public String getActiveLatinRoot() {
+        return activeLatinRoot;
+    }
+    public void setActiveLatinRoot(String activeLatinRoot) {
+        this.activeLatinRoot = activeLatinRoot;
+    }
+
+    @ColumnInfo(name = COLUMN_VERB_ACTIVE_ALTSPELLING)
+    private String activeAltSpelling = "";
+    public String getActiveAltSpelling() {
+        return activeAltSpelling;
+    }
+    public void setActiveAltSpelling(String activeAltSpelling) {
+        this.activeAltSpelling = activeAltSpelling;
+    }
+
     @Ignore
     @ColumnInfo(name = COLUMN_VERB_CONJUGATIONCATEGORIES)
     private List<ConjugationCategory> conjugationCategories;
@@ -205,7 +235,7 @@ public class Verb implements Parcelable {
         parcel.writeString(meaning);
         parcel.writeString(trans);
         parcel.writeString(preposition);
-        parcel.writeString(kana);
+        parcel.writeString(hiraganaFirstChar);
         parcel.writeString(kanji);
         parcel.writeString(romaji);
         parcel.writeString(kanjiRoot);

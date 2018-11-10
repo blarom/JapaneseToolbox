@@ -67,12 +67,26 @@ public final class GlobalConstants {
 
     public final static HashMap<Integer, String> COMPONENT_STRUCTURES_MAP = createStructureMap();
 
-    public static final int VALUE_LATIN = 0;
-    public static final int VALUE_HIRAGANA = 1;
-    public static final int VALUE_KATAKANA = 2;
-    public static final int VALUE_KANJI = 3;
+    public static final int TYPE_LATIN = 0;
+    public static final int TYPE_HIRAGANA = 1;
+    public static final int TYPE_KATAKANA = 2;
+    public static final int TYPE_KANJI = 3;
     public static final int VALUE_NUMBER = 4;
-    public static final int VALUE_INVALID = 5;
+    public static final int TYPE_INVALID = 5;
+
+    public static final String VERB_FAMILY_BU_GODAN = "bu";
+    public static final String VERB_FAMILY_DA = "da";
+    public static final String VERB_FAMILY_GU_GODAN = "gu";
+    public static final String VERB_FAMILY_KU_GODAN = "ku";
+    public static final String VERB_FAMILY_KURU = "kuru";
+    public static final String VERB_FAMILY_MU_GODAN = "mu";
+    public static final String VERB_FAMILY_NU_GODAN = "nu";
+    public static final String VERB_FAMILY_RU_GODAN = "rug";
+    public static final String VERB_FAMILY_RU_ICHIDAN = "rui";
+    public static final String VERB_FAMILY_SU_GODAN = "su";
+    public static final String VERB_FAMILY_SURU = "suru";
+    public static final String VERB_FAMILY_TSU_GODAN = "tsu";
+    public static final String VERB_FAMILY_U_GODAN = "u";
 
     public static final int MAX_SQL_VARIABLES_FOR_QUERY = 500;
 

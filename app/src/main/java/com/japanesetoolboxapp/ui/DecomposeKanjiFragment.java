@@ -12,10 +12,8 @@ import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.text.SpannableString;
 import android.text.Spanned;
-import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -109,7 +107,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
         int textType = ConvertFragment.getTextType(mInputQuery);
 
-        if (!TextUtils.isEmpty(mInputQuery) && textType != GlobalConstants.VALUE_LATIN && textType != GlobalConstants.VALUE_NUMBER) {
+        if (!TextUtils.isEmpty(mInputQuery) && textType != GlobalConstants.TYPE_LATIN && textType != GlobalConstants.VALUE_NUMBER) {
             mDecompositionsHint.setVisibility(View.GONE);
             startGettingDecompositionAsynchronously(mInputQuery.substring(0,1), 0);
         }

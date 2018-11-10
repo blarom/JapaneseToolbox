@@ -224,6 +224,7 @@ public final class Utilities {
 //                    block != Character.UnicodeBlock.SPECIALS;
     }
 
+
     //String manipulations utilities
     public static String convertToUTF8Index(String input_string) {
 
@@ -257,7 +258,7 @@ public final class Utilities {
 
         return result;
     }
-    public static String removeNonSpaceSpecialCharacters(String sentence) {
+    private static String removeNonSpaceSpecialCharacters(String sentence) {
         String current_char;
         StringBuilder concatenated_sentence = new StringBuilder();
         for (int index=0; index<sentence.length(); index++) {
@@ -359,6 +360,65 @@ public final class Utilities {
         }
 
         return new ArrayList<>(set);
+    }
+    public static String getVerbRoot(String verb, String family, int type) {
+        String root;
+        if (verb == null || verb.length()==0 || family == null || family.length()==0) {
+            return "";
+        }
+
+        if (type == GlobalConstants.TYPE_LATIN) {
+            switch (family) {
+                case GlobalConstants.VERB_FAMILY_BU_GODAN:
+                case GlobalConstants.VERB_FAMILY_GU_GODAN:
+                case GlobalConstants.VERB_FAMILY_KU_GODAN:
+                case GlobalConstants.VERB_FAMILY_MU_GODAN:
+                case GlobalConstants.VERB_FAMILY_NU_GODAN:
+                case GlobalConstants.VERB_FAMILY_RU_GODAN:
+                case GlobalConstants.VERB_FAMILY_SU_GODAN:
+                case GlobalConstants.VERB_FAMILY_RU_ICHIDAN:
+                    root = verb.substring(0, verb.length() - 2);
+                    break;
+                case GlobalConstants.VERB_FAMILY_TSU_GODAN:
+                    root = verb.substring(0, verb.length() - 3);
+                    break;
+                case GlobalConstants.VERB_FAMILY_U_GODAN:
+                    root = verb.substring(0, verb.length() - 1);
+                    break;
+                case GlobalConstants.VERB_FAMILY_SURU:
+                case GlobalConstants.VERB_FAMILY_KURU:
+                    root = verb.substring(0, verb.length() - 4);
+                    break;
+                default:
+                    root = verb;
+                    break;
+            }
+        }
+        else {
+            switch (family) {
+                case GlobalConstants.VERB_FAMILY_SURU:
+                case GlobalConstants.VERB_FAMILY_KURU:
+                    root = verb.substring(0, verb.length() - 2);
+                    break;
+                case GlobalConstants.VERB_FAMILY_BU_GODAN:
+                case GlobalConstants.VERB_FAMILY_GU_GODAN:
+                case GlobalConstants.VERB_FAMILY_KU_GODAN:
+                case GlobalConstants.VERB_FAMILY_MU_GODAN:
+                case GlobalConstants.VERB_FAMILY_NU_GODAN:
+                case GlobalConstants.VERB_FAMILY_RU_GODAN:
+                case GlobalConstants.VERB_FAMILY_SU_GODAN:
+                case GlobalConstants.VERB_FAMILY_RU_ICHIDAN:
+                case GlobalConstants.VERB_FAMILY_TSU_GODAN:
+                case GlobalConstants.VERB_FAMILY_U_GODAN:
+                    root = verb.substring(0, verb.length() - 1);
+                    break;
+                default:
+                    root = verb;
+                    break;
+            }
+        }
+
+        return root;
     }
 
 
@@ -474,7 +534,7 @@ public final class Utilities {
 
         //region Preparing the word to be included in the url
         StringBuilder prepared_word;
-        if (ConvertFragment.getTextType(word) == GlobalConstants.VALUE_KANJI) {
+        if (ConvertFragment.getTextType(word) == GlobalConstants.TYPE_KANJI) {
             String converted_word = convertToUTF8Index(word);
             converted_word = converted_word.substring(2,converted_word.length());
             prepared_word = new StringBuilder();
@@ -733,7 +793,7 @@ public final class Utilities {
             }
 
             int textType = ConvertFragment.getTextType(kanji.toString());
-            if (romaji.length()!=0 && (textType == GlobalConstants.VALUE_HIRAGANA || textType == GlobalConstants.VALUE_KATAKANA)) {
+            if (romaji.length()!=0 && (textType == GlobalConstants.TYPE_HIRAGANA || textType == GlobalConstants.TYPE_KATAKANA)) {
                 //When the word is originally katakana only, the website does not display hiragana. This is corrected here.
                 romaji = new StringBuilder(ConvertFragment.getLatinHiraganaKatakana(kanji.toString()).get(0));
             }
@@ -754,7 +814,7 @@ public final class Utilities {
 
                         textType = ConvertFragment.getTextType(currentValue);
                         if (currentValue.length() != 0 &&
-                                (textType == GlobalConstants.VALUE_HIRAGANA || textType == GlobalConstants.VALUE_KATAKANA)) {
+                                (textType == GlobalConstants.TYPE_HIRAGANA || textType == GlobalConstants.TYPE_KATAKANA)) {
                             //When the word is originally katakana only, the website does not display hiragana. This is corrected here.
                             romaji = new StringBuilder(ConvertFragment.getLatinHiraganaKatakana(currentValue).get(0));
                             break;
@@ -1285,15 +1345,17 @@ public final class Utilities {
         verb.setLatinRoot(verbDatabase.get(verbDbRowIndex)[9]);
         verb.setExceptionIndex(verbDatabase.get(verbDbRowIndex)[10]);
         verb.setRomaji(verbDatabase.get(verbDbRowIndex)[2]);
-        verb.setKana(ConvertFragment.getLatinHiraganaKatakana(verb.getRomaji()).get(1).substring(0,1));
+        verb.setKanji(verbDatabase.get(verbDbRowIndex)[3]);
+        verb.setAltSpellings(verbDatabase.get(verbDbRowIndex)[5]);
+        verb.setHiraganaFirstChar(ConvertFragment.getLatinHiraganaKatakana(verb.getRomaji()).get(1).substring(0,1));
 
-        //Getting the family
-
+        //Setting the family
         String MM_index = verbDatabase.get(verbDbRowIndex)[4];
         List<String> MM_index_list = Arrays.asList(MM_index.split(";"));
         if (MM_index_list.size() == 0) { return verb; }
 
         int current_MM_index;
+        List<String> trans = new ArrayList<>();
         for (int i=0; i< MM_index_list.size(); i++) {
 
             current_MM_index = Integer.parseInt(MM_index_list.get(i)) - 1;
@@ -1301,16 +1363,27 @@ public final class Utilities {
 
             //Getting the Family value
             type = currentMeaningCharacteristics[2];
-            if (i == 0 && !type.equals("")) {
-                verb.setTrans(String.valueOf(type.charAt(type.length() - 1)));
-                if (!type.substring(0,1).equals("V")) {
-                    Log.i(DEBUG_TAG, "Warning! Found verb with incorrect type (Meaning index:" + Integer.toString(current_MM_index) +")");
-                }
-                verb.setFamily(type.substring(1, type.length() - 1));
-                break; //Stopping the loop at the first meaning
+
+            if (type.equals("") || !type.substring(0,1).equals("V")) {
+                Log.i(DEBUG_TAG, "Warning! Found verb with incorrect type (Meaning index:" + Integer.toString(current_MM_index) + ")");
+                //No exception catching is made here, in order to make sure that database errors are caught before production
             }
 
+            trans.add(String.valueOf(type.charAt(type.length() - 1)));
+
+            if (i==0) verb.setFamily(type.substring(1, type.length() - 1));
+
         }
+
+        //Setting the transitive/intransitive flag
+        for (int i=0; i<trans.size(); i++) {
+            if (i>0 && !trans.get(i-1).equals(trans.get(i)) ) {
+                verb.setTrans("T/I");
+                break;
+            }
+            if (i == trans.size()-1) verb.setTrans(trans.get(i));
+        }
+
 
         return verb;
     }
@@ -1680,7 +1753,14 @@ public final class Utilities {
 
         return length;
     }
-    public static List<Long> getMatchingWordIdsUsingRoomIndexes(String inputWord, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+    /**
+     * Returns the word ids that match the searchWord.
+     * Performing basic filtering according to each word's keywords list if length>=4, or differently for shorter words.
+     * @param inputWord
+     * @param japaneseToolboxCentralRoomDatabase
+     * @return
+     */
+    public static List<Long> getMatchingWordIdsAndDoBasicFiltering(String inputWord, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
         //region Initializations
         List<Long> matchingWordIds = new ArrayList<>();
@@ -1732,16 +1812,16 @@ public final class Utilities {
         //region Getting the input type and its converted form (english/romaji/kanji/invalid)
         List<String> translationList = ConvertFragment.getLatinHiraganaKatakana(searchWordNoSpaces);
 
-        String searchWordTransliteratedLatin = translationList.get(GlobalConstants.VALUE_LATIN);
-        String searchWordTransliteratedHiragana = translationList.get(GlobalConstants.VALUE_HIRAGANA);
-        String searchWordTransliteratedKatakana = translationList.get(GlobalConstants.VALUE_KATAKANA);
+        String searchWordTransliteratedLatin = translationList.get(GlobalConstants.TYPE_LATIN);
+        String searchWordTransliteratedHiragana = translationList.get(GlobalConstants.TYPE_HIRAGANA);
+        String searchWordTransliteratedKatakana = translationList.get(GlobalConstants.TYPE_KATAKANA);
         int inputTextType = ConvertFragment.getTextType(searchWord);
 
-        if (inputTextType == GlobalConstants.VALUE_INVALID) return matchingWordIds;
+        if (inputTextType == GlobalConstants.TYPE_INVALID) return matchingWordIds;
         //endregion
 
         //region Replacing a Kana input by its Romaji form
-        if (inputTextType == GlobalConstants.VALUE_HIRAGANA || inputTextType == GlobalConstants.VALUE_KATAKANA) {
+        if (inputTextType == GlobalConstants.TYPE_HIRAGANA || inputTextType == GlobalConstants.TYPE_KATAKANA) {
             searchWord = searchWordTransliteratedLatin;
             searchWordNoSpaces = searchWordTransliteratedLatin;
         }
@@ -1756,17 +1836,17 @@ public final class Utilities {
 
         return matchingWordIds;
     }
-    private static List<Long> getMatchingWordIdsFromIndexListForNormalInput(boolean forceExactSearch, int inputTextType, String searchWord, String searchWordNoSpaces,
-                                                                            JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+    private static List<Long> getMatchingWordIdsForNormalInput(boolean forceExactSearch, int inputTextType, String searchWord, String searchWordNoSpaces,
+                                                               JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
-        List<Long> matchingWordIdsFromIndex = new ArrayList<>();
+        List<Long> matchingWordIds = new ArrayList<>();
 
         //region Search for the matches in the indexed keywords
         List<String> searchResultIndexesArray = new ArrayList<>();
         List<LatinIndex> latinIndices;
         List<KanjiIndex> kanjiIndices;
-        if (inputTextType == GlobalConstants.VALUE_LATIN || inputTextType == GlobalConstants.VALUE_HIRAGANA
-                || inputTextType == GlobalConstants.VALUE_KATAKANA || inputTextType == GlobalConstants.VALUE_NUMBER) {
+        if (inputTextType == GlobalConstants.TYPE_LATIN || inputTextType == GlobalConstants.TYPE_HIRAGANA
+                || inputTextType == GlobalConstants.TYPE_KATAKANA || inputTextType == GlobalConstants.VALUE_NUMBER) {
 
             //If the input is a verb in "to " form, remove the "to " for the search only (results will be filtered later on)
             String inputWord = Utilities.removeNonSpaceSpecialCharacters(searchWord);
@@ -1780,13 +1860,15 @@ public final class Utilities {
             boolean exactSearch = inputWordNoSpaces.length() < 3 || forceExactSearch;
             latinIndices = findQueryInLatinIndex(inputWordNoSpaces, exactSearch, japaneseToolboxCentralRoomDatabase);
 
-            if (latinIndices.size()==0) return matchingWordIdsFromIndex;
+            if (latinIndices.size()==0) return matchingWordIds;
 
             // If the entered word is Latin and only has up to WORD_SEARCH_CHAR_COUNT_THRESHOLD characters, limit the word keywords to be checked later
-            if ((inputTextType == GlobalConstants.VALUE_LATIN || inputTextType == GlobalConstants.VALUE_HIRAGANA
-                    || inputTextType == GlobalConstants.VALUE_KATAKANA)
-                    && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD
-                    || inputTextType == GlobalConstants.VALUE_NUMBER && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD-1) {
+            if ((   (inputTextType == GlobalConstants.TYPE_LATIN
+                        || inputTextType == GlobalConstants.TYPE_HIRAGANA
+                        || inputTextType == GlobalConstants.TYPE_KATAKANA)
+                        && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD)
+                    || (inputTextType == GlobalConstants.VALUE_NUMBER
+                        && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD-1)) {
                 for (LatinIndex latinIndex : latinIndices) {
                     if (latinIndex.getLatin().length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD) {
                         searchResultIndexesArray.add(latinIndex.getWordIds());
@@ -1800,14 +1882,14 @@ public final class Utilities {
                 }
             }
 
-        } else if (inputTextType == GlobalConstants.VALUE_KANJI) {
+        } else if (inputTextType == GlobalConstants.TYPE_KANJI) {
             kanjiIndices = findQueryInKanjiIndex(searchWordNoSpaces, japaneseToolboxCentralRoomDatabase);
-            if (kanjiIndices.size()==0) return matchingWordIdsFromIndex;
+            if (kanjiIndices.size()==0) return matchingWordIds;
             for (KanjiIndex kanjiIndex : kanjiIndices) {
                 searchResultIndexesArray.add(kanjiIndex.getWordIds());
             }
         } else {
-            return matchingWordIdsFromIndex;
+            return matchingWordIds;
         }
         //endregion
 
@@ -1816,15 +1898,15 @@ public final class Utilities {
         for (String searchResultIndexes : searchResultIndexesArray) {
             indexList = Arrays.asList(searchResultIndexes.split(";"));
             for (int j = 0; j < indexList.size(); j++) {
-                matchingWordIdsFromIndex.add(Long.valueOf(indexList.get(j)));
+                matchingWordIds.add(Long.valueOf(indexList.get(j)));
             }
         }
         //endregion
 
-        return matchingWordIdsFromIndex;
+        return matchingWordIds;
     }
-    private static List<Long> getMatchingWordIdsFromIndexListForInglessVerb(boolean forceExactSearch, List<Long> matchingWordIdsFromIndex, String inglessVerb,
-                                                                            JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+    private static List<Long> getMatchingWordIdsForInglessVerb(boolean forceExactSearch, List<Long> matchingWordIdsFromIndex, String inglessVerb,
+                                                               JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
         List<Long> newMatchingWordIdsFromIndex = new ArrayList<>(matchingWordIdsFromIndex);
 
@@ -1840,38 +1922,61 @@ public final class Utilities {
 
         return newMatchingWordIdsFromIndex;
     }
-    private static List<Long> getMatchingWordIdsFromIndexList(int inputTextType, String searchWord, String searchWordNoSpaces, String inglessVerb,
-                                                              JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+    /**
+     * Returns matching word ids before filtering, based on the latin an kanji indexes.
+     * If the returned list of ids is too big, returns a list of exact matches only.
+     * In any case, tries to add results where "ing" is removed from gerunds.
+     * @param inputTextType
+     * @param searchWord
+     * @param searchWordNoSpaces
+     * @param inglessVerb
+     * @param japaneseToolboxCentralRoomDatabase
+     * @return
+     */
+    private static List<Long> getMatchingWordIds(int inputTextType, String searchWord, String searchWordNoSpaces, String inglessVerb,
+                                                 JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
-        List<Long> matchingWordIdsFromIndex = getMatchingWordIdsFromIndexListForNormalInput(false, inputTextType,
+        List<Long> matchingWordIds = getMatchingWordIdsForNormalInput(false, inputTextType,
                 searchWord, searchWordNoSpaces, japaneseToolboxCentralRoomDatabase);
 
         //If the number of matching ids is larger than MAX_SQL_VARIABLES_FOR_QUERY, perform an exact search
-        if (matchingWordIdsFromIndex.size() > GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
-            matchingWordIdsFromIndex = getMatchingWordIdsFromIndexListForNormalInput(true, inputTextType,
+        if (matchingWordIds.size() > GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
+            matchingWordIds = getMatchingWordIdsForNormalInput(true, inputTextType,
                     searchWord, searchWordNoSpaces, japaneseToolboxCentralRoomDatabase);
         }
 
-        //region Add search results where the "ing" is removed from an "ing" verb
-        if ((inputTextType == GlobalConstants.VALUE_LATIN || inputTextType == GlobalConstants.VALUE_HIRAGANA
-                || inputTextType == GlobalConstants.VALUE_KATAKANA || inputTextType == GlobalConstants.VALUE_NUMBER) && !inglessVerb.equals(searchWord)) {
+        //Adding search results where the "ing" is removed from an "ing" verb
+        if ((inputTextType == GlobalConstants.TYPE_LATIN || inputTextType == GlobalConstants.TYPE_HIRAGANA
+                || inputTextType == GlobalConstants.TYPE_KATAKANA || inputTextType == GlobalConstants.VALUE_NUMBER) && !inglessVerb.equals(searchWord)) {
 
-            List<Long> newMatchingWordIdsFromIndex = getMatchingWordIdsFromIndexListForInglessVerb(false,
-                    matchingWordIdsFromIndex, inglessVerb, japaneseToolboxCentralRoomDatabase);
+            List<Long> newMatchingWordIds = getMatchingWordIdsForInglessVerb(false,
+                    matchingWordIds, inglessVerb, japaneseToolboxCentralRoomDatabase);
 
-            if (newMatchingWordIdsFromIndex.size() > GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
-                newMatchingWordIdsFromIndex = getMatchingWordIdsFromIndexListForInglessVerb(true,
-                        matchingWordIdsFromIndex, inglessVerb, japaneseToolboxCentralRoomDatabase);
+            if (newMatchingWordIds.size() > GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
+                newMatchingWordIds = getMatchingWordIdsForInglessVerb(true,
+                        matchingWordIds, inglessVerb, japaneseToolboxCentralRoomDatabase);
             }
 
-            if (newMatchingWordIdsFromIndex.size() <= GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
-                matchingWordIdsFromIndex = new ArrayList<>(newMatchingWordIdsFromIndex);
+            if (newMatchingWordIds.size() <= GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
+                matchingWordIds = new ArrayList<>(newMatchingWordIds);
             }
         }
-        //endregion
 
-        return matchingWordIdsFromIndex;
+        return matchingWordIds;
     }
+    /**
+     * Gets the matching word ids from the latin/kanji indexes and filters them to return only words matching the searchWord/
+     * The filter checks the keywords list for matches for word of length 4 and up, and handles shorter words differently.
+     * @param searchWord
+     * @param searchWordNoSpaces
+     * @param inglessVerb
+     * @param searchWordWithoutTo
+     * @param queryIsVerbWithTo
+     * @param inputTextType
+     * @param matchingWordIds
+     * @param japaneseToolboxCentralRoomDatabase
+     * @return
+     */
     private static List<Long> addNormalMatchesToMatchesList(String searchWord, String searchWordNoSpaces, String inglessVerb, String searchWordWithoutTo,
                                                             boolean queryIsVerbWithTo, int inputTextType, List<Long> matchingWordIds,
                                                             JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
@@ -1880,15 +1985,15 @@ public final class Utilities {
         List<long[]> MatchList = new ArrayList<>();
         String keywords;
         long[] current_match_values;
-        boolean found_match;
+        boolean foundMatch;
         //endregion
 
-        List<Long> matchingWordIdsFromIndex = getMatchingWordIdsFromIndexList(inputTextType, searchWord, searchWordNoSpaces, inglessVerb, japaneseToolboxCentralRoomDatabase);
+        List<Long> matchingWordIdsFromIndex = getMatchingWordIds(inputTextType, searchWord, searchWordNoSpaces, inglessVerb, japaneseToolboxCentralRoomDatabase);
 
         //region Limiting the database query if there are too many results (prevents long query times)
         boolean onlyRetrieveShortRomajiWords = false;
-        if ((inputTextType == GlobalConstants.VALUE_LATIN || inputTextType == GlobalConstants.VALUE_HIRAGANA
-                || inputTextType == GlobalConstants.VALUE_KATAKANA) && searchWord.length() < 3) {
+        if ((inputTextType == GlobalConstants.TYPE_LATIN || inputTextType == GlobalConstants.TYPE_HIRAGANA
+                || inputTextType == GlobalConstants.TYPE_KATAKANA) && searchWord.length() < 3) {
             onlyRetrieveShortRomajiWords = true;
         }
         //endregion
@@ -1897,21 +2002,24 @@ public final class Utilities {
         List<Word> matchingWordList = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(matchingWordIdsFromIndex);
         String romaji;
         String meanings;
+        String altSpellings;
         String[] meaningSet;
         StringBuilder builder;
         boolean isExactMeaningWordsMatch;
+        boolean isRomajiMatch;
+        boolean isAltSpellingsMatch;
         int searchWordLength = searchWord.length();
         int romajiLength;
         for (Word word : matchingWordList) {
 
-            found_match = false;
+            foundMatch = false;
 
             //region Handling short words
-            if ((inputTextType == GlobalConstants.VALUE_LATIN || inputTextType == GlobalConstants.VALUE_HIRAGANA
-                    || inputTextType == GlobalConstants.VALUE_KATAKANA) && onlyRetrieveShortRomajiWords) {
+            if ((inputTextType == GlobalConstants.TYPE_LATIN || inputTextType == GlobalConstants.TYPE_HIRAGANA
+                    || inputTextType == GlobalConstants.TYPE_KATAKANA) && onlyRetrieveShortRomajiWords) {
 
                 //Checking if the word is an exact match to one of the words in the meanings
-                builder = new StringBuilder("");
+                builder = new StringBuilder();
                 for (Word.Meaning meaning : word.getMeanings()) {
                     builder.append(" ");
                     builder.append(meaning.getMeaning().replace(", ", " ").replace("(", " ").replace(")", " "));
@@ -1926,13 +2034,24 @@ public final class Utilities {
                     }
                 }
 
+                //Checking if the romaji is a match
                 romaji = word.getRomaji();
                 romajiLength = romaji.length();
-                if (isExactMeaningWordsMatch
-                        || searchWordLength < 3
-                        && romajiLength <= searchWordLength + 1
-                        && romaji.contains(searchWord)) {
-                    found_match = true;
+                isRomajiMatch = romajiLength <= searchWordLength + 1 && romaji.contains(searchWord);
+
+                //Checking if one of the elements of altSpellings is a match
+                altSpellings = word.getAltSpellings();
+                isAltSpellingsMatch = false;
+                for (String altSpelling : altSpellings.split(",")) {
+                    if (altSpelling.trim().contains(searchWord)) {
+                        isAltSpellingsMatch = true;
+                        break;
+                    }
+                }
+
+                //Setting foundMatch
+                if (isExactMeaningWordsMatch || isRomajiMatch || isAltSpellingsMatch) {
+                    foundMatch = true;
                 }
                 else continue;
 
@@ -1940,10 +2059,9 @@ public final class Utilities {
             //endregion
 
             //Otherwise, handling longer words
-            if (!found_match) {
-                keywords = word.getKeywords();
-                found_match = keywords.contains(searchWord)
-                        || keywords.contains(searchWordNoSpaces)
+            if (!foundMatch) {
+                keywords = word.getKeywords().replace(" ","");
+                foundMatch = keywords.contains(searchWordNoSpaces)
                         || keywords.contains(inglessVerb)
                         || queryIsVerbWithTo && keywords.contains(searchWordWithoutTo);
             }
@@ -2046,7 +2164,7 @@ public final class Utilities {
 //            }
 //            //endregion
 
-            if (found_match) {
+            if (foundMatch) {
                 current_match_values = new long[2];
                 current_match_values[0] = word.getWordId();
                 //current_match_values[1] = (long) match_length;
@@ -2072,7 +2190,7 @@ public final class Utilities {
         List<String> searchResultIndexesArray = new ArrayList<>();
         List<Long> matchingWordIdsFromIndex = new ArrayList<>();
 
-        if (inputTextType == GlobalConstants.VALUE_LATIN || inputTextType == GlobalConstants.VALUE_HIRAGANA ||inputTextType == GlobalConstants.VALUE_KATAKANA) {
+        if (inputTextType == GlobalConstants.TYPE_LATIN || inputTextType == GlobalConstants.TYPE_HIRAGANA ||inputTextType == GlobalConstants.TYPE_KATAKANA) {
 
             if (input_word.length()>9) {
                 adjectiveConjugation = input_word.substring(input_word.length()-9, input_word.length());
@@ -2119,7 +2237,7 @@ public final class Utilities {
                 searchResultIndexesArray.add(latinIndex.getWordIds());
             }
 
-        } else if (inputTextType == GlobalConstants.VALUE_KANJI) {
+        } else if (inputTextType == GlobalConstants.TYPE_KANJI) {
 
             if (input_word.length()>5) {
                 adjectiveConjugation = input_word.substring(input_word.length()-5, input_word.length());
