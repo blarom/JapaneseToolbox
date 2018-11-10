@@ -1447,12 +1447,15 @@ public final class Utilities {
                         &&  currentAsyncWord.getKanji().equals(currentLocalWord.getKanji())   ) {
 
                     //Setting the altSpellings
-                    for (String altSpelling : finalAsyncWords.get(currentIndex).getAltSpellings().split(",")) {
-                        if (!finalAltSpellings.contains(altSpelling.trim())) {
-                            finalAltSpellings.add(altSpelling.trim());
+                    String finalAsyncWordAltSpellings = finalAsyncWords.get(currentIndex).getAltSpellings();
+                    if (!TextUtils.isEmpty(finalAsyncWordAltSpellings)) {
+                        for (String altSpelling : finalAsyncWordAltSpellings.split(",")) {
+                            if (!finalAltSpellings.contains(altSpelling.trim())) {
+                                finalAltSpellings.add(altSpelling.trim());
+                            }
                         }
+                        finalWord.setAltSpellings(TextUtils.join(", ", finalAltSpellings));
                     }
-                    finalWord.setAltSpellings(TextUtils.join(", ", finalAltSpellings));
 
                     //Setting the meanings
                     List<Word.Meaning> currentAsyncMeanings = currentAsyncWord.getMeanings();

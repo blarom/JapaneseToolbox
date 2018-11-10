@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
+import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
@@ -149,8 +150,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         }
         //endregion
 
-        //regionSetting the alternate spellings
-        if (!alternatespellings.equals("")) {
+        //region Setting the alternate spellings
+        if (!TextUtils.isEmpty(alternatespellings)) {
             String htmlText = "<font face='serif' color='" +
                     mContext.getResources().getColor(R.color.textColorDictionaryAlternateSpellings) +
                     "'>" + "<b>" + "Alternate spellings: " + "</b>" + alternatespellings + "</font>";

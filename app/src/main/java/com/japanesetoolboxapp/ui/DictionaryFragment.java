@@ -155,7 +155,7 @@ public class DictionaryFragment extends Fragment implements
             mShowOnlineResults = Utilities.getShowOnlineResultsPreference(getActivity());
 
             String text;
-            if (mLocalMatchingWordsList.size() > 1) text = "Found " + mLocalMatchingWordsList.size()+"local results. ";
+            if (mLocalMatchingWordsList.size() > 1) text = "Found " + mLocalMatchingWordsList.size()+" local results. ";
             else if (mLocalMatchingWordsList.size() == 1) text = "Found one local result. ";
             else text = "No local results. ";
             if (mShowOnlineResults) {
@@ -189,7 +189,8 @@ public class DictionaryFragment extends Fragment implements
                 if (differentJishoWords.size()==0) Toast.makeText(getContext(), R.string.no_new_words_or_meanings_found_online, Toast.LENGTH_SHORT).show();
                 else Toast.makeText(getContext(), "Updated list with online results.", Toast.LENGTH_SHORT).show();
 
-                updateFirebaseDbWithJishoWords(differentJishoWords);
+                updateFirebaseDbWithJishoWords(Utilities.getCommonWords(differentJishoWords));
+                //updateFirebaseDbWithJishoWords(differentJishoWords);
 
                 displayResults(mMergedMatchingWordsList);
             }
@@ -431,7 +432,7 @@ public class DictionaryFragment extends Fragment implements
         return sortedWordsList;
     }
     private void updateFirebaseDbWithJishoWords(List<Word> wordsList) {
-        mFirebaseDao.updateObjectsOrCreateThemInFirebaseDb(Utilities.getCommonWords(wordsList));
+        mFirebaseDao.updateObjectsOrCreateThemInFirebaseDb(wordsList);
     }
     private void destroyLoaders() {
         LoaderManager loaderManager = getLoaderManager();
