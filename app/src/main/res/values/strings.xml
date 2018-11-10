@@ -122,7 +122,6 @@
     <string name="GrammarModule_Example_Kanji">Kanji:</string>
     <string name="GrammarModule_Explanation">Details:</string>
     <string name="GrammarModule_Example">Rules and Examples:</string>
-    <string name="showOnlineResultsToastString">Looking for results online, please wait…</string>
     <string name="ShowExamples">Example sentences: (>show)</string>
     <string name="HideExamples">Example sentences: (>hide)</string>
     <string name="PhraseStructure">Phrase structure:</string>
@@ -312,5 +311,4 @@
     <string name="search_for_radical_search_too_broad">Your search is too broad. Please select another structure or select Kanji elements to narrow the search.</string>
     <string name="search_by_radical_no_results_found">No results found for your selections.</string>
     <string name="similars_database">similars_database</string>
-    <string name="updated_list_with_online_words_andMeanings">Updated list with online words and meanings</string>
 </resources>

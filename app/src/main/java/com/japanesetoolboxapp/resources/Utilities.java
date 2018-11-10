@@ -55,6 +55,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class Utilities {
 
@@ -827,10 +829,6 @@ public final class Utilities {
 
             currentWord.setUniqueIdentifier(currentWord.getRomaji()+"-"+kanji);
 
-            //region Extracting the alternate spellings
-            currentWord.setAltSpellings(""); //Alternate spellings, left empty for now >>> TODO: add this functionality
-            //endregion
-
             //region Extracting the Common Word status
             if (conceptLightStatusData!=null) {
                 List<Object> conceptLightCommonSuccess = (List<Object>) getElementAtHeader(conceptLightStatusData, "common success label");
@@ -843,7 +841,7 @@ public final class Utilities {
             }
             //endregion
 
-            //region Extracting the meanings
+            //region Extracting the meanings (types, meanings, altSpellings)
 
             List<Object> conceptLightMeaningsData = (List<Object>) getElementAtHeader(conceptLightClearFixData,"concept_light-meanings medium-9 columns");
             if (conceptLightMeaningsData==null) continue;
@@ -862,16 +860,44 @@ public final class Utilities {
                     List<Object> meaningsTagsData = (List<Object>) meaningsWrapperData.get(j);
                     meaningTag = "";
                     if (meaningsTagsData.size()>0) meaningTag = (String) meaningsTagsData.get(0);
-                    if (meaningTag.contains("Wikipedia") || meaningTag.contains("Other forms") || meaningTag.contains("Notes")) break;
                 }
                 if (currentHeader.contains("meaning-wrapper")) {
-                    List<Object> meaningWrapperData = (List<Object>) meaningsWrapperData.get(j);
-                    List<Object> meaningDefinitionData = (List<Object>) meaningWrapperData.get(1);
-                    List<Object> meaningMeaningata = (List<Object>) getElementAtHeader(meaningDefinitionData,"meaning-meaning");
-                    meaningTagsFromTree.add(meaningTag);
-                    meaning = "";
-                    if (meaningMeaningata!=null && meaningMeaningata.size()>0) meaning = (String) meaningMeaningata.get(0);
-                    meaningsFromTree.add(reformatMeanings(meaning));
+                    if (meaningTag.contains("Wikipedia") || meaningTag.contains("Notes")) break;
+                    else if (meaningTag.contains("Other forms")) {
+                        List<Object> meaningWrapperData = (List<Object>) meaningsWrapperData.get(j);
+                        List<Object> meaningDefinitionData = (List<Object>) meaningWrapperData.get(1);
+                        List<Object> meaningMeaningData = (List<Object>) getElementAtHeader(meaningDefinitionData,"meaning-meaning");
+                        if (meaningMeaningData ==null || meaningMeaningData.size()==0) break;
+
+                        //Getting the altSpellings container bock to extract from
+                        StringBuilder altSpellingsContainer = new StringBuilder();
+                        for (Object element : meaningMeaningData) {
+                            if (element instanceof List) {
+                                List<String> elementList = (List<String>) element;
+                                if (elementList.size()>0) {
+                                    altSpellingsContainer.append(elementList.get(0));
+                                }
+                            }
+                        }
+
+                        //Extracting the altSpellings
+                        List<String> altSpellings = new ArrayList<>();
+                        Matcher m = Pattern.compile("\\b(\\w+)\\s【").matcher(altSpellingsContainer.toString());
+                        while (m.find()) {
+                            altSpellings.add(m.group(1));
+                        }
+                        currentWord.setAltSpellings(TextUtils.join(", ", altSpellings));
+                        break;
+                    }
+                    else {
+                        List<Object> meaningWrapperData = (List<Object>) meaningsWrapperData.get(j);
+                        List<Object> meaningDefinitionData = (List<Object>) meaningWrapperData.get(1);
+                        List<Object> meaningMeaningData = (List<Object>) getElementAtHeader(meaningDefinitionData,"meaning-meaning");
+                        meaningTagsFromTree.add(meaningTag);
+                        meaning = "";
+                        if (meaningMeaningData !=null && meaningMeaningData.size()>0) meaning = (String) meaningMeaningData.get(0);
+                        meaningsFromTree.add(reformatMeanings(meaning));
+                    }
                 }
             }
 
@@ -1401,7 +1427,12 @@ public final class Utilities {
             Word finalWord = new Word();
             finalWord.setRomaji(currentLocalWord.getRomaji());
             finalWord.setKanji(currentLocalWord.getKanji());
-            finalWord.setAltSpellings(currentLocalWord.getAltSpellings());
+            List<String> finalAltSpellings;
+            if (TextUtils.isEmpty(currentLocalWord.getAltSpellings())) finalAltSpellings = new ArrayList<>();
+            else {
+                finalAltSpellings = new ArrayList<>(Arrays.asList(currentLocalWord.getAltSpellings().split(",")));
+                for (int i = 0; i< finalAltSpellings.size(); i++) finalAltSpellings.set(0,finalAltSpellings.get(0).trim());
+            }
 
             List<Word.Meaning> currentLocalMeanings = currentLocalWord.getMeanings();
             List<Word.Meaning> currentFinalMeanings = new ArrayList<>(currentLocalMeanings);
@@ -1410,13 +1441,21 @@ public final class Utilities {
             while (currentIndex >= 0 && finalAsyncWords.size() != 0) {
 
                 if (currentIndex > finalAsyncWords.size()-1) break;
-
                 Word currentAsyncWord = finalAsyncWords.get(currentIndex);
-                List<Word.Meaning> currentAsyncMeanings = currentAsyncWord.getMeanings();
 
                 if (    currentAsyncWord.getRomaji().equals(currentLocalWord.getRomaji().replace(" ", ""))
                         &&  currentAsyncWord.getKanji().equals(currentLocalWord.getKanji())   ) {
 
+                    //Setting the altSpellings
+                    for (String altSpelling : finalAsyncWords.get(currentIndex).getAltSpellings().split(",")) {
+                        if (!finalAltSpellings.contains(altSpelling.trim())) {
+                            finalAltSpellings.add(altSpelling.trim());
+                        }
+                    }
+                    finalWord.setAltSpellings(TextUtils.join(", ", finalAltSpellings));
+
+                    //Setting the meanings
+                    List<Word.Meaning> currentAsyncMeanings = currentAsyncWord.getMeanings();
                     for (int m = 0; m< currentAsyncMeanings.size(); m++) {
 
                         asyncMeaningFoundLocally = false;
@@ -1524,7 +1563,20 @@ public final class Utilities {
                         }
                     }
 
-                    if (meaningNotFoundInLocalWord) differentAsyncWords.add(asyncWord);
+                    boolean altSpellingNotFoundInLocalWord = false;
+                    if (!TextUtils.isEmpty(asyncWord.getAltSpellings())) {
+                        if (TextUtils.isEmpty(localWord.getAltSpellings())) altSpellingNotFoundInLocalWord = true;
+                        else {
+                            for (String asyncAltSpelling : asyncWord.getAltSpellings().split(",")) {
+                                if (!localWord.getAltSpellings().contains(asyncAltSpelling.trim())) {
+                                    altSpellingNotFoundInLocalWord = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (meaningNotFoundInLocalWord || altSpellingNotFoundInLocalWord) differentAsyncWords.add(asyncWord);
 
                     remainingLocalWords.remove(localWord);
                     break;
