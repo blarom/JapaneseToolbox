@@ -152,12 +152,23 @@ public class DictionaryFragment extends Fragment implements
             //Displaying the local results
             displayWordsToUser(mLocalMatchingWordsList);
 
-            //If wanted, update the results with words from Jisho.org
             mShowOnlineResults = Utilities.getShowOnlineResultsPreference(getActivity());
-            if (mShowOnlineResults) startSearchingForJishoWords();
 
-            //Otherwise (if online results are unwanted), if there are no local results to display then try the reverse verb search
-            else if (mLocalMatchingWordsList.size()==0) performConjSearch();
+            String text;
+            if (mLocalMatchingWordsList.size() > 1) text = "Found " + mLocalMatchingWordsList.size()+"local results. ";
+            else if (mLocalMatchingWordsList.size() == 1) text = "Found one local result. ";
+            else text = "No local results. ";
+            if (mShowOnlineResults) {
+                //If wanted, update the results with words from Jisho.org
+                text += "Searching online, please wait…";
+                startSearchingForJishoWords();
+            }
+            else if (mLocalMatchingWordsList.size()==0) {
+                //Otherwise (if online results are unwanted), if there are no local results to display then try the reverse verb search
+                performConjSearch();
+            }
+            mShowOnlineResultsToast = Toast.makeText(getContext(), text, Toast.LENGTH_SHORT);
+            mShowOnlineResultsToast.show();
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_SEARCH_LOADER);
         }
@@ -176,22 +187,16 @@ public class DictionaryFragment extends Fragment implements
 
                 List<Word> differentJishoWords = Utilities.getDifferentAsyncWords(mLocalMatchingWordsList, jishoWords);
                 if (differentJishoWords.size()==0) Toast.makeText(getContext(), R.string.no_new_words_or_meanings_found_online, Toast.LENGTH_SHORT).show();
-                else Toast.makeText(getContext(), R.string.updated_list_with_online_words_andMeanings, Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getContext(), "Updated list with online results.", Toast.LENGTH_SHORT).show();
 
                 updateFirebaseDbWithJishoWords(differentJishoWords);
 
                 displayResults(mMergedMatchingWordsList);
             }
             else {
-                //if there are no jisho results (for whatever reason) then display only the local results
-                if (mLocalMatchingWordsList.size()!=0) {
-                    //The results should have already been displayed, therefore the following line is commented out
-                    //displayResultsInListView(mLocalMatchingWordsList);
-                }
-
+                Toast.makeText(getContext(), R.string.no_matching_words_online, Toast.LENGTH_SHORT).show();
                 //if there are no jisho results (for whatever reason) and no local results to display, then try the reverse verb search on the input
-                else {
-                    Toast.makeText(getContext(), R.string.no_matching_words_online, Toast.LENGTH_SHORT).show();
+                if (mLocalMatchingWordsList.size()==0) {
                     performConjSearch();
                 }
             }
@@ -323,9 +328,6 @@ public class DictionaryFragment extends Fragment implements
     private void startSearchingForJishoWords() {
 
         if (!TextUtils.isEmpty(mInputQuery)) {
-
-            mShowOnlineResultsToast = Toast.makeText(getContext(), getResources().getString(R.string.showOnlineResultsToastString), Toast.LENGTH_SHORT);
-            mShowOnlineResultsToast.show();
 
             if (getActivity() != null) {
 
