@@ -34,19 +34,20 @@ import android.support.v4.content.Loader;
 import android.support.v7.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -88,6 +89,7 @@ public class InputQueryFragment extends Fragment implements
     @BindView(R.id.button_convert) Button mConvertButton;
     @BindView(R.id.button_search_by_radical) Button mSearchByRadicalButton;
     @BindView(R.id.button_decompose) Button mDecomposeButton;
+    private static final int MAX_OCR_DIALOG_RECYCLERVIEW_HEIGHT_DP = 150;
     private static final int QUERY_HISTORY_MAX_SIZE = 20;
     private static final int RESULT_OK = -1;
     private static final int SPEECH_RECOGNIZER_REQUEST_CODE = 101;
@@ -139,13 +141,14 @@ public class InputQueryFragment extends Fragment implements
     private boolean mAlreadyGotOcrResult;
     private boolean mAlreadyGotRomajiFromKanji;
     private Typeface mDroidSansJapaneseTypeface;
+    private int mMaxOCRDialogResultHeightPixels;
     //endregion
 
 
     //Fragment Lifecycle methods
     @Override public void onAttach(Context context) {
         super.onAttach(context);
-        inputQueryOperationsHandler = (InputQueryOperationsHandler) context;
+        mInputQueryOperationsHandler = (InputQueryOperationsHandler) context;
     }
     @Override public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -166,6 +169,8 @@ public class InputQueryFragment extends Fragment implements
             mAlreadyGotOcrResult = savedInstanceState.getBoolean(getString(R.string.saved_ocr_result_state), false);
             mAlreadyGotRomajiFromKanji = savedInstanceState.getBoolean(getString(R.string.saved_romaji_from_kanji_state), false);
         }
+
+        mMaxOCRDialogResultHeightPixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, MAX_OCR_DIALOG_RECYCLERVIEW_HEIGHT_DP, getResources().getDisplayMetrics());
 
         return rootView;
     }
@@ -314,7 +319,7 @@ public class InputQueryFragment extends Fragment implements
                     registerThatUserIsRequestingDictSearch(true);
 
                     drawBorderAroundThisButton(mDictButton);
-                    inputQueryOperationsHandler.onDictRequested(mInputQuery);
+                    mInputQueryOperationsHandler.onDictRequested(mInputQuery);
                 }
                 return true;
             } } );
@@ -384,7 +389,7 @@ public class InputQueryFragment extends Fragment implements
         registerThatUserIsRequestingDictSearch(true); //TODO: remove this?
         drawBorderAroundThisButton(mDictButton);
 
-        inputQueryOperationsHandler.onDictRequested(inputWordString);
+        mInputQueryOperationsHandler.onDictRequested(inputWordString);
     }
     @OnClick(R.id.button_conj) public void onSearchVerbButtonClick() {
 
@@ -395,7 +400,7 @@ public class InputQueryFragment extends Fragment implements
         registerThatUserIsRequestingDictSearch(false); //TODO: remove this?
 
         drawBorderAroundThisButton(mConjButton);
-        inputQueryOperationsHandler.onConjRequested(inputVerbString);
+        mInputQueryOperationsHandler.onConjRequested(inputVerbString);
 
     }
     @OnClick(R.id.button_convert) public void onConvertButtonClick() {
@@ -404,7 +409,7 @@ public class InputQueryFragment extends Fragment implements
         updateQueryHistory();
 
         drawBorderAroundThisButton(mConvertButton);
-        inputQueryOperationsHandler.onConvertRequested(mInputQuery);
+        mInputQueryOperationsHandler.onConvertRequested(mInputQuery);
     }
     @OnClick(R.id.button_search_by_radical) public void onSearchByRadicalButtonClick() {
 
@@ -415,7 +420,7 @@ public class InputQueryFragment extends Fragment implements
         updateQueryHistory();
 
         drawBorderAroundThisButton(mSearchByRadicalButton);
-        inputQueryOperationsHandler.onSearchByRadicalRequested(Utilities.removeSpecialCharacters(mInputQuery));
+        mInputQueryOperationsHandler.onSearchByRadicalRequested(Utilities.removeSpecialCharacters(mInputQuery));
     }
     @OnClick(R.id.button_decompose) public void onDecomposeButtonClick() {
 
@@ -424,7 +429,7 @@ public class InputQueryFragment extends Fragment implements
         updateQueryHistory();
 
         drawBorderAroundThisButton(mDecomposeButton);
-        inputQueryOperationsHandler.onDecomposeRequested(Utilities.removeSpecialCharacters(mInputQuery));
+        mInputQueryOperationsHandler.onDecomposeRequested(Utilities.removeSpecialCharacters(mInputQuery));
     }
     @OnClick(R.id.button_clear_query) public void onClearQueryButtonClick() {
 
@@ -847,7 +852,6 @@ public class InputQueryFragment extends Fragment implements
     public void setSTTLanguage(String mChosenSpeechToTextLanguage) {
         this.mChosenSpeechToTextLanguage = mChosenSpeechToTextLanguage;
     }
-
     private static class TesseractOCRAsyncTaskLoader extends AsyncTaskLoader <String> {
 
         TessBaseAPI mTess;
@@ -893,32 +897,41 @@ public class InputQueryFragment extends Fragment implements
         //cropImageView.setImageUriAsync(mPhotoURI);
         //mImageToBeDecoded = cropImageView.getCroppedImage();
 
-        ListView ocrResultsListView = dialogView.findViewById(R.id.ocrResultsList);
-        final String ocrResultsList[] = ocrResult.split("\\r\\n|\\n|\\r");
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<> (getActivity(), android.R.layout.simple_list_item_1, ocrResultsList);
-
-        mInputQuery = ocrResultsList[0];
+        final List<String> ocrResultsList = Arrays.asList(ocrResult.split("\\r\\n|\\n|\\r"));
+        mInputQuery = ocrResultsList.get(0);
         mInputQueryAutoCompleteTextView.setText(mInputQuery);
-        ocrResultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        //Adjusting the scrollview height
+        final ScrollView ocrResultsScrollView = dialogView.findViewById(R.id.ocrResultsTextViewContainer);
+        final TextView ocrResultsTextView = dialogView.findViewById(R.id.ocrResultsTextView);
+        ocrResultsTextView.setText(TextUtils.join("\n", ocrResultsList));
+        ocrResultsScrollView.post(new Runnable() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                mInputQueryAutoCompleteTextView.setText(ocrResultsList[position]);
+            public void run() {
+                ViewGroup.LayoutParams params = ocrResultsScrollView.getLayoutParams();
+                int totalTextHeight = ocrResultsTextView.getHeight();
+                if (totalTextHeight <= mMaxOCRDialogResultHeightPixels) {
+                    ocrResultsScrollView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                }
+                else {
+                    params.height = mMaxOCRDialogResultHeightPixels;
+                    ocrResultsScrollView.setLayoutParams(params);
+                }
             }
         });
-        ocrResultsListView.setAdapter(arrayAdapter);
 
         //Building the dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.OCRDialogTitle);
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.copy_to_input, new DialogInterface.OnClickListener() {
+            @Override
             public void onClick(DialogInterface dialog, int id) {
-                // User clicked OK button
-                dialog.dismiss();
+                //Overridden later on
             }
         });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                // User cancelled the dialog
+
             }
         });
         builder.setNeutralButton(R.string.readjust,new DialogInterface.OnClickListener() {
@@ -931,9 +944,25 @@ public class InputQueryFragment extends Fragment implements
         }
         else { builder.setMessage(R.string.LowVersionDialogMessage); }
         AlertDialog dialog = builder.create();
-
         //scaleImage(ocrPictureHolder, 1);
         dialog.show();
+
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getContext()!=null) {
+                    String text = ocrResultsTextView.getText().toString();
+                    int startIndex = ocrResultsTextView.getSelectionStart();
+                    int endIndex = ocrResultsTextView.getSelectionEnd();
+                    text = text.substring(startIndex, endIndex);
+                    mInputQuery = text;
+                    mInputQueryAutoCompleteTextView.setText(text);
+                }
+                //dialog.dismiss();
+            }
+        });
+
     }
 
 
@@ -1181,7 +1210,7 @@ public class InputQueryFragment extends Fragment implements
     //Communication with other classes:
 
     //Communication with parent activity:
-    private InputQueryOperationsHandler inputQueryOperationsHandler;
+    private InputQueryOperationsHandler mInputQueryOperationsHandler;
     interface InputQueryOperationsHandler {
         void onDictRequested(String query);
         void onConjRequested(String query);

@@ -51,7 +51,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         mDroidSansJapaneseTypeface = Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf"));
     }
 
-    @NonNull @Override public DictItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {LayoutInflater inflater = LayoutInflater.from(mContext);
+    @NonNull @Override public DictItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(R.layout.list_item_dictonary, parent, false);
         view.setFocusable(true);
         return new DictItemViewHolder(view);
@@ -154,7 +155,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         if (!TextUtils.isEmpty(alternatespellings)) {
             String htmlText = "<font face='serif' color='" +
                     mContext.getResources().getColor(R.color.textColorDictionaryAlternateSpellings) +
-                    "'>" + "<b>" + "Alternate spellings: " + "</b>" + alternatespellings + "</font>";
+                    "'>" + "<b>" + "Alternate forms: " + "</b>" + alternatespellings + "</font>";
             Spanned spanned_alternatespellings = Utilities.fromHtml(htmlText);
             TextView tv_alternatespellings = new TextView(mContext);
             tv_alternatespellings.setText(spanned_alternatespellings);

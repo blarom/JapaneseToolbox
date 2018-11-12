@@ -78,10 +78,10 @@
     <string name="languageLocaleEnglishUS">en-US</string>
     <string name="TextToSpeechLanguageJapanese">jpn</string>
     <string name="TextToSpeechLanguageEnglish">eng</string>
-    <string name="OCRDialogTitle">Please select the text for OCR</string>
+    <string name="OCRDialogTitle">Please select text line to copy to input</string>
     <string name="LowVersionDialogMessage">Current Android version is too low</string>
     <string name="cancel">Cancel</string>
-    <string name="readjust">Readjust Image</string>
+    <string name="readjust">Retouch</string>
     <string name="OCR_image" translatable="false">OCR Image</string>
     <string name="OCR_failed">OCR engine initialization failed.</string>
     <string name="OCR_reinitializing">OCR engine was not initialized. Trying again…</string>
@@ -113,7 +113,8 @@
     <string name="please_enter_word"><![CDATA[<b>Please enter a valid word.</b>
         <br /><br />Complete words will yield the best results, but word fragments will also do.
         <br /><br />You can enter words in English, Romaji, Hiragana, Katakana or Kanji.
-        <br /><br />Also note that this app uses a variation of Kunrei-Shiki romanization, where for example \&quot;う\&quot; is always transliterated to \&quot;u\&quot;, and \&quot;づ\&quot; is always transliterated to \&quot;du\&quot;.]]></string>
+        <br /><br />Also note that this app uses a variation of Kunrei-Shiki romanization, where for example \&quot;う\&quot; is always transliterated to \&quot;u\&quot;,
+        \&quot;di\&quot; is transliterated to \&quot;ヂ\&quot;, and \&quot;づ\&quot; is transliterated to \&quot;du\&quot;.]]></string>
     <string name="GrammarModule_Romaji_construction">Romaji:</string>
     <string name="GrammarModule_Kana_construction">Kana:</string>
     <string name="GrammarModule_English_construction">English:</string>
@@ -151,7 +152,8 @@
     <string name="TransliteratorHint">
         \n<b>Hint:</b>
         \nUse an apostrophe (\&apos;) after \&quot;n\&quot; to ensure its transliteration to \&quot;ん\&quot;.
-        \n\nAlso note that this app uses a variation of Kunrei-Shiki romanization, where for example \&quot;う\&quot; is always transliterated to \&quot;u\&quot;, and \&quot;づ\&quot; is always transliterated to \&quot;du\&quot;.</string>
+        \n\nAlso note that this app uses a variation of Kunrei-Shiki romanization, where for example \&quot;う\&quot; is transliterated to \&quot;u\&quot;,
+        \&quot;di\&quot; is transliterated to \&quot;ヂ\&quot;, and \&quot;づ\&quot; is transliterated to \&quot;du\&quot;.</string>
 
     <!--ComposeKanjiFragment Strings-->
     <string name="search_by_radical_kanji_finder">Kanji Finder</string>
@@ -311,4 +313,5 @@
     <string name="search_for_radical_search_too_broad">Your search is too broad. Please select another structure or select Kanji elements to narrow the search.</string>
     <string name="search_by_radical_no_results_found">No results found for your selections.</string>
     <string name="similars_database">similars_database</string>
+    <string name="copy_to_input">Copy to input</string>
 </resources>

@@ -42,6 +42,7 @@ import butterknife.Unbinder;
 //// Test app ranking algorithm using the following words: eat, car
 
 //TODO: features
+////TODO: add kanji character zoom in
 ////TODO: allow user to enter verb in gerund form (ing) and still find it
 ////TODO indicate if word is common in search results
 ////TODO indicate source as local/jisho in search results

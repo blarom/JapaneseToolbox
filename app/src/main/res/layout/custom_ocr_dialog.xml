@@ -1,32 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/root"
-                android:padding="?dialogPreferredPadding"
-                android:orientation="vertical">
+<LinearLayout
+    android:id="@+id/custom_ocr_dialog"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="?dialogPreferredPadding"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!--<com.theartofdev.edmodo.cropper.CropImageView-->
-        <!--xmlns:custom="http://schemas.android.com/apk/res-auto"-->
-        <!--android:id="@+id/cropImageView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="1"/>-->
+    <!--xmlns:custom="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/cropImageView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_weight="1"/>-->
 
     <ImageView
         android:id="@+id/ocrPicture"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:src="@drawable/test_image"
-        android:scaleType="centerInside"
-        android:contentDescription="@string/OCR_image"/>
-
-
-    <ListView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ocrResultsList">
-    </ListView>
+        android:layout_gravity="center"
+        android:contentDescription="@string/OCR_image"
+        android:scaleType="centerInside"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/test_image"/>
+
+    <ScrollView
+        android:id="@+id/ocrResultsTextViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <TextView
+            android:gravity="center"
+            android:id="@+id/ocrResultsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:lineSpacingMultiplier="1.5"
+            android:focusable="true"
+            android:textSize="22sp"
+            android:textColor="@color/colorAccent"
+            />
+    </ScrollView>
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/ocrResultsList"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="200dp">-->
+    <!--</android.support.v7.widget.RecyclerView>-->
 
 </LinearLayout>
