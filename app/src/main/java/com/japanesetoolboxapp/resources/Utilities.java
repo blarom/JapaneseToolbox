@@ -880,7 +880,7 @@ public final class Utilities {
                             }
                         }
 
-                        //Extracting the altSpellings
+                        //Extracting the altSpellings using regex
                         List<String> altSpellings = new ArrayList<>();
                         Matcher m = Pattern.compile("\\b(\\w+)\\s【(\\w+)】").matcher(altSpellingsContainer.toString());
                         while (m.find()) {

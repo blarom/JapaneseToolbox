@@ -749,7 +749,7 @@ public class ConvertFragment extends Fragment {
                     case "ウ": added_string = "n'"; break;
                     case "ヤ": added_string = "n'"; break;
                     case "ヨ": added_string = "n'"; break;
-                    case "ユ": added_string = "n'"; break;
+                    case "ュ": added_string = "n'"; break;
                     default: added_string = "n"; break;
                 } break;
             case "ニ":
@@ -796,7 +796,7 @@ public class ConvertFragment extends Fragment {
             case "ピ":
                 switch (character_next) {
                     case "ャ": added_string = "pya"; i++; break;
-                    case "ユ": added_string = "pyu"; i++; break;
+                    case "ュ": added_string = "pyu"; i++; break;
                     case "ェ": added_string = "pye"; i++; break;
                     case "ョ": added_string = "pyo"; i++; break;
                     case "ァ": added_string = "*"; i++; break;
@@ -810,7 +810,7 @@ public class ConvertFragment extends Fragment {
             case "フ":
                 switch (character_next) {
                     case "ャ": added_string = "fya"; i++; break;
-                    case "ユ": added_string = "fyu"; i++; break;
+                    case "ュ": added_string = "fyu"; i++; break;
                     case "ェ": added_string = "fe"; i++; break;
                     case "ョ": added_string = "fyo"; i++; break;
                     case "ァ": added_string = "fa"; i++; break;
