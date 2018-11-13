@@ -628,6 +628,10 @@ public class MainActivity extends AppCompatActivity implements
     @Override public void onLocalMatchingWordsFound(List<Word> matchingWords) {
         mLocalMatchingWords = matchingWords;
     }
+    @Override public void onFinalMatchingWordsFound(List<Word> matchingWords) {
+        if (mInputQueryFragment!=null && matchingWords.size()!=0 && matchingWords.get(0).getMeanings().size()!=0)
+            mInputQueryFragment.setFirstMeaning(matchingWords.get(0).getRomaji(), matchingWords.get(0).getMeanings().get(0).getMeaning());
+    }
 
     //Communication with SearchByRadicalFragment
     @Override public void onQueryTextUpdateFromSearchByRadicalRequested(String word) {
