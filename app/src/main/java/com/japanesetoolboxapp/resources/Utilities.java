@@ -482,6 +482,11 @@ public final class Utilities {
                 /((float) Integer.parseInt(context.getString(R.string.pref_OCR_image_saturation_range)))
                 *((float) Integer.parseInt(context.getString(R.string.pref_OCR_image_saturation_multipliers)));
     }
+    public static float convertSaturationProgressToValueOLD(float saturationBarValue, Context context) {
+        return saturationBarValue
+                /((float) Integer.parseInt(context.getString(R.string.pref_OCR_image_saturation_range)))
+                *((float) Integer.parseInt(context.getString(R.string.pref_OCR_image_saturation_multipliers)));
+    }
     public static int convertBrightnessProgressToValue(int brightnessBarValue, Context context) {
         return brightnessBarValue-256;
     }

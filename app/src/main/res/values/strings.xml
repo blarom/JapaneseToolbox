@@ -38,31 +38,37 @@
 
     <string name="pref_OCR_image_contrast_key" translatable="false">pref_OCR_image_contrast_key</string>
     <string name="pref_OCR_image_contrast_title">OCR Default Contrast [0;10]</string>
-    <string name="pref_OCR_image_contrast_summary">Value: 5/10</string>
-    <string name="pref_OCR_image_contrast_default_value">1</string>
-    <string name="pref_OCR_image_contrast_min_value">0</string>
-    <string name="pref_OCR_image_contrast_max_value">10</string>
-    <string name="pref_OCR_image_contrast_range">100</string>
-    <string name="pref_OCR_image_contrast_interval">0.1</string>
+    <string name="pref_OCR_image_contrast_min_display_value" translatable="false">0</string>
+    <string name="pref_OCR_image_contrast_max_display_value" translatable="false">10</string>
+    <string name="pref_OCR_image_contrast_summary" translatable="false">Value: 3</string>
+    <string name="pref_OCR_image_contrast_default_value" translatable="false">3</string>
+    <string name="pref_OCR_image_contrast_min_value" translatable="false">0</string>
+    <string name="pref_OCR_image_contrast_max_value" translatable="false">10</string>
+    <string name="pref_OCR_image_contrast_range" translatable="false">100</string>
+    <string name="pref_OCR_image_contrast_interval" translatable="false">0.1</string>
 
     <string name="pref_OCR_image_saturation_key" translatable="false">pref_OCR_image_saturation_key</string>
     <string name="pref_OCR_image_saturation_title">OCR Default Saturation [0;3]</string>
+    <string name="pref_OCR_image_saturation_min_display_value" translatable="false">0</string>
+    <string name="pref_OCR_image_saturation_max_display_value" translatable="false">3.0</string>
     <string name="pref_OCR_image_saturation_summary">Value: 0</string>
-    <string name="pref_OCR_image_saturation_default_value">-255</string>
-    <string name="pref_OCR_image_saturation_min_value">0</string>
-    <string name="pref_OCR_image_saturation_max_value">512</string>
-    <string name="pref_OCR_image_saturation_range">512</string>
-    <string name="pref_OCR_image_saturation_interval">1</string>
-    <string name="pref_OCR_image_saturation_multipliers">3</string>
+    <string name="pref_OCR_image_saturation_default_value" translatable="false">0</string>
+    <string name="pref_OCR_image_saturation_min_value" translatable="false">0</string>
+    <string name="pref_OCR_image_saturation_max_value" translatable="false">512</string>
+    <string name="pref_OCR_image_saturation_range" translatable="false">512</string>
+    <string name="pref_OCR_image_saturation_interval" translatable="false">1</string>
+    <string name="pref_OCR_image_saturation_multipliers" translatable="false">3</string>
 
     <string name="pref_OCR_image_brightness_key" translatable="false">pref_OCR_image_brightness_key</string>
     <string name="pref_OCR_image_brightness_title">OCR Default Brightness [-1;1]</string>
+    <string name="pref_OCR_image_brightness_min_display_value" translatable="false">-1</string>
+    <string name="pref_OCR_image_brightness_max_display_value" translatable="false">1</string>
     <string name="pref_OCR_image_brightness_summary">Value: 0</string>
-    <string name="pref_OCR_image_brightness_default_value">0</string>
-    <string name="pref_OCR_image_brightness_min_value">-256</string>
-    <string name="pref_OCR_image_brightness_max_value">256</string>
-    <string name="pref_OCR_image_brightness_range">512</string>
-    <string name="pref_OCR_image_brightness_interval">1</string>
+    <string name="pref_OCR_image_brightness_default_value" translatable="false">0</string>
+    <string name="pref_OCR_image_brightness_min_value" translatable="false">-256</string>
+    <string name="pref_OCR_image_brightness_max_value" translatable="false">256</string>
+    <string name="pref_OCR_image_brightness_range" translatable="false">512</string>
+    <string name="pref_OCR_image_brightness_interval" translatable="false">1</string>
 
     <!--InputQueryFragment Strings-->
     <string name="input_query">Search Me!</string>
@@ -315,4 +321,8 @@
     <string name="similars_database">similars_database</string>
     <string name="copy_to_input">Copy to input</string>
     <string name="clear_search_history">Clear Search History</string>
+    <string name="image_adjustment_hint">The original image has saturation 1.0 (normal colors), contrast 1.0 and brightness 0.
+        \n\nOptimal values for character recognition are around saturation 0 (grayscale), contrast 3.0 and brightness -0.5.
+        These are the default settings, but feel free to change them to make the image as clear as possible.
+        You can adjust these defaults in the Settings menu.</string>
 </resources>

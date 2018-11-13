@@ -6,6 +6,7 @@ import android.support.v7.preference.EditTextPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.preference.PreferenceScreen;
 import android.widget.Toast;
 
@@ -18,7 +19,10 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        prefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -49,11 +53,71 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
         if (currentPreference != null) {
             // Updates the summary for the preference
             if (currentPreference instanceof ListPreference || currentPreference instanceof EditTextPreference) {
+                checkIfValueIsInRangeOrWarnUser(currentPreference, sharedPreferences);
                 setSummaryForPreference(currentPreference, sharedPreferences);
             }
         }
     }
+    private void checkIfValueIsInRangeOrWarnUser(Preference preference, SharedPreferences sharedPreferences) {
+        String newValue = sharedPreferences.getString(preference.getKey(), "");
 
+        Toast error;
+
+        if (preference.getKey().equals(getString(R.string.pref_OCR_image_contrast_key))) {
+            error = Toast.makeText(getContext(), "Values outside of the range [ "
+                    + getString(R.string.pref_OCR_image_contrast_min_display_value)
+                    + " : "
+                    + getString(R.string.pref_OCR_image_contrast_max_display_value)
+                    + " ] are ignored.", Toast.LENGTH_SHORT);
+            try {
+                float contrast = Float.parseFloat((String) newValue);
+                // If the number is outside of the acceptable range, show an error.
+                if (contrast > Float.valueOf(getString(R.string.pref_OCR_image_contrast_max_display_value))
+                        || contrast < Float.valueOf(getString(R.string.pref_OCR_image_contrast_min_display_value))) {
+                    error.show();
+                }
+            } catch (NumberFormatException nfe) {
+                // If whatever the user entered can't be parsed to a number, show an error
+                error.show();
+            }
+        }
+        else if (preference.getKey().equals(getString(R.string.pref_OCR_image_saturation_key))) {
+            error = Toast.makeText(getContext(), "Values outside of the range [ "
+                    + getString(R.string.pref_OCR_image_saturation_min_display_value)
+                    + " : "
+                    + getString(R.string.pref_OCR_image_saturation_max_display_value)
+                    + " ] are ignored.", Toast.LENGTH_SHORT);
+            try {
+                float saturation = Float.parseFloat((String) newValue);
+                // If the number is outside of the acceptable range, show an error.
+                if (saturation > Float.valueOf(getString(R.string.pref_OCR_image_saturation_max_display_value))
+                        || saturation < Float.valueOf(getString(R.string.pref_OCR_image_saturation_min_display_value))) {
+                    error.show();
+                }
+            } catch (NumberFormatException nfe) {
+                // If whatever the user entered can't be parsed to a number, show an error
+                error.show();
+            }
+        }
+        else if (preference.getKey().equals(getString(R.string.pref_OCR_image_brightness_key))) {
+            error = Toast.makeText(getContext(), "Values outside of the range [ "
+                    + getString(R.string.pref_OCR_image_brightness_min_display_value)
+                    + " : "
+                    + getString(R.string.pref_OCR_image_brightness_max_display_value)
+                    + " ] are ignored.", Toast.LENGTH_SHORT);
+            try {
+                float brightness = Float.parseFloat((String) newValue);
+                // If the number is outside of the acceptable range, show an error.
+                if (brightness > Float.valueOf(getString(R.string.pref_OCR_image_brightness_max_display_value))
+                        || brightness < Float.valueOf(getString(R.string.pref_OCR_image_brightness_min_display_value))) {
+                    error.show();
+                }
+            } catch (NumberFormatException nfe) {
+                // If whatever the user entered can't be parsed to a number, show an error
+                error.show();
+            }
+        }
+    }
     private void setSummaryForPreference(Preference currentPreference, SharedPreferences sharedPreferences) {
 
         String currentPreferenceValue = sharedPreferences.getString(currentPreference.getKey(), "");
@@ -74,11 +138,16 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
         Toast error;
 
         if (preference.getKey().equals(getString(R.string.pref_OCR_image_contrast_key))) {
-            error = Toast.makeText(getContext(), "Please select a number between 1 and 10.", Toast.LENGTH_SHORT);
+            error = Toast.makeText(getContext(), "Please select a number between "
+                    + getString(R.string.pref_OCR_image_contrast_min_display_value)
+                    + " and "
+                    + getString(R.string.pref_OCR_image_contrast_max_display_value)
+                    + ".", Toast.LENGTH_SHORT);
             try {
                 float contrast = Float.parseFloat((String) newValue);
                 // If the number is outside of the acceptable range, show an error.
-                if (contrast > 10 || contrast <= 1) {
+                if (contrast > Integer.valueOf(getString(R.string.pref_OCR_image_contrast_max_display_value))
+                        || contrast < Integer.valueOf(getString(R.string.pref_OCR_image_contrast_min_display_value))) {
                     error.show();
                     return false;
                 }
@@ -89,11 +158,16 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
             }
         }
         else if (preference.getKey().equals(getString(R.string.pref_OCR_image_saturation_key))) {
-            error = Toast.makeText(getContext(), "Please select a number between -255 and 255", Toast.LENGTH_SHORT);
+            error = Toast.makeText(getContext(), "Please select a number between "
+                    + getString(R.string.pref_OCR_image_saturation_min_display_value)
+                    + " and "
+                    + getString(R.string.pref_OCR_image_saturation_max_display_value)
+                    + ".", Toast.LENGTH_SHORT);
             try {
                 float saturation = Float.parseFloat((String) newValue);
                 // If the number is outside of the acceptable range, show an error.
-                if (saturation > 255 || saturation < -255) {
+                if (saturation > Integer.valueOf(getString(R.string.pref_OCR_image_saturation_max_display_value))
+                        || saturation < Integer.valueOf(getString(R.string.pref_OCR_image_saturation_min_display_value))) {
                     error.show();
                     return false;
                 }
@@ -104,11 +178,16 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
             }
         }
         else if (preference.getKey().equals(getString(R.string.pref_OCR_image_brightness_key))) {
-            error = Toast.makeText(getContext(), "Please select a number between -255 and 255", Toast.LENGTH_SHORT);
+            error = Toast.makeText(getContext(), "Please select a number between "
+                    + getString(R.string.pref_OCR_image_brightness_min_display_value)
+                    + " and "
+                    + getString(R.string.pref_OCR_image_brightness_max_display_value)
+                    + ".", Toast.LENGTH_SHORT);
             try {
                 float brightness = Float.parseFloat((String) newValue);
                 // If the number is outside of the acceptable range, show an error.
-                if (brightness > 255 || brightness < -255) {
+                if (brightness > Integer.valueOf(getString(R.string.pref_OCR_image_brightness_max_display_value))
+                        || brightness < Integer.valueOf(getString(R.string.pref_OCR_image_brightness_min_display_value))) {
                     error.show();
                     return false;
                 }

@@ -183,10 +183,6 @@ public class AdjustImageActivity extends AppCompatActivity {
             int brightnessValue = Utilities.convertBrightnessProgressToValue(brightnessBarValue, getApplicationContext());
             float saturationValue = Utilities.convertSaturationProgressToValue(saturationBarValue, getApplicationContext());
 
-            //float contrastDisplay = (float) progressContrast / Float.parseFloat(getResources().getString(R.string.pref_OCR_image_contrast_max_value));
-            //float brightness = (float) progressBrightness / Float.parseFloat(getResources().getString(R.string.pref_OCR_image_brightness_max_value));
-            //float saturation = (float) progressSaturation / Float.parseFloat(getResources().getString(R.string.pref_OCR_image_saturation_max_value));
-
             float contrastDisplay = contrastValue;
             float brightnessDisplay = (float) brightnessValue/256;
             float saturationDisplay = saturationValue;
