@@ -219,6 +219,9 @@ public class MainActivity extends AppCompatActivity implements
                 startAboutActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(startAboutActivity);
                 return true;
+            case R.id.action_clear_history:
+                if (mInputQueryFragment!=null) mInputQueryFragment.clearHistory();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -630,7 +633,7 @@ public class MainActivity extends AppCompatActivity implements
     }
     @Override public void onFinalMatchingWordsFound(List<Word> matchingWords) {
         if (mInputQueryFragment!=null && matchingWords.size()!=0 && matchingWords.get(0).getMeanings().size()!=0)
-            mInputQueryFragment.setFirstMeaning(matchingWords.get(0).getRomaji(), matchingWords.get(0).getMeanings().get(0).getMeaning());
+            mInputQueryFragment.updateQueryDefinitionInHistory(matchingWords.get(0).getRomaji(), matchingWords.get(0).getMeanings().get(0).getMeaning());
     }
 
     //Communication with SearchByRadicalFragment

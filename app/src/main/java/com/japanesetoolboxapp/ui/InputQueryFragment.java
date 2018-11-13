@@ -845,11 +845,6 @@ public class InputQueryFragment extends Fragment implements
         if (filename.equals("jpn.traineddata")) setJpnOcrDataIsDownloadingStatus(status);
         else if (filename.equals("eng.traineddata")) setEngOcrDataIsDownloadingStatus(status);
     }
-
-    public void setSTTLanguage(String mChosenSpeechToTextLanguage) {
-        this.mChosenSpeechToTextLanguage = mChosenSpeechToTextLanguage;
-    }
-
     private static class TesseractOCRAsyncTaskLoader extends AsyncTaskLoader <String> {
 
         TessBaseAPI mTess;
@@ -1112,7 +1107,7 @@ public class InputQueryFragment extends Fragment implements
         // Add the entry at the beginning of the stack
         // If the entry is already in the spinner, remove that entry
 
-        if (TextUtils.isEmpty(mInputQuery)) return;
+        if (TextUtils.isEmpty(mInputQuery) || getContext()==null) return;
 
         //Preparing the displayed query history value
         String queryAndMeaning = mInputQuery;
@@ -1144,24 +1139,21 @@ public class InputQueryFragment extends Fragment implements
         }
 
         updateQueryHistoryWordsOnly();
+        saveQueryHistoryToPreferences();
 
-        //Save the query history in the preferences
+        mInputQueryAutoCompleteTextView.setAdapter(new QueryInputSpinnerAdapter(
+                getContext(),
+                R.layout.custom_queryhistory_spinner,
+                mQueryHistoryWordsOnly));
+
+    }
+    private void saveQueryHistoryToPreferences() {
         if (getContext() != null) {
             String queryHistoryAsString = TextUtils.join(QUERY_HISTORY_ELEMENTS_DELIMITER, mQueryHistory);
             SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.preferences_query_history_list), Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString(getString(R.string.preferences_query_history_list), queryHistoryAsString);
             editor.apply();
-        }
-
-        // Set the dropdown main to include all past entries
-        if (getActivity() != null) {
-
-            mInputQueryAutoCompleteTextView.setAdapter(new QueryInputSpinnerAdapter(
-                    getActivity().getBaseContext(),
-                    R.layout.custom_queryhistory_spinner,
-                    mQueryHistoryWordsOnly));
-
         }
     }
     private void updateQueryHistoryWordsOnly() {
@@ -1262,11 +1254,18 @@ public class InputQueryFragment extends Fragment implements
     public void setConjButtonSelected() {
         drawBorderAroundThisButton(mConjButton);
     }
-    public void setFirstMeaning(String romaji, String meaning) {
+    public void updateQueryDefinitionInHistory(String romaji, String meaning) {
         mFirstMeaningRomaji = romaji;
         mFirstMeaning = meaning;
         updateQueryHistory(true);
     }
-
+    public void setSTTLanguage(String mChosenSpeechToTextLanguage) {
+        this.mChosenSpeechToTextLanguage = mChosenSpeechToTextLanguage;
+    }
+    public void clearHistory() {
+        mQueryHistoryWordsOnly = new ArrayList<>();
+        mQueryHistory = new ArrayList<>();
+        saveQueryHistoryToPreferences();
+    }
 
 }
