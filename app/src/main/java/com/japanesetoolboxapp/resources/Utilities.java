@@ -893,6 +893,7 @@ public final class Utilities {
                             String convertedMatch = ConvertFragment.getLatinHiraganaKatakana(m.group(2)).get(GlobalConstants.TYPE_LATIN);
                             if (!convertedMatch.equals(currentWord.getRomaji())) altSpellings.add(convertedMatch);
                         }
+                        altSpellings = removeDuplicatesFromList(altSpellings);
                         currentWord.setAltSpellings(TextUtils.join(", ", altSpellings));
                         break;
                     }
@@ -2007,6 +2008,11 @@ public final class Utilities {
                     searchWord, searchWordNoSpaces, japaneseToolboxCentralRoomDatabase);
         }
 
+        //If the number of matching ids is still larger than MAX_SQL_VARIABLES_FOR_QUERY, limit the list length to MAX_SQL_VARIABLES_FOR_QUERY
+        if (matchingWordIds.size() > GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
+            matchingWordIds = matchingWordIds.subList(0,GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY);
+        }
+
         //Adding search results where the "ing" is removed from an "ing" verb
         if ((inputTextType == GlobalConstants.TYPE_LATIN || inputTextType == GlobalConstants.TYPE_HIRAGANA
                 || inputTextType == GlobalConstants.TYPE_KATAKANA || inputTextType == GlobalConstants.VALUE_NUMBER) && !inglessVerb.equals(searchWord)) {
@@ -2014,13 +2020,13 @@ public final class Utilities {
             List<Long> newMatchingWordIds = getMatchingWordIdsForInglessVerb(false,
                     matchingWordIds, inglessVerb, japaneseToolboxCentralRoomDatabase);
 
-            if (newMatchingWordIds.size() > GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
+            if (matchingWordIds.size() + newMatchingWordIds.size() > GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
                 newMatchingWordIds = getMatchingWordIdsForInglessVerb(true,
                         matchingWordIds, inglessVerb, japaneseToolboxCentralRoomDatabase);
             }
 
-            if (newMatchingWordIds.size() <= GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
-                matchingWordIds = new ArrayList<>(newMatchingWordIds);
+            if (matchingWordIds.size() + newMatchingWordIds.size() <= GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
+                matchingWordIds.addAll(newMatchingWordIds);
             }
         }
 

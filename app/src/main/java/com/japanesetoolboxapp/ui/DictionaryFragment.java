@@ -155,7 +155,11 @@ public class DictionaryFragment extends Fragment implements
             mShowOnlineResults = Utilities.getShowOnlineResultsPreference(getActivity());
 
             String text;
-            if (mLocalMatchingWordsList.size() > 1) text = "Found " + mLocalMatchingWordsList.size()+" local results. ";
+            if (mLocalMatchingWordsList.size() > 1) {
+                if (mLocalMatchingWordsList.size() < GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY)
+                    text = "Found " + mLocalMatchingWordsList.size() + " local results. ";
+                else text = "Found more than" + GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY + " local results. ";
+            }
             else if (mLocalMatchingWordsList.size() == 1) text = "Found one local result. ";
             else text = "No local results. ";
             if (mShowOnlineResults) {
