@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:title="General" />
 
     <CheckBoxPreference
         android:defaultValue="@bool/pref_complete_local_with_online_search_default"
@@ -8,6 +10,9 @@
         android:summaryOff="@string/hidden"
         android:summaryOn="@string/shown"
         android:title="@string/complete_local_with_online_search" />
+
+    <PreferenceCategory
+        android:title="Speech" />
 
     <ListPreference
         android:defaultValue="@string/pref_preferred_language_value_japanese"
@@ -22,6 +27,9 @@
         android:entryValues="@array/pref_preferred_TTS_language_values"
         android:key="@string/pref_preferred_TTS_language_key"
         android:title="@string/pref_preferred_TTS_language" />
+
+    <PreferenceCategory
+        android:title="Image Character Recognition" />
 
     <ListPreference
         android:defaultValue="@string/pref_preferred_language_value_japanese"

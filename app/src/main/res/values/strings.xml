@@ -18,10 +18,10 @@
     <string name="about">About</string>
 
     <!--Preferences Strings-->
-    <string name="hidden">Hidden</string>
-    <string name="shown">Shown</string>
+    <string name="hidden">Don\&apos;t get words and meanings online</string>
+    <string name="shown">Merge online search results with local results</string>
     <string name="pref_complete_local_with_online_search_key" translatable="false">complete_local_with_online_search</string>
-    <string name="complete_local_with_online_search">Show online results</string>
+    <string name="complete_local_with_online_search">Search Online Dictionary</string>
     <string name="language_label_japanese">Japanese</string>
     <string name="language_label_english">English (US)</string>
     <string name="pref_preferred_language_value_japanese" translatable="false">japanese</string>
@@ -32,12 +32,12 @@
     <string name="pref_preferred_TTS_language">Text-To-Speech Language</string>
     <string name="pref_preferred_TTS_language_key" translatable="false">preferred_TTS_result</string>
     <string name="pref_preferred_TTS_language_japanese" translatable="false">preferred_TTS_language_japanese</string>
-    <string name="pref_preferred_OCR_language">OCR Language</string>
+    <string name="pref_preferred_OCR_language">Recognition Engine Language</string>
     <string name="pref_preferred_OCR_language_key" translatable="false">preferred_OCR_result</string>
     <string name="pref_preferred_OCR_language_japanese" translatable="false">preferred_OCR_language_japanese</string>
 
     <string name="pref_OCR_image_contrast_key" translatable="false">pref_OCR_image_contrast_key</string>
-    <string name="pref_OCR_image_contrast_title">OCR Default Contrast [0;10]</string>
+    <string name="pref_OCR_image_contrast_title">Initial Contrast</string>
     <string name="pref_OCR_image_contrast_min_display_value" translatable="false">0</string>
     <string name="pref_OCR_image_contrast_max_display_value" translatable="false">10</string>
     <string name="pref_OCR_image_contrast_summary" translatable="false">Value: 3</string>
@@ -48,9 +48,9 @@
     <string name="pref_OCR_image_contrast_interval" translatable="false">0.1</string>
 
     <string name="pref_OCR_image_saturation_key" translatable="false">pref_OCR_image_saturation_key</string>
-    <string name="pref_OCR_image_saturation_title">OCR Default Saturation [0;3]</string>
+    <string name="pref_OCR_image_saturation_title">Initial Saturation</string>
     <string name="pref_OCR_image_saturation_min_display_value" translatable="false">0</string>
-    <string name="pref_OCR_image_saturation_max_display_value" translatable="false">3.0</string>
+    <string name="pref_OCR_image_saturation_max_display_value" translatable="false">3</string>
     <string name="pref_OCR_image_saturation_summary">Value: 0</string>
     <string name="pref_OCR_image_saturation_default_value" translatable="false">0</string>
     <string name="pref_OCR_image_saturation_min_value" translatable="false">0</string>
@@ -60,7 +60,7 @@
     <string name="pref_OCR_image_saturation_multipliers" translatable="false">3</string>
 
     <string name="pref_OCR_image_brightness_key" translatable="false">pref_OCR_image_brightness_key</string>
-    <string name="pref_OCR_image_brightness_title">OCR Default Brightness [-1;1]</string>
+    <string name="pref_OCR_image_brightness_title">Initial Brightness</string>
     <string name="pref_OCR_image_brightness_min_display_value" translatable="false">-1</string>
     <string name="pref_OCR_image_brightness_max_display_value" translatable="false">1</string>
     <string name="pref_OCR_image_brightness_summary">Value: 0</string>
@@ -325,4 +325,6 @@
         \n\nOptimal values for character recognition are around saturation 0 (grayscale), contrast 3.0 and brightness -0.5.
         These are the default settings, but feel free to change them to make the image as clear as possible.
         You can adjust these defaults in the Settings menu.</string>
+    <string name="pref_invalid_input_default_set">Invalid input, default value set instead.</string>
+    <string name="pref_cannot_set_value_outside_ange">You cannot set a value outside of the range</string>
 </resources>
