@@ -10,90 +10,157 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/AboutTextView1"
             style="@style/AboutTextViewItem"
-            android:text="@string/AboutText1"/>
+            android:text="@string/AboutTextIntro1"/>
+        <TextView
+            style="@style/AboutTextViewItem"
+            android:text="@string/AboutTextIntro2"/>
+        <TextView
+            style="@style/AboutTextViewItem"
+            android:text="@string/AboutTextIntro3"/>
+
 
         <TextView
-            android:id="@+id/AboutTextView2"
             style="@style/AboutTextViewItem"
-            android:text="@string/AboutText2"/>
+            android:text="@string/AboutTextButtonsTitle"/>
         <TextView
-            android:id="@+id/AboutTextView2Subtext1"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText2Subtext1"/>
+            style="@style/AboutTextViewItemTitle"
+            android:text="@string/AboutTextButtonsDictTitle"/>
         <TextView
-            android:id="@+id/AboutTextView2Subtext2"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText2Subtext2"/>
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsDictParagraph1"/>
         <TextView
-            android:id="@+id/AboutTextView2Subtext3"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText2Subtext3"/>
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsDictParagraph2"/>
         <TextView
-            android:id="@+id/AboutTextView2Subtext4"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText2Subtext4"/>
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsDictParagraph3"/>
         <TextView
-            android:id="@+id/AboutTextView2Subtext5"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText2Subtext5"/>
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsDictParagraph4"/>
         <TextView
-            android:id="@+id/AboutTextView2Subtext6"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText2Subtext6"/>
+            style="@style/AboutTextViewItemTitle"
+            android:text="@string/AboutTextButtonsConjTitle"/>
         <TextView
-            android:id="@+id/AboutTextView2Subtext7"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText2Subtext7"/>
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsConjParagraph1"/>
         <TextView
-            android:id="@+id/AboutTextView2Subtext8"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText2Subtext8"/>
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsConjParagraph2"/>
+        <TextView
+            style="@style/AboutTextViewItemTitle"
+            android:text="@string/AboutTextButtonsConvertTitle"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsConvertParagraph1"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsConvertParagraph2"/>
+        <TextView
+            style="@style/AboutTextViewItemTitle"
+            android:text="@string/AboutTextButtonsSearchByRadicalTitle"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsSearchByRadicalParagraph1"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsSearchByRadicalParagraph2"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsSearchByRadicalParagraph3"/>
+        <TextView
+            style="@style/AboutTextViewItemTitle"
+            android:text="@string/AboutTextButtonsDecomposeTitle"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsDecomposeParagraph1"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsDecomposeParagraph2"/>
+        <TextView
+            style="@style/AboutTextViewItemTitle"
+            android:text="@string/AboutTextButtonsSpeakerTitle"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsSpeakerParagraph1"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsSpeakerParagraph2"/>
+        <TextView
+            style="@style/AboutTextViewItemTitle"
+            android:text="@string/AboutTextButtonsCameraTitle"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsCameraParagraph1"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsCameraParagraph2"/>
+        <TextView
+            style="@style/AboutTextViewItemTitle"
+            android:text="@string/AboutTextButtonsMicrophoneTitle"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsMicrophoneParagraph1"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextButtonsMicrophoneParagraph2"/>
+
+
 
         <TextView
-            android:id="@+id/AboutTextView4"
             style="@style/AboutTextViewItem"
-            android:text="@string/AboutText4"/>
+            android:text="@string/AboutTextPersonalTitle"/>
         <TextView
-            android:id="@+id/AboutTextView4Subtext1"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText4Subtext1"/>
+            style="@style/AboutTextViewItemTitle"
+            android:text="@string/AboutTextPersonalParagraph1"/>
         <TextView
-            android:id="@+id/AboutTextView4Subtext2"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText4Subtext2"/>
+            style="@style/AboutTextViewItemTitle"
+            android:text="@string/AboutTextPersonalParagraph2"/>
         <TextView
-            android:id="@+id/AboutTextView4Subtext3"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText4Subtext3"/>
-        <TextView
-            android:id="@+id/AboutTextView4Subtext4"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText4Subtext4"/>
-        <TextView
-            android:id="@+id/AboutTextView4Subtext5"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText4Subtext5"/>
+            style="@style/AboutTextViewItemTitle"
+            android:text="@string/AboutTextPersonalParagraph3"/>
+
 
         <TextView
-            android:id="@+id/AboutTextView5"
             style="@style/AboutTextViewItem"
-            android:text="@string/AboutText5"/>
+            android:text="@string/AboutTextCreditsTitle"/>
+        <TextView
+            style="@style/AboutTextViewItemTitle"
+            android:text="@string/AboutTextCreditsCodeTitle"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextCreditsCodeParagraph1"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextCreditsCodeParagraph2"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextCreditsCodeParagraph3"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextCreditsCodeParagraph4"/>
+        <TextView
+            style="@style/AboutTextViewItemTitle"
+            android:text="@string/AboutTextCreditsDatabasesTitle"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextCreditsDatabasesParagraph1"/>
+        <TextView
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextCreditsDatabasesParagraph2"/>
 
         <TextView
-            android:id="@+id/AboutTextView6"
             android:layout_marginTop="10dp"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText6"/>
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextDisclaimer1"/>
 
         <TextView
-            android:id="@+id/AboutTextView7"
             android:layout_marginTop="10dp"
-            style="@style/AboutTextViewItemSubtext"
-            android:text="@string/AboutText7"/>
+            style="@style/AboutTextViewItemParagraph"
+            android:text="@string/AboutTextDisclaimer2"/>
     </LinearLayout>
 </ScrollView>

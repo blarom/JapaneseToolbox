@@ -181,70 +181,127 @@
 
     <!--AboutActivity Text-->
     <string name="DONE">DONE</string>
-    <string name="AboutText1">
-        Japanese Toolbox is a set of reference tools designed to make learning Japanese much more efficient,
-        by giving quick answers to questions on difficult subjects such as grammar, verb conjugations and Kanji decompositions. Most
-        of the app\'s functions require no Internet connectivity.
+    <string name="AboutTextIntro1">
+        Japanese Toolbox is a tool created by a Japanese learner for Japanese learners.
     </string>
-    <string name="AboutText2">
-        The app includes the following tools:
+    <string name="AboutTextIntro2">
+        The app is mainly designed to help you read texts in intermediate to advanced Japanese at a faster pace,
+        and to understand what you read if you haven\'t reached the required level yet. It is currently not designed to translate whole texts.
     </string>
-    <string name="AboutText2Subtext1">
-        - A local dictionary of common Japanese words and expressions, complete with grammar rules (DICT button). If there is Internet access then online results are added.
-    </string>
-    <string name="AboutText2Subtext2">
-        - A reverse verb conjugation finder (CONJ button).
-    </string>
-    <string name="AboutText2Subtext3">
-        - A Latin-to-Kana-to-Latin script converter (あ&#8660;A button).
-    </string>
-    <string name="AboutText2Subtext4">
-        - A Kanji composer (女+子 &#8658; 好 button) where you can find all Kanjis based on their radicals and/or components and/or general structure. Note
-        that users of Android versions below Marshmallow may experience "blank symbols" instead of Japanese characters in some cases.
-    </string>
-    <string name="AboutText2Subtext5">
-        - A Kanji decomposer (好 &#8658; 女+子 button) where you can get the meaning and readings of all of the components in a given Kanji.
-    </string>
-    <string name="AboutText2Subtext6">
-        - A Text-To-Speech function (speaker button) so that you may listen to your query in English or in Japanese. You can choose the speech language in the Settings menu.
-    </string>
-    <string name="AboutText2Subtext7">
-        - A Speech-To-Text function (microphone button) for Japanese or English speech. You can choose the speech recognition language in the Settings menu.
-    </string>
-    <string name="AboutText2Subtext8">
-        - A Image-To-Text function (camera button) for Japanese or English scripts. You can choose the script recognition language in the Settings menu.
+    <string name="AboutTextIntro3">
+        The app does not depend on an Internet connection, so you can use it whenever and wherever you want.
     </string>
 
-    <string name="AboutText4">
-        Credits - I built JapaneseToolbox\'s local database and search algorithms on my own, but also used the following open-source tools:
+    <string name="AboutTextButtonsTitle">
+        Explanations on the tools:
     </string>
-    <string name="AboutText4Subtext1">
-        - The OCR engine is provided by the Tesseract open-source project (supported by Google).
+    <string name="AboutTextButtonsDictTitle">DICT</string>
+    <string name="AboutTextButtonsDictParagraph1">
+        A local dictionary of Japanese words, expressions and grammar rules.
     </string>
-    <string name="AboutText4Subtext2">
-        - The Text-To-Speech and Speech-To-Text functions are based on Google APIs.
+    <string name="AboutTextButtonsDictParagraph2">
+        Better than most online reference tools, you can find explanations on any grammar rule just by entering a relevant keyword, even partially.
     </string>
-    <string name="AboutText4Subtext3">
-        - The camera tools are provided by the ArthurHub library (https://github.com/ArthurHub/Android-Image-Cropper).
+    <string name="AboutTextButtonsDictParagraph3">
+        I manually expanded the dictionary over the years with extra meanings and alternate word forms, so you will find words that many online dictionaries fail to find.
     </string>
-    <string name="AboutText4Subtext4">
-        - Image sharpening is provided by Pete Houston\'s algorithm (https://xjaphx.wordpress.com/2011/06/22/image-processing-sharpening-image/).
+    <string name="AboutTextButtonsDictParagraph4">
+        If there is Internet access then online results are added (you can change this in the Settings menu).
     </string>
-    <string name="AboutText4Subtext5">
-        - The CJK character decompositions database is a heavily modified and corrected version of the cjkdecomp database by Gavin Grover (https://github.com/amake/cjk-decomp) - see disclaimer*.
+    <string name="AboutTextButtonsConjTitle">CONJ</string>
+    <string name="AboutTextButtonsConjParagraph1">
+        Get access to more than 140 verb conjugations for almost 3000 verbs (including suru verbs).
+    </string>
+    <string name="AboutTextButtonsConjParagraph2">
+        Find a verb conjugation\'s meaning through a reverse-search of its conjugated Romaji, Kana or Kanji form.
+    </string>
+    <string name="AboutTextButtonsConvertTitle">あ&#8660;A</string>
+    <string name="AboutTextButtonsConvertParagraph1">
+        A Romaji-Hiragana-Katakana text converter.
+    </string>
+    <string name="AboutTextButtonsConvertParagraph2">
+        Though there are various ways of transliterating Kana syllables to Romaji and back,
+        I chose the way that will feel most intuitive to Western learners and is compatible with most modern conventions.
+    </string>
+    <string name="AboutTextButtonsSearchByRadicalTitle">女+子 &#8658; 好</string>
+    <string name="AboutTextButtonsSearchByRadicalParagraph1">
+        Find any Kanji based on up to 4 radicals/components or by identifying its general structure.
+    </string>
+    <string name="AboutTextButtonsSearchByRadicalParagraph2">
+        The search engine is way better than what you\'ll find online, since I manually inspected and corrected the original components database that online sites rely on.
+    </string>
+    <string name="AboutTextButtonsSearchByRadicalParagraph3">
+        Note that users of older Android versions may experience extra \"blank symbols\" instead of Japanese characters, that can\'t be filtered out.
+    </string>
+    <string name="AboutTextButtonsDecomposeTitle">好 &#8658; 女+子</string>
+    <string name="AboutTextButtonsDecomposeParagraph1">
+        Get the meanings and readings of all of the components in a given Kanji, recursively.
+    </string>
+    <string name="AboutTextButtonsDecomposeParagraph2">
+        Very useful if you want ot understand Kanjis through their radicals.
+    </string>
+    <string name="AboutTextButtonsSpeakerTitle">Speaker</string>
+    <string name="AboutTextButtonsSpeakerParagraph1">
+        A Text-To-Speech function so that you may listen to your query in English or in Japanese.
+    </string>
+    <string name="AboutTextButtonsSpeakerParagraph2">
+        You can choose the speech language in the Settings menu.
+    </string>
+    <string name="AboutTextButtonsCameraTitle">Camera</string>
+    <string name="AboutTextButtonsCameraParagraph1">
+        Convert Japanese or English words to searchable text by taking a picture or using an image in your device. This function works offline.
+    </string>
+    <string name="AboutTextButtonsCameraParagraph2">
+        You can choose the text recognition language and initial image saturation/contrast/brightness in the Settings menu.
+    </string>
+    <string name="AboutTextButtonsMicrophoneTitle">Microphone</string>
+    <string name="AboutTextButtonsMicrophoneParagraph1">
+        A Speech-To-Text function for Japanese or English speech.
+    </string>
+    <string name="AboutTextButtonsMicrophoneParagraph2">
+        You can choose the speech recognition language in the Settings menu.
     </string>
 
-    <string name="AboutText5">
-        If you have any comments or feedback, or encountered a bug, you\'re welcome to post them at japanesetoolboxapp@gmail.com.\n\nI
-        built JapaneseToolbox on my spare time out of love for the Japanese language and to help people learn Japanese faster. The app will always remain
-        FREE, with no ads whatsoever, and the user information you enter in the app through the query input, Speech-To-Text and Image-To-Text functions is in no way
-        used for purposes other than the services provided in the app.\n\nThe
-        source code for the project is freely available at https://github.com/blarom/JapaneseToolbox.\nYou
+    <string name="AboutTextPersonalTitle">Personal Note</string>
+    <string name="AboutTextPersonalParagraph1">
+        If you have any comments or feedback, or encountered a bug, you\'re welcome to post them at japanesetoolboxapp@gmail.com.
+    </string>
+    <string name="AboutTextPersonalParagraph2">
+        I built JapaneseToolbox on my spare time out of love for the Japanese language and to help people learn Japanese faster. The app will always remain
+        FREE and ad-less, and no information you entered in the app is in any way used for purposes other than the services provided in the app.
+    </string>
+    <string name="AboutTextPersonalParagraph3">
+        The source code for the project is freely available at https://github.com/blarom/JapaneseToolbox. You
         can copy the code to your heart\'s content! I encourage the free sharing of knowledge, and if you want to build an app with similar functions,
-        you\'re more than welcome to do so. Just don\'t forget to mention me as the source, I spent a lot of time developing these tools :)
+        you\'re more than welcome to do so. Just don\'t forget to credit me, I spent a lot of time developing these tools :)
     </string>
 
-    <string name="AboutText6">
+    <string name="AboutTextCreditsTitle">
+        Credits - Part of the app\'s tools are based on following:
+    </string>
+    <string name="AboutTextCreditsCodeTitle">Code Sources</string>
+    <string name="AboutTextCreditsCodeParagraph1">
+        The OCR engine is provided by the Tesseract open-source project (supported by Google).
+    </string>
+    <string name="AboutTextCreditsCodeParagraph2">
+        The Text-To-Speech and Speech-To-Text functions are based on Google APIs.
+    </string>
+    <string name="AboutTextCreditsCodeParagraph3">
+        Picture manipulation is provided by the ArthurHub library (https://github.com/ArthurHub/Android-Image-Cropper).
+    </string>
+    <string name="AboutTextCreditsCodeParagraph4">
+        Image sharpening is provided by Pete Houston\'s algorithm (https://xjaphx.wordpress.com/2011/06/22/image-processing-sharpening-image/).
+    </string>
+    <string name="AboutTextCreditsDatabasesTitle">Database Sources</string>
+    <string name="AboutTextCreditsDatabasesParagraph1">
+        The CJK character decompositions database is originally based on the cjkdecomp database by Gavin Grover (https://github.com/amake/cjk-decomp - see disclaimer*),
+        which I heavily modified and corrected.
+    </string>
+    <string name="AboutTextCreditsDatabasesParagraph2">
+        The local dictionary is a reduced form of the open-source EDICT dictionary, which I modified and manually upgraded to suit the app\'s needs.
+    </string>
+
+    <string name="AboutTextDisclaimer1">
         *disclaimer for cjkdecomp:\nCopyright 2017 Gavin Grover\nLicensed under the Apache License,
         Version 2.0 (the "License"); you may not use this database except in compliance with the License.\nYou may
         obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0\nUnless required by applicable
@@ -252,9 +309,9 @@
         WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and limitations under the License.
     </string>
 
-    <string name="AboutText7">
+    <string name="AboutTextDisclaimer2">
         *disclaimer for EDICT Japanese dictionary:\nThis package uses a modified subset of the EDICT and KANJIDIC dictionary files. These files are the property of
-        the Electronic Dictionary Research and Development Group, and are used in conformance with the Group\&apos;s licence;
+        the Electronic Dictionary Research and Development Group, and are used in conformance with the Group\'s licence;
         See http://www.csse.monash.edu.au/~jwb/edict.html and http://www.edrdg.org/.
     </string>
 
