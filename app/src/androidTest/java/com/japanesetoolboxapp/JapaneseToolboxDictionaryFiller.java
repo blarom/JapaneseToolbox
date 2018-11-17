@@ -37,6 +37,9 @@ import static org.hamcrest.Matchers.allOf;
 @RunWith(AndroidJUnit4.class)
 public class JapaneseToolboxDictionaryFiller {
 
+    private static final int NUMBER_WORDS_TO_SEARCH = 1000;
+    private static final int TIME_BETWEEN_WORD_SEARCHES = 4000;
+
     @Rule
     public ActivityTestRule<SplashScreenActivity> mActivityTestRule = new ActivityTestRule<>(SplashScreenActivity.class);
 
@@ -81,7 +84,7 @@ public class JapaneseToolboxDictionaryFiller {
 
         List<String> wordsWithDeletions = new ArrayList<>(words);
         int i = 0;
-        while (i<500) {
+        while (i< NUMBER_WORDS_TO_SEARCH) {
 
             if (i%50 == 0) updateWordsFile(wordsWithDeletions);
 
@@ -90,7 +93,7 @@ public class JapaneseToolboxDictionaryFiller {
             wordsWithDeletions.remove(0);
 
             try {
-                Thread.sleep(2000);
+                Thread.sleep(TIME_BETWEEN_WORD_SEARCHES);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
