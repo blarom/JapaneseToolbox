@@ -198,9 +198,11 @@ public class DictionaryFragment extends Fragment implements
                 if (differentJishoWords.size()==0) Toast.makeText(getContext(), R.string.no_new_words_or_meanings_found_online, Toast.LENGTH_SHORT).show();
                 else Toast.makeText(getContext(), "Updated list with online results.", Toast.LENGTH_SHORT).show();
 
-                updateFirebaseDbWithJishoWords(Utilities.getCommonWords(differentJishoWords));
-                updateFirebaseDbWithJishoWords(differentJishoWords.subList(0,1)); //If the word was searched for then it is useful even if it's not defined as common
-                //updateFirebaseDbWithJishoWords(differentJishoWords);
+                if (differentJishoWords.size()>0) {
+                    updateFirebaseDbWithJishoWords(Utilities.getCommonWords(differentJishoWords));
+                    updateFirebaseDbWithJishoWords(differentJishoWords.subList(0, 1)); //If the word was searched for then it is useful even if it's not defined as common
+                    //updateFirebaseDbWithJishoWords(differentJishoWords);
+                }
 
                 displayResults(mMergedMatchingWordsList);
             }
