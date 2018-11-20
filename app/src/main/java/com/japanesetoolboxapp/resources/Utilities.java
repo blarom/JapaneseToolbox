@@ -737,17 +737,22 @@ public final class Utilities {
         if (primaryData==null) return new ArrayList<>();
 
         List<Object> exactBlockData = (List<Object>) getElementAtHeader(primaryData,"exact_block");
+        List<Object> conceptsBlockData;
         if (exactBlockData==null) {
 
-            List<Object> conceptsBlockData = (List<Object>) getElementAtHeader(primaryData,"concepts");
+            conceptsBlockData = (List<Object>) getElementAtHeader(primaryData,"concepts");
             if (conceptsBlockData==null) return wordsList;
             if (conceptsBlockData.size()>2) wordsList.addAll(addWordsFromBigBlock(conceptsBlockData, 1));
 
             return wordsList;
         }
-        else if (exactBlockData.size()>2) wordsList.addAll(addWordsFromBigBlock(exactBlockData, 3));
+        else if (exactBlockData.size()>2) {
+            wordsList.addAll(addWordsFromBigBlock(exactBlockData, 3));
 
-
+            conceptsBlockData = (List<Object>) getElementAtHeader(primaryData,"concepts");
+            if (conceptsBlockData==null) return wordsList;
+            if (conceptsBlockData.size()>2) wordsList.addAll(addWordsFromBigBlock(conceptsBlockData, 1));
+        }
 
         return wordsList;
     }
