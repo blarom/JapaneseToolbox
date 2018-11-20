@@ -1315,6 +1315,8 @@ public class ConjugatorFragment extends Fragment implements
                 matchingVerbId = mMatchingVerbIdsAndCols.get(p)[0];
                 currentVerb = mJapaneseToolboxCentralRoomDatabase.getVerbByVerbId(matchingVerbId);
                 currentWord = mJapaneseToolboxCentralRoomDatabase.getWordByWordId(matchingVerbId);
+                if (currentWord == null || currentVerb == null
+                        || !mFamilyConjugationIndexes.containsKey(currentVerb.getFamily())) continue;
                 currentFamilyConjugationsIndex = mFamilyConjugationIndexes.get(currentVerb.getFamily());
                 currentConjugationsRowLatin = Arrays.copyOf(mVerbLatinConjDatabase.get(currentFamilyConjugationsIndex), NumberOfSheetCols);
                 currentConjugationsRowKanji = Arrays.copyOf(mVerbKanjiConjDatabase.get(currentFamilyConjugationsIndex), NumberOfSheetCols);
