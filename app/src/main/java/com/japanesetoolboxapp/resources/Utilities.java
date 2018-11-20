@@ -2258,37 +2258,39 @@ public final class Utilities {
         List<String> searchResultIndexesArray = new ArrayList<>();
         List<Long> matchingWordIdsFromIndex = new ArrayList<>();
 
-        if (inputTextType == GlobalConstants.TYPE_LATIN || inputTextType == GlobalConstants.TYPE_HIRAGANA ||inputTextType == GlobalConstants.TYPE_KATAKANA) {
+        if (inputTextType == GlobalConstants.TYPE_LATIN || inputTextType == GlobalConstants.TYPE_HIRAGANA || inputTextType == GlobalConstants.TYPE_KATAKANA) {
+
+            input_word = ConvertFragment.getLatinHiraganaKatakana(input_word).get(GlobalConstants.TYPE_LATIN);
 
             if (input_word.length()>9) {
                 adjectiveConjugation = input_word.substring(input_word.length()-9, input_word.length());
                 baseAdjective = input_word.substring(0, input_word.length()-9) + "i";
                 if (adjectiveConjugation.equals("kunakatta")) isPotentialAdjective = true;
             }
-            else if (input_word.length()>6) {
+            if (!isPotentialAdjective && input_word.length()>6) {
                 adjectiveConjugation = input_word.substring(input_word.length()-6, input_word.length());
                 baseAdjective = input_word.substring(0, input_word.length()-6) + "i";
                 if (adjectiveConjugation.equals("kereba")) isPotentialAdjective = true;
             }
-            else if (input_word.length()>5) {
+            if (!isPotentialAdjective && input_word.length()>5) {
                 adjectiveConjugation = input_word.substring(input_word.length()-5, input_word.length());
                 baseAdjective = input_word.substring(0, input_word.length()-5) + "i";
                 if (adjectiveConjugation.equals("kunai")
                         || adjectiveConjugation.equals("katta")
                         || adjectiveConjugation.equals("karou")) isPotentialAdjective = true;
             }
-            else if (input_word.length()>4) {
+            if (!isPotentialAdjective && input_word.length()>4) {
                 adjectiveConjugation = input_word.substring(input_word.length()-4, input_word.length());
                 baseAdjective = input_word.substring(0, input_word.length()-4) + "i";
                 if (adjectiveConjugation.equals("kute")) isPotentialAdjective = true;
             }
-            else if (input_word.length()>2) {
+            if (!isPotentialAdjective && input_word.length()>2) {
                 adjectiveConjugation = input_word.substring(input_word.length()-2, input_word.length());
                 if (adjectiveConjugation.equals("mi") || adjectiveConjugation.equals("ku")) {
                     isPotentialAdjective = true;
                     baseAdjective = input_word.substring(0, input_word.length()-2) + "i";
                 }
-                else if (adjectiveConjugation.equals("ni")) {
+                else if (adjectiveConjugation.equals("ni") || adjectiveConjugation.equals("na") || adjectiveConjugation.equals("de")) {
                     isPotentialAdjective = true;
                     baseAdjective = input_word.substring(0, input_word.length()-2);
                 }
@@ -2312,7 +2314,7 @@ public final class Utilities {
                 baseAdjective = input_word.substring(0, input_word.length()-5) + "い";
                 if (adjectiveConjugation.equals("くなかった")) isPotentialAdjective = true;
             }
-            else if (input_word.length()>3) {
+            if (!isPotentialAdjective && input_word.length()>3) {
                 adjectiveConjugation = input_word.substring(input_word.length()-3, input_word.length());
                 baseAdjective = input_word.substring(0, input_word.length()-3) + "い";
                 if (adjectiveConjugation.equals("くない")
@@ -2320,18 +2322,18 @@ public final class Utilities {
                         || adjectiveConjugation.equals("かった")
                         || adjectiveConjugation.equals("かろう")) isPotentialAdjective = true;
             }
-            else if (input_word.length()>2) {
+            if (!isPotentialAdjective && input_word.length()>2) {
                 adjectiveConjugation = input_word.substring(input_word.length()-2, input_word.length());
                 baseAdjective = input_word.substring(0, input_word.length()-2) + "い";
                 if (adjectiveConjugation.equals("くて")) isPotentialAdjective = true;
             }
-            else if (input_word.length()>1) {
+            if (!isPotentialAdjective && input_word.length()>1) {
                 adjectiveConjugation = input_word.substring(input_word.length()-1, input_word.length());
                 if (adjectiveConjugation.equals("み") || adjectiveConjugation.equals("く")) {
                     isPotentialAdjective = true;
                     baseAdjective = input_word.substring(0, input_word.length()-1) + "";
                 }
-                else if (adjectiveConjugation.equals("に")) {
+                else if (adjectiveConjugation.equals("に") || adjectiveConjugation.equals("な") || adjectiveConjugation.equals("で")) {
                     isPotentialAdjective = true;
                     baseAdjective = input_word.substring(0, input_word.length()-1);
                 }
