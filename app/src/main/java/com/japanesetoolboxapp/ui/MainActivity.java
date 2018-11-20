@@ -52,8 +52,6 @@ import butterknife.Unbinder;
 ////TODO make the DICT return kanjis having the same romaji value as that of the entered kanji, similar to the way jisho.org works
 
 //TODO: bugs
-////TODO implement jap fonts in OCR module & improve OCR results UI
-////TODO "kamoshi" returns no josho.org results
 ////TODO imperative display for godan verbs
 
 

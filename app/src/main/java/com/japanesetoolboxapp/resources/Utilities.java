@@ -718,7 +718,9 @@ public final class Utilities {
     }
     private static List<Word> adaptJishoTreeToWordsList(List<Object> parsedData) {
 
-        //region Getting to the relevant tree section
+        List<Word> wordsList = new ArrayList<>();
+
+        //Getting to the relevant tree section
         if (parsedData.size()<1) return new ArrayList<>();
         List<Object> htmlData = (List<Object>) parsedData.get(1);
         if (htmlData==null || htmlData.size()<3) return new ArrayList<>();
@@ -733,17 +735,18 @@ public final class Utilities {
         if (rowData==null) return new ArrayList<>();
         List<Object> primaryData = (List<Object>) getElementAtHeader(rowData,"primary");
         if (primaryData==null) return new ArrayList<>();
+
         List<Object> exactBlockData = (List<Object>) getElementAtHeader(primaryData,"exact_block");
-        if (exactBlockData==null) return new ArrayList<>();
-        List<Object> conceptsBlockData = (List<Object>) getElementAtHeader(primaryData,"concepts");
-        if (conceptsBlockData==null) return new ArrayList<>();
-        //endregion
+        if (exactBlockData==null) {
 
-        //Extracting the list of hits
-        List<Word> wordsList = new ArrayList<>();
+            List<Object> conceptsBlockData = (List<Object>) getElementAtHeader(primaryData,"concepts");
+            if (conceptsBlockData==null) return wordsList;
+            if (conceptsBlockData.size()>2) wordsList.addAll(addWordsFromBigBlock(conceptsBlockData, 1));
 
-        wordsList.addAll(addWordsFromBigBlock(exactBlockData, 3));
-        wordsList.addAll(addWordsFromBigBlock(conceptsBlockData, 1));
+            return wordsList;
+        }
+        else if (exactBlockData.size()>2) wordsList.addAll(addWordsFromBigBlock(exactBlockData, 3));
+
 
 
         return wordsList;
@@ -763,7 +766,7 @@ public final class Utilities {
 
             if (!(bigBlockData.get(i) instanceof List)) break;
             List<Object> conceptLightClearFixData = (List<Object>) bigBlockData.get(i);
-            if (!(conceptLightClearFixData.get(1) instanceof List)) break;
+            if (!(conceptLightClearFixData.get(1) instanceof List)) continue;
             List<Object> conceptLightWrapperData = (List<Object>) conceptLightClearFixData.get(1);
             List<Object> conceptLightReadingsData = (List<Object>) conceptLightWrapperData.get(1);
             List<Object> conceptLightRepresentationData = (List<Object>) conceptLightReadingsData.get(1);
