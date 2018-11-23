@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.japanesetoolboxapp.R;
@@ -127,7 +128,16 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             String hiragana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_HIRAGANA);
             String katakana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_KATAKANA);
             if (!TextUtils.isEmpty(alternatespellings) && alternatespellings.contains(mInputQuery)) {
-                romajiAndKanji += " [alt. form of " + mInputQuery + "]";
+                String[] altSpellingElements = alternatespellings.split(",");
+                boolean isExactMatch = false;
+                for (String element : altSpellingElements) {
+                    if (mInputQuery.equals(element.trim())) {
+                        isExactMatch = true;
+                        break;
+                    }
+                }
+                if (isExactMatch) romajiAndKanji += " [alt. form of " + mInputQuery + "]";
+                else romajiAndKanji += " [related to " + mInputQuery + "]";
             }
             else if (cumulative_meaning_value.toString().contains(mInputQuery) || cumulative_meaning_value.toString().contains(latin)) {
                 //Ignore words where the input query is included in the meaning

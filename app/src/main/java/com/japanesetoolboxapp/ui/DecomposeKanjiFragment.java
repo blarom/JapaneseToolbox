@@ -51,6 +51,10 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
     @BindView(R.id.decompositionScrollView) ScrollView mDecompositionScrollView;
     @BindView(R.id.overall_block_container) LinearLayout mOverallBlockContainer;
     @BindView(R.id.decompositions_loading_indicator) ProgressBar mProgressBarLoadingIndicator;
+    private final static int KANJI_ON_READING = 0;
+    private final static int KANJI_KUN_READING = 1;
+    private final static int KANJI_NAME_READING = 2;
+    private final static int KANJI_MEANING = 3;
     private Unbinder mBinding;
     private static final int ROOM_DB_KANJI_DECOMPOSITION_LOADER = 7524;
     private static final int ROOM_DB_KANJI_CHARACTER_LOADER = 4732;
@@ -159,10 +163,9 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         final TextView radicalTV = decompositionContainer.findViewById(R.id.decomposition_element_radical_value);
         final TextView onReadingTV = decompositionContainer.findViewById(R.id.decomposition_element_on_readings_value);
         final TextView kunReadingTV = decompositionContainer.findViewById(R.id.decomposition_element_kun_readings_value);
-        final TextView onMeaningTV = decompositionContainer.findViewById(R.id.decomposition_element_on_meanings_value);
-        final TextView kunMeaningTV = decompositionContainer.findViewById(R.id.decomposition_element_kun__meanings_value);
+        final TextView nameReadingTV = decompositionContainer.findViewById(R.id.decomposition_element_name_readings_value);
+        final TextView meaningTV = decompositionContainer.findViewById(R.id.decomposition_element_meanings_value);
         //endregion
-
 
         //region Initialization
         SpannableString clickable_text;
@@ -173,8 +176,13 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
         if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
 
-        Boolean character_not_found_in_KanjiDictDatabase = false;
-        if (currentKanjiDetailedCharacteristics.size() == 0) { character_not_found_in_KanjiDictDatabase = true; }
+        Boolean character_not_found_in_KanjiDictDatabase = true;
+        for (String characteristic : currentKanjiDetailedCharacteristics) {
+            if (!TextUtils.isEmpty(characteristic)) {
+                character_not_found_in_KanjiDictDatabase = false;
+                break;
+            }
+        }
         Boolean character_is_radical_or_kana = false;
         //endregion
 
@@ -265,19 +273,10 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 radicalTV.setVisibility(View.GONE);
             }
 
-            if (currentKanjiDetailedCharacteristics.size() == 0
-                    || currentKanjiDetailedCharacteristics.get(0).equals("")) {
-                onReadingTV.setText("-");
-                onMeaningTV.setText("-");
-                kunReadingTV.setText("-");
-                kunMeaningTV.setText("-");
-            }
-            else {
-                onReadingTV.setText(currentKanjiDetailedCharacteristics.get(0).equals("")? "-" : currentKanjiDetailedCharacteristics.get(0));
-                onMeaningTV.setText(currentKanjiDetailedCharacteristics.get(2).equals("")? "-" : currentKanjiDetailedCharacteristics.get(2));
-                kunReadingTV.setText(currentKanjiDetailedCharacteristics.get(1).equals("")? "-" : currentKanjiDetailedCharacteristics.get(1));
-                kunMeaningTV.setText(currentKanjiDetailedCharacteristics.get(3).equals("")? "-" : currentKanjiDetailedCharacteristics.get(3));
-            }
+            onReadingTV.setText(currentKanjiDetailedCharacteristics.get(KANJI_ON_READING));
+            kunReadingTV.setText(currentKanjiDetailedCharacteristics.get(KANJI_KUN_READING));
+            nameReadingTV.setText(currentKanjiDetailedCharacteristics.get(KANJI_NAME_READING));
+            meaningTV.setText(currentKanjiDetailedCharacteristics.get(KANJI_MEANING));
         }
         else if (character_is_radical_or_kana) {
             //region Display Radical or Kana Meanings/Readings
@@ -319,24 +318,13 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 //endregion
 
                 //region Get the remaining radical characteristics (readings, meanings) from the KanjiDictDatabase
-                if (currentKanjiDetailedCharacteristics.size() == 0) {
+                if (character_not_found_in_KanjiDictDatabase) {
                     currentKanjiDetailedCharacteristics = currentMainRadicalDetailedCharacteristics;
                 }
-
-                if (currentKanjiDetailedCharacteristics==null
-                        || currentKanjiDetailedCharacteristics.size() == 0
-                        || currentKanjiDetailedCharacteristics.get(0).equals("")) {
-                    onReadingTV.setText("-");
-                    onMeaningTV.setText("-");
-                    kunReadingTV.setText("-");
-                    kunMeaningTV.setText("-");
-                }
-                else {
-                    onReadingTV.setText(currentKanjiDetailedCharacteristics.get(0).equals("")? "-" : currentKanjiDetailedCharacteristics.get(0));
-                    onMeaningTV.setText(currentKanjiDetailedCharacteristics.get(2).equals("")? "-" : currentKanjiDetailedCharacteristics.get(2));
-                    kunReadingTV.setText(currentKanjiDetailedCharacteristics.get(1).equals("")? "-" : currentKanjiDetailedCharacteristics.get(1));
-                    kunMeaningTV.setText(currentKanjiDetailedCharacteristics.get(3).equals("")? "-" : currentKanjiDetailedCharacteristics.get(3));
-                }
+                onReadingTV.setText(currentKanjiDetailedCharacteristics.get(KANJI_ON_READING));
+                kunReadingTV.setText(currentKanjiDetailedCharacteristics.get(KANJI_KUN_READING));
+                nameReadingTV.setText(currentKanjiDetailedCharacteristics.get(KANJI_NAME_READING));
+                meaningTV.setText(currentKanjiDetailedCharacteristics.get(KANJI_MEANING));
                 //endregion
             }
             //endregion
@@ -678,32 +666,44 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         }
         List<String> getKanjiDetailedCharacteristics(KanjiCharacter kanjiCharacter) {
 
-            List<String> characteristics = new ArrayList<>();
+            List<String> characteristics = new ArrayList<>(Arrays.asList("", "", "", ""));
             if (kanjiCharacter ==null || kanjiCharacter.getReadings()==null) return characteristics;
 
-            characteristics = addElementsToCharacteristics(characteristics, kanjiCharacter.getReadings());
-            characteristics = addElementsToCharacteristics(characteristics, kanjiCharacter.getMeanings());
+            String[] readings = kanjiCharacter.getReadings().split(";");
+            String weirdScriptInSource = "T2";
+            String readingLatin;
+            String[] components;
+            List<String> onReadings = new ArrayList<>();
+            List<String> kunReadings = new ArrayList<>();
+            for (String reading : readings) {
+                components = reading.replace(weirdScriptInSource,"").split("\\.");
+                readingLatin = ConvertFragment.getLatinHiraganaKatakana(components[0]).get(GlobalConstants.TYPE_LATIN);
+                if (components.length>1) readingLatin +=
+                        "(" + ConvertFragment.getLatinHiraganaKatakana(components[1]).get(GlobalConstants.TYPE_LATIN) + ")";
 
-            return characteristics;
-        }
-        List<String> addElementsToCharacteristics(List<String> characteristics, String list) {
-            if (list.equals("") || list.equals(";")) {
-                characteristics.add("-");
-                characteristics.add("-");
+                if (ConvertFragment.getTextType(reading.substring(0,1)) == GlobalConstants.TYPE_HIRAGANA) {
+                    onReadings.add(readingLatin);
+                }
+                else if (ConvertFragment.getTextType(reading.substring(0,1)) == GlobalConstants.TYPE_KATAKANA) {
+                    kunReadings.add(readingLatin);
+                }
             }
-            else if (list.substring(0,1).equals(";")) {
-                characteristics.add("-");
-                characteristics.add(list.substring(1,list.length()));
+            characteristics.set(KANJI_ON_READING, (onReadings.size()>0 && !onReadings.get(0).equals(""))? TextUtils.join(", ", onReadings) : "-");
+            characteristics.set(KANJI_KUN_READING, (kunReadings.size()>0 && !kunReadings.get(0).equals(""))? TextUtils.join(", ", kunReadings) : "-");
+
+            readings = kanjiCharacter.getNameReadings().split(";");
+            List<String> nameReadings = new ArrayList<>();
+            for (String reading : readings) {
+                components = reading.replace(weirdScriptInSource,"").split("\\.");
+                readingLatin = ConvertFragment.getLatinHiraganaKatakana(components[0]).get(GlobalConstants.TYPE_LATIN);
+                if (components.length>1) readingLatin +=
+                        "(" + ConvertFragment.getLatinHiraganaKatakana(components[1]).get(GlobalConstants.TYPE_LATIN) + ")";
+                nameReadings.add(readingLatin);
             }
-            else if (list.substring(list.length()-1).equals(";") || !list.contains(";")) {
-                characteristics.add(list.substring(0,list.length()-1));
-                characteristics.add("-");
-            }
-            else {
-                String[] parsed_list = list.split(";");
-                characteristics.add(parsed_list[0]);
-                characteristics.add(parsed_list[1].equals("IDEM")? parsed_list[0] : parsed_list[1]);
-            }
+            characteristics.set(KANJI_NAME_READING, (nameReadings.size()>0 && !nameReadings.get(0).equals(""))? TextUtils.join(", ", nameReadings) : "-");
+
+            characteristics.set(KANJI_MEANING, TextUtils.isEmpty(kanjiCharacter.getMeanings())? "-" : kanjiCharacter.getMeanings());
+
             return characteristics;
         }
         List<String> getKanjiRadicalCharacteristics(KanjiCharacter kanjiCharacter) {

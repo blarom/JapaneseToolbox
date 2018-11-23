@@ -52,6 +52,7 @@ public interface KanjiCharacterDao {
     @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE "
             + KanjiCharacter.COLUMN_KANJI_MEANINGS + " LIKE  '%' || :query || '%' OR "
             + KanjiCharacter.COLUMN_KANJI_READINGS + " LIKE  '%' || :query || '%' OR "
+            + KanjiCharacter.COLUMN_KANJI_NAME_READINGS + " LIKE  '%' || :query || '%' OR "
             + KanjiCharacter.COLUMN_KANJI_RADICAL_PLUS_STROKES + " =  :query OR "
             + KanjiCharacter.COLUMN_KANJI_RADICAL_PLUS_STROKES + " LIKE  '%' || :query || '+%'")
     List<KanjiCharacter> getKanjiCharactersByDescriptor(String query);

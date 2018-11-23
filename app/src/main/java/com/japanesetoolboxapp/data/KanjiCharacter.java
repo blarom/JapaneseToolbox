@@ -19,6 +19,7 @@ public class KanjiCharacter  {
     static final String COLUMN_KANJI_STRUCTURE = "structure";
     static final String COLUMN_KANJI_COMPONENTS = "components";
     static final String COLUMN_KANJI_READINGS = "readings";
+    static final String COLUMN_KANJI_NAME_READINGS = "nameReadings";
     static final String COLUMN_KANJI_MEANINGS = "meanings";
     static final String COLUMN_KANJI_RADICAL_PLUS_STROKES = "radPlusStrokes";
 
@@ -90,6 +91,15 @@ public class KanjiCharacter  {
     }
     public String getReadings() {
         return readings;
+    }
+
+    @ColumnInfo(name = COLUMN_KANJI_NAME_READINGS)
+    private String nameReadings;
+    public void setNameReadings(String nameReadings) {
+        this.nameReadings = nameReadings;
+    }
+    public String getNameReadings() {
+        return nameReadings;
     }
 
     @ColumnInfo(name = COLUMN_KANJI_MEANINGS)

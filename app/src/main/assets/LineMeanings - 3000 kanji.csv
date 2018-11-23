@@ -1177,8 +1177,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1177|head (of a line), front (e.g. of a bus), fore part|NPl|||435|ushiro|temae|
 1178|inside, in|AP||||soko||
 1179|inside, center|NPl|||349|||
-1180|next to|AP|||656|||
-1181|neighbor|NACF||||||
+1180|next to (esp. living next door to)|AP|||656|||
+1181|neighbor (neighbour)|NPe||||||
 1182|nowhere|AP||Always followed by negative verb.|739|||
 1183|opposite side|AP||||||
 1184|outside, exterior|AP||||naka||
@@ -1355,8 +1355,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1355|month|NT||||||
 1356|counter for stories|C|Used for stories, episodes of TV series, etc.|||||
 1357|counter for swings, shakes, waves|C||||||
-1358|swing, shake, wave, swinging|NAc||||||
-1359|appearance, behavior, pretense, show, posture, lack of reservation or introduction|NACF||||||
+1358||-||||||
+1359||-||||||
 1360|after a relatively long time interval (of waiting), after a pause|Sx|||1312, 1313|||
 1361|style, manner|Sx||||||
 1362|counter for Tatami mats|C|||1370|||
@@ -5949,8 +5949,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5949|emphasize, highlight, stress|VsuruT||||||
 5950|distinguish between, differentiate, classify|VsuruI||||||
 5951|calculate, reckon, count, forecast|VsuruT||||||
-5952|determine, resolve|VsuruI||||||
-5953|decide, determine|VsuruI||||||
+5952|be determined, be resolute|VsuruI||||||
+5953|be decided, be determined|VsuruI||||||
 5954|change, modify, alter, revise, amend|VsuruT||||||
 5955|study abroad|VsuruI|||1385|||
 5956|participate, be invlolved|VsuruI||||||
@@ -6159,7 +6159,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6159|skill|NACF||||||
 6160|arm (esp. upper arm)|NAn||||||
 6161|counter used to measure the thickness of round objects|C||||||
-6162|go smoothly, turn out well, do the trick, have peaceful relations|VKuI||||||
+6162|go smoothly, turn out well, do the trick, have peaceful relations|VkuI||||||
 6163|moving (dwelling, office, etc.), changing residence|NAc||||||
 6164|appearing all together|NAc||||||
 6165|news, word, tidings, notice, notification, information|NACF||||||
@@ -16197,7 +16197,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 16197|man in attendance (on a person of high standing), retainer|NACF||||||
 16198|gaining total control (of people or counties), suppression, oppression, control, mastery, ascendancy, supremacy|NACF||||||
 16199|system, institution, organization, organisation|NACF||||||
-16200|uniform|NACF||||||
+16200||-||||||
 16201|restriction, restraint, limitation, limit|NACF||||||
 16202|conquest, domination, mastery|NACF||||||
 16203|political offense, political offence, political crime|NACF||||||

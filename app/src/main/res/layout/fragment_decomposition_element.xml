@@ -133,20 +133,21 @@
             app:layout_constraintTop_toBottomOf="@id/decomposition_element_radical_value"/>
 
         <TextView
-            android:id="@+id/decomposition_element_on_meanings_title"
+            android:id="@+id/decomposition_element_name_readings_title"
             style="@style/DecomposeTitleStyle"
-            android:text="On meaning:"
+            android:layout_height="26dp"
+            android:text="Name reading:"
             app:layout_constraintEnd_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/decomposition_element_on_readings_value"/>
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_kun_readings_value"/>
 
         <TextView
-            android:id="@+id/decomposition_element_on_meanings_value"
+            android:id="@+id/decomposition_element_name_readings_value"
             style="@style/DecomposeValueStyle"
             android:text="-"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@id/decomposition_element_on_readings_value"/>
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_kun_readings_value"/>
 
         <TextView
             android:id="@+id/decomposition_element_kun_readings_title"
@@ -154,7 +155,7 @@
             android:text="Kun reading:"
             app:layout_constraintEnd_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/decomposition_element_on_meanings_value"/>
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_on_readings_value"/>
 
         <TextView
             android:id="@+id/decomposition_element_kun_readings_value"
@@ -162,23 +163,23 @@
             android:text="-"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@id/decomposition_element_on_meanings_value"/>
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_on_readings_value"/>
 
         <TextView
-            android:id="@+id/decomposition_element_kun_meanings_title"
+            android:id="@+id/decomposition_element_meanings_title"
             style="@style/DecomposeTitleStyle"
-            android:text="Kun meaning:"
+            android:text="Meaning:"
             app:layout_constraintEnd_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/decomposition_element_kun_readings_value"/>
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_name_readings_value"/>
 
         <TextView
-            android:id="@+id/decomposition_element_kun__meanings_value"
+            android:id="@+id/decomposition_element_meanings_value"
             style="@style/DecomposeValueStyle"
             android:text="-"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@id/decomposition_element_kun_readings_value"/>
+            app:layout_constraintTop_toBottomOf="@id/decomposition_element_name_readings_value"/>
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline"
