@@ -51,8 +51,6 @@ public class DictionaryFragment extends Fragment implements
     Toast mShowOnlineResultsToast;
     private List<Word> mLocalMatchingWordsList;
     private List<Word> mMergedMatchingWordsList;
-    JapaneseToolboxCentralRoomDatabase mJapaneseToolboxCentralRoomDatabase;
-    private Boolean mShowOnlineResults;
     private FirebaseDao mFirebaseDao;
     private Unbinder mBinding;
     private boolean mAlreadyLoadedRoomResults;
@@ -152,8 +150,6 @@ public class DictionaryFragment extends Fragment implements
             //Displaying the local results
             displayWordsToUser(mLocalMatchingWordsList);
 
-            mShowOnlineResults = Utilities.getShowOnlineResultsPreference(getActivity());
-
             String text;
             if (mLocalMatchingWordsList.size() > 1) {
                 if (mLocalMatchingWordsList.size() < GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY)
@@ -162,7 +158,7 @@ public class DictionaryFragment extends Fragment implements
             }
             else if (mLocalMatchingWordsList.size() == 1) text = "Found one local result. ";
             else text = "No local results. ";
-            if (mShowOnlineResults) {
+            if (Utilities.getShowOnlineResultsPreference(getActivity())) {
                 //If wanted, update the results with words from Jisho.org
                 text += "Searching online, please wait…";
                 startSearchingForJishoWords();
@@ -229,7 +225,6 @@ public class DictionaryFragment extends Fragment implements
         JishoResultsAsyncTaskLoader(Context context, String query) {
             super(context);
             this.mQuery = query;
-            this.internetIsAvailable = internetIsAvailable;
         }
 
         @Override
@@ -311,7 +306,7 @@ public class DictionaryFragment extends Fragment implements
 
         mDictionaryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         mDictionaryRecyclerView.setNestedScrollingEnabled(true);
-        mDictionaryRecyclerViewAdapter = new DictionaryRecyclerViewAdapter(getContext(), this, null, mLegendDatabase);
+        mDictionaryRecyclerViewAdapter = new DictionaryRecyclerViewAdapter(getContext(), this, null, mLegendDatabase, mInputQuery);
         mDictionaryRecyclerView.setAdapter(mDictionaryRecyclerViewAdapter);
     }
     private void getQuerySearchResults() {

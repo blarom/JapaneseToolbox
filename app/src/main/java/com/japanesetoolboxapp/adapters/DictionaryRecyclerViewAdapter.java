@@ -21,7 +21,9 @@ import android.widget.TextView;
 
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.Word;
+import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.Utilities;
+import com.japanesetoolboxapp.ui.ConvertFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,17 +37,24 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
     private final Context mContext;
     private final List<String[]> mLegendDatabase;
+    private final String mInputQuery;
+    private final int mInputQueryTextType;
+    private final String mInputQueryFirstLetter;
     private boolean[] mChildIsVisible;
     private List<Word> mWordsList;
     final private DictionaryItemClickHandler mOnItemClickHandler;
     private final Typeface mDroidSansJapaneseTypeface;
 
-    public DictionaryRecyclerViewAdapter(Context context, DictionaryItemClickHandler listener , List<Word> wordsList, List<String[]> legendDatabase) {
+    public DictionaryRecyclerViewAdapter(Context context, DictionaryItemClickHandler listener , List<Word> wordsList, List<String[]> legendDatabase, String inputQuery) {
         this.mContext = context;
         this.mWordsList = wordsList;
         this.mLegendDatabase = legendDatabase;
         this.mOnItemClickHandler = listener;
+        this.mInputQuery = inputQuery;
         createVisibilityArray();
+
+        mInputQueryTextType = ConvertFragment.getTextType(mInputQuery);
+        mInputQueryFirstLetter = mInputQuery.substring(0,1);
 
         AssetManager am = mContext.getApplicationContext().getAssets();
         mDroidSansJapaneseTypeface = Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf"));
@@ -113,9 +122,28 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         else if (kanji.equals("")) romajiAndKanji = romaji;
         else romajiAndKanji = parentRomaji + " (" + kanji + ")";
 
+        if (!romajiAndKanji.contains(mInputQuery)) {
+            String hiragana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_HIRAGANA);
+            String katakana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_KATAKANA);
+            if (alternatespellings.contains(mInputQuery)) {
+                romajiAndKanji += " [alt. form of " + mInputQuery + "]";
+            }
+            else if (      (mInputQueryTextType == GlobalConstants.TYPE_KANJI
+                            && kanji.length()>0 && !kanji.substring(0,1).equals(mInputQueryFirstLetter))
+                        || (mInputQueryTextType == GlobalConstants.TYPE_LATIN
+                            && romaji.length()>0 && !romaji.substring(0,1).equals(mInputQueryFirstLetter))
+                        || (mInputQueryTextType == GlobalConstants.TYPE_HIRAGANA
+                            && hiragana.length()>0 && !hiragana.substring(0,1).equals(mInputQueryFirstLetter))
+                        || (mInputQueryTextType == GlobalConstants.TYPE_KATAKANA
+                            && katakana.length()>0 && !katakana.substring(0,1).equals(mInputQueryFirstLetter))
+                    ) {
+                romajiAndKanji += " [derived from " + mInputQuery + "]";
+            }
+        }
+
         holder.romajiAndKanjiTextView.setText(romajiAndKanji);
         holder.romajiAndKanjiTextView.setTypeface(mDroidSansJapaneseTypeface, Typeface.BOLD);
-        holder.romajiAndKanjiTextView.setPadding(0,16,0,0);
+        holder.romajiAndKanjiTextView.setPadding(0,16,0,4);
 
 
         if (romaji.equals("") && kanji.equals("")) { holder.romajiAndKanjiTextView.setVisibility(View.GONE); }
