@@ -1051,7 +1051,11 @@ public class SearchByRadicalFragment extends Fragment implements
                 intersectionWithMatchingDescriptors = Utilities.getIntersectionOfLists(displayableComponentSelections, matchingRadicals);
             }
             else {
-                List<KanjiCharacter> matchingKanjiCharactersByDescriptor = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByDescriptor(mKanjiCharacterNameForFilter);
+                List<KanjiCharacter> matchingKanjiCharactersByDescriptor = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByLatinDescriptor(mKanjiCharacterNameForFilter);
+                String hiraganaDescriptor = ConvertFragment.getLatinHiraganaKatakana(mKanjiCharacterNameForFilter).get(GlobalConstants.TYPE_HIRAGANA);
+                matchingKanjiCharactersByDescriptor.addAll(mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByKanaDescriptor(hiraganaDescriptor));
+                String katakanaDescriptor = ConvertFragment.getLatinHiraganaKatakana(mKanjiCharacterNameForFilter).get(GlobalConstants.TYPE_KATAKANA);
+                matchingKanjiCharactersByDescriptor.addAll(mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByKanaDescriptor(katakanaDescriptor));
 
                 List<String> matchingCharacters = new ArrayList<>();
                 for (KanjiCharacter kanjiCharacter : matchingKanjiCharactersByDescriptor) {

@@ -37,8 +37,8 @@ import static org.hamcrest.Matchers.allOf;
 @RunWith(AndroidJUnit4.class)
 public class JapaneseToolboxDictionaryFiller {
 
-    private static final int NUMBER_WORDS_TO_SEARCH = 1000;
-    private static final int TIME_BETWEEN_WORD_SEARCHES = 4000;
+    private static final int NUMBER_WORDS_TO_SEARCH = 500;
+    private static final int TIME_BETWEEN_WORD_SEARCHES = 1000;
 
     @Rule
     public ActivityTestRule<SplashScreenActivity> mActivityTestRule = new ActivityTestRule<>(SplashScreenActivity.class);
