@@ -206,7 +206,7 @@
                         android:layout_marginEnd="8dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="4dp"
-                        android:hint="Keyword or Radical No."
+                        android:hint="@string/search_any_property_"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="@+id/search_by_radical_button_filter"
                         app:layout_constraintEnd_toStartOf="@+id/search_by_radical_button_filter"

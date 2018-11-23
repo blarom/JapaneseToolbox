@@ -1076,7 +1076,6 @@ public class SearchByRadicalFragment extends Fragment implements
         private final int mSelectedStructure;
         private final List<String[]> mSimilarsDatabase;
         private JapaneseToolboxKanjiRoomDatabase mJapaneseToolboxKanjiRoomDatabase;
-        private int mMaxSizeForDuplicateRemoval;
         private boolean mSearchTooBroad;
         //endregion
 
@@ -1115,7 +1114,6 @@ public class SearchByRadicalFragment extends Fragment implements
                 }
             }
 
-            mMaxSizeForDuplicateRemoval = 200;
             String elementA = elements_list[0];
             String elementB = elements_list[1];
             String elementC = elements_list[2];

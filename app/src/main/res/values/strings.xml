@@ -225,7 +225,9 @@
     </string>
     <string name="AboutTextButtonsSearchByRadicalTitle">女+子 &#8658; 好</string>
     <string name="AboutTextButtonsSearchByRadicalParagraph1">
-        Find any Kanji based on up to 4 radicals/components or by identifying its general structure.
+        Find any Kanji based on up to 4 radicals/components or by identifying its general structure. You can find components by selecting one of the 214 radicals
+        or their common variants, or by searching a list of common Kanji components (ordered by popularity). You can also filter the results by entering the wanted
+        reading, meaning or radical number.
     </string>
     <string name="AboutTextButtonsSearchByRadicalParagraph2">
         The search engine is way better than what you\'ll find online, since I manually inspected and corrected the original components database that online sites rely on.
@@ -384,4 +386,5 @@
         You can adjust these defaults in the Settings menu.</string>
     <string name="pref_invalid_input_default_set">Invalid input, default value set instead.</string>
     <string name="pref_cannot_set_value_outside_ange">You cannot set a value outside of the range</string>
+    <string name="search_any_property_">Search Any Property!</string>
 </resources>
