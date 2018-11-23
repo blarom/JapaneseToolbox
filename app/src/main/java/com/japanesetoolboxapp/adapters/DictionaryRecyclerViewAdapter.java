@@ -123,19 +123,22 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         else romajiAndKanji = parentRomaji + " (" + kanji + ")";
 
         if (!romajiAndKanji.contains(mInputQuery)) {
+            String latin = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_LATIN);
             String hiragana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_HIRAGANA);
             String katakana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_KATAKANA);
-            if (alternatespellings.contains(mInputQuery)) {
+            if (!TextUtils.isEmpty(alternatespellings) && alternatespellings.contains(mInputQuery)) {
                 romajiAndKanji += " [alt. form of " + mInputQuery + "]";
             }
-            else if (      (mInputQueryTextType == GlobalConstants.TYPE_KANJI
-                            && kanji.length()>0 && !kanji.substring(0,1).equals(mInputQueryFirstLetter))
-                        || (mInputQueryTextType == GlobalConstants.TYPE_LATIN
-                            && romaji.length()>0 && !romaji.substring(0,1).equals(mInputQueryFirstLetter))
-                        || (mInputQueryTextType == GlobalConstants.TYPE_HIRAGANA
-                            && hiragana.length()>0 && !hiragana.substring(0,1).equals(mInputQueryFirstLetter))
-                        || (mInputQueryTextType == GlobalConstants.TYPE_KATAKANA
-                            && katakana.length()>0 && !katakana.substring(0,1).equals(mInputQueryFirstLetter))
+            else if (cumulative_meaning_value.toString().contains(mInputQuery) || cumulative_meaning_value.toString().contains(latin)) {
+                //Ignore words where the input query is included in the meaning
+            } else if ((mInputQueryTextType == GlobalConstants.TYPE_KANJI
+                    && kanji.length() > 0 && !kanji.substring(0, 1).equals(mInputQueryFirstLetter))
+                    || (mInputQueryTextType == GlobalConstants.TYPE_LATIN
+                    && romaji.length() > 0 && !romaji.substring(0, 1).equals(mInputQueryFirstLetter))
+                    || (mInputQueryTextType == GlobalConstants.TYPE_HIRAGANA
+                    && hiragana.length() > 0 && !hiragana.substring(0, 1).equals(mInputQueryFirstLetter))
+                    || (mInputQueryTextType == GlobalConstants.TYPE_KATAKANA
+                    && katakana.length() > 0 && !katakana.substring(0, 1).equals(mInputQueryFirstLetter))
                     ) {
                 romajiAndKanji += " [derived from " + mInputQuery + "]";
             }
