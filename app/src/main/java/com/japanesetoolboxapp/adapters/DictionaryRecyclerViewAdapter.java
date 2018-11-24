@@ -127,7 +127,10 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             String latin = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_LATIN);
             String hiragana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_HIRAGANA);
             String katakana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_KATAKANA);
-            if (!TextUtils.isEmpty(alternatespellings) && alternatespellings.contains(mInputQuery)) {
+            if (romaji.contains(latin)) {
+                //Ignore words where the romaji value includes the latin convertion of the input query
+            }
+            else if (!TextUtils.isEmpty(alternatespellings) && alternatespellings.contains(mInputQuery)) {
                 String[] altSpellingElements = alternatespellings.split(",");
                 boolean isExactMatch = false;
                 for (String element : altSpellingElements) {
@@ -137,7 +140,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     }
                 }
                 if (isExactMatch) romajiAndKanji += " [alt. form of " + mInputQuery + "]";
-                else romajiAndKanji += " [related to " + mInputQuery + "]";
+                else romajiAndKanji += " [alt. form contains " + mInputQuery + "]";
             }
             else if (cumulative_meaning_value.toString().contains(mInputQuery) || cumulative_meaning_value.toString().contains(latin)) {
                 //Ignore words where the input query is included in the meaning
