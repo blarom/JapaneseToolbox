@@ -38,7 +38,6 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 //TODO: database upgrade
-////TODO: get Kanji readings from DB for kanjis not in kanji dict
 //// Test app ranking algorithm using the following words: eat, car
 
 //TODO: features

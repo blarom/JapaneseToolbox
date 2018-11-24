@@ -372,17 +372,29 @@ public class ConvertFragment extends Fragment {
         switch (character) {
             case "あ":
                 if (character.equals(character_last)) { added_string = "a_double_vowel";
-                } else { added_string = "a";  } break;
+                } else { switch (character_next) {
+                    case "ぁ": added_string = "aa"; i++; break;
+                    default: added_string = "a"; break;
+                } break; } break;
             case "い":
                 if (character.equals(character_last)) { added_string = "i_double_vowel";
-                } else if (character_next.equals("ぇ")) { added_string = "ye"; i++;
-                } else { added_string = "i";  } break;
+                } else { switch (character_next) {
+                    case "ぃ": added_string = "ii"; i++; break;
+                    case "ぇ": added_string = "ye"; i++; break;
+                    default: added_string = "i"; break;
+                } break; } break;
             case "え":
                 if (character.equals(character_last)) { added_string = "e_double_vowel";
-                } else { added_string = "e";  } break;
+                } else { switch (character_next) {
+                    case "ぇ": added_string = "ee"; i++; break;
+                    default: added_string = "e"; break;
+                } break; } break;
             case "お":
                 if (character.equals(character_last)) { added_string = "o_double_vowel";
-                } else { added_string = "o";  } break;
+                } else { switch (character_next) {
+                    case "ぉ": added_string = "oo"; i++; break;
+                    default: added_string = "o"; break;
+                } break; } break;
             case "か": added_string = "ka"; break;
             case "き":
                 switch (character_next) {
