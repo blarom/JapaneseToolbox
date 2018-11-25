@@ -613,7 +613,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 613|distinguished, great|Ai||||||
 614|divine, sublime, solemn|Ai||||||
 615|dull (e.g. knife, sound), blunt, dim, slow, sluggish, inert, lethargic|Ai||||||
-616|early, easy, simple|Ai|||536, 1314|osoi||
+616||-|||536, 1314|osoi||
 617|earth-shattering, staggering, to a very great extent|Ai||||||
 618|easy|Ai||||||
 619|easy, plain, simple|Ai|||555, 556|muzukashii, nikui, taihen||
@@ -649,7 +649,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 649|invisible, unseen, vague, mysterious, imaginary|Ai||||miyasui||
 650|itchy, iching|Ai||||||
 651|light, faint, pale, fleeting|Ai||||||
-652|light, nimble, agile, minor, unimportant, trivial|Ai||||omoi||
+652||-||||omoi||
 653|lonely, lonesome, solitary, desolate|Ai|||575|||
 654|long (distance)|Ai|||209|mijikai||
 655|loose, lenient, lax, gentle (e.g. curve, slope), slow, weak, soft|Ai||||tsuyoi, joubu|yowai, hiyowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, kasuka, hijaku, yawa|
@@ -725,7 +725,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 725|unthinkable, unexpected, outrageous, offensive|Ai||||||
 726|absolutely not, not at all, far from it, impossible, preposterous, bullshit, no way|CE||||||
 727|unusual, rare, curious, weird|Ai|||573|||
-728|vacant, futile, vain, void, empty, ineffective, lifeless|Ai||||||
+728||-||||||
 729|vexing, annoying, frustrating, regrettable, mortifying|Ai||||||
 730||-||||||
 731|visible, understandable, easy on the eyes, easy to see, beautiful, pretty|Ai|||513|imoshinai||
@@ -843,7 +843,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 843|turning round and round, going around in circles, wrapped around|AM||||||
 844|unexpectedly, surprisingly|AM||||||
 845|unintentionally, reflexively, spontaneously, involuntarily, instinctively|AM||||||
-846|unintentionally, unconciously, by mistake, against one's better judgment|AM||||||
+846|unconciously, against one's better judgment|AM||||||
 847|quite (near)|AP||||||
 848|just (now)|AT||||||
 849|very hard, with utmost effort, with all one's might, for dear life|AM|||1353|||
@@ -900,8 +900,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 900|least favorite, unfond|Ana|Verb-based, linked to object by "ga" when used with desu verb.||618|suki, daisuki|daikirai|
 901||-|||504|||
 902|earnestness, eagerness, risking one's life|NACF||||||
-903|easy, comfortable|Ana|||593|taihen, muzukashii, nukui|yasashii|
-904|comfort, ease|NACF||||||
+903||-|||593|taihen, muzukashii, nukui|yasashii|
+904|comfort, ease, relief, (at) peace, relaxation|NACF||||||
 905|on par, matched|Ana||||||
 906|equality, evenness, par, good match|NACF||||||
 907||-||||||
@@ -916,7 +916,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 916|fame|NACF||||||
 917|feeble, faint, weak|Ana||||tsuyoi, joubu|yowai, hiyowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, kasuka, yawa|
 918|firm, unshakeable, resolute|Ana||||||
-919|fixed, settled, constant, definite, uniform, regularized, regularised, defined, standardized, standardised, prescribed|Ana||||||
+919||-||||||
 920|constance, certainty, standard|NACF||||||
 921|fluttery|Ana||||||
 922|clip-clop, clippety-clop|OI||||||
@@ -958,7 +958,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 958|the most|Ana||||||
 959|high-gear|Ana||||||
 960|huge, gigantic, enormous|Ana||||||
-961|hygenic, healthy, healthful, sanitary|Ana||||fukenkou, byouki|genki, joubu|
+961|hygenic|Ana||||fukenkou, byouki|genki, joubu|
 962|identical, same, one and the same, equal|Ana||||||
 963|identity, sameness, similarity, equality, fairness|NACF||||||
 964|immediately, at once, right away, directly|Ana||||||
@@ -988,7 +988,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 988|kindness, gentleness|NACF||||||
 989|large (grain, drop)|Ana||||||
 990|large grain, large drop|NACF||||||
-991|light, easy, not serious, minor|Ana||||||
+991||-||||||
 992|liked, fond|Ana|Verb-based, linked to object by "ga" when used with desu verb.||507|kirai, daikirai|daisuki|
 993|lively, bustling, busy|Ana|||601, 1413|||
 994|long (time since the last time)|Ana||||||
@@ -1051,7 +1051,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1051|questionable, doubtful, suspicious|Ana||||||
 1052|quiet, peaceful|Ana|||587, 1275|urusai||
 1053|quite right|Ana||||||
-1054|rapid|Ana||||||
+1054|rapid (e.g. progress)|Ana||||||
 1055|rare, curious, strange|Ana||||||
 1056|unprotected (ie. Not wearing a condom), live (not recorded)|Ana|||605|||
 1057|raw, uncooked, fresh, natural, as is, unedited, unprocessed, live (ie. not recorded), inexperienced, unpolished, green, crude, unpasteurized|Ana||||||
@@ -1116,7 +1116,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1116|traditional, conventional|Ana||||||
 1117|tranquil, calm, quiet, peaceful|Ana||||||
 1118|tremendous, immense, enormous|Ana||||||
-1119|ultimate, extreme, final, eventual|Ana||||||
+1119|extreme|Ana||||||
 1120|unemployed, without an occupation|Ana||||||
 1121|unexpected, surprising|Ana||||||
 1122|unhealthy|Ana||||joubu|yowai, hiyowai, hiyowa, yowacchii|
@@ -1138,7 +1138,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1138|hack|Ana||||||
 1139|quack (fake or untrained doctor)|NPe||||||
 1140|urgent, pressing|Ana||||||
-1141|emergency|NACF||||||
+1141|urgency, emergency|NACF||||||
 1142|rapid, swift, fast|Ana||||||
 1143|various, all sorts of, variety of|Ana|||603, 1296, 1298|||
 1144|very disliked (to dislike very much), hated|Ana|Verb-based, linked to object by "ga" when used with desu verb.|||suki, daisuki|kirai|
@@ -1177,7 +1177,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1177|head (of a line), front (e.g. of a bus), fore part|NPl|||435|ushiro|temae|
 1178|inside, in|AP||||soko||
 1179|inside, center|NPl|||349|||
-1180|next to (esp. living next door to)|AP|||656|||
+1180|neighbor (neighbour), next to (esp. living next door to)|AP|||656|||
 1181|neighbor (neighbour)|NPe||||||
 1182|nowhere|AP||Always followed by negative verb.|739|||
 1183|opposite side|AP||||||
@@ -1207,7 +1207,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1207|already, too late|AT||||||
 1208|always, all the time, perpetually|AT||||||
 1209|whole year, all year round, throughout the year|NACF||||||
-1210|always, constantly|AT||||||
+1210||-||||||
 1211|always, constantly, frequently, often|AT||||||
 1212|always, usually, every time|AT||Always followed by affirmative verb.|443, 1263, 1358|||
 1213|never|AT||Always followed by negative verb.||||
@@ -1643,7 +1643,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1643|aid, assistance, help, reinforcement, rooting, baracking, support, cheering|NAc||||||
 1644|ambition, aspiration, designs, treachery|NAc||||||
 1645|announcement, publication, presenting, statement, communique, making known, breaking (news story), expressing (one's opinion), releasing, unveiling|NAc||||||
-1646|appearance, arrival|NAc||||||
+1646|appearance, arrival, make one's appearance|NAc||||||
 1647|clapping hands|NAc||||||
 1648|hand-clapping, applause|NAc||||||
 1649|approval|NAc||||||
@@ -1728,7 +1728,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1728|establishing of proof, demonstration, substantiation|NAc||||||
 1729|posing (of a problem), setting (of a movie, scene, options …), assignment|NAc||||||
 1730|estrangement, neglect, alienation, casting out|NAc||||||
-1731|evacuation, escape, taking refuge, finding shelter|NAc||||||
+1731||-||||||
 1732||-||||||
 1733|exact calculation, squaring of accounts, adjustment|NAc||||||
 1734|examination, consideration, test, quiz|NAc||||||
@@ -1786,7 +1786,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1786|knock|NAc||||||
 1787|lactation, suckling|NAc||||||
 1788|mammal|NFa||||||
-1789|lapse, annihilation, extinguishment, termination, vanishing|NAc||||||
+1789|annihilation|NAc||||||
 1790|lateness, late coming|NAc||||||
 1791||-||||||
 1792|leaving or losing a job|NAc||||||
@@ -1794,7 +1794,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1794|loitering, aimless wandering, undecidedness|NAc|Used colloquially.|||||
 1795|looking up (e.g. a word in a dictionary), retrieval (e.g. data), searching for, referring to|NAc||||||
 1796|magnification, enlargement, expansion, amplification|NAc||||||
-1797|maneuver, manoeuvre|NAc||||||
+1797||-||||||
 1798|marriage|NAc|||1297|||
 1799|medical examination and treatment, diagnosis|NAc||||||
 1800|meeting|NAc||||||
@@ -1833,7 +1833,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1833|plot, conspiracy, conference|NAc||||||
 1834|pollution, contamination|NAc||||||
 1835|practice|NAc||||||
-1836|practice, performance, execution (e.g. program), realisation|NAc||||||
+1836|performance, execution (e.g. program), realisation|NAc||||||
 1837|another, different, various, particular, unusual, novel, peculiar|NACF||||||
 1838|prayer, supplication|NAc||||||
 1839|prayer, supplication|NAc||||||
@@ -1931,7 +1931,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1931|match, contest, game, bout|NAc||||||
 1932|victory, triumph|NAc|||||shouri, kachi|
 1933|victory, triumph, conquest, success, win|NAc|||||senshou, kachi|
-1934|vigilance, precaution, watch, lookout, awareness|NAc||||||
+1934|watch, lookout, awareness|NAc||||||
 1935|voting, poll|NAc||||||
 1936|walk|NAc|||172|||
 1937|washing|NAc||||||
@@ -2103,7 +2103,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2103|Yuki|NNe|Japanese person's name.|||||
 2104||-||||||
 2105|crime, offence, offense|NACF||||||
-2106|crime, fault, indiscretion, sin|NACF||||||
+2106||-||||||
 2107|criticism|NACF||||||
 2108|transverse|NACF||||||
 2109|crowd of people, great number of people, many people|NACF|||148|||
@@ -2145,7 +2145,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2145|doctrine, rule, principle, -ism|NACF||||||
 2146|domestic|NACF||||||
 2147|dream|NACF|||1336|||
-2148|drug, supplement|NACF||||||
+2148|supplement|NACF||||||
 2149|drunkenness, intoxication|NACF||||||
 2150||-||||||
 2151|duty, obligation, responsibility|NACF||||||
@@ -2183,7 +2183,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2183|exchange|NACF||||||
 2184||-||||||
 2185|exercise|NACF|||71|||
-2186|existence or nonexistence, presence or absence, consent or refusal, yes or no|NACF||||||
+2186|existence or nonexistence, presence or absence|NACF||||||
 2187|exorcism|NACF||||||
 2188|expectation, anticipation, hope|NACF||||||
 2189|experience|NACF||||||
@@ -2262,7 +2262,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2262|handling charge, commission|NACF|||153|||
 2263|hangover|NACF|||163|||
 2264|happiness, well-being, joy, welfare, blessedness|NACF||||||
-2265|haste, hurry, expedition, speed, dispach|NACF||||||
+2265|dispach|NACF||||||
 2266||-||||||
 2267|health|NACF||||||
 2268|height|NACF|||105|||
@@ -2305,9 +2305,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2305|industry|NACF||||||
 2306|influence, effect|NACF||||||
 2307|information session, briefing, explanatory meeting|NACF||||||
-2308|information, guidance, instruction|NAc||||||
+2308|instruction|NAc||||||
 2309|ingredient, material|NACF||||||
-2310|injury, hurt, wound|NACF||||||
+2310|wound|NACF||||||
 2311|insight, power of observation|NACF||||||
 2312|instant, time, moment|NACF||||||
 2313|(printed) instructions, manual, explanatory leaflet (pamphlet, note), description|NACF|||129|||
@@ -2397,7 +2397,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2397|main line|NACF||||||
 2398|major cleanup, spring cleaning|NACF||||||
 2399|major subject, specialty, special study|NACF||||||
-2400|majority, generality|NACF||||||
+2400|generality|NACF||||||
 2401|man, male|NACF|||79|||
 2402|malnutrition|NACF||||||
 2403|mankind, humanity|NACF||||||
@@ -2409,7 +2409,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2409|means, way, measure|NACF||||||
 2410|medical care, treatment, advance preparation|NACF||||||
 2411|medical science, medicine|NACF||||||
-2412|medicine|NACF|||115|||
+2412|medicine, pharmaceuticals, (legal) drugs, pill, ointment, salve|NACF|||115|||
 2413|medicine plants|NACF||||||
 2414|meeting, assembly, gathering|NACF||||||
 2415|meeting, assembly, party, association, club|NACF||||||
@@ -2625,7 +2625,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2625|shopping, purchased goods|NACF||||||
 2626|short term|NACF||||||
 2627|short trip|NACF|||122|||
-2628|shortage, lack|NACF||||||
+2628||-||||||
 2629|sight, attraction|NACF||||||
 2630|sign|NACF||||||
 2631|sign of life, liveliness|NACF||||||
@@ -2668,7 +2668,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2668|spiritual power|NACF||||||
 2669|sport, sports|NACF|||157, 1298|||
 2670||-||||||
-2671|standpoint, position, situation|NACF||||||
+2671|position, situation|NACF||||||
 2672|start, commencement, beginning, initiation|NACF||||||
 2673||-||||||
 2674|truth|NACF||||||
@@ -2704,7 +2704,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2704|tax, duty|NACF|||154|||
 2705|taxi fare|NACF|||107|||
 2706|techique|NACF||||||
-2707|technique|NACF||||||
+2707|technique, method|NACF||||||
 2708|technique|NACF||||||
 2709|technique, art, skill|NACF||||||
 2710|temperature|NACF||||||
@@ -2746,7 +2746,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2746|traffic lights, semaphore|NACF||||||
 2747|traffic, transportation, communication, exchange (of ideas, etc.), intercourse|NACF||||||
 2748|transitive verb|NACF||||||
-2749|travel agency|NACF|||82|||
+2749||-|||82|||
 2750|treasure|NACF||||||
 2751|travel, trip, journey, excursion, tour|NACF|||61, 1303|||
 2752||-||||||
@@ -2796,7 +2796,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2796|whole, entirety, whatever (is the matter)|NACF||||||
 2797|wholesale|NACF||||||
 2798|will, volition, intention, intent, determination|NACF||||||
-2799|wisdom, intellectual power, mental capacity, brains|NACF||||||
+2799||-||||||
 2800|within the city|NACF||||||
 2801|word, vocabulary, (usually) single-character word|NACF||||||
 2802|word, vocabulary|NACF|||1415|||
@@ -3025,7 +3025,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3025|japanese mustard|NCu||||||
 3026|japanese tea|NCu||||||
 3027|juice|NCu|||274|||
-3028|ketchup|NCu||||||
+3028|ketchup, catsup|NCu||||||
 3029|linoleic oil|NCu||||||
 3030|loaf of bread|NCu||||||
 3031|local beer, microbrew|NCu||||||
@@ -3170,7 +3170,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3170|crab|NFa||||||
 3171|crane (any bird of the family Gruidae, esp. the red-crowned crane, Grus japonensis)|NFa||||||
 3172|critter, insect, bug, cricket, moth, worm|NFa||||||
-3173|crow|NFa||||||
+3173|crow (Corvus spp.), raven|NFa||||||
 3174|dog (Canis (lupus) familiaris)|NFa|||1306|||
 3175|elephant|NFa|||1296|||
 3176|fox|NFa||||||
@@ -3189,7 +3189,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3189|monster|NFa||||||
 3190|owl|NFa||||||
 3191|panda|NFa|||1296|||
-3192|pig|NFa||||||
+3192|pig (Sus scrofa domesticus)|NFa||||||
 3193|rabbit, hare|NFa||||||
 3194|ryuu|NFa||||||
 3195|sheep|NFa||||||
@@ -3200,7 +3200,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3200|snake, serpent|NFa||||||
 3201|sparrow|NFa||||||
 3202|spider|NFa||||||
-3203|tiger|NFa||||||
+3203|tiger (Panthera tigris)|NFa||||||
 3204|turtle, tortoise|NFa||||||
 3205|wolf|NFa||||||
 3206|zebra|NFa||||||
@@ -3208,7 +3208,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3208|autumn colours, fall colors, (Japanese) maple|NFl||||||
 3209|bamboo|NFl||||||
 3210|branch, bow, bough, twig, limb|NFl||||||
-3211|cherry|NFl|As of the tree or blossoms, not the fruit|||||
+3211|cherry tree, cherry blossom|NFl|As of the tree or blossoms, not the fruit|||||
 3212|cherry tree|NFl||||||
 3213|chestnut|NFl||||||
 3214|Chinese bellflower|NFl||||||
@@ -3224,7 +3224,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3224|mandarin orange|NFl||||||
 3225|maple tree, maple|NFl||||||
 3226|mushroom|NFl||||||
-3227|onion|NFl||||||
+3227|onion (Allium cepa)|NFl||||||
 3228|persimmon|NFl||||||
 3229|plants, vegetation|NFl|||1377|||
 3230|potato (Solanum tuberosum)|NFl||||||
@@ -3293,7 +3293,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3293|(brand) new article|NGO||||||
 3294|advertisement|NGO||||||
 3295|air conditioner|NGO|||384|||
-3296|alarm (fire, burglar, etc.), sensor|NGO||||||
+3296|alarm (fire, burglar, etc.)|NGO||||||
 3297|alarm clock|NGO||||||
 3298|answer sheet|NGO|||386|||
 3299|arrow|NGO|||315|||
@@ -3390,7 +3390,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3390|free pass|NGO|||1255, 1218|||
 3391|furniture|NGO||||||
 3392|futon (quilted Japanese-style mattress laid out on the floor), round cushion used for Zen meditation|NGO||||||
-3393|garbage can, rubbish bin, trash can, dust bin|NGO|||1351|||
+3393|dust bin|NGO|||1351|||
 3394|gate|NGO|||326|||
 3395|gem, jewel, precious stone|NGO|||152|||
 3396|cup|NGO|||309|||
@@ -3842,7 +3842,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3842|fool, simpleton, idiot|NPe||||||
 3843||-||||||
 3844|fourth-year student, senior|NPe||||||
-3845|friend|NPe|||1298|||
+3845|friend, companion|NPe|||1298|||
 3846|friend (polite)|NPe|||393, 1330|||
 3847|friend, acquaintance|NPe||||||
 3848|friend, ally, supporter|NPe||||||
@@ -3905,7 +3905,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3905|pirate, sea robber|NPe||||||
 3906|player (sports), athlete, team member, representative|NPe||||||
 3907|policeman|NPe|||403|||
-3908|policeman|NPe||||||
+3908|police officer, policeman, constable|NPe||||||
 3909|policemen|NPe||||||
 3910|poltician|NPe||||||
 3911||-||||||
@@ -4002,7 +4002,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4002|basement, cellar, underground place|NPl||||||
 4003|underground, below ground, secret, under cover|Px||||||
 4004|battlefield, battleground|NPl||||||
-4005|beach, seashore, riverside, riverbank, captures pieces (in the game of go)|NPl||||||
+4005|beach, seashore, captures pieces (in the game of go)|NPl||||||
 4006|beauty parlour, beauty parlor, beauty salon, hairdressing salon|NPl||||||
 4007|bedroom|NPl||||||
 4008|the opposite person|NPl|||132, 1334, 1368||asoko|
@@ -4011,7 +4011,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4011|bookstore|NPl|||464|||
 4012|border, boundary|NPl||||||
 4013|botanical garden|NPl||||||
-4014|bottom (or another side that is hidden from view), undersurface, opposite side, reverse side, rear, back, behind (the house), lining, inside, out of sight, behind the scenes, proof, opposite (of a prediction, common sense, etc.), inverse (of a hypothesis, etc.), bottom (of an inning), last half (of an inning)|NPl||||||
+4014|bottom (or another side that is hidden from view), rear, behind (the house), out of sight|NPl||||||
 4015|branch office|NPl||||||
 4016|branch office|NPl||||||
 4017|bridge|NPl|||462|||
@@ -4111,11 +4111,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4111|Mediterranian Sea|NPl|||1352|||
 4112|meeting room|NPl||||||
 4113|Morikawa|NPl|||281|||
-4114|Mount Fuji|NPl|||1371|||
+4114|Mount Fuji, Mt. Fuji, Fujiyama, Fuji-san|NPl|||1371|||
 4115|mountain range|NPl||||||
 4116|mountain, hill|NPl|||426, 1377|||
 4117|movie theatre, movie theater, cinema|NPl|||418, 1301|||
-4118|Nara|NPl|||279|||
+4118|Nara (city)|NPl|||279|||
 4119|Narita|NPl|||287|||
 4120|neighborhood, neighbourhood|NPl||||||
 4121|neighborhood, neighbourhood|NPl||||||
@@ -4206,7 +4206,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4206||-||||||
 4207|the Orient|NPl||||||
 4208|theatre, theater, playhouse|NPl||||||
-4209|ticket counter, teller window|NPl|||1301|||
+4209|ticket counter|NPl|||1301|||
 4210|ticket examination gate, wicket|NPl|||179|||
 4211|ticket office|NPl||||||
 4212|toilet paper|NPl|||454|||
@@ -4252,7 +4252,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4252|sunlight, rays of the sun|NS||||||
 4253|the Earth|NS||||||
 4254|a few minutes|NT||||||
-4255|afternoon|NT||||||
+4255|just past noon, afternoon|NT||||||
 4256|PM|NT|||494|||
 4257|autumn, fall|NT|||487, 1406|||
 4258|early afternoon|NT||||||
@@ -4422,7 +4422,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4422|strange, unfamiliar, unknown, new|Sa||||||
 4423|temporary, provisional, interim, fictitious, assumed (name), alias|Sa||||||
 4424|how, in what way, how about|SI|ME#0040;0041;0042|||||
-4425|how many|SI|ME#0043;0044|||||
+4425|how many?|SI|ME#0043;0044|||||
 4426|how many times|SI|||1427|||
 4427|how much?, how many?|SI|Used mainly for money-related issues.||704|||
 4428|how much time|SI|||1429|||
@@ -4525,13 +4525,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4525|defeat|VsuT||||||
 4526|consider as, regard (as equivalent), deem (as), equate|VsuT||||||
 4527|miss, overlook, leave at large, let pass|VsuT||||||
-4528|restore, put back, return, give back|VsuT||||||
+4528||-||||||
 4529|let leak, reveal, leak, give utterance, vent, express, wet one's pants, omit, leave out|VsuT||||||
 4530|drain, pour, spill, shed (blood, tears)|VsuT||||||
 4531|lose something|VsuT||||||
 4532|cure, heal|VsuT||||||
 4533|grow long (beard, hair, etc.), lengthen, extend, stretch|VsuT||||||
-4534|drop, lose, fail, let fall, shed (light)|VsuT||||ochiru||
+4534||-||||ochiru||
 4535|shine|VsuI||||||
 4536|denote|VsuT||||||
 4537|attempt, test, try out|VsuT||||||
@@ -4606,9 +4606,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4606|stick through, force through, lead (someone) in(a house, room, etc.), force accept, do the entirety of, do from beginning end without a break, convey (one's ideas, etc.) the other party, do the end|VsuT||||||
 4607||-||||||
 4608|jump out, rush out, fly out, appear (suddenly), protrude, project, butt in|VsuI||||||
-4609|ring, sound, chime, beat, snort (nose)|VsuI||||||
+4609||-||||||
 4610|pass (time), spend|VsuI||||||
-4611|summon, call (e.g. phone), convene, decoy, lure, invoke (e.g. subroutine), call|VsuT||||||
+4611||-||||||
 4612|shine on, illuminate|VsuT||||||
 4613||-||||||
 4614|look again|VsuI||||||
@@ -4660,7 +4660,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4660|delineate, draw, express, imagine|VsuT||||||
 4661||-||||||
 4662|strike (as send flying), beat, knock, jump with force, leap|VsuI||||||
-4663|kick about|VsuT||||||
+4663|kick about, kick around|VsuT||||||
 4664|send back, return|VsuT||||||
 4665|begin rain, start rain|VsuI||||||
 4666|shake and give, start shaking, shake out, write (draw) on a check (cheque)|VsuT||||||
@@ -4692,7 +4692,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4692|sing (bird), bark, purr, mew, moo, make a sound (animal)|VkuI||||||
 4693|be surprised, be astonished|VkuI||||||
 4694|become dry, get dry|VkuI||||||
-4695|embrace, hold in the arms (e.g. a baby), hug|VkuT||||||
+4695||-||||||
 4696|wipe, dry|VkuT||||||
 4697|blow (wind, etc.), whistle, laugh (slang)|VkuT||||||
 4698|sweep, brush, gather up|VkuT||||||
@@ -4711,7 +4711,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4711|incline toward, slant, lurch, heel over, be disposed to, trend toward, be prone to, go down (sun), wane, sink, decline|VkuI||||||
 4712|break, smash, crush|VkuT||||||
 4713|persuade, coax, solicit, seduce, make advances, make a play, make a pass, put the moves on, come on to, hit on, court, woo, romance|VkuT||||||
-4714|invite, ask, beckon|VkuT||||||
+4714|invite, ask|VkuT||||||
 4715|be grounded on, be based on, be due to, originate from|VkuI||||||
 4716|do in advance|VkuI||||||
 4717|spread out, lay out, take a position, impose widely (e.g. over a city)|VkuT||||||
@@ -4833,7 +4833,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4833|stop, cease|VmuI||This verb is usually used in the "teiru" tense, meaning "to be still".||||
 4834|inherit (archaic), follow (the rules)|VmuT||||||
 4835|be zealous, brace oneself, endeavour, endeavor, strive, make an effort|VmuI||||||
-4836|interpose, hold between, insert|VmuT||||||
+4836||-||||||
 4837|cut off|VmuT||||||
 4838|clip, snip|VmuT||||||
 4839|grieve over, mourn, lament|VmuT||||||
@@ -4892,7 +4892,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4892|herd, corner, drive|VmuT||||||
 4893|throw into, toss into|VmuT||||||
 4894|bury, embed|VmuT||||||
-4895|feel down, feel sad, be disappointed, be in a slump (e.g. business, economy)|VmuI||||||
+4895|be disappointed, be in a slump (e.g. business, economy)|VmuI||||||
 4896|look into, peer in|VmuI||||||
 4897|suspect|VmuT||||||
 4898|anticipate, estimate, expect|VmuT||||||
@@ -4951,7 +4951,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4951||-||||||
 4952||-||||||
 4953|turn|VrugI|||1244|||
-4954|leave, exit|VrugI||||||
+4954|exit|VrugI||||||
 4955|obey respectfully, humble oneself, sit straight (upright, respectfully, attentively)|VrugI||||||
 4956|be understood (used as "understand"), be comprehended, be grasped|VrugI|||1307|||
 4957|become clear, be known, be discovered, be realized, be realised, be found out|VrugI||||||
@@ -4963,7 +4963,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4963|say|VrugT||||||
 4964|be (archaic)|VrugI||||||
 4965|do, request|VrugT||||||
-4966|come home, go home, leave (guest, customer, etc.)|VrugI||||||
+4966|leave (guest, customer, etc.)|VrugI||||||
 4967|take (a resource, e.g. time or money)|VrugT|||1289|||
 4968|gather, collect, assemble|VrugI|||1265|||
 4969|strike against, collide with, bump into, conflict with, clash with|VrugI||||||
@@ -4982,7 +4982,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4982|wait upon, serve|VrugI||||||
 4983|design, refer A B|VrugT||||||
 4984|consult with, discuss, confer, deliberate|VrugT||||||
-4985|paste, affix|VrugI||||||
+4985|stick, paste, affix|VrugI||||||
 4986|do (honorific)|VrugI||||||
 4987||-||||||
 4988|come infashion, be prevalent, spread widely (e.g. disease), be endemic|VrugI||||||
@@ -5292,7 +5292,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5292|consist of, be made up of, be composed of, be practical (logical, feasible, viable)|VtsuI||||||
 5293|conquer (e.g. an enemy), defeat, overcome (a difficulty)|VtsuT||||||
 5294|keep, preserve, hold, retain, maintain, support, sustain, last, endure, keep well (food), wear well, be durable|VtsuT||||||
-5295|buy|VuT||||||
+5295|buy, purchase|VuT||||||
 5296|plan (do)|VuT||||||
 5297|pay attention|VuI||||||
 5298||-||||||
@@ -5302,7 +5302,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5302|be wrong|VuI|||1250, 1309, 1310, 1311|||
 5303|use (a thing, method, person, time, money, language), put use, operate|VuT|||1251, 1272, 1291|||
 5304|suck in, smoke, inhale, sip|VuT||||||
-5305|learn|VuT||||||
+5305|take lessons in, be taught, learn (from a teacher), study (under a teacher), get training in|VuT||||||
 5306|invite, ask, call (for), tempt, lure, induce|VuT||||||
 5307|bring a close, close (a business, etc.), close down, shut down, shut up|VuT|||1252|||
 5308|ask after (health)|VuT||||||
@@ -5377,7 +5377,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5377|meet (by chance), come across, run across, encounter, happen upon|VuI||Usually with a negative connotation.||||
 5378|meet, intersect|VuI||||||
 5379|be puzzled, be perplexed, have doubts, feel lost, be at sea|VuI||||||
-5380|keep a pet, own a pet, raise a pet, feed|VuT||||||
+5380|keep a pet, own a pet, raise a pet|VuT||||||
 5381|eat (vulgar), drink (vulgar), receive (e.g. a blow)|VuT||||||
 5382|eat (vulgar male language), receive (usually unfavorable event), have sex with a woman for the first time (vulgar, male language)|VuT||||||
 5383|loiter, putter, prowl, wander about, roam about, knock around|VuI||||||
@@ -5402,7 +5402,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5402|be expressed (as in a facial expression)|VruiI||||||
 5403|close, shut|VruiT||||shimaru||
 5404|warm someone/thing up|VruiT||||||
-5405|stop, turn off, fasten, fix inplace, park|VruiT||||||
+5405|turn off, fix inplace|VruiT||||||
 5406|cast aside, break up with (someone)|VruiT||||||
 5407|be born|VruiI|||1364|||
 5408|give (polite, speaker is the recepient or his relative)|VruiT||General rule of thumb: if "watashi no" can be used on the object being given then "kureru" is used, otherwise "ageru" is used.||||
@@ -5429,13 +5429,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5429|make a mistake (in), commit an error (e.g. in calculation)|VruiI||||||
 5430|appear, come out|VruiI||||||
 5431|fall down, drop, fall (e.g. rain), sink (e.g. sun or moon), fall onto (e.g. light or one's gaze, be used in a certain place (e.g. money)|VruiI|||1254, 1328|otosu||
-5432|rent, borrow|VruiT||||||
+5432||-||||||
 5433||-||||||
 5434|hang (e.g. picture), be partway (verb), take (time, money), wear / put on (glasses, etc.), burden someone, turn on (an engine, etc.), put an effect on (spell, anaesthetic, etc.), pour / sprinkle / spray onto, present (e.g. idea a conference, etc.)|VruiT||||||
 5435||-||||||
 5436||-||||||
 5437|show, display|VruiT||||||
-5438|flee, run away, escape|VruiI||||||
+5438|flee|VruiI||||||
 5439|award, give, grant|VruiT||||||
 5440|swell (from inflammation), become swollen|VruiI||||||
 5441||-||||||
@@ -5449,7 +5449,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5449|become greasy|VruiI||||||
 5450|be in a hurry|VruiI||||||
 5451|collect, assemble, gather|VruiT|||1295|||
-5452|become confused (disconcerted, disorganized, disorganised), be flustered, panic, be in a hurry, rush|VruiI||||||
+5452|become confused (disconcerted, disorganized, disorganised), be flustered, panic|VruiI||||||
 5453||-||||||
 5454|be able (in a position) do, be up the task|VruiI||||||
 5455|be out of, have no more at hand|VruiI||||||
@@ -5468,7 +5468,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5468||-||||||
 5469|be responsible for, take up, contract (a disease)|VruiT||||||
 5470|lower, be lowered|VruiT||||||
-5471|broaden, propagate|VruiT||||||
+5471||-||||||
 5472|sneeze (archaic)|VruiI||||||
 5473|come apart|VruiI||||||
 5474|praise, admire, speak well|VruiT||||||
@@ -5559,7 +5559,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5559|amass, store, leave unpaid|VruiT||||||
 5560|drop, fall senseless, be forced bed (by illness, etc.), be ruined, have a bad debt, fall (of governments, dictators, etc.)|VruiI||||||
 5561|be sufficient, be enough, be adequate|VruiI||||||
-5562|save, rescue, give relief to, spare (life), reinforce, promote, abet|VruiT||||||
+5562|save, rescue, give relief to, spare (life), reinforce, abet|VruiT||||||
 5563|build, construct|VruiT||||||
 5564||-||||||
 5565|come off, be removed, disappear (of pain, a fever, etc.), be attained (of balance, etc.)|VruiI||||||
@@ -5595,7 +5595,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5595|load (luggage), carry, take on board, publish (an article), run (an ad), place (an ad)|VruiT||||||
 5596|descend (e.g. a mountain), go down, come down, be granted, be issued, be given, be passed (from the body i.e. of a roundworm)|VruiI||||||
 5597|take along, hold in the hand|VruiT||||||
-5598|avoid (situation), ward off, avert|VruiT|Only applies to sakeru.|||||
+5598|avoid (situation)|VruiT|Only applies to sakeru.|||||
 5599|avoid (physical contact with)|VruiT|Only applies to yokeru.|||||
 5600|be separated, be divided|VruiI||||||
 5601|be damp, be moist|VruiI||||||
@@ -5631,7 +5631,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5631|be worn out|VruiI||||||
 5632|act violently, rage, struggle, be riotous|VruiI||||||
 5633|park, leave somewhere for a time|VruiT||||||
-5634|give shelter to, lodge|VruiT||||||
+5634|give shelter to, lodge, put up, accommodate|VruiT||||||
 5635|sniff out, get wind of|VruiT||||||
 5636|scent out, discern|VruiT||||||
 5637||-||||||
@@ -5667,7 +5667,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5667|elevate, raise, lift up, flatter, extol, praise the sky|VruiT||||||
 5668|sell (well), be well known, be popular, be famous|VruiI||||||
 5669|use, make use of, utilize, utilise|VruiT||||||
-5670|spread, extend, expand, enlarge, widen, broaden, unfold, open, unroll, unwrap, scatter about, spread around, make flourish, cause prosper|VruiT||||||
+5670|extend, expand, enlarge, widen, broaden, cause prosper|VruiT||||||
 5671|turn towards, point|VruiT||||||
 5672|pick up, disqualify, deliver (a child)|VruiT||||||
 5673|finish, graduate|VruiT||||||
@@ -5802,7 +5802,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5802|be anxious, be concerned, ponder (anxiously), fear, investigate, consider, plan|VruiT||||||
 5803|pat, rub, take a sword in one's hand|VruiT||||||
 5804|manage (with something), get done on time|VruiI||||||
-5805|collect, put together, integrate, consolidate, unify, sumarize, aggregate, bring a conclusion, finalize, settle, put in order, establish, decide|VruiT||||||
+5805|put together, sumarize, bring a conclusion, establish, decide|VruiT||||||
 5806|dye, color, colour|VruiT||||||
 5807|begin to|VruiT||||||
 5808|write out or down|VruiT||||||
@@ -5825,22 +5825,22 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5825|do, wear (specifically shoes, accessories), request, make|VsuruT||||||
 5826|move (apartments)|VsuruI||||||
 5827|grow up|VsuruI||||||
-5828|get married|VsuruI||||||
+5828|get married, marry|VsuruI||||||
 5829|love|VsuruT||||||
 5830||-||||||
 5831|type|VsuruT||||||
 5832|fax|VsuruT||||||
-5833|introduce|VsuruT||||||
+5833||-||||||
 5834|stay, sojourn|VsuruI||||||
-5835|order (something)|VsuruT||||||
+5835||-||||||
 5836|reserve, book, order in advance|VsuruT||||||
 5837|ask (request)|VsuruT||||||
-5838|drive|VsuruT||||||
+5838||-||||||
 5839|go on a long trip, travel|VsuruI||||||
-5840|to be troubled (by), to be bothered (by), to be inconvenienced (by)|VsuruT||||||
+5840||-||||||
 5841||-||||||
-5842|enter school|VsuruI||||||
-5843|be present, attend|VsuruI||||||
+5842||-||||||
+5843||-||||||
 5844|guarantee|VsuruT||||||
 5845||-||||||
 5846||-||||||
@@ -5852,29 +5852,29 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5852|download|VsuruT||||||
 5853|print|VsuruT||||||
 5854|try something on|VsuruT||||||
-5855|study|VsuruT||||||
+5855||-||||||
 5856|change, money exchange|VsuruT||||||
-5857|to eat|VsuruT||||||
+5857||-||||||
 5858|shop|VsuruI||||||
 5859|jog|VsuruI||||||
 5860|slam shut, splash|VsuruT||||||
 5861||-||||||
 5862|make a call, ring, telephone|VsuruI||||||
-5863|travel, trip, journey, excursion, tour|VsuruI||||||
-5864|cleaning, sweeping, dusting, scrubbing|VsuruT|||1269|||
-5865|do the laundry|VsuruI||||||
+5863|travel, trip, journey, tour|VsuruI||||||
+5864||-||||||
+5865||-||||||
 5866|copy, make a copy|VsuruT||||||
 5867|take a walk|VsuruI||||||
 5868|make a note|VsuruT||||||
-5869|practice, exercise|VsuruI||||||
+5869||-||||||
 5870|leave early|VsuruI||||||
 5871|be surprised, be amazed, be frightened, be ashtonished|VsuruI||||||
 5872|go easy on someone, take inconsideration, make a rough estimate, make allowance for|VsuruI||||||
 5873|feel refreshed, feel relieved|VsuruI||||||
-5874|feel relief, feel peace of mind|VsuruI||||||
+5874||-||||||
 5875|share a gift given the subject, share the subject's profit|VsuruT||||||
 5876|make friends with be good friends with, get along with|VsuruI||||||
-5877|worry, be anxious|VsuruI||||||
+5877||-||||||
 5878|need, require, take, demand|VsuruT||||||
 5879|have, possess|VsuruT||||||
 5880||-||||||
@@ -5882,26 +5882,26 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5882|die, pass the next life, give up (a struggle), submit, be at wit's end|VsuruI||||||
 5883|make a round trip, go and return, come and go, socialize, visit one another|VsuruI||||||
 5884|converse|VsuruI||||||
-5885|influence, affect, impact have an effect on, have influence on|VsuruI||||||
-5886|disregard, ignore|VsuruT||||||
+5885||-||||||
+5886||-||||||
 5887|recommend, advise, suggest, encourage|VsuruT||||||
 5888||-||||||
 5889|look after, help, aid, assist, care for|VsuruT||||||
 5890|board, lodge|VsuruI||||||
 5891||-||||||
 5892|boradcast|VsuruT||||||
-5893|prepare for a lesson|VsuruI||||||
+5893||-||||||
 5894|be in a relationship with, connect to|VsuruI||||||
 5895|compete|VsuruI||||||
-5896|experience|VsuruT||||||
+5896||-||||||
 5897|prepare, arrange|VsuruT||||||
 5898|fail, make a mistake, blunder|VsuruI||||||
-5899|prepare, setup, arrange, provision for, reserve|VsuruT||||||
+5899||-||||||
 5900|acknowledge, be aware of, consent, accept, assent, admit to, comply with, agree|VsuruT||||||
-5901|invite|VsuruT||||||
+5901||-||||||
 5902|be absent, be away from home, house-sit, neglect|VsuruI||||||
-5903|export|VsuruT||||||
-5904|contact, get in touch with, communicate with, call, message|VsuruT|||1283|||
+5903||-||||||
+5904||-|||1283|||
 5905|visit ill or distressed people, write get-well letters|VsuruI||||||
 5906|congratulate, celebrate|VsuruI||||||
 5907|quarrel, brawl, fight, squabble, scuffle, argument|VsuruI||||||
@@ -5914,14 +5914,14 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5914|be clear, be definite, be certain, be exact, become clear, clear up|VsuruI||||||
 5915|treat (someone, e.g. a meal)|VsuruT||||||
 5916|feel disappointed, feel dejected, lose heart, feel emotionally drained, feel let down|VsuruI||||||
-5917|report, inform|VsuruT||||||
+5917||-||||||
 5918|prepare, arrange, provide, get ready, lay out (e.g. a meal)|VsuruT|||1279|||
 5919|cancel|VsuruT|||1281|||
-5920|suspend, stop, discontinue, interrupt, cancel|VsuruT|||1282|||
+5920||-|||1282|||
 5921|proceeding the capital (Tokyo), going the capital|VsuruI||||||
 5922|enter preschool|VsuruI||||||
 5923|discover, detect, find|VsuruT||||||
-5924|issue, publish|VsuruT||||||
+5924||-||||||
 5925|take care, guard, take caution|VsuruI||||||
 5926|be injured, be hurt|VsuruI||||||
 5927|be stressed, be nervous, be irritated|VsuruI||||||
@@ -5932,17 +5932,17 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5932|inspect, read|VsuruT||||||
 5933|starve to death|VsuruI||||||
 5934|stamp, affix a seal, seal up, seal off|VsuruT||||||
-5935|retire|VsuruI||||||
+5935||-||||||
 5936|cross|VsuruI||||||
 5937|rotate, revolve, turn|VsuruI||||||
-5938|be in admiration of, be impressed by|VsuruI||||||
+5938||-||||||
 5939|collect data, cover and event|VsuruT||||||
 5940|work out, exercise|VsuruI||||||
 5941|disguise oneself, masquerade|VsuruI||||||
 5942|send back, return the user|VsuruT||||||
 5943|live a long life, live long|VsuruI||||||
 5944|last long, wear well|VsuruI||||||
-5945|fix, repair, mend, service|VsuruT|||1414|||
+5945||-|||1414|||
 5946|document|VsuruT||||||
 5947|set a record, show results, reach value|VsuruI||||||
 5948|rest, relax, be relieved|VsuruI||||||
@@ -5953,15 +5953,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5953|be decided, be determined|VsuruI||||||
 5954|change, modify, alter, revise, amend|VsuruT||||||
 5955|study abroad|VsuruI|||1385|||
-5956|participate, be invlolved|VsuruI||||||
-5957|lead, guide, coach|VsuruT||||||
-5958|experiment|VsuruI||||||
+5956||-||||||
+5957||-||||||
+5958||-||||||
 5959|operate (surgically), perform a surgery|VsuruI||||||
 5960|enter Nirvana, become a Buddha, go heaven, rest in peace, die peacefully|VsuruI||||||
 5961|return home|VsuruI||||||
 5962|discharge, dismiss, lay off, fire|VsuruT||||||
 5963|be hesitant, feel timid|VsuruI||||||
-5964|limit, restrict|VsuruT||||||
+5964||-||||||
 5965|digest, understand thoroughly|VsuruT||||||
 5966|firefight, extinguish a fire|VsuruT||||||
 5967|plan, project, design|VsuruT||||||
@@ -5976,13 +5976,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5976|change into, convert to, transform, be reduced, influence, improve|VsuruI||||||
 5977|provide, supply, pay, give an allowance, give a grant|VsuruT||||||
 5978|weaken|VsuruI||||||
-5979|restore, rehabilitate, recover, return, improve|VsuruT||||||
+5979||-||||||
 5980|assist, support, aid, help, subsidize, supplement|VsuruT||||||
 5981|appear, arrive|VsuruI||||||
 5982|complain (about various things)|VsuruI||||||
 5983|laugh foolishly, smile thoughtlessly, talk indiscreetly, speak carelessly, flare up, burst inflames|VsuruI||||||
 5984|decline, refuse, reject, turn down (polite)|VsuruI||||||
-5985|regret, repentance, remorse|VsuruT||||||
+5985||-||||||
 5986|sail, voyage, travel|VsuruI||||||
 5987|open the public, exhibit|VsuruI||||||
 5988|read aloud, read out loud|VsuruT||||||
@@ -5996,21 +5996,21 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5996|attack, strike, offend, criticise, censure, denunciate, condemn|VsuruT||||||
 5997|irrigate|VsuruT||||||
 5998|take (a suspect ot the police), drag (someone) away|VsuruT||||||
-5999|judge, decide, adjudicate, conclude, decipher, divine|VsuruT||||||
+5999||-||||||
 6000|aid, assist, help, reinforce, root (for), barrack, support, cheer|VsuruT||||||
 6001|whisper, murmur|VsuruT||||||
 6002|tremble, be nervous, be excited, be thrilled|VsuruI||||||
 6003|record (audio, a sound)|VsuruT||||||
 6004|record (video)|VsuruT||||||
-6005|be late|VsuruI||||||
+6005||-||||||
 6006|transfer jobs, relocate|VsuruI||||||
-6007|be careful, pay heed, pay attention, be cautious|VsuruI||||||
+6007||-||||||
 6008|be patient, endure|VsuruI||||||
-6009|despair, be hopeless|VsuruI||||||
+6009||-||||||
 6010|pose a question, ask|VsuruI|||||shitsumon wo suru|
 6011|drop out of school|VsuruI||||||
 6012|enter a higher-level school (esp. university)|VsuruI||||||
-6013|depart|VsuruI||||||
+6013||-||||||
 6014|take refuge, find shelter, evacuate, escape|VsuruI||||||
 6015|criticize, blame, censure, attack, reproach|VsuruT||||||
 6016|cooperate, collaborate|VsuruI||||||
@@ -6019,37 +6019,37 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6019|search, investigate, inquire, enquire|VsuruI||||||
 6020|operate, manage, process, manipulate, fiddle|VsuruT||||||
 6021|search, investigate|VsuruI||||||
-6022|negate, deny, repudiate|VsuruT||||||
-6023|explode, detonate, erupt|VsuruI||||||
+6022|negate, deny, repudiate|-||||||
+6023||-||||||
 6024|commit suicide, kill oneself|VsuruI||||||
 6025|exhibit, display|VsuruT||||||
 6026|defend, guard|VsuruT||||||
-6027|magnify, enlarge, expand|VsuruT||||||
+6027||-||||||
 6028|establish, create, pose (a problem), set, configure, assign, setup|VsuruT||||||
 6029|erase, delete|VsuruT||||||
 6030|eradicate, exterminate|VsuruT||||||
 6031|kill, murder|VsuruT||||||
-6032|complete, perfect, accomplish|VsuruT||||||
+6032||-||||||
 6033|conquer, subjugate, overcome|VsuruT||||||
 6034|lock|VsuruT||||||
 6035|shake hands|VsuruI||||||
 6036|clap hands, applaud|VsuruI||||||
 6037|be absent, not attend|VsuruI||||||
 6038|exclude, remove, reject, eliminate, abate, lift (sanctions, etc..)|VsuruT||||||
-6039|avenge|VsuruT||||||
+6039||-||||||
 6040|review, revise|VsuruT||||||
 6041|swim|VsuruI||||||
 6042|see, look at|VsuruT||||||
 6043|greet, salute, address, reply to, respond to|VsuruT||||||
-6044|stimulate, encourage, motivate, provoke|VsuruT||||||
+6044||-||||||
 6045|dangle, be dangling|VsuruI||||||
-6046|import, introduce|VsuruT||||||
+6046||-||||||
 6047|leave, be rude|VsuruI||||||
 6048|live in luxury|VsuruI||||||
 6049|be worthy of, be proportionate to, correspond (in meaning, function, etc.), be equivalent|VsuruI||||||
 6050|represent, be a delegate of|VsuruT||||||
-6051|hospitalise, hospitalize|VsuruT||||||
-6052|produce, manufacture|VsuruT||||||
+6051||-||||||
+6052||-||||||
 6053|settle (financially), square accounts, clear debts, liquidate, end (a relationship), break up (with), bury (the past), redeem (one's faults)|VsuruT||||||
 6054|calculate exactly, square accounts, adjust financially|VsuruT||||||
 6055|exist, be|VsuruI||||||
@@ -6059,20 +6059,20 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6059|dispatch, depatch, transmit|VsuruT||||||
 6060|start, depart, take off|VsuruT||||||
 6061|imagine, guess|VsuruT||||||
-6062|oppose, resist, contrast, object, dissent, reverse|VsuruT||||||
+6062||-||||||
 6063|automate|VsuruT||||||
 6064|be deeply moved emotionally, be excited, be passionate, be inspired, be impressed|VsuruT||||||
-6065|consult (with)|VsuruI||||||
+6065||-||||||
 6066|take the plate, pitch a game|VsuruI||||||
 6067|inspect, examine, scan, check|VsuruT||||||
 6068|look up (e.g. a word in a dictionary), retrieve (e.g. data), search for, refer to|VsuruT||||||
-6069|affirm, confirm, validate, make sure|VsuruT||||||
+6069||-||||||
 6070|sightsee|VsuruI||||||
 6071|publish, issue|VsuruT||||||
 6072|cross (eachother), intersect|VsuruI||||||
 6073|examine, consider, test, quiz|VsuruT||||||
 6074|remit, send, tansfer (money)|VsuruT||||||
-6075|notify, report, post|VsuruT||||||
+6075||-||||||
 6076|fall, decline, lower, deteriorate, degrade|VsuruI||||||
 6077|be entranced, be enraptured, be transported, be fascinated, be absentminded, be miles away, be in a world of one's own|VsuruI||||||
 6078|glitter, sparkle, glisten, twinkle|VsuruI||||||
@@ -6113,7 +6113,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6113||-||||||
 6114|clean (usu. vacuum cleaner)|NGO||||||
 6115|give (someone) a treat|VrugT||||||
-6116|be extravagant, live|VrugI||||||
+6116|be extravagant, live luxuriously|VrugI||||||
 6117|be proud, be haughty|VrugI||||||
 6118|inform, guide, instruct, lead, show around, announce, invite, make acquaintance with|VsuruT||||||
 6119|florist|NPe||||||
@@ -6217,7 +6217,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6217|arrest, apprehension, capture|NAc||||||
 6218|arrest, apprehend, capture|VsuruT||||||
 6219|trial, judgement, judgment|NAc||||||
-6220|try, judge|VsuruT||||||
+6220||-||||||
 6221|difference, distinction|NACF||||||
 6222|stand-in, proxy, alternate, deputy, relief, successor|NACF||||||
 6223|compensation, exchange, return|NACF||||||
@@ -6255,7 +6255,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6255|profit, gains|NACF||||||
 6256|officer, official, executive, staff|NPe||||||
 6257|part, assigning (allotment of) parts, role, duties|NACF||||||
-6258|arrange, promise, appoint, pact on, engage on|VsuruI||||||
+6258||-||||||
 6259|medicines, drugs|NACF||||||
 6260|North Korea|NNn||||||
 6261|top|NACF||||||
@@ -6410,7 +6410,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6410|move the depthsof fish when it gets cold|VruiI||||||
 6411|care, help, aid, assistance|NACF||||||
 6412|caring, helpful, assistive|Ana||||||
-6413|be caring, be helpful, be assistive|VsuruI||||||
+6413||-||||||
 6414|counter for rolls of cloth (two han in size)|C||||||
 6415|making the rounds|NACF||||||
 6416|spreading|NACF||||||
@@ -6606,7 +6606,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6606|eight days|NT||||||
 6607|nine days|NT||||||
 6608|be thankful, be grateful|VsuruI||||||
-6609|study, research, investigate|VsuruT||||||
+6609||-||||||
 6610|hopeless, wasted, in vain, purposeless|Ana||||||
 6611|cannot, must not, not allowed|Ana||||||
 6612|I am interested in X|PC||X ni kyoumi ga aru @ X = phrase||||
@@ -6618,7 +6618,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6618|firm, rigid, solid|Ai||||||
 6619|intense, strong, fierce, high|Ai||||||
 6620|dependable, trustworthy|Ai||||||
-6621|resign, hand-in a resignation|VsuruI||||||
+6621||-||||||
 6622|be ready, be completed|VruiI||||||
 6623|be made, be built|VruiI||||||
 6624|be good at, be permitted (do)|VruiI||||||
@@ -6626,7 +6626,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6626|grow, be raised|VruiI||||||
 6627|become pregnant|VruiI||||||
 6628|explode, rupture, break off|VsuruI||||||
-6629|permit, authorize|VsuruT||||||
+6629||-||||||
 6630|problem (e.g. societal, political), question, issue, subject (e.g. of research), case, matter|NACF||||||
 6631|question (i.e. doubt)|NACF||||||
 6632|public discussion, controversy|NACF||||||
@@ -6638,7 +6638,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6638|close (relationship)|Ai||||||
 6639|intense, strong|Ai||||||
 6640|late|Ai||||||
-6641|use, apply|VsuruT||||||
+6641||-||||||
 6642|smile, make a smiling face|VsuruI||||||
 6643|future tense|NACF||||||
 6644|the world to come|NACF||||||
@@ -6737,7 +6737,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6737|add (e.g. charcoal the fire), replenish with, feed with, follow up with (e.g. remarks), gather (one's breath)|VguT||||||
 6738|admirable, praiseworthy|Ana||||||
 6739|astonishment, being appalled|NACF||||||
-6740|be astonished, be appalled|VsuruI||||||
+6740||-||||||
 6741|torment, tease, be rough with|VrugT||||||
 6742|toward, respective to|PC||X ni tai suru @ X = phrase||||
 6743|convention, rule|NACF||||||
@@ -6802,7 +6802,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6802|be promoted|VrugI||||||
 6803|be in trouble, be in difficulty, be in pain|VsuruI||||||
 6804|be anxious, be worried, be concerned, care|VsuruI||||||
-6805|make an effort, exert oneself, endeavour, endeavor, work hard, strive|VsuruI||||||
+6805||-||||||
 6806|indisposition, ailment|NACF||||||
 6807|indisposed, ailing|Ana||||||
 6808|replace, move, change the position of|VruiT||||||
@@ -7044,20 +7044,20 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7044|congratulate|VbuI||||||
 7045|gratefully accept|VbuI||||||
 7046|wholly, entirely, completely|A||||||
-7047|pride, boast|VsuruI||||||
+7047||-||||||
 7048|be confident (in oneself)|VsuruI||||||
 7049|recover completely|VsuruI||||||
 7050|coordinate, organize|VsuruT||||||
 7051|supervise, control, direct|VsuruT||||||
 7052|lay flowers as an offering or tribute|VsuruI||||||
 7053|contribute, donate|VsuruI||||||
-7054|expect, anticipate, hope|VsuruI||||||
+7054||-||||||
 7055|retire temporarily, be suspended from office|VsuruI||||||
 7056|job hunt, seek employment|VsuruI||||||
 7057|provide a meal, provide a lunch service|VsuruI||||||
 7058|be in full blossom, be in full bloom|VsuruI||||||
-7059|consent, assent, agree|VsuruI||||||
-7060|understand, comprehend, grasp|VsuruT||||||
+7059||-||||||
+7060||-||||||
 7061|direct, instruct, order, command|VsuruT||||||
 7062|hold on tighly, hold on firmly, hold on securely|VsuruI||||||
 7063|be strongly built, be solidly built, be sturdy, be steady|VsuruI||||||
@@ -7144,7 +7144,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7144|smell sweet, be fragrant|VrugI||||||
 7145|chaos|NACF||||||
 7146|(outward) looks, features, face, countenance, expression|NACF||||||
-7147|turn up, make an appearance, put in an appearance|VsuI||||||
+7147|turn up, make an appearance, put in an appearance, drop by|VsuI||||||
 7148|make somebody lose face, embarrass someone, make someone look foolish|VsuI||||||
 7149|be tough on, be rough with, torment, train harshly|VrugT||||||
 7150|having no slack, rigid, stiff, tight|A||||||
@@ -7223,11 +7223,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7223|alight, perch on|VrugI||||||
 7224|be docked, be berthed, be moored|VrugI||||||
 7225|tsubo, traditional unit of area, approx. 3.31 square meters|NACF||||||
-7226|extend, elongate, prolong, lengthen|VsuruT||||||
+7226||-||||||
 7227|merge (of companies, towns, etc.), combine, unite, amalgamate, consolidate, coalesce, fuse, be annexed, be affiliated, be incorporated|VsuruI||||||
 7228|agree, consent, understand mutually, be in accord, be in consensus|VsuruI||||||
-7229|succeed, pass (e.g. exam), be eligibile|VsuruI||||||
-7230|total to (an amount)|VsuruT||||||
+7229||-||||||
+7230||-||||||
 7231|torture|VsuruT||||||
 7232|rationalize, rationalise|VsuruT||||||
 7233|confluate (of rivers), merge (of traffic), join|VsuruI||||||
@@ -7340,7 +7340,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7340|split, divide, break up|VsuruT||||||
 7341|classify, categorize, sort|VsuruT||||||
 7342|be in amount, be in quantity|VsuruI||||||
-7343|analyse, analyze|VsuruT||||||
+7343||-||||||
 7344|opposite, resist, be insubordinate, defy, be hostile, rebel|VsuruI||||||
 7345|to have a go; to try and do (something); to take a chance with something|CE||||||
 7346|as usual, as always|CE||||||
@@ -8071,10 +8071,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8071|discuss, confer|VsuruI||||||
 8072|invention|VsuruT||||||
 8073|be enlightened, have the meaning of everything become clear|VsuruI||||||
-8074|assess, rate, estimate value|VsuruT||||||
-8075|appreciate, value highly, acknowledge the value (of something)|VsuruT||||||
+8074||-||||||
+8075||-||||||
 8076|make a round, perform a circuit, perform a revolution, run a lap, perform a turn|VsuruI||||||
-8077|execute (e.g. of a plan), carry, practice, act, implement, fulfill, realize|VsuruT||||||
+8077||-||||||
 8078|approve, adopt (e.g. motion, bill), pass|VsuruT||||||
 8079|enlighten, develop, edify, make aware, illumine, educate, inspire|VsuruT||||||
 8080|enlighten, instruct|VsuruT||||||
@@ -8919,7 +8919,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8919|getting on and off (a vehicle), boarding and alighting|NACF||||||
 8920|New Mexico|NACF||||||
 8921|New Mexico|NPl||||||
-8922|compose oneself, regain presence of mind|VkuI||||||
+8922|calm down, compose oneself, regain presence of mind|VkuI||||||
 8923|calm down, settle down, die down, become stable, abate|VkuI||||||
 8924|settle down (in a location, job, etc.), settle in|VkuI||||||
 8925|be settled, be fixed, have been reached|VkuI||||||
@@ -9134,7 +9134,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9134|pass through, go through|VsuruI||||||
 9135|pass|VsuruI||||||
 9136|be commonly used|VsuruI||||||
-9137|transport, ship|VsuruT||||||
+9137||-||||||
 9138|attend (school, college, etc.), be enrolled, be a student|VsuruI||||||
 9139|chat, talk idly|VsuruI||||||
 9140|eleventh sign of the Chinese zodiac (The Dog, 7pm-9pm, west-northwest, September)|NACF||||||
@@ -10398,7 +10398,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 10398|be suitable, be coordinated, match, be appropriate (for)|VsuruI||||||
 10399|deal with, cope with, respond, react|VsuruI||||||
 10400|be compatible (with technology, software, etc.), be capable, give support (for)|VsuruI||||||
-10401|confront, oppose, antagonise|VsuruT||||||
+10401||-||||||
 10402|wage war, compete|VsuruI||||||
 10403|deal with, cope with|VsuruI||||||
 10404|be in contrast with, be in antithesis to, compare to|VsuruI||||||
@@ -11278,9 +11278,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 11278|spread, extend, influence, affect, ripple|VsuruT||||||
 11279|transfigure, transform, change appearance|VsuruI||||||
 11280|change, fluctuate|VsuruI||||||
-11281|change, vary, be altered, mutate, transition, transform, transfigure, metamorphose|VsuruI||||||
-11282|have variety, be diverse|VsuruI||||||
-11283|inflect, declense, conjugate|VsuruT||||||
+11281||-||||||
+11282||-||||||
+11283||-||||||
 11284|sidestepping|VsuruI||||||
 11285|change, transform, innovate, reform, revolutionize, upheave|VsuruT||||||
 11286||-||||||
@@ -12135,7 +12135,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12135|actually feel, have a real feeling (that ...), experience personally|VsuruT||||||
 12136|demonstrate, present|VsuruT||||||
 12137|stage a show, perform|VsuruI||||||
-12138|implementat (e.g. a system), materialize, materialise, realize, realise|VsuruT||||||
+12138||-||||||
 12139|be real, exist|VsuruI||||||
 12140|dissect, perform an autopsy on|VsuruT||||||
 12141|analyze, analyse|VsuruT||||||
@@ -12158,7 +12158,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12158|dissolve (diet, parliament, etc.)|VsuruT||||||
 12159|revise, amend, alter|VsuruT||||||
 12160|explain, comment, expose, elucidate|VsuruT||||||
-12161|explain, interpret|VsuruT||||||
+12161||-||||||
 12162|cancel, liquidate, resolve, reduce (e.g. stress)|VsuruT||||||
 12163|answer, solve|VsuruT||||||
 12164|become a member, join, enter, be admitted, subscribe, affiliate with, adhere, sign|VsuruI||||||
@@ -12225,7 +12225,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12225|enlarge, increase|VsuruT||||||
 12226|create an increased amount|VsuruI||||||
 12227|increase the number of trains in operation, increase bond issues|VsuruI||||||
-12228|increase, rise, grow, add, increment|VsuruI||||||
+12228||-||||||
 12229|augment, reinforce, increase|VsuruT||||||
 12230|extend, expand, add (equipment, facilities, etc.)|VsuruT||||||
 12231|promote, increase, advance|VsuruT||||||
@@ -12418,7 +12418,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12418|dead end, corner|NACF||||||
 12419|distress, being at the end of one's rope|NACF||||||
 12420|larva, grub, maggot|NACF||||||
-12421|refer, allude|VsuruI||||||
+12421||-||||||
 12422|give an excuse|VsuruI||||||
 12423|explain|VsuruI||||||
 12424|shoplift|VsuruI||||||
@@ -12628,7 +12628,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12628|be attached, love, have covetous affection|VsuruI||||||
 12629|read with pleasure|VsuruI||||||
 12630|love, adore|VsuruI||||||
-12631|be a favorite, be a favourite, be used habitually|VsuruI||||||
+12631||-||||||
 12632|have seasoning, have flavour, have flavor|VsuruI||||||
 12633|speak by proxy, speak for (someone else), act as spokesman (for), represent (the views, feelings, etc. of)|VsuruI||||||
 12634|pay by proxy, compensate by proxy, pay on behalf (of)|VsuruI||||||
@@ -12640,7 +12640,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12640|fix (in place), secure, anchoring, fasten down|VsuruT||||||
 12641|fix (e.g. salary, capital), keep the same|VsuruT||||||
 12642||-||||||
-12643|exchange, interchange, switching, reciprocity, barter, substitution, replacement, clearing (of checks, cheques)|VsuruT||||||
+12643||-||||||
 12644|crawl the web|VsuruI||||||
 12645|receive, accept, enjoy, be given|VsuruI||||||
 12646|order, command, decree|VsuruI||||||
@@ -12657,7 +12657,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12657|correspond, communicate, transmit|VsuruI||||||
 12658||-||||||
 12659|pass as, pass for|VsuruI||||||
-12660|tempt, allure, lure, entice, seduce|VsuruT||||||
+12660||-||||||
 12661|light, illumination, glow, gleam|NACF||||||
 12662|lamp, light|NACF||||||
 12663|pass (the night), spend|VsuT||||||
@@ -13368,7 +13368,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13368|cooperation, mutual aid (help)|NACF||||||
 13369|help, assist|VruiT||||||
 13370|aid, contribute (financially)|VruiT||||||
-13371|facilitate, stimulate|VruiT||||||
+13371|facilitate, stimulate, promote, contribute to|VruiT||||||
 13372|example|NACF||||||
 13373|simile, metaphor, allegory, fable, parable|NACF||||||
 13374|for example, for instance, e.g.|A|||152|||
@@ -13458,7 +13458,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13458|sign, seal|VsuruT||||||
 13459|exceed, be more than|VsuruT||||||
 13460|cook, prepare food|VsuruI||||||
-13461|adjust, regulate, coordinate, reconcile, tune, fix, tailor|VsuruT||||||
+13461||-||||||
 13462|regulate, adjust, control|VsuruT||||||
 13463|supply, provision, raise, procure|VsuruT||||||
 13464|arbitrate, concile, mediate|VsuruT||||||
@@ -13480,7 +13480,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13480|depart (of a train, car, etc.), start, leave|VsuruI||||||
 13481|have an idea|VsuruI||||||
 13482|express oneself|VsuruI||||||
-13483|offer for sale, release for sale, launch a product|VsuruT||||||
+13483||-||||||
 13484|generate (e.g. power)|VsuruT||||||
 13485|send a telegram, telegraph|VsuruI||||||
 13486|make a statement, remark, observe, utter, speak, propose|VsuruI||||||
@@ -13491,8 +13491,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13491|develop, grow, expand, extend, flourish|VsuruI||||||
 13492|develop (of a situation, story, etc.), advance, progress, unfold|VsuruI||||||
 13493|play around, have an active sex life|VsuruI||||||
-13494|be average, be in the mean|VsuruI||||||
-13495|be balanced, be in equilibrium|VsuruI||||||
+13494||-||||||
+13495||-||||||
 13496|go side-by-side, go abreast|VsuruI||||||
 13497|run concurrently, occur at the same time, keep pace with|VsuruI||||||
 13498|have a fit, spasm, have an attack, have a seizure|VsuruI||||||
@@ -13537,7 +13537,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13537|possess, own|VsuruT||||||
 13538|testify, provide (verbal) evidence|VsuruI||||||
 13539|prove, verify, certify|VsuruT||||||
-13540|one's possessions, ownership|VsuruI||||||
+13540||-||||||
 13541|be located at|VsuruI||||||
 13542|belong to (a group, organization, etc.), be affiliated (with), be attached to, be under the control of|VsuruI||||||
 13543|be in one's possession|VsuruI||||||
@@ -13545,7 +13545,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13545|bleed, haemorrhage, hemorrhage|VsuruI||||||
 13546|bleed money, sell below cost|VsuruI||||||
 13547|attend (at work), be at work, be present (in the office), go to work, report for work|VsuruI||||||
-13548|publish|VsuruT||||||
+13548||-||||||
 13549|own, be endowed with|VsuruI||||||
 13550|next (day, morning, etc.), following|P||||||
 13551|on the bank of, by the side of (e.g. a river, pond)|NACF|ME#0002;0003||||hen|
@@ -14188,8 +14188,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14188|dwell, reside|VsuruI||||||
 14189|desire, want, will, wish, crave|VsuruT||||||
 14190|demand for, request|VsuruT||||||
-14191|demand, request firmly, require, desire|VsuruT||||||
-14192|appeal, call for something, request, claim, demand|VsuruT||||||
+14191||-||||||
+14192||-||||||
 14193|summarize, digest|VsuruT||||||
 14194|reside, live, dwell|VsuruI||||||
 14195|enroll|VsuruT||||||
@@ -14233,7 +14233,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14233|sliding storm shutter|NACF||||||
 14234||NACF||||||
 14235||-||||||
-14236|United States of America|NPl||||||
+14236||-||||||
 14237|United States of America|NACF||||||
 14238|American person|NACF||||||
 14239|American|NACF||||||
@@ -14271,7 +14271,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14271|pace, step|NACF||||||
 14272|sound of footsteps|NACF||||||
 14273|sense or sign that something is approaching|NACF||||||
-14274|genitals, private parts|NACF||||||
+14274|genitals, private parts, nether regions|NACF||||||
 14275|that far (something psychologically distant from both speaker and listener), that much, that point|NACF||||||
 14276|be hit, strike|VrugI||||||
 14277|be equivalent to, be applicable, apply to|VrugI||||||
@@ -15463,7 +15463,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15463|invert tones, make a negative image|VsuruI||||||
 15464|be derived|VsuruI||||||
 15465|reply, answer, respond|VsuruI||||||
-15466|edit, compile|VsuruT||||||
+15466||-||||||
 15467|do a day trip|VsuruI||||||
 15468|be corpulent, be fat, be obese|VsuruI||||||
 15469|waste time, kill time|VsuruI||||||
@@ -15472,10 +15472,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15472|go North|VsuruI||||||
 15473|be in place|VsuruI||||||
 15474|be self-conscious, be self-aware|VsuruI||||||
-15475|be independent, be self-relying|VsuruI||||||
+15475||-||||||
 15476|have self control, have self restraint|VsuruI||||||
 15477|perform (of play, opera, etc.), stage, present|VsuruT||||||
-15478|rise, ascend, climb|VsuruI||||||
+15478||-||||||
 15479|improve (e.g. in skill, ability), advance, progress|VsuruI||||||
 15480|communicate opinions of the general populace to those of high rank|VsuruI||||||
 15481|combine chemically|VsuruI||||||
@@ -16592,14 +16592,14 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 16592|value highly, prize|VsuruT||||||
 16593|unite, combine, team up|VsuruI||||||
 16594|debut|VsuruI||||||
-16595|achieve independence, be self-supporting|VsuruI||||||
+16595||-||||||
 16596|set sail, put out to sea|VsuruI||||||
 16597|start anew, embark on something new|VsuruI||||||
 16598|develop (film)|VsuruT||||||
 16599|have diarrhoea, have diarrhea|VsuruI||||||
 16600|alight (from train, bus, etc.), get off|VsuruI||||||
 16601|crowd, herd, gather, assemble|VsuruI||||||
-16602|abolish, repeal|VsuruT||||||
+16602||-||||||
 16603|sell, market|VsuruT||||||
 16604|build a bridge, mediate, go between|VsuruT||||||
 16605|compose, forme, organize, organise, compile|VsuruT||||||
@@ -16609,7 +16609,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 16609|regard as important, attach importance to, take a serious view of, put emphasis on|VsuruT||||||
 16610|regard highly, attach importance to|VsuruT||||||
 16611|acquire, possess|VsuruT||||||
-16612|control, manage (e.g. a business)|VsuruT||||||
+16612||-||||||
 16613|concern, be related to|VsuruT||||||
 16614|sing|VsuruI||||||
 16615|form, mold, make up, take form, give form to|VsuruT||||||
@@ -16619,8 +16619,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 16619|make an official announcement, proclaim|VsuruI||||||
 16620|organize, organise, configure, compose|VsuruT||||||
 16621|divide, section, demarcate, partition, segmentate, subdivide, compartmentalize, classify, sort|VsuruT||||||
-16622|be educated, be schooled, train, be instructed, be taught, be brought up|VsuruI||||||
-16623|have culture, be cultivated, be educated|VsuruI||||||
+16622||-||||||
+16623||-||||||
 16624|teach, instruct|VsuruT||||||
 16625|have enough of (food, drink, etc.), have one's fill|VsuruI||||||
 16626|fully enjoy|VsuruT||||||
@@ -16641,7 +16641,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 16641|gain total control (of people or counties), suppress, oppress, control, master|VsuruT||||||
 16642|restrict, restrain, limit|VsuruT||||||
 16643|conquer, dominate, master|VsuruT||||||
-16644|be successful, be a hit|VsuruI||||||
+16644|be successful, be a hit, succeed|VsuruI||||||
 16645||-||||||
 16646|produce, create, turn (something) out, develop|VsuruT||||||
 16647|manufacture, produce|VsuruT||||||
@@ -18146,7 +18146,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18146|take the name of, call oneself|VsuruT||||||
 18147|pretend, feign, purport|VsuruT||||||
 18148|acquire, obtain, gain possession, purchase|VsuruT||||||
-18149|concentrate, focus, converge, centralize, integrate, gather together|VsuruT||||||
+18149||-||||||
 18150|totalize, totalise, aggregate, tally (e.g. votes)|VsuruT||||||
 18151|collect money|VsuruI||||||
 18152|accumulate, ile up|VsuruI||||||
@@ -18165,7 +18165,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18165|extract (e.g. files), decompress, unpack|VsuruT||||||
 18166|score, goal|VsuruI||||||
 18167|integrate, unify, combine, consolidate, synthesise, synthesize|VsuruT||||||
-18168|be unified, consolidate, be uniform, be compatible|VsuruI||||||
+18168||-||||||
 18169|register, access, enter, record|VsuruT||||||
 18170|be elected|VsuruI||||||
 18171|be selected (to win a prize, etc.)|VsuruI||||||
@@ -18459,7 +18459,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18459|request an encore|VsuruI||||||
 18460|treat, serve|VsuruT||||||
 18461|work away from home|VsuruI||||||
-18462|give a speech, giva an address|VsuruI||||||
+18462||-||||||
 18463|arrange (resources), deploy, station, post, configure, lay out|VsuruT||||||
 18464|subtract|VsuruT||||||
 18465|to accomplish, to fulfill, to carry out|VsuruI||||||
@@ -19944,7 +19944,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 19944|showing by a diagram, illustrating, representing graphically|NACF||||||
 19945|diagram, graph, schema|NACF||||||
 19946|impudent, shameless|Ai||||||
-19947|be stabile, be steady, be in equilibrium|VsuruI||||||
+19947|be stable, be steady, be in equilibrium|VsuruI||||||
 19948|tidy up, clear up, clean up, clear away, put in order|VsuruT||||||
 19949|double|VsuruI||||||
 19950|bomb (raid)|VsuruT||||||
@@ -19954,25 +19954,25 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 19954|get a salary increase|VsuruI||||||
 19955|take advantage of (an opportunity), jump on the bandwagon|VsuruI||||||
 19956|take passage (in), get a lift, get a ride|VsuruI||||||
-19957|partition, divide, separate, segment, split|VsuruT||||||
+19957||-||||||
 19958|be ill, be sick|VsuruI||||||
 19959|die from disease, die from illness|VsuruI||||||
 19960|write|VsuruT||||||
 19961|ally with, unite with|VsuruI||||||
-19962|be revived (e.g. musical), make a come-back|VsuruI||||||
-19963|be restored, be reborn, be resurrected|VsuruI||||||
-19964|diffuse, spread, popularize, promulgate, familiarize|VsuruT||||||
+19962||-||||||
+19963||-||||||
+19964||-||||||
 19965|freeze|VsuruT||||||
 19966|be attached, belong (to), be included, be enclosed, be affiliated, be annexed, be associated, be subordinate, be incidental, be dependent, be auxiliary|VsuruI||||||
-19967|decrease, be reduced, decline|VsuruI||||||
+19967||-||||||
 19968|counter-attack|VsuruI||||||
 19969|change suddenly, be reversed, come from behind (baseball)|VsuruI||||||
 19970|be defeated|VsuruI||||||
 19971|be distributed (of information, etc.), be broadcast, be delivered, be transmitted|VsuruI||||||
 19972|lose a court-case|VsuruI||||||
 19973|be defeated, be eliminated (from competition)|VsuruI||||||
-19974|destroy, disrupt|VsuruT||||||
-19975|crash (application)|VsuruI||||||
+19974||-||||||
+19975||-||||||
 19976|reduce by half, halve|VsuruT||||||
 19977|judge, decide, adjudicate, award, determine|VsuruI||||||
 19978|compare|VsuruT||||||
@@ -19981,10 +19981,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 19981|capture, seize|VsuruT||||||
 19982|put in someone's charge, give custody, safekeep, deposit, store|VsuruT||||||
 19983|complement, supplement, complete|VsuruT||||||
-19984|coincide, agree, match|VsuruI||||||
-19985|be conforming, be consistent|VsuruI||||||
-19986|cooperate|VsuruI||||||
-19987|maintain, preserve, improve|VsuruT||||||
+19984||-||||||
+19985||-||||||
+19986||-||||||
+19987||-||||||
 19988|switch over to, migrate, transition|VsuruI||||||
 19989|take a mental image, take a mental picture, view|VsuruI||||||
 19990|be interviewed (for television, newspaper, etc.)|VsuruI||||||
@@ -19993,7 +19993,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 19993|observe (laws, rules, etc.), adhere, obey, follow, abide by, comply|VsuruI||||||
 19994|curve, turn, bend|VsuruI||||||
 19995|curl|VsuruI||||||
-19996|reform, reorganize|VsuruT||||||
+19996||-||||||
 19997|improve, reform|VsuruT||||||
 19998|guarantee, maintain, ensure, insure, secure, reserve|VsuruI||||||
 19999|join (an association, agreement, etc.), participate, affiliate with|VsuruI||||||
@@ -20067,9 +20067,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20067|occupy, have (an area) all to oneself|VsuruT||||||
 20068|occupy, possess, capture, seize|VsuruT||||||
 20069|dive, submerge, go underwater|VsuruI||||||
-20070|select, choose|VsuruT||||||
+20070||-||||||
 20071|retrench, curtail, economize, economise|VsuruI||||||
-20072|economise, economize, save|VsuruI||||||
+20072||-||||||
 20073|die, pass away|VsuruI||||||
 20074|look and listen, view (television)|VsuruI||||||
 20075|give attention, be interested|VsuruI||||||
@@ -20079,7 +20079,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20079|point out, identify|VsuruI||||||
 20080|question|VsuruI||||||
 20081|interpel|VsuruI||||||
-20082|question, inquire, enquire|VsuruI||||||
+20082|question, inquire, enquire, ask a question|VsuruI||||||
 20083|to ask a question, to ask questions|CEV||||||
 20084|obstruct, impede, hinder|VsuruI||||||
 20085|be handicaped, be impaired, be disabled, have a disorder, malfunction|VsuruI||||||
@@ -20956,6 +20956,2077 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20956|experience personally or physically|VsuruI||||||
 20957|enter (on stage), appear (on screen)|VsuruI||||||
 20958|enter, be introduced (into a market)|VsuruI||||||
-20959|manage, administer, operate|VsuruI||||||
+20959|manage, administer, operate, run|VsuruI||||||
 20960|be negligent, be careless, be inattentive, be unprepared|VsuruI||||||
 20961|make a schematic, make a schema, illustrate, explain by diagram|VsuruI||||||
+20962|rise, increase, ascent|SxN||||||
+20963||-||||||
+20964|income, proceeds, return, profit, crop yield|NACF||||||
+20965|freshly-drawn green tea (esp. in sushi shops)|NACF||||||
+20966|completion, stop, finish|NACF||||||
+20967|end result (e.g. of crafts like painting, pottery, etc.), how something comes out|NACF||||||
+20968|after (rain, illness, etc.)|SxN||||||
+20969||-||||||
+20970|ex- (e.g. ex-bureaucrat)|SxN||||||
+20971||-||||||
+20972|northbound|NACF||||||
+20973|senior schoolmate, senior apprentice|NACF||||||
+20974|out (in baseball, tennis, etc.)|NACF||||||
+20975|no good, out of line, unacceptable, failure|CE||||||
+20976|outlet (store that sells seconds, discontinued lines, etc.)|NACF||||||
+20977|electrical outlet|NACF||||||
+20978|hour|NACF||||||
+20979|pity, sorrow, grief, misery, compassion, pathos|NACF||||||
+20980|pitiable, pitiful, pathetic, miserable|Ana||||||
+20981|alack, alas|Ana||||||
+20982|pity, feel sympathy for, sympathize with, sympathise with, commiserate with, have mercy on|VmuT||||||
+20983|enjoy the beauty of, appreciate, admire|VmuT||||||
+20984|make (someone) to meet, let (someone) meet|VruiT||||||
+20985|expose to, subject to|VruiT||||||
+20986|be in a hurry, rush|VruiI||||||
+20987|buoy|NACF||||||
+20988|part, position (in a whole, i.e. body)|NACF||||||
+20989|Japanese amberjack (species of yellowtail, Seriola quinqueradiata)|NACF||||||
+20990|briefs|NACF||||||
+20991|bridge|NACF||||||
+20992||-||||||
+20993|Brisbane|NPl||||||
+20994||-||||||
+20995|Britannia|NPl||||||
+20996|Brussels|NACF||||||
+20997|Bruxelles|NPl||||||
+20998|pork|NACF||||||
+20999|fatso, fatty|NACF||||||
+21000|ground wave, terrestrial broadcast signal (i.e. not satellite)|NACF||||||
+21001|terrestrial, over-the-air|NACF||||||
+21002|wisdom, intellectual power, intelligence, mental capacity, brains|NACF||||||
+21003|casting, founding, minting|NACF||||||
+21004|so, therefore|PP||||||
+21005|starting point, beginning, outset|NACF||||||
+21006|drawing (e.g. of a bill), issuing, draft, draught|NACF||||||
+21007|shaking out|NACF||||||
+21008|throw (of dice), toss|NACF||||||
+21009|infusion|NACF||||||
+21010|furigana, kana over or beside kanji to indicate pronunciation|NACF||||||
+21011|think back (on), reminisce, look back (on), reflect (on)|VrugT||||||
+21012|shake off, shake free from|VrugT||||||
+21013|swing completely (bat, club, etc.), take a full swing|VrugT||||||
+21014|break off from (pursuer), pull away|VrugT||||||
+21015|reject (request), ignore|VrugT||||||
+21016|payment made via bank deposit transfer|NACF||||||
+21017|discarding a tile that becomes another player's winning tile|NACF||||||
+21018|make a payment via bank deposit transfer|VmuT||||||
+21019|discard another player's winning tile|VmuT||||||
+21020|wield, brandish, flourish, wave (about), swing|VsuT||||||
+21021|display (one's knowledge), show off|VsuT||||||
+21022|abuse (one's power)|VsuT||||||
+21023|manipulate someone|VsuT||||||
+21024|(death from) starvation, starving to death|NACF||||||
+21025|boisterously, roughly, briskly|A||||||
+21026|picture dealer, commercial art gallery|NACF||||||
+21027|(clenched) fist, knuckles|NACF||||||
+21028|-like, -looking, -looked, tending to ...|Sx||||||
+21029|brush (e.g. for painting, basting, etc.), whisk|NACF||||||
+21030|hegemony|NACF||||||
+21031|hold between (e.g. one's fingers, chopsticks), grip (from both sides)|VmuT||||||
+21032|put between, sandwich between, insert, interpose|VmuT||||||
+21033|catch (e.g. a finger in a door), trap, pinch|VmuT||||||
+21034|insert (e.g. a break into proceedings), interpose (e.g. an objection), interject, throw in (e.g. a joke)|VmuT||||||
+21035|be on either side of (a road, table, etc.), have between each other, be across (a street, river, etc.)|VmuT||||||
+21036|harbour (feelings), cast (e.g. doubt)|VmuT||||||
+21037|return, restoration|NACF||||||
+21038|taking refuge, finding shelter, evacuation, escape, seeking safe haven|NACF||||||
+21039|refugees, evacuees|NACF||||||
+21040|contraception|NACF||||||
+21041|unfold, open, unroll, unwrap|VruiT||||||
+21042|scatter about, spread around|VruiT||||||
+21043|make flourish, cause to prosper|VruiT||||||
+21044|escaping the summer heat, going somewhere cooler during the summer, summering|NACF||||||
+21045|hope|NACF||||||
+21046|white hope, person of promise|NACF||||||
+21047|Hope (Canada)|NPl||||||
+21048|trend, course of action, direction|NACF||||||
+21049|directionality, directivity, orientation|NACF||||||
+21050|directional, vectorial|NACF||||||
+21051|goal, aim|NACF||||||
+21052|embrace, hold in the arms (e.g. a baby), hug|VkuT||||||
+21053|harbour (e.g. grudge), harbor, bear, have (e.g. ambition), entertain (e.g. hope, suspicion)|VkuT||||||
+21054|have sex with, make love to, sleep with|VkuI||||||
+21055|sit on eggs|VkuI||||||
+21056|arrange (flowers), plant|VruiT||||||
+21057|some, several|PxN||||||
+21058||-||||||
+21059|many|PxN||||||
+21060||-||||||
+21061|how many?, how much?|PxN||||||
+21062||-||||||
+21063|somewhat, to some extent, to some degree|A||||||
+21064|some extent, some degree|NACF||||||
+21065|some, part, portion|NACF||||||
+21066|(how) many times, (how) often|A||||||
+21067|many times|NACF||||||
+21068|childcare, child-rearing, nursing, upbringing|NACF||||||
+21069|rearing, training, nurture, cultivation, promotion|NACF||||||
+21070|how old?|A||||||
+21071|(a) few, some, several|NACF||||||
+21072|caution, admonition, warning, lesson|NACF||||||
+21073|prohibition, ban, commandment, precept|NACF||||||
+21074|punishment|NACF||||||
+21075|caution, guard|NACF||||||
+21076|haste, hurry, expedition, speed, dispatch|NACF||||||
+21077|get fed up with, get sick of, become disgusted with|VrugI||||||
+21078|surrender (to the authorities), giving oneself up, turning oneself in|NACF||||||
+21079|information retrieval|NACF||||||
+21080|intelligence gathering, information gathering|NACF||||||
+21081|upper arm|NACF||||||
+21082|local referendum, poll of residents, plebiscite|NACF||||||
+21083|return, coming back|NACF||||||
+21084|return, come home, go home, go back|VrugI||||||
+21085|get home, get to home plate|VrugI||||||
+21086|monster film|NACF||||||
+21087|opening (of a new road, railway, etc.), going into operation (e.g. telephone communication), beginning services|NACF||||||
+21088|reopening (e.g. a road to traffic), resumption of services|NACF||||||
+21089|counter for countries|C||||||
+21090|create (an atmosphere, feeling, etc.), produce, engender|VsuT||||||
+21091|feeling, sensation, emotion, admiration, impression|SxN||||||
+21092||-||||||
+21093|interjection|NACF||||||
+21094|thermometer|NACF||||||
+21095|thinking, thought, view, opinion, concept|NACF||||||
+21096|idea, notion, imagination|NACF||||||
+21097|intention, plan, design|NACF||||||
+21098|consideration, judgement, deliberation, reflection|NACF||||||
+21099|wish, hope, expectation|NACF||||||
+21100|restoration, return|NACF||||||
+21101|reduction, resolution, deoxidization, deoxidation|NACF||||||
+21102|cold wave|NACF||||||
+21103|return, restoration, refund, (duty) drawback|NACF||||||
+21104|cold, coldness, chilliness|NACF||||||
+21105|cold, chilly|Ana||||||
+21106|degree of perfection, level of completion, degree of completion|NACF||||||
+21107|borrow, have a loan|VruiT||||||
+21108|rent, hire|VruiT||||||
+21109|title (e.g. Doctor, Professor, Lord), job title, position (in a company), degree, status, rank|NACF||||||
+21110|taking over another's debt, shouldering someone else's burden, subrogation|NACF||||||
+21111|wooden printing block|NACF||||||
+21112|stiff neck, stiff shoulders|NACF||||||
+21113|keep (a pet or other animal), have, own, raise, rear, feed|VuT||||||
+21114|counter for the ichi-ni-san counting system (usu. directly preceding the item being counted), noun read using its on-yomi|C||||||
+21115|counter for articles|C||||||
+21116|indicates possessive (esp. in place names)|PP||||||
+21117|scatter (e.g. one's enemies), rout|VsuT||||||
+21118|case (e.g. receptacle, condition, event, legal action, letter style, etc.)|NACF||||||
+21119|Computer-Aided Software Engineering, CASE|NACF||||||
+21120|injury (to animate object), hurt|NACF||||||
+21121|wounded person, injured person|NACF||||||
+21122|police inspector|NACF||||||
+21123|alarm (fire, burglar, railroad-crossing, etc.), sensor|NACF||||||
+21124|vigilance, caution, alertness, precaution, being on guard|NACF||||||
+21125|warning, advice|NACF||||||
+21126|Metropolitan Police Department (esp. Tokyo)|NACF||||||
+21127|Keishichou|NPl||||||
+21128|something carried (in the hand), handheld, portable|NACF||||||
+21129|mobile telephone, cell phone|NACF||||||
+21130|hand game (e.g. rock, paper, scissors)|NACF||||||
+21131|pistol, handgun, revolver|NACF||||||
+21132|research and development, R&,D|NACF||||||
+21133|conclusion of trial (hearing)|NACF||||||
+21134|neighbourhood, neighborhood, vicinity|NACF||||||
+21135|conquest (of a difficulty, illness, handicap, etc.), overcoming, bringing under control, subjugation, victory over|NACF||||||
+21136|hey!|UNC||||||
+21137|Kola, Cora|NPl||||||
+21138|ruin, destruction, devastation, waste, decay|NACF||||||
+21139|sound effect|NACF||||||
+21140|capture (of enemy territory), taking (by storm), conquest, attack, assault|NACF||||||
+21141|defeating (an opponent)|NACF||||||
+21142|attacking (a problem) strategically|NACF||||||
+21143|calendar, almanac|SxN||||||
+21144||-||||||
+21145|give, let one have, do for one, be given|VruiT||||||
+21146|giant wave, large wave|NACF||||||
+21147|consent|NACF||||||
+21148|permission, allowance, acceptance, tolerance, pardon|NACF||||||
+21149|sudden illness|NACF||||||
+21150|sudden, abrupt, rapid, sharp, drastic, radical|Ana||||||
+21151|sudden turn, sudden change|NACF||||||
+21152|(suddenly occurring) accident, emergency|NACF||||||
+21153|hurrying (to somewhere), rushing, hastening|NACF||||||
+21154|express (train)|NACF||||||
+21155|ultimate, final, last, eventual|NACF||||||
+21156|sudden fall, sharp fall, sudden drop, sharp drop|NACF||||||
+21157|sudden death|NACF||||||
+21158|sudden rise (in price), sharp rise, jump, surge|NACF||||||
+21159|urgent business|NACF||||||
+21160|rapid increase, proliferation, surge, explosion|NACF||||||
+21161|(Edo-period) town magistrate|NACF||||||
+21162|bless, show mercy to|VmuT||||||
+21163|give (money, etc.)|VmuT||||||
+21164|return, reaction, recovery|NACF||||||
+21165|return (from a procedure)|NACF||||||
+21166|put back, return, give back, restore (to a previous state, e.g. defrosting, reconstituting, reconciling), turn back (e.g. clock hand)|VsuT||||||
+21167|vomit, throw up|VsuT||||||
+21168|recover (of a market price)|VsuT||||||
+21169|imitation, sham, mock|NACF||||||
+21170|simulation|NACF||||||
+21171|trial examination, mock examination|NACF||||||
+21172|exemplar, model, example, pattern|NACF||||||
+21173|imitation, copying|NACF||||||
+21174|model, dummy, maquette|NACF||||||
+21175|groping (for), exploring for a solution|NACF||||||
+21176|hold (an event), give (a dinner, party, etc.)|VsuT||||||
+21177|feel (sensation, emotion, call of nature, etc.), show signs of|VsuT||||||
+21178|pulse|NACF||||||
+21179|vein|NACF||||||
+21180|chain (of mountains, etc.)|NACF||||||
+21181|hope|NACF||||||
+21182|thread (of an argument)|NACF||||||
+21183|difficulty, trouble, hardship|NACF||||||
+21184|accident, disaster, danger|NACF||||||
+21185|fault, defect|NACF||||||
+21186|difficult to understand, unintelligible, abstruse|Ana||||||
+21187|difficulty in understanding, unintelligibleness, abstruseness|NACF||||||
+21188|barrier, obstacle, difficulty, hurdle, deadlock|NACF||||||
+21189|difficult situation|NACF||||||
+21190|refugee, displaced person|NACF||||||
+21191|person inconvenienced by (lack of something), person unable to satisfactorily (marry, shop, etc.)|NACF||||||
+21192|perplexity, difficult question, difficult problem|NACF||||||
+21193|easily|A||||||
+21194|disapproval|NACF||||||
+21195|if, in case, if it is the case that, if it is true that|PP||||||
+21196|as for, on the topic of|PP||||||
+21197|if that's the case, if so, that being the case|PP||||||
+21198|if possible, if circumstances allow|PP||||||
+21199|and (also), both ... and, as well as|PP||||||
+21200|accustom, train (e.g. one's ear)|VsuT||||||
+21201|tame, domesticate, train (an animal)|VsuT||||||
+21202|ring, sound, chime, beat, snort (nose), snap (fingers)|VsuT||||||
+21203|be popular, be esteemed, be reputed|VsuT||||||
+21204|state, insist, complain|VsuT||||||
+21205|fart (loudly)|VsuT||||||
+21206|imitate, follow, emulate|VuI||||||
+21207|upstart, nouveau riche, new rich, coming into wealth suddenly|NACF||||||
+21208|piece promoted to gold general|NACF||||||
+21209|Narita divorce, divorce case of a newlywed couple breaking up upon their return to Narita Airport from their honeymoon abroad|NACF||||||
+21210|course (of events), development, progress, outcome, result|NACF||||||
+21211|market order, order without limit|NACF||||||
+21212|escape, run away|VruiI||||||
+21213|manual or physical labor, manual or physical labour|NACF||||||
+21214|meet, meet up, rendezvous, get together|VuI||||||
+21215|join (of roads, rivers, etc.), flow together|VuI||||||
+21216|fallen leaves, leaf litter, falling leaves|NACF||||||
+21217|leaf fall, dropping leaves, defoliation|NACF||||||
+21218|deciduous|NACF||||||
+21219|mistake, error, fault, slip, blunder, omission, oversight, lapse|NACF||||||
+21220|fall into (e.g. a hole)|VrugI||||||
+21221|fall into (chaos, depression, dilemma, illness, etc.)|VrugI||||||
+21222|fall into (a trap, etc.)|VrugI||||||
+21223|fall, surrender, capitulate|VrugI||||||
+21224|feel down, feel sad, be depressed, be in low spirits|VmuI||||||
+21225|be in a slump (business, economy, etc.), be in an unfavourable condition|VmuI||||||
+21226|fall into (e.g. a hole)|VmuI||||||
+21227|fall down, drop, fall (e.g. rain), sink (e.g. sun or moon), fall onto (e.g. light or one's gaze), be used in a certain place (e.g. money)|VruiI||||||
+21228|fall (into someone's hands), become someone's possession|VruiI||||||
+21229|fall (into a trap), fall (for a trick)|VruiI||||||
+21230|come to (in the end), end in|VruiI||||||
+21231|move to the depths|VruiI||||||
+21232|return|NACF||||||
+21233|welcome home|NACF||||||
+21234|open sea|NACF||||||
+21235|kindness, courtesy|NACF||||||
+21236|game of tag|NACF||||||
+21237|ounce|NACF||||||
+21238|weight (e.g. paperweight), pressing down|NACF||||||
+21239|keeping control, exercising authority|NACF||||||
+21240|having self-control, exercising self-discipline|NACF||||||
+21241|defense, guard, deterrence|NACF||||||
+21242|the end, closing, being done for|NACF||||||
+21243|that's it, that's enough, that's all|NACF||||||
+21244|being done for, giving up, being in a hopeless situation, not knowing what to do, being brought to one's knees, throwing up (one's) hands|NACF||||||
+21245|younger brother (of an older brother), younger sister (of an older sister)|NACF||||||
+21246|youngest child|NACF||||||
+21247|young, younger, youngest|Px||||||
+21248|young and beautiful, cute|Px||||||
+21249|pitfall, trap, pit|NACF||||||
+21250|drop, lose, let fall, shed (light), cast (one's gaze), pour in (liquid), leave behind|VsuT||||||
+21251|clean off (dirt, makeup, paint, etc.), remove (e.g. stains or facial hair), lose, spend money at a certain place, omit, leave out, secretly let escape|VsuT||||||
+21252|lose (a match), reject (an applicant), fail (a course), defeat (in an election)|VsuT||||||
+21253|lower (e.g. shoulders or voice), lessen (e.g. production or body weight), worsen (quality), reduce (e.g. rank or popularity), speak badly of, make light of, fall into straitened circumstances|VsuT||||||
+21254|fall into (e.g. a dilemma or sin), make one's own, have one's bid accepted, force surrender, take (e.g. an enemy camp or castle), forcefully convince, press for a confession, deal with|VsuT||||||
+21255|download, copy from a computer to another medium|VsuT||||||
+21256|make someone swoon (judo)|VsuT||||||
+21257|finish a story (e.g. with the punch line)|VsuT||||||
+21258|finish (a period, e.g. of fasting)|VsuT||||||
+21259|thanks (e.g. for coming, helping, etc.), glad you could make it|CES||||||
+21260|tiredness, fatigue|NACF||||||
+21261|fall, drop, descent, coming down|NACF||||||
+21262|failure (in an examination), failing to advance (to the next year)|NACF||||||
+21263|falling short of the standard, not making the grade|NACF||||||
+21264|scrawl, scribble, graffiti|NACF||||||
+21265|rakugo story teller, comic story teller|NACF||||||
+21266|election loss, rejection|NACF||||||
+21267|discouragement, despondency, dejection, disappointment|NACF||||||
+21268|history of, experience of|Sx||||||
+21269|successive generations, successive emperors|NACF||||||
+21270|round of calls, tour of visitation|NACF||||||
+21271|evident, plain, distinct, clear|Aj||||||
+21272|neighbour, neighbor, neighbourhood, neighborhood|NACF||||||
+21273|neighbouring house, neighboring house|NACF||||||
+21274|notice, notification|NACF||||||
+21275|adjacency, contiguity, being adjoined|NACF||||||
+21276|next or adjoining room|NACF||||||
+21277|open, unconcealed, undisguised, blatant, plain, frank|Ana||||||
+21278|openness, blatantness, plainness, frankness|NACF||||||
+21279|broad, lewd, indecent, crude|Ana||||||
+21280|broadness, lewdness, indecency, crudeness|NACF||||||
+21281|the most, the extreme|Px||||||
+21282|most, extreme|Ana||||||
+21283|prime, conspicuous|Aj||||||
+21284|disaster relief operation, disaster relief mission|NACF||||||
+21285|reappearance, reemergence, return, revival|NACF||||||
+21286|reproduction, reenactment, recreation|NACF||||||
+21287|return, relapse, reoccurrence|NACF||||||
+21288|Supreme Court|NACF||||||
+21289|Saikousaibansho|NPl||||||
+21290|scariest, most frightening|NACF||||||
+21291|return, coming back|NACF||||||
+21292|second coming (e.g. of Christ), second advent, reincarnation|NACF||||||
+21293|marking, grading, scoring|NACF||||||
+21294|ward off, avert|VruiI||||||
+21295|cold|NACF||||||
+21296|chill, the shivers, shivering fit|NACF||||||
+21297|cold, coldness, cold air|NACF||||||
+21298|Samuke|NPl||||||
+21299|coldness|NACF||||||
+21300|Chinese "star" constellation (one of the 28 mansions)|NACF||||||
+21301|Singapore|NPl||||||
+21302||-||||||
+21303||-||||||
+21304|biotechnology|NACF||||||
+21305|uniformed personnel|NACF||||||
+21306|success or failure, outcome, result|NACF||||||
+21307|maturity, ripeness|NACF||||||
+21308|(good) result, outcome, fruits (of one's labors), product, accomplishment|NACF||||||
+21309|adult age, majority|NACF||||||
+21310|hope of success, prospects of success|NACF||||||
+21311|hurry (up), urge on, press, rush|VsuT||||||
+21312|avenue of approach|NACF||||||
+21313|Shiji, Shih-chi, The Historical Records (ancient Chinese historical record)|NACF||||||
+21314|threshold (esp. one with grooves for sliding doors), sill|NACF||||||
+21315|frequently, repeatedly, often, incessantly, constantly|A||||||
+21316|strongly, eagerly|A||||||
+21317|urgent, pressing, immediate, prompt, express|NACF||||||
+21318|urgently, promptly, at once, right away, without delay, as soon as possible|NACF||||||
+21319|report, return (e.g. tax), statement, declaration, notification, filing|NACF||||||
+21320|inform, notify|VsuI||||||
+21321|know|VsuI||||||
+21322|reign|VsuI||||||
+21323|unconsciously, unwittingly, unawares|A||||||
+21324|extinction, extinguishment, disappearance, vanishing, termination, lapse|NACF||||||
+21325|cleaner fish|NACF||||||
+21326|pancreas|NACF||||||
+21327|sinewy meat|NACF||||||
+21328|steroid|NACF||||||
+21329|talking while standing, standing around talking|NACF||||||
+21330|going out (e.g. of a fire), dying out|NACF||||||
+21331|fizzling out, falling through, coming to nothing|NACF||||||
+21332|entering, going into|NACF||||||
+21333|No Entry, No Trespassing, No Admittance, Off Limits, Keep Out, Keep Off|CE||||||
+21334|off-limits, restricted, forbidden|NACF||||||
+21335|regain one's footing, get back on one's feet|VrugI||||||
+21336|recover, (of the market) to improve|VrugI||||||
+21337|eviction|NACF||||||
+21338|leave, evacuate, withdraw (from), clear out|VkuI||||||
+21339|move out (of a house, etc.), vacate|VkuI||||||
+21340|being brought to a standstill, being stranded, getting stuck, stalling, deadlock|NACF||||||
+21341|being stumped, being in a dilemma, stopping in one's tracks, standing speechless|NACF||||||
+21342|dying while standing (and remaining standing), dying on one's feet|NACF||||||
+21343|leave, depart, take one's leave|VrugI||||||
+21344|stop by, drop in for a short visit|VrugI||||||
+21345|Here I am, I'm home!|CE||||||
+21346||-||||||
+21347|presently, right away, right now, just now|A||||||
+21348|ascertain, confirm, verify, make sure of|VsuT||||||
+21349|drift, float|VuI||||||
+21350|waft (e.g. a scent), hang in the air|VuI||||||
+21351|be in the air (e.g. a feeling or mood)|VuI||||||
+21352|wander, walk around aimlessly|VuI||||||
+21353|be unsteady, be unstable|VuI||||||
+21354|falter, flinch, wince|VuI||||||
+21355|live in unreliable circumstances|VuI||||||
+21356|request, favor, favour|NACF||||||
+21357|reliance, dependence, trust, hope|NACF||||||
+21358|support (financially), contribute (to), provide aid|VruiT||||||
+21359|skyrocketing (prices)|NACF||||||
+21360|conversion, diversion, changeover, commutation, switchover|NACF||||||
+21361|talented, gifted, prodigious, virtuoso, masterful|Ana||||||
+21362|overnight stay, stopover|NACF||||||
+21363|inn, hotel|NACF||||||
+21364|anchorage|NACF||||||
+21365|night duty|NACF||||||
+21366|(within) the (Tokyo) metropolitan area|NACF||||||
+21367|adjoin each other, sit side by side|VuI||||||
+21368|adjoining each other|NACF||||||
+21369|have (e.g. lunch), take (e.g. vitamins)|VrugT||||||
+21370|unintentionally, unconsciously, by mistake, against one's better judgement (judgment)|A||||||
+21371|incidentally, taking the opportunity, while (you) are at it, on the occasion|A||||||
+21372|exile, banishment, eviction, deportation, purge, expulsion, ousting|NACF||||||
+21373|elimination (e.g. of poverty), removal|NACF||||||
+21374|investigation (e.g. into someone's guilt), questioning, pressing, hounding, pinning down|NACF||||||
+21375|catching up, overtaking|NACF||||||
+21376|pursuit (of a goal, ideal, etc.), search, chase, seeking after|NACF||||||
+21377|investigation (e.g. academically, of the unknown), close inquiry (enquiry)|NACF||||||
+21378|ratification, confirmation|NACF||||||
+21379|fall, crash (e.g. aircraft)|NACF||||||
+21380|chase, pursuit, tracking, stalking|NACF||||||
+21381|following up, tracing|NACF||||||
+21382|postscript, post scriptum, PS, P.S.|NACF||||||
+21383|first ten days of the lunar month|NACF||||||
+21384|Tsuitachi|NPl||||||
+21385|about, concerning, as to, regarding|CE||||||
+21386|to accompany, to follow, to keep up with|UNC||||||
+21387|rear-end collision|NACF||||||
+21388|spend, expend, consume|VsuT||||||
+21389|waste, squander, throw away|VsuT||||||
+21390|devote|VsuT||||||
+21391|a loop, a trap|NACF||||||
+21392|denotes uncertainty|PP||||||
+21393|such things as A and B, A and B and so on, A and B and the like, A and B and whatnot|PP||||||
+21394|just managing, with great difficulty|CE||||||
+21395|summon, call (e.g. phone), convene, decoy, lure|VsuT||||||
+21396|invoke (e.g. subroutine), call, open (e.g. a file)|VsuT||||||
+21397|pardon, forgiveness, exemption, permission|NACF||||||
+21398|being clearheaded, having a keen (sharp, brilliant) mind|NACF||||||
+21399|clearheaded, sharp, brilliant|Ana||||||
+21400|cast, found, mint|VsuruT||||||
+21401|die from starvation, starve to death|VsuruI||||||
+21402|clench a fist|VsuruI||||||
+21403|be returned, be restored|VsuruI||||||
+21404|use contraception|VsuruI||||||
+21405|escape the summer heat, go somewhere cooler during the summer, summer|VsuruI||||||
+21406|care for (a child), rear (a child), nurse, upbring|VsuruT||||||
+21407|rear, train, nurture, cultivate, promote|VsuruT||||||
+21408|surrender (to the authorities), give oneself up, turn oneself in|VsuruI||||||
+21409|open (a new road, railway, etc.), go into operation (e.g. telephone communication), begin services|VsuruI||||||
+21410|reopen (e.g. a road to traffic), resume services|VsuruI||||||
+21411|be restored, return|VsuruI||||||
+21412|reduce, resolve, deoxidize|VsuruT||||||
+21413|be returned, be restored, be refunded|VsuruI||||||
+21414|take over another's debt, shoulder someone else's burden, subrogate|VsuruT||||||
+21415|warn, advise|VsuruT||||||
+21416|be carried (the hand)|VsuruI||||||
+21417|be concluded, conclude (trial/hearing)|VsuruI||||||
+21418|conquer (a difficulty, illness, handicap, etc.), overcome, bring under control, subjugate, be victorious over|VsuruT||||||
+21419|be ruined, be destroyed, be devastated, be wasted, decay|VsuruI||||||
+21420|capture (enemy territory), take (by storm), conquer, attack, assault|VsuruT||||||
+21421|defeat (an opponent)|VsuruT||||||
+21422|attack (a problem) strategically|VsuruT||||||
+21423|consent|VsuruI||||||
+21424|give permission, allow, accept, tolerate, pardon|VsuruT||||||
+21425|turn suddenly, change suddenly|VsuruI||||||
+21426|occur by accident|VsuruI||||||
+21427|hurry (to somewhere), rush, hasten|VsuruI||||||
+21428|fall suddenly, drop suddenly|VsuruI||||||
+21429|die suddenly|VsuruI||||||
+21430|rise suddenly (in price), jump, surge|VsuruI||||||
+21431|increase rapidly, proliferate, surge, explode|VsuruI||||||
+21432|imitate, copy|VsuruT||||||
+21433|grope (for), explore for a solution|VsuruI||||||
+21434|be perplexed, be asked a difficult question, be posed a difficult problem|VsuruI||||||
+21435|fall (leaf), drop (leaves), defoliate|VsuruI||||||
+21436|fall, drop, descend, come down|VsuruI||||||
+21437|fail (in an examination), fail to advance (to the next year)|VsuruI||||||
+21438|fall short of the standard, not make the grade|VsuruI||||||
+21439|scrawl, scribble, graffiti|VsuruT||||||
+21440|lose (an election), be rejected|VsuruI||||||
+21441|be discouraged, be despondent, be dejected, be disappointed|VsuruI||||||
+21442|make a round of calls, make a tour|VsuruI||||||
+21443|notify|VsuruT||||||
+21444|be adjacent, be contiguous, be adjoined|VsuruI||||||
+21445|reappear, reemerge, return, be revived|VsuruI||||||
+21446|reproduce, reenact, recreate|VsuruT||||||
+21447|return, relapse, reoccur|VsuruI||||||
+21448|return, come back|VsuruI||||||
+21449||-||||||
+21450|mark, grade, score|VsuruT||||||
+21451|be mature, be ripe|VsuruI||||||
+21452|be reported, be returned (e.g. tax), be stated, be declared, be notified, be filed|VsuruI||||||
+21453|be extinct, be extinguished, disappear, vanish, be terminated, lapse|VsuruI||||||
+21454|be annihilated|VsuruI||||||
+21455|enter, going into|VsuruT||||||
+21456|be brought to a standstill, be stranded, get stuck, stallg, be in a deadlock|VsuruI||||||
+21457|be stumped, be in a dilemma, stop in one's tracks, stand speechless|VsuruI||||||
+21458|die while standing (and remaining standing), die on one's feet|VsuruI||||||
+21459|be converted, be diverted, change over, be commutated, switch over|VsuruI||||||
+21460||-||||||
+21461||-||||||
+21462||-||||||
+21463||-||||||
+21464|pursue (a goal, ideal, etc.), search, chase, seek after|VsuruT||||||
+21465|be investigated (e.g. academically, of the unknown)|VsuruI||||||
+21466|be ratified, be confirmed|VsuruI||||||
+21467|fall, crash (e.g. aircraft)|VsuruI||||||
+21468|chase, pursue, track, stalk|VsuruI||||||
+21469|follow up, trace|VsuruT||||||
+21470|collide with from the rear|VsuruI||||||
+21471|ah, oh|OI||||||
+21472|hey!|OI||||||
+21473|ah!, oh!, alas!|OI||||||
+21474|yes, indeed, that is correct|OI||||||
+21475|aah, gah, argh|OI||||||
+21476|hey!, yo!|OI||||||
+21477|uh huh, yeah yeah, right, gotcha|OI||||||
+21478|Aida|NPl||||||
+21479|iron (for pressing clothes)|NACF||||||
+21480|hair iron, hair tong, curling tong|NACF||||||
+21481|Ireland (country), Eire|NPl||||||
+21482|Ireland (island)|NPl||||||
+21483|ice cream, icecream|NACF||||||
+21484|accent (on a syllable, word), stress, pitch accent|NACF||||||
+21485|intonation, inflection, cadence|NACF||||||
+21486|(language) accent (e.g. American, British)|NACF||||||
+21487|accent (e.g. in a design), highlight, emphasis|NACF||||||
+21488|accent (on a note)|NACF||||||
+21489|accessory|NACF||||||
+21490|United States of America|NACF||||||
+21491|net, netting|NACF||||||
+21492|web|NACF||||||
+21493|window screen, insect screen, mosquito screen, screen, screen door|NACF||||||
+21494|idea, plan, proposal, suggestion, (government) bill|SxN||||||
+21495||-||||||
+21496|draft, rough copy|NACF||||||
+21497|expectation|NACF||||||
+21498|desk, stand|NACF||||||
+21499|seasoning, flavour, flavor, taste|NACF||||||
+21500|condition, state, situation|NACF||||||
+21501|(state of) health, physical condition|NACF||||||
+21502|arrangement, assignment, adjustment, handling, dealing with|NACF||||||
+21503|unexpectedly, surprisingly|A||||||
+21504|unexpected, unanticipated, unforeseen, surprising|Ana||||||
+21505|low-priced, cheap, inexpensive|Ana||||||
+21506|cheapness, inexpensiveness|NACF||||||
+21507|shallow (e.g. sympathy), superficial, cheap (e.g. government)|Ana||||||
+21508|shallowness, superficialness, cheapness|NACF||||||
+21509|matter in question, subject, case, item|NACF||||||
+21510|guidance, leading (the way), showing around|NACF||||||
+21511|information, notice, notification|NACF||||||
+21512|announcement (of one's arrival)|NACF||||||
+21513|invitation|NACF||||||
+21514|acquaintance, knowledge|NACF||||||
+21515|Annai|NPl||||||
+21516|antenna|NACF||||||
+21517|thing or method used to collect information or opinions|NACF||||||
+21518|mallow (any plant of family Malvaceae)|NACF||||||
+21519|Asarum caulescens (species of wild ginger)|NACF||||||
+21520|hollyhock|NACF||||||
+21521|Aomori prefecture (Tōhoku area)|NACF||||||
+21522|Aomori Prefecture|NPl||||||
+21523|increasing|SxN||||||
+21524||-||||||
+21525|upload|NACF||||||
+21526|close-up|NACF||||||
+21527|finishing shooting (of a film, etc.)|NACF||||||
+21528|upswept hairstyle|NACF||||||
+21529|being up (i.e. leading in sports)|NACF||||||
+21530|warming up|NACF||||||
+21531|being over, being finished|Sx||||||
+21532|walking|NACF||||||
+21533|progress, advance|NACF||||||
+21534|walk, go on foot|VmuI||||||
+21535|bag|NACF||||||
+21536|acquisition (esp. corporate), buy-out, takeover, purchase|NACF||||||
+21537|bribery, buying off, corruption|NACF||||||
+21538|back|NACF||||||
+21539|backing, going backwards, reversing|NACF||||||
+21540|background, background colour (color)|NACF||||||
+21541|backhand|NACF||||||
+21542|backer, supporter|NACF||||||
+21543|refunding|NACF||||||
+21544|backstroke (swimming)|NACF||||||
+21545|doggy style (sexual position)|NACF||||||
+21546|backup|NACF||||||
+21547|backbone (e.g. of a network)|NACF||||||
+21548|background|NACF||||||
+21549|backhand|NACF||||||
+21550|backstop, back screen|NACF||||||
+21551|back screen (esp. hitter's background in center field)|NACF||||||
+21552|33 sacred places in the Kanto Region (which was previously known as Bandou)|NACF||||||
+21553|exponent, power|NACF||||||
+21554|should not, must not|CE||||||
+21555|Berlin|NPl||||||
+21556|trade (foreign)|NACF||||||
+21557|defense, defence, safeguard, protection|NACF||||||
+21558|rate, ratio, percentage|NACF||||||
+21559|commission, poundage, percentage|NACF||||||
+21560|assistant (to general manager)|NACF||||||
+21561|armory, armoury, arsenal|NACF||||||
+21562|distributed load|NACF||||||
+21563|Brazil|NPl||||||
+21564|armed neutrality|NACF||||||
+21565|materialism|NACF||||||
+21566|physical|Ana||||||
+21567|disease, -pathy|Sx||||||
+21568|patricide|NACF||||||
+21569|sarin gas attack on the Tokyo subway (Mar. 20, 1995)|NACF||||||
+21570|earth observation satellite|NACF||||||
+21571|geographical dictionary, gazetteer|NACF||||||
+21572|medical treatment, cure|NACF||||||
+21573|treatment, cure, remedy|NACF||||||
+21574|depths of the earth|NACF||||||
+21575|just before|UNC||||||
+21576|Chinese "Extended Net" constellation (one of the 28 mansions)|NACF||||||
+21577||-||||||
+21578|counter for objects with stretched strings (i.e. bows, kotos), curtains, papers, etc.|C||||||
+21579|originator, ringleader, perpetrator, main culprit, person responsible|NACF||||||
+21580|birds and wild animals, wildlife|NACF||||||
+21581|district of a town, city block (of irregular size)|NACF||||||
+21582|birds|NACF||||||
+21583|samurai's attendant, footman|NACF||||||
+21584|state of standstill|NACF||||||
+21585|day and night|NACF||||||
+21586|percussion instrument|NACF||||||
+21587|small-time candy store|NACF||||||
+21588|Daibu|NPl||||||
+21589|elegance, dandyism, sophistication, having style|NACF||||||
+21590|elegant, dandy, sophisticated, stylish|Ana||||||
+21591|affectation, showing off, putting on an air, appearances, doing something just for show|NACF||||||
+21592|for show|Ana||||||
+21593||-||||||
+21594|Denver, Denvir|NPl||||||
+21595|(electric) power company|NACF||||||
+21596|legendary, fabled, fabulous|NACF||||||
+21597|both, either|A||||||
+21598|in either case (used specifically in the instance of two possible outcomes or situations), either way, one way or another|CE||||||
+21599|road, path, street, route|NACF||||||
+21600|way, set of practices, rules for conducting oneself|NACF||||||
+21601|Buddhist teachings|NACF||||||
+21602|Taoism|NACF||||||
+21603|modern administrative region of Japan (Hokkaido)|NACF||||||
+21604|historical administrative region of Japan (Tokaido, Tosando, etc.)|NACF||||||
+21605|province (Tang-era administrative region of China)|NACF||||||
+21606|province (modern administrative region of Korea)|NACF||||||
+21607|simultaneous interpretation|NACF||||||
+21608|operating principles|NACF||||||
+21609|impression given by a painting or image|NACF||||||
+21610|Briton, Englishman, (the) English|NPe||||||
+21611|satellite|NACF||||||
+21612|station building|NACF||||||
+21613|salt, salt content|NACF||||||
+21614|chloride|NACF||||||
+21615|base|NACF||||||
+21616|production (e.g. play), direction|NACF||||||
+21617|chlorine (Cl)|NACF||||||
+21618|area|NACF||||||
+21619|file-name|NACF||||||
+21620|font|NACF||||||
+21621|sticking to, clinging to, adhesion, cohesion, agglutination|NACF||||||
+21622|continue to increase, continue to mount|VruiI||||||
+21623|Fujisan|NPl||||||
+21624|Fuji Television|NNe||||||
+21625|Fujitsu|NNe||||||
+21626|Fujiwhara effect, Fujiwara effect|NACF||||||
+21627|addition, annexation, appendage|NACF||||||
+21628|fluke|NACF||||||
+21629|frock|NACF||||||
+21630|flock|NACF||||||
+21631|full|Ana||||||
+21632|fullnes|NACF||||||
+21633|flute|NACF||||||
+21634|fruit|NACF||||||
+21635|insufficiency, shortage, deficiency, lack, dearth|Ana||||||
+21636|grant, allowance, endowment, bestowal, assignment, conferment|NACF||||||
+21637|diplomatic turn of phrase, diplomatic language, tactful way of expressing something|NACF||||||
+21638|general idea, concept, notion|NACF||||||
+21639|orchestra, band|NACF||||||
+21640|score, sheet music|NACF||||||
+21641|institute, academy|NACF||||||
+21642|face value, par|NACF||||||
+21643|dressing room, green room, backstage|NACF||||||
+21644|behind the scenes, the inside, inside affairs|NACF||||||
+21645|face (of person)|NACF||||||
+21646|(watch) case|NACF||||||
+21647|public entertainment, performing arts|NACF||||||
+21648|accomplishments, attainments|NACF||||||
+21649|performer, entertainer, celebrity|NACF||||||
+21650|drama, play|NACF||||||
+21651|powerful drug|NACF||||||
+21652|troupe, theatrical company|NACF||||||
+21653|comic strip with dramatic story|NACF||||||
+21654|sudden change, upheaval|NACF||||||
+21655|heated discussion|NACF||||||
+21656|play writing|NACF||||||
+21657|dramatic, exciting, touching|Ana||||||
+21658|extreme|Ana||||||
+21659|phenomenological sociology|NACF||||||
+21660|guest room|NACF||||||
+21661|Gifu (city)|NPl||||||
+21662|Greece|NPl||||||
+21663|sesame seeds|NACF||||||
+21664|sesame (Sesamum indicum)|NACF||||||
+21665|Goma|NPl||||||
+21666|rubbish, trash, garbage, refuse|NACF||||||
+21667|garbage can, rubbish bin, trash can, dustbin|NACF||||||
+21668|goggles|NACF||||||
+21669|goal, basket (basketball), finishing line, winning post|NACF||||||
+21670||-||||||
+21671|Gol, Gall, Gaul, Gohl, Gorr|NPl||||||
+21672|Golden Week (early-May holiday season in Japan)|NACF||||||
+21673|reaching the winning post, reaching the finish, making the goal|NACF||||||
+21674|getting married|NACF||||||
+21675|ghost town|NACF||||||
+21676|gorilla (Gorilla spp., esp. western gorilla, Gorilla gorilla)|NACF||||||
+21677|thundering, purring, grumbling (e.g. stomach)|A||||||
+21678|something large and heavy starting to roll|A||||||
+21679|scattered about, common, commonplace, all over|A||||||
+21680|idleness, idling about|A||||||
+21681|having a foreign substance in (e.g. one's eye or stomach)|A||||||
+21682|thunder|NACF||||||
+21683|golfer|NACF||||||
+21684|golf|NACF||||||
+21685|gothic|NACF||||||
+21686|total amount, aggregate sum|NACF||||||
+21687|combined sewer|NACF||||||
+21688|composition, synthesis|NACF||||||
+21689|composite, compound, synthetic, mixed, combined|NACF||||||
+21690|(function) composition|NACF||||||
+21691|synthetic detergent|NACF||||||
+21692|corps commander|NACF||||||
+21693|Imperial Rescript to Soldiers and Sailors (1882)|NACF||||||
+21694|precious stone (esp. jade)|NACF||||||
+21695|egg (sometimes esp. as a sushi topping)|NACF||||||
+21696|stock or security being traded, product being bought or sold|NACF||||||
+21697|position (in finance, the amount of a security either owned or owed by an investor or dealer)|NACF||||||
+21698|geisha|NACF||||||
+21699|time charge for a geisha|NACF||||||
+21700|king (of the junior player)|NACF||||||
+21701|background, scenery, backdrop, setting, circumstance, context|NACF||||||
+21702|backing, support (from behind the scenes)|NACF||||||
+21703|captured pieces (in the game of go), captured stones|NACF||||||
+21704|Yokohama|NPl||||||
+21705|riverbank, riverside|NACF||||||
+21706|beach, foreshore|NACF||||||
+21707|Hamamatsu (city)|NPl||||||
+21708|range name|NACF||||||
+21709|judicial decision, judgement, judgment, sentence, decree|NACF||||||
+21710|rebel army|NACF||||||
+21711|Osaka-Kobe|NPl||||||
+21712|Hanshin (company name: railway, dept. store, baseball team, etc.)|NNe||||||
+21713|Hanshin|NPl||||||
+21714|launching pad|NACF||||||
+21715|flag|NACF||||||
+21716|pataka (banner)|NACF||||||
+21717|raising an army|NACF||||||
+21718|launching business|NACF||||||
+21719|design (on a banner), emblem (on a flag), insignia|NACF||||||
+21720|banner (e.g. of democracy), slogan, cause, objective|NACF||||||
+21721|right to speak|NACF||||||
+21722|speaker|NACF||||||
+21723|fast, quick, hasty, brisk|Ai||||||
+21724|early (in the day, etc.), premature|Ai||||||
+21725|(too) soon, not yet, (too) early|Ai||||||
+21726|easy, simple, quick|Ai||||||
+21727|square kilometer, square kilometre|NACF||||||
+21728|square root|NACF||||||
+21729|fresco, mural, wall painting|NACF||||||
+21730|surface of a wall|NACF||||||
+21731|skipping grades, the act of entering a new school as a non-first-year student|NACF||||||
+21732|room rent|NACF||||||
+21733|exposure to the sun, sunny place|NACF||||||
+21734|per day|NACF||||||
+21735|spark|NACF||||||
+21736|live coals (for firelighting)|NACF||||||
+21737|cause (of disturbance, conflict, etc.), trigger|NACF||||||
+21738|spread, propagate, popularize, disseminate|VruiT||||||
+21739|broaden, extend, widen, enlarge|VruiT||||||
+21740|morning, forenoon|UNC||||||
+21741|just before noon|UNC||||||
+21742|forehead, brow|NACF||||||
+21743|pace, step, cadence|NACF||||||
+21744|infantry, infantryman, foot soldier|NACF||||||
+21745|insurance payout, insurance money|NACF||||||
+21746|walk|NACF||||||
+21747|Northwest Passage (sea route along the north coast of Canada)|NPl||||||
+21748|de-encryption, deciphering|NACF||||||
+21749|rendering|NACF||||||
+21750|original method or procedure|NACF||||||
+21751|regularization, regularisation, getting up speed, proceeding at full tilt|NACF||||||
+21752|genuine, real, regular, normal, typical, standard, orthodox|Ana||||||
+21753|full-scale, full-blown, all-out|Ana||||||
+21754|full-fledged, professional|Ana||||||
+21755|Hong Kong dollar|NACF||||||
+21756|stronghold, inner citadel, base, headquarters|NACF||||||
+21757|faint, indistinct, dim|Ana||||||
+21758|few, a little|Ana||||||
+21759|base, stronghold, main fort|NACF||||||
+21760|home base, home plate|NACF||||||
+21761|televising, broadcasting, airing|NACF||||||
+21762|collapse, crumbling, breaking down, caving in|NACF||||||
+21763|(radioactive) decay, disintegration|NACF||||||
+21764|policy decision|NACF||||||
+21765|possession, retention, maintenance|NACF||||||
+21766|preservation, conservation, storage, maintenance|NACF||||||
+21767|saving (e.g. to disk)|NACF||||||
+21768|Italy|NPl||||||
+21769|recover, be healed|VruiI||||||
+21770|be possible to say, be able to say|VruiI||||||
+21771|medical faculty|NACF||||||
+21772|Igakubu|NPl||||||
+21773|migration, immigration|NACF||||||
+21774|exchange of ideas, exchange of opinions, brainstorming|NACF||||||
+21775|Iraq|NPl||||||
+21776|traditional ordering of the Japanese syllabary|NACF||||||
+21777|fundamentals, the ABCs of ...|NACF||||||
+21778|Grand Shrine at Ise|NPl||||||
+21779|Isetan (department store)|NNe||||||
+21780|medical association|NACF||||||
+21781|Ishikawa prefecture (Hokuriku area)|NPl||||||
+21782||-||||||
+21783|unconscious, senseless|NACF||||||
+21784|fixed, settled, constant, definite, uniform, regularized, regularised, defined, standardized, standardised, certain, prescribed|NACF||||||
+21785|spring, fountain|NACF||||||
+21786|juvenile literature|NACF||||||
+21787|self-defense, self-defence|NACF||||||
+21788|Japanese Self-Defense Force official, Self-Defense Force official|NOI||||||
+21789|self-defence force, self-defense force|NACF||||||
+21790|Japan Self-Defence Force, JSDF|NOI||||||
+21791|taking care of something by oneself, self-management|NACF||||||
+21792|one's own style, self-taught manner|NACF||||||
+21793|net worth, owned capital|NACF||||||
+21794|axis, shaft, axle|SxN||||||
+21795||-||||||
+21796|center, centre, focal point, key point|NACF||||||
+21797|stalk, stem|NACF||||||
+21798|hanging scroll|NACF||||||
+21799|popular front|NACF||||||
+21800|jiro (variety of sweet Japanese persimmon)|NACF||||||
+21801|bicycle trip, cycling tour|NACF||||||
+21802|superior (in rank), top, ranking|NACF||||||
+21803|higher order (e.g. byte)|NACF||||||
+21804|host computer (of connected device)|NACF||||||
+21805|usually, ordinarily|AT||||||
+21806|continuous, 24-hour (e.g. observation, operation (of a machine), care (of patient)), always on|AT||||||
+21807|full-time employment|NACF||||||
+21808|managing director, executive director|NACF||||||
+21809|routine business, regular business|NACF||||||
+21810|standing (committee), permanent (exhibit)|NACF||||||
+21811|boarding (a train, bus, etc.), getting into (e.g. a taxi)|NACF||||||
+21812|passenger ticket|NACF||||||
+21813|ordinary, sensible, commonplace|Ana||||||
+21814|custom, common practice, habit|NACF||||||
+21815|habitual use, daily use|NACF||||||
+21816|kanji for common use, jōyō kanji, list of 2,136 kanji established in 2010, formerly a list of 1,945 established in 1981|NACF||||||
+21817|every preparation (arrangement), all sorts of preparations|NACF||||||
+21818|junior|NACF||||||
+21819|junior welter (weight)|NACF||||||
+21820|bullet (from a rifle)|NACF||||||
+21821|shooting, gunning (down)|NACF||||||
+21822|small arms|NACF||||||
+21823|(sound of a) gunshot, (gun) report|NACF||||||
+21824|Tuesday|NT||||||
+21825|fire (second of the five elements)|NACF||||||
+21826|hereditary title (used in ancient Japan to denote rank and political standing)|NACF||||||
+21827|clan|NACF||||||
+21828|unrecoverable, irreversible, irreparable|Ana||||||
+21829|unrecoverability, irreversibility, irreparability|NACF||||||
+21830|coastal terrace|NACF||||||
+21831|avoidant personality|NACF||||||
+21832|liberated area or zone|NACF||||||
+21833|class struggle|NACF||||||
+21834|raising the curtain|NACF||||||
+21835|opening (of an event), start of a season|NACF||||||
+21836|establishment, opening, setting up, inauguration|NACF||||||
+21837|commentator|NACF||||||
+21838|swivel chair|NACF||||||
+21839|betterment, improvement|NACF||||||
+21840|kaizen (Japanese business philosophy of continuous improvement)|NACF||||||
+21841|firearms, guns|NACF||||||
+21842|expansion, extension, enlargement, escape, ESC|NACF||||||
+21843|filename extension|NACF||||||
+21844|establishment, settlement|NACF||||||
+21845|Kamakura (city)|NACF||||||
+21846|cameraman, photographer, cinematographer|NACF||||||
+21847|director (highest of the four administrative positions of the ritsuryo system), chief|NACF||||||
+21848|participation, taking part in, participating in, being concerned in|NACF||||||
+21849|tolerance, open-mindedness, forbearance, generosity, magnanimity|NACF||||||
+21850|tolerant, open-minded, forbearing, generous, magnanimous|Ana||||||
+21851|lenient, gentle|NACF||||||
+21852|lenient, gentle|Ana||||||
+21853|China|NPl||||||
+21854|Han dynasty|NOI||||||
+21855|Han (majority Chinese ethnic group)|NOI||||||
+21856|man|Sx||||||
+21857|countenance, visage|NACF||||||
+21858|face, honor (honour), dignity|NACF||||||
+21859|Chinese classical writing, Chinese classics|NACF||||||
+21860|writing composed entirely of kanji|NACF||||||
+21861|concern, business|NACF||||||
+21862|tolerant, generous, lenient, broad-minded, magnanimous|Ana||||||
+21863|tolerance, generosity, lenience, broad-mindedness, magnanimity|NACF||||||
+21864|Japanese word of Chinese origin, Sino-Japanese word|NACF||||||
+21865|(ancient) Chinese language|NACF||||||
+21866|controlling office, competent (governmental) authorities|NACF||||||
+21867|barrier, checkpoint, gateway|NACF||||||
+21868|hurdle, obstacle, trial|NACF||||||
+21869|traditional Chinese medicine|NACF||||||
+21870|Chinese herbal medicine|NACF||||||
+21871|joint (knee, elbow, etc.)|NACF||||||
+21872|concern, interest|NACF||||||
+21873|matter of concern and interest|NACF||||||
+21874|function|NACF||||||
+21875|function (programming)|NACF||||||
+21876|China and Japan|NACF||||||
+21877|Chinese and Japanese (languages)|NACF||||||
+21878|Chinese Character-Japanese dictionary|NACF||||||
+21879|tariff (import tax), duty, customs|NACF||||||
+21880|coupling sugar|NACF||||||
+21881|couple|NACF||||||
+21882|coupler|NACF||||||
+21883|Qara (Arab Union)|NPl||||||
+21884|side, edge|NACF||||||
+21885|Kalach, Karachi (Pakistan)|NPl||||||
+21886|colorful, colourful|Ana||||||
+21887|karaoke (singing to taped accompaniment)|NACF||||||
+21888|light, easy, non-serious, minor|Ana||||||
+21889|lightly, easily, carelessly|A||||||
+21890|thoughtless, rash, hasty, imprudent|Ana||||||
+21891|thoughtlessness, rashness, hastiness, imprudence|NACF||||||
+21892|light (i.e. not heavy), feeling light (i.e. offering little resistance, moving easily)|Ai||||||
+21893|light (i.e. of foot), effortless, nimble, agile|Ai||||||
+21894|non-serious, minor, unimportant, trivial|Ai||||||
+21895|slight, small, gentle, soft, easy, lighthearted (e.g. joke)|Ai||||||
+21896|easy, simple|Ai||||||
+21897|indiscriminate|Ai||||||
+21898|heating power, thermal power|NACF||||||
+21899|firepower|NACF||||||
+21900|conflagration, fire|NACF||||||
+21901|fire insurance|NACF||||||
+21902|Mars (planet)|NACF||||||
+21903|beside, besides, nearby|AP||||||
+21904|while (doing), in addition to, at the same time|NACF||||||
+21905|course, curriculum|NACF||||||
+21906|home economics|NACF||||||
+21907|private tutor, coach, governess|NACF||||||
+21908|domestic, in the family|NACF||||||
+21909|Catholic (church)|NACF||||||
+21910|Catholic Church|NACF||||||
+21911|Katorikkukyoukai|NPl||||||
+21912|living, life|NACF||||||
+21913|judo art of resuscitation|NACF||||||
+21914|action, activity|Sx||||||
+21915|value, have a high opinion|VuT||||||
+21916|stir, provoke, draw upon oneself|VuT||||||
+21917|gunpowder, powder|NACF||||||
+21918|Tuesday|NT||||||
+21919|scorn, disdain, contempt|NACF||||||
+21920|abatement, reduction|NACF||||||
+21921|frivolous, flippant, superficial, shallow, trifling, insincere|Ana||||||
+21922|frivolousness, flippance, superficiality, shallowness, trifle nature, insincerity|NACF||||||
+21923|Kyoto-Osaka|NPl||||||
+21924|Keihan|NPl||||||
+21925|light motor vehicle (up to 660cc and 64bhp), k-car, kei car|NACF||||||
+21926|shape, form|NACF||||||
+21927|light (of movements), nimble, sprightly, springy|Ana||||||
+21928|lightness (of movements), nimbleness, sprightliness, springiness|NACF||||||
+21929|light-hearted, cheerful, buoyant, jaunty, casual (e.g. clothing), rhythmical (e.g. melody)|Ana||||||
+21930|light-heartedness, cheerfulness, buoyance, jauntiness, casualness, rhythmicality|NACF||||||
+21931|taking a turn for the better (of an illness), receding of symptoms, recovery, convalescence|NACF||||||
+21932|making light of, thinking little of, slighting, belittling, dismissing, contempt, disdain|NACF||||||
+21933|minor injury|NACF||||||
+21934|rash, thoughtless, careless, hasty, imprudent|Ana||||||
+21935|rashness, thoughtlessness, carelessness, hastiness, imprudence|NACF||||||
+21936|mobile telephone, cellular telephone|NACF||||||
+21937|straps for mobile phone|NACF||||||
+21938|knitting wool, woollen yarn|NACF||||||
+21939|diesel oil, gas oil|NACF||||||
+21940|light oil|NACF||||||
+21941|after all, in the end, ultimately, eventually|A||||||
+21942|conclusion, end|NACF||||||
+21943|end of a game of go, shogi, etc.|NACF||||||
+21944|ticket machine, ticket-vending machine|NACF||||||
+21945|health insurance|NACF||||||
+21946|physical examination|NACF||||||
+21947|health foods|NACF||||||
+21948|hygienic, healthy, healthful, sanitary|Ana||||||
+21949|Bill of Rights|NACF||||||
+21950|checksum|NACF||||||
+21951|number of events (e.g. accidents, crimes, meetings, housing starts, hits on a web page)|NACF||||||
+21952|consideration, examination, investigation, study, scrutiny, discussion, analysis, review|NACF||||||
+21953|building material|NACF||||||
+21954|combination, union, binding, catenation, coupling, joining|NACF||||||
+21955|bond|NACF||||||
+21956|honorific, familiar suffix|Sx||||||
+21957|maneuver (usu. of military force), manoeuvre|NACF||||||
+21958|thin (e.g. air), diluted, sparse, lean, weak, rarified, rarefied|Ana||||||
+21959|thinness, sparseness, leanness, weakness, rarity|NACF||||||
+21960|lacking (e.g. empathy), deficient, insufficient (e.g. zeal)|Ana||||||
+21961|lack, deficiency, insufficiency|NACF||||||
+21962|equal opportunity|NACF||||||
+21963|standard, norm|NACF||||||
+21964|hazardous materials, dangerous goods, explosives, combustibles|NACF||||||
+21965|financial district|NACF||||||
+21966|money market, financial market|NACF||||||
+21967|unbleached cloth, unbleached colour (color)|NACF||||||
+21968|unbleached, undyed|Ana||||||
+21969|unbleachedness, undyedness|NACF||||||
+21970|office hours, business hours, working hours|NACF||||||
+21971|metal fatigue|NACF||||||
+21972|Christian|NACF||||||
+21973|regulation, (traffic) policing, control, restriction|NACF||||||
+21974|scarce, rare|Ana||||||
+21975|scarcity, rarity|NACF||||||
+21976|standard-bearer, flag-bearer|NACF||||||
+21977|basic or standard deduction|NACF||||||
+21978|expected event|NACF||||||
+21979|as expected (positive events), as hoped for|A||||||
+21980|carry to extremes, go to the end of something|VruiT||||||
+21981|investigate thoroughly, master|VruiT||||||
+21982|aristocratic|Ana||||||
+21983|national parliament or congress building (e.g. National Diet Building (Japan), United States Capitol (USA), Houses of Parliament (UK), etc.)|NACF||||||
+21984|royal seal|NACF||||||
+21985|state of a country (population, resources, etc.), condition of a country, strength of a country|NACF||||||
+21986|dicentra (Dicentra peregrina)|NACF||||||
+21987|Komakusa|NPl||||||
+21988|root, source, origin, foundation, base, principle|NACF||||||
+21989|willpower, guts, determination, grit, spirit|NACF||||||
+21990|character, nature, disposition, personality|NACF||||||
+21991|patience, perseverance, persistence, tenacity, energy|NACF||||||
+21992|basis, foundation|NACF||||||
+21993|fundamental, basic|Ana||||||
+21994|(act of) building (temple, monument, etc.), erection|NACF||||||
+21995|root, basis, foundation|NACF||||||
+21996|naming, giving a name, designation, denomination|NACF||||||
+21997|fixed cost|NACF||||||
+21998|fixed assets|NACF||||||
+21999|vast, extensive, immense, huge, large, grand, magnificent|Ana||||||
+22000|vastness, extensiveness, immensity, hugeness, largeness, grandness, magnificence|NACF||||||
+22001|highly composite number|NACF||||||
+22002|public relations, PR, publicity, information, publicizing|NACF||||||
+22003|mentioning later, discussing below|NACF||||||
+22004|advertising agency, advertising firm, advertising company|NACF||||||
+22005|reverberation|NACF||||||
+22006|symphony (orchestra)|NACF||||||
+22007|public broadcasting (e.g. NHK, BBC)|NACF||||||
+22008|symphony|NACF||||||
+22009|public utilities charge|NACF||||||
+22010|general plan, main points, summary, platform (e.g. for a campaign), mission statement|NACF||||||
+22011|(cultural) exchange, interchange, interaction, (inter-) mingling, (social, etc.) networking, intercourse|NACF||||||
+22012|alternating current, AC|NACF||||||
+22013|such|CE||||||
+22014|such|P||||||
+22015|negotiation team, negotiating body|NACF||||||
+22016|unable to tell apart|CE||||||
+22017|extermination, expulsion, destruction|NACF||||||
+22018|destroyer (ship)|NACF||||||
+22019|the aforementioned, the said, (man, incident, etc.) in question, the above-mentioned, the aforesaid|NACF||||||
+22020|the usual|NACF||||||
+22021|efficacious chemical (gunpowder, pesticide, etc.)|NACF||||||
+22022|(pottery) glaze|NACF||||||
+22023|small bribe|NACF||||||
+22024|ring finger, fourth finger|NACF||||||
+22025|doctor|NACF||||||
+22026|get tired, be exhausted|VruiI||||||
+22027|wear out, be battered from long use|VruiI||||||
+22028|relax, feel at home|VguI||||||
+22029|air (force) base|NACF||||||
+22030|script, screenplay, scenario|NACF||||||
+22031|imperial capital (esp. Kyoto)|NACF||||||
+22032|final word of an iroha-uta|NACF||||||
+22033|10^16, 10'000'000'000'000'000, ten quadrillion|NNe||||||
+22034|dresser|NACF||||||
+22035|supply, provision|NACF||||||
+22036|Communist Party|NACF||||||
+22037|counter for balls|C||||||
+22038|Imperial Palace (esp. from 1888 to 1946)|NACF||||||
+22039|just, right, due (east)|Px||||||
+22040|pure, genuine, true|Px||||||
+22041|truth|NACF||||||
+22042|(at the) window|NACF||||||
+22043|ticket window, teller window, counter|NACF||||||
+22044|contact person, point of contact|NACF||||||
+22045|he that fights and runs away may live to fight another day, sometimes you have to lose to win|CE||||||
+22046|full (years, etc.)|PxN||||||
+22047||-||||||
+22048|whole, all|PxN||||||
+22049||-||||||
+22050|fully enough, not lacking|PxN||||||
+22051||-||||||
+22052|Manchuria|NACF||||||
+22053|beckon, wave someone in, gesture to|VkuT||||||
+22054|call in, send for, summon|VkuT||||||
+22055|bring on oneself, cause, incur, lead to, result in|VkuT||||||
+22056|collect, put (it all) together, integrate, consolidate, unify|VruiT||||||
+22057|summarize, aggregate|VruiT||||||
+22058|bring to a conclusion, finalize, settle, put in order|VruiT||||||
+22059|adequacy|NACF||||||
+22060|tolerable, passable, adequate, so-so|Ana||||||
+22061|tolerably, passably, adequately|A||||||
+22062|name|NACF||||||
+22063|in the name of|Sx||||||
+22064|moral duty|NACF||||||
+22065|justification, pretext|NACF||||||
+22066|naming rights|NACF||||||
+22067|folklore|NACF||||||
+22068|commercial broadcasting|NACF||||||
+22069|democratic state|NACF||||||
+22070|missile|NACF||||||
+22071|target language, object language|NACF||||||
+22072|archive science|NACF||||||
+22073|one-thousandth, 0.03 mm (one-thousandth of a sun), 0.01 percent (one-thousandth of a wari), 3.75 milligrams (one-thousandth of a monme)|NNe||||||
+22074|old monetary unit (0.0001 yen)|NACF||||||
+22075|retina|NACF||||||
+22076|encompassing, covering (exhaustively), including (all of), comprising, comprehending|NACF||||||
+22077|avalanche, snowslide|NACF||||||
+22078|southwest|NACF||||||
+22079|root (of a plant)|NACF||||||
+22080|root (of a tooth, hair, etc.), center (of a pimple, etc.)|NACF||||||
+22081|root (of all evil, etc.), source, origin, cause, basis|NACF||||||
+22082|one's true nature|NACF||||||
+22083|(fishing) reef|NACF||||||
+22084|Ne|NPl||||||
+22085|making necessary arrangements, laying the groundwork|NACF||||||
+22086|digging around the roots of a tree (before transplanting)|NACF||||||
+22087|age range, age-group, age bracket|NACF||||||
+22088|fuel|NACF||||||
+22089|come from, have roots in|VsuI||||||
+22090|hateful, abominable, poor-looking, detestable|Ai||||||
+22091|amazing, fantastic, admirable, lovely, wonderful|Ai||||||
+22092|identification tag|NACF||||||
+22093|authorization, authorisation, acknowledgment, acknowledgement, certification, recognition|NACF||||||
+22094|joining a company, getting a job with a company, entering a company|NACF||||||
+22095|coast, offing, offshore|NACF||||||
+22096|left hand, upper hand, secret skills, secret, mystery, last resort, trump card|NACF||||||
+22097|imperial subjects, the people|NACF||||||
+22098|we, us|NACF||||||
+22099|Europe &, America|NPl||||||
+22100|about, roughly, approximately|A||||||
+22101|generally, on the whole, as a rule|A||||||
+22102|completely, quite, entirely, altogether, totally, not at all (with neg. verb)|A||||||
+22103|outline, gist|NACF||||||
+22104|page|NACF||||||
+22105|Beijing dialect (of Mandarin), Pekingese|NACF||||||
+22106|piano recital|NACF||||||
+22107|concealed winning hand consisting of chows, a pair that isn't a value pair, and an open wait|NACF||||||
+22108|Portugal|NPl||||||
+22109|pro wrestler|NACF||||||
+22110|light|Ana||||||
+22111|lightness|NACF||||||
+22112|right|Ana||||||
+22113|rightness|NACF||||||
+22114|right field, right fielder|NACF||||||
+22115|light van|NACF||||||
+22116|easy, simple, without trouble, without hardships|Ana||||||
+22117|(economically) comfortable|Ana||||||
+22118|raku pottery|NACF||||||
+22119|pleasure garden, paradise|NACF||||||
+22120|Rakuen|NPl||||||
+22121|optimistic|Ana||||||
+22122|optimism|NACF||||||
+22123|revolt, rebellion, war|NACF||||||
+22124|ranking|NACF||||||
+22125|toplist (e.g. of WWW sites)|NACF||||||
+22126||-||||||
+22127|Latin America|NPl||||||
+22128|Latin (language)|NACF||||||
+22129|warrant, summons, written order|NACF||||||
+22130|successive jobs, consecutive jobs|NACF||||||
+22131|enumeration, list|NACF||||||
+22132|exercises, practice problem|NACF||||||
+22133|archipelago, chain of islands|NACF||||||
+22134|back, reverse, other side, inside, tails (of coins), background|NACF||||||
+22135|ring|NACF||||||
+22136|ringside|NACF||||||
+22137|rhythm|NACF||||||
+22138|sound recorder, tape recorder|NACF||||||
+22139|audio tape, magnetic tape|NACF||||||
+22140|ruby|NACF||||||
+22141|ruby character, small hiragana or katakana readings of kanji usually above or to the side of the kanji (esp. used by printers and in ref. to printed material)|NACF||||||
+22142|Ruby (programming language)|NACF||||||
+22143|Ruby|NPl||||||
+22144|looks|NACF||||||
+22145|Renaissance|NACF||||||
+22146|roux (mixture of butter and flour used to make sauces), sauce made from such a mixture|NACF||||||
+22147|(Japanese) curry powder, curry sauce made from this powder|NACF||||||
+22148|ruble (Russian currency), rouble|NACF||||||
+22149|Louvre (Museum)|NNe||||||
+22150|Louvres|NPl||||||
+22151|root|NACF||||||
+22152|route|NACF||||||
+22153|loose (e.g. belt)|Ana||||||
+22154|slovenly, careless, slack|Ana||||||
+22155|500-man battalion (Zhou-dynasty Chinese army)|NACF||||||
+22156|travel expenses|NACF||||||
+22157|passport|NACF||||||
+22158|travel agent, travel agency|NACF||||||
+22159|travel voucher, travel coupon|NACF||||||
+22160|traveller, traveler|NACF||||||
+22161|administrative and civil code|NACF||||||
+22162|fee, charge, rate|SxN||||||
+22163||-||||||
+22164|material|SxN||||||
+22165||-||||||
+22166|ryotei, traditional Japanese restaurant (esp. a luxurious one)|NACF||||||
+22167|rucksack, knapsack, backpack|NACF||||||
+22168|prosperity|NACF||||||
+22169|prosperous, flourishing, thriving|Ana||||||
+22170|third son|NACF||||||
+22171|Occella iburia (species of poacher)|NACF||||||
+22172|one's nature, one's destiny|NACF||||||
+22173|custom, tradition, habit, convention|NACF||||||
+22174|reopening, resumption, restarting|NACF||||||
+22175|redevelopment|NACF||||||
+22176|decoy, fake buyer, shill|NACF||||||
+22177|hired applauder|NACF||||||
+22178|horse meat|NACF||||||
+22179|(writing) song lyrics|NACF||||||
+22180|antioxidant|NACF||||||
+22181|support|NACF||||||
+22182|supporter (e.g. wrist supporter), athletic supporter, jockstrap|NACF||||||
+22183|supporter (esp. of soccer), backer|NACF||||||
+22184|support|NACF||||||
+22185|Satou Rumina (1969.12.29-)|NNe||||||
+22186|sound|NACF||||||
+22187|operator|NACF||||||
+22188|intergenerational ethics|NACF||||||
+22189|full name|NACF||||||
+22190|nature, property, disposition|NACF||||||
+22191|inhabiting, living|NACF||||||
+22192|habitat, home (e.g. of the tiger)|NACF||||||
+22193|party politics|NACF||||||
+22194|barrier, gate|NACF||||||
+22195|assertiveness, positiveness|NACF||||||
+22196|selection, choice, choosing, picking, election|SxN||||||
+22197||-||||||
+22198|selection, choice, picking out|NACF||||||
+22199|selection, classification, sorting, screening, triage|NACF||||||
+22200|strategic nuclear weapon|NACF||||||
+22201|selection|NACF||||||
+22202|capital investment, capital expenditure, investment in plant and equipment|NACF||||||
+22203|vindication of honour, vindication of honor, making up for loss, revenge|NACF||||||
+22204|set-top box|NACF||||||
+22205|ti, si, 7th note in the tonic solfa representation of the diatonic scale|NACF||||||
+22206|office (government department beneath a bureau under the ritsuryo system)|NACF||||||
+22207|visual, vision|Px||||||
+22208|visual, vision|Sx||||||
+22209|wish, desire, ambition|NACF||||||
+22210|mayoral election|NACF||||||
+22211||-||||||
+22212|Sidney, Sydney (Australia)|NPl||||||
+22213|street fighting, urban warfare|NACF||||||
+22214|aspiration, volunteering, desire, application|NACF||||||
+22215|administration of justice|NACF||||||
+22216|judicial trial|NACF||||||
+22217|poet|NACF||||||
+22218|field of vision, visibility, view, visual field, (one's) ken|NACF||||||
+22219|chairman, moderator, toastmaster, master of ceremonies, chairperson, host (of a TV show, etc.)|NACF||||||
+22220|sense of sight, vision|NACF||||||
+22221|qualifications, requirements, capabilities|NACF||||||
+22222|funds, capital|NACF||||||
+22223|fundraising|NACF||||||
+22224|fundraising, financing, cash flow|NACF||||||
+22225|executive, executives|NACF||||||
+22226|executive committee|NACF||||||
+22227|stay of execution, suspended sentence|NACF||||||
+22228|cramschool (for boys and girls who wish to go on to the next stage of education)|NACF||||||
+22229|ignoring a traffic light, red-light violation, jaywalking|NACF||||||
+22230|new singer|NACF||||||
+22231|invasion|NACF||||||
+22232|moving forward (e.g. vehicle), onward movement|NACF||||||
+22233|advance (work, procedure, etc), advancement, progress|NACF||||||
+22234|progress (of a disease), disease progression|NACF||||||
+22235|progression (harmonic, melodic)|NACF||||||
+22236|judging, inspection, examination, investigation, review|NACF||||||
+22237|establishing, founding, setting up, organizing, establishment|NACF||||||
+22238|salty taste, saltiness|NACF||||||
+22239|pickling in salt|NACF||||||
+22240|leaving unchanged, leaving unused|NACF||||||
+22241|salt water, brine|NACF||||||
+22242|writing (e.g. as a profession)|NACF||||||
+22243|juice, sap|NACF||||||
+22244|eyesight|NACF||||||
+22245|inspection, observation|NACF||||||
+22246|one's line of sight, one's gaze, one's eyes (looking), glance, gaze, look|NACF||||||
+22247|poetry anthology, collection of poems, collected poems|NACF||||||
+22248|thinker|NACF||||||
+22249|opinion, point of view, visual point|NACF||||||
+22250|discourtesy, impoliteness|NACF||||||
+22251|excuse me, goodbye|CE||||||
+22252|field of vision, view|NACF||||||
+22253|one's outlook (e.g. on life), one's horizons|NACF||||||
+22254|station (esp. a police station), office (e.g. tax office)|NACF||||||
+22255|disposal, throwing away, selling off|NACF||||||
+22256|dealing with (a problem), measure|NACF||||||
+22257|punishment, penalty|NACF||||||
+22258|putting down (e.g. diseased animal)|NACF||||||
+22259|staff member, station employee, official|NACF||||||
+22260|various countries, various regions, various provinces|SxN||||||
+22261||-||||||
+22262|colonization, colonisation|NACF||||||
+22263|colony|NACF||||||
+22264|colonial|NACF||||||
+22265|signature|NACF||||||
+22266|life, lifetime, career|NACF||||||
+22267|for life, all one's life, throughout one's life, as long as one lives|UNC||||||
+22268|consumer|NACF||||||
+22269|consumer goods|NACF||||||
+22270|consumption tax (incl. sales tax, VAT, excise duty, etc.)|NACF||||||
+22271|symptoms, condition|NACF||||||
+22272|case|NACF||||||
+22273|theme song|NACF||||||
+22274|entry in a race|NACF||||||
+22275|Zhou (dynasty of China), Chou|NACF||||||
+22276|perimeter|NACF||||||
+22277||-||||||
+22278|counter for laps or circuits|C||||||
+22279|common knowledge, being well-known, making (something) well-known|NACF||||||
+22280|meeting place, rendezvous (point), roll-call (assembly) point, appointed (designated) place|NACF||||||
+22281|frequency (esp. of waveforms)|NACF||||||
+22282|ambient temperature|NACF||||||
+22283|cycle, period|NACF||||||
+22284|whole year, anniversary|NACF||||||
+22285|scrupulous, meticulous, careful|Ana||||||
+22286|scrupulousness, meticulousness, carefulness|NACF||||||
+22287|accommodation, reception, housing|NACF||||||
+22288|seating|NACF||||||
+22289|custody (e.g. awaiting deportation), internment|NACF||||||
+22290|admission, hospitalization|NACF||||||
+22291|entering (e.g. in dictionary)|NACF||||||
+22292|internment camp, detention facility, POW camp, refugee camp|NACF||||||
+22293|soviet|NACF||||||
+22294|Soviet Union|NOI||||||
+22295|close associate, close aide, brains-truster|NACF||||||
+22296|side, flank, profile, sidelight, lateral|NACF||||||
+22297|aspect, dimension|NACF||||||
+22298|song|NACF||||||
+22299|thong|NACF||||||
+22300|soloist|NACF||||||
+22301|solo|NACF||||||
+22302|Solo|NPl||||||
+22303|abacus|NACF||||||
+22304|clothing|NACF||||||
+22305|binding (of a book)|NACF||||||
+22306|draft (for a speech, bill, etc.)|NACF||||||
+22307|equipping, installing, fitting, mounting, putting on|NACF||||||
+22308|mutual savings bank|NACF||||||
+22309|mutual exchange|NACF||||||
+22310|interaction|NACF||||||
+22311|armoring, armouring, armor, armour|NACF||||||
+22312|herbivorous, plant-eating, graminivorous|NACF||||||
+22313|ornament, decoration|NACF||||||
+22314|binding (book), format|NACF||||||
+22315|presumption, assumption|NACF||||||
+22316|estimation|NACF||||||
+22317|that is, namely, i.e.|A||||||
+22318|that is, namely, i.e.|PP||||||
+22319|special|Ana||||||
+22320|specialness|NACF||||||
+22321|staff|NACF||||||
+22322|stuff|NACF||||||
+22323|stadium|NACF||||||
+22324|Suzuki Ranran (1975.8-)|NNe||||||
+22325|begin a trip, depart, embark|VsuI||||||
+22326|viewpoint, standpoint, point of view|NACF||||||
+22327|tie|NACF||||||
+22328|Thailand|NPl||||||
+22329|sea bream (Sparidae), porgy|NACF||||||
+22330|tai (species of reddish-brown Pacific sea bream, Pagrus major)|NACF||||||
+22331|majority, more than half, most (of)|NACF||||||
+22332|mostly, largely, mainly, predominately, nearly|NACF||||||
+22333|athletic festival|NACF||||||
+22334|timer, clock register|NACF||||||
+22335|Tayma (Saudi Arabia)|NPl||||||
+22336|timing|NACF||||||
+22337|time|NACF||||||
+22338|thyme|NACF||||||
+22339|time out (e.g. in sport)|NACF||||||
+22340|time machine|NACF||||||
+22341|timely|Ana||||||
+22342|clutch hit, run-scoring hit, RBI hit|NACF||||||
+22343|special offers available for a limited time of the day, limited-time sale|NACF||||||
+22344|time-stamp|NACF||||||
+22345|time-stamping machine|NACF||||||
+22346|times|NACF||||||
+22347|The Times (British newspaper)|NNe||||||
+22348|typist|NACF||||||
+22349|tile|NACF||||||
+22350|massive (quantity), mass (e.g. mass production, mass transit, mass destruction)|Ana||||||
+22351|large quantity|NACF||||||
+22352|tight|Ana||||||
+22353|tightness|NACF||||||
+22354|tire, tyre|NACF||||||
+22355|leader of a fearless tribe|NACF||||||
+22356|iridescent|NACF||||||
+22357|equivocal, ambivalent|NACF||||||
+22358|variable meaning, weasel-word, chameleonic interpretation|NACF||||||
+22359|soleness|NACF||||||
+22360|sole, single, solo|Ana||||||
+22361|independence, singleness, singularity|NACF||||||
+22362|star (esp. television), personality|NACF||||||
+22363|talent, skill|NACF||||||
+22364|talent, unit of currency in ancient Greece and Israel|NACF||||||
+22365|Chinese "Wings" constellation (one of the 28 mansions)|NNe||||||
+22366|(written) proposal|NACF||||||
+22367|adverb of degree|NACF||||||
+22368|regular service|NACF||||||
+22369|subscription (e.g. to a magazine)|NACF||||||
+22370|term deposit, (fixed) time deposit|NACF||||||
+22371|resistance, opposition, standing up to|NACF||||||
+22372|reluctance, repulsion, repugnance|NACF||||||
+22373|resistance, drag, friction|NACF||||||
+22374|electrical resistance|NACF||||||
+22375|resistor|NACF||||||
+22376|stopping (of a train, car, etc.), stop|NACF||||||
+22377|range of use, range of application, range of applications, scope (of a document)|NACF||||||
+22378|exhibition|NACF||||||
+22379|test case|NACF||||||
+22380|philosophy|NACF||||||
+22381|7th in a sequence denoted by the iroha system, 7th note in the diatonic scale (used in key names, etc.)|NACF||||||
+22382|thorn, spine, prickle|NACF||||||
+22383|splinter (esp. lodged in one's flesh), hard sharp item (esp. lodged in one's throat, e.g. fish bone)|NACF||||||
+22384|biting words|NACF||||||
+22385|toilet, restroom, bathroom, lavatory|NACF||||||
+22386|limited express train|NACF||||||
+22387|constant, unchanging, eternal|Px||||||
+22388|the House of Tokugawa, the Tokugawas|NACF||||||
+22389|Tokushima prefecture (Shikoku)|NACF||||||
+22390|Tokushima Prefecture|NPl||||||
+22391|triumphantly, proudly|Aj||||||
+22392|tomato (Solanum lycopersicum)|NACF||||||
+22393|park|VruiT||||||
+22394|prevent, suppress (a cough), hold back (tears), hold (one's breath), relieve (pain)|VruiT||||||
+22395|stop (someone from doing something), dissuade, forbid, prohibit|VruiT||||||
+22396|notice, be aware of, concentrate on, pay attention to, remember, bear in mind|VruiT||||||
+22397|fix (in place), fasten, tack, pin, nail, button, staple|VruiT||||||
+22398|detain, keep in custody|VruiT||||||
+22399|drunkard, drunk, sot|NACF||||||
+22400|trouble|NACF||||||
+22401|electrical transistor|NACF||||||
+22402|playing cards|NACF||||||
+22403|training|NACF||||||
+22404|bird meat (esp. chicken meat), fowl, poultry|NACF||||||
+22405|torii, Shinto shrine archway|NACF||||||
+22406|control law|NACF||||||
+22407|company director, board member|NACF||||||
+22408|board of directors|NACF||||||
+22409|board of directors' meeting|NACF||||||
+22410|manage, control, supervise, oversee, command|VrugT||||||
+22411||-||||||
+22412|Toronto (Canada)|NPl||||||
+22413|rule, reign, government, governing|NACF||||||
+22414|(mountain) pass, ridge, peak|SxN||||||
+22415||-||||||
+22416|peak (e.g. of summer), worst (e.g. of an illness), crisis, critical point, most difficult part|NACF||||||
+22417|statistics|NACF||||||
+22418|corn (Zea mays), maize|NACF||||||
+22419|keep a secret when asked about it, but let it slip inadvertently when chatting on another occasion|VruiI||||||
+22420|throwing into, inserting, depositing|NACF||||||
+22421|investment, putting in (personnel, etc.)|NACF||||||
+22422|release of a product|NACF||||||
+22423|making (an electrical circuit)|NACF||||||
+22424|tall building|NACF||||||
+22425|all times and places, everywhen and everywhere|NACF||||||
+22426|Toyama prefecture (Hokuriku area)|NACF||||||
+22427|Toyama Prefecture|NPl||||||
+22428|follow, come along with one, accompany|VkuruI||||||
+22429|bill, bill of sale, payment invoice|NACF||||||
+22430|tab (for later payment), credit|NACF||||||
+22431|contact move (in go), direct attack to an enemy stone|NACF||||||
+22432|sound effect produced by striking with clappers a wooden board in kabuki|NACF||||||
+22433|letter|NACF||||||
+22434|reason, motive, pretext|NACF||||||
+22435|one's fortune, one's luck|NACF||||||
+22436|take advantage of, impose on|VmuI||||||
+22437|make an entry (in an account book)|VmuI||||||
+22438|add (one thing to another), add (a few more words, an explanation, etc.)|VruiT||||||
+22439|root, joint, base, crotch|NACF||||||
+22440|add (to), add on, append|VsuT||||||
+22441|furnished with, including|NACF||||||
+22442|impression, appearance|NACF||||||
+22443|sociality|NACF||||||
+22444|under, assistant (e.g. to a manager)|NACF||||||
+22445|crime, sin, wrongdoing, indiscretion|NACF||||||
+22446|penalty, sentence, punishment|NACF||||||
+22447|fault, responsibility, culpability|NACF||||||
+22448|thoughtlessness, lack of consideration|NACF||||||
+22449|rope|NACF||||||
+22450|grand champion's braided belt|NACF||||||
+22451|tug of war (orig. a form of divination to predict whether the year will be favourable or unfavourable)|NACF||||||
+22452|forward puller (of a rickshaw)|NACF||||||
+22453|tightrope walking, funambulism|NACF||||||
+22454|usual state of things|NACF||||||
+22455|always, constantly|A||||||
+22456|extend, stretch out, stand in a row|VrugI||||||
+22457|attend, participate in|VrugI||||||
+22458|enrol, enroll, join|VrugI||||||
+22459|have a connection, be related, be linked|VrugI||||||
+22460|consent or refusal, yes or no|NACF||||||
+22461|inlet|NACF||||||
+22462|seashore, beach|NACF||||||
+22463|opposite side, bottom, other side, side hidden from view, undersurface, reverse side|NACF||||||
+22464|lining, inside|NACF||||||
+22465|in the shadows, behind the scenes, offstage, behind one's back|NACF||||||
+22466|more (to something than meets the eye), hidden side (e.g. of one's personality), unknown circumstances, different side|NACF||||||
+22467|proof|NACF||||||
+22468|opposite (of a prediction, common sense, etc.), contrary|NACF||||||
+22469|inverse (of a hypothesis, etc.)|NACF||||||
+22470|bottom (of an inning), last half (of an inning)|NACF||||||
+22471|side street (often parallel to a main street), back street, alley, alleyway|NACF||||||
+22472|support (e.g. for an argument), backing, proof, evidence, corroboration, substantiation, guarantee, security|NACF||||||
+22473|support (a theory, claim, etc.), back up, substantiate, prove|VruiT||||||
+22474|inside out, upside down|NACF||||||
+22475|flip side, opposite, contrary, reverse|NACF||||||
+22476|turn inside out, turn the other way, turn (something) over|VsuT||||||
+22477|bribe|NACF||||||
+22478|secret fund, slush fund, money for bribery|NACF||||||
+22479|the reverse, other side, lining|NACF||||||
+22480|treachery, betrayal, perfidy|NACF||||||
+22481|betrayer, traitor, turncoat, informer|NACF||||||
+22482|backdoor, rear entrance|NACF||||||
+22483|someone working behind-the-scenes, scene shifter|NACF||||||
+22484|lady consort (to a high personage)|NACF||||||
+22485|reverse side|NACF||||||
+22486|opposite (of the expected)|NACF||||||
+22487|purl stitch (knitting)|NACF||||||
+22488|back and front, inside and outside, both sides|NACF||||||
+22489|inside out (e.g. clothing)|NACF||||||
+22490|double-dealing, two faces (c.f. two-faced)|NACF||||||
+22491|outward appearance and actual condition, inner workings|NACF||||||
+22492|being much talked about, creating a stir, being the talk of town|NACF||||||
+22493|me|P||||||
+22494|you|P||||||
+22495|it does not mean that ..., I don't mean that ..., it is not the case that...|CE||||||
+22496|there is no way that ... (expresses speaker's belief that something is impossible)|CE||||||
+22497|easy, simple|CE||||||
+22498|it does not mean that ..., I don't mean that ..., it is not the case that|CE||||||
+22499|we|P||||||
+22500|Washington, DC (capital of the United States of America)|NPl||||||
+22501|Washington (US state)|NPl||||||
+22502||-||||||
+22503|cotton plant (Gossypium spp.)|NACF||||||
+22504|batting, wadding, padding|NACF||||||
+22505|Williamson|NPl||||||
+22506|kettle|NACF||||||
+22507|burn, scald|NACF||||||
+22508|National Health Insurance drug price, NHI drug price|NACF||||||
+22509|harmful side effects of a medicine or drug|NACF||||||
+22510|(study of) pharmacy, pharmaceutics|NACF||||||
+22511|medicine, chemicals|NACF||||||
+22512|medicine, drug|NACF||||||
+22513|pharmacist, chemist|NACF||||||
+22514|a little, partially, somewhat, slightly, semi-, -ish, on the ... side, a short time, a while|A||||||
+22515|being apt to, being liable to, being inclined to|A||||||
+22516|reserve, spare|NACF||||||
+22517|preparation, preliminaries|NACF||||||
+22518|reserve funds, emergency funds|NACF||||||
+22519|preparatory school (for entrance examinations), cram school, cramming school|NACF||||||
+22520|Yoshida Shinto, fusion of Shinto, Buddhism, Confucianism and Taoism stressing traditional Japanese elements|NACF||||||
+22521|Yoshida Shintou|UNC||||||
+22522|dress, outfit, equipment, makeup, adornment, guise, get-up|NACF||||||
+22523|dress (oneself in), attire oneself in, adorn, decorate|VuT||||||
+22524|pretend, feign, affect, disguise oneself as|VuT||||||
+22525|very careful, thoroughly prepared|Ana||||||
+22526|carefulness, preparedness|NACF||||||
+22527|cheerful, jovial, merry, lively|Ana||||||
+22528|cheerfulness, joviality, merriness, liveliness|NACF||||||
+22529|weather, season|NACF||||||
+22530|spirit of yang|NACF||||||
+22531|positivity|NACF||||||
+22532|proton|NACF||||||
+22533|snow thaw, thawing|NACF||||||
+22534|snow country|NACF||||||
+22535|imported goods|NACF||||||
+22536|possession, having|NACF||||||
+22537|limited company|NACF||||||
+22538|fraternity, friendship|NACF||||||
+22539|friendship|NACF||||||
+22540|expiration date (on a credit card), effective date|NACF||||||
+22541|advantageous, favourable, better, stronger|Ana||||||
+22542|profitable, lucrative, gainful, paying|Ana||||||
+22543|the|UNC||||||
+22544|definitive, representative, typical, classical|Px||||||
+22545|medicine, agent, (chemical) substance, drug, dose|Sx||||||
+22546|country, countryside|NACF||||||
+22547|outskirts, suburbs|NACF||||||
+22548|situated in, resident in|Px||||||
+22549|fortune, riches|NACF||||||
+22550|source of funds, resources, finances|NACF||||||
+22551|Zaire (now Democratic Republic of the Congo)|NPl||||||
+22552|zaire (currency of the Democratic Republic of the Congo)|NACF||||||
+22553||-||||||
+22554|financial world, business circles|NACF||||||
+22555|full-time trade union official|NACF||||||
+22556||-||||||
+22557|Zambia|NPl||||||
+22558|roughly, coarsely, grittily|A||||||
+22559|roughness, coarseness, grittiness, sandiness, granularness|NACF||||||
+22560|rough (touch, voice, etc.), coarse, gritty, sandy, granular|Ana||||||
+22561|rattling (of beans, beads, etc.)|A||||||
+22562|crayfish (esp. Japanese crayfish, Cambaroides japonicus or red swamp crayfish, Procambarus clarkii), crawfish|NACF||||||
+22563|unanimity|NACF||||||
+22564|first half|NACF||||||
+22565|first half of the game or match|NACF||||||
+22566|aforementioned, above-mentioned|NACF||||||
+22567|the preceding year, the previous year, last year|NT||||||
+22568|preceding fiscal year|NACF||||||
+22569|previous work, preceding work|NACF||||||
+22570|first crop grown in a double-cropped field, preceding crop|NACF||||||
+22571|along|Sx||||||
+22572|first doing of ... (ever, in one's life, in the new year, etc.)|Sx||||||
+22573|increase|NACF||||||
+22574|Zou|NPl||||||
+22575|increase (in an amount of money)|NACF||||||
+22576|reinforcement, augmentation, strengthening, increase, buildup|NACF||||||
+22577|arrange, assign, adjust, handle, deal with|VsuruT||||||
+22578|acquire, buy out, take over, purchase|VsuruT||||||
+22579|bribe, buy off, corrupt|VsuruT||||||
+22580|back up, go backwards, reverse|VsuruI||||||
+22581|refund|VsuruT||||||
+22582|backup|VsuruT||||||
+22583|trade|VsuruT||||||
+22584|defend, safeguard, protect|VsuruT||||||
+22585|treat, cure|VsuruT||||||
+22586|qinterpret simultaneously|VsuruT||||||
+22587|produce (e.g. play), direct|VsuruT||||||
+22588|stick to, cling to, adhere to, cohese with, agglutinate with|VsuruT||||||
+22589|add, annex, append|VsuruT||||||
+22590||-||||||
+22591|grant, allow, endow, bestow, assign, confer|VsuruT||||||
+22592|change suddenly, be upheaved|VsuruI||||||
+22593|discuss heatedly|VsuruT||||||
+22594|write a play|VsuruI||||||
+22595|score a goal, score a point|VsuruI||||||
+22596|reach the winning post, reach the finish, make the goal|VsuruI||||||
+22597|get married|VsuruI||||||
+22598|thunder, purr, grumble (e.g. stomach)|VsuruI||||||
+22599|start to roll heavily|VsuruI||||||
+22600|be scattered about, be common, be commonplace, be all over|VsuruI||||||
+22601|be idle|VsuruI||||||
+22602|have a foreign substance in (e.g. one's eye or stomach)|VsuruI||||||
+22603|be composed, be synthesised, be synthesized|VsuruI||||||
+22604|decide, judge, sentence, decree|VsuruI||||||
+22605|raise an army|VsuruI||||||
+22606|launch a business|VsuruI||||||
+22607|walk|VsuruI||||||
+22608|translate|VsuruT||||||
+22609|de-encrypt, decipher|VsuruT||||||
+22610|render|VsuruT||||||
+22611|be regularized, be regularised, get up speed, proceed at full tilt|VsuruI||||||
+22612|be televised, be broadcast, air|VsuruI||||||
+22613|collapse, crumble, break down, cave in|VsuruI||||||
+22614|decay (radioactively), disintegrate|VsuruI||||||
+22615|possess, retain, maintain|VsuruI||||||
+22616|be preserved, be conserved, be stored, be maintained|VsuruI||||||
+22617|save (e.g. to disk)|VsuruT||||||
+22618|migrate, immigrate|VsuruI||||||
+22619|be fixed, be settled, be constant, be definite, be uniform, be regularized, be regularised, be defined, be standardized, be standardised, be certain, be prescribed|VsuruI||||||
+22620|defend oneself|VsuruI||||||
+22621|take care of something by oneself, self-manage|VsuruI||||||
+22622|be employed full-time|VsuruI||||||
+22623|be standing, be permanent|VsuruI||||||
+22624|board (a train, bus, etc.), get into (e.g. a taxi)|VsuruT||||||
+22625|be custom, be common practice, be a habit|VsuruI||||||
+22626|be used habitually, be used daily|VsuruI||||||
+22627|shoot, gun (down)|VsuruT||||||
+22628|raise the curtain|VsuruI||||||
+22629|be opened (of an event), start (season)|VsuruI||||||
+22630|be established, open, be set, be inaugurated|VsuruI||||||
+22631|better, improve|VsuruT||||||
+22632|perform kaizen (Japanese business philosophy of continuous improvement)|VsuruI||||||
+22633|expand, be extended, be enlarged|VsuruI||||||
+22634|establish, settle|VsuruT||||||
+22635|participate, take part in, be concerned in|VsuruI||||||
+22636|tolerante, be open-minded, forbear, be generous, be magnanimous|VsuruI||||||
+22637|be concerned|VsuruI||||||
+22638|do lightly, do easily, do carelessly|VsuruT||||||
+22639|be scornful, have disdain, have contempt|VsuruI||||||
+22640|be abated, be reduced|VsuruI||||||
+22641|take a turn for the better (of an illness), recede (symptoms), recover, convalesce|VsuruI||||||
+22642|make light of, think little of, slight, belittle, dismiss, have contempt for, be in disdain of|VsuruT||||||
+22643|consider, examine, investigate, study, scrutinise, scrutinize, discuss, analyse, analyze, review|VsuruT||||||
+22644|be combined, be united, bind, be bound, be catenated, couple, be coupled, join, be joined|VsuruI||||||
+22645|bond|VsuruI||||||
+22646|be regulated, be policed, be controlled, be restricted|VsuruI||||||
+22647|be the basis, be the foundation|VsuruI||||||
+22648|build (temple, monument, etc.), erect|VsuruT||||||
+22649|name, give a name to, designate, denominate|VsuruT||||||
+22650|inform, publicize|VsuruT||||||
+22651|mention later, discuss below|VsuruT||||||
+22652|reverberate|VsuruI||||||
+22653|exchange (cultures), interchange, interact, mingle, intermingle, network, intercourse|VsuruI||||||
+22654||-||||||
+22655|be exterminated, be expulsed, be destroyed|VsuruI||||||
+22656||-||||||
+22657|encompass, cover (exhaustively), include (all of), comprise, comprehend|VsuruT||||||
+22658|make necessary arrangements, lay the groundwork|VsuruI||||||
+22659|dig around the roots of a tree (before transplanting)|VsuruI||||||
+22660|authorize, authorise, acknowledge, acknowledge, certify, recognize|VsuruT||||||
+22661|join a company, get a job with a company, enter a company|VsuruI||||||
+22662|have successive jobs, have consecutive jobs|VsuruI||||||
+22663|enumerate, list|VsuruT||||||
+22664|reopen, resume, restart|VsuruI||||||
+22665|be redeveloped|VsuruI||||||
+22666|write song lyrics|VsuruI||||||
+22667|support|VsuruT||||||
+22668|inhabit, living|VsuruI||||||
+22669|select, choose, pick out|VsuruT||||||
+22670|be selected, be classified, be sorted, be screened, be triaged|VsuruI||||||
+22671|be selected|VsuruI||||||
+22672|vindicate honour, vindicate of honor, make up for loss, get revenge|VsuruI||||||
+22673|wish, desire|VsuruT||||||
+22674|aspire for, desire, apply for|VsuruT||||||
+22675|ignore a traffic light, jaywalk|VsuruI||||||
+22676|invade|VsuruT||||||
+22677|move forward (e.g. vehicle)|VsuruI||||||
+22678|advance (work, procedure, etc), progress|VsuruI||||||
+22679|progress (of a disease)|VsuruI||||||
+22680|judge, inspect, examine, investigate, review|VsuruT||||||
+22681|establish, found, set up, organize, organise|VsuruT||||||
+22682|be pickled in salt|VsuruI||||||
+22683|write (e.g. as a profession)|VsuruI||||||
+22684|inspect, observe|VsuruI||||||
+22685|be disposed of, be thrown away, be sold off|VsuruI||||||
+22686|deal with (a problem)|VsuruI||||||
+22687|be punished|VsuruI||||||
+22688|be put down (e.g. diseased animal)|VsuruI||||||
+22689|colonize, colonise|VsuruI||||||
+22690|sign|VsuruT||||||
+22691|enter in a race|VsuruI||||||
+22692|be common knowledge, be well-known|VsuruI||||||
+22693||-||||||
+22694||-||||||
+22695||-||||||
+22696||-||||||
+22697||-||||||
+22698|equip, install, fit, mount, put on|VsuruT||||||
+22699|armor, armour|VsuruT||||||
+22700|be herbivorous, eat plants, be graminivorous|VsuruI||||||
+22701|ornate, decorate|VsuruT||||||
+22702|be bound (book), be formatted|VsuruI||||||
+22703|presume, assume|VsuruT||||||
+22704|estimate|VsuruT||||||
+22705|resist, oppose, stand up to|VsuruT||||||
+22706|be reluctant, be repulsed by, be repugned by|VsuruI||||||
+22707|be resistant, be a drag, create friction|VsuruI||||||
+22708|resist (electrical)|VsuruI||||||
+22709|stop (of a train, car, etc.)|VsuruI||||||
+22710|train|VsuruI||||||
+22711|rule, reign, govern|VsuruT||||||
+22712|make statistics|VsuruI||||||
+22713|be thrown into, be inserted, be deposited|VsuruI||||||
+22714|be invested, be put in (personnel, etc.)|VsuruI||||||
+22715|be released (product)|VsuruI||||||
+22716|be made (electrical circuit)|VsuruI||||||
+22717|walk a tightrope|VsuruI||||||
+22718|be burned, be scalded|VsuruI||||||
+22719|thaw (snow)|VsuruI||||||
+22720|be rough (touch, voice, etc.), be coarse, be gritty, be sandy, be granular|VsuruI||||||
+22721|be aforementioned, be above-mentioned|VsuruI||||||
+22722|use regularly, patronize|VsuruT||||||
+22723|hint, suggest|VsuruT||||||
+22724||-||||||
+22725|be relieved, feel secure, feel peace of mind|VsuruI||||||
+22726||-||||||
+22727|explode, burst, blow up, erupt|VsuruI||||||
+22728|defend, testify for|VsuruT||||||
+22729|study|VsuruT||||||
+22730|be diligent|VsuruI||||||
+22731|give a discount|VsuruI||||||
+22732|reimburse, compensate, repay for loss, indemnize, indemnise|VsuruT||||||
+22733|recruit, invite, select, advertise|VsuruT||||||
+22734|raise, collect, solicit|VsuruT||||||
+22735|barricade, disturb, obstruct, hinder, jam, interfere|VsuruT||||||
+22736|prevent, keep in check|VsuruT||||||
+22737|divide, split, partition, separate, segment|VsuruT||||||
+22738|analyze, analyse, break down|VsuruT||||||
+22739|be late, be tardy|VsuruI||||||
+22740|save money, put money aside|VsuruI||||||
+22741|investigate, inquire into, examine, survey, enquire|VsuruT||||||
+22742|regulate, adjust, coordinate, reconcile, tune, fix, tailor|VsuruT||||||
+22743||-||||||
+22744|hesitate, waver, vacillate, be indecisive|VsuruT||||||
+22745|be careful of, pay attention, be cautious, pay heed|VsuruI||||||
+22746||-||||||
+22747||-||||||
+22748|observe, take notice of|VsuruT||||||
+22749|be observant|VsuruI||||||
+22750|order (food, goods), request|VsuruT||||||
+22751|stop, suspend, discontinue, call off, interrupt, cancel|VsuruT||||||
+22752||-||||||
+22753|compromise, give in|VsuruI||||||
+22754||-||||||
+22755|become independent, be self-reliant, be on one's own|VsuruI||||||
+22756|make an effort, work hard, exert oneself, endeavor, endeavour, strive|VsuruI||||||
+22757|agree, approve, consent, assent|VsuruI||||||
+22758||-||||||
+22759||-||||||
+22760|influence, affect, impact|VsuruI||||||
+22761|extend, lengthen, be elongated, be prolonged|VsuruI||||||
+22762||-||||||
+22763|assist, help, support, aid|VsuruT||||||
+22764|postpone, put off, defer, adjourn|VsuruT||||||
+22765|refrain, hold back, be constrained, be modest, be diffident, diffide, have tact, be discrete, be thoughtful, hesitate|VsuruI||||||
+22766|make a speech, make an address|VsuruI||||||
+22767|spread, diffuse, be promulgated, be popularized|VsuruI||||||
+22768|revive, restore|VsuruT||||||
+22769|be revived, be restored, make a comeback, be reborn, be resurrected|VsuruI||||||
+22770||-||||||
+22771|get revenge|VsuruI||||||
+22772|leave for one's new post, proceed to a new appointment|VsuruI||||||
+22773|be short of, be lacking, be short, be insufficient, be deficient|VsuruI||||||
+22774|bear the weight of|VsuruT||||||
+22775||-||||||
+22776|refer, touch upon, mention, allude|VsuruI||||||
+22777|decrease, reduce|VsuruT||||||
+22778|decrease, decline|VsuruI||||||
+22779|limit, restrict|VsuruT||||||
+22780|argue, discuss, debate, dispute|VsuruI||||||
+22781||-||||||
+22782|pass an examination, succeed|VsuruI||||||
+22783|add up, total|VsuruT||||||
+22784|abolish, do away with, repeal|VsuruT||||||
+22785|deliver, distribute|VsuruT||||||
+22786|destroy, break, ruin|VsuruT||||||
+22787|crash (application)|VsuruI||||||
+22788|publish, issue, bring out|VsuruT||||||
+22789|judge, conclude, decide, adjudicate|VsuruT||||||
+22790||VsuruT||||||
+22791||-||||||
+22792|prosper, flourish, thrive|-||||||
+22793||-||||||
+22794|be against, be opposed, be hostile, object, dissent|VsuruI||||||
+22795|begin selling, put on the market|VsuruT||||||
+22796||-||||||
+22797|average, balance|VsuruT||||||
+22798|change, alter, be transformed, vary, mutate, transition, transform, metamorphose, be transfigured|VsuruI||||||
+22799|edit, compile|VsuruT||||||
+22800||-||||||
+22801|deny, negate, repudiate, disavow|VsuruT||||||
+22802|make secure, guarantee, warrant|VsuruT||||||
+22803|compensate, make up for, make reparations|VsuruT||||||
+22804|report, inform|VsuruT||||||
+22805|visit, call on, pay a visit|VsuruT||||||
+22806|appraise, value, assess, evaluate, rate, estimate value|VsuruT||||||
+22807|appreciate, value highly, acknowledge the value (of something)|VsuruT||||||
+22808|violate, offend, breach, transgress, infringe, contravene|VsuruT||||||
+22809|maintain, preserve, improve, support, keep|VsuruT||||||
+22810|retire, give up one's position|VsuruI||||||
+22811|request, ask, commission, entrust (with a matter)|VsuruT||||||
+22812|agree with, be in unison, coincide with, match, conform|VsuruI||||||
+22813|intend do, make a goal, aim to do|VsuruT||||||
+22814|experiment|VsuruI||||||
+22815|carry out, execute, implement, fulfill, realize|VsuruT||||||
+22816|be proud, boast of, take pride in|VsuruT||||||
+22817|become independent, be self-reliant|VsuruI||||||
+22818||-||||||
+22819|resign (a position)|VsuruT||||||
+22820|resign|VsuruI||||||
+22821|be realized, be realised, come true, be implemented, materialize, materialise|VsuruI||||||
+22822|realize, realised, implement, materialize, materialise|VsuruT||||||
+22823|show a film, screen|VsuruT||||||
+22824|concede, give way to, compromise, conciliate|VsuruT||||||
+22825|go up, rise, ascend, climb|VsuruI||||||
+22826|prepare, set up, arrange, provision, reserve|VsuruT||||||
+22827|supply, furnish, provide|VsuruI||||||
+22828|be restored, recuperate, be rehabilitated, recover, return, improve|VsuruI||||||
+22829|restore, rehabilitate, recover, improve|VsuruT||||||
+22830||-||||||
+22831|open a place the public|VsuruT||||||
+22832||-||||||
+22833|reform, improve, reorganize, reorganise|VsuruT||||||
+22834||-||||||
+22835||-||||||
+22836|interpret, explain|VsuruT||||||
+22837|reclaim, exploit, develop, cultivate|VsuruT||||||
+22838|come down, descend, drop|VsuruI||||||
+22839|process, manufacture, treat|VsuruT||||||
+22840|magnify, enlarge, expand, amplify|VsuruT||||||
+22841|confirm, ascertain, verify, validate, review, check, affirm, identify|VsuruT||||||
+22842||-||||||
+22843||-||||||
+22844||-||||||
+22845|manage, control, administer|VsuruT||||||
+22846|observe, watch closely, survey|VsuruT||||||
+22847|finish, complete|VsuruT||||||
+22848|be finished, be completed|VsuruI||||||
+22849|admire|VsuruT||||||
+22850|be impressed|VsuruI||||||
+22851|intervene, interfere, meddle with|VsuruI||||||
+22852|appreciate|VsuruT||||||
+22853|assume, hypothesize, hypothesise|VsuruT||||||
+22854|suppose|VsuruI||||||
+22855||-||||||
+22856||-||||||
+22857||-||||||
+22858|experience, undergo|VsuruT||||||
+22859||VsuruT||||||
+22860||VsuruT||||||
+22861||VsuruT||||||
+22862|contract, make a contract with|VsuruI||||||
+22863||-||||||
+22864||-||||||
+22865||-||||||
+22866|study, research, investigate|VsuruT||||||
+22867|study, train, intern|VsuruT||||||
+22868||-||||||
+22869||-||||||
+22870||-||||||
+22871||-||||||
+22872||-||||||
+22873||-||||||
+22874|expect, hope, anticipate|VsuruT||||||
+22875|be confused, be in disorder|VsuruI||||||
+22876||-||||||
+22877||-||||||
+22878|construct|VsuruI||||||
+22879|announce publicly|VsuruT||||||
+22880|regret, repent, be sorry|VsuruT||||||
+22881|exchange, interchange, switch, barter, substitute, replace|VsuruT||||||
+22882|consider, think over, take into account|VsuruT||||||
+22883||-||||||
+22884|take turns, take a person's place, alternate, change, shift, substitute|VsuruI||||||
+22885||-||||||
+22886|affirm, acknowledge|VsuruT||||||
+22887|refuse, reject, deny|VsuruT||||||
+22888|permit, approve, authorize, license|VsuruT||||||
+22889|educate, train, instruct, teach, upbring|VsuruT||||||
+22890|compel, force a person do, coerce|VsuruT||||||
+22891|reform, correct, rectify, straighten, remedy|VsuruT||||||
+22892||-||||||
+22893|rescue, help, aid|VsuruT||||||
+22894|rest, take a break|VsuruI||||||
+22895||-||||||
+22896|be troubled, be annoyed, be bothered, be inconvenienced|VsuruI||||||
+22897||-||||||
+22898||-||||||
+22899|permit or approve tacitly , connive, tolerate, acquiesce|VsuruT||||||
+22900||-||||||
+22901|ignore, disregard|VsuruT||||||
+22902|enter a school or university, enroll|VsuruI||||||
+22903|be convinced by, consent to, agree to, assent to|VsuruT||||||
+22904|understand, comprehend, grasp|VsuruI||||||
+22905||-||||||
+22906||-||||||
+22907|be hospitalized|VsuruI||||||
+22908||-||||||
+22909|apply, put in practice|VsuruI||||||
+22910||-||||||
+22911||-||||||
+22912|contact, call, message|VsuruT||||||
+22913|get in touch, communicate|VsuruI||||||
+22914|practice, practise, exercise|VsuruT||||||
+22915||-||||||
+22916||-||||||
+22917|make use of, utilize, use|VsuruT||||||
+22918||-||||||
+22919|waste (money or time), throw away|VsuruT||||||
+22920||-||||||
+22921||-||||||
+22922||-||||||
+22923||-||||||
+22924|hold a trial|VsuruI||||||
+22925||-||||||
+22926|join, take part in, participate in, be involved in|VsuruI||||||
+22927|take a walk, stroll|VsuruI||||||
+22928|agree, approve|VsuruI||||||
+22929|make a living, support oneself|VsuruI||||||
+22930||-||||||
+22931|produce, manufacture|VsuruT||||||
+22932|select, choose , screen|VsuruT||||||
+22933|specialize, major in|VsuruT||||||
+22934||-||||||
+22935|occupy|VsuruT||||||
+22936||-||||||
+22937|choose, select|VsuruT||||||
+22938|wash (clothes)|-||||||
+22939||-||||||
+22940|economize, economise, skimp, save|VsuruT||||||
+22941|drive|VsuruT||||||
+22942|manage (money)|VsuruT||||||
+22943||-||||||
+22944||-||||||
+22945|lead, guide, instruct, direct, coach|VsuruT||||||
+22946|stimulate, irritate, excite, encourage, provoke|VsuruT||||||
+22947||-||||||
+22948|instruct, direct|VsuruT||||||
+22949||-||||||
+22950|be anxious, feel uneasy, worry|VsuruI||||||
+22951|care for, aid, help, assist|VsuruT||||||
+22952|make progress, advance|VsuruI||||||
+22953||-||||||
+22954|make out an application, make a request to, petition|VsuruT||||||
+22955||-||||||
+22956||-||||||
+22957|spend (expenditures)|VsuruT||||||
+22958||-||||||
+22959||-||||||
+22960|use, employ|VsuruT||||||
+22961|eat, take a meal|VsuruI||||||
+22962|consume, expend|VsuruT||||||
+22963|introduce, present|VsuruT||||||
+22964||-||||||
+22965|be promoted, advance, rise in rank|VsuruI||||||
+22966|invite|VsuruT||||||
+22967|own, possess|VsuruT||||||
+22968||-||||||
+22969||-||||||
+22970|reduce, cut, curtail|VsuruT||||||
+22971|curtail oneself|VsuruI||||||
+22972|publish, issue|VsuruT||||||
+22973|leave for, depart|VsuruI||||||
+22974|attend, be present, appear|VsuruI||||||
+22975||-||||||
+22976|concentrate, centralize, centralize, focus, converge, gather together|VsuruI||||||
+22977|repair, mend, fix, service|VsuruT||||||
+22978|find employment, get a job|VsuruI||||||
+22979|accommodate, seat, intern|VsuruT||||||
+22980|accelerate, promote, quicken, encourage, facilitate, spur on|VsuruI||||||
+22981||-||||||
+22982||-||||||
+22983||-||||||
+22984|consult, discuss|VsuruT||||||
+22985|clean, sweep, dust, scrub|VsuruT|||1269|||
+22986||-||||||
+22987||-||||||
+22988||-||||||
+22989||-||||||
+22990||-||||||
+22991|be released from a hospital, be discharged|VsuruI||||||
+22992|be opposed, be confronted, be antagonised|VsuruI||||||
+22993||-||||||
+22994||-||||||
+22995||-||||||
+22996||-||||||
+22997||-||||||
+22998|work all night, stay up all night|VsuruI||||||
+22999||-||||||
+23000||-||||||
+23001|vote, cast a ballot|VsuruI||||||
+23002|unify, unite, consolidate|VsuruT||||||
+23003||-||||||
+23004|invest in|VsuruT||||||
+23005|invest|VsuruI||||||
+23006|see through|VsuruT||||||
+23007|banish, expel, deport, purge, evict|VsuruT||||||
+23008||-||||||
+23009||-||||||
+23010|investigate thoroughly, press, hound|VsuruT||||||
+23011|inform, give notice, report, post|VsuruT||||||
+23012||-||||||
+23013||-||||||
+23014|transport, convey, carry, freight, ship|VsuruT||||||
+23015||-||||||
+23016|promise, agree to, make a pact with|VsuruT||||||
+23017|prevent, protect|VsuruT||||||
+23018|study beforehand, prepare for a lesson|VsuruT||||||
+23019|predict, expect, anticipate, forecast|VsuruI||||||
+23020|demand, claim, require|VsuruT||||||
+23021|request, claim, demand, appeal for|VsuruT||||||
+23022|train, develop (a person), educate|VsuruT||||||
+23023||-||||||
+23024|import, introduce|VsuruT||||||
+23025|export|VsuruT||||||
+23026|kidnap, abduct|VsuruT||||||
+23027|finance, furnish with funds, lend to|VsuruI||||||
+23028||-||||||
+23029|send by mail, post|VsuruT||||||
+23030|tempt, lure, entice, seduce|VsuruT||||||
+23031|have no hope, be in despair, despair, be hopeless|VsuruI||||||
+23032|increase, grow, augment, rise, increment|VsuruI||||||

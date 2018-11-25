@@ -80,6 +80,7 @@ public class SearchByRadicalFragment extends Fragment implements
     @BindView(R.id.search_by_radical_results_grid) RecyclerView mResultsGridRecyclerView;
     @BindView(R.id.search_by_radical_selection_grid_no_results_textview) TextView mNoResultsTextView;
     private Unbinder mBinding;
+    public static final String ASSOCIATED_COMPONENTS_DELIMITER = "";
     private static final int MAX_RECYCLERVIEW_HEIGHT_DP = 320;
     private static final int ROOM_DB_COMPONENT_GRID_LOADER = 5684;
     public static final int ROOM_DB_COMPONENT_GRID_FILTER_LOADER = 4682;
@@ -553,8 +554,8 @@ public class SearchByRadicalFragment extends Fragment implements
     @TargetApi(23) private static boolean isPrintable( String c ) {
         Paint paint=new Paint();
         //paint.setTypeface(MainActivity.CJK_typeface);
-        boolean hasGlyph=true;
-        hasGlyph=paint.hasGlyph(c);
+        boolean hasGlyph = true;
+        if (!c.equals("")) hasGlyph=paint.hasGlyph(c);
         return hasGlyph;
 //            Character.UnicodeBlock block = Character.UnicodeBlock.of( c );
 //            return (!Character.isISOControl(c)) &&
@@ -733,9 +734,11 @@ public class SearchByRadicalFragment extends Fragment implements
 
             //Displaying only the search results that have a glyph in the font
             mPrintableSearchResults = new ArrayList<>();
+            String value;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 for (int i = 0; i < search_results.size(); i++) {
-                    if (isPrintable(search_results.get(i).substring(0, 1))) {
+                    value = search_results.get(i);
+                    if (value.length()>0 && isPrintable(value.substring(0, 1))) {
                         mPrintableSearchResults.add(search_results.get(i));
                     }
                 }
@@ -874,10 +877,10 @@ public class SearchByRadicalFragment extends Fragment implements
                             containsAtLeastOnePrintableGlyph = true;
 
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                printableResultsForCurrentElement = associatedComponents.get(i).getAssociatedComponents().split(";");
-                                for (int j = 0; j < printableResultsForCurrentElement.length; j++) {
+                                printableResultsForCurrentElement = associatedComponents.get(i).getAssociatedComponents().split(ASSOCIATED_COMPONENTS_DELIMITER);
+                                for (String aPrintableResultsForCurrentElement : printableResultsForCurrentElement) {
                                     containsAtLeastOnePrintableGlyph = false;
-                                    if (isPrintable(printableResultsForCurrentElement[j].substring(0, 1))) {
+                                    if (aPrintableResultsForCurrentElement.length() > 0 && isPrintable(aPrintableResultsForCurrentElement.substring(0, 1))) {
                                         containsAtLeastOnePrintableGlyph = true;
                                         break;
                                     }
@@ -1164,19 +1167,19 @@ public class SearchByRadicalFragment extends Fragment implements
 
             for (KanjiComponent.AssociatedComponent associatedComponent : associatedComponents) {
                 if (checkForExactMatchesOfElementA && associatedComponent.getComponent().equals(elementA)) {
-                    listOfMatchingResultsElementA = Arrays.asList(associatedComponent.getAssociatedComponents().split(";"));
+                    listOfMatchingResultsElementA = Arrays.asList(associatedComponent.getAssociatedComponents().split(ASSOCIATED_COMPONENTS_DELIMITER));
                     checkForExactMatchesOfElementA = false;
                 }
                 if (checkForExactMatchesOfElementB && associatedComponent.getComponent().equals(elementB)) {
-                    listOfMatchingResultsElementB = Arrays.asList(associatedComponent.getAssociatedComponents().split(";"));
+                    listOfMatchingResultsElementB = Arrays.asList(associatedComponent.getAssociatedComponents().split(ASSOCIATED_COMPONENTS_DELIMITER));
                     checkForExactMatchesOfElementB = false;
                 }
                 if (checkForExactMatchesOfElementC && associatedComponent.getComponent().equals(elementC)) {
-                    listOfMatchingResultsElementC = Arrays.asList(associatedComponent.getAssociatedComponents().split(";"));
+                    listOfMatchingResultsElementC = Arrays.asList(associatedComponent.getAssociatedComponents().split(ASSOCIATED_COMPONENTS_DELIMITER));
                     checkForExactMatchesOfElementC = false;
                 }
                 if (checkForExactMatchesOfElementD && associatedComponent.getComponent().equals(elementD)) {
-                    listOfMatchingResultsElementD = Arrays.asList(associatedComponent.getAssociatedComponents().split(";"));
+                    listOfMatchingResultsElementD = Arrays.asList(associatedComponent.getAssociatedComponents().split(ASSOCIATED_COMPONENTS_DELIMITER));
                     checkForExactMatchesOfElementD = false;
                 }
                 if (!checkForExactMatchesOfElementA && !checkForExactMatchesOfElementB &&!checkForExactMatchesOfElementC && !checkForExactMatchesOfElementD) break;
@@ -1261,7 +1264,7 @@ public class SearchByRadicalFragment extends Fragment implements
                 List<String> structureComponents;
                 List<String> currentIntersections;
                 for (KanjiComponent.AssociatedComponent associatedComponent : associatedComponents) {
-                    structureComponents = Arrays.asList(associatedComponent.getAssociatedComponents().split(";"));
+                    structureComponents = Arrays.asList(associatedComponent.getAssociatedComponents().split(ASSOCIATED_COMPONENTS_DELIMITER));
                     currentIntersections = Utilities.getIntersectionOfLists(listOfIntersectingResults, structureComponents);
                     listOfResultsRelevantToRequestedStructure.addAll(currentIntersections);
                 }
