@@ -55,7 +55,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         createVisibilityArray();
 
         mInputQueryTextType = ConvertFragment.getTextType(mInputQuery);
-        mInputQueryFirstLetter = mInputQuery.substring(0,1);
+        mInputQueryFirstLetter = (mInputQuery.length()>0) ? mInputQuery.substring(0,1) : "";
 
         AssetManager am = mContext.getApplicationContext().getAssets();
         mDroidSansJapaneseTypeface = Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf"));
