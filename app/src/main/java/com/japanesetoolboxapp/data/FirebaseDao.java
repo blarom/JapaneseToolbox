@@ -137,14 +137,14 @@ public class FirebaseDao {
             else reference.addValueEventListener(mEventListenerUpdateKeyValuePair);
         }
     }
-    public void updateObjectOrCreateItInFirebaseDb(Object object, boolean onlyOnce) {
+    public void updateObjectOrCreateItInFirebaseDb(Object object, boolean onlyOnce, String languageCode) {
 
         final DatabaseReference firebaseDbReference = FirebaseDatabase.getInstance().getReference();
         DatabaseReference reference = null;
 
         if (object instanceof Word) {
             Word word = (Word) object;
-            reference = firebaseDbReference.child("wordsList");
+            reference = firebaseDbReference.child("wordsList" + languageCode);
             mEventListenerUpdateObject = createListenerForUpdatingObject(word.getUniqueIdentifier(), word, reference);
         }
 
@@ -158,7 +158,7 @@ public class FirebaseDao {
         try {
             List<Object> objectsList = (List<Object>) objectsData;
             for (Object object : objectsList) {
-                updateObjectOrCreateItInFirebaseDb(object, true);
+                updateObjectOrCreateItInFirebaseDb(object, true, "");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -217,7 +217,7 @@ public class FirebaseDao {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 //If the object was not found, then try to update it. If that fails, then the object is truly missing so create it
-                updateObjectOrCreateItInFirebaseDb(object, true);
+                updateObjectOrCreateItInFirebaseDb(object, true, "");
             }
         };
         return eventListener;

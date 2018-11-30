@@ -161,6 +161,22 @@ public class Word implements Parcelable {
             return meaning;
         }
 
+        private String meaningFR;
+        public void setMeaningFR(String meaningFR) {
+            this.meaningFR = meaningFR;
+        }
+        public String getMeaningFR() {
+            return meaningFR;
+        }
+
+        private String meaningES;
+        public void setMeaningES(String meaningES) {
+            this.meaningES = meaningES;
+        }
+        public String getMeaningES() {
+            return meaningES;
+        }
+
         private String type;
         public void setType(String type) {
             this.type = type;
@@ -208,6 +224,22 @@ public class Word implements Parcelable {
                 return explanation;
             }
 
+            private String explanationFR;
+            public void setExplanationFR(String explanationFR) {
+                this.explanationFR = explanationFR;
+            }
+            public String getExplanationFR() {
+                return explanationFR;
+            }
+
+            private String explanationES;
+            public void setExplanationES(String explanationES) {
+                this.explanationES = explanationES;
+            }
+            public String getExplanationES() {
+                return explanationES;
+            }
+
             private String rules;
             public void setRules(String rules) {
                 this.rules = rules;
@@ -234,6 +266,22 @@ public class Word implements Parcelable {
                 }
                 public String getEnglishSentence() {
                     return englishSentence;
+                }
+
+                private String frenchSentence;
+                public void setFrenchSentence(String frenchSentence) {
+                    this.frenchSentence = frenchSentence;
+                }
+                public String gettFrenchSentence() {
+                    return frenchSentence;
+                }
+
+                private String spanishSentence;
+                public void setSpanishSentence(String spanishSentence) {
+                    this.spanishSentence = spanishSentence;
+                }
+                public String getSpanishSentence() {
+                    return spanishSentence;
                 }
 
                 private String romajiSentence;

@@ -85,20 +85,20 @@ public class ConvertFragment extends Fragment {
     public static List<String> getLatinHiraganaKatakana(String input_value) {
 
         List<String> translation = new ArrayList<>();
-        String translation_latin = "";
-        String translation_hiragana = "";
-        String translation_katakana = "";
-        translation.add(translation_latin);
-        translation.add(translation_hiragana);
-        translation.add(translation_katakana);
+        StringBuilder translation_latin = new StringBuilder();
+        StringBuilder translation_hiragana = new StringBuilder();
+        StringBuilder translation_katakana = new StringBuilder();
+        translation.add(translation_latin.toString());
+        translation.add(translation_hiragana.toString());
+        translation.add(translation_katakana.toString());
 
         String character;
         if (!input_value.equals("")) { character = Character.toString(input_value.charAt(0)); }
         else { return translation; }
 
-        translation_latin = "";
-        translation_hiragana = "" ;
-        translation_katakana = "";
+        translation_latin = new StringBuilder();
+        translation_hiragana = new StringBuilder();
+        translation_katakana = new StringBuilder();
 
         String added_string_latin;
         String added_string_hiragana;
@@ -134,18 +134,21 @@ public class ConvertFragment extends Fragment {
                 charFinderOutput = getCharBasedOnPhoneme(i, added_string, character, character_next, added_string_last);
                 added_string_last = added_string;
 
-                i = Integer.parseInt(charFinderOutput.get(0)); added_string_latin = charFinderOutput.get(1); added_string_hiragana = charFinderOutput.get(2); added_string_katakana = charFinderOutput.get(3);
+                i = Integer.parseInt(charFinderOutput.get(0));
+                added_string_latin = charFinderOutput.get(1);
+                added_string_hiragana = charFinderOutput.get(2);
+                added_string_katakana = charFinderOutput.get(3);
 
                 // Add the string to the translation
-                translation_latin = translation_latin + added_string_latin;
-                translation_hiragana = translation_hiragana + added_string_hiragana;
-                translation_katakana = translation_katakana + added_string_katakana;
+                translation_latin.append(added_string_latin);
+                translation_hiragana.append(added_string_hiragana);
+                translation_katakana.append(added_string_katakana);
 
         }
 
-        translation.set(GlobalConstants.TYPE_LATIN, Utilities.removeSpecialCharacters(translation_latin));
-        translation.set(GlobalConstants.TYPE_HIRAGANA, Utilities.removeSpecialCharacters(translation_hiragana));
-        translation.set(GlobalConstants.TYPE_KATAKANA, Utilities.removeSpecialCharacters(translation_katakana));
+        translation.set(GlobalConstants.TYPE_LATIN, Utilities.removeSpecialCharacters(translation_latin.toString()));
+        translation.set(GlobalConstants.TYPE_HIRAGANA, Utilities.removeSpecialCharacters(translation_hiragana.toString()));
+        translation.set(GlobalConstants.TYPE_KATAKANA, Utilities.removeSpecialCharacters(translation_katakana.toString()));
         return translation;
     }
     public static int getTextType(String input_value) {
@@ -678,7 +681,7 @@ public class ConvertFragment extends Fragment {
             case "タ": added_string = "ta"; break;
             case "テ":
                 switch (character_next) {
-                    case "ィ": i++; break;
+                    case "ィ": added_string = "ti"; i++; break;
                     case "ュ": added_string = "tu"; i++; break;
                     default: added_string = "te"; break;
                 } break;

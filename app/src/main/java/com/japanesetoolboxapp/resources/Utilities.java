@@ -37,13 +37,17 @@ import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.ui.ConvertFragment;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
@@ -57,6 +61,8 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public final class Utilities {
 
@@ -1036,6 +1042,64 @@ public final class Utilities {
         return meanings_commas;
     }
 
+    public static List<Word> getWordsFromJMDictFR(String word, final Context context) {
+
+        if (TextUtils.isEmpty(word)) { return new ArrayList<>(); }
+
+        return new ArrayList<>();
+    }
+    public static List<Word> getWordsFromJMDictES(String word, final Context context) {
+
+        if (TextUtils.isEmpty(word)) { return new ArrayList<>(); }
+
+        return new ArrayList<>();
+    }
+    public String createQueryOnJMDict(String word) throws IOException {
+        //inspired by: https://stackoverflow.com/questions/38220828/an-htmlunit-alternative-for-android
+        //inspired by: https://stackoverflow.com/questions/15805771/submit-form-using-httpurlconnection
+        //inspired by: https://stackoverflow.com/questions/9767952/how-to-add-parameters-to-httpurlconnection-using-post-using-namevaluepair
+
+        String response = "";
+        try {
+            URL url = new URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?HF");
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(15000);
+            conn.setConnectTimeout(15000);
+            conn.setRequestMethod("POST");
+            conn.setDoInput(true);
+            conn.setDoOutput(true);
+
+            OutputStream os = conn.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+
+            String request = URLEncoder.encode("NAME", "UTF-8") + "=" + URLEncoder.encode("dsrchkey", "UTF-8") +
+                    "&" + URLEncoder.encode("VALUE", "UTF-8") + "=" + URLEncoder.encode(word, "UTF-8") +
+                    "&" + URLEncoder.encode("NAME", "UTF-8") + "=" + URLEncoder.encode("dicsel", "UTF-8") +
+                    "&" + URLEncoder.encode("SELECTED VALUE", "UTF-8") + "=" + URLEncoder.encode("H", "UTF-8");
+            writer.write(request);
+
+            writer.flush();
+            writer.close();
+            os.close();
+            int responseCode=conn.getResponseCode();
+
+            if (responseCode == HttpsURLConnection.HTTP_OK) {
+                String line;
+                BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                while ((line=br.readLine()) != null) {
+                    response += line;
+                }
+            }
+            else {
+                response="";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return response;
+    }
 
     //IO utilities
     public static List<String[]> readCSVFile(String filename, Context context) {
@@ -1432,7 +1496,7 @@ public final class Utilities {
 
 
     //Database operations utilities
-    public static List<Word> getMergedWordsList(List<Word> localWords, List<Word> asyncWords) {
+    public static List<Word> getMergedWordsList(List<Word> localWords, List<Word> asyncWords, String languageCode) {
 
         List<Word> finalWordsList = new ArrayList<>();
         List<Word> finalAsyncWords = new ArrayList<>(asyncWords);

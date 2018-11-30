@@ -37,7 +37,8 @@ import butterknife.Unbinder;
 
 public class DictionaryFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<List<Word>>,
-        FirebaseDao.FirebaseOperationsHandler, DictionaryRecyclerViewAdapter.DictionaryItemClickHandler {
+        FirebaseDao.FirebaseOperationsHandler,
+        DictionaryRecyclerViewAdapter.DictionaryItemClickHandler {
 
 
     //region Parameters
@@ -48,6 +49,8 @@ public class DictionaryFragment extends Fragment implements
     private String mInputQuery;
     private static final int JISHO_WEB_SEARCH_LOADER = 41;
     private static final int ROOM_DB_SEARCH_LOADER = 42;
+    public static final int JMDICTFR_WEB_SEARCH_LOADER = 43;
+    public static final int JMDICTES_WEB_SEARCH_LOADER = 44;
     Toast mShowOnlineResultsToast;
     private List<Word> mLocalMatchingWordsList;
     private List<Word> mMergedMatchingWordsList;
@@ -55,6 +58,8 @@ public class DictionaryFragment extends Fragment implements
     private Unbinder mBinding;
     private boolean mAlreadyLoadedRoomResults;
     private boolean mAlreadyLoadedJishoResults;
+    private boolean mAlreadyLoadedJMDictFRResults;
+    private boolean mAlreadyLoadedJMDictESResults;
     private List<String[]> mLegendDatabase;
     private DictionaryRecyclerViewAdapter mDictionaryRecyclerViewAdapter;
     //endregion
@@ -124,9 +129,19 @@ public class DictionaryFragment extends Fragment implements
         }
 
         if (id == JISHO_WEB_SEARCH_LOADER) {
-            JishoResultsAsyncTaskLoader jishoResultsAsyncTaskLoader = new JishoResultsAsyncTaskLoader(getContext(), inputQuery);
-            jishoResultsAsyncTaskLoader.setLoaderState(true);
-            return jishoResultsAsyncTaskLoader;
+            JishoResultsAsyncTaskLoader asyncTaskLoader = new JishoResultsAsyncTaskLoader(getContext(), inputQuery);
+            asyncTaskLoader.setLoaderState(true);
+            return asyncTaskLoader;
+        }
+        else if (id == JMDICTFR_WEB_SEARCH_LOADER) {
+            JMDictFRResultsAsyncTaskLoader asyncTaskLoader = new JMDictFRResultsAsyncTaskLoader(getContext(), inputQuery);
+            asyncTaskLoader.setLoaderState(true);
+            return asyncTaskLoader;
+        }
+        else if (id == JMDICTES_WEB_SEARCH_LOADER) {
+            JMDictESResultsAsyncTaskLoader asyncTaskLoader = new JMDictESResultsAsyncTaskLoader(getContext(), inputQuery);
+            asyncTaskLoader.setLoaderState(true);
+            return asyncTaskLoader;
         }
         else if (id == ROOM_DB_SEARCH_LOADER){
             RoomDbWordSearchAsyncTaskLoader roomDbSearchLoader = new RoomDbWordSearchAsyncTaskLoader(getContext(), inputQuery);
@@ -161,7 +176,9 @@ public class DictionaryFragment extends Fragment implements
             if (Utilities.getShowOnlineResultsPreference(getActivity())) {
                 //If wanted, update the results with words from Jisho.org
                 text += "Searching online, please wait…";
-                startSearchingForJishoWords();
+                startSearchingForWordsInJisho();
+                startSearchingForWordsInJMDictFR();
+                startSearchingForWordsInJMDictES();
             }
             else if (mLocalMatchingWordsList.size()==0) {
                 //Otherwise (if online results are unwanted), if there are no local results to display then try the reverse verb search
@@ -185,7 +202,7 @@ public class DictionaryFragment extends Fragment implements
             if (!showOnlineResults) jishoWords = new ArrayList<>();
 
             if (jishoWords.size() != 0) {
-                mMergedMatchingWordsList = Utilities.getMergedWordsList(mLocalMatchingWordsList, jishoWords);
+                mMergedMatchingWordsList = Utilities.getMergedWordsList(mLocalMatchingWordsList, jishoWords, "");
                 mMergedMatchingWordsList = sortWordsAccordingToLengths(mMergedMatchingWordsList);
 
                 dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mMergedMatchingWordsList);
@@ -212,6 +229,23 @@ public class DictionaryFragment extends Fragment implements
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(JISHO_WEB_SEARCH_LOADER);
 
+        }
+        else if (loader.getId() == JMDICTFR_WEB_SEARCH_LOADER && !mAlreadyLoadedJMDictFRResults) {
+            mAlreadyLoadedJMDictFRResults = true;
+
+            List<Word> JMDictFRWords = Utilities.cleanUpProblematicWordsFromJisho(loaderResultWordsList);
+
+            if (JMDictFRWords.size() > 0) {
+                mMergedMatchingWordsList = Utilities.getMergedWordsList(mLocalMatchingWordsList, JMDictFRWords, "FR");
+                mMergedMatchingWordsList = sortWordsAccordingToLengths(mMergedMatchingWordsList);
+
+                List<Word> differentWords = Utilities.getDifferentAsyncWords(mLocalMatchingWordsList, JMDictFRWords);
+
+                if (differentWords.size() > 0) {
+                    updateFirebaseDbWithJishoWords(differentWords);
+                }
+            }
+            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(JMDICTFR_WEB_SEARCH_LOADER);
         }
 
     }
@@ -248,6 +282,76 @@ public class DictionaryFragment extends Fragment implements
                 cancelLoadInBackground();
             }
             return matchingWordsFromJisho;
+        }
+
+        void setLoaderState(boolean state) {
+            mAllowLoaderStart = state;
+        }
+    }
+    private static class JMDictFRResultsAsyncTaskLoader extends AsyncTaskLoader <List<Word>> {
+
+        String mQuery;
+        private boolean internetIsAvailable;
+        private boolean mAllowLoaderStart;
+
+        JMDictFRResultsAsyncTaskLoader(Context context, String query) {
+            super(context);
+            this.mQuery = query;
+        }
+
+        @Override
+        protected void onStartLoading() {
+            if (mAllowLoaderStart) forceLoad();
+        }
+
+        @Override
+        public List<Word> loadInBackground() {
+
+            internetIsAvailable = Utilities.internetIsAvailableCheck(getContext());
+
+            List<Word> matchingWordsFromJMDict = new ArrayList<>();
+
+            if (internetIsAvailable && !TextUtils.isEmpty(mQuery)) {
+                matchingWordsFromJMDict = Utilities.getWordsFromJMDictFR(mQuery, getContext());
+            } else {
+                cancelLoadInBackground();
+            }
+            return matchingWordsFromJMDict;
+        }
+
+        void setLoaderState(boolean state) {
+            mAllowLoaderStart = state;
+        }
+    }
+    private static class JMDictESResultsAsyncTaskLoader extends AsyncTaskLoader <List<Word>> {
+
+        String mQuery;
+        private boolean internetIsAvailable;
+        private boolean mAllowLoaderStart;
+
+        JMDictESResultsAsyncTaskLoader(Context context, String query) {
+            super(context);
+            this.mQuery = query;
+        }
+
+        @Override
+        protected void onStartLoading() {
+            if (mAllowLoaderStart) forceLoad();
+        }
+
+        @Override
+        public List<Word> loadInBackground() {
+
+            internetIsAvailable = Utilities.internetIsAvailableCheck(getContext());
+
+            List<Word> matchingWordsFromJMDict = new ArrayList<>();
+
+            if (internetIsAvailable && !TextUtils.isEmpty(mQuery)) {
+                matchingWordsFromJMDict = Utilities.getWordsFromJMDictES(mQuery, getContext());
+            } else {
+                cancelLoadInBackground();
+            }
+            return matchingWordsFromJMDict;
         }
 
         void setLoaderState(boolean state) {
@@ -300,6 +404,8 @@ public class DictionaryFragment extends Fragment implements
 
         mAlreadyLoadedRoomResults = false;
         mAlreadyLoadedJishoResults = false;
+        mAlreadyLoadedJMDictFRResults = false;
+        mAlreadyLoadedJMDictESResults = false;
     }
     private void initializeViews(View rootView) {
         mBinding = ButterKnife.bind(this, rootView);
@@ -333,7 +439,7 @@ public class DictionaryFragment extends Fragment implements
         displayResults(localMatchingWordsList);
 
     }
-    private void startSearchingForJishoWords() {
+    private void startSearchingForWordsInJisho() {
 
         if (!TextUtils.isEmpty(mInputQuery)) {
 
@@ -347,6 +453,40 @@ public class DictionaryFragment extends Fragment implements
                 Loader<String> JishoWebSearchLoader = loaderManager.getLoader(JISHO_WEB_SEARCH_LOADER);
                 if (JishoWebSearchLoader == null) loaderManager.initLoader(JISHO_WEB_SEARCH_LOADER, queryBundle, this);
                 else loaderManager.restartLoader(JISHO_WEB_SEARCH_LOADER, queryBundle, this);
+            }
+        }
+
+    }
+    private void startSearchingForWordsInJMDictFR() {
+
+        if (!TextUtils.isEmpty(mInputQuery)) {
+
+            if (getActivity() != null) {
+
+                Bundle queryBundle = new Bundle();
+                queryBundle.putString(getString(R.string.saved_input_query), mInputQuery);
+
+                LoaderManager loaderManager = getActivity().getSupportLoaderManager();
+                Loader<String> webSearchLoader = loaderManager.getLoader(JMDICTFR_WEB_SEARCH_LOADER);
+                if (webSearchLoader == null) loaderManager.initLoader(JMDICTFR_WEB_SEARCH_LOADER, queryBundle, this);
+                else loaderManager.restartLoader(JMDICTFR_WEB_SEARCH_LOADER, queryBundle, this);
+            }
+        }
+
+    }
+    private void startSearchingForWordsInJMDictES() {
+
+        if (!TextUtils.isEmpty(mInputQuery)) {
+
+            if (getActivity() != null) {
+
+                Bundle queryBundle = new Bundle();
+                queryBundle.putString(getString(R.string.saved_input_query), mInputQuery);
+
+                LoaderManager loaderManager = getActivity().getSupportLoaderManager();
+                Loader<String> webSearchLoader = loaderManager.getLoader(JMDICTES_WEB_SEARCH_LOADER);
+                if (webSearchLoader == null) loaderManager.initLoader(JMDICTES_WEB_SEARCH_LOADER, queryBundle, this);
+                else loaderManager.restartLoader(JMDICTES_WEB_SEARCH_LOADER, queryBundle, this);
             }
         }
 
@@ -480,6 +620,8 @@ public class DictionaryFragment extends Fragment implements
         mInputQuery = query;
         mAlreadyLoadedRoomResults = false;
         mAlreadyLoadedJishoResults = false;
+        mAlreadyLoadedJMDictFRResults = false;
+        mAlreadyLoadedJMDictESResults = false;
         getQuerySearchResults();
     }
 
