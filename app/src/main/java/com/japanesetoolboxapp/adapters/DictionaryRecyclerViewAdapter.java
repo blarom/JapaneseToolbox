@@ -28,6 +28,7 @@ import com.japanesetoolboxapp.ui.ConvertFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -37,7 +38,7 @@ import butterknife.ButterKnife;
 public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<DictionaryRecyclerViewAdapter.DictItemViewHolder> {
 
     private final Context mContext;
-    private final List<String[]> mLegendDatabase;
+    private final HashMap<String, String> mLegendDatabase;
     private final String mInputQuery;
     private final int mInputQueryTextType;
     private final String mInputQueryFirstLetter;
@@ -46,7 +47,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     final private DictionaryItemClickHandler mOnItemClickHandler;
     private final Typeface mDroidSansJapaneseTypeface;
 
-    public DictionaryRecyclerViewAdapter(Context context, DictionaryItemClickHandler listener , List<Word> wordsList, List<String[]> legendDatabase, String inputQuery) {
+    public DictionaryRecyclerViewAdapter(Context context, DictionaryItemClickHandler listener , List<Word> wordsList, HashMap<String, String> legendDatabase, String inputQuery) {
         this.mContext = context;
         this.mWordsList = wordsList;
         this.mLegendDatabase = legendDatabase;
@@ -231,11 +232,12 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             holder.childElementsLinearLayout.addView(line);
 
             //region Setting the type and meaning
-            fullType = "";
-            for (int i=0; i<mLegendDatabase.size(); i++) {
-                if (mLegendDatabase.get(i)[0].equals(type)) { fullType = mLegendDatabase.get(i)[1]; break; }
+            List<String> types = new ArrayList<>();
+            for (String element : type.split(";")) {
+                if (mLegendDatabase.containsKey(element)) types.add(mLegendDatabase.get(element));
             }
-            if (fullType.equals("")) { fullType = type; }
+            fullType = TextUtils.join(", ", types);
+            if (fullType.equals("")) fullType = type;
 
             String htmlText = "<i><font color='"+
                     mContext.getResources().getColor(R.color.textColorDictionaryTypeMeaning) +

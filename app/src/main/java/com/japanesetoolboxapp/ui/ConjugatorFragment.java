@@ -32,6 +32,8 @@ import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
 import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.data.Word;
 import static com.japanesetoolboxapp.resources.GlobalConstants.*;
+
+import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
@@ -1335,20 +1337,8 @@ public class ConjugatorFragment extends Fragment implements
                     case "T/I": currentVerb.setTrans("trans./intrans."); break;
                 }
 
-                switch (currentVerb.getFamily()) {
-                    case VERB_FAMILY_SU_GODAN: currentVerb.setFamily("su godan"); break;
-                    case VERB_FAMILY_KU_GODAN: currentVerb.setFamily("ku godan"); break;
-                    case VERB_FAMILY_GU_GODAN: currentVerb.setFamily("gu godan"); break;
-                    case VERB_FAMILY_BU_GODAN: currentVerb.setFamily("bu godan"); break;
-                    case VERB_FAMILY_MU_GODAN: currentVerb.setFamily("mu godan"); break;
-                    case VERB_FAMILY_NU_GODAN: currentVerb.setFamily("nu godan"); break;
-                    case VERB_FAMILY_RU_GODAN: currentVerb.setFamily("ru godan"); break;
-                    case VERB_FAMILY_TSU_GODAN: currentVerb.setFamily("tsu godan"); break;
-                    case VERB_FAMILY_U_GODAN: currentVerb.setFamily("u godan"); break;
-                    case VERB_FAMILY_RU_ICHIDAN: currentVerb.setFamily("ru ichidan"); break;
-                    case VERB_FAMILY_DA: currentVerb.setFamily("desu copula"); break;
-                    case VERB_FAMILY_KURU: currentVerb.setFamily("kuru verb"); break;
-                    case VERB_FAMILY_SURU: currentVerb.setFamily("suru verb"); break;
+                if (GlobalConstants.VERB_FAMILIES_FULL_NAME_MAP.containsKey(currentVerb.getFamily())) {
+                    currentVerb.setFamily(VERB_FAMILIES_FULL_NAME_MAP.get(currentVerb.getFamily()));
                 }
                 //endregion
 

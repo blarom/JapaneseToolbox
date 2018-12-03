@@ -380,9 +380,11 @@ public final class Utilities {
                 case GlobalConstants.VERB_FAMILY_BU_GODAN:
                 case GlobalConstants.VERB_FAMILY_GU_GODAN:
                 case GlobalConstants.VERB_FAMILY_KU_GODAN:
+                case GlobalConstants.VERB_FAMILY_IKU_SPECIAL:
                 case GlobalConstants.VERB_FAMILY_MU_GODAN:
                 case GlobalConstants.VERB_FAMILY_NU_GODAN:
                 case GlobalConstants.VERB_FAMILY_RU_GODAN:
+                case GlobalConstants.VERB_FAMILY_ARU_SPECIAL:
                 case GlobalConstants.VERB_FAMILY_SU_GODAN:
                 case GlobalConstants.VERB_FAMILY_RU_ICHIDAN:
                     root = verb.substring(0, verb.length() - 2);
@@ -391,6 +393,7 @@ public final class Utilities {
                     root = verb.substring(0, verb.length() - 3);
                     break;
                 case GlobalConstants.VERB_FAMILY_U_GODAN:
+                case GlobalConstants.VERB_FAMILY_U_SPECIAL:
                     root = verb.substring(0, verb.length() - 1);
                     break;
                 case GlobalConstants.VERB_FAMILY_SURU:
@@ -411,13 +414,16 @@ public final class Utilities {
                 case GlobalConstants.VERB_FAMILY_BU_GODAN:
                 case GlobalConstants.VERB_FAMILY_GU_GODAN:
                 case GlobalConstants.VERB_FAMILY_KU_GODAN:
+                case GlobalConstants.VERB_FAMILY_IKU_SPECIAL:
                 case GlobalConstants.VERB_FAMILY_MU_GODAN:
                 case GlobalConstants.VERB_FAMILY_NU_GODAN:
                 case GlobalConstants.VERB_FAMILY_RU_GODAN:
+                case GlobalConstants.VERB_FAMILY_ARU_SPECIAL:
                 case GlobalConstants.VERB_FAMILY_SU_GODAN:
                 case GlobalConstants.VERB_FAMILY_RU_ICHIDAN:
                 case GlobalConstants.VERB_FAMILY_TSU_GODAN:
                 case GlobalConstants.VERB_FAMILY_U_GODAN:
+                case GlobalConstants.VERB_FAMILY_U_SPECIAL:
                     root = verb.substring(0, verb.length() - 1);
                     break;
                 default:

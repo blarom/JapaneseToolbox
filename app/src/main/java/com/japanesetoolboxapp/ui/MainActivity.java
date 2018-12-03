@@ -31,6 +31,7 @@ import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements
     @BindView(R.id.second_fragment_placeholder) FrameLayout mSecondFragmentPlaceholder;
     private String mSecondFragmentFlag;
     InputQueryFragment mInputQueryFragment;
-    List<String[]> LegendDatabase;
+    HashMap<String, String> LegendDatabase;
     List<String[]> VerbLatinConjDatabase;
     List<String[]> VerbKanjiConjDatabase;
     List<String[]> SimilarsDatabase;
@@ -414,7 +415,13 @@ public class MainActivity extends AppCompatActivity implements
 
             Object[] databases = (Object[]) data;
 
-            LegendDatabase = new ArrayList((List<String[]>) databases[0]);
+            List<String[]> LegendDatabaseList = new ArrayList((List<String[]>) databases[0]);
+
+            LegendDatabase = new HashMap<>();
+            for (int i=0; i<LegendDatabaseList.size(); i++) {
+                LegendDatabase.put(LegendDatabaseList.get(i)[0], LegendDatabaseList.get(i)[1]);
+            }
+
             SimilarsDatabase = new ArrayList((List<String[]>) databases[1]);
             VerbLatinConjDatabase = new ArrayList((List<String[]>) databases[2]);
             VerbKanjiConjDatabase = new ArrayList((List<String[]>) databases[3]);
@@ -487,7 +494,7 @@ public class MainActivity extends AppCompatActivity implements
         mDictionaryFragment = new DictionaryFragment();
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
-        bundle.putSerializable(getString(R.string.legend_database), new ArrayList<>(LegendDatabase));
+        bundle.putSerializable(getString(R.string.legend_database), LegendDatabase);
         mDictionaryFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();

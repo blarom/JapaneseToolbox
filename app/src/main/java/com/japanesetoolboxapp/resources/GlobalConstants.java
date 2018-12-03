@@ -65,8 +65,6 @@ public final class GlobalConstants {
     public final static int Index_bottomleftout = 16;
     public final static int Index_bottomout = 17;
 
-    public final static HashMap<Integer, String> COMPONENT_STRUCTURES_MAP = createStructureMap();
-
     public static final int TYPE_LATIN = 0;
     public static final int TYPE_HIRAGANA = 1;
     public static final int TYPE_KATAKANA = 2;
@@ -78,18 +76,44 @@ public final class GlobalConstants {
     public static final String VERB_FAMILY_DA = "da";
     public static final String VERB_FAMILY_GU_GODAN = "gu";
     public static final String VERB_FAMILY_KU_GODAN = "ku";
+    public static final String VERB_FAMILY_IKU_SPECIAL = "iku";
     public static final String VERB_FAMILY_KURU = "kuru";
     public static final String VERB_FAMILY_MU_GODAN = "mu";
     public static final String VERB_FAMILY_NU_GODAN = "nu";
     public static final String VERB_FAMILY_RU_GODAN = "rug";
     public static final String VERB_FAMILY_RU_ICHIDAN = "rui";
+    public static final String VERB_FAMILY_ARU_SPECIAL = "aru";
     public static final String VERB_FAMILY_SU_GODAN = "su";
     public static final String VERB_FAMILY_SURU = "suru";
     public static final String VERB_FAMILY_TSU_GODAN = "tsu";
     public static final String VERB_FAMILY_U_GODAN = "u";
+    public static final String VERB_FAMILY_U_SPECIAL = "us";
+
+    public final static HashMap<String, String> VERB_FAMILIES_FULL_NAME_MAP = createVerbFamiliesMap();
+    private static HashMap<String, String> createVerbFamiliesMap() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put(VERB_FAMILY_SU_GODAN, "su godan");
+        map.put(VERB_FAMILY_KU_GODAN, "ku godan");
+        map.put(VERB_FAMILY_IKU_SPECIAL, "iku/yuku special class");
+        map.put(VERB_FAMILY_GU_GODAN, "gu godan");
+        map.put(VERB_FAMILY_BU_GODAN, "bu godan");
+        map.put(VERB_FAMILY_MU_GODAN, "mu godan");
+        map.put(VERB_FAMILY_NU_GODAN, "nu godan");
+        map.put(VERB_FAMILY_RU_GODAN, "ru godan");
+        map.put(VERB_FAMILY_ARU_SPECIAL, "aru special class");
+        map.put(VERB_FAMILY_TSU_GODAN, "tsu godan");
+        map.put(VERB_FAMILY_U_GODAN, "u godan");
+        map.put(VERB_FAMILY_U_SPECIAL, "u special class");
+        map.put(VERB_FAMILY_RU_ICHIDAN, "ru ichidan");
+        map.put(VERB_FAMILY_DA, "desu copula");
+        map.put(VERB_FAMILY_KURU, "kuru verb");
+        map.put(VERB_FAMILY_SURU, "suru verb");
+        return map;
+    }
 
     public static final int MAX_SQL_VARIABLES_FOR_QUERY = 500;
 
+    public final static HashMap<Integer, String> COMPONENT_STRUCTURES_MAP = createStructureMap();
     private static HashMap<Integer, String> createStructureMap() {
         HashMap<Integer, String> map = new HashMap<>();
         map.put(Index_full, "full");

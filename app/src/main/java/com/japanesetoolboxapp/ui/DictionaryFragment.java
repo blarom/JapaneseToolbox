@@ -29,6 +29,7 @@ import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -60,7 +61,7 @@ public class DictionaryFragment extends Fragment implements
     private boolean mAlreadyLoadedJishoResults;
     private boolean mAlreadyLoadedJMDictFRResults;
     private boolean mAlreadyLoadedJMDictESResults;
-    private List<String[]> mLegendDatabase;
+    private HashMap<String, String> mLegendDatabase;
     private DictionaryRecyclerViewAdapter mDictionaryRecyclerViewAdapter;
     //endregion
 
@@ -392,7 +393,7 @@ public class DictionaryFragment extends Fragment implements
     private void getExtras() {
         if (getArguments()!=null) {
             mInputQuery = getArguments().getString(getString(R.string.user_query_word));
-            mLegendDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.legend_database));
+            mLegendDatabase = (HashMap<String, String>) getArguments().getSerializable(getString(R.string.legend_database));
         }
     }
     private void initializeParameters() {
