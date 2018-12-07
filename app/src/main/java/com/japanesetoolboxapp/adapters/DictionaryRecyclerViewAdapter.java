@@ -17,7 +17,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.japanesetoolboxapp.R;
@@ -84,6 +83,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         List<Word.Meaning> meanings = mWordsList.get(position).getMeanings();
 
         StringBuilder cumulative_meaning_value = new StringBuilder();
+        boolean wordHasPhraseConstruction = false;
         boolean typeIsVerbConjugation = false;
         boolean typeIsiAdjectiveConjugation = false;
         boolean typeIsnaAdjectiveConjugation = false;
@@ -98,6 +98,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 typeIsnaAdjectiveConjugation = type.equals("naAC");
                 typeIsVerb = type.contains("V") && !type.equals("VC") && !type.equals("NV");
             }
+            if (!wordHasPhraseConstruction) wordHasPhraseConstruction = type.equals("PC");
         }
         //endregion
 
@@ -344,7 +345,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     String where = " where: ";
                     String intro = "";
                     if (!parsedRule[0].contains(":")) {
-                        intro = mContext.getResources().getString(R.string.PhraseStructure) + " ";
+                        intro = mContext.getResources().getString(R.string.how_it_s_used_);
                     }
                     Spanned spanned_rule;
 
@@ -353,7 +354,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                                 "<font color='" + mContext.getResources().getColor(R.color.textColorDictionaryRulePhraseStructureClause) + "'>" +
                                 intro +
                                 "</font>" +
-                                rules;
+                                rules +
+                                "</b>";
                         spanned_rule = Utilities.fromHtml(htmlText);
                         rulesTextView.setText(spanned_rule);
                         rulesTextView.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));

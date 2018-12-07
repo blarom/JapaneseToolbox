@@ -131,7 +131,7 @@
     <string name="GrammarModule_Example">Rules and Examples:</string>
     <string name="ShowExamples">Example sentences: (>show)</string>
     <string name="HideExamples">Example sentences: (>hide)</string>
-    <string name="PhraseStructure">Phrase structure:</string>
+    <string name="how_it_s_used_">How it\'s used:\u0020</string>
 
     <!--ConjugationFragment Strings-->
     <string name="English">English</string>
@@ -144,7 +144,7 @@
         \n\nIf you\&apos;re searching for a verb addition (e.g. taberu bakari), use the &lt;DICT&gt; search on \&quot;bakari\&quot; to look up the corresponding grammar rule.
         \n\nThe &lt;DICT&gt; search also covers alternate Romaji or Kanji spellings for a variety of verbs (in dictionary form).
         The &lt;CONJ&gt; search only looks up conjugations for the most common Romaji spelling and Kanji interpretation of each verb.</string>
-    <string name="where">, where: </string>
+    <string name="where">, where:\u0020</string>
     <string name="PleaseEnterJapVerb">Please enter a Japanese verb.</string>
     <string name="CanEnterEngVerb">You can also enter an English verb in ing/infinitive form.</string>
     <string name="SeeHints">Check the rules below for hints.</string>
