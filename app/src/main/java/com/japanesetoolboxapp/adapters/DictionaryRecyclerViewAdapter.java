@@ -75,6 +75,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         String romaji = mWordsList.get(position).getRomaji();
         String kanji = mWordsList.get(position).getKanji();
         String alternatespellings = mWordsList.get(position).getAltSpellings();
+        String keywords = mWordsList.get(position).getKeywords();
         String type = "";
         String fullType;
         String meaning;
@@ -146,7 +147,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             }
             else if (cumulative_meaning_value.toString().contains(mInputQuery) || cumulative_meaning_value.toString().contains(latin)) {
                 //Ignore words where the input query is included in the meaning
-            } else if ((mInputQueryTextType == GlobalConstants.TYPE_KANJI
+            }
+            else if ((mInputQueryTextType == GlobalConstants.TYPE_KANJI
                     && kanji.length() > 0 && !kanji.substring(0, 1).equals(mInputQueryFirstLetter))
                     || (mInputQueryTextType == GlobalConstants.TYPE_LATIN
                     && romaji.length() > 0 && !romaji.substring(0, 1).equals(mInputQueryFirstLetter))
@@ -156,6 +158,15 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     && katakana.length() > 0 && !katakana.substring(0, 1).equals(mInputQueryFirstLetter))
                     ) {
                 romajiAndKanji += " [derived from " + mInputQuery + "]";
+            }
+            else if (keywords.contains(mInputQuery)) {
+                for (String keyword : keywords.split(",")) {
+                    if (romaji.contains(keyword) && !kanji.contains(keyword) && !alternatespellings.contains(keyword)
+                            && !cumulative_meaning_value.toString().contains(keyword)) {
+                        romajiAndKanji += " [from " + keyword + "]";
+                        break;
+                    }
+                }
             }
         }
 
