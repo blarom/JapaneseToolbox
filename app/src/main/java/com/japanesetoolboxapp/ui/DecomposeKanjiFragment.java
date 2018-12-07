@@ -733,7 +733,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                                     parsed_list.get(0) +
                                     ") with " +
                                     parsed_list.get(1) +
-                                    " additional strokes.";
+                                    ((Integer.valueOf(parsed_list.get(1))>1)? " additional strokes." : " additional stroke.");
                         }
                         radical_characteristics.add(text);
                     }
