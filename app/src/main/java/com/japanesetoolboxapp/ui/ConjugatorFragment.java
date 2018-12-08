@@ -723,20 +723,38 @@ public class ConjugatorFragment extends Fragment implements
 
                 if (mVerbLatinConjDatabase.get(rowIndex)[0].equals("") || !mVerbLatinConjDatabase.get(rowIndex)[1].equals("")) continue;
 
-                switch (mVerbLatinConjDatabase.get(rowIndex)[0]) {
-                    case "su godan": mFamilyConjugationIndexes.put("su", rowIndex);
-                    case "ku godan": mFamilyConjugationIndexes.put("ku", rowIndex);
-                    case "gu godan": mFamilyConjugationIndexes.put("gu", rowIndex);
-                    case "bu godan": mFamilyConjugationIndexes.put("bu", rowIndex);
-                    case "mu godan": mFamilyConjugationIndexes.put("mu", rowIndex);
-                    case "nu godan": mFamilyConjugationIndexes.put("nu", rowIndex);
-                    case "ru godan": mFamilyConjugationIndexes.put("rug", rowIndex);
-                    case "tsu godan": mFamilyConjugationIndexes.put("tsu", rowIndex);
-                    case "u godan": mFamilyConjugationIndexes.put("u", rowIndex);
-                    case "ru ichidan": mFamilyConjugationIndexes.put("rui", rowIndex);
-                    case "desu copula": mFamilyConjugationIndexes.put("da", rowIndex);
-                    case "kuru verb": mFamilyConjugationIndexes.put("kuru", rowIndex);
-                    case "suru verb": mFamilyConjugationIndexes.put("suru", rowIndex);
+                if ("su godan".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_SU_GODAN)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_SU_GODAN, rowIndex);
+                } else if ("ku godan".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_KU_GODAN)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_KU_GODAN, rowIndex);
+                } else if ("iku/yuku special class".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_IKU_SPECIAL)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_IKU_SPECIAL, rowIndex);
+                } else if ("gu godan".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_GU_GODAN)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_GU_GODAN, rowIndex);
+                } else if ("bu godan".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_BU_GODAN)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_BU_GODAN, rowIndex);
+                } else if ("mu godan".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_MU_GODAN)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_MU_GODAN, rowIndex);
+                } else if ("nu godan".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_NU_GODAN)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_NU_GODAN, rowIndex);
+                } else if ("ru godan".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_RU_GODAN)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_RU_GODAN, rowIndex);
+                } else if ("aru special class".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_ARU_SPECIAL)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_ARU_SPECIAL, rowIndex);
+                } else if ("tsu godan".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_TSU_GODAN)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_TSU_GODAN, rowIndex);
+                } else if ("u godan".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_U_GODAN)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_U_GODAN, rowIndex);
+                } else if ("u special class".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_U_SPECIAL)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_U_SPECIAL, rowIndex);
+                } else if ("ru ichidan".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_RU_ICHIDAN)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_RU_ICHIDAN, rowIndex);
+                } else if ("desu copula".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_DA)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_DA, rowIndex);
+                } else if ("kuru verb".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_KURU)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_KURU, rowIndex);
+                } else if ("suru verb".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_SURU)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_SURU, rowIndex);
                 }
             }
         }

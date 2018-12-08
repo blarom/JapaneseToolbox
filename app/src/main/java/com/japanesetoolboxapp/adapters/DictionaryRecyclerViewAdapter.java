@@ -36,6 +36,7 @@ import butterknife.ButterKnife;
 
 public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<DictionaryRecyclerViewAdapter.DictItemViewHolder> {
 
+    public static final String RULE_DELIMITER = "@";
     private final Context mContext;
     private final HashMap<String, String> mLegendDatabase;
     private final String mInputQuery;
@@ -352,7 +353,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     rulesTextView.setPadding(0, 8, 0, 0);
                     rulesTextView.setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
 
-                    String[] parsedRule = rules.split("@");
+                    String[] parsedRule = rules.split(RULE_DELIMITER);
                     String where = " where: ";
                     String intro = "";
                     if (!parsedRule[0].contains(":")) {

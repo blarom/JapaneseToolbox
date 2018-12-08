@@ -1,93 +1,146 @@
 Shortcut|Type|
-A|Adverb|
-ADc|Adverb: Declarative|
-ADg|Adverb: Degree|
-Ai|Adjective (i-keiyoushi)|
-Aj|Adjective (general)|
-AM|Adverb: Manner|
-Ana|Adjectivial Noun (na-keiyoushi)|
-AO|Adverb: Order|
-AP|Adverb: Place|
-AT|Adverb: Time|
-C|Counter|
-CE|Common Expression|
-CEA|Common Expression - Adverb|
-CEAi|Common Expression - i-Adjective|
-CEAna|Common Expression - na-Adjective|
-CEN|Common Expression - Noun|
-CEP|Common Expression - Particle|
-CES|Common Expression - Idiom|
-CEV|Common Expression - Verb|
-CO|Sentence Conjunction|
-iAC|i-Adjective (i-keiyoushi) Conjugation |
-IES|Impolite Expressions & Swearwords|
-naAC|na-Adjective (na-keiyoushi) Conjugation |
-NAc|Noun: Activity|
-NACF|Noun: Abstract|
-NAn|Noun: Anatomy|
-NAt|Noun: Attire|
-NB|Noun: Beliefs|
-NCo|Noun: Color|
-NCu|Noun: Culinary|
-NDM|Noun: Days of the Month|
-NDW|Noun: Days of the Week|
-NFa|Noun: Fauna|
-NFl|Noun: Flora|
-NFy|Noun: Family|
-NGO|Noun: Object|
-NJEP|Noun: Japanese Eras & Periods|
-NMAC|Noun: Music, Art & Culture|
-NMe|Noun: Medical|
-NMo|Noun: Months|
-NMSE|Noun: Maths, Science & Engineering|
-NN|Noun: Number|
-NNe|Noun: Name|
-NNE|Noun: Natural Element|
-NNn|Noun: Nation|
-NOI|Noun: Organizations & Institutions|
-NPe|Noun: Person|
-NPl|Noun: Place|
-NS|Noun: Space|
-NT|Noun: Temporal|
-NV|Noun: Vehicle|
-NW|Noun: Weeks|
-NY|Noun: Years|
-OI|Onomatopeia & Interjections|
-P|Pronoun|
-PC|Phrase Construction|
-PP|Particle/Preposition|
-PPS|Particle / Suffix|
-Px|Prefix|
-PxN|Noun / Prefix|
-Sa|Special adjective|
-SI|Special: Interrogative|
-Sx|Suffix|
-SxN|Noun / Suffix|
-UNC|Unclassified|
-VbuI|Verb bu godan, intrans.|
-VbuT|Verb bu godan, trans.|
-VC|Verb Conjugation|
-VdaI|Verb desu copula, intrans.|
-VdaT|Verb desu copula, trans.|
-VguI|Verb gu godan, intrans.|
-VguT|Verb gu godan, trans.|
-VkuI|Verb ku godan, intrans.|
-VkuruI|Verb kuru compound, intrans.|
-VkuruT|Verb kuru compound, trans.|
-VkuT|Verb ku godan, trans.|
-VmuI|Verb mu godan, intrans.|
-VmuT|Verb mu godan, trans.|
-VnuI|Verb nu godan, intrans.|
-VnuT|Verb nu godan, trans.|
-VrugI|Verb ru godan, intrans.|
-VrugT|Verb ru godan, trans.|
-VruiI|Verb ru ichidan, intrans.|
-VruiT|Verb ru ichidan, trans.|
-VsuI|Verb su godan, intrans.|
-VsuruI|Verb suru compound, intrans.|
-VsuruT|Verb suru compound, trans.|
-VsuT|Verb su godan, trans.|
-VtsuI|Verb tsu godan, intrans.|
-VtsuT|Verb tsu godan, trans.|
-VuI|Verb u godan, intrans.|
-VuT|Verb u godan, trans.|
+A|adverb|
+Abr|abbreviation|
+Abs|abstract|
+Ac|activity|
+ADc|adverb - declarative|
+ADg|adverb - degree|
+Af|noun or verb acting prenominally|
+Ai|i-adjective|
+Aj|adjective|
+AM|adverb - manner|
+An|anatomy term|
+Ana|na-adjective|
+Ano|no-adjective (noun)|
+AO|adverb - order|
+AP|adverb - place|
+Apn|pre-noun adjectival|
+AT|adverb - time|
+Ati|attire|
+Ato|adverb taking 'to' particle|
+Atr|taru-adjective|
+Ax|auxiliary adjective|
+B|beliefs|
+C|counter|
+CE|expression|
+CEA|expression - adverb|
+CEAi|expression - i-adjective|
+CEAna|expression - na-adjective|
+CEC|colloquialism|
+CEN|expression - noun|
+CEP|expression - particle|
+CES|idiom/proverb|
+CEV|expression - verb|
+CO|conjunction|
+Col|color|
+Cu|culinary term|
+DM|day of the month|
+Dr|derogatory|
+DW|day of the week|
+Fa|fauna|
+Fl|flora|
+Fy|family|
+GO|object|
+iAC|i-adjective conjugation |
+IES|rude/X-rated term|
+JEP|japanese era/period|
+LF|familiar language|
+LFt|female term or language|
+LHm|humble|
+LHn|honorific/polite|
+LMt|male language|
+MAC|music, art & culture|
+Md|medical term|
+Mo|month|
+MSE|math/science/engineering term|
+N|noun|
+naAC|na-adjective conjugation |
+NAdv|adverbial noun|
+Ne|proper name|
+NE|natural element|
+Nn|nation|
+num|numeric term|
+Obs|obsolete term|
+OI|onomatopeia/interjection|
+org|organization/institution|
+P|pronoun|
+PC|phrase structure|
+Pe|person|
+Pl|place|
+PP|particle/preposition|
+Px|prefix|
+SI|interrogative|
+Sl|slang|
+Sp|space term|
+Sx|suffix|
+T|temporal term|
+UNC|unclassified|
+V|vehicle|
+VaruI|verb aru special class, intrans.|
+VaruT|verb aru special class, trans.|
+VbuI|verb bu godan, intrans.|
+VbuT|verb bu godan, trans.|
+VC|verb conjugation|
+VdaI|verb desu copula, intrans.|
+VdaT|verb desu copula, trans.|
+VguI|verb gu godan, intrans.|
+VguT|verb gu godan, trans.|
+VikuI|verb iku/yuku special class, intrans.|
+VikuT|verb iku/yuku special class, trans.|
+VkuI|verb ku godan, intrans.|
+VkuruI|verb kuru compound, intrans.|
+VkuruT|verb kuru compound, trans.|
+VkuT|verb ku godan, trans.|
+VmuI|verb mu godan, intrans.|
+VmuT|verb mu godan, trans.|
+VnuI|verb nu godan, intrans.|
+VnuT|verb nu godan, trans.|
+VrugI|verb ru godan, intrans.|
+VrugT|verb ru godan, trans.|
+VruiI|verb ru ichidan, intrans.|
+VruiT|verb ru ichidan, trans.|
+VsuI|verb su godan, intrans.|
+VsuruI|verb suru compound, intrans.|
+VsuruT|verb suru compound, trans.|
+VsuT|verb su godan, trans.|
+VtsuI|verb tsu godan, intrans.|
+VtsuT|verb tsu godan, trans.|
+VuI|verb u godan, intrans.|
+vul|vulgar expression or word|
+VusI|verb u special class, intrans.|
+VusT|verb u special class, trans.|
+VuT|verb u godan, trans.|
+Vx|auxiliary verb|
+ZAc|architecture term|
+ZAn|anatomical term|
+ZAs|astronomy term|
+ZB|Buddhist term|
+ZBb|baseball term|
+ZBi|biology term|
+ZBs|business term|
+ZBt|botany term|
+ZC|chemistry term|
+ZCL|children's language|
+ZEc|economics term|
+ZEg|engineering term|
+ZF|food term|
+ZFn|finance term|
+ZG|geometry term|
+ZGg|geology term|
+ZH|humorous term|
+ZI|computer terminology|
+ZL|linguistics terminology|
+ZLw|law term|
+ZM|martial arts term|
+ZMc|music term|
+ZMg|manga slang|
+ZMj|mahjong term|
+ZMl|military term|
+ZMt|mathematics term|
+ZP|poetical term|
+ZPh|physics term|
+ZSg|shogi term|
+ZSm|sumo term|
+ZSp|sports term|
+ZSt|Shinto term|
+ZZ|zoology term|
