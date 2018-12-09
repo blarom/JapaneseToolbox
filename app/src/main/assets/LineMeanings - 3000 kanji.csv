@@ -165,7 +165,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 165|and|CO|ME#0151;0152|||||
 166|but|CO|ME#0153;0154|||||
 167||-|Y even if X.|X tokoro de, Y @ X/Y = phrase|504|||
-168|totteringly, staggeringly, unsteadily|AM||||||
+168|totteringly, staggeringly, unsteadily|A;M||||||
 169|lanky, spindly, slender, frail|Ana||||||
 170|nevertheless, however|CO|X nevertheless Y, X however Y|X. sore ni shite mo Y @ Y = phrase||||
 171|or|PC|X? or Y?|X? soretomo Y? @ X/Y = phrase|948, 949|||
@@ -389,7 +389,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 389|no kind|A||Always followed by negative verb.||||
 390|everybody, everyone|A||||||
 391|everything|A|||711, 712|||
-392|lankily, spindily, slenderly, frailly|AM||||||
+392|lankily, spindily, slenderly, frailly|A;M||||||
 393|everyone, every person, all, anyone|A||||||
 394|everything|A||||||
 395|exactly, surely, certainly|A||||||
@@ -420,154 +420,154 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 420|that over there|A|||715, 716|||
 421|this (something or someone close to the speaker (including the speaker), or ideas expressed by the speaker)|A|||104|||
 422|this kind of|A||"konna" describing the type of object.|721|||
-423|after all|ADc||||||
-424|anyhow, in any case, at any rate, after all, no matter what, at best, at most, at all|ADc||||||
-425|first of all, at once, right away|ADc|Not used in the literal "in the meanwhile" sense, more in the figurative sense.|||||
-426|of course, certainly|ADc|||624|||
+423|after all|A||||||
+424|anyhow, in any case, at any rate, after all, no matter what, at best, at most, at all|A||||||
+425|first of all, at once, right away|A|Not used in the literal "in the meanwhile" sense, more in the figurative sense.|||||
+426|of course, certainly|A|||624|||
 427|go home|VnuI||||||
-428|even|ADc||||||
-429|even, if only, if just, as long as, the only thing needed|ADc||||||
-430|if|ADc|||623|||
-431|if I'm not mistaken, if I remember correctly|ADc||||||
-432|in all, in total, all told|ADc||||||
+428|even|A||||||
+429|even, if only, if just, as long as, the only thing needed|A||||||
+430|if|A|||623|||
+431|if I'm not mistaken, if I remember correctly|A||||||
+432|in all, in total, all told|A||||||
 433|circumstances, condition, convenience|N;Abs||||||
 434|go, leave|VnuI||||||
-435|indeed|ADc||||||
-436|really, truly, entirely, completely, wholly, perfectly|ADg||||||
+435|indeed|A||||||
+436|really, truly, entirely, completely, wholly, perfectly|A;Dg||||||
 437|good grief (expression of exasperation)|CE||||||
-438|indeed, really, absolutely, truly, in truth, actually, very, quite|ADc||||||
-439|maybe, possibly|ADc|||622|||
-440|no, nay|ADc|Used only by male subjects.|||||
-441|no, nay|ADc|Used by both male and female subjects.|||||
-442|no, nay|ADc||||||
-443|tentatively, for the time being|ADc|||1401|||
-444|almost all, in large part, for the greater part, in majority, mostly, for the most part|ADc||||||
-445|perhaps, possibly, if I'm not wrong|ADc||||||
-446|please|ADc||||||
-447|please|ADc|Dialect.|||||
-448|please give me|ADc||||||
-449|so to speak, so to call it, as it were|ADc||||||
-450|so, right|ADc||||||
-451|like that|AM||||||
-452|still more, to say nothing of, not to mention, still less (with neg. verb)|ADc||||||
+438|indeed, really, absolutely, truly, in truth, actually, very, quite|A||||||
+439|maybe, possibly|A|||622|||
+440|no, nay|A|Used only by male subjects.|||||
+441|no, nay|A|Used by both male and female subjects.|||||
+442|no, nay|A||||||
+443|tentatively, for the time being|A|||1401|||
+444|almost all, in large part, for the greater part, in majority, mostly, for the most part|A||||||
+445|perhaps, possibly, if I'm not wrong|A||||||
+446|please|A||||||
+447|please|A|Dialect.|||||
+448|please give me|A||||||
+449|so to speak, so to call it, as it were|A||||||
+450|so, right|A||||||
+451|like that|A;M||||||
+452|still more, to say nothing of, not to mention, still less (with neg. verb)|A||||||
 453|levy, charge, assess, impose, assign|VsuruT||||||
-454|unfortunately, Sorry, but ...|ADc||||||
-455|without (doing), instead of|ADc||||||
-456|yes|ADc|Used in colloquial speech.|||||
-457|yeah|ADc|Used in a formal sentence.|||||
-458|yeah, right, correct|ADc||||||
+454|unfortunately, Sorry, but ...|A||||||
+455|without (doing), instead of|A||||||
+456|yes|A|Used in colloquial speech.|||||
+457|yeah|A|Used in a formal sentence.|||||
+458|yeah, right, correct|A||||||
 459|yes|OI||||||
-460|a little, somewhat|ADg||||||
-461|absolutely, positively, decidedly|ADg||||||
-462|absolutely, unconditionally|ADg||||||
+460|a little, somewhat|A;Dg||||||
+461|absolutely, positively, decidedly|A;Dg||||||
+462|absolutely, unconditionally|A;Dg||||||
 463|absoluteness, absolute|N;Abs||||||
-464|all, altogether, entirely, completely|ADg||||||
+464|all, altogether, entirely, completely|A;Dg||||||
 465|just like, the spitting image of|Ana||||||
-466|all, thoroughly|ADg||||||
-467|entirely, completely|ADg||||||
-468|all, entire, whole, altogether|ADg|||653, 1258, 1355|subete, zenbu||
-469|in general, overall|ADg||||minna, zenbu||
-470|altogether, entirely|ADg|||||尽く|
-471|usually|ADg|||649, 650|||
-472|approximately, about (quantity, time)|ADg|||633|||
-473|just, only|ADg|||648|||
-474|always, without exception, necessarily, certainly, without fail, positively, invariably|ADg||||||
-475|approximately, about (quantity, time)|ADg|||632, 141|||
-476|approximately, about, at most|ADg|||1468, 1469, 1470|||
+466|all, thoroughly|A;Dg||||||
+467|entirely, completely|A;Dg||||||
+468|all, entire, whole, altogether|A;Dg|||653, 1258, 1355|subete, zenbu||
+469|in general, overall|A;Dg||||minna, zenbu||
+470|altogether, entirely|A;Dg|||||尽く|
+471|usually|A;Dg|||649, 650|||
+472|approximately, about (quantity, time)|A;Dg|||633|||
+473|just, only|A;Dg|||648|||
+474|always, without exception, necessarily, certainly, without fail, positively, invariably|A;Dg||||||
+475|approximately, about (quantity, time)|A;Dg|||632, 141|||
+476|approximately, about, at most|A;Dg|||1468, 1469, 1470|||
 477|degree, extent, bounds, limit|N;Abs||||||
-478|as ever, as usual, the same, still|ADg|Based on the "zu" conjugation of kawaru (ie. without changing).||1413|||
-479|at last, at length|ADg||||||
-480|barely, narrowly, just, by the skin of one's teeth|ADg||||||
+478|as ever, as usual, the same, still|A;Dg|Based on the "zu" conjugation of kawaru (ie. without changing).||1413|||
+479|at last, at length|A;Dg||||||
+480|barely, narrowly, just, by the skin of one's teeth|A;Dg||||||
 481|heave-ho|OI||||||
-482|at least|ADg||||||
-483|by all means, certainly, without fail, why not|ADg|||1417|||
+482|at least|A;Dg||||||
+483|by all means, certainly, without fail, why not|A;Dg|||1417|||
 484|right and wrong, pros and cons|N;Abs||||||
-485|by no means, not readily|ADg|Used in a negative phrase.|||||
-486|very, considerably, easily, readily, fairly, quite, highly, rather|ADg|Used in an affirmative phrase.|||||
-487|completely, entirely|ADg|Used in an affirmative phrase.|||||
-488|not in the least (with neg. verb), not at all|ADg|Used in a negative phrase.|||||
+485|by no means, not readily|A;Dg|Used in a negative phrase.|||||
+486|very, considerably, easily, readily, fairly, quite, highly, rather|A;Dg|Used in an affirmative phrase.|||||
+487|completely, entirely|A;Dg|Used in an affirmative phrase.|||||
+488|not in the least (with neg. verb), not at all|A;Dg|Used in a negative phrase.|||||
 489|refreshed, relieved, neat, trimmed, plain, simple|Ana||||||
 490|unknown|N;Abs||||||
-491|considerably, fairly, quite|ADg||||||
+491|considerably, fairly, quite|A;Dg||||||
 492|considerable|Ana||||||
-493|considerably, greatly, a lot|ADg||||||
-494|especially, particularly|ADg||||||
-495|excessively, very much|ADg||||||
-496|extremely|ADg||||||
+493|considerably, greatly, a lot|A;Dg||||||
+494|especially, particularly|A;Dg||||||
+495|excessively, very much|A;Dg||||||
+496|extremely|A;Dg||||||
 497|befitting, becoming, worthy of, proportionate, in keeping with, suitable, considerable, substantial|Ana||||||
 498|fit, suitability|N;Abs||||||
-499|few, for a little while|ADg|Also used as to soften a sentence.||642|||
-500|a little, for a little while|ADg|||641|||
+499|few, for a little while|A;Dg|Also used as to soften a sentence.||642|||
+500|a little, for a little while|A;Dg|||641|||
 501|little, few|Ana||||||
-502|finally, at last, reaching a head|ADg||||||
-503|generally, more or less|ADg|||634, 1307, 1308|||
-504|halfway, partly, semi|ADg||||||
+502|finally, at last, reaching a head|A;Dg||||||
+503|generally, more or less|A;Dg|||634, 1307, 1308|||
+504|halfway, partly, semi|A;Dg||||||
 505|middle, half|N;Abs||||||
-506|just, only|ADg||X dake|1098, 1099, 1367||shika, tatta|
-507|like so, like this, in this way|ADg||"konna ni" meaning "like so/like this/in this way".|722, 723, 724|||
-508|like that, in that way|ADg|||725, 726, 727|||
-509|little by little|ADg||||||
+506|just, only|A;Dg||X dake|1098, 1099, 1367||shika, tatta|
+507|like so, like this, in this way|A;Dg||"konna ni" meaning "like so/like this/in this way".|722, 723, 724|||
+508|like that, in that way|A;Dg|||725, 726, 727|||
+509|little by little|A;Dg||||||
 510|pass (of time)|VnuI||||||
 511|little while, short while, moment, instant, a while, quite a time|N;Abs||||||
-512|a large number of|ADg||||chotto|ooi|
-513|much|ADg|||1415|chotto|ooku|
+512|a large number of|A;Dg||||chotto|ooi|
+513|much|A;Dg|||1415|chotto|ooku|
 514|numerous, a lot of|Ai|||460, 471, 1285, 1326|sukunai||
 515|die|VnuI|||642, 194|||
 516|go bad, rot|VnuI||||||
-517|most, extremely|ADg||||||
-518|mostly, nearly, practically, well-nigh, almost invariably, all but, just about, almost|ADg|||1416|||
-519|mostly, ordinarily, usually, generally, probably|ADg|||1428|||
+517|most, extremely|A;Dg||||||
+518|mostly, nearly, practically, well-nigh, almost invariably, all but, just about, almost|A;Dg|||1416|||
+519|mostly, ordinarily, usually, generally, probably|A;Dg|||1428|||
 520|ordinary, usual, general, probable|Ana|||613, 1272|||
-521|motionlessly, fixedly, patiently, firmly (e.g. hold), in a restrained manner|ADg||||||
-522|no matter what, however much|ADg||||||
+521|motionlessly, fixedly, patiently, firmly (e.g. hold), in a restrained manner|A;Dg||||||
+522|no matter what, however much|A;Dg||||||
 523|whatever kind of, what kind of|P||||||
-524|normally, generally, usually, regularly|ADg||||||
+524|normally, generally, usually, regularly|A;Dg||||||
 525|general, ordinary, regular, usual fact or concept|N;Abs|||1255|tokubetsu||
-526|nothing, not a bit, not at all|ADg|Used in a negative phrase.|||||
-527|quite, really, very, extremely|ADg|Used in an affirmative phrase.|||||
-528|not at all|ADg|Used in a negative phrase.|||||
-529|not at all (with neg. verb)|ADg|Use in phrase with negative tense only.||682||metta ni, amari, never|
-530|not important, doesn't matter|ADg|||729, 730, 731|||
-531|not less than, ... and more, ... and upwards|ADg|||1290|||
+526|nothing, not a bit, not at all|A;Dg|Used in a negative phrase.|||||
+527|quite, really, very, extremely|A;Dg|Used in an affirmative phrase.|||||
+528|not at all|A;Dg|Used in a negative phrase.|||||
+529|not at all (with neg. verb)|A;Dg|Use in phrase with negative tense only.||682||metta ni, amari, never|
+530|not important, doesn't matter|A;Dg|||729, 730, 731|||
+531|not less than, ... and more, ... and upwards|A;Dg|||1290|||
 532|beyond ... (e.g. one's means), further (e.g. nothing further to say), more than ... (e.g. cannot pay more than that)|N;Abs||||ikka||
-533|not much, not often|ADg|Use in phrase with negative tense only.||680, 681, 1464||metta ni, zenzen|
-534|not so much, not very|ADg|Used in a negative phrase.|||||
-535|not very (well)|ADg|||680, 1321, 1414|||
+533|not much, not often|A;Dg|Use in phrase with negative tense only.||680, 681, 1464||metta ni, zenzen|
+534|not so much, not very|A;Dg|Used in a negative phrase.|||||
+535|not very (well)|A;Dg|||680, 1321, 1414|||
 536|remainder, rest, balance, remains, scraps, residue, remnant, surplus, excess|N;Abs||||||
-537|nothing except for|ADg|Only used in a negative phrase. Usually used to emphasize that there should be more. Colloquial form: shikia, shikkia.|X shika|651, 652, 1100, 1101||tatta, dake|
-538|only|ADg|||||shika,dake|
-539|only, nothing but|ADg||X nomi||||
-540|only, simply, merely, just|ADg||||||
+537|nothing except for|A;Dg|Only used in a negative phrase. Usually used to emphasize that there should be more. Colloquial form: shikia, shikkia.|X shika|651, 652, 1100, 1101||tatta, dake|
+538|only|A;Dg|||||shika,dake|
+539|only, nothing but|A;Dg||X nomi||||
+540|only, simply, merely, just|A;Dg||||||
 541|ordinary, common, usual|N;Abs|Adjoined to nouns using "no".|||||
-542|perfectly, thoroughly, fully, in full|ADg||||||
+542|perfectly, thoroughly, fully, in full|A;Dg||||||
 543|plenty, enough, sufficient, adequate, satisfactory|Ana||||||
 544|division into ten|N;MSE||||||
-545|perhaps, probably, likely, I dare say|ADg||||||
-546|quite, entirely, completely, at all|ADg||X marude||||
-547|quite, very well|ADg|||639|||
+545|perhaps, probably, likely, I dare say|A;Dg||||||
+546|quite, entirely, completely, at all|A;Dg||X marude||||
+547|quite, very well|A;Dg|||639|||
 548|fine, sufficient, tolerable, well enough, OK, reasonable, fair, splendid, nice, wonderful, delicious, sweet, pretty (quantitative)|Ana|Polite form of ii.||||ii, yoi|
-549|reasonably, fairly well|ADg||||||
+549|reasonably, fairly well|A;Dg||||||
 550|or so, about|Sx||||||
-551|relatively|ADg||||||
-552|right, exactly, just, precisely|ADg|||640, 1349|||
-553|roughly, in round numbers|ADg||||||
-554|simply, merely, only, solely|ADg||||||
-555|somehow or other, for some reason or another|ADg||||||
-556|to that degree, to that extent|ADg||||||
-557|to that extent|ADg||||||
-558|until then, till then, up to that time|AT||||||
-559|to that extent, to that degree|ADg|||728|||
-560|together, jointly, along with, both|ADg||||||
-561|together, with|ADg|||636|hitori de|minna de, futari de|
-562|very, awfully, exceedingly|ADg|"tottemo" is usually used in a more expressive context than "totemo".||637, 1275|||
-563|very, extremely|ADg||||||
+551|relatively|A;Dg||||||
+552|right, exactly, just, precisely|A;Dg|||640, 1349|||
+553|roughly, in round numbers|A;Dg||||||
+554|simply, merely, only, solely|A;Dg||||||
+555|somehow or other, for some reason or another|A;Dg||||||
+556|to that degree, to that extent|A;Dg||||||
+557|to that extent|A;Dg||||||
+558|until then, till then, up to that time|A;T||||||
+559|to that extent, to that degree|A;Dg|||728|||
+560|together, jointly, along with, both|A;Dg||||||
+561|together, with|A;Dg|||636|hitori de|minna de, futari de|
+562|very, awfully, exceedingly|A;Dg|"tottemo" is usually used in a more expressive context than "totemo".||637, 1275|||
+563|very, extremely|A;Dg||||||
 564|that is…|CE||||||
-565|very, extremely, surprisingly, considerably, awfully, terribly|ADg|||1342|||
+565|very, extremely, surprisingly, considerably, awfully, terribly|A;Dg|||1342|||
 566|terrible, horrid, contemptible, reprehensible|Ana||||||
-567|very, greatly, terribly, awfully|ADg|||638|||
+567|very, greatly, terribly, awfully|A;Dg|||638|||
 568|immense, enournous, great, serious, grave, stressful, terrible, dreadful, difficult, hard|Ana|||591, 592|yasashii, raku|muzukashii, nukui|
-569|very, much, greatly, a lot of|ADg||||||
-570|without omission, in full, fully|ADg||||||
+569|very, much, greatly, a lot of|A;Dg||||||
+570|without omission, in full, fully|A;Dg||||||
 571|adorable|Ai||||||
 572|amazing, great, wonderful, terrific, impressive, vast, extensive|Ai|||574|||
 573|applauded (to applaud)|Ai|Verb-based, linked to object by "ga" when used with desu verb.|||||
@@ -743,118 +743,118 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 743|wonderful|Ai||||||
 744|yellow|Ai|||578|||
 745|young, youthful|Ai|||560, 561|furui|atarashii|
-746|absent-mindedly|AM||||||
+746|absent-mindedly|A;M||||||
 747|soft, fluffy|Ana||||||
-748|again and again, repeatedly|AM||||||
-749|alone|AM|||1286|futari de, issho ni, minna de||
-750|anyhow, at any rate, anyway, somehow or other, generally speaking, in any case|AM||||||
+748|again and again, repeatedly|A;M||||||
+749|alone|A;M|||1286|futari de, issho ni, minna de||
+750|anyhow, at any rate, anyway, somehow or other, generally speaking, in any case|A;M||||||
 751|was X|PC||X deatta @ X = phrase||||
-752|arbitrarily, of its own accord, involuntarily, wilfully, willfully, as one pleases|AM||||||
-753|arduously, diligently, industriously|AM||||||
+752|arbitrarily, of its own accord, involuntarily, wilfully, willfully, as one pleases|A;M||||||
+753|arduously, diligently, industriously|A;M||||||
 754||-||||||
 755|badness, evilness|N;Abs||||||
-756|both|AM||||hitori de|issho ni, minna de|
-757|by all means, at any cost, no matter what|AM||||||
-758|by oneself|AM||||||
-759|carefreely, leisurely|AM||||||
-760|carefully, cautiously|AM||||||
-761|carelessly, thoughtlessly, inadvertently|AM||||||
-762|clearly, plainly, distinctly|AM||||||
-763|completely, entirely|AM||||||
-764|constantly, always, continually, steadily|AM||||||
-765|crunchily, munchily|AM||||||
-766|damply, moistly|AM||||||
-767|deliberately, carefully, without rushing|AM||||||
-768|diligently, seriously, earnestly, reliably, steadily, legitimately, perfectly, properly, exactly, orderly, punctually, regularly, sufficiently, satisfactorily, quickly|AM||||||
-769|dimly, vaguely, indistincly, faintly, abentmindedly, vacantly, carelessly, idly, aimlessly|AM||||||
+756|both|A;M||||hitori de|issho ni, minna de|
+757|by all means, at any cost, no matter what|A;M||||||
+758|by oneself|A;M||||||
+759|carefreely, leisurely|A;M||||||
+760|carefully, cautiously|A;M||||||
+761|carelessly, thoughtlessly, inadvertently|A;M||||||
+762|clearly, plainly, distinctly|A;M||||||
+763|completely, entirely|A;M||||||
+764|constantly, always, continually, steadily|A;M||||||
+765|crunchily, munchily|A;M||||||
+766|damply, moistly|A;M||||||
+767|deliberately, carefully, without rushing|A;M||||||
+768|diligently, seriously, earnestly, reliably, steadily, legitimately, perfectly, properly, exactly, orderly, punctually, regularly, sufficiently, satisfactorily, quickly|A;M||||||
+769|dimly, vaguely, indistincly, faintly, abentmindedly, vacantly, carelessly, idly, aimlessly|A;M||||||
 770|fool, blockhead, dunce|N;Pe||||||
-771|disappointedly, dejectedly|AM||||||
-772|distantly, far|AM|||221|||
-773|duly, naturally|AM||||||
-774|easily, readily, quickly|AM||||||
-775|every way|AM||Always followed by affirmative verb.||||
-776|no way|AM||Always followed by negative verb.||||
+771|disappointedly, dejectedly|A;M||||||
+772|distantly, far|A;M|||221|||
+773|duly, naturally|A;M||||||
+774|easily, readily, quickly|A;M||||||
+775|every way|A;M||Always followed by affirmative verb.||||
+776|no way|A;M||Always followed by negative verb.||||
 777|thanks, thank you|CE||||||
-778|everyone together|AM|||635|hitori de|futari de, issho ni|
-779|fairly, impartially, justly|AM||||||
+778|everyone together|A;M|||635|hitori de|futari de, issho ni|
+779|fairly, impartially, justly|A;M||||||
 780||-||||||
 781|reliable, steady|Ana||||||
 782|firmness, tighness, reliability, level-headedness, steadiness|N;Abs||||||
-783|foolishly, stupidly, idiotically, absurdly, ridiculously|AM||||||
-784|for one's self, personally|AM||||||
-785|freely|AM|||629|||
-786|glitterlingly, sparklingly|AM||||||
+783|foolishly, stupidly, idiotically, absurdly, ridiculously|A;M||||||
+784|for one's self, personally|A;M||||||
+785|freely|A;M|||629|||
+786|glitterlingly, sparklingly|A;M||||||
 787|glitter, sparkle, twinkle|N;Ac||||||
-788|progressively|AM|||654|||
-789|grandly, boldly, confidently, fairly, squarely, unreservedly, without apology, without hesitation|AM||||||
+788|progressively|A;M|||654|||
+789|grandly, boldly, confidently, fairly, squarely, unreservedly, without apology, without hesitation|A;M||||||
 790|magnificient, grand, impressive, dignified, majestic, imposing, stately, fair, square, open|Aj||||||
-791|happily|AM||||||
-792|hastily, hurriedly|AM||||||
-793|honestly, frankly|AM||||||
+791|happily|A;M||||||
+792|hastily, hurriedly|A;M||||||
+793|honestly, frankly|A;M||||||
 794|honest, integrous, frank|Ana||||||
 795|honesty, integrity, frankness|N;Abs||||||
-796|horizontally|AM||||||
-797|implicitly|AM||||||
-798|as such|AM||||||
-799|irrespective, without discrimination, without distinction|AM||||||
-800|leisurly, by taking time|AM|||625|||
-801|like that (over there)|AM||||||
-802|like this|AM||Use as response to "dou".|741|||
-803|luckily, fortunately|AM||||||
+796|horizontally|A;M||||||
+797|implicitly|A;M||||||
+798|as such|A;M||||||
+799|irrespective, without discrimination, without distinction|A;M||||||
+800|leisurly, by taking time|A;M|||625|||
+801|like that (over there)|A;M||||||
+802|like this|A;M||Use as response to "dou".|741|||
+803|luckily, fortunately|A;M||||||
 804|happy, blessed, lucky, fortunate, felicious|Ana||||||
 805|happiness, blessedness, luck, fortune, felicity|N;Abs||||||
-806|meanderingly, wnderingly, windingly, sinuously|AM||||||
-807|forever, endlessly, on and on|AT||||||
-808|newly, anew|AM||||||
-809|newly, freshly|AM||||||
+806|meanderingly, wnderingly, windingly, sinuously|A;M||||||
+807|forever, endlessly, on and on|A;T||||||
+808|newly, anew|A;M||||||
+809|newly, freshly|A;M||||||
 810|new, fresh, novel|Ana|||||atarashii|
-811|nonchalantly, without a care|AM||||||
-812|or cordial terms|AM||||||
-813|on purpose|AM||||||
-814|one by one, separately, every single, each and every|AM||||||
-815|originally, primarily, properly, legally|AM||||||
+811|nonchalantly, without a care|A;M||||||
+812|or cordial terms|A;M||||||
+813|on purpose|A;M||||||
+814|one by one, separately, every single, each and every|A;M||||||
+815|originally, primarily, properly, legally|A;M||||||
 816|original, primary|N;Abs||||||
-817|ploppingly, splashingly, tumblingly|AM|Onomatopeia|||||
-818|precisely, accurately|AM||||||
-819|precisely, accurately, neatly|AM|||1345, 1346|||
-820|prettily|AM||||||
-821|pullingly, stretchingly, with tension|AM||||||
-822|quietly, calmly, gently, peacefully|AM||||||
-823|really, truly|AM||||||
-824|really, truly|AM||||||
-825|scatteredly, dispersedly, loosely, disconnectedly, rustlingly|AM||||||
+817|ploppingly, splashingly, tumblingly|A;M|Onomatopeia|||||
+818|precisely, accurately|A;M||||||
+819|precisely, accurately, neatly|A;M|||1345, 1346|||
+820|prettily|A;M||||||
+821|pullingly, stretchingly, with tension|A;M||||||
+822|quietly, calmly, gently, peacefully|A;M||||||
+823|really, truly|A;M||||||
+824|really, truly|A;M||||||
+825|scatteredly, dispersedly, loosely, disconnectedly, rustlingly|A;M||||||
 826|scattered, disperse, loose, disconnected, in pieces, in drops, rustling|Ana||||||
-827|separately, individually|AM||||||
-828|skillfully, aptly, well, cleverly|AM|||||yoku, yoroshiku, jouzu ni|
-829|slowly, late|AM||||hayaku||
+827|separately, individually|A;M||||||
+828|skillfully, aptly, well, cleverly|A;M|||||yoku, yoroshiku, jouzu ni|
+829|slowly, late|A;M||||hayaku||
 830||-||||||
-831|soon, momentarily, before long, any time now|AT|Mainly used to refer to an event that will be related to the subject of the sentence (usually a person).||1382||sugu|
-832|slurpingly (noodles)|AM||||||
-833|softly, gently, quietly, secretly|AM||||||
-834|somehow|AM|||1414, 1415, 1416|||
-835|soundly (asleep), fast (asleep)|AM||||||
-836|stealthily, secretly|AM||||||
-837|strongly|AM||||||
-838|suddenly, all of a sudden|AM||||||
-839|suddenly, unexpectedly, abruptly|AM|||626||totsuzen|
-840|thus, in this way|AM||||||
-841|tighly, closely, exactly, precisely, suddenly stopping, perfectly suited, ideally|AM||||||
-842|time and time again, many times, a number of times|AM||||||
-843|turning round and round, going around in circles, wrapped around|AM||||||
-844|unexpectedly, surprisingly|AM||||||
-845|unintentionally, reflexively, spontaneously, involuntarily, instinctively|AM||||||
-846|unconciously, against one's better judgment|AM||||||
-847|quite (near)|AP||||||
-848|just (now)|AT||||||
-849|very hard, with utmost effort, with all one's might, for dear life|AM|||1353|||
+831|soon, momentarily, before long, any time now|A;T|Mainly used to refer to an event that will be related to the subject of the sentence (usually a person).||1382||sugu|
+832|slurpingly (noodles)|A;M||||||
+833|softly, gently, quietly, secretly|A;M||||||
+834|somehow|A;M|||1414, 1415, 1416|||
+835|soundly (asleep), fast (asleep)|A;M||||||
+836|stealthily, secretly|A;M||||||
+837|strongly|A;M||||||
+838|suddenly, all of a sudden|A;M||||||
+839|suddenly, unexpectedly, abruptly|A;M|||626||totsuzen|
+840|thus, in this way|A;M||||||
+841|tighly, closely, exactly, precisely, suddenly stopping, perfectly suited, ideally|A;M||||||
+842|time and time again, many times, a number of times|A;M||||||
+843|turning round and round, going around in circles, wrapped around|A;M||||||
+844|unexpectedly, surprisingly|A;M||||||
+845|unintentionally, reflexively, spontaneously, involuntarily, instinctively|A;M||||||
+846|unconciously, against one's better judgment|A;M||||||
+847|quite (near)|A;loc||||||
+848|just (now)|A;T||||||
+849|very hard, with utmost effort, with all one's might, for dear life|A;M|||1353|||
 850|very hard, desperately hard, with utmost effort|Ana||||||
-851|vividely|AM||||||
-852|well, proficiently|AM|||628||yoku, yoroshiku, umaku|
-853|well, properly, suitably|AM|||||yoku, jouzu ni, umaku|
+851|vividely|A;M||||||
+852|well, proficiently|A;M|||628||yoku, yoroshiku, umaku|
+853|well, properly, suitably|A;M|||||yoku, jouzu ni, umaku|
 854||-||||||
-855|much|AT|||662|||
-856|willingly|AM||||||
-857|with trouble, at great pains|AM|||1386|||
+855|much|A;T|||662|||
+856|willingly|A;M||||||
+857|with trouble, at great pains|A;M|||1386|||
 858||-||||||
 859|being (too) late, belated treatment|N;Abs||||||
 860||-||||||
@@ -962,7 +962,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 962|identical, same, one and the same, equal|Ana||||||
 963|identity, sameness, similarity, equality, fairness|N;Abs||||||
 964|immediately, at once, right away, directly|Ana||||||
-965|soon, in a short time, before long, shortly, immediately, right away, fast|AT|||669, 670, 1364||sorosoro|
+965|soon, in a short time, before long, shortly, immediately, right away, fast|A;T|||669, 670, 1364||sorosoro|
 966|important, momentous, essential, principal, major|Ana||||||
 967||-||||||
 968||-||||||
@@ -1153,154 +1153,154 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1153|worry, concern, anxiety, uneasiness, fear|N;Abs||||||
 1154|zealous, enthusiastic|Ana||||||
 1155|enthusiasm, zeal|N;Abs||||||
-1156|at the beginning (of an event)|AO|||685||mazu|
-1157|first action, initial action|AO|||684|||
-1158|first of all|AO|||||hajime wa|
-1159|first of all, to start with, to begin with, originally|AO||||||
-1160|firstly|AO||||||
+1156|at the beginning (of an event)|A;T|||685||mazu|
+1157|first action, initial action|A;T|||684|||
+1158|first of all|A;T|||||hajime wa|
+1159|first of all, to start with, to begin with, originally|A;T||||||
+1160|firstly|A;T||||||
 1161|first, foremost, number one|N;Abs||||||
-1162|next, following, subsequent|AO|||657, 658|saki||
-1163|in front|AO||||tsugi||
+1162|next, following, subsequent|A;T|||657, 658|saki||
+1163|in front|A;T||||tsugi||
 1164|before|Sx|e.g. renrakusaki (before making a reservation)|||||
 1165||-||||||
 1166|top, summit|N;Pl|||434|shita||
-1167|anywhere|AP|||740|||
-1168|back, behind, rear|AP||||mae||
+1167|anywhere|A;loc|||740|||
+1168|back, behind, rear|A;loc||||mae||
 1169|back|N;Pl|||439|mae, temae||
 1170||-||||||
 1171|bottom|N;Pl||||ue||
-1172|everywhere|AP||Always followed by affirmative verb.||||
-1173|from afar, over a great distance, all the way|AP||||||
-1174|here (place physically close to the speaker, place pointed by the speaker while explaining), this place|AP|ME#0025;0026|||||
-1175|in front (of), before (e.g. the house)|AP||||ushiro||
-1176|before, previously, ago|AT|||667|||
+1172|everywhere|A;loc||Always followed by affirmative verb.||||
+1173|from afar, over a great distance, all the way|A;loc||||||
+1174|here (place physically close to the speaker, place pointed by the speaker while explaining), this place|A;loc|ME#0025;0026|||||
+1175|in front (of), before (e.g. the house)|A;loc||||ushiro||
+1176|before, previously, ago|A;T|||667|||
 1177|head (of a line), front (e.g. of a bus), fore part|N;Pl|||435|ushiro|temae|
-1178|inside, in|AP||||soko||
+1178|inside, in|A;loc||||soko||
 1179|inside, center|N;Pl|||349|||
-1180|neighbor (neighbour), next to (esp. living next door to)|AP|||656|||
+1180|neighbor (neighbour), next to (esp. living next door to)|A;loc|||656|||
 1181|neighbor (neighbour)|N;Pe||||||
-1182|nowhere|AP||Always followed by negative verb.|739|||
-1183|opposite side|AP||||||
-1184|outside, exterior|AP||||naka||
+1182|nowhere|A;loc||Always followed by negative verb.|739|||
+1183|opposite side|A;loc||||||
+1184|outside, exterior|A;loc||||naka||
 1185|outside, exterior|N;Pl|||440|uchi, inai||
-1186|there (place physically distant from both speaker and listener), over there, that place, yonder, you-know-where|AP|ME#0029;0030|||||
-1187|somewhere, someplace|AP||||||
-1188|somwhere, anywhere|AP|||738|||
-1189|there (place relatively near listener)|AP|ME#0027;0028|||||
-1190|a few times|AT||||||
-1191|a long time ago|AT||||||
+1186|there (place physically distant from both speaker and listener), over there, that place, yonder, you-know-where|A;loc|ME#0029;0030|||||
+1187|somewhere, someplace|A;loc||||||
+1188|somwhere, anywhere|A;loc|||738|||
+1189|there (place relatively near listener)|A;loc|ME#0027;0028|||||
+1190|a few times|A;T||||||
+1191|a long time ago|A;T||||||
 1192|olden days, former|N;T|||1263|||
-1193|abruptly, suddenly, unexpectedly, all at once|AT|||||kyuu ni, tozzen|
-1194|after a long time|AT|||1411|||
-1195|after this, from now on, hereafter|AT||||||
-1196|again, and, also, still (doing something)|AT|||668|||
-1197|another time, again, over again, once again, anew|AT||||||
-1198|again, once more, a second time|AT||||||
-1199|all day|AT||||||
-1200|all day and night|AT||||||
-1201|all day long, all the day, throughout the day|AT||||||
-1202|all night long|AT||||||
-1203|all night long|AT|||1303|||
-1204|all year round|AT||||||
-1205|all year, year round|AT||||||
-1206|alreaady, a while ago|AT||||||
-1207|already, too late|AT||||||
-1208|always, all the time, perpetually|AT||||||
+1193|abruptly, suddenly, unexpectedly, all at once|A;T|||||kyuu ni, tozzen|
+1194|after a long time|A;T|||1411|||
+1195|after this, from now on, hereafter|A;T||||||
+1196|again, and, also, still (doing something)|A;T|||668|||
+1197|another time, again, over again, once again, anew|A;T||||||
+1198|again, once more, a second time|A;T||||||
+1199|all day|A;T||||||
+1200|all day and night|A;T||||||
+1201|all day long, all the day, throughout the day|A;T||||||
+1202|all night long|A;T||||||
+1203|all night long|A;T|||1303|||
+1204|all year round|A;T||||||
+1205|all year, year round|A;T||||||
+1206|alreaady, a while ago|A;T||||||
+1207|already, too late|A;T||||||
+1208|always, all the time, perpetually|A;T||||||
 1209|whole year, all year round, throughout the year|N;Abs||||||
 1210||-||||||
-1211|always, constantly, frequently, often|AT||||||
-1212|always, usually, every time|AT||Always followed by affirmative verb.|443, 1263, 1358|||
-1213|never|AT||Always followed by negative verb.||||
-1214|any hour, all hours|AT|||744|||
-1215|anyday|AT|||745|||
-1216|anytime|AT|||743|||
-1217|around a specific point in time|AT|||671|||
-1218|at once, immediately, directly, in person, automatically|AT||||||
-1219|at that time, in those days|AT||||||
-1220|barely, narrowly, hardly, only just|AT||||||
-1221|finally, at last|AT||||||
-1222|gradually, little by little, by degrees|AT||||||
-1223|before the week is out, before the week is over, within the week, sometime this week|AT||||||
-1224|beforehand|AT||||||
+1211|always, constantly, frequently, often|A;T||||||
+1212|always, usually, every time|A;T||Always followed by affirmative verb.|443, 1263, 1358|||
+1213|never|A;T||Always followed by negative verb.||||
+1214|any hour, all hours|A;T|||744|||
+1215|anyday|A;T|||745|||
+1216|anytime|A;T|||743|||
+1217|around a specific point in time|A;T|||671|||
+1218|at once, immediately, directly, in person, automatically|A;T||||||
+1219|at that time, in those days|A;T||||||
+1220|barely, narrowly, hardly, only just|A;T||||||
+1221|finally, at last|A;T||||||
+1222|gradually, little by little, by degrees|A;T||||||
+1223|before the week is out, before the week is over, within the week, sometime this week|A;T||||||
+1224|beforehand|A;T||||||
 1225||-||||||
-1226|far off|AT||||||
-1227|much, by far|AT|||673|||
-1228|straight, direct|AT||||||
-1229|day after tomorrow|AT|||288|||
+1226|far off|A;T||||||
+1227|much, by far|A;T|||673|||
+1228|straight, direct|A;T||||||
+1229|day after tomorrow|A;T|||288|||
 1230|the day after tomorrow|N;T|||277|||
-1231|early|AT|Usually means "early-ish", a bit less early than hayaku.|||||
-1232|early, quickly|AT|||672, 1294, 1295|osoku||
-1233|every day|AT|||748|||
-1234|every day, daily|AT||||||
-1235|every evening, every night|AT|||750, 1410|||
-1236|every hour, hourly|AT||||||
-1237|every month|AT|||758|||
-1238|every morning|AT|||749|||
-1239|every week|AT|||755|||
-1240|every year, yearly, annually|AT|||763|||
-1241|finally, at last, in the end|AT||||||
-1242|first time (doing something)|AT|||683|||
-1243|for a long time|AT||||||
-1244|for some years|AT||||||
-1245|from now on, after this|AT||||||
-1246|immediately, at once, directly, shortly, soon, right away, promptly|AT|||686||chikaku, sassoku|
-1247|directly, shortly, soon, right away|AT|||687||sugu ni, chikaku|
-1248|in the end|AT||||||
-1249|just about to, on the verge of|AT||||||
-1250|just then|AT||||||
-1251|just when one is…|AT||||||
-1252|last month|AT|||756|||
-1253|last week, the week before|AT|||752|||
-1254|last year|AT|||759|||
+1231|early|A;T|Usually means "early-ish", a bit less early than hayaku.|||||
+1232|early, quickly|A;T|||672, 1294, 1295|osoku||
+1233|every day|A;T|||748|||
+1234|every day, daily|A;T||||||
+1235|every evening, every night|A;T|||750, 1410|||
+1236|every hour, hourly|A;T||||||
+1237|every month|A;T|||758|||
+1238|every morning|A;T|||749|||
+1239|every week|A;T|||755|||
+1240|every year, yearly, annually|A;T|||763|||
+1241|finally, at last, in the end|A;T||||||
+1242|first time (doing something)|A;T|||683|||
+1243|for a long time|A;T||||||
+1244|for some years|A;T||||||
+1245|from now on, after this|A;T||||||
+1246|immediately, at once, directly, shortly, soon, right away, promptly|A;T|||686||chikaku, sassoku|
+1247|directly, shortly, soon, right away|A;T|||687||sugu ni, chikaku|
+1248|in the end|A;T||||||
+1249|just about to, on the verge of|A;T||||||
+1250|just then|A;T||||||
+1251|just when one is…|A;T||||||
+1252|last month|A;T|||756|||
+1253|last week, the week before|A;T|||752|||
+1254|last year|A;T|||759|||
 1255||-||||||
-1256|later on, eventually, afterwards|AT|More formal version of "ato de".||||ato de|
-1257|long ago, a long time ago, already|AT||||||
-1258|many times over, often|AT||||||
-1259|never, by no means, not in the least, in no way|AT|Used in a negative phrase.|||||
-1260|next month|AT|||758|||
-1261|next week|AT|||754|||
-1262|next year|AT|||761|||
+1256|later on, eventually, afterwards|A;T|More formal version of "ato de".||||ato de|
+1257|long ago, a long time ago, already|A;T||||||
+1258|many times over, often|A;T||||||
+1259|never, by no means, not in the least, in no way|A;T|Used in a negative phrase.|||||
+1260|next month|A;T|||758|||
+1261|next week|A;T|||754|||
+1262|next year|A;T|||761|||
 1263||-||||||
-1264|now, the present time, just now, soon, immediately, (one) more|AT|||664|||
-1265|at this late hour (ie. too late for something)|AT||||||
-1266|now, at this time, lately|AT||||||
+1264|now, the present time, just now, soon, immediately, (one) more|A;T|||664|||
+1265|at this late hour (ie. too late for something)|A;T||||||
+1266|now, at this time, lately|A;T||||||
 1267||-|||1412|||
-1268|on any date|AT||||||
-1269|on some date|AT||||||
-1270|one time|AT||||||
-1271|presently, right away, right now|AT||||||
+1268|on any date|A;T||||||
+1269|on some date|A;T||||||
+1270|one time|A;T||||||
+1271|presently, right away, right now|A;T||||||
 1272|(I have returned) just now, I'm back|CE|||1183|||
-1273|quick|AT|Usually means "quick-ish", a bit less quick than hayaku.|||||
-1274|quickly|AT|Used colloquially.|||||
-1275|steadily in time, one after another, all at once|AT|||||one after the other|
+1273|quick|A;T|Usually means "quick-ish", a bit less quick than hayaku.|||||
+1274|quickly|A;T|Used colloquially.|||||
+1275|steadily in time, one after another, all at once|A;T|||||one after the other|
 1276|drumming noise|OI||||||
-1277|recently, nowadays, these days, now, at present|AT|||||saikin|
+1277|recently, nowadays, these days, now, at present|A;T|||||saikin|
 1278||-||||||
-1279|shortly, soon|AT|||||sugu ni, sassoku|
+1279|shortly, soon|A;T|||||sugu ni, sassoku|
 1280|neighborhood, neighbourhood, vicinity, near|N;Pl|||413|||
-1281|since then, after that|AT||||||
-1282|since, henceforth, from then on|AT||||||
-1283|some day|AT||||||
-1284|sometime|AT|||742|||
-1285|some hour|AT||||||
-1286|some time ago, just now|AT||||||
-1287|some time ago, not long ago, just now|AT||||||
-1288|from time to time|AT|||663|||
-1289|soon, before long, in a short time|AT||||||
-1290|suddenly, all of a sudden|AT||||||
-1291|suddenly, abruptly, instantly|AT|Archaic.|||||
-1292|the other day, a few days ago|AT||||||
-1293|the year after next|AT|||762|||
-1294|this evening, tonight|AT||||||
-1295|this month|AT|||757|||
-1296|this week|AT|||753|||
-1297|this year, this fiscal year, this school year|AT|||760|||
-1298|today, this day|AT|||929|||
-1299|tomorrow|AT|||747, 173|||
-1300|tonight, this evening|AT|||751, 1410|||
-1301|very seldom, almost never, rarely|AT|Use in phrase with negative tense only.||679, 134||amari, zenzen|
-1302|very soon, before long, in a moment|AT|||665, 666|||
-1303|X in addition to, besides Y|AT||hoka ni X Y, WHERE: X = characteristic, Y = time||||
+1281|since then, after that|A;T||||||
+1282|since, henceforth, from then on|A;T||||||
+1283|some day|A;T||||||
+1284|sometime|A;T|||742|||
+1285|some hour|A;T||||||
+1286|some time ago, just now|A;T||||||
+1287|some time ago, not long ago, just now|A;T||||||
+1288|from time to time|A;T|||663|||
+1289|soon, before long, in a short time|A;T||||||
+1290|suddenly, all of a sudden|A;T||||||
+1291|suddenly, abruptly, instantly|A;T|Archaic.|||||
+1292|the other day, a few days ago|A;T||||||
+1293|the year after next|A;T|||762|||
+1294|this evening, tonight|A;T||||||
+1295|this month|A;T|||757|||
+1296|this week|A;T|||753|||
+1297|this year, this fiscal year, this school year|A;T|||760|||
+1298|today, this day|A;T|||929|||
+1299|tomorrow|A;T|||747, 173|||
+1300|tonight, this evening|A;T|||751, 1410|||
+1301|very seldom, almost never, rarely|A;T|Use in phrase with negative tense only.||679, 134||amari, zenzen|
+1302|very soon, before long, in a moment|A;T|||665, 666|||
+1303|X in addition to, besides Y|A;T||hoka ni X Y, WHERE: X = characteristic, Y = time||||
 1304||-|||746|||
 1305|yesterday|N;T|||||yuube|
 1306|counter for small animals|C|Used for small animals, insects, fish, reptiles, amphibians, oni (demons/ogres). Usage: (1) ippiki, (2) nihiki), (3) sanbiki, (4) yonhiki, (5) gohiki, (6) roppiki, (7) nanahiki, (8) hachihiki, (9) kyuuhiki, (10) juppiki|||||
@@ -4756,7 +4756,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4756|sigh, lament, grieve|VkuI||||||
 4757|come, go, be (somewhere)|VaruI||||||
 4758|guide, lead, show the way, conduct, derive, deduce|VkuT||||||
-4759|perspire, sweat|VkuI||||||
+4759|to perspire, to sweat|CE||||||
 4760|flicker, quiver, waver, sway|VkuI||||||
 4761|flap (wings)|VkuI||||||
 4762|approach|VkuI||||||
@@ -5420,7 +5420,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5420|rush|VruiI||||||
 5421|give (polite, speaker is the giver), offer up the gods, show someone (ina room)|VruiT||General rule of thumb: if "watashi no" can be used on the object being given then "kureru" is used, otherwise "ageru" is used.|1331|||
 5422|give (polite)|VruiT||||||
-5423|cry (out/for help)|VruiI||||||
+5423|to cry (out/for help)|CE||||||
 5424|be visible|VruiI|||1334|||
 5425|memorize (not for a specific purpose), learn (news)|VruiT||||||
 5426|be extinguished|VruiI||||||
@@ -6080,8 +6080,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6080|fly, soar|VsuruI||||||
 6081||-||||||
 6082||-||||||
-6083|how, how much, up to how much, to what extent, to what degree|ADg||||||
-6084|one night, one evening|AT||||||
+6083|how, how much, up to how much, to what extent, to what degree|A;Dg||||||
+6084|one night, one evening|A;T||||||
 6085|complete, entire|Sx||||||
 6086|walk about, walk to and fro, pace around|VrugI||||||
 6087|to turn up, to make an appearance, to put in an appearance, to appear, to show up|CE||||||
@@ -6151,9 +6151,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6151|student loan|N;Abs|||1450|||
 6152|miserable, pitiable, shameful, deplorable, pathetic|Ai|Also used as an insult in a condescending setting.|||||
 6153|harbour, harbor, port|N;Pl||||||
-6154|importantly, valuably, seriously|AM||||||
-6155|zealously, enthusiatically|AM||||||
-6156|directly, erectly, straightforwardly, honestly, frankly|AM||||||
+6154|importantly, valuably, seriously|A;M||||||
+6155|zealously, enthusiatically|A;M||||||
+6156|directly, erectly, straightforwardly, honestly, frankly|A;M||||||
 6157|approval, agreement, support, favour, favor|N;Abs||||||
 6158|arm|N;An||||||
 6159|skill|N;Abs||||||
@@ -6185,15 +6185,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6185|overseas travel, (in preliberation China) a store operated by a foreigner|N;Abs||||||
 6186|winter vacation|N;Abs||||||
 6187|one day, first day of the month|N;T||||||
-6188|how long, how far, how much|ADg||||||
+6188|how long, how far, how much|A;Dg||||||
 6189|(hospital) nurse, (registered nurse, RN|N;Pe||||||
 6190|island|N;Pl||||||
 6191|territory (of a prostitute, organized crime gang, etc.), turf|N;Pl||||||
 6192|as if, as though, just like, similar to|PP|When used alone.|||||
-6193|for now, for the time being|ADc||||||
+6193|for now, for the time being|A||||||
 6194|people in general, general public, public at large|N;Abs||||||
 6195|large part, greater part, majority|N;Abs||||||
-6196|probably, maybe, perhaps|ADc||||||
+6196|probably, maybe, perhaps|A||||||
 6197|level, degree of something|iAC|Add "sa" to adjectives to express a degree or amount.|i/na-adj. root + sa|1458, 1459|||
 6198|yes, that's right|CE||||||
 6199|now that you mention it, speaking of that…|CE||||||
@@ -6209,7 +6209,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6209|fat, plump, stout|CE||||||
 6210|slim, thin|CE||||||
 6211|date (between persons who are already in a relationship)|N;Abs|Not to be confused with the English usage of "date", also for persons who are not yet in a relationship.|||||
-6212|at the same time|AM||||||
+6212|at the same time|A;M||||||
 6213|same, identical, alike|N;Abs||||||
 6214|shark|N;Fa||||||
 6215|tuition, school expenses|N;Abs||||||
@@ -6246,7 +6246,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6246|scoring combination (e.g. in mahjong, card games, etc.), hand|N;Abs||||||
 6247|develop (photos)|VkuT||||||
 6248|be jealous, to be envious|VkuI||||||
-6249|approximately, about|ADg||||||
+6249|approximately, about|A;Dg||||||
 6250|promise|N;Abs||||||
 6251|shortening, reduction, simplification|N;Abs||||||
 6252|contraction (in phonetics)|N;Abs||||||
@@ -6279,7 +6279,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6279|fragment, splinter, broken piece, chip, shard|N;Abs||||||
 6280|in the rain|N;Abs||||||
 6281|punish, penalize, penalise|VsuruT||||||
-6282|severly, strictly, rigidly, unsparingly, relentlessly, sternly, austerely, gravely, solemnly, intensely, harshly|AM||||||
+6282|severly, strictly, rigidly, unsparingly, relentlessly, sternly, austerely, gravely, solemnly, intensely, harshly|A;M||||||
 6283|duty, responsibility (incl. supervision of staff), liability, onus|N;Abs||||||
 6284|person in charge (including a supervisory role for other staff), person responsible for …, responsible party, supervisor, manager|N;Pe||||||
 6285|come into view, arrive|VruiT||||||
@@ -6372,7 +6372,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6372|antique, period piece|N;Abs||||||
 6373|preparedness, readiness, attitude|N;Abs||||||
 6374|thanks, solicitude, sympathy|N;Abs||||||
-6375|just a little, somewhat, slightly|ADg||||||
+6375|just a little, somewhat, slightly|A;Dg||||||
 6376|per (e.g. 100 yen per person), for every|CE||||||
 6377|lenient|Ai||||||
 6378|slow, stupid|Ai||||||
@@ -6481,8 +6481,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6481|date, time|N;T||||||
 6482|obvious, evident, clear, plain|Ana||||||
 6483|obviousness, evidence, clearness, plainness|NACf||||||
-6484|how, in what way|AM||||||
-6485|in detail, fully, minutely, at length|AM||||||
+6484|how, in what way|A;M||||||
+6485|in detail, fully, minutely, at length|A;M||||||
 6486|stress|N;Abs||||||
 6487|counter for aircraft|C||||||
 6488|counter for remaining lives (in video games)|C||||||
@@ -6570,7 +6570,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6570|eat, drinkHonorific or respectful (sonkeigo)|VrugI||||||
 6571|serve (in one's master's home)|VrugI||||||
 6572|go north|VrugI||||||
-6573|in great numbers|ADg||||||
+6573|in great numbers|A;Dg||||||
 6574|sale, offering for sale, release (for sale), launch (product)|N;Ac||||||
 6575||-||||||
 6576|steps, stairs, staircase, terrace|N;Pl||||||
@@ -6665,13 +6665,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6665|material, substance|N;Abs||||||
 6666|matter|N;MSE||||||
 6667|material, physical|Ana||||||
-6668|likewise|ADc||||||
-6669|simply, easily|AM||||||
-6670|briefly, quickly, lightly|AM||||||
+6668|likewise|A||||||
+6669|simply, easily|A;M||||||
+6670|briefly, quickly, lightly|A;M||||||
 6671|a good place|CE||||||
 6672|host|N;Pe||||||
 6673|Disney|N;Ne||||||
-6674|awfully, very, immensely, greatly, extensively, impressively|ADg||||||
+6674|awfully, very, immensely, greatly, extensively, impressively|A;Dg||||||
 6675|resignation|N;Ac||||||
 6676|official business, public business|N;Abs||||||
 6677|professional|N;Pe||||||
@@ -6752,7 +6752,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6752|thickness|N;Abs||||||
 6753|advantageous circumstances|N;Abs||||||
 6754|one-tenth of a monme of silver|N;Abs||||||
-6755|widely, far and wide, extensively, universally|ADg||||||
+6755|widely, far and wide, extensively, universally|A;Dg||||||
 6756|fiscal year (usu. April 1 to March 31 in Japan), financial year|N;T||||||
 6757|academic year, school year|N;T||||||
 6758|product year|N;T||||||
@@ -6811,9 +6811,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6811||-||||||
 6812|shine in (light), illuminate|VmuI||||||
 6813|insert, put in, thrust in, plug in|VmuT||||||
-6814|sternly, severely|AM|Used as an onomatopeia.|||||
-6815|having no slack, rigidly, stiffly, tightly|AM|Used as an onomatopeia.|||||
-6816|suddenly, abruptly, instantly|AM|Used as an onomatopeia, archaic.|||||
+6814|sternly, severely|A;M|Used as an onomatopeia.|||||
+6815|having no slack, rigidly, stiffly, tightly|A;M|Used as an onomatopeia.|||||
+6816|suddenly, abruptly, instantly|A;M|Used as an onomatopeia, archaic.|||||
 6817|impossible|Ana||||||
 6818|forcible, forced, compulsory|Ana||||||
 6819|excessive (work, etc.), immoderate|Ana||||||
@@ -6863,8 +6863,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6863|famous Japanese hamster character|N;Pe||||||
 6864|popular name ending in Japan|N;Abs||||||
 6865|famous Japanese giant hamster character|N;Pe||||||
-6866|Ah!, Oh!, expression of surprise, recollection, etc.|CES||||||
-6867|Hey!, used to get someone's attention|CES||||||
+6866|Ah!, Oh!, expression of surprise, recollection, etc.|CE;idp||||||
+6867|Hey!, used to get someone's attention|CE;idp||||||
 6868|that (indicating something distant from both speaker and listener (in space, time or psychologically), or something understood without naming it directly)|N;Abs||||||
 6869|that person (used to refer to one's equals or inferiors)|N;Abs||||||
 6870|down there (i.e. one's genitals)|N;Abs||||||
@@ -7145,7 +7145,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7145|chaos|N;Abs||||||
 7146|(outward) looks, features, face, countenance, expression|N;Abs||||||
 7147|turn up, make an appearance, put in an appearance, drop by|CE||||||
-7148|make somebody lose face, embarrass someone, make someone look foolish|VsuI||||||
+7148|to make somebody lose face, to embarrass someone, to make someone look foolish|CE||||||
 7149|be tough on, be rough with, torment, train harshly|VrugT||||||
 7150|having no slack, rigid, stiff, tight|A||||||
 7151|Kokonoka|N;Pl||||||
@@ -7497,7 +7497,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7497|cold, cold-hearted, heartless, unkind|Ana||||||
 7498|coldness, cold-heartedness, heartlessness, unkindness|N;Abs||||||
 7499|freezing, cold storage, refrigeration|N;Abs||||||
-7500|recently, lately, these days, nowadays, right now|AT|||678||kono goro|
+7500|recently, lately, these days, nowadays, right now|A;T|||678||kono goro|
 7501|nearest, closest|N;Abs||||||
 7502|bacterium, bacteria, germ|N;Abs||||||
 7503|fresh, refreshing, invigorating|Ana||||||
@@ -7510,15 +7510,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7510|entry, approach, penetration|N;Abs||||||
 7511|frank, candid, straightforward, openhearted, direct, outspoken|Ana||||||
 7512|frankness, candidness, straightforwardness, openheartedness, directness, outspokenness|N;Abs||||||
-7513|that way (direction distant from the speaker, close to the listener)|AP||||||
-7514|there (place distant from the speaker, close to the listener)|AP||||||
+7513|that way (direction distant from the speaker, close to the listener)|A;loc||||||
+7514|there (place distant from the speaker, close to the listener)|A;loc||||||
 7515|you, your family, your company|P||||||
 7516|that person (someone close to the listener)|P||||||
 7517|immense, enormous, great|Ana||||||
 7518|serious, grave, dreadful, terrible|Ana||||||
 7519|major incident, disaster|N;Abs||||||
 7520|interior of the body|N;Abs||||||
-7521|anyhow, at any rate, anyway, somehow or other, generally speaking, in any case, at least|AM|||1390|||
+7521|anyhow, at any rate, anyway, somehow or other, generally speaking, in any case, at least|A;M|||1390|||
 7522|pardon, forgiveness, tolerance, overlooking|N;Abs||||||
 7523|leniency, mercy, going easy (on someone)|N;Abs||||||
 7524|mercilessly, relentlessly, unsparingly|A||||||
@@ -7628,10 +7628,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7628|approximation, rough estimate|N;Abs||||||
 7629|yes, that is correct|CE||||||
 7630|understood, I see, OK, okay|CE||||||
-7631|present, here|AP||||||
+7631|present, here|A;loc||||||
 7632|pardon?, what's that?, come again?|CE||||||
 7633|now, here, here you go|CE||||||
-7634|giddy-up, giddap|CES||||||
+7634|giddy-up, giddap|CE;idp||||||
 7635|high|Ana||||||
 7636|high|N;Abs||||||
 7637|Al-Hayy (Iraq), High, Hy|N;Pl||||||
@@ -8146,7 +8146,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8146|loveable, very likeable, like very much|Ana||||||
 8147|outline, main point, gist|N;Abs||||||
 8148|general, substantially, approximately, about|A||||||
-8149|in the first place, to begin with, from the start|AT||||||
+8149|in the first place, to begin with, from the start|A;T||||||
 8150|president (of a nation or company), chief executive|N;Abs||||||
 8151|big man, boss, buddy, mate|N;Abs||||||
 8152|fragment, scrap, piece, shred|N;Abs||||||
@@ -8288,7 +8288,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8288|taxation|N;Abs||||||
 8289|ventilation|N;Abs||||||
 8290|communication (within an organisation), openness|N;Abs||||||
-8291|catch a cold|VkuI||||||
+8291|to catch a cold|CE||||||
 8292|corollary|N;Abs||||||
 8293|system (range of strata that correspond to a particular time period)|N;Abs||||||
 8294|(taxonomical) series|N;Abs||||||
@@ -8414,8 +8414,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8414|undermentioned (statement), the following, at left|N;Abs||||||
 8415|pioneer, leader, taking the initiative, forerunner, harbinger, herald|N;Abs||||||
 8416|leading an attack, charging ahead of others (towards the enemy)|N;Abs||||||
-8417|recently, the other day|AT||||||
-8418|some time ago, not long ago, just now|AT||||||
+8417|recently, the other day|A;T||||||
+8418|some time ago, not long ago, just now|A;T||||||
 8419|before, earlier than, first, ahead, beyond, away, previously, recently|A||||||
 8420|earliness, aheadness, previousness, recentness|N;Abs||||||
 8421|postpone|N;Abs||||||
@@ -8430,7 +8430,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8430|influence, control, domination|N;Abs||||||
 8431|Sou|N;Pl||||||
 8432|hereditary title (used in ancient Japan to denote rank and political standing)|N;Abs||||||
-8433|the other day, some time ago, recently|AT||||||
+8433|the other day, some time ago, recently|A;T||||||
 8434|prior to, in advance of|CE||||||
 8435|other party, other side|N;Abs||||||
 8436|ahead, in front|N;Abs||||||
@@ -8648,8 +8648,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8648|in order to (e.g. meet goal), so that, take care (so as)|CE||||||
 8649|hoping or wishing for something|CE||||||
 8650|approval|N;Abs||||||
-8651|reach the point that, come to be that, turn into|CEV||||||
-8652|(following a verb) to be sure to, to do (something) so that ..., to make sure to, to try to|CEV||||||
+8651|reach the point that, come to be that, turn into|CE||||||
+8652|(following a verb) to be sure to, to do (something) so that ..., to make sure to, to try to|CE||||||
 8653|whole (body), full-length (e.g. portrait)|N;Abs||||||
 8654|antecedents, ancestor, previous position, previous existence, predecessor organization, predecessor organisation|N;Abs||||||
 8655|advance, moving forward, progress|N;Abs||||||
@@ -8831,8 +8831,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8831|top reporter at a newspaper's local office|N;Abs||||||
 8832|captain|N;Abs||||||
 8833|captain|N;Abs||||||
-8834|each time, always, often|AT||||||
-8835|thank you for your continued patronage|CES||||||
+8834|each time, always, often|A;T||||||
+8835|thank you for your continued patronage|CE;idp||||||
 8836|mile|N;Abs||||||
 8837|go, come, call|VrugI||||||
 8838|be defeated, collapse, die|VrugI||||||
@@ -9265,7 +9265,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9265|control (of a machine, device, etc.)|N;Abs||||||
 9266|control (over an opponent, one's emotions, etc.), governing, management, suppression, keeping in check|N;Abs||||||
 9267|believe, believe in, place trust in, confide in, have faith in|VruiT||||||
-9268|it can't be helped, it is inevitable, nothing can be done, there's no point (in doing something), there's no reason (to do something)|CES||||||
+9268|it can't be helped, it is inevitable, nothing can be done, there's no point (in doing something), there's no reason (to do something)|CE;idp||||||
 9269||-||||||
 9270|prize, monetary award|N;Abs||||||
 9271|negative, conservative|N;Abs||||||
@@ -9434,7 +9434,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9434|solid, firm, stout, burly, strong, sturdy|Ana||||||
 9435|solidity, firmness, stoutness, burliness, strength, sturdiness|N;Abs||||||
 9436|(written) application, application form, written request, written petition|N;Abs||||||
-9437|now, current, present, present time, as of|AT||||||
+9437|now, current, present, present time, as of|A;T||||||
 9438|end of the month|N;T||||||
 9439|honorific/polite/humble prefix|Px||||||
 9440|honorific suffix|Sx||||||
@@ -9693,7 +9693,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9693|sense (of something's arrival), feeling|N;Abs||||||
 9694|voice, voiced sound|N;Abs||||||
 9695|flour, meal, powder, dust|N;Abs||||||
-9696|hello, good day, good afternoon|CES||||||
+9696|hello, good day, good afternoon|CE;idp||||||
 9697|(approximate) time, around, about, toward|N;Abs||||||
 9698|suitable time (or condition)|N;Abs||||||
 9699|time of year, season|N;Abs||||||
@@ -9776,12 +9776,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9776|catch sight of, see, suppose, assume from appearances|VruiT||||||
 9777|look out over, survey (scene), take an extensive view of|VsuT||||||
 9778|replica firearm, realistic toy gun with no firing mechanism|N;Abs||||||
-9779|perhaps, possibly, maybe, by any chance, if I'm not mistaken|CES||||||
+9779|perhaps, possibly, maybe, by any chance, if I'm not mistaken|CE;idp||||||
 9780||-||||||
-9781|if, in case, in the event that|CEA||||||
+9781|if, in case, in the event that|CE;A||||||
 9782||-||||||
-9783|hello (e.g. on phone)|CES||||||
-9784|excuse me! (when calling out to someone)|CES||||||
+9783|hello (e.g. on phone)|CE;idp||||||
+9784|excuse me! (when calling out to someone)|CE;idp||||||
 9785|facing, opposite, across the street, other side|N;Abs||||||
 9786|face|VuI||||||
 9787|go towards, head towards|VuI||||||
@@ -9961,7 +9961,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9961|logging road|N;Abs||||||
 9962|search (for something desired, needed), look for|VsuT||||||
 9963|search (for something lost), seek (a suspect in a crime)|VsuT||||||
-9964|nowadays, recently|AT||||||
+9964|nowadays, recently|A;T||||||
 9965|last night|N;T||||||
 9966|cut, reduction, curtailment|N;Abs||||||
 9967|last year|N;T||||||
@@ -10042,7 +10042,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 10042|youngest child|N;Abs||||||
 10043|descendants, offspring, posterity|N;Abs||||||
 10044|future|N;T||||||
-10045|finally|AM||||||
+10045|finally|A;M||||||
 10046|trivialities|N;Abs||||||
 10047|spreading out like an open fan|N;Abs||||||
 10048|becoming prosperous|N;Abs||||||
@@ -10204,7 +10204,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 10204|run into (difficulties, problems, etc.), run up against|VrugI||||||
 10205|associate with, keep company with, go out with, go steady with, get on with|VuI||||||
 10206|go along with, follow someone's lead, accompany someone, compromise|VuI||||||
-10207|every month, monthly, month by month|AT||||||
+10207|every month, monthly, month by month|A;T||||||
 10208|time, years, days|N;Abs||||||
 10209|every month|N;Abs||||||
 10210|trite, commonplace, conventional, hackneyed|Ana||||||
@@ -10437,7 +10437,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 10437|-able|PP||||||
 10438|probably, likely|PP||||||
 10439|counter for suits of clothing|C||||||
-10440|steadily|AM||||||
+10440|steadily|A;M||||||
 10441|landing|N;Abs||||||
 10442|steady, sound, solid, reliable, trustworthy|Ana||||||
 10443|steadiness, soundness, solidity, reliability, trustworthiness|N;Abs||||||
@@ -10548,8 +10548,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 10548|study (under teacher), be an apprentice|VkuI||||||
 10549|be lit (e.g. electricity comes on), be lighted|VkuI||||||
 10550|catch fire|VkuI||||||
-10551|deeply, keenly, severely, completely, utterly|AM||||||
-10552|intently, carefully, closely, attentively|AM||||||
+10551|deeply, keenly, severely, completely, utterly|A;M||||||
+10552|intently, carefully, closely, attentively|A;M||||||
 10553|making, producing, manufacturing, building, construction, make, structure|N;Abs||||||
 10554|appearance (attire, make-up, etc.)|N;Abs||||||
 10555|build, physique|N;Abs||||||
@@ -10914,7 +10914,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 10914|saviour, savior, messiah|N;Abs||||||
 10915|absorption, suction, attraction|N;Abs||||||
 10916|eyelid, eyelids|N;Abs||||||
-10917|by no means, never!, well, I never!, you don't say!, certainly (not)|CES||||||
+10917|by no means, never!, well, I never!, you don't say!, certainly (not)|CE;idp||||||
 10918|something unexpected, emergency|N;Abs||||||
 10919|currently, for the time being, presently, for now|N;Abs||||||
 10920|indeed, really, truly, unexpectedly|A||||||
@@ -10959,11 +10959,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 10959|taking sides with, supporting, standing by, backing up|N;Abs||||||
 10960|person's identity, ID, past, background|N;Abs||||||
 10961|dress, attire, clothing, getup, outfit, personal appearance|N;Abs||||||
-10962|one's personal belongings, one's vicinity, one's daily life, everyday necessities|CEN||||||
+10962|one's personal belongings, one's vicinity, one's daily life, everyday necessities|CE;N||||||
 10963||-||||||
-10964|one's station in life, one's personal history, one's circumstances|CEN||||||
+10964|one's station in life, one's personal history, one's circumstances|CE;N||||||
 10965||-||||||
-10966|one's lot, one's destiny, one's future|CEN||||||
+10966|one's lot, one's destiny, one's future|CE;N||||||
 10967||-||||||
 10968|discover, find (e.g. an error in a book), come across, detect, spot|VruiT||||||
 10969|locate, find (e.g. something missing), find fault|VruiT||||||
@@ -10979,9 +10979,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 10979|catalogue, catalog, inventory, index, list|N;Abs||||||
 10980|certificate indicating an impending gift|N;Abs||||||
 10981|if, in case, supposing|A||||||
-10982|perhaps, maybe, perchance, by some chance, by any chance|CEA||||||
+10982|perhaps, maybe, perchance, by some chance, by any chance|CE;A||||||
 10983||-||||||
-10984|perhaps, maybe, by some chance|CEA||||||
+10984|perhaps, maybe, by some chance|CE;A||||||
 10985||-||||||
 10986|or, otherwise|PP||||||
 10987|or, otherwise|CE||||||
@@ -11003,7 +11003,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 11003|start to throw|VsuT||||||
 11004|face defeat, give up|VruiT||||||
 11005|Nile (river)|N;Abs||||||
-11006|any, whatever one likes, by all means, anything, everything|CEA||||||
+11006|any, whatever one likes, by all means, anything, everything|CE;A||||||
 11007||-||||||
 11008|I am told, I understand, they say, I hear|CE||||||
 11009|and everything else (with noun plus "mo"), all|CE||||||
@@ -11033,7 +11033,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 11033|Nicaragua|N;Abs||||||
 11034|also, too, not ... either, as well, even|CE||||||
 11035|(it's not possible) no matter what, although one might wish otherwise|CE||||||
-11036|in spite of, nevertheless, although, despite, no matter the, regardless of|CEP||||||
+11036|in spite of, nevertheless, although, despite, no matter the, regardless of|CE;PP||||||
 11037||-||||||
 11038|food cooked by boiling or stewing|N;Abs||||||
 11039|luggage, baggage, package|N;Abs||||||
@@ -11233,7 +11233,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 11233|irritating, troublesome|Ai||||||
 11234|heavy (weather), cloudy|Ai||||||
 11235|new leaves, fresh verdure|N;Abs||||||
-11236|one's youth, early life, one's early days, one's early years|CEN||||||
+11236|one's youth, early life, one's early days, one's early years|CE;N||||||
 11237||-||||||
 11238|young man, young woman, young people, youth, youngsters|N;Abs||||||
 11239|young person|N;Abs||||||
@@ -11523,7 +11523,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 11523|implementation (e.g. of a system), materialization, materialisation, realization, realisation|N;Abs||||||
 11524|industry, business|N;Abs||||||
 11525|businessman, industrialist|N;Abs||||||
-11526|as a matter of fact, by the way, to tell you the truth, to be honest, frankly|CEA||||||
+11526|as a matter of fact, by the way, to tell you the truth, to be honest, frankly|CE;A||||||
 11527||-||||||
 11528|real condition, actual circumstances, actual state of affairs|N;Abs||||||
 11529|example, illustration, precedent|N;Abs||||||
@@ -11731,9 +11731,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 11731|application form, written application|N;Abs||||||
 11732|statement, account (of something), declaration, allegation|N;Abs||||||
 11733|apology, excuse|N;Abs||||||
-11734|I'm sorry, (it's) inexcusable, I feel regretful, I feel guilty|CEAi||||||
+11734|I'm sorry, (it's) inexcusable, I feel regretful, I feel guilty|CE;Ai||||||
 11735||-||||||
-11736|thank you very much (for help, etc.)|CEAi||||||
+11736|thank you very much (for help, etc.)|CE;Ai||||||
 11737||-||||||
 11738|heat wave, fierce heat|N;Abs||||||
 11739|do|VsuT||||||
@@ -12043,7 +12043,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12043|seize, catch, grasp, grip, grab, clutch, hold, catch hold of, lay one's hands on|VmuT||||||
 12044|obtain, acquire, get, win, capture|VmuT||||||
 12045|understand, grasp, comprehend|VmuT||||||
-12046|moment, brief space of time|CEN||||||
+12046|moment, brief space of time|CE;N||||||
 12047||-||||||
 12048|tiredness, fatigue|N;Abs||||||
 12049|be worn out (e.g. of well used objects)|VruiI||||||
@@ -12092,9 +12092,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12092|informal, light, flexible (e.g. thinking)|Ai||||||
 12093|nicely, properly, well, skillfully, skilfully|A|||630, 102, 1269||umaku, yoroshiku, jouzu ni|
 12094|frequently, often|A||||||
-12095|frequently asked questions, FAQ|CEN||||||
+12095|frequently asked questions, FAQ|CE;N||||||
 12096||-||||||
-12097|frequently asked questions, FAQ|CEN||||||
+12097|frequently asked questions, FAQ|CE;N||||||
 12098||-||||||
 12099|pinky swear, pinky promise, hooking each other's little fingers to confirm a promise|N;Abs||||||
 12100|toe tip, toe|N;Abs||||||
@@ -12288,9 +12288,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12288|dodge (a question, blow, etc.), evade, sidestep, avoid (e.g. peak season)|VsuT||||||
 12289|miss (a target, chance, punch, etc.)|VsuT||||||
 12290|here and there, this way and that way, everywhere, all over|N;Abs||||||
-12291|had better|CEAi||||||
+12291|had better|CE;Ai||||||
 12292||-||||||
-12293|had better not|CEAi||||||
+12293|had better not|CE;Ai||||||
 12294||-||||||
 12295|direction, way|N;Abs||||||
 12296|point of the compass, cardinal direction, bearing|N;Abs||||||
@@ -12316,8 +12316,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12316|excuse|N;Abs||||||
 12317|explanation|N;Abs||||||
 12318|announce, tell, sentence, order|VsuT||||||
-12319|about when, how soon|AT||||||
-12320|it goes without saying, there is no need to say so, but of course, it is needless to say, it need scarcely be said|CEAi||||||
+12319|about when, how soon|A;T||||||
+12320|it goes without saying, there is no need to say so, but of course, it is needless to say, it need scarcely be said|CE;Ai||||||
 12321||-||||||
 12322|wire netting, wire mesh, wire screen, chain-link mesh|N;Abs||||||
 12323|hammer|N;Abs||||||
@@ -12356,9 +12356,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12356|paulownia tree, Paulownia tomentosa|N;Abs||||||
 12357|trump card|N;Abs||||||
 12358|ace up one's sleeve, secret weapon|N;Abs||||||
-12359|endless, boundless, innumerable|CEAi||||||
+12359|endless, boundless, innumerable|CE;Ai||||||
 12360||-||||||
-12361|endless, never-ending, going on forever|CEAi||||||
+12361|endless, never-ending, going on forever|CE;Ai||||||
 12362||-||||||
 12363|giraffe (Giraffa camelopardalis)|N;Abs||||||
 12364|qilin (Chinese unicorn)|N;Abs||||||
@@ -12381,7 +12381,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12381|everything, all|N;Abs||||||
 12382|various|N;Abs||||||
 12383|shoplifting, shoplifter|N;Abs||||||
-12384|if by any chance, just in case, in the worst case, in the unlikely event that, 10000 to 1|CEA||||||
+12384|if by any chance, just in case, in the worst case, in the unlikely event that, 10000 to 1|CE;A||||||
 12385||-||||||
 12386|fountain pen|N;Abs||||||
 12387|(not) altogether, (not) wholly|A||||||
@@ -12462,7 +12462,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12462|payment by proxy, compensation by proxy, paying on behalf (of)|N;Abs||||||
 12463|acting for (someone else), carrying out (on someone's behalf)|N;Abs||||||
 12464|pinch-hitting|N;Abs||||||
-12465|for generations, hereditary, generation after generation|AT||||||
+12465|for generations, hereditary, generation after generation|A;T||||||
 12466|parliamentarian, member of a congress|N;Abs||||||
 12467|representative, exemplary, model|Ana||||||
 12468|price, cost, charge, payment, bill, fee|N;Abs||||||
@@ -12516,7 +12516,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12516|go to (school, work, etc.), attend, commute, frequent|VuI||||||
 12517|circulate (e.g. blood, electricity), be communicated (e.g. thought)|VuI||||||
 12518|resemble|VuI||||||
-12519|in one's imagination|CEN||||||
+12519|in one's imagination|CE;N||||||
 12520||-||||||
 12521|fixing (in place), securing, anchoring, fastening down|N;Abs||||||
 12522|fixing (e.g. salary, capital), keeping the same|N;Abs||||||
@@ -12611,7 +12611,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12611||-||||||
 12612|connoisseur, authority|N;Sx||||||
 12613|counter for letters, notes, documents, etc.|C||||||
-12614|usual, ordinary, normal, regular, general, common|AM||||||
+12614|usual, ordinary, normal, regular, general, common|A;M||||||
 12615|currency|N;Abs||||||
 12616|commuting to work|N;Abs||||||
 12617|passage, pathway, roadway, avenue, aisle|N;Abs||||||
@@ -12704,7 +12704,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12704|(addressee's) name, (recipient's) name and address|N;Abs||||||
 12705|address, destination|N;Abs||||||
 12706|(divine) punishment, curse, retribution|N;Abs||||||
-12707|out-of-place, inappropriate, sticking out like a sore thumb|CEAna||||||
+12707|out-of-place, inappropriate, sticking out like a sore thumb|CE;Ana||||||
 12708||-||||||
 12709||-||||||
 12710|Vatican, Vatican City|N;Abs||||||
@@ -13118,7 +13118,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13118|please, kindly, I beg of you, if it pleases you|A||||||
 13119|by all means, without fail|A||||||
 13120|something, for some reason, some kind of|A||||||
-13121|most, best, above all|CEA||||||
+13121|most, best, above all|CE;A||||||
 13122||-||||||
 13123||-||||||
 13124|whatever, what, what sort of, any kind of|A||||||
@@ -13143,7 +13143,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13143|during an era|Sx||||||
 13144|annuity, pension|N;Abs||||||
 13145|seniority by length of service|N;Abs||||||
-13146|year by year, annually, every year, from year to year|AT||||||
+13146|year by year, annually, every year, from year to year|A;T||||||
 13147|elderly, age, years|N;Abs||||||
 13148|pupil in ... year, student in ... year|Sx||||||
 13149|desirable, hoped for, preferable, advisable|Ai||||||
@@ -13166,9 +13166,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13166|foreground|N;Abs||||||
 13167|main street|N;Abs||||||
 13168|outward appearance, ostensible, public, official|N;Abs||||||
-13169|girl, daughter|CEN||||||
+13169|girl, daughter|CE;N||||||
 13170||-||||||
-13171|young woman|CEN||||||
+13171|young woman|CE;N||||||
 13172||-||||||
 13173|womanly, ladylike, feminine|Ai||||||
 13174|very young|Ai||||||
@@ -13218,7 +13218,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13218|exceptional|Ana||||||
 13219|regular meeting|N;Abs||||||
 13220|average (normal, ordinary) year|N;T||||||
-13221|every year, annually|AT||||||
+13221|every year, annually|A;T||||||
 13222|advantage, benefit, profit, interest|N;Abs||||||
 13223|advantages and disadvantages, interests (of parties)|N;Abs||||||
 13224|interests, stake|N;Abs||||||
@@ -13395,7 +13395,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13395|abrupt, sudden, unexpected|N;Abs||||||
 13396|value, prize, esteem, respect|VbuT||||||
 13397|stage, station|N;Abs||||||
-13398|in the following manner, as follows|CEA||||||
+13398|in the following manner, as follows|CE;A||||||
 13399||-||||||
 13400|in succession, one by one|A||||||
 13401|in succession, one by one|N;Abs||||||
@@ -13787,7 +13787,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13787|the baseball world|N;Abs||||||
 13788|coccus|N;Abs||||||
 13789|plan of a house, arrangement of rooms, list of rooms in an apartment, excluding bathroom and toilet, encoded as a string of digits and letters (e.g. "2DK" for a two-room apartment with a kitchen/dining area)|N;Abs||||||
-13790|ago, before (some event), previously, (minutes) to (the hour)|AT||||||
+13790|ago, before (some event), previously, (minutes) to (the hour)|A;T||||||
 13791|in the presence of|A||||||
 13792|helping, portion|N;Abs||||||
 13793|privates, private parts|N;An||||||
@@ -13809,7 +13809,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13809|awfully, extremely, to excess, senseless, reckless|Ana||||||
 13810|disorder, confusion, jumbledness|N;Abs||||||
 13811|disorderly, confused, being jumbled, being mixed up|Ana||||||
-13812|very, extremely, excessively|ADg||||||
+13812|very, extremely, excessively|A;Dg||||||
 13813|ignorance, innocence, stupidity|N;Abs||||||
 13814|ignorant, innocent, stupid|Ana||||||
 13815|infinity, infinitude, eternity|N;Abs||||||
@@ -13952,7 +13952,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13952|poem, verse of poetry|N;Abs||||||
 13953|magazine|Sx||||||
 13954||-||||||
-13955|before one knew it, before one realized it|CEA||||||
+13955|before one knew it, before one realized it|CE;A||||||
 13956||-||||||
 13957|omen|N;Abs||||||
 13958|headquarters|N;Abs||||||
@@ -14080,7 +14080,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14080|element (e.g. in array), member (e.g. data structure)|N;Abs||||||
 14081|aspect, phase, condition|N;Abs||||||
 14082|modality (philosophy)|N;Abs||||||
-14083|in short, in a word, to sum up, to put it simply, to make a long story short, after all|CEA||||||
+14083|in short, in a word, to sum up, to put it simply, to make a long story short, after all|CE;A||||||
 14084||-||||||
 14085|gist, main point|N;Abs||||||
 14086|summary, digest|N;Abs||||||
@@ -14409,7 +14409,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14409|be ... or something|VrugI||||||
 14410|democracy|N;Abs||||||
 14411|democrat|N;Abs||||||
-14412|it is not (like that), used to explicitly deny one thing while also implicitly denying other things|CEAi||||||
+14412|it is not (like that), used to explicitly deny one thing while also implicitly denying other things|CE;Ai||||||
 14413||-||||||
 14414|demonstration, protest|N;Abs||||||
 14415|(giving a) demo, demonstration, presentation|N;Abs||||||
@@ -14538,7 +14538,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14538|quitting (one's job), firing someone, divorcing (one's spouse)|Ana||||||
 14539|(of one's time) free, (of one's business) slow|Ana||||||
 14540|leaving, departing|N;Abs||||||
-14541|busy, having no (free) time|CEAi||||||
+14541|busy, having no (free) time|CE;Ai||||||
 14542||-||||||
 14543|corpulence, fatness, obesity|N;Abs||||||
 14544|day by day|A||||||
@@ -14654,7 +14654,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14654|communication of opinions of the general populace to those of high rank|N;Abs||||||
 14655|superior, first-class, excellent, top quality|Ana||||||
 14656|superiority, excellence|N;Abs||||||
-14657|(that's) just fine!, bring it on!|CES||||||
+14657|(that's) just fine!, bring it on!|CE;idp||||||
 14658||-||||||
 14659|skillful, skilled, proficient, good (at), adept, clever|Ana|Verb-based, linked to object by "ga" when used with desu verb.||367, 620|heta||
 14660|flattery|N;Abs||||||
@@ -14857,7 +14857,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14857|correction|N;Abs||||||
 14858|collector|N;Abs||||||
 14859|corrector|N;Abs||||||
-14860|so far, up to now, hitherto|CEN||||||
+14860|so far, up to now, hitherto|CE;N||||||
 14861||-||||||
 14862|that's enough (for today), it ends here|CE||||||
 14863|these|P||||||
@@ -14885,7 +14885,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14885|looking like, appearing like, smacking of, -ish|Sx||||||
 14886|mowing, mower|N;Abs||||||
 14887|plants, vegetation|N;Abs||||||
-14888|grassroots, rank and file, the roots of grass|CEN||||||
+14888|grassroots, rank and file, the roots of grass|CE;N||||||
 14889||-||||||
 14890|Kusari|N;Pl||||||
 14891|pathfinder, trailblazer, early settler|N;Abs||||||
@@ -14913,7 +14913,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14913|to (a place), as far as|PP||||||
 14914|to (an extent), up to, so far as, even|PP||||||
 14915|only, merely|PP||||||
-14916|doesn't amount to doing (something), not significant enough to require (something), unnecessary|CEAi||||||
+14916|doesn't amount to doing (something), not significant enough to require (something), unnecessary|CE;Ai||||||
 14917||-||||||
 14918|up to ... (e.g. items), until ... (times), as far as|CE||||||
 14919|exactly, surely, certainly, just|A||||||
@@ -14985,9 +14985,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14985|not, impossible, won't happen|Ai||||||
 14986|not ...|Aj||||||
 14987|to not be..., to have not ...|Aj||||||
-14988|have to (verb), must (verb)|CEAi||||||
+14988|have to (verb), must (verb)|CE;Ai||||||
 14989||-||||||
-14990|is indispensable, absolutely necessary|CEAi||||||
+14990|is indispensable, absolutely necessary|CE;Ai||||||
 14991||-||||||
 14992|among, within|N;Abs||||||
 14993|center (centre), middle|N;Abs||||||
@@ -15000,7 +15000,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15000|reveal oneself (as), admit to being|VrugI||||||
 15001|adopt as one's name, take (a name)|VrugT||||||
 15002|call out the goods one is selling|VrugI||||||
-15003|I see, that's right, indeed|CEA||||||
+15003|I see, that's right, indeed|CE;A||||||
 15004||-||||||
 15005|accomplish, finish, fulfill|VruiT||||||
 15006|knead, thicken into a paste (stirring over a flame)|VrugT||||||
@@ -15263,11 +15263,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15263||-||||||
 15264|the very thing, itself|N;Sx||||||
 15265||-||||||
-15266|before very long, soon, someday, one of these days, sooner or later|CEA||||||
+15266|before very long, soon, someday, one of these days, sooner or later|CE;A||||||
 15267||-||||||
-15268|of the previously mentioned, of that number, among them, among others|CEA||||||
+15268|of the previously mentioned, of that number, among them, among others|CE;A||||||
 15269||-||||||
-15270|before very long, soon, someday, one of these days, sooner or later|CEA||||||
+15270|before very long, soon, someday, one of these days, sooner or later|CE;A||||||
 15271||-||||||
 15272|in addition, furthermore|PP||||||
 15273|above (which), on top of (which)|PP||||||
@@ -15816,7 +15816,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15816|reality, actuality, actual conditions|N;Abs||||||
 15817||-||||||
 15818|bhutakoti (limit of reality)|N;Abs||||||
-15819|in fact, actually, to tell the truth|CEA||||||
+15819|in fact, actually, to tell the truth|CE;A||||||
 15820||-||||||
 15821|inside of a castle|N;Abs||||||
 15822|area surrounded by castle walls|N;Abs||||||
@@ -15889,7 +15889,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15889|(Western) pop song|N;Abs||||||
 15890|many, numerous, various, large number of|N;Abs||||||
 15891||-||||||
-15892|in great numbers|CEA||||||
+15892|in great numbers|CE;A||||||
 15893||-||||||
 15894|in great numbers|N;Abs||||||
 15895|planned, scheduled, systematic|Ana||||||
@@ -16115,8 +16115,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 16115|group, crowd, flock, herd, bevy, school, swarm, cluster (e.g. of stars), clump, pack (e.g. of dogs)|N;Abs||||||
 16116|Muromachi (era 1392-1573, or 1333-1573, or 1336-1573)|N;Abs||||||
 16117|warrior|N;Abs||||||
-16118|long time, long interval, for quite some time|CEN||||||
-16119|for quite some time|AT||||||
+16118|long time, long interval, for quite some time|CE;N||||||
+16119|for quite some time|A;T||||||
 16120|while, during, as|PP|Describes an action Y done during X.|X nagara Y @ X = verb nagara form, Y = action verb teimasu form. Note: the sentence order is important.|959, 960|||
 16121|while, although, though, despite, in spite of, notwithstanding|PP||||||
 16122|all, both|PP||||||
@@ -16133,7 +16133,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 16133|face|N;Abs||||||
 16134|surface|N;Abs||||||
 16135|mask (esp. a noh or kyogen mask)|N;Abs||||||
-16136|to one's heart's content|CEA||||||
+16136|to one's heart's content|CE;A||||||
 16137||-||||||
 16138|official, governmental, formal|N;Abs||||||
 16139|public (use, facility, etc.), common|N;Abs||||||
@@ -17230,7 +17230,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 17230|clever, shrewd, ingenious|Ana||||||
 17231|cleverness, shrewdness, ingeniousness|N;Abs||||||
 17232|tools and materials, equipment and materials|N;Abs||||||
-17233|as a child, when one was a child, childhood|CEN||||||
+17233|as a child, when one was a child, childhood|CE;N||||||
 17234||-||||||
 17235|children|N;Abs||||||
 17236|lake shore|N;Abs||||||
@@ -18282,7 +18282,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18282|notice, recognize, recognise, become aware of, perceive, realize, realise|VkuI||||||
 18283|climate|N;Abs||||||
 18284|tendency, propensity|N;Abs||||||
-18285|good feeling, feeling good|CEAi||||||
+18285|good feeling, feeling good|CE;Ai||||||
 18286||-||||||
 18287|bad feeling, feeling bad, disagreeable, unpleasant, revolting, gross, disgusting|Ai||||||
 18288|like, be pleased with, be delighted with, take a liking to, suit one's fancy|VrugI||||||
@@ -18337,7 +18337,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18337|price reduction, discount|N;Abs||||||
 18338|exaggeration|N;Abs||||||
 18339||-||||||
-18340|to make matters worse, besides, what's more, in addition, on top of that|CEP||||||
+18340|to make matters worse, besides, what's more, in addition, on top of that|CE;PP||||||
 18341|charm, amulet|N;Abs||||||
 18342|police officer|N;Abs||||||
 18343|Holland, The Netherlands|N;Abs||||||
@@ -18712,7 +18712,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18712|ASCII art|N;Abs||||||
 18713|round shape, circle|N;Abs||||||
 18714|paint, coloring materials, colors, colours|N;Abs||||||
-18715|paint (draw) a picture|VkuI||||||
+18715|paint (draw) a picture|CE||||||
 18716|prefectural governor (of Osaka or Kyoto)|N;Abs||||||
 18717|prefectural office|N;Abs||||||
 18718|wisteria (esp. Japanese wisteria, Wisteria floribunda), wistaria|N;Abs||||||
@@ -18817,7 +18817,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18817|being defeated, being eliminated (from competition)|N;Abs||||||
 18818|destruction, disruption|N;Abs||||||
 18819|(application) crash|N;Abs||||||
-18820|unfathomable, inestimable, immeasurable|CEAi||||||
+18820|unfathomable, inestimable, immeasurable|CE;Ai||||||
 18821||-||||||
 18822|plan, attempt, devise|VrugT||||||
 18823|plot, conspire, scheme|VrugT||||||
@@ -19553,7 +19553,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 19553|at the meeting, on the occasion|N;Abs||||||
 19554|sense of responsibility|N;Abs||||||
 19555|person in charge (including a supervisory role for other staff), person responsible for ..., responsible party, supervisor, manager|N;Abs||||||
-19556|be responsible for, bear the responsibility of|VsuI||||||
+19556|to be responsible for, to bear the responsibility of|CE||||||
 19557|sweeping conquest, sweeping over, conquering, invading|N;Abs||||||
 19558|seasonal festival|N;Abs||||||
 19559|Sendai (city)|N;Abs||||||
@@ -20080,7 +20080,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20080|question|VsuruI||||||
 20081|interpel|VsuruI||||||
 20082|question, inquire, enquire, ask a question|VsuruI||||||
-20083|to ask a question, to ask questions|CEV||||||
+20083|to ask a question, to ask questions|CE||||||
 20084|obstruct, impede, hinder|VsuruI||||||
 20085|be handicaped, be impaired, be disabled, have a disorder, malfunction|VsuruI||||||
 20086|rise in status, be promoted, advance|VsuruI||||||
@@ -20183,10 +20183,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20183|support, help, aid, assistance|N;Abs||||||
 20184|stress, emphasis|N;Abs||||||
 20185|means, resources|N;Abs||||||
-20186|with all one's strength, with might and main, as hard as one can|CEA||||||
+20186|with all one's strength, with might and main, as hard as one can|CE;A||||||
 20187||-||||||
 20188|muscleman, strong man|N;Abs||||||
-20189|unintelligible language, incoherent language, talking nonsense, "all Greek to me", double Dutch, (something) incomprehensible, babble, gibberish, jargon, gobbledygook|CEN||||||
+20189|unintelligible language, incoherent language, talking nonsense, "all Greek to me", double Dutch, (something) incomprehensible, babble, gibberish, jargon, gobbledygook|CE;N||||||
 20190|unintelligible, incoherent|Ana||||||
 20191||-||||||
 20192|gratuity, tip|N;Abs||||||
@@ -20550,7 +20550,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20550|I'm sorry, (it's) inexcusable, I feel regretful, I feel guilty|CE||||||
 20551|contradiction, inconsistency|N;Abs||||||
 20552|old tale, folk tale, legend|N;Abs||||||
-20553|the way it was, the way it used be, as of old, in former times|CEN||||||
+20553|the way it was, the way it used be, as of old, in former times|CE;N||||||
 20554||-||||||
 20555|opposite side, other side, opposite direction|N;Abs||||||
 20556|over there, that way, far away, beyond|N;Abs||||||
@@ -20595,7 +20595,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20595|Orange|N;Pl||||||
 20596|orange (colour, color)|N;Abs||||||
 20597|male (animal, plant)|N;Abs||||||
-20598|boy, male child, baby boy|CEN||||||
+20598|boy, male child, baby boy|CE;N||||||
 20599||-||||||
 20600|party|N;Abs||||||
 20601|percent, percentage|N;Abs||||||
@@ -21256,7 +21256,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 21256|make someone swoon (judo)|VsuT||||||
 21257|finish a story (e.g. with the punch line)|VsuT||||||
 21258|finish (a period, e.g. of fasting)|VsuT||||||
-21259|thanks (e.g. for coming, helping, etc.), glad you could make it|CES||||||
+21259|thanks (e.g. for coming, helping, etc.), glad you could make it|CE;idp||||||
 21260|tiredness, fatigue|N;Abs||||||
 21261|fall, drop, descent, coming down|N;Abs||||||
 21262|failure (in an examination), failing to advance (to the next year)|N;Abs||||||
@@ -21802,8 +21802,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 21802|superior (in rank), top, ranking|N;Abs||||||
 21803|higher order (e.g. byte)|N;Abs||||||
 21804|host computer (of connected device)|N;Abs||||||
-21805|usually, ordinarily|AT||||||
-21806|continuous, 24-hour (e.g. observation, operation (of a machine), care (of patient)), always on|AT||||||
+21805|usually, ordinarily|A;T||||||
+21806|continuous, 24-hour (e.g. observation, operation (of a machine), care (of patient)), always on|A;T||||||
 21807|full-time employment|N;Abs||||||
 21808|managing director, executive director|N;Abs||||||
 21809|routine business, regular business|N;Abs||||||
@@ -21900,7 +21900,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 21900|conflagration, fire|N;Abs||||||
 21901|fire insurance|N;Abs||||||
 21902|Mars (planet)|N;Abs||||||
-21903|beside, besides, nearby|AP||||||
+21903|beside, besides, nearby|A;loc||||||
 21904|while (doing), in addition to, at the same time|N;Abs||||||
 21905|course, curriculum|N;Abs||||||
 21906|home economics|N;Abs||||||
@@ -22416,7 +22416,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 22416|peak (e.g. of summer), worst (e.g. of an illness), crisis, critical point, most difficult part|N;Abs||||||
 22417|statistics|N;Abs||||||
 22418|corn (Zea mays), maize|N;Abs||||||
-22419|keep a secret when asked about it, but let it slip inadvertently when chatting on another occasion|VruiI||||||
+22419|to keep a secret when asked about it, but let it slip inadvertently when chatting on another occasion|CE||||||
 22420|throwing into, inserting, depositing|N;Abs||||||
 22421|investment, putting in (personnel, etc.)|N;Abs||||||
 22422|release of a product|N;Abs||||||
@@ -23156,7 +23156,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 23156|send (someone) back, send (someone) home|VsuT||||||
 23157|pleasant feeling|N||||||
 23158|demolition, disassembly, dismantling, deconstruction, dissolution|N||||||
-23159|prepare oneself (for the worst), resolve oneself|VruiI||||||
+23159|to prepare oneself (for the worst), to resolve oneself|CE||||||
 23160|seasoning, flavoring, flavouring|N||||||
 23161|addition, inclusion, taking into account|N||||||
 23162|hair style, coiffure, hairdo|N||||||

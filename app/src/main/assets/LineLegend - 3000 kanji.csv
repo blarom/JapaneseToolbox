@@ -1,36 +1,26 @@
 Shortcut|Type|
 A|adverb|
 Abr|abbreviation|
-Abs|abstract|
+Abs|abstract term|
 Ac|activity|
-ADc|adverb - declarative|
-ADg|adverb - degree|
+Dg|degree of doing/being|
 Af|noun or verb acting prenominally|
 Ai|i-adjective|
 Aj|adjective|
-AM|adverb - manner|
+M|manner of doing/being|
 An|anatomy term|
 Ana|na-adjective|
-Ano|no-adjective (noun)|
-AO|adverb - order|
-AP|adverb - place|
+Ano|no-adjective|
+loc|location term|
 Apn|pre-noun adjectival|
-AT|adverb - time|
-Ati|attire|
+Ati|clothing term|
 Ato|adverb taking 'to' particle|
 Atr|taru-adjective|
-Ax|auxiliary adjective|
-B|beliefs|
+Ax|auxiliary adj.|
+B|religious term|
 C|counter|
 CE|expression|
-CEA|expression - adverb|
-CEAi|expression - i-adjective|
-CEAna|expression - na-adjective|
-CEC|colloquialism|
-CEN|expression - noun|
-CEP|expression - particle|
-CES|idiom/proverb|
-CEV|expression - verb|
+idp|idiom/proverb|
 CO|conjunction|
 Col|color|
 Cu|culinary term|
@@ -43,13 +33,13 @@ Fy|family|
 GO|object|
 iAC|i-adjective conjugation |
 IES|rude/X-rated term|
-JEP|japanese era/period|
+JEP|Japanese era/period|
 LF|familiar language|
 LFt|female term or language|
 LHm|humble|
 LHn|honorific/polite|
 LMt|male language|
-MAC|music, art & culture|
+MAC|music/art/culture term|
 Md|medical term|
 Mo|month|
 MSE|math/science/engineering term|
@@ -128,8 +118,8 @@ ZFn|finance term|
 ZG|geometry term|
 ZGg|geology term|
 ZH|humorous term|
-ZI|computer terminology|
-ZL|linguistics terminology|
+ZI|computer term|
+ZL|linguistics term|
 ZLw|law term|
 ZM|martial arts term|
 ZMc|music term|

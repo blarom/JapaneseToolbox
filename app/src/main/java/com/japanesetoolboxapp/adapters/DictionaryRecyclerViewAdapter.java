@@ -160,7 +160,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     ) {
                 romajiAndKanji += " [derived from " + mInputQuery + "]";
             }
-            else if (keywords.contains(mInputQuery)) {
+            else if (keywords != null && keywords.contains(mInputQuery)) {
                 for (String keyword : keywords.split(",")) {
                     if (romaji.contains(keyword) && !kanji.contains(keyword) && !alternatespellings.contains(keyword)
                             && !cumulative_meaning_value.toString().contains(keyword)) {
@@ -247,18 +247,24 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             //region Setting the type and meaning
             List<String> types = new ArrayList<>();
             for (String element : type.split(";")) {
-                if (mLegendDatabase.containsKey(element)) types.add(mLegendDatabase.get(element));
+                if (mLegendDatabase.containsKey(element)) types.add(Utilities.capitalizeFirstLetter(mLegendDatabase.get(element)));
             }
             fullType = TextUtils.join(", ", types);
             if (fullType.equals("")) fullType = type;
 
-            String htmlText = "<i><font color='"+
-                    mContext.getResources().getColor(R.color.textColorDictionaryTypeMeaning) +
-                    "'>" + "[" +
-                    fullType +
-                    "] " + "</font></i>" + "<b>" +
-                    meaning +
-                    "</b>";
+            String htmlText;
+            if (!fullType.equals("")) {
+                htmlText = "<i><font color='" +
+                        mContext.getResources().getColor(R.color.textColorDictionaryTypeMeaning) +
+                        "'>" + "[" +
+                        fullType +
+                        "] " + "</font></i>" + "<b>" +
+                        meaning +
+                        "</b>";
+            }
+            else {
+                htmlText = "<b>" + meaning + "</b>";
+            }
             Spanned type_and_meaning = Utilities.fromHtml(htmlText);
             TextView typeAndMeaningTextView = new TextView(mContext);
             typeAndMeaningTextView.setText(type_and_meaning);
