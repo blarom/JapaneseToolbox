@@ -31,6 +31,7 @@ import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -397,6 +398,23 @@ public class MainActivity extends AppCompatActivity implements
         mSearchByRadicalFragment = null;
         mDecomposeKanjiFragment = null;
     }
+    private void updateInputQueryWithDefinition(List<Word> matchingWords) {
+        if (mInputQueryFragment!=null && matchingWords.size()!=0 && matchingWords.get(0).getMeanings().size()!=0) {
+            String romaji = "";
+            String meaning = "";
+            for (Word word : matchingWords) {
+                List<String> altSpellings = Arrays.asList(word.getAltSpellings().split(","));
+                if (word.getRomaji().equals(mInputQuery)
+                        || word.getKanji().equals(mInputQuery)
+                        || altSpellings.contains(mInputQuery)) {
+                    romaji = word.getRomaji();
+                    meaning = word.getMeanings().get(0).getMeaning();
+                    break;
+                }
+            }
+            mInputQueryFragment.updateQueryDefinitionInHistory(romaji, meaning);
+        }
+    }
 
 
     //Asynchronous methods
@@ -636,8 +654,7 @@ public class MainActivity extends AppCompatActivity implements
         mLocalMatchingWords = matchingWords;
     }
     @Override public void onFinalMatchingWordsFound(List<Word> matchingWords) {
-        if (mInputQueryFragment!=null && matchingWords.size()!=0 && matchingWords.get(0).getMeanings().size()!=0)
-            mInputQueryFragment.updateQueryDefinitionInHistory(matchingWords.get(0).getRomaji(), matchingWords.get(0).getMeanings().get(0).getMeaning());
+        updateInputQueryWithDefinition(matchingWords);
     }
 
     //Communication with SearchByRadicalFragment

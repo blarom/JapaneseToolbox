@@ -77,6 +77,7 @@ public final class GlobalConstants {
     public static final String VERB_FAMILY_GU_GODAN = "gu";
     public static final String VERB_FAMILY_KU_GODAN = "ku";
     public static final String VERB_FAMILY_IKU_SPECIAL = "iku";
+    public static final String VERB_FAMILY_YUKU_SPECIAL = "yuku";
     public static final String VERB_FAMILY_KURU = "kuru";
     public static final String VERB_FAMILY_MU_GODAN = "mu";
     public static final String VERB_FAMILY_NU_GODAN = "nu";
@@ -94,7 +95,8 @@ public final class GlobalConstants {
         HashMap<String, String> map = new HashMap<>();
         map.put(VERB_FAMILY_SU_GODAN, "su godan");
         map.put(VERB_FAMILY_KU_GODAN, "ku godan");
-        map.put(VERB_FAMILY_IKU_SPECIAL, "iku/yuku special class");
+        map.put(VERB_FAMILY_IKU_SPECIAL, "iku special class");
+        map.put(VERB_FAMILY_YUKU_SPECIAL, "yuku special class");
         map.put(VERB_FAMILY_GU_GODAN, "gu godan");
         map.put(VERB_FAMILY_BU_GODAN, "bu godan");
         map.put(VERB_FAMILY_MU_GODAN, "mu godan");

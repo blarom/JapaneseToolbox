@@ -381,6 +381,7 @@ public final class Utilities {
                 case GlobalConstants.VERB_FAMILY_GU_GODAN:
                 case GlobalConstants.VERB_FAMILY_KU_GODAN:
                 case GlobalConstants.VERB_FAMILY_IKU_SPECIAL:
+                case GlobalConstants.VERB_FAMILY_YUKU_SPECIAL:
                 case GlobalConstants.VERB_FAMILY_MU_GODAN:
                 case GlobalConstants.VERB_FAMILY_NU_GODAN:
                 case GlobalConstants.VERB_FAMILY_RU_GODAN:
@@ -415,6 +416,7 @@ public final class Utilities {
                 case GlobalConstants.VERB_FAMILY_GU_GODAN:
                 case GlobalConstants.VERB_FAMILY_KU_GODAN:
                 case GlobalConstants.VERB_FAMILY_IKU_SPECIAL:
+                case GlobalConstants.VERB_FAMILY_YUKU_SPECIAL:
                 case GlobalConstants.VERB_FAMILY_MU_GODAN:
                 case GlobalConstants.VERB_FAMILY_NU_GODAN:
                 case GlobalConstants.VERB_FAMILY_RU_GODAN:

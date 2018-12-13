@@ -729,6 +729,8 @@ public class ConjugatorFragment extends Fragment implements
                     mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_KU_GODAN, rowIndex);
                 } else if ("iku/yuku special class".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_IKU_SPECIAL)) {
                     mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_IKU_SPECIAL, rowIndex);
+                } else if ("iku/yuku special class".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_YUKU_SPECIAL)) {
+                    mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_YUKU_SPECIAL, rowIndex);
                 } else if ("gu godan".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_GU_GODAN)) {
                     mFamilyConjugationIndexes.put(GlobalConstants.VERB_FAMILY_GU_GODAN, rowIndex);
                 } else if ("bu godan".equals(mVerbLatinConjDatabase.get(rowIndex)[0]) && !mFamilyConjugationIndexes.containsKey(GlobalConstants.VERB_FAMILY_BU_GODAN)) {
