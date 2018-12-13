@@ -403,7 +403,7 @@ public class MainActivity extends AppCompatActivity implements
             String romaji = "";
             String meaning = "";
             for (Word word : matchingWords) {
-                List<String> altSpellings = Arrays.asList(word.getAltSpellings().split(","));
+                List<String> altSpellings = (word.getAltSpellings()!=null)? Arrays.asList(word.getAltSpellings().split(",")) : new ArrayList<String>();
                 if (word.getRomaji().equals(mInputQuery)
                         || word.getKanji().equals(mInputQuery)
                         || altSpellings.contains(mInputQuery)) {
