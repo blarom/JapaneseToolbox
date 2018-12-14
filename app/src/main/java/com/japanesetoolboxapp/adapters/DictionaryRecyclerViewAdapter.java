@@ -127,7 +127,15 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         else if (kanji.equals("")) romajiAndKanji = romaji;
         else romajiAndKanji = parentRomaji + " (" + kanji + ")";
 
-        if (!romajiAndKanji.contains(mInputQuery) && !romajiAndKanji.replace(" ","").contains(mInputQuery)) {
+        String inputQueryNoSpaces = mInputQuery.replace(" ","");
+        String inputQueryLatin = ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN);
+        String romajiAndKanjiNoSpaces = romajiAndKanji.replace(" ","");
+
+        if (!romajiAndKanji.contains(mInputQuery)
+                && !romajiAndKanji.contains(inputQueryNoSpaces)
+                && !romajiAndKanjiNoSpaces.contains(mInputQuery)
+                && !romajiAndKanjiNoSpaces.contains(inputQueryNoSpaces)
+                && !romajiAndKanjiNoSpaces.contains(inputQueryLatin)) {
             String latin = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_LATIN);
             String hiragana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_HIRAGANA);
             String katakana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_KATAKANA);

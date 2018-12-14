@@ -1273,11 +1273,11 @@ public class ConjugatorFragment extends Fragment implements
                 Word currentWord = mJapaneseToolboxCentralRoomDatabase.getWordByWordId(ConjugationSearchMatchingVerbRowColIndexList.get(i)[0]);
                 if (currentWord==null) continue;
 
-                int length = Utilities.getLengthFromWordAttributes(currentWord, inputQuery, queryWordWithoutTo, queryIsVerbWithTo);
+                int ranking = Utilities.getRankingFromWordAttributes(currentWord, inputQuery, queryWordWithoutTo, queryIsVerbWithTo);
 
                 long[] currentMatchingWordIndexLengthAndCol = new long[3];
                 currentMatchingWordIndexLengthAndCol[0] = i;
-                currentMatchingWordIndexLengthAndCol[1] = length;
+                currentMatchingWordIndexLengthAndCol[1] = ranking;
                 currentMatchingWordIndexLengthAndCol[2] = ConjugationSearchMatchingVerbRowColIndexList.get(i)[1];
 
                 matchingVerbIndexesLengthsAndCols.add(currentMatchingWordIndexLengthAndCol);

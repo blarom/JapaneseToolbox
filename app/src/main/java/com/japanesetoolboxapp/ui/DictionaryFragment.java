@@ -150,107 +150,6 @@ public class DictionaryFragment extends Fragment implements
         }
         else return new RoomDbWordSearchAsyncTaskLoader(getContext(), "");
     }
-    @Override public void onLoadFinished(@NonNull Loader<List<Word>> loader, List<Word> loaderResultWordsList) {
-
-        if (getContext() == null) return;
-
-        hideLoadingIndicator();
-        if (loader.getId() == ROOM_DB_SEARCH_LOADER && !mAlreadyLoadedRoomResults) {
-            mAlreadyLoadedRoomResults = true;
-            mLocalMatchingWordsList = loaderResultWordsList;
-            mLocalMatchingWordsList = sortWordsAccordingToLengths(mLocalMatchingWordsList);
-
-            //Update the MainActivity with the matching words
-            dictionaryFragmentOperationsHandler.onLocalMatchingWordsFound(mLocalMatchingWordsList);
-
-            //Displaying the local results
-            displayWordsToUser(mLocalMatchingWordsList);
-
-            String text;
-            if (mLocalMatchingWordsList.size() > 1) {
-                if (mLocalMatchingWordsList.size() < GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY)
-                    text = "Found " + mLocalMatchingWordsList.size() + " local results. ";
-                else text = "Found more than" + GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY + " local results. ";
-            }
-            else if (mLocalMatchingWordsList.size() == 1) text = "Found one local result. ";
-            else text = "No local results. ";
-            if (Utilities.getShowOnlineResultsPreference(getActivity())) {
-                //If wanted, update the results with words from Jisho.org
-                text += "Searching online, please wait…";
-                startSearchingForWordsInJisho();
-                startSearchingForWordsInJMDictFR();
-                startSearchingForWordsInJMDictES();
-            }
-            else if (mLocalMatchingWordsList.size()==0) {
-                //Otherwise (if online results are unwanted), if there are no local results to display then try the reverse verb search
-                performConjSearch();
-            }
-            else {
-                dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mLocalMatchingWordsList);
-            }
-            mShowOnlineResultsToast = Toast.makeText(getContext(), text, Toast.LENGTH_SHORT);
-            mShowOnlineResultsToast.show();
-
-            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_SEARCH_LOADER);
-        }
-        else if (loader.getId() == JISHO_WEB_SEARCH_LOADER && !mAlreadyLoadedJishoResults) {
-            mAlreadyLoadedJishoResults = true;
-
-            List<Word> jishoWords = Utilities.cleanUpProblematicWordsFromJisho(loaderResultWordsList);
-
-            //If wanted, update the results with words from Jisho.org by merging the lists, otherwise clear the jisho results
-            Boolean showOnlineResults = Utilities.getShowOnlineResultsPreference(getActivity());
-            if (!showOnlineResults) jishoWords = new ArrayList<>();
-
-            if (jishoWords.size() != 0) {
-                mMergedMatchingWordsList = Utilities.getMergedWordsList(mLocalMatchingWordsList, jishoWords, "");
-                mMergedMatchingWordsList = sortWordsAccordingToLengths(mMergedMatchingWordsList);
-
-                dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mMergedMatchingWordsList);
-
-                List<Word> differentJishoWords = Utilities.getDifferentAsyncWords(mLocalMatchingWordsList, jishoWords);
-                if (differentJishoWords.size()==0) Toast.makeText(getContext(), R.string.no_new_words_or_meanings_found_online, Toast.LENGTH_SHORT).show();
-                else Toast.makeText(getContext(), "Updated list with online results.", Toast.LENGTH_SHORT).show();
-
-                if (differentJishoWords.size()>0) {
-                    updateFirebaseDbWithJishoWords(Utilities.getCommonWords(differentJishoWords));
-                    updateFirebaseDbWithJishoWords(differentJishoWords.subList(0, 1)); //If the word was searched for then it is useful even if it's not defined as common
-                }
-
-                displayResults(mMergedMatchingWordsList);
-            }
-            else {
-                dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mLocalMatchingWordsList);
-                Toast.makeText(getContext(), R.string.no_matching_words_online, Toast.LENGTH_SHORT).show();
-                //if there are no jisho results (for whatever reason) and no local results to display, then try the reverse verb search on the input
-                if (mLocalMatchingWordsList.size()==0) {
-                    performConjSearch();
-                }
-            }
-
-            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(JISHO_WEB_SEARCH_LOADER);
-
-        }
-        else if (loader.getId() == JMDICTFR_WEB_SEARCH_LOADER && !mAlreadyLoadedJMDictFRResults) {
-            mAlreadyLoadedJMDictFRResults = true;
-
-            List<Word> JMDictFRWords = Utilities.cleanUpProblematicWordsFromJisho(loaderResultWordsList);
-
-            if (JMDictFRWords.size() > 0) {
-                mMergedMatchingWordsList = Utilities.getMergedWordsList(mLocalMatchingWordsList, JMDictFRWords, "FR");
-                mMergedMatchingWordsList = sortWordsAccordingToLengths(mMergedMatchingWordsList);
-
-                List<Word> differentWords = Utilities.getDifferentAsyncWords(mLocalMatchingWordsList, JMDictFRWords);
-
-                if (differentWords.size() > 0) {
-                    updateFirebaseDbWithJishoWords(differentWords);
-                }
-            }
-            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(JMDICTFR_WEB_SEARCH_LOADER);
-        }
-
-    }
-    @Override public void onLoaderReset(@NonNull Loader<List<Word>> loader) {}
     private static class JishoResultsAsyncTaskLoader extends AsyncTaskLoader <List<Word>> {
 
         String mQuery;
@@ -387,6 +286,107 @@ public class DictionaryFragment extends Fragment implements
             return localMatchingWordsList;
         }
     }
+    @Override public void onLoadFinished(@NonNull Loader<List<Word>> loader, List<Word> loaderResultWordsList) {
+
+        if (getContext() == null) return;
+
+        hideLoadingIndicator();
+        if (loader.getId() == ROOM_DB_SEARCH_LOADER && !mAlreadyLoadedRoomResults) {
+            mAlreadyLoadedRoomResults = true;
+            mLocalMatchingWordsList = loaderResultWordsList;
+            mLocalMatchingWordsList = sortWordsAccordingToLengths(mLocalMatchingWordsList);
+
+            //Update the MainActivity with the matching words
+            dictionaryFragmentOperationsHandler.onLocalMatchingWordsFound(mLocalMatchingWordsList);
+
+            //Displaying the local results
+            displayWordsToUser(mLocalMatchingWordsList);
+
+            String text;
+            if (mLocalMatchingWordsList.size() > 1) {
+                if (mLocalMatchingWordsList.size() < GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY)
+                    text = "Found " + mLocalMatchingWordsList.size() + " local results. ";
+                else text = "Found more than" + GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY + " local results. ";
+            }
+            else if (mLocalMatchingWordsList.size() == 1) text = "Found one local result. ";
+            else text = "No local results. ";
+            if (Utilities.getShowOnlineResultsPreference(getActivity())) {
+                //If wanted, update the results with words from Jisho.org
+                text += "Searching online, please wait…";
+                startSearchingForWordsInJisho();
+                startSearchingForWordsInJMDictFR();
+                startSearchingForWordsInJMDictES();
+            }
+            else if (mLocalMatchingWordsList.size()==0) {
+                //Otherwise (if online results are unwanted), if there are no local results to display then try the reverse verb search
+                performConjSearch();
+            }
+            else {
+                dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mLocalMatchingWordsList);
+            }
+            mShowOnlineResultsToast = Toast.makeText(getContext(), text, Toast.LENGTH_SHORT);
+            mShowOnlineResultsToast.show();
+
+            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_SEARCH_LOADER);
+        }
+        else if (loader.getId() == JISHO_WEB_SEARCH_LOADER && !mAlreadyLoadedJishoResults) {
+            mAlreadyLoadedJishoResults = true;
+
+            List<Word> jishoWords = Utilities.cleanUpProblematicWordsFromJisho(loaderResultWordsList);
+
+            //If wanted, update the results with words from Jisho.org by merging the lists, otherwise clear the jisho results
+            Boolean showOnlineResults = Utilities.getShowOnlineResultsPreference(getActivity());
+            if (!showOnlineResults) jishoWords = new ArrayList<>();
+
+            if (jishoWords.size() != 0) {
+                mMergedMatchingWordsList = Utilities.getMergedWordsList(mLocalMatchingWordsList, jishoWords, "");
+                mMergedMatchingWordsList = sortWordsAccordingToLengths(mMergedMatchingWordsList);
+
+                dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mMergedMatchingWordsList);
+
+                List<Word> differentJishoWords = Utilities.getDifferentAsyncWords(mLocalMatchingWordsList, jishoWords);
+                if (differentJishoWords.size()==0) Toast.makeText(getContext(), R.string.no_new_words_or_meanings_found_online, Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getContext(), "Updated list with online results.", Toast.LENGTH_SHORT).show();
+
+                if (differentJishoWords.size()>0) {
+                    updateFirebaseDbWithJishoWords(Utilities.getCommonWords(differentJishoWords));
+                    updateFirebaseDbWithJishoWords(differentJishoWords.subList(0, 1)); //If the word was searched for then it is useful even if it's not defined as common
+                }
+
+                displayResults(mMergedMatchingWordsList);
+            }
+            else {
+                dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mLocalMatchingWordsList);
+                Toast.makeText(getContext(), R.string.no_matching_words_online, Toast.LENGTH_SHORT).show();
+                //if there are no jisho results (for whatever reason) and no local results to display, then try the reverse verb search on the input
+                if (mLocalMatchingWordsList.size()==0) {
+                    performConjSearch();
+                }
+            }
+
+            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(JISHO_WEB_SEARCH_LOADER);
+
+        }
+        else if (loader.getId() == JMDICTFR_WEB_SEARCH_LOADER && !mAlreadyLoadedJMDictFRResults) {
+            mAlreadyLoadedJMDictFRResults = true;
+
+            List<Word> JMDictFRWords = Utilities.cleanUpProblematicWordsFromJisho(loaderResultWordsList);
+
+            if (JMDictFRWords.size() > 0) {
+                mMergedMatchingWordsList = Utilities.getMergedWordsList(mLocalMatchingWordsList, JMDictFRWords, "FR");
+                mMergedMatchingWordsList = sortWordsAccordingToLengths(mMergedMatchingWordsList);
+
+                List<Word> differentWords = Utilities.getDifferentAsyncWords(mLocalMatchingWordsList, JMDictFRWords);
+
+                if (differentWords.size() > 0) {
+                    updateFirebaseDbWithJishoWords(differentWords);
+                }
+            }
+            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(JMDICTFR_WEB_SEARCH_LOADER);
+        }
+
+    }
+    @Override public void onLoaderReset(@NonNull Loader<List<Word>> loader) {}
 
 
 	//Functionality methods
@@ -555,11 +555,11 @@ public class DictionaryFragment extends Fragment implements
             Word currentWord = wordsList.get(i);
             if (currentWord==null) continue;
 
-            int length = Utilities.getLengthFromWordAttributes(currentWord, inputQuery, queryWordWithoutTo, queryIsVerbWithTo);
+            int ranking = Utilities.getRankingFromWordAttributes(currentWord, inputQuery, queryWordWithoutTo, queryIsVerbWithTo);
 
             long[] currentMatchingWordIndexAndLength = new long[3];
             currentMatchingWordIndexAndLength[0] = i;
-            currentMatchingWordIndexAndLength[1] = length;
+            currentMatchingWordIndexAndLength[1] = ranking;
             currentMatchingWordIndexAndLength[2] = 0;
 
             matchingWordIndexesAndLengths.add(currentMatchingWordIndexAndLength);
