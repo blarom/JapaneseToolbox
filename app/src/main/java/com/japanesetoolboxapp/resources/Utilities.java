@@ -1455,7 +1455,9 @@ public final class Utilities {
 
         // Value Initializations
         Verb verb = new Verb();
-        String type;
+        boolean foundVerbType;
+        String[] types;
+        int lastCharIndex;
         String[] currentMeaningCharacteristics;
 
         verb.setVerbId(Integer.parseInt(verbDatabase.get(verbDbRowIndex)[0]));
@@ -1481,17 +1483,23 @@ public final class Utilities {
             currentMeaningCharacteristics = meaningsDatabase.get(current_MM_index);
 
             //Getting the Family value
-            type = currentMeaningCharacteristics[2];
+            types = currentMeaningCharacteristics[2].split(";");
 
-            if (type.equals("") || !type.substring(0,1).equals("V")) {
-                Log.i(DEBUG_TAG, "Warning! Found verb with incorrect type (Meaning index:" + Integer.toString(current_MM_index) + ")");
-                //No exception catching is made here, in order to make sure that database errors are caught before production
+            foundVerbType = false;
+            for (String type : types) {
+                lastCharIndex = type.length()-1;
+                if (type.substring(0,1).equals("V") && (type.substring(lastCharIndex).equals("T") || type.substring(lastCharIndex).equals("I"))) {
+                    trans.add(String.valueOf(type.charAt(lastCharIndex)));
+                    if (i==0) verb.setFamily(type.substring(1, lastCharIndex)); //only keeping the verb itself
+                    foundVerbType = true;
+                    break;
+                }
             }
 
-            trans.add(String.valueOf(type.charAt(type.length() - 1)));
-
-            if (i==0) verb.setFamily(type.substring(1, type.length() - 1));
-
+            if (!foundVerbType) {
+                Log.i(DEBUG_TAG, "Warning! No VxxxT/I type found for verb " + verb.getRomaji() + " (Meaning index:" + Integer.toString(current_MM_index) + ")");
+                //No exception catching is made here, in order to make sure that database errors are caught before production
+            }
         }
 
         //Setting the transitive/intransitive flag
