@@ -62,21 +62,20 @@ public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGrid
         if (kanji.contains("0") || kanji.contains("1") || kanji.contains("2") || kanji.contains("3")
                 || kanji.contains("4") || kanji.contains("5") || kanji.contains("6")
                 || kanji.contains("7") || kanji.contains("8") || kanji.contains("9")) {
-            tv.setTextSize(24);
+            tv.setTextSize(26);
             tv.setTypeface(null, Typeface.BOLD);
             tv.setTextColor(Color.RED);
         }
         else if (kanji.contains("variant")) {
             tv.setTextSize(28);
             tv.setText(kanji.substring(0,1));
-            tv.setTextColor(Color.GREEN);
+            tv.setTextColor(mContext.getResources().getColor(R.color.colorPrimaryLight));
         }
         else {
             tv.setTextSize(isResultsGrid? 32 : 28);
             tv.setText(kanji);
-            //if (mKanjiIsSelected[position]) makeKanjiAppearSelected(tv);
-            //else makeKanjiAppearNormal(tv);
-            makeKanjiAppearNormal(tv);
+            tv.setTypeface(null, Typeface.NORMAL);
+            tv.setTextColor(mContext.getResources().getColor(R.color.colorAccentLight));
         }
 
         tv.setOnClickListener(new View.OnClickListener() {
@@ -105,10 +104,6 @@ public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGrid
             tv.setBackgroundResource(R.drawable.border_background_accent_color);
             mKanjiIsSelected[position] = true;
         }
-    }
-    private void makeKanjiAppearNormal(TextView tv) {
-        tv.setTypeface(null, Typeface.NORMAL);
-        tv.setTextColor(Color.BLUE);
     }
     private void createSelectedArray() {
         mKanjiIsSelected = new boolean[mKanjis ==null? 0 : mKanjis.size()];

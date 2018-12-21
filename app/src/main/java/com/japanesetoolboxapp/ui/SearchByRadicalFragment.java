@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -61,6 +62,7 @@ public class SearchByRadicalFragment extends Fragment implements
     //region Parameters
     @BindView(R.id.search_by_radical_loading_indicator) ProgressBar mProgressBarLoadingIndicator;
     @BindView(R.id.search_by_radical_overall_structure_button) Button mOverallStructureButton;
+    @BindView(R.id.search_by_radical_container_scrollview) NestedScrollView mOverallContainerScrollView;
     @BindView(R.id.search_by_radicals_overall_block_container) LinearLayout mOverallBlockContainerLinearLayout;
     @BindView(R.id.search_by_radical_elementA) EditText mElementAEditText;
     @BindView(R.id.search_by_radical_elementB) EditText mElementBEditText;
@@ -469,6 +471,8 @@ public class SearchByRadicalFragment extends Fragment implements
         if (!enterPressed || getView()==null) return;
         EditText edittext = getView().findViewById(mSelectedEditTextId);
         edittext.setText(mSelectedComponent);
+
+        mOverallContainerScrollView.scrollTo(0,0);
     }
     private void showLoadingIndicator() {
         if (mProgressBarLoadingIndicator!=null) mProgressBarLoadingIndicator.setVisibility(View.VISIBLE);
@@ -642,19 +646,19 @@ public class SearchByRadicalFragment extends Fragment implements
     @OnClick (R.id.search_by_radical_button_selection_grid_cancel_top) public void onCancelTopButtonClick() {
         handleComponentSelection(false);
     }
-    @OnClick (R.id.search_by_radical_button_selection_grid_copy_to_radical_top) public void onEnterTopButtonClick() {
+    @OnClick (R.id.search_by_radical_button_selection_grid_send_to_element_top) public void onSendToElementTopButtonClick() {
         handleComponentSelection(true);
     }
-    @OnClick (R.id.search_by_radical_button_selection_grid_copy_to_input_top) public void onCopyToInputTopButtonClick() {
+    @OnClick (R.id.search_by_radical_button_selection_grid_send_to_input_top) public void onSendToInputTopButtonClick() {
         searchByRadicalFragmentOperationsHandler.onQueryTextUpdateFromSearchByRadicalRequested(mSelectedComponent);
     }
     @OnClick (R.id.search_by_radical_button_selection_grid_cancel_bottom) public void onCancelBottomButtonClick() {
         handleComponentSelection(false);
     }
-    @OnClick (R.id.search_by_radical_button_selection_grid_copy_to_radical_bottom) public void onEnterBottomButtonClick() {
+    @OnClick (R.id.search_by_radical_button_selection_grid_send_to_element_bottom) public void onSendToElementBottomButtonClick() {
         handleComponentSelection(true);
     }
-    @OnClick (R.id.search_by_radical_button_selection_grid_copy_to_input_bottom) public void onCopyToInputBottomButtonClick() {
+    @OnClick (R.id.search_by_radical_button_selection_grid_send_to_input_bottom) public void onSendToInputBottomButtonClick() {
         searchByRadicalFragmentOperationsHandler.onQueryTextUpdateFromSearchByRadicalRequested(mSelectedComponent);
     }
 

@@ -183,7 +183,7 @@
                     android:gravity="center"
                     android:paddingEnd="8dp"
                     android:paddingStart="8dp"
-                    android:text="Component is a defining element of this substructure:"/>
+                    android:text="@string/component_is_used_to_create_this_substructure"/>
 
 
                 <android.support.constraint.ConstraintLayout
@@ -220,7 +220,7 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        android:text="Filter List"/>
+                        android:text="@string/filter_list"/>
                 </android.support.constraint.ConstraintLayout>
 
                 <LinearLayout
@@ -235,21 +235,21 @@
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cancel"/>
+                        android:text="@string/cancel"/>
 
                     <Button
-                        android:id="@+id/search_by_radical_button_selection_grid_copy_to_radical_top"
+                        android:id="@+id/search_by_radical_button_selection_grid_send_to_element_top"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Update radical"/>
+                        android:text="@string/send_to_element"/>
 
                     <Button
-                        android:id="@+id/search_by_radical_button_selection_grid_copy_to_input_top"
+                        android:id="@+id/search_by_radical_button_selection_grid_send_to_input_top"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Send to input"/>
+                        android:text="@string/send_to_input"/>
 
                 </LinearLayout>
 
@@ -266,7 +266,7 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
-                    android:text="No elements found."/>
+                    android:text="@string/no_elements_found"/>
 
                 <LinearLayout
                     android:id="@+id/search_by_radical_button_selection_grid_enter_cancel_container_bottom"
@@ -280,21 +280,21 @@
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cancel"/>
+                        android:text="@string/cancel"/>
 
                     <Button
-                        android:id="@+id/search_by_radical_button_selection_grid_copy_to_radical_bottom"
+                        android:id="@+id/search_by_radical_button_selection_grid_send_to_element_bottom"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Update radical"/>
+                        android:text="@string/send_to_element"/>
 
                     <Button
-                        android:id="@+id/search_by_radical_button_selection_grid_copy_to_input_bottom"
+                        android:id="@+id/search_by_radical_button_selection_grid_send_to_input_bottom"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Send to input"/>
+                        android:text="@string/send_to_input"/>
 
                 </LinearLayout>
 

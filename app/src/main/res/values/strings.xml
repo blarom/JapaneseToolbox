@@ -187,11 +187,11 @@
     <!--AboutActivity Text-->
     <string name="DONE">DONE</string>
     <string name="AboutTextIntro1">
-        Japanese Toolbox is a tool created by a Japanese learner for Japanese learners.
+        Japanese Toolbox is an app created by a Japanese learner for Japanese learners.
     </string>
     <string name="AboutTextIntro2">
-        The app is mainly designed to help you read texts in intermediate to advanced Japanese at a faster pace,
-        and to understand what you read if you haven\'t reached the required level yet. It is currently not designed to translate whole texts.
+        The app is designed to help you decipher texts in intermediate to advanced Japanese at a faster pace than other tools,
+        allowing you to understand the meanings and components of every word or phrase you read.
     </string>
     <string name="AboutTextIntro3">
         The app does not depend on an Internet connection, so you can use it whenever and wherever you want.
@@ -215,10 +215,11 @@
     </string>
     <string name="AboutTextButtonsConjTitle">CONJ</string>
     <string name="AboutTextButtonsConjParagraph1">
-        Get access to more than 140 verb conjugations for more than 1700 regular verbs and more than 1500 suru verbs.
+        A verb conjugator with more than 140 conjugations for more than 1700 regular verbs and more than 1700 suru verbs.
     </string>
     <string name="AboutTextButtonsConjParagraph2">
-        Find a verb conjugation\'s meaning through a reverse-search of its conjugated Romaji, Kana or Kanji form.
+        If you search for a conjugated verb (in Romaji, Kana or Kanji form) with this function, a unique reverse-search engine
+        will find all possible matching verbs and give the relevant conjugation\'s meaning.
     </string>
     <string name="AboutTextButtonsConvertTitle">あ&#8660;A</string>
     <string name="AboutTextButtonsConvertParagraph1">
@@ -391,5 +392,10 @@
         You can adjust these defaults in the Settings menu.</string>
     <string name="pref_invalid_input_default_set">Invalid input, default value set instead.</string>
     <string name="pref_cannot_set_value_outside_ange">You cannot set a value outside of the range</string>
-    <string name="search_any_property_">Search Any Property!</string>
+    <string name="search_any_property_">property/name/etc..</string>
+    <string name="component_is_used_to_create_this_substructure">Component is used to create this substructure:</string>
+    <string name="filter_list">Filter List</string>
+    <string name="send_to_input">Send to input</string>
+    <string name="send_to_element">Send to element</string>
+    <string name="no_elements_found">No elements found.</string>
 </resources>
