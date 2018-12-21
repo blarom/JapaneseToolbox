@@ -1119,6 +1119,12 @@ public class InputQueryFragment extends Fragment implements
                         + mFirstMeaning)
             );
         }
+        else {
+            if (mQueryHistory.get(0).length() > mInputQuery.length()
+                && mQueryHistory.get(0).substring(0,mInputQuery.length()).equals(mInputQuery)) {
+                queryAndMeaning = mQueryHistory.get(0);
+            }
+        }
 
         //Adding the prepared query history value to the history and removing old identical entries
         boolean alreadyExistsInHistory = false;

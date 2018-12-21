@@ -709,7 +709,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 709|strong, potent, competent, domineering, tough|Ai|||520, 1321|yowai, hiyowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, kasuka, hijaku, yawa|joubu, kyouryoku|
 710|strong, firm, tough|Ai|||565|yawarakai||
 711|suspicious, dubious, doubtful, dodgy, dangerous, ominous, strange, shady, fishy|Ai||||||
-712|sweet|Ai|||579|||
+712|sweet-tasting, sweet, sugary, sugared|Ai|||579|||
 713|tall (person)|Ai|||1220, 1400|se ga hikui||
 714|tasteless, nasty, tasting bad, disgusting|Ai|||531|oishii||
 715||-||||||
@@ -722,8 +722,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 722|tight|Ai||||yurui||
 723|ugly, hard on the eyes|Ai||||rippa||
 724|uncomfortable|Ai||||kaiteki||
-725|unthinkable, unexpected, outrageous, offensive|Ai||||||
-726|absolutely not, not at all, far from it, impossible, preposterous, bullshit, no way|CE||||||
+725||-||||||
+726||-||||||
 727|unusual, rare, curious, weird|Ai|||573|||
 728||-||||||
 729|vexing, annoying, frustrating, regrettable, mortifying|Ai||||||
@@ -1075,7 +1075,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1075|sufficiency|N;MSE||||||
 1076|serious|Ana||||||
 1077|serious, important, significant, grave, weighty|Ana||||||
-1078|similar|Ana|Used colloquially.|||||
+1078|-like, sort of, similar to, resembling|Ana|Used colloquially.|||||
 1079|simple, convenient, easy|Ana||||||
 1080|simplicity, convenience, easiness, quasi-|N;Abs||||||
 1081|simple, easy, straightforward, uncomplicated|Ana|||589, 604|fukuzatsu, taihen||
@@ -1745,7 +1745,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1745||-||||||
 1746|extinguishment, destruction, effacement|N;Ac||||||
 1747|fall, decline, lowering, deterioration, degradation|N;Ac||||||
-1748|fear, dread, dismay, terror, horror, scare|N;Ac||||||
+1748|fear, dread, dismay, terror, horror, scare, panic|N;Ac||||||
 1749|fire fighting, extinguishing a fire|N;Ac||||||
 1750|first menstruation|N;Ac||||||
 1751|fishing|N;Ac|||173|||
@@ -2056,7 +2056,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2056|circumstance|N;Abs||||||
 2057|considerations|N;Abs||||||
 2058|class|N;Abs|As of a subject class.||96|||
-2059|class, grade, rank, school class, school grade|N;Abs||||||
+2059|school class, school grade|N;Abs||||||
 2060|class, lecture, teaching unit, lectureship, professorial chair|N;Abs||||||
 2061|class, lesson|N;Abs|||97|||
 2062|classroom|N;Abs|Refers only to the location.||98|||
@@ -2738,7 +2738,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2738|together|N;Abs||||||
 2739|toll, charge, admission-paid|N;Abs||||||
 2740|tone color, tone colour, tone quality, timbre, synthesizer patch, synthesiser patch|N;Abs||||||
-2741|top, hair|N;Abs||||||
+2741||-||||||
 2742|topic, subject|N;Abs||||||
 2743|tour|N;Abs|||145|||
 2744|tournament, match, game, bout, contest|N;Abs|||66|||
@@ -2998,7 +2998,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2998|drink, beverage|N;Cu|||270|||
 2999|dumplings|N;Cu||||||
 3000|dust tea|N;Cu||||||
-3001|eel|N;Cu||||||
+3001|eel (esp. the Japanese eel, Anguilla japonica)|N;Cu||||||
 3002|egg, eggshell|N;Cu||||||
 3003|eggs, egg, spawn, roe|N;Cu|||254|||
 3004|evening meal, dinner|N;Cu||||||
@@ -3037,7 +3037,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3037|lunch|N;Cu|||242|||
 3038|margarine|N;Cu||||||
 3039|mayonnaise|N;Cu||||||
-3040|meal|N;Cu|||1324|||
+3040|meal, dinner|N;Cu|||1324|||
 3041|meat|N;Cu|||257|||
 3042|minced meat|N;Cu||||||
 3043|bean paste|N;Cu||||||
@@ -3205,7 +3205,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3205|wolf|N;Fa||||||
 3206|zebra|N;Fa||||||
 3207|Asian pear|N;Fl||||||
-3208||-||||||
+3208|None|-||||||
 3209|bamboo|N;Fl||||||
 3210|branch, bow, bough, twig, limb|N;Fl||||||
 3211|cherry tree, cherry blossom|N;Fl|As of the tree or blossoms, not the fruit|||||
@@ -3399,7 +3399,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3399|hairpin, hairclip, hairgrip, bobby pin|N;GO||||||
 3400|handbag|N;GO||||||
 3401|handkerchiefs|N;GO|||340|||
-3402|historic ruins, relics, remains|N;GO||||||
+3402||-||||||
 3403|hotel register|N;GO||||||
 3404|instrument, appliance, apparatus|N;GO||||||
 3405|Internet|N;GO||||||
@@ -3839,7 +3839,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3839|fetus, foetus, embryo, unborn child|N;Pe||||||
 3840|first-year student, freshman|N;Pe||||||
 3841|fool, blockhead, idiot, dunce|N;Pe||||||
-3842|fool, simpleton, idiot|N;Pe||||||
+3842||-||||||
 3843||-||||||
 3844|fourth-year student, senior|N;Pe||||||
 3845|friend, companion|N;Pe|||1298|||
@@ -3968,7 +3968,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3968||-||||||
 3969|warrior, samurai|N;Pe||||||
 3970|wife and children|N;Pe||||||
-3971|woman|N;Pe| b||188||josei|
+3971||-||||||
 3972|woman, female|N;Pe||||dansei, otoko no hito|onna no hito|
 3973|woman, girl|N;Pe||||||
 3974|woodcutter, lumberjack, logger|N;Pe||||||
@@ -4747,7 +4747,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4747|scratch|VkuT||||||
 4748|be prolonged, drag on|VkuI||||||
 4749|maintain itself, last, to make itself pay, make a living, keep going|VikuI||||||
-4750|walk down the road|VikuI||||||
+4750|walk down the road|VyukuI||||||
 4751|cook (grains, e.g. rice), boil, simmer, stew, seethe|VkuT||||||
 4752|well (up), gush forth (of water), spring out, surge, appear (esp. suddenly) (sweat, tears, etc.), feel emotions form (joy, bravery, etc.), hatch (esp. of parasitic insects, etc.)|VkuI||||||
 4753|judge|VkuT||||||
@@ -4775,12 +4775,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4775|grumble, complain|VkuI||||||
 4776|go through, pierce, penetrate, persist, stick to|VkuT||||||
 4777|chip, nick, break, crack|VkuT||||||
-4778|pass, go past|VikuI||||||
+4778|pass, go past|VyukuI||||||
 4779|tear up, cut up, cleave, cut open (esp. the abdomen)|VkuT||||||
 4780|spare (time, money, …)|VkuT||||||
 4781|cut off, cut up, tear pieces|VkuT||||||
 4782|draw, paint, sketch|VkuT||||||
-4783|darken, wane|VikuI||||||
+4783|darken, wane|VyukuI||||||
 4784|stumble, trip, fail|VkuI||||||
 4785|swim|VguI||||||
 4786|hurry, rush, hasten, make something happen sooner|VguI||||||
@@ -4902,11 +4902,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4902|drive in (e.g. nail, stake), hammer in|VmuI||||||
 4903|gulp down, swallow deeply|VmuT||||||
 4904|falter, flinch (from), recoil (from), quail (at)|VmuI||||||
-4905|flee, take flight|VikuI||||||
+4905|flee, take flight|VyukuI||||||
 4906|stop crying, cry oneself out|VmuI||||||
 4907|stand (still), loiter, stop|VmuI||||||
-4908|be ruined, go down in the world|VikuI||||||
-4909|settle down (e.g. in one location)|VikuI||||||
+4908|be ruined, go down in the world|VyukuI||||||
+4909|settle down (e.g. in one location)|VyukuI||||||
 4910|hate, detest|VmuT||||||
 4911|be worried, be troubled|VmuI||||||
 4912|shrink, contract, diminish (in size)|VmuI||||||
@@ -4916,7 +4916,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4916|redden, blush, become red|VmuI||||||
 4917|send in|VmuT||||||
 4918|flow into, pour into, stream into|VmuI||||||
-4919|be completely satisfied, be completely contented|VikuI||||||
+4919|be completely satisfied, be completely contented|VyukuI||||||
 4920|leave (archaic)|VnuI||||||
 4921|exist (object is inanimate)|VrugI||||||
 4922|to be on the right track, to go well|CE||||||
@@ -5220,7 +5220,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5220|stretch breaking point|VrugI||||||
 5221|go under, pass under|VrugI||||||
 5222|dive (in or under water), get under, get into, get in, creep into, crawl under, bury oneself, burrow into, dig oneself into, snuggle under, hide oneself (esp. from the government), conceal oneself, go underground|VrugI||||||
-5223|fade, become dim|VikuI||||||
+5223|fade, become dim|VyukuI||||||
 5224|hang, suspend (something from something), be hanged (by the neck)|VrugT||||||
 5225|groan, moan, roar, howl, growl, hum, buzz, sough|VrugI||||||
 5226|be resurrected, be resuscitated, be rehabilitated, be revived, be refreshed, be restored, be recalled (e.g. memories), be brought back|VrugI||||||
@@ -5274,15 +5274,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5274|leave behind|VikuI||||||
 5275|expect|VtsuT||||||
 5276|win, gain victory|VtsuI||||||
-5277|continue|VikuI||||||
-5278|change, shift, come and go|VikuI||||||
+5277|continue|VyukuI||||||
+5278|change, shift, come and go|VyukuI||||||
 5279|strike (someone, noon, etc.), beat (a drum, rythmically, etc.)|VtsuT||||||
 5280|attract attention, be conspicuous, stand out|VtsuI||||||
 5281|be raised (e.g. child), be brought up, grow (up)|VtsuI||||||
 5282|cut (cloth)|VtsuT||||||
 5283|sever, cut off, suppress, abstain (from)|VtsuT||||||
 5284|be erected, be built|VtsuI||||||
-5285|grow up|VikuI||||||
+5285|grow up|VyukuI||||||
 5286|to understand, to make out|CE||||||
 5287|rise up, initiate (political) action|VtsuI||||||
 5288|have an erection|VtsuI||||||
@@ -5295,7 +5295,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5295|buy, purchase|VuT||||||
 5296|plan (do)|VuT||||||
 5297|pay attention|VuI||||||
-5298|clear gradually, get cold gradually|VikuI||||||
+5298|clear gradually, get cold gradually|VyukuI||||||
 5299|do ... each other|VuT|||1249|||
 5300|receive, take, accept|VuT||||||
 5301|express|VuT||||||
@@ -5867,7 +5867,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5867|take a walk|VsuruI||||||
 5868|make a note|VsuruT||||||
 5869||-||||||
-5870|leave early|VsuruI||||||
+5870|be relative|VsuruI||||||
 5871|be surprised, be amazed, be frightened, be ashtonished|VsuruI||||||
 5872|go easy on someone, take inconsideration, make a rough estimate, make allowance for|VsuruI||||||
 5873|feel refreshed, feel relieved|VsuruI||||||
@@ -13325,8 +13325,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13325|personal, private, proprietary|Ana||||||
 13326|privacy, propriety|N;Abs||||||
 13327|private railway|N;Abs||||||
-13328|personal use|N;Abs||||||
-13329|private business|N;Abs||||||
+13328|personal use, private use|N;Abs||||||
+13329|private business, personal business|N;Abs||||||
 13330|clan, family|N;Abs||||||
 13331|chief, head (of an office, of a laboratory)|N;Abs||||||
 13332|possession, owning|N;Abs||||||
@@ -13931,7 +13931,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13931|author, authoress, writer, composer, artist|N;Abs||||||
 13932|changing completely, transformation|N;Abs||||||
 13933|varied, various|Ana||||||
-13934|variedness|N;Abs||||||
+13934|variousness|N;Abs||||||
 13935|House of Councillors (upper house of the National Diet of Japan)|N;Abs||||||
 13936|action, operation, effect, function|N;Abs||||||
 13937|elite, best, pick, cream of the crop|N;Abs||||||
@@ -19746,7 +19746,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 19746||-||||||
 19747|rely on, depend on, count on, turn to (for help)|VrugI||||||
 19748|diverse, varied|Ana||||||
-19749|diversity, variedness|N;Abs||||||
+19749|diversity, variousness|N;Abs||||||
 19750|diversity, variety|N;Abs||||||
 19751|handle, manage, deal with, work with, have experience with|VruiT||||||
 19752|rear, look after|VruiT||||||
@@ -23576,3 +23576,400 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 23576|weep for joy, cry with happiness|VsuruI||||||
 23577|go extinct, be exterminated|VsuruI||||||
 23578|be eradicated, be stamped out, be wiped out|VsuruI||||||
+23579|pour on|VruiT||||||
+23580|fat, tallow, lard, grease|N||||||
+23581|nickname|N||||||
+23582|zinc (Zn)|N:NE||||||
+23583|doomed (business, trade, etc.), in a bad state, poor|CE||||||
+23584|tuck (e.g. in a dress)|N;Sx||||||
+23585|rise (e.g. in price)|N||||||
+23586|frying, fried food|N;Px;Sx||||||
+23587|aburaage, thin deep-fried slices of tofu|N;Abr||||||
+23588|in the end (after a long process), finally, after all, at last|NAdv;T||||||
+23589|last line (of a renga)|N||||||
+23590|sitting cross-legged (i.e. Indian style)|N||||||
+23591|simpleton|N;Pe||||||
+23592|foolish, idiotic|Ana||||||
+23593|love, affection, care|N;Sx||||||
+23594|attachment, craving, desire|N;ZB||||||
+23595|dyer's knotweed (Persicaria tinctoria, used to produce indigo dye)|N||||||
+23596|indigo (dye)|N||||||
+23597|indigo (colour)|N||||||
+23598|during|N||||||
+23599|password, watchword|N||||||
+23600|motto, slogan|N||||||
+23601|vagueness, ambiguousness, lack of clarity|N||||||
+23602|vague, ambiguous, unclear|Ana||||||
+23603|fuzziness|N;ZI;ZMt||||||
+23604|fuzzy|Ana;ZI;ZMt||||||
+23605|coupled with, together|A||||||
+23606|affinity, compatibility|N||||||
+23607|confrontation, facing, between ourselves, no third party, tete-a-tete|N;Ano||||||
+23608|condolence, regret, tribute, sorrow, sympathy, lament|N;Ano||||||
+23609|dirt, filth, grime|N||||||
+23610|account (e.g. online service)|N||||||
+23611|Japanese red pine (Pinus densiflora), Japanese umbrella pine, tanyosho pine|N||||||
+23612|dawn, daybreak|N||||||
+23613|event (e.g. "in the event of ..."), occasion, occurrence|N||||||
+23614|scarlet, red|N;Ano||||||
+23615|blood|N||||||
+23616|dawn, daybreak, beginning|N||||||
+23617|morning and evening, all the time|NAdv;T||||||
+23618|former name of Hiroshima prefecture|N||||||
+23619|weariness, boredom, tedium, tiresomeness|N||||||
+23620|empty can|N||||||
+23621|trade, business, trading, dealing|N||||||
+23622|highlight, best part|N||||||
+23623|stunning, incredible, superb|Ano;Ana||||||
+23624|being taken aback, state of shock, dumbfoundedness|N||||||
+23625|yearning, longing, aspiration|N;Ano||||||
+23626||-||||||
+23627|kanji "yawning" radical (radical 76)|N||||||
+23628|evil deed, crime, wickedness|N||||||
+23629|wicked woman|N||||||
+23630|ugly woman|N||||||
+23631|vicious circle, vicious cycle|N||||||
+23632|next day, following day|NAdv;T||||||
+23633|grip (of hand), grip strength|N||||||
+23634|malignancy, virulence|N||||||
+23635|malignant (cancer), pernicious (anemia, anaemia)|Ana||||||
+23636|abuse, misuse, perversion|N||||||
+23637|raindrops (dripping from eaves, branches, etc.)|N||||||
+23638|exclamation point, exclamation mark|N;coq||||||
+23639|lack of self-reliance, depending on others|N||||||
+23640|rain gear|N||||||
+23641|retiring high-ranking government officials taking a lucrative job in a private or semi-private corporation|N||||||
+23642|command (from superior to inferior, government to private sector, etc.), order, imposition|N||||||
+23643|descent from heaven|N||||||
+23644|sweetness, sugary taste|N||||||
+23645|sweets, dessert, cake|N||||||
+23646|charm, appeal|N||||||
+23647|taste, flavour, flavor|N||||||
+23648||-||||||
+23649|"rain water" solar term (approx. Feb 19)|N||||||
+23650|roof leak|N||||||
+23651|Milky Way, luminous band corresponding to the plane of the galaxy|N;ZAs||||||
+23652|save, leave over, spare|VsuT||||||
+23653|taking shelter from rain|N||||||
+23654|pamper, spoil|VsuT||||||
+23655|(hard) candy, toffee|N;ZF||||||
+23656|rice-sugar, sugar made from the starch of rice, potatoes, etc.|N;ZF||||||
+23657|amber, yellowish-brown|N;Abr||||||
+23658|rainfall, rainy weather|N||||||
+23659|ease, simplicity|N||||||
+23660|easy, simple|Ana||||||
+23661|easy-goingness|N||||||
+23662|easy-going|Ana||||||
+23663|dark clouds|N||||||
+23664|red bean paste, red bean jam, anko|N;ZF||||||
+23665|kudzu sauce|N;ZF||||||
+23666|filling (of a dumpling, bun, etc., e.g. ground meat, vegetables, bean paste)|N;ZF||||||
+23667|filling (generally), a substance wrapped in something else (e.g. cushion stuffing)|N||||||
+23668|disdain, look down on, make light of, hold in contempt, scorn, despise|VrugT||||||
+23669|not necessarily, not entirely, not altogether|A||||||
+23670|safe hit|N;ZBb||||||
+23671|code, password, cipher|N;Ano||||||
+23672|pilgrimage, traveling on foot|N||||||
+23673|hint, suggestion|N;Ano||||||
+23674|memorization, memorisation, learning by heart|N||||||
+23675|tacit, unspoken, implicit|N;Ano||||||
+23676|safety, welfare, well-being|N||||||
+23677|security (e.g. national security)|N;Abr||||||
+23678|US-Japan Security Treaty|N;Abr||||||
+23679|campaign against the Japan-U.S. Security Treaty (1959-60, 1970)|N;Abr||||||
+23680|euthanasia|N||||||
+23681|assassination|N||||||
+23682||-||||||
+23683|restful, quiet, reposed|Ana||||||
+23684|sense of security|N||||||
+23685|reef, sunken rock|N||||||
+23686|unforeseen difficulty|N||||||
+23687|apricot (Prunus armeniaca)|N||||||
+23688|fresh leaves|N||||||
+23689|fan|VguT||||||
+23690|incite, instigate|VguT||||||
+23691|Japanese laurel, spotted laurel, Aucuba japonica|N||||||
+23692|live tree|N||||||
+23693|face up|N||||||
+23694|fan (oneself|VrugT||||||
+23695|flap (in the wind)|VrugT||||||
+23696|instigate, stir up, incite, agitate|VrugT||||||
+23697|drive up prices (by buying a large amount of something)|VrugT||||||
+23698|take a photo from a low angle|VrugT||||||
+23699|tailgate|VrugT||||||
+23700|speculatively buying a rice harvest, while the fields are still green|N||||||
+23701|recruiting of university students before the agreed date|N||||||
+23702|unripe plum|N||||||
+23703|green willow (i.e. one that has budded)|N||||||
+23704|meat of the trough shell (Mactra chinensis)|N||||||
+23705|pressure|N||||||
+23706|oppression, suppression|N||||||
+23707|rough, wild, rude, harsh, gruff, violent|Ai||||||
+23708|finish washing, wash well, investigate thoroughly|VruiT||||||
+23709|beforehand, in advance, previously|A;Af||||||
+23710|logs in bark, rough wood, unseasoned timber, new lumber|N||||||
+23711|raging waves, stormy seas|N;Ano||||||
+23712|hardships, troubles, adversities|N||||||
+23713|wild, violent, rough-mannered|Ai||||||
+23714|rough (e.g. work), crude, coarse, careless|Ai||||||
+23715|roughen (e.g. one's attitude), raise (one's voice)|VruiT||||||
+23716|dispute, strife, quarrel, dissension, conflict, rivalry, contest|N||||||
+23717|lay waste, devastate, damage|VsuT||||||
+23718|invade, break into|VsuT||||||
+23719|troll (e.g. web forums), spam|VsuT;ZI;coq||||||
+23720|outline, summary, argument|N||||||
+23721|be renewed, change|VrugI||||||
+23722|be improved, be reformed, be revised, be corrected|VrugI||||||
+23723|stand on ceremony, be formal|VrugI||||||
+23724|take a turn for the worse (of an illness), take a serious turn|VrugI||||||
+23725|write, publish|VsuT||||||
+23726|stormy weather, tempest, chaps (of skin)|N||||||
+23727|ant|N||||||
+23728|unsurprising, trite, commonplace, mundane, hackneyed, garden variety (of)|Af||||||
+23729|past days, bygone days, days of yore, the olden days|N;Ano||||||
+23730|while still alive, during one's lifetime|N;Ano||||||
+23731|a certain ..., some ...|Apn||||||
+23732|Japanese morning glory (Ipomoea nil), picotee morning glory, ivy morning glory|N||||||
+23733|any funnel shaped object, bell (e.g. of a trumpet), funnel-shaped urinal|N||||||
+23734|shallow, superficial, thoughtless, short-sighted, foolish, silly|Ana||||||
+23735|hemp cloth, linen|N||||||
+23736|impatience|N||||||
+23737|fade, discolor, discolour|VruiI||||||
+23738|diminish, fade (e.g. of a memory)|VruiI||||||
+23739|scaffold, scaffolding|N||||||
+23740|foothold, footing|N||||||
+23741|foothold (e.g. in business), foundation, base|N||||||
+23742|convenience for transportation, convenience of access (by road or rail)|N||||||
+23743|fast walking, quickness, briskness|N||||||
+23744|fast (walking), quick, brisk|Ana||||||
+23745|quick passing of time, rapidity, swiftness|N||||||
+23746|quick (passing of time), rapid, swift|Ana||||||
+23747|don't get me wrong, but ..., I'm sorry|A||||||
+23748|kind offices, services, through the good offices of, influence|N||||||
+23749|intercession, mediation|N||||||
+23750|complete victory|N||||||
+23751|compression, condensation, constriction, compaction|N||||||
+23752|successful role|N||||||
+23753|assign, set aside|VruiT||||||
+23754|afterword, postscript|N||||||
+23755|going backward, turning back, backtracking, doubling back|N||||||
+23756|retrogression, relapse, returning to a bad state|N||||||
+23757|wearing thick clothes, dressing warmly|N||||||
+23758|impudent, shameless, brazen|Ai||||||
+23759|thickness, profound|N||||||
+23760|stress|N;ZPh||||||
+23761|pressure (e.g. political), coercion, arm-twisting|N||||||
+23762|thickness|N||||||
+23763|heat (of the weather), hotness|N||||||
+23764|overwhelmingness, overwpoweringness, crush, complete defeat|N||||||
+23765||-||||||
+23766|intimidation, fright, threat|N||||||
+23767|bubble, foam, froth, head on beer|N||||||
+23768|match (rhythm|VsuT||||||
+23769|join together, unite, combine, add up|VsuT||||||
+23770|face, be opposite (someone)|VsuT||||||
+23771|compare, check with|VsuT||||||
+23772|cause to meet (e.g. an unpleasant fate)|VsuT||||||
+23773|place together, connect, overlap|VsuT||||||
+23774|mix, combine|VsuT||||||
+23775|put blade to blade, fight|VsuT||||||
+23776|busy, hurried, confused, flurried|Ai||||||
+23777|error, mistake, slip, bug|N||||||
+23778|in error, by mistake, by accident|CE||||||
+23779|compromise, concession|N||||||
+23780|compromise, meet halfway|VrugI||||||
+23781|step up to, walk up to, approach|VrugI||||||
+23782|deceive, delude, trick, fool|VkuT||||||
+23783|be as ... as ... (e.g. "as bright as day"|VkuT||||||
+23784|vivid, bright, clear, fresh, vibrant|Ana||||||
+23785|skillful, skilful, adept, adroit, deft, brilliant, beautiful, fine, excellent|Ana||||||
+23786|under custody, under supervision|N||||||
+23787|undecided match, draw, tie|N||||||
+23788|cloakroom, parcel room|N||||||
+23789|claim check, baggage check, luggage check, deposit receipt|N||||||
+23790|make a deposit|VruiT||||||
+23791|adzuki bean (Vigna angularis)|N||||||
+23792|horse-riding ground|N||||||
+23793|trade, buying and selling, trafficking (e.g. of humans, arms, drugs), dealing|N||||||
+23794|germ, germs, bacteria, mold, mould|N;coq||||||
+23795|something harmful, vermin|N||||||
+23796|selling off, disposal by sale, sale|N||||||
+23797|jury|N||||||
+23798|compensation, reparations, indemnity, damages|N||||||
+23799|indemnities, reparations|N||||||
+23800|give a nickname|VsuruI||||||
+23801|confront, face|VsuruT||||||
+23802|condole with, regret, tribute, sympathize with, lament|VsuruT||||||
+23803|abuse, misuse, pervert|VsuruT||||||
+23804||-||||||
+23805|command, order, impose|VsuruI||||||
+23806|descend from heaven|VsuruI||||||
+23807|leak (roof)|VsuruI||||||
+23808|take shelter from rain|VsuruI||||||
+23809|hit safe |VsuruI;ZBb||||||
+23810|pilgrimage, travel on foot|VsuruI||||||
+23811|memorize, memorise, learn by heart|VsuruT||||||
+23812|assassinate|VsuruT||||||
+23813|be pressured|VsuruI||||||
+23814|be oppressed, be suppressed|VsuruI||||||
+23815||-||||||
+23816|intercess, mediate|VsuruI||||||
+23817|have complete victory|VsuruI||||||
+23818|be compressed, be condensated, be constricted, be compacted|VsuruI||||||
+23819|go backward, turn back, backtrack, double back|VsuruI||||||
+23820|retrogress, relapse, return to a bad state|VsuruI||||||
+23821|wear thick clothes, dress warmly|VsuruI||||||
+23822|overwhelm (e.g. an opponent), overwpower, crush, defeat completely|VsuruT||||||
+23823|overwhelm (someone with emotion), move, impress, fill with emotion|VsuruT||||||
+23824|intimidate, frighten, threaten|VsuruT||||||
+23825|trade, buy and sell, traffic, deal|VsuruI||||||
+23826|sell off, dispose by sale, sale|VsuruT||||||
+23827|evil spirit|N||||||
+23828|actress|N||||||
+23829|fragrant (smelling), sweet (music)|Ai||||||
+23830|lightly salted, light in salt, not spicy|Ai||||||
+23831|naive, overly optimistic, soft on, generous, indulgent, easy-going, lenient|Ai||||||
+23832|half-hearted, not finished properly|Ai||||||
+23833|insufficient, not satisfactory, inadequate, loose|Ai||||||
+23834|mild|Ai||||||
+23835|tempting, enticing, luring|Ai||||||
+23836||-||||||
+23837||-||||||
+23838||-||||||
+23839|penis|N||||||
+23840|junior high school student, middle school pupil|N||||||
+23841|used car, secondhand car|N||||||
+23842|junior high school graduate, middle school graduate|N||||||
+23843|your Highness, his Highness, her Highness|P||||||
+23844|Tenga|Pl||||||
+23845|nonsense, irresponsible remark, codswallop, hogwash, rubbish|N||||||
+23846|nonsensical, irresponsible|Ana||||||
+23847|random, haphazard, unsystematic|Ana||||||
+23848|randomness, haphazardness, unsystematicness|N||||||
+23849|Mr., Mrs., Miss, Ms.|Sx||||||
+23850|foreign-made car, imported car|N||||||
+23851|paddle wheel|N||||||
+23852|drawing ability, skill at art|N||||||
+23853|top of ..., head of ...|Sx||||||
+23854|the moment that ...|Sx||||||
+23855|nominalizing suffix|Sx||||||
+23856|pretending to ..., playing make-believe ...|Sx||||||
+23857|distance of eight sun (approx. 24 cm)|N||||||
+23858|dish or tray of this size (esp. used in kaiseki cuisine to serve several kinds of delicacies), food served in such a dish|N||||||
+23859|var. of thick, traditional Japanese paper|N||||||
+23860|pull, patronage, influence|N;Sx||||||
+23861||-||||||
+23862|tug|N;Sx||||||
+23863||-||||||
+23864|discount|N;Sx||||||
+23865||-||||||
+23866|exchange, conversion|N||||||
+23867|coward, dastard|N||||||
+23868|anger, rage, fury, wrath, indignation|N||||||
+23869|way of life|CE;N||||||
+23870||-||||||
+23871|historic ruins (remains, relics), archeological site|N||||||
+23872|(passenger) car, automobile|N||||||
+23873|anhedonia|N||||||
+23874|analysis, analytical study|N||||||
+23875|parsing|N||||||
+23876|securing, obtaining, ensuring, guarantee, maintaining|N||||||
+23877|belay, belaying|N||||||
+23878|conviction, belief, confidence|N||||||
+23879|decision, settlement|N||||||
+23880|definition|N||||||
+23881|firm promise, definite promise|N||||||
+23882|lower grade, low class, junior (officer)|N||||||
+23883|argument based on emotion, sentimental argument|N||||||
+23884|government service, official position, civil service|N||||||
+23885|freight car, van|N||||||
+23886|kendo, swordmanship, fencing, way of the sword|N||||||
+23887|swordsman, swordswoman, fencer|N||||||
+23888|counter for horsemen|C||||||
+23889|horse riding, horseback riding, horseback rider|N||||||
+23890|base pay|N||||||
+23891|basically, fundamentally|A||||||
+23892|defect of memory|N||||||
+23893|being full of vitality (energy), in exuberant spirits, effervescent, ebullient|N||||||
+23894|knight|N||||||
+23895|horseman, rider, jockey|N||||||
+23896|at the top of one's voice|CE;A||||||
+23897||-||||||
+23898|stimulant drug|N||||||
+23899|leading, foremost, preeminent, outstanding, one of the best|N||||||
+23900|fortified foods|N||||||
+23901|class (e.g. school), grade, rank|N||||||
+23902|kyū, kyu, junior rank in martial arts, go, shogi, etc.|C||||||
+23903|be satisfied (with), find satisfactory|VikuI||||||
+23904|moral duty, moral obligations|N||||||
+23905|justification, pretext, just cause|N||||||
+23906|Meniere|N||||||
+23907|to see, to witness, to observe, to catch sight of, to get a glimpse of, to encounter|CE||||||
+23908|menu|N||||||
+23909|schedule, program, programme|N||||||
+23910|(computer) menu|N||||||
+23911|former, ex-, past, one-time|N||||||
+23912|un-, non-|Px||||||
+23913|free (of charge), gratuitous|N||||||
+23914|some, any, in any way, of some kind, of some sort|A||||||
+23915|some, any|N||||||
+23916|something causing worry|N||||||
+23917|steal another's spouse, steal another's lover|VrugT||||||
+23918|Madagascar periwinkle (Catharanthus roseus)|N||||||
+23919|nisei, second-generation Japanese (or Korean, etc.), foreigner of Japanese parentage|N||||||
+23920|the Second (king, etc. of the same name), second generation, junior|N;Sx;Px||||||
+23921||-||||||
+23922||-||||||
+23923|son|N||||||
+23924|woman|CE;N;Pe|||188||josei|
+23925||-||||||
+23926|none of your business!, don't bother me!, keep out of it!|CE;N||||||
+23927||-||||||
+23928|in case of, at that time, at this time|A||||||
+23929|appetizer|N||||||
+23930|later date, post-dating (e.g. a letter or cheque)|N||||||
+23931|our gracious (e.g. Queen), honorific that attaches to name of a person or thing that has bestowed grace or favour upon you|Sx||||||
+23932|third year (college) student, junior|N||||||
+23933|just person, man of justice, righteous person, upright person|N||||||
+23934|avoiding or dodging responsibility|N||||||
+23935|someone of that nature, someone doing that work|Sx||||||
+23936|social life|N||||||
+23937|rear, rear unit guard|N||||||
+23938|anchor (man)|N||||||
+23939|diet|N||||||
+23940|sugar|N||||||
+23941|connoisseur, devotee|N||||||
+23942|insertion, incorporation, infixing|N||||||
+23943|special someone, special person, precious one, significant other|CE;N||||||
+23944||-||||||
+23945|food (meat, fish, vegetables, etc.) cooked separately but served together on one dish|N||||||
+23946|junior college, vocationally oriented two or three year post-secondary education institution|N||||||
+23947||-||||||
+23948|Tanki University|Pl||||||
+23949|battlefield|N||||||
+23950|feudal lord, daimyo|N||||||
+23951|sugar|N;Sx||||||
+23952||-||||||
+23953|diabetes, diabetes mellitus|N||||||
+23954|written estimate|N||||||
+23955|fade, become dim|VruiI||||||
+23956|spiral galaxy|N||||||
+23957|whirl, eddy, swirl, curl (smoke)|VkuI||||||
+23958|be all jumbled together (feelings, thoughts, etc.)|VkuI||||||
+23959|surge, sweep|VkuI||||||
+23960|I, me|P||||||
+23961|nightfall, early evening|N||||||
+23962|automobile, car|N||||||
+23963||-||||||
+23964||-||||||
+23965||-||||||
+23966|analyze, study analytically|VsuruT||||||
+23967|parse|VsuruT||||||
+23968|have conviction, believe, be confident|VsuruI||||||
+23969|decide, settle|VsuruI||||||
+23970|be defined|VsuruI||||||
+23971|promise firmly, promise definitely|VsuruI||||||
+23972|fear, dread, be scared, panic|VsuruI||||||
+23973||-||||||
+23974|avoid or dodge responsibility|VsuruI||||||
+23975|be inserted, be incorporated|VsuruI||||||
