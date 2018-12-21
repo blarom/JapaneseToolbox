@@ -314,25 +314,32 @@ public class ConjugatorFragment extends Fragment implements
             mConjugationsContainerScrollView.setVisibility(View.GONE);
         }
 
-
         //Setting the conjugation spinner to the position of the first item matching the user query
+        selectConjugationCategoryBasedOnInputQuery(verbIndex);
+
+    }
+    private void selectConjugationCategoryBasedOnInputQuery(final int verbIndex) {
+
+        Verb verb = mMatchingVerbs.get(verbIndex);
+        List<Verb.ConjugationCategory> conjugationCategories = verb.getConjugationCategories();
         List<Verb.ConjugationCategory.Conjugation> conjugations;
         int matchingConjugationCategoryIndex = 0;
         boolean foundMatch = false;
         if (!mInputQuery.equals(verb.getLatinRoot()) && !mInputQuery.equals(verb.getKanjiRoot())) {
+
+            //First pass - checking for conjugations that equal the input query
             for (int i=0; i<conjugationCategories.size(); i++) {
                 conjugations = conjugationCategories.get(i).getConjugations();
                 for (Verb.ConjugationCategory.Conjugation conjugation : conjugations) {
-                    
+
                     if (mInputQueryTextType == TYPE_LATIN && conjugation.getConjugationLatin().equals(mInputQuery)) {
                         foundMatch = true;
                     }
                     else if ((mInputQueryTextType == TYPE_HIRAGANA || mInputQueryTextType == TYPE_KATAKANA)
-                        && conjugation.getConjugationLatin().equals(mInputQueryTransliterations.get(0))) {
+                            && conjugation.getConjugationLatin().equals(mInputQueryTransliterations.get(0))) {
                         foundMatch = true;
                     }
-                    else if (mInputQueryTextType == TYPE_KANJI
-                        && conjugation.getConjugationKanji().equals(mInputQuery)) {
+                    else if (mInputQueryTextType == TYPE_KANJI && conjugation.getConjugationKanji().equals(mInputQuery)) {
                         foundMatch = true;
                     }
 
@@ -341,6 +348,32 @@ public class ConjugatorFragment extends Fragment implements
                 if (foundMatch) {
                     matchingConjugationCategoryIndex = i;
                     break;
+                }
+            }
+
+            //Second pass - if index is still 0, checking for conjugations that contain the input query
+            if (matchingConjugationCategoryIndex == 0) {
+                for (int i=0; i<conjugationCategories.size(); i++) {
+                    conjugations = conjugationCategories.get(i).getConjugations();
+                    for (Verb.ConjugationCategory.Conjugation conjugation : conjugations) {
+
+                        if (mInputQueryTextType == TYPE_LATIN && conjugation.getConjugationLatin().contains(mInputQuery)) {
+                            foundMatch = true;
+                        }
+                        else if ((mInputQueryTextType == TYPE_HIRAGANA || mInputQueryTextType == TYPE_KATAKANA)
+                                && conjugation.getConjugationLatin().contains(mInputQueryTransliterations.get(0))) {
+                            foundMatch = true;
+                        }
+                        else if (mInputQueryTextType == TYPE_KANJI && conjugation.getConjugationKanji().contains(mInputQuery)) {
+                            foundMatch = true;
+                        }
+
+                        if (foundMatch) break;
+                    }
+                    if (foundMatch) {
+                        matchingConjugationCategoryIndex = i;
+                        break;
+                    }
                 }
             }
         }
