@@ -682,10 +682,10 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                         "(" + ConvertFragment.getLatinHiraganaKatakana(components[1]).get(GlobalConstants.TYPE_LATIN) + ")";
 
                 if (ConvertFragment.getTextType(reading.substring(0,1)) == GlobalConstants.TYPE_HIRAGANA) {
-                    onReadings.add(readingLatin);
+                    kunReadings.add(readingLatin);
                 }
                 else if (ConvertFragment.getTextType(reading.substring(0,1)) == GlobalConstants.TYPE_KATAKANA) {
-                    kunReadings.add(readingLatin);
+                    onReadings.add(readingLatin);
                 }
             }
             characteristics.set(KANJI_ON_READING, (onReadings.size()>0 && !onReadings.get(0).equals(""))? TextUtils.join(", ", onReadings) : "-");
