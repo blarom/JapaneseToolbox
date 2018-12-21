@@ -325,7 +325,7 @@ public class DictionaryFragment extends Fragment implements
                 dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mLocalMatchingWordsList);
             }
             mShowOnlineResultsToast = Toast.makeText(getContext(), text, Toast.LENGTH_SHORT);
-            mShowOnlineResultsToast.show();
+            if (Utilities.getShowInfoBoxesOnSearchPreference(getActivity())) mShowOnlineResultsToast.show();
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_SEARCH_LOADER);
         }
@@ -345,8 +345,11 @@ public class DictionaryFragment extends Fragment implements
                 dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mMergedMatchingWordsList);
 
                 List<Word> differentJishoWords = Utilities.getDifferentAsyncWords(mLocalMatchingWordsList, jishoWords);
-                if (differentJishoWords.size()==0) Toast.makeText(getContext(), R.string.no_new_words_or_meanings_found_online, Toast.LENGTH_SHORT).show();
-                else Toast.makeText(getContext(), "Updated list with online results.", Toast.LENGTH_SHORT).show();
+                if (Utilities.getShowInfoBoxesOnSearchPreference(getActivity())) {
+                    if (differentJishoWords.size() == 0)
+                        Toast.makeText(getContext(), R.string.no_new_words_or_meanings_found_online, Toast.LENGTH_SHORT).show();
+                    else Toast.makeText(getContext(), "Updated list with online results.", Toast.LENGTH_SHORT).show();
+                }
 
                 if (differentJishoWords.size()>0) {
                     updateFirebaseDbWithJishoWords(Utilities.getCommonWords(differentJishoWords));
@@ -357,7 +360,9 @@ public class DictionaryFragment extends Fragment implements
             }
             else {
                 dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mLocalMatchingWordsList);
-                Toast.makeText(getContext(), R.string.no_matching_words_online, Toast.LENGTH_SHORT).show();
+                if (Utilities.getShowInfoBoxesOnSearchPreference(getActivity()))
+                    Toast.makeText(getContext(), R.string.no_matching_words_online, Toast.LENGTH_SHORT).show();
+
                 //if there are no jisho results (for whatever reason) and no local results to display, then try the reverse verb search on the input
                 if (mLocalMatchingWordsList.size()==0) {
                     performConjSearch();

@@ -2578,6 +2578,15 @@ public final class Utilities {
         }
         return showOnlineResults;
     }
+    public static Boolean getShowInfoBoxesOnSearchPreference(Activity activity) {
+        Boolean showInfoBoxesOnSearch = false;
+        if (activity!=null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+            showInfoBoxesOnSearch = sharedPreferences.getBoolean(activity.getString(R.string.pref_show_info_boxes_on_search_key),
+                    activity.getResources().getBoolean(R.bool.pref_show_info_boxes_on_search_default));
+        }
+        return showInfoBoxesOnSearch;
+    }
     public static void setAppPreferenceKanjiDatabaseFinishedLoadingFlag(Context context, boolean flag) {
         if (context != null) {
             SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.app_preferences), Context.MODE_PRIVATE);

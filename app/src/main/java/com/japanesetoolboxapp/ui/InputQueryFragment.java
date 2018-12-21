@@ -1119,7 +1119,7 @@ public class InputQueryFragment extends Fragment implements
                         + mFirstMeaning)
             );
         }
-        else {
+        else if (mQueryHistory.size() > 0) {
             if (mQueryHistory.get(0).length() > mInputQuery.length()
                 && mQueryHistory.get(0).substring(0,mInputQuery.length()).equals(mInputQuery)) {
                 queryAndMeaning = mQueryHistory.get(0);

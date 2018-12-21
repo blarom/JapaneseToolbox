@@ -18,10 +18,15 @@
     <string name="about">About</string>
 
     <!--Preferences Strings-->
-    <string name="hidden">Don\&apos;t get words and meanings online</string>
-    <string name="shown">Merge online search results with local results</string>
+    <string name="hidden_online_search">Don\&apos;t get words and meanings online</string>
+    <string name="shown_online_search">Merge online search results with local results</string>
+    <string name="hidden_info_boxes">Don\&apos;t show informative popup texts on search</string>
+    <string name="shown_info_boxes">Show informative popup texts on search</string>
     <string name="pref_complete_local_with_online_search_key" translatable="false">complete_local_with_online_search</string>
+    <string name="pref_show_info_boxes_on_search_key" translatable="false">show_info_boxes_on_search</string>
+    <string name="pref_show" translatable="false">complete_local_with_online_search</string>
     <string name="complete_local_with_online_search">Search Online Dictionary</string>
+    <string name="show_search_indicators">Show Info Boxes On Search</string>
     <string name="language_label_japanese">Japanese</string>
     <string name="language_label_english">English (US)</string>
     <string name="pref_preferred_language_value_japanese" translatable="false">japanese</string>

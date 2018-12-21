@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements
     Intent restartIntent;
 
     public boolean mShowOnlineResults;
+    public boolean mShowInfoBoxesOnSearch;
     public String mChosenSpeechToTextLanguage;
     public String mChosenTextToSpeechLanguage;
     public String mChosenOCRLanguage;
@@ -232,6 +233,9 @@ public class MainActivity extends AppCompatActivity implements
         if (key.equals(getString(R.string.pref_complete_local_with_online_search_key))) {
             setShowOnlineResults(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default)));
         }
+        else if (key.equals(getString(R.string.pref_show_info_boxes_on_search_key))) {
+            setShowInfoBoxesOnSearch(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_info_boxes_on_search_default)));
+        }
         else if (key.equals(getString(R.string.pref_preferred_STT_language_key))) {
             setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese)));
         }
@@ -266,6 +270,9 @@ public class MainActivity extends AppCompatActivity implements
     public void setShowOnlineResults(boolean showOnlineResults) {
         mShowOnlineResults = showOnlineResults;
     }
+    public void setShowInfoBoxesOnSearch(boolean showInfoBoxes) {
+        mShowInfoBoxesOnSearch = showInfoBoxes;
+    }
     public void setSpeechToTextLanguage(String language) {
         if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
             mChosenSpeechToTextLanguage = getResources().getString(R.string.languageLocaleJapanese);
@@ -290,24 +297,6 @@ public class MainActivity extends AppCompatActivity implements
         else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
             mChosenOCRLanguage = getResources().getString(R.string.languageLocaleEnglishUS);
         }
-    }
-    public void showExitAppDialog() {
-        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-        alertDialog.setMessage(getString(R.string.sure_you_want_to_exit));
-        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.yes),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.cancel),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-        alertDialog.show();
     }
 
 
@@ -415,6 +404,24 @@ public class MainActivity extends AppCompatActivity implements
             }
             mInputQueryFragment.updateQueryDefinitionInHistory(romaji, meaning);
         }
+    }
+    public void showExitAppDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setMessage(getString(R.string.sure_you_want_to_exit));
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.yes),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 
 

@@ -7,9 +7,16 @@
     <CheckBoxPreference
         android:defaultValue="@bool/pref_complete_local_with_online_search_default"
         android:key="@string/pref_complete_local_with_online_search_key"
-        android:summaryOff="@string/hidden"
-        android:summaryOn="@string/shown"
+        android:summaryOff="@string/hidden_online_search"
+        android:summaryOn="@string/shown_online_search"
         android:title="@string/complete_local_with_online_search" />
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_show_info_boxes_on_search_default"
+        android:key="@string/pref_show_info_boxes_on_search_key"
+        android:summaryOff="@string/hidden_info_boxes"
+        android:summaryOn="@string/shown_info_boxes"
+        android:title="@string/show_search_indicators" />
 
     <PreferenceCategory
         android:title="Speech" />
