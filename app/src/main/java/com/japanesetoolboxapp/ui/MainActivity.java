@@ -16,6 +16,7 @@ import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements
     private float mOcrImageDefaultContrast;
     private float mOcrImageDefaultBrightness;
     private float mOcrImageDefaultSaturation;
+    private int mQueryHistorySize;
     private FragmentManager mFragmentManager;
     private Bundle mSavedInstanceState;
     private Unbinder mBinding;
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements
     private boolean mAllowButtonOperations;
     private List<Word> mLocalMatchingWords;
     private String mInputQuery;
+    List<String> mQueryHistory;
     //endregion
 
 
@@ -237,6 +240,10 @@ public class MainActivity extends AppCompatActivity implements
         else if (key.equals(getString(R.string.pref_show_info_boxes_on_search_key))) {
             setShowInfoBoxesOnSearch(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_info_boxes_on_search_default)));
         }
+        else if (key.equals(getString(R.string.pref_query_history_size_key))) {
+            mQueryHistorySize = Utilities.getQueryHistorySizePreference(sharedPreferences, getApplicationContext());
+            updateQueryHistorySize();
+        }
         else if (key.equals(getString(R.string.pref_preferred_STT_language_key))) {
             setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese)));
         }
@@ -260,6 +267,7 @@ public class MainActivity extends AppCompatActivity implements
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         setShowOnlineResults(sharedPreferences.getBoolean(getString(R.string.pref_complete_local_with_online_search_key),
                 getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default)));
+        mQueryHistorySize = Utilities.getQueryHistorySizePreference(sharedPreferences, getApplicationContext());
         setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese)));
         setTextToSpeechLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese)));
         setOCRLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_preferred_language_value_japanese)));
@@ -425,6 +433,24 @@ public class MainActivity extends AppCompatActivity implements
                     }
                 });
         alertDialog.show();
+    }
+    private void updateQueryHistorySize() {
+
+        //Getting the history
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preferences_query_history_list), Context.MODE_PRIVATE);
+        String queryHistoryAsString = sharedPref.getString(getString(R.string.preferences_query_history_list), "");
+        if (!queryHistoryAsString.equals("")) mQueryHistory = new ArrayList<>(Arrays.asList(queryHistoryAsString.split(GlobalConstants.QUERY_HISTORY_ELEMENTS_DELIMITER)));
+
+        //Updating its size
+        if (mQueryHistory.size() > mQueryHistorySize) mQueryHistory = mQueryHistory.subList(0, mQueryHistorySize);
+
+        //Saving the hstory
+        queryHistoryAsString = TextUtils.join(GlobalConstants.QUERY_HISTORY_ELEMENTS_DELIMITER, mQueryHistory);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(getString(R.string.preferences_query_history_list), queryHistoryAsString);
+        editor.apply();
+
+        if (mInputQueryFragment!=null) mInputQueryFragment.updateQueryHistoryList(mQueryHistory, mQueryHistorySize);
     }
 
 

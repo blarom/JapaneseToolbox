@@ -18,6 +18,13 @@
         android:summaryOn="@string/shown_info_boxes"
         android:title="@string/show_search_indicators" />
 
+    <EditTextPreference
+        android:defaultValue="@string/pref_query_history_size_default_value"
+        android:key="@string/pref_query_history_size_key"
+        android:summary="@string/pref_query_history_size_summary"
+        android:inputType="number"
+        android:title="@string/pref_query_history_size_title" />
+
     <PreferenceCategory
         android:title="Speech" />
 

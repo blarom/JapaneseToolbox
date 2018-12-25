@@ -54,6 +54,7 @@ import android.widget.Toast;
 import com.googlecode.tesseract.android.TessBaseAPI;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.Word;
+import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.Utilities;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -89,11 +90,8 @@ public class InputQueryFragment extends Fragment implements
     @BindView(R.id.button_convert) Button mConvertButton;
     @BindView(R.id.button_search_by_radical) Button mSearchByRadicalButton;
     @BindView(R.id.button_decompose) Button mDecomposeButton;
-    public static final String QUERY_HISTORY_ELEMENTS_DELIMITER = ";";
-    public static final String QUERY_HISTORY_MEANINGS_DELIMITER = "@";
-    public static final String QUERY_HISTORY_MEANINGS_DISPLAYED_DELIMITER = "~";
     private static final int MAX_OCR_DIALOG_RECYCLERVIEW_HEIGHT_DP = 150;
-    private static final int QUERY_HISTORY_MAX_SIZE = 20;
+    private int mQueryHistoryMaxSize = 20;
     private static final int RESULT_OK = -1;
     private static final int SPEECH_RECOGNIZER_REQUEST_CODE = 101;
     private static final int ADJUST_IMAGE_ACTIVITY_REQUEST_CODE = 201;
@@ -1080,7 +1078,7 @@ public class InputQueryFragment extends Fragment implements
                 LayoutInflater inflater = LayoutInflater.from(getActivity().getBaseContext());
                 View layout = inflater.inflate(R.layout.custom_queryhistory_spinner, parent, false);
                 TextView queryHistoryElement = layout.findViewById(R.id.query_value);
-                queryHistoryElement.setText(mQueryHistory.get(position).replace(QUERY_HISTORY_MEANINGS_DELIMITER, QUERY_HISTORY_MEANINGS_DISPLAYED_DELIMITER));
+                queryHistoryElement.setText(mQueryHistory.get(position).replace(GlobalConstants.QUERY_HISTORY_MEANINGS_DELIMITER, GlobalConstants.QUERY_HISTORY_MEANINGS_DISPLAYED_DELIMITER));
                 queryHistoryElement.setMaxLines(1);
                 queryHistoryElement.setEllipsize(TextUtils.TruncateAt.END);
                 queryHistoryElement.setTypeface(mDroidSansJapaneseTypeface);
@@ -1096,7 +1094,7 @@ public class InputQueryFragment extends Fragment implements
         if (getContext() != null) {
             SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.preferences_query_history_list), Context.MODE_PRIVATE);
             String queryHistoryAsString = sharedPref.getString(getString(R.string.preferences_query_history_list), "");
-            if (!queryHistoryAsString.equals("")) mQueryHistory = new ArrayList<>(Arrays.asList(queryHistoryAsString.split(QUERY_HISTORY_ELEMENTS_DELIMITER)));
+            if (!queryHistoryAsString.equals("")) mQueryHistory = new ArrayList<>(Arrays.asList(queryHistoryAsString.split(GlobalConstants.QUERY_HISTORY_ELEMENTS_DELIMITER)));
         }
 
         updateQueryHistoryWordsOnly();
@@ -1114,7 +1112,7 @@ public class InputQueryFragment extends Fragment implements
         if (saveDefinition) {
             queryAndMeaning = mInputQuery
                 + (TextUtils.isEmpty(mFirstMeaning) ? "" :
-                (" " + QUERY_HISTORY_MEANINGS_DELIMITER + " "
+                (" " + GlobalConstants.QUERY_HISTORY_MEANINGS_DELIMITER + " "
                         + (TextUtils.isEmpty(mFirstMeaningRomaji) ? "" : "[" + mFirstMeaningRomaji + "] ")
                         + mFirstMeaning)
             );
@@ -1129,7 +1127,7 @@ public class InputQueryFragment extends Fragment implements
         //Adding the prepared query history value to the history and removing old identical entries
         boolean alreadyExistsInHistory = false;
         for (int i = 0; i< mQueryHistory.size(); i++) {
-            String queryHistoryWord = mQueryHistory.get(i).split(QUERY_HISTORY_MEANINGS_DELIMITER)[0].trim();
+            String queryHistoryWord = mQueryHistory.get(i).split(GlobalConstants.QUERY_HISTORY_MEANINGS_DELIMITER)[0].trim();
             if (mInputQuery.equalsIgnoreCase(queryHistoryWord)) {
                 mQueryHistory.remove(i);
                 if (mQueryHistory.size()==0) mQueryHistory.add(queryAndMeaning);
@@ -1141,7 +1139,7 @@ public class InputQueryFragment extends Fragment implements
         if (!alreadyExistsInHistory) {
             if (mQueryHistory.size()==0) mQueryHistory.add(queryAndMeaning);
             else mQueryHistory.add(0, queryAndMeaning);
-            if (mQueryHistory.size() > QUERY_HISTORY_MAX_SIZE) mQueryHistory.remove(QUERY_HISTORY_MAX_SIZE);
+            if (mQueryHistory.size() > mQueryHistoryMaxSize) mQueryHistory.remove(mQueryHistoryMaxSize);
         }
 
         updateQueryHistoryWordsOnly();
@@ -1155,7 +1153,7 @@ public class InputQueryFragment extends Fragment implements
     }
     private void saveQueryHistoryToPreferences() {
         if (getContext() != null) {
-            String queryHistoryAsString = TextUtils.join(QUERY_HISTORY_ELEMENTS_DELIMITER, mQueryHistory);
+            String queryHistoryAsString = TextUtils.join(GlobalConstants.QUERY_HISTORY_ELEMENTS_DELIMITER, mQueryHistory);
             SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.preferences_query_history_list), Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString(getString(R.string.preferences_query_history_list), queryHistoryAsString);
@@ -1165,7 +1163,7 @@ public class InputQueryFragment extends Fragment implements
     private void updateQueryHistoryWordsOnly() {
         mQueryHistoryWordsOnly = new ArrayList<>();
         for (String element : mQueryHistory) {
-            mQueryHistoryWordsOnly.add(element.split(QUERY_HISTORY_MEANINGS_DELIMITER)[0].trim());
+            mQueryHistoryWordsOnly.add(element.split(GlobalConstants.QUERY_HISTORY_MEANINGS_DELIMITER)[0].trim());
         }
     }
     private void registerThatUserIsRequestingDictSearch(Boolean state) {
@@ -1273,5 +1271,13 @@ public class InputQueryFragment extends Fragment implements
         mQueryHistory = new ArrayList<>();
         saveQueryHistoryToPreferences();
     }
-
+    public void updateQueryHistoryList(List<String> queryHistory, int queryHistoryMaxSize) {
+        mQueryHistory = queryHistory;
+        mQueryHistoryMaxSize = queryHistoryMaxSize;
+        updateQueryHistoryWordsOnly();
+        mInputQueryAutoCompleteTextView.setAdapter(new QueryInputSpinnerAdapter(
+                getContext(),
+                R.layout.custom_queryhistory_spinner,
+                mQueryHistoryWordsOnly));
+    }
 }

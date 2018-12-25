@@ -75,6 +75,15 @@
     <string name="pref_OCR_image_brightness_range" translatable="false">512</string>
     <string name="pref_OCR_image_brightness_interval" translatable="false">1</string>
 
+    <string name="pref_query_history_size_key" translatable="false">pref_query_history_size_key</string>
+    <string name="pref_query_history_size_title">Search History Size</string>
+    <string name="pref_query_history_size_min_display_value" translatable="false">0</string>
+    <string name="pref_query_history_size_max_display_value" translatable="false">200</string>
+    <string name="pref_query_history_size_summary">Number of words in history: 20</string>
+    <string name="pref_query_history_size_default_value" translatable="false">20</string>
+    <string name="pref_query_history_size_min_value" translatable="false">0</string>
+    <string name="pref_query_history_size_max_value" translatable="false">200</string>
+
     <!--InputQueryFragment Strings-->
     <string name="input_query">Search Me!</string>
     <string name="GrammarModule_GetWord">DICT</string>
@@ -391,7 +400,7 @@
         These are the default settings, but feel free to change them to make the image as clear as possible.
         You can adjust these defaults in the Settings menu.</string>
     <string name="pref_invalid_input_default_set">Invalid input, default value set instead.</string>
-    <string name="pref_cannot_set_value_outside_ange">You cannot set a value outside of the range</string>
+    <string name="pref_cannot_set_value_outside_range">You cannot set a value outside of the range</string>
     <string name="search_any_property_">property/name/etc..</string>
     <string name="component_is_used_to_create_this_substructure">Component is used to create this substructure:</string>
     <string name="filter_list">Filter List</string>

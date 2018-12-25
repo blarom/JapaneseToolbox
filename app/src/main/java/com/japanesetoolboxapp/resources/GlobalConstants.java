@@ -91,6 +91,7 @@ public final class GlobalConstants {
     public static final String VERB_FAMILY_U_SPECIAL = "us";
 
     public final static HashMap<String, String> VERB_FAMILIES_FULL_NAME_MAP = createVerbFamiliesMap();
+
     private static HashMap<String, String> createVerbFamiliesMap() {
         HashMap<String, String> map = new HashMap<>();
         map.put(VERB_FAMILY_SU_GODAN, "su godan");
@@ -218,4 +219,7 @@ public final class GlobalConstants {
 	   return colIndexNumber;
 	}
 
+    public static final String QUERY_HISTORY_ELEMENTS_DELIMITER = ";";
+    public static final String QUERY_HISTORY_MEANINGS_DELIMITER = "@";
+    public static final String QUERY_HISTORY_MEANINGS_DISPLAYED_DELIMITER = "~";
 }

@@ -6,7 +6,6 @@ import android.support.v7.preference.EditTextPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
-import android.support.v7.preference.PreferenceManager;
 import android.support.v7.preference.PreferenceScreen;
 import android.widget.Toast;
 
@@ -61,7 +60,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
         if (preference.getKey().equals(getString(R.string.pref_OCR_image_contrast_key))) {
             try {
                 float contrast = Float.parseFloat(newValue);
-                error = Toast.makeText(getContext(), getString(R.string.pref_cannot_set_value_outside_ange) + " [ "
+                error = Toast.makeText(getContext(), getString(R.string.pref_cannot_set_value_outside_range) + " [ "
                         + getString(R.string.pref_OCR_image_contrast_min_display_value) + " : "
                         + getString(R.string.pref_OCR_image_contrast_max_display_value) + " ].", Toast.LENGTH_SHORT);
                 if (contrast > Float.valueOf(getString(R.string.pref_OCR_image_contrast_max_display_value))) {
@@ -80,15 +79,15 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
         }
         else if (preference.getKey().equals(getString(R.string.pref_OCR_image_saturation_key))) {
             try {
-                float contrast = Float.parseFloat(newValue);
-                error = Toast.makeText(getContext(), getString(R.string.pref_cannot_set_value_outside_ange) + " [ "
+                float saturation = Float.parseFloat(newValue);
+                error = Toast.makeText(getContext(), getString(R.string.pref_cannot_set_value_outside_range) + " [ "
                         + getString(R.string.pref_OCR_image_saturation_min_display_value) + " : "
                         + getString(R.string.pref_OCR_image_saturation_max_display_value) + " ].", Toast.LENGTH_SHORT);
-                if (contrast > Float.valueOf(getString(R.string.pref_OCR_image_saturation_max_display_value))) {
+                if (saturation > Float.valueOf(getString(R.string.pref_OCR_image_saturation_max_display_value))) {
                     sharedPreferences.edit().putString(preference.getKey(), getString(R.string.pref_OCR_image_saturation_max_display_value)).apply();
                     error.show();
                 }
-                else if (contrast < Float.valueOf(getString(R.string.pref_OCR_image_saturation_min_display_value))) {
+                else if (saturation < Float.valueOf(getString(R.string.pref_OCR_image_saturation_min_display_value))) {
                     sharedPreferences.edit().putString(preference.getKey(), getString(R.string.pref_OCR_image_saturation_min_display_value)).apply();
                     error.show();
                 }
@@ -101,20 +100,41 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
         else if (preference.getKey().equals(getString(R.string.pref_OCR_image_brightness_key))) {
 
             try {
-                float contrast = Float.parseFloat(newValue);
-                error = Toast.makeText(getContext(), getString(R.string.pref_cannot_set_value_outside_ange) + " [ "
+                float brightness = Float.parseFloat(newValue);
+                error = Toast.makeText(getContext(), getString(R.string.pref_cannot_set_value_outside_range) + " [ "
                         + getString(R.string.pref_OCR_image_brightness_min_display_value) + " : "
                         + getString(R.string.pref_OCR_image_brightness_max_display_value) + " ].", Toast.LENGTH_SHORT);
-                if (contrast > Float.valueOf(getString(R.string.pref_OCR_image_brightness_max_display_value))) {
+                if (brightness > Float.valueOf(getString(R.string.pref_OCR_image_brightness_max_display_value))) {
                     sharedPreferences.edit().putString(preference.getKey(), getString(R.string.pref_OCR_image_brightness_max_display_value)).apply();
                     error.show();
                 }
-                else if (contrast < Float.valueOf(getString(R.string.pref_OCR_image_brightness_min_display_value))) {
+                else if (brightness < Float.valueOf(getString(R.string.pref_OCR_image_brightness_min_display_value))) {
                     sharedPreferences.edit().putString(preference.getKey(), getString(R.string.pref_OCR_image_brightness_min_display_value)).apply();
                     error.show();
                 }
             } catch (NumberFormatException nfe) {
                 sharedPreferences.edit().putString(preference.getKey(), getString(R.string.pref_OCR_image_brightness_default_value)).apply();
+                error = Toast.makeText(getContext(), R.string.pref_invalid_input_default_set, Toast.LENGTH_SHORT);
+                error.show();
+            }
+        }
+        else if (preference.getKey().equals(getString(R.string.pref_query_history_size_key))) {
+
+            try {
+                int size = Integer.parseInt(newValue);
+                error = Toast.makeText(getContext(), getString(R.string.pref_cannot_set_value_outside_range) + " [ "
+                        + getString(R.string.pref_query_history_size_min_display_value) + " : "
+                        + getString(R.string.pref_query_history_size_max_display_value) + " ].", Toast.LENGTH_SHORT);
+                if (size > Integer.parseInt(getString(R.string.pref_query_history_size_max_display_value))) {
+                    sharedPreferences.edit().putString(preference.getKey(), getString(R.string.pref_query_history_size_max_display_value)).apply();
+                    error.show();
+                }
+                else if (size < Integer.parseInt(getString(R.string.pref_query_history_size_min_display_value))) {
+                    sharedPreferences.edit().putString(preference.getKey(), getString(R.string.pref_query_history_size_min_display_value)).apply();
+                    error.show();
+                }
+            } catch (Exception nfe) {
+                sharedPreferences.edit().putString(preference.getKey(), getString(R.string.pref_query_history_size_default_value)).apply();
                 error = Toast.makeText(getContext(), R.string.pref_invalid_input_default_set, Toast.LENGTH_SHORT);
                 error.show();
             }

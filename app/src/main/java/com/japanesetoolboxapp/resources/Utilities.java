@@ -452,7 +452,7 @@ public final class Utilities {
         } catch (Exception e) {
             contrastValue = Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_contrast_default_value));
         } finally {
-            contrastValue = truncateToRange(contrastValue,
+            contrastValue = truncateFloatToRange(contrastValue,
                     Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_contrast_min_value)),
                     Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_contrast_max_value)));
         }
@@ -466,7 +466,7 @@ public final class Utilities {
         } catch (Exception e) {
             saturationValue = Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_saturation_default_value));
         } finally {
-            saturationValue = truncateToRange(saturationValue,
+            saturationValue = truncateFloatToRange(saturationValue,
                     Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_saturation_min_value)),
                     Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_saturation_max_value)));
         }
@@ -480,13 +480,18 @@ public final class Utilities {
         } catch (Exception e) {
             brightnessValue = Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_brightness_default_value));
         } finally {
-            brightnessValue = truncateToRange(brightnessValue,
+            brightnessValue = truncateFloatToRange(brightnessValue,
                     Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_brightness_min_value)),
                     Float.parseFloat(context.getResources().getString(R.string.pref_OCR_image_brightness_max_value)));
         }
         return (int) brightnessValue;
     }
-    private static float truncateToRange(float value, float min, float max) {
+    private static float truncateFloatToRange(float value, float min, float max) {
+        if (value < min) value = min;
+        else if (value > max) value = max;
+        return value;
+    }
+    private static int truncateIntToRange(int value, int min, int max) {
         if (value < min) value = min;
         else if (value > max) value = max;
         return value;
@@ -2601,6 +2606,20 @@ public final class Utilities {
                     activity.getResources().getBoolean(R.bool.pref_show_info_boxes_on_search_default));
         }
         return showInfoBoxesOnSearch;
+    }
+    public static int getQueryHistorySizePreference(SharedPreferences sharedPreferences, Context context) {
+        int queryHistorySize = Integer.parseInt(context.getResources().getString(R.string.pref_query_history_size_default_value));
+        try {
+            queryHistorySize = Integer.parseInt(sharedPreferences.getString(context.getResources().getString(R.string.pref_query_history_size_key),
+                    context.getResources().getString(R.string.pref_query_history_size_default_value)));
+        } catch (Exception e) {
+            queryHistorySize = Integer.parseInt(context.getResources().getString(R.string.pref_query_history_size_default_value));
+        } finally {
+            queryHistorySize = truncateIntToRange(queryHistorySize,
+                    Integer.parseInt(context.getResources().getString(R.string.pref_query_history_size_min_value)),
+                    Integer.parseInt(context.getResources().getString(R.string.pref_query_history_size_max_value)));
+        }
+        return queryHistorySize;
     }
     public static void setAppPreferenceKanjiDatabaseFinishedLoadingFlag(Context context, boolean flag) {
         if (context != null) {
