@@ -644,7 +644,13 @@ public final class Utilities {
         runningIndex = 0;
         int initial_offset = 15; //Skips <!DOCTYPE html>
         websiteCodeString = website_code.substring(initial_offset, website_code.length());
-        List<Object> parsedWebsiteTree = getChildren();
+        List<Object> parsedWebsiteTree = new ArrayList<>();
+        try {
+            parsedWebsiteTree = getChildren();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return parsedWebsiteTree;
     }
@@ -1918,7 +1924,10 @@ public final class Utilities {
 
         //If the word starts with the inputQuery, its ranking improves
         String inputQueryLatin = ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN);
+        String romajiNoSpaces = getRomajiNoSpacesForSpecialPartsOfSpeech(romaji_value);
+
         if (       (romaji_value.length() >= mInputQuery.length() && romaji_value.substring(0,mInputQuery.length()).equals(mInputQuery))
+                || romajiNoSpaces.equals(mInputQuery) || romajiNoSpaces.equals(inputQueryLatin)
                 || (romaji_value.length() >= inputQueryLatin.length() && romaji_value.substring(0,mInputQuery.length()).equals(inputQueryLatin))
                 || (kanji_value.length() >= mInputQuery.length() && kanji_value.substring(0,mInputQuery.length()).equals(mInputQuery))
                 ) {
@@ -2566,7 +2575,13 @@ public final class Utilities {
         List<KanjiIndex> matchingKanjiIndexes = japaneseToolboxCentralRoomDatabase.getKanjiIndexesListForStartingWord(prepared_word);
         return matchingKanjiIndexes;
     }
-
+    public static String getRomajiNoSpacesForSpecialPartsOfSpeech(String romaji) {
+        return romaji.replace(" ni", "ni")
+                .replace(" de", "de")
+                .replace(" wo", "wo")
+                .replace(" to", "to")
+                .replace(" na", "na");
+    }
 
     //Preference utilities
     public static Boolean getShowOnlineResultsPreference(Activity activity) {

@@ -8,8 +8,8 @@ android {
         applicationId "com.japanesetoolboxapp"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 56
-        versionName "2.79"
+        versionCode 57
+        versionName "2.88"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
         // the following code makes the app only available to relevant phones, thereby reducing the apk size
         // See https://android.jlelse.eu/controlling-apk-size-when-using-native-libraries-45c6c0e5b70a

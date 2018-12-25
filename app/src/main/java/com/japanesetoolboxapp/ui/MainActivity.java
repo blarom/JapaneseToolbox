@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.Word;
+import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
@@ -395,6 +396,8 @@ public class MainActivity extends AppCompatActivity implements
             for (Word word : matchingWords) {
                 List<String> altSpellings = (word.getAltSpellings()!=null)? Arrays.asList(word.getAltSpellings().split(",")) : new ArrayList<String>();
                 if (word.getRomaji().equals(mInputQuery)
+                        || Utilities.getRomajiNoSpacesForSpecialPartsOfSpeech(word.getRomaji())
+                            .equals(ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN))
                         || word.getKanji().equals(mInputQuery)
                         || altSpellings.contains(mInputQuery)) {
                     romaji = word.getRomaji();

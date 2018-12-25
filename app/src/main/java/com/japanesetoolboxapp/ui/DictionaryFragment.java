@@ -294,7 +294,7 @@ public class DictionaryFragment extends Fragment implements
         if (loader.getId() == ROOM_DB_SEARCH_LOADER && !mAlreadyLoadedRoomResults) {
             mAlreadyLoadedRoomResults = true;
             mLocalMatchingWordsList = loaderResultWordsList;
-            mLocalMatchingWordsList = sortWordsAccordingToLengths(mLocalMatchingWordsList);
+            mLocalMatchingWordsList = sortWordsAccordingToRanking(mLocalMatchingWordsList);
 
             //Update the MainActivity with the matching words
             dictionaryFragmentOperationsHandler.onLocalMatchingWordsFound(mLocalMatchingWordsList);
@@ -340,7 +340,7 @@ public class DictionaryFragment extends Fragment implements
 
             if (jishoWords.size() != 0) {
                 mMergedMatchingWordsList = Utilities.getMergedWordsList(mLocalMatchingWordsList, jishoWords, "");
-                mMergedMatchingWordsList = sortWordsAccordingToLengths(mMergedMatchingWordsList);
+                mMergedMatchingWordsList = sortWordsAccordingToRanking(mMergedMatchingWordsList);
 
                 dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mMergedMatchingWordsList);
 
@@ -379,7 +379,7 @@ public class DictionaryFragment extends Fragment implements
 
             if (JMDictFRWords.size() > 0) {
                 mMergedMatchingWordsList = Utilities.getMergedWordsList(mLocalMatchingWordsList, JMDictFRWords, "FR");
-                mMergedMatchingWordsList = sortWordsAccordingToLengths(mMergedMatchingWordsList);
+                mMergedMatchingWordsList = sortWordsAccordingToRanking(mMergedMatchingWordsList);
 
                 List<Word> differentWords = Utilities.getDifferentAsyncWords(mLocalMatchingWordsList, JMDictFRWords);
 
@@ -441,7 +441,7 @@ public class DictionaryFragment extends Fragment implements
     }
     private void displayWordsToUser(List<Word> localMatchingWordsList) {
 
-        localMatchingWordsList = sortWordsAccordingToLengths(localMatchingWordsList);
+        localMatchingWordsList = sortWordsAccordingToRanking(localMatchingWordsList);
         displayResults(localMatchingWordsList);
 
     }
@@ -531,7 +531,7 @@ public class DictionaryFragment extends Fragment implements
         //createExpandableListViewContentsFromWordsList(wordsList);
         //showExpandableListViewWithContents();
     }
-    private List<Word> sortWordsAccordingToLengths(List<Word> wordsList) {
+    private List<Word> sortWordsAccordingToRanking(List<Word> wordsList) {
 
         if (wordsList == null || wordsList.size()==0) return new ArrayList<>();
 

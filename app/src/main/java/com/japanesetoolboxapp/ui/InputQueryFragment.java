@@ -383,7 +383,7 @@ public class InputQueryFragment extends Fragment implements
         String inputWordString = mInputQueryAutoCompleteTextView.getText().toString();
         mInputQuery = inputWordString;
 
-        updateQueryHistory(false);
+        updateQueryHistory(true);
         registerThatUserIsRequestingDictSearch(true); //TODO: remove this?
         drawBorderAroundThisButton(mDictButton);
 
