@@ -390,23 +390,23 @@ public class MainActivity extends AppCompatActivity implements
         mDecomposeKanjiFragment = null;
     }
     private void updateInputQueryWithDefinition(List<Word> matchingWords) {
-        if (mInputQueryFragment!=null && matchingWords.size()!=0 && matchingWords.get(0).getMeanings().size()!=0) {
-            String romaji = "";
-            String meaning = "";
-            for (Word word : matchingWords) {
-                List<String> altSpellings = (word.getAltSpellings()!=null)? Arrays.asList(word.getAltSpellings().split(",")) : new ArrayList<String>();
-                if (word.getRomaji().equals(mInputQuery)
-                        || Utilities.getRomajiNoSpacesForSpecialPartsOfSpeech(word.getRomaji())
-                            .equals(ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN))
-                        || word.getKanji().equals(mInputQuery)
-                        || altSpellings.contains(mInputQuery)) {
-                    romaji = word.getRomaji();
-                    meaning = word.getMeanings().get(0).getMeaning();
-                    break;
-                }
+        if (mInputQueryFragment==null) return;
+
+        String romaji = "";
+        String meaning = "";
+        for (Word word : matchingWords) {
+            List<String> altSpellings = (word.getAltSpellings()!=null)? Arrays.asList(word.getAltSpellings().split(",")) : new ArrayList<String>();
+            if (word.getRomaji().equals(mInputQuery)
+                    || Utilities.getRomajiNoSpacesForSpecialPartsOfSpeech(word.getRomaji())
+                    .equals(ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN))
+                    || word.getKanji().equals(mInputQuery)
+                    || altSpellings.contains(mInputQuery)) {
+                romaji = word.getRomaji();
+                meaning = word.getMeanings().size()>0? word.getMeanings().get(0).getMeaning() : "";
+                break;
             }
-            mInputQueryFragment.updateQueryDefinitionInHistory(romaji, meaning);
         }
+        mInputQueryFragment.updateQueryDefinitionInHistory(romaji, meaning);
     }
     public void showExitAppDialog() {
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
