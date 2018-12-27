@@ -32,10 +32,13 @@ public interface KanjiIndexDao {
     @Query("SELECT * FROM " + KanjiIndex.TABLE_NAME + " WHERE " + KanjiIndex.COLUMN_KANA + " = :kana")
     KanjiIndex getKanjiIndexByKanji(String kana);
 
-    //Get a LatinIndex list by similar query match - see: https://stackoverflow.com/questions/44234644/android-rooms-search-in-string
+    //Get a KanjiIndex list by similar query match - see: https://stackoverflow.com/questions/44234644/android-rooms-search-in-string
     @Query("SELECT * FROM " + KanjiIndex.TABLE_NAME + " WHERE " + KanjiIndex.COLUMN_KANA_IDS + " LIKE :query  || '%' ")
-    List<KanjiIndex> getKanjiIndexByStartingLatinQuery(String query);
+    List<KanjiIndex> getKanjiIndexByStartingUTF8Query(String query);
 
+    //Get a KanjiIndex by Exact query match
+    @Query("SELECT * FROM " + KanjiIndex.TABLE_NAME + " WHERE " + KanjiIndex.COLUMN_KANA_IDS + " = :query")
+    KanjiIndex getKanjiIndexByExactUTF8Query(String query);
 
     //Delete a KanjiIndex by Kanji
     @Query("DELETE FROM " + KanjiIndex.TABLE_NAME + " WHERE " + KanjiIndex.COLUMN_KANA + " = :kana")

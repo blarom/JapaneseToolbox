@@ -3,15 +3,12 @@ A|adverb|
 Abr|abbreviation|
 Abs|abstract term|
 Ac|activity|
-Dg|degree of doing/being|
 Af|noun or verb acting prenominally|
 Ai|i-adjective|
 Aj|adjective|
-M|manner of doing/being|
 An|anatomy term|
 Ana|na-adjective|
 Ano|no-adjective|
-loc|location term|
 Apn|pre-noun adjectival|
 Ati|clothing term|
 Ato|adverb taking 'to' particle|
@@ -20,10 +17,10 @@ Ax|auxiliary adj.|
 B|religious term|
 C|counter|
 CE|expression|
-idp|idiom/proverb|
 CO|conjunction|
 Col|color|
 Cu|culinary term|
+Dg|degree of doing/being|
 DM|day of the month|
 Dr|derogatory|
 DW|day of the week|
@@ -32,6 +29,7 @@ Fl|flora|
 Fy|family|
 GO|object|
 iAC|i-adjective conjugation |
+idp|idiom/proverb|
 IES|rude/X-rated term|
 JEP|Japanese era/period|
 LF|familiar language|
@@ -39,6 +37,8 @@ LFt|female term or language|
 LHm|humble|
 LHn|honorific/polite|
 LMt|male language|
+loc|location term|
+M|manner of doing/being|
 MAC|music/art/culture term|
 Md|medical term|
 Mo|month|

@@ -16,7 +16,7 @@ import com.japanesetoolboxapp.resources.Utilities;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class}, version = 39, exportSchema = false)
+@Database(entities = {Word.class, Verb.class, KanjiIndex.class, LatinIndex.class}, version = 40, exportSchema = false)
 public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
@@ -197,11 +197,14 @@ public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
     public List<LatinIndex> getLatinIndexesListForStartingWord(String query) {
         return latinIndex().getLatinIndexByStartingLatinQuery(query);
     }
-    public LatinIndex getLatinIndexListForExactWord(String query) {
+    public LatinIndex getLatinIndexForExactWord(String query) {
         return latinIndex().getLatinIndexByExactLatinQuery(query);
     }
+    public KanjiIndex getKanjiIndexForExactWord(String query) {
+        return kanjiIndex().getKanjiIndexByExactUTF8Query(query);
+    }
     public List<KanjiIndex> getKanjiIndexesListForStartingWord(String query) {
-        return kanjiIndex().getKanjiIndexByStartingLatinQuery(query);
+        return kanjiIndex().getKanjiIndexByStartingUTF8Query(query);
     }
 
     public List<Verb> getVerbListByVerbIds(List<Long> verbIds) {
