@@ -414,6 +414,7 @@ public class MainActivity extends AppCompatActivity implements
             );
         }
         else {
+            //Get the first definition matching the romaji / kanji / altSpellings
             for (Word word : matchingWords) {
                 List<String> altSpellings = (word.getAltSpellings() != null) ? Arrays.asList(word.getAltSpellings().split(",")) : new ArrayList<String>();
                 if (word.getRomaji().equals(mInputQuery)
@@ -422,8 +423,30 @@ public class MainActivity extends AppCompatActivity implements
                         || word.getKanji().equals(mInputQuery)
                         || altSpellings.contains(mInputQuery)) {
                     romaji = word.getRomaji();
-                    meaning = word.getMeanings().size() > 0 ? Utilities.getMeaningsExtract(matchingWords.get(0).getMeanings(), 2) : "";
+                    meaning = word.getMeanings().size() > 0 ? Utilities.getMeaningsExtract(word.getMeanings(), 2) : "";
                     break;
+                }
+            }
+            //If no definition was found, get the first definition that includes the input query as a word in the meanings
+            if (romaji.equals("")) {
+                for (Word word : matchingWords) {
+                    List<String> wordsInMeanings = new ArrayList<>();
+                    for (Word.Meaning wordMeaning : word.getMeanings()) {
+                        wordsInMeanings.add(wordMeaning.getMeaning()
+                                .replace(", ", ";")
+                                .replace("(", "")
+                                .replace(")", ""));
+                    }
+                    String wordsInMeaningsAsString = TextUtils.join(";", wordsInMeanings);
+                    wordsInMeanings = Arrays.asList(wordsInMeaningsAsString.split(";"));
+                    for (int i=0; i<wordsInMeanings.size(); i++) {
+                        wordsInMeanings.set(i, wordsInMeanings.get(i).trim());
+                    }
+                    if (wordsInMeanings.contains(mInputQuery)) {
+                        romaji = word.getRomaji();
+                        meaning = word.getMeanings().size() > 0 ? Utilities.getMeaningsExtract(word.getMeanings(), 2) : "";
+                        break;
+                    }
                 }
             }
             mInputQueryFragment.updateQueryDefinitionInHistory(romaji, meaning);
