@@ -191,7 +191,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 191|happening during a movement|CO|Action Y happening on the way during movement X.|X tochuu de Y @ X = movement|980, 981|||
 192|and also|CO|X is true and also Y.|X. ato Y|129|||
 193|try to do|PC|(Try/make an effort) in order to [do/be] X, in the hopes of something uncertain.|X you ni to suru @ X = action|984||tame ni|
-194|for the sake of|CO|Y for the sake of [doing/being] X, for the sake of something certain.|X tame ni Y @ X = verb, Y = verb|991||you ni|
+194|in order to, for, for the sake of, in favor of, in favour of, on behalf of|CO|Y for the sake of [doing/being] X, for the sake of something certain.|X tame ni Y @ X = verb, Y = verb|991||you ni|
 195|for the benefit of|CO|ME#0172;0173|||||
 196|tell/ask to do|PC|Tell/ask to [do/be] X|X you ni to Y @ X = action, Y = iu, tsutaeru|994, 995|||
 197|say/tell that|PC|ME#0174;0175|||||
@@ -202,14 +202,14 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 202|know/think/believe/see if is not|PC|Do you Y if X is ... or not?|X ka dou ka Y ka? @ X = question, Y = know/think/believe/see/etc..|1016, 1017|||
 203|I don't know/think/believe if is or not|PC|ME#0180;0181;0182|||||
 204|In order to see if is or not|PC|In order to see if X is … or not.|X ka dou ka Y miru @ X = phrase, Y = verb in te-form|1349, 1350|||
-205|supposed to do|PC|ME#0183;0184;0185;0186;0187;0188;0189|||||
-206|not supposed to do|PC|ME#0190;0191;0192;0193;0194;0195;0196|||||
-207|certainly supposed to do|PC|ME#0197;0198;0199|||||
-208|regrettably supposed to do|PC|ME#0200;0201;0202|||||
-209|certainly not supposed to do|PC|ME#0203;0204;0205|||||
-210|concerning, about, relating to, regarding|PC|ME#0206;0207|||||
-211|becoming|PC|ME#0208;0209;0210;0211|||||
-212|became|PC|ME#0212;0213;0214|||||
+205|supposed to be/do, expected to be/do, should be/do, must be/do|PC|ME#0183;0184;0185;0186;0187;0188;0189|||||
+206|not supposed to be/do, expected not to be/do, should not be/do, must not be/do|PC|ME#0190;0191;0192;0193;0194;0195;0196|||||
+207|certainly supposed to be/do|PC|ME#0197;0198;0199|||||
+208|regrettably supposed to be/do|PC|ME#0200;0201;0202|||||
+209|certainly not supposed to be/do|PC|ME#0203;0204;0205|||||
+210|concerning, about, relating to, with regard to, regarding, with regards to, in regards to|PC|ME#0206;0207|||||
+211|becoming, comes to be, comes to do|PC|ME#0208;0209;0210;0211|||||
+212|became, came to be, came to do|PC|ME#0212;0213;0214|||||
 213|become able to do|PC|To become able to be/do X. Replaces the invalid "eru + tai" construction.|X you ni naritai @ X = verb in eru (can do/be) form||||
 214|not become able to do|PC|To not become able to be/do X. Replaces the invalid "eru + tai" construction.|X you ni naru kamo shirenai @ X = verb in eru (can do/be) form||||
 215|same|PC|X and Y have the same (characteristic).|X to Y onaji (characteristic)|1049|||
@@ -220,7 +220,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 220|less than|PC|ME#0218;0219|||||
 221|between|PC|ME#0220;0221|||||
 222|less and a bit more|PC|Less X and a bit more Y.|X yori mou sukoshi Y @ Y = adj.|1057|||
-223|looks like|PC|ME#0222;0223;0224;0225;0226;0227|||||
+223|looks like, appears to be|PC|ME#0222;0223;0224;0225;0226;0227|||||
 224|after|CO|ME#0228;0229;0230|||||
 225|before|CO|ME#0231;0232|||||
 226|and then, and so, and, so then, indicates continuing action|CO|ME#0233;0234|||||
@@ -1303,7 +1303,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1303|X in addition to, besides Y|A;T||hoka ni X Y, WHERE: X = characteristic, Y = time||||
 1304||-|||746|||
 1305|yesterday|N;T|||||yuube|
-1306|counter for small animals|C|Used for small animals, insects, fish, reptiles, amphibians, oni (demons/ogres). Usage: (1) ippiki, (2) nihiki), (3) sanbiki, (4) yonhiki, (5) gohiki, (6) roppiki, (7) nanahiki, (8) hachihiki, (9) kyuuhiki, (10) juppiki|||||
+1306|counter for small animals|C|Used for small animals, insects, fish, reptiles, amphibians, oni (demons/ogres). Usage: (1) ippiki, (2) nihiki, (3) sanbiki, (4) yonhiki, (5) gohiki, (6) roppiki, (7) nanahiki, (8) hachihiki, (9) kyuuhiki, (10) juppiki|||||
 1307||-||||||
 1308|counter for books, novels|C|||1143|||
 1309|counter for boxes (or boxed objects)|C|Use "bako" when necessary.|||||

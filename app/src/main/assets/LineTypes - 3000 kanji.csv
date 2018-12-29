@@ -796,7 +796,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 796|mou sugu, もうすぐ, very soon, before long, in a moment|mou sugu|もうすぐ|1302||
 797|hoka ni, ほか に, X in addition to, besides Y|hoka ni|ほか に|1303||
 798|kinou, 昨日, yesterday|kinou|昨日|1305||
-799|hiki, 匹, counter for small animals, counter for rolls of cloth (two han in size), ippiki, sanbiki, roppiki, juppiki, nanhiki|hiki|匹|1306;6414||
+799|hiki, 匹, counter for small animals, counter for rolls of cloth (two han in size), ippiki, sanbiki, roppiki, juppiki, nanhiki, nihiki, yonhiki, gohiki, nanahiki, hachihiki, kyuuhiki|hiki|匹|1306;6414||
 800|wa, 羽, counter for birds and rabbits, ba, pa|wa|羽|18416|ba, pa|
 801|satsu, 冊, counter for books, novels, volume|satsu|冊|1308;11847||
 802|hako, 箱, counter for boxes (or boxed objects), box, train car, receptacle, box, case, chest, package, pack, crate, car (of a train, etc.), shamisen case, shamisen, public building, community building, man who carries a geisha's shamisen, receptacle for human waste, feces (faeces), bako|hako|箱|1309;1310;14477;14478;14479;14480;14481;14482||
@@ -840,7 +840,7 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 840|sen, 千, counter for thousands, one thousand , zen, issen, sanzen, hassen, nanzen|sen|千|1364;1365||
 841|kai, 回, counter for times, occurences, counter for occurrences, a time, an instance, inning (baseball), round, game, episode, chapter, instalment, Hui (people), Islam, ikkai, ikkaime, nikaime, once, twice|kai|回|1366;14675;14676;14677;14678;14679;14680||
 842|tabi, 度, counter for times, occurences, time (three times, each time, etc.), times|tabi|度|1367;9278||
-843|tsu, つ, counter for undefined objects, hitotsu, futatsu, mittsu, yottsu, itsutsu, muttsu, nanatsu, yattsu, kokonotsu, tou, 一つ, 二つ, 三つ, 四つ, 五つ, 六つ, 七つ, 八つ, 九つ, 十, 1, 2, 3, 4, 5, 6, 7, 8, 9, one, two, three, four, five, six, seven, eight, nine|tsu|つ|1368||
+843|tsu, つ, counter for undefined objects, hitotsu, futatsu, mittsu, yottsu, itsutsu, muttsu, nanatsu, yattsu, kokonotsu, tou, 1, 2, 3, 4, 5, 6, 7, 8, 9, one, two, three, four, five, six, seven, eight, nine|tsu|つ|1368||
 844|shuukan, 週間, counter for weeks, week|shuukan|週間|1369;1370||
 845|nenkan, 年間, counter for year-long periods, (period of) a year, during an era|nenkan|年間|1371;13142;13143||
 846|nen, 年, counter for years, year (e.g. AD)|nen|年|1372;13137||
@@ -5930,20 +5930,20 @@ Index|KEYWORDS|Romaji construction|Kana construction|Meaning|Alternate Spellings
 5930|igai, 以外, except for, other than, with the exception of, with the exception of, excepting|igai|以外|159;6392||
 5931|ato, あと, and also, atto|ato|あと|192||
 5932|youni, 様に, try to do, in order to (e.g. meet goal), so that, take care (so as), hoping or wishing for something|youni|様に|193;8648;8649||
-5933|tame ni, 為に, for the sake of, in order to, for, for the sake of, in favor of, in favour of, on behalf of|tame ni|為に|194||
+5933|tame ni, 為に, in order to, for, for the sake of, in favor of, in favour of, on behalf of|tame ni|為に|194||
 5934|no tame ni, の為に, for the benefit of, no tame no, の為の|no tame ni|の為に|195|no tame no, の為の|
 5935|tame, 為, good, advantage, benefit, welfare, because of X, due to X, sake, purpose, objective, aim, consequence, result, effect, affecting, regarding, concerning, 爲, 為め, no tame, ta tame, da tame|tame|為|2249;6360;20843;20844;20845|爲, 為め|
-5936|hazu, 筈, supposed to do, not supposed to do, certainly supposed to do, regrettably supposed to do, certainly not supposed to do, expectation that something took place, will take place or was in some state, it should be so, bound to be, expected to be, must be, nock (of a bow), nock (of an arrow), nock-shaped grip (between thumb and forefinger), wooden frame on the tip of the mast of a Japanese ship that prevents the hawser from falling out, 弭, expected to do, should do, expected to be, supposed to be, should be, must do, must be, sure, no hazu, na hazu, I'm sure that, was sure that|hazu|筈|205;206;207;208;209;6305;6306;6307;6308;6309|弭|
-5937|nitsuite, に就いて, concerning, about, relating to, regarding, per (e.g. 100 yen per person), for every, concerning, regarding, per (e.g. 100 yen per person), for every, with regard to, with regards to, in regards to, ni tsuite no|nitsuite|に就いて|210;6376;9833;9834||
-5938|naru, なる, becoming, became, ni naru, you ni naru, comes to be, comes to do|naru|なる|211;212||
+5936|hazu, 筈, supposed to be/do, expected to be/do, should be/do, must be/do, not supposed to be/do, expected not to be/do, should not be/do, must not be/do, certainly supposed to be/do, regrettably supposed to be/do, certainly not supposed to be/do, expectation that something took place, will take place or was in some state, it should be so, bound to be, expected to be, must be, nock (of a bow), nock (of an arrow), nock-shaped grip (between thumb and forefinger), wooden frame on the tip of the mast of a Japanese ship that prevents the hawser from falling out, 弭, sure, no hazu, na hazu, I'm sure that, was sure that|hazu|筈|205;206;207;208;209;6305;6306;6307;6308;6309|弭|
+5937|nitsuite, に就いて, concerning, about, relating to, with regard to, regarding, with regards to, in regards to, per (e.g. 100 yen per person), for every, concerning, regarding, per (e.g. 100 yen per person), for every, ni tsuite no|nitsuite|に就いて|210;6376;9833;9834||
+5938|naru, なる, becoming, comes to be, comes to do, became, came to be, came to do, ni naru, you ni naru|naru|なる|211;212||
 5939|onaji, 同じ, same, same, identical, equal, uniform, equivalent, similar, common (origin), changeless, alike, similarity, identity, equality, uniformity, equivalence, common origin, changeless, likeness, anyway, anyhow, in either case, onnaji, toonaji, と同じ|onaji|同じ|215;1072;2634;15109|onnaji|
-5940|you ni, ように, looks like, you na, appears to be, no you ni, no you na|you ni|ように|223|you na|
+5940|you ni, ように, looks like, appears to be, you na, no you na, no you ni|you ni|ように|223|you na, no you na, no you ni|
 5941|yori, より, less than, from, out of, since, at, on, except, but, other than, more, from, out of, since, at, on|yori|より|220;15399;15400;15401;19908||
 5942|ato de, 後で, after, ato, atto de, no ato de, の後で, no atto de, afterwards|ato de|後で|224||
 5943|mae ni, 前に, before, no mae ni, の前に|mae ni|前に|225||
 5944|sorekara, それから, and then, afterwards|sorekara|それから|227||
 5945|soshite, 然して, and, and then, thus, and now, and finally, soushite, 然うして, 而して,  shikashite, soushite, thus|soshite|然して|8978|soushite, 然うして, 而して,  shikashite|
-5946|sou na, そうな, looks like, appears to be|sou na|そうな|223||
+5946|sou na, そうな, looks like, appears to be, appears to be|sou na|そうな|223||
 5947|akegata, 明け方, dawn|akegata|明け方|12666||
 5948|aki, 空き, space, room, gap, emptiness, vacancy, opening, empty seat, free time, time to spare, disuse, unused thing, 明き|aki|空き|12676;12677;12678;12679|明き|
 5949|akiya, 空き家, vacant house, unoccupied house, 空家, 空き屋, 明き家, 空屋|akiya|空き家|12680|空家, 空き屋, 明き家, 空屋|
