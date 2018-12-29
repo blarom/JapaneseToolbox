@@ -953,9 +953,9 @@ public final class Utilities {
                         List<String> altSpellings = new ArrayList<>();
                         Matcher m = Pattern.compile("\\b(\\w+)\\s【(\\w+)】").matcher(altSpellingsContainer.toString());
                         while (m.find()) {
-                            if (!m.group(1).equals(currentWord.getKanji())) altSpellings.add(m.group(1));
+                            if (!m.group(1).equals(currentWord.getKanji())) altSpellings.add(m.group(1).trim());
                             String convertedMatch = ConvertFragment.getLatinHiraganaKatakana(m.group(2)).get(GlobalConstants.TYPE_LATIN);
-                            if (!convertedMatch.equals(currentWord.getRomaji())) altSpellings.add(convertedMatch);
+                            if (!convertedMatch.equals(currentWord.getRomaji())) altSpellings.add(convertedMatch.trim());
                         }
                         altSpellings = removeDuplicatesFromList(altSpellings);
                         currentWord.setAltSpellings(TextUtils.join(", ", altSpellings));
@@ -1570,7 +1570,7 @@ public final class Utilities {
             if (TextUtils.isEmpty(currentLocalWord.getAltSpellings())) finalAltSpellings = new ArrayList<>();
             else {
                 finalAltSpellings = new ArrayList<>(Arrays.asList(currentLocalWord.getAltSpellings().split(",")));
-                for (int i = 0; i< finalAltSpellings.size(); i++) finalAltSpellings.set(0,finalAltSpellings.get(0).trim());
+                for (int i = 0; i< finalAltSpellings.size(); i++) finalAltSpellings.set(i,finalAltSpellings.get(i).trim());
             }
 
             List<Word.Meaning> currentLocalMeanings = currentLocalWord.getMeanings();
