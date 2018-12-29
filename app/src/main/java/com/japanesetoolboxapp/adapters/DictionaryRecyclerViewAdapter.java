@@ -46,6 +46,11 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     private List<Word> mWordsList;
     final private DictionaryItemClickHandler mOnItemClickHandler;
     private final Typeface mDroidSansJapaneseTypeface;
+    private List<String> listRomajiAndKanji;
+    private List<String> listMeaningExtract;
+    private List<Boolean> listTypeIsVerb;
+    private LinearLayout.LayoutParams mChildLineParams;
+    private LinearLayout.LayoutParams mubChildLineParams;
 
     public DictionaryRecyclerViewAdapter(Context context, DictionaryItemClickHandler listener , List<Word> wordsList, HashMap<String, String> legendDatabase, String inputQuery) {
         this.mContext = context;
@@ -60,6 +65,13 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
         AssetManager am = mContext.getApplicationContext().getAssets();
         mDroidSansJapaneseTypeface = Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf"));
+
+        mChildLineParams = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT, 2 );
+        mChildLineParams.setMargins(0, 16, 0, 16);
+        mubChildLineParams = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT, 2 );
+        mubChildLineParams.setMargins(128, 16, 128, 4);
+
+        prepareLayoutTexts();
     }
 
     @NonNull @Override public DictItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -70,124 +82,32 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     }
     @Override public void onBindViewHolder(@NonNull DictItemViewHolder holder, int position) {
 
-        holder.childLinearLayout.setVisibility( mChildIsVisible[position]? View.VISIBLE : View.GONE);
-
-        //region Getting the word characteristics
-        String romaji = mWordsList.get(position).getRomaji();
-        String kanji = mWordsList.get(position).getKanji();
-        String alternatespellings = mWordsList.get(position).getAltSpellings();
-        String keywords = mWordsList.get(position).getKeywords();
-        String type = "";
-        String fullType;
-        String meaning;
-        String antonym;
-        String synonym;
-        List<Word.Meaning> meanings = mWordsList.get(position).getMeanings();
-
-        StringBuilder cumulative_meaning_value = new StringBuilder();
-        boolean wordHasPhraseConstruction = false;
-        boolean typeIsVerbConjugation = false;
-        boolean typeIsiAdjectiveConjugation = false;
-        boolean typeIsnaAdjectiveConjugation = false;
-        boolean typeIsVerb = false;
-        for (int j = 0; j< meanings.size(); j++) {
-            cumulative_meaning_value.append(meanings.get(j).getMeaning());
-            if (j< meanings.size()-1) { cumulative_meaning_value.append(", "); }
-            if (j==0) {
-                type = meanings.get(j).getType();
-                typeIsVerbConjugation = type.equals("VC");
-                typeIsiAdjectiveConjugation = type.equals("iAC");
-                typeIsnaAdjectiveConjugation = type.equals("naAC");
-                typeIsVerb = type.contains("V") && !type.equals("VC") && !type.equals("NV");
-            }
-            if (!wordHasPhraseConstruction) wordHasPhraseConstruction = type.equals("PC");
+        //region Setting behavior when element is clicked
+        if (mChildIsVisible[position]) {
+            holder.childLinearLayout.setVisibility(View.VISIBLE);
+            holder.meaningsTextView.setVisibility(View.GONE);
+            holder.parentContainer.setBackgroundColor(mContext.getResources().getColor(R.color.colorSelectedDictResultBackground));
         }
-        //endregion
-
-        //region Setting the special text
-//        if (type.equals("PC") || type.equals("CO")) {
-//            holder.parentContainer.setBackgroundColor(mContext.getResources().getColor(R.color.list_item_selection_highlight));
-//        }
-//        else if (type.equals("VC")) {
-//            holder.parentContainer.setBackgroundColor(mContext.getResources().getColor(R.color.list_item_selection_highlight));
-//        }
-//        else holder.parentContainer.setBackgroundColor(Color.TRANSPARENT);
+        else {
+            holder.childLinearLayout.setVisibility(View.GONE);
+            holder.meaningsTextView.setVisibility(View.VISIBLE);
+            holder.parentContainer.setBackgroundColor(Color.TRANSPARENT);
+        }
         //endregion
 
         //region Updating the parent values
-        String parentRomaji;
-        if (typeIsVerbConjugation && romaji.length()>3 && romaji.substring(0,3).equals("(o)")) parentRomaji = "(o)[verb]" + romaji.substring(3,romaji.length());
-        else if (typeIsVerbConjugation && romaji.length()>3 && !romaji.substring(0,3).equals("(o)")) parentRomaji = "[verb]" + romaji;
-        else if (typeIsiAdjectiveConjugation) parentRomaji = "[i-adj.]" + romaji;
-        else if (typeIsnaAdjectiveConjugation) parentRomaji = "[na-adj.]" + romaji;
-        else parentRomaji = romaji;
+        String romaji = mWordsList.get(position).getRomaji();
+        String kanji = mWordsList.get(position).getKanji();
+        String alternatespellings = mWordsList.get(position).getAltSpellings();
 
-        String romajiAndKanji;
-        if (romaji.equals("")) romajiAndKanji = kanji;
-        else if (kanji.equals("")) romajiAndKanji = romaji;
-        else romajiAndKanji = parentRomaji + " (" + kanji + ")";
-
-        String inputQueryNoSpaces = mInputQuery.replace(" ","");
-        String inputQueryLatin = ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN);
-        String romajiAndKanjiNoSpaces = romajiAndKanji.replace(" ","");
-
-        if (!romajiAndKanji.contains(mInputQuery)
-                && !romajiAndKanji.contains(inputQueryNoSpaces)
-                && !romajiAndKanjiNoSpaces.contains(mInputQuery)
-                && !romajiAndKanjiNoSpaces.contains(inputQueryNoSpaces)
-                && !romajiAndKanjiNoSpaces.contains(inputQueryLatin)) {
-            String latin = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_LATIN);
-            String hiragana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_HIRAGANA);
-            String katakana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_KATAKANA);
-            if (romaji.contains(latin)) {
-                //Ignore words where the romaji value includes the latin convertion of the input query
-            }
-            else if (!TextUtils.isEmpty(alternatespellings) && alternatespellings.contains(mInputQuery)) {
-                String[] altSpellingElements = alternatespellings.split(",");
-                boolean isExactMatch = false;
-                for (String element : altSpellingElements) {
-                    if (mInputQuery.equals(element.trim())) {
-                        isExactMatch = true;
-                        break;
-                    }
-                }
-                if (isExactMatch) romajiAndKanji += " [alt. form of " + mInputQuery + "]";
-                else romajiAndKanji += " [alt. form contains " + mInputQuery + "]";
-            }
-            else if (cumulative_meaning_value.toString().contains(mInputQuery) || cumulative_meaning_value.toString().contains(latin)) {
-                //Ignore words where the input query is included in the meaning
-            }
-            else if ((mInputQueryTextType == GlobalConstants.TYPE_KANJI
-                    && kanji.length() > 0 && !kanji.substring(0, 1).equals(mInputQueryFirstLetter))
-                    || (mInputQueryTextType == GlobalConstants.TYPE_LATIN
-                    && romaji.length() > 0 && !romaji.substring(0, 1).equals(mInputQueryFirstLetter))
-                    || (mInputQueryTextType == GlobalConstants.TYPE_HIRAGANA
-                    && hiragana.length() > 0 && !hiragana.substring(0, 1).equals(mInputQueryFirstLetter))
-                    || (mInputQueryTextType == GlobalConstants.TYPE_KATAKANA
-                    && katakana.length() > 0 && !katakana.substring(0, 1).equals(mInputQueryFirstLetter))
-                    ) {
-                romajiAndKanji += " [derived from " + mInputQuery + "]";
-            }
-            else if (keywords != null && keywords.contains(mInputQuery)) {
-                for (String keyword : keywords.split(",")) {
-                    if (romaji.contains(keyword) && !kanji.contains(keyword) && !alternatespellings.contains(keyword)
-                            && !cumulative_meaning_value.toString().contains(keyword)) {
-                        romajiAndKanji += " [from " + keyword + "]";
-                        break;
-                    }
-                }
-            }
-        }
-
-        holder.romajiAndKanjiTextView.setText(romajiAndKanji);
+        holder.romajiAndKanjiTextView.setText(listRomajiAndKanji.get(position));
         holder.romajiAndKanjiTextView.setTypeface(mDroidSansJapaneseTypeface, Typeface.BOLD);
         holder.romajiAndKanjiTextView.setPadding(0,16,0,4);
-
 
         if (romaji.equals("") && kanji.equals("")) { holder.romajiAndKanjiTextView.setVisibility(View.GONE); }
         else { holder.romajiAndKanjiTextView.setVisibility(View.VISIBLE); }
 
-        holder.meaningsTextView.setText(Utilities.removeDuplicatesFromCommaList(cumulative_meaning_value.toString()));
+        holder.meaningsTextView.setText(Utilities.removeDuplicatesFromCommaList(listMeaningExtract.get(position)));
         //endregion
 
         //region Updating the child values
@@ -200,8 +120,17 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         //endregion
 
         //region Showing the romaji and kanji values for user click
+        if (listTypeIsVerb.get(position)) {
+            holder.romajiChildTextView.setVisibility(View.VISIBLE);
+            holder.kanjiChildTextView.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.romajiChildTextView.setVisibility(View.GONE);
+            holder.kanjiChildTextView.setVisibility(View.GONE);
+        }
+
         if (romaji.length()>0 && kanji.length()>0) {
-            if (typeIsVerb) {
+            if (listTypeIsVerb.get(position)) {
                 setHyperlinksInCopyToInputLine("verb", holder.romajiChildTextView, "Conjugate ", romaji, " ");
                 setHyperlinksInCopyToInputLine("verb", holder.kanjiChildTextView, "(", kanji, ").");
             } else {
@@ -234,13 +163,136 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         }
         //endregion
 
-        LinearLayout.LayoutParams childLineParams = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT, 2 );
-        childLineParams.setMargins(0, 16, 0, 16);
-        LinearLayout.LayoutParams subChildLineParams = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT, 2 );
-        subChildLineParams.setMargins(128, 16, 128, 4);
-        View line;
-
         //region Setting the wordMeaning elements
+        setMeaningsLayout(position, holder);
+        //endregion
+
+        //endregion
+
+    }
+
+    private void prepareLayoutTexts() {
+
+        listRomajiAndKanji = new ArrayList<>();
+        listMeaningExtract = new ArrayList<>();
+        listTypeIsVerb = new ArrayList<>();
+
+        if (mWordsList == null) return;
+
+        for (Word word : mWordsList) {
+
+            //region Getting the word characteristics
+            String romaji = word.getRomaji();
+            String kanji = word.getKanji();
+            String alternatespellings = word.getAltSpellings();
+            String keywords = word.getKeywords();
+            String type = "";
+            List<Word.Meaning> meanings = word.getMeanings();
+
+            listMeaningExtract.add(Utilities.getMeaningsExtract(meanings, 4));
+
+            StringBuilder cumulative_meaning_value = new StringBuilder();
+            boolean wordHasPhraseConstruction = false;
+            boolean typeIsVerbConjugation = false;
+            boolean typeIsiAdjectiveConjugation = false;
+            boolean typeIsnaAdjectiveConjugation = false;
+            boolean typeIsVerb = false;
+            for (int j = 0; j< meanings.size(); j++) {
+                cumulative_meaning_value.append(meanings.get(j).getMeaning());
+                if (j< meanings.size()-1) { cumulative_meaning_value.append(", "); }
+                if (j==0) {
+                    type = meanings.get(j).getType();
+                    typeIsVerbConjugation = type.equals("VC");
+                    typeIsiAdjectiveConjugation = type.equals("iAC");
+                    typeIsnaAdjectiveConjugation = type.equals("naAC");
+                    typeIsVerb = type.contains("V") && !type.equals("VC") && !type.equals("NV");
+                }
+                if (!wordHasPhraseConstruction) wordHasPhraseConstruction = type.equals("PC");
+            }
+            listTypeIsVerb.add(typeIsVerb);
+            //endregion
+
+            //region Updating the parent values
+            String parentRomaji;
+            if (typeIsVerbConjugation && romaji.length()>3 && romaji.substring(0,3).equals("(o)")) parentRomaji = "(o)[verb]" + romaji.substring(3,romaji.length());
+            else if (typeIsVerbConjugation && romaji.length()>3 && !romaji.substring(0,3).equals("(o)")) parentRomaji = "[verb]" + romaji;
+            else if (typeIsiAdjectiveConjugation) parentRomaji = "[i-adj.]" + romaji;
+            else if (typeIsnaAdjectiveConjugation) parentRomaji = "[na-adj.]" + romaji;
+            else parentRomaji = romaji;
+
+            String romajiAndKanji;
+            if (romaji.equals("")) romajiAndKanji = kanji;
+            else if (kanji.equals("")) romajiAndKanji = romaji;
+            else romajiAndKanji = parentRomaji + " (" + kanji + ")";
+
+            String inputQueryNoSpaces = mInputQuery.replace(" ","");
+            String inputQueryLatin = ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN);
+            String romajiAndKanjiNoSpaces = romajiAndKanji.replace(" ","");
+
+            if (!romajiAndKanji.contains(mInputQuery)
+                    && !romajiAndKanji.contains(inputQueryNoSpaces)
+                    && !romajiAndKanjiNoSpaces.contains(mInputQuery)
+                    && !romajiAndKanjiNoSpaces.contains(inputQueryNoSpaces)
+                    && !romajiAndKanjiNoSpaces.contains(inputQueryLatin)) {
+                String latin = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_LATIN);
+                String hiragana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_HIRAGANA);
+                String katakana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_KATAKANA);
+                if (romaji.contains(latin)) {
+                    //Ignore words where the romaji value includes the latin convertion of the input query
+                }
+                else if (!TextUtils.isEmpty(alternatespellings) && alternatespellings.contains(mInputQuery)) {
+                    String[] altSpellingElements = alternatespellings.split(",");
+                    boolean isExactMatch = false;
+                    for (String element : altSpellingElements) {
+                        if (mInputQuery.equals(element.trim())) {
+                            isExactMatch = true;
+                            break;
+                        }
+                    }
+                    if (isExactMatch) romajiAndKanji += " [alt. form of " + mInputQuery + "]";
+                    else romajiAndKanji += " [alt. form contains " + mInputQuery + "]";
+                }
+                else if (cumulative_meaning_value.toString().contains(mInputQuery) || cumulative_meaning_value.toString().contains(latin)) {
+                    //Ignore words where the input query is included in the meaning
+                }
+                else if ((mInputQueryTextType == GlobalConstants.TYPE_KANJI
+                        && kanji.length() > 0 && !kanji.substring(0, 1).equals(mInputQueryFirstLetter))
+                        || (mInputQueryTextType == GlobalConstants.TYPE_LATIN
+                        && romaji.length() > 0 && !romaji.substring(0, 1).equals(mInputQueryFirstLetter))
+                        || (mInputQueryTextType == GlobalConstants.TYPE_HIRAGANA
+                        && hiragana.length() > 0 && !hiragana.substring(0, 1).equals(mInputQueryFirstLetter))
+                        || (mInputQueryTextType == GlobalConstants.TYPE_KATAKANA
+                        && katakana.length() > 0 && !katakana.substring(0, 1).equals(mInputQueryFirstLetter))
+                        ) {
+                    romajiAndKanji += " [derived from " + mInputQuery + "]";
+                }
+                else if (keywords != null && keywords.contains(mInputQuery)) {
+                    for (String keyword : keywords.split(",")) {
+                        if (romaji.contains(keyword) && !kanji.contains(keyword) && !alternatespellings.contains(keyword)
+                                && !cumulative_meaning_value.toString().contains(keyword)) {
+                            romajiAndKanji += " [from " + keyword + "]";
+                            break;
+                        }
+                    }
+                }
+            }
+            listRomajiAndKanji.add(romajiAndKanji);
+            //endregion
+
+        }
+    }
+    private void setMeaningsLayout(int position, DictItemViewHolder holder) {
+
+        View line;
+        String type = "";
+        String fullType;
+        String meaning;
+        String antonym;
+        String synonym;
+        int startIndex = 0;
+        int endIndex = 0;
+        List<Word.Meaning> meanings = mWordsList.get(position).getMeanings();
+
         for (Word.Meaning wordMeaning : meanings) {
             meaning = wordMeaning.getMeaning();
             type = wordMeaning.getType();
@@ -248,7 +300,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             synonym = wordMeaning.getSynonym();
 
             line = new View(mContext);
-            line.setLayoutParams(childLineParams);
+            line.setLayoutParams(mChildLineParams);
             line.setBackgroundColor(Color.WHITE);
             holder.childElementsLinearLayout.addView(line);
 
@@ -260,9 +312,9 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             fullType = TextUtils.join(", ", types);
             if (fullType.equals("")) fullType = type;
 
-            String htmlText;
+            String typeAsHtmlText;
             if (!fullType.equals("")) {
-                htmlText = "<i><font color='" +
+                typeAsHtmlText = "<i><font color='" +
                         mContext.getResources().getColor(R.color.textColorDictionaryTypeMeaning) +
                         "'>" + "[" +
                         fullType +
@@ -271,13 +323,14 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         "</b>";
             }
             else {
-                htmlText = "<b>" + meaning + "</b>";
+                typeAsHtmlText = "<b>" + meaning + "</b>";
             }
-            Spanned type_and_meaning = Utilities.fromHtml(htmlText);
+            Spanned type_and_meaning = Utilities.fromHtml(typeAsHtmlText);
             TextView typeAndMeaningTextView = new TextView(mContext);
             typeAndMeaningTextView.setText(type_and_meaning);
             typeAndMeaningTextView.setTextColor(mContext.getResources().getColor(R.color.textColorDictionaryTypeMeaning2));
             typeAndMeaningTextView.setTextSize(15);
+            typeAndMeaningTextView.setTextIsSelectable(true);
             typeAndMeaningTextView.setPadding(0, 16, 0, 16);
             holder.childElementsLinearLayout.addView(typeAndMeaningTextView);
             //endregion
@@ -355,6 +408,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     explanationTextView.setTextColor(mContext.getResources().getColor(R.color.textColorDictionaryExplanation));
                     explanationTextView.setPadding(0, 8, 0, 0);
                     explanationTextView.setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
+                    explanationTextView.setTextIsSelectable(true);
                     holder.childElementsLinearLayout.addView(explanationTextView);
                 }
                 //endregion
@@ -366,6 +420,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     rulesTextView.setTextColor(mContext.getResources().getColor(R.color.textColorDictionaryRule));
                     rulesTextView.setPadding(0, 8, 0, 0);
                     rulesTextView.setTypeface(Typeface.DEFAULT, Typeface.ITALIC);
+                    rulesTextView.setTextIsSelectable(true);
 
                     String[] parsedRule = rules.split(RULE_DELIMITER);
                     String where = " where: ";
@@ -376,17 +431,17 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     Spanned spanned_rule;
 
                     if (parsedRule.length == 1) { // If the rule doesn't have a "where" clause
-                        htmlText = "<b>" +
+                        typeAsHtmlText = "<b>" +
                                 "<font color='" + mContext.getResources().getColor(R.color.textColorDictionaryRulePhraseStructureClause) + "'>" +
                                 intro +
                                 "</font>" +
                                 rules +
                                 "</b>";
-                        spanned_rule = Utilities.fromHtml(htmlText);
+                        spanned_rule = Utilities.fromHtml(typeAsHtmlText);
                         rulesTextView.setText(spanned_rule);
                         rulesTextView.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
                     } else {
-                        htmlText = "<b>" +
+                        typeAsHtmlText = "<b>" +
                                 "<font color='" + mContext.getResources().getColor(R.color.textColorDictionaryRulePhraseStructureClause) + "'>" +
                                 intro +
                                 "</font>" +
@@ -395,7 +450,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                                 where +
                                 "</font>" +
                                 "<b>" + parsedRule[1] + "</b>";
-                        spanned_rule = Utilities.fromHtml(htmlText);
+                        spanned_rule = Utilities.fromHtml(typeAsHtmlText);
                         rulesTextView.setText(spanned_rule);
                     }
 
@@ -446,6 +501,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         englishExampleTextView.setTextSize(14);
                         englishExampleTextView.setPadding(4, 8, 0, 0);
                         englishExampleTextView.setVisibility(View.GONE);
+                        englishExampleTextView.setTextIsSelectable(true);
                         examplesTextViews.add(englishExampleTextView);
                         holder.childElementsLinearLayout.addView(englishExampleTextView);
 
@@ -457,6 +513,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         romajiExampleTextView.setTextSize(14);
                         romajiExampleTextView.setPadding(4, 0, 0, 0);
                         romajiExampleTextView.setVisibility(View.GONE);
+                        romajiExampleTextView.setTextIsSelectable(true);
                         examplesTextViews.add(romajiExampleTextView);
                         holder.childElementsLinearLayout.addView(romajiExampleTextView);
 
@@ -466,6 +523,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         kanjiExampleTextView.setTextColor(mContext.getResources().getColor(R.color.textColorDictionaryExampleKanji));
                         kanjiExampleTextView.setTextSize(14);
                         kanjiExampleTextView.setVisibility(View.GONE);
+                        kanjiExampleTextView.setTextIsSelectable(true);
                         kanjiExampleTextView.setTypeface(mDroidSansJapaneseTypeface);
                         kanjiExampleTextView.setPadding(4, 12, 0, 16);
                         examplesTextViews.add(kanjiExampleTextView);
@@ -478,7 +536,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 //region Adding the separator line between explanations
                 if (!rules.equals("")) {
                     line = new View(mContext);
-                    line.setLayoutParams(subChildLineParams);
+                    line.setLayoutParams(mubChildLineParams);
                     line.setBackgroundColor(mContext.getResources().getColor(R.color.colorPrimaryLight));
                     holder.childElementsLinearLayout.addView(line);
                 }
@@ -487,12 +545,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             //endregion
 
         }
-        //endregion
-
-        //endregion
-
     }
-
     private void setHyperlinksInCopyToInputLine(String type, TextView textView, String before, String hyperlinkText, String after) {
         String totalText = "<b>" +
                 "<font color='" + mContext.getResources().getColor(R.color.textColorSecondary) + "'>" +
@@ -515,7 +568,6 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         textView.setTextSize(16);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
     }
-
     private class WordClickableSpan extends ClickableSpan {
         // code extracted from http://stackoverflow.com/questions/15475907/make-parts-of-textview-clickable-not-url
         public void onClick(View textView) {
@@ -564,6 +616,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     public void setContents(List<Word> wordsList) {
         mWordsList = wordsList;
         createVisibilityArray();
+        prepareLayoutTexts();
         if (mWordsList != null) {
             this.notifyDataSetChanged();
         }
@@ -599,10 +652,14 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         private void switchVisibilityOfChildLayout(int clickedPosition) {
             if (childLinearLayout.getVisibility() == View.VISIBLE) {
                 childLinearLayout.setVisibility(View.GONE);
+                meaningsTextView.setVisibility(View.VISIBLE);
+                parentContainer.setBackgroundColor(Color.TRANSPARENT);
                 mChildIsVisible[clickedPosition] = false;
             }
             else {
                 childLinearLayout.setVisibility(View.VISIBLE);
+                meaningsTextView.setVisibility(View.GONE);
+                parentContainer.setBackgroundColor(mContext.getResources().getColor(R.color.colorSelectedDictResultBackground));
                 mChildIsVisible[clickedPosition] = true;
             }
         }

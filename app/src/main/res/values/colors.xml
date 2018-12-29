@@ -50,5 +50,6 @@
     <!--Composition colors-->
     <color name="textColorCompositionGridElementDefault">#800080</color>
     <color name="textColorCompositionGridElementSelected">@color/colorAccent</color>
+    <color name="colorSelectedDictResultBackground">#edf8ff</color>
 
 </resources>

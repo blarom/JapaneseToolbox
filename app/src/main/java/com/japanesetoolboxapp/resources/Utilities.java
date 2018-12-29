@@ -309,8 +309,7 @@ public final class Utilities {
     public static String removeDuplicatesFromCommaList(String input_list) {
 
         Boolean is_repeated;
-        List<String> parsed_cumulative_meaning_value = Arrays.asList(input_list.split(","));
-        StringBuilder final_cumulative_meaning_value = new StringBuilder("");
+        List<String> parsed_cumulative_meaning_value = Arrays.asList(splitAtCommasOutsideParentheses(input_list));
         List<String> final_cumulative_meaning_value_array = new ArrayList<>();
         String current_value;
         for (int j = 0; j <parsed_cumulative_meaning_value.size(); j++) {
@@ -321,11 +320,7 @@ public final class Utilities {
             }
             if (!is_repeated)  final_cumulative_meaning_value_array.add(current_value);
         }
-        for (int j = 0; j <final_cumulative_meaning_value_array.size(); j++) {
-            final_cumulative_meaning_value.append(final_cumulative_meaning_value_array.get(j).trim());
-            if (j <final_cumulative_meaning_value_array.size()-1) final_cumulative_meaning_value.append(", ");
-        }
-        return final_cumulative_meaning_value.toString();
+        return TextUtils.join(", ", final_cumulative_meaning_value_array);
     }
     public static List<String> getIntersectionOfLists(List<String> A, List<String> B) {
         //https://stackoverflow.com/questions/2400838/efficient-intersection-of-component_substructures[2]-liststring-in-java
@@ -442,6 +437,37 @@ public final class Utilities {
         }
         return original.substring(0, 1).toUpperCase() + original.substring(1);
     }
+    public static String getMeaningsExtract(List<Word.Meaning> meanings, int balancePoint) {
+        List<String> totalMeaningElements = new ArrayList<>();
+
+        if (meanings.size() == 1 || balancePoint < 2) return meanings.get(0).getMeaning();
+        else if (meanings.size() >= 2 && meanings.size() <= balancePoint) {
+            for (Word.Meaning meaning : meanings) {
+                totalMeaningElements = addMeaningElementsToListUpToMaxNumber(
+                        totalMeaningElements, meaning.getMeaning(),balancePoint + 1 - meanings.size());
+            }
+            return TextUtils.join(", ", totalMeaningElements);
+        }
+        else if (meanings.size() > balancePoint || balancePoint > 6) {
+            for (Word.Meaning meaning : meanings) {
+                totalMeaningElements = addMeaningElementsToListUpToMaxNumber(
+                        totalMeaningElements, meaning.getMeaning(), 1);
+            }
+            return TextUtils.join(", ", totalMeaningElements);
+        }
+        else  return "";
+    }
+    private static List<String> addMeaningElementsToListUpToMaxNumber(List<String> totalList, String meaning, int maxNumber) {
+        String[] meaningelements = splitAtCommasOutsideParentheses(meaning);
+        if (meaningelements.length <= maxNumber) totalList.addAll(Arrays.asList(meaningelements));
+        else totalList.addAll(Arrays.asList(meaningelements).subList(0, maxNumber));
+        return totalList;
+    }
+    private static String[] splitAtCommasOutsideParentheses(String text) {
+        // https://stackoverflow.com/questions/9030036/regex-to-match-only-commas-not-in-parentheses
+        return text.split(",(?![^(]*\\))(?![^\"']*[\"'](?:[^\"']*[\"'][^\"']*[\"'])*[^\"']*$)");
+    }
+
 
     //OCR utilities
     public static int loadOCRImageContrastFromSharedPreferences(SharedPreferences sharedPreferences, Context context) {
@@ -1124,6 +1150,7 @@ public final class Utilities {
 
         return response;
     }
+
 
     //IO utilities
     public static List<String[]> readCSVFile(String filename, Context context) {
