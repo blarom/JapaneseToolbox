@@ -155,6 +155,10 @@ public class ConjugatorFragment extends Fragment implements
     @Override public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
     }
+    @Override public void onAttach(Context context) {
+        super.onAttach(context);
+        conjugatorFragmentOperationsHandler = (ConjugatorFragmentOperationsHandler) context;
+    }
     @Override public void onPause() {
         super.onPause();
     }
@@ -188,7 +192,7 @@ public class ConjugatorFragment extends Fragment implements
         hideAll();
         mConjugationTitles = getConjugationTitles();
         getInputQueryParameters();
-        findMatchingVerbsInRoomDb();
+        startSearchingForMatchingVerbsInRoomDb();
 
     }
     private List<ConjugationTitle> getConjugationTitles() {
@@ -240,7 +244,7 @@ public class ConjugatorFragment extends Fragment implements
 
         return conjugationTitles;
     }
-    private void findMatchingVerbsInRoomDb() {
+    private void startSearchingForMatchingVerbsInRoomDb() {
         if (getActivity()!=null && !mInputQueryIsInvalid) {
             showLoadingIndicator();
             LoaderManager loaderManager = getActivity().getSupportLoaderManager();
@@ -649,7 +653,11 @@ public class ConjugatorFragment extends Fragment implements
 
         if (loader.getId() == ROOM_DB_VERB_SEARCH_LOADER && !mAlreadyLoadedRoomResults && data!=null) {
             mAlreadyLoadedRoomResults = true;
-            mMatchingVerbs = (List<Verb>) data;
+            Object[] dataElements = (Object[]) data;
+            mMatchingVerbs = (List<Verb>) dataElements[0];
+            List<Word> matchingWords = (List<Word>) dataElements[1];
+
+            conjugatorFragmentOperationsHandler.onMatchingVerbsFound(matchingWords);
 
             //Displaying the local results
             displayVerbsInVerbChooserSpinner();
@@ -726,7 +734,13 @@ public class ConjugatorFragment extends Fragment implements
                 mMatchingVerbs = getVerbs(mMatchingVerbIdsAndCols);
             }
 
-            return mMatchingVerbs;
+            List<Word> matchingWords = new ArrayList<>();
+            for (Verb verb : mMatchingVerbs) {
+                List<Word> words = mJapaneseToolboxCentralRoomDatabase.getWordsByExactRomajiAndKanjiMatch(verb.getRomaji(), verb.getKanji());
+                if (words.size()>0) matchingWords.add(words.get(0));
+            }
+
+            return new Object[]{mMatchingVerbs, matchingWords};
         }
 
         private void setInputQueryParameters() {
@@ -1522,4 +1536,10 @@ public class ConjugatorFragment extends Fragment implements
         }
     }
 
+
+    //Communication with parent activity
+    private ConjugatorFragmentOperationsHandler conjugatorFragmentOperationsHandler;
+    interface ConjugatorFragmentOperationsHandler {
+        void onMatchingVerbsFound(List<Word> matchingVerbsAsWords);
+    }
 }

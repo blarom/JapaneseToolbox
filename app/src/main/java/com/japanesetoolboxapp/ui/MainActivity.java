@@ -28,6 +28,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.japanesetoolboxapp.R;
+import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.Utilities;
@@ -62,6 +63,7 @@ import butterknife.Unbinder;
 public class MainActivity extends AppCompatActivity implements
         InputQueryFragment.InputQueryOperationsHandler,
         DictionaryFragment.DictionaryFragmentOperationsHandler,
+        ConjugatorFragment.ConjugatorFragmentOperationsHandler,
         SearchByRadicalFragment.SearchByRadicalFragmentOperationsHandler,
         SharedPreferences.OnSharedPreferenceChangeListener,
         LoaderManager.LoaderCallbacks<Object> {
@@ -397,24 +399,35 @@ public class MainActivity extends AppCompatActivity implements
         mSearchByRadicalFragment = null;
         mDecomposeKanjiFragment = null;
     }
-    private void updateInputQueryWithDefinition(List<Word> matchingWords) {
+    private void updateInputQueryWithDefinition(List<Word> matchingWords, boolean fromConjSearch) {
         if (mInputQueryFragment==null) return;
 
         String romaji = "";
         String meaning = "";
-        for (Word word : matchingWords) {
-            List<String> altSpellings = (word.getAltSpellings()!=null)? Arrays.asList(word.getAltSpellings().split(",")) : new ArrayList<String>();
-            if (word.getRomaji().equals(mInputQuery)
-                    || Utilities.getRomajiNoSpacesForSpecialPartsOfSpeech(word.getRomaji())
-                    .equals(ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN))
-                    || word.getKanji().equals(mInputQuery)
-                    || altSpellings.contains(mInputQuery)) {
-                romaji = word.getRomaji();
-                meaning = word.getMeanings().size()>0? word.getMeanings().get(0).getMeaning() : "";
-                break;
-            }
+        if ( matchingWords == null || matchingWords.size() == 0) {
+            mInputQueryFragment.updateQueryDefinitionInHistory(romaji, meaning);
         }
-        mInputQueryFragment.updateQueryDefinitionInHistory(romaji, meaning);
+        else if (fromConjSearch) {
+            mInputQueryFragment.updateQueryDefinitionInHistory(
+                    matchingWords.get(0).getRomaji(),
+                    Utilities.getMeaningsExtract(matchingWords.get(0).getMeanings(), 2)
+            );
+        }
+        else {
+            for (Word word : matchingWords) {
+                List<String> altSpellings = (word.getAltSpellings() != null) ? Arrays.asList(word.getAltSpellings().split(",")) : new ArrayList<String>();
+                if (word.getRomaji().equals(mInputQuery)
+                        || Utilities.getRomajiNoSpacesForSpecialPartsOfSpeech(word.getRomaji())
+                        .equals(ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN))
+                        || word.getKanji().equals(mInputQuery)
+                        || altSpellings.contains(mInputQuery)) {
+                    romaji = word.getRomaji();
+                    meaning = word.getMeanings().size() > 0 ? Utilities.getMeaningsExtract(matchingWords.get(0).getMeanings(), 2) : "";
+                    break;
+                }
+            }
+            mInputQueryFragment.updateQueryDefinitionInHistory(romaji, meaning);
+        }
     }
     public void showExitAppDialog() {
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
@@ -691,7 +704,10 @@ public class MainActivity extends AppCompatActivity implements
         mLocalMatchingWords = matchingWords;
     }
     @Override public void onFinalMatchingWordsFound(List<Word> matchingWords) {
-        updateInputQueryWithDefinition(matchingWords);
+        updateInputQueryWithDefinition(matchingWords, false);
+    }
+    @Override public void onMatchingVerbsFound(List<Word> matchingVerbsAsWords) {
+        updateInputQueryWithDefinition(matchingVerbsAsWords, true);
     }
 
     //Communication with SearchByRadicalFragment
