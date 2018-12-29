@@ -37,7 +37,7 @@ public interface KanjiIndexDao {
     List<KanjiIndex> getKanjiIndexByStartingUTF8Query(String query);
 
     //Get a KanjiIndex by Exact query match
-    @Query("SELECT * FROM " + KanjiIndex.TABLE_NAME + " WHERE " + KanjiIndex.COLUMN_KANA_IDS + " = :query")
+    @Query("SELECT * FROM " + KanjiIndex.TABLE_NAME + " WHERE " + KanjiIndex.COLUMN_KANA_IDS + " LIKE :query")
     KanjiIndex getKanjiIndexByExactUTF8Query(String query);
 
     //Delete a KanjiIndex by Kanji

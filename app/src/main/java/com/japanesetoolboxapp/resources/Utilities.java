@@ -2050,6 +2050,7 @@ public final class Utilities {
                 queryIsVerbWithTo, inputTextType, matchingWordIds, japaneseToolboxCentralRoomDatabase);
 
         matchingWordIds = addConjugatedAdjectivesToMatchesList(searchWord, inputTextType, matchingWordIds, japaneseToolboxCentralRoomDatabase);
+        matchingWordIds = addCountersToMatchesList(searchWord, inputTextType, matchingWordIds, japaneseToolboxCentralRoomDatabase);
         //endregion
 
         return matchingWordIds;
@@ -2403,7 +2404,7 @@ public final class Utilities {
         return matchingWordIds;
     }
     private static List<Long> addConjugatedAdjectivesToMatchesList(String searchWord, int inputTextType, List<Long> matchingWordIds,
-                                                                  JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+                                                                   JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
         //Adding relevant adjectives to the list of matches if the input query is an adjective conjugation
         List<Long> matchingWordIdsFromIndex = getmatchingWordIdsFromIndexForAdjectiveSearch(searchWord, inputTextType,
@@ -2420,9 +2421,13 @@ public final class Utilities {
             boolean isAlreadyInList;
             for (Word word : matchingPotentialAdjectives) {
                 isAlreadyInList = false;
-                List<Word.Meaning> meaningsList = word.getMeanings();
-                if (meaningsList.size() > 0 &&
-                        (meaningsList.get(0).getType().equals("Ai") || meaningsList.get(0).getType().equals("Ana"))) {
+
+                List<String> typesList = new ArrayList<>();
+                for (Word.Meaning meaning : word.getMeanings()) {
+                    typesList.add(meaning.getType());
+                }
+                typesList = Arrays.asList(TextUtils.join(";", typesList).split(";"));
+                if (typesList.contains("Ai") || typesList.contains("Ana")) {
                     for (long id : matchingWordIds) {
                         if (id == word.getWordId()) {
                             isAlreadyInList = true;
@@ -2430,6 +2435,69 @@ public final class Utilities {
                         }
                     }
                     if (!isAlreadyInList) matchingWordIds.add(word.getWordId());
+                }
+            }
+        }
+
+        return matchingWordIds;
+    }
+    private static List<Long> addCountersToMatchesList(String searchWord, int inputTextType, List<Long> matchingWordIds,
+                                                                   JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+
+        if (inputTextType == GlobalConstants.TYPE_KANJI && searchWord.length()==2
+                && (searchWord.substring(0,1).equals("何")
+                || searchWord.substring(0,1).equals("一")
+                || searchWord.substring(0,1).equals("二")
+                || searchWord.substring(0,1).equals("三")
+                || searchWord.substring(0,1).equals("四")
+                || searchWord.substring(0,1).equals("五")
+                || searchWord.substring(0,1).equals("六")
+                || searchWord.substring(0,1).equals("七")
+                || searchWord.substring(0,1).equals("八")
+                || searchWord.substring(0,1).equals("九")
+                || searchWord.substring(0,1).equals("十") )
+                ) {
+
+            List<KanjiIndex> kanjiIndicesForCounter = findQueryInKanjiIndex(searchWord.substring(1,2), true, japaneseToolboxCentralRoomDatabase);
+
+            if (kanjiIndicesForCounter.size()==0) return matchingWordIds;
+
+            List<String> searchResultIndexesArray = new ArrayList<>();
+            for (KanjiIndex kanjiIndex : kanjiIndicesForCounter) {
+                searchResultIndexesArray.add(kanjiIndex.getWordIds());
+            }
+
+            List<String> indexList;
+            List<Long> matchingWordIdsFromIndex = new ArrayList<>();
+            for (String searchResultIndexes : searchResultIndexesArray) {
+                indexList = Arrays.asList(searchResultIndexes.split(";"));
+                for (int j = 0; j < indexList.size(); j++) {
+                    matchingWordIdsFromIndex.add(Long.valueOf(indexList.get(j)));
+                }
+            }
+
+            if (matchingWordIdsFromIndex.size() > GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
+                Log.i(DEBUG_TAG, "WARNING: exceeded MAX_SQL_VARIABLES_FOR_QUERY when searching for "+ searchWord +" in counter search, but prevented crash.");
+            }
+            else {
+                List<Word> matchingPotentialCounters = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(matchingWordIdsFromIndex);
+                boolean isAlreadyInList;
+                for (Word word : matchingPotentialCounters) {
+                    isAlreadyInList = false;
+                    List<String> typesList = new ArrayList<>();
+                    for (Word.Meaning meaning : word.getMeanings()) {
+                        typesList.add(meaning.getType());
+                    }
+                    typesList = Arrays.asList(TextUtils.join(";", typesList).split(";"));
+                    if (typesList.contains("C")) {
+                        for (long id : matchingWordIds) {
+                            if (id == word.getWordId()) {
+                                isAlreadyInList = true;
+                                break;
+                            }
+                        }
+                        if (!isAlreadyInList) matchingWordIds.add(word.getWordId());
+                    }
                 }
             }
         }
