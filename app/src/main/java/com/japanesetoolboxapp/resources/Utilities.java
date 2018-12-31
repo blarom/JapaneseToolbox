@@ -1960,7 +1960,7 @@ public final class Utilities {
 
         if (       (romaji_value.length() >= mInputQuery.length() && romaji_value.substring(0,mInputQuery.length()).equals(mInputQuery))
                 || romajiNoSpaces.equals(mInputQuery) || romajiNoSpaces.equals(inputQueryLatin)
-                || (romaji_value.length() >= inputQueryLatin.length() && romaji_value.substring(0,mInputQuery.length()).equals(inputQueryLatin))
+                || (romaji_value.length() >= mInputQuery.length() && romaji_value.substring(0,mInputQuery.length()).equals(inputQueryLatin))
                 || (kanji_value.length() >= mInputQuery.length() && kanji_value.substring(0,mInputQuery.length()).equals(mInputQuery))
                 ) {
             ranking -= 100;
