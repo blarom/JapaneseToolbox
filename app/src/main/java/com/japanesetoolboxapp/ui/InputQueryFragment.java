@@ -434,6 +434,8 @@ public class InputQueryFragment extends Fragment implements
     }
     @OnClick(R.id.button_show_history) public void onShowHistoryButtonClick() {
 
+        if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
+
         boolean queryHistoryIsEmpty = true;
         for (String element : mQueryHistory) {
             if (!element.equals("")) { queryHistoryIsEmpty = false; break; }
