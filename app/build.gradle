@@ -11,6 +11,7 @@ android {
         versionCode 58
         versionName "3.00"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        vectorDrawables.useSupportLibrary = true
         // the following code makes the app only available to relevant phones, thereby reducing the apk size
         // See https://android.jlelse.eu/controlling-apk-size-when-using-native-libraries-45c6c0e5b70a
 //        ndk {

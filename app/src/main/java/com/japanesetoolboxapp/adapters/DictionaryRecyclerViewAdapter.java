@@ -16,6 +16,7 @@ import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -80,7 +81,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         view.setFocusable(true);
         return new DictItemViewHolder(view);
     }
-    @Override public void onBindViewHolder(@NonNull DictItemViewHolder holder, int position) {
+    @Override public void onBindViewHolder(@NonNull final DictItemViewHolder holder, final int position) {
 
         //region Setting behavior when element is clicked
         if (mChildIsVisible[position]) {
@@ -93,6 +94,26 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             holder.meaningsTextView.setVisibility(View.VISIBLE);
             holder.parentContainer.setBackgroundColor(Color.TRANSPARENT);
         }
+
+        holder.romajiAndKanjiTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.childLinearLayout.getVisibility() == View.VISIBLE) {
+                    holder.childLinearLayout.setVisibility(View.GONE);
+                    holder.meaningsTextView.setVisibility(View.VISIBLE);
+                    holder.parentContainer.setBackgroundColor(Color.TRANSPARENT);
+                    holder.dropdownArrowImageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_down_black_24dp));
+                    mChildIsVisible[position] = false;
+                }
+                else {
+                    holder.childLinearLayout.setVisibility(View.VISIBLE);
+                    holder.meaningsTextView.setVisibility(View.GONE);
+                    holder.parentContainer.setBackgroundColor(mContext.getResources().getColor(R.color.colorSelectedDictResultBackground));
+                    holder.dropdownArrowImageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_up_black_24dp));
+                    mChildIsVisible[position] = true;
+                }
+            }
+        });
         //endregion
 
         //region Updating the parent values
@@ -267,8 +288,10 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     romajiAndKanji += " [derived from " + mInputQuery + "]";
                 }
                 else if (keywords != null && keywords.contains(mInputQuery)) {
-                    for (String keyword : keywords.split(",")) {
-                        if (romaji.contains(keyword) && !kanji.contains(keyword) && !alternatespellings.contains(keyword)
+                    String[] keywordList = keywords.split(",");
+                    for (String element : keywordList) {
+                        String keyword = element.trim();
+                        if (!romaji.contains(keyword) && !kanji.contains(keyword) && !alternatespellings.contains(keyword)
                                 && !cumulative_meaning_value.toString().contains(keyword)) {
                             romajiAndKanji += " [from " + keyword + "]";
                             break;
@@ -534,7 +557,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 //endregion
 
                 //region Adding the separator line between explanations
-                if (!rules.equals("")) {
+                if (!rules.equals("") && i < currentExplanations.size()-1) {
                     line = new View(mContext);
                     line.setLayoutParams(mubChildLineParams);
                     line.setBackgroundColor(mContext.getResources().getColor(R.color.colorPrimaryLight));
@@ -630,6 +653,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
         @BindView(R.id.list_item_parent_container) ConstraintLayout parentContainer;
         @BindView(R.id.list_item_romaji_and_kanji) TextView romajiAndKanjiTextView;
+        @BindView(R.id.dropdown_arrow) ImageView dropdownArrowImageView;
         @BindView(R.id.list_item_meanings) TextView meaningsTextView;
         @BindView(R.id.list_item_child_linearlayout) LinearLayout childLinearLayout;
         @BindView(R.id.list_item_child_romaji) TextView romajiChildTextView;
@@ -654,12 +678,14 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 childLinearLayout.setVisibility(View.GONE);
                 meaningsTextView.setVisibility(View.VISIBLE);
                 parentContainer.setBackgroundColor(Color.TRANSPARENT);
+                dropdownArrowImageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_down_black_24dp));
                 mChildIsVisible[clickedPosition] = false;
             }
             else {
                 childLinearLayout.setVisibility(View.VISIBLE);
                 meaningsTextView.setVisibility(View.GONE);
                 parentContainer.setBackgroundColor(mContext.getResources().getColor(R.color.colorSelectedDictResultBackground));
+                dropdownArrowImageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_up_black_24dp));
                 mChildIsVisible[clickedPosition] = true;
             }
         }

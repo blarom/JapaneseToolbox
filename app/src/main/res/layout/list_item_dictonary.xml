@@ -21,6 +21,8 @@
         android:layout_marginStart="2dp"
         android:gravity="start|center_vertical"
         android:textIsSelectable="true"
+        android:clickable="true"
+        android:focusable="true"
         android:text="@string/Kanji"
         android:textColor="@color/textColorDictionaryGroupItemRomajiAndKanji"
         android:textSize="@dimen/DictionaryGroupItemRomajiKanji"
@@ -98,5 +100,15 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/dropdown_arrow"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/list_item_meanings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/list_item_romaji_and_kanji"
+        app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp"
+        android:contentDescription="@string/dropdown_arrow"/>
 
 </android.support.constraint.ConstraintLayout>

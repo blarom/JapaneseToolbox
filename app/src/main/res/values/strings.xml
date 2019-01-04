@@ -407,4 +407,5 @@
     <string name="send_to_input">Send to input</string>
     <string name="send_to_element">Send to element</string>
     <string name="no_elements_found">No elements found.</string>
+    <string name="dropdown_arrow">dropdown arrow</string>
 </resources>
