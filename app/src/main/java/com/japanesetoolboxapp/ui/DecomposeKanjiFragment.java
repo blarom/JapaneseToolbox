@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
@@ -55,13 +56,19 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
     private final static int KANJI_KUN_READING = 1;
     private final static int KANJI_NAME_READING = 2;
     private final static int KANJI_MEANING = 3;
+    private final static int DECOMP_KANJI_LIST_INDEX = 0;
+    private final static int DECOMP_RADICAL_ITERATION = 1;
+    private final static int DECOMP_PARENT_ALREADY_DISPLAYED = 2;
+    private final static int DECOMP_SELECTED_DECOMPOSITIONS = 3;
     private Unbinder mBinding;
     private static final int ROOM_DB_KANJI_DECOMPOSITION_LOADER = 7524;
     private static final int ROOM_DB_KANJI_CHARACTER_LOADER = 4732;
-    private String mInputQuery;
+    private List<Object> mInputQueryKanjis;
     private List<String[]> mRadicalsOnlyDatabase;
     private boolean mAlreadyGotFirstQuery;
     private Typeface mDroidSansJapaneseTypeface;
+    private String mInputQuery;
+    private String mOwnerKanji;
     //endregion
 
 
@@ -107,13 +114,28 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
     }
     public void getDecomposition() {
 
-        // Check that the input is valid. If not, return no result.
+        //Keep only the Kanjis in the input query
+        mInputQueryKanjis = new ArrayList<>();
+        mOwnerKanji = "";
+        for (int i=0; i<mInputQuery.length(); i++) {
+            String currentChar = mInputQuery.substring(i,i+1);
+            if (ConvertFragment.getTextType(currentChar) == GlobalConstants.TYPE_KANJI) {
+                Object[] elements = new Object[4];
+                elements[DECOMP_KANJI_LIST_INDEX] = currentChar;
+                elements[DECOMP_RADICAL_ITERATION] = 0;
+                elements[DECOMP_PARENT_ALREADY_DISPLAYED] = false;
+                elements[DECOMP_SELECTED_DECOMPOSITIONS] = new ArrayList<>();
+                mInputQueryKanjis.add(elements);
+            }
+        }
 
-        int textType = ConvertFragment.getTextType(mInputQuery);
-
-        if (!TextUtils.isEmpty(mInputQuery) && textType != GlobalConstants.TYPE_LATIN && textType != GlobalConstants.VALUE_NUMBER) {
-            mDecompositionsHint.setVisibility(View.GONE);
-            startGettingDecompositionAsynchronously(mInputQuery.substring(0,1), 0);
+        //Checking that the input is valid and getting the decompositions. If not, return no results
+        if (mInputQueryKanjis.size() > 0) {
+            Object[] elements = (Object[]) mInputQueryKanjis.get(0);
+            if (!TextUtils.isEmpty((String) elements[DECOMP_KANJI_LIST_INDEX])) {
+                mDecompositionsHint.setVisibility(View.GONE);
+                startGettingDecompositionAsynchronously((String) elements[DECOMP_KANJI_LIST_INDEX], (int) elements[1], 0);
+            }
         }
         else {
             mDecompositionsHint.setVisibility(View.VISIBLE);
@@ -144,17 +166,19 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         }
     }
     private void displayDecomposition(String inputQuery,
-                                      final int radical_iteration,
+                                      final int radicalIteration,
                                       final List<List<String>> decomposedKanji,
                                       List<String> currentKanjiDetailedCharacteristics,
                                       List<String> currentKanjiMainRadicalInfo,
                                       int radicalIndex,
                                       int radicalIndexOriginal,
-                                      List<String> currentMainRadicalDetailedCharacteristics) {
+                                      List<String> currentMainRadicalDetailedCharacteristics,
+                                      final int kanjiListIndex) {
 
         //region Setting up the view
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View decompositionContainer = inflater.inflate(R.layout.fragment_decomposition_element, null);
+        final View decompositionContainer = inflater.inflate(R.layout.fragment_decomposition_element, null);
+        final ConstraintLayout layout = decompositionContainer.findViewById(R.id.fragment_decomposition_element_constraint_layout);
         final TextView kanjiTV = decompositionContainer.findViewById(R.id.decomposition_element_kanji);
         final ImageView structureIV = decompositionContainer.findViewById(R.id.decomposition_element_structure_image);
         final LinearLayout radicalGalleryLL = decompositionContainer.findViewById(R.id.decomposition_element_radical_gallery);
@@ -195,15 +219,34 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         //endregion
 
         // If the user clicks on a component further up in the overall_block_container chain, remove the following views
-        int childCount = mOverallBlockContainer.getChildCount();
-        for (int i=radical_iteration;i<childCount;i++) {
-            mOverallBlockContainer.removeViewAt(radical_iteration);
+        int childIndex = 0;
+        while (childIndex < mOverallBlockContainer.getChildCount()) {
+            View view = mOverallBlockContainer.getChildAt(childIndex);
+
+            if (view.getTag() == null) {
+                childIndex++;
+                continue;
+            }
+            String tagString = ((String) view.getTag());
+            if (TextUtils.isEmpty(tagString) || !tagString.contains(";")) {
+                childIndex++;
+                continue;
+            }
+            String[] tags = ((String) view.getTag()).split(";");
+            int currentKanjiListIndex = Integer.parseInt(tags[0]);
+            int currentRadicalIteration = Integer.parseInt(tags[1]);
+            if (currentKanjiListIndex == kanjiListIndex && currentRadicalIteration >= radicalIteration) {
+                mOverallBlockContainer.removeViewAt(childIndex);
+            }
+            else childIndex++;
         }
 
+        //Updating the kanji list with the relevant radical iteration index
         kanjiTV.setTypeface(mDroidSansJapaneseTypeface);
         kanjiTV.setTextLocale(Locale.JAPAN);
         setPrintableKanji(kanjiTV, mainKanji);
         kanjiTV.setHint(mainKanji);
+        mOwnerKanji = mainKanji;
         structure_info = getStructureInfo(decomposedKanji.get(0).get(1));
         structureIV.setBackgroundResource(Integer.parseInt(structure_info[1]));
 
@@ -229,9 +272,37 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             tv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startGettingDecompositionAsynchronously(tv.getHint().toString(), radical_iteration+1);
+
+                    String[] tagElements = ((String) tv.getTag()).split(";");
+                    int kanjiListIndex = Integer.parseInt(tagElements[0]);
+                    int radicalIteration = Integer.parseInt(tagElements[1]);
+                    mOwnerKanji = tagElements[2];
+
+                    //Updating the list of selected decompositions
+                    Object[] elements = (Object[]) mInputQueryKanjis.get(kanjiListIndex);
+                    List<String> decompositions = (List<String>) elements[DECOMP_SELECTED_DECOMPOSITIONS];
+                    decompositions.add(tv.getHint().toString());
+                    elements[DECOMP_SELECTED_DECOMPOSITIONS] = decompositions;
+                    mInputQueryKanjis.set(kanjiListIndex, elements);
+
+                    //Getting the decomposition
+                    startGettingDecompositionAsynchronously(tv.getHint().toString(), radicalIteration + 1, kanjiListIndex);
+
+                    mDecompositionScrollView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (mDecompositionScrollView!=null && getContext() != null) {
+                                int heightPx = decompositionContainer.getHeight();
+                                int heightDpi =  Utilities.convertPxToDpi(heightPx, getContext());
+                                //mDecompositionScrollView.fullScroll(View.FOCUS_DOWN);
+                                int scrollY = mDecompositionScrollView.getScrollY();
+                                mDecompositionScrollView.smoothScrollTo(0, scrollY + heightPx - 50);
+                            }
+                        }
+                    });
                 }
             });
+            tv.setTag(Integer.toString(kanjiListIndex)+";"+Integer.toString(radicalIteration)+";"+mainKanji);
             tv.setTextSize(26);
             tv.setPadding(10,0,10,0);
             tv.setMovementMethod(LinkMovementMethod.getInstance());
@@ -331,15 +402,36 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         }
         //endregion
 
-        mOverallBlockContainer.addView(decompositionContainer);
+        //Updating the list of decompositions for each card
+        Object[] elements;
+        elements = (Object[]) mInputQueryKanjis.get(kanjiListIndex);
+        elements[DECOMP_RADICAL_ITERATION] = radicalIteration;
+        mInputQueryKanjis.set(kanjiListIndex, elements);
 
-        mDecompositionScrollView.fullScroll(View.FOCUS_DOWN);
-        mDecompositionScrollView.post(new Runnable() {
-            @Override
-            public void run() {
-                mDecompositionScrollView.fullScroll(View.FOCUS_DOWN);
+        //Adding the decomposition at the correct position in the list
+        int position = 0;
+        elements = (Object[]) mInputQueryKanjis.get(0);
+        position += (int) elements[DECOMP_RADICAL_ITERATION];
+
+        for (int i = 1; i < kanjiListIndex+1; i++) {
+            elements = (Object[]) mInputQueryKanjis.get(i);
+            position++;
+            position += (int) elements[DECOMP_RADICAL_ITERATION];
+        }
+
+        decompositionContainer.setTag(kanjiListIndex + ";" + radicalIteration);
+        if (getContext()!=null) {
+            if (kanjiListIndex % 2 == 0) {
+                layout.setBackground(getContext().getResources().getDrawable(R.drawable.border_background_full_primary_inside));
             }
-        });
+            else {
+                layout.setBackground(getContext().getResources().getDrawable(R.drawable.border_background_full_accent_inside));
+            }
+        }
+        mOverallBlockContainer.addView( decompositionContainer, position);
+
+
+        //mDecompositionScrollView.fullScroll(View.FOCUS_DOWN);
     }
     static public String[] getStructureInfo(String requested_structure) {
         String structureText = "";
@@ -482,13 +574,14 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         return structure;
     }
 
-    private void startGettingDecompositionAsynchronously(String inputQuery, int radicalIteration) {
+    private void startGettingDecompositionAsynchronously(String inputKanjiAtIndex, int radicalIteration, int kanjiListIndex) {
         if (getActivity()!=null) {
             LoaderManager loaderManager = getActivity().getSupportLoaderManager();
             Loader<String> roomDbSearchLoader = loaderManager.getLoader(ROOM_DB_KANJI_DECOMPOSITION_LOADER);
             Bundle bundle = new Bundle();
-            bundle.putString(getString(R.string.decomposition_query), inputQuery);
+            bundle.putString(getString(R.string.decomposition_query), inputKanjiAtIndex);
             bundle.putInt(getString(R.string.decomposition_radical_iteration),radicalIteration);
+            bundle.putInt(getString(R.string.decomposition_kanji_list_index),kanjiListIndex);
             if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_KANJI_DECOMPOSITION_LOADER, bundle, this);
             else loaderManager.restartLoader(ROOM_DB_KANJI_DECOMPOSITION_LOADER, bundle, this);
         }
@@ -508,10 +601,12 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             showLoadingIndicator();
             String firstQuery = args.getString(getString(R.string.decomposition_query));
             int radicalIteration = args.getInt(getString(R.string.decomposition_radical_iteration));
-            KanjiCharacterDecompositionAsyncTaskLoader decompositionLoader = new KanjiCharacterDecompositionAsyncTaskLoader(getContext(), firstQuery, radicalIteration, mRadicalsOnlyDatabase);
+            int kanjiListIndex = args.getInt(getString(R.string.decomposition_kanji_list_index));
+            KanjiCharacterDecompositionAsyncTaskLoader decompositionLoader =
+                    new KanjiCharacterDecompositionAsyncTaskLoader(getContext(), firstQuery, radicalIteration, mRadicalsOnlyDatabase, kanjiListIndex);
             return decompositionLoader;
         }
-        else return new KanjiCharacterDecompositionAsyncTaskLoader(getContext(), "", 0, null);
+        else return new KanjiCharacterDecompositionAsyncTaskLoader(getContext(), "", 0, null, 0);
     }
     @Override public void onLoadFinished(@NonNull Loader<Object> loader, Object data) {
 
@@ -529,8 +624,10 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             int radicalIndex = (int) dataElements[5];
             int radicalIndexOriginal = (int) dataElements[6];
             List<String> currentMainRadicalDetailedCharacteristics = (List<String>) dataElements[7];
+            int kanjiListIndex = (int) dataElements[8];
             hideLoadingIndicator();
 
+            //Displaying the decomposition
             displayDecomposition(inputQuery.substring(0,1),
                     radical_iteration,
                     decomposedKanji,
@@ -538,9 +635,33 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                     currentKanjiMainRadicalInfo,
                     radicalIndex,
                     radicalIndexOriginal,
-                    currentMainRadicalDetailedCharacteristics);
+                    currentMainRadicalDetailedCharacteristics,
+                    kanjiListIndex);
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_KANJI_DECOMPOSITION_LOADER);
+
+            //Saving the fact that the kanji decomposition is now being displayed
+            Object[] elements = (Object[]) mInputQueryKanjis.get(kanjiListIndex);
+            mInputQueryKanjis.set(kanjiListIndex, new Object[]{
+                    elements[DECOMP_KANJI_LIST_INDEX],
+                    elements[DECOMP_RADICAL_ITERATION],
+                    true,
+                    elements[DECOMP_SELECTED_DECOMPOSITIONS]
+            });
+
+            //Getting the decomposition for the next kanji if relevant
+            for (int i=0; i<mInputQueryKanjis.size(); i++) {
+                elements = (Object[]) mInputQueryKanjis.get(i);
+                if (!((boolean) elements[DECOMP_PARENT_ALREADY_DISPLAYED])) {
+                    if (!TextUtils.isEmpty((String) elements[0]))
+                        startGettingDecompositionAsynchronously(
+                                (String) elements[DECOMP_KANJI_LIST_INDEX],
+                                (int) elements[DECOMP_RADICAL_ITERATION],
+                                i
+                        );
+                    break;
+                }
+            }
         }
     }
     @Override public void onLoaderReset(@NonNull Loader<Object> loader) {}
@@ -552,13 +673,15 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         private KanjiCharacter mCurrentKanjiCharacter;
         private final List<String[]> mRadicalsOnlyDatabase;
         private final int radicalIteration;
+        private final int kanjiListIndex;
         //endregion
 
-        KanjiCharacterDecompositionAsyncTaskLoader(Context context, String inputQuery, int radicalIteration, List<String[]> mRadicalsOnlyDatabase) {
+        KanjiCharacterDecompositionAsyncTaskLoader(Context context, String inputQuery, int radicalIteration, List<String[]> mRadicalsOnlyDatabase, int kanjiListIndex) {
             super(context);
             this.inputQuery = inputQuery;
             this.radicalIteration = radicalIteration;
             this.mRadicalsOnlyDatabase = mRadicalsOnlyDatabase;
+            this.kanjiListIndex = kanjiListIndex;
         }
 
         @Override
@@ -586,7 +709,8 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                     radicalIteration,
                     radicalInfo[0],
                     radicalInfo[1],
-                    radicalInfo[2]
+                    radicalInfo[2],
+                    kanjiListIndex
             };
         }
 

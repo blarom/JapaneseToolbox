@@ -22,6 +22,7 @@ import android.support.v7.preference.PreferenceManager;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -193,6 +194,12 @@ public final class Utilities {
         if (suffix != null) resultBuffer.append(suffix);
         return resultBuffer.toString();
     }
+    public static int convertPxToDpi(int pixels, Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        int dp = Math.round(pixels / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+        return dp;
+    }
+
 
 
     //Image utilities
