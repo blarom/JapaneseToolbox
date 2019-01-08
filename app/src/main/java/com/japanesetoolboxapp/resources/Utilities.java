@@ -24,8 +24,13 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 
 import com.google.firebase.database.FirebaseDatabase;
 import com.japanesetoolboxapp.BuildConfig;
@@ -237,6 +242,27 @@ public final class Utilities {
 //            return (!Character.isISOControl(c)) &&
 //                    block != null &&
 //                    block != Character.UnicodeBlock.SPECIALS;
+    }
+    public static void showAndFadeOutAndHideImage(final ImageView img, int fadeOutDurationMillis) {
+        if (img == null) return;
+
+        img.setVisibility(View.VISIBLE);
+
+        //from: https://stackoverflow.com/questions/20782260/making-a-smooth-fade-out-for-imageview-in-android
+        Animation fadeOut = new AlphaAnimation(1, 0);
+        fadeOut.setInterpolator(new AccelerateInterpolator());
+        fadeOut.setDuration(fadeOutDurationMillis);
+
+        fadeOut.setAnimationListener(new Animation.AnimationListener() {
+            public void onAnimationEnd(Animation animation)
+            {
+                img.setVisibility(View.GONE);
+            }
+            public void onAnimationRepeat(Animation animation) {}
+            public void onAnimationStart(Animation animation) {}
+        });
+
+        img.startAnimation(fadeOut);
     }
 
 
