@@ -14,8 +14,6 @@
     <color name="Purple">#FF800080</color>
     <color name="Transparent">#80FFFFFF</color>
     <color name="list_item_selection_highlight">#80E1F5FE</color>
-    <color name="decomposition_item_background_color_1">#e6ffff</color> //cyan
-    <color name="decomposition_item_background_color_2">#e5ffe5</color> //indigo
 
     <!--InputQueryFragment colors-->
     <color name="textColorSearch">@color/colorPrimaryDark</color>

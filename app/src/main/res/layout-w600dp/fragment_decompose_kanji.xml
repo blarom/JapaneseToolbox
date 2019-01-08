@@ -32,6 +32,7 @@
 
     <ScrollView
         android:id="@+id/decompositionScrollView"
+        android:focusable="false"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -41,6 +42,7 @@
 
         <LinearLayout
             android:id="@+id/overall_block_container"
+            android:focusable="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"

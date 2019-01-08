@@ -2,9 +2,8 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
        android:shape="rectangle">
     <solid
-        android:color="@color/decomposition_item_background_color_1"
-        android:alpha="0.3" />
+        android:color="@android:color/white" />
     <stroke
         android:width="3dp"
-        android:color="@color/colorAccentLight" />
+        android:color="@color/colorPrimaryLight" />
 </shape>
