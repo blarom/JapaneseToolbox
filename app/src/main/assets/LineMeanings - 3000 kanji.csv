@@ -1012,8 +1012,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1012|necessary, needed, essential, indispensable|Ana|||1325|||
 1013|necessity, need, requirement|N;Abs||||||
 1014|no good, not serving its purpose, useless, broken|Ana|||616|||
-1015|of due form|Ana||||||
-1016|due form, officialness, formality|N;Abs||||||
+1015||-||||||
+1016||-||||||
 1017|only, merely, (a) little, small quantity|Ana||||||
 1018|small quantity|N;Abs||||||
 1019|erupt|VsuruI||||||
@@ -6410,7 +6410,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6410|move the depths|VruiI|Of fish when it gets cold.|||||
 6411|care, help, aid, assistance|N;Abs||||||
 6412|caring, helpful, assistive|Ana||||||
-6413||-||||||
+6413|officially, formally|A;M||||||
 6414|counter for rolls of cloth (two han in size)|C||||||
 6415|making the rounds|N;Abs||||||
 6416|spreading|N;Abs||||||
@@ -7416,7 +7416,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7416|department, section, faculty, school, arm|N;Sx||||||
 7417||-||||||
 7418|course (of study), branch of study, specialization|N;Sx||||||
-7419||-||||||
+7419|imperfectly, incompletely, faultily|A;M||||||
 7420|(taxonomical) family|N;Sx||||||
 7421|mosquito|N;Abs||||||
 7422|restoration, rehabilitation, recovery, return, replevin, improvement|N;Abs||||||
@@ -7473,7 +7473,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7473|finish, end, close|VrugI||||||
 7474|lei (garland of flowers)|N;Abs||||||
 7475|lei (plural of leu, currency of Rumania and Moldova)|N;Abs||||||
-7476||-||||||
+7476|perfectly, completely|A;M||||||
 7477|command, order, dictation|N;Sx||||||
 7478|custom, practice, habit, usual|N;Abs||||||
 7479|said, aforementioned|N;Abs||||||
@@ -7523,7 +7523,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7523|leniency, mercy, going easy (on someone)|N;Abs||||||
 7524|mercilessly, relentlessly, unsparingly|A||||||
 7525|copy, duplicate, reproduce|VsuruT||||||
-7526|to report|VsuruI||||||
+7526|report|VsuruI||||||
 7527|broom|VsuruT||||||
 7528|pack, wrap|VsuruT||||||
 7529|lift a ban, raise an embargo, open a season (hunting, fishing, etc.)|VsuruT||||||
@@ -25583,7 +25583,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 25583|transfer to a different hospital|VsuruI||||||
 25584|make a stopover (during a train or bus journey)|VsuruI||||||
 25585|be subjugated (using military force), be suppressed, be subdued|VsuruI||||||
-25586|bring up, rear, upbring|VsuruT||||||
+25586|bring up, rear|VsuruT||||||
 25587|reduction of staff|N||||||
 25588|waste land, wilderness, moor, field, plain|N||||||
 25589|present, existing|N;Ano||||||
@@ -25849,10 +25849,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 25849|go into opposition, lose power|VsuruI||||||
 25850|descend (mountain)|VsuruI||||||
 25851|be resolved, be decided, be voted|VsuruI||||||
-25852|be closely examined, be carefuly selected, be tested, be scrutinized|VsuruI||||||
+25852|be closely examined, be carefully selected, be tested, be scrutinized|VsuruI||||||
 25853||-||||||
 25854|recite and appreciate traditional poetry|VsuruI||||||
-25855|provide false evidence, perform perjury, falsly testify|VsuruI||||||
+25855|provide false evidence, perform perjury, falsely testify|VsuruI||||||
 25856|be camouflaged, be disguised|VsuruI||||||
 25857|pretend, feign, masquerade|VsuruI||||||
 25858|be forged, be falsified, be fabricated, be counterfeit|VsuruI||||||
@@ -26073,7 +26073,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26073|be distributed (books)|VsuruI||||||
 26074|be plumbed, be piped|VsuruI||||||
 26075|be disposed, be abandoned, be scrapped, be discarded, be abolished|VsuruI||||||
-26076|be annuled, be cancelled, be abrogated, be repealed|VsuruI||||||
+26076|be annulled, be cancelled, be abrogated, be repealed|VsuruI||||||
 26077|be exhausted, be emitted (of gas from an engine)|VsuruI||||||
 26078|be expulsed (of air), be ventilated|VsuruI||||||
 26079|be distributed (e.g. films, rice)|VsuruI||||||
@@ -26082,25 +26082,25 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26082|breach trust, be malfeasant, malpractice, be misappropriating|VsuruI||||||
 26083|be arranged, be disposed|VsuruI||||||
 26084|be considerate, be concerned, be attentive, be thoughtful, make arrangements, care, trouble oneself|VsuruI||||||
-26085|be rejected, be expulsed, be boycotted, be ostracised|VsuruI||||||
+26085|be rejected, be expulsed, be boycotted, be ostracized|VsuruI||||||
 26086|be wired|VsuruI||||||
 26087|be unfaithful|VsuruI||||||
 26088|be evacuated, be emitted (e.g. of CO2, etc.), be ejected|VsuruI||||||
 26089|turn out in great numbers, appear one after the other|VsuruI||||||
 26090|be delivered|VsuruI||||||
-26091|be drained, be pumped out (water), be sewered|VsuruI||||||
+26091|be drained, be pumped out (water)|VsuruI||||||
 26092|be displaced|VsuruI||||||
 26093|be allotted, be apportioned, be shared|VsuruI||||||
 26094||-||||||
 26095|be abolished, be eliminated|VsuruI||||||
 26096|be extinct, be discontinued|VsuruI||||||
-26097|be assignmed (person to somewhere), be attached (person to another unit, organization, etc.)|VsuruI||||||
+26097|be assigned (person to somewhere), be attached (person to another unit, organization, etc.)|VsuruI||||||
 26098|visit a grave|VsuruI||||||
 26099|be ignited, catch fire|VsuruI||||||
 26100|be fired (e.g. gun), be discharged|VsuruI||||||
 26101|be detected (plot, fraud, etc.), be discovered, come to light, be uncovered|VsuruI||||||
 26102|be published|VsuruI||||||
-26103|be shown (of power, ability, etc.), be exhibited, be demonstrated, be displayed, be manifestated|VsuruI||||||
+26103|be shown (of power, ability, etc.), be exhibited, be demonstrated, be displayed, be manifestoed|VsuruI||||||
 26104|be emitted (light), be radiated (light)|VsuruI||||||
 26105|come into effect|VsuruI||||||
 26106|ferment|VsuruI||||||
@@ -26378,9 +26378,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26378|cynical, sarcastic, ironic, satirical|Ana||||||
 26379|be stationed (troops)|VsuruI||||||
 26380|be transported, be conveyed, be delivered|VsuruI||||||
-26381|be hospitalized, be transfered to hospital|VsuruI||||||
+26381|be hospitalized, be transferred to hospital|VsuruI||||||
 26382|be fired, be discharged (gun)|VsuruI||||||
-26383|be repayed, be refunded|VsuruI||||||
+26383|be repaid, be refunded|VsuruI||||||
 26384|attack on both sides (flanks)|VsuruI||||||
 26385|be bankrupt, be insolvent|VsuruI||||||
 26386|be damaged|VsuruI||||||
@@ -26423,10 +26423,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26423|be used together (jointly), be used at the same time|VsuruI||||||
 26424|be changed, be altered, be transmuted, be mutated|VsuruI||||||
 26425|change in appearance, transform|VsuruI||||||
-26426|be returned, be repayed|VsuruI||||||
-26427|be repayed, be reimbursed, be refunded, be redeemed|VsuruI||||||
+26426|be returned, be repaid|VsuruI||||||
+26427|be repaid, be reimbursed, be refunded, be redeemed|VsuruI||||||
 26428|reply|VsuruI||||||
-26429|be altered (character, essence), change in quality, transform, deteriorate, degenerate, transmutate|VsuruI||||||
+26429|be altered (character, essence), change in quality, transform, deteriorate, degenerate, transmute|VsuruI||||||
 26430|reply, answer|VsuruI||||||
 26431|be altered, be defaced, be debased, be falsified, be forged|VsuruI||||||
 26432|be bombed|VsuruI||||||
@@ -26785,7 +26785,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26785|be nursed, be nurtured, be reared, be lactated, suckle|VsuruI||||||
 26786|be retained, be maintained, be preserved|VsuruI||||||
 26787|be assisted, be supported, be aided, be helped|VsuruI||||||
-26788|be subsidized, be supplemented, be subvented|VsuruI||||||
+26788|be subsidized, be supplemented|VsuruI||||||
 26789||-||||||
 26790|spot (in bodybuilding)|VsuruI||||||
 26791|be replenished, be supplemented, be replaced, be refilled|VsuruI||||||
@@ -26807,7 +26807,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26807|be sieged, be encircled, be enveloped, be surrounded, be besieged|VsuruI||||||
 26808|be set fire|VsuruI||||||
 26809|be included, be covered|VsuruI||||||
-26810|abandon, renunciate, resign, abdicate|VsuruT||||||
+26810|abandon, renounce, resign, abdicate|VsuruT||||||
 26811||-||||||
 26812|perform a public duty|VsuruI||||||
 26813|visit Japan|VsuruI||||||
@@ -28093,14 +28093,14 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28093|be engaged in (work), pursue (e.g. studies), follow (a profession), be involved in|VsuruT||||||
 28094|be full, be complete, be perfect, be substantial|VsuruI||||||
 28095|be enhanced, be improved, be enriched, be upgraded|VsuruI||||||
-28096|be replenished, be repleted|VsuruI||||||
+28096|be replenished|VsuruI||||||
 28097|be filled with, be full of, be permeated|VsuruI||||||
 28098|be the chief priest (of a Buddhist temple)|VsuruI||||||
 28099|be sufficient|VsuruI||||||
 28100|be congested (e.g. traffic), be delayed, be stagnant|VsuruI||||||
 28101|be allocated, be appropriated |VsuruI||||||
 28102|be subordinated, be dependent|VsuruI||||||
-28103|be awarded, be confered|VsuruI||||||
+28103|be awarded, be conferred|VsuruI||||||
 28104|be received|VsuruI||||||
 28105|be received (television)|VsuruI||||||
 28106|increase (pressure)|VsuruI||||||
@@ -28123,7 +28123,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28123|be opened (for that day's business)|VsuruI||||||
 28124|be opened (a new library, museum, cinema, etc.)|VsuruI||||||
 28125|be changed (constitution)|VsuruI||||||
-28126|return, revolve, recurr|VsuruI||||||
+28126|return, revolve, recur|VsuruI||||||
 28127|regress|VsuruI;ZMt||||||
 28128|be opened (of a broadcasted station, post office, bureau, etc.), be established|VsuruI||||||
 28129|be clarified, be elucidated, be explained|VsuruI||||||
@@ -28153,20 +28153,20 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28153|be cancelled (contract)|VsuruI||||||
 28154|interpose, intervene, be involved|VsuruI||||||
 28155|be weighted (in averaging), be aggravated |VsuruI||||||
-28156|yell in order to to time or encourage an activity (e.g. "Heave ho!", "On three ... One, be two, be three!"), enthusiastically shout from the audience (e.g. in kabuki), shout (in concerts)|VsuruI||||||
+28156|yell in order to  time or encourage an activity (e.g. "Heave ho!", "On three ... One, be two, be three!"), enthusiastically shout from the audience (e.g. in kabuki), shout (in concerts)|VsuruI||||||
 28157|be resolute, be resigned, be ready, be prepared|VsuruI||||||
 28158|expand|VsuruI||||||
 28159|be isolated, be segregated, be separated, be quarantined|VsuruI||||||
 28160|be scattered, be diffused, be spread (e.g. signal across the spectrum)|VsuruI||||||
 28161|be reformed, innovate|VsuruI||||||
-28162|be in discord, be antagonised|VsuruI||||||
+28162|be in discord, be antagonized|VsuruI||||||
 28163|build a bridge|VsuruI||||||
 28164||-||||||
 28165|take into consideration, give consideration|VsuruI||||||
 28166|be invited, be solicited, be canvassed, be canvased, be induced, be persuaded, be encouraged|VsuruI||||||
 28167|be sold out|VsuruI||||||
 28168|be periodically thinned (e.g. forest)|VsuruI||||||
-28169|cave in, collapse, sink, be depressed (e.g. of the skull), be subsident|VsuruI||||||
+28169|cave in, collapse, sink, be depressed (e.g. of the skull)|VsuruI||||||
 28170|be nursed (patient)|VsuruI||||||
 28171|be misunderstood, be mistaken (idea), be guessed wrong|VsuruI||||||
 28172|make money|VsuruI||||||
@@ -28599,7 +28599,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28599|advise, counsel, remonstrate, recommend|VsuruT||||||
 28600|be completed|VsuruI||||||
 28601|act decisively, go through with, dare to do, carry out|VsuruI||||||
-28602|sightseee|VsuruI||||||
+28602|sightsee|VsuruI||||||
 28603|be summoned|VsuruI||||||
 28604|be resigned to, be prepared for, accept|VsuruT||||||
 28605|observe and contemplate, meditate on|VsuruT;ZB||||||
@@ -28652,7 +28652,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28652|be quarantined, be medically inspected|VsuruI||||||
 28653|be censored, be inspected, be examined|VsuruI||||||
 28654|be thrifty, be economical, be frugal|VsuruI||||||
-28655|be informed, be experienced, be knowledgable, be observant|VsuruI||||||
+28655|be informed, be experienced, be knowledgeable, be observant|VsuruI||||||
 28656|worry, be fearful, be anxious, be concerned|VsuruI||||||
 28657|motion, propose, suggest|VsuruT||||||
 28658|hold on to, stick to|VsuruT||||||
@@ -28674,7 +28674,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28674|be actual (as opposed to hidden or latent), be apparent, be obvious, be tangible, be revealed|VsuruI||||||
 28675|be settled, be payed (account)|VsuruI||||||
 28676|be sanctioned, be approved|VsuruI||||||
-28677|make a decisive battle, do a decive match|VsuruI||||||
+28677|make a decisive battle, make a decisive match|VsuruI||||||
 28678|crystallize, crystallise|VsuruI||||||
 28679||-||||||
 28680|be concentrated (efforts, forces, etc.), be gathered together, be regimented, be marshalled, be mobilized|VsuruI||||||
@@ -28694,11 +28694,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28694|write down what one hears, account what one hears|VsuruI||||||
 28695|stop at a port|VsuruI||||||
 28696|set to work|VsuruI||||||
-28697|be rejected, be dismissed, be turned down, be abandoned, be renunciated|VsuruI||||||
+28697|be rejected, be dismissed, be turned down, be abandoned, be renounced|VsuruI||||||
 28698|return to Tokyo|VsuruI||||||
 28699|return to the capital|VsuruI||||||
 28700|take a leave|VsuruI||||||
-28701|be layed off temporarily|VsuruI||||||
+28701|be laid off temporarily|VsuruI||||||
 28702|Happy New Year|CE||||||
 28703|assassin|N||||||
 28704|head (of a household), proprietor (of a store), proprietress, landlord, landlady, master (of a servant)|N||||||
@@ -28814,3 +28814,2593 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28814|be toughened, be disciplined, be trained|VsuruI||||||
 28815|move from place to place, be passed around repeatedly|VsuruI||||||
 28816|roll about|VsuruI||||||
+28817|prayer|N||||||
+28818|nearsightedness, shortsightedness, myopia|N;Ano||||||
+28819|nearsighted, shortsighted, myopic|Ana||||||
+28820|favorite, favourite, pet|N||||||
+28821|soon, in a few days|NAdv;T||||||
+28822|coastal waters, adjacent seas|N;Ano||||||
+28823|power of money, financial influence|N;Ano||||||
+28824|Kinki (region around Osaka, Kyoto, Nara)|N||||||
+28825|taboo word|N||||||
+28826|short distance|N||||||
+28827|recent state, present state, present condition, current status, current circumstances|N||||||
+28828|closeness, compactness, tight knit|N||||||
+28829|rigourous, rigorous, close, compact, tightly knit|Ana||||||
+28830|taboo, forbidden thing|N||||||
+28831|vein of gold|N||||||
+28832|financial connections, patron, source of money|N||||||
+28833|first of the sexagenary cycle|N||||||
+28834|tension, strain|N||||||
+28835|neighbourhood, neighborhood, vicinity|N||||||
+28836|money and goods|N||||||
+28837|labor, labour, exertion, diligent service|N||||||
+28838|worker|N||||||
+28839|physical strength, muscle strength|N||||||
+28840|recent work|N||||||
+28841|symmetry, balance, proportion, uniformity|N||||||
+28842|recent past, recent times|N||||||
+28843|early modern period (from the Azuchi-Momoyama period to the end of the Edo period)|N||||||
+28844|minerals and rocks, metal and stone utensils|N||||||
+28845|epigraph|N||||||
+28846|myopia, shortsightedness, nearsightedness|N;Ano||||||
+28847|self restraint, moderating one's behaviour, penitence, discipline|N||||||
+28848|confinement to one's home, house arrest|N||||||
+28849|near relative|N;Ano||||||
+28850|abstinence from alcohol, temperance|N||||||
+28851|prohibition of drinking|N||||||
+28852|shrinkage, contraction, economy, retrenchment|N;Ano||||||
+28853|money, funds|N||||||
+28854|equality, uniformity, evenness|N||||||
+28855|equal, uniform, even|Ana||||||
+28856|continuous service|N||||||
+28857|forbid, suppress|VruiT||||||
+28858|eagerness, enthusiasm, fervor, excitement, fighting spirit, fighting mood|N||||||
+28859|gorgeous, gaudy, dazzling, gay, resplendent|Ana||||||
+28860|(sea) mine|N||||||
+28861|run out of, be short of, be out of stock|VsuT||||||
+28862|be out of (e.g. breath), lose (one's patience|VsuT||||||
+28863|slice, strip|N||||||
+28864|cloth|N||||||
+28865|sharpness|N||||||
+28866|counter for scraps, pieces, etc.|C||||||
+28867|sharpness, cutting ability|N||||||
+28868|quickness (of wit), incisiveness, technical proficiency, skill|N||||||
+28869|peppiness (of a ball)|N||||||
+28870|pretty, lovely, beautiful, fair|Ana||||||
+28871|clean, clear, pure, tidy, neat|Ana||||||
+28872|completely, entirely|Ana||||||
+28873|gap, break, rift|N||||||
+28874|pause, interval, interruption|N||||||
+28875|cut, incision, notch, score|N||||||
+28876|end|N||||||
+28877|crack, crevice, fissure, chap, rift|N||||||
+28878|exchange, conversion, replacement, switching (to), switchover|N||||||
+28879|cut end, section, opening, slit|N||||||
+28880|point of view, (different) perspective, new approach|N||||||
+28881|devaluation (e.g. of currency), markdown, write-down, undercutting|N||||||
+28882|drizzle, light rain|N||||||
+28883|cutting a person down (without a second thought), sacrificing, throwing to the wolves, treating as sword fodder|N||||||
+28884|omission, rounding down (e.g. fractions), truncation|N||||||
+28885|forked road, crossroads|N||||||
+28886|issuing of bonds|N||||||
+28887|parasitism, parasitic|N;Ano||||||
+28888|homecoming, returning home|N||||||
+28889|great master of go, great master of shogi|N||||||
+28890|fervour, fervor, vigour, vigor, ardour, ardor, spirit|N||||||
+28891|tire track|N||||||
+28892|traces of a person or thing, path one has taken|N||||||
+28893|locus|N;ZMt||||||
+28894|steamship, steamboat, steamer|N||||||
+28895|shogi player, go player|N||||||
+28896|fierce god|N;Ano||||||
+28897|disposition, temperament, temper, nature|N||||||
+28898|(Japanese) Meteorological Agency, JMA|N||||||
+28899|meteorological observatory|N||||||
+28900|surprise attack|N;Ano||||||
+28901|drafting (e.g. a bill), drawing up|N||||||
+28902|suspension of indictment, leaving charge on the file|N||||||
+28903|tea drinking|N||||||
+28904|teahouse, tearoom, coffee lounge, coffee shop, (rather formal) cafe|N;Abr||||||
+28905|north entrance|N||||||
+28906|official regulations, inner rules|N||||||
+28907|steam whistle|N||||||
+28908|on the way back, returning|N;Ano||||||
+28909|cylinder|N;C||||||
+28910|opportunity, chance, good time (to do)|N||||||
+28911|trend, tendency, momentum|N||||||
+28912|be careful, pay attention, take care|VruiI;CE||||||
+28913|agreement, rules, code, protocol, convention, bylaw|N||||||
+28914|contribution, service|N||||||
+28915|smugness, pompousness, conceitedness, snobbishness, pretentiousness|N||||||
+28916|affected, smug, pompous, conceited, snobby, pretentious|Ana||||||
+28917|signs, omen, symptoms|N||||||
+28918|faint, swoon|N||||||
+28919|belonging, ascription, attribution, imputation, possession, jurisdiction|N||||||
+28920|reversion, return, restoration|N||||||
+28921|exaggeration|N||||||
+28922|solitude, loneliness, isolation|N;Ano||||||
+28923|solitary, lonely, isolated|Ana||||||
+28924|small tool, gadget|N||||||
+28925|(stage) properties, prop|N||||||
+28926|prop master|N;Abr||||||
+28927|manure, night soil, dung, fertiliser, fertilizer|N||||||
+28928|subsidiary (company)|N||||||
+28929|small build, small stature|N;Ano||||||
+28930|small, petite|Ana||||||
+28931|small pattern|N;Ano||||||
+28932|small|Ana||||||
+28933|cold wintry wind|N||||||
+28934|low voice, whisper|N;Ano||||||
+28935|freeze (of one's body), be frozen, become numb (with cold), be chilled|VruiI||||||
+28936|cut end, edge (of a page, etc.)|N||||||
+28937|small amount, small sum|N||||||
+28938|beginning, clue|N||||||
+28939|tiger's den, jaws of death, dangerous place|N||||||
+28940|smallness, narrowness|N||||||
+28941|small, narrow|Ana||||||
+28942|single-breadth cloth (approx. 36 cm wide)|N||||||
+28943|lamb|N||||||
+28944|orphan|N;Ano||||||
+28945|person without friends|N||||||
+28946|historical event, ancient event|N||||||
+28947|tradition, folklore, legend, origin|N||||||
+28948|orphanage|N||||||
+28949|beggar|N||||||
+28950|begging|N||||||
+28951|small island, islet|N||||||
+28952|the deceased, the departed|N||||||
+28953|solid (body)|N;Ano||||||
+28954|Black Sea|N;Ano||||||
+28955|skeleton, skeletal structure, build, physique|N;Ano||||||
+28956|framework|N;Ano||||||
+28957|funniness, comicality, humorousness, laughableness|N||||||
+28958|funny, comical, humorous, laughable|Ana||||||
+28959|ridiculousness, silliness, absurdity|N||||||
+28960|ridiculous, silly, absurd|Ana||||||
+28961|power of the state, national sovereignty, sovereign rights|N||||||
+28962|self denial, self control|N;Ano||||||
+28963|national treasury|N;Ano||||||
+28964|moment by moment, hour by hour|A;Ato||||||
+28965|diplomatic relations|N||||||
+28966|an individual, individual people|N||||||
+28967|ninefold, imperial palace, the Court|N||||||
+28968|(mental) attitude, way of thinking, attention, care, prudence, intention|N||||||
+28969|spirit, disposition|N||||||
+28970|from the bottom of one's heart, heart and soul, by nature|A||||||
+28971|anticipation, expectation|N||||||
+28972|archaic period of time (usu. a period of approx. two hours corresponding to one of the signs of the Chinese zodiac)|N||||||
+28973|carving, engraving, cutting, mincing|N||||||
+28974|victory|N||||||
+28975|strictness, cruelty|N||||||
+28976|severity, harshness, stringency, rigorousness, strictness, unfairness|N||||||
+28977|severe, harsh, stringent, rigorous, strict, unfair|Ana||||||
+28978|farewell, leave-taking|N||||||
+28979|Japanese literature|N||||||
+28980|state-supported provincial temple (Nara period)|N||||||
+28981|notice, announcement|N||||||
+28982|national university|N||||||
+28983|(Japanese) National Land Agency|N||||||
+28984|government management, state management|N;Ano||||||
+28985|national interest|N||||||
+28986|black smoke|N||||||
+28987|graphite|N||||||
+28988|study of (ancient) Japanese literature and culture|N||||||
+28989|provincial school (under Japan's ritsuryo system and pre-Sui Chinese law)|N;ar||||||
+28990|national sport (e.g. sumo)|N||||||
+28991|Japanese-language dictionary|N||||||
+28992|national armed forces|N||||||
+28993|acknowledgement, acknowledgment|N;Ano||||||
+28994|profession of love|N;Ano||||||
+28995|confession of sins (e.g. the confessional)|N;Ano||||||
+28996|indictment, prosecution, complaint|N||||||
+28997|national expenditure, government spending, public funds|N||||||
+28998|state guest|N||||||
+28999|national treasure|N||||||
+29000|moment by moment, hour by hour|A;Ato;CE||||||
+29001||-||||||
+29002|notice, bulletin|N||||||
+29003|resembling closely, being strikingly similar, bearing a strong likeness|N||||||
+29004|indigenous person, inhabitant of a country|N||||||
+29005|local, native|N||||||
+29006|local lords and samurai|N||||||
+29007|daimyo who did not leave his domains to meet the shogun in Kyoto (during the Muromachi period)|N||||||
+29008|conditions of a country|N||||||
+29009|detailed, scrupulous, careful, minute, faithful, elaborate|Ana||||||
+29010|diligent, honest, upright, sincere|Ana;ar||||||
+29011|country name|N||||||
+29012|grain, cereal, corn|N;Ano||||||
+29013|affairs of state|N||||||
+29014|Secretary of State|N||||||
+29015|State Department|N||||||
+29016|public opinion|N||||||
+29017|national power|N||||||
+29018|Japan International Cooperation Agency (1974), JICA|N||||||
+29019|national policy|N||||||
+29020|distinguished citizen, patriot|N||||||
+29021|accusation, complaint, charge, legal action|N;Ano||||||
+29022|national polity|N||||||
+29023|National Athletic Meet|N;Abr||||||
+29024|Committee of the National Diet|N;Abr||||||
+29025|national ownership|N;Ano||||||
+29026|national policy|N||||||
+29027|national tax|N||||||
+29028|National Tax Agency (Japan), Internal Revenue Service (USA), IRS|N||||||
+29029|revenue office, taxation bureau|N||||||
+29030|small, fine, detailed, stingy|Ana||||||
+29031|minutely, finely|A||||||
+29032|rice granary|N||||||
+29033|lowercase letter|N||||||
+29034|small letter|N||||||
+29035|adviser, advisor, consultant|N;Ano||||||
+29036|accessories, small articles|N||||||
+29037|shut oneself in (e.g. one's room), be confined in, seclude oneself, hide away, stay inside (one's shell)|VrugI||||||
+29038|be filled with (emotion|VrugI||||||
+29039|fill the room (of a gas, be heavy with (e.g. smoke), be stuffy, be dense|VrugI||||||
+29040|be muffled (e.g. voice)|VrugI||||||
+29041|hold (a castle|VrugI||||||
+29042|confine oneself in a temple to pray|VrugI||||||
+29043|be crowded, be packed|VmuI||||||
+29044|be complex|VmuI||||||
+29045|go into, put into, remain (seated), be plunged into (silence), do thoroughly|Vx||||||
+29046|do intently|Vx||||||
+29047|continue in the same state|Vx||||||
+29048|wrestler of the fourth highest rank|N;ZSm||||||
+29049|marriage, matrimony|N;Ano||||||
+29050|engagement, betrothal|N;Ano||||||
+29051|fiance, fiancee|N||||||
+29052|navy blue, deep blue|N;Ano||||||
+29053|milk powder|N||||||
+29054|baby formula|N||||||
+29055|digest|VsuT||||||
+29056|break down, break to pieces, crush|VsuT||||||
+29057|be able to use, be good at, have a good command of|VsuT||||||
+29058|finish, complete, manage, perform|VsuT||||||
+29059|sell|VsuT||||||
+29060|do ... well, do ... completely|VsuI;Sx||||||
+29061|good evening|OI||||||
+29062|insect, bug|N;Ano||||||
+29063|informal talk|N||||||
+29064|confusion, mixing, merger|N||||||
+29065|root, source, origin, foundation, base, principle|N;Ano||||||
+29066|mixing, mixture, meld|N||||||
+29067|miscegenation|N||||||
+29068|foundation, basis, core, fundamentals|N||||||
+29069|root and trunk|N||||||
+29070|mixed race, mixed parentage|N;Ano||||||
+29071|this season|NAdv;T||||||
+29072|turmoil, chaos, confusion|N||||||
+29073|mixing, blending, adding, adulteration|N||||||
+29074|Imperial Guards|N||||||
+29075|cooking stove, burner (gas, electric, etc.), range, cooktop, hob|N||||||
+29076|mixed (e.g. team, chorus)|N;Ano||||||
+29077|trace, traces, vestige, vestiges|N;Ano||||||
+29078|confused fight, free-for-all, melee|N||||||
+29079|close contest, close match|N||||||
+29080|friendship, intimacy|N||||||
+29081|this spring, spring this year|NAdv;T||||||
+29082|friendly talk, chat|N||||||
+29083|bewilderment, perplexity, embarrassment, discomfiture, bafflement|N||||||
+29084|congestion, crush, crowding, jam|N||||||
+29085|confusion, disorder|N||||||
+29086|hailing each other|N||||||
+29087|acting in concert, responding (to), sympathizing (with)|N||||||
+29088|agreement, concord|N;ZL||||||
+29089|learn by experience, learn one's lesson, learn the hard way|VruiI||||||
+29090|have enough (of), be disgusted with|VruiI||||||
+29091|isolation, being alone, being friendless|N||||||
+29092|roll|VsuT||||||
+29093|turn over, tip over, throw down|VsuT||||||
+29094|leave|VsuT||||||
+29095|buy and sell (quickly for a profit)|VsuT||||||
+29096|clothes, garment|N||||||
+29097|gown, robe|N||||||
+29098|coating (e.g. glaze, batter, icing)|N||||||
+29099|grow stiff|VrugI||||||
+29100|be absorbed in, be devoted to, be a fanatic, elaborate|VrugI||||||
+29101|light rain, drizzle|N||||||
+29102|used paper, paper for recycling|N||||||
+29103|sticking to (an opinion, theory, belief, etc.), clinging to, adherence, persistence, insistence|N||||||
+29104|bone fracture|N||||||
+29105|solid (body), solid matter, solid-state|N;Ano||||||
+29106|solo exhibition, one-man exhibition, one-woman exhibition|N||||||
+29107|tip of one's hand|N||||||
+29108|cheap trick, superficial wit, superficial cleverness|N||||||
+29109|lukewarm, cheap, perfunctory, makeshift, shortsighted|Ano||||||
+29110|congratulations, felicitations, best wishes|N||||||
+29111|longevity, long life|N||||||
+29112|especially, particularly, unusually, above all|A||||||
+29113|additionally|A;ar||||||
+29114|depending on the circumstances|CE;Af||||||
+29115|due to (with modifying verb)|CE||||||
+29116|without permission|CE||||||
+29117|notice, notification, warning|N||||||
+29118|permission, consent|N||||||
+29119|rejection, refusal, nonacceptance, declination, declining|N||||||
+29120|excuse, plea|N||||||
+29121|bone marrow, medulla|N;Ano||||||
+29122|true spirit, one's mind|N;Ano||||||
+29123|elaborate, exquisite, tasteful, refined, artistic|Af||||||
+29124|public safety commission|N||||||
+29125|public safety, public welfare|N||||||
+29126|high voltage, high pressure|N;Ano||||||
+29127|incline, grade, pitch|N||||||
+29128|slope (of a linear function)|N;ZMt||||||
+29129|gradient (vector calculus)|N;ZMt;ZPh||||||
+29130|buying power, purchasing power|N||||||
+29131|leaving the mound, being knocked out|N;ZBb||||||
+29132|resigning from a role or position|N||||||
+29133|fragrant, aromatic, sweet-smelling|Ai||||||
+29134|savory (smelling), savoury|Ai||||||
+29135|public appeal (e.g. for contributions), public offering (of securities), public advertisement (of a post), open recruitment|N||||||
+29136|workshop, studio, atelier|N||||||
+29137|offense and defense, offence and defence|N||||||
+29138|official document, archives|N||||||
+29139|official document, archives|N||||||
+29140|favourite dish (favorite), favourite food|N||||||
+29141|mineral|N||||||
+29142|detention, confinement, arrest|N||||||
+29143|high ground, plateau, heights|N;Ano||||||
+29144|construction, building, putting up, erecting, creation, formulation, architecture (systems, agreement, etc)|N||||||
+29145|prison, detention house, detention center, jail|N||||||
+29146|promise, satisfactoriness|N;Ano||||||
+29147|favourable, favorable, promising, satisfactory, in good shape|Ana||||||
+29148|flush, blush|N||||||
+29149|public hearing|N||||||
+29150|story-telling|N||||||
+29151|paid subscription (e.g. magazine)|N;Ano||||||
+29152|public management|N;Ano||||||
+29153|trade, commerce|N||||||
+29154|public interest, public benefit, public good|N;Ano||||||
+29155|public-service corporation, charitable corporation|N||||||
+29156|juridical (legal) person working for the public good|N||||||
+29157|delivery, issuance, handing over, granting|N||||||
+29158|official proclamation, announcement, promulgation (e.g. of regulations)|N||||||
+29159|capitulation, surrender, submission|N||||||
+29160|yield|N;ZEg||||||
+29161|large sum (money)|N;Ano||||||
+29162|large (sum of money)|Ana||||||
+29163|department (or school) of technology, engineering or science|N||||||
+29164|upper grades of primary school (sixth, fifth, and sometimes fourth grades)|N||||||
+29165|industrial arts, craft|N;Ano||||||
+29166|protest, objection|N;Ano||||||
+29167|mutual, reciprocal, alternate|N;Ano||||||
+29168|(Japanese) empress, queen|N;Ano||||||
+29169|industrial enterprise|N||||||
+29170|performance, act|N||||||
+29171|entertainment industry, show business|N||||||
+29172|mining industry|N||||||
+29173|red and white, colours for festive or auspicious occasions (colors)|N;Ano||||||
+29174|two teams, two groups|N||||||
+29175|Red and White singing contest, annual contest between male and female popular singers on New Year's Eve (sponsored and broadcast by NHK)|N;Abr||||||
+29176|extensiveness, vast range, wide scope|N||||||
+29177|extensive, vast, wide|Ana||||||
+29178|public hearing, trial|N;Ano||||||
+29179|wide, extensive, comprehensive, far-reaching, widespread|Ano;Ana||||||
+29180|steel sheet, steel plate, steel plates|N||||||
+29181|starting late|N;Ano||||||
+29182|public expense, public funds, public money, public expenditure|N||||||
+29183|construction cost|N||||||
+29184|high quality|N;Ano||||||
+29185|high-quality|Ana||||||
+29186|official bulletin, communique|N||||||
+29187|method of construction|N||||||
+29188|sailing, navigation|N||||||
+29189|popularity, favorable reputation, favourable reputation|N;Ano||||||
+29190|popular, favorable, favourable|Ana||||||
+29191|kindness, favor, favour|N||||||
+29192|kindness, favor, favour, friendliness|N||||||
+29193|goodwill, affection, liking (for someone), love|N||||||
+29194|dignity, eminence|N||||||
+29195|dignified, eminent, high ranking|Ana||||||
+29196|high order (digit, bit, etc.)|N||||||
+29197|high-order (digit, bit, etc.)|Ana||||||
+29198|wide area|N;Ano||||||
+29199|factory worker|N||||||
+29200|prognostic symptoms, after-effect|N||||||
+29201|public character|N||||||
+29202|vocal message, speech, statement|N||||||
+29203|prologue at the start of a kabuki performance|N||||||
+29204|constancy, permanence|N||||||
+29205|thyroid gland|N||||||
+29206|engineering course|N||||||
+29207|elevated (structure), overhead|N;Ano||||||
+29208|high seas, international waters|N||||||
+29209|town hall, public hall|N||||||
+29210|demotion|N||||||
+29211|official residence|N||||||
+29212|good feeling, good will, favourable impression, favorable impression|N||||||
+29213|high official|N;Ano||||||
+29214|aperture, bore, calibre, caliber|N||||||
+29215|good times, boom, (wave of) prosperity|N||||||
+29216|good opportunity, chance|N||||||
+29217|high (atmospheric) pressure, high-pressure system, anticyclone|N||||||
+29218|public funds|N||||||
+29219|antibacterialness, antimicrobialness|N;Ano||||||
+29220|antibacterial, antimicrobial|Ana||||||
+29221|detention, custody, confinement, internment|N||||||
+29222|curiosity, inquisitiveness|N||||||
+29223|finance corporation|N;Ano||||||
+29224|archaeology, archeology|N;Ano||||||
+29225|appeal, protest, complaint|N;ZLw||||||
+29226|filial piety|N||||||
+29227|filially pious|Ana||||||
+29228|cruise, navigation, sailing|N||||||
+29229|mining area, mine lot|N||||||
+29230|prosperous conditions, healthy economy|N||||||
+29231|permanence, perpetuity|N;Ano||||||
+29232|high salary|N||||||
+29233|fairness, justice|N||||||
+29234|fair, just|Ana||||||
+29235|fame|N;Ano||||||
+29236|famous, renowned|Ana||||||
+29237|citizen, freemen|N||||||
+29238|public hall, community center, community centre|N||||||
+29239|civil rights, franchise, citizenship|N||||||
+29240|Imperialist Party|N||||||
+29241|engineering, engineering works|N||||||
+29242|ingeniousness, skillfulness, cleverness, deftness|N||||||
+29243|ingenious, skillful, clever, deft|Ana||||||
+29244|premises, grounds, campus, compound, precincts|N||||||
+29245|high fever|N;Px||||||
+29246|pyro-|N;Px||||||
+29247|anti-Japanese|N||||||
+29248|official recognition, authorization, authorisation, licence, license, accreditation|N;Ano||||||
+29249|successor|N;Ano||||||
+29250|certified public accountant|N||||||
+29251|high temperature|N||||||
+29252|high-pitched tone, soprano|N||||||
+29253|outing, excursion, pleasure trip, going on a picnic|N||||||
+29254|tourist resort, holiday resort|N||||||
+29255|established practice, custom|N;Ano||||||
+29256|retail price|N||||||
+29257|retail store, retail shop|N||||||
+29258|high rate|N||||||
+29259|high-rate|Ana||||||
+29260|blast furnace|N||||||
+29261|public opinion, unbiased criticism, unbiassed criticism|N||||||
+29262|meritorious deed, services|N||||||
+29263|consideration, taking into account|N||||||
+29264|company, friendship, association, society, acquaintance|N||||||
+29265|public debt, public bond or securities|N;Ano||||||
+29266|High Court|N;Abr||||||
+29267|entertainment expenses|N||||||
+29268|handicraft|N||||||
+29269|work, construction, manufacturing|N||||||
+29270|maneuvering, manoeuvering|N||||||
+29271|cultivation, farming|N||||||
+29272|spy, agent provocateur, covert operative|N||||||
+29273|maker, builder, constructor|N||||||
+29274|machine tools|N||||||
+29275|probability, likelihood|N||||||
+29276|surrender, submission, capitulation|N||||||
+29277|being defeated (e.g. by a problem), giving up, giving in|N||||||
+29278|consideration, inquiry, enquiry, investigation, study|N||||||
+29279|welfare, public welfare, social welfare|N||||||
+29280|(former) Ministry of Health and Welfare|N;Abr||||||
+29281|offensive (movement), aggression|N||||||
+29282|welfare pension|N||||||
+29283|high efficiency, high performance|N;Ano||||||
+29284|highly efficient, highly performant|Ana||||||
+29285|good results|N||||||
+29286|Ministry of Health and Welfare (now Ministry of Health, Labour and Welfare)|N||||||
+29287|achievements, merit, meritorious service, meritorious deed|N||||||
+29288|public election|N;Ano||||||
+29289|resistance|N||||||
+29290|public (institution)|N;Ano||||||
+29291|snowfall, snow|N||||||
+29292|public corporation|N||||||
+29293|official residence|N||||||
+29294|public bonds|N||||||
+29295|envoy, diplomat below the rank of ambassador (e.g. deputy chief of mission, charge d'affaires), minister (of legation)|N||||||
+29296|company, firm (in China)|N||||||
+29297|young nobleman|N||||||
+29298|public and private, official and personal, government and people|N;Ano||||||
+29299|use, exercise (of one's right, authority, power, etc.)|N||||||
+29300|lecturer|N||||||
+29301|telecommunications, correspondence|N||||||
+29302|one's junior, next generation|N||||||
+29303|reversing, going astern, going backwards|N||||||
+29304|Imperial household|N||||||
+29305|high place, high altitude, heights, elevation|N||||||
+29306|broad view|N||||||
+29307|public office|N||||||
+29308|good fielding|N;ZBb||||||
+29309|offense and defense, offence and defence, batting and fielding|N||||||
+29310|short course, training|N||||||
+29311|sanitation, public health|N;Ano||||||
+29312|accusation, prosecution|N||||||
+29313|koso appeal (initial appeal to a higher court)|N;Ano||||||
+29314|enzyme|N;Ano||||||
+29315|high school graduate|N;Ano;Abr||||||
+29316|dispute, resistance|N||||||
+29317|plan, plot, idea, conception, vision, scheme|N||||||
+29318|multistory, multistoried, high-rise, high, tall|Ano||||||
+29319|rainfall, precipitation|N||||||
+29320|high level|N||||||
+29321|high-level|Ana||||||
+29322|amount of precipitation, precipitation|N||||||
+29323|alternation, change, relief, relay, shift, substitution (sports, etc.), taking turns|N||||||
+29324|Queen Mother, Empress Dowager|N||||||
+29325|crown princess|N||||||
+29326|official (rate, price, etc.)|N;Ano||||||
+29327|official residence|N||||||
+29328|process, operation, stage of a process, progress of work|N||||||
+29329|affirmation|N||||||
+29330|affirmative (logic)|N||||||
+29331|journey, course, distance, march, flight, drive, leg (of a journey, relay race, etc.)|N||||||
+29332|itinerary|N||||||
+29333|stroke (of a piston), throw (of a switch)|N||||||
+29334|high and low, rise and fall|N||||||
+29335|official discount (bank) rate|N||||||
+29336|publicness, officialness|N||||||
+29337|public, official|Ana||||||
+29338|fine weather|N||||||
+29339|changing for the better|N||||||
+29340|a posteriori, acquired|Ana||||||
+29341|Fair Trade Commission|N;Abr||||||
+29342|good (nice) pitching|N||||||
+29343|sudden price jump, steep price rise|N||||||
+29344|oral proceedings, oral pleadings|N||||||
+29345|convenience, favorability, favourability, expedience|N||||||
+29346|convenient, favorable, favourable, expedient|Ana||||||
+29347|reconciliation (between warring nations), (making of) peace|N||||||
+29348|dyer|N||||||
+29349|wasteland, wilderness, deserted land, prairie, vast plain, wilds, desert, wild land|N||||||
+29350|public commitment, public promise, campaign pledge, official vow|N;Ano||||||
+29351|autumn colours, fall colors, leaves changing color (colour)|N||||||
+29352|leaves turning red, red leaves|N||||||
+29353|leaves turning yellow, yellow leaves|N||||||
+29354|(Japanese) maple (Acer japonicum)|N||||||
+29355|venison|N;coq||||||
+29356|layered colors in garments, resembling autumn colors|N||||||
+29357|broadleaf tree|N||||||
+29358|acquaintance|N||||||
+29359|friendship, companionship|N||||||
+29360|public ownership|N;Ano||||||
+29361|steel material|N||||||
+29362|mine (ore)|N||||||
+29363|high mountain|N;Ano||||||
+29364|succeeding, following, trailing|N;Ano||||||
+29365|imperial family, royalty|N||||||
+29366|composition|N||||||
+29367|flood, flooding|N||||||
+29368|take measures, work out a plan|VruiT||||||
+29369|lecture, read aloud|VruiT||||||
+29370|confer|VruiT||||||
+29371|dramatic role for child, child actor|N||||||
+29372|hill, knoll|N||||||
+29373|employment (long term), hire|N||||||
+29374|little finger, pinky|N||||||
+29375|little toe|N||||||
+29376|characteristic, traditional, peculiar, inherent, native, eigen-|Ano;Ana||||||
+29377|section (i.e. of text), sentence, passage, paragraph|N;Sx||||||
+29378|phrase|N;ZL;Sx||||||
+29379|verse (of 5 or 7 mora in Japanese poetry; of 4, 5, or 7 characters in Chinese poetry)|N;Sx||||||
+29380|haiku, first 17 morae of a renga, etc.|N;Sx||||||
+29381|maxim, saying, idiom, expression|N;Sx||||||
+29382|present, gift|N||||||
+29383|hollow, cavity, dent, depression|N||||||
+29384|beak, bill|N||||||
+29385|fuse, pilot light|N||||||
+29386|cause (of a war, argument, revolt, etc.), origin, trigger|N||||||
+29387|whistle (sound made with the lips)|N||||||
+29388|forbidding to speak, muzzling (a person), bribing into secrecy|N||||||
+29389|hush money|N;Abr||||||
+29390|quarrel, dispute, argument|N||||||
+29391|hesitate to say, mumble, hem and haw, falter|VrugI||||||
+29392|severally, unanimously|A||||||
+29393|number of words a person speaks|N||||||
+29394|number of dependents, number of mouths to feed|N||||||
+29395|number of shares, items, applications, etc.|N||||||
+29396|mediation, good offices, intervention, mediator, middleman|N||||||
+29397|influential person, person of influence|N||||||
+29398|eloquence, eloquent person|N;ar||||||
+29399|way of speaking|N;ar||||||
+29400|word of mouth|N||||||
+29401|comment on an Internet forum or web page|N||||||
+29402|descent, downhill, decline, waning|N||||||
+29403|verbose, importunate, wordy, repetitious, long-winded|Ai||||||
+29404|heavy (taste), rich, strong, cloying, gaudy, loud|Ai||||||
+29405|driving force|N||||||
+29406|scheme, device, scheming, devising, figuring out, coming up with, solving ingeniously|N||||||
+29407|dedication to spiritual improvement (esp. through Zen meditation)|N||||||
+29408|candid advice, frank advice, honest opinion, exhortation|N;Ano||||||
+29409|nail (i.e. small metal spike)|N||||||
+29410|discrepancy, different or conflicting opinions|N||||||
+29411|bite into (e.g. rope into skin), cut into, dig into (e.g. of fingernails)|VmuI||||||
+29412|eat into, encroach, make inroads, penetrate (e.g. a market), break into (e.g. first place), erode, cut into (e.g. time|VmuI||||||
+29413|be wedged (i.e. underwear pulled from the back|VmuI;vul||||||
+29414|hang on to, hang from, cling to|VrugI||||||
+29415|hound, keep after (someone), refuse to back down, persist, tenaciously face (someone), doggedly oppose|VrugI||||||
+29416|grab the front of the opponent's mawashi|VrugI;ZSm||||||
+29417|check, hold back, keep at bay, stop, prevent, stem, curb, halt|VruiT||||||
+29418|lottery, lot, raffle, draw|N||||||
+29419|lottery, drawn lot|N||||||
+29420|stalk, stem|N||||||
+29421|multiplication table, times table|N||||||
+29422|difficult situation, adverse circumstances, predicament, trouble, dilemma, distress|N||||||
+29423|all over, everywhere, in every nook and cranny|A||||||
+29424|rearrangement (of classes), recomposition, recombination, reclassification|N||||||
+29425|draw (water), scoop up, dip up, pump out|VrugT||||||
+29426|understand (someone's feelings, grasp, surmise, take into consideration|VrugT||||||
+29427|weather, look of the sky|N||||||
+29428|situation, turn of affairs, signs, way the wind is blowing|N||||||
+29429|kun reading, kun'yomi, native Japanese reading of a Chinese character|N||||||
+29430|native Japanese reading of a Chinese character|N||||||
+29431|precept, lesson, one's teachings|N;Sx||||||
+29432|suffering, distress, hardship, trial|N||||||
+29433|national character, regional character|N||||||
+29434|countries|N||||||
+29435|last resort, desperate measure taken under pressure of necessity|CE||||||
+29436|instruction, direction, briefing|N||||||
+29437|(mental) agony, anguish, suffering, distress|N||||||
+29438|decoration, order, medal|N||||||
+29439|storage charges|N||||||
+29440|sincerely, earnestly|A||||||
+29441|repeatedly, over and over, again and again|A||||||
+29442|deep red, crimson|N||||||
+29443|rouge, lipstick|N||||||
+29444|upward move, advance|N||||||
+29445|move up, advance|VruiT||||||
+29446|extension ladder, aerial ladder|N||||||
+29447|draw (a thread), let out (e.g. a rope)|VsuT||||||
+29448|turn out in large numbers, flock, sally forth|VsuT||||||
+29449|send out, dispatch|VsuT||||||
+29450|lunge, unleash|VsuT||||||
+29451|inward transfer (of money), carry over (money from previous period)|N||||||
+29452|repetition, reiteration, iteration, refrain, cycle|N;Ano||||||
+29453|repeatedly|NAdv||||||
+29454|postponement|N||||||
+29455|black spot, black dot, bull's-eye|N||||||
+29456|failure mark|N;ZSm||||||
+29457|unbarked lumber|N||||||
+29458|Japan Current, Kuroshio Current|N||||||
+29459|wrap up, tuck in, pack, do up, cover with, dress in|VmuT||||||
+29460|racking one's brains, worrying oneself, being anxious|N||||||
+29461|hard fight, close game, struggle, tight contest|N||||||
+29462|comb|N||||||
+29463|free use|N||||||
+29464|pains, hard work, effort, trouble, labour, labor|N||||||
+29465|collection of haiku poems|N||||||
+29466|digging out, excavation|N||||||
+29467|bending, indentation|N||||||
+29468|refraction|N||||||
+29469|inflection|N||||||
+29470|warping (e.g. of opinion, reasoning, etc.), distortion|N||||||
+29471|tickle|VrugT||||||
+29472|tickle (one's curiosity, arouse, appeal to, flatter|VrugT||||||
+29473|make laugh, amuse, entertain|VrugT||||||
+29474|ticklish|Ai||||||
+29475|embarrassing|Ai||||||
+29476|punctuation mark|N||||||
+29477|overturn, capsize, upset|VsuT||||||
+29478|overthrow (government etc.)|VsuT||||||
+29479|reverse (decision etc.), disprove (an established theory etc.), overrule|VsuT||||||
+29480|disgrace, humiliation|N||||||
+29481|worry, care, concern|N||||||
+29482|ennui, boredom|N||||||
+29483|attach, stick together, paste, glue|VruiI||||||
+29484|place together, put side-by-side|VruiI||||||
+29485|make someone get married, get someone hitched|VruiI;coq||||||
+29486|aircraft carrier|N;Abr||||||
+29487|vacant land, unoccupied ground, empty lot|N||||||
+29488|air conditioning|N;Abr||||||
+29489|cave, cavity|N||||||
+29490|hollow|Ano||||||
+29491|airspace|N||||||
+29492|empty conveyance, empty taxi, free taxi|N||||||
+29493|having spaces available (of a parking lot)|N||||||
+29494|racing (an engine), idling (an engine)|N||||||
+29495|going in circles (esp. argument, discussion, etc.), spinning one's wheels|N||||||
+29496|crying from vexation, tears of regret|N||||||
+29497|memorial service for the dead, holding a service|N||||||
+29498|kudzu (Pueraria montana), Japanese arrowroot|N||||||
+29499|Chinese moonseed (Sinomenium acutum)|N||||||
+29500|crumbling, collapse, ruin|N||||||
+29501|has-been, wannabe|N;Sx||||||
+29502|cursive style of writing or calligraphy|N||||||
+29503|vanity|N||||||
+29504|great sum|N;Ano||||||
+29505|great (sum)|Ana||||||
+29506|falsehood, untruth, lie, misinformation|N;Ano||||||
+29507|fallacy (logic)|N||||||
+29508|refusal, rejection, denial, veto|N||||||
+29509|right of veto|N||||||
+29510|resident, inhabitant|N||||||
+29511|fabrication, concoction|N||||||
+29512|fictitious, fictional, imaginary|Ano||||||
+29513|utmost limits, extremity|N||||||
+29514|limit|N;ZMt||||||
+29515|far right (in politics), extreme right, ultraconservative|N;Ano||||||
+29516|nihility, nothingness|N||||||
+29517|holding a ceremony, wedding ceremony|N||||||
+29518|macroscopicness|N||||||
+29519|macroscopic|Ana||||||
+29520|living room|N||||||
+29521|master, masterhand, maestro|N||||||
+29522|donation, contribution|N||||||
+29523|leaving or staying|N||||||
+29524|(one's) course of action, (one's) position, (one's) attitude|N||||||
+29525|large build|N||||||
+29526|whole party, party as a whole|N||||||
+29527|interest, entertainment, pleasure|N||||||
+29528|implicit comparison (style of the Shi Jing)|N||||||
+29529|atrocious, fiendish, brutal, villainous|Ana||||||
+29530|conspiracy, collusion, complicity|N||||||
+29531|state (of mind), mental state, emotional condition|N||||||
+29532|field (of activity)|N||||||
+29533|one's lot, circumstance, situation in life|N||||||
+29534|place, region, area, land|N||||||
+29535|collaboration, co-authorship|N||||||
+29536|cooperation, conciliation, harmony, coordination|N||||||
+29537|smiting, blow|N||||||
+29538|religious organization, religious organisation|N||||||
+29539|(teacher's) platform, podium, dais|N||||||
+29540|strength, intensity|N||||||
+29541|strong (e.g. glasses), powerful (e.g. lens), intense (e.g. fear), extreme|Ano||||||
+29542|mutual prosperity|N||||||
+29543|appearing together, co-acting, co-starring|N||||||
+29544|recital contest|N||||||
+29545|strong wind, high wind, moderate gale|N||||||
+29546|coeducation|N||||||
+29547|kyogen, farce presented between noh plays or during the interlude of a noh play|N||||||
+29548|kabuki play, kabuki performance|N||||||
+29549|make-believe, ruse, trick|N||||||
+29550|conference, consultation, discussion, negotiation|N||||||
+29551|veteran, champion|N;Ana||||||
+29552||-||||||
+29553|one's circumstances, environment, situation (in life)|N||||||
+29554|threat, menace, coercion, terrorism|N||||||
+29555|complicity|N||||||
+29556|racewalking, race walking, walking race|N||||||
+29557|threat, menace|N||||||
+29558|affidavit, deposition, testimony|N||||||
+29559|subject, curriculum|N||||||
+29560|boundary|N||||||
+29561|blackmail, extortion, threat (to extort money)|N||||||
+29562|strong power of the state, iron fist, heavy hand|N||||||
+29563|dangerous weapon, lethal weapon, deadly weapon, murder weapon|N||||||
+29564|madness, insanity|N;Ano||||||
+29565|firm, strong, solid, stable|Ana||||||
+29566|firmness, strength, unbendingness, unyieldingness, uncompromisingness, stubbornness, toughness|N||||||
+29567|firm, strong, unbending, unyielding, uncompromising, stubborn, tough, hard-line|Ana||||||
+29568|forcing, enforcement|N||||||
+29569|forced, enforced|Ana||||||
+29570|panic, scare, consternation|N||||||
+29571|steamroller voting, steamrollering|N||||||
+29572|lesson, precept, teachings, moral|N||||||
+29573|school affairs, religious affairs|N||||||
+29574|fury, frenzy, madness|N;Ano||||||
+29575|strength, intensity, severity|N||||||
+29576|strong, intense, severe|Ana||||||
+29577|dinosaur|N||||||
+29578|joint sponsorship (of an event), cosponsorship, joint hosting|N||||||
+29579|bad harvest, poor crop|N;Ano||||||
+29580|communism|N||||||
+29581|Communist Party|N;Abr||||||
+29582|support, mutual aid, cooperation, approval, authorization, authorisation|N||||||
+29583|coexistence, living together|N;Ano||||||
+29584|symbiosis|N;Ano;ZBi||||||
+29585|paragenesis|N;Ano;ZGg||||||
+29586|compulsion, coercion, forcing (to do), enforcement|N||||||
+29587|correction (of fault, defect, flaw, etc.), remedy, rectification, redress, reform|N;Ano||||||
+29588|heart attack, angina pectoris|N||||||
+29589|(presidential) message|N||||||
+29590|teaching staff, faculty|N||||||
+29591|feeling obliged, being grateful, being thankful, being sorry, being ashamed|N||||||
+29592|obliged, grateful, thankful, sorry, ashamed|Ana||||||
+29593|shrinking back in fear|N;ar||||||
+29594|training, instruction|N||||||
+29595|founder of a religious sect|N||||||
+29596|concerto|N;ZMc||||||
+29597|arrangement, pact, agreement|N||||||
+29598|formidable enemy, strong enemy, tough enemy|N||||||
+29599|believer, adherent|N||||||
+29600|joint struggle, common (united) front|N||||||
+29601|deputy head teacher, vice principal|N||||||
+29602|concord, harmony, concert|N||||||
+29603|giving, provision, furnishing|N||||||
+29604|coercion, extortion, compulsion, force|N||||||
+29605|cultivation, refinement, culture, education|N;Ano||||||
+29606|teaching materials|N||||||
+29607|coexistence|N||||||
+29608|refusal, rejection|N||||||
+29609|(organ) rejection|N||||||
+29610|unthinking dismissal, strong reaction (against)|N||||||
+29611|dilemma, predicament|N||||||
+29612|relief, rescue|N||||||
+29613|payment, provision, benefit, present, delivery|N||||||
+29614|performance|N||||||
+29615|temporary absence from school|N||||||
+29616|recruiting, job offer, job vacancy|N||||||
+29617|relief, aid, rescue|N||||||
+29618|theater closure, theatre closure, stage absence|N||||||
+29619|wrestler's absence from the tournament|N;ZSm||||||
+29620|distress, wretched condition|N||||||
+29621|suspension of publication|N||||||
+29622|closure (of a library, museum, etc.)|N;Ano||||||
+29623|rest, break, recess, intermission|N||||||
+29624|recommended sentence, prosecution's demand for punishment|N||||||
+29625|patriot devoted to the salvation of his country|N||||||
+29626|(temporary) closure of school|N||||||
+29627|cancellation (of a lecture, class, etc.)|N||||||
+29628|narrowness|N||||||
+29629|narrow, tight, cramped|Ana||||||
+29630|formality, stiffness, strictness, ceremoniousness, rigidity|N||||||
+29631|formal, stiff, strict, ceremonious, rigid|Ana||||||
+29632|constraint, discomfort|N||||||
+29633|constrained, uncomfortable|Ana||||||
+29634|tightness|N||||||
+29635|tight (e.g. finances)|Ana||||||
+29636|hurriedly, in a hurry, in haste|A||||||
+29637|sudden|Ana;ar||||||
+29638|first-aid, emergency (aid)|N;Ano||||||
+29639|lifesaving|N;Ano||||||
+29640|investigation (esp. in academic and scientific contexts)|N||||||
+29641|urgent business, pressing need, imperative|N||||||
+29642|quick pace|N||||||
+29643|quick (pace)|Ana||||||
+29644|salary, wages, pay|N||||||
+29645|relief, aid, rescue, salvation, help|N||||||
+29646|cease-fire, truce, armistice|N||||||
+29647|pause, cessation, rest|N;Ano||||||
+29648|sudden rise (esp. of stock prices), jump|N||||||
+29649|rapid progress, radical|N||||||
+29650|centripetal force|N;ZPh||||||
+29651|unifying force, cohesive power|N||||||
+29652|rescue, extricate, reclaim, deliverance|N||||||
+29653|water supply|N||||||
+29654|pay, salary, wages|N||||||
+29655|allowance, grant, supply, providing with|N||||||
+29656|rest, break, recreation, recuperation, convalescence|N;Ano||||||
+29657|refueling (car, plane, etc.)|N||||||
+29658|lubricating (a machine), oiling|N||||||
+29659|petrol filling station, gasoline filling station|N||||||
+29660|mahjong, mah-jongg|N||||||
+29661|brand new|Ai||||||
+29662|sparseness, thinness, scatteredness, sporadicness|N||||||
+29663|sparse, thin, scattered, straggling, sporadic|Ana||||||
+29664|phantom, vision, illusion, dream, apparition|N;Ano||||||
+29665|dazzling, radiant|Ai||||||
+29666|waiting, waiting time|N;Sx||||||
+29667|wait tile, tile which would complete one's hand|N;ZMj;Sx||||||
+29668|rendezvous|N||||||
+29669|area where guests gather before the start of a tea ceremony|N||||||
+29670|waiting room|N;Abr||||||
+29671|meeting place for assignations, drinking, etc.|N;Abr;ar||||||
+29672|waiting room|N||||||
+29673|appointment|N||||||
+29674|rendezvous, meet at a prearranged place and time, arrange to meet|VruiI||||||
+29675|ambush, lying in wait for an ambush|N||||||
+29676|looking forward to, anxiously awaited|Ai||||||
+29677|certain, sure, doubtless|Ai;CE||||||
+29678|I have no doubt, You can depend on it, It's a safe bet|CE||||||
+29679|lie in wait, be on the watch for|VruiT||||||
+29680|wait impatiently for|VruiT||||||
+29681|wait eagerly for, look forward to|VmuT||||||
+29682|await, expect|VruiT||||||
+29683|bewilder, perplex, puzzle, delude, mislead, deceive|VsuT||||||
+29684|tempt, seduce|VsuT||||||
+29685|advance warning, previous notice, announcement|N||||||
+29686|herald, harbinger, forerunner, portent, omen|N||||||
+29687|moving forward (e.g. plans), acceleration (e.g. of payment schedule), front-loading|N||||||
+29688|preface, preamble, prolog|N||||||
+29689|getting an advance (on one's salary)|N||||||
+29690|rank-and-file wrestlers in the highest division|N;Ano;ZSm||||||
+29691|beforehand, for a long time|N||||||
+29692|front-facing|N;Ano;Ana||||||
+29693||-||||||
+29694|forward-looking, positivity, constructiveness|N;Ano||||||
+29695|forward-looking, positive, constructive|Ana||||||
+29696|serious look (on one's face), straight face|N||||||
+29697|renting a room|N||||||
+29698|divert (e.g. one's mind), distract, relieve (e.g. boredom)|VsuT||||||
+29699|conceal (e.g. one's sorrow with a smile), shift (the conversation)|VsuT||||||
+29700|confusing, misleading, equivocal, ambiguous, easily mixed up (e.g. similar words)|Ai||||||
+29701|disappear into, be lost in, slip into, get mixed in among|VruiI||||||
+29702|do something under the cover of (confusion|VruiI||||||
+29703|be almost indistinguishable, be confusingly similar|VruiI||||||
+29704|be diverted from (negative emotions, forget about|VruiI||||||
+29705|be distracted by, be too absorbed in|VruiI||||||
+29706|sincerity, true heart, devotion|N||||||
+29707|be confused, be flustered, be at a loss|VkuI||||||
+29708|fluke, chance, pure luck|N||||||
+29709|tuna (edible fish, Thunnus spp.), tunny|N||||||
+29710|Pacific bluefin tuna (edible fish, Thunnus orientalis)|N||||||
+29711|dead lay, starfish, person who is inactive during sexual intercourse|N;Sl;vul||||||
+29712|paralysis, palsy, numbness, stupor|N||||||
+29713|dancing, dance|N||||||
+29714|every time, each round|NAdv;T||||||
+29715|burial|N;Ano||||||
+29716|the number of flat things|N||||||
+29717|win-loss difference which influences the ranking of wrestlers|N;ZSm||||||
+29718|burying in the ground|N||||||
+29719|having underground deposits|N||||||
+29720|mix, combine|VruiT||||||
+29721|exchange (words|VruiT||||||
+29722|cross (e.g. swords), join together|VruiT||||||
+29723|mixed, mingled|N;Sx||||||
+29724|cross, intersect, join, meet|VrugI||||||
+29725|associate with, mingle with, consort with|VrugI||||||
+29726|have a sexual relationship, copulate|VrugI||||||
+29727|supply (goods, cover (costs), pay, finance, maintain (e.g. a family)|VuT||||||
+29728|give board, provide meals|VuT||||||
+29729|kindling, fuel|N||||||
+29730|piece(s) of firewood|N||||||
+29731|directly opposite, right in front|N||||||
+29732|middle of the forehead|N||||||
+29733|helmet front|N||||||
+29734|truth, reality|N;A||||||
+29735|sincerity, honesty, integrity, fidelity|N;A||||||
+29736|that's right|N;A;ar||||||
+29737|curtain, bunting|N||||||
+29738|act (in play)|N;C||||||
+29739|membrane, film|N||||||
+29740|sow, plant, seed|VkuT||||||
+29741|sprinkle (gold or silver powder on lacquerware)|VkuT||||||
+29742|the rise of the curtain, opening (of play)|N||||||
+29743|beginning (e.g. of an era), opening (festival, event, etc.)|N||||||
+29744|fall of the curtain, last scene, end of act|N||||||
+29745|pillow, bolster|N;Sx||||||
+29746|introduction (e.g. to a rakugo story), lead-in|N;Sx||||||
+29747|third highest division, wrestlers of the third highest division|N;ZSm||||||
+29748|highest-ranking division|N;ZSm||||||
+29749|diligence, hard work, conscientiousness, sincerity|N||||||
+29750|diligent, hardworking, conscientious, sincere|Ana||||||
+29751|health, fitness|N||||||
+29752|healthy, fit|Ana||||||
+29753|faithfulness, devotion|N;ar||||||
+29754|faithful, devoted|Ana||||||
+29755|chopping board, cutting board|N||||||
+29756|eyeball|N||||||
+29757|pupil and (dark) iris of the eye|N;ar||||||
+29758|insight, perceptivity, power of observation|N;ar||||||
+29759|look, field of vision|N;ar||||||
+29760|core, center, centre, essence|N;ar||||||
+29761|midsummer|NAdv;T||||||
+29762|(a) look, gaze|N||||||
+29763|invitation|N||||||
+29764|makeshift|N||||||
+29765|expiration (of a term), maturity (e.g. investment), serving one's (full) time|N;Ano||||||
+29766|perfect circle|N||||||
+29767|perfect (circle)|Ana||||||
+29768|cuteness|N||||||
+29769|cute|Ana||||||
+29770|ten thousand years|N||||||
+29771|eternity|N||||||
+29772|full|N;Ano||||||
+29773|expiration, termination|N||||||
+29774|chronicity, chronic|N;Ano||||||
+29775|chronic|Ana||||||
+29776|stupidity, foolishness, idiocy|N||||||
+29777|stupid, foolish, idiotic|Ana||||||
+29778|manzai, comic dialogue, two-person comedy act (usu. presented as a fast-paced dialogue, occ. presented as a skit)|N||||||
+29779|quite, entirely, completely, at all|A||||||
+29780|as if, as though, just like|A||||||
+29781|close clipping|N||||||
+29782|become rounded, roll into a ball|VrugI||||||
+29783|rubbing, chafing|N||||||
+29784|discord, friction, strife, conflict|N||||||
+29785|square|N;Ano;Ana||||||
+29786||-||||||
+29787|directly opposite, right in front|N||||||
+29788|midst, middle of, height of|N;NAdv||||||
+29789|anaesthesia, anesthesia|N;Ano||||||
+29790|mark, target|N||||||
+29791|find resolution, be settled, be agreed on, be completed|VrugI||||||
+29792|be collected, be assembled, be brought together|VrugI||||||
+29793|be well arranged, be in order, be unified, take shape, be coherent|VrugI||||||
+29794|settlement, conclusion, summary|N||||||
+29795|dance (orig. a whirling dance)|VuI||||||
+29796|flutter about, revolve|VuI||||||
+29797|just above, right overhead|N;Ano||||||
+29798|mawashi, belt, loincloth|N;Sx;ZSm||||||
+29799|mantle, cape|N||||||
+29800|gang rape|N||||||
+29801|narcotic, drug, dope|N||||||
+29802|dead of night, midnight|NAdv;T||||||
+29803|mix together, blend, compound|VsuI||||||
+29804|mark, guide, landmark|N||||||
+29805|purpose, aim, goal, intention, end|N||||||
+29806|sight (on a firearm)|N||||||
+29807|loss (of weight or volume, e.g. in transit), ullage, outage|N||||||
+29808|decrease (in value), reduction|N||||||
+29809|disorderliness, messiness|N||||||
+29810|disorderly, messy, ruined|Ana||||||
+29811|absurdness, unreasonableness, excessiveness, rashness|N||||||
+29812|absurd, unreasonable, excessive, rash|Ana||||||
+29813|very, extremely|A||||||
+29814|eyeball|N||||||
+29815|special feature, centerpiece, showpiece, drawcard|N;Abr||||||
+29816|special program, loss leader|N;Abr||||||
+29817|sunny-side up fried egg|N;Abr||||||
+29818|bargain goods, eye-catching goods, featured product, loss leader|N||||||
+29819|aim, goal|N||||||
+29820|prospect, outlook|N||||||
+29821|inner canthus, inner corner of the eye|N||||||
+29822|blessing, grace|N||||||
+29823|eye drops, eyewash|N||||||
+29824|niece|N||||||
+29825|good idea|N||||||
+29826|light and darkness, light and shade|N||||||
+29827|stipulation, stating clearly, documenting in writing, stating explicitly|N||||||
+29828|famous book, masterpiece (literary work)|N||||||
+29829|brand, make, description|N||||||
+29830|trading name of stocks and securities|N||||||
+29831|declaration, statement|N||||||
+29832|harvest moon|N||||||
+29833|bright moon, full moon|N||||||
+29834|elucidation, explicit statement, specification|N;Ano||||||
+29835|in name and in reality, nominally and virtually, form and contents|N||||||
+29836|clarity, lucidity, unequivocality, explicitness|N||||||
+29837|clear, clear-cut, lucid, unequivocal, explicit|Ana||||||
+29838|clear writing, specification|N||||||
+29839|famous music|N||||||
+29840|each, individual|N;Ano;NAdv||||||
+29841|maze, labyrinth, blind alley|N;Ano||||||
+29842|details, particulars, specifics|N||||||
+29843|detailed, minute|Ana||||||
+29844|detailed statement|N;Abr||||||
+29845|master|N||||||
+29846|expert board game player (chess, go, shogi, etc.)|N||||||
+29847|leader (of an alliance), leading power|N||||||
+29848|great actor, famous actor, star|N||||||
+29849|sworn friend|N||||||
+29850|white-eye family of birds (Zosteropidae)|N||||||
+29851|Japanese white-eye (Zosterops japonicus)|N||||||
+29852|jostling, milling about, crush, being jammed together|N;Ano||||||
+29853|packed with (activities, products, etc.), teeming with, chock-full of|Ano||||||
+29854|turn over, turn pages of a book|VrugT||||||
+29855|tear off, strip off, tear up|VrugT||||||
+29856|every person, each one, everybody|N||||||
+29857|before one's eyes, in front of one, under one's nose|N;CE||||||
+29858|immediate, imminent, around the corner|N;CE||||||
+29859|exemption from responsibility, disclaimer|N;Ano||||||
+29860|dismissal, sacking, discharge|N||||||
+29861|face, honour, honor|N||||||
+29862|meld|N;ZMj||||||
+29863|lineup (of players participating in a mahjong game)|N||||||
+29864|principal, main, important, fashionable|N;Ano||||||
+29865|before one's eyes, under one's nose|N||||||
+29866|immediate (e.g. interests), present, at hand, short-run|N;Ano||||||
+29867|foresight, near future|N||||||
+29868|appearance|N||||||
+29869|downfall, ruin, collapse, destruction|N||||||
+29870|thoughtless, reckless, careless, rash|Ana||||||
+29871|seldom, rare|Ana||||||
+29872|ordinary, usual, common|Ana||||||
+29873|excessive, immoderate, extreme|Ana;ar||||||
+29874|rarely, seldom|A||||||
+29875|criterion, standard, yardstick, reference, aim|N||||||
+29876|rough estimate, approximation|N||||||
+29877|fruit, nut|N||||||
+29878|seed|N||||||
+29879|(in broth) pieces of meat, vegetable, etc.|N||||||
+29880|content, substance|N||||||
+29881|not be found|Ai||||||
+29882|be found|VrugI||||||
+29883|widow|N||||||
+29884|glued to, pressing tightly against, closely related to|N||||||
+29885|giving total coverage to the key figure(s) of a TV or film documentary|N||||||
+29886|contact printing|N||||||
+29887|not yet known, unknown, strange|N;Ano||||||
+29888|hardly recognise, mistake for something or somebody else|VruiT||||||
+29889|(an) unknown, unknown number, variable|N;ZMt||||||
+29890|unknown quantity, not yet known|N;Ano||||||
+29891|heading, headline, title, caption|N||||||
+29892|index|N||||||
+29893|headword|N;Abr||||||
+29894|point worthy of note, highlight (e.g. in a film), thing to note|N||||||
+29895|good prospects for the future, promise|N||||||
+29896|airs, pretensions, show, ostentation, display, appearance, vanity, charm|N||||||
+29897|appearing and disappearing|N||||||
+29898|polish, improvement, burnishing|N||||||
+29899|agile, nimble, light (of foot)|Ana||||||
+29900|casual (clothing), light (e.g. luggage)|Ana||||||
+29901|carefree, with limited responsibility|Ana||||||
+29902|unsightly, ugly, unseemly, indecent, deplorable, disgraceful, shameful|Ai||||||
+29903|unpublished, not yet announced|N||||||
+29904|unpaid, overdue|N;Ano||||||
+29905|prospect, outlook|N||||||
+29906|viewing platform|N;Abr||||||
+29907|command a view, look out over (onto, overlook|VsuT||||||
+29908|watch-keeping, guard, lookout|N||||||
+29909|trade fair|N||||||
+29910|gaze at, fix one's eyes upon|VrugI||||||
+29911|miserable, wretched, unhappy, sad, pitiable|Ana||||||
+29912|unripeness, greenness|N;Ano||||||
+29913|unripe, green|Ana||||||
+29914|inexperience, immaturity, lack of skill|N;Ano||||||
+29915|inexperienced, immature, unskilled|Ana||||||
+29916|premature baby|N||||||
+29917|new moon, crescent moon|N||||||
+29918|reward, compensation, repayment, something done or given in return|N||||||
+29919|collateral, security|N||||||
+29920|turning to look behind|N||||||
+29921|uncivilized, uncivilised, primitive, savage|N;Ano||||||
+29922|undeveloped (land), unexplored (territory, field, etc.)|N;Ano||||||
+29923|unbloomed (flower)|N;Ano||||||
+29924|unsettledness, pendingness, unresolvedness|N||||||
+29925|unsettled, pending, unresolved|Ana||||||
+29926|(tree) trunk, (arrow) shaft, (tool) handle, backbone, base|N||||||
+29927|abandonment, giving up, forsaking|N||||||
+29928|bargain sale, selling off cheaply|N||||||
+29929|edge (e.g. of an architectural member), boundary|N||||||
+29930|starting a train (or bus, etc.) before all the passengers are on board|N||||||
+29931|making a snap decision, starting an action without considering objections to it any longer|N||||||
+29932|smuggling|N||||||
+29933|unmarried, not yet married|N;Ano||||||
+29934|portable shrine (carried in festivals)|N||||||
+29935|palanquin|N;LHn||||||
+29936|buttocks, lower back, waist, hips|N||||||
+29937|visiting ill or distressed people, writing get-well letters|N||||||
+29938|get-well gifts, get-well letters|N||||||
+29939|expression of sympathy, expression of concern, enquiry, inquiry|N||||||
+29940|watch over, watch attentively|VrugT||||||
+29941|less than, insufficient|N;Sx||||||
+29942|early dawn, grey of morning, gray of morning|NAdv;T||||||
+29943|close to the ear|N||||||
+29944|welcome news, invitingness, encouragment, temptation, hopefulness|N||||||
+29945|welcome (news), inviting, encouraging, tempting, hopeful|Ana||||||
+29946|offensiveness (to the ear), raspness, roughness, harshness, gratingness, jarringness, cacophony|N||||||
+29947|hard (on the ears), offensive (to the ear), rasping, rough, harsh, grating, jarring, cacophonous|Ana||||||
+29948|private management|N||||||
+29949|privatization, privatisation|N||||||
+29950|popular will|N||||||
+29951|throwing oneself (e.g. into the water to commit suicide)|N||||||
+29952|Minamata disease|N||||||
+29953|south entrance|N||||||
+29954|review, reconsideration, revision|N||||||
+29955|apprenticeship, learning by observation|N||||||
+29956|apprentice, trainee, probationer|N;Ano||||||
+29957|follow another's example|VuT||||||
+29958|peak, summit, ridge, top|N||||||
+29959|back of a blade|N||||||
+29960|folk craft, folk art|N||||||
+29961|civil affairs, civil case|N;Ano||||||
+29962|private demand|N||||||
+29963|private house|N||||||
+29964|ripening (of a crop)|N;Ano||||||
+29965|crop, harvest|N;Ano||||||
+29966|ransom demand|N||||||
+29967|payment default, overdue on a payment|N||||||
+29968|militia, militiaman|N||||||
+29969|civil law, civil code|N||||||
+29970|civil administration, civil government|N||||||
+29971|politics focused on the promotion of public welfare|N||||||
+29972|public welfare, the people's livelihood|N||||||
+29973|Democratic Socialist Party|N||||||
+29974|remembrance, recollection, recognition|N||||||
+29975|overlook, fail to notice, miss (seeing)|VsuT||||||
+29976|charm, fascination, glamour, glamor, attraction, appeal|N||||||
+29977|fascination|N||||||
+29978|cape (on coast)|N||||||
+29979|fidelity, honour, honor, constancy|N||||||
+29980|chastity (of a woman), faithfulness (e.g. to one's husband)|N||||||
+29981|imperial mausoleum, Emperor's tomb|N||||||
+29982|big hill|N||||||
+29983|highlight (scene), high point, climax, showtime|N||||||
+29984|show-off scene (of an actor in a play)|N||||||
+29985|show off, flaunt|VsuT||||||
+29986|minor, not of age|N||||||
+29987|seeming, pose, show, pretense, sham, mock|N;Ano||||||
+29988|strange, unfamiliar, unknown|Apn||||||
+29989|last day of the month|N||||||
+29990|misjudge, mistake, misread|VuT||||||
+29991|misjudge (someone), overestimate|VuT||||||
+29992|miss seeing, overlook, fail to notice|VuT||||||
+29993|intimacy, nearness|N||||||
+29994|close (relationship, connection, etc.), intimate, near|Ana||||||
+29995|closeness|N||||||
+29996|close (together)|Ana||||||
+29997|room that cannot be entered (e.g. because it's locked from the inside)|N||||||
+29998|secret room|N||||||
+29999|crowding together, clustering together, close formation, swarm|N||||||
+30000|appearance|N||||||
+30001|undecidedness, pendingness|N;Ano||||||
+30002|not yet fixed, undecided, pending|Ana||||||
+30003|make sure of, assure oneself of, see with one's own eyes, ascertain|VruiT||||||
+30004|approval, acceptance, recognition, acknowledgement|N||||||
+30005|private seal, signet|N;Abr||||||
+30006|unobstructed view, perspective, visibility, vista|N||||||
+30007|forecast, outlook, prospect, prediction|N||||||
+30008|insight, foresight|N||||||
+30009|be fascinated (by), be captivated by, be enchanted by, gaze admiringly at, watch in fascination|VruiI||||||
+30010|smuggling, bootlegging, illicit trade|N||||||
+30011|density|N||||||
+30012|smuggling oneself into a country, illegal immigration|N||||||
+30013|poaching|N||||||
+30014|secret agreement|N||||||
+30015|smuggling, contraband trade|N||||||
+30016|shameful, disgraceful, indecent, unseemly, unbecoming, improper|Ai||||||
+30017|three|num||||||
+30018|lose sight of, miss|VuT||||||
+30019|distinction|N||||||
+30020|attraction, fascination, lure, captivation, charm|N;Ano||||||
+30021|mountain recess, deep in the mountains|N||||||
+30022|before it happens, previously|N||||||
+30023|landing, unloading (e.g. a ship)|N||||||
+30024|catch (of fish), takings|N||||||
+30025|sales (of a shop)|N||||||
+30026|defloration (e.g. of a geisha)|N||||||
+30027|preservation (of cut flowers, in ikebana)|N||||||
+30028|waterside, waterfront|N||||||
+30029|spout|N||||||
+30030|(being) by oneself, with no outsiders present|N;Ano||||||
+30031|light blue, pale blue, aqua|N;Ano||||||
+30032|water content, moisture, juiciness, dampness|N||||||
+30033|water vapor (vapour), steam|N||||||
+30034|dropsy, edema, oedema|N||||||
+30035|stand-offish, distant, not frank, reserved|Ai||||||
+30036|watery (alcohol, coffee, etc.)|Ai||||||
+30037|dilution, watering down|N;Af||||||
+30038|inflation (of budget, claim, etc.), padding|N;Af||||||
+30039|fresh and youthful, lively, vibrant, vivacious, juicy (e.g. fruit)|Ai||||||
+30040|hold, charge, keep possession, in charge|N;Sx||||||
+30041|wear, durability, life, draw|N;Sx||||||
+30042|usage|Sx||||||
+30043|unity, even matching, interdependence|N||||||
+30044|steadiness (of market price), holding, no change|N||||||
+30045|inherent flavor, inherent flavour, natural taste|N||||||
+30046|distinctive characteristic (of a person, work, etc.), peculiar quality, special ability|N||||||
+30047|taking something out, carrying out|N||||||
+30048|providing money oneself, paying with one's own money|N||||||
+30049|corbel|N;ZAc||||||
+30050|strengthening under a seam (clothing)|N||||||
+30051|take out, carry out, bring out from where it belongs|VsuT||||||
+30052|mention something, broach a topic, bring up (a subject), raise (an issue), mention|VsuT||||||
+30053|one's (own) house|N||||||
+30054|stock holdings, one's shares|N||||||
+30055|takeout (i.e. food), take-out, takeaway, take-away|N||||||
+30056|bring back, carry home, take out (e.g. food)|VrugT||||||
+30057|bring-your-own (e.g. food and drink), carry-on (e.g. luggage)|N||||||
+30058|take something into ..., bring in, carry in|VmuT||||||
+30059|lodge (a complaint), file (a plan), bring (a proposal), commence negotiations|VmuT||||||
+30060|bring to (a state: tied game|VmuT||||||
+30061|carry over, carry forward, keep (for later), defer|VsuT||||||
+30062|hold out (e.g. against an attack), hang on, withstand, endure, last|VruiT||||||
+30063|one's nature, characteristic, inherent, natural|N;Ano||||||
+30064|rotation (of a post, role, etc.), taking turns|N||||||
+30065|one's property, personal effects, one's belongings|N||||||
+30066|recover, rally, improve, pick up|VsuT||||||
+30067|owner, proprietor, possessor (e.g. of talent, beauty, etc.)|N||||||
+30068|returning, giving back|N||||||
+30069|struggle, writhe, wriggle, squirm|VkuI||||||
+30070|act franticly, make desperate efforts|VkuI||||||
+30071|at present, now|NAdv;T||||||
+30072|charcoal|N||||||
+30073|before one's very eyes, under one's nose, imminence, close at hand|N;Ano||||||
+30074|disagree, dispute, fight (over)|VruiI||||||
+30075|thigh|N||||||
+30076|femoral|Ano||||||
+30077|rub, crumple|VmuT||||||
+30078|massage|VmuT||||||
+30079|argue, have a heated discussion|VmuT||||||
+30080|train, coach|VmuT||||||
+30081|jostle, crowd, shake, rock|VmuT||||||
+30082|have various experiences (out in the world)|VmuT||||||
+30083|pattern, design|N||||||
+30084|(family) crest, coat of arms|N||||||
+30085|Ministry of Education, Science and Culture (1871-2001)|N;Abr||||||
+30086|frame for drying clothes, clotheshorse|N||||||
+30087|manner of speaking|N||||||
+30088|verbal argument|N||||||
+30089|objection, protesting a decision (esp. that of a sumo referee)|N||||||
+30090|rumor, rumour|N||||||
+30091|place hidden from view, cover, shelter, hiding place|N||||||
+30092|failure to reach agreement|N||||||
+30093|(idle) curiosity, fancifulness|N||||||
+30094|fanciful, whimsy, having strange tastes|Ana||||||
+30095|wholly, solely, entirely, exclusively, devotedly, fixedly|A;Ano||||||
+30096|principally, mostly, chiefly, mainly|A;Ano||||||
+30097|brittle, fragile, weak, frail|Ai||||||
+30098|tender-hearted, sentimental, easily moved|Ai||||||
+30099|leak, run out|VrugI||||||
+30100|chief mourner|N||||||
+30101|lean against, lean on, recline on|VruiI||||||
+30102|lie heavy (on the stomach), be uneasily digested|VruiI||||||
+30103|hospitality, reception, treatment, service, entertainment|N||||||
+30104|(light) refreshment, entertaining with food and drink, treat|N||||||
+30105|entertain, make welcome|VsuT||||||
+30106|original stock|N||||||
+30107|get entangled, get tangled, tangle|VruiI||||||
+30108|have poor control over (one's tongue, trip over|VruiI||||||
+30109|become complicated|VruiI||||||
+30110|with, by, by means of|CE||||||
+30111|because of, on account of, for, due to|CE||||||
+30112|on (a day, date), at (a time), as of (e.g. today)|CE||||||
+30113|adds emphasis to preceding word|CE||||||
+30114|in addition (to being), moreover, as well as, and|CO;CE||||||
+30115|therefore, and so, hence|CO;CE||||||
+30116|cecum, caecum, blind gut|N;Ano;ZAn||||||
+30117|(vermiform) appendix|N;Ano;coq||||||
+30118|appendicitis|N;coq||||||
+30119|heavy blow, heavy hit|N||||||
+30120|school for the blind|N||||||
+30121|fury, power, menace|N||||||
+30122|blind person|N||||||
+30123|fierce attack|N||||||
+30124|blindness|N;Ano||||||
+30125|blind|Ana||||||
+30126|arrangement, appointment|N||||||
+30127|I'm sorry, (it's) inexcusable|CE||||||
+30128|thank you very much (for help, etc.)|CE||||||
+30129|blind spot|N||||||
+30130|event, festivities, function, social gathering, auspices, opening, holding (a meeting)|N||||||
+30131|recklessness, thoughtlessness, rashness, impulsiveness, madness|N||||||
+30132|reckless, thoughtless, rash, ill-advised, impulsive, mad (e.g. scheme)|Ana||||||
+30133|shamelessness|N||||||
+30134|shameless|Ana||||||
+30135|chaos, confusion|N||||||
+30136|disorderly, chaotic, confused|Ana||||||
+30137|uselessness, futility, vainness|N;Ano||||||
+30138|useless, futile, vain|Ana||||||
+30139|unrelatedness, irrelevance, indifference|N;Ano||||||
+30140|unrelated, irrelevant, indifferent|Ana||||||
+30141|without relations (esp. of a deceased person), having no surviving relatives|N;Ano||||||
+30142|unrelated to the teachings of Buddha, unable to be saved by Buddha|N;Ano;ZB||||||
+30143|calm, windless|N;Ano||||||
+30144|harmlessness|N;Ano||||||
+30145|harmless|Ana||||||
+30146|wheat, barley, oat (oats)|N||||||
+30147|silence (not speaking), muteness|N;Ano||||||
+30148|without dividend|N;Ano||||||
+30149|lawlessness, injustice, wrong|N||||||
+30150|outrageous, lawless, disorderly, unjust, unreasonable|Ano;Ana||||||
+30151|nonsense, no meaning, meaninglessness|N||||||
+30152|nonsensical, meaningless|Ana||||||
+30153|unconsciousness|N||||||
+30154|unconscious|Ana||||||
+30155|the unconscious|N||||||
+30156|unconscious|Ana||||||
+30157|innocence, simple-mindedness|N||||||
+30158|innocent, simple-minded|Ana||||||
+30159|innocence, guiltlessness, false accusation, false charge|N;Ano||||||
+30160|absence of the fact, insubstantiality, lacking substance|N||||||
+30161|insincerity, dishonesty|N;ar||||||
+30162|heartlessness, hardness of heart, coldheartedness, cruelty|N;Ano||||||
+30163|heartless, coldhearted, cruel|Ana||||||
+30164|insentient, inanimate|N;Ano;ZB||||||
+30165|unconditional|N;Ano||||||
+30166|weightlessness, zero gravity|N||||||
+30167|meeting, greeting, welcome|N||||||
+30168|apathy, indifference|N||||||
+30169|apathetic, indifferent|Ana||||||
+30170|on the left as one faces (it)|CE||||||
+30171|abstract, immaterial, moral, spiritual, intangible|N;Ano||||||
+30172|intangible cultural asset|N||||||
+30173|peel off, come off, be taken off|VruiI||||||
+30174|direction, orientation, aspect, exposure|N;Sx||||||
+30175|suited to, suitable for, designed for|N;Sx||||||
+30176|tendency, inclination|N||||||
+30177|nature (of a request or desire)|N||||||
+30178|person|N||||||
+30179|indefinite|N||||||
+30180|inorganic substance|N||||||
+30181|indefinite|Ano||||||
+30182|unsigned, unregistered|N||||||
+30183|apathy, lassitude, lethargy, languor|N||||||
+30184|apathetic, lethargic|Ana||||||
+30185|flawlessness, spotlessness, soundness, perfection|N;Ano||||||
+30186|unhurt, uninjured, unwounded, flawless, spotless, sound, perfect|Ana||||||
+30187|husband, groom|N||||||
+30188|(one's) son-in-law|N||||||
+30189|other side, opposite side, other party|N||||||
+30190|without a holiday, nonstop|N||||||
+30191|unpaid, nonsalaried|N;Ano||||||
+30192|nameless, unnamed, anonymous, unsigned|N;Ano||||||
+30193|obscure, unknown, not famous|N;Ano||||||
+30194|causeless, unjustifiable|N;Ano||||||
+30195|unlicensed, without a license (licence)|N||||||
+30196|principle, aim, main purpose, central part, pillar|N||||||
+30197|purport, gist, drift, meaning|N||||||
+30198|instructions, orders, intention, wishes|N||||||
+30199|ridge (of roof)|N||||||
+30200|back of a sword|N||||||
+30201|counter for buildings, apartments, etc.|Sx;C||||||
+30202|mortification|N;Ano||||||
+30203|regretful, chagrinous, mortified|Ana||||||
+30204|freedom from obstructive thoughts|N;ZB||||||
+30205|incompetence, inefficiency, inability, incapacity|N;Ano||||||
+30206|incompetent, inefficient, unable|Ana||||||
+30207|incompetent person|N||||||
+30208|unevenness (of colour, paint, etc.), irregularity, nonuniformity, blotchiness|N||||||
+30209|uneven (colour, paint, etc.), irregular, nonuniform, blotchy|Ana||||||
+30210|unevenness (of quality, results, behaviour, etc.), inconsistency, instability|N||||||
+30211|uneven (quality, results, behaviour, etc.), inconsistent, unstable|Ana||||||
+30212|fickleness, capriciousness, fitfulness|N||||||
+30213|fickle, capricious, fitful|Ana||||||
+30214|purple, violet|N;Ano||||||
+30215|(earning or paying) no interest|N||||||
+30216|powerlessness, helplessness, incompetence|N;Ano||||||
+30217|powerless, helpless, incompetent|Ana||||||
+30218|immeasurable|N;Ano||||||
+30219|covet, crave, lust insatiably for|VrugT||||||
+30220|indulge in, devour greedily|VrugT||||||
+30221|lack of policy, having no measures, lacking means|N;Ano;Ana||||||
+30222||-||||||
+30223|inanimate object|N||||||
+30224|anarchy|N||||||
+30225|unrestrictedness, limitlessness|N;Ano||||||
+30226|unlimited, unrestricted, limitless|Ana||||||
+30227|irresponsibility|N||||||
+30228|irresponsibile|Ana||||||
+30229|no outs|N;ZBb||||||
+30230|disregarding, ignoring|N||||||
+30231|steaming|N;Sx||||||
+30232|cavity, tooth decay, decayed tooth, dental caries|N||||||
+30233|lack of qualification, lack of certification|N||||||
+30234|unqualified, unlicensed, uncertified|Ana||||||
+30235|innocence|N;Ano||||||
+30236|innocent|Ana||||||
+30237|unsentience|N;Ano||||||
+30238|insentient (i.e. plants, inanimate objects, etc.)|Ana||||||
+30239|freedom from obstructive thoughts|N;Ano;ZB||||||
+30240|free from obstructive thoughts|Ana||||||
+30241|insensitiveness, inconsideration, callousness|N||||||
+30242|insensitive, inconsiderate, callous, thick-skinned|Ana||||||
+30243|rather, better, instead|A||||||
+30244|excessively, very much|A||||||
+30245|independent (esp. in politics), non-partisan|N;Ano||||||
+30246|ending, conclusion|N||||||
+30247|join, union, connecting|N||||||
+30248|knot, knotting|N||||||
+30249|rice ball|N;ZF||||||
+30250|connection, relation|N||||||
+30251|be related, be connected, be joined together|VkuI||||||
+30252|result in, lead to, bring about|VkuI||||||
+30253|scoreless (game or competition)|N||||||
+30254|unaffiliated voters, floating voters, swinging voters|N||||||
+30255|without a vote|N||||||
+30256|thoughtlessly, recklessly, rashly, indiscriminately, indiscreetly, at random|A||||||
+30257|excessively, unreasonably, immoderately, absurdly|A||||||
+30258|unselfishness, unavariciousness|N;Ano||||||
+30259|unselfish, disinterested, unavaricious, free of avarice|Ana||||||
+30260|innocence, being not guilty|N;Ano||||||
+30261|cruelty, mercilessness, atrociousness, ruthlessness, cold-bloodedness|N||||||
+30262|cruel, merciless, atrocious, ruthless, cold-blooded|Ana||||||
+30263|pitifulness, tragicness, horribleness, miserableness|N||||||
+30264|pitiful, tragic, horrible, miserable|Ana||||||
+30265|breaking a religious precept without shame|N;ZB;Ana||||||
+30266||-||||||
+30267|easiness, simplicity, readiness|N||||||
+30268|easy, simple, ready|Ana||||||
+30269|casualness, off-handedness, easy-goingness, carelessness, artlessness|N||||||
+30270|casual, off-hand, easy-going, careless, artless|Ana||||||
+30271|pulse, pulse rate, pulsation, stroke of pulse|N;Ano;Md||||||
+30272|logical connection, chain of reasoning, coherence, context|N||||||
+30273|blood vessel|N||||||
+30274|bend, flutter, wave|VkuI||||||
+30275|yield to, be swayed by, bow to, obey|VkuI||||||
+30276|open sea|N||||||
+30277|soothe, calm, pacify|VruiT||||||
+30278|young plant|N||||||
+30279|rice seedling|N||||||
+30280|seedling, sapling, young tree|N||||||
+30281|long spell of rain|N||||||
+30282|long talk|N||||||
+30283|scene, view, prospect, outlook|N||||||
+30284|long time, many years|NAdv;T||||||
+30285|long sleeves|N;Ano||||||
+30286|lasting long, continuation, keeping at (something), sticking to (something)|N||||||
+30287|long epic song with shamisen accompaniment (developed in Edo in the early 17th century)|N||||||
+30288|tenement house, row house|N||||||
+30289|a throw, a fall|N||||||
+30290|throw into|VmuT||||||
+30291|water's edge, beach, shore|N||||||
+30292|remains, traces, vestiges, relics|N||||||
+30293|(the sorrow of) parting|N||||||
+30294|end|N||||||
+30295|reluctant (to part)|Ai||||||
+30296|connotation, comprehension, intension|N||||||
+30297|inclusion, containment within|N||||||
+30298|unofficial announcement|N||||||
+30299|the facts, the truth, the true state of affairs|N||||||
+30300|in truth, in fact, in reality, actually|NAdv||||||
+30301|internal conditions, true state of affairs|N||||||
+30302|domestic demand|N||||||
+30303|interior angle, internal angle|N;ZMt||||||
+30304|inside corner|N;ZBb||||||
+30305|private regulations, bylaws, internal rules, tradition|N||||||
+30306|introversion|N||||||
+30307|introverted, withdrawn|Ana||||||
+30308|internal or domestic affairs|N||||||
+30309|inland|N;Ano||||||
+30310|from ... to, between ... and|CO||||||
+30311|or|CO||||||
+30312|unofficial report, confidential report|N||||||
+30313|secrecy, confidentiality, privacy, secret|N;Ano||||||
+30314|one's circumstances (esp. fiscal)|N;Ano||||||
+30315|inner realization, personal enlightenment|N;Ano;ZB||||||
+30316|kitchen|N;Ano||||||
+30317|side job (at home), home industry, side line|N||||||
+30318|interior design, interior, upholstery|N||||||
+30319|infield, diamond|N;ZBb||||||
+30320|infielder, baseman|N||||||
+30321|internal (e.g. disk), built-in, equipped (with)|Ano||||||
+30322|brokerage|N||||||
+30323|island in a pond or river|N||||||
+30324|tear-stained face|N||||||
+30325|cry, crying voice|N||||||
+30326|matchmaker|N||||||
+30327|go-between, intermediary, middleman, mediator, intercessor|N||||||
+30328|live broadcast (radio, TV), live coverage|N||||||
+30329|smelling of fish, smelling of blood, bloody|Ai||||||
+30330|degenerate (of a monk), depraved, corrupt, fallen|Ai||||||
+30331|worldly, mundane, secular, common, ordinary|Ai||||||
+30332|fishy, suspicious, questionable|Ai||||||
+30333|impertinence, sauciness, cheekiness, audaciousness, brazenness, feistiness|N||||||
+30334|impertinent, saucy, cheeky, conceitful, audacious, brazen, feisty|Ana||||||
+30335|lively, green, fresh, raw, vivid, graphic|Ai||||||
+30336|lukewarm, tepid|Ai||||||
+30337|half-hearted, vague, weak|Ai||||||
+30338|lenient, mild, soft|Ai||||||
+30339|smooth (of a surface), glassy, velvety, soft|Ana||||||
+30340|smooth (of an action, proceedings, etc.), fluent (speech), fluid, trouble-free|Ana||||||
+30341|continuously differentiable|Ana;ZMt||||||
+30342|average, medium, common, ordinary|N;Ano||||||
+30343|mid-grade (item), regular grade|N;Ano||||||
+30344|same level as, equal to, equivalent to, on par with|N;Sx||||||
+30345|each (e.g. month), every|N;Sx||||||
+30346|row of (teeth, houses, etc.), line of|N;Sx||||||
+30347|roadside tree, row of trees|N;Ano||||||
+30348|difficulty, relative difficulty|N||||||
+30349|slope, obliqueness|N;Ano||||||
+30350|slanting, tilted, sloping, diagonal, oblique|Ana||||||
+30351|distorted feeling, bad mood, awriness|N;Ano||||||
+30352|distorted (feeling), slanted (e.g. view of the world), bad (mood), amiss, awry|Ana||||||
+30353|how many times, how often|CE||||||
+30354|hundreds|N||||||
+30355|incurable disease|N||||||
+30356|hardness of hearing, bradyacusia, deafness, hearing loss|N;Ano||||||
+30357|how many times?, how often?|N||||||
+30358|Antarctic Ocean|N||||||
+30359|unintentionally, calmly, inadvertently, innocently|A;CE||||||
+30360|several tens|N||||||
+30361|house arrest|N||||||
+30362|difficult voyage, hard flight|N||||||
+30363|rough going, rough passage, running into trouble, stormy passage|N||||||
+30364|giving one's name (or rank, etc.), self-introduction|N||||||
+30365|name readings of kanji|N||||||
+30366|introduce oneself, announce oneself (e.g. as the person sought), come forward (e.g. as a witness|VruiI||||||
+30367|soft (esp. of softball, tennis, etc.)|N;Ano||||||
+30368|many thousands|N||||||
+30369|over-familiar|Ai||||||
+30370|ringing, sound|N||||||
+30371|without|N;Sx||||||
+30372|unacceptable, not alright, unsatisfactory|N;coq||||||
+30373|eggplant (Solanum melongena), aubergine|N||||||
+30374|yearn for (someone, miss|VmuT||||||
+30375|natto (fermented soybeans)|N||||||
+30376|cord|N||||||
+30377|policeman's rope|N||||||
+30378|stretching a rope around, roping off, cordoning off, demarcation|N||||||
+30379|one's turf, domain, territory, jurisdiction, sphere of influence|N||||||
+30380|calling by name, designation, nomination|N||||||
+30381|riddle, puzzle, mystery|N||||||
+30382|enigmatic, mysterious|Ano||||||
+30383|riddle, puzzle, enigma|N||||||
+30384|pattern after, liken to, imitate|VruiT||||||
+30385|gluey, gummy, glutinous, viscous, gooey, greasy|A||||||
+30386|stickiness, something sticky|N||||||
+30387|stickiness, viscosity|N||||||
+30388|tenacity, persistence|N||||||
+30389|tenacious, persevering, persistent, stubborn, steadfast|Ai||||||
+30390|sticky|Ai||||||
+30391|be sticky, be adhesive|VrugI||||||
+30392|persevere, persist, stick to, hold out, linger|VrugI||||||
+30393|indisposition (e.g. a cold) caused by getting chilled while sleeping|N||||||
+30394|being enthusiastic about, being wild about, being absorbed in, being engrossed in, being devoted to|N||||||
+30395|beg, pester, plead, coax, hound, importune|VrugT||||||
+30396|change sides, double-cross, betray|VrugI||||||
+30397|sleeping face|N||||||
+30398|inquisitively, pryingly, nosily, thoroughly, persistently, through-and-through|A;CE||||||
+30399|breathing of a sleeping person|N||||||
+30400|heat, hot air|N||||||
+30401|enthusiasm|N||||||
+30402|root, stub, stump|N||||||
+30403|wild enthusiasm, being crazy about|N||||||
+30404|dislike of very hot food or drink, inability to take hot food|N||||||
+30405|bent back, hunchback, stoop|N;Ano||||||
+30406|sleep-wear, nightclothes, pyjamas, pajamas, nightgown, nightdress|N||||||
+30407|sleepiness, drowsiness|N||||||
+30408|sleep, sleeping|N||||||
+30409|inactivity|N||||||
+30410|death|N||||||
+30411|sleepy, drowsy|Ai||||||
+30412|carefulness, scrupulousness, thoroughness, conscientiousness, elaborateness, deliberateness, attentiveness|N||||||
+30413|careful, scrupulous, thorough, conscientious, elaborate, deliberate, attentive|Ana||||||
+30414|sense, idea, thought, feeling|N||||||
+30415|desire, concern|N||||||
+30416|attention, care|N||||||
+30417|cohesion, adhesion|N||||||
+30418|New Year's greetings, New Year's card|N||||||
+30419|New Year's card|N||||||
+30420|yearly amount|N||||||
+30421|one's heart's desire, one's dearest wish|N;Ano||||||
+30422|date|N||||||
+30423|name of an era, year number|N||||||
+30424|annual|N||||||
+30425|fiscal year, school year|N||||||
+30426|year (in some sequence)|Sx||||||
+30427|conference, annual convention|N||||||
+30428|annual publication, year of publication|N;Ano||||||
+30429|mucous membrane|N;Ano||||||
+30430|by the end of the year|N||||||
+30431|fuel consumption, gas mileage|N||||||
+30432|annual salary|N||||||
+30433|chronological table|N||||||
+30434|willpower, faith|N||||||
+30435|telekinesis, psychokinesis|N||||||
+30436|annual tree ring, growth ring|N||||||
+30437|experience in life|N||||||
+30438|annual rate (of interest)|N||||||
+30439|annual production|N||||||
+30440|New Year's call, beginning of the year, New Year's greetings|T||||||
+30441|beginning of the year, New Year's greetings|N;NAdv||||||
+30442|written pledge, signed note of assurance, memorandum, legal instrument|N||||||
+30443|yearly (annual) turnover|N||||||
+30444|burning, combustion|N||||||
+30445|annual income|N||||||
+30446|number of years|N||||||
+30447|beginning of the year|N||||||
+30448|the oldest person|N||||||
+30449|(on one's) mind, heed|N||||||
+30450|sprain|N||||||
+30451|kneading, gloss, tempering|N;Sx||||||
+30452|paste (e.g. bean paste, mustard paste)|N;Af||||||
+30453|parading of portable shrines and floats at festivals|N;ZSt||||||
+30454|fierce fight, close contest|N||||||
+30455|be jealous of, envy, begrudge|VmuT||||||
+30456|staying at, lodging at|N||||||
+30457|fervent speech|N;Ano||||||
+30458|zeal, enthusiasm, ardor, ardour|N||||||
+30459|ardence, vehemence|N||||||
+30460|ardent, passionate, vehement|Ana||||||
+30461|tropics|N||||||
+30462|boiling water|N;Ano||||||
+30463|sleeping posture|N||||||
+30464|second, number two, runner-up|N||||||
+30465|two parts, two copies, the second part|N||||||
+30466|halving, dividing (into two parts), bisection|N;Ano||||||
+30467|the two equinoxes (vernal and autumnal)|N;Ano||||||
+30468|daytime, during the day|NAdv;T||||||
+30469|Japan and China|N||||||
+30470|Japan-America|N||||||
+30471|sunset|N||||||
+30472|day and night, around the clock, always, constantly|N;NAdv||||||
+30473|(truck) load-carrying tray, (bicycle) luggage carrier, roof rack|N||||||
+30474|two times, twice|N||||||
+30475|two degrees|N||||||
+30476|packing, baling, crating|N||||||
+30477|be boiled, be cooked|VruiI||||||
+30478|label, tag|N||||||
+30479|bitterness, bitter taste|N;Ano||||||
+30480|bitter smile, wry smile, forced smile, strained laugh|N||||||
+30481|let (someone) take hold of your hand|VsuT||||||
+30482|grasping, gripping, grasp, clutch|N||||||
+30483|handful, fistful|N||||||
+30484|handle, grip, knob|N||||||
+30485|rice ball|N;Abr||||||
+30486|nigirizushi, hand-formed sushi with a topping of seafood, etc.|N;Abr||||||
+30487|grasp tightly|VruiT||||||
+30488|nigirizushi, hand-formed sushi with a topping of seafood, etc.|N;ZF||||||
+30489|be crowded with people, be bustling with|VuI||||||
+30490|prosper, flourish, do thriving business|VuI||||||
+30491|become muddy, become cloudy, get impure (of a liquid|VrugI||||||
+30492|become dull (of a sound, become hoarse|VrugI||||||
+30493|become impure (of a heart, be corrupted, be polluted|VrugI||||||
+30494|become voiced, add voiced consonant marks|VrugI||||||
+30495|make muddy (of a liquid), make cloudy, make turbid, roil|VsuT||||||
+30496|make ambiguous, evade (e.g. the point), be noncommittal about|VsuT||||||
+30497|number two|N||||||
+30498|mistress, concubine|N||||||
+30499|second string players|N;Ano;ZSp||||||
+30500|the Two Ise Shrines|N||||||
+30501|double feature (movie)|N||||||
+30502|Science Council of Japan|N||||||
+30503|two hundred, 200|N||||||
+30504|220th day, end of the storm period|N||||||
+30505|210th day (from the first day of spring according to the lunar calendar), the storm day|N||||||
+30506|the two houses of legislature|N||||||
+30507|second floor, upstairs|N||||||
+30508|two-storied building|N||||||
+30509|two periods or terms|N||||||
+30510|daily publication, daily issue|N;Ano||||||
+30511|Japan and (South) Korea|N||||||
+30512|Japanese and (South) Korean|Ano||||||
+30513|(of) Japanese descent|N;Px||||||
+30514|non-Japanese of Japanese descent, nikkeijin|N;Abr||||||
+30515|company, etc. set up with Japanese capital, company managed by Japanese or non-Japanese of Japanese descent|N||||||
+30516|Nikkei (newspaper, share index)|N;Abr||||||
+30517|sunbathing|N||||||
+30518|daily wages|N||||||
+30519|natural voice (without a microphone)|N||||||
+30520|two sheets (pieces) (of paper)|N||||||
+30521|handsome man|N||||||
+30522|actor in a love scene|N||||||
+30523|optionality, voluntariness, randomness, discretionariness, facultativeness, spontaneousness|N;Ano||||||
+30524|optional, voluntary, arbitrary, random, discretionary, facultative, spontaneous, any|Ana||||||
+30525|arbitrariness|N;Ano;ZMt||||||
+30526|arbitrary|Ana||||||
+30527|obligation, duty, charge, responsibility|N||||||
+30528|bearer, carrier|N||||||
+30529|person bearing responsibility, person in charge, supporter|N||||||
+30530|carry on one's shoulder, shoulder, bear|VuT||||||
+30531|bear (burden, take upon oneself|VuT||||||
+30532|acknowledgement, acknowledgment, recognition, cognition|N;Ano||||||
+30533|three-legged race|N||||||
+30534|cooperation with singleness of purpose (e.g. between companies), operating in tandem|N||||||
+30535|carrot (Daucus carota)|N||||||
+30536|Asian ginseng (Panax ginseng)|N||||||
+30537|humanity, empathy, kindness, sympathy|N||||||
+30538|human nature, common sense, customs and manners|N||||||
+30539|approval, license, licence, permission|N||||||
+30540|term of office|N||||||
+30541|portion of food|N||||||
+30542|secondary, subordinate|N||||||
+30543|pregnant woman|N;Ano||||||
+30544|certification, authentication, confirmation|N||||||
+30545|Imperial attestation|N||||||
+30546|looks, countenance, facial features|N||||||
+30547|physiognomy|N||||||
+30548|endurance, perseverance, patience|N||||||
+30549|the number of people|N||||||
+30550|many people, a large number of people|N||||||
+30551|daily report|N||||||
+30552|two-wheeled vehicle (bicycle, motorcycle, etc.)|N||||||
+30553|second base|N;ZBb||||||
+30554|two-base hit, double|N;ZBb||||||
+30555|second baseman|N;ZBb||||||
+30556|second-rate, inferior|N;Ano||||||
+30557|imitation, fake, phony, counterfeit, forged, bogus, sham|N;Ano||||||
+30558|pseudo-|Px||||||
+30559|choosing between two things, two choices|N;Ano||||||
+30560|two out, two down (and one to go)|N;ZBb||||||
+30561|west entrance|N||||||
+30562|brocade|N||||||
+30563|fine dress, fine clothes|N||||||
+30564|western Japan, Japan west of the Itoigawa-Shizuoka Tectonic Line, i.e. the Chūbu region and westward|N||||||
+30565|daily output|N||||||
+30566|Nissan (Japanese car company)|N;Abr||||||
+30567|journal, log|N||||||
+30568|solar eclipse|N||||||
+30569|sunlight|N||||||
+30570|sunrise|N||||||
+30571|Japanese-Soviet|N;Ano||||||
+30572|a number of days|N||||||
+30573|boil down, concentrate (soup|VruiT||||||
+30574|reach a conclusion, conclude a discussion|VruiT||||||
+30575|pasturing, letting (an animal) run loose|N;Ano||||||
+30576|letting (someone) do as they please, leaving (something) to take its own course, letting (an issue) go unchecked, leaving uncontrolled, leaving at large (e.g. a criminal)|N;Ano||||||
+30577|futures|N||||||
+30578|credit (buying)|N||||||
+30579|stretching|N||||||
+30580|total (preceding counter, unit, etc.), aggregate, gross|Px||||||
+30581|growth, development|N||||||
+30582|stretching (one's body, e.g. when waking up)|N||||||
+30583|(ability to) spread (of paint, cream, etc.)|N||||||
+30584|elongation, extension, carry (e.g. of sound), sustain|N||||||
+30585|be sluggish (business), make little progress, not grow as much as expected|VmuI||||||
+30586|comfortably, peacefully, with one's mind at ease, calmly, without worries|A;Ato||||||
+30587|(growing) quickly|A;Ato||||||
+30588|growth rate, coefficient of extension|N||||||
+30589|carefreeness|N||||||
+30590|comfortable, carefree|Ana||||||
+30591|raise, record, bring up (a matter), serve (food), send some on out|VruiT||||||
+30592|put something out of the way, move (something|VruiT||||||
+30593|remove, exclude, take away|VruiT||||||
+30594|set aside, keep apart|VruiT||||||
+30595|remove (someone) from the group, shun|VruiT||||||
+30596|do well despite difficulties, accomplish despite adversity|VruiI;Vx||||||
+30597|do resolutely, do boldly|VruiI;Vx||||||
+30598|eaves|N||||||
+30599|narrow aisle surrounding the core of a temple building|N||||||
+30600|row of houses|N||||||
+30601|every house, each house, every door|N||||||
+30602|all, totally, altogether, across the board|NAdv||||||
+30603||-||||||
+30604|musical saw|N||||||
+30605|amount left over, remaining portion|N;CE||||||
+30606|in the middle of a field|N||||||
+30607|carefreeness, optimism, carelessness, recklessness, heedlessness, easygoingness, thoughtlessness|N||||||
+30608|carefree, optimistic, careless, reckless, heedless, happy-go-lucky, easygoing, thoughtless|Ana||||||
+30609|Nobel Prize|N||||||
+30610|eagerness, enthusiasm|N||||||
+30611|interested, eager, enthusiastic|Ana||||||
+30612|climb over, get over, ride across|VruiI||||||
+30613|surmount, overcome|VruiI||||||
+30614|surpass, overtake|VruiI||||||
+30615|riding past (one's station)|N||||||
+30616|dunce, dimwit, dolt, slowcoach, slowpoke|N||||||
+30617|blockheaded, dim-witted, slow|Ana||||||
+30618|curse, put a curse on, detest intensely|VuT||||||
+30619|stretching|N||||||
+30620|sidestroke (in swimming)|N||||||
+30621|capture, takeover, hijack, skyjacking|N||||||
+30622|take over, capture, seize, commandeer, occupy, usurp|VrugT||||||
+30623|hijack (vehicle|VrugT||||||
+30624|agrarian reform|N||||||
+30625|activeness|N||||||
+30626|active|Ana||||||
+30627|payment, supply|N||||||
+30628|noh play|N||||||
+30629|department of agriculture|N||||||
+30630|farming methods|N||||||
+30631|payment|N||||||
+30632|rich (in flavor, color, smell, etc.), thick, dense, strong|Ana||||||
+30633|very likely, highly possible|Ana||||||
+30634|passionate, hot|Ana||||||
+30635|farming, agriculture, cultivation|N||||||
+30636|agricultural cooperative|N;Abr||||||
+30637|payment (taxes, fees, etc.)|N||||||
+30638|supply (of goods), delivery|N||||||
+30639|one's mind|N||||||
+30640|agriculture and forestry|N||||||
+30641|farmwork|N||||||
+30642|crops, agricultural produce|N||||||
+30643|agricultural products|N||||||
+30644|agricultural administration|N||||||
+30645|Minister of Agriculture|N;Abr||||||
+30646|cerebral hemorrhage, cerebral haemorrhage|N||||||
+30647|concentration (e.g. of a solution), enrichment, condensation|N;Ano||||||
+30648|stroke, cerebral haemorrhage, cerebral hemorrhage|N||||||
+30649|agricultural community, farm village|N||||||
+30650|rural|Ano||||||
+30651|light and shade, shade (of colour, color)|N||||||
+30652|depth (of flavor), complexity, strength and weakness (of flavor)|N||||||
+30653|payment of taxes|N||||||
+30654|except, save|CE||||||
+30655|corners of a field|N||||||
+30656|seam, stitch, suture|N||||||
+30657|without, not including, dispensed with|A;Sx||||||
+30658|(beating) in succession|A;Sx||||||
+30659|warmth|N||||||
+30660|slime, mucus, sliminess, viscous liquid|N;Ano||||||
+30661|cloth, fabric|N||||||
+30662|repaint, paint again|VruiT||||||
+30663|break (a record), rewrite, remake|VruiT||||||
+30664|actuality, actual conditions, true situation, faithful representation, vivid depiction|N||||||
+30665|ultimate reality, absolute truth|N;ZB||||||
+30666|entering the rainy season, beginning of the rainy season|N||||||
+30667|enrollment in kindergarten, enrolment in kindergarten|N||||||
+30668|entering a park, garden, zoo, etc.|N||||||
+30669|infant (below 1 year old), suckling baby|N||||||
+30670|admission ticket, entrance ticket|N||||||
+30671|platform ticket, ticket allowing a non-traveller access to a railway station platform|N||||||
+30672|arrival of goods, goods received|N||||||
+30673|joining the cabinet|N||||||
+30674|admission fee|N||||||
+30675|deposit, payment, money received, money due|N||||||
+30676|entry into a country|N||||||
+30677|entry into port, arriving in harbor|N||||||
+30678|moving into (house)|N||||||
+30679|advancing to the first grade|N||||||
+30680|entering an institution, beginning training|N||||||
+30681|primer, manual, introduction (to)|N;Ano||||||
+30682|carefulness, elaborateness, scrupulousness|N||||||
+30683|careful, elaborate, scrupulous|Ana||||||
+30684|bid, tender, bidding|N||||||
+30685|dairy products|N||||||
+30686|entry in family register|N||||||
+30687|chosen (in a competition)|N||||||
+30688|entrance examination|N;Ano;Abr||||||
+30689|entering a room|N||||||
+30690|studying under a Buddhist teacher|N;ZB||||||
+30691|admission (e.g. to a training institution, research establishment, social welfare facility, etc.), entrance|N||||||
+30692|imprisonment, internment, confinement|N||||||
+30693|settlement, immigration|N||||||
+30694|winning a prize or place (in a contest)|N||||||
+30695|joining a political party|N||||||
+30696|bathing|N||||||
+30697|infants, babies and very young children|N||||||
+30698|grandmother|N||||||
+30699|old woman, female senior citizen|N||||||
+30700|large number, innumerable, great many, immense, vast, abundant|Ai||||||
+30701|intimidate, frighten, scare|VsuT||||||
+30702|threaten (e.g. peace), jeopardize, endanger, imperil|VsuT||||||
+30703|note|N||||||
+30704|(diplomatic) memorandum|N||||||
+30705|Buddhist priest, monk|N;LF;LHn||||||
+30706|son (of others)|N;LF;LHn||||||
+30707|tea (usu. green)|N;LHn||||||
+30708|tea break (at work)|N||||||
+30709|tea ceremony|N||||||
+30710|fallen scraps, scatterings|N||||||
+30711|leftovers, remainder, pickings, odds and ends|N||||||
+30712|student who cannot keep up in school, dropout (from school, society, a movement, etc.)|N;Ano;coq||||||
+30713|calm, composed, cool|Af||||||
+30714|settled, fixed, established|Af||||||
+30715|unobtrusive, quiet, subdued, low-key (color)|Af||||||
+30716|mid-year gift, summer gift|N||||||
+30717|flatter, soft-soap, sweet talk, cajole, instigate|VruiT||||||
+30718|calmness, gentleness, quietness|N||||||
+30719|calm, gentle, quiet|Ana||||||
+30720||-||||||
+30721|prominent forehead, beetle brow|N||||||
+30722|not catching anything (in fishing)|N;coq||||||
+30723|leaping, jumping, spring, exciting|N||||||
+30724|dancer (usu. female)|N||||||
+30725|threaten, menace, frighten (into doing)|VsuT||||||
+30726|one's mother|N;coq||||||
+30727|stream, brook, creek|N||||||
+30728|Amur silvergrass (Miscanthus sacchariflorus)|N||||||
+30729|solemnness, austerity, graveness, majesticness, dignity, stateliness, impressiveness|N||||||
+30730|solemn (ceremony, atmosphere, etc.), austere, grave, majestic, dignified, stately, impressive|Ana||||||
+30731|one's favourite party trick (favorite), one's specialty, one's forte|N||||||
+30732|No. 18, eighteenth|N||||||
+30733|repertoire of 18 kabuki plays|N;Abr||||||
+30734|busy (phone)|Ano;LHn||||||
+30735|good morning|OI;Abr||||||
+30736|nephew|N||||||
+30737|old age, old person, the old, the aged|N||||||
+30738|gain on, put pressure on, close in on|VruiT||||||
+30739|expel, drive out|VsuT||||||
+30740|final stage, last spurt|N||||||
+30741|live printing area (in publishing)|N||||||
+30742|pass (e.g. car), overtake|VsuT||||||
+30743|surpass, outstrip, get ahead of, outdistance|VsuT||||||
+30744|pass (a car), overtake|VkuT||||||
+30745|surpass, outstrip, outdistance, outsail|VkuT||||||
+30746|age, grow old|VruiI||||||
+30747|doctor|N;LHn||||||
+30748|growth, development|N||||||
+30749|one's early life, upbringing, personal history|N||||||
+30750|attacking a fleeing enemy|N||||||
+30751|additional attack on a weakened enemy, additional blow to an already unfortunate situation|N||||||
+30752|congratulation, congratulations, celebration, festival, congratulatory gift|N;LHn||||||
+30753|welcome home|OI||||||
+30754|chill, shakes, ague|N||||||
+30755|money|N;LHn||||||
+30756|confections, sweets, candy|N||||||
+30757|invade, raid, violate (airspace, intrude, trespass|VsuT||||||
+30758|infringe, encroach|VsuT||||||
+30759|harm, afflict, affect|VsuT||||||
+30760|brave, risk, face, venture|VsuT||||||
+30761|harm, afflict, affect|VsuT||||||
+30762|desecrate, profane|VsuT||||||
+30763|assume (someone else's surname), take|VsuT||||||
+30764|bucket, pail, tub|N||||||
+30765|place for something, storehouse|N||||||
+30766|ornament, figurehead, object placed in tokonoma|N||||||
+30767|favorite, favourite, pet (e.g. teacher's pet)|Ano;CE||||||
+30768|bookmark (in web browser)|CE||||||
+30769|law, regulation, rule, code, agreement, arrangement, compact|N||||||
+30770|chase, run after, pursue|VruiT||||||
+30771|interior, backwoods, hinterland, back regions|N;Ano||||||
+30772|retard, delay|VsuT||||||
+30773|pushing (propelling) (one's opponent) out of the ring from behind|N;ZSm||||||
+30774|guess, speculation, supposition|N||||||
+30775|portable shrine (carried in festivals)|N;LHn||||||
+30776|buttocks, lower back, waist, hips|N||||||
+30777|be conceited|VrugI||||||
+30778|suddenly understand (esp. on basis of experience or memory), come to mind, recall (in a flash), be reminded of, call to mind, think of, strike on, hit on an answer, seize the crux of a problem|VrugI||||||
+30779|unexpected, contrary to expectations, by chance, casual|Ai||||||
+30780|with all one's strength, with all one's heart, to the utmost|A||||||
+30781|resolution, decisiveness|N||||||
+30782|resolutely, boldly, decisively, daringly|A||||||
+30783|re-think, think back upon, change one's mind|VsuT||||||
+30784|recall, remember|VsuT||||||
+30785|just as one likes, as one pleases, as one prefers|A;Ano||||||
+30786|give up (a plan or idea), desist from (doing)|VrugT||||||
+30787|plan, idea, suggestion|N||||||
+30788|think of, hit upon, come into one's mind|VkuT||||||
+30789|remember, recall|VkuT||||||
+30790|be struck with an idea|VkuI||||||
+30791|remember|VkuI||||||
+30792|consideration, thoughtfulness, sympathy, compassion, feeling, kindness, understanding, regard, kindheartedness|N||||||
+30793|importance, emphasis, stress|N||||||
+30794||-||||||
+30795|weight (e.g. of someone's words), burden, grandeur, dignity|N||||||
+30796|importance, significance|N||||||
+30797|expression, look, countenance, face|N||||||
+30798|mainly, primarily|A||||||
+30799|honor, honour, respect, esteem, prize|VruiT||||||
+30800|get heavy|VrugI||||||
+30801|worsen (of illness), grow serious|VrugI||||||
+30802|stone weight (as used on pickle-tub covers)|N;Abr||||||
+30803|weight (as used in balances)|N||||||
+30804|amusing, interesting|Af||||||
+30805|become public, be known|VtsuI||||||
+30806|publicly, openly, ostensibly, formally|CE||||||
+30807|expectation, anticipation, prediction, forecast, calculations|N||||||
+30808|purpose, intention, motive, ulterior motive|N||||||
+30809|others' opinions of one|N||||||
+30810|speculation|N;ZFn||||||
+30811|on reading, on'yomi, Chinese-derived reading of a kanji|N||||||
+30812|belly, abdomen, stomach|N;LHn||||||
+30813|and Company, Messrs, for the attention of ...|N;Sx||||||
+30814|warmness, mildness, temperateness|N||||||
+30815|warm, mild, temperate|Ana||||||
+30816|lead (in a cheer, toast, song, etc.), (someone's) lead|N||||||
+30817|folk song and dance performed by a group|N||||||
+30818|leader of a group of wind instruments (in gagaku)|N||||||
+30819|reading aloud|N||||||
+30820|reading a kanji by its Chinese-derived pronunciation|N||||||
+30821|requital of a favour (favor), repayment (of an obligation, kindness, etc.)|N||||||
+30822|benefactor, patron|N||||||
+30823|grace, favor, favour, blessing, benefit|N||||||
+30824|quietness, dependableness, uniformity, moderateness|N||||||
+30825|quiet, dependable, uniform, (politically) moderate|Ana||||||
+30826|gentleness|N||||||
+30827|gentle|Ana||||||
+30828|each|N;NAdv||||||
+30829|you (plural)|P;ar||||||
+30830|amnesty, pardon|N||||||
+30831|ungratefulness|N||||||
+30832|ungrateful|Ana||||||
+30833|greenhouse, hothouse, conservatory, glasshouse|N||||||
+30834|hotbed, breeding ground|N||||||
+30835|temperate zone|N||||||
+30836|gentleness, mildness, moderateness|N||||||
+30837|gentle, mild, moderate|Ana||||||
+30838|preservation, retainment, keeping|N||||||
+30839|heavy turnover (trading)|N||||||
+30840|heavy rain|N||||||
+30841|large boat|N||||||
+30842|(major) mark, level, barrier|N||||||
+30843|100-yen unit (stock market)|N||||||
+30844|large store|N||||||
+30845|final scene, the end, finale|N||||||
+30846|large scale|N||||||
+30847|large-scale|Ana||||||
+30848|grandiosity, exaggeration|N||||||
+30849|grandiose, exaggerated|Ana||||||
+30850|loud voice|N;Ano||||||
+30851|very, much, greatly, a lot of|A||||||
+30852|great hurry, great haste|N;Ano||||||
+30853|in a hurry, hasteful, in a rush|Ana||||||
+30854|antiquatedness, anachronisticness|N||||||
+30855|old-fashioned, antiquated, anachronistic|Ana||||||
+30856|rough (estimate, outline, etc.), broad, general, loose|Ana||||||
+30857|generous, openhanded|Ana||||||
+30858|New Year's Eve, December 31st|T||||||
+30859|flood|N;Ano||||||
+30860|uppercase letter, capital letter|N||||||
+30861|large character, large writing|N||||||
+30862|the (kanji) character "dai" meaning "big"|N||||||
+30863|huge character "dai" formed by fires lit on the side of a mountain in Kyoto on 16 Aug each year|N||||||
+30864|important person, big-shot, bigwig|N;Ano||||||
+30865|big game (animal, fish), big thing, valuable thing|N;Ano||||||
+30866|large serving|N||||||
+30867|barley (Hordeum vulgare)|N||||||
+30868|large field|N||||||
+30869|tablespoon|N||||||
+30870|clamour, clamor, uproar, tumult, furore, furor|N||||||
+30871|outline, summary|N||||||
+30872|roughness, broadness, sketchiness|N||||||
+30873|rough (as in not precise), broad, sketchy|Ana||||||
+30874|ōzeki (second highest rank in sumo)|N;ZSm||||||
+30875|heavens, firmament, sky|N||||||
+30876|professional sumo wrestling|N||||||
+30877|opportunity, chance, occasion, time|N||||||
+30878|folding, fold, pleat, crease|N||||||
+30879|small food box (wooden or cardboard)|N||||||
+30880|counter for folds|C||||||
+30881|counter for items (esp. food) packed in an oribako|C||||||
+30882|cage, pen, jail cell, gaol cell|N||||||
+30883|weave, weaving, woven item|N||||||
+30884|agreement (e.g. business, dispute), understanding, compromise, settlement|N||||||
+30885|mutual relations (between family members, coworkers, etc.)|N||||||
+30886|origami, art of paper folding|N||||||
+30887|hallmark, certificate of authenticity|N||||||
+30888|by return, (call or write back) without delay|A||||||
+30889|lapel, cuff, turn-up, flap|N||||||
+30890|going back, returning, turn (marathon, swimming, etc.)|N||||||
+30891|chorus, refrain|N||||||
+30892|shuttle service|N||||||
+30893|aliasing (in imaging)|N||||||
+30894|back-to-back, BTB|N;Ano;ZI||||||
+30895|wrapping (text on computer screen), wrap|N;ZI||||||
+30896|turn up (hem, fold back (e.g. page)|VsuT||||||
+30897|turn back, double back, return|VsuT||||||
+30898|loopback (a signal|VsuT;ZI||||||
+30899|just then, at that time, right then, at that moment|T;CE||||||
+30900|appropriate moment|T;CE||||||
+30901|textile, fabric|N||||||
+30902|occasionally, now and then, from time to time|A||||||
+30903|folding, collapsible, telescopic|Ano;Af||||||
+30904|not to mention ..., needless to say ..., not to speak of ..., not only ...|CE||||||
+30905|negligent, neglectful, careless, remiss|Ana;ar||||||
+30906|wholesale, wholesaling|N||||||
+30907|wholesale price|N||||||
+30908|wholesale market|N||||||
+30909|negligent, neglectful, careless, remiss|Ana||||||
+30910|fit into (a box, be contained within, fall within (e.g. a budget)|VrugI||||||
+30911|settle down (into), be installed (in one's rightful place), be returned (to one's original position)|VrugI||||||
+30912|settle into (one's position), take up (a post), occupy (a role)|VrugI||||||
+30913|be delivered, be paid (e.g. taxes)|VrugI||||||
+30914|be settled (dispute, be sorted, subside (e.g. wind), calm down, abate|VrugI||||||
+30915|be satisfied (e.g. with an answer), consent, agree|VrugI||||||
+30916|die down (storm, calm down, cool off, abate, be settled, be brought under control|VrugI||||||
+30917|be at peace, be governed well|VrugI||||||
+30918|subside (of pain, be alleviated, get better, ease off|VrugI||||||
+30919|study, complete (a course), cultivate, master|VruiT||||||
+30920|order (one's life)|VruiT||||||
+30921|repair (a fault one has committed)|VruiT||||||
+30922|govern, manage|VruiT||||||
+30923|subdue|VruiT||||||
+30924|(giving) birth, childbirth, delivery, confinement|N;LHn||||||
+30925|food served during the New Year's Holidays|N||||||
+30926|year-end gift|N||||||
+30927|end of the year, year end|N||||||
+30928|flattery, compliment|N||||||
+30929|meddlesomeness, nosiness, interference, officiousness|N||||||
+30930|meddling, meddlesome, nosy, interfering, officious|Ana||||||
+30931|meddler, buttinsky, busybody|N||||||
+30932|chattering, idle talk, chitchat, gossip|N||||||
+30933|chattiness, talkativeness, chatterbox, blabbermouth|N||||||
+30934|chatty, talkative|Ana||||||
+30935|stylish, fashion-conscious|Ano;Ana||||||
+30936|someone smartly dressed|N||||||
+30937|push, pressure, authority, audacity|N||||||
+30938|wet towel (supplied at table), hot, moistened hand towel|N||||||
+30939|pushing something out, extrusion|N||||||
+30940|presence, appearance|N||||||
+30941|run walked in|N;ZBb||||||
+30942|pushing one's opponent out by pressing one's hands up against them|N;ZSm||||||
+30943|breaking into, burglar|N||||||
+30944|overcome (opposition), push past, force one's way|VrugT||||||
+30945|press and cut|VrugT||||||
+30946|without sparing (effort, funds, etc.)|Ai||||||
+30947|arguing back and forth, bandying words, verbal tug-of-war|N||||||
+30948|(face) powder|N||||||
+30949|high-pressure salesmanship|N||||||
+30950|fear, horror, anxiety, concern, uneasiness|N||||||
+30951|dreadful, terrible, horrible, deplorable|Af||||||
+30952|fearsome, formidable, awesome, redoubtable|Af||||||
+30953|fearfully, timidly, nervously, cautiously, gingerly|A||||||
+30954|recommend, endorse (e.g. a candidate), nominate|VsuT||||||
+30955|infer, conclude, conjecture, surmise|VsuT||||||
+30956|think something through, ponder deeply|VsuT||||||
+30957|maid, helper|N||||||
+30958|help, assistance|N||||||
+30959|maid|N||||||
+30960|weakening, emaciation, decline|N||||||
+30961|become weak, decline, wear, abate, decay, wither, waste away|VruiI||||||
+30962|New Year's gift (usu. money given to a child by relatives and visitors)|N||||||
+30963|lost property, something dropped and left behind|N||||||
+30964|visit, call|N||||||
+30965|arrival (e.g. of spring), advent, coming, appearance|N||||||
+30966|news, tidings, word|N||||||
+30967|old man, venerable gentleman|N||||||
+30968|venerable, old, father|Sx;LHn||||||
+30969|application, subscription, entry (competition, raffle, etc.), enlistment|N||||||
+30970|according to one's abilities, appropriate, reasonable|N;Ano;Ana||||||
+30971||-||||||
+30972|hit, strike, blow|N||||||
+30973|horizontal banner|N||||||
+30974|folding fan|N||||||
+30975|fan shape|N;Ano||||||
+30976|passing on to the next life|N;ZB||||||
+30977|death|N||||||
+30978|giving up a struggle, submission|N||||||
+30979|being at one's wits' end, being flummoxed|N||||||
+30980|coercion|N||||||
+30981|emergency, first-aid|N;Ano||||||
+30982|years gone by, earlier years, former years, the past|N;Ano||||||
+30983|coming and going, traffic|N||||||
+30984|road, street|N||||||
+30985|association, socializing, socialising, fellowship, mutual visits|N||||||
+30986|recurring (e.g. thoughts)|N||||||
+30987|correspondence|N||||||
+30988|making a bid, tendering a bid|N||||||
+30989|horizontal line|N||||||
+30990|reception (e.g. of visitors), dealing with|N||||||
+30991|king (of the senior player)|N;ZSg||||||
+30992|exchange, reciprocation, give-and-take, return|N||||||
+30993|reply, riposte|N||||||
+30994|seizure, confiscation|N;Ano||||||
+30995|dealing with (people, customers, complaints, etc.), receiving (callers, visitors, etc.), attending to, handling, serving|N||||||
+30996|reply, answer, response|N||||||
+30997|(practical) application, putting to practical use|N||||||
+30998|applied|Af||||||
+30999|royalty|N;Ano||||||
+31000|lack of filial piety, disobedience to one's parents|N||||||
+31001|lacking filial piety, disobedient to one's parents|Ana||||||
+31002|parent company|N||||||
+31003|boss, chief, foreman, supervisor|N;LHn||||||
+31004|stable master|N;ZSm;LHn||||||
+31005|craftsman, artisan|N;LHn||||||
+31006|foster parent|N;ar||||||
+31007|male actor in female kabuki roles|N||||||
+31008|holiday, day off, absence|N;LHn||||||
+31009|sleep, rest|N;LHn||||||
+31010|Good night|Abr;CE||||||
+31011|good night|CE||||||
+31012|between-meal snack|N||||||
+31013|mid-afternoon (around 3 o'clock) snack, afternoon refreshment, afternoon tea|N||||||
+31014|swimming|N||||||
+31015|Pyongyang|N||||||
+31016|ramen, Chinese-style noodles|N||||||
+31017|next (year, etc.)|Px||||||
+31018|since (last month, etc.)|Sx||||||
+31019|guest, visitor, visitor's arrival|N||||||
+31020|visit, call|N||||||
+31021|visitor, caller|N||||||
+31022|arrival in Japan, coming to Japan, visit to Japan|N||||||
+31023|next spring|NAdv;T||||||
+31024|coming to a store (restaurant, bar, shop, etc.)|N||||||
+31025|thunderstorm|N||||||
+31026|rakugo, traditional Japanese comic storytelling, comic story (told by a professional storyteller)|N||||||
+31027|dairy farming|N||||||
+31028|difference in elevation (between two points in a body of water), head, drop (e.g. of a waterfall), fall distance|N||||||
+31029|difference, gap|N||||||
+31030|successful bid, winning a tender|N||||||
+31031|column of text (e.g. in a newspaper)|N;Sx||||||
+31032|field (in a form, web page, etc.)|N;Sx||||||
+31033|oval shape, egg shape|N;Ano||||||
+31034|ovum, ovule, egg cell|N;Ano||||||
+31035|spiral, helix|N||||||
+31036|screw|N||||||
+31037|air-conditioning, heating and cooling|N||||||
+31038|cemetery|N||||||
+31039|ceremonial dress, evening dress, dress suit, morning suit|N||||||
+31040|cold-weather damage (to crops)|N||||||
+31041|twelve o'clock, midnight, noon|N||||||
+31042|acknowledgment, acknowledgement, letter of thanks|N||||||
+31043|cool summer, cold summer, cooler-than-normal summer|N||||||
+31044|below zero, sub-zero|N;Ano||||||
+31045|finder's fee, reward, honorarium|N||||||
+31046|key money|N||||||
+31047|cooling, refrigeration|N||||||
+31048|insignificant, trifling, paltry, cottage (industry), tiny (company)|Ana||||||
+31049|cold war|N;Ano||||||
+31050|cold water|N||||||
+31051|cold storage, refrigeration|N;Ano||||||
+31052|deterioration, degradation, drop in quality|N||||||
+31053|continuous use|N||||||
+31054|repeated blows, striking repeatedly, barrage|N||||||
+31055|consecutive hits (e.g. boxing, baseball)|N||||||
+31056|operating together, working together, gearing, linkage|N||||||
+31057|linked, coupled, interlocking|Af||||||
+31058|abstain from smoking, quit smoking|VsuruI||||||
+31059|pray|VsuruI||||||
+31060|be balanced|VsuruI||||||
+31061|serve, work|VsuruI||||||
+31062|function|VsuruI||||||
+31063|be tense, be strained|VsuruI||||||
+31064|labor, labour, exert oneself, be diligent|VsuruI||||||
+31065|abstain from alcohol|VsuruI||||||
+31066|be prohibited from drinking|VsuruI||||||
+31067|shrink, contract, retrench|VsuruI||||||
+31068|serve continuously|VsuruI||||||
+31069|be issued (bonds)|VsuruI||||||
+31070|be parasitic|VsuruI||||||
+31071|return home|VsuruI||||||
+31072|attack by surprise|VsuruI||||||
+31073|be drafted (e.g. a bill), be drawn up|VsuruI||||||
+31074|contribute, serve|VsuruI||||||
+31075|faint, swoon|VsuruI||||||
+31076|belong, be ascribed to, be attributed, be imputated, be possessed|VsuruI||||||
+31077|be reversed, be returned, be restored|VsuruI||||||
+31078|exaggerate|VsuruI||||||
+31079|beg|VsuruI||||||
+31080|self deny, self control|VsuruI||||||
+31081|be anticipated, be expected|VsuruI||||||
+31082|take leave|VsuruI||||||
+31083|make an announcement|VsuruI||||||
+31084|confess, acknowledge|VsuruI||||||
+31085|profess one's love|VsuruI||||||
+31086|confess sins|VsuruI||||||
+31087|be indicted, be prosecuted|VsuruI||||||
+31088|post a notice|VsuruI||||||
+31089|resemble closely, be similar, bear a strong likeness|VsuruI||||||
+31090|accuse, complain about, charge|VsuruI||||||
+31091|be married|VsuruI||||||
+31092|be engaged, be betrothed|VsuruI||||||
+31093|talk informally|VsuruI||||||
+31094|be confused, be mixed, be merged|VsuruI||||||
+31095|mix, meld|VsuruI||||||
+31096||VsuruI||||||
+31097|be of mixed race, have mixed parentage|VsuruI||||||
+31098|be in turmoil, be in chaos, be confused|VsuruI||||||
+31099|be mixed, be blended, be added, be adulterated|VsuruI||||||
+31100|be mixed (e.g. team, be chorus)|VsuruI||||||
+31101|chat|VsuruI||||||
+31102|be bewildered, be perplexed, be embarrassed, be uncomfortable, be baffled|VsuruI||||||
+31103|be congested, be crushed, be crowded, be jammed|VsuruI||||||
+31104|be confused, be in disorder|VsuruI||||||
+31105|be isolated, be alone, be friendless|VsuruI||||||
+31106|stick to (an opinion, theory, belief, etc.), cling to, adhere, persist, insist|VsuruI||||||
+31107|fracture a bone|VsuruI||||||
+31108|serve in a police box|VsuruI||||||
+31109|leave the mound, be knocked out|VsuruI;ZBb||||||
+31110|resign from a role or position|VsuruI||||||
+31111|appeal to the public (e.g. for contributions), make a public offering (of securities), make a public advertisement (of a post), recruit openly|VsuruI||||||
+31112|be detained, be confined, be arrested|VsuruI||||||
+31113|be constructed, be built, be put up, be erected, be created, be formulated|VsuruI||||||
+31114|flush, blush|VsuruI||||||
+31115|pay for a subscription (e.g. magazine)|VsuruI||||||
+31116|act, conduct, behave, mobilize, mobilise|VsuruI||||||
+31117|trade|VsuruI||||||
+31118|lecture, make a speech|VsuruI||||||
+31119|be delivered, be issued, be handed over, be granted|VsuruI||||||
+31120|be officially proclaimed, be announced, be promulgated (e.g. of regulations)|VsuruI||||||
+31121|capitulate, surrender, submit|VsuruI||||||
+31122|be excited, be stimulated, be agitated, be aroused|VsuruI||||||
+31123|protest, object|VsuruI||||||
+31124|lecture|VsuruI||||||
+31125|enterprise (industrial)|VsuruI||||||
+31126|perform, act|VsuruI||||||
+31127|start late|VsuruI||||||
+31128|be demoted|VsuruI||||||
+31129|be detained, be in custody, be confined, be interned|VsuruI||||||
+31130|be advertised|VsuruI||||||
+31131|appeal, protest, complain|VsuruI;ZLw||||||
+31132|cruise, navigate, sail|VsuruI||||||
+31133|be officially recognized, be authorized, be authorised, be licenced, be licensed, be accredited|VsuruI||||||
+31134|be associated, be acquainted|VsuruI||||||
+31135||VsuruI||||||
+31136|be constructed, be manufactured|VsuruI||||||
+31137|maneuver, manoeuver|VsuruI||||||
+31138|be cultivated, be farmed|VsuruI||||||
+31139|surrender, submit, capitulate|VsuruI||||||
+31140|be defeated (e.g. by a problem), give up, give in|VsuruI||||||
+31141|be considered, be investigated, be studied|VsuruI||||||
+31142|be publicly elected|VsuruI||||||
+31143|be resistant|VsuruI||||||
+31144|snow|VsuruI||||||
+31145|be use, be exercised (one's right, authority, power, etc.)|VsuruI||||||
+31146|telecommunicate, correspond|VsuruI||||||
+31147|reverse, go astern, go backwards|VsuruI||||||
+31148|be public named, be announced publicly|VsuruI||||||
+31149|be fielded well|VsuruI;ZBb||||||
+31150|train|VsuruI||||||
+31151|be accused, be prosecuted|VsuruI||||||
+31152|make a koso appeal (initial appeal to a higher court)|VsuruI||||||
+31153|dispute, resist|VsuruT||||||
+31154|be planned, be plotted,  be conceived, be devised, be schemed|VsuruI||||||
+31155|be official (rate, price, etc.)|VsuruI||||||
+31156|rise and fall|VsuruI||||||
+31157|change for the better|VsuruI||||||
+31158|pitch well|VsuruI||||||
+31159|jump suddenly (price), rise steeply (price)|VsuruI||||||
+31160|communicate, exchange (ideas, etc.), intercourse|VsuruI||||||
+31161|conciliate (warring nations), make peace|VsuruI||||||
+31162|promise publicly, pledge in a campaign, vow officially|VsuruI||||||
+31163|succeed, follow, trail|VsuruT||||||
+31164|be employed (long term), be hired|VsuruI||||||
+31165|be forbidden to speak, be muzzled (person), be bribed into secrecy|VsuruI||||||
+31166|quarrel, argue|VsuruI||||||
+31167|be the driving force|VsuruI||||||
+31168|scheme, devise, figure out, come up with, solve ingeniously|VsuruT||||||
+31169|be dedicated to spiritual improved (esp. through Zen meditation)|VsuruI||||||
+31170|be drawn (lottery)|VsuruI||||||
+31171|be rearranged (classes), be recomposed, be recombined, be reclassified|VsuruI||||||
+31172|give the kun reading of a character|VsuruI||||||
+31173|be instructed, be directed, be briefed|VsuruI||||||
+31174|be in agony (mental), anguish, suffer, be in distress|VsuruI||||||
+31175|be repeated, be reiterated, be iterated, be cycled|VsuruI||||||
+31176|rack one's brains, worry oneself, be anxious|VsuruI||||||
+31177|fight hard, struggle|VsuruI||||||
+31178|use freely, make free use of, have good command (e.g. of a language)|VsuruT||||||
+31179|drive someone on|VsuruT||||||
+31180|take pains, work hard, make effort, trouble oneself, labour, labor|VsuruI||||||
+31181|be dug out, be excavated|VsuruI||||||
+31182|be bent, be indented|VsuruI||||||
+31183|be refracted|VsuruI||||||
+31184|be inflected|VsuruI||||||
+31185|be warped (e.g. of opinion, reasoning, etc.), be distorted|VsuruI||||||
+31186|worry, care, be concerned|VsuruI||||||
+31187|be bored|VsuruI||||||
+31188|race (engine), idle (engine)|VsuruI||||||
+31189|go in circles (esp. argument, discussion, etc.), spin one's wheels|VsuruI||||||
+31190|cry from vexation|VsuruI||||||
+31191|hold a memorial service|VsuruI||||||
+31192|hold a wedding ceremony|VsuruI||||||
+31193|donate, contribute|VsuruI||||||
+31194|conspire, collude, be complicit|VsuruI||||||
+31195|cooperate, be conciliated, be coordinated|VsuruI||||||
+31196|be smitten|VsuruI||||||
+31197|appear together, co-act, co-star|VsuruI||||||
+31198|do a recital contest|VsuruI||||||
+31199|coeducate|VsuruI||||||
+31200|be conferred, be consulted, be discussed, be negotiated|VsuruI||||||
+31201|be threatened, be menaced, be coerced, be terrorised|VsuruI||||||
+31202|be threatened, be menaced|VsuruI||||||
+31203|make an affidavit, make a deposition, testify|VsuruI||||||
+31204|be blackmailed, be extorted, be threatened (to extort money)|VsuruI||||||
+31205|be forced, be enforced|VsuruI||||||
+31206|panic, be scared, be consternated|VsuruI||||||
+31207|teach a lesson or moral|VsuruI||||||
+31208|be furious, be frenzied, be mad|VsuruI||||||
+31209|be jointly sponsored (of an event), be cosponsored, be jointly hosted|VsuruI||||||
+31210|be approved, be authorized, be authorised|VsuruI||||||
+31211|coexist, live together|VsuruI||||||
+31212|be in symbiosis|VsuruI;ZBi||||||
+31213||-||||||
+31214|feel obliged, be grateful, be thankful, be sorry, be ashamed|VsuruI||||||
+31215|shrink back in fear|VsuruI;ar||||||
+31216|be trained, be instructed|VsuruI||||||
+31217|make an arrangement, make a pact, make an agreement|VsuruI||||||
+31218|struggle jointly|VsuruI||||||
+31219|be in concord, be in harmony, be in concert|VsuruI||||||
+31220|be given, be provided, be furnished|VsuruI||||||
+31221|be coerced, be extorted, be forced|VsuruI||||||
+31222|be cultivated, be refined, be cultured, be educated|VsuruI||||||
+31223|coexist|VsuruI||||||
+31224|be refused, be rejected|VsuruI||||||
+31225|be relieved, be rescued|VsuruI||||||
+31226|pay, provision, benefit, deliver|VsuruT||||||
+31227|be performed|VsuruI||||||
+31228|be temporarily absent from school|VsuruI||||||
+31229|be closed (e.g. store), be suspended (business), be shut down, be on holiday|VsuruI||||||
+31230|recruit, offer a job|VsuruI||||||
+31231|close a theater, be absent from stage|VsuruI||||||
+31232|be absent from a tournament|VsuruI;ZSm||||||
+31233|be suspended (publication)|VsuruI||||||
+31234|be closed (library, museum, etc.)|VsuruI||||||
+31235|recommend a sentence (punishment)|VsuruI||||||
+31236|close temporarily (school)|VsuruI||||||
+31237|be cancelled (lecture, class, etc.)|VsuruI||||||
+31238|be investigated (esp. in academic and scientific contexts)|VsuruI||||||
+31239|be relieved, be aided, be rescued, be saved, be helped|VsuruI||||||
+31240|have a cease-fire, make truce|VsuruI||||||
+31241|pause, cease, rest|VsuruI||||||
+31242|rise suddenly (esp. of stock prices), jump|VsuruI||||||
+31243|progress rapidly|VsuruI||||||
+31244|be rescued, be extricated, be reclaimed|VsuruI||||||
+31245|be supplied (water)|VsuruI||||||
+31246|be allowed, be granted, be supplied, be provided with|VsuruI||||||
+31247|rest, break, recreate, recuperate, convalesce|VsuruI||||||
+31248|be refueled (car, plane, etc.)|VsuruI||||||
+31249|be lubricated (machine), be oiled|VsuruI||||||
+31250|rendezvous, meet|VsuruI||||||
+31251|lie in wait for an ambush|VsuruI||||||
+31252|be warned in advance|VsuruI||||||
+31253|herald|VsuruI||||||
+31254|move forward (e.g. plans), accelerate (e.g. of payment schedule)|VsuruI||||||
+31255|get an advance (on one's salary)|VsuruI||||||
+31256|rent a room|VsuruI||||||
+31257|be paralyzed, be numb|VsuruI||||||
+31258|be buried|VsuruI||||||
+31259|be buried in the ground|VsuruI||||||
+31260|have underground deposits|VsuruI||||||
+31261|be expired, be terminated|VsuruI||||||
+31262|rub, chafe|VsuruI||||||
+31263|lose (weight or volume, e.g. in transit)|VsuruI||||||
+31264|decrease (in value), be reduced|VsuruI||||||
+31265|be stipulated, be stated clearly, be documented in writing, be stated explicitly|VsuruI||||||
+31266|be declared, be stated|VsuruI||||||
+31267|be elucidated, be explicitly stated, be specified|VsuruI||||||
+31268|be clearly written, be specified|VsuruI||||||
+31269|travel a maze, travel a labyrinth|VsuruI||||||
+31270|be exempt from responsibility|VsuruI||||||
+31271|be dismissed, be sacked, be discharged|VsuruI||||||
+31272|be ruined, collapse, be destroyed|VsuruI||||||
+31273|be glued to, be pressed tightly against, be closely related to|VsuruI||||||
+31274|give total coverage to the key figure(s) of a TV or film documentary|VsuruI||||||
+31275|contact print|VsuruI||||||
+31276|appear and disappear|VsuruI||||||
+31277|start a train (or bus, etc.) before all the passengers are on board|VsuruI||||||
+31278|make a snap decision, start an action without considering objections to it any longer|VsuruI||||||
+31279|be smuggled|VsuruI||||||
+31280|be privatized, be privatised|VsuruI||||||
+31281|throw oneself (e.g. into the water to commit suicide)|VsuruI||||||
+31282|be reviewed, be reconsidered, be revised|VsuruI||||||
+31283|charm, fascinate, mesmerize, mesmerise|VsuruI||||||
+31284|crowd together, cluster together, swarm|VsuruI||||||
+31285|be smuggled, be bootlegged, be traded illicitly|VsuruI||||||
+31286|smuggle oneself into a country, immigrate illegally|VsuruI||||||
+31287|be poached|VsuruI||||||
+31288|make a secret agreement|VsuruI||||||
+31289|be smuggled|VsuruI||||||
+31290|be attracted, be fascinated, be lured, be captivated, be charmed|VsuruI||||||
+31291|be landed, be unloaded (e.g. a ship)|VsuruI||||||
+31292|be deflored (e.g. geisha)|VsuruI||||||
+31293|be preserved (cut flowers, in ikebana)|VsuruI||||||
+31294|be diluted, be watered down|VsuruI||||||
+31295|be inflated (budget, claim, etc.), be padded|VsuruI||||||
+31296|be hospitalized, be received, be treated, be serviced, be entertained|VsuruI||||||
+31297|be entertained with food and drink, be treated|VsuruI||||||
+31298|be attacked fiercely|VsuruI||||||
+31299|pester someone (for cash, etc.)|VsuruT||||||
+31300|be talk for a long time|VsuruI||||||
+31301|last long, continue, keep at (something), stick to (something)|VsuruI||||||
+31302|be connoted, be comprehended|VsuruI||||||
+31303|be included, be contained within|VsuruI||||||
+31304|be announced unofficially|VsuruI||||||
+31305|be introverted|VsuruI||||||
+31306|report unofficially or confidentially|VsuruI||||||
+31307|to a side job (at home)|VsuruI||||||
+31308|perform interior design|VsuruI||||||
+31309|be built-in, be equipped (with)|VsuruI||||||
+31310|cry|VsuruI||||||
+31311|cry (esp. animal), roar, chirp, tweet, bark, whine, meow|VsuruI||||||
+31312|be broadcast live (radio, be TV), be covered live|VsuruI||||||
+31313|be under house arrest|VsuruI||||||
+31314|be difficult (voyage), be hard (flight)|VsuruI||||||
+31315|run into trouble|VsuruI||||||
+31316|give one's name (or rank, etc.), introduce oneself|VsuruI||||||
+31317|give the name readings of a kanji|VsuruI||||||
+31318|be called by name, be designated, be nominated|VsuruI||||||
+31319|be sticky, be gluey, be gummy, be glutinous, be viscous, be gooey, be greasy|VsuruI||||||
+31320|be indisposed (e.g. a cold)|VsuruI||||||
+31321|be enthusiastic about, be wild about, be absorbed in, be engrossed in, be devoted to|VsuruI||||||
+31322|be wildly enthusiastic about, be crazy about|VsuruI||||||
+31323|cohere, adhere|VsuruI||||||
+31324|desire, wish|VsuruI||||||
+31325|be burned, be combusted|VsuruI||||||
+31326|be sprained|VsuruI||||||
+31327|stay at, lodge at|VsuruI||||||
+31328|be halved, be divided (into two parts), be bisected|VsuruI||||||
+31329||-||||||
+31330|be packed, be baled, be crated|VsuruI||||||
+31331|smile forcedly, make a strained laugh|VsuruI||||||
+31332|sunbathe|VsuruI||||||
+31333|be acknowledged, be acknowledged, be recognized, be recognised|VsuruI||||||
+31334|be approved, be licensed, be licenced, be permitted|VsuruI||||||
+31335|be pregnant|VsuruI||||||
+31336|be certified, be attested, be authenticated, be confirmed|VsuruI||||||
+31337||-||||||
+31338|endure, persevere, be patient|VsuruI||||||
+31339|be comfortable, be peaceful, be at ease, be calm|VsuruI||||||
+31340|grow quickly|VsuruI||||||
+31341|be paid, be supplied|VsuruI||||||
+31342|be paid|VsuruI||||||
+31343|be paid (taxes, be fees, etc.)|VsuruI||||||
+31344|be supplied (goods), be delivered|VsuruI||||||
+31345|be concentrated (e.g. of a solution), be enriched, condensate|VsuruI||||||
+31346|be paid (taxes)|VsuruI||||||
+31347|begin (rainy season)|VsuruI||||||
+31348|be enrolled in kindergarten, be enroled in kindergarten|VsuruI||||||
+31349|enter a park, be garden, be zoo, etc.|VsuruI||||||
+31350|arrive (goods), be received (goods)|VsuruI||||||
+31351|join the cabinet|VsuruI||||||
+31352|be deposited, be paid, be received (money)|VsuruI||||||
+31353|enter into a country|VsuruI||||||
+31354|enter into port, arrive in harbor|VsuruI||||||
+31355|move into (house)|VsuruI||||||
+31356|advance to the first grade|VsuruI||||||
+31357|enter an institution, begin training|VsuruI||||||
+31358|bid, tender|VsuruI||||||
+31359|be entered in a family register|VsuruI||||||
+31360|be chosen (in a competition)|VsuruI||||||
+31361|enter a room|VsuruI||||||
+31362|study under a Buddhist teacher|VsuruI;ZB||||||
+31363|be admitted (e.g. to a trained instituted, research establishment, social welfare facility, etc.), enter|VsuruI||||||
+31364|be imprisoned, be interned, be confined|VsuruI||||||
+31365|settle, immigrate|VsuruI||||||
+31366|win a prize or place (in a contest)|VsuruI||||||
+31367|join a political party|VsuruI||||||
+31368|bathe, take a bath, enter a bath|VsuruI||||||
+31369|bow|VsuruI;LHn||||||
+31370|return a gift, return a favour (favor)|VsuruI||||||
+31371|get revenge|VsuruI||||||
+31372|get change (in a cash transaction)|VsuruI||||||
+31373|guess, speculate, suppose|VsuruI||||||
+31374|give an on reading for a character|VsuruI||||||
+31375|requite a favour (favor), be repaid (obligation, kindness, etc.)|VsuruI||||||
+31376|be preserved, be retained, be kept|VsuruI||||||
+31377|be in clamour, be in clamor, be in uproar, be tumultuous, be furious|VsuruI||||||
+31378|be in great joy|VsuruI||||||
+31379|be polluted, be contaminated|VsuruI||||||
+31380|chatter, talk, chat, chitchat, gossip|VsuruI||||||
+31381|dress up, be fashionable|VsuruI||||||
+31382|argue back and forth, bandy words|VsuruI||||||
+31383|help, provide assistance|VsuruI||||||
+31384|apply, subscribe, enter (competition, raffle, etc.), enlist|VsuruI||||||
+31385|be hit, be stricken|VsuruI||||||
+31386|come and go|VsuruI||||||
+31387|associate, socialize, socialise|VsuruI||||||
+31388|recur (e.g. thoughts)|VsuruI||||||
+31389|correspond|VsuruI||||||
+31390|make a bid, tender a bid|VsuruI||||||
+31391|be received (e.g. of visitors), be dealt with|VsuruI||||||
+31392|be exchanged, be reciprocated, be returned|VsuruI||||||
+31393|reply, riposte|VsuruI||||||
+31394|be seized, be confiscated|VsuruI||||||
+31395|be dealt with (people, customers, complaints, etc.), be received (callers, be visitors, etc.), be attended to, be handled, be served|VsuruI||||||
+31396|reply, answer, respond|VsuruI||||||
+31397|be disobedient to one's parents|VsuruI||||||
+31398|visit, call|VsuruI||||||
+31399|arrive in Japan, come to Japan, visit Japan|VsuruI||||||
+31400|come to a store (restaurant, bar, shop, etc.)|VsuruI||||||
+31401|bid successfully, win a tender|VsuruI||||||
+31402|be cooled, be refrigerated|VsuruI||||||
+31403|be in cold storage, be refrigerated|VsuruI||||||
+31404|deteriorate, degrade, drop in quality|VsuruI||||||
+31405|be used continuously|VsuruI||||||
+31406|be stricken repeatedly|VsuruI||||||

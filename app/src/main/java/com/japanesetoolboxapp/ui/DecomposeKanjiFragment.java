@@ -172,6 +172,8 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                                       List<String> currentMainRadicalDetailedCharacteristics,
                                       final int kanjiListIndex) {
 
+        if (getContext()==null) return;
+
         //region Setting up the view
         LayoutInflater inflater = LayoutInflater.from(getContext());
         final View decompositionContainer = inflater.inflate(R.layout.fragment_decomposition_element, null);
@@ -281,14 +283,14 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                         //    mDecompositionScrollView.smoothScrollTo(0, mScrollY + 100);
                         //else mDecompositionScrollView.fullScroll(View.FOCUS_DOWN);
 
-                        mDecompositionScrollView.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (kanjiListIndex < mInputQueryKanjis.size() - 1)
-                                    mDecompositionScrollView.smoothScrollTo(0, mScrollY + 100);
-                                else mDecompositionScrollView.fullScroll(View.FOCUS_DOWN);
-                            }
-                        });
+//                        mDecompositionScrollView.post(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                if (kanjiListIndex < mInputQueryKanjis.size() - 1)
+//                                    mDecompositionScrollView.smoothScrollTo(0, mScrollY + 100);
+//                                else mDecompositionScrollView.fullScroll(View.FOCUS_DOWN);
+//                            }
+//                        });
 
                         //int heightPx = decompositionContainer.getHeight();
                         //int heightDpi =  Utilities.convertPxToDpi(heightPx, getContext());
