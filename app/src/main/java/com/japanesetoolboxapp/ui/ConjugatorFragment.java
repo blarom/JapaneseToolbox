@@ -53,6 +53,7 @@ public class ConjugatorFragment extends Fragment implements
 
     //region Parameters
     private static final int ROOM_DB_VERB_SEARCH_LOADER = 6542;
+    private static final int MAX_NUM_RESULTS_FOR_SURU_CONJ_SEARCH = 100;
 
     @BindView(R.id.verb_chooser_spinner) Spinner mVerbChooserSpinner;
     @BindView(R.id.conjugations_chooser_spinner) Spinner mConjugationChooserSpinner;
@@ -118,7 +119,6 @@ public class ConjugatorFragment extends Fragment implements
     private List<String> mInputQueryTransliterations;
     private boolean mInputQueryIsInvalid;
     private boolean mAlreadyLoadedRoomResults;
-    private List<Verb> mCompleteVerbsList;
     private List<String[]> mVerbLatinConjDatabase;
     private List<String[]> mVerbKanjiConjDatabase;
     private List<Word> mWordsFromDictFragment;
@@ -185,7 +185,6 @@ public class ConjugatorFragment extends Fragment implements
     private void initializeParameters() {
 
         mMatchingVerbs = new ArrayList<>();
-        mCompleteVerbsList = new ArrayList<>();
     }
     public void SearchForConjugations() {
 
@@ -271,7 +270,7 @@ public class ConjugatorFragment extends Fragment implements
         hideLoadingIndicator();
         if (mMatchingVerbs.size() != 0) {
             showResults();
-            mVerbChooserSpinner.setAdapter(new VerbSpinnerAdapter(getContext(), R.layout.custom_verbchooser_spinner, mMatchingVerbs));
+            mVerbChooserSpinner.setAdapter(new VerbSpinnerAdapter(getContext(), R.layout.spinner_item_verb, mMatchingVerbs));
             mVerbChooserSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> arg0, View arg1, int verbIndex, long id) {
@@ -297,7 +296,7 @@ public class ConjugatorFragment extends Fragment implements
         conjugationTitles.remove(0);
         mConjugationChooserSpinner.setAdapter(new ConjugationsSpinnerAdapter(
                 getContext(),
-                R.layout.custom_conjugationchooser_spinner,
+                R.layout.spinner_item_verb_conjugation_category,
                 conjugationCategories,
                 conjugationTitles));
         mConjugationChooserSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
@@ -542,7 +541,7 @@ public class ConjugatorFragment extends Fragment implements
         View getCustomView(int position, View convertView, ViewGroup parent) {
 
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            View mySpinner = inflater.inflate(R.layout.custom_verbchooser_spinner, parent, false);
+            View mySpinner = inflater.inflate(R.layout.spinner_item_verb, parent, false);
 
             String SpinnerText;
             Verb verb = verbs.get(position);
@@ -612,7 +611,7 @@ public class ConjugatorFragment extends Fragment implements
         View getCustomView(int position, View convertView, ViewGroup parent) {
 
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            View mySpinner = inflater.inflate(R.layout.custom_conjugationchooser_spinner, parent, false);
+            View mySpinner = inflater.inflate(R.layout.spinner_item_verb_conjugation_category, parent, false);
 
             String SpinnerText;
             Verb.ConjugationCategory conjugationCategory = conjugationCategories.get(position);
@@ -644,10 +643,10 @@ public class ConjugatorFragment extends Fragment implements
 
         if (id == ROOM_DB_VERB_SEARCH_LOADER){
             VerbSearchAsyncTaskLoader roomDbVerbSearchLoader = new VerbSearchAsyncTaskLoader(
-                    getContext(), mCompleteVerbsList, inputQuery, mConjugationTitles, mVerbLatinConjDatabase, mVerbKanjiConjDatabase, mWordsFromDictFragment);
+                    getContext(), inputQuery, mConjugationTitles, mVerbLatinConjDatabase, mVerbKanjiConjDatabase, mWordsFromDictFragment);
             return roomDbVerbSearchLoader;
         }
-        else return new VerbSearchAsyncTaskLoader(getContext(), null, "", null, null, null, null);
+        else return new VerbSearchAsyncTaskLoader(getContext(), "", null, null, null, null);
     }
     @Override public void onLoadFinished(@NonNull Loader<Object> loader, Object data) {
 
@@ -688,7 +687,6 @@ public class ConjugatorFragment extends Fragment implements
         private List<long[]> mMatchingVerbIdsAndCols;
         private JapaneseToolboxCentralRoomDatabase mJapaneseToolboxCentralRoomDatabase;
         private HashMap<String, Integer> mFamilyConjugationIndexes = new HashMap<>();
-        private int mInputQueryTransliteratedKanaFormContatenatedLength;
         private List<String[]> mVerbLatinConjDatabase;
         private List<String[]> mVerbKanjiConjDatabase;
         final static int INDEX_ROMAJI = 0;
@@ -699,13 +697,12 @@ public class ConjugatorFragment extends Fragment implements
         final static int INDEX_ACTIVE_ALTSPELLING = 5;
         //endregion
 
-        VerbSearchAsyncTaskLoader(Context context, List<Verb> completeVerbsList, String inputQuery,
+        VerbSearchAsyncTaskLoader(Context context, String inputQuery,
                                   List<ConjugationTitle> conjugationTitles,
                                   List<String[]> mVerbLatinConjDatabase,
                                   List<String[]> mVerbKanjiConjDatabase,
                                   List<Word> mWordsFromDictFragment) {
             super(context);
-            this.mCompleteVerbsList = completeVerbsList;
             this.mInputQuery = inputQuery;
             this.mConjugationTitles = conjugationTitles;
             this.mVerbLatinConjDatabase = mVerbLatinConjDatabase;
@@ -722,7 +719,9 @@ public class ConjugatorFragment extends Fragment implements
         public Object loadInBackground() {
 
             mJapaneseToolboxCentralRoomDatabase = JapaneseToolboxCentralRoomDatabase.getInstance(getContext());
-            if (mCompleteVerbsList.size()==0) mCompleteVerbsList = mJapaneseToolboxCentralRoomDatabase.getAllVerbs();
+            if (mCompleteVerbsList == null || mCompleteVerbsList.size()==0) {
+                mCompleteVerbsList = mJapaneseToolboxCentralRoomDatabase.getAllVerbs();
+            }
 
             List<Verb> mMatchingVerbs = new ArrayList<>();
             if (!TextUtils.isEmpty(mInputQuery)) {
@@ -763,7 +762,6 @@ public class ConjugatorFragment extends Fragment implements
             mInputQueryTransliteratedLatinFormContatenated = Utilities.removeSpecialCharacters(mInputQueryTransliteratedLatinForm);
             mInputQueryTransliteratedKanaFormContatenated = Utilities.removeSpecialCharacters(mInputQueryTransliteratedKanaForm);
             mInputQueryTransliteratedLatinFormContatenatedLength = mInputQueryTransliteratedLatinFormContatenated.length();
-            mInputQueryTransliteratedKanaFormContatenatedLength = mInputQueryTransliteratedKanaFormContatenated.length();
         }
         private void getFamilyConjugationIndexes() {
             for (int rowIndex = 3; rowIndex < mVerbLatinConjDatabase.size(); rowIndex++) {
@@ -1019,15 +1017,24 @@ public class ConjugatorFragment extends Fragment implements
             }
             String type;
             List<long[]> matchingVerbIdsAndColsFromBasicCharacteristics = new ArrayList<>();
+            int counter = 0;
             for (Word word : mMatchingWords) {
                 type = word.getMeanings().get(0).getType();
-                if (type.length() > 0 && type.substring(0,1).equals("V") && !type.equals("VC")) {
+
+                //Preventing the input query being a suru verb conjugation from overloading the results
+                if (queryIsContainedInASuruConjugation && word.getRomaji().contains(" suru")) {
+                    if (counter > MAX_NUM_RESULTS_FOR_SURU_CONJ_SEARCH) break;
+                    counter++;
+                }
+
+                //Adding the word id to the candidates
+                if (type.length() > 0 && type.substring(0,1).equals("V") && !type.contains("VC")) {
                     matchingVerbIdsAndColsFromBasicCharacteristics.add(new long[]{word.getWordId(), 0});
                 }
             }
             //endregion
 
-            //region Adding the suru verb if the query is contained in the suru conjugations
+            //region Adding the suru verb if the query is contained in the suru conjugations, and limiting total results
             if (queryIsContainedInASuruConjugation) {
                 Word suruVerb = mJapaneseToolboxCentralRoomDatabase.getWordsByExactRomajiAndKanjiMatch("suru", "為る").get(0);
                 boolean alreadyInList = false;
@@ -1279,11 +1286,11 @@ public class ConjugatorFragment extends Fragment implements
 
                         //Update the list of match ids
                         matchingVerbIdsAndColsFromExpandedConjugations.add(new long[]{verb.getVerbId(), matchColumn});
+
                         break;
                     }
                 }
                 //endregion
-
             }
             //endregion
 

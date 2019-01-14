@@ -307,7 +307,7 @@ public class InputQueryFragment extends Fragment implements
 
         mInputQueryAutoCompleteTextView.setAdapter(new QueryInputSpinnerAdapter(
                 getContext(),
-                R.layout.custom_queryhistory_spinner,
+                R.layout.spinner_item_queryhistory,
                 mQueryHistoryWordsOnly));
 
         mInputQueryAutoCompleteTextView.setText(mInputQuery);
@@ -882,7 +882,7 @@ public class InputQueryFragment extends Fragment implements
 
         //Setting the elements in the dialog
         LayoutInflater inflater = LayoutInflater.from(getActivity());
-        View dialogView = inflater.inflate(R.layout.custom_ocr_dialog, null);
+        View dialogView = inflater.inflate(R.layout.dialog_ocr_results, null);
 
         ImageView ocrPictureHolder = dialogView.findViewById(R.id.ocrPicture);
         ocrPictureHolder.setImageBitmap(mImageToBeDecoded);
@@ -1078,7 +1078,7 @@ public class InputQueryFragment extends Fragment implements
 
             if (getActivity() != null) {
                 LayoutInflater inflater = LayoutInflater.from(getActivity().getBaseContext());
-                View layout = inflater.inflate(R.layout.custom_queryhistory_spinner, parent, false);
+                View layout = inflater.inflate(R.layout.spinner_item_queryhistory, parent, false);
                 TextView queryHistoryElement = layout.findViewById(R.id.query_value);
                 queryHistoryElement.setText(mQueryHistory.get(position).replace(GlobalConstants.QUERY_HISTORY_MEANINGS_DELIMITER, GlobalConstants.QUERY_HISTORY_MEANINGS_DISPLAYED_DELIMITER));
                 queryHistoryElement.setMaxLines(1);
@@ -1149,7 +1149,7 @@ public class InputQueryFragment extends Fragment implements
 
         mInputQueryAutoCompleteTextView.setAdapter(new QueryInputSpinnerAdapter(
                 getContext(),
-                R.layout.custom_queryhistory_spinner,
+                R.layout.spinner_item_queryhistory,
                 mQueryHistoryWordsOnly));
 
     }
@@ -1279,7 +1279,7 @@ public class InputQueryFragment extends Fragment implements
         updateQueryHistoryWordsOnly();
         mInputQueryAutoCompleteTextView.setAdapter(new QueryInputSpinnerAdapter(
                 getContext(),
-                R.layout.custom_queryhistory_spinner,
+                R.layout.spinner_item_queryhistory,
                 mQueryHistoryWordsOnly));
     }
 }
