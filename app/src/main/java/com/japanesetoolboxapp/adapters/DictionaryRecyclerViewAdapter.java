@@ -651,7 +651,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
     public class DictItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @BindView(R.id.list_item_parent_container) ConstraintLayout parentContainer;
+        @BindView(R.id.list_item_dictionary) ConstraintLayout parentContainer;
         @BindView(R.id.list_item_romaji_and_kanji) TextView romajiAndKanjiTextView;
         @BindView(R.id.dropdown_arrow) ImageView dropdownArrowImageView;
         @BindView(R.id.list_item_meanings) TextView meaningsTextView;

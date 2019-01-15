@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:id="@+id/fragment_decomposition_element"
+    android:id="@+id/list_item_decomposition"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -204,6 +204,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.3"/>
+
+        <ImageView
+            android:id="@+id/remove_decomposition_imageview"
+            android:layout_width="30dp"
+            android:layout_height="26dp"
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_clear_black_24dp"/>
     </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>

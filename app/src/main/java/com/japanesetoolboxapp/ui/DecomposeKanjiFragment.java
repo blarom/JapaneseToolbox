@@ -176,9 +176,10 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
         //region Setting up the view
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        final View decompositionContainer = inflater.inflate(R.layout.fragment_decomposition_element, null);
+        final View decompositionContainer = inflater.inflate(R.layout.list_item_decomposition, null);
         final ConstraintLayout layout = decompositionContainer.findViewById(R.id.fragment_decomposition_element_constraint_layout);
         final TextView kanjiTV = decompositionContainer.findViewById(R.id.decomposition_element_kanji);
+        final ImageView removeDecompositionIV = decompositionContainer.findViewById(R.id.remove_decomposition_imageview);
         final ImageView structureIV = decompositionContainer.findViewById(R.id.decomposition_element_structure_image);
         final LinearLayout radicalGalleryLL = decompositionContainer.findViewById(R.id.decomposition_element_radical_gallery);
         final TextView structureTV = decompositionContainer.findViewById(R.id.decomposition_element_structure_value);
@@ -214,30 +215,6 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         if (radicalIndex != -1) {
             radical_row = mRadicalsOnlyDatabase.get(radicalIndex);
             character_is_radical_or_kana = true;
-        }
-        //endregion
-
-        //region If the user clicks on a component further up in the decompositions chain for the current kanji, remove the following views
-        int childIndex = 0;
-        while (childIndex < mOverallBlockContainer.getChildCount()) {
-            View view = mOverallBlockContainer.getChildAt(childIndex);
-
-            if (view.getTag() == null) {
-                childIndex++;
-                continue;
-            }
-            String tagString = ((String) view.getTag());
-            if (TextUtils.isEmpty(tagString) || !tagString.contains(";")) {
-                childIndex++;
-                continue;
-            }
-            String[] tags = ((String) view.getTag()).split(";");
-            int currentKanjiListIndex = Integer.parseInt(tags[0]);
-            int currentRadicalIteration = Integer.parseInt(tags[1]);
-            if (currentKanjiListIndex == kanjiListIndex && currentRadicalIteration >= radicalIteration) {
-                mOverallBlockContainer.removeViewAt(childIndex);
-            }
-            else childIndex++;
         }
         //endregion
 
@@ -414,26 +391,37 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         }
         //endregion
 
-        //region Updating the list of decompositions for each decomposition card
+        //region Updating mInputQueryKanjis
         Object[] elements;
         elements = (Object[]) mInputQueryKanjis.get(kanjiListIndex);
         elements[DECOMP_RADICAL_ITERATION] = radicalIteration;
         mInputQueryKanjis.set(kanjiListIndex, elements);
         //endregion
 
-        //region Adding the decomposition at the correct position in the list
-        int position = 0;
-        elements = (Object[]) mInputQueryKanjis.get(0);
-        position += (int) elements[DECOMP_RADICAL_ITERATION];
-
-        for (int i = 1; i < kanjiListIndex+1; i++) {
-            elements = (Object[]) mInputQueryKanjis.get(i);
-            position++;
-            position += (int) elements[DECOMP_RADICAL_ITERATION];
-        }
-
+        //region Adding the decomposition at the correct position in the list while removing the subsequent decompositions
+        decompositionContainer.setId(View.generateViewId());
         decompositionContainer.setTag(kanjiListIndex + ";" + radicalIteration);
-        mOverallBlockContainer.addView( decompositionContainer, position);
+        if (radicalIteration == 0) removeDecompositionIV.setVisibility(View.GONE);
+
+        modifyViewsAtRadicalIteration(kanjiListIndex, radicalIteration, true, decompositionContainer);
+
+        removeDecompositionIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String[] tags = ((String) decompositionContainer.getTag()).split(";");
+                int currentKanjiListIndex = Integer.parseInt(tags[0]);
+                int currentRadicalIteration = Integer.parseInt(tags[1]);
+
+                Object[] elements = (Object[]) mInputQueryKanjis.get(currentKanjiListIndex);
+                elements[DECOMP_RADICAL_ITERATION] = currentRadicalIteration - 1;
+                mInputQueryKanjis.set(currentKanjiListIndex, elements);
+
+                View child = mOverallBlockContainer.findViewById(decompositionContainer.getId());
+                if (child != null) {
+                    modifyViewsAtRadicalIteration(currentKanjiListIndex, currentRadicalIteration, false, null);
+                }
+            }
+        });
         //endregion
 
         //region Setting the border color
@@ -446,8 +434,56 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             }
         }
         //endregion
+    }
+    private void modifyViewsAtRadicalIteration(int kanjiListIndex, int radicalIteration, boolean addView, View decompositionContainer) {
+        int childIndex = mOverallBlockContainer.getChildCount()-1;
 
-        //mDecompositionScrollView.fullScroll(View.FOCUS_DOWN);
+        if (radicalIteration == 0 && addView) {
+            mOverallBlockContainer.addView(decompositionContainer);
+            return;
+        }
+
+        while (childIndex >= 0) {
+            View currentCard = mOverallBlockContainer.getChildAt(childIndex);
+
+            if (currentCard.getTag() == null) {
+                childIndex--;
+                continue;
+            }
+            String tagString = ((String) currentCard.getTag());
+            if (TextUtils.isEmpty(tagString) || !tagString.contains(";")) {
+                childIndex--;
+                continue;
+            }
+            String[] currentCardTags = ((String) currentCard.getTag()).split(";");
+            int currentKanjiListIndex = Integer.parseInt(currentCardTags[0]);
+            int currentRadicalIteration = Integer.parseInt(currentCardTags[1]);
+
+            if (currentKanjiListIndex == kanjiListIndex) {
+                if (currentRadicalIteration >= radicalIteration) mOverallBlockContainer.removeViewAt(childIndex);
+            }
+            childIndex--;
+        }
+
+        if (!addView) return;
+
+        for (int i=0; i<mOverallBlockContainer.getChildCount(); i++) {
+
+            View currentCard = mOverallBlockContainer.getChildAt(i);
+            if (currentCard.getTag() == null) continue;
+
+            String tagString = ((String) currentCard.getTag());
+            if (TextUtils.isEmpty(tagString) || !tagString.contains(";")) continue;
+
+            String[] currentCardTags = ((String) currentCard.getTag()).split(";");
+            int currentKanjiListIndex = Integer.parseInt(currentCardTags[0]);
+            int currentRadicalIteration = Integer.parseInt(currentCardTags[1]);
+
+            if (currentKanjiListIndex == kanjiListIndex && currentRadicalIteration + 1 >= radicalIteration) {
+                mOverallBlockContainer.addView(decompositionContainer, i+1);
+                break;
+            }
+        }
     }
     static public String[] getStructureInfo(String requested_structure) {
         String structureText = "";
