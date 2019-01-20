@@ -224,7 +224,7 @@
     </string>
     <string name="AboutTextButtonsConjTitle">CONJ</string>
     <string name="AboutTextButtonsConjParagraph1">
-        A verb conjugator with more than 140 conjugations for more than 1700 regular verbs and more than 2400 suru verbs.
+        A verb conjugator with more than 140 conjugations for more than 2000 regular verbs and more than 3300 suru verbs.
     </string>
     <string name="AboutTextButtonsConjParagraph2">
         If you search for a conjugated verb (in Romaji, Kana or Kanji form) with this function, a unique reverse-search engine
@@ -316,6 +316,7 @@
     </string>
     <string name="AboutTextCreditsDatabasesParagraph2">
         The local dictionary is a reduced form of the open-source EDICT dictionary, which I modified and manually upgraded to suit the app\'s needs.
+        Some other sources were used, including wiktionary.org for updating the suru verb meanings.
     </string>
 
     <string name="AboutTextDisclaimer1">
