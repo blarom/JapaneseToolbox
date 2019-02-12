@@ -627,6 +627,8 @@ public class SearchByRadicalFragment extends Fragment implements
     }
     @OnClick (R.id.search_by_radical_button_search) public void onSearchButtonClick() {
 
+        if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
+
         showResultsSection();
 
         String[] elements_strings = new String[4];

@@ -748,9 +748,13 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
             // Search for the input in the database and retrieve the result's characteristics
 
-            List<List<String>> decomposedKanji = Decomposition(inputQuery);
+            String concatenated_input = Utilities.removeSpecialCharacters(inputQuery);
+            String inputHexIdentifier = Utilities.convertToUTF8Index(concatenated_input).toUpperCase();
+            mCurrentKanjiCharacter = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharacterByHexId(inputHexIdentifier);
             List<String> currentKanjiDetailedCharacteristics = getKanjiDetailedCharacteristics(mCurrentKanjiCharacter);
             List<String> currentKanjiMainRadicalInfo = getKanjiRadicalCharacteristics(mCurrentKanjiCharacter);
+
+            List<List<String>> decomposedKanji = Decomposition(inputQuery);
             Object[] radicalInfo = getRadicalInfo();
 
             return new Object[] {
@@ -771,7 +775,6 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             String concatenated_input = Utilities.removeSpecialCharacters(word);
             String inputHexIdentifier = Utilities.convertToUTF8Index(concatenated_input).toUpperCase();
             mCurrentKanjiCharacter = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharacterByHexId(inputHexIdentifier);
-            //mCurrentKanjiIndex = Collections.binarySearch(mKanjiCharacters, new KanjiCharacter(inputHexIdentifier), KanjiCharacter.hexIdentiferComparatorAscending);
 
             List<List<String>> decomposedKanji = new ArrayList<>();
             List<String> kanji_and_its_structure = new ArrayList<>();

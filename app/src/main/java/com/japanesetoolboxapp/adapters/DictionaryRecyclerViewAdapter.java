@@ -226,7 +226,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     typeIsVerbConjugation = type.equals("VC");
                     typeIsiAdjectiveConjugation = type.equals("iAC");
                     typeIsnaAdjectiveConjugation = type.equals("naAC");
-                    typeIsVerb = type.contains("V") && !type.equals("VC") && !type.equals("NV");
+                    String[] typeElements = type.split(";");
+                    typeIsVerb = type.contains("V") && !type.equals("VC") && !Arrays.asList(typeElements).contains("V");
                 }
                 if (!wordHasPhraseConstruction) wordHasPhraseConstruction = type.equals("PC");
             }
