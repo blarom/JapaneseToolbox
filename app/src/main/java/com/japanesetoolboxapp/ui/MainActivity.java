@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements
 
     public boolean mShowOnlineResults;
     public boolean mShowInfoBoxesOnSearch;
+    public boolean mShowKanjiStructureInfo;
     public String mChosenSpeechToTextLanguage;
     public String mChosenTextToSpeechLanguage;
     public String mChosenOCRLanguage;
@@ -242,6 +243,9 @@ public class MainActivity extends AppCompatActivity implements
         else if (key.equals(getString(R.string.pref_show_info_boxes_on_search_key))) {
             setShowInfoBoxesOnSearch(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_info_boxes_on_search_default)));
         }
+        else if (key.equals(getString(R.string.pref_show_decomp_structure_info_key))) {
+            setShowKanjiStructureInfo(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_decomp_structure_info_default)));
+        }
         else if (key.equals(getString(R.string.pref_query_history_size_key))) {
             mQueryHistorySize = Utilities.getQueryHistorySizePreference(sharedPreferences, getApplicationContext());
             updateQueryHistorySize();
@@ -283,6 +287,9 @@ public class MainActivity extends AppCompatActivity implements
     }
     public void setShowInfoBoxesOnSearch(boolean showInfoBoxes) {
         mShowInfoBoxesOnSearch = showInfoBoxes;
+    }
+    public void setShowKanjiStructureInfo(boolean showStructureInfo) {
+        mShowKanjiStructureInfo = showStructureInfo;
     }
     public void setSpeechToTextLanguage(String language) {
         if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {

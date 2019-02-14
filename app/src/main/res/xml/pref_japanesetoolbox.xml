@@ -16,7 +16,14 @@
         android:key="@string/pref_show_info_boxes_on_search_key"
         android:summaryOff="@string/hidden_info_boxes"
         android:summaryOn="@string/shown_info_boxes"
-        android:title="@string/show_search_indicators" />
+        android:title="@string/show_info_boxes_when_searching" />
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_show_decomp_structure_info_default"
+        android:key="@string/pref_show_decomp_structure_info_key"
+        android:summaryOff="@string/hidden_decomp_structure_info"
+        android:summaryOn="@string/shown_decomp_structure_info"
+        android:title="@string/show_decomp_structure_info_text" />
 
     <EditTextPreference
         android:defaultValue="@string/pref_query_history_size_default_value"

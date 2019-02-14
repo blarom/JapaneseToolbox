@@ -2761,6 +2761,15 @@ public final class Utilities {
         }
         return showInfoBoxesOnSearch;
     }
+    public static Boolean getShowDecompKanjiStructureInfoPreference(Activity activity) {
+        Boolean showDecompStructureInfo = false;
+        if (activity!=null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+            showDecompStructureInfo = sharedPreferences.getBoolean(activity.getString(R.string.pref_show_decomp_structure_info_key),
+                    activity.getResources().getBoolean(R.bool.pref_show_decomp_structure_info_default));
+        }
+        return showDecompStructureInfo;
+    }
     public static int getQueryHistorySizePreference(SharedPreferences sharedPreferences, Context context) {
         int queryHistorySize = Integer.parseInt(context.getResources().getString(R.string.pref_query_history_size_default_value));
         try {

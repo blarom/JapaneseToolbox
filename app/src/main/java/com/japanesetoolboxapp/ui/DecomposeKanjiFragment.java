@@ -182,6 +182,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         final ImageView removeDecompositionIV = decompositionContainer.findViewById(R.id.remove_decomposition_imageview);
         final ImageView structureIV = decompositionContainer.findViewById(R.id.decomposition_element_structure_image);
         final LinearLayout radicalGalleryLL = decompositionContainer.findViewById(R.id.decomposition_element_radical_gallery);
+        final TextView structureTitleTV = decompositionContainer.findViewById(R.id.decomposition_element_structure_title);
         final TextView structureTV = decompositionContainer.findViewById(R.id.decomposition_element_structure_value);
         final TextView radicalTitleTV = decompositionContainer.findViewById(R.id.decomposition_element_radical_title);
         final TextView radicalTV = decompositionContainer.findViewById(R.id.decomposition_element_radical_value);
@@ -189,6 +190,14 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         final TextView kunReadingTV = decompositionContainer.findViewById(R.id.decomposition_element_kun_readings_value);
         final TextView nameReadingTV = decompositionContainer.findViewById(R.id.decomposition_element_name_readings_value);
         final TextView meaningTV = decompositionContainer.findViewById(R.id.decomposition_element_meanings_value);
+
+        if (Utilities.getShowDecompKanjiStructureInfoPreference(getActivity())) {
+            structureTitleTV.setVisibility(View.VISIBLE);
+            structureTV.setVisibility(View.VISIBLE);
+        } else {
+            structureTitleTV.setVisibility(View.GONE);
+            structureTV.setVisibility(View.GONE);
+        }
         //endregion
 
         //region Initialization

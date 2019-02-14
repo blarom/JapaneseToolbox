@@ -21,8 +21,8 @@
         <TextView
             android:id="@+id/decomposition_element_kanji"
             style="@style/DecomposeTopRowTextStyle"
-            android:text="A"
             android:paddingTop="4dp"
+            android:text="A"
             android:textIsSelectable="true"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,22 +90,22 @@
         <TextView
             android:id="@+id/decomposition_element_structure_title"
             style="@style/DecomposeTitleStyle"
-            android:layout_marginTop="8dp"
+            android:layout_height="17dp"
             android:text="Structure:"
             app:layout_constraintEnd_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/decomposition_element_kanji"/>
+            app:layout_constraintTop_toTopOf="@+id/decomposition_element_structure_value"/>
 
         <TextView
             android:id="@+id/decomposition_element_structure_value"
             style="@style/DecomposeValueStyle"
-            android:layout_marginTop="8dp"
+
+            android:focusable="true"
             android:text="-"
             android:textIsSelectable="true"
-            android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@id/decomposition_element_kanji"/>
+            app:layout_constraintTop_toBottomOf="@+id/decomposition_element_separator1"/>
 
         <TextView
             android:id="@+id/decomposition_element_radical_title"
