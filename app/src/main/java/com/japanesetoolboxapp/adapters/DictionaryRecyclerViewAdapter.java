@@ -381,6 +381,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 antonymSpannable.setTextSize(14);
                 antonymSpannable.setTypeface(mDroidSansJapaneseTypeface);
                 antonymSpannable.setTextIsSelectable(true);
+                antonymSpannable.setPadding(0, 0, 0, 16);
                 holder.childElementsLinearLayout.addView(antonymSpannable);
             }
             //endregion
@@ -410,6 +411,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 synonymTextView.setTextSize(14);
                 synonymTextView.setTextIsSelectable(true);
                 synonymTextView.setTypeface(mDroidSansJapaneseTypeface);
+                synonymTextView.setPadding(0, 0, 0, 16);
                 holder.childElementsLinearLayout.addView(synonymTextView);
             }
             //endregion
