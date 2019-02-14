@@ -1115,7 +1115,7 @@ public class InputQueryFragment extends Fragment implements
             queryAndMeaning = mInputQuery
                 + (TextUtils.isEmpty(mFirstMeaning) ? "" :
                 (" " + GlobalConstants.QUERY_HISTORY_MEANINGS_DELIMITER + " "
-                        + (TextUtils.isEmpty(mFirstMeaningRomaji) ? "" : "[" + mFirstMeaningRomaji + "] ")
+                        + ( (TextUtils.isEmpty(mFirstMeaningRomaji) || mFirstMeaningRomaji.equals(mInputQuery)) ? "" : "[" + mFirstMeaningRomaji + "] ")
                         + mFirstMeaning)
             );
         }
