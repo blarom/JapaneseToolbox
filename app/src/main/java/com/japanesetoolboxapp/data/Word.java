@@ -25,6 +25,7 @@ public class Word implements Parcelable {
     static final String COLUMN_WORD_ALT_SPELLINGS = "altSpellings";
     static final String COLUMN_WORD_MEANINGS = "meanings";
     static final String COLUMN_WORD_COMMON_STATUS = "commonStatus";
+    static final String COLUMN_WORD_IS_LOCAL = "isLocal";
 
     public Word() {
     }
@@ -117,6 +118,15 @@ public class Word implements Parcelable {
     }
     public int getCommonStatus() {
         return commonStatus;
+    }
+
+    @ColumnInfo(name = COLUMN_WORD_IS_LOCAL)
+    private boolean isLocal = true;
+    public void setIsLocal(boolean isLocal) {
+        this.isLocal = isLocal;
+    }
+    public boolean getIsLocal() {
+        return isLocal;
     }
 
     @TypeConverters({JapaneseToolboxDbTypeConverters.class})

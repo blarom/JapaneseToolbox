@@ -141,7 +141,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         //endregion
 
         //region Showing the romaji and kanji values for user click
-        if (listTypeIsVerb.get(position)) {
+        if (listTypeIsVerb.get(position) && mWordsList.get(position).getIsLocal()) {
             holder.romajiChildTextView.setVisibility(View.VISIBLE);
             holder.kanjiChildTextView.setVisibility(View.VISIBLE);
         }
@@ -150,7 +150,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             holder.kanjiChildTextView.setVisibility(View.GONE);
         }
 
-        if (romaji.length()>0 && kanji.length()>0) {
+        if (romaji.length() > 0 && kanji.length() > 0) {
             if (listTypeIsVerb.get(position)) {
                 setHyperlinksInCopyToInputLine("verb", holder.romajiChildTextView, "Conjugate ", romaji, " ");
                 setHyperlinksInCopyToInputLine("verb", holder.kanjiChildTextView, "(", kanji, ").");
@@ -158,11 +158,9 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 setHyperlinksInCopyToInputLine("word", holder.romajiChildTextView, "Copy ", romaji, " ");
                 setHyperlinksInCopyToInputLine("word", holder.kanjiChildTextView, "(", kanji, ") to input.");
             }
-        }
-        else if (romaji.length()==0) {
+        } else if (romaji.length() == 0) {
             setHyperlinksInCopyToInputLine("word", holder.romajiChildTextView, "Copy ", kanji, " to input.");
-        }
-        else {
+        } else {
             setHyperlinksInCopyToInputLine("word", holder.romajiChildTextView, "Copy ", romaji, " to input.");
         }
         //endregion

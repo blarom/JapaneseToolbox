@@ -1650,6 +1650,9 @@ public final class Utilities {
             finalWord.setMeanings(currentFinalMeanings);
             finalWordsList.add(finalWord);
         }
+
+        //Once all async words have been merged with the local words, set isLocal=false to the remaining async words and add them to the list
+        for (Word word : finalAsyncWords) word.setIsLocal(false);
         finalWordsList.addAll(finalAsyncWords);
 
         return finalWordsList;
