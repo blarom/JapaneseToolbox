@@ -876,6 +876,8 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                     onReadings.add(readingLatin);
                 }
             }
+            onReadings = Utilities.removeDuplicatesFromList(onReadings);
+            kunReadings = Utilities.removeDuplicatesFromList(kunReadings);
             characteristics.set(KANJI_ON_READING, (onReadings.size()>0 && !onReadings.get(0).equals(""))? TextUtils.join(", ", onReadings) : "-");
             characteristics.set(KANJI_KUN_READING, (kunReadings.size()>0 && !kunReadings.get(0).equals(""))? TextUtils.join(", ", kunReadings) : "-");
 
@@ -888,6 +890,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                         "(" + ConvertFragment.getLatinHiraganaKatakana(components[1]).get(GlobalConstants.TYPE_LATIN) + ")";
                 nameReadings.add(readingLatin);
             }
+            nameReadings = Utilities.removeDuplicatesFromList(nameReadings);
             characteristics.set(KANJI_NAME_READING, (nameReadings.size()>0 && !nameReadings.get(0).equals(""))? TextUtils.join(", ", nameReadings) : "-");
 
             characteristics.set(KANJI_MEANING, TextUtils.isEmpty(kanjiCharacter.getMeanings())? "-" : kanjiCharacter.getMeanings());
