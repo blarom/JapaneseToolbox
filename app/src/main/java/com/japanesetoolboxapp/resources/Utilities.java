@@ -1017,53 +1017,47 @@ public final class Utilities {
 
                 //Getting the Type value
                 String matchingWordType = meaningTagsFromTree.get(j);
-                if (matchingWordType.contains("verb")) {
-                    if      (matchingWordType.contains("su ending")) {
+                if (matchingWordType.contains("Expression")) {
+                    matchingWordType = "CE";
+                }
+                else if (matchingWordType.contains("verb")) {
+                    if (matchingWordType.contains("su ending")) {
                         if (matchingWordType.contains("intransitive")) matchingWordType = "VsuI";
                         if (matchingWordType.contains("Transitive")) matchingWordType = "VsuT";
                         else matchingWordType = "VsuI";
-                    }
-                    else if (matchingWordType.contains("ku ending")) {
+                    } else if (matchingWordType.contains("ku ending")) {
                         if (matchingWordType.contains("intransitive")) matchingWordType = "VkuI";
                         if (matchingWordType.contains("Transitive")) matchingWordType = "VkuT";
                         else matchingWordType = "VkuI";
-                    }
-                    else if (matchingWordType.contains("gu ending")) {
+                    } else if (matchingWordType.contains("gu ending")) {
                         if (matchingWordType.contains("intransitive")) matchingWordType = "VguI";
                         if (matchingWordType.contains("Transitive")) matchingWordType = "VguT";
                         else matchingWordType = "VguI";
-                    }
-                    else if (matchingWordType.contains("mu ending")) {
+                    } else if (matchingWordType.contains("mu ending")) {
                         if (matchingWordType.contains("intransitive")) matchingWordType = "VmuI";
                         if (matchingWordType.contains("Transitive")) matchingWordType = "VmuT";
                         else matchingWordType = "VmuI";
-                    }
-                    else if (matchingWordType.contains("bu ending")) {
+                    } else if (matchingWordType.contains("bu ending")) {
                         if (matchingWordType.contains("intransitive")) matchingWordType = "VbuI";
                         if (matchingWordType.contains("Transitive")) matchingWordType = "VbuT";
                         else matchingWordType = "VbuI";
-                    }
-                    else if (matchingWordType.contains("nu ending")) {
+                    } else if (matchingWordType.contains("nu ending")) {
                         if (matchingWordType.contains("intransitive")) matchingWordType = "VnuI";
                         if (matchingWordType.contains("Transitive")) matchingWordType = "VnuT";
                         else matchingWordType = "VnuI";
-                    }
-                    else if (matchingWordType.contains("ru ending")) {
+                    } else if (matchingWordType.contains("ru ending")) {
                         if (matchingWordType.contains("intransitive")) matchingWordType = "VrugI";
                         if (matchingWordType.contains("Transitive")) matchingWordType = "VrugT";
                         else matchingWordType = "VrugI";
-                    }
-                    else if (matchingWordType.contains("tsu ending")) {
+                    } else if (matchingWordType.contains("tsu ending")) {
                         if (matchingWordType.contains("intransitive")) matchingWordType = "VtsuI";
                         if (matchingWordType.contains("Transitive")) matchingWordType = "VtsuT";
                         else matchingWordType = "VtsuI";
-                    }
-                    else if (matchingWordType.contains("u ending")) {
+                    } else if (matchingWordType.contains("u ending")) {
                         if (matchingWordType.contains("intransitive")) matchingWordType = "VuI";
                         if (matchingWordType.contains("Transitive")) matchingWordType = "VuT";
                         else matchingWordType = "VuI";
-                    }
-                    else if (matchingWordType.contains("Ichidan")) {
+                    } else if (matchingWordType.contains("Ichidan")) {
                         if (matchingWordType.contains("intransitive")) matchingWordType = "VruiI";
                         if (matchingWordType.contains("Transitive")) matchingWordType = "VruiT";
                         else matchingWordType = "VruiI";
