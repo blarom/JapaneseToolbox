@@ -115,7 +115,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 115|seems|PC|(He) seems to [do/be] X.|X rashii da @ X = verb plain form, noun|870|||
 116|seems, heard that|PC|ME#0080;0081;0082;0083;0084|||||
 117|heard that (negative)|PC|(I've) heard that (he's/it's) not X (from what I can see).|X ja/dewa nasasou @ X = noun|880|||
-118|wow|-|Abbreviation of "satemo".|||||
+118|wow|OI|Abbreviation of "satemo".|||||
 119|seems|PC|ME#0089;0090;0091|||||
 120|even if, even though|PC|ME#0092;0093;0094|||||
 121|no matter how much|PC|No matter how much [I/you/he/she] [does/is] X.|ikura X mo @ X = verb te form||||
@@ -247,8 +247,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 247|not permitted, forbidden|VC|[doing/being] X is not permitted/forbidden. Colloquial form of "te wa ikenai" for verbs.|X cha ikenai @ X = verb root|1483||te wa ikenai|
 248|fine to do|VC|Is it fine if [I/you/he/she] [does/is] X?|X mo ii desu ka @ X = verb te form|891|||
 249|do as a favor|VC|[I/you/he/she] [do/does/am/are/is] X as a personal favor for someone. Use "te ageru" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence).|X ageru @ X = verb te form|885, 1393, 1436, 1437, 1440, 1443||te morau, te kureru|
-250|want to do, hope to do|VC|[I/you/he/she] want someone to [do/be] X, hope someone [does/is] X.|X hoshii da @ X = verb te form||||
-251|please do|VC|Please [do/be] X.|X kudasai @ X = verb te form (add "sumimasen" or "chotto" to soften the request)|886|||
+250|want to do/be, hope to do/be|VC|[I/you/he/she] want someone to [do/be] X, hope someone [does/is] X.|X hoshii da @ X = verb te form||||
+251|please do/be|VC|Please [do/be] X.|X kudasai @ X = verb te form (add "sumimasen" or "chotto" to soften the request)|886|||
 252||-||||||
 253|would you please do|VC|Would you please [do/be] X.|X kuremasen ka @ X = verb te form (expression used when the request may cause some trouble to the other person)|||te kurenai, te itadakemasen ka|
 254|do as a favor|VC|[you/he/she] [do/does/are/is] X as a favor for me. Use "te kureru" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence). Usually refers to performing an act for the subject or a close familiar. Usage of "te kureru" corresponds to an active phrase as opposted to "te morau"that corresponds to a passive phrase.|Y ga Z wo X kureru @ X = verb te form, Y = person doing the favor, Z = object of the favor|1435, 1438, 1441||te morau, te ageru|
@@ -2575,7 +2575,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2575|resolution, resignation, readiness, preparedness|N;Abs||||||
 2576|break|N;Abs||||||
 2577|vacation, holidays|N;Abs|Used in an informal dialogue||77, 1298|||
-2578|result, consequence, outcome, effect|N;Abs||||||
+2578||-||||||
 2579|results, record, grades, performance, marks|N;Abs||||||
 2580|retirement|N;Abs||||||
 2581|reverse, opposite|N;Abs||||||
@@ -4290,7 +4290,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4290||-||||||
 4291|yesterday evening, last night|N;T|||503||yuube, kinou|
 4292|ambulance|N;V||||||
-4293|automobile|N;V|||328|||
+4293|automobile|N;V||||||
 4294|bicycle|N;V|||358|||
 4295|boat, watercraft (often hand-propelled)|N;V||||||
 4296|cab|N;V||||||
@@ -10824,7 +10824,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 10824|down, plumage, feathers|N;Abs||||||
 10825|police officer|N;Abs||||||
 10826|police station|N;Abs||||||
-10827|coming to fruition, bearing fruit|N;Abs||||||
+10827||-||||||
 10828|dangerous, perilous, threatening, stormy, volatile, tense, critical, serious|Ana||||||
 10829|dangerousness, perilousness, threateningness, storminess, volatility, tenseness, criticality, seriousness|N;Abs||||||
 10830|stern (expression), hostile (attitude), sharp, harsh|Ana||||||
@@ -22653,7 +22653,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 22653|exchange (cultures), interchange, interact, mingle, intermingle, network, intercourse|VsuruI||||||
 22654||-||||||
 22655|be exterminated, be expulsed, be destroyed|VsuruI||||||
-22656||-||||||
+22656|be authorized, be authorised, be acknowledged, be acknowledged, be certified, be recognized|VsuruI||||||
 22657|encompass, cover (exhaustively), include (all of), comprise, comprehend|VsuruT||||||
 22658|make necessary arrangements, lay the groundwork|VsuruI||||||
 22659|dig around the roots of a tree (before transplanting)|VsuruI||||||
@@ -33658,7 +33658,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 33658|unique, peculiar, singular|Ana||||||
 33659|(regular) customer, client, patron, clientele|N||||||
 33660|anonymity, using an assumed name|N;Ano||||||
-33661|particularly, especially|A||||||
+33661||-||||||
 33662|special case, exception|N||||||
 33663|profitable plan, good plan|N;Ana||||||
 33664||-||||||

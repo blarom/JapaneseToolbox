@@ -460,10 +460,10 @@ public class ConvertFragment extends Fragment {
                 } break;
             case "ぢ":
                 switch (character_next) {
-                    case "ゃ": added_string = "*"; i++; break;
-                    case "ゅ": added_string = "*"; i++; break;
+                    case "ゃ": added_string = "dya"; i++; break;
+                    case "ゅ": added_string = "dyu"; i++; break;
                     case "ぇ": added_string = "*"; i++; break;
-                    case "ょ": added_string = "*"; i++; break;
+                    case "ょ": added_string = "dyo"; i++; break;
                     default: added_string = "di"; break;
                 } break;
             case "つ":
@@ -476,10 +476,11 @@ public class ConvertFragment extends Fragment {
                 } break;
             case "づ":
                 switch (character_next) {
-                    case "ぁ": added_string = "da"; i++; break;
-                    case "ぃ": added_string = "di"; i++; break;
-                    case "ぇ": added_string = "de"; i++; break;
-                    case "ぉ": added_string = "do"; i++; break;
+                    case "ぁ": added_string = "*"; i++; break;
+                    case "ゅ": added_string = "*"; i++; break;
+                    case "ぃ": added_string = "*"; i++; break;
+                    case "ぇ": added_string = "*"; i++; break;
+                    case "ぉ": added_string = "*"; i++; break;
                     default: added_string = "du"; break;
                 } break;
             case "な": added_string = "na"; break;
@@ -1262,6 +1263,11 @@ public class ConvertFragment extends Fragment {
             case "dju": added_string_latin = "dju"; added_string_hiragana = "＊"; added_string_katakana = "ヂュ"; break;
             case "dje": added_string_latin = "dje"; added_string_hiragana = "＊"; added_string_katakana = "ヂェ"; break;
             case "djo": added_string_latin = "djo"; added_string_hiragana = "＊"; added_string_katakana = "ヂョ"; break;
+            case "dya": added_string_latin = "dya"; added_string_hiragana = "ぢゃ"; added_string_katakana = "ヂァ"; break;
+            case "dyi": added_string_latin = "dyi"; added_string_hiragana = "＊"; added_string_katakana = "ヂィ"; break;
+            case "dyu": added_string_latin = "dyu"; added_string_hiragana = "ぢゅ"; added_string_katakana = "ヂュ"; break;
+            case "dye": added_string_latin = "dye"; added_string_hiragana = "＊"; added_string_katakana = "ヂェ"; break;
+            case "dyo": added_string_latin = "dyo"; added_string_hiragana = "ぢょ"; added_string_katakana = "ヂォ"; break;
             case "dza": added_string_latin = "dza"; added_string_hiragana = "＊"; added_string_katakana = "ヅァ"; break;
             case "dzi": added_string_latin = "dzi"; added_string_hiragana = "＊"; added_string_katakana = "ヅィ"; break;
             case "dzu": added_string_latin = "dzu"; added_string_hiragana = "＊"; added_string_katakana = "ヅ"; break;
