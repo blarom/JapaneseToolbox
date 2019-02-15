@@ -406,7 +406,13 @@ public class ConvertFragment extends Fragment {
                     case "ょ": added_string = "kyo"; i++; break;
                     default: added_string = "ki"; break;
                 } break;
-            case "く": added_string = "ku"; break;
+            case "く":
+                switch (character_next) {
+                    case "ゃ": added_string = "kwa"; i++; break;
+                    case "ゅ": added_string = "*"; i++; break;
+                    case "ょ": added_string = "*"; i++; break;
+                    default: added_string = "ku"; break;
+                } break;
             case "け": added_string = "ke"; break;
             case "こ": added_string = "ko"; break;
             case "が": added_string = "ga"; break;
@@ -417,7 +423,13 @@ public class ConvertFragment extends Fragment {
                     case "ょ": added_string = "gyo"; i++; break;
                     default: added_string = "gi"; break;
                 } break;
-            case "ぐ": added_string = "gu"; break;
+            case "ぐ":
+                switch (character_next) {
+                    case "ゃ": added_string = "gwa"; i++; break;
+                    case "ゅ": added_string = "*"; i++; break;
+                    case "ょ": added_string = "*"; i++; break;
+                    default: added_string = "gu"; break;
+                } break;
             case "げ": added_string = "ge"; break;
             case "ご": added_string = "go"; break;
             case "さ": added_string = "sa"; break;
@@ -631,7 +643,13 @@ public class ConvertFragment extends Fragment {
                     case "ォ": added_string = "*"; i++; break;
                     default: added_string = "ki"; break;
                 } break;
-            case "ク": added_string = "ku"; break;
+            case "ク":
+                switch (character_next) {
+                    case "ャ": added_string = "kwa"; i++; break;
+                    case "ュ": added_string = "*"; i++; break;
+                    case "ョ": added_string = "*"; i++; break;
+                    default: added_string = "ku"; break;
+                } break;
             case "ケ": added_string = "ke"; break;
             case "コ": added_string = "ko"; break;
             case "ガ": added_string = "ga"; break;
@@ -646,7 +664,13 @@ public class ConvertFragment extends Fragment {
                     case "ォ": added_string = "*"; i++; break;
                     default: added_string = "gi"; break;
                 } break;
-            case "グ": added_string = "gu"; break;
+            case "グ":
+                switch (character_next) {
+                    case "ャ": added_string = "gwa"; i++; break;
+                    case "ュ": added_string = "*"; i++; break;
+                    case "ョ": added_string = "*"; i++; break;
+                    default: added_string = "gu"; break;
+                } break;
             case "ゲ": added_string = "ge"; break;
             case "ゴ": added_string = "go"; break;
             case "サ": added_string = "sa"; break;
@@ -1289,6 +1313,7 @@ public class ConvertFragment extends Fragment {
             case "gu": added_string_latin = "gu"; added_string_hiragana = "ぐ"; added_string_katakana = "グ"; break;
             case "ge": added_string_latin = "ge"; added_string_hiragana = "げ"; added_string_katakana = "ゲ"; break;
             case "go": added_string_latin = "go"; added_string_hiragana = "ご"; added_string_katakana = "ゴ"; break;
+            case "gwa": added_string_latin = "gwa"; added_string_hiragana = "ぐゎ"; added_string_katakana = "グァ"; break;
             case "gya": added_string_latin = "gya"; added_string_hiragana = "ぎゃ"; added_string_katakana = "ギャ"; break;
             case "gye": added_string_latin = "gye"; added_string_hiragana = "ぎぇ"; added_string_katakana = "ギェ"; break;
             case "gyi": added_string_latin = "gyi"; added_string_hiragana = "ぎぃ"; added_string_katakana = "ギィ"; break;
@@ -1320,6 +1345,7 @@ public class ConvertFragment extends Fragment {
             case "ku": added_string_latin = "ku"; added_string_hiragana = "く"; added_string_katakana = "ク"; break;
             case "ke": added_string_latin = "ke"; added_string_hiragana = "け"; added_string_katakana = "ケ"; break;
             case "ko": added_string_latin = "ko"; added_string_hiragana = "こ"; added_string_katakana = "コ"; break;
+            case "kwa": added_string_latin = "kwa"; added_string_hiragana = "くゎ"; added_string_katakana = "クァ"; break;
             case "kya": added_string_latin = "kya"; added_string_hiragana = "きゃ"; added_string_katakana = "キャ"; break;
             case "kye": added_string_latin = "kye"; added_string_hiragana = "きぇ"; added_string_katakana = "キェ"; break;
             case "kyi": added_string_latin = "kyi"; added_string_hiragana = "きぃ"; added_string_katakana = "キィ"; break;

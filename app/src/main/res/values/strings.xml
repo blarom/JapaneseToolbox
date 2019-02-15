@@ -137,8 +137,7 @@
     <string name="please_enter_word"><![CDATA[<b>Please enter a valid word.</b>
         <br /><br />Complete words will yield the best results, but word fragments will also do.
         <br /><br />You can enter words in English, Romaji, Hiragana, Katakana or Kanji.
-        <br /><br />Also note that this app uses a variation of Kunrei-Shiki romanization, where for example \&quot;う\&quot; is always transliterated to \&quot;u\&quot;,
-        \&quot;di\&quot; is transliterated to \&quot;ヂ\&quot;, and \&quot;づ\&quot; is transliterated to \&quot;du\&quot;.]]></string>
+        <br /><br />Also note that this app uses a variation of Kunrei-Shiki romanization where all kana homophones are transliterated to unique Romaji forms, thereby allowing for unambiguous transliterations.]]></string>
     <string name="GrammarModule_Romaji_construction">Romaji:</string>
     <string name="GrammarModule_Kana_construction">Kana:</string>
     <string name="GrammarModule_English_construction">English:</string>
@@ -176,8 +175,7 @@
     <string name="TransliteratorHint">
         \n<b>Hint:</b>
         \nUse an apostrophe (\&apos;) after \&quot;n\&quot; to ensure its transliteration to \&quot;ん\&quot;.
-        \n\nAlso note that this app uses a variation of Kunrei-Shiki romanization, where for example \&quot;う\&quot; is transliterated to \&quot;u\&quot;,
-        \&quot;di\&quot; is transliterated to \&quot;ヂ\&quot;, and \&quot;づ\&quot; is transliterated to \&quot;du\&quot;.</string>
+        \n\nAlso note that this app uses a variation of Kunrei-Shiki romanization where all kana homophones are transliterated to unique Romaji forms, thereby allowing for unambiguous transliterations.</string>
 
     <!--ComposeKanjiFragment Strings-->
     <string name="search_by_radical_kanji_finder">Kanji Finder</string>
