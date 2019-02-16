@@ -963,7 +963,7 @@ public final class Utilities {
                     meaningTag = "";
                     if (meaningsTagsData.size()>0) meaningTag = (String) meaningsTagsData.get(0);
                 }
-                if (meaningTag.contains("Wikipedia") || meaningTag.contains("Notes")) break;
+                if (meaningTag.contains("Wikipedia") || meaningTag.contains("Notes")) continue;
                 if (currentHeader.contains("meaning-wrapper")) {
                     if (meaningTag.contains("Other forms")) {
                         List<Object> meaningWrapperData = (List<Object>) meaningsWrapperData.get(j);
