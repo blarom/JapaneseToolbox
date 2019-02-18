@@ -1379,7 +1379,7 @@ public final class Utilities {
         String matchingWordRules;
         String matchingWordExampleList;
         String[] current_meaning_characteristics;
-        Boolean has_multiple_explanations;
+        boolean has_multiple_explanations;
         String ME_index;
 
         //Finding the meanings using the supplied index
