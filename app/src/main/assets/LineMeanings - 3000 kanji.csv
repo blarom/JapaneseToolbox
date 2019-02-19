@@ -154,7 +154,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 154|and then, and so, and, so then|CO|ME#0136;0137|||||
 155|therefore|CO|ME#0138;0139;0140;0141|||||
 156|by means of|CO|X by means of Y.|X te/de Y @ X = action verb te-form, Y = action verb|1044|||
-157||-||||||
+157|dangerous, risky|N||||||
 158|despite, in spite of, regardless of|PC|Despite X, in spite of X, regardless of X.|X kakawarazu @ X = phrase||||
 159|except for, other than, with the exception of|PC|Except for X, other than X, with the exception of X.|X igai @ X = phrase||||
 160||-||||||
@@ -4767,7 +4767,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4767|think out, cull, run on a curtailed schedule|VkuT||||||
 4768|see through|VkuT||||||
 4769|disseminate, scatter, broadcast, give money freely, strew|VkuT||||||
-4770|be effective, show effect, be possible use|VkuI||||||
+4770|be effective, show effect, be possible to use|VkuI||||||
 4771||-||||||
 4772|peek (though a keyhole, gap, etc.), look down in(a ravine, etc.), peek in(a shop, bookstore, etc.), sneak a look at, take a quick look at, peep (through a telescope, microscope, etc.)|VkuT||||||
 4773|stick out (a scarf from a collar, etc.), peek through (sky through a forest canopy, etc.)|VkuI||||||
@@ -6645,8 +6645,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6645|number, edition, make, model, issue, part of that group|N;Abs||||||
 6646|sobriquet, pen-name|N;GO||||||
 6647|suffix attached to names of ships, trains, airplanes, etc.|Sx||||||
-6648|0.18039 litres (liters)|N;MSE||||||
-6649|0.3306 metres square (meters)|N;MSE||||||
+6648||-||||||
+6649||-||||||
 6650|one-tenth of the way from the base to the summit of a mountain|N;MSE||||||
 6651|conjunction|N;MSE||||||
 6652|counter for covered containers|C||||||
@@ -13011,7 +13011,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13011|one's dominant eye|N;Abs||||||
 13012|precious metal|N;Abs||||||
 13013|do its work, carry out its function well|VkuI||||||
-13014|be possible to use|VkuI||||||
+13014||-||||||
 13015|end of term|N;Abs||||||
 13016|your company|N;Abs||||||
 13017|your shrine|N;Abs||||||
@@ -22496,7 +22496,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 22496|there is no way that ... (expresses speaker's belief that something is impossible)|CE||||||
 22497|easy, simple|CE||||||
 22498|it does not mean that ..., I don't mean that ..., it is not the case that|CE||||||
-22499|we|P||||||
+22499||-||||||
 22500|Washington, DC (capital of the United States of America)|N;Pl||||||
 22501|Washington (US state)|N;Pl||||||
 22502||-||||||

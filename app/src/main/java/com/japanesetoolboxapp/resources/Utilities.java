@@ -1620,8 +1620,8 @@ public final class Utilities {
                                 finalAltSpellings.add(altSpelling.trim());
                             }
                         }
-                        finalWord.setAltSpellings(TextUtils.join(", ", finalAltSpellings));
                     }
+                    finalWord.setAltSpellings(TextUtils.join(", ", finalAltSpellings));
 
                     //Setting the meanings
                     List<Word.Meaning> currentAsyncMeanings = currentAsyncWord.getMeanings();
