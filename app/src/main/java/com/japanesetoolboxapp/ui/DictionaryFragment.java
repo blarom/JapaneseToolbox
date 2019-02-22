@@ -127,6 +127,7 @@ public class DictionaryFragment extends Fragment implements
         String inputQuery = "";
         if (args!=null && args.getString(getString(R.string.saved_input_query))!=null) {
             inputQuery = args.getString(getString(R.string.saved_input_query));
+            if (inputQuery != null) inputQuery = inputQuery.toLowerCase();
         }
 
         if (id == JISHO_WEB_SEARCH_LOADER) {

@@ -46,7 +46,6 @@ import butterknife.Unbinder;
 //// Test app ranking algorithm using the following words: eat, car
 
 //TODO: features
-////TODO: limit latin index size by separating word with spaces & preventing index values crossing over long words
 ////TODO: add wildcard characters to local searches
 ////TODO: add kanji character zoom in
 ////TODO: allow user to enter verb in gerund form (ing) and still find it

@@ -2314,7 +2314,7 @@ public final class Utilities {
 
             //Otherwise, handling longer words
             if (!foundMatch) {
-                keywords = word.getKeywords().replace(" ","");
+                keywords = word.getKeywords().replace(" ","").toLowerCase();
                 foundMatch = keywords.contains(searchWordNoSpaces)
                         || keywords.contains(inglessVerb)
                         || queryIsVerbWithTo && keywords.contains(searchWordWithoutTo);
