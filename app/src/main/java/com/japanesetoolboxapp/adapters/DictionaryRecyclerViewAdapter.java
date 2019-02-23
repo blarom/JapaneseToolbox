@@ -234,10 +234,10 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
             //region Updating the parent values
             String parentRomaji;
-            if (typeIsVerbConjugation && romaji.length()>3 && romaji.substring(0,3).equals("(o)")) parentRomaji = "(o)[verb]" + romaji.substring(3,romaji.length());
-            else if (typeIsVerbConjugation && romaji.length()>3 && !romaji.substring(0,3).equals("(o)")) parentRomaji = "[verb]" + romaji;
-            else if (typeIsiAdjectiveConjugation) parentRomaji = "[i-adj.]" + romaji;
-            else if (typeIsnaAdjectiveConjugation) parentRomaji = "[na-adj.]" + romaji;
+            if (typeIsVerbConjugation && romaji.length()>3 && romaji.substring(0,3).equals("(o)")) parentRomaji = "(o)[verb] + " + romaji.substring(3);
+            else if (typeIsVerbConjugation && romaji.length()>3 && !romaji.substring(0,3).equals("(o)")) parentRomaji = "[verb] + " + romaji;
+            else if (typeIsiAdjectiveConjugation) parentRomaji = "[i-adj.] + " + romaji;
+            else if (typeIsnaAdjectiveConjugation) parentRomaji = "[na-adj.] + " + romaji;
             else parentRomaji = romaji;
 
             String romajiAndKanji;
