@@ -591,6 +591,8 @@ public class MainActivity extends AppCompatActivity implements
         mDictionaryFragment = new DictionaryFragment();
         Bundle bundle = new Bundle();
         bundle.putString(getString(R.string.user_query_word), query);
+        bundle.putSerializable(getString(R.string.latin_conj_database), new ArrayList<>(VerbLatinConjDatabase));
+        bundle.putSerializable(getString(R.string.kanji_conj_database), new ArrayList<>(VerbKanjiConjDatabase));
         bundle.putSerializable(getString(R.string.legend_database), LegendDatabase);
         mDictionaryFragment.setArguments(bundle);
 

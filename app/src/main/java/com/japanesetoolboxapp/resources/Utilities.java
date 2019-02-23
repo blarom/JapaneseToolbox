@@ -35,6 +35,7 @@ import android.widget.ImageView;
 import com.google.firebase.database.FirebaseDatabase;
 import com.japanesetoolboxapp.BuildConfig;
 import com.japanesetoolboxapp.R;
+import com.japanesetoolboxapp.data.ConjugationTitle;
 import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
 import com.japanesetoolboxapp.data.KanjiIndex;
 import com.japanesetoolboxapp.data.LatinIndex;
@@ -266,7 +267,7 @@ public final class Utilities {
     }
 
 
-    //String manipulations utilities
+    //String manipulation utilities
     public static String convertToUTF8Index(String input_string) {
 
         byte[] byteArray = {};
@@ -2806,4 +2807,54 @@ public final class Utilities {
         return sharedPref.getBoolean(context.getString(R.string.word_and_verb_database_finished_loading_flag), false);
     }
 
+    //Conjugator Module utilities
+    public static List<ConjugationTitle> getConjugationTitles(List<String[]> verbLatinConjDatabase) {
+
+        String[] titlesRow = verbLatinConjDatabase.get(0);
+        String[] subtitlesRow = verbLatinConjDatabase.get(1);
+        String[] endingsRow = verbLatinConjDatabase.get(2);
+        int sheetLength = titlesRow.length;
+        List<ConjugationTitle> conjugationTitles = new ArrayList<>();
+        List<ConjugationTitle.Subtitle> subtitles = new ArrayList<>();
+        ConjugationTitle conjugationTitle = new ConjugationTitle();
+
+        for (int col = 0; col < sheetLength; col++) {
+
+            if (col == 0) {
+                conjugationTitle.setTitle(titlesRow[col]);
+                conjugationTitle.setTitleIndex(col);
+
+                ConjugationTitle.Subtitle subtitle = new ConjugationTitle.Subtitle();
+                subtitle.setSubtitle(subtitlesRow[col]);
+                subtitle.setSubtitleIndex(col);
+                subtitles.add(subtitle);
+            }
+            else if (col == sheetLength -1) {
+                conjugationTitle.setSubtitles(subtitles);
+                conjugationTitles.add(conjugationTitle);
+            }
+            else {
+                if (!titlesRow[col].equals("")) {
+
+                    conjugationTitle.setSubtitles(subtitles);
+                    conjugationTitles.add(conjugationTitle);
+
+                    conjugationTitle = new ConjugationTitle();
+                    subtitles = new ArrayList<>();
+
+                    conjugationTitle.setTitle(titlesRow[col]);
+                    conjugationTitle.setTitleIndex(col);
+
+                }
+
+                ConjugationTitle.Subtitle subtitle = new ConjugationTitle.Subtitle();
+                subtitle.setSubtitle(subtitlesRow[col]);
+                subtitle.setEnding(endingsRow[col]);
+                subtitle.setSubtitleIndex(col);
+                subtitles.add(subtitle);
+            }
+        }
+
+        return conjugationTitles;
+    }
 }

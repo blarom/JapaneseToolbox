@@ -117,7 +117,7 @@ public class ConjugatorFragment extends Fragment implements
     private int mInputQueryTextType;
     private List<String> mInputQueryTransliterations;
     private boolean mInputQueryIsInvalid;
-    private boolean mAlreadyLoadedRoomResults;
+    private boolean mAlreadyLoadedVerbs;
     private List<String[]> mVerbLatinConjDatabase;
     private List<String[]> mVerbKanjiConjDatabase;
     private List<Word> mWordsFromDictFragment;
@@ -182,65 +182,15 @@ public class ConjugatorFragment extends Fragment implements
         }
     }
     private void initializeParameters() {
-
         mMatchingVerbs = new ArrayList<>();
+        mConjugationTitles = Utilities.getConjugationTitles(mVerbLatinConjDatabase);
     }
     public void SearchForConjugations() {
 
         hideAll();
-        mConjugationTitles = getConjugationTitles();
         getInputQueryParameters();
         startSearchingForMatchingVerbsInRoomDb();
 
-    }
-    private List<ConjugationTitle> getConjugationTitles() {
-
-        String[] titlesRow = mVerbLatinConjDatabase.get(0);
-        String[] subtitlesRow = mVerbLatinConjDatabase.get(1);
-        String[] endingsRow = mVerbLatinConjDatabase.get(2);
-        int sheetLength = titlesRow.length;
-        List<ConjugationTitle> conjugationTitles = new ArrayList<>();
-        List<ConjugationTitle.Subtitle> subtitles = new ArrayList<>();
-        ConjugationTitle conjugationTitle = new ConjugationTitle();
-
-        for (int col = 0; col < sheetLength; col++) {
-
-            if (col == 0) {
-                conjugationTitle.setTitle(titlesRow[col]);
-                conjugationTitle.setTitleIndex(col);
-
-                ConjugationTitle.Subtitle subtitle = new ConjugationTitle.Subtitle();
-                subtitle.setSubtitle(subtitlesRow[col]);
-                subtitle.setSubtitleIndex(col);
-                subtitles.add(subtitle);
-            }
-            else if (col == sheetLength -1) {
-                conjugationTitle.setSubtitles(subtitles);
-                conjugationTitles.add(conjugationTitle);
-            }
-            else {
-                if (!titlesRow[col].equals("")) {
-
-                    conjugationTitle.setSubtitles(subtitles);
-                    conjugationTitles.add(conjugationTitle);
-
-                    conjugationTitle = new ConjugationTitle();
-                    subtitles = new ArrayList<>();
-
-                    conjugationTitle.setTitle(titlesRow[col]);
-                    conjugationTitle.setTitleIndex(col);
-
-                }
-
-                ConjugationTitle.Subtitle subtitle = new ConjugationTitle.Subtitle();
-                subtitle.setSubtitle(subtitlesRow[col]);
-                subtitle.setEnding(endingsRow[col]);
-                subtitle.setSubtitleIndex(col);
-                subtitles.add(subtitle);
-            }
-        }
-
-        return conjugationTitles;
     }
     private void startSearchingForMatchingVerbsInRoomDb() {
         if (getActivity()!=null && !mInputQueryIsInvalid) {
@@ -649,8 +599,8 @@ public class ConjugatorFragment extends Fragment implements
     }
     @Override public void onLoadFinished(@NonNull Loader<Object> loader, Object data) {
 
-        if (loader.getId() == VERB_SEARCH_LOADER && !mAlreadyLoadedRoomResults && data!=null) {
-            mAlreadyLoadedRoomResults = true;
+        if (loader.getId() == VERB_SEARCH_LOADER && !mAlreadyLoadedVerbs && data!=null) {
+            mAlreadyLoadedVerbs = true;
             Object[] dataElements = (Object[]) data;
             mMatchingVerbs = (List<Verb>) dataElements[0];
             List<Word> matchingWords = (List<Word>) dataElements[1];

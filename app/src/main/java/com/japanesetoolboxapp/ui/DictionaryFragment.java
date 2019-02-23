@@ -2,16 +2,13 @@ package com.japanesetoolboxapp.ui;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
-import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +18,15 @@ import android.widget.Toast;
 
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.adapters.DictionaryRecyclerViewAdapter;
+import com.japanesetoolboxapp.data.ConjugationTitle;
 import com.japanesetoolboxapp.data.FirebaseDao;
-import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
+import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.data.Word;
-import com.japanesetoolboxapp.loaders.*;
+import com.japanesetoolboxapp.loaders.JMDictESResultsAsyncTaskLoader;
+import com.japanesetoolboxapp.loaders.JMDictFRResultsAsyncTaskLoader;
+import com.japanesetoolboxapp.loaders.JishoResultsAsyncTaskLoader;
+import com.japanesetoolboxapp.loaders.RoomDbWordSearchAsyncTaskLoader;
+import com.japanesetoolboxapp.loaders.VerbSearchAsyncTaskLoader;
 import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
@@ -38,7 +40,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class DictionaryFragment extends Fragment implements
-        LoaderManager.LoaderCallbacks<List<Word>>,
+        LoaderManager.LoaderCallbacks<Object>,
         FirebaseDao.FirebaseOperationsHandler,
         DictionaryRecyclerViewAdapter.DictionaryItemClickHandler {
 
@@ -53,6 +55,7 @@ public class DictionaryFragment extends Fragment implements
     private static final int ROOM_DB_SEARCH_LOADER = 42;
     public static final int JMDICTFR_WEB_SEARCH_LOADER = 43;
     public static final int JMDICTES_WEB_SEARCH_LOADER = 44;
+    private static final int VERB_SEARCH_LOADER = 45;
     Toast mShowOnlineResultsToast;
     private List<Word> mLocalMatchingWordsList;
     private List<Word> mMergedMatchingWordsList;
@@ -62,7 +65,12 @@ public class DictionaryFragment extends Fragment implements
     private boolean mAlreadyLoadedJishoResults;
     private boolean mAlreadyLoadedJMDictFRResults;
     private boolean mAlreadyLoadedJMDictESResults;
+    private boolean mAlreadyLoadedVerbs;
+    private List<Verb> mMatchingVerbs;
     private HashMap<String, String> mLegendDatabase;
+    private List<String[]> mVerbLatinConjDatabase;
+    private List<String[]> mVerbKanjiConjDatabase;
+    private List<ConjugationTitle> mConjugationTitles;
     private DictionaryRecyclerViewAdapter mDictionaryRecyclerViewAdapter;
     //endregion
 
@@ -123,7 +131,7 @@ public class DictionaryFragment extends Fragment implements
 
 
     //Asynchronous methods
-    @NonNull @Override public Loader<List<Word>> onCreateLoader(int id, final Bundle args) {
+    @NonNull @Override public Loader<Object> onCreateLoader(int id, final Bundle args) {
 
         String inputQuery = "";
         if (args!=null && args.getString(getString(R.string.saved_input_query))!=null) {
@@ -150,14 +158,20 @@ public class DictionaryFragment extends Fragment implements
             RoomDbWordSearchAsyncTaskLoader roomDbSearchLoader = new RoomDbWordSearchAsyncTaskLoader(getContext(), inputQuery);
             return roomDbSearchLoader;
         }
+        else if (id == VERB_SEARCH_LOADER){
+            VerbSearchAsyncTaskLoader verbSearchLoader = new VerbSearchAsyncTaskLoader(
+                    getContext(), inputQuery, mConjugationTitles, mVerbLatinConjDatabase, mVerbKanjiConjDatabase, new ArrayList<Word>());
+            return verbSearchLoader;
+        }
         else return new RoomDbWordSearchAsyncTaskLoader(getContext(), "");
     }
-    @Override public void onLoadFinished(@NonNull Loader<List<Word>> loader, List<Word> loaderResultWordsList) {
+    @Override public void onLoadFinished(@NonNull Loader<Object> loader, Object data) {
 
         if (getContext() == null) return;
 
         hideLoadingIndicator();
         if (loader.getId() == ROOM_DB_SEARCH_LOADER && !mAlreadyLoadedRoomResults) {
+            List<Word> loaderResultWordsList = (List<Word>) data;
             mAlreadyLoadedRoomResults = true;
             mLocalMatchingWordsList = loaderResultWordsList;
             mLocalMatchingWordsList = sortWordsAccordingToRanking(mLocalMatchingWordsList);
@@ -188,6 +202,7 @@ public class DictionaryFragment extends Fragment implements
                 performConjSearch();
             }
             else {
+                findMatchingVerbsInDictModule();
                 dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mLocalMatchingWordsList);
             }
             mShowOnlineResultsToast = Toast.makeText(getContext(), text, Toast.LENGTH_SHORT);
@@ -196,6 +211,7 @@ public class DictionaryFragment extends Fragment implements
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_SEARCH_LOADER);
         }
         else if (loader.getId() == JISHO_WEB_SEARCH_LOADER && !mAlreadyLoadedJishoResults) {
+            List<Word> loaderResultWordsList = (List<Word>) data;
             mAlreadyLoadedJishoResults = true;
 
             List<Word> jishoWords = Utilities.cleanUpProblematicWordsFromJisho(loaderResultWordsList);
@@ -223,6 +239,7 @@ public class DictionaryFragment extends Fragment implements
                 }
 
                 displayResults(mMergedMatchingWordsList);
+                findMatchingVerbsInDictModule();
             }
             else {
                 dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mLocalMatchingWordsList);
@@ -235,10 +252,12 @@ public class DictionaryFragment extends Fragment implements
                 }
             }
 
+
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(JISHO_WEB_SEARCH_LOADER);
 
         }
         else if (loader.getId() == JMDICTFR_WEB_SEARCH_LOADER && !mAlreadyLoadedJMDictFRResults) {
+            List<Word> loaderResultWordsList = (List<Word>) data;
             mAlreadyLoadedJMDictFRResults = true;
 
             List<Word> JMDictFRWords = Utilities.cleanUpProblematicWordsFromJisho(loaderResultWordsList);
@@ -255,15 +274,33 @@ public class DictionaryFragment extends Fragment implements
             }
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(JMDICTFR_WEB_SEARCH_LOADER);
         }
+        else if (loader.getId() == VERB_SEARCH_LOADER && !mAlreadyLoadedVerbs && data!=null) {
+            mAlreadyLoadedVerbs = true;
+            Object[] dataElements = (Object[]) data;
+            mMatchingVerbs = (List<Verb>) dataElements[0];
+            List<Word> matchingWordsFromVerbs = (List<Word>) dataElements[1];
 
+            mMergedMatchingWordsList = Utilities.getMergedWordsList(mMergedMatchingWordsList, matchingWordsFromVerbs, "");
+
+            if (matchingWordsFromVerbs.size()>0)
+                Toast.makeText(getContext(), "Found "
+                    + Integer.toString(matchingWordsFromVerbs.size())
+                    + " verbs with conjugations matching the search word.", Toast.LENGTH_SHORT).show();
+
+            displayResults(mMergedMatchingWordsList);
+
+            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(VERB_SEARCH_LOADER);
+        }
     }
-    @Override public void onLoaderReset(@NonNull Loader<List<Word>> loader) {}
+    @Override public void onLoaderReset(@NonNull Loader<Object> loader) {}
 
 
 	//Functionality methods
     private void getExtras() {
         if (getArguments()!=null) {
             mInputQuery = getArguments().getString(getString(R.string.user_query_word));
+            mVerbLatinConjDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.latin_conj_database));
+            mVerbKanjiConjDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.kanji_conj_database));
             mLegendDatabase = (HashMap<String, String>) getArguments().getSerializable(getString(R.string.legend_database));
         }
     }
@@ -278,6 +315,8 @@ public class DictionaryFragment extends Fragment implements
         mAlreadyLoadedJishoResults = false;
         mAlreadyLoadedJMDictFRResults = false;
         mAlreadyLoadedJMDictESResults = false;
+
+        mConjugationTitles = Utilities.getConjugationTitles(mVerbLatinConjDatabase);
     }
     private void initializeViews(View rootView) {
         mBinding = ButterKnife.bind(this, rootView);
@@ -288,7 +327,9 @@ public class DictionaryFragment extends Fragment implements
         mDictionaryRecyclerView.setAdapter(mDictionaryRecyclerViewAdapter);
     }
     private void getQuerySearchResults() {
-        if (!TextUtils.isEmpty(mInputQuery)) findMatchingWordsInRoomDb();
+        if (!TextUtils.isEmpty(mInputQuery)) {
+            findMatchingWordsInRoomDb();
+        }
         else showEmptySearchResults();
     }
     private void findMatchingWordsInRoomDb() {
@@ -300,6 +341,16 @@ public class DictionaryFragment extends Fragment implements
             bundle.putString(getString(R.string.saved_input_query), mInputQuery);
             if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_SEARCH_LOADER, bundle, this);
             else loaderManager.restartLoader(ROOM_DB_SEARCH_LOADER, bundle, this);
+        }
+    }
+    private void findMatchingVerbsInDictModule() {
+        if (getActivity()!=null) {
+            LoaderManager loaderManager = getActivity().getSupportLoaderManager();
+            Loader<String> verbSearchLoader = loaderManager.getLoader(VERB_SEARCH_LOADER);
+            Bundle bundle = new Bundle();
+            bundle.putString(getString(R.string.saved_input_query), mInputQuery);
+            if (verbSearchLoader == null) loaderManager.initLoader(VERB_SEARCH_LOADER, bundle, this);
+            else loaderManager.restartLoader(VERB_SEARCH_LOADER, bundle, this);
         }
     }
     private void showEmptySearchResults() {
@@ -393,9 +444,6 @@ public class DictionaryFragment extends Fragment implements
             mDictionaryRecyclerView.setVisibility(View.GONE);
         }
 
-        // Populate the list of choices for the SearchResultsChooserSpinner. Each text element of inside the individual spinner choices corresponds to a sub-element of the choicelist
-        //createExpandableListViewContentsFromWordsList(wordsList);
-        //showExpandableListViewWithContents();
     }
     private List<Word> sortWordsAccordingToRanking(List<Word> wordsList) {
 

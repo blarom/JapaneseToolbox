@@ -10,7 +10,7 @@ import com.japanesetoolboxapp.resources.Utilities;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JMDictFRResultsAsyncTaskLoader extends AsyncTaskLoader<List<Word>> {
+public class JMDictFRResultsAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
     String mQuery;
     private boolean internetIsAvailable;

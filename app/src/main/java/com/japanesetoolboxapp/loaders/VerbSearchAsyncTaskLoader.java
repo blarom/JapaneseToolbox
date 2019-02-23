@@ -53,12 +53,12 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
     private HashMap<String, Integer> mFamilyConjugationIndexes = new HashMap<>();
     private List<String[]> mVerbLatinConjDatabase;
     private List<String[]> mVerbKanjiConjDatabase;
-    final static int INDEX_ROMAJI = 0;
-    final static int INDEX_KANJI = 1;
-    final static int INDEX_HIRAGANA_FIRST_CHAR = 2;
-    final static int INDEX_LATIN_ROOT = 3;
-    final static int INDEX_KANJI_ROOT = 4;
-    final static int INDEX_ACTIVE_ALTSPELLING = 5;
+    private final static int INDEX_ROMAJI = 0;
+    private final static int INDEX_KANJI = 1;
+    private final static int INDEX_HIRAGANA_FIRST_CHAR = 2;
+    private final static int INDEX_LATIN_ROOT = 3;
+    private final static int INDEX_KANJI_ROOT = 4;
+    private final static int INDEX_ACTIVE_ALTSPELLING = 5;
     //endregion
 
     public VerbSearchAsyncTaskLoader(Context context, String inputQuery,
