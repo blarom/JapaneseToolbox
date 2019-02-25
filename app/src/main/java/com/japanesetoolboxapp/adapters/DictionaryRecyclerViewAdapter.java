@@ -37,7 +37,7 @@ import butterknife.ButterKnife;
 
 public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<DictionaryRecyclerViewAdapter.DictItemViewHolder> {
 
-    public static final String RULE_DELIMITER = "@";
+    private static final String RULE_DELIMITER = "@";
     private final Context mContext;
     private final HashMap<String, String> mLegendDatabase;
     private final String mInputQuery;
@@ -254,13 +254,12 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     && !romajiAndKanjiNoSpaces.contains(mInputQuery)
                     && !romajiAndKanjiNoSpaces.contains(inputQueryNoSpaces)
                     && !romajiAndKanjiNoSpaces.contains(inputQueryLatin)) {
+
                 String latin = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_LATIN);
                 String hiragana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_HIRAGANA);
                 String katakana = ConvertFragment.getLatinHiraganaKatakana(romaji).get(GlobalConstants.TYPE_KATAKANA);
-                if (romaji.contains(latin)) {
-                    //Ignore words where the romaji value includes the latin convertion of the input query
-                }
-                else if (!TextUtils.isEmpty(alternatespellings) && alternatespellings.contains(mInputQuery)) {
+
+                if (!TextUtils.isEmpty(alternatespellings) && alternatespellings.contains(mInputQuery)) {
                     String[] altSpellingElements = alternatespellings.split(",");
                     boolean isExactMatch = false;
                     for (String element : altSpellingElements) {
@@ -284,7 +283,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         || (mInputQueryTextType == GlobalConstants.TYPE_KATAKANA
                         && katakana.length() > 0 && !katakana.substring(0, 1).equals(mInputQueryFirstLetter))
                         ) {
-                    romajiAndKanji += " [derived from " + mInputQuery + "]";
+                    romajiAndKanji += " [derived from: " + mInputQuery + "]";
                 }
                 else if (keywords != null && keywords.contains(mInputQuery)) {
                     String[] keywordList = keywords.split(",");
@@ -292,7 +291,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         String keyword = element.trim();
                         if (!romaji.contains(keyword) && !kanji.contains(keyword) && !alternatespellings.contains(keyword)
                                 && !cumulative_meaning_value.toString().contains(keyword)) {
-                            romajiAndKanji += " [from " + keyword + "]";
+                            romajiAndKanji += (typeIsVerb)? " [from conjugation: " + keyword + "]" : " [from: " + keyword + "]";
                             break;
                         }
                     }

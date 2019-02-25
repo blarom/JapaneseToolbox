@@ -77,6 +77,7 @@ public class DictionaryFragment extends Fragment implements
     private List<Word> mDifferentJishoWords;
     private List<Word> mMatchingWordsFromVerbs;
     private boolean mAlreadyDisplayedResults;
+    private List<Object[]> mMatchingConjugationParameters;
     //endregion
 
 
@@ -231,8 +232,16 @@ public class DictionaryFragment extends Fragment implements
             Object[] dataElements = (Object[]) data;
             List<Verb> mMatchingVerbs = (List<Verb>) dataElements[0];
             mMatchingWordsFromVerbs = (List<Word>) dataElements[1];
+            mMatchingConjugationParameters = (List<Object[]>) dataElements[2];
 
-            for (Word word : mMatchingWordsFromVerbs) word.setIsLocal(true);
+            //Adapting the words list to include information used for proper display in the results list
+            for (int i = 0; i < mMatchingWordsFromVerbs.size(); i++) {
+                Word word = mMatchingWordsFromVerbs.get(i);
+                String matchingConjugation = (String) mMatchingConjugationParameters.get(i)[VerbSearchAsyncTaskLoader.MATCHING_CONJUGATION];
+                word.setIsLocal(true);
+                word.setKeywords(word.getKeywords() + ", " + matchingConjugation);
+            }
+
             displayMergedWordsToUser();
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(VERB_SEARCH_LOADER);
