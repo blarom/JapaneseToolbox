@@ -80,6 +80,7 @@ public class DictionaryFragment extends Fragment implements
     private List<Word> mMatchingWordsFromVerbs;
     private boolean mAlreadyDisplayedResults;
     private List<Object[]> mMatchingConjugationParameters;
+    private boolean mOverrideDisplayConditions;
     //endregion
 
 
@@ -310,13 +311,10 @@ public class DictionaryFragment extends Fragment implements
             }
 
             //Preventing computation/connectivity delays from freezing the UI thread
+            mOverrideDisplayConditions = false;
             new Handler().postDelayed(new Runnable() {
                 @Override public void run() {
-                    mAlreadyLoadedJishoResults = true;
-                    mAlreadyLoadedVerbs = true;
-                    mAlreadyLoadedRoomResults = true;
-                    mAlreadyLoadedJMDictFRResults = true;
-                    mAlreadyLoadedJMDictESResults = true;
+                    mOverrideDisplayConditions = true;
                     Log.i(DEBUG_TAG, "Displaying merged words at WORD_RESULTS_MAX_RESPONSE_DELAY");
                     if (!mAlreadyDisplayedResults) displayMergedWordsToUser();
                 }
@@ -368,7 +366,7 @@ public class DictionaryFragment extends Fragment implements
                 ) || (  showOnlineResults && !showConjResults && (!waitForOnlineResults || mAlreadyLoadedJishoResults)
                 ) || (  !showOnlineResults && showConjResults && (!waitForConjResults || mAlreadyLoadedVerbs)
                 ) || (  !showOnlineResults && !showConjResults)
-            ) {
+            || mOverrideDisplayConditions) {
 
             Log.i(DEBUG_TAG, "Display successful");
             mAlreadyDisplayedResults = true;
@@ -382,17 +380,32 @@ public class DictionaryFragment extends Fragment implements
             String text = "Found "
                     + Integer.toString(mLocalMatchingWordsList.size())
                     + " local result"
-                    + ((mLocalMatchingWordsList.size()==1)? "" : "s")
-                    + ", "
-                    + Integer.toString(mDifferentJishoWords.size())
+                    + ((mLocalMatchingWordsList.size()==1)? "" : "s");
+
+            if (showOnlineResults && mAlreadyLoadedJishoResults) {
+                if (showConjResults) text += ", ";
+                else text += " and ";
+
+                text +=
+                    Integer.toString(mDifferentJishoWords.size())
                     + ((mDifferentJishoWords.size()>0)? " new or fuller" : "")
                     + " online result"
-                    + ((mDifferentJishoWords.size()==1)? "" : "s")
-                    + ", and "
-                    + ((mMatchingWordsFromVerbs.size()!=0)? Integer.toString(mMatchingWordsFromVerbs.size()) : "no")
+                    + ((mDifferentJishoWords.size()==1)? "" : "s");
+            }
+
+            if (showConjResults && mAlreadyLoadedVerbs) {
+                if (showOnlineResults && mAlreadyLoadedJishoResults) text += ", ";
+                if (!showOnlineResults || mAlreadyLoadedJishoResults) text += "and ";
+                else text += " and ";
+
+                text +=
+                    ((mMatchingWordsFromVerbs.size()!=0)? Integer.toString(mMatchingWordsFromVerbs.size()) : "no")
                     + " verb"
                     + ((mMatchingWordsFromVerbs.size()==1)? "" : "s")
-                    + " with conjugations matching the search word.";
+                    + " with conjugations matching the search word";
+            }
+
+            text += ".";
 
             displayResults(mMergedMatchingWordsList);
 
