@@ -20,15 +20,27 @@
     <!--Preferences Strings-->
     <string name="hidden_online_search">Don\&apos;t get words and meanings online</string>
     <string name="shown_online_search">Merge online search results with local results</string>
+    <string name="wait_for_online_results_off">Display the list immediately when finding results, and refresh it when getting online results</string>
+    <string name="wait_for_online_results_on">Wait for online results before showing the list</string>
+    <string name="complete_with_conj_search_off">Don\&apos;t check verb conjugations</string>
+    <string name="complete_with_conj_search_on">Add matching verbs by checking conjugations</string>
+    <string name="wait_for_conj_results_off">Display the list immediately when finding results, and refresh it when finding matching verbs through the conjugtion search</string>
+    <string name="wait_for_conj_results_on">Wait for matching verbs results before showing the list</string>
     <string name="hidden_info_boxes">Don\&apos;t show informative popup texts on search</string>
     <string name="shown_info_boxes">Show informative popup texts on search</string>
     <string name="hidden_decomp_structure_info">Don\&apos;t show Kanji structure explanation</string>
     <string name="shown_decomp_structure_info">Show decomposed Kanji structure explanation</string>
     <string name="pref_complete_local_with_online_search_key" translatable="false">complete_local_with_online_search</string>
+    <string name="pref_wait_for_online_results_key" translatable="false">wait_for_online_results</string>
+    <string name="pref_complete_with_conj_search_key" translatable="false">complete_with_conj_search</string>
+    <string name="pref_wait_for_conj_results_key" translatable="false">wait_for_conj_results</string>
     <string name="pref_show_info_boxes_on_search_key" translatable="false">show_info_boxes_on_search</string>
     <string name="pref_show_decomp_structure_info_key" translatable="false">show_decomp_structure_info</string>
     <string name="pref_show" translatable="false">complete_local_with_online_search</string>
-    <string name="complete_local_with_online_search">Search Online Dictionary</string>
+    <string name="complete_local_with_online_search">Search for words online</string>
+    <string name="wait_for_online_results">Wait for online results</string>
+    <string name="complete_with_conj_search">Search verb conjugations</string>
+    <string name="pref_wait_for_conj_results">Wait for matching verbs</string>
     <string name="show_info_boxes_when_searching">Show Info Boxes On Search</string>
     <string name="show_decomp_structure_info_text">Show Decomp. Structure Text</string>
     <string name="language_label_japanese">Japanese</string>

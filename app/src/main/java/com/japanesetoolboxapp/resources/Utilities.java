@@ -2739,15 +2739,43 @@ public final class Utilities {
                 .replace(" na", "na");
     }
 
+
     //Preference utilities
-    public static Boolean getShowOnlineResultsPreference(Activity activity) {
-        Boolean showOnlineResults = false;
+    public static boolean getShowOnlineResultsPreference(Activity activity) {
+        boolean state = false;
         if (activity!=null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
-            showOnlineResults = sharedPreferences.getBoolean(activity.getString(R.string.pref_complete_local_with_online_search_key),
+            state = sharedPreferences.getBoolean(activity.getString(R.string.pref_complete_local_with_online_search_key),
                     activity.getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default));
         }
-        return showOnlineResults;
+        return state;
+    }
+    public static boolean getWaitForOnlineResultsPreference(Activity activity) {
+        boolean state = false;
+        if (activity!=null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+            state = sharedPreferences.getBoolean(activity.getString(R.string.pref_wait_for_online_results_key),
+                    activity.getResources().getBoolean(R.bool.pref_wait_for_online_results_default));
+        }
+        return state;
+    }
+    public static boolean getShowConjResultsPreference(Activity activity) {
+        boolean state = false;
+        if (activity!=null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+            state = sharedPreferences.getBoolean(activity.getString(R.string.pref_complete_with_conj_search_key),
+                    activity.getResources().getBoolean(R.bool.pref_complete_with_conj_search_default));
+        }
+        return state;
+    }
+    public static boolean getWaitForConjResultsPreference(Activity activity) {
+        boolean state = false;
+        if (activity!=null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+            state = sharedPreferences.getBoolean(activity.getString(R.string.pref_wait_for_conj_results_key),
+                    activity.getResources().getBoolean(R.bool.pref_wait_for_conj_results_default));
+        }
+        return state;
     }
     public static Boolean getShowInfoBoxesOnSearchPreference(Activity activity) {
         Boolean showInfoBoxesOnSearch = false;
@@ -2805,6 +2833,7 @@ public final class Utilities {
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.app_preferences), Context.MODE_PRIVATE);
         return sharedPref.getBoolean(context.getString(R.string.word_and_verb_database_finished_loading_flag), false);
     }
+
 
     //Conjugator Module utilities
     public static List<ConjugationTitle> getConjugationTitles(List<String[]> verbLatinConjDatabase) {

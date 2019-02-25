@@ -89,19 +89,19 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
             mCompleteVerbsList = mJapaneseToolboxCentralRoomDatabase.getAllVerbs();
         }
 
-        List<Verb> mMatchingVerbs = new ArrayList<>();
+        List<Verb> matchingVerbs = new ArrayList<>();
         if (!TextUtils.isEmpty(mInputQuery)) {
             setInputQueryParameters();
             getFamilyConjugationIndexes();
 
             mMatchingVerbIdsAndCols = getMatchingVerbIdsAndCols();
             mMatchingVerbIdsAndCols = sortMatchingVerbsList(mMatchingVerbIdsAndCols);
-            mMatchingVerbs = getVerbs(mMatchingVerbIdsAndCols);
+            matchingVerbs = getVerbs(mMatchingVerbIdsAndCols);
         }
 
         List<Word> matchingWords = new ArrayList<>();
         List<Object[]> matchingConjugationParameters = new ArrayList<>();
-        for (Verb verb : mMatchingVerbs) {
+        for (Verb verb : matchingVerbs) {
             List<Word> words = mJapaneseToolboxCentralRoomDatabase.getWordsByExactRomajiAndKanjiMatch(verb.getRomaji(), verb.getKanji());
             if (words.size()>0) matchingWords.add(words.get(0));
 
@@ -109,7 +109,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
             matchingConjugationParameters.add(parameters);
         }
 
-        return new Object[]{mMatchingVerbs, matchingWords, matchingConjugationParameters};
+        return new Object[]{matchingVerbs, matchingWords, matchingConjugationParameters};
     }
 
     private Object[] getConjugationParameters(Verb verb, String inputQuery, String inputQueryLatin) {

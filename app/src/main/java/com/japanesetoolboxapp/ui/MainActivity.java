@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity implements
     Intent restartIntent;
 
     public boolean mShowOnlineResults;
+    public boolean mWaitForOnlineResults;
+    public boolean mShowConjResults;
+    public boolean mWaitForConjResults;
     public boolean mShowInfoBoxesOnSearch;
     public boolean mShowKanjiStructureInfo;
     public String mChosenSpeechToTextLanguage;
@@ -239,6 +242,15 @@ public class MainActivity extends AppCompatActivity implements
         if (key.equals(getString(R.string.pref_complete_local_with_online_search_key))) {
             setShowOnlineResults(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default)));
         }
+        else if (key.equals(getString(R.string.pref_wait_for_online_results_key))) {
+            setWaitForOnlineResults(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_wait_for_online_results_default)));
+        }
+        else if (key.equals(getString(R.string.pref_complete_with_conj_search_key))) {
+            setShowConjResults(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_complete_with_conj_search_default)));
+        }
+        else if (key.equals(getString(R.string.pref_wait_for_conj_results_key))) {
+            setWaitForConjResults(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_wait_for_conj_results_default)));
+        }
         else if (key.equals(getString(R.string.pref_show_info_boxes_on_search_key))) {
             setShowInfoBoxesOnSearch(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_info_boxes_on_search_default)));
         }
@@ -272,6 +284,12 @@ public class MainActivity extends AppCompatActivity implements
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         setShowOnlineResults(sharedPreferences.getBoolean(getString(R.string.pref_complete_local_with_online_search_key),
                 getResources().getBoolean(R.bool.pref_complete_local_with_online_search_default)));
+        setWaitForOnlineResults(sharedPreferences.getBoolean(getString(R.string.pref_wait_for_online_results_key),
+                getResources().getBoolean(R.bool.pref_wait_for_online_results_default)));
+        setShowConjResults(sharedPreferences.getBoolean(getString(R.string.pref_complete_with_conj_search_key),
+                getResources().getBoolean(R.bool.pref_complete_with_conj_search_default)));
+        setWaitForConjResults(sharedPreferences.getBoolean(getString(R.string.pref_wait_for_conj_results_key),
+                getResources().getBoolean(R.bool.pref_wait_for_conj_results_default)));
         mQueryHistorySize = Utilities.getQueryHistorySizePreference(sharedPreferences, getApplicationContext());
         setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese)));
         setTextToSpeechLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese)));
@@ -283,6 +301,15 @@ public class MainActivity extends AppCompatActivity implements
     }
     public void setShowOnlineResults(boolean showOnlineResults) {
         mShowOnlineResults = showOnlineResults;
+    }
+    public void setWaitForOnlineResults(boolean waitForOnlineResults) {
+        mWaitForOnlineResults = waitForOnlineResults;
+    }
+    public void setShowConjResults(boolean showConjResults) {
+        mShowConjResults = showConjResults;
+    }
+    public void setWaitForConjResults(boolean waitForConjResults) {
+        mWaitForConjResults = waitForConjResults;
     }
     public void setShowInfoBoxesOnSearch(boolean showInfoBoxes) {
         mShowInfoBoxesOnSearch = showInfoBoxes;

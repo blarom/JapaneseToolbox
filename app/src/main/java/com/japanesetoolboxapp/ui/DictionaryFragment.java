@@ -10,6 +10,7 @@ import android.support.v4.content.Loader;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ public class DictionaryFragment extends Fragment implements
 
 
     public static final int WORD_RESULTS_MAX_RESPONSE_DELAY = 2000;
+    private static final String DEBUG_TAG = "JT DEBUG";
     //region Parameters
     @BindView(R.id.dictionary_recyclerview) RecyclerView mDictionaryRecyclerView;
     @BindView(R.id.word_hint) TextView mHintTextView;
@@ -183,6 +185,7 @@ public class DictionaryFragment extends Fragment implements
 
             dictionaryFragmentOperationsHandler.onLocalMatchingWordsFound(mLocalMatchingWordsList);
 
+            Log.i(DEBUG_TAG, "Displaying Room words");
             displayMergedWordsToUser();
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_SEARCH_LOADER);
@@ -204,6 +207,7 @@ public class DictionaryFragment extends Fragment implements
                 }
             }
 
+            Log.i(DEBUG_TAG, "Displaying Jisho merged words");
             displayMergedWordsToUser();
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(JISHO_WEB_SEARCH_LOADER);
@@ -242,6 +246,7 @@ public class DictionaryFragment extends Fragment implements
                 word.setKeywords(word.getKeywords() + ", " + matchingConjugation);
             }
 
+            Log.i(DEBUG_TAG, "Displaying Verb merged words");
             displayMergedWordsToUser();
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(VERB_SEARCH_LOADER);
@@ -289,18 +294,19 @@ public class DictionaryFragment extends Fragment implements
         mMergedMatchingWordsList = new ArrayList<>();
         mDifferentJishoWords = new ArrayList<>();
         mMergedMatchingWordsList = new ArrayList<>();
+        mMatchingWordsFromVerbs = new ArrayList<>();
         if (!TextUtils.isEmpty(mInputQuery)) {
 
             showLoadingIndicator();
 
             findMatchingWordsInRoomDb();
-            findMatchingVerbsInDictModule();
+            if (Utilities.getShowConjResultsPreference(getActivity())) {
+                startReverseConjSearchForMatchingVerbs();
+            }
             if (Utilities.getShowOnlineResultsPreference(getActivity())) {
-
                 startSearchingForWordsInJisho();
                 //startSearchingForWordsInJMDictFR();
                 //startSearchingForWordsInJMDictES();
-
             }
 
             //Preventing computation/connectivity delays from freezing the UI thread
@@ -311,6 +317,7 @@ public class DictionaryFragment extends Fragment implements
                     mAlreadyLoadedRoomResults = true;
                     mAlreadyLoadedJMDictFRResults = true;
                     mAlreadyLoadedJMDictESResults = true;
+                    Log.i(DEBUG_TAG, "Displaying merged words at WORD_RESULTS_MAX_RESPONSE_DELAY");
                     if (!mAlreadyDisplayedResults) displayMergedWordsToUser();
                 }
             }, WORD_RESULTS_MAX_RESPONSE_DELAY);
@@ -327,7 +334,7 @@ public class DictionaryFragment extends Fragment implements
             else loaderManager.restartLoader(ROOM_DB_SEARCH_LOADER, bundle, this);
         }
     }
-    private void findMatchingVerbsInDictModule() {
+    private void startReverseConjSearchForMatchingVerbs() {
         if (getActivity()!=null) {
             LoaderManager loaderManager = getActivity().getSupportLoaderManager();
             Loader<String> verbSearchLoader = loaderManager.getLoader(VERB_SEARCH_LOADER);
@@ -342,13 +349,29 @@ public class DictionaryFragment extends Fragment implements
     }
     private void displayMergedWordsToUser() {
 
-        mAlreadyDisplayedResults = true;
-        if (!Utilities.getShowOnlineResultsPreference(getActivity())) mJishoMatchingWordsList = new ArrayList<>();
+        if (getContext()==null || getActivity()==null) return;
 
-        if (    mAlreadyLoadedRoomResults
-                && mAlreadyLoadedVerbs
-                && (!Utilities.getShowOnlineResultsPreference(getActivity()) || mAlreadyLoadedJishoResults)) {
+        boolean showOnlineResults = Utilities.getShowOnlineResultsPreference(getActivity());
+        boolean showConjResults = Utilities.getShowConjResultsPreference(getActivity());
+        boolean waitForOnlineResults = Utilities.getWaitForOnlineResultsPreference(getActivity());
+        boolean waitForConjResults = Utilities.getWaitForConjResultsPreference(getActivity());
 
+        if (!showOnlineResults) mJishoMatchingWordsList = new ArrayList<>();
+        if (!showConjResults) mMatchingWordsFromVerbs = new ArrayList<>();
+
+        if (mAlreadyLoadedRoomResults &&
+                (       showOnlineResults && showConjResults &&
+                                (!waitForOnlineResults && !waitForConjResults)
+                                || (!waitForOnlineResults && waitForConjResults && mAlreadyLoadedVerbs)
+                                || (waitForOnlineResults && !waitForConjResults && mAlreadyLoadedJishoResults)
+                                || (waitForOnlineResults && waitForConjResults && mAlreadyLoadedJishoResults && mAlreadyLoadedVerbs)
+                ) || (  showOnlineResults && !showConjResults && (!waitForOnlineResults || mAlreadyLoadedJishoResults)
+                ) || (  !showOnlineResults && showConjResults && (!waitForConjResults || mAlreadyLoadedVerbs)
+                ) || (  !showOnlineResults && !showConjResults)
+            ) {
+
+            Log.i(DEBUG_TAG, "Display successful");
+            mAlreadyDisplayedResults = true;
             hideLoadingIndicator();
 
             //Getting the word lists
