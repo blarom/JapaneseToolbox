@@ -394,8 +394,8 @@ public class DictionaryFragment extends Fragment implements
             }
 
             if (showConjResults && mAlreadyLoadedVerbs) {
-                if (showOnlineResults && mAlreadyLoadedJishoResults) text += ", ";
-                if (!showOnlineResults || mAlreadyLoadedJishoResults) text += "and ";
+                if (showOnlineResults && mAlreadyLoadedJishoResults) text += ", and ";
+                else if (showOnlineResults) text += ", ";
                 else text += " and ";
 
                 text +=

@@ -216,6 +216,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             boolean typeIsiAdjectiveConjugation = false;
             boolean typeIsnaAdjectiveConjugation = false;
             boolean typeIsVerb = false;
+            boolean typeIsAdverb = false;
             for (int j = 0; j< meanings.size(); j++) {
                 cumulative_meaning_value.append(meanings.get(j).getMeaning());
                 if (j< meanings.size()-1) { cumulative_meaning_value.append(", "); }
@@ -226,6 +227,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     typeIsnaAdjectiveConjugation = type.equals("naAC");
                     String[] typeElements = type.split(";");
                     typeIsVerb = type.contains("V") && !type.equals("VC") && !Arrays.asList(typeElements).contains("V");
+                    typeIsAdverb = type.contains("A");
                 }
                 if (!wordHasPhraseConstruction) wordHasPhraseConstruction = type.equals("PC");
             }
@@ -238,6 +240,9 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             else if (typeIsVerbConjugation && romaji.length()>3 && !romaji.substring(0,3).equals("(o)")) parentRomaji = "[verb] + " + romaji;
             else if (typeIsiAdjectiveConjugation) parentRomaji = "[i-adj.] + " + romaji;
             else if (typeIsnaAdjectiveConjugation) parentRomaji = "[na-adj.] + " + romaji;
+            else if (typeIsAdverb & romaji.length()>2
+                    && romaji.substring(romaji.length()-2).equals("ni")
+                    && !romaji.substring(romaji.length()-3).equals(" ni")) parentRomaji = romaji.substring(0,romaji.length()-2) + " ni";
             else parentRomaji = romaji;
 
             String romajiAndKanji;

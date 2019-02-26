@@ -1610,7 +1610,8 @@ public final class Utilities {
                 if (currentIndex > finalAsyncWords.size()-1) break;
                 Word currentAsyncWord = finalAsyncWords.get(currentIndex);
 
-                if (    currentAsyncWord.getRomaji().equals(currentLocalWord.getRomaji().replace(" ", ""))
+                if (    currentAsyncWord.getRomaji().replace(" ", "")
+                        .equals(currentLocalWord.getRomaji().replace(" ", ""))
                         &&  currentAsyncWord.getKanji().equals(currentLocalWord.getKanji())   ) {
 
                     //Setting the altSpellings
