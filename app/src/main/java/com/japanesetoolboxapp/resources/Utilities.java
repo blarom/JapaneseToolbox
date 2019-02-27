@@ -1594,12 +1594,14 @@ public final class Utilities {
             Word finalWord = new Word();
             finalWord.setRomaji(currentLocalWord.getRomaji());
             finalWord.setKanji(currentLocalWord.getKanji());
+            finalWord.setKeywords(currentLocalWord.getKeywords());
             List<String> finalAltSpellings;
             if (TextUtils.isEmpty(currentLocalWord.getAltSpellings())) finalAltSpellings = new ArrayList<>();
             else {
                 finalAltSpellings = new ArrayList<>(Arrays.asList(currentLocalWord.getAltSpellings().split(",")));
                 for (int i = 0; i< finalAltSpellings.size(); i++) finalAltSpellings.set(i,finalAltSpellings.get(i).trim());
             }
+            finalWord.setAltSpellings(TextUtils.join(", ", finalAltSpellings));
 
             List<Word.Meaning> currentLocalMeanings = currentLocalWord.getMeanings();
             List<Word.Meaning> currentFinalMeanings = new ArrayList<>(currentLocalMeanings);

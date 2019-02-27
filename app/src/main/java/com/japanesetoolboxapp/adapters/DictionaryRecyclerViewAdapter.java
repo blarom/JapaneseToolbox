@@ -279,18 +279,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 else if (cumulative_meaning_value.toString().contains(mInputQuery) || cumulative_meaning_value.toString().contains(latin)) {
                     //Ignore words where the input query is included in the meaning
                 }
-                else if ((mInputQueryTextType == GlobalConstants.TYPE_KANJI
-                        && kanji.length() > 0 && !kanji.substring(0, 1).equals(mInputQueryFirstLetter))
-                        || (mInputQueryTextType == GlobalConstants.TYPE_LATIN
-                        && romaji.length() > 0 && !romaji.substring(0, 1).equals(mInputQueryFirstLetter))
-                        || (mInputQueryTextType == GlobalConstants.TYPE_HIRAGANA
-                        && hiragana.length() > 0 && !hiragana.substring(0, 1).equals(mInputQueryFirstLetter))
-                        || (mInputQueryTextType == GlobalConstants.TYPE_KATAKANA
-                        && katakana.length() > 0 && !katakana.substring(0, 1).equals(mInputQueryFirstLetter))
-                        ) {
-                    romajiAndKanji += " [derived from: " + mInputQuery + "]";
-                }
-                else if (keywords != null && keywords.contains(mInputQuery)) {
+                else if (keywords != null && (keywords.contains(mInputQuery) || keywords.contains(inputQueryLatin))) {
                     String[] keywordList = keywords.split(",");
                     for (String element : keywordList) {
                         String keyword = element.trim();
@@ -300,6 +289,17 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                             break;
                         }
                     }
+                }
+                else if ((mInputQueryTextType == GlobalConstants.TYPE_KANJI
+                        && kanji.length() > 0 && !kanji.substring(0, 1).equals(mInputQueryFirstLetter))
+                        || (mInputQueryTextType == GlobalConstants.TYPE_LATIN
+                        && romaji.length() > 0 && !romaji.substring(0, 1).equals(mInputQueryFirstLetter))
+                        || (mInputQueryTextType == GlobalConstants.TYPE_HIRAGANA
+                        && hiragana.length() > 0 && !hiragana.substring(0, 1).equals(mInputQueryFirstLetter))
+                        || (mInputQueryTextType == GlobalConstants.TYPE_KATAKANA
+                        && katakana.length() > 0 && !katakana.substring(0, 1).equals(mInputQueryFirstLetter))
+                ) {
+                    romajiAndKanji += " [derived from: " + mInputQuery + "]";
                 }
             }
             listRomajiAndKanji.add(romajiAndKanji);

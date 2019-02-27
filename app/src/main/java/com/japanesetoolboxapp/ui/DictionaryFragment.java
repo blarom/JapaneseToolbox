@@ -388,7 +388,7 @@ public class DictionaryFragment extends Fragment implements
 
                 text +=
                     Integer.toString(mDifferentJishoWords.size())
-                    + ((mDifferentJishoWords.size()>0)? " new or fuller" : "")
+                    + ((mDifferentJishoWords.size()>0)? " new or fuller" : " new")
                     + " online result"
                     + ((mDifferentJishoWords.size()==1)? "" : "s");
             }
