@@ -17,7 +17,6 @@ import java.util.List;
 public class FirebaseDao {
 
     private static final String DEBUG_TAG = "JT DB Debug";
-    private final Context mContext;
     private final DatabaseReference mFirebaseDbReference;
     private ValueEventListener mEventListenerGetUniqueObject;
     private ValueEventListener mEventListenerGetObjectByValuePair;
@@ -26,8 +25,7 @@ public class FirebaseDao {
     private ValueEventListener mEventListenerGetFullObjectsList;
 
 
-    public FirebaseDao(Context context, FirebaseOperationsHandler listener) {
-        this.mContext = context;
+    public FirebaseDao(FirebaseOperationsHandler listener) {
         this.mOnOperationPerformedHandler = listener;
         mFirebaseDbReference = FirebaseDatabase.getInstance().getReference();
     }
@@ -198,7 +196,7 @@ public class FirebaseDao {
     private ValueEventListener createListenerForObjectList(final Object object) {
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 sendObjectListToInterface(dataSnapshot, object);
             }
 
@@ -210,7 +208,7 @@ public class FirebaseDao {
     private ValueEventListener createListenerForUniqueObject(final Object object) {
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 sendUniqueObjectListToInterface(dataSnapshot, object);
             }
 

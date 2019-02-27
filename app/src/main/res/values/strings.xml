@@ -6,7 +6,7 @@
     <string name="action_settings" translatable="false">Settings</string>
     <string name="app_name" translatable="false">Japanese Toolbox</string>
     <string name="EmptyResult" translatable="false">…</string>
-    <string name="NoText" translatable="false"></string>
+    <string name="NoText" translatable="false"/>
 
     <!--Splashscreen-->
     <string name="splashscreen_intro_sentence">Your personal aid for deciphering\nthe Japanese language.</string>

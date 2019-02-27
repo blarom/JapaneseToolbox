@@ -27,9 +27,7 @@ public class ConvolutionMatrix
 
     public void applyConfig(double[][] config) {
         for(int x = 0; x < SIZE; ++x) {
-            for(int y = 0; y < SIZE; ++y) {
-                Matrix[x][y] = config[x][y];
-            }
+            System.arraycopy(config[x], 0, Matrix[x], 0, SIZE);
         }
     }
 

@@ -81,7 +81,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         view.setFocusable(true);
         return new DictItemViewHolder(view);
     }
-    @Override public void onBindViewHolder(@NonNull final DictItemViewHolder holder, final int position) {
+    @Override public void onBindViewHolder(@NonNull final DictItemViewHolder holder, int position) {
 
         //region Setting behavior when element is clicked
         if (mChildIsVisible[position]) {
@@ -103,14 +103,14 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     holder.meaningsTextView.setVisibility(View.VISIBLE);
                     holder.parentContainer.setBackgroundColor(Color.TRANSPARENT);
                     holder.dropdownArrowImageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_down_black_24dp));
-                    mChildIsVisible[position] = false;
+                    mChildIsVisible[holder.getAdapterPosition()] = false;
                 }
                 else {
                     holder.childLinearLayout.setVisibility(View.VISIBLE);
                     holder.meaningsTextView.setVisibility(View.GONE);
                     holder.parentContainer.setBackgroundColor(mContext.getResources().getColor(R.color.colorSelectedDictResultBackground));
                     holder.dropdownArrowImageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_up_black_24dp));
-                    mChildIsVisible[position] = true;
+                    mChildIsVisible[holder.getAdapterPosition()] = true;
                 }
             }
         });
@@ -310,12 +310,12 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     private void setMeaningsLayout(int position, DictItemViewHolder holder) {
 
         View line;
-        String type = "";
+        String type;
         String fullType;
         String meaning;
         String antonym;
         String synonym;
-        int startIndex = 0;
+        int startIndex;
         int endIndex = 0;
         List<Word.Meaning> meanings = mWordsList.get(position).getMeanings();
 
@@ -598,7 +598,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     }
     private class WordClickableSpan extends ClickableSpan {
         // code extracted from http://stackoverflow.com/questions/15475907/make-parts-of-textview-clickable-not-url
-        public void onClick(View textView) {
+        public void onClick(@NonNull View textView) {
             // code extracted from http://stackoverflow.com/questions/19750458/android-clickablespan-get-text-onclick
 
             TextView text = (TextView) textView;
@@ -611,14 +611,14 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
         }
         @Override
-        public void updateDrawState(TextPaint ds) {
+        public void updateDrawState(@NonNull TextPaint ds) {
             ds.setColor(mContext.getResources().getColor(R.color.textColorDictionarySpanClicked));
             ds.setUnderlineText(false);
         }
     }
     private class VerbClickableSpan extends ClickableSpan {
         // code extracted from http://stackoverflow.com/questions/15475907/make-parts-of-textview-clickable-not-url
-        public void onClick(View textView) {
+        public void onClick(@NonNull View textView) {
             // code extracted from http://stackoverflow.com/questions/19750458/android-clickablespan-get-text-onclick
 
             TextView text = (TextView) textView;
@@ -632,7 +632,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         }
 
         @Override
-        public void updateDrawState(TextPaint ds) {
+        public void updateDrawState(@NonNull TextPaint ds) {
             ds.setColor(mContext.getResources().getColor(R.color.textColorDictionarySpanClicked));
             ds.setUnderlineText(false);
         }

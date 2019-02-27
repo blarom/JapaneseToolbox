@@ -371,7 +371,7 @@ public class ConvertFragment extends Fragment {
         character_next2 = character_next2.toLowerCase();
         character_last = character_last.toLowerCase();
 
-        String added_string = "";
+        String added_string;
         switch (character) {
             case "あ":
                 if (character.equals(character_last)) { added_string = "a_double_vowel";
@@ -1443,11 +1443,11 @@ public class ConvertFragment extends Fragment {
             case "katakana_repeat_bar":
 
                 if (!added_string_last.equals("")) {
-                    if (added_string_last.substring(added_string_last.length() - 1, added_string_last.length()).equals("a")) { added_string_latin = "a"; added_string_hiragana = "あ"; added_string_katakana = "ー";
-                    } else if (added_string_last.substring(added_string_last.length() - 1, added_string_last.length()).equals("i")) { added_string_latin = "i"; added_string_hiragana = "い"; added_string_katakana = "ー";
-                    } else if (added_string_last.substring(added_string_last.length() - 1, added_string_last.length()).equals("u")) { added_string_latin = "u"; added_string_hiragana = "う"; added_string_katakana = "ー";
-                    } else if (added_string_last.substring(added_string_last.length() - 1, added_string_last.length()).equals("e")) { added_string_latin = "e"; added_string_hiragana = "え"; added_string_katakana = "ー";
-                    } else if (added_string_last.substring(added_string_last.length() - 1, added_string_last.length()).equals("o")) { added_string_latin = "o"; added_string_hiragana = "お"; added_string_katakana = "ー";
+                    if (added_string_last.substring(added_string_last.length() - 1).equals("a")) { added_string_latin = "a"; added_string_hiragana = "あ"; added_string_katakana = "ー";
+                    } else if (added_string_last.substring(added_string_last.length() - 1).equals("i")) { added_string_latin = "i"; added_string_hiragana = "い"; added_string_katakana = "ー";
+                    } else if (added_string_last.substring(added_string_last.length() - 1).equals("u")) { added_string_latin = "u"; added_string_hiragana = "う"; added_string_katakana = "ー";
+                    } else if (added_string_last.substring(added_string_last.length() - 1).equals("e")) { added_string_latin = "e"; added_string_hiragana = "え"; added_string_katakana = "ー";
+                    } else if (added_string_last.substring(added_string_last.length() - 1).equals("o")) { added_string_latin = "o"; added_string_hiragana = "お"; added_string_katakana = "ー";
                     } else if (added_string_last.equals("*")) { added_string_latin = ""; added_string_hiragana = ""; added_string_katakana = "";
                     }
                 } break;
@@ -1455,7 +1455,8 @@ public class ConvertFragment extends Fragment {
         }
 
         char first_char;
-        if (!added_string_latin.equals("")) { first_char = added_string_latin.charAt(0);}
+        if (!added_string_latin.equals("")) {
+        }
         if (added_string_last.equals("small_tsu")) {
             if (added_string_latin.equals("")) { added_string_latin = "*"; } //If the character after small_tsu is invlid (e.g. a kanji), this line prevents the program from crashing
             else {

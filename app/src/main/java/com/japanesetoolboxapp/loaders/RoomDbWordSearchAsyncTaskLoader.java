@@ -14,7 +14,6 @@ import java.util.List;
 public class RoomDbWordSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
     String mSearchWord;
-    private List<Long> mMatchingWordIds;
 
     public RoomDbWordSearchAsyncTaskLoader(Context context, String searchWord) {
         super(context);
@@ -32,8 +31,8 @@ public class RoomDbWordSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
         List<Word> localMatchingWordsList = new ArrayList<>();
         if (!TextUtils.isEmpty(mSearchWord)) {
             JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase = JapaneseToolboxCentralRoomDatabase.getInstance(getContext());
-            mMatchingWordIds = Utilities.getMatchingWordIdsAndDoBasicFiltering(mSearchWord, japaneseToolboxCentralRoomDatabase);
-            localMatchingWordsList = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(mMatchingWordIds);
+            List<Long> matchingWordIds = Utilities.getMatchingWordIdsAndDoBasicFiltering(mSearchWord, japaneseToolboxCentralRoomDatabase);
+            localMatchingWordsList = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(matchingWordIds);
         }
 
         return localMatchingWordsList;

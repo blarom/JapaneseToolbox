@@ -17,7 +17,7 @@ import java.util.List;
 public class StructuresGridViewAdapter extends ArrayAdapter {
     private Context context;
     private int layoutResourceId;
-    private List<Integer> imageIds = new ArrayList();
+    private List<Integer> imageIds;
 
     public StructuresGridViewAdapter(Context context, int layoutResourceId, List<Integer> imageIds) {
         super(context, layoutResourceId, imageIds);
@@ -30,7 +30,7 @@ public class StructuresGridViewAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         View row = convertView;
-        ViewHolder holder = null;
+        ViewHolder holder;
 
         if (row == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();

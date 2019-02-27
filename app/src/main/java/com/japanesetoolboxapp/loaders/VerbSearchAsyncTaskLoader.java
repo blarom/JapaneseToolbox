@@ -41,7 +41,6 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
     private List<ConjugationTitle> mConjugationTitles;
     private int mInputQueryTextType;
     private List<String> mInputQueryTransliterations;
-    private String mInputQueryTransliteratedLatinForm;
     private String mInputQueryTransliteratedKanaForm;
     private String mInputQueryTransliteratedLatinFormContatenated;
     private String mInputQueryTransliteratedKanaFormContatenated;
@@ -49,7 +48,6 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
     private int mInputQueryLength;
     private String mInputQueryContatenated;
     private int mInputQueryContatenatedLength;
-    private List<long[]> mMatchingVerbIdsAndCols;
     private JapaneseToolboxCentralRoomDatabase mJapaneseToolboxCentralRoomDatabase;
     private HashMap<String, Integer> mFamilyConjugationIndexes = new HashMap<>();
     private List<String[]> mVerbLatinConjDatabase;
@@ -94,7 +92,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
             setInputQueryParameters();
             getFamilyConjugationIndexes();
 
-            mMatchingVerbIdsAndCols = getMatchingVerbIdsAndCols();
+            List<long[]> mMatchingVerbIdsAndCols = getMatchingVerbIdsAndCols();
             mMatchingVerbIdsAndCols = sortMatchingVerbsList(mMatchingVerbIdsAndCols);
             matchingVerbs = getVerbs(mMatchingVerbIdsAndCols);
         }
@@ -194,7 +192,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
         mInputQueryTextType = ConvertFragment.getTextType(mInputQuery);
 
-        mInputQueryTransliteratedLatinForm = mInputQueryTransliterations.get(GlobalConstants.TYPE_LATIN);
+        String mInputQueryTransliteratedLatinForm = mInputQueryTransliterations.get(GlobalConstants.TYPE_LATIN);
         mInputQueryTransliteratedKanaForm = mInputQueryTransliterations.get(GlobalConstants.TYPE_HIRAGANA);
 
         mInputQueryContatenated = Utilities.removeSpecialCharacters(mInputQuery);
@@ -271,11 +269,11 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
         //region Initializations
         int NumberOfSheetCols = mVerbLatinConjDatabase.get(0).length;
         List<Integer> dilutedConjugationColIndexes = new ArrayList<>();
-        boolean queryIsContainedInNormalFamilyConjugation = false;
-        boolean queryIsContainedInAKuruConjugation = false;
-        boolean queryIsContainedInASuruConjugation = false;
-        boolean queryIsContainedInADesuConjugation = false;
-        boolean queryIsContainedInIruVerbConjugation = false;
+        boolean queryIsContainedInNormalFamilyConjugation;
+        boolean queryIsContainedInAKuruConjugation;
+        boolean queryIsContainedInASuruConjugation;
+        boolean queryIsContainedInADesuConjugation;
+        boolean queryIsContainedInIruVerbConjugation;
         int exceptionIndex;
         String[] currentFamilyConjugations;
         String[] currentConjugations;
@@ -309,7 +307,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
                         (!verb2WithIng.substring(0, 2 + 1).equals("to ") && IsOfTypeIngIng(verb2WithIng.substring(0, mInputQueryLength + 3)))) {
                 } else {
                     // If the verb does not belong to the list, then remove the ending "ing" so that it can be compared later on to the verbs excel
-                    ;//If the verb is for e.g. to sing / sing (verb2 = to singing / singing), then check that verb2 (without the "to ") belongs to the list, and if it does then do nothing
+                    //If the verb is for e.g. to sing / sing (verb2 = to singing / singing), then check that verb2 (without the "to ") belongs to the list, and if it does then do nothing
 
                     mInputQuery = mInputQuery.substring(0, mInputQueryLength -3);
                 }
@@ -749,7 +747,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
         String queryWordWithoutTo = "";
         if (mInputQuery.length()>3 && mInputQuery.substring(0,3).equals("to ")) {
             queryIsVerbWithTo = true;
-            queryWordWithoutTo = mInputQuery.substring(3, mInputQuery.length());
+            queryWordWithoutTo = mInputQuery.substring(3);
         }
         //endregion
 
@@ -822,7 +820,8 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
         int passiveTenseCategoryIndex = 0;
         for (int i = 0; i < mConjugationTitles.size(); i++) {
             currentTitle = mConjugationTitles.get(i).getTitle();
-            if (currentTitle.contains("Passive (X is done to him)")) { passiveTenseCategoryIndex = i; }
+            if (currentTitle.contains("Passive (X is done to him)")) {
+            }
         }
         //endregion
 

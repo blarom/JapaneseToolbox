@@ -22,7 +22,7 @@
             android:layout_marginBottom="4dp"
             android:background="@android:color/background_dark"
             android:scaleType="centerInside"
-            android:contentDescription=""/>
+            android:contentDescription="OCR"/>
 
         <TextView
             android:id="@+id/saturationDescription"

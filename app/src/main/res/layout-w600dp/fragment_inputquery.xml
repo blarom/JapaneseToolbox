@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_inputquery"
     android:layout_width="@dimen/maximum_layout_width"
     android:layout_centerInParent="true"
@@ -27,6 +28,7 @@
                 android:layout_gravity="start|center_vertical"
                 android:completionThreshold="100"
                 android:paddingEnd="@dimen/searchMeTextViewEndPadding"
+                android:paddingStart="0dp"
                 android:ems="10"
                 android:imeOptions="actionDone"
                 android:inputType="text|textNoSuggestions"
@@ -75,7 +77,7 @@
             android:layout_marginEnd="@dimen/functionIconsLeftRightMargin"
             android:layout_marginStart="@dimen/functionIconsLeftRightMargin"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_keyboard_voice_black_24dp"
+            app:srcCompat="@drawable/ic_keyboard_voice_black_24dp"
             android:contentDescription="@string/getTextThroughSpeech"/>
 
         <ImageView
@@ -86,7 +88,7 @@
             android:layout_marginEnd="@dimen/functionIconsLeftRightMargin"
             android:layout_marginStart="@dimen/functionIconsLeftRightMargin"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_camera_alt_black_24dp"
+            app:srcCompat="@drawable/ic_camera_alt_black_24dp"
             android:contentDescription="@string/getTextThroughCamera"/>
 
         <ImageView
@@ -97,7 +99,7 @@
             android:layout_marginEnd="@dimen/functionIconsLeftRightMargin"
             android:layout_marginStart="@dimen/functionIconsLeftRightMargin"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_volume_up_black_24dp"
+            app:srcCompat="@drawable/ic_volume_up_black_24dp"
             android:contentDescription="@string/speakQuery"/>
     </LinearLayout>
 

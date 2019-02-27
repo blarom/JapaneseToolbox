@@ -141,10 +141,6 @@ public class SearchByRadicalFragment extends Fragment implements
         super.onResume();
         if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
     }
-    @Override public void onStart() {
-        super.onStart();
-
-    }
     @Override public void onDetach() {
         super.onDetach();
         if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_COMPONENT_GRID_LOADER);
@@ -860,7 +856,7 @@ public class SearchByRadicalFragment extends Fragment implements
             else {
                 List<String[]> fullList = new ArrayList<>();
                 String[] printableResultsForCurrentElement;
-                Boolean containsAtLeastOnePrintableGlyph;
+                boolean containsAtLeastOnePrintableGlyph;
 
                 //List<KanjiComponent> kanjiComponents = mJapaneseToolboxRoomDatabase.getAllKanjiComponents();
                 String componentStructure = GlobalConstants.COMPONENT_STRUCTURES_MAP.get(chosen_components_list);

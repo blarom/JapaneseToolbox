@@ -58,6 +58,7 @@ import java.net.URLEncoder;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -153,9 +154,7 @@ public final class Utilities {
             String datafilepath = dir + "/" + filename;
             File datafile = new File(datafilepath);
 
-            if (!datafile.exists()) {
-                return false;
-            }
+            return datafile.exists();
         }
         return true;
     }
@@ -236,7 +235,7 @@ public final class Utilities {
     @TargetApi(23) public static boolean isPrintable(String c ) {
         Paint paint=new Paint();
         //paint.setTypeface(MainActivity.CJK_typeface);
-        boolean hasGlyph=true;
+        boolean hasGlyph;
         hasGlyph=paint.hasGlyph(c);
         return hasGlyph;
 //            Character.UnicodeBlock block = Character.UnicodeBlock.of( c );
@@ -270,12 +269,8 @@ public final class Utilities {
     //String manipulation utilities
     public static String convertToUTF8Index(String input_string) {
 
-        byte[] byteArray = {};
-        try {
-            byteArray = input_string.getBytes("UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        byte[] byteArray;
+        byteArray = input_string.getBytes(Charset.forName("UTF-8"));
         StringBuilder prepared_word = new StringBuilder("1.");
         for (byte b : byteArray) {
             prepared_word.append(Integer.toHexString(b & 0xFF));
@@ -342,7 +337,7 @@ public final class Utilities {
     }
     public static String removeDuplicatesFromCommaList(String input_list) {
 
-        Boolean is_repeated;
+        boolean is_repeated;
         List<String> parsed_cumulative_meaning_value = Arrays.asList(splitAtCommasOutsideParentheses(input_list));
         List<String> final_cumulative_meaning_value_array = new ArrayList<>();
         String current_value;
@@ -627,7 +622,7 @@ public final class Utilities {
         StringBuilder prepared_word;
         if (ConvertFragment.getTextType(word) == GlobalConstants.TYPE_KANJI) {
             String converted_word = convertToUTF8Index(word);
-            converted_word = converted_word.substring(2,converted_word.length());
+            converted_word = converted_word.substring(2);
             prepared_word = new StringBuilder();
             for (int i = 0; i < converted_word.length() - 1; i = i + 2) {
                 prepared_word.append("%").append(converted_word, i, i + 2);
@@ -708,7 +703,7 @@ public final class Utilities {
 
         runningIndex = 0;
         int initial_offset = 15; //Skips <!DOCTYPE html>
-        websiteCodeString = website_code.substring(initial_offset, website_code.length());
+        websiteCodeString = website_code.substring(initial_offset);
         List<Object> parsedWebsiteTree = new ArrayList<>();
         try {
             parsedWebsiteTree = getChildren();
@@ -731,7 +726,7 @@ public final class Utilities {
             currentParent.add("");
             return currentParent;
         }
-        String remainingWebsiteCodeString = websiteCodeString.substring(runningIndex,websiteCodeString.length());
+        String remainingWebsiteCodeString = websiteCodeString.substring(runningIndex);
 
         if (!remainingWebsiteCodeString.contains("<")) {
             currentParent.add(remainingWebsiteCodeString);
@@ -751,7 +746,7 @@ public final class Utilities {
             //If there is String text before the next header, add it to the list and continue to the header
             if (nextHeaderStart != runningIndex) {
                 String currentText = websiteCodeString.substring(runningIndex, nextHeaderStart);
-                StringBuilder validText = new StringBuilder("");
+                StringBuilder validText = new StringBuilder();
                 for (int i=0; i<currentText.length(); i++) {
                     if (i<currentText.length()-1 && currentText.substring(i,i+1).equals("\n")) { i++; continue;}
                     validText.append(currentText.charAt(i));
@@ -914,7 +909,7 @@ public final class Utilities {
                         String sentenceSearchFor = (String) aRef.get(0);
                         String currentValue = "";
                         if (sentenceSearchFor.length() > 20 && sentenceSearchFor.contains("Sentence search for")) {
-                            currentValue = sentenceSearchFor.substring(20, sentenceSearchFor.length());
+                            currentValue = sentenceSearchFor.substring(20);
                         }
 
                         textType = ConvertFragment.getTextType(currentValue);
@@ -1132,12 +1127,12 @@ public final class Utilities {
 
         return new ArrayList<>();
     }
-    public String createQueryOnJMDict(String word) throws IOException {
+    public String createQueryOnJMDict(String word) {
         //inspired by: https://stackoverflow.com/questions/38220828/an-htmlunit-alternative-for-android
         //inspired by: https://stackoverflow.com/questions/15805771/submit-form-using-httpurlconnection
         //inspired by: https://stackoverflow.com/questions/9767952/how-to-add-parameters-to-httpurlconnection-using-post-using-namevaluepair
 
-        String response = "";
+        StringBuilder response = new StringBuilder();
         try {
             URL url = new URL("https://www.edrdg.org/cgi-bin/wwwjdic/wwwjdic?HF");
 
@@ -1149,7 +1144,7 @@ public final class Utilities {
             conn.setDoOutput(true);
 
             OutputStream os = conn.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, Charset.forName("UTF-8")));
 
             String request = URLEncoder.encode("NAME", "UTF-8") + "=" + URLEncoder.encode("dsrchkey", "UTF-8") +
                     "&" + URLEncoder.encode("VALUE", "UTF-8") + "=" + URLEncoder.encode(word, "UTF-8") +
@@ -1166,17 +1161,17 @@ public final class Utilities {
                 String line;
                 BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 while ((line=br.readLine()) != null) {
-                    response += line;
+                    response.append(line);
                 }
             }
             else {
-                response="";
+                response = new StringBuilder();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return response;
+        return response.toString();
     }
 
 
@@ -1439,7 +1434,7 @@ public final class Utilities {
             if (current_meaning_characteristics[3].length() > 3) {
                 if (current_meaning_characteristics[3].substring(0,3).equals("ME#")) {
                     has_multiple_explanations = true;
-                    ME_index = current_meaning_characteristics[3].substring(3,current_meaning_characteristics[3].length());
+                    ME_index = current_meaning_characteristics[3].substring(3);
                 }
             }
 
@@ -2031,7 +2026,7 @@ public final class Utilities {
         //Registering if the input query is a "to " verb
         if (searchWord.length()>3 && searchWord.substring(0,3).equals("to ")) {
             queryIsVerbWithTo = true;
-            searchWordWithoutTo = searchWord.substring(3, searchWord.length());
+            searchWordWithoutTo = searchWord.substring(3);
         }
         //endregion
 
@@ -2041,7 +2036,7 @@ public final class Utilities {
         if (searchWord.length() > 2 && searchWord.substring(searchWord.length()-3).equals("ing")) {
 
             if (searchWord.length() > 5 && searchWord.substring(searchWord.length()-6).equals("inging")) {
-                if (	(searchWord.substring(0, 3).equals("to ") && isOfTypeIngIng(searchWord.substring(3,searchWord.length()))) ||
+                if (	(searchWord.substring(0, 3).equals("to ") && isOfTypeIngIng(searchWord.substring(3))) ||
                         (!searchWord.substring(0, 3).equals("to ") && isOfTypeIngIng(searchWord))   ) {
                     // If the verb ends with "inging" then remove the the second "ing"
                     inglessVerb = searchWord.substring(0,searchWord.length()-3);
@@ -2104,7 +2099,7 @@ public final class Utilities {
             String inputWord = Utilities.removeNonSpaceSpecialCharacters(searchWord);
             if (searchWord.length()>3) {
                 if (searchWord.substring(0, 3).equals("to ")) {
-                    inputWord = searchWordNoSpaces.substring(2, searchWordNoSpaces.length());
+                    inputWord = searchWordNoSpaces.substring(2);
                 }
             }
             String inputWordNoSpaces = Utilities.removeSpecialCharacters(inputWord);
@@ -2543,7 +2538,7 @@ public final class Utilities {
 
         List<Long> matchingWordIdsFromIndex = new ArrayList<>();
         String input_word = Utilities.removeNonSpaceSpecialCharacters(searchWord);
-        String adjectiveConjugation = "";
+        String adjectiveConjugation;
         String baseAdjective = "";
         boolean isPotentialAdjective = false;
         List<String> searchResultIndexesArray = new ArrayList<>();
@@ -2553,29 +2548,29 @@ public final class Utilities {
             input_word = ConvertFragment.getLatinHiraganaKatakana(input_word).get(GlobalConstants.TYPE_LATIN);
 
             if (input_word.length()>9) {
-                adjectiveConjugation = input_word.substring(input_word.length()-9, input_word.length());
+                adjectiveConjugation = input_word.substring(input_word.length()-9);
                 baseAdjective = input_word.substring(0, input_word.length()-9) + "i";
                 if (adjectiveConjugation.equals("kunakatta")) isPotentialAdjective = true;
             }
             if (!isPotentialAdjective && input_word.length()>6) {
-                adjectiveConjugation = input_word.substring(input_word.length()-6, input_word.length());
+                adjectiveConjugation = input_word.substring(input_word.length()-6);
                 baseAdjective = input_word.substring(0, input_word.length()-6) + "i";
                 if (adjectiveConjugation.equals("kereba")) isPotentialAdjective = true;
             }
             if (!isPotentialAdjective && input_word.length()>5) {
-                adjectiveConjugation = input_word.substring(input_word.length()-5, input_word.length());
+                adjectiveConjugation = input_word.substring(input_word.length()-5);
                 baseAdjective = input_word.substring(0, input_word.length()-5) + "i";
                 if (adjectiveConjugation.equals("kunai")
                         || adjectiveConjugation.equals("katta")
                         || adjectiveConjugation.equals("karou")) isPotentialAdjective = true;
             }
             if (!isPotentialAdjective && input_word.length()>4) {
-                adjectiveConjugation = input_word.substring(input_word.length()-4, input_word.length());
+                adjectiveConjugation = input_word.substring(input_word.length()-4);
                 baseAdjective = input_word.substring(0, input_word.length()-4) + "i";
                 if (adjectiveConjugation.equals("kute")) isPotentialAdjective = true;
             }
             if (!isPotentialAdjective && input_word.length()>2) {
-                adjectiveConjugation = input_word.substring(input_word.length()-2, input_word.length());
+                adjectiveConjugation = input_word.substring(input_word.length()-2);
                 if (adjectiveConjugation.equals("mi") || adjectiveConjugation.equals("ku")) {
                     isPotentialAdjective = true;
                     baseAdjective = input_word.substring(0, input_word.length()-2) + "i";
@@ -2600,12 +2595,12 @@ public final class Utilities {
         } else if (inputTextType == GlobalConstants.TYPE_KANJI) {
 
             if (input_word.length()>5) {
-                adjectiveConjugation = input_word.substring(input_word.length()-5, input_word.length());
+                adjectiveConjugation = input_word.substring(input_word.length()-5);
                 baseAdjective = input_word.substring(0, input_word.length()-5) + "い";
                 if (adjectiveConjugation.equals("くなかった")) isPotentialAdjective = true;
             }
             if (!isPotentialAdjective && input_word.length()>3) {
-                adjectiveConjugation = input_word.substring(input_word.length()-3, input_word.length());
+                adjectiveConjugation = input_word.substring(input_word.length()-3);
                 baseAdjective = input_word.substring(0, input_word.length()-3) + "い";
                 if (adjectiveConjugation.equals("くない")
                         || adjectiveConjugation.equals("ければ")
@@ -2613,12 +2608,12 @@ public final class Utilities {
                         || adjectiveConjugation.equals("かろう")) isPotentialAdjective = true;
             }
             if (!isPotentialAdjective && input_word.length()>2) {
-                adjectiveConjugation = input_word.substring(input_word.length()-2, input_word.length());
+                adjectiveConjugation = input_word.substring(input_word.length()-2);
                 baseAdjective = input_word.substring(0, input_word.length()-2) + "い";
                 if (adjectiveConjugation.equals("くて")) isPotentialAdjective = true;
             }
             if (!isPotentialAdjective && input_word.length()>1) {
-                adjectiveConjugation = input_word.substring(input_word.length()-1, input_word.length());
+                adjectiveConjugation = input_word.substring(input_word.length()-1);
                 if (adjectiveConjugation.equals("み") || adjectiveConjugation.equals("く")) {
                     isPotentialAdjective = true;
                     baseAdjective = input_word.substring(0, input_word.length()-1) + "";
@@ -2654,7 +2649,7 @@ public final class Utilities {
         return matchingWordIdsFromIndex;
     }
     public static String replaceInvalidKanjisWithValidOnes(String input, List<String[]> mSimilarsDatabase) {
-        String output = "";
+        StringBuilder output = new StringBuilder();
         char currentChar;
         boolean found;
         for (int i=0; i<input.length(); i++) {
@@ -2662,17 +2657,17 @@ public final class Utilities {
             found = false;
             for (int j = 0; j < mSimilarsDatabase.size(); j++) {
                 if (mSimilarsDatabase.get(j).length > 0 && mSimilarsDatabase.get(j)[0].charAt(0) == currentChar) {
-                    output += mSimilarsDatabase.get(j)[1].charAt(0);
+                    output.append(mSimilarsDatabase.get(j)[1].charAt(0));
                     found = true;
                     break;
                 }
             }
-            if (!found) output += currentChar;
+            if (!found) output.append(currentChar);
         }
-        return output;
+        return output.toString();
     }
     private static Boolean isOfTypeIngIng(String verb) {
-        Boolean answer = false;
+        boolean answer = false;
         if (	verb.equals("accinging") || verb.equals("astringing") || verb.equals("befringing") || verb.equals("besinging") ||
                 verb.equals("binging") || verb.equals("boinging") || verb.equals("bowstringing") || verb.equals("bringing") ||
                 verb.equals("clinging") || verb.equals("constringing") || verb.equals("cringing") || verb.equals("dinging") ||
@@ -2694,14 +2689,14 @@ public final class Utilities {
     }
     private static String removeApostrophes(String sentence) {
         String current_char;
-        String concatenated_sentence = "";
+        StringBuilder concatenated_sentence = new StringBuilder();
         for (int index=0; index<sentence.length(); index++) {
             current_char = Character.toString(sentence.charAt(index));
             if (!( current_char.equals("'")) ) {
-                concatenated_sentence = concatenated_sentence + current_char;
+                concatenated_sentence.append(current_char);
             }
         }
-        return concatenated_sentence;
+        return concatenated_sentence.toString();
     }
     private static List<LatinIndex> findQueryInLatinIndex(String concatenated_word, boolean exactSearch, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
@@ -2781,7 +2776,7 @@ public final class Utilities {
         return state;
     }
     public static Boolean getShowInfoBoxesOnSearchPreference(Activity activity) {
-        Boolean showInfoBoxesOnSearch = false;
+        boolean showInfoBoxesOnSearch = false;
         if (activity!=null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
             showInfoBoxesOnSearch = sharedPreferences.getBoolean(activity.getString(R.string.pref_show_info_boxes_on_search_key),
@@ -2790,7 +2785,7 @@ public final class Utilities {
         return showInfoBoxesOnSearch;
     }
     public static Boolean getShowDecompKanjiStructureInfoPreference(Activity activity) {
-        Boolean showDecompStructureInfo = false;
+        boolean showDecompStructureInfo = false;
         if (activity!=null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
             showDecompStructureInfo = sharedPreferences.getBoolean(activity.getString(R.string.pref_show_decomp_structure_info_key),

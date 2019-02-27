@@ -110,13 +110,9 @@ public class ConjugatorFragment extends Fragment implements
 
     private Unbinder mBinding;
     private String mInputQuery;
-    private int mSelectedConjugationCategoryIndex;
     private String mChosenRomajiOrKanji;
     private List<Verb> mMatchingVerbs;
     private List<ConjugationTitle> mConjugationTitles;
-    private int mInputQueryTextType;
-    private List<String> mInputQueryTransliterations;
-    private boolean mInputQueryIsInvalid;
     private boolean mAlreadyLoadedVerbs;
     private List<String[]> mVerbLatinConjDatabase;
     private List<String[]> mVerbKanjiConjDatabase;
@@ -149,18 +145,9 @@ public class ConjugatorFragment extends Fragment implements
 
         return rootView;
     }
-    @Override public void onResume() {
-        super.onResume();
-    }
-    @Override public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
     @Override public void onAttach(Context context) {
         super.onAttach(context);
         conjugatorFragmentOperationsHandler = (ConjugatorFragmentOperationsHandler) context;
-    }
-    @Override public void onPause() {
-        super.onPause();
     }
     @Override public void onDetach() {
         super.onDetach();
@@ -195,7 +182,7 @@ public class ConjugatorFragment extends Fragment implements
 
     }
     private void startSearchingForMatchingVerbsInRoomDb() {
-        if (getActivity()!=null && !mInputQueryIsInvalid) {
+        if (getActivity()!=null) {
             showLoadingIndicator();
             LoaderManager loaderManager = getActivity().getSupportLoaderManager();
             Loader<String> roomDbSearchLoader = loaderManager.getLoader(VERB_SEARCH_LOADER);
@@ -210,9 +197,9 @@ public class ConjugatorFragment extends Fragment implements
         //Converting the word to lowercase (the search algorithm is not efficient if needing to search both lower and upper case)
         mInputQuery = mInputQuery.toLowerCase(Locale.ENGLISH);
 
-        mInputQueryTransliterations = ConvertFragment.getLatinHiraganaKatakana(mInputQuery);
+        List<String> mInputQueryTransliterations = ConvertFragment.getLatinHiraganaKatakana(mInputQuery);
 
-        mInputQueryTextType = ConvertFragment.getTextType(mInputQuery);
+        int mInputQueryTextType = ConvertFragment.getTextType(mInputQuery);
     }
     private void displayVerbsInVerbChooserSpinner() {
 
@@ -253,7 +240,6 @@ public class ConjugatorFragment extends Fragment implements
         mConjugationChooserSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, final int conjugationIndex, long id) {
-                mSelectedConjugationCategoryIndex = conjugationIndex;
                 showSelectedConjugationsInCategory(verbIndex, conjugationIndex);
             }
 

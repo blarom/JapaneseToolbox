@@ -17,7 +17,6 @@ import java.util.List;
 public class JishoResultsAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
     String mQuery;
-    private boolean internetIsAvailable;
     private boolean mAllowLoaderStart;
 
     public JishoResultsAsyncTaskLoader(Context context, String query) {
@@ -33,11 +32,9 @@ public class JishoResultsAsyncTaskLoader extends AsyncTaskLoader<Object> {
     @Override
     public List<Word> loadInBackground() {
 
-        internetIsAvailable = Utilities.internetIsAvailableCheck(getContext());
-
         List<Word> matchingWordsFromJisho = new ArrayList<>();
 
-        if (internetIsAvailable && !TextUtils.isEmpty(mQuery)) {
+        if (Utilities.internetIsAvailableCheck(getContext()) && !TextUtils.isEmpty(mQuery)) {
             matchingWordsFromJisho = Utilities.getWordsFromJishoOnWeb(mQuery, getContext());
         } else {
             Log.i("Diagnosis Time", "Failed to access online resources.");

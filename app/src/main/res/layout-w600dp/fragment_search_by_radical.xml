@@ -2,7 +2,6 @@
     android:id="@+id/fragment_search_by_radical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/maximum_layout_width"
     android:layout_height="match_parent"
     android:layout_marginTop="8dp"
@@ -60,7 +59,8 @@
                         <EditText
                             android:id="@+id/search_by_radical_elementA"
                             style="@style/SearchByRadicalElementStyle"
-                            android:hint=" A "/>
+                            android:hint=" A "
+                            android:autofillHints="kanji element"/>
                     </FrameLayout>
 
                     <FrameLayout
@@ -71,7 +71,8 @@
                         <EditText
                             android:id="@+id/search_by_radical_elementB"
                             style="@style/SearchByRadicalElementStyle"
-                            android:hint=" B "/>
+                            android:hint=" B "
+                            android:autofillHints="kanji element"/>
                     </FrameLayout>
 
                     <FrameLayout
@@ -82,7 +83,8 @@
                         <EditText
                             android:id="@+id/search_by_radical_elementC"
                             style="@style/SearchByRadicalElementStyle"
-                            android:hint=" C "/>
+                            android:hint=" C "
+                            android:autofillHints="kanji element"/>
                     </FrameLayout>
 
                     <FrameLayout
@@ -93,7 +95,8 @@
                         <EditText
                             android:id="@+id/search_by_radical_elementD"
                             style="@style/SearchByRadicalElementStyle"
-                            android:hint=" D "/>
+                            android:hint=" D "
+                            android:autofillHints="kanji element"/>
                     </FrameLayout>
                 </LinearLayout>
 
@@ -211,7 +214,8 @@
                         app:layout_constraintBottom_toBottomOf="@+id/search_by_radical_button_filter"
                         app:layout_constraintEnd_toStartOf="@+id/search_by_radical_button_filter"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:autofillHints="property of kanji element, including name, radical number, etc.."/>
 
                     <Button
                         android:id="@+id/search_by_radical_button_filter"

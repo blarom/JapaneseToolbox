@@ -360,6 +360,7 @@ public class MainActivity extends AppCompatActivity implements
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 Utilities.hideSoftKeyboard(MainActivity.this);
+                v.performClick();
                 return false;
             }
         });

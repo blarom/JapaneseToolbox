@@ -33,7 +33,7 @@ public class KanjiComponent {
         return id;
     }
     public void setComponentId(long component_id) {
-        this.id = id;
+        this.id = component_id;
     }
 
     @ColumnInfo(name = COLUMN_COMPONENT_STRUCTURE)

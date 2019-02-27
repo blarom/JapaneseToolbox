@@ -79,7 +79,6 @@ public class DictionaryFragment extends Fragment implements
     private List<Word> mDifferentJishoWords;
     private List<Word> mMatchingWordsFromVerbs;
     private boolean mAlreadyDisplayedResults;
-    private List<Object[]> mMatchingConjugationParameters;
     private boolean mOverrideDisplayConditions;
     //endregion
 
@@ -107,9 +106,6 @@ public class DictionaryFragment extends Fragment implements
 
         return rootView;
     }
-    @Override public void onPause() {
-        super.onPause();
-    }
     @Override public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
@@ -119,9 +115,6 @@ public class DictionaryFragment extends Fragment implements
 
         destroyLoaders();
 
-    }
-    @Override public void onResume() {
-        super.onResume();
     }
     @Override public void onDetach() {
         super.onDetach();
@@ -237,7 +230,7 @@ public class DictionaryFragment extends Fragment implements
             Object[] dataElements = (Object[]) data;
             List<Verb> mMatchingVerbs = (List<Verb>) dataElements[0];
             mMatchingWordsFromVerbs = (List<Word>) dataElements[1];
-            mMatchingConjugationParameters = (List<Object[]>) dataElements[2];
+            List<Object[]> mMatchingConjugationParameters = (List<Object[]>) dataElements[2];
 
             //Adapting the words list to include information used for proper display in the results list
             for (int i = 0; i < mMatchingWordsFromVerbs.size(); i++) {
@@ -267,7 +260,7 @@ public class DictionaryFragment extends Fragment implements
     }
     private void initializeParameters() {
 
-        mFirebaseDao = new FirebaseDao(getContext(), this);
+        mFirebaseDao = new FirebaseDao(this);
 
         mLocalMatchingWordsList = new ArrayList<>();
         mMergedMatchingWordsList = new ArrayList<>();
@@ -520,7 +513,7 @@ public class DictionaryFragment extends Fragment implements
         String queryWordWithoutTo = "";
         if (mInputQuery.length()>3 && mInputQuery.substring(0,3).equals("to ")) {
             queryIsVerbWithTo = true;
-            queryWordWithoutTo = mInputQuery.substring(3, mInputQuery.length());
+            queryWordWithoutTo = mInputQuery.substring(3);
         }
         //endregion
 

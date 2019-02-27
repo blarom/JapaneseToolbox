@@ -3,7 +3,6 @@
     android:id="@+id/list_item_decomposition"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:focusable="false"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -212,7 +211,8 @@
             android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_clear_black_24dp"/>
+            app:srcCompat="@drawable/ic_clear_black_24dp"
+            android:contentDescription="remove decomposition"/>
     </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>

@@ -209,14 +209,14 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
         if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
 
-        Boolean character_not_found_in_KanjiDictDatabase = true;
+        boolean character_not_found_in_KanjiDictDatabase = true;
         for (String characteristic : currentKanjiDetailedCharacteristics) {
             if (!TextUtils.isEmpty(characteristic)) {
                 character_not_found_in_KanjiDictDatabase = false;
                 break;
             }
         }
-        Boolean character_is_radical_or_kana = false;
+        boolean character_is_radical_or_kana = false;
         //endregion
 
         //region Get the radical characteristics
@@ -806,7 +806,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 List<String> parsedComponents = Arrays.asList(mCurrentKanjiCharacter.getComponents().split(";"));
 
                 String current_component;
-                List<List<String>> newDecomposition = new ArrayList<>();
+                List<List<String>> newDecomposition;
 
                 for (int i = 0; i < parsedComponents.size() ; i++) {
                     current_component = parsedComponents.get(i);
@@ -840,7 +840,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         }
         String getStringFromUTF8(String word) {
 
-            String hex = word.substring(2,word.length());
+            String hex = word.substring(2);
             ByteBuffer buff = ByteBuffer.allocate(hex.length()/2);
             for (int i = 0; i < hex.length(); i+=2) {
                 buff.put((byte)Integer.parseInt(hex.substring(i, i+2), 16));
@@ -950,7 +950,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
             if (radicalIndex >= 0) {
                 List<String> parsed_number = Arrays.asList(mRadicalsOnlyDatabase.get(radicalIndex)[2].split(";"));
-                Boolean found_main_radical = false;
+                boolean found_main_radical = false;
                 mainRadicalIndex = radicalIndex;
 
                 if (parsed_number.size() > 1) {

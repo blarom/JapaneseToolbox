@@ -13,7 +13,6 @@ import java.util.List;
 public class JMDictFRResultsAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
     String mQuery;
-    private boolean internetIsAvailable;
     private boolean mAllowLoaderStart;
 
     public JMDictFRResultsAsyncTaskLoader(Context context, String query) {
@@ -29,11 +28,9 @@ public class JMDictFRResultsAsyncTaskLoader extends AsyncTaskLoader<Object> {
     @Override
     public List<Word> loadInBackground() {
 
-        internetIsAvailable = Utilities.internetIsAvailableCheck(getContext());
-
         List<Word> matchingWordsFromJMDict = new ArrayList<>();
 
-        if (internetIsAvailable && !TextUtils.isEmpty(mQuery)) {
+        if (Utilities.internetIsAvailableCheck(getContext()) && !TextUtils.isEmpty(mQuery)) {
             matchingWordsFromJMDict = Utilities.getWordsFromJMDictFR(mQuery, getContext());
         } else {
             cancelLoadInBackground();
