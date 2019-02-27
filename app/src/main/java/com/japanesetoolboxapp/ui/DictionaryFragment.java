@@ -47,7 +47,7 @@ public class DictionaryFragment extends Fragment implements
         DictionaryRecyclerViewAdapter.DictionaryItemClickHandler {
 
 
-    public static final int WORD_RESULTS_MAX_RESPONSE_DELAY = 2000;
+    private static final int WORD_RESULTS_MAX_RESPONSE_DELAY = 2000;
     private static final String DEBUG_TAG = "JT DEBUG";
     //region Parameters
     @BindView(R.id.dictionary_recyclerview) RecyclerView mDictionaryRecyclerView;
@@ -57,10 +57,10 @@ public class DictionaryFragment extends Fragment implements
     private String mInputQuery;
     private static final int JISHO_WEB_SEARCH_LOADER = 41;
     private static final int ROOM_DB_SEARCH_LOADER = 42;
-    public static final int JMDICTFR_WEB_SEARCH_LOADER = 43;
-    public static final int JMDICTES_WEB_SEARCH_LOADER = 44;
+    private static final int JMDICTFR_WEB_SEARCH_LOADER = 43;
+    private static final int JMDICTES_WEB_SEARCH_LOADER = 44;
     private static final int VERB_SEARCH_LOADER = 45;
-    Toast mShowOnlineResultsToast;
+    private Toast mShowOnlineResultsToast;
     private List<Word> mLocalMatchingWordsList;
     private List<Word> mMergedMatchingWordsList;
     private FirebaseDao mFirebaseDao;
@@ -191,13 +191,15 @@ public class DictionaryFragment extends Fragment implements
             mJishoMatchingWordsList = Utilities.cleanUpProblematicWordsFromJisho(loaderResultWordsList);
             for (Word word : mJishoMatchingWordsList) word.setIsLocal(false);
 
-            if (!Utilities.getShowOnlineResultsPreference(getActivity())) mJishoMatchingWordsList = new ArrayList<>();
+            if (!Utilities.getPreferenceShowOnlineResults(getActivity())) mJishoMatchingWordsList = new ArrayList<>();
 
             if (mJishoMatchingWordsList.size() != 0) {
                 mDifferentJishoWords = Utilities.getDifferentAsyncWords(mLocalMatchingWordsList, mJishoMatchingWordsList);
                 if (mDifferentJishoWords.size()>0) {
                     updateFirebaseDbWithJishoWords(Utilities.getCommonWords(mDifferentJishoWords));
-                    updateFirebaseDbWithJishoWords(mDifferentJishoWords.subList(0, 1)); //If the word was searched for then it is useful even if it's not defined as common
+                    if (Utilities.wordsAreSimilar(mDifferentJishoWords.get(0), mInputQuery)) {
+                        updateFirebaseDbWithJishoWords(mDifferentJishoWords.subList(0, 1)); //If the word was searched for then it is useful even if it's not defined as common
+                    }
                 }
             }
 
@@ -282,6 +284,8 @@ public class DictionaryFragment extends Fragment implements
     }
     private void getQuerySearchResults() {
 
+        if (getContext()==null || getActivity()==null) return;
+
         mAlreadyDisplayedResults = false;
         mLocalMatchingWordsList = new ArrayList<>();
         mJishoMatchingWordsList = new ArrayList<>();
@@ -293,11 +297,13 @@ public class DictionaryFragment extends Fragment implements
 
             showLoadingIndicator();
 
+            mDictionaryRecyclerViewAdapter.setShowSources(Utilities.getPreferenceShowSources(getActivity()));
+
             findMatchingWordsInRoomDb();
-            if (Utilities.getShowConjResultsPreference(getActivity())) {
+            if (Utilities.getPreferenceShowConjResults(getActivity())) {
                 startReverseConjSearchForMatchingVerbs();
             }
-            if (Utilities.getShowOnlineResultsPreference(getActivity())) {
+            if (Utilities.getPreferenceShowOnlineResults(getActivity())) {
                 startSearchingForWordsInJisho();
                 //startSearchingForWordsInJMDictFR();
                 //startSearchingForWordsInJMDictES();
@@ -342,10 +348,10 @@ public class DictionaryFragment extends Fragment implements
 
         if (getContext()==null || getActivity()==null) return;
 
-        boolean showOnlineResults = Utilities.getShowOnlineResultsPreference(getActivity());
-        boolean showConjResults = Utilities.getShowConjResultsPreference(getActivity());
-        boolean waitForOnlineResults = Utilities.getWaitForOnlineResultsPreference(getActivity());
-        boolean waitForConjResults = Utilities.getWaitForConjResultsPreference(getActivity());
+        boolean showOnlineResults = Utilities.getPreferenceShowOnlineResults(getActivity());
+        boolean showConjResults = Utilities.getPreferenceShowConjResults(getActivity());
+        boolean waitForOnlineResults = Utilities.getPreferenceWaitForOnlineResults(getActivity());
+        boolean waitForConjResults = Utilities.getPreferenceWaitForConjResults(getActivity());
 
         if (!showOnlineResults) mJishoMatchingWordsList = new ArrayList<>();
         if (!showConjResults) mMatchingWordsFromVerbs = new ArrayList<>();
@@ -408,15 +414,9 @@ public class DictionaryFragment extends Fragment implements
                 //performConjSearch();
             }
 
-            if (Utilities.getShowInfoBoxesOnSearchPreference(getActivity())) Toast.makeText(getContext(), text, Toast.LENGTH_LONG).show();
+            if (Utilities.getPreferenceShowInfoBoxesOnSearch(getActivity())) Toast.makeText(getContext(), text, Toast.LENGTH_LONG).show();
 
         }
-
-    }
-    private void displayWordsToUser(List<Word> localMatchingWordsList) {
-
-        localMatchingWordsList = sortWordsAccordingToRanking(localMatchingWordsList);
-        displayResults(localMatchingWordsList);
 
     }
     private void startSearchingForWordsInJisho() {
@@ -536,7 +536,6 @@ public class DictionaryFragment extends Fragment implements
             long[] currentMatchingWordIndexAndLength = new long[3];
             currentMatchingWordIndexAndLength[0] = i;
             currentMatchingWordIndexAndLength[1] = ranking;
-            currentMatchingWordIndexAndLength[2] = 0;
 
             matchingWordIndexesAndLengths.add(currentMatchingWordIndexAndLength);
         }

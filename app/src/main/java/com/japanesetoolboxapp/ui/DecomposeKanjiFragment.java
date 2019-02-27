@@ -112,7 +112,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             mRadicalsOnlyDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.rad_only_database));
         }
     }
-    public void getDecomposition() {
+    private void getDecomposition() {
 
         //Keep only the Kanjis in the input query
         mInputQueryKanjis = new ArrayList<>();
@@ -191,7 +191,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         final TextView nameReadingTV = decompositionContainer.findViewById(R.id.decomposition_element_name_readings_value);
         final TextView meaningTV = decompositionContainer.findViewById(R.id.decomposition_element_meanings_value);
 
-        if (Utilities.getShowDecompKanjiStructureInfoPreference(getActivity())) {
+        if (Utilities.getPreferenceShowDecompKanjiStructureInfo(getActivity())) {
             structureTitleTV.setVisibility(View.VISIBLE);
             structureTV.setVisibility(View.VISIBLE);
         } else {
@@ -494,7 +494,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             }
         }
     }
-    static public String[] getStructureInfo(String requested_structure) {
+    private static String[] getStructureInfo(String requested_structure) {
         String structureText = "";
         int structureImage = 0;
 

@@ -9,9 +9,9 @@ public class ConvolutionMatrix
 {
     private static final int SIZE = 3;
 
-    private double[][] Matrix;
+    private final double[][] Matrix;
     public double Factor = 1;
-    private double Offset = 1;
+    private final double Offset = 1;
 
     public ConvolutionMatrix(int size) {
         Matrix = new double[size][size];

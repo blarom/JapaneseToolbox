@@ -12,7 +12,7 @@ public class LatinIndex {
 
     static final String TABLE_NAME = "latin_index_table";
     static final String COLUMN_LATIN = "latin";
-    static final String WORD_IDS = "word_ids";
+    private static final String WORD_IDS = "word_ids";
 
     LatinIndex() { }
 

@@ -27,18 +27,18 @@ import static com.japanesetoolboxapp.resources.GlobalConstants.VERB_FAMILIES_FUL
 import static com.japanesetoolboxapp.resources.GlobalConstants.VERB_FAMILY_DA;
 import static com.japanesetoolboxapp.resources.GlobalConstants.VERB_FAMILY_KURU;
 import static com.japanesetoolboxapp.resources.GlobalConstants.VERB_FAMILY_SURU;
-import static com.japanesetoolboxapp.resources.GlobalConstants.VerbModule_colIndex_istem;
+import static com.japanesetoolboxapp.resources.GlobalConstants.COLUMN_VERB_ISTEM;
 
 public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
     //region Parameters
     private static final int MAX_NUM_RESULTS_FOR_SURU_CONJ_SEARCH = 100;
-    public static final int MATCHING_CATEGORY_INDEX = 0;
+    private static final int MATCHING_CATEGORY_INDEX = 0;
     public static final int MATCHING_CONJUGATION = 1;
     private List<Verb> mCompleteVerbsList;
     private final List<Word> mWordsFromDictFragment;
     private String mInputQuery;
-    private List<ConjugationTitle> mConjugationTitles;
+    private final List<ConjugationTitle> mConjugationTitles;
     private int mInputQueryTextType;
     private List<String> mInputQueryTransliterations;
     private String mInputQueryTransliteratedKanaForm;
@@ -49,9 +49,9 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
     private String mInputQueryContatenated;
     private int mInputQueryContatenatedLength;
     private JapaneseToolboxCentralRoomDatabase mJapaneseToolboxCentralRoomDatabase;
-    private HashMap<String, Integer> mFamilyConjugationIndexes = new HashMap<>();
-    private List<String[]> mVerbLatinConjDatabase;
-    private List<String[]> mVerbKanjiConjDatabase;
+    private final HashMap<String, Integer> mFamilyConjugationIndexes = new HashMap<>();
+    private final List<String[]> mVerbLatinConjDatabase;
+    private final List<String[]> mVerbKanjiConjDatabase;
     private final static int INDEX_ROMAJI = 0;
     private final static int INDEX_KANJI = 1;
     private final static int INDEX_HIRAGANA_FIRST_CHAR = 2;
@@ -378,7 +378,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
                     break;
                 default:
                     currentFamilyConjugations = mVerbLatinConjDatabase.get(familyIndex);
-                    for (int column = VerbModule_colIndex_istem; column < NumberOfSheetCols; column++) {
+                    for (int column = COLUMN_VERB_ISTEM; column < NumberOfSheetCols; column++) {
                         if (currentFamilyConjugations[column].contains(mInputQueryContatenated)
                                 || currentFamilyConjugations[column].contains(mInputQueryTransliteratedKanaFormContatenated)) {
                             queryIsContainedInNormalFamilyConjugation = true;
@@ -387,7 +387,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
                     }
                     if (queryIsContainedInNormalFamilyConjugation) break;
                     currentFamilyConjugations = mVerbKanjiConjDatabase.get(familyIndex);
-                    for (int column = VerbModule_colIndex_istem; column < NumberOfSheetCols; column++) {
+                    for (int column = COLUMN_VERB_ISTEM; column < NumberOfSheetCols; column++) {
                         if (currentFamilyConjugations[column].contains(mInputQueryContatenated)) {
                             queryIsContainedInNormalFamilyConjugation = true;
                             break;
@@ -407,7 +407,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
         //Checking if the query is an iru verb conjugation, which could lead to too may hits
         currentFamilyConjugations = mVerbLatinConjDatabase.get(mFamilyConjugationIndexes.get("rui"));
         String currentConjugation;
-        for (int column = VerbModule_colIndex_istem; column < NumberOfSheetCols; column++) {
+        for (int column = COLUMN_VERB_ISTEM; column < NumberOfSheetCols; column++) {
             currentConjugation = "i" + currentFamilyConjugations[column];
             if (currentConjugation.contains(mInputQueryContatenated)
                     || currentConjugation.contains(mInputQueryTransliteratedKanaFormContatenated)) {
@@ -434,7 +434,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
             queryLengthForDilution = mInputQueryContatenatedLength;
         }
 
-        for (int col = VerbModule_colIndex_istem; col < NumberOfSheetCols; col++) {
+        for (int col = COLUMN_VERB_ISTEM; col < NumberOfSheetCols; col++) {
             if (!verbConjugationMaxLengths.get(0)[col].equals(""))
                 conjugationMaxLength = Integer.parseInt(verbConjugationMaxLengths.get(0)[col]);
             else conjugationMaxLength = 0;
@@ -869,7 +869,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
                 Arrays.fill(currentConjugationExceptionsRowKanji, "");
             }
 
-            for (int col = VerbModule_colIndex_istem; col < NumberOfSheetCols; col++) {
+            for (int col = COLUMN_VERB_ISTEM; col < NumberOfSheetCols; col++) {
 
                 if (!currentConjugationExceptionsRowLatin[col].equals("")) currentConjugationsRowLatin[col] = currentConjugationExceptionsRowLatin[col];
                 else {

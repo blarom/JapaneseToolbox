@@ -51,8 +51,9 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     private List<String> listSourceInfo;
     private List<String> listMeaningExtract;
     private List<Boolean> listTypeIsVerb;
-    private LinearLayout.LayoutParams mChildLineParams;
-    private LinearLayout.LayoutParams mubChildLineParams;
+    private final LinearLayout.LayoutParams mChildLineParams;
+    private final LinearLayout.LayoutParams mubChildLineParams;
+    private boolean mShowSources = false;
 
     public DictionaryRecyclerViewAdapter(Context context, DictionaryItemClickHandler listener , List<Word> wordsList, HashMap<String, String> legendDatabase, String inputQuery) {
         this.mContext = context;
@@ -266,7 +267,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             //endregion
 
             //region Updating the parent Source Info
-            String sourceInfo = "";
+            List<String> sourceInfo = new ArrayList<>();
             if (!romajiAndKanji.contains(mInputQuery)
                     && !romajiAndKanji.contains(inputQueryNoSpaces)
                     && !romajiAndKanjiNoSpaces.contains(mInputQuery)
@@ -286,8 +287,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                             break;
                         }
                     }
-                    if (isExactMatch) sourceInfo = "From alt. form \"" + mInputQuery + "\"";
-                    else sourceInfo = "From alt. form containing \"" + mInputQuery + "\"";
+                    if (isExactMatch) sourceInfo.add("From alt. form \"" + mInputQuery + "\".");
+                    else sourceInfo.add("From alt. form containing \"" + mInputQuery + "\".");
                 }
                 else if (cumulative_meaning_value.toString().contains(mInputQuery) || cumulative_meaning_value.toString().contains(latin)) {
                     //Ignore words where the input query is included in the meaning
@@ -298,7 +299,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         String keyword = element.trim();
                         if (!romaji.contains(keyword) && !kanji.contains(keyword) && !alternatespellings.contains(keyword)
                                 && !cumulative_meaning_value.toString().contains(keyword)) {
-                            sourceInfo = (typeIsVerb)? "From conjugated form \"" + keyword + "\"" : "From associated word \"" + keyword + "\"";
+                            sourceInfo.add((typeIsVerb)? "From conjugated form \"" + keyword + "\"." : "From associated word \"" + keyword + "\".");
                             break;
                         }
                     }
@@ -312,10 +313,16 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         || (mInputQueryTextType == GlobalConstants.TYPE_KATAKANA
                         && katakana.length() > 0 && !katakana.substring(0, 1).equals(mInputQueryFirstLetter))
                 ) {
-                    sourceInfo = "Derived from \"" + mInputQuery + "\"";
+                    sourceInfo.add("Derived from \"" + mInputQuery + "\".");
                 }
             }
-            listSourceInfo.add(sourceInfo);
+
+                if (mShowSources) {
+                sourceInfo.add((word.getIsCommon())? "Common word." : "Uncommon word.");
+                sourceInfo.add((word.getIsLocal()) ? "Source: local (offline)." : "Source: EDICT (online).");
+            }
+
+            listSourceInfo.add(TextUtils.join(" ", sourceInfo));
             //endregion
 
         }
@@ -587,6 +594,10 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
         }
     }
+    private void createVisibilityArray() {
+        mChildIsVisible = new boolean[mWordsList==null? 0 : mWordsList.size()];
+        Arrays.fill(mChildIsVisible, false);
+    }
     private void setHyperlinksInCopyToInputLine(String type, TextView textView, String before, String hyperlinkText, String after) {
         String totalText = "<b>" +
                 "<font color='" + mContext.getResources().getColor(R.color.textColorSecondary) + "'>" +
@@ -662,9 +673,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             this.notifyDataSetChanged();
         }
     }
-    private void createVisibilityArray() {
-        mChildIsVisible = new boolean[mWordsList==null? 0 : mWordsList.size()];
-        Arrays.fill(mChildIsVisible, false);
+    public void setShowSources(boolean state) {
+        mShowSources = state;
     }
 
     public class DictItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

@@ -33,14 +33,14 @@ import java.util.Random;
 public class AdjustImageActivity extends AppCompatActivity {
     //http://android-er.blogspot.co.il/2013/09/adjust-saturation-of-bitmap-with.html
 
-    ImageView imageResult;
-    SeekBar contrastBar;
-    TextView contrastText;
-    SeekBar saturationBar;
-    TextView saturationText;
-    SeekBar brightnessBar;
-    TextView brightnessText;
-    Bitmap bitmapMaster;
+    private ImageView imageResult;
+    private SeekBar contrastBar;
+    private TextView contrastText;
+    private SeekBar saturationBar;
+    private TextView saturationText;
+    private SeekBar brightnessBar;
+    private TextView brightnessText;
+    private Bitmap bitmapMaster;
 
     //Activity lifecylce methods
     @Override protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +119,7 @@ public class AdjustImageActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void returnWithResult() {
+    private void returnWithResult() {
         bitmapMaster = getBitmapFromImageView(imageResult);
         Uri adjustedImageURI = createImageUri(bitmapMaster);
 
@@ -130,11 +130,11 @@ public class AdjustImageActivity extends AppCompatActivity {
     }
 
     //Image modification methods
-    public Bitmap getBitmapFromImageView(ImageView imageView) {
+    private Bitmap getBitmapFromImageView(ImageView imageView) {
         BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
         return drawable.getBitmap();
     }
-    public Uri createImageUri(Bitmap inImage) {
+    private Uri createImageUri(Bitmap inImage) {
 
         Uri uri = null;
         try {

@@ -13,7 +13,7 @@ import java.util.List;
 
 public class RoomDbWordSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
-    String mSearchWord;
+    private final String mSearchWord;
 
     public RoomDbWordSearchAsyncTaskLoader(Context context, String searchWord) {
         super(context);

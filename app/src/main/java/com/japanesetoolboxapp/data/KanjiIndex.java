@@ -12,7 +12,7 @@ public class KanjiIndex {
 
     static final String TABLE_NAME = "kanji_index_table";
     static final String COLUMN_KANA = "kana";
-    static final String WORD_IDS = "word_ids";
+    private static final String WORD_IDS = "word_ids";
     static final String COLUMN_KANA_IDS = "kana_ids";
 
     KanjiIndex() { }

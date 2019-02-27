@@ -7,43 +7,35 @@ public final class GlobalConstants {
 
     // Defining the column title (and index) of each column in the excel files
 
-	public final static int VerbModule_Conjugations_Basics   = 0;
-    public final static int VerbModule_Conjugations_Stems   = 1;
-	
-	public final static int VerbModule_colIndex_family      = ColIndexConverter("a");
-    public final static int VerbModule_colIndex_english     = ColIndexConverter("b");
-    public final static int VerbModule_colIndex_trans       = ColIndexConverter("c");
-    public final static int VerbModule_colIndex_prep        = ColIndexConverter("d");
-    public final static int VerbModule_colIndex_kana        = ColIndexConverter("e");
-    public final static int VerbModule_colIndex_kanji       = ColIndexConverter("f");
-    public final static int VerbModule_colIndex_ustem       = ColIndexConverter("g");
-    public final static int VerbModule_colIndex_rootKanji   = ColIndexConverter("h");
-    public final static int VerbModule_colIndex_rootLatin   = ColIndexConverter("i");
-    public final static int VerbModule_colIndex_exception   = ColIndexConverter("j");
-    public final static int VerbModule_colIndex_altSpellings = ColIndexConverter("k");
-    public final static int VerbModule_colIndex_istem       = ColIndexConverter("j");
+    public static final int COLUMN_WORD_ID                      = ColIndexConverter("a");
+    public static final int COLUMN_KEYWORDS                     = ColIndexConverter("b");
+    public static final int COLUMN_ROMAJI                       = ColIndexConverter("c");
+    public static final int COLUMN_KANA                         = ColIndexConverter("d");
+    public static final int COLUMN_MEANING_INDEXES              = ColIndexConverter("e");
+    public static final int COLUMN_ALT_SPELLINGS                = ColIndexConverter("f");
+    public static final int COLUMN_COMMON                       = ColIndexConverter("g");
+    public static final int COLUMN_PREPOSITION                  = ColIndexConverter("i");
+    public static final int COLUMN_KANJI_ROOT                   = ColIndexConverter("j");
+    public static final int COLUMN_LATIN_ROOT                   = ColIndexConverter("k");
+    public static final int COLUMN_EXCEPTION_INDEX              = ColIndexConverter("l");
 
-    public final static int GrammarModule_colIndex_Id			 	= ColIndexConverter("a");
-    public final static int GrammarModule_colIndex_Keyword			 	= ColIndexConverter("b");
-	public final static int GrammarModule_colIndex_Romaji_construction = ColIndexConverter("c");
-	public final static int GrammarModule_colIndex_Kanji_construction  = ColIndexConverter("d");
-    public final static int GrammarModule_colIndex_Meaning				= ColIndexConverter("e");
-    public final static int GrammarModule_colIndex_Type			    = ColIndexConverter("k");
-    public final static int GrammarModule_colIndex_Categories			= ColIndexConverter("g");
-    public final static int GrammarModule_colIndex_Explanation			= ColIndexConverter("h");
-	public final static int GrammarModule_colIndex_Rules				= ColIndexConverter("i");
-	public final static int GrammarModule_colIndex_Example1			= ColIndexConverter("j");
-	public final static int GrammarModule_colIndex_Example2			= ColIndexConverter("k");
-	public final static int GrammarModule_colIndex_Example3			= ColIndexConverter("l");
+    public static final int COLUMN_MEANINGS_MEANING             = ColIndexConverter("b");
+    public static final int COLUMN_MEANINGS_TYPE                = ColIndexConverter("c");
+    public static final int COLUMN_MEANINGS_EXPLANATION         = ColIndexConverter("d");
+    public static final int COLUMN_MEANINGS_RULES               = ColIndexConverter("e");
+    public static final int COLUMN_MEANINGS_EXAMPLES            = ColIndexConverter("f");
+    public static final int COLUMN_MEANINGS_ANTONYM             = ColIndexConverter("g");
+    public static final int COLUMN_MEANINGS_SYNONYM             = ColIndexConverter("h");
 
-	public final static int GrammarModule_colIndex_Antonym             = ColIndexConverter("m"); //true index starts at "h", but examples are inserted before
-    public final static int GrammarModule_colIndex_Synonym 			= ColIndexConverter("n");
-    public final static int GrammarModule_colIndex_ExtraKeywords    	= ColIndexConverter("o");
-    public final static int GrammarModule_colIndex_Title    	        = ColIndexConverter("p");
+    public static final int COLUMN_MULT_EXPLANATIONS_ITEM       = ColIndexConverter("b");
+    public static final int COLUMN_MULT_EXPLANATIONS_RULE       = ColIndexConverter("c");
+    public static final int COLUMN_MULT_EXPLANATIONS_EXAMPLES   = ColIndexConverter("d");
 
-	public final static int Examples_colIndex_Example_English 		    = ColIndexConverter("b");
-	public final static int Examples_colIndex_Example_Romaji		    = ColIndexConverter("c");
-	public final static int Examples_colIndex_Example_Kanji 		    = ColIndexConverter("d");
+    public final static int COLUMN_EXAMPLES_ENGLISH             = ColIndexConverter("b");
+    public final static int COLUMN_EXAMPLES_ROMAJI              = ColIndexConverter("c");
+    public final static int COLUMN_EXAMPLES_KANJI               = ColIndexConverter("d");
+
+    public final static int COLUMN_VERB_ISTEM                   = ColIndexConverter("j");
 
 
     public final static int Index_full = 0;

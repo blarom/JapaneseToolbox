@@ -4,6 +4,7 @@
     <bool name="pref_wait_for_online_results_default">false</bool>
     <bool name="pref_complete_with_conj_search_default">true</bool>
     <bool name="pref_wait_for_conj_results_default">true</bool>
+    <bool name="pref_show_sources_default">false</bool>
     <bool name="pref_show_info_boxes_on_search_default">true</bool>
     <bool name="pref_show_decomp_structure_info_default">false</bool>
 </resources>

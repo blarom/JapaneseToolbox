@@ -32,7 +32,7 @@ public class FirebaseDao {
 
 
     //Firebase Database CRUD methods
-    public String addObjectToFirebaseDb(Object object) {
+    private String addObjectToFirebaseDb(Object object) {
 
         DatabaseReference firebaseDbReference = FirebaseDatabase.getInstance().getReference();
 
@@ -59,7 +59,7 @@ public class FirebaseDao {
                 if (object != null) {
                     if (object instanceof Word) {
                         Word word = (Word) object;
-                        if (word.getCommonStatus()==1) addObjectToFirebaseDb(object);
+                        if (word.getIsCommon()) addObjectToFirebaseDb(object);
                     }
                 }
             }
@@ -135,7 +135,7 @@ public class FirebaseDao {
             else reference.addValueEventListener(mEventListenerUpdateKeyValuePair);
         }
     }
-    public void updateObjectOrCreateItInFirebaseDb(Object object, boolean onlyOnce, String languageCode) {
+    private void updateObjectOrCreateItInFirebaseDb(Object object, boolean onlyOnce, String languageCode) {
 
         final DatabaseReference firebaseDbReference = FirebaseDatabase.getInstance().getReference();
         DatabaseReference reference = null;

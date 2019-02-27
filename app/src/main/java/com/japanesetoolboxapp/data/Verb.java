@@ -14,18 +14,18 @@ public class Verb implements Parcelable {
 
     public static final String TABLE_NAME = "verbs_table";
     public static final String COLUMN_ID = "verb_id";
-    static final String COLUMN_VERB_FAMILY = "family";
-    static final String COLUMN_VERB_MEANING = "meaning";
-    static final String COLUMN_VERB_TRANSITIVE = "transitive";
-    static final String COLUMN_VERB_PREPOSITION = "preposition";
-    static final String COLUMN_VERB_HIRAGANA_FIRST_CHAR = "hiraganafirstchar";
+    private static final String COLUMN_VERB_FAMILY = "family";
+    private static final String COLUMN_VERB_MEANING = "meaning";
+    private static final String COLUMN_VERB_TRANSITIVE = "transitive";
+    private static final String COLUMN_VERB_PREPOSITION = "preposition";
+    private static final String COLUMN_VERB_HIRAGANA_FIRST_CHAR = "hiraganafirstchar";
     static final String COLUMN_VERB_KANJI = "kanji";
     static final String COLUMN_VERB_ROMAJI = "romaji";
-    static final String COLUMN_VERB_KANJIROOT = "kanjiroot";
-    static final String COLUMN_VERB_LATINROOT = "latinroot";
-    static final String COLUMN_VERB_EXCEPTIONINDEX = "exceptionindex";
-    static final String COLUMN_VERB_ALTSPELLINGS = "altspellings";
-    static final String COLUMN_VERB_CONJUGATIONCATEGORIES = "conjugationcategories";
+    private static final String COLUMN_VERB_KANJIROOT = "kanjiroot";
+    private static final String COLUMN_VERB_LATINROOT = "latinroot";
+    private static final String COLUMN_VERB_EXCEPTIONINDEX = "exceptionindex";
+    private static final String COLUMN_VERB_ALTSPELLINGS = "altspellings";
+    private static final String COLUMN_VERB_CONJUGATIONCATEGORIES = "conjugationcategories";
     static final String COLUMN_VERB_ACTIVE_KANJIROOT = "activekanjiroot";
     static final String COLUMN_VERB_ACTIVE_LATINROOT = "activelatinroot";
     static final String COLUMN_VERB_ACTIVE_ALTSPELLING = "activealtspellings";
@@ -50,7 +50,7 @@ public class Verb implements Parcelable {
     }
 
 
-    protected Verb(Parcel in) {
+    Verb(Parcel in) {
         verb_id = in.readLong();
         family = in.readString();
         meaning = in.readString();

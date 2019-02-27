@@ -48,7 +48,7 @@ public class ConvertFragment extends Fragment {
             mInputQuery = getArguments().getString(getString(R.string.user_query_word));
         }
     }
-    public void getConversion(final String inputQuery) {
+    private void getConversion(final String inputQuery) {
 
         // Gets the output of the InputQueryFragment and makes it available to the current fragment
 
@@ -113,7 +113,7 @@ public class ConvertFragment extends Fragment {
         List<String> charFinderOutput;
 
         int final_index = 0;
-        if (!input_value.equals("")) {final_index = input_value.length()-1;}
+        final_index = input_value.length() - 1;
 
         for (int i=0; i <= final_index; i++) {
             character_next = "";
@@ -364,7 +364,7 @@ public class ConvertFragment extends Fragment {
 
         return text_type;
     }
-    public static List<String> getPhonemeBasedOnLetter(int i, String character, String character_next, String character_next2, String character_last) {
+    private static List<String> getPhonemeBasedOnLetter(int i, String character, String character_next, String character_next2, String character_last) {
 
         character = character.toLowerCase();
         character_next = character_next.toLowerCase();
@@ -1254,7 +1254,7 @@ public class ConvertFragment extends Fragment {
         output.add(added_string);
         return output;
     }
-    public static List<String> getCharBasedOnPhoneme(int i, String added_string, String character, String character_next, String added_string_last) {
+    private static List<String> getCharBasedOnPhoneme(int i, String added_string, String character, String character_next, String added_string_last) {
 
         String added_string_latin = "";
         String added_string_hiragana = "";

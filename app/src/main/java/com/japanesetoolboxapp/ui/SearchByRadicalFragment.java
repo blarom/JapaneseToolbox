@@ -82,16 +82,16 @@ public class SearchByRadicalFragment extends Fragment implements
     @BindView(R.id.search_by_radical_results_grid) RecyclerView mResultsGridRecyclerView;
     @BindView(R.id.search_by_radical_selection_grid_no_results_textview) TextView mNoResultsTextView;
     private Unbinder mBinding;
-    public static final String ASSOCIATED_COMPONENTS_DELIMITER = "";
+    private static final String ASSOCIATED_COMPONENTS_DELIMITER = "";
     private static final int MAX_RECYCLERVIEW_HEIGHT_DP = 320;
     private static final int ROOM_DB_COMPONENT_GRID_LOADER = 5684;
-    public static final int ROOM_DB_COMPONENT_GRID_FILTER_LOADER = 4682;
+    private static final int ROOM_DB_COMPONENT_GRID_FILTER_LOADER = 4682;
     private static final int ROOM_DB_KANJI_SEARCH_LOADER = 9512;
-    int mSelectedOverallStructure;
-    int mSelectedComponentStructure;
-    String mComponentSelectionType;
-    String[] user_selections;
-    List<String> mDisplayableComponentSelections;
+    private int mSelectedOverallStructure;
+    private int mSelectedComponentStructure;
+    private String mComponentSelectionType;
+    private String[] user_selections;
+    private List<String> mDisplayableComponentSelections;
     private String mInputQuery;
     private List<String[]> mRadicalsOnlyDatabase;
     private boolean mAlreadyLoadedSelectionGrid;
@@ -166,6 +166,7 @@ public class SearchByRadicalFragment extends Fragment implements
     }
     private void initializeViews(View rootView) {
 
+        if (getContext()==null) return;
         mBinding = ButterKnife.bind(this, rootView);
 
         //region Setting the Element listeners
@@ -388,6 +389,7 @@ public class SearchByRadicalFragment extends Fragment implements
         structuresGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
+                if (getContext()==null) return;
                 mTempSelectedStructureId = structureIds.get(pos);
                 Drawable image = getContext().getResources().getDrawable(mTempSelectedStructureId);
                 requestedStructure.setCompoundDrawablesWithIntrinsicBounds(null, null, image, null);
@@ -403,7 +405,7 @@ public class SearchByRadicalFragment extends Fragment implements
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
-                if (mTempSelectedStructureId==0) return;
+                if (getContext()==null || mTempSelectedStructureId==0) return;
 
                 Drawable image = getContext().getResources().getDrawable(mTempSelectedStructureId);
 
@@ -1284,7 +1286,7 @@ public class SearchByRadicalFragment extends Fragment implements
     }
 
     //Communication with parent activity
-    SearchByRadicalFragmentOperationsHandler searchByRadicalFragmentOperationsHandler;
+    private SearchByRadicalFragmentOperationsHandler searchByRadicalFragmentOperationsHandler;
     interface SearchByRadicalFragmentOperationsHandler {
         void onQueryTextUpdateFromSearchByRadicalRequested(String selectedWordString);
     }

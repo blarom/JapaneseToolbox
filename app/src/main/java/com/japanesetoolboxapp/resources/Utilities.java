@@ -50,7 +50,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
 import java.net.URL;
@@ -58,7 +57,6 @@ import java.net.URLEncoder;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -201,8 +199,7 @@ public final class Utilities {
     }
     public static int convertPxToDpi(int pixels, Context context) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        int dp = Math.round(pixels / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-        return dp;
+        return Math.round(pixels / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
 
@@ -291,9 +288,7 @@ public final class Utilities {
         Charset cs = Charset.forName("UTF-8");
         CharBuffer cb = cs.decode(buff);
 
-        String result = cb.toString();
-
-        return result;
+        return cb.toString();
     }
     private static String removeNonSpaceSpecialCharacters(String sentence) {
         String current_char;
@@ -479,7 +474,7 @@ public final class Utilities {
         }
         else if (meanings.size() > balancePoint || balancePoint > 6) {
             for (Word.Meaning meaning : meanings) {
-                totalMeaningElements = addMeaningElementsToListUpToMaxNumber(
+                addMeaningElementsToListUpToMaxNumber(
                         totalMeaningElements, meaning.getMeaning(), 1);
             }
             return TextUtils.join(", ", totalMeaningElements);
@@ -933,9 +928,9 @@ public final class Utilities {
                 if (conceptLightCommonSuccess != null && conceptLightCommonSuccess.size() > 0) {
                     String value = (String) conceptLightCommonSuccess.get(0);
                     if (!TextUtils.isEmpty(value) && value.equalsIgnoreCase("Common word")) {
-                        currentWord.setCommonStatus(1);
-                    } else currentWord.setCommonStatus(0);
-                } else currentWord.setCommonStatus(0);
+                        currentWord.setIsCommon(true);
+                    } else currentWord.setIsCommon(false);
+                } else currentWord.setIsCommon(false);
             }
             //endregion
 
@@ -1338,29 +1333,30 @@ public final class Utilities {
         List<String> parsed_example_list;
 
         //Getting the index value
-        int matchingWordId = Integer.parseInt(centralDatabase.get(centralDbRowIndex)[0]);
+        int matchingWordId = Integer.parseInt(centralDatabase.get(centralDbRowIndex)[GlobalConstants.COLUMN_WORD_ID]);
         word.setWordId(matchingWordId);
 
         //Getting the keywords value
-        String matchingWordKeywordsList = centralDatabase.get(centralDbRowIndex)[1];
+        String matchingWordKeywordsList = centralDatabase.get(centralDbRowIndex)[GlobalConstants.COLUMN_KEYWORDS];
         word.setKeywords(matchingWordKeywordsList);
 
         //Getting the Romaji value
-        String matchingWordRomaji = centralDatabase.get(centralDbRowIndex)[2];
+        String matchingWordRomaji = centralDatabase.get(centralDbRowIndex)[GlobalConstants.COLUMN_ROMAJI];
         word.setRomaji(matchingWordRomaji);
 
         //Getting the Kanji value
-        String matchingWordKanji = centralDatabase.get(centralDbRowIndex)[3];
+        String matchingWordKanji = centralDatabase.get(centralDbRowIndex)[GlobalConstants.COLUMN_KANA];
         word.setKanji(matchingWordKanji);
 
         //Setting the unique identifier
         word.setUniqueIdentifier(matchingWordRomaji+"-"+matchingWordKanji);
 
-        //Setting the Common Word flag
-        word.setCommonStatus(2);
+        //Setting the flags
+        word.setIsCommon(centralDatabase.get(centralDbRowIndex)[GlobalConstants.COLUMN_COMMON].equals("1"));
+        word.setIsLocal(true);
 
         //Getting the AltSpellings value
-        String matchingWordAltSpellings = centralDatabase.get(centralDbRowIndex)[5];
+        String matchingWordAltSpellings = centralDatabase.get(centralDbRowIndex)[GlobalConstants.COLUMN_ALT_SPELLINGS];
         word.setAltSpellings(matchingWordAltSpellings);
 
 
@@ -1369,7 +1365,7 @@ public final class Utilities {
         //Initializations
         String matchingWordMeaning;
         String matchingWordType;
-        String matchingWordOpposite;
+        String matchingWordAntonym;
         String matchingWordSynonym;
         String matchingWordExplanation;
         String matchingWordRules;
@@ -1379,7 +1375,7 @@ public final class Utilities {
         String ME_index;
 
         //Finding the meanings using the supplied index
-        String MM_index = centralDatabase.get(centralDbRowIndex)[4];
+        String MM_index = centralDatabase.get(centralDbRowIndex)[GlobalConstants.COLUMN_MEANING_INDEXES];
         List<String> MM_index_list = Arrays.asList(MM_index.split(";"));
         if (MM_index_list.size() == 0) { return word; }
 
@@ -1392,11 +1388,11 @@ public final class Utilities {
             current_meaning_characteristics = meaningsDatabase.get(current_MM_index);
 
             //Getting the Meaning value
-            matchingWordMeaning = current_meaning_characteristics[1];
+            matchingWordMeaning = current_meaning_characteristics[GlobalConstants.COLUMN_MEANINGS_MEANING];
             if (matchingWordMeaning.equals("")) continue;
 
             //Getting the Type value
-            matchingWordType = current_meaning_characteristics[2];
+            matchingWordType = current_meaning_characteristics[GlobalConstants.COLUMN_MEANINGS_TYPE];
 
             //Make corrections to the meaning values if the hit is a verb
             if (matchingWordType.contains("V") && !matchingWordType.equals("VC") && !matchingWordType.equals("NV") && !matchingWordType.equals("VdaI")) {
@@ -1421,20 +1417,20 @@ public final class Utilities {
             meaning.setType(matchingWordType);
 
             //Getting the Opposite value
-            matchingWordOpposite = current_meaning_characteristics[6];
-            meaning.setAntonym(matchingWordOpposite);
+            matchingWordAntonym = current_meaning_characteristics[GlobalConstants.COLUMN_MEANINGS_ANTONYM];
+            meaning.setAntonym(matchingWordAntonym);
 
             //Getting the Synonym value
-            matchingWordSynonym = current_meaning_characteristics[7];
+            matchingWordSynonym = current_meaning_characteristics[GlobalConstants.COLUMN_MEANINGS_SYNONYM];
             meaning.setSynonym(matchingWordSynonym);
 
             //Getting the set of Explanations
             has_multiple_explanations = false;
             ME_index = "";
-            if (current_meaning_characteristics[3].length() > 3) {
-                if (current_meaning_characteristics[3].substring(0,3).equals("ME#")) {
+            if (current_meaning_characteristics[GlobalConstants.COLUMN_MEANINGS_EXPLANATION].length() > 3) {
+                if (current_meaning_characteristics[GlobalConstants.COLUMN_MEANINGS_EXPLANATION].substring(0,3).equals("ME#")) {
                     has_multiple_explanations = true;
-                    ME_index = current_meaning_characteristics[3].substring(3);
+                    ME_index = current_meaning_characteristics[GlobalConstants.COLUMN_MEANINGS_EXPLANATION].substring(3);
                 }
             }
 
@@ -1449,24 +1445,24 @@ public final class Utilities {
                     current_ME_index = Integer.parseInt(ME_index_list.get(j))-1;
 
                     //Getting the Explanation value
-                    matchingWordExplanation = multExplanationsDatabase.get(current_ME_index)[1];
+                    matchingWordExplanation = multExplanationsDatabase.get(current_ME_index)[GlobalConstants.COLUMN_MULT_EXPLANATIONS_ITEM];
                     explanation.setExplanation(matchingWordExplanation);
 
                     //Getting the Rules value
-                    matchingWordRules = multExplanationsDatabase.get(current_ME_index)[2];
+                    matchingWordRules = multExplanationsDatabase.get(current_ME_index)[GlobalConstants.COLUMN_MULT_EXPLANATIONS_RULE];
                     explanation.setRules(matchingWordRules);
 
                     //Getting the Examples
-                    matchingWordExampleList = multExplanationsDatabase.get(current_ME_index)[3];
+                    matchingWordExampleList = multExplanationsDatabase.get(current_ME_index)[GlobalConstants.COLUMN_MULT_EXPLANATIONS_EXAMPLES];
                     List<Word.Meaning.Explanation.Example> exampleList = new ArrayList<>();
                     if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
                         parsed_example_list = Arrays.asList(matchingWordExampleList.split(", "));
                         for (int t = 0; t < parsed_example_list.size(); t++) {
                             Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
                             example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
-                            example.setEnglishSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_English]);
-                            example.setRomajiSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Romaji]);
-                            example.setKanjiSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Kanji]);
+                            example.setEnglishSentence(examplesDatabase.get(example_index)[GlobalConstants.COLUMN_EXAMPLES_ENGLISH]);
+                            example.setRomajiSentence(examplesDatabase.get(example_index)[GlobalConstants.COLUMN_EXAMPLES_ROMAJI]);
+                            example.setKanjiSentence(examplesDatabase.get(example_index)[GlobalConstants.COLUMN_EXAMPLES_KANJI]);
                             exampleList.add(example);
                         }
                     }
@@ -1478,24 +1474,24 @@ public final class Utilities {
                 Word.Meaning.Explanation explanation = new Word.Meaning.Explanation();
 
                 //Getting the Explanation value
-                matchingWordExplanation = meaningsDatabase.get(current_MM_index)[3];
+                matchingWordExplanation = meaningsDatabase.get(current_MM_index)[GlobalConstants.COLUMN_MEANINGS_EXPLANATION];
                 explanation.setExplanation(matchingWordExplanation);
 
                 //Getting the Rules value
-                matchingWordRules = meaningsDatabase.get(current_MM_index)[4];
+                matchingWordRules = meaningsDatabase.get(current_MM_index)[GlobalConstants.COLUMN_MEANINGS_RULES];
                 explanation.setRules(matchingWordRules);
 
                 //Getting the Examples
-                matchingWordExampleList = meaningsDatabase.get(current_MM_index)[5];
+                matchingWordExampleList = meaningsDatabase.get(current_MM_index)[GlobalConstants.COLUMN_MEANINGS_EXAMPLES];
                 List<Word.Meaning.Explanation.Example> exampleList = new ArrayList<>();
                 if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
                     parsed_example_list = Arrays.asList(matchingWordExampleList.split(", "));
                     for (int t = 0; t < parsed_example_list.size(); t++) {
                         Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
                         example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
-                        example.setEnglishSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_English]);
-                        example.setRomajiSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Romaji]);
-                        example.setKanjiSentence(examplesDatabase.get(example_index)[GlobalConstants.Examples_colIndex_Example_Kanji]);
+                        example.setEnglishSentence(examplesDatabase.get(example_index)[GlobalConstants.COLUMN_EXAMPLES_ENGLISH]);
+                        example.setRomajiSentence(examplesDatabase.get(example_index)[GlobalConstants.COLUMN_EXAMPLES_ROMAJI]);
+                        example.setKanjiSentence(examplesDatabase.get(example_index)[GlobalConstants.COLUMN_EXAMPLES_KANJI]);
                         exampleList.add(example);
                     }
                 }
@@ -1521,18 +1517,18 @@ public final class Utilities {
         int lastCharIndex;
         String[] currentMeaningCharacteristics;
 
-        verb.setVerbId(Integer.parseInt(verbDatabase.get(verbDbRowIndex)[0]));
-        verb.setPreposition(verbDatabase.get(verbDbRowIndex)[7]);
-        verb.setKanjiRoot(verbDatabase.get(verbDbRowIndex)[8]);
-        verb.setLatinRoot(verbDatabase.get(verbDbRowIndex)[9]);
-        verb.setExceptionIndex(verbDatabase.get(verbDbRowIndex)[10]);
-        verb.setRomaji(verbDatabase.get(verbDbRowIndex)[2]);
-        verb.setKanji(verbDatabase.get(verbDbRowIndex)[3]);
-        verb.setAltSpellings(verbDatabase.get(verbDbRowIndex)[5]);
+        verb.setVerbId(Integer.parseInt(verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_WORD_ID]));
+        verb.setPreposition(verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_PREPOSITION]);
+        verb.setKanjiRoot(verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_KANJI_ROOT]);
+        verb.setLatinRoot(verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_LATIN_ROOT]);
+        verb.setExceptionIndex(verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_EXCEPTION_INDEX]);
+        verb.setRomaji(verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_ROMAJI]);
+        verb.setKanji(verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_KANA]);
+        verb.setAltSpellings(verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_ALT_SPELLINGS]);
         verb.setHiraganaFirstChar(ConvertFragment.getLatinHiraganaKatakana(verb.getRomaji()).get(1).substring(0,1));
 
         //Setting the family
-        String MM_index = verbDatabase.get(verbDbRowIndex)[4];
+        String MM_index = verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_MEANING_INDEXES];
         List<String> MM_index_list = Arrays.asList(MM_index.split(";"));
         if (MM_index_list.size() == 0) { return verb; }
 
@@ -1587,9 +1583,15 @@ public final class Utilities {
         for (int j = 0; j< localWords.size(); j++) {
             Word currentLocalWord = localWords.get(j);
             Word finalWord = new Word();
+
+            //Copying basic properties
             finalWord.setRomaji(currentLocalWord.getRomaji());
             finalWord.setKanji(currentLocalWord.getKanji());
             finalWord.setKeywords(currentLocalWord.getKeywords());
+            finalWord.setIsCommon(currentLocalWord.getIsCommon());
+            finalWord.setIsLocal(currentLocalWord.getIsLocal());
+
+            //Adjusting and copying alt spellings
             List<String> finalAltSpellings;
             if (TextUtils.isEmpty(currentLocalWord.getAltSpellings())) finalAltSpellings = new ArrayList<>();
             else {
@@ -1598,6 +1600,7 @@ public final class Utilities {
             }
             finalWord.setAltSpellings(TextUtils.join(", ", finalAltSpellings));
 
+            //Updating and copying meanings/alt spellings from the async word
             List<Word.Meaning> currentLocalMeanings = currentLocalWord.getMeanings();
             List<Word.Meaning> currentFinalMeanings = new ArrayList<>(currentLocalMeanings);
 
@@ -1647,6 +1650,7 @@ public final class Utilities {
                 }
             }
             finalWord.setMeanings(currentFinalMeanings);
+
             finalWordsList.add(finalWord);
         }
 
@@ -1772,7 +1776,7 @@ public final class Utilities {
     public static List<Word> getCommonWords(List<Word> wordsList) {
         List<Word> commonWords = new ArrayList<>();
         for (Word word : wordsList) {
-            if (word.getCommonStatus()==1) commonWords.add(word);
+            if (word.getIsCommon()) commonWords.add(word);
         }
         return commonWords;
     }
@@ -2736,10 +2740,16 @@ public final class Utilities {
                 .replace(" to", "to")
                 .replace(" na", "na");
     }
+    public static boolean wordsAreEquivalent(Word wordA, Word wordB) {
+        return wordA.getRomaji().trim().equals(wordB.getRomaji().trim()) && wordA.getKanji().trim().equals(wordB.getKanji().trim());
+    }
+    public static boolean wordsAreSimilar(Word wordA, String wordB) {
+        return wordA.getRomaji().trim().equals(wordB) || wordA.getKanji().trim().equals(wordB);
+    }
 
 
     //Preference utilities
-    public static boolean getShowOnlineResultsPreference(Activity activity) {
+    public static boolean getPreferenceShowOnlineResults(Activity activity) {
         boolean state = false;
         if (activity!=null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
@@ -2748,7 +2758,7 @@ public final class Utilities {
         }
         return state;
     }
-    public static boolean getWaitForOnlineResultsPreference(Activity activity) {
+    public static boolean getPreferenceWaitForOnlineResults(Activity activity) {
         boolean state = false;
         if (activity!=null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
@@ -2757,7 +2767,7 @@ public final class Utilities {
         }
         return state;
     }
-    public static boolean getShowConjResultsPreference(Activity activity) {
+    public static boolean getPreferenceShowConjResults(Activity activity) {
         boolean state = false;
         if (activity!=null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
@@ -2766,7 +2776,7 @@ public final class Utilities {
         }
         return state;
     }
-    public static boolean getWaitForConjResultsPreference(Activity activity) {
+    public static boolean getPreferenceWaitForConjResults(Activity activity) {
         boolean state = false;
         if (activity!=null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
@@ -2775,7 +2785,16 @@ public final class Utilities {
         }
         return state;
     }
-    public static Boolean getShowInfoBoxesOnSearchPreference(Activity activity) {
+    public static boolean getPreferenceShowSources(Activity activity) {
+        boolean state = false;
+        if (activity!=null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+            state = sharedPreferences.getBoolean(activity.getString(R.string.pref_show_sources_key),
+                    activity.getResources().getBoolean(R.bool.pref_show_sources_default));
+        }
+        return state;
+    }
+    public static Boolean getPreferenceShowInfoBoxesOnSearch(Activity activity) {
         boolean showInfoBoxesOnSearch = false;
         if (activity!=null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
@@ -2784,7 +2803,7 @@ public final class Utilities {
         }
         return showInfoBoxesOnSearch;
     }
-    public static Boolean getShowDecompKanjiStructureInfoPreference(Activity activity) {
+    public static Boolean getPreferenceShowDecompKanjiStructureInfo(Activity activity) {
         boolean showDecompStructureInfo = false;
         if (activity!=null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
@@ -2793,7 +2812,7 @@ public final class Utilities {
         }
         return showDecompStructureInfo;
     }
-    public static int getQueryHistorySizePreference(SharedPreferences sharedPreferences, Context context) {
+    public static int getPreferenceQueryHistorySize(SharedPreferences sharedPreferences, Context context) {
         int queryHistorySize = Integer.parseInt(context.getResources().getString(R.string.pref_query_history_size_default_value));
         try {
             queryHistorySize = Integer.parseInt(sharedPreferences.getString(context.getResources().getString(R.string.pref_query_history_size_key),

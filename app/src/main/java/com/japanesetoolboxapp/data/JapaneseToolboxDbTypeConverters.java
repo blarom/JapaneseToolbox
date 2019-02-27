@@ -11,7 +11,7 @@ import java.util.List;
 
 public class JapaneseToolboxDbTypeConverters {
 
-    static Gson gson = new Gson();
+    private static final Gson gson = new Gson();
 
     @TypeConverter
     public static List<Word.Meaning> stringToWordMeaningsList(String data) {

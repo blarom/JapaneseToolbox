@@ -18,27 +18,28 @@ public class Word implements Parcelable {
 
     public static final String TABLE_NAME = "words_table";
     public static final String COLUMN_ID = BaseColumns._ID;
-    static final String COLUMN_WORD_KEYWORDS = "keywords";
-    static final String COLUMN_WORD_UNIQUE_ID = "uniqueIdentifier";
+    private static final String COLUMN_WORD_KEYWORDS = "keywords";
+    private static final String COLUMN_WORD_UNIQUE_ID = "uniqueIdentifier";
     static final String COLUMN_WORD_ROMAJI = "romaji";
     static final String COLUMN_WORD_KANJI = "kanji";
-    static final String COLUMN_WORD_ALT_SPELLINGS = "altSpellings";
-    static final String COLUMN_WORD_MEANINGS = "meanings";
-    static final String COLUMN_WORD_COMMON_STATUS = "commonStatus";
-    static final String COLUMN_WORD_IS_LOCAL = "isLocal";
+    private static final String COLUMN_WORD_ALT_SPELLINGS = "altSpellings";
+    private static final String COLUMN_WORD_MEANINGS = "meanings";
+    private static final String COLUMN_WORD_COMMON_STATUS = "isCommon";
+    private static final String COLUMN_WORD_IS_LOCAL = "isLocal";
 
     public Word() {
     }
 
 
-    protected Word(Parcel in) {
+    Word(Parcel in) {
         id = in.readLong();
         keywords = in.readString();
         uniqueIdentifier = in.readString();
         romaji = in.readString();
         kanji = in.readString();
         altSpellings = in.readString();
-        commonStatus = in.readInt();
+        isCommon = in.readByte() != 0;
+        isLocal = in.readByte() != 0;
     }
 
     public static final Creator<Word> CREATOR = new Creator<Word>() {
@@ -112,12 +113,12 @@ public class Word implements Parcelable {
     }
 
     @ColumnInfo(name = COLUMN_WORD_COMMON_STATUS)
-    private int commonStatus; //0 for uncommon word, 1 for common word, 2 for local word (ie. might be uncommon but included anyway)
-    public void setCommonStatus(int commonStatus) {
-        this.commonStatus = commonStatus;
+    private boolean isCommon; //0 for uncommon word, 1 for common word, 2 for local word (ie. might be uncommon but included anyway)
+    public void setIsCommon(boolean commonStatus) {
+        this.isCommon = commonStatus;
     }
-    public int getCommonStatus() {
-        return commonStatus;
+    public boolean getIsCommon() {
+        return isCommon;
     }
 
     @ColumnInfo(name = COLUMN_WORD_IS_LOCAL)
@@ -152,7 +153,8 @@ public class Word implements Parcelable {
         parcel.writeString(romaji);
         parcel.writeString(kanji);
         parcel.writeString(altSpellings);
-        parcel.writeInt(commonStatus);
+        parcel.writeByte((byte) (isCommon? 1 : 0));
+        parcel.writeByte((byte) (isLocal? 1 : 0));
     }
 
     //@Embedded

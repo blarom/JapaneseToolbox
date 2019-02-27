@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StructuresGridViewAdapter extends ArrayAdapter {
-    private Context context;
-    private int layoutResourceId;
-    private List<Integer> imageIds;
+    private final Context context;
+    private final int layoutResourceId;
+    private final List<Integer> imageIds;
 
     public StructuresGridViewAdapter(Context context, int layoutResourceId, List<Integer> imageIds) {
         super(context, layoutResourceId, imageIds);

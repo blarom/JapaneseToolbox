@@ -28,7 +28,6 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.japanesetoolboxapp.R;
-import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.Utilities;
@@ -49,8 +48,6 @@ import butterknife.Unbinder;
 ////TODO: add wildcard characters to local searches
 ////TODO: add kanji character zoom in
 ////TODO: allow user to enter verb in gerund form (ing) and still find it
-////TODO indicate if word is common in search results
-////TODO indicate source as local/jisho in search results
 ////TODO Show the adjective conjugations (it will also explain to the user why certain adjectives appear in the list, based on their conjugations)
 ////TODO Add filtering functionality: if more than one word is entered, the results will be limited to those that include all words.
 ////TODO Translate the app into other European languages, and allow the user to choose the wanted language.
@@ -72,25 +69,26 @@ public class MainActivity extends AppCompatActivity implements
     private static final int SMALL_DATABASE_LOADER = 9512;
     @BindView(R.id.second_fragment_placeholder) FrameLayout mSecondFragmentPlaceholder;
     private String mSecondFragmentFlag;
-    InputQueryFragment mInputQueryFragment;
-    HashMap<String, String> LegendDatabase;
-    List<String[]> VerbLatinConjDatabase;
-    List<String[]> VerbKanjiConjDatabase;
-    List<String[]> SimilarsDatabase;
-    List<String[]> RadicalsOnlyDatabase;
-    Typeface CJK_typeface;
+    private InputQueryFragment mInputQueryFragment;
+    private HashMap<String, String> LegendDatabase;
+    private List<String[]> VerbLatinConjDatabase;
+    private List<String[]> VerbKanjiConjDatabase;
+    private List<String[]> SimilarsDatabase;
+    private List<String[]> RadicalsOnlyDatabase;
+    private Typeface CJK_typeface;
 
-    Intent restartIntent;
+    private Intent restartIntent;
 
-    public boolean mShowOnlineResults;
-    public boolean mWaitForOnlineResults;
-    public boolean mShowConjResults;
-    public boolean mWaitForConjResults;
-    public boolean mShowInfoBoxesOnSearch;
-    public boolean mShowKanjiStructureInfo;
-    public String mChosenSpeechToTextLanguage;
-    public String mChosenTextToSpeechLanguage;
-    public String mChosenOCRLanguage;
+    private boolean mShowOnlineResults;
+    private boolean mWaitForOnlineResults;
+    private boolean mShowConjResults;
+    private boolean mWaitForConjResults;
+    private boolean mShowSources;
+    private boolean mShowInfoBoxesOnSearch;
+    private boolean mShowKanjiStructureInfo;
+    private String mChosenSpeechToTextLanguage;
+    private String mChosenTextToSpeechLanguage;
+    private String mChosenOCRLanguage;
     private float mOcrImageDefaultContrast;
     private float mOcrImageDefaultBrightness;
     private float mOcrImageDefaultSaturation;
@@ -108,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements
     private boolean mAllowButtonOperations;
     private List<Word> mLocalMatchingWords;
     private String mInputQuery;
-    List<String> mQueryHistory;
+    private List<String> mQueryHistory;
     //endregion
 
 
@@ -251,6 +249,9 @@ public class MainActivity extends AppCompatActivity implements
         else if (key.equals(getString(R.string.pref_wait_for_conj_results_key))) {
             setWaitForConjResults(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_wait_for_conj_results_default)));
         }
+        else if (key.equals(getString(R.string.pref_show_sources_key))) {
+            setShowSources(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_sources_default)));
+        }
         else if (key.equals(getString(R.string.pref_show_info_boxes_on_search_key))) {
             setShowInfoBoxesOnSearch(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_info_boxes_on_search_default)));
         }
@@ -258,7 +259,7 @@ public class MainActivity extends AppCompatActivity implements
             setShowKanjiStructureInfo(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_decomp_structure_info_default)));
         }
         else if (key.equals(getString(R.string.pref_query_history_size_key))) {
-            mQueryHistorySize = Utilities.getQueryHistorySizePreference(sharedPreferences, getApplicationContext());
+            mQueryHistorySize = Utilities.getPreferenceQueryHistorySize(sharedPreferences, getApplicationContext());
             updateQueryHistorySize();
         }
         else if (key.equals(getString(R.string.pref_preferred_STT_language_key))) {
@@ -290,7 +291,9 @@ public class MainActivity extends AppCompatActivity implements
                 getResources().getBoolean(R.bool.pref_complete_with_conj_search_default)));
         setWaitForConjResults(sharedPreferences.getBoolean(getString(R.string.pref_wait_for_conj_results_key),
                 getResources().getBoolean(R.bool.pref_wait_for_conj_results_default)));
-        mQueryHistorySize = Utilities.getQueryHistorySizePreference(sharedPreferences, getApplicationContext());
+        setShowSources(sharedPreferences.getBoolean(getString(R.string.pref_show_sources_key),
+                getResources().getBoolean(R.bool.pref_show_sources_default)));
+        mQueryHistorySize = Utilities.getPreferenceQueryHistorySize(sharedPreferences, getApplicationContext());
         setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese)));
         setTextToSpeechLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese)));
         setOCRLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_preferred_language_value_japanese)));
@@ -299,25 +302,28 @@ public class MainActivity extends AppCompatActivity implements
         mOcrImageDefaultBrightness = Utilities.loadOCRImageBrightnessFromSharedPreferences(sharedPreferences, getApplicationContext());
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
-    public void setShowOnlineResults(boolean showOnlineResults) {
-        mShowOnlineResults = showOnlineResults;
+    private void setShowOnlineResults(boolean state) {
+        mShowOnlineResults = state;
     }
-    public void setWaitForOnlineResults(boolean waitForOnlineResults) {
-        mWaitForOnlineResults = waitForOnlineResults;
+    private void setWaitForOnlineResults(boolean state) {
+        mWaitForOnlineResults = state;
     }
-    public void setShowConjResults(boolean showConjResults) {
-        mShowConjResults = showConjResults;
+    private void setShowConjResults(boolean state) {
+        mShowConjResults = state;
     }
-    public void setWaitForConjResults(boolean waitForConjResults) {
-        mWaitForConjResults = waitForConjResults;
+    private void setWaitForConjResults(boolean state) {
+        mWaitForConjResults = state;
     }
-    public void setShowInfoBoxesOnSearch(boolean showInfoBoxes) {
-        mShowInfoBoxesOnSearch = showInfoBoxes;
+    private void setShowSources(boolean state) {
+        mShowSources = state;
     }
-    public void setShowKanjiStructureInfo(boolean showStructureInfo) {
-        mShowKanjiStructureInfo = showStructureInfo;
+    private void setShowInfoBoxesOnSearch(boolean state) {
+        mShowInfoBoxesOnSearch = state;
     }
-    public void setSpeechToTextLanguage(String language) {
+    private void setShowKanjiStructureInfo(boolean state) {
+        mShowKanjiStructureInfo = state;
+    }
+    private void setSpeechToTextLanguage(String language) {
         if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
             mChosenSpeechToTextLanguage = getResources().getString(R.string.languageLocaleJapanese);
         }
@@ -326,7 +332,7 @@ public class MainActivity extends AppCompatActivity implements
         }
         if (mInputQueryFragment!=null) mInputQueryFragment.setSTTLanguage(mChosenSpeechToTextLanguage);
     }
-    public void setTextToSpeechLanguage(String language) {
+    private void setTextToSpeechLanguage(String language) {
         if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
             mChosenTextToSpeechLanguage = getResources().getString(R.string.languageLocaleJapanese);
         }
@@ -334,7 +340,7 @@ public class MainActivity extends AppCompatActivity implements
             mChosenTextToSpeechLanguage = getResources().getString(R.string.languageLocaleEnglishUS);
         }
     }
-    public void setOCRLanguage(String language) {
+    private void setOCRLanguage(String language) {
         if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
             mChosenOCRLanguage = getResources().getString(R.string.languageLocaleJapanese);
         }
@@ -408,7 +414,7 @@ public class MainActivity extends AppCompatActivity implements
 
         fragmentTransaction.commit();
     }
-    public void clearBackstack() {
+    private void clearBackstack() {
 
         mFragmentManager = getSupportFragmentManager();
         if (mFragmentManager!=null && mFragmentManager.getBackStackEntryCount()>0) {
@@ -486,7 +492,7 @@ public class MainActivity extends AppCompatActivity implements
             mInputQueryFragment.updateQueryDefinitionInHistory(romaji, meaning);
         }
     }
-    public void showExitAppDialog() {
+    private void showExitAppDialog() {
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setMessage(getString(R.string.sure_you_want_to_exit));
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, getString(R.string.yes),

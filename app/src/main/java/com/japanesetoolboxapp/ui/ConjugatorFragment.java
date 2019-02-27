@@ -174,7 +174,7 @@ public class ConjugatorFragment extends Fragment implements
         mMatchingConjugationParameters = new ArrayList<>();
         mConjugationTitles = Utilities.getConjugationTitles(mVerbLatinConjDatabase);
     }
-    public void SearchForConjugations() {
+    private void SearchForConjugations() {
 
         hideAll();
         getInputQueryParameters();
@@ -299,7 +299,7 @@ public class ConjugatorFragment extends Fragment implements
 
         displayConjugationsOfSelectedCategory(verbIndex, conjugationIndex);
     }
-    public void displayConjugationsOfSelectedCategory(int verbIndex, int conjugationIndex) {
+    private void displayConjugationsOfSelectedCategory(int verbIndex, int conjugationIndex) {
         if (getActivity()==null) return;
 
         List<TextView> Tense = new ArrayList<>();
@@ -401,7 +401,7 @@ public class ConjugatorFragment extends Fragment implements
     private class VerbSpinnerAdapter extends ArrayAdapter<Verb> {
         // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
 
-        List<Verb> verbs;
+        final List<Verb> verbs;
 
         VerbSpinnerAdapter(Context ctx, int txtViewResourceId, List<Verb> verbs) {
             super(ctx, txtViewResourceId, verbs);
@@ -464,7 +464,7 @@ public class ConjugatorFragment extends Fragment implements
     private class ConjugationsSpinnerAdapter extends ArrayAdapter<Verb.ConjugationCategory> {
         // Code adapted from http://mrbool.com/how-to-customize-spinner-in-android/28286
 
-        List<Verb.ConjugationCategory> conjugationCategories;
+        final List<Verb.ConjugationCategory> conjugationCategories;
         private final List<ConjugationTitle> conjugationTitles;
 
         ConjugationsSpinnerAdapter(Context ctx, int txtViewResourceId,

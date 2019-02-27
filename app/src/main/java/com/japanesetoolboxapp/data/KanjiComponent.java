@@ -16,7 +16,7 @@ public class KanjiComponent {
     public static final String TABLE_NAME = "kanji_components_table";
     public static final String COLUMN_ID = BaseColumns._ID;
     static final String COLUMN_COMPONENT_STRUCTURE = "structure";
-    static final String COLUMN_COMPONENT_ASSOCIATED_COMPONENTS = "associatedComponents";
+    private static final String COLUMN_COMPONENT_ASSOCIATED_COMPONENTS = "associatedComponents";
 
     public KanjiComponent() {
     }

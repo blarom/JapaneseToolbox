@@ -16,8 +16,8 @@ public class KanjiCharacter  {
     public static final String COLUMN_ID = BaseColumns._ID;
     static final String COLUMN_KANJI = "kanji";
     static final String COLUMN_KANJI_HEX_ID = "hexIdentifier";
-    static final String COLUMN_KANJI_STRUCTURE = "structure";
-    static final String COLUMN_KANJI_COMPONENTS = "components";
+    private static final String COLUMN_KANJI_STRUCTURE = "structure";
+    private static final String COLUMN_KANJI_COMPONENTS = "components";
     static final String COLUMN_KANJI_READINGS = "readings";
     static final String COLUMN_KANJI_NAME_READINGS = "nameReadings";
     static final String COLUMN_KANJI_MEANINGS = "meanings";

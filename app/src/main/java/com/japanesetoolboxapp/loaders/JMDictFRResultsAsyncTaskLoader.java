@@ -12,7 +12,7 @@ import java.util.List;
 
 public class JMDictFRResultsAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
-    String mQuery;
+    private final String mQuery;
     private boolean mAllowLoaderStart;
 
     public JMDictFRResultsAsyncTaskLoader(Context context, String query) {

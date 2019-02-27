@@ -103,18 +103,17 @@ public class InputQueryFragment extends Fragment implements
     private static final String DOWNLOAD_FILE_PREFS = "download_file_prefs";
     private static final String JPN_FILE_DOWNLOADING_FLAG = "jpn_file_downloading";
     private static final String ENG_FILE_DOWNLOADING_FLAG = "eng_file_downloading";
-    List<String> mQueryHistory;
-    List<String> mQueryHistoryWordsOnly;
-    String mInputQuery;
-    Bitmap mImageToBeDecoded;
-    TessBaseAPI mTess;
-    String mInternalStorageTesseractFolderPath = "";
+    private List<String> mQueryHistory;
+    private List<String> mQueryHistoryWordsOnly;
+    private String mInputQuery;
+    private Bitmap mImageToBeDecoded;
+    private TessBaseAPI mTess;
+    private String mInternalStorageTesseractFolderPath = "";
     private boolean mInitializedOcrApiJpn;
     private boolean mInitializedOcrApiEng;
     private String mOCRLanguage;
-    private String mOCRLanguageLabel;
-    Uri mPhotoURI;
-    String mOcrResultString;
+    private Uri mPhotoURI;
+    private String mOcrResultString;
     private boolean firstTimeInitializedJpn;
     private boolean firstTimeInitializedEng;
     private TextToSpeech tts;
@@ -125,7 +124,6 @@ public class InputQueryFragment extends Fragment implements
     private String mDownloadsFolder;
     private int timesPressed;
     private boolean jpnOcrDataIsAvailable;
-    private String mChosenTextToSpeechLanguage;
     private String mLanguageBeingDownloadedLabel;
     private String mLanguageBeingDownloaded;
     private boolean engOcrDataIsAvailable;
@@ -249,6 +247,11 @@ public class InputQueryFragment extends Fragment implements
                 sendImageToImageAdjuster(mCropImageResult);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
+                try {
+                    throw error;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
         else if (requestCode == ADJUST_IMAGE_ACTIVITY_REQUEST_CODE) {
@@ -561,7 +564,7 @@ public class InputQueryFragment extends Fragment implements
             }
         }
     }
-    public void getOcrTextWithTesseractAndDisplayDialog(Bitmap imageToBeDecoded){
+    private void getOcrTextWithTesseractAndDisplayDialog(Bitmap imageToBeDecoded){
         if (getActivity()==null) return;
 
         mTess.setImage(imageToBeDecoded);
@@ -641,7 +644,7 @@ public class InputQueryFragment extends Fragment implements
         String newLanguage = getOCRLanguageFromSettings();
         if (mOCRLanguage != null && !mOCRLanguage.equals(newLanguage)) initializeTesseractAPI(newLanguage);
         mOCRLanguage = newLanguage;
-        mOCRLanguageLabel = getLanguageLabel(mOCRLanguage);
+        String mOCRLanguageLabel = getLanguageLabel(mOCRLanguage);
     }
     private String getLanguageLabel(String language) {
         if (language.equals("jpn")) return getResources().getString(R.string.language_label_japanese);
@@ -665,9 +668,9 @@ public class InputQueryFragment extends Fragment implements
                             jpnOcrFileISDownloading = false;
                             setOcrDataIsDownloadingStatus(mLanguageBeingDownloaded+".traineddata", false);
 
-                            String uriString = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
-                            Uri a = Uri.parse(uriString);
-                            File d = new File(a.getPath());
+                            //String uriString = c.getString(c.getColumnIndex(DownloadManager.COLUMN_LOCAL_URI));
+                            //Uri a = Uri.parse(uriString);
+                            //File d = new File(a.getPath());
                             // copy file from external to internal will easily available on net use google.
                             //String sdCard = Environment.getExternalStorageDirectory().toString();
                             File sourceLocation = new File(mDownloadsFolder + "/" + mLanguageBeingDownloaded + ".traineddata");
@@ -847,7 +850,7 @@ public class InputQueryFragment extends Fragment implements
     }
     private static class TesseractOCRAsyncTaskLoader extends AsyncTaskLoader <String> {
 
-        TessBaseAPI mTess;
+        final TessBaseAPI mTess;
         private boolean mAllowLoaderStart;
 
         TesseractOCRAsyncTaskLoader(Context context,
@@ -973,7 +976,7 @@ public class InputQueryFragment extends Fragment implements
         if (getActivity() != null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
             String language = sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese));
-            mChosenTextToSpeechLanguage = getTextToSpeechLanguageLocale(language);
+            String mChosenTextToSpeechLanguage = getTextToSpeechLanguageLocale(language);
 
             //Setting the language
             if (mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
@@ -992,7 +995,7 @@ public class InputQueryFragment extends Fragment implements
         setTTSLanguage();
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
-    public String getTextToSpeechLanguageLocale(String language) {
+    private String getTextToSpeechLanguageLocale(String language) {
         if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
             return getResources().getString(R.string.languageLocaleJapanese);
         }
@@ -1004,7 +1007,7 @@ public class InputQueryFragment extends Fragment implements
 
 
     //SpeechToText methods
-    public String getSpeechToTextLanguageLocale(String language) {
+    private String getSpeechToTextLanguageLocale(String language) {
         if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
             return getResources().getString(R.string.languageLocaleJapanese);
         }
@@ -1015,8 +1018,8 @@ public class InputQueryFragment extends Fragment implements
     }
     private static class GetRomajiFromKanjiUsingJishoAsyncTaskLoader extends AsyncTaskLoader <String> {
 
-        String queryText;
-        private boolean requestedSpeechToText;
+        final String queryText;
+        private final boolean requestedSpeechToText;
         private boolean internetIsAvailable;
         private boolean mAllowLoaderStart;
 
@@ -1101,7 +1104,7 @@ public class InputQueryFragment extends Fragment implements
 
         updateQueryHistoryWordsOnly();
     }
-    public void updateQueryHistory(boolean saveDefinition) {
+    private void updateQueryHistory(boolean saveDefinition) {
 
         // Implementing a FIFO array for the spinner
         // Add the entry at the beginning of the stack

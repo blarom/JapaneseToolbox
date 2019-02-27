@@ -57,6 +57,13 @@
         android:summaryOn="@string/wait_for_conj_results_on"
         android:title="@string/pref_wait_for_conj_results" />
 
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_show_sources_default"
+        android:key="@string/pref_show_sources_key"
+        android:summaryOff="@string/show_sources_off"
+        android:summaryOn="@string/show_sources_on"
+        android:title="@string/pref_show_sources" />
+
     <PreferenceCategory
         android:title="Speech" />
 

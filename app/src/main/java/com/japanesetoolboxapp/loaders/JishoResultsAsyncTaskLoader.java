@@ -16,7 +16,7 @@ import java.util.List;
 
 public class JishoResultsAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
-    String mQuery;
+    private final String mQuery;
     private boolean mAllowLoaderStart;
 
     public JishoResultsAsyncTaskLoader(Context context, String query) {
