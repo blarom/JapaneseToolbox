@@ -30,6 +30,20 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/list_item_source_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/NoText"
+        android:layout_gravity="start"
+        android:layout_marginStart="2dp"
+        android:textColor="@color/textColorDictionaryChildItemKanji"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/list_item_romaji_and_kanji"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="4dp"
+        android:textIsSelectable="true" />
+
+    <TextView
         android:id="@+id/list_item_meanings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,7 +54,7 @@
         android:textColor="@color/textColorDictionaryGroupItemMeanings"
         android:textSize="@dimen/DictionaryGroupItemMeanings"
         android:text="@string/English"
-        app:layout_constraintTop_toBottomOf="@id/list_item_romaji_and_kanji"
+        app:layout_constraintTop_toBottomOf="@id/list_item_source_info"
         app:layout_constraintStart_toStartOf="parent"
         android:ellipsize="end"
         android:maxLines="4" />
