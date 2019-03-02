@@ -318,7 +318,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             }
 
                 if (mShowSources) {
-                sourceInfo.add((word.getIsCommon())? "Common word." : "Uncommon word.");
+                sourceInfo.add((word.getIsCommon())? "Common word." : "Infrequent word.");
                 sourceInfo.add((word.getIsLocal()) ? "Source: local (offline)." : "Source: EDICT (online).");
             }
 

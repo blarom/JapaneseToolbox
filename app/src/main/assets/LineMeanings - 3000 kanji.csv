@@ -498,7 +498,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 498|fit, suitability|N;Abs||||||
 499|few, for a little while|A;Dg|Also used as to soften a sentence.||642|||
 500|a little, for a little while|A;Dg|||641|||
-501|little, few|Ana||||||
+501|small quantity, little, few, something|Ana||||||
 502|finally, at last, reaching a head|A;Dg||||||
 503|generally, more or less|A;Dg|||634, 1307, 1308|||
 504|halfway, partly, semi|A;Dg||||||
@@ -573,7 +573,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 573|applauded (to applaud)|Ai|Verb-based, linked to object by "ga" when used with desu verb.|||||
 574|appropriate, adequate, suitable, fitting, worthy|Ai||||||
 575|huh?, what?|OI||||||
-576|awful, terrible|Ai|"hidee" is used colloquially.||535, 1284|idai||
+576||-|"hidee" is used colloquially.||535, 1284|idai||
 577|bad, poor, inferior|Ai|||514|ii, yoi, kekkou, yoroshii||
 578|beautiful|Ai||||||
 579|beautiful, lovely|Ai|||||kirei|
@@ -689,7 +689,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 689|salty|Ai|||580|||
 690|few, a little, scarce, insufficient, seldom|Ai|||544, 1272, 1286|ooi||
 691|scary, frightening, eerie, dreadful|Ai|||569|||
-692|severe, strict, rigid, unsparing, relentless, stern, austere, grave, solemn, intense (e.g. cold), harsh, tough|Ai||||||
+692|severe, strict, rigid, unsparing, relentless, stern, austere, grave, solemn|Ai||||||
 693|shallow, superficial|Ai|||567|fukai||
 694|short|Ai|||533|nagai||
 695|short & simple|Ai||||||
@@ -720,7 +720,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 720|thin, pale light, dilute, weak (e.g. taste)|Ai|||545|tsuyoi, koi, joubu, futoi|hosoi, yowai, hiyowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, kasuka, hijaku, yawa|
 721|thin, slender, fine|Ai|Used to describe road widths, people, etc.||546||usui|
 722|(too) tight, constricting, close|Ai||||yurui||
-723|ugly, hard on the eyes|Ai||||rippa||
+723|hard on the eyes|Ai||||rippa||
 724|uncomfortable|Ai||||kaiteki||
 725||-||||||
 726||-||||||
@@ -1108,7 +1108,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1108|something superb, something excellent|N;Abs||||||
 1109|tasteful, delicious, umami|Ana||||||
 1110|tedious, boring|Ana||||||
-1111|tedium, boredom|N;Abs||||||
+1111|tedium, boredom, dullness|N;Abs||||||
 1112|thankful, grateful|Ana||||||
 1113|thanks, gratitude|N;Abs||||||
 1114|thin (of paper, cloth, etc.), weak-bodied|Ana||||||
@@ -1323,7 +1323,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1323|counter for full glasses, cups, drinks|C|Used for cups and glasses of drink, spoonsful, cuttlefish, octopuses, crabs, squid, abalone, boats (slang). Usage: (1) ippai, (2) nihai, (3) sanbai, (4) yonhai, (5) gohai, (6) roppai, (7) nanahai, (8) hachihai, (9) kyuuhai, (10) juppai||1142|||
 1324|counter for goods, items, articles of clothing, works of art, etc.|C||||||
 1325|spot, mark, point, dot, score, point|N;Abs||||||
-1326|decimal point|N;MSE||||||
+1326|(punctuation) mark (e.g. comma, period, decimal point), dot|N;MSE||||||
 1327||-||||||
 1328|departure, departing (from ...), departing (at time ...)|N;Ac||||||
 1329|departing from, departing at time, sent by, sent at|Sx|||1329|||
@@ -1436,8 +1436,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1436|how was it?|CE||||||
 1437|how was it?|CE||||||
 1438|how, in what way, by what means|CE|Lieterally "dou" (how) + "yatte" (do).||1457|||
-1439|how…!, what…!, what?|CE||||||
-1440|such as, (things) like|Sx||||||
+1439||-||||||
+1440||-||||||
 1441|I agree|CE|||1165|||
 1442|I am sorry to have been rude|CE||||||
 1443|I am sorry, excuse me|CE|||1163|||
@@ -1990,7 +1990,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1990|article, news story, report, account|N;Abs||||||
 1991|artificial, man-made, human work, human skill, artificiality|N;Abs||||||
 1992||-||||||
-1993|attitude, behavior, manner|N;Abs||||||
+1993|behavior|N;Abs||||||
 1994|automatic motion, self motion|N;Abs||||||
 1995|avenue, street, way, road|N;Abs||||||
 1996|ability to understand one's surroundings|N;Abs||||||
@@ -2130,7 +2130,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2130|determination, resolution|N;Abs||||||
 2131|deviation, confusion, disorder|N;Abs||||||
 2132|dialogue|N;Abs|||| ||
-2133|difference, discrepancy|N;Abs||||||
+2133||-||||||
 2134||-||||||
 2135|diplomacy|N;Abs||||||
 2136|disco|N;Abs|||135|||
@@ -2265,8 +2265,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2265||-||||||
 2266||-||||||
 2267|health|N;Abs||||||
-2268|height|N;Abs|||105|||
-2269|back|N;An||||||
+2268|height, stature|N;Abs|||105|||
+2269|back, spine|N;An||||||
 2270|height (of body), stature|N;Abs|As of height of a person|||||
 2271|highest strength, strongest|N;Abs||||||
 2272|intrusion|N;Abs||||||
@@ -2456,7 +2456,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2456|nothing, naught, nought, nil, zero|N;Abs||||||
 2457|notice, attention, observation|N;Abs||||||
 2458|novice, greenhorn|N;Abs||||||
-2459|now, current, present, present time, as of|N;Abs||||||
+2459||-||||||
 2460|number, series of digits|N;Abs|||84|||
 2461|number of times, frequency, count|N;Abs||||||
 2462|amount, quantity|N;Abs||||||
@@ -2588,7 +2588,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2588|rot, rottenness, decay, corruption|N;Abs||||||
 2589||-||||||
 2590|rotten smell|N;Abs||||||
-2591|round-trip|N;Abs||||||
+2591|round-trip ticket, return ticket|N;Abs||||||
 2592|ruins, wreckage|N;Abs||||||
 2593|rules|N;Abs||||||
 2594|rules, regulations, conventions|N;Abs||||||
@@ -2765,7 +2765,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2765|vacation, holidays|N;Abs|Used in word conjunctions & for medium-long vacations|||||
 2766|treasures|N;Abs|||152|||
 2767|value, worth, price, dignity|N;Abs||||||
-2768|vedana|N;Abs|From Buddhism: sensation.|||||
+2768|vedana (sensation)|N;Abs|From Buddhism: sensation.|||||
 2769|vehicle, conveyance, transport|N;Abs||||||
 2770|verbal message, word|N;Abs|||1292|||
 2771|victim|N;Abs||||||
@@ -2816,7 +2816,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2816|abdomen, belly, stomach, intentions, motive|N;An||||||
 2817|ankle|N;An||||||
 2818|arm|N;An||||||
-2819|back|N;An||||||
+2819|back (of body)|N;An||||||
 2820|ball sack, scrotum, testicle sack|N;An||||||
 2821|biceps|N;An||||||
 2822|birthmark, nevus, bruise, tache de vin, envie|N;An||||||
@@ -3160,7 +3160,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3160|beast, animal, brute|N;Fa||||||
 3161|beast, brute, animal|N;Fa||||||
 3162|beasts, mammals|N;Fa||||||
-3163|bee, wasp|N;Fa||||||
+3163|bee, wasp, hornet|N;Fa||||||
 3164|bird|N;Fa|||177, 1333|||
 3165|butterfly|N;Fa||||||
 3166|cat|N;Fa||||||
@@ -3220,7 +3220,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3220|grass|N;Fl||||||
 3221|iris|N;Fl|As of the flower|||||
 3222|leaves|N;Fl||||||
-3223|lotus|N;Fl||||||
+3223|sacred lotus (Nelumbo nucifera), Indian lotus, lotus|N;Fl||||||
 3224|mandarin orange|N;Fl||||||
 3225|maple tree, maple|N;Fl||||||
 3226|mushroom|N;Fl||||||
@@ -3397,7 +3397,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3397|groceries, foodstuff|N;GO||||||
 3398|guitar|N;GO|||368|||
 3399|hairpin, hairclip, hairgrip, bobby pin|N;GO||||||
-3400|handbag|N;GO||||||
+3400|handbag, purse|N;GO||||||
 3401|handkerchiefs|N;GO|||340|||
 3402||-||||||
 3403|hotel register|N;GO||||||
@@ -4574,7 +4574,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4574|lie down (in bed)|VsuI||||||
 4575|lie down (in bed), take one's bed (archaic)|VsuI||||||
 4576|write down, note, jot down|VsuI||||||
-4577|smash, crush, shut down, thwart, block, kill (time), waste (e.g. talents)|VsuT||||||
+4577|waste (e.g. talents)|VsuT||||||
 4578|aim at, have an eye on|VsuT||||||
 4579|aim carefully at|VsuT||||||
 4580||-||||||
@@ -4622,7 +4622,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4622|have a child|VsuT||||||
 4623|exert, cause, exercise|VsuT||||||
 4624|surprise, frighten, create a stir|VsuT||||||
-4625|threaten, menace, startle, surprise|VsuT||||||
+4625|surprise|VsuT||||||
 4626|afflict, torment, harass, molest|VsuT||||||
 4627|appease, reach (a certain number)|VsuT||||||
 4628|make (the best) use of, leverage (skills, attributes, experience, etc.), capitalize on (experience, etc.)|VsuT||||||
@@ -4749,7 +4749,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4749|maintain itself, last, to make itself pay, make a living, keep going|VikuI||||||
 4750|walk down the road|VyukuI||||||
 4751|cook (grains, e.g. rice), boil, simmer, stew, seethe|VkuT||||||
-4752|well (up), gush forth (of water), spring out, surge, appear (esp. suddenly) (sweat, tears, etc.), feel emotions form (joy, bravery, etc.), hatch (esp. of parasitic insects, etc.)|VkuI||||||
+4752|well (up), gush forth (of water), spring out, surge|VkuI||||||
 4753|judge|VkuT||||||
 4754|be, come, go|VaruI||||||
 4755|remove, uninstall, take away, set apart|VkuT||||||
@@ -4763,7 +4763,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4763|see, look, watch|VaruI||||||
 4764|dust, play drums, flame (figuratively)|VkuT||||||
 4765|waiver|VkuI||||||
-4766|approach, draw near, get close, get acquainted with, get closer to, get know|VkuT||||||
+4766||-||||||
 4767|think out, cull, run on a curtailed schedule|VkuT||||||
 4768|see through|VkuT||||||
 4769|disseminate, scatter, broadcast, give money freely, strew|VkuT||||||
@@ -4790,7 +4790,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4790|take off (clothes, shoes, etc.), undress|VguT||||||
 4791|make noise, be noisy, rustle, swoosh, clamor, clamour, make a fuss, panic, feel tense, be uneasy, be excited|VguI||||||
 4792|pour (in a vessel), dish out food or drink|VguT||||||
-4793|tie, fasten, connect, transfer (phone call)|VguT||||||
+4793||-||||||
 4794|rank next to, come after, follow|VguI||||||
 4795|succeed (a person, a position, etc.), inherit, take over, follow|VguT||||||
 4796|join, piece together, set (bones), graft (trees)|VguT||||||
@@ -5235,7 +5235,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5235|remain, abide, stay (in the one place), be limited to, be confined to|VrugI||||||
 5236|kill (a human) using a blade (sword, machete, knife, etc.), slice (off), lop (off), cut (off)|VrugT||||||
 5237|be sufficient, be enough|VrugI||||||
-5238|stop, halt, stand still|VrugI||||||
+5238||-||||||
 5239|to look toward, to have one's eyes attracted towards something|CE||||||
 5240|go past, go along, travel along, pass through, use (a road), take (a route), go via, go by way of|VrugI|||1365|||
 5241|take away, kidnap|VrugT||||||
@@ -5301,7 +5301,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5301|express|VuT||||||
 5302|be wrong|VuI|||1250, 1309, 1310, 1311|||
 5303|use (a thing, method, person, time, money, language), put use, operate|VuT|||1251, 1272, 1291|||
-5304|suck in, smoke, inhale, sip|VuT||||||
+5304|suck in|VuT||||||
 5305|take lessons in, be taught, learn (from a teacher), study (under a teacher), get training in|VuT||||||
 5306|invite, ask, call (for), tempt, lure, induce|VuT||||||
 5307|bring a close, close (a business, etc.), close down, shut down, shut up|VuT|||1252|||
@@ -5490,7 +5490,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5490||-||||||
 5491|exchange, interchange|VruiT||||||
 5492|hold or carry under or in the arms, have (esp. problems, debts, etc.), employ, engage, hire|VruiT||||||
-5493|put up, hang out, hoist, fly (a sail), float (a flag, kite, etc.), stoke (a fire), fan (a flame)|VruiT||||||
+5493|fly (a sail), float (a flag, kite, etc.), stoke (a fire), fan (a flame)|VruiT||||||
 5494|wane (of the moon), go in eclipse|VruiI||||||
 5495|run (race, esp. horse), dash, gallop (one's horse), canter, advance (against one's enemy, archaic)|VruiI||||||
 5496|wager, bet, risk, stake, gamble|VruiT||||||
@@ -5698,7 +5698,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5698|deep-fry, summon (for geishas, etc.)|VruiT||||||
 5699|bring (someone's attention), call for, take someone court, resort (e.g. arms, violence)|VruiT||||||
 5700|long for, yearn after, admire, be attracted by|VruiI||||||
-5701|get tired of, lose interest in, have enough|VruiI||||||
+5701||-||||||
 5702|recommend, advise, encourage, offer (wine)|VruiT||||||
 5703|be blessed with, be rich in, abound in|VruiI||||||
 5704|overflow, brim over, flood|VruiI||||||
@@ -5869,16 +5869,16 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5869||-||||||
 5870|be relative|VsuruI||||||
 5871|be surprised, be amazed, be frightened, be astonished|VsuruI||||||
-5872|go easy on someone, take inconsideration, make a rough estimate, make allowance for|VsuruI||||||
+5872|go easy on someone, make allowances, use discretion, take various circumstances into account​|VsuruI||||||
 5873|feel refreshed, feel relieved|VsuruI||||||
 5874||-||||||
-5875|share a gift given the subject, share the subject's profit|VsuruT||||||
-5876|make friends with be good friends with, get along with|VsuruI||||||
+5875|share a gift from someone, share someone's profit|VsuruT||||||
+5876|make friends with, be good friends with, get along with|VsuruI||||||
 5877||-||||||
 5878|need, require, take, demand|VsuruT||||||
 5879|have, possess|VsuruT||||||
 5880||-||||||
-5881|comply, act in accordance, learn and obey|VsuruT||||||
+5881||-||||||
 5882|die, pass the next life, give up (a struggle), submit, be at wit's end|VsuruI||||||
 5883|make a round trip, go and return, come and go, socialize, visit one another|VsuruI||||||
 5884|converse with|VsuruI||||||
@@ -5897,13 +5897,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5897|prepare, arrange|VsuruT||||||
 5898|fail, make a mistake, blunder|VsuruI||||||
 5899||-||||||
-5900|acknowledge, be aware of, consent, accept, assent, admit to, comply with, agree|VsuruT||||||
+5900|send, forward|VsuruT||||||
 5901||-||||||
 5902|be absent, be away from home, house-sit, neglect|VsuruI||||||
 5903||-||||||
 5904||-|||1283|||
 5905|visit ill or distressed people, write get-well letters|VsuruI||||||
-5906|congratulate, celebrate|VsuruI||||||
+5906|celebrate|VsuruI||||||
 5907|quarrel, brawl, fight, squabble, scuffle, argument|VsuruI||||||
 5908|break down, fail|VsuruI||||||
 5909|heat|VsuruT||||||
@@ -5912,7 +5912,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5912|reach, get to, arrive at|VsuruI||||||
 5913|belong to, come under, be affiliated with, be subject to|VsuruI||||||
 5914|be clear, be definite, be certain, be exact, become clear, clear up|VsuruI||||||
-5915|treat (someone, e.g. a meal)|VsuruT||||||
+5915||-||||||
 5916|feel disappointed, feel dejected, lose heart, feel emotionally drained, feel let down|VsuruI||||||
 5917||-||||||
 5918|prepare, arrange, provide, get ready, lay out (e.g. a meal)|VsuruT|||1279|||
@@ -5924,7 +5924,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5924||-||||||
 5925|take care, guard, take caution|VsuruI||||||
 5926|get hurt, injure oneself|VsuruI||||||
-5927|be stressed, be nervous, be irritated|VsuruI||||||
+5927||-||||||
 5928|be tense, be nervous, be strained|VsuruI||||||
 5929||-||||||
 5930|interpret|VsuruT||||||
@@ -5932,8 +5932,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5932|inspect, read|VsuruT||||||
 5933|to die of starvation, to starve to death|CE||||||
 5934|stamp, affix a seal, seal up, seal off|VsuruT||||||
-5935|to cut in a sideways direction|-||||||
-5936|to go across, to cross, to go latitudinally|VsuruI||||||
+5935|cut in a sideways direction|VsuruT||||||
+5936|go across, cross, go latitudinally, traverse|VsuruT||||||
 5937|rotate, revolve, turn|VsuruI||||||
 5938||-||||||
 5939|collect data on, cover (an event)|VsuruT||||||
@@ -5957,12 +5957,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5957||-||||||
 5958||-||||||
 5959|operate (surgically), perform a surgery|VsuruI||||||
-5960|enter Nirvana, become a Buddha, go heaven, rest in peace, die peacefully|VsuruI||||||
+5960|enter Nirvana, become a Buddha, go to heaven, rest in peace, die peacefully|VsuruI||||||
 5961|return home|VsuruI||||||
 5962|discharge, dismiss, lay off, fire|VsuruT||||||
 5963|be hesitant, feel timid|VsuruI||||||
 5964||-||||||
-5965|digest, understand thoroughly|VsuruT||||||
+5965||-||||||
 5966|firefight, extinguish a fire|VsuruT||||||
 5967|plan, project, design|VsuruT||||||
 5968|affirm, declare, assert|VsuruT||||||
@@ -5979,7 +5979,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5979||-||||||
 5980||-||||||
 5981|appear, arrive|VsuruI||||||
-5982|complain (about various things)|VsuruI||||||
+5982|be messy, be confused, be chaotic, be disorderly, be mixed up, be jumbled up|VsuruI||||||
 5983|laugh foolishly, smile thoughtlessly, talk indiscreetly, speak carelessly, flare up, burst inflames|VsuruI||||||
 5984|decline, refuse, reject, turn down (polite)|VsuruI||||||
 5985||-||||||
@@ -6042,7 +6042,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6042|see, look at|VsuruT||||||
 6043|greet, salute, address, reply to, respond to|VsuruT||||||
 6044||-||||||
-6045|dangle, be dangling|VsuruI||||||
+6045|dangle|VsuruI||||||
 6046||-||||||
 6047|leave, be rude|VsuruI||||||
 6048|live in luxury|VsuruI||||||
@@ -6196,7 +6196,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6196|probably, maybe, perhaps|A||||||
 6197|level, degree of something|iAC|Add "sa" to adjectives to express a degree or amount.|i/na-adj. root + sa|1458, 1459|||
 6198|yes, that's right|CE||||||
-6199|now that you mention it, speaking of that…|CE||||||
+6199||-||||||
 6200|seen from that light, thinking like that, from that point of view|CE||||||
 6201|if you do it that way…, if done that way…|CE||||||
 6202|if you don't do it that way…|CE||||||
@@ -7047,7 +7047,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7047||-||||||
 7048|be confident (in oneself)|VsuruI||||||
 7049|recover completely|VsuruI||||||
-7050|coordinate, organize|VsuruT||||||
+7050|coordinate, handle affairs|VsuruI||||||
 7051|supervise, control, direct|VsuruT||||||
 7052|lay flowers as an offering or tribute|VsuruI||||||
 7053|contribute, donate|VsuruI||||||
@@ -7232,7 +7232,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7232|rationalize, rationalise|VsuruT||||||
 7233|confluate (of rivers), merge (of traffic), join|VsuruI||||||
 7234|unite (e.g. of forces), link up, merge, come together|VsuruI||||||
-7235|meet together, be introduced|VsuruI||||||
+7235|meet, be introduced|VsuruI||||||
 7236|be put to shame, be outshone, be eclipsed, feel embarrassed|VsuruI||||||
 7237|write (a manuscript, version, draft)|VsuruI||||||
 7238|be bitter, be in distress, be in pain, be in anguish, be afflicted|VsuruI||||||
@@ -7339,7 +7339,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7339|distribute, allocate|VsuruT||||||
 7340|be split, be divided, break up|VsuruI||||||
 7341|classify, categorize, sort|VsuruT||||||
-7342|be in amount, be in quantity|VsuruI||||||
+7342|amount to, quantify to|VsuruI||||||
 7343||-||||||
 7344|opposite, resist, be insubordinate, defy, be hostile, rebel|VsuruI||||||
 7345|to have a go, to try and do (something), to take a chance with something|CE||||||
@@ -8055,11 +8055,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8055|coward, weakling, scaredy cat, wimp, sissy|N;Abs||||||
 8056|cowardly, weak, scared, wimpy, sissy|Ana||||||
 8057|slowly, at ease, restful|A||||||
-8058|to testify (usu. Christian religious context)|VsuruI||||||
+8058|testify (usu. Christian religious context)|VsuruI||||||
 8059|perform in a band, create a (pop) band|VsuruI||||||
 8060|start (construction) work|VsuruI||||||
 8061|start work (on), undertake|VsuruI||||||
-8062|to start committing a crime|VsuruI||||||
+8062|start committing a crime|VsuruI||||||
 8063|challenge, defy, dare, attempt, try|VsuruT||||||
 8064|dash|VsuruI||||||
 8065|usurp, take back, dispossess|VsuruT||||||
@@ -8067,7 +8067,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8067|prolapse, proptose|VsuruI||||||
 8068|act, perform|VsuruI||||||
 8069|perform (in a musical), play (an instrument)|VsuruT||||||
-8070|approximate, provide a rough estimate|VsuruI||||||
+8070|approximate, provide a rough estimate of|VsuruT||||||
 8071|discuss, confer|VsuruI||||||
 8072|invention|VsuruT||||||
 8073|be enlightened, have the meaning of everything become clear|VsuruI||||||
@@ -8084,7 +8084,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8084|contribute (furthering a goal or cause), serve (a cause)|VsuruI||||||
 8085|close in on (the enemy, first place, etc.), come close to|VsuruI||||||
 8086|press hard (e.g. with a question), take to task, grill|VsuruT||||||
-8087|profit, gains|VsuruI||||||
+8087|profit, gain|VsuruI||||||
 8088|be of benefit, be of advantage, be of interest (to the public, etc.)|VsuruI||||||
 8089|grace (of God, Buddha, etc.) (esp. as attained through rightful actions, prayer, adherence to one's faith, etc.), bless, perform a miracle|VsuruI||||||
 8090|sew, perform needlework|VsuruI||||||
@@ -8110,7 +8110,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8110|complete, accomplish, attain greatness or success|VsuruT||||||
 8111|apply (e.g. a technology), adopt|VsuruT||||||
 8112|estimate, make a budget|VsuruI||||||
-8113|operate slowly, operate at ease, be restful|VsuruI||||||
+8113|perform slowly, perform at ease, do restfully|VsuruI||||||
 8114|horse mackerel (Carangidae spp., esp. the Japanese horse mackerel, Trachurus japonicus), jack mackerel, pompano, scad|N;Abs||||||
 8115|look for, search for, hunt for, scavenge, scrounge, look through, rummage through|VrugT||||||
 8116|go on a spree (spending, reading, etc.), binge|VrugI||||||
@@ -8661,7 +8661,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8661|go on a venture which is unlikely to succeed, attempt something risky, put onself in danger|VsuruI||||||
 8662|perceive sense, be aware of|VsuruT||||||
 8663|react, respond|VsuruI||||||
-8664|go to several places in succession (e.g. barhopping)|VsuruI||||||
+8664|go to several places in succession (e.g. barhop)|VsuruI||||||
 8665|abandon, desert|VsuruT||||||
 8666|be lively, be vivid, be animated, be active, be energetic|VsuruI||||||
 8667|horse-ride|VsuruI||||||
@@ -8672,7 +8672,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8672|breathe|VsuruI||||||
 8673|exempt, exonerate, discharge|VsuruT||||||
 8674|meet (face-to-face), interview|VsuruT||||||
-8675|provide a license, provide a permit, provide a licence, provide a certificate|VsuruI||||||
+8675|license, licence, permit, certify|VsuruT||||||
 8676|be at an interview (e.g. for a job)|VsuruI||||||
 8677||-||||||
 8678|get a tax exemption, get a duty exemption|VsuruI||||||
@@ -9090,7 +9090,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9090|be in tatters, be in rags, be crumbled|VsuruI||||||
 9091|fall lightly (e.g. snow, petals, confetti), flutter|VsuruI||||||
 9092|flicker, twinkle, glimmer, sparkle, dazzle|VsuruI||||||
-9093|appear and disappear, catch glimpses|VsuruI||||||
+9093|appear and disappear|VsuruI||||||
 9094|glance (repeatedly)|VsuruI||||||
 9095|(hear, see) from time to time or intermittently|VsuruI||||||
 9096|practice|VsuruI||||||
@@ -9111,9 +9111,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9111|be elevated, rise, improve, advance, progress|VsuruI||||||
 9112|daydream, fantasize, fancy|VsuruI||||||
 9113|make a mistake, be in error, fail|VsuruI||||||
-9114|join a group|VsuruT||||||
-9115|practice, experience|VsuruI||||||
-9116|transfer (trains, buses, etc.), connection, connexion|VsuruI||||||
+9114|join a group|VsuruI||||||
+9115|practice, experience|VsuruT||||||
+9116|transfer (trains, buses, etc.), connect|VsuruI||||||
 9117|switch (stock)|VsuruI||||||
 9118|cross over (choromosomal)|VsuruI||||||
 9119|get on and off (a vehicle), board and alight|VsuruT||||||
@@ -9202,7 +9202,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9202|during a stay|N;Abs||||||
 9203|conceal, hide, be engulfed in, be enveloped by|VmuI||||||
 9204|make a draft, make a rough copy|VsuruI||||||
-9205|inspect, perform a preliminary inspection, have a look in advance|VsuruI||||||
+9205|perform a preliminary inspection, have a look in advance|VsuruI||||||
 9206|perform a preparatory read-through (e.g. of lesson notes)|VsuruI||||||
 9207|perform a preliminary investigation, prepare|VsuruI||||||
 9208|to the last, persistency, thoroughness|A||||||
@@ -11263,14 +11263,14 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 11263|have sympathy, agree with, align, conform, tune|VsuruI||||||
 11264|have sympathy, have compassion, feel pity for|VsuruI||||||
 11265|have sexual intercourse, copulate, fuck|VsuruT||||||
-11266|etch|VsuruI||||||
+11266|etch|VsuruT||||||
 11267|liquefy|VsuruI||||||
 11268|agree, concur, conform, comply|VsuruI||||||
 11269|be solid, be robust, be well-built|VsuruI||||||
 11270|be tight, be taut|VsuruI||||||
 11271|be shrewd, be calculating, be astute|VsuruI||||||
 11272|battle fiercly, battle hard, hotly contest, fight severely|VsuruT||||||
-11273|have pleasure, be amused|VsuruI||||||
+11273|please, amuse|VsuruT||||||
 11274|suffer defeat, lose a battle, lose a war|VsuruI||||||
 11275|tear up and discard (e.g. documents), dispose of (e.g. weaponry), destroy|VsuruT||||||
 11276|annul, cancel, abrogate, void, break (e.g. treaty)|VsuruT||||||
@@ -12146,8 +12146,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12146|settle, solve, resolve|VsuruT||||||
 12147|recollect, reminisce, look back, retrospect, review|VsuruT||||||
 12148|warn, caution|VsuruT||||||
-12149|found a country|VsuruT||||||
-12150|open of a country (e.g. Japan) to the world|VsuruI||||||
+12149|found a country|VsuruI||||||
+12150|open a country (e.g. Japan) to the world|VsuruI||||||
 12151|be solved, be settled|VsuruI||||||
 12152|open one's mouth, begin to speak|VsuruI||||||
 12153|open a school|VsuruI||||||
@@ -12191,7 +12191,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12191|relocate the capital, transfer the capital|VsuruI||||||
 12192|start work, commence|VsuruI||||||
 12193|execute, carry out, perform, enforce|VsuruT||||||
-12194|match a taste, be liked, be preferred|VsuruI||||||
+12194|like, prefer|VsuruT||||||
 12195|intend to, aim at, have a preference (for), have an orientation (towards a goal)|VsuruT||||||
 12196|think, consider|VsuruI||||||
 12197|execute, enforce, carry out|VsuruT||||||
@@ -12636,7 +12636,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12636|represent, proxy, substitute|VsuruT||||||
 12637|substitute|VsuruT||||||
 12638|substitute|VsuruT||||||
-12639|enjoy|VsuruI||||||
+12639|enjoy|VsuruT||||||
 12640|fix (in place), secure, anchoring, fasten down|VsuruT||||||
 12641|fix (e.g. salary, capital), keep the same|VsuruT||||||
 12642||-||||||
@@ -13486,7 +13486,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13486|make a statement, remark, observe, utter, speak, propose|VsuruI||||||
 13487|grow (physically), develop|VsuruI||||||
 13488|pronounce|VsuruT||||||
-13489|produce the sound of|VsuruI||||||
+13489|produce the sound of|VsuruT||||||
 13490|develop, grow|VsuruI||||||
 13491|develop, grow, expand, extend, flourish|VsuruI||||||
 13492|develop (of a situation, story, etc.), advance, progress, unfold|VsuruI||||||
@@ -13516,7 +13516,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13516|acquire, obtain|VsuruT||||||
 13517|pan (in a film)|VsuruI||||||
 13518|punch (with the fist)|VsuruT||||||
-13519|punch (a hole)|VsuruI||||||
+13519|punch (a hole)|VsuruT||||||
 13520|be punctured, be flat (tyre/tire), burst|VsuruI||||||
 13521|abuse, misuse, misappropriate, use to excess|VsuruT||||||
 13522|undersell, sell in panic|VsuruT||||||
@@ -13532,7 +13532,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13532|explode, burst|VsuruI||||||
 13533|deduct, subtract, balance|VsuruT||||||
 13534|ebb and flow, rise and fall|VsuruI||||||
-13535|use personally|VsuruI||||||
+13535|use personally|VsuruT||||||
 13536|have a private business|VsuruI||||||
 13537|possess, own|VsuruT||||||
 13538|testify, provide (verbal) evidence|VsuruI||||||
@@ -13546,7 +13546,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13546|bleed money, sell below cost|VsuruI||||||
 13547|attend (at work), be at work, be present (in the office), go to work, report for work|VsuruI||||||
 13548||-||||||
-13549|own, be endowed with|VsuruI||||||
+13549|own, be endowed with|VsuruT||||||
 13550|next (day, morning, etc.), following|P||||||
 13551|on the bank of, by the side of (e.g. a river, pond)|N;Abs|ME#0002;0003||||hen|
 13552|(in the) neighbourhood, neighborhood, vicinity, nearby|N;Abs||||||
@@ -14138,7 +14138,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14138|perform reckless baserunning|VsuruI||||||
 14139|rise suddenly, rise sharply, boom, skyrocket|VsuruI||||||
 14140|engage in correspondence, exchange letters|VsuruI||||||
-14141|be increased (wage)|VsuruI||||||
+14141|increase (wage)|VsuruI||||||
 14142|suppress, subjugate|VsuruT||||||
 14143|sink, founder, go down, submerse|VsuruI||||||
 14144|get dead drunk|VsuruI||||||
@@ -14164,7 +14164,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14164|reach a resolution, decide|VsuruI||||||
 14165|decide, determine, resolve|VsuruT||||||
 14166|suffer a breakdown, rupture|VsuruI||||||
-14167|pay in advance, prepay|VsuruI||||||
+14167|pay in advance, prepay|VsuruT||||||
 14168|preface, introduce|VsuruT||||||
 14169|make an advance sale, make a booking|VsuruI||||||
 14170|perform a silent prayer|VsuruI||||||
@@ -15423,7 +15423,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15423|Jordan|N;Pl||||||
 15424|spare energy, time or money, remaining strength, reserve power, money to spare|N;Abs||||||
 15425|Korean living in Japan|N;Abs||||||
-15426|to get things in the wrong order (back to front), to become muddled up|VsuruI||||||
+15426|get things in the wrong order (back to front), become muddled up|VsuruI||||||
 15427|step (in place), stamp (up and down), stomp, mark time (for a soldier)|VsuruI||||||
 15428|be in a standstill, be in a stalemate|VsuruI||||||
 15429|diverge, ramificate, bifurcate, branch off|VsuruI||||||
@@ -15455,9 +15455,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15455|regret, repent, feel remorse, be sorry|VsuruI||||||
 15456|reflect (light, sound, radio waves, etc..)|VsuruT||||||
 15457||-||||||
-15458|be contrary to, be inconsistent with, contradict|VsuruI||||||
-15459|act contrary to (rules or guidelines), violate, transgress|VsuruI||||||
-15460|oppose, rebel, revolt|VsuruI||||||
+15458|be contrary to, be inconsistent with, contradict|VsuruT||||||
+15459|act contrary to (rules or guidelines), violate, transgress|VsuruT||||||
+15460|oppose, rebel against, revolt against|VsuruT||||||
 15461|roll over|VsuruI||||||
 15462|turn around, turn from side to side, be inversed, be reversed|VsuruI||||||
 15463|invert tones, make a negative image|VsuruI||||||
@@ -15490,9 +15490,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15490|collecte, recover, withdraw, retrieve|VsuruT||||||
 15491|recollect, reflect on, reminisce about|VsuruT||||||
 15492|reply, answer|VsuruT||||||
-15493|write|VsuruI||||||
-15494|enter (e.g. to a form)|VsuruI||||||
-15495|post (e.g. to a blog)|VsuruI||||||
+15493|write|VsuruT||||||
+15494|enter (e.g. to a form)|VsuruT||||||
+15495|post (e.g. to a blog)|VsuruT||||||
 15496|register (e.g. of mail), write down, put on record, record, make a note of|VsuruT||||||
 15497|exalt, upgrade, promote|VsuruT||||||
 15498|rate, classify, allocate, grade|VsuruT||||||
@@ -15500,13 +15500,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15500|be petrified, fossilize, fossilise|VsuruI||||||
 15501|apply make-up, apply makeup|VsuruI||||||
 15502|register, enter|VsuruT||||||
-15503|be internationalized, be internationalised|VsuruI||||||
+15503|internationalize, internationalise|VsuruT||||||
 15504|go on a detour, create a diversion|VsuruI||||||
 15505|tell a tale, tell a story, tell a legend|VsuruI||||||
 15506|nominate|VsuruT||||||
 15507|be similar, be the same|VsuruI||||||
 15508|check|VsuruT||||||
-15509|meetg, face, confront|VsuruT||||||
+15509|meet, face, confront|VsuruT||||||
 15510|be established, be instituted|VsuruI||||||
 15511|instal (machine or equipment)|VsuruT||||||
 15512|be correct, be right, have a correct interpretation (answer, solution)|VsuruI||||||
@@ -16604,7 +16604,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 16604|build a bridge, mediate, go between|VsuruT||||||
 16605|compose, forme, organize, organise, compile|VsuruT||||||
 16606|get home|VsuruI||||||
-16607|color, colour, assort, scheme, makeup|VsuruT||||||
+16607|color, colour, assort, make up|VsuruT||||||
 16608|win (a prize)|VsuruI||||||
 16609|regard as important, attach importance to, take a serious view of, put emphasis on|VsuruT||||||
 16610|regard highly, attach importance to|VsuruT||||||
@@ -16631,7 +16631,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 16631|program|VsuruT||||||
 16632|propose marriage|VsuruI||||||
 16633|release|VsuruT||||||
-16634|comprehend, consent, understand, agree to|VsuruT||||||
+16634|comprehend, consent to, understand, agree to|VsuruT||||||
 16635|acquiesce|VsuruT||||||
 16636|hand out a sentence, assess a case|VsuruI||||||
 16637|mass produce|VsuruT||||||
@@ -16656,7 +16656,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 16656|elect|VsuruT||||||
 16657|go on an election campaign, go on a political campaign, campaign, electioneer, canvass|VsuruI||||||
 16658|establish, found, incorporate (a business)|VsuruT||||||
-16659|rehabilitation (in society)|VsuruI||||||
+16659|rehabilitate (in society)|VsuruT||||||
 16660|sell on the market (in the marketplace, in stores, etc.), make something commercially available|VsuruT||||||
 16661|believe, trust, rely on|VsuruT||||||
 16662|signal|VsuruI||||||
@@ -18089,8 +18089,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18089|join, intermediate, relay, broker|VsuruT||||||
 18090||-||||||
 18091|suffer from summer heat|VsuruI||||||
-18092|hike prices, mark up|VsuruI||||||
-18093|reduce prices, discount|VsuruI||||||
+18092|hike (prices), mark up|VsuruT||||||
+18093|reduce (prices), discount|VsuruT||||||
 18094|fall (prices)|VsuruI||||||
 18095|cut in price|VsuruT||||||
 18096|open (a new store, golf course, runway, etc.)|VsuruT||||||
@@ -18132,16 +18132,16 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18132|support, back, endorse, approve|VsuruT||||||
 18133|support, hold up, prop|VsuruT||||||
 18134|lead a meeting, preside over a meeting, officiate at a ceremony, chair|VsuruI||||||
-18135|be at an examination, be at an exam, be at a test|VsuruI||||||
+18135|be at an examination, take an exam, take a test|VsuruI||||||
 18136|try, experiment, test|VsuruT||||||
 18137|discriminate, discern, identify|VsuruT||||||
 18138|die, pass away|VsuruI||||||
-18139|be friends|VsuruI||||||
+18139|befriend|VsuruT||||||
 18140|be newly-wed|VsuruI||||||
 18141|advance (into a new market or stage of progress), launch (a new career or venture), expand (into a new market), step forward, emerge|VsuruI||||||
 18142|feign ignorance, pretend not to recognize (somebody)|VsuruI||||||
 18143|have an unconcerned air, be indifferent|VsuruI||||||
-18144|commission, entrust with (work)|VsuruI||||||
+18144|commission, entrust with (work)|VsuruT||||||
 18145|process, dealing with, treat, dispose|VsuruT||||||
 18146|take the name of, call oneself|VsuruT||||||
 18147|pretend, feign, purport|VsuruT||||||
@@ -18462,11 +18462,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18462||-||||||
 18463|arrange (resources), deploy, station, post, configure, lay out|VsuruT||||||
 18464|subtract|VsuruT||||||
-18465|to accomplish, to fulfill, to carry out|VsuruI||||||
+18465|accomplish, fulfill, carry out|VsuruT||||||
 18466|smile sweetly, grin broadly|VsuruI||||||
 18467|grin friendlily, smile|VsuruI||||||
 18468|visit (a shrine, grave, etc.), worship|VsuruT||||||
-18469|get a freebie (e.g. with a purchase), get something additional, get a bonus, get a an extra|VsuruI||||||
+18469|add a freebie to (e.g. with a purchase), give something additional, give a bonus, give an extra|VsuruT||||||
 18470|reduce the price of, discount|VsuruT||||||
 18471|exaggerate|VsuruI||||||
 18472|be compatibile, coexist, stand together|VsuruI||||||
@@ -18506,7 +18506,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18506|feel (i.e. tactile sensation), touch, feeling, sensation, texture (e.g. food, cloth)|N;Abs||||||
 18507|admiration, wonder, astonishment|N;Abs||||||
 18508|feel, sense|VruiI||||||
-18509|disgust, hate, repugnance|N;Abs||||||
+18509|disgust, hate, repugnance, loathing|N;Abs||||||
 18510|unpleasant feelings (e.g. hatred, disgust, revulsion, fear)|N;Abs||||||
 18511|suspicion|N;Abs||||||
 18512|disliked, hated, disagreeable|Ana||||||
@@ -18557,7 +18557,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 18557|feel (i.e. tactile sensation), touch|VsuruT||||||
 18558|have admiration, wonder, be astonished|VsuruI||||||
 18559|hate, dislike, despise, detest|VsuruT||||||
-18560|be enhanced, be exaltated, be promoted, be uplifted|VsuruI||||||
+18560|enhance, exalt, promote, uplift|VsuruT||||||
 18561|have a set meal, have a combo-meal, have a combo, have a combination meal|VsuruI||||||
 18562|do (someone's) hair|VsuruT||||||
 18563|sway, swing, rock, shake, waver, flicker|VsuruI||||||
@@ -19120,7 +19120,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 19120|expenses, cost, outlay|N;Abs||||||
 19121|including a sum of money in one's calculations|N;Abs||||||
 19122|appropriation (a sum of money)|N;Abs||||||
-19123|passage (of time), elapsing|N;Abs||||||
+19123|passage (of time), elapsing, lapse|N;Abs||||||
 19124|progress, development, course (of events)|N;Abs||||||
 19125|transit|N;Abs||||||
 19126|meter, gauge|N;Abs||||||
@@ -19946,7 +19946,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 19946|impudent, shameless|Ai||||||
 19947|be stable, be steady, be in equilibrium|VsuruI||||||
 19948|tidy up, clear up, clean up, clear away, put in order|VsuruT||||||
-19949|double|VsuruI||||||
+19949|double|VsuruT||||||
 19950|bomb (raid)|VsuruT||||||
 19951|blow up, explode|VsuruI||||||
 19952|roar in laughter (several people)|VsuruI||||||
@@ -19955,7 +19955,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 19955|take advantage of (an opportunity), jump on the bandwagon|VsuruI||||||
 19956|take passage (in), get a lift, get a ride|VsuruI||||||
 19957||-||||||
-19958|be ill, be sick|VsuruI||||||
+19958|be ill, get sick|VsuruI||||||
 19959|die from disease, die from illness|VsuruI||||||
 19960|write|VsuruT||||||
 19961|ally with, unite with|VsuruI||||||
@@ -19990,7 +19990,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 19990|interview (in television, newspaper, etc.)|VsuruT||||||
 19991|declare an intent, express one's intention, manifes intention|VsuruI||||||
 19992|go on a pilgrimage|VsuruI||||||
-19993|observe (laws, rules, etc.), adhere, obey, follow, abide by, comply|VsuruI||||||
+19993|observe (laws, rules, etc.), adhere to, obey, follow, abide by, comply with|VsuruT||||||
 19994|make a turn, (baseball) throw a curve ball|VsuruI||||||
 19995|curl|VsuruI||||||
 19996||-||||||
@@ -20007,7 +20007,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20007|pass (time), elapse|VsuruI||||||
 20008|progress, develop|VsuruI||||||
 20009|transit|VsuruI||||||
-20010|tend to, incline|VsuruI||||||
+20010|tend to, incline to|VsuruI||||||
 20011|have a personal history, follow a career|VsuruI||||||
 20012|measure, weigh|VsuruT||||||
 20013|measure|VsuruT||||||
@@ -20023,7 +20023,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20023|mention (in a document), record, enter, state, list|VsuruT||||||
 20024|have a press conference|VsuruI||||||
 20025|make a door-to-door visit|VsuruI||||||
-20026|coach|VsuruI||||||
+20026|coach|VsuruT||||||
 20027|purchase, buy|VsuruT||||||
 20028|retail|VsuruT||||||
 20029|work together (as equals), share, have in common (land, etc.), make joint (statement, etc.), cooperate, co-operate, collaborate, associate|VsuruI||||||
@@ -20034,19 +20034,19 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20034|share, have in common|VsuruT||||||
 20035|share|VsuruT||||||
 20036|have joint ownership of, co-own, share|VsuruT||||||
-20037|to mark, to put a mark on|VsuruI||||||
+20037|mark, put a mark on|VsuruT||||||
 20038|pay attention to, focus on, watch, guard, mark|VsuruT||||||
 20039|register a record (in sport, etc.)|VsuruI||||||
 20040|imitate, copy, mimic|VsuruT||||||
 20041|behave, act, conduct oneself|VsuruI||||||
 20042|multi-post|VsuruI||||||
-20043|have a multilevel marketing system, pyramid sell, refer in chain|VsuruI||||||
+20043|operate a multilevel marketing system, pyramid sell, refer in chain|VsuruI||||||
 20044|mulch|VsuruI||||||
 20045|make (direct) hit, hit the mark|VsuruI||||||
 20046|name, christen|VsuruT||||||
 20047|appoint, nominate, ordinate, commission, designate|VsuruT||||||
 20048|join (a group, team, etc.), enroll in|VsuruT||||||
-20049|pollute, contaminate, corrupt|VsuruI||||||
+20049|pollute, contaminate, corrupt|VsuruT||||||
 20050|be lazy, shirk|VsuruI||||||
 20051|walk sideways, stagger, stride|VsuruI||||||
 20052|be rampant, be widespread, be prevalent|VsuruI||||||
@@ -20062,13 +20062,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20062|oxidize, become oxidized|VsuruI||||||
 20063|ley eggs, spawn|VsuruI||||||
 20064|return home, visit one's parents|VsuruI||||||
-20065|conquer, invade|VsuruI||||||
+20065|conquer, invade|VsuruT||||||
 20066|declare, proclaim, announce|VsuruT||||||
 20067|occupy, have (an area) all to oneself|VsuruT||||||
 20068|occupy, possess, capture, seize|VsuruT||||||
 20069|dive, submerge, go underwater|VsuruI||||||
 20070||-||||||
-20071|retrench, curtail, economize, economise|VsuruI||||||
+20071|retrench, curtail oneself, economize, economise|VsuruI||||||
 20072||-||||||
 20073|die, pass away|VsuruI||||||
 20074|watch and listen to, view (television)|VsuruT||||||
@@ -20077,7 +20077,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20077|name, nominate, designate|VsuruT||||||
 20078|want (someone) for questioning, have (someone) on the wanted list|VsuruT||||||
 20079|point out, identify|VsuruT||||||
-20080|question|VsuruI||||||
+20080|question|VsuruT||||||
 20081|interpel|VsuruI||||||
 20082|question, inquire, enquire, ask a question|VsuruI||||||
 20083||-||||||
@@ -20095,7 +20095,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20095|loan, lend and borrow|VsuruT||||||
 20096|loan, lend|VsuruT||||||
 20097|achieve, attain, accomplish, realize|VsuruT||||||
-20098|bring news, bring tidings, inform|VsuruI||||||
+20098|bring news, bring tidings|VsuruI||||||
 20099|suspend, interrupt, stop, ban, halt, abey|VsuruT||||||
 20100|stop|VsuruI||||||
 20101|lock up (doors and windows), fasten the doors|VsuruT||||||
@@ -20108,7 +20108,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20108|hibernate|VsuruI||||||
 20109|arrange, manage|VsuruT||||||
 20110|lend money, raise money|VsuruI||||||
-20111|accompany|VsuruI||||||
+20111|accompany|VsuruT||||||
 20112|total|VsuruT||||||
 20113|predict, prophecize, foretell|VsuruT||||||
 20114|screen (in a contest)|VsuruT||||||
@@ -21410,7 +21410,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 21410|reopen (e.g. a road to traffic), resume services|VsuruI||||||
 21411|restore, return|VsuruT||||||
 21412|reduce, resolve, deoxidize|VsuruT||||||
-21413|be returned, be restored, be refunded|VsuruI||||||
+21413|return, restore, refund|VsuruT||||||
 21414|take over another's debt, shoulder someone else's burden, subrogate|VsuruT||||||
 21415|warn, advise|VsuruT||||||
 21416|carry, bring with oneself|VsuruT||||||
@@ -21431,7 +21431,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 21431|increase rapidly, proliferate, surge, explode|VsuruI||||||
 21432|imitate, copy|VsuruT||||||
 21433|grope, fumble, explore|VsuruT||||||
-21434|be perplexed, be asked a difficult question, be posed a difficult problem|VsuruI||||||
+21434|perplex, ask a difficult question, pose a difficult problem|VsuruI||||||
 21435|fall (leaf), drop (leaves), defoliate|VsuruI||||||
 21436|fall, drop, descend, come down|VsuruI||||||
 21437|fail (in an examination), fail to advance (to the next year)|VsuruI||||||
@@ -21449,7 +21449,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 21449||-||||||
 21450|mark, grade, score|VsuruT||||||
 21451|be mature, be ripe|VsuruI||||||
-21452|be reported, be returned (e.g. tax), be stated, be declared, be notified, be filed|VsuruI||||||
+21452|report, return (e.g. tax), state, declare, notify of, file|VsuruT||||||
 21453|go extinct, be extinguished, disappear, vanish, be terminated, lapse|VsuruI||||||
 21454|be annihilated|VsuruI||||||
 21455|enter, going into|VsuruT||||||
@@ -21462,8 +21462,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 21462||-||||||
 21463||-||||||
 21464|pursue (a goal, ideal, etc.), search, chase, seek after|VsuruT||||||
-21465|be investigated (e.g. academically, of the unknown)|VsuruI||||||
-21466|be ratified, be confirmed|VsuruI||||||
+21465|investigate (e.g. academically, the unknown)|VsuruT||||||
+21466|ratify, confirm|VsuruT||||||
 21467|fall, crash (e.g. aircraft)|VsuruI||||||
 21468|chase, pursue, track, stalk|VsuruT||||||
 21469|follow up, trace|VsuruT||||||
@@ -22579,11 +22579,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 22579|bribe, buy off, corrupt|VsuruT||||||
 22580|back up, go backwards, reverse|VsuruI||||||
 22581|refund|VsuruT||||||
-22582|backup|VsuruT||||||
+22582|back up|VsuruT||||||
 22583|trade|VsuruT||||||
 22584|defend, safeguard, protect|VsuruT||||||
 22585|treat, cure|VsuruT||||||
-22586|qinterpret simultaneously|VsuruT||||||
+22586|interpret simultaneously|VsuruT||||||
 22587|produce (e.g. play), direct|VsuruT||||||
 22588|stick to, cling to, adhere to, cohese with, agglutinate with|VsuruT||||||
 22589|add, annex, append|VsuruT||||||
@@ -22601,7 +22601,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 22601|be idle|VsuruI||||||
 22602|have a foreign substance in (e.g. one's eye or stomach)|VsuruI||||||
 22603|compose, synthesise, synthesize|VsuruT||||||
-22604|decide, judge, sentence, decree|VsuruI||||||
+22604|decide, judge, sentence, decree|VsuruT||||||
 22605|raise an army|VsuruI||||||
 22606|launch a business|VsuruI||||||
 22607|walk|VsuruI||||||
@@ -22622,8 +22622,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 22622|be employed full-time|VsuruI||||||
 22623|be standing, be permanent|VsuruI||||||
 22624|board (a train, bus, etc.), get into (e.g. a taxi)|VsuruT||||||
-22625|be custom, be common practice, be a habit|VsuruI||||||
-22626|be used habitually, be used daily|VsuruI||||||
+22625|be a custom, be common practice, be a habit|VsuruI||||||
+22626|use habitually, use daily|VsuruT||||||
 22627|shoot, gun (down)|VsuruT||||||
 22628|raise the curtain|VsuruI||||||
 22629|be opened (of an event), start (season)|VsuruI||||||
@@ -22633,7 +22633,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 22633|expand, extend, enlarge|VsuruT||||||
 22634|establish, settle|VsuruT||||||
 22635|participate, take part in, be concerned in|VsuruI||||||
-22636|tolerante, be open-minded, forbear, be generous, be magnanimous|VsuruI||||||
+22636|be tolerant, be open-minded, be forbearing, be generous, be magnanimous|VsuruI||||||
 22637|be concerned|VsuruI||||||
 22638|do lightly, do easily, do carelessly|VsuruT||||||
 22639|contemn, disdain, despise|VsuruT||||||
@@ -22662,7 +22662,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 22662|have successive jobs, have consecutive jobs|VsuruI||||||
 22663|enumerate, list|VsuruT||||||
 22664|reopen, resume, restart|VsuruI||||||
-22665|be redeveloped|VsuruI||||||
+22665|redevelop|VsuruT||||||
 22666|write song lyrics|VsuruI||||||
 22667|support|VsuruT||||||
 22668|inhabit, living|VsuruI||||||
@@ -23024,7 +23024,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 23024|import, introduce|VsuruT||||||
 23025|export|VsuruT||||||
 23026|kidnap, abduct|VsuruT||||||
-23027|finance, furnish with funds, lend to|VsuruI||||||
+23027|finance, furnish with funds, lend to|VsuruT||||||
 23028||-||||||
 23029|send by mail, post|VsuruT||||||
 23030|tempt, lure, entice, seduce|VsuruT||||||
@@ -23390,7 +23390,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 23390|constellation, mansion (in Chinese astronomy)|N||||||
 23391|pending issue, unresolved problem, open question|N||||||
 23392|relay station, post station, stage|N||||||
-23393|lodging|N||||||
+23393|accommodation, lodging|N||||||
 23394|fate, destiny, predestination|N||||||
 23395|lodging house|N||||||
 23396|particular interest, fondness|N||||||
@@ -23537,7 +23537,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 23537|transform|VsuruI||||||
 23538|be pessimistic, be disappointed|VsuruI||||||
 23539|shriek, scream|VsuruI||||||
-23540|be defeated|VsuruI||||||
+23540|be defeated once|VsuruI||||||
 23541|be self-satisfed, be complacent, be smug|VsuruI||||||
 23542|demolish, dismantle, dissolve, disassemble, break up|VsuruT||||||
 23543|season, flavor, flavour|VsuruT||||||
@@ -23556,7 +23556,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 23556|ask for the moon, ask for too much, askk for the impossible|VsuruI||||||
 23557|ejaculate intravaginally (anal, etc.), creampie|VsuruI||||||
 23558|have a split among friends, fall out, have an internal discord|VsuruI||||||
-23559|reconcile, make peace with|VsuruI||||||
+23559|reconcile, make peace|VsuruI||||||
 23560|carry on one's back (e.g. baby), give a piggyback ride to|VsuruT||||||
 23561|total|VsuruT||||||
 23562|accumulate|VsuruT||||||
@@ -23564,7 +23564,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 23564|take care of, house-watch|VsuruT||||||
 23565|transcribe in musical notation, copy down (a tune)|VsuruT||||||
 23566|exist, live, survive|VsuruI||||||
-23567|be disinfected, be sterilized, be sterilised|VsuruI||||||
+23567|disinfect, sterilize, sterilise|VsuruT||||||
 23568|lodge, accommodate|VsuruT||||||
 23569|collect, accumulat, gather|VsuruT||||||
 23570||-||||||
@@ -23802,7 +23802,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 23802|condole with, regret, tribute, sympathize with, lament|VsuruT||||||
 23803|abuse, misuse, pervert|VsuruT||||||
 23804||-||||||
-23805|command, order, impose|VsuruI||||||
+23805|command, order, impose|VsuruT||||||
 23806|descend from heaven|VsuruI||||||
 23807|leak (roof)|VsuruI||||||
 23808|take shelter from rain|VsuruI||||||
@@ -24108,7 +24108,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 24108|the staff, inside the department|N||||||
 24109|safety, security, innocuousness, inoffensiveness|N||||||
 24110|safe (e.g. choice), secure, innocuous, inoffensive|Ana||||||
-24111|acceptableness, passability, satisfactoriness, adequateness, faultlessness, flawlessness|N||||||
+24111|acceptability, passability, satisfactoriness, adequateness, faultlessness, flawlessness|N||||||
 24112|acceptable, passable, satisfactory, adequate, faultless, without flaw|Ana||||||
 24113|separation (e.g. of rubbish when recycling), classification, discrimination, division, distinction|N||||||
 24114|denominator|N;ZMt||||||
@@ -24206,12 +24206,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 24206|study, pursue knowledge|VsuruI||||||
 24207|explain, justify, defend|VsuruT||||||
 24208|explain, excuse, vindicate, apologize for|VsuruT||||||
-24209|be discussed, be debated, be argued|VsuruI||||||
-24210|be repayed, be settled, be payed off, be reimbursed|VsuruI||||||
-24211|be stockpiled, be stored|VsuruI||||||
+24209|discuss, debate, argue|VsuruI||||||
+24210|repay, settle, pay off, reimburse|VsuruT||||||
+24211|stockpile, store|VsuruT||||||
 24212|tremor slightly, mover slightly, quiver|VsuruI||||||
 24213|beautify, glorify|VsuruT||||||
-24214|be bottled|VsuruI||||||
+24214|bottle|VsuruT||||||
 24215|smile|VsuruI||||||
 24216|raise funds, collect funds|VsuruI||||||
 24217|forfeit, seize, confiscate, impound|VsuruT||||||
@@ -24227,11 +24227,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 24227|soundproof|VsuruT||||||
 24228|spin (textiles)|VsuruI||||||
 24229|fight defensively|VsuruI||||||
-24230|accept blindly, believe blindly, be credulous|VsuruI||||||
+24230|accept blindly, believe blindly, be credulous|VsuruT||||||
 24231|waterproof, make something waterproof|VsuruT||||||
-24232|magistrate|VsuruI||||||
+24232|administer, be a magistrate of|VsuruT||||||
 24233|separate (e.g. of rubbish when recycling), classify, discriminate, divide, distinguish|VsuruT||||||
-24234|be divided (labor, labour), be specialized, be specialised|VsuruI||||||
+24234|divide (labor, labour), specialize, specialise|VsuruT||||||
 24235|ride separately|VsuruT||||||
 24236|sell (real-estate) lots|VsuruT||||||
 24237|become differentiated, become specialized, become specialised|VsuruI||||||
@@ -24240,14 +24240,14 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 24240|disperse, break up, scatter, decentralize, decentralise, distribute|VsuruI||||||
 24241|vary|VsuruI;ZMt||||||
 24242||-||||||
-24243|be parturized, be delivered|VsuruI||||||
+24243|deliver offspring|VsuruI||||||
 24244|be indolent, be lazy|VsuruI||||||
 24245|dance|VsuruI||||||
 24246|perform contemporary dance|VsuruI;Abr||||||
 24247|depicte, describe, portray|VsuruT||||||
 24248|wear clothes|VsuruI||||||
 24249|be attentive, give one's attention, focus|VsuruI||||||
-24250|be coloured, be colored|VsuruI||||||
+24250|colour, color|VsuruT||||||
 24251|be delayed, be late|VsuruI||||||
 24252|be a shortcut|VsuruI||||||
 24253|amassing of wealth|N||||||
@@ -24414,7 +24414,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 24414|stationing (troops), occupancy|N||||||
 24415|second grade, medium quality, average, middle class, secondary grade|N;Ano||||||
 24416|accumulate|VsuruT||||||
-24417|amass (wealth)|VsuruI||||||
+24417|amass (wealth)|VsuruT||||||
 24418|sink, subside|VsuruI||||||
 24419|apologize, apologise|VsuruT||||||
 24420|lease, rent, hire|VsuruT||||||
@@ -24427,33 +24427,33 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 24427|be controlled directly|VsuruI||||||
 24428|go straight to|VsuruT||||||
 24429|manage directly|VsuruT||||||
-24430|be hit directly|VsuruI||||||
+24430|hit directly|VsuruT||||||
 24431|face, confront, encounter|VsuruT||||||
 24432|look someone in the eyes, take a straight look at something|VsuruT||||||
 24433|go straight on, go straight ahead|VsuruI||||||
 24434|connect directly|VsuruI||||||
-24435|control directly, supervise directly|VsuruI||||||
-24436|store of water|VsuruI||||||
+24435|control directly, supervise directly|VsuruT||||||
+24436|store water|VsuruI||||||
 24437|punish, discipline, reprimand|VsuruT||||||
-24438|slug, long-hit|VsuruI;ZBb||||||
+24438|slug, make a long hit|VsuruI;ZBb||||||
 24439|duplicate|VsuruT||||||
 24440|provoke, stir, arouse|VsuruT||||||
 24441|draft, recruit, enlist|VsuruT||||||
-24442|be disciplined, be punished, be reprimanded|VsuruI||||||
-24443|be cancelled, be written off|VsuruI||||||
+24442|discipline, punish, reprimand|VsuruT||||||
+24443|cancel, write off|VsuruT||||||
 24444|carve, engrave, sculpt|VsuruT||||||
 24445|attend a lecture, audit|VsuruI||||||
 24446|train (animals), break (animals), adjust parameters of, tune|VsuruT||||||
 24447|make a condolence call|VsuruI||||||
 24448|listen, hear|VsuruI||||||
-24449|be heared, audition|VsuruI||||||
-24450|be received (radio)|VsuruI||||||
+24449|be heard, audition|VsuruI||||||
+24450|have reception (radio)|VsuruI||||||
 24451|collect (fees, taxes, etc.), levy|VsuruT||||||
 24452|jump, leap, skip, bound|VsuruI||||||
 24453|store, preserve|VsuruT||||||
 24454|annotate, comment|VsuruT||||||
 24455|interrupt, suspend, break, abort, discontinue|VsuruT||||||
-24456|be poisoned|VsuruI||||||
+24456|poison|VsuruT||||||
 24457|mediate|VsuruI||||||
 24458|pour, inject|VsuruT||||||
 24459|omit the middle of a phrase|VsuruI||||||
@@ -24603,7 +24603,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 24603|voltage|N||||||
 24604|adjustment, touch up|N||||||
 24605||-||||||
-24606|be neutralized, be neutralised, be counteracted|VsuruI||||||
+24606|neutralize, neutralise, counteract|VsuruT||||||
 24607|reside, stay, be stationed (overseas, etc.)|VsuruI||||||
 24608|be interrupted, be discontinued, be suspended, fall into abeyance|VsuruI||||||
 24609|get an abortion|VsuruI||||||
@@ -24611,7 +24611,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 24611|represent others in a conference|VsuruT||||||
 24612|recover, take back, recapture|VsuruT||||||
 24613|recover, rescue, recapture|VsuruT||||||
-24614|be hugged, be carried in one's arms (a baby, pet, doll, etc.)|VsuruI;ZCL||||||
+24614|hug, carry in one's arms (a baby, pet, doll, etc.)|VsuruT;ZCL||||||
 24615|rid oneself of, free oneself of, grow out of, overcome, outgrow|VsuruT||||||
 24616|consult, discuss, confer|VsuruI||||||
 24617|collude, rig bids|VsuruI||||||
@@ -24636,7 +24636,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 24636|drop out, fall behind, fall by the wayside, desert|VsuruI||||||
 24637|be omitted, be left out|VsuruI||||||
 24638|fall off, come off, be shed|VsuruI||||||
-24639|be desulfurized, be desulphurised, be desulphurized|VsuruI||||||
+24639|desulfurize, desulfurise, desulphurise, desulphurize|VsuruT||||||
 24640|evade taxes|VsuruI||||||
 24641|deliver home (food)|VsuruT||||||
 24642|proselytizing, evangelism, missionary work|N||||||
@@ -24967,7 +24967,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 24967|rehabilitation, reinstatement, restoration of rights|N||||||
 24968|revival, renaissance, reconstruction, restoration|N||||||
 24969||-||||||
-24970|be adjusted, be touched up|VsuruI||||||
+24970|adjust, touch up|VsuruT||||||
 24971|preach|VsuruI||||||
 24972|send a verbal message, send word (from someone)|VsuruI||||||
 24973|electrify|VsuruT||||||
@@ -24976,7 +24976,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 24976|transmit, deliver|VsuruT||||||
 24977|decide without consulting others|VsuruI||||||
 24978|self-educate, self-instruct, self-study|VsuruT||||||
-24979|be a dictatorship, be a despotism|VsuruI||||||
+24979|impose onself over, dictate over|VsuruI||||||
 24980|monopolize, dominate, monopolise, have an economic monopoly|VsuruT||||||
 24981|hog, keep to oneself|VsuruT||||||
 24982|create originally|VsuruT||||||
@@ -24986,28 +24986,28 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 24986|become dull, slow down|VsuruI||||||
 24987|lift a person high (in celebration), toss someone into the air, carry someone on shoulders|VsuruI||||||
 24988||-||||||
-24989|be animated|VsuruI||||||
+24989|animate|VsuruT||||||
 24990|be accompanied by, go with|VsuruI||||||
 24991|mobilize|VsuruT||||||
 24992|travel together|VsuruI||||||
 24993|harden (arteries)|VsuruI||||||
-24994|be disturbed, be agitated, be upheaved|VsuruI||||||
+24994|disturb, agitate, upheave|VsuruT||||||
 24995|act, execute, actuate, operate|VsuruI||||||
-24996|be discerned|VsuruI||||||
+24996|discern|VsuruT||||||
 24997|sit with, be with|VsuruI||||||
 24998|take the same ship|VsuruI||||||
 24999|share a room, occupy the same room|VsuruI||||||
 25000|shake, tremble, pitch, roll, oscillate|VsuruI||||||
 25001|be disturbed, be agitated, be excited, feel shaken|VsuruI||||||
-25002|be a permanent residence|VsuruI||||||
+25002|reside permanently|VsuruI||||||
 25003|farm|VsuruI||||||
 25004|be permanent|VsuruI||||||
-25005|be transgressed (border)|VsuruI||||||
+25005|transgress (border)|VsuruT||||||
 25006|perform a dance|VsuruI||||||
-25007|be covered, be protected, be backed, be relieved|VsuruI||||||
+25007|cover, protect, back, relieve|VsuruT||||||
 25008|go up in flames, be destroyed by fire (esp. of a large building)|VsuruI||||||
 25009|stir up criticism online, become the target of criticism|VsuruI;coq||||||
-25010|be kept alive longer, be prolonged (life), be extended (life)|VsuruI||||||
+25010|keep alive longer, prolonged (life), extended (life)|VsuruT||||||
 25011|perform an expedition, make a (military) campaign|VsuruI||||||
 25012|make a tour, make a visit|VsuruI||||||
 25013|excurse, go on a trip|VsuruI||||||
@@ -25027,7 +25027,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 25027|surface|VsuruI||||||
 25028|emerge, leap into prominence|VsuruI||||||
 25029|rise (of rank)|VsuruI||||||
-25030|be rehabilitated, be reinstated, be restored (rights)|VsuruI||||||
+25030|rehabilitate, reinstate, restore (rights)|VsuruT||||||
 25031|certainly, reliably, soundly|A;M||||||
 25032|restoration, restitution, rehabilitation|N;Ano||||||
 25033|edict, ordinance, proclamation|N||||||
@@ -25334,7 +25334,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 25334|reconstruct, restore, revive|VsuruT||||||
 25335|be restored, be restituted, be rehabilitated|VsuruI||||||
 25336|edict, ordain, proclaim|VsuruT||||||
-25337|be demodulated|VsuruI||||||
+25337|demodulate|VsuruI||||||
 25338|recover, get back to form|VsuruI||||||
 25339|serve penally, serve (military)|VsuruI||||||
 25340|restore, reconstruct|VsuruT||||||
@@ -25355,11 +25355,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 25355|spew, gush, spout, erupt, effuse|VsuruT||||||
 25356|dispute|VsuruT||||||
 25357|struggle|VsuruI||||||
-25358|be choreographed, be coached|VsuruI||||||
+25358|choreograph, coach|VsuruT||||||
 25359|give alms, give offerings|VsuruI||||||
 25360|arrange go stones strategically|VsuruI||||||
 25361|prepare|VsuruI||||||
-25362|take pains to, rack one's brains, do everything one can|VsuruI||||||
+25362|take pains, rack one's brains, do everything one can|VsuruI||||||
 25363|be incidental, be ancillary, be secondary, be collateral|VsuruI||||||
 25364|boil, seethe|VsuruI||||||
 25365|become heated (e.g. debate), be excited, be agitated, ferment|VsuruI||||||
@@ -25370,7 +25370,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 25370|float (e.g. in air, water), buoy up (e.g. economy)|VsuruI||||||
 25371|float, drift, be suspended|VsuruI||||||
 25372|wander (about)|VsuruI||||||
-25373|be introduced, be outlined|VsuruI||||||
+25373|introduce, outline|VsuruT||||||
 25374|correspond to, be applicable to, be relevant to, come under, fall under, fulfill (requirements), meet (conditions), qualify for|VsuruI||||||
 25375|travel|VsuruI||||||
 25376|contain (ingredient, mineral, etc.)|VsuruT||||||
@@ -25570,9 +25570,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 25570|absolutely necessary|Ana||||||
 25571|attach too much importance to, place disproportionate emphasis on, make too much of|VsuruI||||||
 25572|give up, relinquish, serve up, let loose|VsuruI||||||
-25573|be domesticated|VsuruI||||||
+25573|domesticate|VsuruT||||||
 25574|conclude|VsuruI||||||
-25575|be mummified|VsuruI||||||
+25575|mummify|VsuruI||||||
 25576|soften (of attitude), be mollified|VsuruI||||||
 25577|weaken (of the market)|VsuruI||||||
 25578|blanch|VsuruI||||||
@@ -25827,40 +25827,40 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 25827|honey|N||||||
 25828|potted plant|N||||||
 25829||-||||||
-25830|be the cause, originate, be the source|VsuruI||||||
-25831|be reduced (staff)|VsuruI||||||
+25830|cause, be the source of|VsuruT||||||
+25831|reduce staff|VsuruI||||||
 25832|be lowered (fever), be alleviated (fever)|VsuruI||||||
-25833|be reduced, be diminished, be abated|VsuruI||||||
-25834|be cut (pay, salary)|VsuruI||||||
-25835|be reduced and exempt (e.g. taxes), be mitigated and remitted (e.g. in criminal law)|VsuruI||||||
+25833|reduce, diminish, abate|VsuruT||||||
+25834|cut someone's pay or salary|VsuruT||||||
+25835|reduce and exempt (e.g. taxes), mitigate and remit (e.g. in criminal law)|VsuruT||||||
 25836|occur primarily in (medicine)  |VsuruI||||||
 25837|lose weight (esp. body weight)|VsuruI||||||
 25838|lose quantity, be reduced (quantity)|VsuruI||||||
-25839|be reduced (production)|VsuruI||||||
-25840|observe strictly, adhere rigidly, comply scrupulously|VsuruI||||||
+25839|reduce production|VsuruI||||||
+25840|observe strictly, adhere rigidly, comply scrupulously|VsuruT||||||
 25841|fall, decrease (income)|VsuruI||||||
 25842|decelerate|VsuruI||||||
 25843|decline, ebb, fail, decay, decrease, lose|VsuruI||||||
-25844|be reduced (crop size)|VsuruI||||||
-25845|be subtracted, be given a demerit|VsuruI||||||
+25844|reduce a crop's size|VsuruI||||||
+25845|sutract, give a demerit to|VsuruT||||||
 25846|reduce (taxes)|VsuruT||||||
 25847|depreciate, decline, fall, slump|VsuruI||||||
 25848|retire from public office|VsuruI||||||
 25849|go into opposition, lose power|VsuruI||||||
 25850|descend a mountain|VsuruI||||||
 25851|to pass a resolution|VsuruI||||||
-25852|be closely examined, be carefully selected, be tested, be scrutinized|VsuruI||||||
+25852|examine closely, select carefully, test, scrutinize|VsuruT||||||
 25853||-||||||
-25854|recite and appreciate traditional poetry|VsuruI||||||
+25854||-||||||
 25855|provide false evidence, perform perjury, falsely testify|VsuruI||||||
 25856|camouflage, disguise|VsuruT||||||
 25857|pretend, feign, masquerade as|VsuruT||||||
-25858|be forged, be falsified, be fabricated, be counterfeit|VsuruI||||||
-25859|neglect (fail) to write (call, visit, etc.)|VsuruI||||||
-25860|treat (someone, e.g. to a meal)|VsuruI||||||
+25858|forge, falsify, fabricate, counterfeit|VsuruT||||||
+25859|neglect to write (call, visit, etc.)|VsuruI||||||
+25860|treat (someone, e.g. to a meal)|VsuruT||||||
 25861|guard, to escort|VsuruT||||||
 25862|interchange, switch out|VsuruT||||||
-25863|be misrecognized, be mistaken|VsuruI||||||
+25863|misrecognize, mistake for someone or something else|VsuruT||||||
 25864|make a miscalculation, miscalculate|VsuruI||||||
 25865|escort, see, off, in a convoy|VsuruT||||||
 25866|combine, unite, incorporate|VsuruT||||||
@@ -25870,15 +25870,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 25870|assist, help|VsuruI||||||
 25871|donate, give alms|VsuruI||||||
 25872|make a stratagem, plan tactics|VsuruI||||||
-25873|be embodied, be expressed concretely|VsuruI||||||
-25874|be embodied, be materialized, be actualized, be realized, take form, take shape|VsuruI||||||
-25875|outbreak suddenly, be accidental, be incidental|VsuruI||||||
+25873|embody, expressed concretely|VsuruT||||||
+25874|be embodied, materialize, actualize, be realized, take form, take shape|VsuruI||||||
+25875|break out suddenly, be accidental, be incidental|VsuruI||||||
 25876|be slow, be tardy, dawdle, linger, be hesitant|VsuruI;OI||||||
 25877|be unsettled (e.g. weather)|VsuruI;OI||||||
 25878|massacre|VsuruT||||||
 25879|abuse, maltreat, ill-treat|VsuruT||||||
 25880|win after defeat seems certain, come from behind to win|VsuruI||||||
-25881|be reimported|VsuruI||||||
+25881|reimport|VsuruT||||||
 25882|fish, catch fish|VsuruI||||||
 25883|coagulate, freeze, solidify|VsuruI||||||
 25884|condensate|VsuruI||||||
@@ -26064,20 +26064,20 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26064|large hanging lantern|N||||||
 26065||-||||||
 26066|wear a headband|VsuruI||||||
-26067|be restrained, be curtailed|VsuruI||||||
+26067|restrain oneself, curtail oneself|VsuruI||||||
 26068|deploy|VsuruI||||||
 26069|distribute, allot, divide,  among|VsuruT||||||
-26070|be distributed (electricity)|VsuruI||||||
+26070|distribute electricity|VsuruI||||||
 26071|distribute|VsuruT||||||
 26072|discontinue business, close down, give up (one's practice), retire|VsuruI||||||
-26073|be distributed (books)|VsuruI||||||
+26073|distribute books|VsuruI||||||
 26074|plumb, install plumbing or pipework|VsuruT||||||
 26075|dispose of, scrap, annul, cancel|VsuruT||||||
 26076||-||||||
-26077|emit,  exhaust|VsuruT||||||
+26077|emit, exhaust|VsuruT||||||
 26078|expulse (air), ventilate|VsuruT||||||
-26079|distribute (e.g. films, rice)|VsuruI||||||
-26080|ration (e.g. food, gasoline)|VsuruI||||||
+26079|distribute (e.g. films, rice)|VsuruT||||||
+26080|ration (e.g. food, gasoline)|VsuruT||||||
 26081||-||||||
 26082|breach trust, be malfeasant, malpractice, be misappropriating|VsuruI||||||
 26083|put in order, arrange, lay out|VsuruT||||||
@@ -26087,7 +26087,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26087|betray|VsuruT||||||
 26088|emit, produce, excrete, discharge|VsuruT||||||
 26089|turn out in great numbers, appear one after the other|VsuruI||||||
-26090|be delivered|VsuruI||||||
+26090|deliver|VsuruT||||||
 26091|drain, pump out (water)|VsuruT||||||
 26092|displace|VsuruT||||||
 26093|distribute proceeds|VsuruI||||||
@@ -26108,7 +26108,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26108|discover (e.g. new talent)|VsuruT||||||
 26109|issue (e.g. a passport)|VsuruT||||||
 26110|persecute|VsuruT||||||
-26111|attack closely|VsuruI||||||
+26111|attack closely|VsuruT||||||
 26112|be ruined, be destroyed, fall into ruin|VsuruI||||||
 26113|brush one's teeth|VsuruI||||||
 26114|be generic|VsuruI||||||
@@ -26380,8 +26380,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26380|transport, convey|VsuruT||||||
 26381|transfer to a hospital|VsuruT||||||
 26382|fire, discharge (gun)|VsuruT||||||
-26383|be repaid, be refunded|VsuruI||||||
-26384|attack on both sides (flanks)|VsuruI||||||
+26383|repay, refund|VsuruT||||||
+26384|attack on both sides (flanks)|VsuruT||||||
 26385|go bankrupt, be insolvent|VsuruI||||||
 26386|damage|VsuruT||||||
 26387|emanate, give out, radiate, diffuse|VsuruT||||||
@@ -26412,7 +26412,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26412|not reach an agreement (e.g. of a debate)|VsuruI||||||
 26413|be dumbfounded, be stumped, be at one's wits' end, be nonplussed|VsuruI||||||
 26414|be annoyed|VsuruI||||||
-26415|fall of the curtain, come to an end|VsuruI||||||
+26415|come to an end|VsuruI||||||
 26416|be arranged in a line, stand in a row|VsuruI||||||
 26417|stand abreast|VsuruI||||||
 26418|close an entrance, close down (facility, company, etc.)|VsuruT||||||
@@ -26423,12 +26423,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26423|use together, use both at the same time|VsuruT||||||
 26424|change, alter, mutate|VsuruT||||||
 26425|change in appearance, transform|VsuruI||||||
-26426|be returned, be repaid|VsuruI||||||
+26426|return, repay|VsuruT||||||
 26427|repay, reimburse, return (something loaned)|VsuruT||||||
 26428|reply|VsuruI||||||
 26429|be altered (character, essence), change in quality, transform, deteriorate, degenerate, transmute|VsuruI||||||
 26430|reply, answer|VsuruT||||||
-26431|be altered, be defaced, be debased, be falsified, be forged|VsuruI||||||
+26431|alter, deface, debase, falsify, forge|VsuruT||||||
 26432|be bombed|VsuruI||||||
 26433|be A-bombed, be nuked, be exposed to radiation (from an atomic blast)|VsuruI||||||
 26434|swell, enlarge, become fat|VsuruI||||||
@@ -26815,15 +26815,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26815|visit Europe|VsuruI||||||
 26816|collapse, break, cave in, crash, decline (market)|VsuruI||||||
 26817|wander|VsuruI||||||
-26818|be discharged (e.g. of water from a dam)|VsuruI||||||
-26819|be liberated, be stocked (e.g. a river with fish)|VsuruI||||||
+26818|discharge (e.g. of water from a dam)|VsuruT||||||
+26819|liberate, stock (e.g. a river with fish)|VsuruT||||||
 26820|sew|VsuruT||||||
 26821|emit, radiate|VsuruT||||||
 26822||-||||||
 26823|offer goods at a reduced price, provide a service for free|VsuruI||||||
 26824|satiate|VsuruT||||||
 26825|release, emit, let out, vent, discharge, give out|VsuruT||||||
-26826|be hosed down, be drained, be discharged (water), be sprayed with water|VsuruI||||||
+26826|hose down, drain, discharge (water), spray with water|VsuruT||||||
 26827|saturation, satiation|N;Ano||||||
 26828|Buddhist memorial service|N||||||
 26829|health preservation, recuperation, recreation|N||||||
@@ -27506,7 +27506,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 27506|multiply|VruiI;ZMt||||||
 27507|assistant official|N||||||
 27508|accepting an order, receiving an order, orders received|N||||||
-27509|be bandaged, be dressed|VsuruI||||||
+27509|bandage, dress|VsuruT||||||
 27510|be saturated, be satiated|VsuruI||||||
 27511|recuperate, rest, relax|VsuruI||||||
 27512|preserve, maintain the integrity of, conserve|VsuruT||||||
@@ -27524,7 +27524,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 27524|coincide, agree, match|VsuruI||||||
 27525|conform, be consistent|VsuruI||||||
 27526|cooperate|VsuruI||||||
-27527|lead of a charge, be the first to arrive|VsuruI||||||
+27527|lead a charge, be the first to arrive|VsuruI||||||
 27528|reach a stopping place, settle down (before the next stage), get to a point where one can rest, complete the first stage (of the work)|VsuruI||||||
 27529|unify, centralize, centralise|VsuruT||||||
 27530|be entrusted with, be left with|VsuruI||||||
@@ -27548,7 +27548,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 27548|lump together, sum up, bundle, batch|VsuruT||||||
 27549|look, glimpse, glance|VsuruT||||||
 27550||-||||||
-27551|combat personally, flight one-to-one|VsuruI||||||
+27551|combat personally, flight one-to-one|VsuruT||||||
 27552|emigrate, immigrate|VsuruI||||||
 27553||-||||||
 27554|quote, cite, refer|VsuruT||||||
@@ -27562,19 +27562,19 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 27562|stop overnight, stay for one night|VsuruI||||||
 27563|change completely, about-face|VsuruI||||||
 27564|get irritated, get annoyed, be on the edge, fret, lose patience|VsuruI||||||
-27565|be replaced, be substituted, be changed|VsuruI||||||
+27565|replace, substitute, change|VsuruT||||||
 27566|be shunted (rail), be switched|VsuruI||||||
-27567|be tattooed|VsuruI||||||
-27568|be consoled|VsuruI||||||
-27569|be commissioned, be entrusted (with), be requested, be appointed (to a position)|VsuruI||||||
+27567|tattoo|VsuruT||||||
+27568|console|VsuruT||||||
+27569|commission, entrust (with), request, appoint (to a position)|VsuruT||||||
 27570|transplant (plants, organs, culture, etc.), graft|VsuruT||||||
 27571|port (software)|VsuruT;ZI||||||
 27572|change, reform, remodel|VsuruT||||||
-27573|be purged, be done away with, be eradicated|VsuruI||||||
+27573|purge, be done away with, eradicate|VsuruT||||||
 27574|entrust (to a person), consign (of goods), put in someone's charge, commission|VsuruT||||||
 27575|deviate, depart|VsuruI||||||
 27576|be omitted|VsuruI||||||
-27577|dislike, be disgusted by, be disinclined by, be tired of|VsuruI||||||
+27577|dislike, be disgusted by, be disinclined by, be tired of|VsuruT||||||
 27578|depend on, rely on|VsuruI||||||
 27579|settle out of court|VsuruI||||||
 27580|be independent, be self-employed, be self-supporting, operate one's own business|VsuruI||||||
@@ -27582,10 +27582,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 27582|confess, acknowledge|VsuruT||||||
 27583|self-purify, self-cleanse|VsuruI||||||
 27584|self-support|VsuruI||||||
-27585|be self-determined|VsuruI||||||
+27585|self-determine|VsuruI||||||
 27586|commit suicide|VsuruI||||||
-27587|be reported live, be covered live, be broadcasted live|VsuruI;Abr||||||
-27588|endure, persist|VsuruI||||||
+27587|report live, cover live, broadcast live|VsuruT;Abr||||||
+27588|endure, persist|VsuruT||||||
 27589|be self-supporting|VsuruI||||||
 27590|be self-destructive, ruin oneself|VsuruI||||||
 27591|decay naturally, perish naturally|VsuruI||||||
@@ -27605,13 +27605,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 27605|scan a book or magazine to create an ebook by oneself|VsuruI||||||
 27606|turn down, decline, refuse, pass up|VsuruT||||||
 27607|continue, persist, last, be sustained, endure|VsuruI||||||
-27608|be a co-star|VsuruI||||||
+27608|co-star|VsuruI||||||
 27609|except, exclude|VsuruT||||||
 27610|give advice, give suggestions|VsuruT||||||
 27611|go slowly|VsuruI||||||
 27612|clean up, weed out, remove, get rid of|VsuruT||||||
-27613|be expulsed, be excommunicated|VsuruI||||||
-27614|be assisted, be fostered, be aided|VsuruI||||||
+27613|expulse, excommunicate|VsuruT||||||
+27614|assist, foster, aid|VsuruT||||||
 27615|weed|VsuruT||||||
 27616|stay permanently, be stationed, reside|VsuruI||||||
 27617|go up and down, rise and fall, fluctuate|VsuruI||||||
@@ -28062,7 +28062,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28062|be accepted|VsuruI||||||
 28063|teach, instruct, give a lesson|VsuruI||||||
 28064|be given and received, be transferred|VsuruI||||||
-28065|be punished|VsuruI||||||
+28065|punish|VsuruT||||||
 28066|take an examination  (esp. school and university entrance)|VsuruI||||||
 28067|take (attend) lectures|VsuruI||||||
 28068|be familiar with, have a thorough knowledge of, be well-informed about|VsuruI||||||
@@ -28070,7 +28070,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28070|receive payments (pension, ration)|VsuruI||||||
 28071|suffer, agonize|VsuruI||||||
 28072||-||||||
-28073|be toured|VsuruI||||||
+28073|tour|VsuruT||||||
 28074|go around, patrol, tour|VsuruI||||||
 28075|circulate (incl. blood)|VsuruI||||||
 28076|cruise|VsuruI||||||
@@ -28078,8 +28078,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28078|make rhetorical flourishes|VsuruI||||||
 28079|accept (esp. a document)|VsuruT||||||
 28080|establish, found, set (record)|VsuruT||||||
-28081|be received (letter), be acknowledged, be accepted|VsuruI||||||
-28082|be fertilized, be fertilised, be impregnated, be pollinated |VsuruI||||||
+28081|receive (a letter), acknowledge, accept|VsuruT||||||
+28082|fertilize, fertilise, impregnate, pollinate|VsuruT||||||
 28083|receive (e.g. radio signal, email message)|VsuruT||||||
 28084|have a medical examination, see a doctor|VsuruI||||||
 28085|receive (decoration, order)|VsuruT||||||
@@ -28102,7 +28102,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28102|be subordinate, be dependent|VsuruI||||||
 28103|award, confer|VsuruT||||||
 28104|accept, reach acceptance|VsuruT||||||
-28105|be received (television)|VsuruI||||||
+28105|get reception (television)|VsuruI||||||
 28106|increase (pressure)|VsuruI||||||
 28107|operate (machine), run, work|VsuruI||||||
 28108|adjust, moderate, regulate|VsuruT||||||
@@ -28114,7 +28114,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28114|open and shut|VsuruT||||||
 28115|count ballots, tally votes|VsuruI||||||
 28116|release (e.g. informed ), disclose (legal), show, indicate, display|VsuruT||||||
-28117|be helped, be assisted, be aided|VsuruI||||||
+28117|help, assist, aid|VsuruT||||||
 28118|be opened (doors to an event, etc.), open for business|VsuruI||||||
 28119|be inaugurated |VsuruI||||||
 28120|bud (flowers), bloom, flower|VsuruI||||||
@@ -28122,7 +28122,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28122|start a meeting|VsuruI||||||
 28123|open (for that day's business)|VsuruT||||||
 28124|open (a new library, museum, cinema, etc.)|VsuruT||||||
-28125|be changed (constitution)|VsuruI||||||
+28125|perform constitutional change|VsuruI||||||
 28126|return, revolve, recur|VsuruI||||||
 28127|regress|VsuruI;ZMt||||||
 28128|open (of a broadcasted station, post office, bureau, etc.), be established|VsuruI||||||
@@ -28132,12 +28132,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28132|intervene|VsuruI||||||
 28133|be examined (tickets)|VsuruI||||||
 28134||-||||||
-28135|be resurrected, be resuscitated, be regenerated |VsuruI||||||
-28136|be re-elected|VsuruI||||||
+28135|resurrect, resuscitate, regenerate|VsuruT||||||
+28136|re-elect|VsuruT||||||
 28137|break out (war), start a war|VsuruI||||||
 28138|start, commence, begin, initiate|VsuruT||||||
 28139|be congenial, be satisfied, be gratified |VsuruI||||||
-28140|be reformed |VsuruI||||||
+28140|reform|VsuruT||||||
 28141|dine together, mess|VsuruI||||||
 28142|sweep a victory|VsuruI||||||
 28143|repair, improve|VsuruT||||||
@@ -28147,13 +28147,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28147|revise (text), alter, change|VsuruT||||||
 28148|open (new shop)|VsuruI||||||
 28149|open a shop (for the day)|VsuruI||||||
-28150|be purchased, be bought|VsuruI||||||
-28151|be traded-in, be bought back|VsuruI||||||
-28152|be purchased on a no-return policy|VsuruI||||||
-28153|be cancelled (contract)|VsuruI||||||
+28150|purchase, buy|VsuruT||||||
+28151|trade in, buy back|VsuruT||||||
+28152|purchase on a no-return policy|VsuruT||||||
+28153|cancel (a contract)|VsuruT||||||
 28154|interpose, intervene, be involved|VsuruI||||||
-28155|be weighted (in averaging), be aggravated |VsuruI||||||
-28156|yell in order to  time or encourage an activity (e.g. "Heave ho!", "On three ... One, be two, be three!"), enthusiastically shout from the audience (e.g. in kabuki), shout (in concerts)|VsuruI||||||
+28155|weigh (in averaging), aggravate|VsuruT||||||
+28156|yell in order to time or encourage an activity (e.g. "Heave ho!", "On three ... One, be two, be three!"), enthusiastically shout from the audience (e.g. in kabuki), shout (in concerts)|VsuruI||||||
 28157|be resolute, be resigned, be ready, be prepared, prepare oneself mentally|VsuruI||||||
 28158|expand|VsuruT||||||
 28159|isolate, segregate, separate, quarantine, box off, shut out|VsuruT||||||
@@ -28162,10 +28162,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28162|be in discord, be antagonized|VsuruI||||||
 28163|build a bridge|VsuruI||||||
 28164||-||||||
-28165|take into consideration, give consideration|VsuruI||||||
+28165|take into consideration, give consideration for|VsuruT||||||
 28166|invite, solicit, canvas, induce, persuade, encourage|VsuruT||||||
 28167|sell out completely, get sold out|VsuruI||||||
-28168|be periodically thinned (e.g. forest)|VsuruI||||||
+28168|thin periodically (e.g. forest)|VsuruT||||||
 28169|cave in, collapse, sink, be depressed (e.g. of the skull)|VsuruI||||||
 28170|nurse (patient)|VsuruT||||||
 28171|be misunderstood, be mistaken (idea), be guessed wrong|VsuruI||||||
@@ -28589,15 +28589,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28589|nurse|VsuruT||||||
 28590|influence, inspire, reform, correct|VsuruT||||||
 28591|overlook|VsuruT||||||
-28592|be sensed, be felt|VsuruI||||||
+28592|sense, feel|VsuruT||||||
 28593|be concluded, be completed|VsuruI||||||
 28594|arouse, excite, awaken|VsuruT||||||
 28595|be ventilated|VsuruI||||||
 28596|be delighted, be joyful|VsuruI||||||
-28597|be realized (goods into money), be converted (into money), be liquidated|VsuruI||||||
+28597|realize (goods into money), converte (into money), liquidate|VsuruT||||||
 28598|confine|VsuruT||||||
 28599|advise, counsel, remonstrate, recommend|VsuruT||||||
-28600|be completed|VsuruI||||||
+28600|complete|VsuruT||||||
 28601|act decisively, go through with, dare to do, carry out|VsuruI||||||
 28602|sightsee|VsuruI||||||
 28603|summon|VsuruT||||||
@@ -28605,16 +28605,16 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28605|observe and contemplate, meditate on|VsuruT;ZB||||||
 28606|toast, drink (in celebration or in honor of something)|VsuruI||||||
 28607|drink one's glass dry|VsuruI||||||
-28608|be completely defeated, be beaten hollow|VsuruI||||||
-28609|be completely blockaded (seal), be shut out (baseball)|VsuruI||||||
+28608|defeat completely, beat hollow|VsuruT||||||
+28609|blockade completely (seal), shut out (baseball)|VsuruT||||||
 28610|fall, sink, surrender, capitulate|VsuruI||||||
-28611|be superintended, be supervised, be administered|VsuruI||||||
+28611|superintend, supervise, administer|VsuruT||||||
 28612|inspect, audit, judge|VsuruT||||||
 28613|converte (e.g. yen to dollars), change, exchange, translate (numerical)|VsuruT||||||
 28614|inspect|VsuruT||||||
 28615|monitor, watch, observ, surveil, guard, supervise|VsuruT||||||
-28616|be encouraged, be stimulated|VsuruI||||||
-28617|be admired, be appreciated, be enjoyed, be viewed (for pleasure)|VsuruI||||||
+28616|encourage, stimulate|VsuruT||||||
+28617|admire, appreciate, enjoy, view (for pleasure)|VsuruT||||||
 28618|to become accustomed to|VsuruT||||||
 28619|supervise (editorial), edit|VsuruT||||||
 28620|dry, dehydrate, desiccate|VsuruT||||||
@@ -28625,9 +28625,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28625|fight bravely|VsuruI||||||
 28626|relieve, mitigate, alleviate, relaxe, soften, lessen (in amount)|VsuruT||||||
 28627|add, supplement|VsuruT||||||
-28628|be changed, be transformed|VsuruI||||||
+28628|change, transform|VsuruI||||||
 28629|do something temporarily (esp. build temporary facilities), do something provisionally|VsuruI||||||
-28630|be loaned|VsuruI||||||
+28630|loan, lend|VsuruT||||||
 28631|give a temporary name|VsuruT||||||
 28632|accelerate, speed up|VsuruI||||||
 28633|imagine, consider possibilities|VsuruI||||||
@@ -28646,7 +28646,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28646|guard, escort|VsuruT||||||
 28647|post, display, stick up|VsuruT||||||
 28648|slant, incline, slope|VsuruI||||||
-28649|relieve the (started) pitcher|VsuruI||||||
+28649|relieve the (starting) pitcher|VsuruI||||||
 28650|hoist (e.g. a flag), raise, fly, put up|VsuruT||||||
 28651|rise to action, stand up against, jump to one's feet|VsuruI||||||
 28652|quarantine|VsuruT||||||
@@ -28664,7 +28664,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28664|inspect, examine, check|VsuruT||||||
 28665|examine, investigate, prosecute|VsuruT||||||
 28666|autopsy, inquest, investigate a death|VsuruT||||||
-28667|be physically examined, be medically examined, be screened (health)|VsuruI;Abr||||||
+28667|examine (physically or medically), screen (health)|VsuruT;Abr||||||
 28668|inspect, verify|VsuruT||||||
 28669|honour (publicly), honor, make someone's good deeds or achievements well-known|VsuruT||||||
 28670|detect, sense|VsuruT||||||
@@ -28673,18 +28673,18 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28673|fight bravely, make strenuous efforts|VsuruI||||||
 28674|be actual (as opposed to hidden or latent), be apparent, be obvious, be tangible, be revealed|VsuruI||||||
 28675|settle, pay (account)|VsuruT||||||
-28676|be sanctioned, be approved|VsuruI||||||
+28676|sanction, approve|VsuruT||||||
 28677|make a decisive battle, make a decisive match|VsuruI||||||
 28678|crystallize, crystallise, produce results|VsuruI||||||
 28679||-||||||
 28680|concentrate (efforts, forces, etc.), gather together, regiment, marshall, mobilize|VsuruT||||||
-28681|be united|VsuruI||||||
-28682|be bundled, be bound, be tied|VsuruI||||||
-28683|put on (clothes, armour, etc.)|VsuruI;ar||||||
+28681|unite|VsuruT||||||
+28682|bundle, bind, tie up|VsuruT||||||
+28683|put on (clothes, armour, etc.)|VsuruT;ar||||||
 28684|separate, part|VsuruI||||||
 28685|lack, want, be short of|VsuruT||||||
 28686|be absent, not take a part|VsuruI||||||
-28687|be formed (party|VsuruI||||||
+28687|form (a party)|VsuruT||||||
 28688|ignite, detonate, trigger, explode|VsuruI||||||
 28689|pray, supplicate|VsuruI||||||
 28690|be constrained, be reserved, feel hesitant, be afraid of troubling someone|VsuruI||||||
@@ -28694,7 +28694,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28694|write down what one hears, account what one hears|VsuruI||||||
 28695|stop at a port|VsuruI||||||
 28696|set to work|VsuruI||||||
-28697|be rejected, be dismissed, be turned down, be abandoned, be renounced|VsuruI||||||
+28697|reject, dismiss, turn down, abandon, renounce|VsuruT||||||
 28698|return to Tokyo|VsuruI||||||
 28699|return to the capital|VsuruI||||||
 28700|take a leave|VsuruI||||||
@@ -28804,14 +28804,14 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28804|mutton, lamb (meat)|N||||||
 28805|be a match for, rival, equal, compare with, be equivalent to|VsuruI||||||
 28806|look, glance|VsuruI||||||
-28807|take (something) seriously|VsuruI||||||
+28807|take (something) seriously|VsuruT||||||
 28808|dramatize (e.g. of a novel), dramatise, embellish, exaggerate, embroider|VsuruT||||||
 28809||-||||||
 28810|go south|VsuruI||||||
 28811|take a moment, take a minute|VsuruI||||||
 28812|go to school in groups|VsuruI||||||
-28813|be tempered (metal), be annealed, be forged|VsuruI||||||
-28814|be toughened, be disciplined, be trained|VsuruI||||||
+28813|temper (metal), anneal, forge|VsuruT||||||
+28814|toughen, discipline, traine|VsuruT||||||
 28815|move from place to place, be passed around repeatedly|VsuruI||||||
 28816|roll about|VsuruI||||||
 28817|prayer|N||||||
@@ -29408,12 +29408,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 29408|candid advice, frank advice, honest opinion, exhortation|N;Ano||||||
 29409|nail (i.e. small metal spike)|N||||||
 29410|discrepancy, different or conflicting opinions|N||||||
-29411|bite into (e.g. rope into skin), dig into (e.g. of fingernails)|VmuI||||||
-29412|eat into, encroach, make inroads, penetrate (e.g. a market), break into (e.g. first place), erode, cut into (e.g. time|VmuI||||||
-29413|be wedged (i.e. underwear pulled from the back|VmuI;vul||||||
+29411||-||||||
+29412|eat into, encroach, make inroads, penetrate (e.g. a market), break into (e.g. first place), erode, cut into (e.g. time, savings)|VmuI||||||
+29413|be wedged (i.e. underwear pulled from the back, driving it between the buttocks)|VmuI;vul||||||
 29414|hang on to, hang from, cling to|VrugI||||||
 29415|hound, keep after (someone), refuse to back down, persist, tenaciously face (someone), doggedly oppose|VrugI||||||
-29416|grab the front of the opponent's mawashi|VrugI;ZSm||||||
+29416|grab the front of the opponent's mawashi, place one's head against their chest, and lower one's hips|VrugI;ZSm||||||
 29417|check, hold back, keep at bay, stop, prevent, stem, curb, halt|VruiT||||||
 29418|lottery, lot, raffle, draw|N||||||
 29419|lottery, drawn lot|N||||||
@@ -29718,7 +29718,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 29718|burying in the ground|N||||||
 29719|having underground deposits|N||||||
 29720|mix, combine|VruiT||||||
-29721|exchange (words|VruiT||||||
+29721|exchange (words, fire, etc.)|VruiT||||||
 29722|cross (e.g. swords), join together|VruiT||||||
 29723|mixed, mingled|N;Sx||||||
 29724|cross, intersect, join, meet|VrugI||||||
@@ -31087,17 +31087,17 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 31087|charge, indict, prosecute|VsuruT||||||
 31088|notify|VsuruT||||||
 31089|resemble closely, be similar, bear a strong likeness|VsuruI||||||
-31090|accuse, complain about, charge|VsuruI||||||
-31091|be married|VsuruI||||||
+31090|accuse, complain about, charge, sue|VsuruT||||||
+31091|marry|VsuruI||||||
 31092|be engaged, be betrothed|VsuruI||||||
 31093|talk informally about|VsuruT||||||
 31094|confuse with, mix up with|VsuruT||||||
-31095|mix, meld|VsuruI||||||
+31095|mix, meld|VsuruT||||||
 31096|mix, blend, merge, mingle|VsuruT||||||
 31097|be of mixed race, have mixed parentage|VsuruI||||||
 31098|be in turmoil, be in chaos, be confused|VsuruI||||||
 31099|get mixed, be added, be adulterated|VsuruI||||||
-31100|be mixed (e.g. team, be chorus)|VsuruI||||||
+31100|be mixed (e.g. team, chorus)|VsuruI||||||
 31101|chat|VsuruI||||||
 31102|be bewildered, be perplexed, be embarrassed, be uncomfortable, be baffled|VsuruI||||||
 31103|be congested, be crushed, be crowded, be jammed|VsuruI||||||
@@ -31109,7 +31109,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 31109|leave the mound, be knocked out|VsuruI;ZBb||||||
 31110|resign from a role or position|VsuruI||||||
 31111|appeal to the public (e.g. for contributions), make a public offering (of securities), make a public advertisement (of a post), recruit openly|VsuruI||||||
-31112|be detained, be confined, be arrested|VsuruI||||||
+31112|detain, confine, arrest|VsuruT||||||
 31113|construct, build, put up, erect, creat, formulate|VsuruT||||||
 31114|flush, blush|VsuruI||||||
 31115|pay for a subscription (e.g. magazine)|VsuruI||||||
@@ -31126,7 +31126,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 31126|perform, act|VsuruI||||||
 31127|start late|VsuruI||||||
 31128|demote|VsuruT||||||
-31129|be detained, be in custody, be confined, be interned|VsuruI||||||
+31129|detain, confine, intern, take into custody|VsuruT||||||
 31130|advertise|VsuruT||||||
 31131|appeal, protest, complain|VsuruI;ZLw||||||
 31132|cruise, navigate, sail|VsuruI||||||
@@ -31139,16 +31139,16 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 31139|surrender, submit, capitulate|VsuruI||||||
 31140|be defeated (e.g. by a problem), give up, give in|VsuruI||||||
 31141|consider, discuss, investigate, speculate about|VsuruT||||||
-31142|be publicly elected|VsuruI||||||
-31143|be resistant|VsuruI||||||
+31142|perform a public election|VsuruI||||||
+31143|resist|VsuruI||||||
 31144|snow|VsuruI||||||
 31145|use, exercise (one's right, authority, power, etc.)|VsuruT||||||
 31146|telecommunicate, correspond|VsuruI||||||
 31147|reverse, go astern, go backwards|VsuruI||||||
-31148|be public named, be announced publicly|VsuruI||||||
-31149|be fielded well|VsuruI;ZBb||||||
+31148|annouce publicly|VsuruT||||||
+31149|field well|VsuruI;ZBb||||||
 31150|train|VsuruI||||||
-31151|be accused, be prosecuted|VsuruI||||||
+31151|prosecute, indict|VsuruT||||||
 31152|make a koso appeal (initial appeal to a higher court)|VsuruI||||||
 31153|fight with one another, contend|VsuruI||||||
 31154|plan, plot, conceive, devise, scheme|VsuruI||||||
@@ -31167,12 +31167,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 31167|drive, activate|VsuruT||||||
 31168|scheme, devise, figure out, come up with, solve ingeniously|VsuruT||||||
 31169|be dedicated to spiritual improved (esp. through Zen meditation)|VsuruI||||||
-31170|be drawn (lottery)|VsuruI||||||
-31171|be rearranged (classes), be recomposed, be recombined, be reclassified|VsuruI||||||
+31170|draw (in a lottery)|VsuruI||||||
+31171|rearrange (classes), recompose, recombine, reclassify|VsuruT||||||
 31172|use the kun reading of a character|VsuruI||||||
 31173|instruct, brief|VsuruT||||||
 31174|be in agony (mental), anguish, suffer, be in distress|VsuruI||||||
-31175|be repeated, be reiterated, be iterated, be cycled|VsuruI||||||
+31175|repeat, reiterate, cycle through|VsuruT||||||
 31176|rack one's brains, worry oneself, be anxious|VsuruI||||||
 31177|fight hard, struggle|VsuruI||||||
 31178|use freely, make free use of, have good command (e.g. of a language)|VsuruT||||||
@@ -31213,7 +31213,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 31213||-||||||
 31214|feel obliged, be grateful, be thankful, be sorry, be ashamed|VsuruI||||||
 31215|shrink back in fear|VsuruI;ar||||||
-31216|be trained, be instructed|VsuruI||||||
+31216|train, instruct|VsuruT||||||
 31217|make an arrangement, make a pact, make an agreement|VsuruI||||||
 31218|struggle jointly|VsuruI||||||
 31219|be in concord, be in harmony, be in concert|VsuruI||||||
@@ -31245,12 +31245,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 31245|supply water|VsuruI||||||
 31246|allow, grant, supply, provide with|VsuruT||||||
 31247|rest, break, recreate, recuperate, convalesce|VsuruI||||||
-31248|be refueled (car, plane, etc.)|VsuruI||||||
-31249|be lubricated (machine), be oiled|VsuruI||||||
+31248|refuel (car, plane, etc.)|VsuruT||||||
+31249|lubricate (machine), oil|VsuruT||||||
 31250|rendezvous, meet|VsuruI||||||
 31251|lie in wait for an ambush|VsuruI||||||
-31252|be warned in advance|VsuruI||||||
-31253|herald|VsuruI||||||
+31252|give advance warning of|VsuruT||||||
+31253|herald|VsuruT||||||
 31254|move forward (e.g. plans), accelerate (e.g. of payment schedule)|VsuruI||||||
 31255|get an advance (on one's salary)|VsuruI||||||
 31256|rent a room|VsuruI||||||
@@ -31260,15 +31260,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 31260|have underground deposits|VsuruI||||||
 31261|expire|VsuruI||||||
 31262|rub, chafe|VsuruI||||||
-31263|lose (weight or volume, e.g. in transit)|VsuruI||||||
+31263|lose weight or volume (e.g. in transit)|VsuruI||||||
 31264|decrease (in value), be reduced|VsuruI||||||
-31265|be stipulated, be stated clearly, be documented in writing, be stated explicitly|VsuruI||||||
+31265|stipulate, state clearly, document in writing, state explicitly|VsuruT||||||
 31266|state clearly|VsuruT||||||
 31267|elucidate, explicitly state, specify|VsuruT||||||
 31268|write clearly, specify|VsuruT||||||
 31269|get lost, lose one's way|VsuruI||||||
 31270|be exempt from responsibility|VsuruI||||||
-31271|be dismissed, be sacked, be discharged|VsuruI||||||
+31271|dismiss, sack, discharge|VsuruI||||||
 31272|be ruined, collapse, be destroyed|VsuruI||||||
 31273|stick closely, adhere, cling, be in close relations, be in close contact|VsuruI||||||
 31274|give total coverage to the key figure(s) of a TV or film documentary|VsuruI||||||
@@ -31276,46 +31276,46 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 31276|appear and disappear|VsuruI||||||
 31277|start a train (or bus, etc.) before all the passengers are on board|VsuruI||||||
 31278|make a snap decision, start an action without considering objections to it any longer|VsuruI||||||
-31279|be smuggled|VsuruI||||||
-31280|be privatized, be privatised|VsuruI||||||
+31279|smuggle|VsuruT||||||
+31280|privatize, privatise|VsuruT||||||
 31281|throw oneself (e.g. into the water to commit suicide)|VsuruI||||||
-31282|be reviewed, be reconsidered, be revised|VsuruI||||||
+31282|review, reconsider, revise|VsuruT||||||
 31283|charm, fascinate, mesmerize, mesmerise|VsuruI||||||
 31284|crowd together, cluster together, swarm|VsuruI||||||
-31285|be smuggled, be bootlegged, be traded illicitly|VsuruI||||||
+31285|smuggle, bootleg, trade illicitly|VsuruT||||||
 31286|smuggle oneself into a country, immigrate illegally|VsuruI||||||
 31287|poach|VsuruT||||||
 31288|make a secret agreement|VsuruI||||||
 31289|smuggle|VsuruT||||||
 31290|attract, fascinate, lure, captivate, charm|VsuruT||||||
-31291|be landed, be unloaded (e.g. a ship)|VsuruI||||||
-31292|be deflored (e.g. geisha)|VsuruI||||||
+31291|land, unload (e.g. a ship)|VsuruT||||||
+31292|deflore (e.g. geisha)|VsuruT||||||
 31293|be preserved (cut flowers, in ikebana)|VsuruI||||||
 31294|dilute|VsuruT||||||
 31295|inflate (budget, claim, etc.)|VsuruT||||||
-31296|be hospitalized, be received, be treated, be serviced, be entertained|VsuruI||||||
-31297|be entertained with food and drink, be treated|VsuruI||||||
-31298|be attacked fiercely|VsuruI||||||
+31296|be hospitable to, receive, service|VsuruT||||||
+31297|entertain with food and drink, treat|VsuruT||||||
+31298|attack fiercely|VsuruT||||||
 31299|pester someone (for cash, etc.)|VsuruT||||||
-31300|be talk for a long time|VsuruI||||||
+31300|talk for a long time|VsuruI||||||
 31301|last long, continue, keep at (something), stick to (something)|VsuruI||||||
-31302|be connoted, be comprehended|VsuruI||||||
-31303|be included, be contained within|VsuruI||||||
-31304|be announced unofficially|VsuruI||||||
+31302|connote, comprehend|VsuruT||||||
+31303|include, contain|VsuruT||||||
+31304|announce unofficially|VsuruT||||||
 31305|be introverted|VsuruI||||||
-31306|report unofficially or confidentially|VsuruI||||||
-31307|to a side job (at home)|VsuruI||||||
+31306|report unofficially or confidentially|VsuruT||||||
+31307|do a side job (at home)|VsuruI||||||
 31308|perform interior design|VsuruI||||||
 31309|be built-in, be equipped (with)|VsuruI||||||
 31310|cry|VsuruI||||||
 31311|cry (esp. animal), roar, chirp, tweet, bark, whine, meow|VsuruI||||||
-31312|be broadcast live (radio, be TV), be covered live|VsuruI||||||
+31312|broadcast live (radio, be TV), cover live|VsuruT||||||
 31313|put under house arrest|VsuruT||||||
 31314|have a hard flight, have a rough passage|VsuruI||||||
 31315|run into trouble, run into difficulties, have a rough time|VsuruI||||||
 31316|give one's name (or rank, etc.), introduce oneself|VsuruI||||||
 31317|give the name readings of a kanji|VsuruI||||||
-31318|be called by name, be designated, be nominated|VsuruI||||||
+31318|call by name, designate, nominate|VsuruT||||||
 31319|be sticky, be gluey, be gummy, be glutinous, be viscous, be gooey, be greasy|VsuruI||||||
 31320|be indisposed (e.g. a cold)|VsuruI||||||
 31321|be enthusiastic about, be wild about, be absorbed in, be engrossed in, be devoted to|VsuruI||||||
@@ -31327,7 +31327,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 31327|stay at, lodge at|VsuruI||||||
 31328|halve, divide in two, splt|VsuruT||||||
 31329||-||||||
-31330|be packed, be baled, be crated|VsuruI||||||
+31330|pack, bale, crate|VsuruI||||||
 31331|smile forcedly, make a strained laugh|VsuruI||||||
 31332|sunbathe|VsuruI||||||
 31333|acknowledge, acknowledge, recognize, recognise|VsuruT||||||
@@ -31339,17 +31339,17 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 31339|be comfortable, be peaceful, be at ease, be calm|VsuruI||||||
 31340|grow quickly|VsuruI||||||
 31341|pay, supply|VsuruT||||||
-31342|be paid|VsuruI||||||
+31342|make a payment|VsuruI||||||
 31343|pay (taxes, fees, etc..)|VsuruT||||||
 31344|deliver, supply|VsuruT||||||
 31345|be concentrated (e.g. of a solution), be enriched, condensate|VsuruI||||||
-31346|be paid (taxes)|VsuruI||||||
+31346|pay taxes|VsuruI||||||
 31347|begin (rainy season)|VsuruI||||||
 31348|enroll in kindergarten|VsuruI||||||
 31349|enter (a park, garden, zoo, etc..)|VsuruI||||||
 31350|arrive (goods), receive goods|VsuruI||||||
 31351|join the cabinet|VsuruI||||||
-31352|be deposited, be paid, be received (money)|VsuruI||||||
+31352|make a deposit, make a payment|VsuruI||||||
 31353|enter a country|VsuruI||||||
 31354|enter into port, arrive in harbor|VsuruI||||||
 31355|move into (house)|VsuruI||||||
@@ -31376,7 +31376,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 31376|treasure and preserve|VsuruT||||||
 31377|be in clamour, be in clamor, be in uproar, be tumultuous, be furious|VsuruI||||||
 31378|be in great joy|VsuruI||||||
-31379|be polluted, be contaminated|VsuruI||||||
+31379|pollute, contaminate|VsuruT||||||
 31380|chatter, talk, chat, chitchat, gossip|VsuruI||||||
 31381|dress up, be fashionable|VsuruI||||||
 31382|argue back and forth, bandy words|VsuruI||||||
@@ -31399,10 +31399,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 31399|arrive in Japan, come to Japan, visit Japan|VsuruI||||||
 31400|come to a store (restaurant, bar, shop, etc.)|VsuruI||||||
 31401|bid successfully, win a tender|VsuruT||||||
-31402|refrigerate, cool, cool down|VsuruI||||||
+31402|refrigerate, cool, cool down|VsuruT||||||
 31403|put in cold storage, refrigerate|VsuruT||||||
 31404|deteriorate, degrade, drop in quality|VsuruT||||||
-31405|be used continuously|VsuruI||||||
+31405|use continuously|VsuruT||||||
 31406|strike repeatedly|VsuruT||||||
 31407|and, or, and the like, and so forth, and what not|Sx;PP|ME#0251;0252;0253|||||
 31408|connection, relation, linkage|N||||||
@@ -34909,7 +34909,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 34909|be glued, bond, be bound, adhere, be fastened|VsuruI||||||
 34910|grow, develop, be bred, be raised|VsuruI||||||
 34911|be outlaid|VsuruI||||||
-34912|face, be opposite, oppose|VsuruI||||||
+34912|face, be opposite (someone), oppose|VsuruI||||||
 34913|feel bored, get bored with, get tired of, be bored|VsuruI||||||
 34914|depart, leave, go away, evacuate|VsuruI||||||
 34915|recede|VsuruI||||||
@@ -35267,7 +35267,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 35267|no different (to), just like, equivalent|Ai||||||
 35268|essentialness, indispensability, imperativeness, necessity, compellingness, vitalness, criticality|N||||||
 35269|essential, indispensable, imperative, necessary, compelling, vital, critical|Ana||||||
-35270|upper limit|PP||||||
+35270|drastically, substantially|A;M||||||
 35271|far away, far off|Ai||||||
 35272|protective trade|N||||||
 35273|translator|N||||||
@@ -35862,3 +35862,250 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 35862|think ill of a person based on a misunderstanding|VsuruI||||||
 35863|move in (to a new house)|VsuruI||||||
 35864|transmigrate (souls), reincarnate|VsuruI||||||
+35865|depending on the situation, should time and circumstances permit|CE||||||
+35866|in order to, for the purpose of|PP||||||
+35867|must, should|PP;Sx||||||
+35868||-||||||
+35869|vector|N||||||
+35870|vector|N||||||
+35871|earthling, earthman|N||||||
+35872|superpower, superstate|N||||||
+35873|display|N||||||
+35874|it seems like, it appears that|A||||||
+35875|somehow or other|A||||||
+35876|working generation, people still working|N||||||
+35877|suffix appended to somebody else's family members|Sx||||||
+35878|too late (by a short time), just failed (by a small margin)|CE||||||
+35879|passing mark, qualifying marks (score)|N||||||
+35880|cruel, heartless, hard, harsh, severe|Ai||||||
+35881|violent, intense, strong, heavy, extreme|Ai||||||
+35882|very bad, terrible, awful|Ai||||||
+35883|excessive, exorbitant, unreasonable, outrageous, unfair, unjust|Ai||||||
+35884|notebook|N||||||
+35885|almost, nearly|A||||||
+35886|topmost|N||||||
+35887|coming, going, being (somewhere), being (doing something)|CE||||||
+35888|isoniazid|N||||||
+35889|party, gang, company, squad|N||||||
+35890|taking an examination (esp. school and university entrance)|N||||||
+35891|put up (a notice, sign, etc.), hang out (e.g. a banner), fly (e.g. a flag), hoist, raise, display|VruiT||||||
+35892|hold up high, raise overhead|VruiT||||||
+35893|tout (a principle, plan, etc.), herald, hold up (an ideal), parade (e.g. a slogan)|VruiT||||||
+35894|publish, print, carry (e.g. an article)|VruiT||||||
+35895|boldly, bravely, resolutely, determinedly|Aj||||||
+35896|result document type (of a link)|N||||||
+35897|fruition, fructification, bearing fruit|N||||||
+35898|being successful, achieving success, bearing fruit (idea, plan, ambition), realization, realisation|N||||||
+35899|intense (e.g. cold), harsh, tough|Ai||||||
+35900|Pleistocene epoch|N||||||
+35901|series|N||||||
+35902|exposing fully, uncovering completely, being in full view, putting on display, not disguising|N||||||
+35903|sheer waste|N||||||
+35904|greenhouse, icehouse, cellar|N||||||
+35905|be enigmatic or puzzling, be wrapped in mystery|VkuI||||||
+35906|pornographic literature, sensual literature, erotic literature|N||||||
+35907|baggage car (of a train), luggage van|N||||||
+35908|certificate|N||||||
+35909|become frightened, be frightened (of), be scared (of)|VruiI||||||
+35910|threaten, menace, intimidate|VsuT||||||
+35911|startle, frighten, scare|VsuT||||||
+35912|coming, going, being (somewhere)|N||||||
+35913|pursuer, pursuing party, posse|N||||||
+35914|chase scene|N||||||
+35915|groupie, paparazzo|N||||||
+35916|soon, by-and-by|N||||||
+35917|display, array (of things), succession (of things)|N||||||
+35918|widescale reform|N||||||
+35919|making a round trip, going and returning, coming and going|N||||||
+35920|correspondence, exchanging (letters)|N||||||
+35921|socializing, visiting one another|N||||||
+35922|writing (poetry), composing|N||||||
+35923|clan|N||||||
+35924|studying for a test|N||||||
+35925|spirit, psyche|N||||||
+35926|god, deity, divinity, kami|N||||||
+35927|new record (in sports, etc.)|N||||||
+35928|inexpert or untrained eyes|N||||||
+35929|at work|N||||||
+35930|office (e.g. the Oval Office)|N||||||
+35931|outcasts common around the Kyoto region from the Kamakura period to the Edo period|N||||||
+35932|Shuku|Pl||||||
+35933|going to work (e.g. in the morning), coming to work|N||||||
+35934|organized crime, organised crime|N||||||
+35935|all roads lead to Rome|CE||||||
+35936|fight against, oppose, face|VuI||||||
+35937|attitude, manner, behaviour|N||||||
+35938|trial of strength, test of one's strength (stamina)|N||||||
+35939|strongly hoping or requesting (of something that is difficult to be brought to fruition)|A;N||||||
+35940||-||||||
+35941|dot, spot, point, speck, mark|N||||||
+35942|mark (in an exam, etc.), grade, score, points|N||||||
+35943|point (in a game), score, goal, run|N||||||
+35944|point (in geometry)|N||||||
+35945|point, aspect, matter, detail, part, respect, way, viewpoint|N||||||
+35946|"dot" stroke (in a Chinese character)|N||||||
+35947|counter for points, marks, goals, etc.|C||||||
+35948|age, years|N||||||
+35949|connect, link together|VguT||||||
+35950|tie, fasten, restrain|VguT||||||
+35951|maintain, preserve, keep|VguT||||||
+35952|transfer (phone call), put a person through|VguT||||||
+35953|hedge, buy or sell forward|VguT||||||
+35954|pass (examination)|VrugI||||||
+35955|(be able to) take (food, medicine, etc.), bear, tolerate, endure|VruiT||||||
+35956|be affected by, take damage from|VruiT||||||
+35957|dwell, live, remain|VrugI||||||
+35958|stay at, take shelter at, stop at, lodge at|VrugI||||||
+35959|be pregnant|VrugI||||||
+35960|be part of a constellation|VrugI||||||
+35961|be a parasite (bugs, plants, etc.)|VrugI||||||
+35962|display|VsuruT||||||
+35963|fructify, bear fruit|VsuruI||||||
+35964|be successful, achieve success|VsuruI||||||
+35965|study for a test|VsuruI||||||
+35966|go to work (e.g. in the morning), come to work|VsuruI||||||
+35967|going up and down, rising and falling|CE||||||
+35968|young star, young entertainer, heartthrob, TV personality, idol|N||||||
+35969|idol, image|N||||||
+35970|out of one's league, facing a too tough opponent, outclassed|CE||||||
+35971|get tired of, lose interest in, be fed up with, have enough|VruiI||||||
+35972|chant (religious)|N||||||
+35973|cheer (e.g. in cheerleading)|N||||||
+35974|difference, distinction, discrepancy|N||||||
+35975|mistake, error|N||||||
+35976|dot, point, mark|N||||||
+35977|gidayū musicians (in kabuki)|N||||||
+35978|writing on someone's behalf|N||||||
+35979|(video) footage, image, picture|N||||||
+35980|impotent (person)|N||||||
+35981|screen (of a TV, computer, etc.)|N||||||
+35982|image (on a screen), picture, scene|N||||||
+35983|surface of a painting (picture, drawing, etc.)|N||||||
+35984|present, present tense|N||||||
+35985|exhausted, tired|Ana||||||
+35986|exhaustion, tiredness|N||||||
+35987|withered, worn out|Ana||||||
+35988|withering, wear|N||||||
+35989|boiling until shapeless or mushy|N||||||
+35990|tediously, repetitively, wordily|N||||||
+35991|limply, wearily, listlessly, languidly, exhaustedly, unenergetically|A||||||
+35992|trade journal|N||||||
+35993|third in a sequence denoted by the iroha system, third note in the diatonic scale (used in key names, etc.)|N||||||
+35994|Wa|Pl||||||
+35995|hiking|N||||||
+35996|backache, back pain|N||||||
+35997|handle|N||||||
+35998|steering wheel|N||||||
+35999|(bicycle) handlebar|N||||||
+36000|I'm hungry|CE||||||
+36001|rose of Sharon (Hibiscus syriacus)|N||||||
+36002|earlier than usual, ahead of time, in good season|A||||||
+36003|completely exhausted, dead tired, knackered|Ana||||||
+36004|complete exhaustion, tiredness|N||||||
+36005|secret police|N||||||
+36006|one breath|N||||||
+36007|time of one breath|N||||||
+36008|pause, break, rest, breather|N||||||
+36009|(doing in) one go, doing without stopping|N||||||
+36010|small amount of effort, a little more effort|N||||||
+36011|to make a serious effort|CE||||||
+36012|being up to the person himself|N||||||
+36013|different body|N||||||
+36014|more than usual|A||||||
+36015|rock door (to a cave)|N||||||
+36016|dimensional regularisation, dimensional regularization|N||||||
+36017|Critique of Pure Reason (Kritik der reinen Vernunft) (Kant)|N||||||
+36018|avoidant personality disorder|N||||||
+36019|ulcer|N||||||
+36020|available choice|N||||||
+36021|warp (weaving)|N||||||
+36022|longitude|N||||||
+36023|scripture, sutra|N||||||
+36024|trans-|Px||||||
+36025|shoulder|N||||||
+36026|serum|N||||||
+36027|to be on one's mind, to worry one, to care about, to be bothered by, to feel uneasy, to be anxious, to be curious about|CE||||||
+36028|to feel like, to feel inclined to|CE||||||
+36029|to fancy, to like, to catch one's eye|CE||||||
+36030|attack, assault, raid, onslaught, offensive|N||||||
+36031|bite (in fishing)|N||||||
+36032|bite into (e.g. rope into skin), cut into, dig into (e.g. of fingernails)|VmuI||||||
+36033|kanji "box" or "country" radical (radical 31), radical consisting of an enclosing box|N||||||
+36034|magic|N||||||
+36035|Magic Marker, felt-tip pen, permanent marker|N||||||
+36036|magic number|N||||||
+36037|earnestness, solemnity, gravity, seriousness, soberness|N||||||
+36038|magician|N||||||
+36039|accomplish, fulfill, carry out|VsuruT||||||
+36040|derogatory suffix (referring to others)|Sx||||||
+36041|humble suffix (referring to oneself)|Sx||||||
+36042|eating house, restaurant that serves simple food|N||||||
+36043|mesh, grid|N||||||
+36044|highlight in the hair, streaked hair|N||||||
+36045|ugly, unattractive|Ai||||||
+36046|unsightly, unseemly|Ai||||||
+36047|certification of contents|N||||||
+36048|easy, trifling, harmless, of no concern, nothing|CE||||||
+36049|nothing of the sort, not at all|CE||||||
+36050|above anything else, above all, more than anything|CE||||||
+36051|best, greatest, excellent, wonderful, most important|CE||||||
+36052|banknote|N||||||
+36053|soft currency|N||||||
+36054|everyday life, daily life|N||||||
+36055|to keep a diary|CE||||||
+36056|luggage compartment, cargo bay (aircraft), baggage compartment|N||||||
+36057|ascent, uphill|N||||||
+36058|scandalous conduct|N||||||
+36059|in many cases|CE||||||
+36060|pineapple|N||||||
+36061|pine|N||||||
+36062|pineapple juice|N||||||
+36063|pizza|N||||||
+36064|fat, ugly person|N||||||
+36065|letter|N||||||
+36066|lettering|N||||||
+36067|lettuce (Lactuca sativa)|N||||||
+36068|first owner|N||||||
+36069|reverse, rear side|N||||||
+36070|ridge (of a mountain)|N||||||
+36071|seminar|N||||||
+36072|combatant|N||||||
+36073|explanatory note|N||||||
+36074|dental hygienist|N||||||
+36075|tired, frazzled|Ai||||||
+36076|tiresome, worrisome, bothersome|Ai||||||
+36077|faith, belief, piety, devotion, godliness|N||||||
+36078|win, victory|N||||||
+36079|beautiful scenery, scenic spot|N||||||
+36080||-||||||
+36081|counter for wins|C||||||
+36082|abundance|N||||||
+36083|stock, amount, existing amount|N||||||
+36084|short distance|A||||||
+36085|smoke, breathe in, inhale|VuT||||||
+36086|suck, sip, slurp|VuT||||||
+36087|absorb, soak up|VuT||||||
+36088|kiss|VuT||||||
+36089|stop (in one's tracks), come to a stop, halt, pause, stand still|VrugI||||||
+36090|when dealing with urgent business, make use of whoever is handy|CE||||||
+36091|game, contest, bout|N||||||
+36092|scrap value|N||||||
+36093|smash, crush, flatten|VsuT||||||
+36094|shut down, put out of business, force (a company) to close up shop|VsuT||||||
+36095|wreck, break, block, thwart|VsuT||||||
+36096|butcher, slaughter, kill (livestock, for food)|VsuT||||||
+36097|kill (time), while away (the time)|VsuT||||||
+36098|(family) relationship, connection|N||||||
+36099|share, portion, quota, cut|N||||||
+36100|appear (esp. suddenly) (sweat, tears, etc.)|VkuI||||||
+36101|feel emotions form (joy, bravery, etc.)|VkuI||||||
+36102|hatch (esp. of parasitic insects, etc.)|VkuI||||||
+36103|spring, welling of water|N||||||
+36104|afterimage, imprint|N||||||
+36105|absolute (as opposed to relative) motion|N||||||
+36106|a long time ago|CE||||||
+36107|chant|VsuruI||||||
+36108|cheer|VsuruI||||||
+36109|write on someone's behalf, ghostwrite|VsuruI||||||
+36110|be dead tired|VsuruI||||||
+36111|have faith, believe, be pious, be devoted, be godly|VsuruI||||||
