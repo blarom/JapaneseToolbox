@@ -118,7 +118,7 @@
     <string name="languageLocaleEnglishUS">en-US</string>
     <string name="TextToSpeechLanguageJapanese">jpn</string>
     <string name="TextToSpeechLanguageEnglish">eng</string>
-    <string name="OCRDialogTitle">Please select text line to copy to input</string>
+    <string name="OCRDialogTitle">Select text to copy to input</string>
     <string name="LowVersionDialogMessage">Current Android version is too low</string>
     <string name="cancel">Cancel</string>
     <string name="readjust">Retouch</string>
@@ -428,4 +428,6 @@
     <string name="no_elements_found">No elements found.</string>
     <string name="dropdown_arrow">dropdown arrow</string>
     <string name="decomposition_kanji_list_index">decomposition_kanji_list_index</string>
+    <string name="done">Done</string>
+    <string name="ocr_results_dialog_instructions">Manually select the text you want to copy then press \"Copy To Input\". If no text is selected, the first line of text is copied.</string>
 </resources>

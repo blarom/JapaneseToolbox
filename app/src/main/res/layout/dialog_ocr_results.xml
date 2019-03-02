@@ -25,6 +25,16 @@
         android:layout_marginBottom="8dp"
         android:src="@drawable/test_image"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ocr_results_dialog_instructions"
+        android:textColor="@color/colorAccentDark"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:textAlignment="center"/>
+
     <ScrollView
         android:id="@+id/ocrResultsTextViewContainer"
         android:layout_width="match_parent"
@@ -35,18 +45,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textIsSelectable="true"
+            android:background="@drawable/border_background_fill_white_edge_accent"
             android:lineSpacingMultiplier="1.5"
             android:focusable="true"
             android:textSize="22sp"
+            android:padding="16dp"
             android:textColor="@color/colorAccent"
             />
     </ScrollView>
-
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/ocrResultsList"-->
-        <!--android:layout_marginTop="8dp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="200dp">-->
-    <!--</android.support.v7.widget.RecyclerView>-->
 
 </LinearLayout>

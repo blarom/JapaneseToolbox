@@ -893,14 +893,16 @@ public class InputQueryFragment extends Fragment implements
         //cropImageView.setImageUriAsync(mPhotoURI);
         //mImageToBeDecoded = cropImageView.getCroppedImage();
 
-        final List<String> ocrResultsList = Arrays.asList(ocrResult.split("\\r\\n|\\n|\\r"));
-        mInputQuery = ocrResultsList.get(0);
-        mInputQueryAutoCompleteTextView.setText(mInputQuery);
 
         //Adjusting the scrollview height
         final ScrollView ocrResultsScrollView = dialogView.findViewById(R.id.ocrResultsTextViewContainer);
         final TextView ocrResultsTextView = dialogView.findViewById(R.id.ocrResultsTextView);
-        ocrResultsTextView.setText(TextUtils.join("\n", ocrResultsList));
+        final List<String> ocrResultsList = Arrays.asList(ocrResult.split("\\r\\n|\\n|\\r"));
+        List<String> textDisplayedInDialog = new ArrayList<>(ocrResultsList);
+        for (int i = 0; i < textDisplayedInDialog.size(); i++) {
+            textDisplayedInDialog.set(i, "~ " + textDisplayedInDialog.get(i) + " ~");
+        }
+        ocrResultsTextView.setText(TextUtils.join("\n", textDisplayedInDialog));
         ocrResultsScrollView.post(new Runnable() {
             @Override
             public void run() {
@@ -925,7 +927,7 @@ public class InputQueryFragment extends Fragment implements
                 //Overridden later on
             }
         });
-        builder.setNegativeButton(R.string.ok, new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.done, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
             }
@@ -951,7 +953,14 @@ public class InputQueryFragment extends Fragment implements
                     String text = ocrResultsTextView.getText().toString();
                     int startIndex = ocrResultsTextView.getSelectionStart();
                     int endIndex = ocrResultsTextView.getSelectionEnd();
-                    text = text.substring(startIndex, endIndex);
+
+                    if (startIndex != endIndex){
+                        text = text.substring(startIndex, endIndex);
+                    }
+                    else {
+                        text = text.split("\n")[0];
+                    }
+
                     mInputQuery = text;
                     mInputQueryAutoCompleteTextView.setText(text);
                 }
