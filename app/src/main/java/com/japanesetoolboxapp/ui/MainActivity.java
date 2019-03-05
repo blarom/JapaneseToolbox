@@ -613,7 +613,7 @@ public class MainActivity extends AppCompatActivity implements
             return;
         }
         cleanSavedData();
-        clearBackstack();
+        //clearBackstack();
 
         mSecondFragmentCurrentlyDisplayed = getString(R.string.dict_fragment);
 
@@ -643,7 +643,7 @@ public class MainActivity extends AppCompatActivity implements
 
         if (!mAllowButtonOperations) return;
         cleanSavedData();
-        clearBackstack();
+        //clearBackstack();
         if (LegendDatabase==null) {
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
             return;
