@@ -961,6 +961,9 @@ public class InputQueryFragment extends Fragment implements
                         text = text.split("\n")[0];
                     }
 
+                    if (text.length()>2 && text.substring(0,2).equals("~ ")) text = text.substring(2);
+                    if (text.length()>2 && text.substring(text.length()-2).equals(" ~")) text = text.substring(0,text.length()-2);
+
                     mInputQuery = text;
                     mInputQueryAutoCompleteTextView.setText(text);
                 }

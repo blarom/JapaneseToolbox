@@ -112,6 +112,8 @@ public class MainActivity extends AppCompatActivity implements
 
     //Lifecycle methods
     @Override protected void onCreate(Bundle savedInstanceState) {
+
+        savedInstanceState = null;
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
@@ -136,31 +138,6 @@ public class MainActivity extends AppCompatActivity implements
             if (savedRequestedFragment != null) {
                 mSecondFragmentFlag = savedRequestedFragment;
             }
-
-//            mSecondFragmentCurrentlyDisplayed = savedInstanceState.getString(getString(R.string.requested_second_fragment));
-//            mDictionaryFragment = (DictionaryFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.dict_fragment));
-//            mConjugatorFragment = (ConjugatorFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.conj_fragment));
-//            mConvertFragment = (ConvertFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.conv_fragment));
-//            mSearchByRadicalFragment = (SearchByRadicalFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.srad_fragment));
-//            mDecomposeKanjiFragment = (DecomposeKanjiFragment) getSupportFragmentManager().getFragment(savedInstanceState, getString(R.string.dcmp_fragment));
-
-//            //Load the second fragment
-//            clearBackstack();
-//            FragmentManager fragmentManager = getSupportFragmentManager();
-//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//            if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.dict_fragment)))
-//                fragmentTransaction.replace(R.id.second_fragment_placeholder, mDictionaryFragment, getString(R.string.dict_fragment));
-//            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.conj_fragment)))
-//                fragmentTransaction.replace(R.id.second_fragment_placeholder, mConjugatorFragment, getString(R.string.conj_fragment));
-//            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.conv_fragment)))
-//                fragmentTransaction.replace(R.id.second_fragment_placeholder, mConvertFragment, getString(R.string.conv_fragment));
-//            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.srad_fragment)))
-//                fragmentTransaction.replace(R.id.second_fragment_placeholder, mSearchByRadicalFragment, getString(R.string.srad_fragment));
-//            else if (mSecondFragmentCurrentlyDisplayed.equals(getString(R.string.dcmp_fragment)))
-//                fragmentTransaction.replace(R.id.second_fragment_placeholder, mDecomposeKanjiFragment, getString(R.string.dcmp_fragment));
-//            fragmentTransaction.addToBackStack(getString(R.string.dictonary_fragment_instance));
-//            fragmentTransaction.commit();
-
         }
         mAllowButtonOperations = true;
     }
