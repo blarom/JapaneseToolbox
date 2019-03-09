@@ -112,8 +112,6 @@ public class MainActivity extends AppCompatActivity implements
 
     //Lifecycle methods
     @Override protected void onCreate(Bundle savedInstanceState) {
-
-        savedInstanceState = null;
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
@@ -431,17 +429,25 @@ public class MainActivity extends AppCompatActivity implements
             );
         }
         else {
-            //Get the first definition matching the romaji / kanji / altSpellings
+            //Get the first definition matching the romaji / kanji
             for (Word word : matchingWords) {
-                List<String> altSpellings = (word.getAltSpellings() != null) ? Arrays.asList(word.getAltSpellings().split(",")) : new ArrayList<String>();
-                if (word.getRomaji().equals(mInputQuery)
+                if (word.getRomaji().equals(mInputQuery) || word.getKanji().equals(mInputQuery)
                         || Utilities.getRomajiNoSpacesForSpecialPartsOfSpeech(word.getRomaji())
-                        .equals(ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN))
-                        || word.getKanji().equals(mInputQuery)
-                        || altSpellings.contains(mInputQuery)) {
+                            .equals(ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN)) ) {
                     romaji = word.getRomaji();
                     meaning = word.getMeanings().size() > 0 ? Utilities.getMeaningsExtract(word.getMeanings(), 2) : "";
                     break;
+                }
+            }
+            //If no definition was found, get the first definition matching the altSpellings
+            if (romaji.equals("")) {
+                for (Word word : matchingWords) {
+                    List<String> altSpellings = (word.getAltSpellings() != null) ? Arrays.asList(word.getAltSpellings().split(",")) : new ArrayList<String>();
+                    if (altSpellings.contains(mInputQuery)) {
+                        romaji = word.getRomaji();
+                        meaning = word.getMeanings().size() > 0 ? Utilities.getMeaningsExtract(word.getMeanings(), 2) : "";
+                        break;
+                    }
                 }
             }
             //If no definition was found, get the first definition that includes the input query as a word in the meanings
