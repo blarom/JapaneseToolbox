@@ -430,4 +430,8 @@
     <string name="decomposition_kanji_list_index">decomposition_kanji_list_index</string>
     <string name="done">Done</string>
     <string name="ocr_results_dialog_instructions">Manually select the text you want to copy then press \"Copy To Input\". If no text is selected, the first line of text is copied.</string>
+    <string name="common_word">Common word.</string>
+    <string name="less_common_word">Less Common word.</string>
+    <string name="source_local_offline">Source: local (offline).</string>
+    <string name="source_edict_online">Source: EDICT (online).</string>
 </resources>

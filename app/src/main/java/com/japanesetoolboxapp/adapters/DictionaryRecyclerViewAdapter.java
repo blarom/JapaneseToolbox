@@ -318,8 +318,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             }
 
                 if (mShowSources) {
-                sourceInfo.add((word.getIsCommon())? "Common word." : "Infrequent word.");
-                sourceInfo.add((word.getIsLocal()) ? "Source: local (offline)." : "Source: EDICT (online).");
+                sourceInfo.add((word.getIsCommon())? mContext.getString(R.string.common_word) : mContext.getString(R.string.less_common_word));
+                sourceInfo.add((word.getIsLocal()) ? mContext.getString(R.string.source_local_offline) : mContext.getString(R.string.source_edict_online));
             }
 
             listSourceInfo.add(TextUtils.join(" ", sourceInfo));
