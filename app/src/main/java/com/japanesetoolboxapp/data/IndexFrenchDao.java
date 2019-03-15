@@ -29,15 +29,15 @@ public interface IndexFrenchDao {
     List<IndexFrench> getAllLatinIndexes();
 
     //Get a IndexFrench by Exact query match
-    @Query("SELECT * FROM " + IndexFrench.TABLE_NAME + " WHERE " + IndexFrench.COLUMN_FRENCH + " LIKE :query")
-    IndexFrench getIndexFrenchByExactLatinQuery(String query);
+    @Query("SELECT * FROM " + IndexFrench.TABLE_NAME + " WHERE " + IndexFrench.COLUMN_VALUE + " LIKE :query")
+    IndexFrench getIndexByExactQuery(String query);
 
     //Get a IndexFrench list by similar latin index query match - see: https://stackoverflow.com/questions/44234644/android-rooms-search-in-string
-    @Query("SELECT * FROM " + IndexFrench.TABLE_NAME + " WHERE " + IndexFrench.COLUMN_FRENCH + " LIKE :query  || '%' ")
-    List<IndexFrench> getIndexFrenchByStartingLatinQuery(String query);
+    @Query("SELECT * FROM " + IndexFrench.TABLE_NAME + " WHERE " + IndexFrench.COLUMN_VALUE + " LIKE :query  || '%' ")
+    List<IndexFrench> getIndexByStartingQuery(String query);
 
     //Delete a IndexFrench by Latin
-    @Query("DELETE FROM " + IndexFrench.TABLE_NAME + " WHERE " + IndexFrench.COLUMN_FRENCH + " = :latin")
+    @Query("DELETE FROM " + IndexFrench.TABLE_NAME + " WHERE " + IndexFrench.COLUMN_VALUE + " = :latin")
     int deletIndexByLatin(String latin);
 
     @Delete

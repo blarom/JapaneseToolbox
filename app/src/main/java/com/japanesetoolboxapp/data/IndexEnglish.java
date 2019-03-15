@@ -10,27 +10,27 @@ import android.support.annotation.NonNull;
 @Entity(tableName = IndexEnglish.TABLE_NAME)
 public class IndexEnglish {
 
-    static final String TABLE_NAME = "latin_index_table";
-    static final String COLUMN_ENGLISH = "english";
+    static final String TABLE_NAME = "english_index_table";
+    static final String COLUMN_VALUE = "value";
     private static final String WORD_IDS = "word_ids";
 
     IndexEnglish() { }
 
     @Ignore
-    IndexEnglish(@NonNull String english, String wordIds) {
-        this.english = english;
+    IndexEnglish(@NonNull String value, String wordIds) {
+        this.value = value;
         this.wordIds = wordIds;
     }
 
     @PrimaryKey()
-    @ColumnInfo(index = true, name = COLUMN_ENGLISH)
+    @ColumnInfo(index = true, name = COLUMN_VALUE)
     @NonNull
-    private String english = ".";
-    public void setEnglish(@NonNull String english) {
-        this.english = english;
+    private String value = ".";
+    public void setValue(@NonNull String value) {
+        this.value = value;
     }
-    @NonNull public String getEnglish() {
-        return english;
+    @NonNull public String getValue() {
+        return value;
     }
 
     @ColumnInfo(name = WORD_IDS)

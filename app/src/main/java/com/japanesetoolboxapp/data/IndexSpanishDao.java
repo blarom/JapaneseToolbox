@@ -29,15 +29,15 @@ public interface IndexSpanishDao {
     List<IndexSpanish> getAllLatinIndexes();
 
     //Get a IndexSpanish by Exact query match
-    @Query("SELECT * FROM " + IndexSpanish.TABLE_NAME + " WHERE " + IndexSpanish.COLUMN_SPANISH + " LIKE :query")
-    IndexSpanish getIndexSpanishByExactLatinQuery(String query);
+    @Query("SELECT * FROM " + IndexSpanish.TABLE_NAME + " WHERE " + IndexSpanish.COLUMN_VALUE + " LIKE :query")
+    IndexSpanish getIndexByExactQuery(String query);
 
     //Get a IndexSpanish list by similar latin index query match - see: https://stackoverflow.com/questions/44234644/android-rooms-search-in-string
-    @Query("SELECT * FROM " + IndexSpanish.TABLE_NAME + " WHERE " + IndexSpanish.COLUMN_SPANISH + " LIKE :query  || '%' ")
-    List<IndexSpanish> getIndexSpanishByStartingLatinQuery(String query);
+    @Query("SELECT * FROM " + IndexSpanish.TABLE_NAME + " WHERE " + IndexSpanish.COLUMN_VALUE + " LIKE :query  || '%' ")
+    List<IndexSpanish> getIndexByStartingQuery(String query);
 
     //Delete a IndexSpanish by Latin
-    @Query("DELETE FROM " + IndexSpanish.TABLE_NAME + " WHERE " + IndexSpanish.COLUMN_SPANISH + " = :latin")
+    @Query("DELETE FROM " + IndexSpanish.TABLE_NAME + " WHERE " + IndexSpanish.COLUMN_VALUE + " = :latin")
     int deleteIndexByLatin(String latin);
 
     @Delete

@@ -50,7 +50,7 @@
     <string name="language_label_japanese">Japanese</string>
     <string name="language_label_english">English (US)</string>
     <string name="pref_preferred_language_value_japanese" translatable="false">japanese</string>
-    <string name="pref_preferred_language_value_english" translatable="false">romaji</string>
+    <string name="pref_preferred_language_value_english" translatable="false">value</string>
     <string name="pref_preferred_STT_language">Speech-To-Text Language</string>
     <string name="pref_preferred_STT_language_key" translatable="false">preferred_STT_result</string>
     <string name="pref_preferred_STT_language_japanese" translatable="false">preferred_STT_language_japanese</string>

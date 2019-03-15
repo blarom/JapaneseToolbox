@@ -1616,7 +1616,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1616|shut up|IES|Literally means "you're noisy".|||||
 1617|shut up|IES|More vulgar than using "urusai".|||||
 1618|shut up|IES|Literally means "the store is closed".|||||
-1619|slut|IES|From the romaji "bitch".|||||
+1619|slut|IES|From the value "bitch".|||||
 1620|son of a bitch, damn it, shit|IES||||||
 1621|subject is surprised|IES||||||
 1622|ugly|IES|Short for "busaiku".|||||
@@ -13899,7 +13899,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13899|hysteresis|N;Abs||||||
 13900|ideal, ideals|N;Abs||||||
 13901|Rome|N;Abs||||||
-13902|romaji, romanized Japanese, system of transliterating Japanese into the Latin alphabet|N;Abs||||||
+13902|value, romanized Japanese, system of transliterating Japanese into the Latin alphabet|N;Abs||||||
 13903|Latin alphabet, Roman alphabet|N;Abs||||||
 13904||-||||||
 13905|Los Angeles|N;Pl||||||

@@ -10,27 +10,27 @@ import android.support.annotation.NonNull;
 @Entity(tableName = IndexRomaji.TABLE_NAME)
 public class IndexRomaji {
 
-    static final String TABLE_NAME = "latin_index_table";
-    static final String COLUMN_ROMAJI = "romaji";
+    static final String TABLE_NAME = "romaji_index_table";
+    static final String COLUMN_VALUE = "value";
     private static final String WORD_IDS = "word_ids";
 
     IndexRomaji() { }
 
     @Ignore
     IndexRomaji(@NonNull String english, String wordIds) {
-        this.romaji = english;
+        this.value = english;
         this.wordIds = wordIds;
     }
 
     @PrimaryKey()
-    @ColumnInfo(index = true, name = COLUMN_ROMAJI)
+    @ColumnInfo(index = true, name = COLUMN_VALUE)
     @NonNull
-    private String romaji = ".";
-    public void setRomaji(@NonNull String romaji) {
-        this.romaji = romaji;
+    private String value = ".";
+    public void setValue(@NonNull String value) {
+        this.value = value;
     }
-    @NonNull public String getRomaji() {
-        return romaji;
+    @NonNull public String getValue() {
+        return value;
     }
 
     @ColumnInfo(name = WORD_IDS)

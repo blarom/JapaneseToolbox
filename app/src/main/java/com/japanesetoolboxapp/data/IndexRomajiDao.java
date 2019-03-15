@@ -29,15 +29,15 @@ public interface IndexRomajiDao {
     List<IndexRomaji> getAllLatinIndexes();
 
     //Get a IndexRomaji by Exact query match
-    @Query("SELECT * FROM " + IndexRomaji.TABLE_NAME + " WHERE " + IndexRomaji.COLUMN_ROMAJI + " LIKE :query")
-    IndexRomaji getIndexRomajiByExactLatinQuery(String query);
+    @Query("SELECT * FROM " + IndexRomaji.TABLE_NAME + " WHERE " + IndexRomaji.COLUMN_VALUE + " LIKE :query")
+    IndexRomaji getIndexByExactQuery(String query);
 
     //Get a IndexRomaji list by similar latin index query match - see: https://stackoverflow.com/questions/44234644/android-rooms-search-in-string
-    @Query("SELECT * FROM " + IndexRomaji.TABLE_NAME + " WHERE " + IndexRomaji.COLUMN_ROMAJI + " LIKE :query  || '%' ")
-    List<IndexRomaji> getIndexRomajiByStartingLatinQuery(String query);
+    @Query("SELECT * FROM " + IndexRomaji.TABLE_NAME + " WHERE " + IndexRomaji.COLUMN_VALUE + " LIKE :query  || '%' ")
+    List<IndexRomaji> getIndexByStartingQuery(String query);
 
     //Delete a IndexRomaji by Latin
-    @Query("DELETE FROM " + IndexRomaji.TABLE_NAME + " WHERE " + IndexRomaji.COLUMN_ROMAJI + " = :romaji")
+    @Query("DELETE FROM " + IndexRomaji.TABLE_NAME + " WHERE " + IndexRomaji.COLUMN_VALUE + " = :romaji")
     int deletIndexByRomaji(String romaji);
 
     @Delete

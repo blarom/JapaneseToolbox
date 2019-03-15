@@ -231,11 +231,29 @@ public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
         return word().count();
     }
 
-    public List<IndexEnglish> getLatinIndexesListForStartingWord(String query) {
-        return this.indexEnglish().getLatinIndexByStartingLatinQuery(query);
+    public List<IndexRomaji> getRomajiIndexesListForStartingWord(String query) {
+        return this.indexRomaji().getIndexByStartingQuery(query);
     }
-    public IndexEnglish getLatinIndexForExactWord(String query) {
-        return this.indexEnglish().getLatinIndexByExactLatinQuery(query);
+    public IndexRomaji getRomajiIndexForExactWord(String query) {
+        return this.indexRomaji().getIndexByExactQuery(query);
+    }
+    public List<IndexEnglish> getEnglishIndexesListForStartingWord(String query) {
+        return this.indexEnglish().getIndexByStartingQuery(query);
+    }
+    public IndexEnglish getEnglishIndexForExactWord(String query) {
+        return this.indexEnglish().getIndexByExactQuery(query);
+    }
+    public List<IndexFrench> getFrenchIndexesListForStartingWord(String query) {
+        return this.indexFrench().getIndexByStartingQuery(query);
+    }
+    public IndexFrench getFrenchIndexForExactWord(String query) {
+        return this.indexFrench().getIndexByExactQuery(query);
+    }
+    public List<IndexSpanish> getSpanishIndexesListForStartingWord(String query) {
+        return this.indexSpanish().getIndexByStartingQuery(query);
+    }
+    public IndexSpanish getSpanishIndexForExactWord(String query) {
+        return this.indexSpanish().getIndexByExactQuery(query);
     }
     public IndexKanji getKanjiIndexForExactWord(String query) {
         return indexKanji().getKanjiIndexByExactUTF8Query(query);
