@@ -18,14 +18,19 @@ public class Word implements Parcelable {
 
     public static final String TABLE_NAME = "words_table";
     public static final String COLUMN_ID = BaseColumns._ID;
-    private static final String COLUMN_WORD_KEYWORDS = "keywords";
     private static final String COLUMN_WORD_UNIQUE_ID = "uniqueIdentifier";
     static final String COLUMN_WORD_ROMAJI = "romaji";
     static final String COLUMN_WORD_KANJI = "kanji";
     private static final String COLUMN_WORD_ALT_SPELLINGS = "altSpellings";
-    private static final String COLUMN_WORD_MEANINGS = "meanings";
+    private static final String COLUMN_WORD_MEANINGS_EN = "meaningsEN";
+    private static final String COLUMN_WORD_MEANINGS_FR = "meaningsFR";
+    private static final String COLUMN_WORD_MEANINGS_ES = "meaningsES";
+    private static final String COLUMN_WORD_EXTRA_KEYWORDS_EN = "extraKeywordsEN";
+    private static final String COLUMN_WORD_EXTRA_KEYWORDS_FR = "extraKeywordsFR";
+    private static final String COLUMN_WORD_EXTRA_KEYWORDS_ES = "extraKeywordsES";
     private static final String COLUMN_WORD_COMMON_STATUS = "isCommon";
     private static final String COLUMN_WORD_IS_LOCAL = "isLocal";
+    private static final String COLUMN_WORD_KEYWORDS_JAP = "keywordsJAP";
 
     public Word() {
     }
@@ -33,7 +38,7 @@ public class Word implements Parcelable {
 
     Word(Parcel in) {
         id = in.readLong();
-        keywords = in.readString();
+        extraKeywordsEN = in.readString();
         uniqueIdentifier = in.readString();
         romaji = in.readString();
         kanji = in.readString();
@@ -62,15 +67,6 @@ public class Word implements Parcelable {
     }
     public void setWordId(long new_id) {
         id = new_id;
-    }
-
-    @ColumnInfo(name = COLUMN_WORD_KEYWORDS)
-    private String keywords;
-    public void setKeywords(String keywords) {
-        this.keywords = keywords;
-    }
-    public String getKeywords() {
-        return keywords;
     }
 
     @ColumnInfo(name = COLUMN_WORD_UNIQUE_ID)
@@ -121,6 +117,15 @@ public class Word implements Parcelable {
         return isCommon;
     }
 
+    @ColumnInfo(name = COLUMN_WORD_KEYWORDS_JAP)
+    private String extraKeywordsJAP;
+    public void setExtraKeywordsJAP(String extraKeywordsJAP) {
+        this.extraKeywordsJAP = extraKeywordsJAP;
+    }
+    public String getExtraKeywordsJAP() {
+        return extraKeywordsJAP;
+    }
+
     @ColumnInfo(name = COLUMN_WORD_IS_LOCAL)
     private boolean isLocal = true;
     public void setIsLocal(boolean isLocal) {
@@ -131,13 +136,60 @@ public class Word implements Parcelable {
     }
 
     @TypeConverters({JapaneseToolboxDbTypeConverters.class})
-    @ColumnInfo(name = COLUMN_WORD_MEANINGS)
-    private List<Meaning> meanings;
-    public void setMeanings(List<Meaning> meanings) {
-        this.meanings = meanings;
+    @ColumnInfo(name = COLUMN_WORD_MEANINGS_EN)
+    private List<Meaning> meaningsEN;
+    public void setMeaningsEN(List<Meaning> meaningsEN) {
+        this.meaningsEN = meaningsEN;
     }
-    public List<Meaning> getMeanings() {
-        return meanings;
+    public List<Meaning> getMeaningsEN() {
+        return meaningsEN;
+    }
+
+    @ColumnInfo(name = COLUMN_WORD_EXTRA_KEYWORDS_EN)
+    private String extraKeywordsEN;
+    public void setExtraKeywordsEN(String extraKeywordsEN) {
+        this.extraKeywordsEN = extraKeywordsEN;
+    }
+    public String getExtraKeywordsEN() {
+        return extraKeywordsEN;
+    }
+
+    @TypeConverters({JapaneseToolboxDbTypeConverters.class})
+    @ColumnInfo(name = COLUMN_WORD_MEANINGS_FR)
+    private List<Meaning> meaningsFR;
+    public void setMeaningsFR(List<Meaning> meaningsFR) {
+        this.meaningsFR = meaningsFR;
+    }
+    public List<Meaning> getMeaningsFR() {
+        return meaningsFR;
+    }
+
+    @ColumnInfo(name = COLUMN_WORD_EXTRA_KEYWORDS_FR)
+    private String extraKeywordsFR;
+    public void setExtraKeywordsFR(String extraKeywordsFR) {
+        this.extraKeywordsFR = extraKeywordsFR;
+    }
+    public String getExtraKeywordsFR() {
+        return extraKeywordsFR;
+    }
+
+    @TypeConverters({JapaneseToolboxDbTypeConverters.class})
+    @ColumnInfo(name = COLUMN_WORD_MEANINGS_ES)
+    private List<Meaning> meaningsES;
+    public void setMeaningsES(List<Meaning> meaningsES) {
+        this.meaningsES = meaningsES;
+    }
+    public List<Meaning> getMeaningsES() {
+        return meaningsES;
+    }
+
+    @ColumnInfo(name = COLUMN_WORD_EXTRA_KEYWORDS_ES)
+    private String extraKeywordsES;
+    public void setExtraKeywordsES(String extraKeywordsES) {
+        this.extraKeywordsES = extraKeywordsES;
+    }
+    public String getExtraKeywordsES() {
+        return extraKeywordsES;
     }
 
     @Override
@@ -148,7 +200,7 @@ public class Word implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeLong(id);
-        parcel.writeString(keywords);
+        parcel.writeString(extraKeywordsEN);
         parcel.writeString(uniqueIdentifier);
         parcel.writeString(romaji);
         parcel.writeString(kanji);
@@ -173,23 +225,7 @@ public class Word implements Parcelable {
             return meaning;
         }
 
-        private String meaningFR;
-        public void setMeaningFR(String meaningFR) {
-            this.meaningFR = meaningFR;
-        }
-        public String getMeaningFR() {
-            return meaningFR;
-        }
-
-        private String meaningES;
-        public void setMeaningES(String meaningES) {
-            this.meaningES = meaningES;
-        }
-        public String getMeaningES() {
-            return meaningES;
-        }
-
-        private String type;
+        private String type = "";
         public void setType(String type) {
             this.type = type;
         }
@@ -236,22 +272,6 @@ public class Word implements Parcelable {
                 return explanation;
             }
 
-            private String explanationFR;
-            public void setExplanationFR(String explanationFR) {
-                this.explanationFR = explanationFR;
-            }
-            public String getExplanationFR() {
-                return explanationFR;
-            }
-
-            private String explanationES;
-            public void setExplanationES(String explanationES) {
-                this.explanationES = explanationES;
-            }
-            public String getExplanationES() {
-                return explanationES;
-            }
-
             private String rules;
             public void setRules(String rules) {
                 this.rules = rules;
@@ -278,22 +298,6 @@ public class Word implements Parcelable {
                 }
                 public String getEnglishSentence() {
                     return englishSentence;
-                }
-
-                private String frenchSentence;
-                public void setFrenchSentence(String frenchSentence) {
-                    this.frenchSentence = frenchSentence;
-                }
-                public String gettFrenchSentence() {
-                    return frenchSentence;
-                }
-
-                private String spanishSentence;
-                public void setSpanishSentence(String spanishSentence) {
-                    this.spanishSentence = spanishSentence;
-                }
-                public String getSpanishSentence() {
-                    return spanishSentence;
                 }
 
                 private String romajiSentence;

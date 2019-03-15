@@ -215,9 +215,9 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             String romaji = word.getRomaji();
             String kanji = word.getKanji();
             String alternatespellings = word.getAltSpellings();
-            String keywords = word.getKeywords();
+            String keywords = word.getExtraKeywordsEN();
             String type = "";
-            List<Word.Meaning> meanings = word.getMeanings();
+            List<Word.Meaning> meanings = word.getMeaningsEN();
 
             listMeaningExtract.add(Utilities.getMeaningsExtract(meanings, 4));
 
@@ -337,7 +337,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         String synonym;
         int startIndex;
         int endIndex = 0;
-        List<Word.Meaning> meanings = mWordsList.get(position).getMeanings();
+        List<Word.Meaning> meanings = mWordsList.get(position).getMeaningsEN();
 
         for (Word.Meaning wordMeaning : meanings) {
             meaning = wordMeaning.getMeaning();

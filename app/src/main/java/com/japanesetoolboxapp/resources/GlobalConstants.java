@@ -8,16 +8,21 @@ public final class GlobalConstants {
     // Defining the column title (and index) of each column in the excel files
 
     public static final int COLUMN_WORD_ID                      = ColIndexConverter("a");
-    public static final int COLUMN_KEYWORDS                     = ColIndexConverter("b");
-    public static final int COLUMN_ROMAJI                       = ColIndexConverter("c");
-    public static final int COLUMN_KANA                         = ColIndexConverter("d");
-    public static final int COLUMN_MEANING_INDEXES              = ColIndexConverter("e");
-    public static final int COLUMN_ALT_SPELLINGS                = ColIndexConverter("f");
-    public static final int COLUMN_COMMON                       = ColIndexConverter("g");
-    public static final int COLUMN_PREPOSITION                  = ColIndexConverter("i");
-    public static final int COLUMN_KANJI_ROOT                   = ColIndexConverter("j");
-    public static final int COLUMN_LATIN_ROOT                   = ColIndexConverter("k");
-    public static final int COLUMN_EXCEPTION_INDEX              = ColIndexConverter("l");
+    public static final int COLUMN_ROMAJI                       = ColIndexConverter("b");
+    public static final int COLUMN_KANJI                        = ColIndexConverter("c");
+    public static final int COLUMN_ALT_SPELLINGS                = ColIndexConverter("d");
+    public static final int COLUMN_COMMON                       = ColIndexConverter("e");
+    public static final int COLUMN_EXTRA_KEYWORDS_JAP           = ColIndexConverter("f");
+    public static final int COLUMN_PREPOSITION                  = ColIndexConverter("g");
+    public static final int COLUMN_KANJI_ROOT                   = ColIndexConverter("h");
+    public static final int COLUMN_LATIN_ROOT                   = ColIndexConverter("i");
+    public static final int COLUMN_EXCEPTION_INDEX              = ColIndexConverter("j");
+    public static final int COLUMN_MEANING_EN_INDEXES           = ColIndexConverter("k");
+    public static final int COLUMN_EXTRA_KEYWORDS_EN            = ColIndexConverter("l");
+    public static final int COLUMN_MEANING_FR_INDEXES           = ColIndexConverter("m");
+    public static final int COLUMN_EXTRA_KEYWORDS_FR            = ColIndexConverter("n");
+    public static final int COLUMN_MEANING_ES_INDEXES           = ColIndexConverter("o");
+    public static final int COLUMN_EXTRA_KEYWORDS_ES            = ColIndexConverter("p");
 
     public static final int COLUMN_MEANINGS_MEANING             = ColIndexConverter("b");
     public static final int COLUMN_MEANINGS_TYPE                = ColIndexConverter("c");

@@ -457,7 +457,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
         List<long[]> matchingVerbIdsAndColsFromBasicCharacteristics = new ArrayList<>();
         int counter = 0;
         for (Word word : mMatchingWords) {
-            type = word.getMeanings().get(0).getType();
+            type = word.getMeaningsEN().get(0).getType();
 
             //Preventing the input query being a suru verb conjugation from overloading the results
             if (queryIsContainedInASuruConjugation && word.getRomaji().contains(" suru")) {
@@ -838,9 +838,9 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
             //region Setting the verb's basic characteristics for display
             StringBuilder stringBuilder = new StringBuilder();
-            for (int i=0; i< currentWord.getMeanings().size(); i++) {
+            for (int i = 0; i< currentWord.getMeaningsEN().size(); i++) {
                 if (i != 0) stringBuilder.append(", ");
-                stringBuilder.append(currentWord.getMeanings().get(i).getMeaning());
+                stringBuilder.append(currentWord.getMeaningsEN().get(i).getMeaning());
             }
             currentVerb.setMeaning(stringBuilder.toString());
 

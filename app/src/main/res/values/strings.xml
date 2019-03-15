@@ -18,7 +18,7 @@
     <string name="about">About</string>
 
     <!--Preferences Strings-->
-    <string name="hidden_online_search">Don\&apos;t get words and meanings online</string>
+    <string name="hidden_online_search">Don\&apos;t get words and meaningsEN online</string>
     <string name="shown_online_search">Merge online search results with local results</string>
     <string name="wait_for_online_results_off">Display the list immediately when finding results, and refresh it when getting online results</string>
     <string name="wait_for_online_results_on">Wait for online results before showing the list</string>
@@ -50,7 +50,7 @@
     <string name="language_label_japanese">Japanese</string>
     <string name="language_label_english">English (US)</string>
     <string name="pref_preferred_language_value_japanese" translatable="false">japanese</string>
-    <string name="pref_preferred_language_value_english" translatable="false">english</string>
+    <string name="pref_preferred_language_value_english" translatable="false">romaji</string>
     <string name="pref_preferred_STT_language">Speech-To-Text Language</string>
     <string name="pref_preferred_STT_language_key" translatable="false">preferred_STT_result</string>
     <string name="pref_preferred_STT_language_japanese" translatable="false">preferred_STT_language_japanese</string>
@@ -218,7 +218,7 @@
     </string>
     <string name="AboutTextIntro2">
         The app is designed to help you decipher texts in intermediate to advanced Japanese at a faster pace than other tools,
-        allowing you to understand the meanings and components of every word or phrase you read.
+        allowing you to understand the meaningsEN and components of every word or phrase you read.
     </string>
     <string name="AboutTextIntro3">
         The app does not depend on an Internet connection, so you can use it whenever and wherever you want.
@@ -235,7 +235,7 @@
         Better than most online reference tools, you can find explanations on any grammar rule just by entering a relevant keyword, even partially.
     </string>
     <string name="AboutTextButtonsDictParagraph3">
-        I manually expanded the dictionary over the years with extra meanings and alternate word forms, so you will find words that many online dictionaries fail to find.
+        I manually expanded the dictionary over the years with extra meaningsEN and alternate word forms, so you will find words that many online dictionaries fail to find.
     </string>
     <string name="AboutTextButtonsDictParagraph4">
         If there is Internet access then online results are added (you can change this in the Settings menu).
@@ -270,7 +270,7 @@
     </string>
     <string name="AboutTextButtonsDecomposeTitle">好 &#8658; 女+子</string>
     <string name="AboutTextButtonsDecomposeParagraph1">
-        Get the meanings and readings of all of the components in a given Kanji, recursively.
+        Get the meaningsEN and readings of all of the components in a given Kanji, recursively.
     </string>
     <string name="AboutTextButtonsDecomposeParagraph2">
         Very useful if you want ot understand Kanjis through their radicals.
@@ -334,7 +334,7 @@
     </string>
     <string name="AboutTextCreditsDatabasesParagraph2">
         The local dictionary is a reduced form of the open-source EDICT dictionary, which I modified and manually upgraded to suit the app\'s needs.
-        Some other sources were used, including wiktionary.org for updating the suru verb meanings.
+        Some other sources were used, including wiktionary.org for updating the suru verb meaningsEN.
     </string>
 
     <string name="AboutTextDisclaimer1">
@@ -404,7 +404,7 @@
     <string name="sure_you_want_to_exit">Are you sure you want to exit the app?</string>
     <string name="yes">Yes</string>
     <string name="no_matching_words_online">No matching words found online.</string>
-    <string name="no_new_words_or_meanings_found_online">No new words or meanings found online.</string>
+    <string name="no_new_words_or_meanings_found_online">No new words or meaningsEN found online.</string>
     <string name="structure_">Structure:\u0020</string>
     <string name="properties_">Properties:\u0020</string>
     <string name="this_component_is_a_CJK_character">This component is a CJK Character.</string>

@@ -425,7 +425,7 @@ public class MainActivity extends AppCompatActivity implements
         else if (fromConjSearch) {
             mInputQueryFragment.updateQueryDefinitionInHistory(
                     matchingWords.get(0).getRomaji(),
-                    Utilities.getMeaningsExtract(matchingWords.get(0).getMeanings(), 2)
+                    Utilities.getMeaningsExtract(matchingWords.get(0).getMeaningsEN(), 2)
             );
         }
         else {
@@ -435,7 +435,7 @@ public class MainActivity extends AppCompatActivity implements
                         || Utilities.getRomajiNoSpacesForSpecialPartsOfSpeech(word.getRomaji())
                             .equals(ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN)) ) {
                     romaji = word.getRomaji();
-                    meaning = word.getMeanings().size() > 0 ? Utilities.getMeaningsExtract(word.getMeanings(), 2) : "";
+                    meaning = word.getMeaningsEN().size() > 0 ? Utilities.getMeaningsExtract(word.getMeaningsEN(), 2) : "";
                     break;
                 }
             }
@@ -445,7 +445,7 @@ public class MainActivity extends AppCompatActivity implements
                     List<String> altSpellings = (word.getAltSpellings() != null) ? Arrays.asList(word.getAltSpellings().split(",")) : new ArrayList<String>();
                     if (altSpellings.contains(mInputQuery)) {
                         romaji = word.getRomaji();
-                        meaning = word.getMeanings().size() > 0 ? Utilities.getMeaningsExtract(word.getMeanings(), 2) : "";
+                        meaning = word.getMeaningsEN().size() > 0 ? Utilities.getMeaningsExtract(word.getMeaningsEN(), 2) : "";
                         break;
                     }
                 }
@@ -454,7 +454,7 @@ public class MainActivity extends AppCompatActivity implements
             if (romaji.equals("")) {
                 for (Word word : matchingWords) {
                     List<String> wordsInMeanings = new ArrayList<>();
-                    for (Word.Meaning wordMeaning : word.getMeanings()) {
+                    for (Word.Meaning wordMeaning : word.getMeaningsEN()) {
                         wordsInMeanings.add(wordMeaning.getMeaning()
                                 .replace(", ", ";")
                                 .replace("(", "")
@@ -467,7 +467,7 @@ public class MainActivity extends AppCompatActivity implements
                     }
                     if (wordsInMeanings.contains(mInputQuery)) {
                         romaji = word.getRomaji();
-                        meaning = word.getMeanings().size() > 0 ? Utilities.getMeaningsExtract(word.getMeanings(), 2) : "";
+                        meaning = word.getMeaningsEN().size() > 0 ? Utilities.getMeaningsExtract(word.getMeaningsEN(), 2) : "";
                         break;
                     }
                 }

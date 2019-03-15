@@ -239,7 +239,7 @@ public class DictionaryFragment extends Fragment implements
                 Word word = mMatchingWordsFromVerbs.get(i);
                 String matchingConjugation = (String) mMatchingConjugationParameters.get(i)[VerbSearchAsyncTaskLoader.MATCHING_CONJUGATION];
                 word.setIsLocal(true);
-                word.setKeywords(word.getKeywords() + ", " + matchingConjugation);
+                word.setExtraKeywordsEN(word.getExtraKeywordsEN() + ", " + matchingConjugation);
             }
 
             Log.i(DEBUG_TAG, "Displaying Verb merged words");

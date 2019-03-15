@@ -7,30 +7,30 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 
-@Entity(tableName = LatinIndex.TABLE_NAME)
-public class LatinIndex {
+@Entity(tableName = IndexFrench.TABLE_NAME)
+public class IndexFrench {
 
     static final String TABLE_NAME = "latin_index_table";
-    static final String COLUMN_LATIN = "latin";
+    static final String COLUMN_FRENCH = "french";
     private static final String WORD_IDS = "word_ids";
 
-    LatinIndex() { }
+    IndexFrench() { }
 
     @Ignore
-    LatinIndex(@NonNull String latin, String wordIds) {
-        this.latin = latin;
+    IndexFrench(@NonNull String french, String wordIds) {
+        this.french = french;
         this.wordIds = wordIds;
     }
 
     @PrimaryKey()
-    @ColumnInfo(index = true, name = COLUMN_LATIN)
+    @ColumnInfo(index = true, name = COLUMN_FRENCH)
     @NonNull
-    private String latin = ".";
-    public void setLatin(@NonNull String latin) {
-        this.latin = latin;
+    private String french = ".";
+    public void setFrench(@NonNull String french) {
+        this.french = french;
     }
-    @NonNull public String getLatin() {
-        return latin;
+    @NonNull public String getFrench() {
+        return french;
     }
 
     @ColumnInfo(name = WORD_IDS)

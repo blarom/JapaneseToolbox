@@ -7,18 +7,18 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 
-@Entity(tableName = KanjiIndex.TABLE_NAME)
-public class KanjiIndex {
+@Entity(tableName = IndexKanji.TABLE_NAME)
+public class IndexKanji {
 
     static final String TABLE_NAME = "kanji_index_table";
     static final String COLUMN_KANA = "kana";
     private static final String WORD_IDS = "word_ids";
     static final String COLUMN_KANA_IDS = "kana_ids";
 
-    KanjiIndex() { }
+    IndexKanji() { }
 
     @Ignore
-    KanjiIndex(String kana, String wordIds, @NonNull String kanaIds) {
+    IndexKanji(String kana, String wordIds, @NonNull String kanaIds) {
         this.kana = kana;
         this.wordIds = wordIds;
         this.kanaIds = kanaIds;
