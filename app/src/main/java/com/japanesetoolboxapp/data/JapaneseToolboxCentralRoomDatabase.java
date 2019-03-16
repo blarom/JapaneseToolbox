@@ -16,7 +16,15 @@ import com.japanesetoolboxapp.resources.Utilities;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {Word.class, Verb.class, IndexKanji.class, IndexEnglish.class}, version = 65, exportSchema = false)
+@Database(entities = {Word.class,
+                        Verb.class,
+                        IndexRomaji.class,
+                        IndexEnglish.class,
+                        IndexFrench.class,
+                        IndexSpanish.class,
+                        IndexKanji.class},
+                    version = 66,
+                    exportSchema = false)
 public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
@@ -92,7 +100,7 @@ public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
         List<String[]> typesDatabase            = Utilities.readCSVFile("LineTypes - 3000 kanji.csv", context);
         List<String[]> grammarDatabase          = Utilities.readCSVFile("LineGrammar - 3000 kanji.csv", context);
         List<String[]> verbsDatabase     	    = Utilities.readCSVFile("LineVerbsForGrammar - 3000 kanji.csv", context);
-        List<String[]> meaningsENDatabase         = Utilities.readCSVFile("LineMeanings - 3000 kanji.csv", context);
+        List<String[]> meaningsENDatabase       = Utilities.readCSVFile("LineMeanings - 3000 kanji.csv", context);
         List<String[]> meaningsFRDatabase       = Utilities.readCSVFile("LineMeaningsFR - 3000 kanji.csv", context);
         List<String[]> meaningsESDatabase       = Utilities.readCSVFile("LineMeaningsES - 3000 kanji.csv", context);
         List<String[]> multExplanationsDatabase = Utilities.readCSVFile("LineMultExplanations - 3000 kanji.csv", context);

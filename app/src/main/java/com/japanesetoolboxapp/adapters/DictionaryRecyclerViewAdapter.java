@@ -54,6 +54,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     private final LinearLayout.LayoutParams mChildLineParams;
     private final LinearLayout.LayoutParams mubChildLineParams;
     private boolean mShowSources = false;
+    private String mUILanguage;
 
     public DictionaryRecyclerViewAdapter(Context context, DictionaryItemClickHandler listener , List<Word> wordsList, HashMap<String, String> legendDatabase, String inputQuery) {
         this.mContext = context;
@@ -73,6 +74,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         mChildLineParams.setMargins(0, 16, 0, 16);
         mubChildLineParams = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT, 2 );
         mubChildLineParams.setMargins(128, 16, 128, 4);
+
+        mUILanguage = "EN";
 
         prepareLayoutTexts();
     }
@@ -138,7 +141,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         if (romaji.equals("") && kanji.equals("")) { holder.romajiAndKanjiTextView.setVisibility(View.GONE); }
         else { holder.romajiAndKanjiTextView.setVisibility(View.VISIBLE); }
 
-        holder.meaningsTextView.setText(Utilities.removeDuplicatesFromCommaList(listMeaningExtract.get(position)));
+        holder.meaningsTextView.setText(listMeaningExtract.get(position));
         //endregion
 
         //region Updating the child values
@@ -217,9 +220,20 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             String alternatespellings = word.getAltSpellings();
             String keywords = word.getExtraKeywordsEN();
             String type = "";
-            List<Word.Meaning> meanings = word.getMeaningsEN();
+            List<Word.Meaning> meanings = new ArrayList<>();
+            switch (mUILanguage) {
+                case "EN":
+                    meanings = word.getMeaningsEN();
+                    break;
+                case "FR":
+                    meanings = word.getMeaningsFR();
+                    break;
+                case "ES":
+                    meanings = word.getMeaningsES();
+                    break;
+            }
 
-            listMeaningExtract.add(Utilities.getMeaningsExtract(meanings, 4));
+            listMeaningExtract.add(Utilities.removeDuplicatesFromCommaList(Utilities.getMeaningsExtract(meanings, 4)));
 
             StringBuilder cumulative_meaning_value = new StringBuilder();
             boolean wordHasPhraseConstruction = false;
@@ -337,7 +351,18 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         String synonym;
         int startIndex;
         int endIndex = 0;
-        List<Word.Meaning> meanings = mWordsList.get(position).getMeaningsEN();
+        List<Word.Meaning> meanings = new ArrayList<>();
+        switch (mUILanguage) {
+            case "EN":
+                meanings = mWordsList.get(position).getMeaningsEN();
+                break;
+            case "FR":
+                meanings = mWordsList.get(position).getMeaningsFR();
+                break;
+            case "ES":
+                meanings = mWordsList.get(position).getMeaningsES();
+                break;
+        }
 
         for (Word.Meaning wordMeaning : meanings) {
             meaning = wordMeaning.getMeaning();
@@ -411,7 +436,6 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             //endregion
 
             //regionSetting the synonym
-
             if (!synonym.equals("")) {
                 String fullSynonym = "Synonyms: " + synonym;
                 SpannableString fullSynonymSpannable = new SpannableString(fullSynonym);

@@ -1398,15 +1398,15 @@ public final class Utilities {
 
         //Finding the meanings using the supplied index
         String MM_indexEN = centralDatabase.get(centralDbRowIndex)[meaningsColumn];
-        List<String> MM_index_listEN = Arrays.asList(MM_indexEN.split(";"));
-        if (MM_index_listEN.size() == 0) { return new ArrayList<>(); }
+        List<String> MM_index_list = Arrays.asList(MM_indexEN.split(";"));
+        if (MM_index_list.size() == 0 || MM_index_list.get(0).equals("")) { return new ArrayList<>(); }
 
         List<Word.Meaning> meaningsList = new ArrayList<>();
         int current_MM_index;
-        for (int i=0; i< MM_index_listEN.size(); i++) {
+        for (int i=0; i< MM_index_list.size(); i++) {
 
             Word.Meaning meaning = new Word.Meaning();
-            current_MM_index = Integer.parseInt(MM_index_listEN.get(i))-1;
+            current_MM_index = Integer.parseInt(MM_index_list.get(i))-1;
             current_meaning_characteristics = meaningsDatabase.get(current_MM_index);
 
             //Getting the Meaning value
