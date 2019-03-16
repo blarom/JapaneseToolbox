@@ -23,7 +23,7 @@ import java.util.List;
                         IndexFrench.class,
                         IndexSpanish.class,
                         IndexKanji.class},
-                    version = 66,
+                    version = 73,
                     exportSchema = false)
 public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
@@ -136,6 +136,7 @@ public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
         word().insertAll(wordList);
         Log.i("Diagnosis Time","Loaded Words Database.");
 
+        //TODO: problem is not here, shukujo not found in dB - double-check loading of fr and es meanings
         List<Verb> verbList = new ArrayList<>();
         for (int i=1; i<verbsDatabase.size(); i++) {
             if (verbsDatabase.get(i)[0].equals("")) break;

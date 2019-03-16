@@ -367,6 +367,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 meanings = mWordsList.get(position).getMeaningsES();
                 break;
         }
+        if (meanings == null) return;
 
         for (Word.Meaning wordMeaning : meanings) {
             meaning = wordMeaning.getMeaning();
