@@ -43,6 +43,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     private final String mInputQuery;
     private final int mInputQueryTextType;
     private final String mInputQueryFirstLetter;
+    private boolean[] mActiveMeaningLanguages;
     private boolean[] mChildIsVisible;
     private List<Word> mWordsList;
     final private DictionaryItemClickHandler mOnItemClickHandler;
@@ -76,6 +77,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         mubChildLineParams.setMargins(128, 16, 128, 4);
 
         mUILanguage = "EN";
+        mActiveMeaningLanguages = new boolean[]{true, false, false};
 
         prepareLayoutTexts();
     }
@@ -196,7 +198,9 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         //endregion
 
         //region Setting the wordMeaning elements
-        setMeaningsLayout(position, holder);
+        if (mActiveMeaningLanguages[GlobalConstants.LANG_EN]) setMeaningsLayout(position, holder, GlobalConstants.LANG_EN);
+        if (mActiveMeaningLanguages[GlobalConstants.LANG_FR]) setMeaningsLayout(position, holder, GlobalConstants.LANG_FR);
+        if (mActiveMeaningLanguages[GlobalConstants.LANG_ES]) setMeaningsLayout(position, holder, GlobalConstants.LANG_ES);
         //endregion
 
         //endregion
@@ -341,7 +345,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
         }
     }
-    private void setMeaningsLayout(int position, DictItemViewHolder holder) {
+    private void setMeaningsLayout(int position, DictItemViewHolder holder, int language) {
 
         View line;
         String type;
@@ -352,14 +356,14 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         int startIndex;
         int endIndex = 0;
         List<Word.Meaning> meanings = new ArrayList<>();
-        switch (mUILanguage) {
-            case "EN":
+        switch (language) {
+            case GlobalConstants.LANG_EN:
                 meanings = mWordsList.get(position).getMeaningsEN();
                 break;
-            case "FR":
+            case GlobalConstants.LANG_FR:
                 meanings = mWordsList.get(position).getMeaningsFR();
                 break;
-            case "ES":
+            case GlobalConstants.LANG_ES:
                 meanings = mWordsList.get(position).getMeaningsES();
                 break;
         }
@@ -699,6 +703,9 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     }
     public void setShowSources(boolean state) {
         mShowSources = state;
+    }
+    public void setActiveMeaningLanguages(boolean[] activeMeaningLanguages) {
+        mActiveMeaningLanguages = activeMeaningLanguages;
     }
 
     public class DictItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

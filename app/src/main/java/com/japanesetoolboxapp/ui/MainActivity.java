@@ -107,6 +107,9 @@ public class MainActivity extends AppCompatActivity implements
     private List<Word> mLocalMatchingWords;
     private String mInputQuery;
     private List<String> mQueryHistory;
+    private boolean mMeaningsEN;
+    private boolean mMeaningsFR;
+    private boolean mMeaningsES;
     //endregion
 
 
@@ -227,6 +230,15 @@ public class MainActivity extends AppCompatActivity implements
         else if (key.equals(getString(R.string.pref_show_sources_key))) {
             setShowSources(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_sources_default)));
         }
+        else if (key.equals(getString(R.string.pref_show_meanings_EN_key))) {
+            setShowMeaningsEN(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_meanings_EN_default)));
+        }
+        else if (key.equals(getString(R.string.pref_show_meanings_FR_key))) {
+            setShowMeaningsFR(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_meanings_FR_default)));
+        }
+        else if (key.equals(getString(R.string.pref_show_meanings_ES_key))) {
+            setShowMeaningsES(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_meanings_ES_default)));
+        }
         else if (key.equals(getString(R.string.pref_show_info_boxes_on_search_key))) {
             setShowInfoBoxesOnSearch(sharedPreferences.getBoolean(key, getResources().getBoolean(R.bool.pref_show_info_boxes_on_search_default)));
         }
@@ -291,6 +303,15 @@ public class MainActivity extends AppCompatActivity implements
     }
     private void setShowSources(boolean state) {
         mShowSources = state;
+    }
+    private void setShowMeaningsEN(boolean state) {
+        mMeaningsEN = state;
+    }
+    private void setShowMeaningsFR(boolean state) {
+        mMeaningsFR = state;
+    }
+    private void setShowMeaningsES(boolean state) {
+        mMeaningsES = state;
     }
     private void setShowInfoBoxesOnSearch(boolean state) {
         mShowInfoBoxesOnSearch = state;

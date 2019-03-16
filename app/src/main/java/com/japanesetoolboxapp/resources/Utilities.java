@@ -2930,6 +2930,33 @@ public final class Utilities {
         }
         return state;
     }
+    public static boolean getPreferenceShowMeaningsEN(Activity activity) {
+        boolean state = false;
+        if (activity!=null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+            state = sharedPreferences.getBoolean(activity.getString(R.string.pref_show_meanings_EN_key),
+                    activity.getResources().getBoolean(R.bool.pref_show_meanings_EN_default));
+        }
+        return state;
+    }
+    public static boolean getPreferenceShowMeaningsFR(Activity activity) {
+        boolean state = false;
+        if (activity!=null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+            state = sharedPreferences.getBoolean(activity.getString(R.string.pref_show_meanings_FR_key),
+                    activity.getResources().getBoolean(R.bool.pref_show_meanings_FR_default));
+        }
+        return state;
+    }
+    public static boolean getPreferenceShowMeaningsES(Activity activity) {
+        boolean state = false;
+        if (activity!=null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+            state = sharedPreferences.getBoolean(activity.getString(R.string.pref_show_meanings_ES_key),
+                    activity.getResources().getBoolean(R.bool.pref_show_meanings_ES_default));
+        }
+        return state;
+    }
     public static Boolean getPreferenceShowInfoBoxesOnSearch(Activity activity) {
         boolean showInfoBoxesOnSearch = false;
         if (activity!=null) {

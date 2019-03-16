@@ -65,6 +65,30 @@
         android:title="@string/pref_show_sources" />
 
     <PreferenceCategory
+        android:title="Languages" />
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_show_meanings_EN_default"
+        android:key="@string/pref_show_meanings_EN_key"
+        android:summaryOff="@string/show_meanings_EN_off"
+        android:summaryOn="@string/show_meanings_EN_on"
+        android:title="@string/pref_show_meanings_EN" />
+    
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_show_meanings_FR_default"
+        android:key="@string/pref_show_meanings_FR_key"
+        android:summaryOff="@string/show_meanings_FR_off"
+        android:summaryOn="@string/show_meanings_FR_on"
+        android:title="@string/pref_show_meanings_FR" />
+    
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_show_meanings_ES_default"
+        android:key="@string/pref_show_meanings_ES_key"
+        android:summaryOff="@string/show_meanings_ES_off"
+        android:summaryOn="@string/show_meanings_ES_on"
+        android:title="@string/pref_show_meanings_ES" />
+
+    <PreferenceCategory
         android:title="Speech" />
 
     <ListPreference

@@ -298,6 +298,11 @@ public class DictionaryFragment extends Fragment implements
             showLoadingIndicator();
 
             mDictionaryRecyclerViewAdapter.setShowSources(Utilities.getPreferenceShowSources(getActivity()));
+            mDictionaryRecyclerViewAdapter.setActiveMeaningLanguages(new boolean[]{
+                    Utilities.getPreferenceShowMeaningsEN(getActivity()),
+                    Utilities.getPreferenceShowMeaningsFR(getActivity()),
+                    Utilities.getPreferenceShowMeaningsES(getActivity()),
+            });
 
             findMatchingWordsInRoomDb();
             if (Utilities.getPreferenceShowConjResults(getActivity())) {
