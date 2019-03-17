@@ -608,7 +608,7 @@ public class SearchByRadicalFragment extends Fragment implements
 
         mSelectedComponent = "";
         mComponentSelectionType = "radical";
-        mSelectionGridTitleTextView.setText("Select the Radical");
+        mSelectionGridTitleTextView.setText(R.string.select_the_radical);
         showComponentsSelectionSection();
 
         startCreatingComponentKanjiGridElementsAsynchronously();
@@ -618,7 +618,7 @@ public class SearchByRadicalFragment extends Fragment implements
 
         mSelectedComponent = "";
         mComponentSelectionType = "component";
-        mSelectionGridTitleTextView.setText("Select the Component");
+        mSelectionGridTitleTextView.setText(R.string.select_the_component);
         showComponentsSelectionSection();
 
         startCreatingComponentKanjiGridElementsAsynchronously();

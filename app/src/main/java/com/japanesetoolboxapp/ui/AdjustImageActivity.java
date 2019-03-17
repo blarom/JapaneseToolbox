@@ -187,9 +187,12 @@ public class AdjustImageActivity extends AppCompatActivity {
             float brightnessDisplay = (float) brightnessValue/256;
             float saturationDisplay = saturationValue;
 
-            contrastText.setText("Contrast: " + String.valueOf(contrastDisplay));
-            brightnessText.setText("Brightness: " + String.valueOf(brightnessDisplay));
-            saturationText.setText("Saturation: " + String.valueOf(saturationDisplay));
+            String text = getString(R.string.contrast_) + String.valueOf(contrastDisplay);
+            contrastText.setText(text);
+            text = getString(R.string.brightness_) + String.valueOf(brightnessDisplay);
+            brightnessText.setText(text);
+            text = getString(R.string.saturation_) + String.valueOf(saturationDisplay);
+            saturationText.setText(text);
 
             Bitmap result = adjustImageContrastAndBrightness(bitmapMaster, contrastValue, brightnessValue);
             result = adjustBitmapSaturation(result, saturationValue);

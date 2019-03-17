@@ -437,7 +437,6 @@
     <string name="filter_list">Filter List</string>
     <string name="send_to_input">Send to input</string>
     <string name="send_to_element">Send to element</string>
-    <string name="no_elements_found">No elements found.</string>
     <string name="dropdown_arrow">dropdown arrow</string>
     <string name="decomposition_kanji_list_index">decomposition_kanji_list_index</string>
     <string name="done">Done</string>
@@ -446,4 +445,35 @@
     <string name="less_common_word">Less Common word.</string>
     <string name="source_local_offline">Source: local (offline).</string>
     <string name="source_edict_online">Source: EDICT (online).</string>
+    <string name="ocr">OCR</string>
+    <string name="saturation">Saturation</string>
+    <string name="contrast">Contrast</string>
+    <string name="brightness">Brightness</string>
+    <string name="requested_structure">Requested structure:</string>
+    <string name="down_arrow">down arrow</string>
+    <string name="elements">Elements:</string>
+    <string name="select_radical">Select Radical</string>
+    <string name="select_component">Select Component</string>
+    <string name="select_overall_kanji_structure">Select Overall Kanji structure:</string>
+    <string name="find_the_kanji">Find the Kanji!</string>
+    <string name="select_the_component">Select the Component</string>
+    <string name="results">Results</string>
+    <string name="structure">Structure:</string>
+    <string name="radical">Radical:</string>
+    <string name="on_reading">On reading:</string>
+    <string name="name_reading">Name reading:</string>
+    <string name="kun_reading">Kun reading:</string>
+    <string name="meaning">Meaning:</string>
+    <string name="remove_decomposition">remove decomposition</string>
+    <string name="image">image</string>
+    <string name="contrast_">Contrast:\u0020</string>
+    <string name="saturation_">Saturation:\u0020</string>
+    <string name="brightness_">Brightness:\u0020</string>
+    <string name="select_the_radical">Select the Radical</string>
+    <string name="elements_">Elements:</string>
+    <string name="hyphen">-</string>
+    <string name="vertical_separator">|</string>
+    <string name="kanji_structure">kanji structure</string>
+    <string name="no_elements_found">No Elements Found.</string>
+
 </resources>

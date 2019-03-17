@@ -31,7 +31,7 @@
             android:id="@+id/decomposition_element_separator1"
             style="@style/DecomposeTopRowTextStyle"
             android:paddingBottom="8dp"
-            android:text="|"
+            android:text="@string/vertical_separator"
             android:textIsSelectable="false"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="@+id/decomposition_element_kanji"
@@ -46,7 +46,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/colored_structure_2_overlapping"
-            android:contentDescription="kanji structure"
+            android:contentDescription="@string/kanji_structure"
             app:layout_constraintBottom_toBottomOf="@+id/decomposition_element_kanji"
             app:layout_constraintStart_toEndOf="@id/decomposition_element_separator1"
             app:layout_constraintTop_toTopOf="@+id/decomposition_element_kanji"/>
@@ -55,7 +55,7 @@
             android:id="@+id/decomposition_element_separator2"
             style="@style/DecomposeTopRowTextStyle"
             android:paddingBottom="8dp"
-            android:text="|"
+            android:text="@string/vertical_separator"
             android:textIsSelectable="false"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="@+id/decomposition_element_kanji"
@@ -90,7 +90,7 @@
             android:id="@+id/decomposition_element_structure_title"
             style="@style/DecomposeTitleStyle"
             android:layout_height="17dp"
-            android:text="Structure:"
+            android:text="@string/structure"
             app:layout_constraintEnd_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/decomposition_element_structure_value"/>
@@ -100,7 +100,7 @@
             style="@style/DecomposeValueStyle"
 
             android:focusable="true"
-            android:text="-"
+            android:text="@string/hyphen"
             android:textIsSelectable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -109,7 +109,7 @@
         <TextView
             android:id="@+id/decomposition_element_radical_title"
             style="@style/DecomposeTitleStyle"
-            android:text="Radical:"
+            android:text="@string/radical"
             app:layout_constraintEnd_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/decomposition_element_structure_value"/>
@@ -117,7 +117,7 @@
         <TextView
             android:id="@+id/decomposition_element_radical_value"
             style="@style/DecomposeValueStyle"
-            android:text="-"
+            android:text="@string/hyphen"
             android:textIsSelectable="true"
             android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +127,7 @@
         <TextView
             android:id="@+id/decomposition_element_on_readings_title"
             style="@style/DecomposeTitleStyle"
-            android:text="On reading:"
+            android:text="@string/on_reading"
             app:layout_constraintEnd_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/decomposition_element_radical_value"/>
@@ -135,7 +135,7 @@
         <TextView
             android:id="@+id/decomposition_element_on_readings_value"
             style="@style/DecomposeValueStyle"
-            android:text="-"
+            android:text="@string/hyphen"
             android:textIsSelectable="true"
             android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +146,7 @@
             android:id="@+id/decomposition_element_name_readings_title"
             style="@style/DecomposeTitleStyle"
             android:layout_height="26dp"
-            android:text="Name reading:"
+            android:text="@string/name_reading"
             app:layout_constraintEnd_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/decomposition_element_kun_readings_value"/>
@@ -154,7 +154,7 @@
         <TextView
             android:id="@+id/decomposition_element_name_readings_value"
             style="@style/DecomposeValueStyle"
-            android:text="-"
+            android:text="@string/hyphen"
             android:textIsSelectable="true"
             android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -164,7 +164,7 @@
         <TextView
             android:id="@+id/decomposition_element_kun_readings_title"
             style="@style/DecomposeTitleStyle"
-            android:text="Kun reading:"
+            android:text="@string/kun_reading"
             app:layout_constraintEnd_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/decomposition_element_on_readings_value"/>
@@ -172,7 +172,7 @@
         <TextView
             android:id="@+id/decomposition_element_kun_readings_value"
             style="@style/DecomposeValueStyle"
-            android:text="-"
+            android:text="@string/hyphen"
             android:textIsSelectable="true"
             android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -182,7 +182,7 @@
         <TextView
             android:id="@+id/decomposition_element_meanings_title"
             style="@style/DecomposeTitleStyle"
-            android:text="Meaning:"
+            android:text="@string/meaning"
             app:layout_constraintEnd_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/decomposition_element_name_readings_value"/>
@@ -190,7 +190,7 @@
         <TextView
             android:id="@+id/decomposition_element_meanings_value"
             style="@style/DecomposeValueStyle"
-            android:text="-"
+            android:text="@string/hyphen"
             android:textIsSelectable="true"
             android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -212,7 +212,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_clear_black_24dp"
-            android:contentDescription="remove decomposition"/>
+            android:contentDescription="@string/remove_decomposition"/>
     </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>

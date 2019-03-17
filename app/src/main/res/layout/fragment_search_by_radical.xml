@@ -48,7 +48,7 @@
                         style="@style/SearchByRadicalTextStyle"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="2dp"
-                        android:text="Elements:"/>
+                        android:text="@string/elements"/>
 
                     <FrameLayout
                         android:id="@+id/search_by_radical_elementA_container"
@@ -116,14 +116,14 @@
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Select Radical"/>
+                        android:text="@string/select_radical"/>
 
                     <Button
                         android:id="@+id/search_by_radical_button_component"
                         style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Select Component"/>
+                        android:text="@string/select_component"/>
                 </LinearLayout>
             </FrameLayout>
 
@@ -142,7 +142,7 @@
                 android:gravity="center"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp"
-                android:text="Select Overall Kanji structure:"/>
+                android:text="@string/select_overall_kanji_structure"/>
 
             <Button
                 android:id="@+id/search_by_radical_button_search"
@@ -154,7 +154,7 @@
                 android:background="@drawable/border_background_primary_color"
                 android:paddingEnd="16dp"
                 android:paddingStart="16dp"
-                android:text="Find the Kanji!"/>
+                android:text="@string/find_the_kanji"/>
 
             <LinearLayout
                 android:id="@+id/search_by_radical_selection_grid_container"
@@ -169,7 +169,7 @@
                 <TextView
                     android:id="@+id/search_by_radical_selection_grid_title"
                     style="@style/SearchByRadicalTextStyle"
-                    android:text="Select the component"/>
+                    android:text="@string/select_the_component"/>
 
                 <Button
                     android:id="@+id/search_by_radical_requested_component_structure"
@@ -317,7 +317,7 @@
                     style="@style/SearchByRadicalTextStyle"
                     android:background="@drawable/border_background_bottom_primary_color"
                     android:layout_height="28dp"
-                    android:text="Results"/>
+                    android:text="@string/results"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/search_by_radical_results_grid"
@@ -334,7 +334,7 @@
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
-                    android:text="No elements found."/>
+                    android:text="@string/no_elements_found"/>
 
             </LinearLayout>
 

@@ -22,14 +22,14 @@
             android:layout_marginBottom="4dp"
             android:background="@android:color/background_dark"
             android:scaleType="centerInside"
-            android:contentDescription="OCR"/>
+            android:contentDescription="@string/ocr"/>
 
         <TextView
             android:id="@+id/saturationDescription"
             android:layout_marginStart="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Saturation" />
+            android:text="@string/saturation" />
 
         <SeekBar
             android:id="@+id/saturationBar"
@@ -44,7 +44,7 @@
             android:layout_marginStart="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Contrast" />
+            android:text="@string/contrast" />
 
         <SeekBar
             android:id="@+id/contrastBar"
@@ -59,7 +59,7 @@
             android:layout_marginStart="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Brightness" />
+            android:text="@string/brightness" />
 
         <SeekBar
             android:id="@+id/brightnessBar"

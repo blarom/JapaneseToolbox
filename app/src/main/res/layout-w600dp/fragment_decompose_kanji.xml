@@ -61,6 +61,6 @@
         android:layout_marginBottom="0dp"
         android:background="@drawable/ic_arrow_drop_down_black_24dp"
         android:visibility="gone"
-        android:contentDescription="down arrow"/>
+        android:contentDescription="@string/down_arrow"/>
 
 </RelativeLayout>

@@ -14,6 +14,6 @@
         android:id="@+id/list_item_structures_grid_image"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:contentDescription="image"/>
+        android:contentDescription="@string/image"/>
 
 </LinearLayout>
