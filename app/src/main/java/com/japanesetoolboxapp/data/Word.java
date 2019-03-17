@@ -39,6 +39,9 @@ public class Word implements Parcelable {
     Word(Parcel in) {
         id = in.readLong();
         extraKeywordsEN = in.readString();
+        extraKeywordsFR = in.readString();
+        extraKeywordsES = in.readString();
+        extraKeywordsJAP = in.readString();
         uniqueIdentifier = in.readString();
         romaji = in.readString();
         kanji = in.readString();
@@ -201,6 +204,9 @@ public class Word implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeLong(id);
         parcel.writeString(extraKeywordsEN);
+        parcel.writeString(extraKeywordsFR);
+        parcel.writeString(extraKeywordsES);
+        parcel.writeString(extraKeywordsJAP);
         parcel.writeString(uniqueIdentifier);
         parcel.writeString(romaji);
         parcel.writeString(kanji);

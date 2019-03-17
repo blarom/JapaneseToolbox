@@ -1608,6 +1608,9 @@ public final class Utilities {
             finalWord.setRomaji(currentLocalWord.getRomaji());
             finalWord.setKanji(currentLocalWord.getKanji());
             finalWord.setExtraKeywordsEN(currentLocalWord.getExtraKeywordsEN());
+            finalWord.setExtraKeywordsFR(currentLocalWord.getExtraKeywordsFR());
+            finalWord.setExtraKeywordsES(currentLocalWord.getExtraKeywordsES());
+            finalWord.setExtraKeywordsJAP(currentLocalWord.getExtraKeywordsJAP());
             finalWord.setIsCommon(currentLocalWord.getIsCommon());
             finalWord.setIsLocal(currentLocalWord.getIsLocal());
 
@@ -1670,6 +1673,8 @@ public final class Utilities {
                 }
             }
             finalWord.setMeaningsEN(currentFinalMeanings);
+            finalWord.setMeaningsFR(currentLocalWord.getMeaningsFR());
+            finalWord.setMeaningsES(currentLocalWord.getMeaningsES());
 
             finalWordsList.add(finalWord);
         }
@@ -2380,7 +2385,7 @@ public final class Utilities {
                         || queryIsVerbWithTo && keywords.contains(searchWordWithoutTo);
             }
 
-
+/*
 //            //region Loop initializations
 //            keywords = word.getExtraKeywordsEN();
 //            if (keywords.equals("") || keywords.equals("-") || keywords.equals("KEYWORDS")) continue;
@@ -2477,6 +2482,7 @@ public final class Utilities {
 //                }
 //            }
 //            //endregion
+*/
 
             if (foundMatch) {
                 current_match_values = new long[2];
@@ -2838,16 +2844,20 @@ public final class Utilities {
 
         } else {
             if (searchType.equals("romajiOnly") || searchType.equals("All")) {
-                matchingIndices.add(japaneseToolboxCentralRoomDatabase.getRomajiIndexesListForStartingWord(concatenated_word));
+                List<IndexRomaji> indexesRomaji = japaneseToolboxCentralRoomDatabase.getRomajiIndexesListForStartingWord(concatenated_word);
+                if (indexesRomaji != null && indexesRomaji.size()>0) matchingIndices.addAll(indexesRomaji);
             }
 
             if (searchType.equals("englishOnly") || searchType.equals("All")) {
-                matchingIndices.add(japaneseToolboxCentralRoomDatabase.getEnglishIndexesListForStartingWord(concatenated_word));
+                List<IndexEnglish> indexesEnglish = japaneseToolboxCentralRoomDatabase.getEnglishIndexesListForStartingWord(concatenated_word);
+                if (indexesEnglish != null && indexesEnglish.size()>0) matchingIndices.addAll(indexesEnglish);
             }
 
             if (searchType.equals("All")) {
-                matchingIndices.add(japaneseToolboxCentralRoomDatabase.getFrenchIndexesListForStartingWord(concatenated_word));
-                matchingIndices.add(japaneseToolboxCentralRoomDatabase.getSpanishIndexesListForStartingWord(concatenated_word));
+                List<IndexFrench> indexesFrench = japaneseToolboxCentralRoomDatabase.getFrenchIndexesListForStartingWord(concatenated_word);
+                if (indexesFrench != null && indexesFrench.size()>0) matchingIndices.addAll(indexesFrench);
+                List<IndexSpanish> indexesSpanish = japaneseToolboxCentralRoomDatabase.getSpanishIndexesListForStartingWord(concatenated_word);
+                if (indexesSpanish != null && indexesSpanish.size()>0) matchingIndices.addAll(indexesSpanish);
             }
         }
         return matchingIndices;

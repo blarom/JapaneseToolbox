@@ -136,7 +136,6 @@ public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
         word().insertAll(wordList);
         Log.i("Diagnosis Time","Loaded Words Database.");
 
-        //TODO: problem is not here, shukujo not found in dB - double-check loading of fr and es meanings
         List<Verb> verbList = new ArrayList<>();
         for (int i=1; i<verbsDatabase.size(); i++) {
             if (verbsDatabase.get(i)[0].equals("")) break;

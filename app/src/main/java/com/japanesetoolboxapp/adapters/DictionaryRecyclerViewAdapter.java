@@ -56,6 +56,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     private final LinearLayout.LayoutParams mubChildLineParams;
     private boolean mShowSources = false;
     private String mUILanguage;
+    private boolean mShowLanguageIndicator;
 
     public DictionaryRecyclerViewAdapter(Context context, DictionaryItemClickHandler listener , List<Word> wordsList, HashMap<String, String> legendDatabase, String inputQuery) {
         this.mContext = context;
@@ -356,15 +357,19 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         int startIndex;
         int endIndex = 0;
         List<Word.Meaning> meanings = new ArrayList<>();
+        String langIndicator = "";
         switch (language) {
             case GlobalConstants.LANG_EN:
                 meanings = mWordsList.get(position).getMeaningsEN();
+                langIndicator = "<i><font color='" + mContext.getResources().getColor(R.color.textColorDictionaryTypeMeaning) + "'>[EN] ";
                 break;
             case GlobalConstants.LANG_FR:
                 meanings = mWordsList.get(position).getMeaningsFR();
+                langIndicator = "<i><font color='" + mContext.getResources().getColor(R.color.textColorDictionaryTypeMeaning) + "'>[FR] ";
                 break;
             case GlobalConstants.LANG_ES:
                 meanings = mWordsList.get(position).getMeaningsES();
+                langIndicator = "<i><font color='" + mContext.getResources().getColor(R.color.textColorDictionaryTypeMeaning) + "'>[ES] ";
                 break;
         }
         if (meanings == null) return;
@@ -390,7 +395,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
             String typeAsHtmlText;
             if (!fullType.equals("")) {
-                typeAsHtmlText = "<i><font color='" +
+                typeAsHtmlText =
+                        "<i><font color='" +
                         mContext.getResources().getColor(R.color.textColorDictionaryTypeMeaning) +
                         "'>" + "[" +
                         fullType +
@@ -401,6 +407,10 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             else {
                 typeAsHtmlText = "<b>" + meaning + "</b>";
             }
+            if (mShowLanguageIndicator) {
+                typeAsHtmlText = langIndicator + typeAsHtmlText;
+            }
+
             Spanned type_and_meaning = Utilities.fromHtml(typeAsHtmlText);
             TextView typeAndMeaningTextView = new TextView(mContext);
             typeAndMeaningTextView.setText(type_and_meaning);
@@ -707,6 +717,14 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     }
     public void setActiveMeaningLanguages(boolean[] activeMeaningLanguages) {
         mActiveMeaningLanguages = activeMeaningLanguages;
+        mShowLanguageIndicator = showLanguageIndicator(activeMeaningLanguages);
+    }
+    private boolean showLanguageIndicator(boolean[] activeMeaningLanguages) {
+        int num_active_languages = 0;
+        for (boolean active : activeMeaningLanguages) {
+            if (active) num_active_languages++;
+        }
+        return num_active_languages > 1;
     }
 
     public class DictItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
