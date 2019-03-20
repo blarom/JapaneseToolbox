@@ -123,7 +123,7 @@
                 android:layout_width="@dimen/inputQueryButtonWidthAtTopRow"
                 android:layout_height="@dimen/inputQueryButtonHeight"
                 android:textSize="@dimen/inputQueryButtonTextSize"
-                android:text="@string/GrammarModule_GetWord"/>
+                android:text="@string/DICT"/>
 
             <Button
                 android:id="@+id/button_conj"
@@ -131,7 +131,7 @@
                 android:layout_width="@dimen/inputQueryButtonWidthAtTopRow"
                 android:layout_height="@dimen/inputQueryButtonHeight"
                 android:textSize="@dimen/inputQueryButtonTextSize"
-                android:text="@string/button_Conjugate"/>
+                android:text="@string/CONJ"/>
 
             <Button
                 android:id="@+id/button_convert"

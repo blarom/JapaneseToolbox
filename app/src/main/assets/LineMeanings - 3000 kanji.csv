@@ -402,7 +402,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 402|in addition to, besides, other than, else|A|ME#0004;0005|||||
 403|me too|A||||||
 404|(some) more, even more, longer, further|A|||646, 647|||
-405|monotonic|Ana||||||
+405|monotone, monotonic|Ana||||||
 406|monotony, dullness|N;Abs||||||
 407|neither choice|A||||||
 408|none|A||||||
@@ -902,7 +902,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 902|earnestness, eagerness, risking one's life|N;Abs||||||
 903||-|||593|taihen, muzukashii, nukui|yasashii|
 904|comfort, ease, relief, (at) peace, relaxation|N;Abs||||||
-905|on par, matched|Ana||||||
+905||-||||||
 906|equality, evenness, par, good match|N;Abs||||||
 907||-||||||
 908|equality, impartiality, evenness|N;Abs||||||
@@ -1616,7 +1616,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1616|shut up|IES|Literally means "you're noisy".|||||
 1617|shut up|IES|More vulgar than using "urusai".|||||
 1618|shut up|IES|Literally means "the store is closed".|||||
-1619|slut|IES|From the value "bitch".|||||
+1619|slut|IES|From the english "bitch".|||||
 1620|son of a bitch, damn it, shit|IES||||||
 1621|subject is surprised|IES||||||
 1622|ugly|IES|Short for "busaiku".|||||
@@ -2020,7 +2020,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2020|body|N;Abs||||||
 2021|both sides, both parties|N;Abs||||||
 2022|trouble, bother, annoyance, nuisance, inconvenience|N;Abs||||||
-2023|break-down, failure, fault, accident, out of order|N;Abs||||||
+2023|break-down|N;Abs||||||
 2024|breakfast|N;Abs|||1318|||
 2025|breeding, raising, rearing|N;Abs||||||
 2026|bureau, department|N;Abs||||||
@@ -2197,7 +2197,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2197|fair weather|N;Abs|||73|||
 2198|fast pace, quick pace|N;Abs||||||
 2199|faults, defects, weaknesses|N;Abs||||||
-2200|favor, favour, obligation, debt of gratitude|N;Abs||||||
+2200||-||||||
 2201|feast, treat|N;Abs||||||
 2202|fee, charge, fare|N;Abs|||141, 142, 1288, 1310|||
 2203|fee, charge, fare, cost, price, tariff|N;Abs|||1309|||
@@ -2328,7 +2328,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2328|irritation, stress|N;Abs||||||
 2329|isolation, segregation, separation, quarantine|N;Abs||||||
 2330||-||||||
-2331|Japanese language|N;Abs|||68|||
+2331||-||||||
 2332|Japanese to English|N;Abs|||161|||
 2333|jest, joke, funny story|N;Abs||||||
 2334|joy, delight, rapture, pleasure, gratification, rejoicing, congratulations, felicitations|N;Abs||||||
@@ -2344,8 +2344,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2344||-||||||
 2345|land rent, land price|N;Abs||||||
 2346|language|N;Abs||||||
-2347|language|N;Abs|||59|||
-2348|language|Sx||||||
+2347|language|N;Abs;Sx|||59|||
+2348||-||||||
 2349||-||||||
 2350|end, conclusion|N;Abs|||167|||
 2351|laugh, laughter|N;Abs||||||
@@ -2520,7 +2520,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2520|population|N;Abs||||||
 2521|portion, section, part|N;Abs||||||
 2522|potentiality, likelihood, possibility, availability|N;Abs||||||
-2523|power, might, authority|N;Abs||||||
+2523|power, might, authority, influence|N;Abs||||||
 2524|practical use, application, conjugation, declension, inflection|N;Abs||||||
 2525|preconception, prejudice, preoccupation, preconceived notion|N;Abs||||||
 2526|prejudice, bias, inferiority complex|N;Abs||||||
@@ -2592,7 +2592,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2592|ruins, wreckage|N;Abs||||||
 2593|rules|N;Abs||||||
 2594|rules, regulations, conventions|N;Abs||||||
-2595|salary, pay, compensation, benefit, bonus, allowance|N;Abs||||||
+2595||-||||||
 2596|sample question, sample problem|N;Abs|||160|||
 2597|sanity, consciousness, soberness|N;Abs||||||
 2598|savings|N;Abs||||||
@@ -2634,7 +2634,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2634|similarity, identity, equality, uniformity, equivalence, common origin, changeless, likeness|N;Abs||||||
 2635|single blow, single hit, poke|N;Abs||||||
 2636|size|N;Abs||||||
-2637|size|N;Abs||||||
+2637|size, dimensions, volume|N;Abs||||||
 2638|slip, omission, outcome, final result, the end, punch line (of a joke)|N;Abs||||||
 2639||-||||||
 2640|sneer|N;Abs||||||
@@ -2767,7 +2767,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2767|value, worth, price, dignity|N;Abs||||||
 2768|vedana (sensation)|N;Abs|From Buddhism: sensation.|||||
 2769|vehicle, conveyance, transport|N;Abs||||||
-2770|verbal message, word|N;Abs|||1292|||
+2770|verbal message, word (from someone)|N;Abs|||1292|||
 2771|victim|N;Abs||||||
 2772|victim, sacrifice, scapegoat|N;Abs||||||
 2773|virtue|N;Abs||||||
@@ -2866,7 +2866,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2866||-||||||
 2867|muscle, sinew|N;An||||||
 2868|nail, claw, talon, hoof, pick, hook, clasp, fingernails|N;An||||||
-2869|nasal mucus, snot, dripping nose|N;An||||||
+2869||-||||||
 2870|neck, unemployed person|N;An||||||
 2871|nipple, teat|N;An||||||
 2872|nose|N;An||||||
@@ -2917,7 +2917,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2917|shirt (underwear), undershirt, singlet|N;Ati|||200|||
 2918|shoe, shoes, boots, footwear, footgear|N;Ati|||192, 1349|||
 2919|skirt|N;Ati|||209|||
-2920|slipper|N;Ati|||196|||
+2920|slipper, slippers|N;Ati|||196|||
 2921|socks, sock, stockings, stocking|N;Ati|||202|||
 2922|suit|N;Ati|||188|||
 2923|sunglasses|N;Ati||||||
@@ -3204,7 +3204,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3204|turtle, tortoise|N;Fa||||||
 3205|wolf|N;Fa||||||
 3206|zebra|N;Fa||||||
-3207|Asian pear|N;Fl||||||
+3207|nashi (Pyrus pyrifolia, esp. var. culta), Japanese pear, Asian pear, sand pear, apple pear|N;Fl||||||
 3208||-||||||
 3209|bamboo|N;Fl||||||
 3210|branch, bow, bough, twig, limb|N;Fl||||||
@@ -4129,7 +4129,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4129|Omotesando|N;Pl|Very luxurious road in Tokyo.|||||
 4130|one's own country|N;Pl||||||
 4131|Ooyama|N;Pl||||||
-4132|ore mine|N;Pl||||||
+4132|independently, autonomously, voluntarily|A;M||||||
 4133|Osaka (city)|N;Pl||||||
 4134|outdoors|N;Pl||||||
 4135|Paris|N;Pl|||1385|||
@@ -4312,7 +4312,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4312|three years|T||||||
 4313|two years|T||||||
 4314|ah|OI||||||
-4315|alright, all right, right on, ok, okay|OI||||||
+4315||-||||||
 4316|atchoo|OI||||||
 4317|bear sound|OI||||||
 4318|bee sound|OI||||||
@@ -5140,7 +5140,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5140|be negligent in doing something, shirk, be off one's guard|VrugI||||||
 5141|take (a photo)|VrugT|||1294|||
 5142|record (video, audio, etc.), make (a film)|VrugT||||||
-5143|take, catch (fish), capture|VrugT||||||
+5143|catch (fish)|VrugT||||||
 5144|adopt (measure, proposal)|VrugT||||||
 5145|take (trouble), attend (business), command (army)|VrugT||||||
 5146|take (nuance of stealing), steal|VrugT||||||
@@ -5309,7 +5309,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5309|get lost, lose one's way, waver, hesitate, be perplexed, be puzzled, give in temptation, lose control of oneself, turn in one's grave|VuI||||||
 5310|pick up, find, gather, get (a taxi)|VuI||||||
 5311|do up (hair), braid, fasten, fix|VuT||||||
-5312|congratulate, celebrate, observe (a festival)|VuT||||||
+5312||-||||||
 5313|protect someone, take under one's wing, plead for, stick up for, cover up for someone|VuT||||||
 5314|care (for, about), prepare for, interfere with, meddle in|VuT||||||
 5315|come true (wish), be suited to, bear (e.g. I can't bear the heat)|VuI||||||
@@ -5653,7 +5653,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5653|break, be smashed, cleave, come light, be established|VruiI||||||
 5654|give, offer|VruiT||||||
 5655|deliver, forward, send, file notice (the authorities)|VruiT||||||
-5656|visit|VruiT||||||
+5656|visit, call on, pay a visit to|VruiT||||||
 5657|grow cold (from room temperature, e.g. in refrigerator), get chilly, cool down|VruiI||||||
 5658|lead, take (a person)|VruiT||||||
 5659||-||||||
@@ -5869,7 +5869,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5869||-||||||
 5870|be relative|VsuruI||||||
 5871|be surprised, be amazed, be frightened, be astonished|VsuruI||||||
-5872|go easy on someone, make allowances, use discretion, take various circumstances into account​|VsuruI||||||
+5872|go easy on someone, make allowances, use discretion, take various circumstances into account|VsuruI||||||
 5873|feel refreshed, feel relieved|VsuruI||||||
 5874||-||||||
 5875|share a gift from someone, share someone's profit|VsuruT||||||
@@ -6086,7 +6086,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6086|walk about, walk to and fro, pace around|VrugI||||||
 6087|to turn up, to make an appearance, to put in an appearance, to appear, to show up|CE||||||
 6088|cry (esp. animal), roar, chirp, tweet, bark, whine, meow|N;Ac||||||
-6089|echo, reverberation, sound|N;Ac||||||
+6089|echo, reverberation|N;Ac||||||
 6090|resound, echo, reverberate|VrugI||||||
 6091|oversleep|VsuI||||||
 6092|sleep in late, oversleep|VsuruI||||||
@@ -8241,7 +8241,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8241|shovel, paddle|VkuT||||||
 8242|draw, paint|VkuT||||||
 8243|pit (of a fruit), stone|N;Abs||||||
-8244|core|N;Abs||||||
+8244|core (of an organization, team, etc.), nucleus, heart|N;Abs||||||
 8245|nucleus, nuclear|N;Abs||||||
 8246|nucleus, nuclear|Px||||||
 8247|nuclear weaponry|N;Abs||||||
@@ -8645,7 +8645,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8645|government office, public office|N;Abs||||||
 8646|post, official position|N;Abs||||||
 8647|managerial position, executive position|N;Abs||||||
-8648|in order to (e.g. meet goal), so that, take care (so as)|CE||||||
+8648|in order to (e.g. meet goal), so that, take care (so as)|CE|(Try/make an effort) in order to [do/be] X, in the hopes of something uncertain.|X you ni to suru @ X = action|984||tame ni|
 8649|hoping or wishing for something|CE||||||
 8650|approval|N;Abs||||||
 8651|reach the point that, come to be that, turn into|CE||||||
@@ -13899,7 +13899,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13899|hysteresis|N;Abs||||||
 13900|ideal, ideals|N;Abs||||||
 13901|Rome|N;Abs||||||
-13902|value, romanized Japanese, system of transliterating Japanese into the Latin alphabet|N;Abs||||||
+13902|romaji, romanized Japanese, system of transliterating Japanese into the Latin alphabet|N;Abs||||||
 13903|Latin alphabet, Roman alphabet|N;Abs||||||
 13904||-||||||
 13905|Los Angeles|N;Pl||||||
@@ -15034,7 +15034,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15034|for (in regard to), in order to|PP||||||
 15035|Japan's best, number one in Japan|N;Abs||||||
 15036|Japanese painting|N;Abs||||||
-15037|Japanese (language)|N;Abs||||||
+15037|Japanese (language)|N;Abs|||68|||
 15038|first (of its kind) in Japan|N;Abs||||||
 15039|Japanese person, Japanese people|N;Abs||||||
 15040|throughout Japan|N;Abs||||||
@@ -15084,7 +15084,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15084|be clear, be transparent (e.g. of the sky)|VruiI||||||
 15085|be stupid, be absentminded, be careless, be inattentive|VruiI||||||
 15086|exit (a program loop)|VruiI||||||
-15087|go through, pass through|VruiT||||||
+15087|go through, pass through, give way, collapse|VruiT||||||
 15088|pull out, draw out, unplug, weed|VkuT||||||
 15089|omit, leave out, go without, skip|VkuT||||||
 15090|do to the end, carry through|VkuI||||||
@@ -20385,7 +20385,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20385|Corporate Rehabilitation Law|N;Abs||||||
 20386|starting time|N;Abs||||||
 20387|(putting on) record, writing down, noting down, registry|N;Abs||||||
-20388|kernel|N;Abs||||||
+20388|kernel, core|N;Abs||||||
 20389|angle|N;Abs||||||
 20390|square (or cube)|N;Abs||||||
 20391|bishop|N;Abs||||||
@@ -20891,7 +20891,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20891|oil well|N;Abs||||||
 20892|hero, the brave, man of valour (valor)|N;Abs||||||
 20893|seat, place, position|N;Abs||||||
-20894|status|N;Abs||||||
+20894|position, status|N;Abs||||||
 20895|gathering, group|N;Abs||||||
 20896|stand, pedestal, platform|N;Abs||||||
 20897|counter for theatres, deities, Buddhist images, tall mountains, and satokagura songs|Sx||||||
@@ -21802,7 +21802,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 21802|superior (in rank), top, ranking|N;Abs||||||
 21803|higher order (e.g. byte)|N;Abs||||||
 21804|host computer (of connected device)|N;Abs||||||
-21805|usually, ordinarily|A;T||||||
+21805|usually, ordinarily, always|A;T||||||
 21806|continuous, 24-hour (e.g. observation, operation (of a machine), care (of patient)), always on|A;T||||||
 21807|full-time employment|N;Abs||||||
 21808|managing director, executive director|N;Abs||||||
@@ -22509,7 +22509,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 22509|harmful side effects of a medicine or drug|N;Abs||||||
 22510|(study of) pharmacy, pharmaceutics|N;Abs||||||
 22511|medicine, chemicals|N;Abs||||||
-22512|medicine, drug|N;Abs||||||
+22512|medicine, drug, chemical|N;Abs||||||
 22513|pharmacist, chemist|N;Abs||||||
 22514|a little, partially, somewhat, slightly, semi-, -ish, on the ... side, a short time, a while|A||||||
 22515|being apt to, being liable to, being inclined to|A||||||
@@ -28998,7 +28998,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28998|state guest|N||||||
 28999|national treasure|N||||||
 29000|moment by moment, hour by hour|A;Ato;CE||||||
-29001||-||||||
+29001|None|-||||||
 29002|notice, bulletin|N||||||
 29003|resembling closely, being strikingly similar, bearing a strong likeness|N||||||
 29004|indigenous person, inhabitant of a country|N||||||
@@ -30213,7 +30213,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 30213|fickle, capricious, fitful|Ana||||||
 30214|purple, violet|N;Ano||||||
 30215|(earning or paying) no interest|N||||||
-30216|powerlessness, helplessness, incompetence|N;Ano||||||
+30216|incompetence|N;Ano||||||
 30217|powerless, helpless, incompetent|Ana||||||
 30218|immeasurable|N;Ano||||||
 30219|covet, crave, lust insatiably for|VrugT||||||
@@ -36109,3 +36109,187 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 36109|write on someone's behalf, ghostwrite|VsuruI||||||
 36110|be dead tired|VsuruI||||||
 36111|have faith, believe, be pious, be devoted, be godly|VsuruI||||||
+36112|arm|N||||||
+36113|automated retroactive minimal moderation, ARMM|N||||||
+36114|voice|N||||||
+36115|dictaphone, dictation system|N||||||
+36116|bonus|N||||||
+36117|volume (sound level)|N||||||
+36118|volume (books)|N||||||
+36119|volume, substantial quantity (e.g. hearty meal), bulk, bulkiness, mass|N||||||
+36120|any kind of adjustment knob, not necessarily for sound|N||||||
+36121|please, please do for me|CE||||||
+36122|hey, hold on, come on|CE||||||
+36123|great disaster|N||||||
+36124|escape from, get out|VsuruI||||||
+36125|de- (indicating reversal, removal, etc.), post-|Px||||||
+36126|legend, tradition|N||||||
+36127|biography, life|N||||||
+36128|method, way|N||||||
+36129|horseback transportation and communication relay system used in ancient Japan|N||||||
+36130|Eien era (987.4.5-989.8.8)|N||||||
+36131|clanging, banging, booming, loudly|A||||||
+36132|throbbing (headache), pounding, splitting|A||||||
+36133|fully, vigorously, hard (e.g. working), flat out|A||||||
+36134|Guingamp (France)|Pl||||||
+36135|equal (in ability), even, evenly matched, well-matched, on par (with)|Ana||||||
+36136|reduction of armaments, disarmament|N||||||
+36137|rice covered with beef and vegetables|N||||||
+36138|(cow's) milk|N||||||
+36139|nasal mucus, dripping nose, snot|N||||||
+36140|rebel, traitor|N||||||
+36141|sound (esp. the distinctive sound of an object or activity, e.g. rain, gun, gallop, drum), noise|N||||||
+36142|quality of a sound (e.g. a fine phrase, clear voice, resonant bell), feeling of a sound, emotion or feeling inspired by something heard or read|N||||||
+36143|depth of field (photography)|N||||||
+36144|this device|N||||||
+36145|this plane|N||||||
+36146|vagrant, vagabond, drifter|N||||||
+36147|indescribable, having no way to express|CE||||||
+36148|numerously|A||||||
+36149|many, numerous|N||||||
+36150|spirits, vigor, vigour, energy, boldness|N||||||
+36151|transfer (of one's name into another family register)|N||||||
+36152|transfer (to another team, company, etc.)|N||||||
+36153|celebrate, congratulate, observe (a festival)|VuT||||||
+36154|present (a gift) in celebration, drink in celebration|VuT||||||
+36155|wish for (a happy future, good fortune, etc.), pray for|VuT||||||
+36156|preface, foreword, introduction|N||||||
+36157|continuous, 24-hour (operation, care, etc.), constant, always on|N||||||
+36158|spell, charm, incantation, magic word|N||||||
+36159|stone (of a fruit), pit, pip|N||||||
+36160|nuclear weapons|N||||||
+36161|nucleus (of an atom)|N||||||
+36162|nucleus (of a cell)|N||||||
+36163|condensation nucleus|N||||||
+36164|(planetary) core|N||||||
+36165|ring (in a cyclic compound)|N||||||
+36166|nucleus (of a cultured pearl)|N||||||
+36167|fulfill (conditions), meet (requirements)|VruiT||||||
+36168|reconsider, rethink, reassess|VsuT||||||
+36169|hunter|N||||||
+36170|shape, appearance|N;Sx||||||
+36171||-||||||
+36172|collateral|N;Sx||||||
+36173||-||||||
+36174|obverse of an old "zeni" coin|N;Sx||||||
+36175||-||||||
+36176|lightweight equipment or dress|N||||||
+36177|the late (deceased)|Px||||||
+36178|breakdown, failure, fault, accident, out of order|N||||||
+36179|damage, hurt|N||||||
+36180|objection, protest|N||||||
+36181|clear|Ana||||||
+36182|clearing (a bar, hurdle, etc.)|N||||||
+36183|overcoming, getting through, getting past, completing, solving, settling, meeting (e.g. a standard)|N||||||
+36184|clearing (the ball)|N||||||
+36185|clearing (e.g. a checked box)|N||||||
+36186|(illegal) drug, narcotic|N||||||
+36187|pons (pontes), pons Varolii, pontine, part of the brain stem (links the medulla oblongata and cerebellum with the midbrain)|N||||||
+36188|(Japanese) archery|N||||||
+36189|layout (of a house or apartment), arrangement of rooms|N||||||
+36190|magician, conjurer|N||||||
+36191|powerlessness, helplessness, incompetent|Ana||||||
+36192|sense of helplessness, feeling of powerlessness|N||||||
+36193|without|CE||||||
+36194|nationalism|N||||||
+36195|national|Ana||||||
+36196|nationality|N||||||
+36197|national chain|N||||||
+36198|National League|N||||||
+36199|exaggeration|N||||||
+36200|favour, favor, obligation, debt of gratitude|N||||||
+36201|please|CE||||||
+36202|please|CE||||||
+36203|private, secret|Ana||||||
+36204|privacy, secrecy, spy, detective|N||||||
+36205|break in, burgle, burglarize|VmuT||||||
+36206|apply pressure from above, press down|VsuT||||||
+36207|stamp (i.e. a passport), apply a seal|VsuT||||||
+36208|affix (e.g. gold leaf)|VsuT||||||
+36209|press (someone for something), urge, compel, influence|VsuT||||||
+36210|overwhelm, overpower, repress|VsuT||||||
+36211|push (events along), advance (a plan)|VsuT||||||
+36212|do in spite of ..., do even though ..., force|VsuT||||||
+36213|make sure|VsuT||||||
+36214|be pressed for time|VsuT||||||
+36215|advance troops, attack|VsuT||||||
+36216| light) to be diffused across an entire surface|VsuT||||||
+36217|disco dancing with synchronized arm motions|N||||||
+36218|sparse, scattered (e.g. clumps of grass)|Ana||||||
+36219|crumbly (e.g. tofu, cheese, non-sticky rice), loose and falling apart|N||||||
+36220|Parapara|Pl||||||
+36221|power|N||||||
+36222|strength, power, proficiency, ability|N||||||
+36223|the strength of ... people, the strength of ... men|Sx||||||
+36224|Deva King|N||||||
+36225|stone monument|N||||||
+36226|serif|N||||||
+36227|speech, words, one's lines, remarks|N||||||
+36228|employing, using, setting to work, enslavement|N||||||
+36229|causative (verb, etc.)|N||||||
+36230|things at hand, personal belongings|N||||||
+36231|one's opinion|N||||||
+36232|patrolling (esp. using ships or aircraft)|N||||||
+36233|manager, director, superintendent, overseer|N||||||
+36234|lady|N||||||
+36235|draft, rough copy|N||||||
+36236|cursive script, "grass" kanji|N||||||
+36237|which reminds me ..., come to think of it ..., now that you mention it ..., on that subject ..., so, if you say ...|CE||||||
+36238|bust-waist-hip measurements, vital statistics|N||||||
+36239|slim|Ana||||||
+36240|slimness|N||||||
+36241|slip, skid, slide|N||||||
+36242|slip (i.e. petticoat)|N||||||
+36243|slip (of paper)|N||||||
+36244|Serial Link IP, SLIP|N||||||
+36245|thriller (movie, story)|N||||||
+36246|thrilling|Ana||||||
+36247|thrill|N||||||
+36248|thrill|N||||||
+36249|slit|N||||||
+36250|voluminous work, bulky volume, tome|N||||||
+36251|great work, masterpiece, magnum opus|N||||||
+36252|archduke|N||||||
+36253|great disaster|N||||||
+36254|treasure chest, strongbox|N||||||
+36255|in units of (e.g. "in thousands"), in amounts of|Sx||||||
+36256|salary, pay, compensation, allowance (e.g. housing allowance), benefit, bonus|N||||||
+36257|medical care, treatment|N||||||
+36258|advance preparation|N||||||
+36259|pail, bucket|N||||||
+36260|terror, terrorism|N||||||
+36261|telop, television opaque projector, device used to broadcast onscreen text (e.g. subtitles, captions)|N||||||
+36262|onscreen text and images (e.g. subtitles, captions, scrolling tickers, logos)|N||||||
+36263|terrorist|N||||||
+36264|terrorism|N||||||
+36265|take, catch, capture|VrugT||||||
+36266|class, order, rank|N;Sx;C||||||
+36267||-||||||
+36268||-||||||
+36269|et cetera, etc., and the like|Sx||||||
+36270|equal, iso-|Px||||||
+36271|and so on, at last, finally, after all|N||||||
+36272|art of conversation|N||||||
+36273|end, completion|N||||||
+36274|cut into (a line, conversation, etc.), force oneself into (e.g. a crowd), wedge oneself into, squeeze oneself into, intrude on, interrupt|VmuT||||||
+36275|fall below (of stock prices, sales, etc.), drop below|VmuT||||||
+36276|relatively, comparatively|A||||||
+36277|alright, all right, right on, looking good, OK, okay|OI||||||
+36278|gathering, party, company, atmosphere (of a gathering)|N||||||
+36279|attaches to the names of constellations|Sx||||||
+36280|attaches to the names of theatres, cinemas and theatrical troupes|Sx||||||
+36281|sound of rushing water, sound of pouring rain, white noise sound|A||||||
+36282|honorific added to names of makuuchi and juryo division wrestlers|Sx||||||
+36283|complete book, complete set, treatise|N||||||
+36284|skull, cranium|N||||||
+36285|throb, pound|VsuruI||||||
+36286|dress lightly|VsuruI||||||
+36287|write down, note|VsuruT||||||
+36288|remember|VsuruT||||||
+36289|clear (a bar, hurdle, etc.)|VsuruT||||||
+36290|overcome, get through, get past, complete, solve, settle, meet (e.g. a standard)|VsuruT||||||
+36291|clear (the ball)|VsuruT||||||
+36292|clear (e.g. a checked box)|VsuruT||||||
+36293|employ, use, set to work, enslave|VsuruT||||||
+36294|patrol (esp. using ships or aircraft)|VsuruT||||||
+36295|slip, skid, slide|VsuruI||||||

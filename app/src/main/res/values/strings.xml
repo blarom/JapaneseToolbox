@@ -1,38 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--Application Strings-->
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="action_settings" translatable="false">Settings</string>
     <string name="app_name" translatable="false">Japanese Toolbox</string>
-    <string name="EmptyResult" translatable="false">…</string>
-    <string name="NoText" translatable="false"/>
-
-    <!--Splashscreen-->
+    <string name="EmptyResult" translatable="false"> </string>
+    <string name="NoText" translatable="false"></string>
     <string name="splashscreen_intro_sentence">Your personal aid for deciphering\nthe Japanese language.</string>
     <string name="splashscreen_loading_database">Loading Local Database…</string>
     <string name="splashscreen_should_take_only_a_few_seconds">This should only take a few seconds.</string>
-
-    <!--Menu Strings-->
     <string name="settings">Settings</string>
     <string name="about">About</string>
-
-    <!--Preferences Strings-->
-    <string name="hidden_online_search">Don\&apos;t get words and meaningsEN online</string>
+    <string name="hidden_online_search">Don\&apos;t get words and meanings online</string>
     <string name="shown_online_search">Merge online search results with local results</string>
-    <string name="wait_for_online_results_off">Display the list immediately when finding results, and refresh it when getting online results</string>
+    <string name="wait_for_online_results_off">Display the list immediately when finding results, and refresh it when getting online results.</string>
     <string name="wait_for_online_results_on">Wait for online results before showing the list</string>
     <string name="complete_with_conj_search_off">Don\&apos;t check verb conjugations</string>
-    <string name="complete_with_conj_search_on">Add matching verbs by checking conjugations</string>
+    <string name="complete_with_conj_search_on">Add matching verbs after checking conjugations</string>
     <string name="wait_for_conj_results_off">Display the list immediately when finding results, and refresh it when finding matching verbs through the conjugation search</string>
     <string name="wait_for_conj_results_on">Wait for matching verbs results before showing the list</string>
-    <string name="show_sources_off">Don\'t show extra information on each word</string>
+    <string name="show_sources_off">Don\&apos;t show extra information on each word</string>
     <string name="show_sources_on">Show extra information (source, common status)</string>
-    <string name="show_meanings_EN_off">Don\'t show English meanings in search results</string>
+    <string name="show_meanings_EN_off">Don\&apos;t show English meanings in search results</string>
     <string name="show_meanings_EN_on">Show English meanings in search results</string>
-    <string name="show_meanings_FR_off">Don\'t show French meanings in search results</string>
+    <string name="show_meanings_FR_off">Don\&apos;t show French meanings in search results</string>
     <string name="show_meanings_FR_on">Show French meanings in search results</string>
-    <string name="show_meanings_ES_off">Don\'t show Spanish meanings in search results</string>
+    <string name="show_meanings_ES_off">Don\&apos;t show Spanish meanings in search results</string>
     <string name="show_meanings_ES_on">Show Spanish meanings in search results</string>
     <string name="hidden_info_boxes">Don\&apos;t show informative popup texts on search</string>
     <string name="shown_info_boxes">Show informative popup texts on search</string>
@@ -72,7 +65,6 @@
     <string name="pref_preferred_OCR_language">Recognition Engine Language</string>
     <string name="pref_preferred_OCR_language_key" translatable="false">preferred_OCR_result</string>
     <string name="pref_preferred_OCR_language_japanese" translatable="false">preferred_OCR_language_japanese</string>
-
     <string name="pref_OCR_image_contrast_key" translatable="false">pref_OCR_image_contrast_key</string>
     <string name="pref_OCR_image_contrast_title">Initial Contrast</string>
     <string name="pref_OCR_image_contrast_min_display_value" translatable="false">0</string>
@@ -83,7 +75,6 @@
     <string name="pref_OCR_image_contrast_max_value" translatable="false">10</string>
     <string name="pref_OCR_image_contrast_range" translatable="false">100</string>
     <string name="pref_OCR_image_contrast_interval" translatable="false">0.1</string>
-
     <string name="pref_OCR_image_saturation_key" translatable="false">pref_OCR_image_saturation_key</string>
     <string name="pref_OCR_image_saturation_title">Initial Saturation</string>
     <string name="pref_OCR_image_saturation_min_display_value" translatable="false">0</string>
@@ -95,7 +86,6 @@
     <string name="pref_OCR_image_saturation_range" translatable="false">512</string>
     <string name="pref_OCR_image_saturation_interval" translatable="false">1</string>
     <string name="pref_OCR_image_saturation_multipliers" translatable="false">3</string>
-
     <string name="pref_OCR_image_brightness_key" translatable="false">pref_OCR_image_brightness_key</string>
     <string name="pref_OCR_image_brightness_title">Initial Brightness</string>
     <string name="pref_OCR_image_brightness_min_display_value" translatable="false">-1</string>
@@ -106,7 +96,6 @@
     <string name="pref_OCR_image_brightness_max_value" translatable="false">256</string>
     <string name="pref_OCR_image_brightness_range" translatable="false">512</string>
     <string name="pref_OCR_image_brightness_interval" translatable="false">1</string>
-
     <string name="pref_query_history_size_key" translatable="false">pref_query_history_size_key</string>
     <string name="pref_query_history_size_title">Search History Size</string>
     <string name="pref_query_history_size_min_display_value" translatable="false">0</string>
@@ -115,258 +104,123 @@
     <string name="pref_query_history_size_default_value" translatable="false">20</string>
     <string name="pref_query_history_size_min_value" translatable="false">0</string>
     <string name="pref_query_history_size_max_value" translatable="false">200</string>
-
-    <!--InputQueryFragment Strings-->
     <string name="input_query">Search Me!</string>
-    <string name="GrammarModule_GetWord">DICT</string>
-    <string name="button_Conjugate">CONJ</string>
-    <string name="button_SearchKAD">KAD</string>
-    <string name="Convert">あ&#8660;A</string>
-    <string name="button_SearchByRadical">女+子 &#8658; 好</string>
-    <string name="button_Decompose">好 &#8658; 女+子</string>
+    <string name="DICT">DICT</string>
+    <string name="CONJ">CONJ</string>
+    <string name="Convert">あ⇔A</string>
+    <string name="button_SearchByRadical">女+子 ⇒ 好</string>
+    <string name="button_Decompose">好 ⇒ 女+子</string>
     <string name="SpeechToTextUserPromptEnglish">Please state your query in English.</string>
     <string name="SpeechToTextUserPromptJapanese">Please state your query in Japanese.</string>
-    <string name="languageLocaleJapanese">ja_JP</string>
-    <string name="languageLocaleEnglishUS">en-US</string>
-    <string name="TextToSpeechLanguageJapanese">jpn</string>
-    <string name="TextToSpeechLanguageEnglish">eng</string>
+    <string name="languageLocaleJapanese" translatable="false">ja_JP</string>
+    <string name="languageLocaleEnglishUS" translatable="false">en-US</string>
+    <string name="TextToSpeechLanguageJapanese" translatable="false">jpn</string>
+    <string name="TextToSpeechLanguageEnglish" translatable="false">eng</string>
     <string name="OCRDialogTitle">Select text to copy to input</string>
-    <string name="LowVersionDialogMessage">Current Android version is too low</string>
+    <string name="LowVersionDialogMessage">Your Android version is too low</string>
     <string name="cancel">Cancel</string>
     <string name="readjust">Retouch</string>
-    <string name="OCR_image" translatable="false">OCR Image</string>
+    <string name="OCR_image" translatable="false">OCR_image</string>
     <string name="OCR_failed">OCR engine initialization failed.</string>
-    <string name="OCR_reinitializing">OCR engine was not initialized. Trying again…</string>
-    <string name="OCR_waitWhileProcessing">Wait while processing…</string>
-    <string name="OCR_waitWhileProcessingExplanation">A long processing time may mean the OCR engine is having trouble deciphering the
-        image and will result in random OCR text. In such case you should try using a better picture.</string>
+    <string name="OCR_reinitializing">OCR engine was not initialized. Trying again </string>
+    <string name="OCR_waitWhileProcessing">Wait while processing </string>
+    <string name="OCR_waitWhileProcessingExplanation">A long processing time may mean the OCR engine is having trouble deciphering the\n        image and will result in random OCR text. In such case you should try using a better picture.</string>
     <string name="OCR_downloading">Please wait until the OCR data finishes downloading.</string>
     <string name="OCR_copy_data">Successfully installed data from Downloads Folder.</string>
-    <string name="processing">Please wait, performing OCR…</string>
-    <string name="OCRinstructionsJPN">Please select and crop Japanese text.
-        For best results, select a FEW symbols occupying a large area in a clear picture. Otherwise the OCR engine may not work properly.</string>
-    <string name="OCRinstructionsENG">Please select and crop English text.
-        For best results, select a FEW words occupying a large area in a clear picture. Otherwise the OCR engine may not work properly.</string>
+    <string name="processing">Please wait, performing OCR </string>
+    <string name="OCRinstructionsJPN">Please select and crop Japanese text.\n        For best results, select a FEW symbols occupying a large area in a clear picture. Otherwise the OCR engine may not work properly.</string>
+    <string name="OCRinstructionsENG">Please select and crop English text.\n        For best results, select a FEW words occupying a large area in a clear picture. Otherwise the OCR engine may not work properly.</string>
     <string name="getTextThroughSpeech">Speak words</string>
     <string name="getTextThroughCamera">Optical character recognition</string>
     <string name="speakQuery">Hear user query</string>
-    <string name="requestingDictSearch">requestingDictSearch</string>
-    <string name="preferences_query_history_list">query_history_key</string>
+    <string name="requestingDictSearch" translatable="false">requestingDictSearch</string>
+    <string name="preferences_query_history_list" translatable="false">query_history_key</string>
     <string name="copiedTextToClipboard">Copied text to clipboard</string>
-    <string name="STTACtivityNotFound">Sorry, it appears your phone does not have Speech-To-Text functionality. Redirecting to relevant resources…</string>
+    <string name="STTACtivityNotFound">Sorry, it appears your phone does not have Speech-To-Text functionality. Redirecting to relevant resources </string>
     <string name="DownloadDialogTitle">Download OCR data files.</string>
     <string name="DownloadDialogMessageJPN">Please select how you want to download the required Japanese Optical Character Recognition data (approx. 40MB).</string>
     <string name="DownloadDialogMessageENG">Please select how you want to download the required English Optical Character Recognition data (approx. 20MB).</string>
     <string name="DownloadDialogWifiOnly">WiFi only</string>
     <string name="DownloadDialogWifiAndMobile">Anytime</string>
-
-    <!--DictionaryFragment Strings-->
-    <string name="no_match_found">Not found in local dictionary. Searching in other sources…</string>
-    <string name="please_enter_word"><![CDATA[<b>Please enter a valid word.</b>
-        <br /><br />Complete words will yield the best results, but word fragments will also do.
-        <br /><br />You can enter words in English, Romaji, Hiragana, Katakana or Kanji.
-        <br /><br />Also note that this app uses a variation of Kunrei-Shiki romanization where all kana homophones are transliterated to unique Romaji forms, thereby allowing for unambiguous transliterations.]]></string>
-    <string name="GrammarModule_Romaji_construction">Romaji:</string>
-    <string name="GrammarModule_Kana_construction">Kana:</string>
-    <string name="GrammarModule_English_construction">English:</string>
-    <string name="GrammarModule_Example_English">English:</string>
-    <string name="GrammarModule_Example_Romaji">Romaji:</string>
-    <string name="GrammarModule_Example_Kanji">Kanji:</string>
-    <string name="GrammarModule_Explanation">Details:</string>
-    <string name="GrammarModule_Example">Rules and Examples:</string>
-    <string name="ShowExamples">Example sentences: (>show)</string>
-    <string name="HideExamples">Example sentences: (>hide)</string>
-    <string name="how_it_s_used_">How it\'s used:\u0020</string>
-
-    <!--ConjugationFragment Strings-->
+    <string name="no_match_found">Not found in local dictionary. Searching in other sources </string>
+    <string name="please_enter_word">&lt;b&gt;Please enter a valid word.&lt;/b&gt;\n        &lt;br /&gt;&lt;br /&gt;Complete words will yield the best results, but word fragments will also do.\n        &lt;br /&gt;&lt;br /&gt;You can enter words in English, Romaji, Hiragana, Katakana or Kanji.\n        &lt;br /&gt;&lt;br /&gt;Also note that this app uses a variation of Kunrei-Shiki romanization where all kana homophones are transliterated to unique Romaji forms, thereby allowing for unambiguous transliterations.</string>
+    <string name="ShowExamples">Example sentences: (&gt;show)</string>
+    <string name="HideExamples">Example sentences: (&gt;hide)</string>
+    <string name="how_it_s_used_">How it\&apos;s used:\u0020</string>
     <string name="English">English</string>
     <string name="Romaji">Romaji</string>
     <string name="Kanji">Kanji</string>
-    <string name="verbHint"><b>Please enter a valid verb conjugation.</b>
-        \n\n<b>In order to keep the search time reasonable, not all verb tenses are included. As such, please observe the following rules:</b>
+    <string name="verbHint">&lt;b&gt;Please enter a valid verb conjugation.&lt;/b&gt;
+        \n\n&lt;b&gt;In order to keep the search time reasonable, not all verb tenses are included. As such, please observe the following rules:&lt;/b&gt;
         \n\nWhen looking up less common conjugations (e.g. tabesaseta), you may have to convert the verb to present tense (tabesaseru).
-        \n\nIf you\&apos;re searching for a compound verb (e.g. tabete ikimasu), you must first convert the second verb to its dictionary form (tabete iku).
-        \n\nIf you\&apos;re searching for a verb addition (e.g. taberu bakari), use the &lt;DICT&gt; search on \&quot;bakari\&quot; to look up the corresponding grammar rule.
-        \n\nThe &lt;DICT&gt; search also covers alternate Romaji or Kanji spellings for a variety of verbs (in dictionary form).
-        The &lt;CONJ&gt; search only looks up conjugations for the most common Romaji spelling and Kanji interpretation of each verb.</string>
+        \n\nIf you\&amp;apos;re searching for a compound verb (e.g. tabete ikimasu), you must first convert the second verb to its dictionary form (tabete iku).
+        \n\nIf you\&amp;apos;re searching for a verb addition (e.g. taberu bakari), use the &amp;lt;DICT&amp;gt; search on \&amp;quot;bakari\&amp;quot; to look up the corresponding grammar rule.
+        \n\nThe &amp;lt;DICT&amp;gt; search also covers alternate Romaji or Kanji spellings for a variety of verbs (in dictionary form).
+        The &amp;lt;CONJ&amp;gt; search only looks up conjugations for the most common Romaji spelling and Kanji interpretation of each verb.</string>
     <string name="where">, where:\u0020</string>
     <string name="PleaseEnterJapVerb">Please enter a Japanese verb.</string>
-    <string name="CanEnterEngVerb">You can also enter an English verb in ing/infinitive form.</string>
+    <string name="CanEnterEngVerb">You can also enter an English/French/Spanish verb in infinitive form.</string>
     <string name="SeeHints">Check the rules below for hints.</string>
-
-    <!--ConversionFragment Strings-->
     <string name="Conversion">Transliteration: </string>
     <string name="ConversionLatin">Latin Script: </string>
     <string name="ConversionHiragana">Hiragana: </string>
     <string name="ConversionKatakana">Katakana: </string>
     <string name="EnterWord">Please enter a word.</string>
-    <string name="TransliteratorHint">
-        \n<b>Hint:</b>
-        \nUse an apostrophe (\&apos;) after \&quot;n\&quot; to ensure its transliteration to \&quot;ん\&quot;.
+    <string name="TransliteratorHint">        \n&lt;b&gt;Hint:&lt;/b&gt;
+        \nUse an apostrophe (\&amp;apos;) after \&amp;quot;n\&amp;quot; to ensure its transliteration to \&amp;quot;?\&amp;quot;.
         \n\nAlso note that this app uses a variation of Kunrei-Shiki romanization where all kana homophones are transliterated to unique Romaji forms, thereby allowing for unambiguous transliterations.</string>
-
-    <!--ComposeKanjiFragment Strings-->
-    <string name="search_by_radical_kanji_finder">Kanji Finder</string>
-    <string name="search_by_radical_select_structure">1. Select your wanted Kanji\&apos;s overall structure</string>
-    <string name="search_by_radical_select_radicals">2. Select your wanted Kanji\&apos;s radicals</string>
-
-    <!--DecomposeKanjiFragment Strings-->
-    <string name="RadicalDecomp">Kanji Decomposition</string>
-    <string name="QueryOnMeaning">On meaning: </string>
-    <string name="QueryKunMeaning">Kun meaning: </string>
-    <string name="QueryOnReadings">On readings: </string>
-    <string name="QueryKunReadings">Kun readings: </string>
-    <string name="Structure">Structure: </string>
-    <string name="DecompositionsHint">
-        \n<b>Hint:</b>
-        \nEnter a Kanji into the Search bar and click on the decomposition (好 > 女+子) button in order to get its decompositions.
+    <string name="DecompositionsHint">\n&lt;b&gt;Hint:&lt;/b&gt;
+        \nEnter a Kanji into the Search bar and click on the decomposition (? &gt; ?+?) button in order to get its decompositions.
         \n
-        \nThe decompositions are evaluated using a heavily modified and corrected version of Gavin Grover\&apos;s decomposition database (see cjkdecomp.codeplex.com). </string>
-
-    <!--AboutActivity Text-->
+        \nThe decompositions are evaluated using a heavily modified and corrected version of Gavin Grover\&amp;apos;s decomposition database (see cjkdecomp.codeplex.com). </string>
     <string name="DONE">DONE</string>
-    <string name="AboutTextIntro1">
-        Japanese Toolbox is an app created by a Japanese learner for Japanese learners.
-    </string>
-    <string name="AboutTextIntro2">
-        The app is designed to help you decipher texts in intermediate to advanced Japanese at a faster pace than other tools,
-        allowing you to understand the meaningsEN and components of every word or phrase you read.
-    </string>
-    <string name="AboutTextIntro3">
-        The app does not depend on an Internet connection, so you can use it whenever and wherever you want.
-    </string>
-
-    <string name="AboutTextButtonsTitle">
-        Explanations on the tools:
-    </string>
+    <string name="AboutTextIntro1">\n        Japanese Toolbox is an app created by a Japanese learner for Japanese learners.\n    </string>
+    <string name="AboutTextIntro2">\n        The app is designed to help you decipher texts in intermediate to advanced Japanese at a faster pace than other tools,\n        allowing you to understand the meanings and components of every word or phrase you read.\n    </string>
+    <string name="AboutTextIntro3">\n        The app does not depend on an Internet connection, so you can use it whenever and wherever you want.\n    </string>
+    <string name="AboutTextButtonsTitle">\n        Explanations on the tools:\n    </string>
     <string name="AboutTextButtonsDictTitle">DICT</string>
-    <string name="AboutTextButtonsDictParagraph1">
-        A local dictionary of Japanese words, expressions and grammar rules.
-    </string>
-    <string name="AboutTextButtonsDictParagraph2">
-        Better than most online reference tools, you can find explanations on any grammar rule just by entering a relevant keyword, even partially.
-    </string>
-    <string name="AboutTextButtonsDictParagraph3">
-        I manually expanded the dictionary over the years with extra meaningsEN and alternate word forms, so you will find words that many online dictionaries fail to find.
-    </string>
-    <string name="AboutTextButtonsDictParagraph4">
-        If there is Internet access then online results are added (you can change this in the Settings menu).
-    </string>
+    <string name="AboutTextButtonsDictParagraph1">\n        A local dictionary of Japanese words, expressions and grammar rules.\n    </string>
+    <string name="AboutTextButtonsDictParagraph2">\n        Better than most online reference tools, you can find explanations on any grammar rule just by entering a relevant keyword, even partially.\n    </string>
+    <string name="AboutTextButtonsDictParagraph3">\n        I manually expanded the dictionary over the years with extra meanings and alternate word forms, so you will find words that many online dictionaries fail to find.\n    </string>
+    <string name="AboutTextButtonsDictParagraph4">\n        If there is Internet access then online results are added (you can change this in the Settings menu).\n    </string>
     <string name="AboutTextButtonsConjTitle">CONJ</string>
-    <string name="AboutTextButtonsConjParagraph1">
-        A verb conjugator with more than 140 conjugations for more than 2000 regular verbs and more than 3300 suru verbs.
-    </string>
-    <string name="AboutTextButtonsConjParagraph2">
-        If you search for a conjugated verb (in Romaji, Kana or Kanji form) with this function, a unique reverse-search engine
-        will find all possible matching verbs and give the relevant conjugation\'s meaning.
-    </string>
-    <string name="AboutTextButtonsConvertTitle">あ&#8660;A</string>
-    <string name="AboutTextButtonsConvertParagraph1">
-        A Romaji-Hiragana-Katakana text converter.
-    </string>
-    <string name="AboutTextButtonsConvertParagraph2">
-        Though there are various ways of transliterating Kana syllables to Romaji and back,
-        I chose the way that will feel most intuitive to Western learners and is compatible with most modern conventions.
-    </string>
-    <string name="AboutTextButtonsSearchByRadicalTitle">女+子 &#8658; 好</string>
-    <string name="AboutTextButtonsSearchByRadicalParagraph1">
-        Find any Kanji based on up to 4 radicals/components or by identifying its general structure. You can find components by selecting one of the 214 radicals
-        or their common variants, or by searching a list of common Kanji components (ordered by popularity). You can also filter the results by entering the wanted
-        reading, meaning or radical number.
-    </string>
-    <string name="AboutTextButtonsSearchByRadicalParagraph2">
-        The search engine is way better than what you\'ll find online, since I manually inspected and corrected the original components database that online sites rely on.
-    </string>
-    <string name="AboutTextButtonsSearchByRadicalParagraph3">
-        Note that users of older Android versions may experience extra \"blank symbols\" instead of Japanese characters, that can\'t be filtered out.
-    </string>
-    <string name="AboutTextButtonsDecomposeTitle">好 &#8658; 女+子</string>
-    <string name="AboutTextButtonsDecomposeParagraph1">
-        Get the meaningsEN and readings of all of the components in a given Kanji, recursively.
-    </string>
-    <string name="AboutTextButtonsDecomposeParagraph2">
-        Very useful if you want ot understand Kanjis through their radicals.
-    </string>
+    <string name="AboutTextButtonsConjParagraph1">\n        A verb conjugator with more than 140 conjugations for more than 2000 regular verbs and more than 3400 suru verbs.\n    </string>
+    <string name="AboutTextButtonsConjParagraph2">\n        If you search for a conjugated verb (in Romaji, Kana or Kanji form) with this function, a unique reverse-search engine\n        will find all possible matching verbs and give the relevant conjugation\&apos;s meaning.\n    </string>
+    <string name="AboutTextButtonsConvertTitle">あ⇔A</string>
+    <string name="AboutTextButtonsConvertParagraph1">\n        A Romaji-Hiragana-Katakana text converter.\n    </string>
+    <string name="AboutTextButtonsConvertParagraph2">\n        Though there are various ways of transliterating Kana syllables to Romaji and back,\n        I chose the way that will feel most intuitive to Western learners and is compatible with most modern conventions.\n    </string>
+    <string name="AboutTextButtonsSearchByRadicalTitle">女+子 ⇒ 好</string>
+    <string name="AboutTextButtonsSearchByRadicalParagraph1">\n        Find any Kanji based on up to 4 radicals/components or by identifying its general structure. You can find components by selecting one of the 214 radicals\n        or their common variants, or by searching a list of common Kanji components (ordered by popularity). You can also filter the results by entering the wanted\n        reading, meaning or radical number.\n    </string>
+    <string name="AboutTextButtonsSearchByRadicalParagraph2">\n        The search engine is way better than what you\&apos;ll find online, since I manually inspected and corrected the original components database that online sites rely on.\n    </string>
+    <string name="AboutTextButtonsSearchByRadicalParagraph3">\n        Note that users of older Android versions may experience extra \&quot;blank symbols\&quot; instead of Japanese characters, that can\&apos;t be filtered out.\n    </string>
+    <string name="AboutTextButtonsDecomposeTitle">好 ⇒ 女+子</string>
+    <string name="AboutTextButtonsDecomposeParagraph1">\n        Get the meanings and readings of all of the components in a given Kanji, recursively.\n    </string>
+    <string name="AboutTextButtonsDecomposeParagraph2">\n        Very useful if you want ot understand Kanjis through their radicals.\n    </string>
     <string name="AboutTextButtonsSpeakerTitle">Speaker</string>
-    <string name="AboutTextButtonsSpeakerParagraph1">
-        A Text-To-Speech function so that you may listen to your query in English or in Japanese.
-    </string>
-    <string name="AboutTextButtonsSpeakerParagraph2">
-        You can choose the speech language in the Settings menu.
-    </string>
+    <string name="AboutTextButtonsSpeakerParagraph1">\n        A Text-To-Speech function so that you may listen to your query in English or in Japanese.\n    </string>
+    <string name="AboutTextButtonsSpeakerParagraph2">\n        You can choose the speech language in the Settings menu.\n    </string>
     <string name="AboutTextButtonsCameraTitle">Camera</string>
-    <string name="AboutTextButtonsCameraParagraph1">
-        Convert Japanese or English words to searchable text by taking a picture or using an image in your device. This function works offline.
-    </string>
-    <string name="AboutTextButtonsCameraParagraph2">
-        You can choose the text recognition language and initial image saturation/contrast/brightness in the Settings menu.
-    </string>
+    <string name="AboutTextButtonsCameraParagraph1">\n        Convert Japanese or English words to searchable text by taking a picture or using an image in your device. This function works offline.\n    </string>
+    <string name="AboutTextButtonsCameraParagraph2">\n        You can choose the text recognition language and initial image saturation/contrast/brightness in the Settings menu.\n    </string>
     <string name="AboutTextButtonsMicrophoneTitle">Microphone</string>
-    <string name="AboutTextButtonsMicrophoneParagraph1">
-        A Speech-To-Text function for Japanese or English speech.
-    </string>
-    <string name="AboutTextButtonsMicrophoneParagraph2">
-        You can choose the speech recognition language in the Settings menu.
-    </string>
-
+    <string name="AboutTextButtonsMicrophoneParagraph1">\n        A Speech-To-Text function for Japanese or English speech.\n    </string>
+    <string name="AboutTextButtonsMicrophoneParagraph2">\n        You can choose the speech recognition language in the Settings menu.\n    </string>
     <string name="AboutTextPersonalTitle">Personal Note</string>
-    <string name="AboutTextPersonalParagraph1">
-        If you have any comments or feedback, or encountered a bug, you\'re welcome to post them at japanesetoolboxapp@gmail.com.
-    </string>
-    <string name="AboutTextPersonalParagraph2">
-        I built JapaneseToolbox on my spare time out of love for the Japanese language and to help people learn Japanese faster. The app will always remain
-        FREE and ad-less, and no information you entered in the app is in any way used for purposes other than the services provided in the app.
-    </string>
-    <string name="AboutTextPersonalParagraph3">
-        The source code for the project is freely available at https://github.com/blarom/JapaneseToolbox. You
-        can copy the code to your heart\'s content! I encourage the free sharing of knowledge, and if you want to build an app with similar functions,
-        you\'re more than welcome to do so. Just don\'t forget to credit me, I spent a lot of time developing these tools :)
-    </string>
-
-    <string name="AboutTextCreditsTitle">
-        Credits - Part of the app\'s tools are based on following:
-    </string>
+    <string name="AboutTextPersonalParagraph1">\n        If you have any comments or encountered a bug, you\&apos;re welcome to post them at japanesetoolboxapp@gmail.com.\n    </string>
+    <string name="AboutTextPersonalParagraph2">\n        I built JapaneseToolbox on my spare time out of love for the Japanese language and to help people learn Japanese faster. The app will always remain\n        FREE and ad-less, and no information you entered in the app is in any way used for purposes other than the services provided in the app.\n    </string>
+    <string name="AboutTextPersonalParagraph3">\n        The source code for the project is freely available at https://github.com/blarom/JapaneseToolbox. You\n        can copy the code to your heart\&apos;s content! I encourage the free sharing of knowledge, and if you want to build an app with similar functions,\n        you\&apos;re more than welcome to do so. Just don\&apos;t forget to credit me, I spent a lot of time developing these tools :)\n    </string>
+    <string name="AboutTextCreditsTitle">\n        Credits - Part of the app\&apos;s tools are based on following:\n    </string>
     <string name="AboutTextCreditsCodeTitle">Code Sources</string>
-    <string name="AboutTextCreditsCodeParagraph1">
-        The OCR engine is provided by the Tesseract open-source project (supported by Google).
-    </string>
-    <string name="AboutTextCreditsCodeParagraph2">
-        The Text-To-Speech and Speech-To-Text functions are based on Google APIs.
-    </string>
-    <string name="AboutTextCreditsCodeParagraph3">
-        Picture manipulation is provided by the ArthurHub library (https://github.com/ArthurHub/Android-Image-Cropper).
-    </string>
-    <string name="AboutTextCreditsCodeParagraph4">
-        Image sharpening is provided by Pete Houston\'s algorithm (https://xjaphx.wordpress.com/2011/06/22/image-processing-sharpening-image/).
-    </string>
+    <string name="AboutTextCreditsCodeParagraph1">\n        The OCR engine is provided by the Tesseract open-source project (supported by Google).\n    </string>
+    <string name="AboutTextCreditsCodeParagraph2">\n        The Text-To-Speech and Speech-To-Text functions are based on Google APIs.\n    </string>
+    <string name="AboutTextCreditsCodeParagraph3">\n        Picture manipulation is provided by the ArthurHub library (https://github.com/ArthurHub/Android-Image-Cropper).\n    </string>
+    <string name="AboutTextCreditsCodeParagraph4">\n        Image sharpening is provided by Pete Houston\&apos;s algorithm (https://xjaphx.wordpress.com/2011/06/22/image-processing-sharpening-image/).\n    </string>
     <string name="AboutTextCreditsDatabasesTitle">Database Sources</string>
-    <string name="AboutTextCreditsDatabasesParagraph1">
-        The CJK character decompositions database is originally based on the cjkdecomp database by Gavin Grover (https://github.com/amake/cjk-decomp - see disclaimer*),
-        which I heavily modified and corrected.
-    </string>
-    <string name="AboutTextCreditsDatabasesParagraph2">
-        The local dictionary is a reduced form of the open-source EDICT dictionary, which I modified and manually upgraded to suit the app\'s needs.
-        Some other sources were used, including wiktionary.org for updating the suru verb meaningsEN.
-    </string>
-
-    <string name="AboutTextDisclaimer1">
-        *disclaimer for cjkdecomp:\nCopyright 2017 Gavin Grover\nLicensed under the Apache License,
-        Version 2.0 (the "License"); you may not use this database except in compliance with the License.\nYou may
-        obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0\nUnless required by applicable
-        law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS,
-        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and limitations under the License.
-    </string>
-
-    <string name="AboutTextDisclaimer2">
-        *disclaimer for EDICT Japanese dictionary:\nThis package uses a modified subset of the EDICT and KANJIDIC dictionary files. These files are the property of
-        the Electronic Dictionary Research and Development Group, and are used in conformance with the Group\'s licence;
-        See http://www.csse.monash.edu.au/~jwb/edict.html and http://www.edrdg.org/.
-    </string>
-
-    <!--OcrCaptureACtivity-->
+    <string name="AboutTextCreditsDatabasesParagraph1">\n        The CJK character decompositions database is originally based on the cjkdecomp database by Gavin Grover (https://github.com/amake/cjk-decomp - see disclaimer*),\n        which I heavily modified and corrected.\n    </string>
+    <string name="AboutTextCreditsDatabasesParagraph2">\n        The local dictionary is a reduced form of the open-source EDICT dictionary, which I modified and manually upgraded to suit the app\&apos;s needs.\n        Some other sources were used, including wiktionary.org for updating the suru verb meanings.\n    </string>
+    <string name="AboutTextDisclaimer1">\n        *disclaimer for cjkdecomp:\nCopyright 2017 Gavin Grover\nLicensed under the Apache License,\n        Version 2.0 (the &quot;License&quot;); you may not use this database except in compliance with the License.\nYou may\n        obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0\nUnless required by applicable\n        law or agreed to in writing, software distributed under the License is distributed on an &quot;AS IS&quot; BASIS,\n        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and limitations under the License.\n    </string>
+    <string name="AboutTextDisclaimer2">\n        *disclaimer for EDICT Japanese dictionary:\nThis package uses a modified subset of the EDICT and KANJIDIC dictionary files. These files are the property of\n        the Electronic Dictionary Research and Development Group, and are used in conformance with the Group\&apos;s licence;\n        See http://www.csse.monash.edu.au/~jwb/edict.html and http://www.edrdg.org/.\n    </string>
     <string name="ok">OK</string>
-    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
-    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
     <string name="ocr_header">Click &quot;Detect Text&quot; to detect text</string>
     <string name="read_text">Detect Text</string>
     <string name="auto_focus">Auto Focus</string>
@@ -376,60 +230,57 @@
     <string name="ocr_error">Error reading text: %1$s</string>
     <string name="ocrOutputSharedPrefs" translatable="false">ocrOutputSharedPrefs</string>
     <string name="ocrOutputSharedPrefsString" translatable="false">ocrOutputSharedPrefsString</string>
-    <string name="jisho_website_url">https://jisho.org/search/</string>
-    <string name="requested_second_fragment">requested_second_fragment</string>
-    <string name="user_query_word">user_query_word</string>
-    <string name="sorry_only_have_first_part">Sorry, you only have</string>
-    <string name="sorry_only_have_second_part">MB left in internal memory and can\'t install the OCR data. Please clear some app data and try again.</string>
-    <string name="downloading_ocr_data_first_part">Downloading the</string>
+    <string name="jisho_website_url" translatable="false">https://jisho.org/search/</string>
+    <string name="requested_second_fragment" translatable="false">requested_second_fragment</string>
+    <string name="user_query_word" translatable="false">user_query_word</string>
+    <string name="sorry_only_have_first_part">Sorry, you only have\u0020</string>
+    <string name="sorry_only_have_second_part">MB left in internal memory and can\&apos;t install the OCR data. Please clear some app data and try again.</string>
+    <string name="downloading_ocr_data_first_part">Downloading the\u0020</string>
     <string name="downloading_ocr_data_second_part">OCR data on Wifi only.</string>
     <string name="attempting_download_first_part">Attempting to download the\u0020</string>
     <string name="attempting_download_second_part">OCR data. Please wait.</string>
     <string name="failed_to_connect_to_internet">Failed to connect to the Internet.</string>
-    <string name="saved_local_results">saved_local_results</string>
-    <string name="saved_merged_results">saved_merged_results</string>
-    <string name="saved_input_query">saved_input_query</string>
-    <string name="search_by_radical_fragment_instance">search_by_radical_fragment_instance</string>
-    <string name="saved_ocr_result_state">saved_ocr_result_state</string>
-    <string name="saved_romaji_from_kanji_state">saved_romaji_from_kanji_state</string>
-    <string name="dict_fragment">saved_dict_fragment</string>
-    <string name="conj_fragment">saved_conj_fragment</string>
-    <string name="conv_fragment">saved_conv_fragment</string>
-    <string name="srad_fragment">saved_srad_fragment</string>
-    <string name="dcmp_fragment">saved_dcmp_fragment</string>
-    <string name="displayed_second_fragment">displayed_second_fragment</string>
-    <string name="legend_database">legend_database</string>
-    <string name="latin_conj_database">latin_conj_database</string>
-    <string name="kanji_conj_database">kanji_conj_database</string>
-    <string name="rad_only_database">rad_only_database</string>
-    <string name="words_list">words_list</string>
-    <string name="search_by_radical_elements_list">search_by_radical_elements_list</string>
-    <string name="decomposition_query">decomposition_query</string>
-    <string name="decomposition_radical_iteration">decomposition_radical_iteration</string>
-    <string name="database_finished_loading_flag">database_finished_loading_flag</string>
-    <string name="app_preferences">app_preferences</string>
+    <string name="saved_local_results" translatable="false">saved_local_results</string>
+    <string name="saved_merged_results" translatable="false">saved_merged_results</string>
+    <string name="saved_input_query" translatable="false">saved_input_query</string>
+    <string name="search_by_radical_fragment_instance" translatable="false">search_by_radical_fragment_instance</string>
+    <string name="saved_ocr_result_state" translatable="false">saved_ocr_result_state</string>
+    <string name="saved_romaji_from_kanji_state" translatable="false">saved_romaji_from_kanji_state</string>
+    <string name="dict_fragment" translatable="false">saved_dict_fragment</string>
+    <string name="conj_fragment" translatable="false">saved_conj_fragment</string>
+    <string name="conv_fragment" translatable="false">saved_conv_fragment</string>
+    <string name="srad_fragment" translatable="false">saved_srad_fragment</string>
+    <string name="dcmp_fragment" translatable="false">saved_dcmp_fragment</string>
+    <string name="displayed_second_fragment" translatable="false">displayed_second_fragment</string>
+    <string name="legend_database" translatable="false">legend_database</string>
+    <string name="latin_conj_database" translatable="false">latin_conj_database</string>
+    <string name="kanji_conj_database" translatable="false">kanji_conj_database</string>
+    <string name="rad_only_database" translatable="false">rad_only_database</string>
+    <string name="words_list" translatable="false">words_list</string>
+    <string name="search_by_radical_elements_list" translatable="false">search_by_radical_elements_list</string>
+    <string name="decomposition_query" translatable="false">decomposition_query</string>
+    <string name="decomposition_radical_iteration" translatable="false">decomposition_radical_iteration</string>
+    <string name="database_finished_loading_flag" translatable="false">database_finished_loading_flag</string>
+    <string name="app_preferences" translatable="false">app_preferences</string>
     <string name="loading_central_database">Installing the central words database.\n~ May take up to one minute ~</string>
     <string name="loading_kanji_database">Finished installing the central database.\nCurrently installing the Kanji database.\n~ May take up to 3-5 minutes ~</string>
     <string name="finished_loading_databases">Finished loading the databases.</string>
-    <string name="word_and_verb_database_finished_loading_flag">word_and_verb_database_finished_loading_flag</string>
+    <string name="word_and_verb_database_finished_loading_flag" translatable="false">word_and_verb_database_finished_loading_flag</string>
     <string name="database_being_installed">The database is currently being installed.\nThis may take a few minutes.\nThis delay only occurs when installing or upgrading the app.</string>
     <string name="sure_you_want_to_exit">Are you sure you want to exit the app?</string>
     <string name="yes">Yes</string>
     <string name="no_matching_words_online">No matching words found online.</string>
-    <string name="no_new_words_or_meanings_found_online">No new words or meaningsEN found online.</string>
+    <string name="no_new_words_or_meanings_found_online">No new words or meanings found online.</string>
     <string name="structure_">Structure:\u0020</string>
     <string name="properties_">Properties:\u0020</string>
     <string name="this_component_is_a_CJK_character">This component is a CJK Character.</string>
     <string name="radical_">Radical:\u0020</string>
     <string name="search_for_radical_search_too_broad">Your search is too broad. Please select another structure or select Kanji elements to narrow the search.</string>
     <string name="search_by_radical_no_results_found">No results found for your selections.</string>
-    <string name="similars_database">similars_database</string>
+    <string name="similars_database" translatable="false">similars_database</string>
     <string name="copy_to_input">Copy to input</string>
     <string name="clear_search_history">Clear Search History</string>
-    <string name="image_adjustment_hint">The original image has saturation 1.0 (normal colors), contrast 1.0 and brightness 0.
-        \n\nOptimal values for character recognition are around saturation 0 (grayscale), contrast 3.0 and brightness -0.5.
-        These are the default settings, but feel free to change them to make the image as clear as possible.
-        You can adjust these defaults in the Settings menu.</string>
+    <string name="image_adjustment_hint">The original image has saturation 1.0 (normal colors), contrast 1.0 and brightness 0.\n        \n\nOptimal values for character recognition are around saturation 0 (grayscale), contrast 3.0 and brightness -0.5.\n        These are the default settings, but feel free to change them to make the image as clear as possible.\n        You can adjust these defaults in the Settings menu.</string>
     <string name="pref_invalid_input_default_set">Invalid input, default value set instead.</string>
     <string name="pref_cannot_set_value_outside_range">You cannot set a value outside of the range</string>
     <string name="search_any_property_">property/name/etc..</string>
@@ -438,11 +289,11 @@
     <string name="send_to_input">Send to input</string>
     <string name="send_to_element">Send to element</string>
     <string name="dropdown_arrow">dropdown arrow</string>
-    <string name="decomposition_kanji_list_index">decomposition_kanji_list_index</string>
+    <string name="decomposition_kanji_list_index" translatable="false">decomposition_kanji_list_index</string>
     <string name="done">Done</string>
-    <string name="ocr_results_dialog_instructions">Manually select the text you want to copy then press \"Copy To Input\". If no text is selected, the first line of text is copied.</string>
+    <string name="ocr_results_dialog_instructions">Manually select the text you want to copy then press \&quot;Copy To Input\&quot;. If no text is selected, the first line of text is copied.</string>
     <string name="common_word">Common word.</string>
-    <string name="less_common_word">Less Common word.</string>
+    <string name="less_common_word">Non-common word.</string>
     <string name="source_local_offline">Source: local (offline).</string>
     <string name="source_edict_online">Source: EDICT (online).</string>
     <string name="ocr">OCR</string>
@@ -451,7 +302,7 @@
     <string name="brightness">Brightness</string>
     <string name="requested_structure">Requested structure:</string>
     <string name="down_arrow">down arrow</string>
-    <string name="elements">Elements:</string>
+    <string name="elements_">Elements:</string>
     <string name="select_radical">Select Radical</string>
     <string name="select_component">Select Component</string>
     <string name="select_overall_kanji_structure">Select Overall Kanji structure:</string>
@@ -460,9 +311,9 @@
     <string name="results">Results</string>
     <string name="structure">Structure:</string>
     <string name="radical">Radical:</string>
-    <string name="on_reading">On reading:</string>
+    <string name="on_reading">On reading: </string>
     <string name="name_reading">Name reading:</string>
-    <string name="kun_reading">Kun reading:</string>
+    <string name="kun_reading">Kun reading: </string>
     <string name="meaning">Meaning:</string>
     <string name="remove_decomposition">remove decomposition</string>
     <string name="image">image</string>
@@ -470,9 +321,8 @@
     <string name="saturation_">Saturation:\u0020</string>
     <string name="brightness_">Brightness:\u0020</string>
     <string name="select_the_radical">Select the Radical</string>
-    <string name="elements_">Elements:</string>
-    <string name="hyphen">-</string>
-    <string name="vertical_separator">|</string>
+    <string name="hyphen" translatable="false">-</string>
+    <string name="vertical_separator" translatable="false">|</string>
     <string name="kanji_structure">kanji structure</string>
     <string name="no_elements_found">No Elements Found.</string>
 

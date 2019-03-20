@@ -48,7 +48,7 @@
                         style="@style/SearchByRadicalTextStyle"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="2dp"
-                        android:text="@string/elements"/>
+                        android:text="@string/elements_"/>
 
                     <FrameLayout
                         android:id="@+id/search_by_radical_elementA_container"
