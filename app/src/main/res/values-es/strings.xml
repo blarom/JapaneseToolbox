@@ -88,11 +88,11 @@
     <string name="Romaji">Romaji</string>
     <string name="Kanji">Kanji</string>
     <string name="verbHint">&lt;b&gt; Por favor ingrese una conjugación verbo válida. &lt;/b&gt;
-         \ n \ n &lt;b&gt; Para mantener el tiempo de búsqueda razonable, no se incluyen todos los tiempos verbales. Como tal, observe las siguientes reglas: &lt;/b&gt;
-         \ n \ n Al buscar conjugaciones menos comunes (por ejemplo, tabesaseta), es posible que tenga que convertir el verbo al tiempo presente (tabesaseru).
-         \ n \ nSi estás buscando un verbo compuesto (por ejemplo, tabete ikimasu), primero debes convertir el segundo verbo a su forma de diccionario (tabete iku).
-         \ n \ nSi estás buscando una verbo conjuncto (por ejemplo, taberu bakari), usa &amp;lt;DICT&amp;gt; para buscar \&amp;quot;bakari\&amp;quot; y consultar la regla gramatical correspondiente.
-         \ n \ n La búsqueda &amp;lt;DICC&amp;gt; también cubre ortografías alternativas de romaji o kanji para una variedad de verbos (en forma de diccionario).
+         \n\n &lt;b&gt; Para mantener el tiempo de búsqueda razonable, no se incluyen todos los tiempos verbales. Como tal, observe las siguientes reglas: &lt;/b&gt;
+         \n\n Al buscar conjugaciones menos comunes (por ejemplo, tabesaseta), es posible que tenga que convertir el verbo al tiempo presente (tabesaseru).
+         \n\nSi estás buscando un verbo compuesto (por ejemplo, tabete ikimasu), primero debes convertir el segundo verbo a su forma de diccionario (tabete iku).
+         \n\nSi estás buscando una verbo conjuncto (por ejemplo, taberu bakari), usa &amp;lt;DICT&amp;gt; para buscar \&amp;quot;bakari\&amp;quot; y consultar la regla gramatical correspondiente.
+         \n\nLa búsqueda &amp;lt;DICC&amp;gt; también cubre ortografías alternativas de romaji o kanji para una variedad de verbos (en forma de diccionario).
          La búsqueda &amp;lt;CONJ&amp;gt; solo busca conjugaciones para la ortografía romaji más común y la alternativas interpretaciónes de kanji de cada verbo.</string>
     <string name="where">, donde:\u0020</string>
     <string name="PleaseEnterJapVerb">Por favor, introduzca un verbo japonés.</string>
@@ -103,60 +103,60 @@
     <string name="ConversionHiragana">Hiragana</string>
     <string name="ConversionKatakana">Katakana:</string>
     <string name="EnterWord">Por favor ingrese una palabra.</string>
-    <string name="TransliteratorHint">\n &lt;b&gt; Sugerencia: &lt;/b&gt;
-         \ nUtilice un apóstrofe (\&amp;apos;) después de \&amp;quot;n\&amp;quot; para asegurar su transliteración a \&amp;quot;?\&amp;quot;.
-         \ n \ nTambién tenga en cuenta que esta aplicación utiliza una variación de la romanización Kunrei-Shiki donde todos los homófonos kana se transcriben a formas únicas de romaji, lo que permite transliteraciones inequívocas.</string>
-    <string name="DecompositionsHint">&quot;\ n &lt;b&gt; Sugerencia: &lt;/b&gt;
+    <string name="TransliteratorHint">\n&lt;b&gt; Sugerencia: &lt;/b&gt;
+         \nUtilice un apóstrofe (\&amp;apos;) después de \&amp;quot;n\&amp;quot; para asegurar su transliteración a \&amp;quot;?\&amp;quot;.
+         \n\nTambién tenga en cuenta que esta aplicación utiliza una variación de la romanización Kunrei-Shiki donde todos los homófonos kana se transcriben a formas únicas de romaji, lo que permite transliteraciones inequívocas.</string>
+    <string name="DecompositionsHint">&quot;\n &lt;b&gt; Sugerencia: &lt;/b&gt;
          \nIntroduzca un kanji en la barra de búsqueda y haga clic en el botón de descomposición (? &gt; ?+?) para obtener sus descomposiciones.
          \n
-         \ nLas descomposiciones se evalúan utilizando una versión muy modificada y corregida de la base de datos de descomposición de Gavin Grover (ver cjkdecomp.codeplex.com). &quot;</string>
+         \nLas descomposiciones se evalúan utilizando una versión muy modificada y corregida de la base de datos de descomposición de Gavin Grover (ver cjkdecomp.codeplex.com). &quot;</string>
     <string name="DONE">HECHO</string>
-    <string name="AboutTextIntro1">\n Japanese Toolbox es una aplicación creada por un estudiante del japonés para estudiantes del japoneses.\n</string>
-    <string name="AboutTextIntro2">\n La aplicación está diseñada para ayudarte a descifrar textos en japonés intermedio a avanzado, a un ritmo más rápido que otras herramientas,\n permitiéndote entender los significados y componentes de cada palabra o frase que lees.\n</string>
-    <string name="AboutTextIntro3">\n La aplicación no depende de una conexión a Internet, por lo que puedes usarla cuando y donde quieras.\n</string>
-    <string name="AboutTextButtonsTitle">\n Explicaciones sobre las herramientas:\n</string>
+    <string name="AboutTextIntro1">\n        Japanese Toolbox es una aplicación creada por un estudiante del japonés para estudiantes del japoneses.\n</string>
+    <string name="AboutTextIntro2">\n        La aplicación está diseñada para ayudarte a descifrar textos en japonés intermedio a avanzado, a un ritmo más rápido que otras herramientas,\n permitiéndote entender los significados y componentes de cada palabra o frase que lees.\n</string>
+    <string name="AboutTextIntro3">\n        La aplicación no depende de una conexión a Internet, por lo que puedes usarla cuando y donde quieras.\n</string>
+    <string name="AboutTextButtonsTitle">\n        Explicaciones sobre las herramientas:\n</string>
     <string name="AboutTextButtonsDictTitle">DICC</string>
-    <string name="AboutTextButtonsDictParagraph1">\n Un diccionario local de palabras, expresiones y reglas gramaticales japonesos.\n</string>
-    <string name="AboutTextButtonsDictParagraph2">\n Mejor que la mayoría de las herramientas de referencia en línea, puede encontrar explicaciones sobre cualquier regla gramatical simplemente ingresando una palabra clave relevante, incluso parcial.\n</string>
-    <string name="AboutTextButtonsDictParagraph3">\n Extendí manualmente el diccionario a lo largo del tiempo con significados adicionales y formas de palabras alternativas, por lo que encontrarás palabras que muchos diccionarios en línea no pueden encontrar.\n</string>
-    <string name="AboutTextButtonsDictParagraph4">\n Si hay acceso a Internet, se agregan los resultados en línea (puede cambiar esto en la Configuración).\n</string>
+    <string name="AboutTextButtonsDictParagraph1">\n        Un diccionario local de palabras, expresiones y reglas gramaticales japonesos.\n</string>
+    <string name="AboutTextButtonsDictParagraph2">\n        Mejor que la mayoría de las herramientas de referencia en línea, puede encontrar explicaciones sobre cualquier regla gramatical simplemente ingresando una palabra clave relevante, incluso parcial.\n</string>
+    <string name="AboutTextButtonsDictParagraph3">\n        Extendí manualmente el diccionario a lo largo del tiempo con significados adicionales y formas de palabras alternativas, por lo que encontrarás palabras que muchos diccionarios en línea no pueden encontrar.\n</string>
+    <string name="AboutTextButtonsDictParagraph4">\n        Si hay acceso a Internet, se agregan los resultados en línea (puede cambiar esto en la Configuración).\n</string>
     <string name="AboutTextButtonsConjTitle">CONJ</string>
-    <string name="AboutTextButtonsConjParagraph1">\n Un conjugador de verbos con más de 140 conjugaciones para más de 2000 verbos regulares y más de 3400 verbos suru.\n</string>
-    <string name="AboutTextButtonsConjParagraph2">\n Si busca un verbo conjugado (en forma de romaji, kana o kanji) con esta función, un único motor de búsqueda inversa\n encontrará todos los verbos coincidentes posibles y le dará el significado de su conjugación.\n</string>
+    <string name="AboutTextButtonsConjParagraph1">\n        Un conjugador de verbos con más de 140 conjugaciones para más de 2000 verbos regulares y más de 3400 verbos suru.\n</string>
+    <string name="AboutTextButtonsConjParagraph2">\n        Si busca un verbo conjugado (en forma de romaji, kana o kanji) con esta función, un único motor de búsqueda inversa\n encontrará todos los verbos coincidentes posibles y le dará el significado de su conjugación.\n</string>
     <string name="AboutTextButtonsConvertTitle">あ⇔A</string>
-    <string name="AboutTextButtonsConvertParagraph1">\n Un convertidor de texto romaji-hiragana-katakana.\n</string>
-    <string name="AboutTextButtonsConvertParagraph2">\n Aunque hay varias formas de transcribir las sílabas de kana a romaji y volver,\n elegí una forma más intuitiva para los estudiantes occidentales y compatible con la mayoría de las convenciones modernas.\n</string>
+    <string name="AboutTextButtonsConvertParagraph1">\n        Un convertidor de texto romaji-hiragana-katakana.\n</string>
+    <string name="AboutTextButtonsConvertParagraph2">\n        Aunque hay varias formas de transcribir las sílabas de kana a romaji y volver,\n elegí una forma más intuitiva para los estudiantes occidentales y compatible con la mayoría de las convenciones modernas.\n</string>
     <string name="AboutTextButtonsSearchByRadicalTitle">女+子 ⇒ 好</string>
-    <string name="AboutTextButtonsSearchByRadicalParagraph1">\n Encuentra cualquier kanji basado en hasta 4 radicales/componentes o identificando su estructura general. Puede encontrar componentes seleccionando uno de los 214 radicales\n o sus variantes, o buscando una lista de componentes comunes de kanji (ordenados por popularidad). También puede filtrar los resultados ingresando\n la pronunciación deseada, el significado o el número del radical.\n</string>
-    <string name="AboutTextButtonsSearchByRadicalParagraph2">\n El motor de búsqueda es mucho mejor de lo que encontrarás en línea, ya que inspeccioné y corregí manualmente la base de datos de componentes en la que se basan los sitios en línea.\n</string>
-    <string name="AboutTextButtonsSearchByRadicalParagraph3">\n Tenga en cuenta que los usuarios de versiones anteriores de Android pueden experimentar &quot;símbolos nulos&quot; adicionales en lugar de caracteres japoneses, que no se pueden filtrar.\n</string>
+    <string name="AboutTextButtonsSearchByRadicalParagraph1">\n        Encuentra cualquier kanji basado en hasta 4 radicales/componentes o identificando su estructura general. Puede encontrar componentes seleccionando uno de los 214 radicales\n o sus variantes, o buscando una lista de componentes comunes de kanji (ordenados por popularidad). También puede filtrar los resultados ingresando\n la pronunciación deseada, el significado o el número del radical.\n</string>
+    <string name="AboutTextButtonsSearchByRadicalParagraph2">\n        El motor de búsqueda es mucho mejor de lo que encontrarás en línea, ya que inspeccioné y corregí manualmente la base de datos de componentes en la que se basan los sitios en línea.\n</string>
+    <string name="AboutTextButtonsSearchByRadicalParagraph3">\n        Tenga en cuenta que los usuarios de versiones anteriores de Android pueden experimentar &quot;símbolos nulos&quot; adicionales en lugar de caracteres japoneses, que no se pueden filtrar.\n</string>
     <string name="AboutTextButtonsDecomposeTitle">好 ⇒ 女+子</string>
-    <string name="AboutTextButtonsDecomposeParagraph1">\n Obtener los significados y las lecturas de todos los componentes en un kanji dado, recursivamente.\n</string>
-    <string name="AboutTextButtonsDecomposeParagraph2">\n Muy útil si quieres entender a los kanjis a través de sus radicales.\n</string>
+    <string name="AboutTextButtonsDecomposeParagraph1">\n        Obtener los significados y las lecturas de todos los componentes en un kanji dado, recursivamente.\n</string>
+    <string name="AboutTextButtonsDecomposeParagraph2">\n        Muy útil si quieres entender a los kanjis a través de sus radicales.\n</string>
     <string name="AboutTextButtonsSpeakerTitle">Altavoz</string>
-    <string name="AboutTextButtonsSpeakerParagraph1">\n Una función de texto a voz para que pueda escuchar su consulta en inglés o en japonés.\n</string>
-    <string name="AboutTextButtonsSpeakerParagraph2">\n Puede elegir el idioma de la voz en la Configuración.\n</string>
+    <string name="AboutTextButtonsSpeakerParagraph1">\n        Una función de texto a voz para que pueda escuchar su consulta en inglés o en japonés.\n</string>
+    <string name="AboutTextButtonsSpeakerParagraph2">\n        Puede elegir el idioma de la voz en la Configuración.\n</string>
     <string name="AboutTextButtonsCameraTitle">Cámara</string>
-    <string name="AboutTextButtonsCameraParagraph1">\n Convierta palabras japonesas o inglesas en texto para buscar, haciendo una foto o usando una imagen en su dispositivo. Esta función funciona sin conexión.\n</string>
-    <string name="AboutTextButtonsCameraParagraph2">\n Puede elegir el idioma de reconocimiento de texto y la saturación / el contraste / el brillo de la imagen inicial en la Configuración.\n</string>
+    <string name="AboutTextButtonsCameraParagraph1">\n        Convierta palabras japonesas o inglesas en texto para buscar, haciendo una foto o usando una imagen en su dispositivo. Esta función funciona sin conexión.\n</string>
+    <string name="AboutTextButtonsCameraParagraph2">\n        Puede elegir el idioma de reconocimiento de texto y la saturación / el contraste / el brillo de la imagen inicial en la Configuración.\n</string>
     <string name="AboutTextButtonsMicrophoneTitle">Micrófono</string>
-    <string name="AboutTextButtonsMicrophoneParagraph1">\n Una función de voz a texto para el japonés o el inglés.\n</string>
-    <string name="AboutTextButtonsMicrophoneParagraph2">\n Puede elegir el idioma de reconocimiento de voz en la Configuración.\n</string>
+    <string name="AboutTextButtonsMicrophoneParagraph1">\n        Una función de voz a texto para el japonés o el inglés.\n</string>
+    <string name="AboutTextButtonsMicrophoneParagraph2">\n        Puede elegir el idioma de reconocimiento de voz en la Configuración.\n</string>
     <string name="AboutTextPersonalTitle">Nota personal</string>
-    <string name="AboutTextPersonalParagraph1">\n Si tiene algún comentario o encontró un error, le invitamos a publicarlos en japanesetoolboxapp@gmail.com.\n</string>
-    <string name="AboutTextPersonalParagraph2">\n Construí JapaneseToolbox en mi tiempo libre por amor al idioma japonés y para ayudar a las personas a aprender japonés más rápido. La aplicación siempre se mantendrá\n GRATUITA y sin publicidad, y ninguna información que ingresó en la aplicación se usará de ninguna otra forma para fines distintos a los servicios proporcionados en la aplicación.\n</string>
-    <string name="AboutTextPersonalParagraph3">\n El código fuente del proyecto está disponible gratuitamente en https://github.com/blarom/JapaneseToolbox. ¡Usted puede\n copiar el código a voluntad! Recomiendo el intercambio gratuito de conocimientos, y si desea crear una aplicación con funciones similares,\n es más que bienvenido a hacerlo. Simplemente no olvide darme crédito, pasé mucho tiempo desarrollando estas herramientas :)\n</string>
-    <string name="AboutTextCreditsTitle">\n Créditos: parte de las herramientas de la aplicación se basan en lo siguiente:\n</string>
+    <string name="AboutTextPersonalParagraph1">\n        Si tiene algún comentario o encontró un error, le invitamos a publicarlos en japanesetoolboxapp@gmail.com.\n</string>
+    <string name="AboutTextPersonalParagraph2">\n        Construí JapaneseToolbox en mi tiempo libre por amor al idioma japonés y para ayudar a las personas a aprender japonés más rápido. La aplicación siempre se mantendrá\n GRATUITA y sin publicidad, y ninguna información que ingresó en la aplicación se usará de ninguna otra forma para fines distintos a los servicios proporcionados en la aplicación.\n</string>
+    <string name="AboutTextPersonalParagraph3">\n        El código fuente del proyecto está disponible gratuitamente en https://github.com/blarom/JapaneseToolbox. ¡Usted puede\n copiar el código a voluntad! Recomiendo el intercambio gratuito de conocimientos, y si desea crear una aplicación con funciones similares,\n es más que bienvenido a hacerlo. Simplemente no olvide darme crédito, pasé mucho tiempo desarrollando estas herramientas :)\n</string>
+    <string name="AboutTextCreditsTitle">\n        Créditos: parte de las herramientas de la aplicación se basan en lo siguiente:\n</string>
     <string name="AboutTextCreditsCodeTitle">Fuentes de código</string>
-    <string name="AboutTextCreditsCodeParagraph1">\n El motor de ROC es proporcionado por el proyecto de código abierto Tesseract (apoyado por Google).\n</string>
-    <string name="AboutTextCreditsCodeParagraph2">\n Las funciones de texto a voz y de voz a texto se basan en las API de Google.\n</string>
-    <string name="AboutTextCreditsCodeParagraph3">\n La manipulación de imágenes la proporciona la biblioteca ArthurHub (https://github.com/ArthurHub/Android-Image-Cropper).\n</string>
-    <string name="AboutTextCreditsCodeParagraph4">\n El ajuste de imágenes lo proporciona el algoritmo de Pete Houston (https://xjaphx.wordpress.com/2011/06/22/image-processing-sharpening-image/).\n</string>
+    <string name="AboutTextCreditsCodeParagraph1">\n        El motor de ROC es proporcionado por el proyecto de código abierto Tesseract (apoyado por Google).\n</string>
+    <string name="AboutTextCreditsCodeParagraph2">\n        Las funciones de texto a voz y de voz a texto se basan en las API de Google.\n</string>
+    <string name="AboutTextCreditsCodeParagraph3">\n        La manipulación de imágenes la proporciona la biblioteca ArthurHub (https://github.com/ArthurHub/Android-Image-Cropper).\n</string>
+    <string name="AboutTextCreditsCodeParagraph4">\n        El ajuste de imágenes lo proporciona el algoritmo de Pete Houston (https://xjaphx.wordpress.com/2011/06/22/image-processing-sharpening-image/).\n</string>
     <string name="AboutTextCreditsDatabasesTitle">Fuentes de base de datos</string>
-    <string name="AboutTextCreditsDatabasesParagraph1">\n La base de datos de descomposiciones de caracteres CJK se basa originalmente en la base de datos cjkdecomp de Gavin Grover (https://github.com/amake/cjk-decomp - vea la cláusula de exención de responsabilidad *),\n que modifiqué y corregí.\n</string>
-    <string name="AboutTextCreditsDatabasesParagraph2">\n El diccionario local es una forma reducida del diccionario EDICT de código abierto, que modifiqué y actualicé manualmente para satisfacer las necesidades de la aplicación.\n Se usaron algunas otras fuentes, incluido wiktionary.org para actualizar los significados de los verbos suru.\n</string>
-    <string name="AboutTextDisclaimer1">\n *descargo de responsabilidad de cjkdecomp:\nDerechos de autor 2017 Gavin Grover\nBajo la Licencia de Apache,\n Versión 2.0 (la &quot;Licencia&quot;); no puede utilizar esta base de datos excepto en cumplimiento con la Licencia.\nUsted puede\n obtener una copia de la Licencia en http://www.apache.org/licenses/LICENSE-2.0\n A menos que sea requerido por la ley aplicable o esté de acuerdo por escrito, el software distribuido bajo la Licencia se distribuye &quot;TAL CUAL&quot;,\n SIN GARANTÍAS O CONDICIONES DE NINGÚN TIPO, ya sea explícita o implícita.\nConsulte la Licencia del idioma específico que rige los permisos y limitaciones de la Licencia. \n</string>
-    <string name="AboutTextDisclaimer2">\n *renuncia de responsabilidad para el diccionario japonés EDICT:\nEste paquete utiliza un subconjunto modificado de los archivos de diccionario EDICT y KANJIDIC. Estos archivos son propiedad de\n Electronic Dictionary Research and Development Group y se utilizan de conformidad con la licencia del Grupo;\n Consulte http://www.csse.monash.edu.au/~jwb/edict .html y http://www.edrdg.org/.\n</string>
+    <string name="AboutTextCreditsDatabasesParagraph1">\n        La base de datos de descomposiciones de caracteres CJK se basa originalmente en la base de datos cjkdecomp de Gavin Grover (https://github.com/amake/cjk-decomp - vea la cláusula de exención de responsabilidad *),\n que modifiqué y corregí.\n</string>
+    <string name="AboutTextCreditsDatabasesParagraph2">\n        El diccionario local es una forma reducida del diccionario EDICT de código abierto, que modifiqué y actualicé manualmente para satisfacer las necesidades de la aplicación.\n Se usaron algunas otras fuentes, incluido wiktionary.org para actualizar los significados de los verbos suru.\n</string>
+    <string name="AboutTextDisclaimer1">\n        *descargo de responsabilidad de cjkdecomp:\nDerechos de autor 2017 Gavin Grover\nBajo la Licencia de Apache,\n Versión 2.0 (la &quot;Licencia&quot;); no puede utilizar esta base de datos excepto en cumplimiento con la Licencia.\nUsted puede\n obtener una copia de la Licencia en http://www.apache.org/licenses/LICENSE-2.0\n A menos que sea requerido por la ley aplicable o esté de acuerdo por escrito, el software distribuido bajo la Licencia se distribuye &quot;TAL CUAL&quot;,\n SIN GARANTÍAS O CONDICIONES DE NINGÚN TIPO, ya sea explícita o implícita.\nConsulte la Licencia del idioma específico que rige los permisos y limitaciones de la Licencia. \n</string>
+    <string name="AboutTextDisclaimer2">\n        *renuncia de responsabilidad para el diccionario japonés EDICT:\nEste paquete utiliza un subconjunto modificado de los archivos de diccionario EDICT y KANJIDIC. Estos archivos son propiedad de\n Electronic Dictionary Research and Development Group y se utilizan de conformidad con la licencia del Grupo;\n Consulte http://www.csse.monash.edu.au/~jwb/edict .html y http://www.edrdg.org/.\n</string>
     <string name="ok">OK</string>
     <string name="ocr_header">Haga clic en &quot;Detectar texto&quot; para detectar texto</string>
     <string name="read_text">Detectar texto</string>
