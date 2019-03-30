@@ -298,12 +298,12 @@ public class Word implements Parcelable {
 
             public static class Example {
 
-                private String englishSentence;
-                public void setEnglishSentence(String englishSentence) {
-                    this.englishSentence = englishSentence;
+                private String latinSentence;
+                public void setLatinSentence(String latinSentence) {
+                    this.latinSentence = latinSentence;
                 }
-                public String getEnglishSentence() {
-                    return englishSentence;
+                public String getLatinSentence() {
+                    return latinSentence;
                 }
 
                 private String romajiSentence;

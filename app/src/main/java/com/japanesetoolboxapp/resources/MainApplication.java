@@ -27,6 +27,10 @@ public class MainApplication extends Application {
         activateFirebase();
 
     }
+    @Override protected void attachBaseContext(Context base) {
+        //Inspired by: https://gunhansancar.com/change-language-programmatically-in-android/
+        super.attachBaseContext(LocaleHelper.onAttach(base, "en"));
+    }
 
 
     private RefWatcher refWatcher;

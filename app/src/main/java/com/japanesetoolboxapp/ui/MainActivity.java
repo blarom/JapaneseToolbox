@@ -14,7 +14,6 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -30,6 +29,7 @@ import android.widget.Toast;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.GlobalConstants;
+import com.japanesetoolboxapp.resources.LocaleHelper;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ import butterknife.Unbinder;
 //TODO: features
 ////TODO: add wildcard characters to local searches
 ////TODO: add kanji character zoom in
-////TODO: allow user to enter verb in gerund form (ing) and still find it
+////TODO: allow user to enter verb in gerund form (ing) and still find its
 ////TODO Show the adjective conjugations (it will also explain to the user why certain adjectives appear in the list, based on their conjugations)
 ////TODO Add filtering functionality: if more than one word is entered, the results will be limited to those that include all words.
 ////TODO Translate the app into other European languages, and allow the user to choose the wanted language.
@@ -56,7 +56,7 @@ import butterknife.Unbinder;
 //TODO: bugs
 
 
-public class MainActivity extends AppCompatActivity implements
+public class MainActivity extends BaseActivity implements
         InputQueryFragment.InputQueryOperationsHandler,
         DictionaryFragment.DictionaryFragmentOperationsHandler,
         ConjugatorFragment.ConjugatorFragmentOperationsHandler,
@@ -110,13 +110,13 @@ public class MainActivity extends AppCompatActivity implements
     private boolean mMeaningsEN;
     private boolean mMeaningsFR;
     private boolean mMeaningsES;
+    private String mLanguageCode;
     //endregion
 
 
     //Lifecycle methods
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         mSavedInstanceState = savedInstanceState;
@@ -250,13 +250,13 @@ public class MainActivity extends AppCompatActivity implements
             updateQueryHistorySize();
         }
         else if (key.equals(getString(R.string.pref_preferred_STT_language_key))) {
-            setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese)));
+            setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_language_value_japanese)));
         }
         else if (key.equals(getString(R.string.pref_preferred_TTS_language_key))) {
-            setTextToSpeechLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese)));
+            setTextToSpeechLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_language_value_japanese)));
         }
         else if (key.equals(getString(R.string.pref_preferred_OCR_language_key))) {
-            setOCRLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_preferred_language_value_japanese)));
+            setOCRLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_language_value_japanese)));
         }
         else if (key.equals(getString(R.string.pref_OCR_image_saturation_key))) {
             mOcrImageDefaultSaturation = Utilities.loadOCRImageSaturationFromSharedPreferences(sharedPreferences, getApplicationContext());
@@ -281,9 +281,9 @@ public class MainActivity extends AppCompatActivity implements
         setShowSources(sharedPreferences.getBoolean(getString(R.string.pref_show_sources_key),
                 getResources().getBoolean(R.bool.pref_show_sources_default)));
         mQueryHistorySize = Utilities.getPreferenceQueryHistorySize(sharedPreferences, getApplicationContext());
-        setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese)));
-        setTextToSpeechLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese)));
-        setOCRLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_preferred_language_value_japanese)));
+        setSpeechToTextLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_language_value_japanese)));
+        setTextToSpeechLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_language_value_japanese)));
+        setOCRLanguage(sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_language_value_japanese)));
         mOcrImageDefaultContrast = Utilities.loadOCRImageContrastFromSharedPreferences(sharedPreferences, getApplicationContext());
         mOcrImageDefaultSaturation = Utilities.loadOCRImageSaturationFromSharedPreferences(sharedPreferences, getApplicationContext());
         mOcrImageDefaultBrightness = Utilities.loadOCRImageBrightnessFromSharedPreferences(sharedPreferences, getApplicationContext());
@@ -320,27 +320,39 @@ public class MainActivity extends AppCompatActivity implements
         mShowKanjiStructureInfo = state;
     }
     private void setSpeechToTextLanguage(String language) {
-        if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
+        if (language.equals(getResources().getString(R.string.pref_language_value_japanese))) {
             mChosenSpeechToTextLanguage = getResources().getString(R.string.languageLocaleJapanese);
         }
-        else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
+        else if (language.equals(getResources().getString(R.string.pref_language_value_english))) {
             mChosenSpeechToTextLanguage = getResources().getString(R.string.languageLocaleEnglishUS);
+        }
+        else if (language.equals(getResources().getString(R.string.pref_language_value_french))) {
+            mChosenSpeechToTextLanguage = getResources().getString(R.string.languageLocaleFrench);
+        }
+        else if (language.equals(getResources().getString(R.string.pref_language_value_spanish))) {
+            mChosenSpeechToTextLanguage = getResources().getString(R.string.languageLocaleSpanish);
         }
         if (mInputQueryFragment!=null) mInputQueryFragment.setSTTLanguage(mChosenSpeechToTextLanguage);
     }
     private void setTextToSpeechLanguage(String language) {
-        if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
+        if (language.equals(getResources().getString(R.string.pref_language_value_japanese))) {
             mChosenTextToSpeechLanguage = getResources().getString(R.string.languageLocaleJapanese);
         }
-        else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
+        else if (language.equals(getResources().getString(R.string.pref_language_value_english))) {
             mChosenTextToSpeechLanguage = getResources().getString(R.string.languageLocaleEnglishUS);
+        }
+        else if (language.equals(getResources().getString(R.string.pref_language_value_french))) {
+            mChosenTextToSpeechLanguage = getResources().getString(R.string.languageLocaleFrench);
+        }
+        else if (language.equals(getResources().getString(R.string.pref_language_value_spanish))) {
+            mChosenTextToSpeechLanguage = getResources().getString(R.string.languageLocaleSpanish);
         }
     }
     private void setOCRLanguage(String language) {
-        if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
+        if (language.equals(getResources().getString(R.string.pref_language_value_japanese))) {
             mChosenOCRLanguage = getResources().getString(R.string.languageLocaleJapanese);
         }
-        else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
+        else if (language.equals(getResources().getString(R.string.pref_language_value_english))) {
             mChosenOCRLanguage = getResources().getString(R.string.languageLocaleEnglishUS);
         }
     }
@@ -372,6 +384,8 @@ public class MainActivity extends AppCompatActivity implements
         //CJK_typeface = Typeface.createFromAsset(getAssets(), "fonts/DroidSansFallback.ttf");
         //CJK_typeface = Typeface.createFromAsset(getAssets(), "fonts/DroidSansJapanese.ttf");
         //see https://stackoverflow.com/questions/11786553/changing-the-android-typeface-doesnt-work
+
+        mLanguageCode = LocaleHelper.getLanguage(getApplicationContext());
     }
     private void setFragments() {
 
@@ -441,7 +455,7 @@ public class MainActivity extends AppCompatActivity implements
         String romaji = "";
         String meaning = "";
         if ( matchingWords == null || matchingWords.size() == 0) {
-            mInputQueryFragment.updateQueryDefinitionInHistory(romaji, meaning);
+            mInputQueryFragment.updateQueryDefinitionInHistory(romaji, "");
         }
         else if (fromConjSearch) {
             mInputQueryFragment.updateQueryDefinitionInHistory(
@@ -456,7 +470,7 @@ public class MainActivity extends AppCompatActivity implements
                         || Utilities.getRomajiNoSpacesForSpecialPartsOfSpeech(word.getRomaji())
                             .equals(ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN)) ) {
                     romaji = word.getRomaji();
-                    meaning = word.getMeaningsEN().size() > 0 ? Utilities.getMeaningsExtract(word.getMeaningsEN(), 2) : "";
+                    meaning = getCurrentMeanings(word);
                     break;
                 }
             }
@@ -466,7 +480,7 @@ public class MainActivity extends AppCompatActivity implements
                     List<String> altSpellings = (word.getAltSpellings() != null) ? Arrays.asList(word.getAltSpellings().split(",")) : new ArrayList<String>();
                     if (altSpellings.contains(mInputQuery)) {
                         romaji = word.getRomaji();
-                        meaning = word.getMeaningsEN().size() > 0 ? Utilities.getMeaningsExtract(word.getMeaningsEN(), 2) : "";
+                        meaning = getCurrentMeanings(word);
                         break;
                     }
                 }
@@ -488,13 +502,35 @@ public class MainActivity extends AppCompatActivity implements
                     }
                     if (wordsInMeanings.contains(mInputQuery)) {
                         romaji = word.getRomaji();
-                        meaning = word.getMeaningsEN().size() > 0 ? Utilities.getMeaningsExtract(word.getMeaningsEN(), 2) : "";
+                        meaning = getCurrentMeanings(word);
                         break;
                     }
                 }
             }
             mInputQueryFragment.updateQueryDefinitionInHistory(romaji, meaning);
         }
+    }
+    private String getCurrentMeanings(Word word) {
+
+        List<Word.Meaning> meanings;
+        switch (mLanguageCode) {
+            case "en":
+                meanings = word.getMeaningsEN();
+                break;
+            case "fr":
+                meanings = word.getMeaningsFR();
+                break;
+            case "es":
+                meanings = word.getMeaningsES();
+                break;
+            default: meanings = word.getMeaningsEN();
+        }
+
+        if (meanings == null || meanings.size() == 0) {
+            meanings = word.getMeaningsEN();
+        }
+
+        return Utilities.getMeaningsExtract(meanings, GlobalConstants.BALANCE_POINT_HISTORY_DISPLAY);
     }
     private void showExitAppDialog() {
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
@@ -519,7 +555,9 @@ public class MainActivity extends AppCompatActivity implements
         //Getting the history
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.preferences_query_history_list), Context.MODE_PRIVATE);
         String queryHistoryAsString = sharedPref.getString(getString(R.string.preferences_query_history_list), "");
-        if (!queryHistoryAsString.equals("")) mQueryHistory = new ArrayList<>(Arrays.asList(queryHistoryAsString.split(GlobalConstants.QUERY_HISTORY_ELEMENTS_DELIMITER)));
+        if (queryHistoryAsString!=null && !queryHistoryAsString.equals(""))
+            mQueryHistory = new ArrayList<>(Arrays.asList(queryHistoryAsString.split(GlobalConstants.QUERY_HISTORY_ELEMENTS_DELIMITER)));
+        else mQueryHistory = new ArrayList<>();
 
         //Updating its size
         if (mQueryHistory.size() > mQueryHistorySize) mQueryHistory = mQueryHistory.subList(0, mQueryHistorySize);

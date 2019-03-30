@@ -30,7 +30,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Random;
 
-public class AdjustImageActivity extends AppCompatActivity {
+public class AdjustImageActivity extends BaseActivity {
     //http://android-er.blogspot.co.il/2013/09/adjust-saturation-of-bitmap-with.html
 
     private ImageView imageResult;

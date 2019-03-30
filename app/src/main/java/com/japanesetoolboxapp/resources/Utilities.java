@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -203,6 +204,15 @@ public final class Utilities {
     public static int convertPxToDpi(int pixels, Context context) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return Math.round(pixels / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    }
+    public static void restartApplication(Activity activity) {
+
+        Intent intent = activity.getPackageManager().getLaunchIntentForPackage( activity.getPackageName() );
+        if (intent!=null) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            activity.startActivity(intent);
+            activity.finish();
+        }
     }
 
 
@@ -465,6 +475,7 @@ public final class Utilities {
         return original.substring(0, 1).toUpperCase() + original.substring(1);
     }
     public static String getMeaningsExtract(List<Word.Meaning> meanings, int balancePoint) {
+        if (meanings == null) return "";
         List<String> totalMeaningElements = new ArrayList<>();
 
         if (meanings.size() == 1 || balancePoint < 2) return meanings.get(0).getMeaning();
@@ -482,7 +493,7 @@ public final class Utilities {
             }
             return TextUtils.join(", ", totalMeaningElements);
         }
-        else  return "";
+        else return "";
     }
     private static List<String> addMeaningElementsToListUpToMaxNumber(List<String> totalList, String meaning, int maxNumber) {
         String[] meaningelements = splitAtCommasOutsideParentheses(meaning);
@@ -1331,7 +1342,9 @@ public final class Utilities {
                                                   List<String[]> meaningsENDatabase,
                                                   List<String[]> meaningsFRDatabase,
                                                   List<String[]> meaningsESDatabase,
-                                                  List<String[]> multExplanationsDatabase,
+                                                  List<String[]> multExplENDatabase,
+                                                  List<String[]> multExplFRDatabase,
+                                                  List<String[]> multExplESDatabase,
                                                   List<String[]> examplesDatabase, int centralDbRowIndex) {
 
         Word word = new Word();
@@ -1364,13 +1377,13 @@ public final class Utilities {
 
         //Getting the Meanings
         word.setMeaningsEN(getMeanings(centralDatabase, meaningsENDatabase, GlobalConstants.COLUMN_MEANING_EN_INDEXES,
-                multExplanationsDatabase, examplesDatabase, centralDbRowIndex));
+                multExplENDatabase, examplesDatabase, centralDbRowIndex, "en"));
         if (word.getMeaningsEN().size()==0) return new Word();
 
         word.setMeaningsFR(getMeanings(centralDatabase, meaningsFRDatabase, GlobalConstants.COLUMN_MEANING_FR_INDEXES,
-                multExplanationsDatabase, examplesDatabase, centralDbRowIndex));
+                multExplFRDatabase, examplesDatabase, centralDbRowIndex, "fr"));
         word.setMeaningsES(getMeanings(centralDatabase, meaningsESDatabase, GlobalConstants.COLUMN_MEANING_ES_INDEXES,
-                multExplanationsDatabase, examplesDatabase, centralDbRowIndex));
+                multExplESDatabase, examplesDatabase, centralDbRowIndex, "es"));
 
         //Setting the keywords value
         word.setExtraKeywordsEN(centralDatabase.get(centralDbRowIndex)[GlobalConstants.COLUMN_EXTRA_KEYWORDS_EN]);
@@ -1380,7 +1393,7 @@ public final class Utilities {
         return word;
     }
     private static List<Word.Meaning> getMeanings(List<String[]> centralDatabase, List<String[]> meaningsDatabase, int meaningsColumn,
-                                                 List<String[]> multExplanationsDatabase, List<String[]> examplesDatabase, int centralDbRowIndex) {
+                                                 List<String[]> multExplDatabase, List<String[]> examplesDatabase, int centralDbRowIndex, String language) {
 
         //Initializations
         int example_index;
@@ -1395,6 +1408,13 @@ public final class Utilities {
         String[] current_meaning_characteristics;
         boolean has_multiple_explanations;
         String ME_index;
+        int exampleLatinColumn;
+        switch (language) {
+            case "en": exampleLatinColumn = GlobalConstants.COLUMN_EXAMPLES_ENGLISH; break;
+            case "fr": exampleLatinColumn = GlobalConstants.COLUMN_EXAMPLES_FRENCH; break;
+            case "es": exampleLatinColumn = GlobalConstants.COLUMN_EXAMPLES_SPANISH; break;
+            default: exampleLatinColumn = GlobalConstants.COLUMN_EXAMPLES_ENGLISH; break;
+        }
 
         //Finding the meanings using the supplied index
         String MM_indexEN = centralDatabase.get(centralDbRowIndex)[meaningsColumn];
@@ -1467,25 +1487,24 @@ public final class Utilities {
                     current_ME_index = Integer.parseInt(ME_index_list.get(j))-1;
 
                     //Getting the Explanation value
-                    matchingWordExplanation = multExplanationsDatabase.get(current_ME_index)[GlobalConstants.COLUMN_MULT_EXPLANATIONS_ITEM];
+                    matchingWordExplanation = multExplDatabase.get(current_ME_index)[GlobalConstants.COLUMN_MULT_EXPLANATIONS_ITEM];
                     explanation.setExplanation(matchingWordExplanation);
 
                     //Getting the Rules value
-                    matchingWordRules = multExplanationsDatabase.get(current_ME_index)[GlobalConstants.COLUMN_MULT_EXPLANATIONS_RULE];
+                    matchingWordRules = multExplDatabase.get(current_ME_index)[GlobalConstants.COLUMN_MULT_EXPLANATIONS_RULE];
                     explanation.setRules(matchingWordRules);
 
                     //Getting the Examples
-                    matchingWordExampleList = multExplanationsDatabase.get(current_ME_index)[GlobalConstants.COLUMN_MULT_EXPLANATIONS_EXAMPLES];
+                    matchingWordExampleList = multExplDatabase.get(current_ME_index)[GlobalConstants.COLUMN_MULT_EXPLANATIONS_EXAMPLES];
                     List<Word.Meaning.Explanation.Example> exampleList = new ArrayList<>();
                     if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
                         parsed_example_list = Arrays.asList(matchingWordExampleList.split(", "));
                         for (int t = 0; t < parsed_example_list.size(); t++) {
                             Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
                             example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
-                            example.setEnglishSentence(examplesDatabase.get(example_index)[GlobalConstants.COLUMN_EXAMPLES_ENGLISH]);
+                            example.setLatinSentence(examplesDatabase.get(example_index)[exampleLatinColumn]);
                             example.setRomajiSentence(examplesDatabase.get(example_index)[GlobalConstants.COLUMN_EXAMPLES_ROMAJI]);
                             example.setKanjiSentence(examplesDatabase.get(example_index)[GlobalConstants.COLUMN_EXAMPLES_KANJI]);
-                            //TODO: add FR and ES examples sentence column to excel dB, and adapt rest of app
                             exampleList.add(example);
                         }
                     }
@@ -1512,7 +1531,7 @@ public final class Utilities {
                     for (int t = 0; t < parsed_example_list.size(); t++) {
                         Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
                         example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
-                        example.setEnglishSentence(examplesDatabase.get(example_index)[GlobalConstants.COLUMN_EXAMPLES_ENGLISH]);
+                        example.setLatinSentence(examplesDatabase.get(example_index)[exampleLatinColumn]);
                         example.setRomajiSentence(examplesDatabase.get(example_index)[GlobalConstants.COLUMN_EXAMPLES_ROMAJI]);
                         example.setKanjiSentence(examplesDatabase.get(example_index)[GlobalConstants.COLUMN_EXAMPLES_KANJI]);
                         exampleList.add(example);
@@ -3026,7 +3045,7 @@ public final class Utilities {
 
 
     //Conjugator Module utilities
-    public static List<ConjugationTitle> getConjugationTitles(List<String[]> verbLatinConjDatabase) {
+    public static List<ConjugationTitle> getConjugationTitles(List<String[]> verbLatinConjDatabase, Context context) {
 
         String[] titlesRow = verbLatinConjDatabase.get(0);
         String[] subtitlesRow = verbLatinConjDatabase.get(1);
@@ -3039,11 +3058,13 @@ public final class Utilities {
         for (int col = 0; col < sheetLength; col++) {
 
             if (col == 0) {
-                conjugationTitle.setTitle(titlesRow[col]);
+                int titleRef = GlobalConstants.VERB_CONJUGATION_TITLES.get(titlesRow[col]);
+                conjugationTitle.setTitle(context.getString(titleRef));
                 conjugationTitle.setTitleIndex(col);
 
                 ConjugationTitle.Subtitle subtitle = new ConjugationTitle.Subtitle();
-                subtitle.setSubtitle(subtitlesRow[col]);
+                int subtitleRef = GlobalConstants.VERB_CONJUGATION_TITLES.get(subtitlesRow[col]);
+                subtitle.setSubtitle(context.getString(subtitleRef));
                 subtitle.setSubtitleIndex(col);
                 subtitles.add(subtitle);
             }
@@ -3060,14 +3081,16 @@ public final class Utilities {
                     conjugationTitle = new ConjugationTitle();
                     subtitles = new ArrayList<>();
 
-                    conjugationTitle.setTitle(titlesRow[col]);
+                    int titleRef = GlobalConstants.VERB_CONJUGATION_TITLES.get(titlesRow[col]);
+                    conjugationTitle.setTitle(context.getString(titleRef));
                     conjugationTitle.setTitleIndex(col);
 
                 }
 
                 ConjugationTitle.Subtitle subtitle = new ConjugationTitle.Subtitle();
-                subtitle.setSubtitle(subtitlesRow[col]);
-                subtitle.setEnding(endingsRow[col]);
+                int subtitleRef = GlobalConstants.VERB_CONJUGATION_TITLES.get(subtitlesRow[col]);
+                subtitle.setSubtitle(context.getString(subtitleRef));
+                subtitle.setEnding((col <= GlobalConstants.COLUMN_VERB_MASUSTEM)? "" : endingsRow[col]);
                 subtitle.setSubtitleIndex(col);
                 subtitles.add(subtitle);
             }

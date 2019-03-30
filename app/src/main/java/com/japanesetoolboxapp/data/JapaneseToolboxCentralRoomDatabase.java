@@ -103,7 +103,9 @@ public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
         List<String[]> meaningsENDatabase       = Utilities.readCSVFile("LineMeanings - 3000 kanji.csv", context);
         List<String[]> meaningsFRDatabase       = Utilities.readCSVFile("LineMeaningsFR - 3000 kanji.csv", context);
         List<String[]> meaningsESDatabase       = Utilities.readCSVFile("LineMeaningsES - 3000 kanji.csv", context);
-        List<String[]> multExplanationsDatabase = Utilities.readCSVFile("LineMultExplanations - 3000 kanji.csv", context);
+        List<String[]> multExplENDatabase = Utilities.readCSVFile("LineMultExplEN - 3000 kanji.csv", context);
+        List<String[]> multExplFRDatabase = Utilities.readCSVFile("LineMultExplFR - 3000 kanji.csv", context);
+        List<String[]> multExplESDatabase = Utilities.readCSVFile("LineMultExplES - 3000 kanji.csv", context);
         List<String[]> examplesDatabase         = Utilities.readCSVFile("LineExamples - 3000 kanji.csv", context);
 
         //Removing the titles row in each sheet
@@ -122,7 +124,9 @@ public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
         Utilities.checkDatabaseStructure(meaningsENDatabase, "Meanings Database", Utilities.NUM_COLUMNS_IN_WORDS_CSV_SHEETS);
         Utilities.checkDatabaseStructure(meaningsFRDatabase, "MeaningsFR Database", Utilities.NUM_COLUMNS_IN_WORDS_CSV_SHEETS);
         Utilities.checkDatabaseStructure(meaningsESDatabase, "MeaningsES Database", Utilities.NUM_COLUMNS_IN_WORDS_CSV_SHEETS);
-        Utilities.checkDatabaseStructure(multExplanationsDatabase, "Explanations Database", Utilities.NUM_COLUMNS_IN_WORDS_CSV_SHEETS);
+        Utilities.checkDatabaseStructure(multExplENDatabase, "Explanations Database", Utilities.NUM_COLUMNS_IN_WORDS_CSV_SHEETS);
+        Utilities.checkDatabaseStructure(multExplFRDatabase, "Explanations Database", Utilities.NUM_COLUMNS_IN_WORDS_CSV_SHEETS);
+        Utilities.checkDatabaseStructure(multExplESDatabase, "Explanations Database", Utilities.NUM_COLUMNS_IN_WORDS_CSV_SHEETS);
         Utilities.checkDatabaseStructure(examplesDatabase, "Examples Database", Utilities.NUM_COLUMNS_IN_WORDS_CSV_SHEETS);
 
         List<Word> wordList = new ArrayList<>();
@@ -130,7 +134,8 @@ public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
             if (centralDatabase.get(i)[0].equals("")) break;
             Word word = Utilities.createWordFromCsvDatabases(centralDatabase,
                     meaningsENDatabase, meaningsFRDatabase, meaningsESDatabase,
-                    multExplanationsDatabase, examplesDatabase, i);
+                    multExplENDatabase, multExplFRDatabase, multExplESDatabase,
+                    examplesDatabase, i);
             wordList.add(word);
         }
         word().insertAll(wordList);

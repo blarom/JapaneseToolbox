@@ -2,21 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <PreferenceCategory
-        android:title="General" />
-
-    <CheckBoxPreference
-        android:defaultValue="@bool/pref_show_info_boxes_on_search_default"
-        android:key="@string/pref_show_info_boxes_on_search_key"
-        android:summaryOff="@string/hidden_info_boxes"
-        android:summaryOn="@string/shown_info_boxes"
-        android:title="@string/show_info_boxes_when_searching" />
-
-    <CheckBoxPreference
-        android:defaultValue="@bool/pref_show_decomp_structure_info_default"
-        android:key="@string/pref_show_decomp_structure_info_key"
-        android:summaryOff="@string/hidden_decomp_structure_info"
-        android:summaryOn="@string/shown_decomp_structure_info"
-        android:title="@string/show_decomp_structure_info_text" />
+        android:title="@string/general" />
 
     <EditTextPreference
         android:defaultValue="@string/pref_query_history_size_default_value"
@@ -27,7 +13,40 @@
 
 
     <PreferenceCategory
-        android:title="Search" />
+        android:title="@string/languages" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_language_value_english"
+        android:entries="@array/pref_app_language_labels"
+        android:entryValues="@array/pref_app_language_values"
+        android:key="@string/pref_app_language_key"
+        android:title="@string/pref_app_language" />
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_show_meanings_EN_default"
+        android:key="@string/pref_show_meanings_EN_key"
+        android:summaryOff="@string/show_meanings_EN_off"
+        android:summaryOn="@string/show_meanings_EN_on"
+        android:title="@string/pref_show_meanings_EN" />
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_show_meanings_FR_default"
+        android:key="@string/pref_show_meanings_FR_key"
+        android:summaryOff="@string/show_meanings_FR_off"
+        android:summaryOn="@string/show_meanings_FR_on"
+        android:title="@string/pref_show_meanings_FR" />
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_show_meanings_ES_default"
+        android:key="@string/pref_show_meanings_ES_key"
+        android:summaryOff="@string/show_meanings_ES_off"
+        android:summaryOn="@string/show_meanings_ES_on"
+        android:title="@string/pref_show_meanings_ES" />
+
+
+
+    <PreferenceCategory
+        android:title="@string/search" />
 
     <CheckBoxPreference
         android:defaultValue="@bool/pref_complete_local_with_online_search_default"
@@ -64,42 +83,36 @@
         android:summaryOn="@string/show_sources_on"
         android:title="@string/pref_show_sources" />
 
-    <PreferenceCategory
-        android:title="Languages" />
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_show_info_boxes_on_search_default"
+        android:key="@string/pref_show_info_boxes_on_search_key"
+        android:summaryOff="@string/hidden_info_boxes"
+        android:summaryOn="@string/shown_info_boxes"
+        android:title="@string/show_info_boxes_when_searching" />
 
-    <CheckBoxPreference
-        android:defaultValue="@bool/pref_show_meanings_EN_default"
-        android:key="@string/pref_show_meanings_EN_key"
-        android:summaryOff="@string/show_meanings_EN_off"
-        android:summaryOn="@string/show_meanings_EN_on"
-        android:title="@string/pref_show_meanings_EN" />
-    
-    <CheckBoxPreference
-        android:defaultValue="@bool/pref_show_meanings_FR_default"
-        android:key="@string/pref_show_meanings_FR_key"
-        android:summaryOff="@string/show_meanings_FR_off"
-        android:summaryOn="@string/show_meanings_FR_on"
-        android:title="@string/pref_show_meanings_FR" />
-    
-    <CheckBoxPreference
-        android:defaultValue="@bool/pref_show_meanings_ES_default"
-        android:key="@string/pref_show_meanings_ES_key"
-        android:summaryOff="@string/show_meanings_ES_off"
-        android:summaryOn="@string/show_meanings_ES_on"
-        android:title="@string/pref_show_meanings_ES" />
 
     <PreferenceCategory
-        android:title="Speech" />
+        android:title="@string/decomposition" />
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_show_decomp_structure_info_default"
+        android:key="@string/pref_show_decomp_structure_info_key"
+        android:summaryOff="@string/hidden_decomp_structure_info"
+        android:summaryOn="@string/shown_decomp_structure_info"
+        android:title="@string/show_decomp_structure_info_text" />
+
+    <PreferenceCategory
+        android:title="@string/speech" />
 
     <ListPreference
-        android:defaultValue="@string/pref_preferred_language_value_japanese"
+        android:defaultValue="@string/pref_language_value_japanese"
         android:entries="@array/pref_preferred_STT_language_labels"
         android:entryValues="@array/pref_preferred_STT_language_values"
         android:key="@string/pref_preferred_STT_language_key"
         android:title="@string/pref_preferred_STT_language" />
 
     <ListPreference
-        android:defaultValue="@string/pref_preferred_language_value_japanese"
+        android:defaultValue="@string/pref_language_value_japanese"
         android:entries="@array/pref_preferred_TTS_language_labels"
         android:entryValues="@array/pref_preferred_TTS_language_values"
         android:key="@string/pref_preferred_TTS_language_key"
@@ -107,14 +120,14 @@
 
 
     <PreferenceCategory
-        android:title="Image Character Recognition" />
+        android:title="@string/optical_character_recognition" />
 
-    <ListPreference
-        android:defaultValue="@string/pref_preferred_language_value_japanese"
-        android:entries="@array/pref_preferred_OCR_language_labels"
-        android:entryValues="@array/pref_preferred_OCR_language_values"
-        android:key="@string/pref_preferred_OCR_language_key"
-        android:title="@string/pref_preferred_OCR_language" />
+    <!--<ListPreference-->
+        <!--android:defaultValue="@string/pref_language_value_japanese"-->
+        <!--android:entries="@array/pref_preferred_OCR_language_labels"-->
+        <!--android:entryValues="@array/pref_preferred_OCR_language_values"-->
+        <!--android:key="@string/pref_preferred_OCR_language_key"-->
+        <!--android:title="@string/pref_preferred_OCR_language" />-->
 
     <EditTextPreference
         android:defaultValue="@string/pref_OCR_image_saturation_default_value"

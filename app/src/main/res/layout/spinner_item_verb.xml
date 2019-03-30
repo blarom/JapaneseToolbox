@@ -43,7 +43,7 @@
         android:textColor="@color/textColorConjugatorVerbChooserCharacteristics" />
 
     <TextView
-        android:id="@+id/verbchooser_EnglishMeaning"
+        android:id="@+id/verbchooser_LatinMeaning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"

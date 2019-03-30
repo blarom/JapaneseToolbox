@@ -1,5 +1,6 @@
 package com.japanesetoolboxapp.ui;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.preference.EditTextPreference;
@@ -10,6 +11,9 @@ import android.support.v7.preference.PreferenceScreen;
 import android.widget.Toast;
 
 import com.japanesetoolboxapp.R;
+import com.japanesetoolboxapp.resources.GlobalConstants;
+import com.japanesetoolboxapp.resources.LocaleHelper;
+import com.japanesetoolboxapp.resources.Utilities;
 
 public class SettingsFragment extends PreferenceFragmentCompat implements
         SharedPreferences.OnSharedPreferenceChangeListener {
@@ -34,6 +38,18 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
         PreferenceScreen prefScreen = getPreferenceScreen();
         SharedPreferences sharedPreferences = prefScreen.getSharedPreferences();
 
+        // Setting the listener on the Langage Preference
+        for (int i = 0; i < prefScreen.getPreferenceCount(); i++) {
+            Preference currentPreference = prefScreen.getPreference(i);
+            if (currentPreference instanceof ListPreference) {
+                setSummaryForPreference(currentPreference, sharedPreferences);
+
+                if (currentPreference.getKey().equals(getString(R.string.pref_app_language_key))) {
+                    setLanguage(currentPreference);
+                }
+            }
+        }
+
         // Go through all of the preferences, and set up their characteristics.
         for (int i = 0; i < prefScreen.getPreferenceCount(); i++) {
             Preference currentPreference = prefScreen.getPreference(i);
@@ -48,10 +64,25 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Preference currentPreference = findPreference(key);
         if (currentPreference != null) {
-            if (currentPreference instanceof ListPreference || currentPreference instanceof EditTextPreference) {
+            if (currentPreference instanceof EditTextPreference) {
                 checkIfValueIsInRangeOrWarnUser(currentPreference, sharedPreferences);
                 setSummaryForPreference(currentPreference, sharedPreferences);
             }
+            else if (currentPreference instanceof ListPreference) {
+                setSummaryForPreference(currentPreference, sharedPreferences);
+                if (currentPreference.getKey().equals(getString(R.string.pref_app_language_key))) {
+                    setLanguage(currentPreference);
+                }
+            }
+        }
+    }
+    private void setLanguage(Preference currentPreference) {
+        String language = ((ListPreference) currentPreference).getValue();
+        String languageCode = GlobalConstants.LANGUAGE_CODE_MAP.get(language);
+        String currentLanguageCode = LocaleHelper.getLanguage(getContext());
+        if (!currentLanguageCode.equals(languageCode)) {
+            Context context = LocaleHelper.setLocale(getContext(), languageCode);
+            if (getActivity() != null) Utilities.restartApplication(getActivity());
         }
     }
     private void checkIfValueIsInRangeOrWarnUser(Preference preference, SharedPreferences sharedPreferences) {
@@ -150,7 +181,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
         }
         else if (currentPreference instanceof EditTextPreference) {
             // For EditTextPreferences, set the summary to the value's simple string representation.
-            currentPreference.setSummary("Value: " + sharedPreferences.getString(currentPreference.getKey(), ""));
+            currentPreference.setSummary(getString(R.string.value_) + sharedPreferences.getString(currentPreference.getKey(), ""));
         }
     }
     private void setTitleForPreference(Preference currentPreference) {

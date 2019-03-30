@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.japanesetoolboxapp.R;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

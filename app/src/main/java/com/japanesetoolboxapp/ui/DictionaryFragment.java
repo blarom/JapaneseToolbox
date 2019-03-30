@@ -30,6 +30,7 @@ import com.japanesetoolboxapp.loaders.JishoResultsAsyncTaskLoader;
 import com.japanesetoolboxapp.loaders.RoomDbWordSearchAsyncTaskLoader;
 import com.japanesetoolboxapp.loaders.VerbSearchAsyncTaskLoader;
 import com.japanesetoolboxapp.resources.GlobalConstants;
+import com.japanesetoolboxapp.resources.LocaleHelper;
 import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
@@ -272,14 +273,14 @@ public class DictionaryFragment extends Fragment implements
         mAlreadyLoadedJMDictFRResults = false;
         mAlreadyLoadedJMDictESResults = false;
 
-        mConjugationTitles = Utilities.getConjugationTitles(mVerbLatinConjDatabase);
+        mConjugationTitles = Utilities.getConjugationTitles(mVerbLatinConjDatabase, getContext());
     }
     private void initializeViews(View rootView) {
         mBinding = ButterKnife.bind(this, rootView);
 
         mDictionaryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         mDictionaryRecyclerView.setNestedScrollingEnabled(true);
-        mDictionaryRecyclerViewAdapter = new DictionaryRecyclerViewAdapter(getContext(), this, null, mLegendDatabase, mInputQuery);
+        mDictionaryRecyclerViewAdapter = new DictionaryRecyclerViewAdapter(getContext(), this, null, mLegendDatabase, mInputQuery, LocaleHelper.getLanguage(getContext()));
         mDictionaryRecyclerView.setAdapter(mDictionaryRecyclerViewAdapter);
     }
     private void getQuerySearchResults() {

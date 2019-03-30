@@ -41,10 +41,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-import static com.japanesetoolboxapp.resources.GlobalConstants.TYPE_HIRAGANA;
 import static com.japanesetoolboxapp.resources.GlobalConstants.TYPE_KANJI;
-import static com.japanesetoolboxapp.resources.GlobalConstants.TYPE_KATAKANA;
-import static com.japanesetoolboxapp.resources.GlobalConstants.TYPE_LATIN;
 
 public class ConjugatorFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<Object> {
@@ -172,7 +169,7 @@ public class ConjugatorFragment extends Fragment implements
     private void initializeParameters() {
         mMatchingVerbs = new ArrayList<>();
         mMatchingConjugationParameters = new ArrayList<>();
-        mConjugationTitles = Utilities.getConjugationTitles(mVerbLatinConjDatabase);
+        mConjugationTitles = Utilities.getConjugationTitles(mVerbLatinConjDatabase, getContext());
     }
     private void SearchForConjugations() {
 
@@ -455,8 +452,8 @@ public class ConjugatorFragment extends Fragment implements
 
             //Setting the meaning
             SpinnerText = verb.getMeaning();
-            TextView verbchooser_EnglishMeaning = mySpinner.findViewById(R.id.verbchooser_EnglishMeaning);
-            verbchooser_EnglishMeaning.setText(SpinnerText);
+            TextView verbchooser_LatinMeaning = mySpinner.findViewById(R.id.verbchooser_LatinMeaning);
+            verbchooser_LatinMeaning.setText(SpinnerText);
 
             return mySpinner;
         }

@@ -90,6 +90,7 @@ public class InputQueryFragment extends Fragment implements
     @BindView(R.id.button_convert) Button mConvertButton;
     @BindView(R.id.button_search_by_radical) Button mSearchByRadicalButton;
     @BindView(R.id.button_decompose) Button mDecomposeButton;
+    private static final boolean ALLOW_OCR_FOR_LATIN_LANGUAGES = false;
     private static final int MAX_OCR_DIALOG_RECYCLERVIEW_HEIGHT_DP = 150;
     private int mQueryHistoryMaxSize = 20;
     private static final int RESULT_OK = -1;
@@ -103,6 +104,8 @@ public class InputQueryFragment extends Fragment implements
     private static final String DOWNLOAD_FILE_PREFS = "download_file_prefs";
     private static final String JPN_FILE_DOWNLOADING_FLAG = "jpn_file_downloading";
     private static final String ENG_FILE_DOWNLOADING_FLAG = "eng_file_downloading";
+    private static final String FRA_FILE_DOWNLOADING_FLAG = "fra_file_downloading";
+    private static final String SPA_FILE_DOWNLOADING_FLAG = "spa_file_downloading";
     private List<String> mQueryHistory;
     private List<String> mQueryHistoryWordsOnly;
     private String mInputQuery;
@@ -111,11 +114,15 @@ public class InputQueryFragment extends Fragment implements
     private String mInternalStorageTesseractFolderPath = "";
     private boolean mInitializedOcrApiJpn;
     private boolean mInitializedOcrApiEng;
+    private boolean mInitializedOcrApiFra;
+    private boolean mInitializedOcrApiSpa;
     private String mOCRLanguage;
     private Uri mPhotoURI;
     private String mOcrResultString;
     private boolean firstTimeInitializedJpn;
     private boolean firstTimeInitializedEng;
+    private boolean firstTimeInitializedFra;
+    private boolean firstTimeInitializedSpa;
     private TextToSpeech tts;
     private long enqueue;
     private DownloadManager downloadmanager;
@@ -124,15 +131,19 @@ public class InputQueryFragment extends Fragment implements
     private String mDownloadsFolder;
     private int timesPressed;
     private boolean jpnOcrDataIsAvailable;
+    private boolean engOcrDataIsAvailable;
+    private boolean fraOcrDataIsAvailable;
+    private boolean spaOcrDataIsAvailable;
     private String mLanguageBeingDownloadedLabel;
     private String mLanguageBeingDownloaded;
-    private boolean engOcrDataIsAvailable;
     private AsyncTask mTesseractOCRAsyncTask;
     private String mChosenSpeechToTextLanguage;
     private String mDownloadType;
     private boolean jpnOcrFileISDownloading;
     private boolean mJpnOcrFileIsDownloading;
     private boolean mEngOcrFileIsDownloading;
+    private boolean mFraOcrFileIsDownloading;
+    private boolean mSpaOcrFileIsDownloading;
     private CropImage.ActivityResult mCropImageResult;
     private BroadcastReceiver mBroadcastReceiver;
     private boolean mRequestedSpeechToText;
@@ -291,11 +302,17 @@ public class InputQueryFragment extends Fragment implements
         mOcrResultString = "";
         firstTimeInitializedJpn = true;
         firstTimeInitializedEng = true;
+        firstTimeInitializedFra = true;
+        firstTimeInitializedSpa = true;
         mInitializedOcrApiJpn = false;
         mInitializedOcrApiEng = false;
+        mInitializedOcrApiFra = false;
+        mInitializedOcrApiSpa = false;
         timesPressed = 0;
         jpnOcrDataIsAvailable = false;
         engOcrDataIsAvailable = false;
+        fraOcrDataIsAvailable = false;
+        spaOcrDataIsAvailable = false;
         mRequestedSpeechToText = false;
         mCropImageResult = null;
         mAlreadyGotOcrResult = false;
@@ -453,8 +470,8 @@ public class InputQueryFragment extends Fragment implements
             //Getting the user setting from the preferences
             if (getActivity()==null) return;
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            String language = sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_preferred_language_value_japanese));
-            mChosenSpeechToTextLanguage = getSpeechToTextLanguageLocale(language);
+            String language = sharedPreferences.getString(getString(R.string.pref_preferred_STT_language_key), getString(R.string.pref_language_value_japanese));
+            mChosenSpeechToTextLanguage = getLanguageLocale(language!=null? language : getString(R.string.pref_language_value_japanese));
 
             Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
@@ -465,6 +482,10 @@ public class InputQueryFragment extends Fragment implements
                 intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechToTextUserPromptJapanese));
             } else if (mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleEnglishUS))) {
                 intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechToTextUserPromptEnglish));
+            } else if (mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleFrench))) {
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechToTextUserPromptFrench));
+            } else if (mChosenSpeechToTextLanguage.equals(getResources().getString(R.string.languageLocaleSpanish))) {
+                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getResources().getString(R.string.SpeechToTextUserPromptSpanish));
             }
             startActivityForResult(intent, SPEECH_RECOGNIZER_REQUEST_CODE);
         } catch (ActivityNotFoundException e) {
@@ -478,14 +499,17 @@ public class InputQueryFragment extends Fragment implements
     @OnClick(R.id.button_ocr) public void onOcrButtonClick() {
 
         getOcrDataDownloadingStatus();
-        if ((mOCRLanguage.equals("eng") && mEngOcrFileIsDownloading) || (mOCRLanguage.equals("jpn") && mJpnOcrFileIsDownloading) ) {
+        if ((mOCRLanguage.equals("eng") && mEngOcrFileIsDownloading)
+                || (mOCRLanguage.equals("jpn") && mJpnOcrFileIsDownloading)
+                || (mOCRLanguage.equals("fra") && mFraOcrFileIsDownloading)
+                || (mOCRLanguage.equals("spa") && mSpaOcrFileIsDownloading) ) {
             Toast toast = Toast.makeText(getContext(),getResources().getString(R.string.OCR_downloading), Toast.LENGTH_SHORT);
             toast.show();
         }
         else {
             if (mInitializedOcrApiJpn && mOCRLanguage.equals("jpn")) {
                 if (firstTimeInitializedJpn) {
-                    Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.OCRinstructionsJPN), Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.OCRinstructions), Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
                     toast.show();
                     firstTimeInitializedJpn = false;
@@ -494,10 +518,28 @@ public class InputQueryFragment extends Fragment implements
                 performImageCaptureAndCrop();
             } else if (mInitializedOcrApiEng && mOCRLanguage.equals("eng")) {
                 if (firstTimeInitializedEng) {
-                    Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.OCRinstructionsENG), Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.OCRinstructions), Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
                     toast.show();
                     firstTimeInitializedEng = false;
+                }
+                timesPressed = 0;
+                performImageCaptureAndCrop();
+            } else if (mInitializedOcrApiFra && mOCRLanguage.equals("fra")) {
+                if (firstTimeInitializedFra) {
+                    Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.OCRinstructions), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                    toast.show();
+                    firstTimeInitializedFra = false;
+                }
+                timesPressed = 0;
+                performImageCaptureAndCrop();
+            } else if (mInitializedOcrApiSpa && mOCRLanguage.equals("spa")) {
+                if (firstTimeInitializedSpa) {
+                    Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.OCRinstructions), Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
+                    toast.show();
+                    firstTimeInitializedSpa = false;
                 }
                 timesPressed = 0;
                 performImageCaptureAndCrop();
@@ -505,8 +547,14 @@ public class InputQueryFragment extends Fragment implements
                 if (timesPressed <= 3) {
                     mLanguageBeingDownloaded = "jpn";
                     ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
-                    mLanguageBeingDownloaded = "eng";
-                    ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
+                    if (ALLOW_OCR_FOR_LATIN_LANGUAGES) {
+                        mLanguageBeingDownloaded = "eng";
+                        ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
+                        mLanguageBeingDownloaded = "fra";
+                        ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
+                        mLanguageBeingDownloaded = "spa";
+                        ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
+                    }
 
                     initializeOcrEngineForChosenLanguage();
 
@@ -543,6 +591,10 @@ public class InputQueryFragment extends Fragment implements
         ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
         mLanguageBeingDownloaded = "eng";
         ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
+        mLanguageBeingDownloaded = "fra";
+        ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
+        mLanguageBeingDownloaded = "spa";
+        ifOcrDataIsNotAvailableThenMakeItAvailable(mLanguageBeingDownloaded);
         initializeOcrEngineForChosenLanguage();
     }
     private void initializeTesseractAPI(String language) {
@@ -556,6 +608,8 @@ public class InputQueryFragment extends Fragment implements
                 mTess.init(mInternalStorageTesseractFolderPath, language);
                 if (language.equals("jpn") ) mInitializedOcrApiJpn = true;
                 else if (language.equals("eng") ) mInitializedOcrApiEng = true;
+                else if (language.equals("fra") ) mInitializedOcrApiFra = true;
+                else if (language.equals("spa") ) mInitializedOcrApiSpa = true;
                 Log.e(TAG_TESSERACT, "Initialized Tesseract.");
             } catch (Exception e) {
                 Log.e(TAG_TESSERACT, "Failed to initialize Tesseract.");
@@ -617,17 +671,24 @@ public class InputQueryFragment extends Fragment implements
             SharedPreferences sharedPreferences = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
             mJpnOcrFileIsDownloading = sharedPreferences.getBoolean(JPN_FILE_DOWNLOADING_FLAG, false);
             mEngOcrFileIsDownloading = sharedPreferences.getBoolean(ENG_FILE_DOWNLOADING_FLAG, false);
+            mFraOcrFileIsDownloading = sharedPreferences.getBoolean(FRA_FILE_DOWNLOADING_FLAG, false);
+            mSpaOcrFileIsDownloading = sharedPreferences.getBoolean(SPA_FILE_DOWNLOADING_FLAG, false);
         }
     }
     private String getOCRLanguageFromSettings() {
         if (getActivity() != null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            String language = sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_preferred_language_value_japanese));
+            String language = sharedPreferences.getString(getString(R.string.pref_preferred_OCR_language_key), getString(R.string.pref_language_value_japanese));
+            if (language==null) language = getResources().getString(R.string.pref_language_value_japanese);
 
-            if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
+            if (language.equals(getResources().getString(R.string.pref_language_value_japanese))) {
                 return "jpn";
-            } else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
+            } else if (language.equals(getResources().getString(R.string.pref_language_value_english))) {
                 return "eng";
+            } else if (language.equals(getResources().getString(R.string.pref_language_value_french))) {
+                return "fra";
+            } else if (language.equals(getResources().getString(R.string.pref_language_value_spanish))) {
+                return "spa";
             } else return "jpn";
         }
         else return "jpn";
@@ -647,8 +708,18 @@ public class InputQueryFragment extends Fragment implements
         String mOCRLanguageLabel = getLanguageLabel(mOCRLanguage);
     }
     private String getLanguageLabel(String language) {
-        if (language.equals("jpn")) return getResources().getString(R.string.language_label_japanese);
-        else return getResources().getString(R.string.language_label_english);
+        switch (language) {
+            case "jpn":
+                return getResources().getString(R.string.language_label_japanese);
+            case "eng":
+                return getResources().getString(R.string.language_label_english);
+            case "fra":
+                return getResources().getString(R.string.language_label_french);
+            case "spa":
+                return getResources().getString(R.string.language_label_spanish);
+            default:
+                return getResources().getString(R.string.language_label_japanese);
+        }
     }
     private void setupBroadcastReceiverForDownloadedOCRData() {
         mBroadcastReceiver = new BroadcastReceiver() {
@@ -689,8 +760,12 @@ public class InputQueryFragment extends Fragment implements
         mOCRLanguage = getOCRLanguageFromSettings();
         if (mOCRLanguage.equals("jpn") && jpnOcrDataIsAvailable) initializeTesseractAPI(mOCRLanguage);
         else if (mOCRLanguage.equals("eng") && engOcrDataIsAvailable) initializeTesseractAPI(mOCRLanguage);
+        else if (mOCRLanguage.equals("fra") && fraOcrDataIsAvailable) initializeTesseractAPI(mOCRLanguage);
+        else if (mOCRLanguage.equals("spa") && spaOcrDataIsAvailable) initializeTesseractAPI(mOCRLanguage);
     }
     private void ifOcrDataIsNotAvailableThenMakeItAvailable(String language) {
+
+        if (!ALLOW_OCR_FOR_LATIN_LANGUAGES && !language.equals("jpn")) return;
 
         String filename = language + ".traineddata";
         Boolean fileExistsInAppFolder = Utilities.checkIfFileExistsInSpecificFolder(new File(mPhoneAppFolderTesseractDataFilepath), filename);
@@ -700,11 +775,25 @@ public class InputQueryFragment extends Fragment implements
             makeOcrDataAvailableInAppFolder(language);
         }
         else {
-            if (language.equals("jpn")) jpnOcrDataIsAvailable = true;
-            else if (language.equals("eng")) engOcrDataIsAvailable = true;
+            switch (language) {
+                case "jpn":
+                    jpnOcrDataIsAvailable = true;
+                    break;
+                case "eng":
+                    engOcrDataIsAvailable = true;
+                    break;
+                case "fra":
+                    fraOcrDataIsAvailable = true;
+                    break;
+                case "spa":
+                    spaOcrDataIsAvailable = true;
+                    break;
+            }
         }
     }
     private void makeOcrDataAvailableInAppFolder(String language) {
+
+        if (!ALLOW_OCR_FOR_LATIN_LANGUAGES && !language.equals("jpn")) return;
 
         mLanguageBeingDownloadedLabel = getLanguageLabel(language);
         String filename = language + ".traineddata";
@@ -785,7 +874,7 @@ public class InputQueryFragment extends Fragment implements
     }
     private void askForPreferredDownloadTimeAndDownload(String language, final String filename) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.OCRDialogTitle);
+        //builder.setTitle(R.string.OCRDialogTitle);
         builder.setPositiveButton(R.string.DownloadDialogWifiOnly, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 mDownloadType = "WifiOnly";
@@ -809,7 +898,9 @@ public class InputQueryFragment extends Fragment implements
             }
         });
         if (language.equals("jpn")) builder.setMessage(R.string.DownloadDialogMessageJPN);
-        else builder.setMessage(R.string.DownloadDialogMessageENG);
+        else if (language.equals("eng")) builder.setMessage(R.string.DownloadDialogMessageENG);
+        else if (language.equals("fra")) builder.setMessage(R.string.DownloadDialogMessageFRA);
+        else if (language.equals("spa")) builder.setMessage(R.string.DownloadDialogMessageSPA);
         AlertDialog dialog = builder.create();
         dialog.show();
     }
@@ -828,25 +919,48 @@ public class InputQueryFragment extends Fragment implements
         }
         else return true;
     }
-    private void setJpnOcrDataIsDownloadingStatus(Boolean status) {
+    private void setOcrDataIsDownloadingStatus(Boolean status, String language) {
         if (getContext() != null) {
             SharedPreferences sharedPref = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putBoolean(JPN_FILE_DOWNLOADING_FLAG, status);
-            editor.apply();
-        }
-    }
-    private void setEngOcrDataIsDownloadingStatus(Boolean status) {
-        if (getContext() != null) {
-            SharedPreferences sharedPref = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putBoolean(ENG_FILE_DOWNLOADING_FLAG, status);
+            switch (language) {
+                case "jpn":
+                    editor.putBoolean(JPN_FILE_DOWNLOADING_FLAG, status);
+                    break;
+                case "eng":
+                    editor.putBoolean(ENG_FILE_DOWNLOADING_FLAG, status);
+                    break;
+                case "fra":
+                    editor.putBoolean(FRA_FILE_DOWNLOADING_FLAG, status);
+                    break;
+                case "spa":
+                    editor.putBoolean(SPA_FILE_DOWNLOADING_FLAG, status);
+                    break;
+            }
             editor.apply();
         }
     }
     private void setOcrDataIsDownloadingStatus(String filename, Boolean status) {
-        if (filename.equals("jpn.traineddata")) setJpnOcrDataIsDownloadingStatus(status);
-        else if (filename.equals("eng.traineddata")) setEngOcrDataIsDownloadingStatus(status);
+
+        if (getContext() != null) {
+            SharedPreferences sharedPref = getContext().getSharedPreferences(DOWNLOAD_FILE_PREFS, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            switch (filename.substring(0,3)) {
+                case "jpn":
+                    editor.putBoolean(JPN_FILE_DOWNLOADING_FLAG, status);
+                    break;
+                case "eng":
+                    editor.putBoolean(ENG_FILE_DOWNLOADING_FLAG, status);
+                    break;
+                case "fra":
+                    editor.putBoolean(FRA_FILE_DOWNLOADING_FLAG, status);
+                    break;
+                case "spa":
+                    editor.putBoolean(SPA_FILE_DOWNLOADING_FLAG, status);
+                    break;
+            }
+            editor.apply();
+        }
     }
     private static class TesseractOCRAsyncTaskLoader extends AsyncTaskLoader <String> {
 
@@ -987,14 +1101,19 @@ public class InputQueryFragment extends Fragment implements
         //Getting the user setting from the preferences
         if (getActivity() != null) {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            String language = sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_preferred_language_value_japanese));
-            String mChosenTextToSpeechLanguage = getTextToSpeechLanguageLocale(language);
+            String language = sharedPreferences.getString(getString(R.string.pref_preferred_TTS_language_key), getString(R.string.pref_language_value_japanese));
+            String mChosenTextToSpeechLanguage = getLanguageLocale(language!=null? language : getString(R.string.pref_language_value_japanese));
 
             //Setting the language
             if (mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleJapanese))) {
                 result = tts.setLanguage(Locale.JAPAN);
             } else if (mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleEnglishUS))) {
                 result = tts.setLanguage(Locale.US);
+            } else if (mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleFrench))) {
+                result = tts.setLanguage(Locale.FRANCE);
+            } else if (mChosenTextToSpeechLanguage.equals(getResources().getString(R.string.languageLocaleSpanish))) {
+                Locale spanish = new Locale("es", "ES");
+                result = tts.setLanguage(spanish);
             } else result = tts.setLanguage(Locale.US);
 
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
@@ -1007,24 +1126,21 @@ public class InputQueryFragment extends Fragment implements
         setTTSLanguage();
         tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
     }
-    private String getTextToSpeechLanguageLocale(String language) {
-        if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
-            return getResources().getString(R.string.languageLocaleJapanese);
-        }
-        else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
-            return getResources().getString(R.string.languageLocaleEnglishUS);
-        }
-        else return getResources().getString(R.string.languageLocaleEnglishUS);
-    }
 
 
     //SpeechToText methods
-    private String getSpeechToTextLanguageLocale(String language) {
-        if (language.equals(getResources().getString(R.string.pref_preferred_language_value_japanese))) {
+    private String getLanguageLocale(String language) {
+        if (language.equals(getResources().getString(R.string.pref_language_value_japanese))) {
             return getResources().getString(R.string.languageLocaleJapanese);
         }
-        else if (language.equals(getResources().getString(R.string.pref_preferred_language_value_english))) {
+        else if (language.equals(getResources().getString(R.string.pref_language_value_english))) {
             return getResources().getString(R.string.languageLocaleEnglishUS);
+        }
+        else if (language.equals(getResources().getString(R.string.pref_language_value_french))) {
+            return getResources().getString(R.string.languageLocaleFrench);
+        }
+        else if (language.equals(getResources().getString(R.string.pref_language_value_french))) {
+            return getResources().getString(R.string.languageLocaleFrench);
         }
         else return getResources().getString(R.string.languageLocaleEnglishUS);
     }
@@ -1280,8 +1396,8 @@ public class InputQueryFragment extends Fragment implements
         mFirstMeaning = meaning;
         updateQueryHistory(true);
     }
-    public void setSTTLanguage(String mChosenSpeechToTextLanguage) {
-        this.mChosenSpeechToTextLanguage = mChosenSpeechToTextLanguage;
+    public void setSTTLanguage(String chosenSpeechToTextLanguage) {
+        mChosenSpeechToTextLanguage = chosenSpeechToTextLanguage;
     }
     public void clearHistory() {
         mQueryHistoryWordsOnly = new ArrayList<>();

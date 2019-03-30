@@ -20,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class SplashScreenActivity extends Activity {
+public class SplashScreenActivity extends BaseActivity {
 
     private final int SPLASH_DISPLAY_LENGTH = 1000; //Miliseconds
     private Unbinder mBinding;

@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Japanese Toolbox</string>
-    <string name="splashscreen_intro_sentence">Votre aide personnelle pour déchiffrer\nla langue japonaise.</string>
+    <string name="splashscreen_intro_sentence">Votre assistant personnel pour déchiffrer\nla langue japonaise.</string>
     <string name="splashscreen_loading_database">Charge la base de données locale…</string>
-    <string name="splashscreen_should_take_only_a_few_seconds">Cela ne devrait prendre que quelques secondes.</string>
+    <string name="splashscreen_should_take_only_a_few_seconds">Ceci ne devrait prendre que quelques secondes.</string>
     <string name="settings">Paramètres</string>
     <string name="about">À propos</string>
     <string name="hidden_online_search">Ne pas chercher les mots et sens en ligne</string>
     <string name="shown_online_search">Fusionner les résultats de la recherche en ligne avec les résultats locaux</string>
-    <string name="wait_for_online_results_off">Afficher la liste de résultats immédiatement et l&apos;actualiser après avoir obtenu des résultats en ligne</string>
-    <string name="wait_for_online_results_on">Attendre les résultats en ligne avant d&apos;afficher la liste</string>
+    <string name="wait_for_online_results_off">Afficher la liste de résultats immédiatement et l\'actualiser après avoir obtenu des résultats en ligne</string>
+    <string name="wait_for_online_results_on">Attendre les résultats en ligne avant d\'afficher la liste</string>
     <string name="complete_with_conj_search_off">Ne pas chercher dans les conjugaison de verbes</string>
-    <string name="complete_with_conj_search_on">Ajouter les verbes pertinents après avoir verifié les conjugaisons</string>
-    <string name="wait_for_conj_results_off">Afficher la liste immédiatement avec la réception des résultats et l&apos;actualiser après avoir trouvé les verbes pertinents par recherche de conjugaisons</string>
-    <string name="wait_for_conj_results_on">Attendre les résultats de verbes pertinents avant d&apos;afficher la liste</string>
-    <string name="show_sources_off">Ne pas montrer de l&apos;information supplémentaire sur chaque mot</string>
-    <string name="show_sources_on">Afficher de l&apos;information supplémentaire (source, statut commun)</string>
-    <string name="show_meanings_EN_off">Ne pas afficher les significations en anglais dans les résultats de recherche</string>
-    <string name="show_meanings_EN_on">Afficher les significations en anglais dans les résultats de recherche</string>
-    <string name="show_meanings_FR_off">Ne pas montrer les significations françaises dans les résultats de recherche</string>
-    <string name="show_meanings_FR_on">Afficher les significations françaises dans les résultats de recherche</string>
-    <string name="show_meanings_ES_off">Ne pas afficher les significations en espagnol dans les résultats de recherche</string>
-    <string name="show_meanings_ES_on">Afficher les significations en espagnol dans les résultats de recherche</string>
+    <string name="complete_with_conj_search_on">Ajouter les verbes correspondants après avoir verifié les conjugaisons</string>
+    <string name="wait_for_conj_results_off">Afficher la liste immédiatement avec la réception des résultats et l\'actualiser après avoir trouvé les verbes correspondants par recherche de conjugaisons</string>
+    <string name="wait_for_conj_results_on">Attendre les résultats de verbes correspondants avant d\'afficher la liste</string>
+    <string name="show_sources_off">Ne pas montrer de l\'information supplémentaire sur chaque mot</string>
+    <string name="show_sources_on">Afficher de l\'information supplémentaire (source, statut commun)</string>
+    <string name="show_meanings_EN_off">Ne pas afficher les senses anglais dans les résultats de recherche</string>
+    <string name="show_meanings_EN_on">Afficher les senses anglais dans les résultats de recherche</string>
+    <string name="show_meanings_FR_off">Ne pas montrer les senses français dans les résultats de recherche</string>
+    <string name="show_meanings_FR_on">Afficher les senses français dans les résultats de recherche</string>
+    <string name="show_meanings_ES_off">Ne pas afficher les senses espagnoles dans les résultats de recherche</string>
+    <string name="show_meanings_ES_on">Afficher les senses espagnoles dans les résultats de recherche</string>
     <string name="hidden_info_boxes">Ne pas afficher de texte contextuel informatif lors de la recherche</string>
-    <string name="shown_info_boxes">Afficher les textes contextuels informatifs lors de la recherche</string>
-    <string name="hidden_decomp_structure_info">Ne pas afficher d&apos;explication sur la structure du Kanji</string>
-    <string name="shown_decomp_structure_info">Afficher l&apos;explication sur la structure du Kanji décomposé</string>
+    <string name="shown_info_boxes">Afficher des textes contextuels informatifs lors de la recherche</string>
+    <string name="hidden_decomp_structure_info">Ne pas afficher d\'explication sur la structure du Kanji</string>
+    <string name="shown_decomp_structure_info">Afficher l\'explication sur la structure du Kanji décomposé</string>
     <string name="complete_local_with_online_search">Rechercher des mots en ligne</string>
     <string name="wait_for_online_results">Attendre les résultats en ligne</string>
     <string name="complete_with_conj_search">Rechercher les conjugaisons de verbe</string>
-    <string name="pref_wait_for_conj_results">Attendre pour les verbes pertinents</string>
+    <string name="pref_wait_for_conj_results">Attendre aux verbes correspondants</string>
     <string name="pref_show_sources">Afficher Informations sur Mots</string>
-    <string name="pref_show_meanings_EN">Afficher significations en anglais</string>
-    <string name="pref_show_meanings_FR">Afficher significations françaises</string>
-    <string name="pref_show_meanings_ES">Afficher significations en espagnol</string>
-    <string name="show_info_boxes_when_searching">Afficher Boîtes d&apos;Info de Recherche</string>
+    <string name="pref_show_meanings_EN">Afficher Senses Anglais</string>
+    <string name="pref_show_meanings_FR">Afficher Senses Français</string>
+    <string name="pref_show_meanings_ES">Afficher Senses Espagnoles</string>
+    <string name="show_info_boxes_when_searching">Afficher Boîtes d\'Info sur la Recherche</string>
     <string name="show_decomp_structure_info_text">Afficher Infos sur Structure</string>
     <string name="language_label_japanese">Japonais</string>
     <string name="language_label_english">Anglais (É.U.)</string>
@@ -46,137 +46,221 @@
     <string name="pref_OCR_image_saturation_summary">Valeur: 0</string>
     <string name="pref_OCR_image_brightness_title">Luminosité Initiale</string>
     <string name="pref_OCR_image_brightness_summary">Valeur: 0</string>
-    <string name="pref_query_history_size_title">Taille de l&apos;historique de recherche</string>
-    <string name="pref_query_history_size_summary">Nombre de mots dans l&apos;historique: 20</string>
-    <string name="input_query">Cherche moi!</string>
+    <string name="pref_query_history_size_title">Taille de l\'historique de recherche</string>
+    <string name="pref_query_history_size_summary">Nombre de mots dans l\'historique: 20</string>
+    <string name="input_query">Cherchez moi!</string>
     <string name="DICT">DICT</string>
     <string name="CONJ">CONJ</string>
     <string name="Convert">あ⇔A</string>
     <string name="button_SearchByRadical">女+子 ⇒ 好</string>
     <string name="button_Decompose">好 ⇒ 女+子</string>
     <string name="SpeechToTextUserPromptEnglish">Veuillez indiquer votre requête en anglais.</string>
+    <string name="SpeechToTextUserPromptFrench">Veuillez indiquer votre requête en français.</string>
+    <string name="SpeechToTextUserPromptSpanish">Veuillez indiquer votre requête en espagnol.</string>
     <string name="SpeechToTextUserPromptJapanese">Veuillez indiquer votre requête en japonais.</string>
     <string name="OCRDialogTitle">Sélectionner le texte à copier pour la recherche</string>
-    <string name="LowVersionDialogMessage">Votre version d&apos;Android est trop basse</string>
+    <string name="LowVersionDialogMessage">Votre version d\'Android est trop basse</string>
     <string name="cancel">Annuler</string>
     <string name="readjust">Retoucher</string>
-    <string name="OCR_failed">L&apos;initialisation du moteur ROC a échoué.</string>
-    <string name="OCR_reinitializing">Le moteur d&apos;ROC n&apos;a pas été initialisé. Tente encore…</string>
+    <string name="OCR_failed">L\'initialisation du moteur ROC a échoué.</string>
+    <string name="OCR_reinitializing">Le moteur d\'ROC n\'a pas été initialisé. Tente encore…</string>
     <string name="OCR_waitWhileProcessing">Attendez pendant le traitement…</string>
-    <string name="OCR_waitWhileProcessingExplanation">Un long temps de traitement peut signifier que le moteur ROC a du mal à déchiffrer l&apos;image\n        et entraînera un texte ROC aléatoire. Dans ce cas, essayez d’utiliser une meilleure image.</string>
-    <string name="OCR_downloading">Veuillez patienter jusqu&apos;à ce que le téléchargement des données ROC soit terminé.</string>
+    <string name="OCR_waitWhileProcessingExplanation">Un long temps de traitement peut signifier que le moteur ROC a du mal à déchiffrer l\'image
+        et entraînera un texte ROC aléatoire. Dans ce cas, essayez d’utiliser une meilleure image.</string>
+    <string name="OCR_downloading">Veuillez patienter jusqu\'à ce que le téléchargement des données ROC soit terminé.</string>
     <string name="OCR_copy_data">Données installées avec succès à partir du dossier de Téléchargements.</string>
     <string name="processing">Veuillez patienter, effectue la ROC…</string>
-    <string name="OCRinstructionsJPN">Veuillez sélectionner et rogner le texte japonais.\n        Pour des résultats optimaux, sélectionnez QUELQUES symboles occupant une grande surface dans une image claire. Sinon, le moteur d&apos;ROC risque de ne pas fonctionner correctement.</string>
-    <string name="OCRinstructionsENG">Veuillez sélectionner et rogner le texte anglais.\n        Pour de meilleurs résultats, sélectionnez QUELQUES mots occupant une grande surface dans une image claire. Sinon, le moteur d&apos;ROC risque de ne pas fonctionner correctement.</string>
+    <string name="OCRinstructions">Veuillez sélectionner et rogner votre texte.
+        Pour des résultats optimaux, sélectionnez QUELQUES symboles/mots occupant une grande surface dans une image claire. Sinon, le moteur d\'ROC risque de ne pas fonctionner correctement.</string>
     <string name="getTextThroughSpeech">Dire les mots</string>
     <string name="getTextThroughCamera">Reconnaissance optique de caractères</string>
-    <string name="speakQuery">Entendre la requête de l&apos;utilisateur</string>
+    <string name="speakQuery">Entendre la requête de l\'utilisateur</string>
     <string name="copiedTextToClipboard">Texte copié au presse-papier</string>
     <string name="STTACtivityNotFound">Désolé, il semble que votre téléphone ne dispose pas de la fonctionnalité Parole-Texte. Redirecte vers les ressources pertinentes…</string>
     <string name="DownloadDialogTitle">Télécharger les fichiers de données ROC.</string>
     <string name="DownloadDialogMessageJPN">Veuillez sélectionner le mode de téléchargement des données de reconnaissance optique de caractères japonais requises (environ 40 Mo).</string>
     <string name="DownloadDialogMessageENG">Veuillez sélectionner le mode de téléchargement des données de reconnaissance optique de caractères anglais requises (environ 20 Mo).</string>
+    <string name="DownloadDialogMessageFRA">Veuillez sélectionner le mode de téléchargement des données de reconnaissance optique de caractères français requises (environ 20 Mo).</string>
+    <string name="DownloadDialogMessageSPA">Veuillez sélectionner le mode de téléchargement des données de reconnaissance optique de caractères espagnols requises (environ 20 Mo).</string>
     <string name="DownloadDialogWifiOnly">WiFi uniquement</string>
     <string name="DownloadDialogWifiAndMobile">À tout moment</string>
-    <string name="no_match_found">Non trouvé dans le dictionnaire local. Recherche dans d&apos;autres sources…</string>
-    <string name="please_enter_word">&lt;b&gt;Veuillez entrer un mot valide.&lt;/b&gt;\n        &lt;br /&gt; &lt;br /&gt; Des mots complets donneront les meilleurs résultats, mais les fragments de mot sont aussi valides.\n &lt;br /&gt; &lt;br /&gt; Vous pouvez entrez des mots en anglais, français, espagnol, romaji, hiragana, katakana ou kanji.\n &lt;br /&gt; &lt;br /&gt; Notez également que cette application utilise une variante de la romanisation Kunrei-Shiki où tous les homophones de kana sont translittérés en formes romaji uniques, permettant ainsi des translitérations non ambiguës.</string>
-    <string name="ShowExamples">Exemple de phrases: (&gt;montrer)</string>
-    <string name="HideExamples">Exemple de phrases: (&gt;masquer)</string>
-    <string name="how_it_s_used_">Comment c&apos;est utilisé:\u0020</string>
+    <string name="no_match_found">Non trouvé dans le dictionnaire local. Recherche d\'autres sources…</string>
+    <string name="please_enter_word">
+        <![CDATA[
+        <b>Veuillez entrer un mot valide.</b>
+        \n<br/><br/>Des mots complets donneront les meilleurs résultats, mais les fragments de mot sont aussi valides.
+        \n<br/><br/>Vous pouvez entrez des mots en anglais, français, espagnol, romaji, hiragana, katakana ou kanji.
+        \n<br/><br/> Notez également que cette application utilise une variante de la romanisation Kunrei-Shiki où tous les homophones de kana sont translittérés en formes romaji uniques, permettant ainsi des translitérations non ambiguës.
+        ]]>
+    </string>
+    <string name="ShowExamples">Phrases Exemplaires: (&gt;montrer)</string>
+    <string name="HideExamples">Phrases Exemplaires: (&gt;masquer)</string>
+    <string name="how_it_s_used_">Comment c\'est utilisé:\u0020</string>
     <string name="English">Anglais</string>
     <string name="Romaji">Romaji</string>
     <string name="Kanji">Kanji</string>
-    <string name="verbHint">&lt;b&gt; Veuillez entrer une conjugaison de verbe valide. &lt;/b&gt;
-         \n\n &lt;b&gt; Afin que le temps de recherche reste raisonnable, pas tous les temps de verbe ne sont inclus. En tant que tel, respectez les règles suivantes: &lt;/b&gt;
-         \n\nLorsque vous recherchez des conjugaisons moins courantes (par exemple, tabesaseta), vous devrez peut-être convertir le verbe au présent (tabesaseru).
-         \n\nSi vous recherchez un verbe composé (par exemple, tabete ikimasu), vous devez d’abord convertir le deuxième verbe au format de dictionnaire (tabete iku).
-         \n\nSi vous recherchez un verbe conjoint (par exemple, taberu bakari), utilisez la commande &amp;lt;DICT&amp;gt; pour effectuer une recherche sur \&amp;quot;bakari\&amp;quot; afin de trouver la règle de grammaire correspondante.
-         \n\nLa fonction de recherche &amp;lt;DICT&amp;gt; couvre également les orthographes alternatives du romaji ou du kanji pour une variété de verbes (en forme dictionnaire).
-         La fonction &amp;lt;CONJ&amp;gt; ne cherche que les conjugaisons de l&apos;orthographe les plus communes de romaji et les variations de kanji de chaque verbe.</string>
+    <string name="verbHint"><b>Veuillez entrer une conjugaison valide de verbe.</b>
+        \n\n<b>Afin que le temps de recherche reste raisonnable, pas tous les temps de verbe ne sont inclus. En tant que tel, respectez les règles suivantes:</b>
+        \n\nLorsque vous recherchez des conjugaisons moins courantes (ex. tabesaseta), vous devrez peut-être convertir le verbe au présent (tabesaseru).
+        \n\nSi vous recherchez un verbe composé (ex. tabete ikimasu), vous devez d’abord convertir le deuxième verbe au format de dictionnaire (tabete iku).
+        \n\nSi vous recherchez un verbe conjoint (ex. taberu bakari), utilisez la commande \&lt;DICT\&gt; pour effectuer une recherche sur \"bakari\" afin de trouver la règle de grammaire correspondante.
+        \n\nLa fonction de recherche \&lt;DICT\&gt; couvre également les orthographes alternatives du romaji ou du kanji pour une variété de verbes (en forme dictionnaire).
+        La fonction \&lt;CONJ\&gt; cherche les conjugaisons de l\'orthographe les plus communes de romaji et les variations de kanji de chaque verbe.
+    </string>
     <string name="where">, où:\u0020</string>
-    <string name="PleaseEnterJapVerb">S&apos;il vous plaît entrer un verbe japonais.</string>
+    <string name="PleaseEnterJapVerb">S\'il vous plaît entrer un verbe japonais.</string>
     <string name="CanEnterEngVerb">Vous pouvez également entrer un verbe anglais/français/espagnol sous forme infinitive.</string>
     <string name="SeeHints">Vérifiez les règles ci-dessous pour des indices.</string>
     <string name="Conversion">Translitération:</string>
-    <string name="ConversionLatin">Écriture latine:</string>
+    <string name="ConversionLatin">Romaji:</string>
     <string name="ConversionHiragana">Hiragana:</string>
     <string name="ConversionKatakana">Katakana:</string>
     <string name="EnterWord">Veuillez entrer un mot.</string>
-    <string name="TransliteratorHint">\n&lt;b&gt; Indice: &lt;/b&gt;
-         \nUtilisez une apostrophe (\&amp;apos;) après \&amp;quot;n\&amp;quot; &quot; pour assurer sa translitération en \&amp;quot;?\&amp;quot;.
-         \n\nNotez également que cette application utilise une variante de la romanisation Kunrei-Shiki où tous les kana homophones sont translitérés en formes uniques de romaji, permettant ainsi des translitérations non ambiguës.</string>
-    <string name="DecompositionsHint">&quot;\n &lt;b&gt; Indice: &lt;/b&gt;
-         \nEntrez un Kanji dans la barre de recherche et cliquez sur le bouton de décomposition (? &gt; ?+?) pour obtenir ses décompositions.
-         \n
-         \nLes décompositions sont évaluées à l&apos;aide d&apos;une version fortement modifiée et corrigée de la base de données de décomposition de Gavin Grover (voir cjkdecomp.codeplex.com). &quot;</string>
+    <string name="TransliteratorHint">
+        \n<b>Indice:</b>
+        \nUtilisez une apostrophe (\') après \"n\" pour assurer sa translitération en \"ん\".
+        \n\nNotez également que cette application utilise une variante de la romanisation Kunrei-Shiki où tous les kana homophones sont translitérés en formes uniques de romaji, permettant ainsi des translitérations non ambiguës.</string>
+    <string name="DecompositionsHint">
+        \n<b>Indice:</b>
+        \nEntrez un Kanji dans la barre de recherche et cliquez sur le bouton de décomposition (好 ⇒ 女+子) pour obtenir ses décompositions.
+        \n\nLes décompositions sont évaluées à l\'aide d\'une version fortement modifiée et corrigée de la base de données de décomposition de Gavin Grover (voir cjkdecomp.codeplex.com).</string>
     <string name="DONE">TERMINÉ</string>
-    <string name="AboutTextIntro1">\n        Japanese Toolbox est une application créée par un étudiant du japonais pour les édudiants du japonais.\n</string>
-    <string name="AboutTextIntro2">\n        L’application est conçue pour vous aider à déchiffrer les textes en japonais intermédiaire à avancé, à un rythme plus rapide que les autres outils,\n vous permettant de comprendre le sens et les composants de chaque mot ou phrase que vous lisez.\n</string>
-    <string name="AboutTextIntro3">\n        L’application ne dépend pas d’une connexion Internet. Vous pouvez donc l’utiliser quand vous voulez et où vous voulez.\n</string>
-    <string name="AboutTextButtonsTitle">\n        Explications sur les outils:\n</string>
+    <string name="AboutTextIntro1">
+        Japanese Toolbox est une application créée par un étudiant du japonais pour les édudiants du japonais.
+    </string>
+    <string name="AboutTextIntro2">
+        L\'application est conçue pour vous aider à déchiffrer les textes en japonais intermédiaire à avancé, à un rythme plus rapide que les autres outils,\n vous permettant de comprendre le sens et les composants de chaque mot ou phrase que vous lisez.
+    </string>
+    <string name="AboutTextIntro3">
+        L\'application ne dépend pas d’une connexion Internet. Vous pouvez donc l\'utiliser quand vous voulez et où vous voulez.
+    </string>
+    <string name="AboutTextButtonsTitle">
+        Explications sur les outils:
+    </string>
     <string name="AboutTextButtonsDictTitle">DICT</string>
-    <string name="AboutTextButtonsDictParagraph1">\n        Un dictionnaire local de mots, expressions et règles de grammaire japonais.\n</string>
-    <string name="AboutTextButtonsDictParagraph2">\n        Mieux que la plupart des outils de référence en ligne, vous pouvez trouver des explications sur n’importe quelle règle de grammaire simplement en saisissant un mot-clé pertinent, même partiel.\n</string>
-    <string name="AboutTextButtonsDictParagraph3">\n        J&apos;ai manuellement développé le dictionnaire au fil du temps avec des sens supplémentaires et des formes de mots alternatives. Vous trouverez ainsi des mots que beaucoup de dictionnaires en ligne ne parviennent pas à trouver.\n</string>
-    <string name="AboutTextButtonsDictParagraph4">\n        S&apos;il existe un accès à l&apos;Internet, les résultats en ligne sont ajoutés (vous pouvez modifier ceci dans les Paramètres).\n</string>
+    <string name="AboutTextButtonsDictParagraph1">
+        Un dictionnaire local de mots, expressions et règles de grammaire japonais.
+    </string>
+    <string name="AboutTextButtonsDictParagraph2">
+        Mieux que la plupart des outils de référence en ligne, vous pouvez trouver des explications sur n’importe quelle règle de grammaire simplement en saisissant un mot-clé pertinent, même partiel.
+    </string>
+    <string name="AboutTextButtonsDictParagraph3">
+        J\'ai manuellement développé le dictionnaire au fil du temps avec des sens supplémentaires et des formes de mots alternatives. Vous trouverez ainsi des mots que beaucoup de dictionnaires en ligne ne parviennent pas à trouver.
+    </string>
+    <string name="AboutTextButtonsDictParagraph4">
+        S\'il existe un accès à l\'Internet, les résultats en ligne sont ajoutés (vous pouvez modifier ceci dans les Paramètres).
+    </string>
     <string name="AboutTextButtonsConjTitle">CONJ</string>
-    <string name="AboutTextButtonsConjParagraph1">\n        Un conjugueur avec plus de 140 conjugaisons pour plus de 2000 verbes réguliers et plus de 3400 verbes suru.\n</string>
-    <string name="AboutTextButtonsConjParagraph2">\n        Si vous recherchez un verbe conjugué (sous forme de romaji, kana ou kanji) avec cette fonction, un moteur de recherche inversée unique\n trouvera tous les verbes correspondants possibles et donnera le sens de sa conjugaison.\n</string>
+    <string name="AboutTextButtonsConjParagraph1">
+        Un conjugueur avec plus de 140 conjugaisons pour plus de 2000 verbes réguliers et plus de 3400 verbes suru.
+    </string>
+    <string name="AboutTextButtonsConjParagraph2">
+        Si vous recherchez un verbe conjugué (sous forme de romaji, kana ou kanji) avec cette fonction, un moteur de recherche inversée unique\n trouvera tous les verbes correspondants possibles et donnera le sens de sa conjugaison.
+    </string>
     <string name="AboutTextButtonsConvertTitle">あ⇔A</string>
-    <string name="AboutTextButtonsConvertParagraph1">\n        Un convertisseur de texte romaji-hiragana-katakana.\n</string>
-    <string name="AboutTextButtonsConvertParagraph2">\n        Bien qu’il existe différentes manières de translitérer les syllabes kana en romaji et vice versa,\n j&apos;ai choisi la méthode la plus intuitive pour les étudiants occidentaux et compatible avec la plupart des conventions modernes.\n</string>
+    <string name="AboutTextButtonsConvertParagraph1">
+        Un convertisseur de texte romaji-hiragana-katakana.
+    </string>
+    <string name="AboutTextButtonsConvertParagraph2">
+        Bien qu\’il existe différentes manières de translitérer les syllabes kana en romaji et vice versa,\n j\'ai choisi la méthode la plus intuitive pour les étudiants occidentaux et compatible avec la plupart des conventions modernes.
+    </string>
     <string name="AboutTextButtonsSearchByRadicalTitle">女+子 ⇒ 好</string>
-    <string name="AboutTextButtonsSearchByRadicalParagraph1">\n        Trouver n’importe quel kanji en se basant sur un maximum de 4 radicaux/composants ou en identifiant sa structure générale. Vous pouvez rechercher des composants en sélectionnant un des 214 radicaux\n ou leurs variantes, ou en recherchant une liste des composants kanji communs (classés par popularité). Vous pouvez également filtrer les résultats en entrant la\n prononciation, le sens ou le numéral du radical recherché.\n</string>
-    <string name="AboutTextButtonsSearchByRadicalParagraph2">\n        Le moteur de recherche est bien meilleur que ce que vous trouverez en ligne, car j’ai inspecté et corrigé manuellement la base de données de composants sur laquelle reposent les sites en ligne.\n</string>
-    <string name="AboutTextButtonsSearchByRadicalParagraph3">\n        Notez que les utilisateurs d&apos;anciennes versions d&apos;Android peuvent rencontrer des \&quot;symboles nuls\&quot; supplémentaires au lieu de caractères japonais, qui ne peuvent pas être filtrés.\n</string>
+    <string name="AboutTextButtonsSearchByRadicalParagraph1">
+        Trouver n\’importe quel kanji en se basant sur un maximum de 4 radicaux/composants ou en identifiant sa structure générale. Vous pouvez rechercher des composants en sélectionnant un des 214 radicaux\n ou leurs variantes, ou en recherchant une liste des composants kanji communs (classés par popularité). Vous pouvez également filtrer les résultats en entrant la\n prononciation, le sens ou le numéral du radical recherché.
+    </string>
+    <string name="AboutTextButtonsSearchByRadicalParagraph2">
+        Le moteur de recherche est bien meilleur que ce que vous trouverez en ligne, car j\'ai inspecté et corrigé manuellement la base de données de composants sur laquelle reposent les sites en ligne.
+    </string>
+    <string name="AboutTextButtonsSearchByRadicalParagraph3">
+        Notez que les utilisateurs d\'anciennes versions d\'Android peuvent rencontrer des \\"symboles nuls\\" supplémentaires au lieu de caractères japonais, qui ne peuvent pas être filtrés.
+    </string>
     <string name="AboutTextButtonsDecomposeTitle">好 ⇒ 女+子</string>
-    <string name="AboutTextButtonsDecomposeParagraph1">\n        Obtenez les significations et les lectures de tous les composants d’un kanji donné, récursivement.\n</string>
-    <string name="AboutTextButtonsDecomposeParagraph2">\n        Très utile si vous voulez comprendre les kanjis à travers leurs radicaux.\n</string>
+    <string name="AboutTextButtonsDecomposeParagraph1">
+        Obtenez les senses et les lectures de tous les composants d’un kanji donné, récursivement.
+    </string>
+    <string name="AboutTextButtonsDecomposeParagraph2">
+        Très utile si vous voulez comprendre les kanjis à travers leurs radicaux.
+    </string>
     <string name="AboutTextButtonsSpeakerTitle">Haut-Parleur</string>
-    <string name="AboutTextButtonsSpeakerParagraph1">\n        Une fonction de synthèse vocale permettant d&apos;entendre votre requête en anglais ou en japonais.\n</string>
-    <string name="AboutTextButtonsSpeakerParagraph2">\n        Vous pouvez choisir la langue parlée dans les Paramètres.\n</string>
+    <string name="AboutTextButtonsSpeakerParagraph1">
+        Une fonction de synthèse vocale permettant d\'entendre votre requête en anglais ou en japonais.
+    </string>
+    <string name="AboutTextButtonsSpeakerParagraph2">
+        Vous pouvez choisir la langue parlée dans les Paramètres.
+    </string>
     <string name="AboutTextButtonsCameraTitle">Caméra</string>
-    <string name="AboutTextButtonsCameraParagraph1">\n        Convertissez des mots japonais ou anglais en texte à rechercher, en prenant une photo ou en utilisant une image de votre appareil. Cette fonction fonctionne hors connexion.\n</string>
-    <string name="AboutTextButtonsCameraParagraph2">\n        Vous pouvez choisir la langue de reconnaissance du texte et la saturation / le contraste / la luminosité de l’image initiale dans les Paramètres.\n</string>
+    <string name="AboutTextButtonsCameraParagraph1">
+        Convertissez des mots japonais ou anglais en texte à rechercher, en prenant une photo ou en utilisant une image de votre appareil. Cette fonction fonctionne hors connexion.
+    </string>
+    <string name="AboutTextButtonsCameraParagraph2">
+        Vous pouvez choisir la langue de reconnaissance du texte et la saturation / le contraste / la luminosité de l\'image initiale dans les Paramètres.
+    </string>
     <string name="AboutTextButtonsMicrophoneTitle">Microphone</string>
-    <string name="AboutTextButtonsMicrophoneParagraph1">\n        Fonction de synthèse vocale pour les conversations en japonais ou en anglais.\n</string>
-    <string name="AboutTextButtonsMicrophoneParagraph2">\n        Vous pouvez choisir la langue de reconnaissance vocale dans les Paramètres.\n</string>
+    <string name="AboutTextButtonsMicrophoneParagraph1">
+        Fonction de synthèse vocale pour les conversations en japonais ou en anglais.
+    </string>
+    <string name="AboutTextButtonsMicrophoneParagraph2">
+        Vous pouvez choisir la langue de reconnaissance vocale dans les Paramètres.
+    </string>
     <string name="AboutTextPersonalTitle">Note personnelle</string>
-    <string name="AboutTextPersonalParagraph1">\n        Si vous avez des commentaires ou si vous avez rencontré un bogue, n&apos;hésitez pas à les poster à l&apos;adresse japanesetoolboxapp@gmail.com.\n</string>
-    <string name="AboutTextPersonalParagraph2">\n        J&apos;ai construit JapaneseToolbox pendant mon temps libre par amour pour la langue japonaise et pour aider les gens à apprendre le japonais plus rapidement. L’application restera toujours\n GRATUITE et sans publicité, et aucune des informations saisies dans l’application ne sera utilisée de quelque manière que ce soit à des fins autres que les services fournis dans l’application.\n</string>
-    <string name="AboutTextPersonalParagraph3">\n        Le code source du projet est disponible gratuitement sur https://github.com/blarom/JapaneseToolbox. Vous pouvez\n copier le code à volonté! J&apos;encourage le partage gratuit des connaissances, et si vous voulez créer une application avec des fonctions similaires, vous êtes le bienvenu. N&apos;oubliez pas de me créditer, j&apos;ai passé beaucoup de temps à développer ces outils :)\n</string>
-    <string name="AboutTextCreditsTitle">\n        Crédits - Une partie des outils de l&apos;application sont basés sur les éléments suivants:\n</string>
+    <string name="AboutTextPersonalParagraph1">
+        Si vous avez des commentaires ou si vous avez rencontré un bogue, n\'hésitez pas à les poster à l\'adresse japanesetoolboxapp@gmail.com.
+    </string>
+    <string name="AboutTextPersonalParagraph2">
+        J\'ai construit JapaneseToolbox pendant mon temps libre par amour pour la langue japonaise et pour aider les gens à apprendre le japonais plus rapidement. l\'application restera toujours\n GRATUITE et sans publicité, et aucune des informations saisies dans l\'application ne sera utilisée de quelque manière que ce soit à des fins autres que les services fournis dans l\'application.
+    </string>
+    <string name="AboutTextPersonalParagraph3">
+        Le code source du projet est disponible gratuitement sur https://github.com/blarom/JapaneseToolbox. Vous pouvez\n copier le code à volonté! J\'encourage le partage gratuit des connaissances, et si vous voulez créer une application avec des fonctions similaires, vous êtes le bienvenu. N\'oubliez pas de me créditer, j\'ai passé beaucoup de temps à développer ces outils :)
+    </string>
+    <string name="AboutTextCreditsTitle">
+        Crédits - Une partie des outils de l\'application sont basés sur les éléments suivants:
+    </string>
     <string name="AboutTextCreditsCodeTitle">Sources de code</string>
-    <string name="AboutTextCreditsCodeParagraph1">\n        Le moteur ROC est fourni par le projet open-source Tesseract (pris en charge par Google).\n</string>
-    <string name="AboutTextCreditsCodeParagraph2">\n        Les fonctions de synthèse vocale reposent sur les API de Google.\n</string>
-    <string name="AboutTextCreditsCodeParagraph3">\n        La manipulation d&apos;images est fournie par la bibliothèque ArthurHub (https://github.com/ArthurHub/Android-Image-Cropper).\n</string>
-    <string name="AboutTextCreditsCodeParagraph4">\n        L&apos;amélioration d&apos;images est fournie par l&apos;algorithme de Pete Houston (https://xjaphx.wordpress.com/2011/06/22/image-processing-sharpening-image/).\n</string>
+    <string name="AboutTextCreditsCodeParagraph1">
+        Le moteur ROC est fourni par le projet open-source Tesseract (pris en charge par Google).
+    </string>
+    <string name="AboutTextCreditsCodeParagraph2">
+        Les fonctions de synthèse vocale reposent sur les API de Google.
+    </string>
+    <string name="AboutTextCreditsCodeParagraph3">
+        La manipulation d\'images est fournie par la bibliothèque ArthurHub (https://github.com/ArthurHub/Android-Image-Cropper).
+    </string>
+    <string name="AboutTextCreditsCodeParagraph4">
+        L\'amélioration d\'images est fournie par l\'algorithme de Pete Houston (https://xjaphx.wordpress.com/2011/06/22/image-processing-sharpening-image/).
+    </string>
     <string name="AboutTextCreditsDatabasesTitle">Sources de base de données</string>
-    <string name="AboutTextCreditsDatabasesParagraph1">\n        La base de données de décompositions de caractères CJK est à l’origine basée sur la base de données cjkdecomp de Gavin Grover (https://github.com/amake/cjk-decomp - see disclaimer *),\n que j’ai fortement modifié et corrigé.\n</string>
-    <string name="AboutTextCreditsDatabasesParagraph2">\n        Le dictionnaire local est une forme réduite du dictionnaire EDICT à code source ouvert, que j&apos;ai modifié et mis à niveau manuellement pour répondre aux besoins de l&apos;application.\n D&apos;autres sources ont été utilisées, notamment wiktionary.org pour mettre à jour le sens des verbes suru.\n</string>
-    <string name="AboutTextDisclaimer1">\n        *avertissement pour cjkdecomp:\nDroits d&apos;auteur 2017 Gavin Grover\nLicensié sous Apache,\n Version 2.0 (la &quot;Licence&quot;); vous ne utiliser cette base de données que conformément à la licence.\nVous pouvez obtenir une copie de la licence à l&apos;adresse http://www.apache.org/licenses/LICENSE-2.0\nSi non requis par la loi en vigueur ou convenu par écrit, les logiciels distribués sous licence sont distribués &quot;TELS QUELS&quot;,\n SANS AUCUNE GARANTIE NI CONDITION, qu&apos;elle soit explicite ou implicite.\nLisez la licence pour le langage spécifique régissant les autorisations et les limitations sous la licence.\n</string>
-    <string name="AboutTextDisclaimer2">\n        *avertissement concernant le dictionnaire japonais EDICT:\nCe package utilise un sous-ensemble modifié des fichiers de dictionnaire EDICT et KANJIDIC. Ces fichiers sont la propriété du Electronic Dictionary Research and Development Group et sont utilisés conformément à la licence du groupe;\n Voir http://www.csse.monash.edu.au/~jwb/edict .html et http://www.edrdg.org/.\n</string>
+    <string name="AboutTextCreditsDatabasesParagraph1">
+        La base de données de décompositions de caractères CJK est à l\'origine basée sur la base de données cjkdecomp de Gavin Grover (https://github.com/amake/cjk-decomp - see disclaimer *),\n que j\'ai fortement modifié et corrigé.
+    </string>
+    <string name="AboutTextCreditsDatabasesParagraph2">
+        Le dictionnaire local est une forme réduite du dictionnaire EDICT à code source ouvert, que j\'ai modifié et mis à niveau manuellement pour répondre aux besoins de l\'application.\n D\'autres sources ont été utilisées, notamment wiktionary.org pour mettre à jour le sens des verbes suru.
+    </string>
+    <string name="AboutTextDisclaimer1">
+        *avertissement pour cjkdecomp:\nDroits d\'auteur 2017 Gavin Grover\nLicensié sous Apache,\n Version 2.0 (la \"Licence\"); vous ne utiliser cette base de données que conformément à la licence.\nVous pouvez obtenir une copie de la licence à l\'adresse http://www.apache.org/licenses/LICENSE-2.0\nSi non requis par la loi en vigueur ou convenu par écrit, les logiciels distribués sous licence sont distribués \"TELS QUELS\",\n SANS AUCUNE GARANTIE NI CONDITION, qu\'elle soit explicite ou implicite.\nLisez la licence pour le langage spécifique régissant les autorisations et les limitations sous la licence.
+    </string>
+    <string name="AboutTextDisclaimer2">
+        *avertissement concernant le dictionnaire japonais EDICT:\nCe package utilise un sous-ensemble modifié des fichiers de dictionnaire EDICT et KANJIDIC. Ces fichiers sont la propriété du Electronic Dictionary Research and Development Group et sont utilisés conformément à la licence du groupe;\n Voir http://www.csse.monash.edu.au/~jwb/edict .html et http://www.edrdg.org/.
+    </string>
     <string name="ok">OK</string>
-    <string name="ocr_header">Cliquez sur &quot;Détecter le texte&quot; pour détecter le texte.</string>
+    <string name="ocr_header">Cliquez sur \"Détecter le texte\" pour détecter le texte.</string>
     <string name="read_text">Détecter le texte</string>
     <string name="auto_focus">Mise au point automatique</string>
     <string name="use_flash">Utilisez Flash</string>
     <string name="ocr_success">Texte lu avec succès</string>
     <string name="ocr_failure">Aucun texte capturé</string>
     <string name="ocr_error">Erreur de lecture du texte: %1$s</string>
-    <string name="sorry_only_have_first_part">Désolé, vous n&apos;avez que\u0020</string>
-    <string name="sorry_only_have_second_part">Mo restant dans la mémoire interne et ne pouvez pas installer les données ROC. Veuillez effacer certaines données dans votre mémoire d&apos;appareil et réessayer.</string>
+    <string name="sorry_only_have_first_part">Désolé, vous n\'avez que\u0020</string>
+    <string name="sorry_only_have_second_part">Mo restant dans la mémoire interne et ne pouvez pas installer les données ROC. Veuillez effacer certaines données dans votre mémoire d\'appareil et réessayer.</string>
     <string name="downloading_ocr_data_first_part">Télécharge les données ROC\u0020</string>
     <string name="downloading_ocr_data_second_part"> en Wifi uniquement.</string>
     <string name="attempting_download_first_part">Tenter de télécharger les données ROC\u0020</string>
-    <string name="attempting_download_second_part">. S&apos;il vous plaît, attendez.</string>
+    <string name="attempting_download_second_part">. S\'il vous plaît, attendez.</string>
     <string name="failed_to_connect_to_internet">Échec de la connexion à Internet.</string>
     <string name="loading_central_database">Installation de la base de données centrale.\n ~ Peut prendre environ une minute ~</string>
-    <string name="loading_kanji_database">Terminé l&apos;installation de la base de données centrale.\nInstallation de la base de données de kanji.\n ~ Peut prendre jusqu&apos;à 3-5 minutes ~</string>
+    <string name="loading_kanji_database">Terminé l\'installation de la base de données centrale.\nInstallation de la base de données de kanji.\n ~ Peut prendre jusqu\'à 3-5 minutes ~</string>
     <string name="finished_loading_databases">Chargement des bases de données accompli.</string>
-    <string name="database_being_installed">La base de données est en cours d&apos;installation.\nCela peut prendre quelques minutes.\nCe délai ne se produit que lors de l&apos;installation ou de la mise à niveau de l&apos;application.</string>
-    <string name="sure_you_want_to_exit">Êtes-vous sûr de vouloir quitter l&apos;application?</string>
+    <string name="database_being_installed">La base de données est en cours d\'installation.\nCela peut prendre quelques minutes.\nCe délai ne se produit que lors de l\'installation ou de la mise à niveau de l\'application.</string>
+    <string name="sure_you_want_to_exit">Êtes-vous sûr de vouloir quitter l\'application?</string>
     <string name="yes">Oui</string>
     <string name="no_matching_words_online">Aucun mot correspondant trouvé en ligne.</string>
     <string name="no_new_words_or_meanings_found_online">Aucun nouveau mot ou nouveau sens trouvé en ligne.</string>
@@ -186,22 +270,22 @@
     <string name="radical_">Radical:\u0020</string>
     <string name="search_for_radical_search_too_broad">Votre recherche est trop large. Veuillez sélectionner une autre structure ou sélectionner des éléments de kanji pour affiner la recherche.</string>
     <string name="search_by_radical_no_results_found">Aucun résultat trouvé pour vos sélections.</string>
-    <string name="copy_to_input">Copier à l&apos;input</string>
-    <string name="clear_search_history">Effacer l&apos;historique</string>
-    <string name="image_adjustment_hint">L’image originale présente une saturation de 1.0 (couleurs normales), un contraste de 1.0 et une luminosité de 0.\n\n\nLes valeurs optimales pour la reconnaissance des caractères se situent autour de la saturation 0 (niveaux de gris), du contraste de 3.0 et de la luminosité -0.5.\n Cecis sont les paramètres par défaut, mais n&apos;hésitez pas à les modifier pour rendre l&apos;image aussi claire que possible.\n Vous pouvez régler ces paramètres par défaut dans les Paramètres.</string>
+    <string name="copy_to_input">Copier à l\'input</string>
+    <string name="clear_search_history">Effacer l\'historique</string>
+    <string name="image_adjustment_hint">l\'image originale présente une saturation de 1.0 (couleurs normales), un contraste de 1.0 et une luminosité de 0.\n\n\nLes valeurs optimales pour la reconnaissance des caractères se situent autour de la saturation 0 (niveaux de gris), du contraste de 3.0 et de la luminosité -0.5.\n Cecis sont les paramètres par défaut, mais n\'hésitez pas à les modifier pour rendre l\'image aussi claire que possible.\n Vous pouvez régler ces paramètres par défaut dans les Paramètres.</string>
     <string name="pref_invalid_input_default_set">Entrée non valide, valeur par défaut définie à sa place.</string>
-    <string name="pref_cannot_set_value_outside_range">Vous ne pouvez pas définir une valeur en dehors de l&apos;intervalle</string>
+    <string name="pref_cannot_set_value_outside_range">Vous ne pouvez pas définir une valeur en dehors de l\'intervalle</string>
     <string name="search_any_property_">propriété/nom/etc..</string>
     <string name="component_is_used_to_create_this_substructure">Le composant est utilisé pour créer cette sous-structure:</string>
     <string name="filter_list">Filter la liste</string>
-    <string name="send_to_input">Envoyer à l&apos;input</string>
-    <string name="send_to_element">Envoyer à l&apos;élément</string>
+    <string name="send_to_input">Envoyer à l\'input</string>
+    <string name="send_to_element">Envoyer à l\'élément</string>
     <string name="dropdown_arrow">flèche de déroulement</string>
     <string name="done">Terminé</string>
-    <string name="ocr_results_dialog_instructions">Sélectionnez manuellement le texte que vous souhaitez copier, puis appuyez sur \&quot;Copier à l&apos;input\&quot;. Si aucun texte n&apos;est sélectionné, la première ligne de texte est copiée.</string>
+    <string name="ocr_results_dialog_instructions">Sélectionnez manuellement le texte que vous souhaitez copier, puis appuyez sur \\"Copier à l\'input\\". Si aucun texte n\'est sélectionné, la première ligne de texte est copiée.</string>
     <string name="common_word">Mot commun.</string>
-    <string name="less_common_word">Mot non commun.</string>
-    <string name="source_local_offline">Source: locale (hors ligne).</string>
+    <string name="less_common_word">Mot non-commun.</string>
+    <string name="source_local_offline">Source: local.</string>
     <string name="source_edict_online">Source: EDICT (en ligne).</string>
     <string name="ocr">ROC</string>
     <string name="saturation">Saturation</string>
@@ -210,24 +294,198 @@
     <string name="requested_structure">Structure demandée:</string>
     <string name="down_arrow">flèche vers le bas</string>
     <string name="elements_">Éléments:</string>
-    <string name="select_radical">Sélectionner Radical</string>
-    <string name="select_component">Sélectionner Composant</string>
-    <string name="select_overall_kanji_structure">Sélectionner la structure globale du kanji:</string>
+    <string name="select_radical">Sélect. Radical</string>
+    <string name="select_component">Sélect. Composant</string>
+    <string name="select_overall_kanji_structure">Sélect. la structure globale du kanji:</string>
     <string name="find_the_kanji">Trouvez les kanji!</string>
-    <string name="select_the_component">Sélectionnez le composant</string>
+    <string name="select_the_component">Sélect. le composant</string>
     <string name="results">Résultats</string>
     <string name="structure">Structure:</string>
     <string name="radical">Radical:</string>
-    <string name="on_reading">Prononciation On:</string>
+    <string name="on_reading">Lecture On:</string>
     <string name="name_reading">Util. dans noms:</string>
-    <string name="kun_reading">Prononciation Kun:</string>
+    <string name="kun_reading">Lecture Kun:</string>
     <string name="meaning">Sens:</string>
     <string name="remove_decomposition">enlever la décomposition</string>
     <string name="image">image</string>
     <string name="contrast_">Contraste:\u0020</string>
     <string name="saturation_">Saturation:\u0020</string>
     <string name="brightness_">Luminosité:</string>
-    <string name="select_the_radical">Sélectionnez le radical</string>
+    <string name="select_the_radical">Sélect. le radical</string>
     <string name="kanji_structure">structure du kanji</string>
     <string name="no_elements_found">Aucun élément trouvé.</string>
+    <string name="language_label_french">Français</string>
+    <string name="language_label_spanish">Espagnol</string>
+    <string name="pref_app_language">Langage de l\'Application</string>
+    <string name="general">Général</string>
+    <string name="search">Recherche</string>
+    <string name="languages">Langues</string>
+    <string name="speech">Parole</string>
+    <string name="optical_character_recognition">Reconnaissance Optique de Caractères</string>
+    <string name="decomposition">Décomposition</string>
+    <string name="verb">verbe</string>
+    <string name="from_alt_form">De la forme alt.</string>
+    <string name="from_alt_form_containing">De la forme alt. contenant</string>
+    <string name="from_conjugated_form">De la forme conjugée</string>
+    <string name="from_associated_word">Du mot associé</string>
+    <string name="derived_from">Dérivé de</string>
+    <string name="unavailable">non-disponibles</string>
+    <string name="meanings_in">Senses en</string>
+    <string name="value_">Valeur:\u0020</string>
+
+    <string name="verb_TitleBasics">Bases</string>
+    <string name="verb_Basics1">Famile</string>
+    <string name="verb_Basics2">Anglais</string>
+    <string name="verb_Basics3">T/I</string>
+    <string name="verb_Basics4">Prép</string>
+    <string name="verb_Basics5">Kana</string>
+    <string name="verb_Basics6">Kanji</string>
+    <string name="verb_Basics7">u-stem</string>
+    <string name="verb_Basics8">Racine du Kanji</string>
+    <string name="verb_Basics9">Racine du Romaji</string>
+    <string name="verb_Basics10">i-stem</string>
+    <string name="verb_Basics11">a-stem</string>
+    <string name="verb_Basics12">o-stem</string>
+    <string name="verb_Basics13">e-stem</string>
+    <string name="verb_Basics14">te-stem</string>
+    <string name="verb_Basics15">ta-stem</string>
+    <string name="verb_Basics16">masu-stem</string>
+
+    <string name="verb_TitleSimpleForm">Forme Simple (Il fait/est X)</string>
+    <string name="verb_TitleProgressive">Progressif (Il est en train de faire X) ou état d\'être (il est X, p.ex. c\'est ouvert)</string>
+    <string name="verb_TitlePoliteness">Autres Formes de Politesse</string>
+    <string name="verb_TitleRequest">Requête (Il est invité à faire/être X)</string>
+    <string name="verb_TitleImperative">Impératif (Vous êtes ordonnés à faire/être X)</string>
+    <string name="verb_TitleDesire">Désire (Il veut faire/être X)</string>
+    <string name="verb_TitleProvisional">Provisionel / Conditionel (Si il fait/est X)</string>
+    <string name="verb_TitleVolitional">Volitionel (Il devrait/prévois faire/être X)</string>
+    <string name="verb_TitleObligation">Obligation (Il doit/est obligé à faire/être X)</string>
+    <string name="verb_TitlePresumptive">Présomptif (Il fait/est probablement X)</string>
+    <string name="verb_TitleAlternative">Alternatif (Il fait/est X, entre autres choses)</string>
+    <string name="verb_TitleCausativeA">Causatif Actif (Il le fait faire/être X)</string>
+    <string name="verb_TitleCausativePv">Causatif Passif (Il est causé à faire/être X)</string>
+    <string name="verb_TitlePassive">Passif (X est fait à lui), aussi Forme Humble</string>
+    <string name="verb_TitlePotential">Potentiel (Il peut faire/être X)</string>
+    <string name="verb_TitleContinuative">Continuatif (Il fait/est X et …)</string>
+    <string name="verb_TitleCompulsion">Compulsion (Il a besoin de faire/être X)</string>
+    <string name="verb_TitleGerund">Gérondif (Une X-sion)</string>
+
+    <string name="verb_PPr">Prés. Simple</string>
+    <string name="verb_PPs">Passé Simple</string>
+    <string name="verb_PPrN">Prés. Simple Nég.</string>
+    <string name="verb_PPsN">Passé Simple Nég.</string>
+    <string name="verb_PlPr">Prés. Poli</string>
+    <string name="verb_PlPs">Passé Poli</string>
+    <string name="verb_PlPrN">Prés. Poli Nég.</string>
+    <string name="verb_PlPsN">Passé Poli Nég.</string>
+    <string name="verb_PPrA">Prés. Simple (adjoint)</string>
+    <string name="verb_ClPr">Prés. Familier</string>
+    <string name="verb_ClPrA">Prés. Familier (adjoint)</string>
+    <string name="verb_ClPrN">Prés. Familier Nég.</string>
+    <string name="verb_LPl">Moins Poli</string>
+    <string name="verb_Hn1">Honorifique 1</string>
+    <string name="verb_Hn2">Honorifique 2</string>
+    <string name="verb_Hm1">Humble 2</string>
+    <string name="verb_Hm2">Humble 2</string>
+    <string name="verb_Pl1">Poli 1</string>
+    <string name="verb_Pl2">Poli 2</string>
+    <string name="verb_PlN">Poli Nég.</string>
+    <string name="verb_Hn">Honorifique</string>
+    <string name="verb_HnN">Honorifique Nég.</string>
+    <string name="verb_PPrV">Prés. Simple Verbal</string>
+    <string name="verb_PPrL">Prés. Simple Litéraire</string>
+    <string name="verb_Pr3rdPO">Prés. 3è pers. seulm.</string>
+    <string name="verb_Pba">Simple (ba)</string>
+    <string name="verb_ClN">Familier Nég.</string>
+    <string name="verb_PNba">Simple Nég. (ba)</string>
+    <string name="verb_Plba">Poli (ba)</string>
+    <string name="verb_PlNba">Poli Nég. (ba)</string>
+    <string name="verb_Ptara">Simple (tara)</string>
+    <string name="verb_PNtara">Simple Nég. (tara)</string>
+    <string name="verb_Pltara">Poli (tara)</string>
+    <string name="verb_PlNtara">Poli Nég. (tara)</string>
+    <string name="verb_IIWTS">Si je veux dire</string>
+    <string name="verb_P">Simple</string>
+    <string name="verb_Ps">Passé</string>
+    <string name="verb_PN">Simple Nég.</string>
+    <string name="verb_PPg">Simple Progressif</string>
+    <string name="verb_Pl">Poli</string>
+    <string name="verb_PPr1">Prés. Simple 1</string>
+    <string name="verb_PPr2">Prés. Simple 2</string>
+    <string name="verb_PPrN1">Prés. Simple Nég. 1</string>
+    <string name="verb_PPrN2">Prés. Simple Nég. 2</string>
+    <string name="verb_PPrN3">Prés. Simple Nég. 3</string>
+    <string name="verb_PlPr1">Prés. Poli 1</string>
+    <string name="verb_PlPr2">Prés. Poli 2</string>
+    <string name="verb_PlPrN1">Prés. Poli Nég. 1</string>
+    <string name="verb_PlPrN2">Prés. Poli Nég. 2</string>
+    <string name="verb_PlPrN3">Prés. Poli Nég. 3</string>
+    <string name="verb_A">Affirmatif</string>
+    <string name="verb_N">Négatif</string>
+    <string name="verb_APg">Aff. Progressif</string>
+    <string name="verb_NPg">Nég. Progressif</string>
+    <string name="verb_PvPg">Passif Progressif</string>
+    <string name="verb_PsPg">Passé Progressif</string>
+    <string name="verb_teform">Forme te</string>
+
+    <string name="verb_TitleteformCmp">Verbes Composés (Forme te)</string>
+    <string name="verb_teformCmp1">Il fait/est X en donnant (1)</string>
+    <string name="verb_teformCmp2">Il fait/est X en donnan (2)</string>
+    <string name="verb_teformCmp3">Il fait/est X en recevant (en tant que faveur)</string>
+    <string name="verb_teformCmp4">Il fait/est X en passant</string>
+    <string name="verb_teformCmp5">Il est en train de faire/être X en avance</string>
+    <string name="verb_teformCmp6">Il est prêt à faire/être X (familier)</string>
+    <string name="verb_teformCmp7">Il a fini de faire/être X</string>
+    <string name="verb_teformCmp8">Il a fini de faire/être X (Familier)</string>
+    <string name="verb_teformCmp9">Il fait/est X and le regrette</string>
+    <string name="verb_teformCmp10">Il fait/est X and le regrette (Familier)</string>
+    <string name="verb_teformCmp11">Éssayez de faire/être X and vous verrez</string>
+    <string name="verb_teformCmp12">Il fait une X-sion</string>
+    <string name="verb_teformCmp13">X a (déjà) été fait (p.ex. ouvert)</string>
+    <string name="verb_teformCmp14">Il s\'est avéré qu\'il fait/est X</string>
+
+    <string name="verb_TitleteformConj">te + Divers Conjonctifs</string>
+    <string name="verb_teformConj1">Fais-moi une faveur et fais/sois X</string>
+    <string name="verb_teformConj2">C\'est bien qu\'il fasse/soit X</string>
+    <string name="verb_teformConj3">Je m\'en fous qu\'il fait/est X</string>
+    <string name="verb_teformConj4">C\'est bien qu\'il ne fasse/soit pas X</string>
+
+    <string name="verb_TitleSFConj">Forme Simple + Divers Conjonctifs</string>
+    <string name="verb_SFConj1">Il fait/est X (accentuation)</string>
+    <string name="verb_SFConj2">Il fait/est X (accentuation, formel)</string>
+    <string name="verb_SFConj3">Il fait/est X (accentuation, poli)</string>
+    <string name="verb_SFConj4">Il fait/est X (accentuation, poli formel)</string>
+
+    <string name="verb_TitlemasuCmp">Radical masu + Verbs Composés</string>
+    <string name="verb_masuCmp1">Il fait/est X en trop</string>
+    <string name="verb_masuCmp2">Il fait/est X en trop (phrase nominale)</string>
+    <string name="verb_masuCmp3">On fait X les uns aux autres</string>
+    <string name="verb_masuCmp4">Il commence à faire/être X</string>
+    <string name="verb_masuCmp5">Il commence à faire/être X</string>
+    <string name="verb_masuCmp6">Il fait/est X encore une fois</string>
+    <string name="verb_masuCmp7">Il fait/est X en retard</string>
+    <string name="verb_masuCmp8">Il finit à faire/être X</string>
+    <string name="verb_masuCmp9">Il oublie à faire/être X</string>
+    <string name="verb_masuCmp10">Il fait/est X (vulgaire - dénote la haine/le mépris)</string>
+    <string name="verb_masuCmp11">Il est incapable/trouve difficile à faire/être X</string>
+    <string name="verb_masuCmp12">Il achève à faire/être X</string>
+
+    <string name="verb_TitleStemMisc">Radical + Divers Attributs</string>
+    <string name="verb_StemMisc1">Il fait [action] afin de faire/être X</string>
+    <string name="verb_StemMisc2">En faisant/étant X</string>
+    <string name="verb_StemMisc3">Il semble qu\'il ne fait pas/n\'est pas X</string>
+    <string name="verb_StemMisc4">Il continue à faire/être X</string>
+    <string name="verb_StemMisc5">La façon qu\'il fait/est X</string>
+    <string name="verb_StemMisc6">Il est difficile de faire/être X</string>
+    <string name="verb_StemMisc7">Il est facile de faire/être X</string>
+    <string name="verb_StemMisc8">Il arrête au mileu de faire/être X</string>
+    <string name="verb_StemMisc9">Il fait/est X (très vulgaire - dénote la haine/le mépris)</string>
+
+    <string name="verb_TitleArch">Archaïc</string>
+    <string name="verb_Arch1">Prés. Simple Nég. (équiv. à "nai")</string>
+    <string name="verb_Arch2">[verbe] sans faire/être X</string>
+
+    <string name="trans_">trans.</string>
+    <string name="intrans_">intrans.</string>
+    <string name="trans_intrans_">trans./intrans.</string>
 </resources>

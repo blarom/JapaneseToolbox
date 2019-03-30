@@ -4,11 +4,13 @@ import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
 import android.text.TextUtils;
 
+import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.ConjugationTitle;
 import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
 import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.GlobalConstants;
+import com.japanesetoolboxapp.resources.LocaleHelper;
 import com.japanesetoolboxapp.resources.Utilities;
 import com.japanesetoolboxapp.ui.ConvertFragment;
 
@@ -837,17 +839,41 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
             currentConjugationsRowKanji = Arrays.copyOf(mVerbKanjiConjDatabase.get(currentFamilyConjugationsIndex), NumberOfSheetCols);
 
             //region Setting the verb's basic characteristics for display
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i< currentWord.getMeaningsEN().size(); i++) {
-                if (i != 0) stringBuilder.append(", ");
-                stringBuilder.append(currentWord.getMeaningsEN().get(i).getMeaning());
+            List<Word.Meaning> meanings;
+            String language = "";
+            switch (LocaleHelper.getLanguage(getContext())) {
+                case "en":
+                    language = getContext().getResources().getString(R.string.language_label_english).toLowerCase();
+                    meanings = currentWord.getMeaningsEN();
+                    break;
+                case "fr":
+                    language = getContext().getResources().getString(R.string.language_label_french).toLowerCase();
+                    meanings = currentWord.getMeaningsFR();
+                    break;
+                case "es":
+                    language = getContext().getResources().getString(R.string.language_label_spanish).toLowerCase();
+                    meanings = currentWord.getMeaningsES();
+                    break;
+                default: meanings = currentWord.getMeaningsEN();
             }
-            currentVerb.setMeaning(stringBuilder.toString());
+            String extract = "";
+            if (meanings == null || meanings.size() == 0) {
+                meanings = currentWord.getMeaningsEN();
+                extract += "["
+                        + getContext().getString(R.string.meanings_in)
+                        + " "
+                        + language.toLowerCase()
+                        + " "
+                        + getContext().getString(R.string.unavailable)
+                        + "] ";
+            }
+            extract += Utilities.removeDuplicatesFromCommaList(Utilities.getMeaningsExtract(meanings, GlobalConstants.BALANCE_POINT_REGULAR_DISPLAY));
+            currentVerb.setMeaning(extract);
 
             switch (currentVerb.getTrans()) {
-                case "T": currentVerb.setTrans("trans."); break;
-                case "I": currentVerb.setTrans("intrans."); break;
-                case "T/I": currentVerb.setTrans("trans./intrans."); break;
+                case "T": currentVerb.setTrans(getContext().getString(R.string.trans_)); break;
+                case "I": currentVerb.setTrans(getContext().getString(R.string.intrans_)); break;
+                case "T/I": currentVerb.setTrans(getContext().getString(R.string.trans_intrans_)); break;
             }
 
             if (GlobalConstants.VERB_FAMILIES_FULL_NAME_MAP.containsKey(currentVerb.getFamily())) {
@@ -895,6 +921,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
             //region Getting the verb conjugations and putting each conjugation of the conjugations row into its appropriate category
             conjugationCategories = new ArrayList<>();
+            String verbClause = "[" + getContext().getString(R.string.verb) + "]";
             for (int categoryIndex = 1; categoryIndex < mConjugationTitles.size(); categoryIndex++) {
 
                 //region Getting the set of Latin and Kanji conjugations according to the current category's subtitle column indexes
@@ -904,8 +931,8 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
                 conjugationSetKanji = new ArrayList<>();
                 for (int i=0; i<subtitles.size(); i++) {
                     subtitleColIndex = subtitles.get(i).getSubtitleIndex();
-                    conjugationSetLatin.add(currentConjugationsRowLatin[subtitleColIndex]);
-                    conjugationSetKanji.add(currentConjugationsRowKanji[subtitleColIndex]);
+                    conjugationSetLatin.add(currentConjugationsRowLatin[subtitleColIndex].replace("[verb]",verbClause));
+                    conjugationSetKanji.add(currentConjugationsRowKanji[subtitleColIndex].replace("[verb]",verbClause));
                 }
                 //endregion
 
