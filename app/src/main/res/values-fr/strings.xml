@@ -93,9 +93,9 @@
         \n<br/><br/> Notez également que cette application utilise une variante de la romanisation Kunrei-Shiki où tous les homophones de kana sont translittérés en formes romaji uniques, permettant ainsi des translitérations non ambiguës.
         ]]>
     </string>
-    <string name="ShowExamples">Phrases Exemplaires: (&gt;montrer)</string>
-    <string name="HideExamples">Phrases Exemplaires: (&gt;masquer)</string>
-    <string name="how_it_s_used_">Comment c\'est utilisé:\u0020</string>
+    <string name="show_examples">Exemples: (&gt;montrer)</string>
+    <string name="HideExamples">Exemples: (&gt;masquer)</string>
+    <string name="how_it_s_used_">Règle de grammaire:\u0020</string>
     <string name="English">Anglais</string>
     <string name="Romaji">Romaji</string>
     <string name="Kanji">Kanji</string>
@@ -107,7 +107,7 @@
         \n\nLa fonction de recherche \&lt;DICT\&gt; couvre également les orthographes alternatives du romaji ou du kanji pour une variété de verbes (en forme dictionnaire).
         La fonction \&lt;CONJ\&gt; cherche les conjugaisons de l\'orthographe les plus communes de romaji et les variations de kanji de chaque verbe.
     </string>
-    <string name="where">, où:\u0020</string>
+    <string name="_where_">\u0020où:\u0020</string>
     <string name="PleaseEnterJapVerb">S\'il vous plaît entrer un verbe japonais.</string>
     <string name="CanEnterEngVerb">Vous pouvez également entrer un verbe anglais/français/espagnol sous forme infinitive.</string>
     <string name="SeeHints">Vérifiez les règles ci-dessous pour des indices.</string>
@@ -329,7 +329,7 @@
     <string name="from_conjugated_form">De la forme conjugée</string>
     <string name="from_associated_word">Du mot associé</string>
     <string name="derived_from">Dérivé de</string>
-    <string name="unavailable">non-disponibles</string>
+    <string name="unavailable">non disponibles, séléctionez le mot pour voir les sens en anglais</string>
     <string name="meanings_in">Senses en</string>
     <string name="value_">Valeur:\u0020</string>
 
@@ -488,4 +488,13 @@
     <string name="trans_">trans.</string>
     <string name="intrans_">intrans.</string>
     <string name="trans_intrans_">trans./intrans.</string>
+    <string name="antonyms_">Antonymes:</string>
+    <string name="synonyms_">Synonymes:</string>
+    <string name="explanation_">Explication:</string>
+    <string name="alternate_forms_">Formes alternatives:</string>
+    <string name="conjugate">Conjuger</string>
+    <string name="copy">Copier</string>
+    <string name="to_search_field">au champ de recherche</string>
+    <string name="i_adj">adj. \"i\"</string>
+    <string name="na_adj">adj. \"na\"</string>
 </resources>

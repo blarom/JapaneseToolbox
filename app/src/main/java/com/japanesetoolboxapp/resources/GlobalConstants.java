@@ -38,9 +38,9 @@ public final class GlobalConstants {
     public static final int COLUMN_MULT_EXPLANATIONS_RULE       = ColIndexConverter("c");
     public static final int COLUMN_MULT_EXPLANATIONS_EXAMPLES   = ColIndexConverter("d");
 
-    public final static int COLUMN_EXAMPLES_ENGLISH             = ColIndexConverter("b");
-    public final static int COLUMN_EXAMPLES_ROMAJI              = ColIndexConverter("c");
-    public final static int COLUMN_EXAMPLES_KANJI               = ColIndexConverter("d");
+    public final static int COLUMN_EXAMPLES_ROMAJI              = ColIndexConverter("b");
+    public final static int COLUMN_EXAMPLES_KANJI               = ColIndexConverter("c");
+    public final static int COLUMN_EXAMPLES_ENGLISH             = ColIndexConverter("d");
     public final static int COLUMN_EXAMPLES_FRENCH              = ColIndexConverter("e");
     public final static int COLUMN_EXAMPLES_SPANISH             = ColIndexConverter("f");
 

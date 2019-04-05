@@ -299,11 +299,6 @@ public class DictionaryFragment extends Fragment implements
             showLoadingIndicator();
 
             mDictionaryRecyclerViewAdapter.setShowSources(Utilities.getPreferenceShowSources(getActivity()));
-            mDictionaryRecyclerViewAdapter.setActiveMeaningLanguages(new boolean[]{
-                    Utilities.getPreferenceShowMeaningsEN(getActivity()),
-                    Utilities.getPreferenceShowMeaningsFR(getActivity()),
-                    Utilities.getPreferenceShowMeaningsES(getActivity()),
-            });
 
             findMatchingWordsInRoomDb();
             if (Utilities.getPreferenceShowConjResults(getActivity())) {
@@ -537,7 +532,8 @@ public class DictionaryFragment extends Fragment implements
             Word currentWord = wordsList.get(i);
             if (currentWord==null) continue;
 
-            int ranking = Utilities.getRankingFromWordAttributes(currentWord, inputQuery, queryWordWithoutTo, queryIsVerbWithTo);
+            String language = LocaleHelper.getLanguage(getContext());
+            int ranking = Utilities.getRankingFromWordAttributes(currentWord, inputQuery, queryWordWithoutTo, queryIsVerbWithTo, language);
 
             long[] currentMatchingWordIndexAndLength = new long[3];
             currentMatchingWordIndexAndLength[0] = i;

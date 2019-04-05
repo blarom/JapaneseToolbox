@@ -767,7 +767,8 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
             Word currentWord = mJapaneseToolboxCentralRoomDatabase.getWordByWordId(ConjugationSearchMatchingVerbRowColIndexList.get(i)[0]);
             if (currentWord==null) continue;
 
-            int ranking = Utilities.getRankingFromWordAttributes(currentWord, inputQuery, queryWordWithoutTo, queryIsVerbWithTo);
+            String language = LocaleHelper.getLanguage(getContext());
+            int ranking = Utilities.getRankingFromWordAttributes(currentWord, inputQuery, queryWordWithoutTo, queryIsVerbWithTo, language);
 
             long[] currentMatchingWordIndexLengthAndCol = new long[3];
             currentMatchingWordIndexLengthAndCol[0] = i;

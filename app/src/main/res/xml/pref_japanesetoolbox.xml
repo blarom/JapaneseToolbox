@@ -11,38 +11,12 @@
         android:inputType="number"
         android:title="@string/pref_query_history_size_title" />
 
-
-    <PreferenceCategory
-        android:title="@string/languages" />
-
     <ListPreference
         android:defaultValue="@string/pref_language_value_english"
         android:entries="@array/pref_app_language_labels"
         android:entryValues="@array/pref_app_language_values"
         android:key="@string/pref_app_language_key"
         android:title="@string/pref_app_language" />
-
-    <CheckBoxPreference
-        android:defaultValue="@bool/pref_show_meanings_EN_default"
-        android:key="@string/pref_show_meanings_EN_key"
-        android:summaryOff="@string/show_meanings_EN_off"
-        android:summaryOn="@string/show_meanings_EN_on"
-        android:title="@string/pref_show_meanings_EN" />
-
-    <CheckBoxPreference
-        android:defaultValue="@bool/pref_show_meanings_FR_default"
-        android:key="@string/pref_show_meanings_FR_key"
-        android:summaryOff="@string/show_meanings_FR_off"
-        android:summaryOn="@string/show_meanings_FR_on"
-        android:title="@string/pref_show_meanings_FR" />
-
-    <CheckBoxPreference
-        android:defaultValue="@bool/pref_show_meanings_ES_default"
-        android:key="@string/pref_show_meanings_ES_key"
-        android:summaryOff="@string/show_meanings_ES_off"
-        android:summaryOn="@string/show_meanings_ES_on"
-        android:title="@string/pref_show_meanings_ES" />
-
 
 
     <PreferenceCategory

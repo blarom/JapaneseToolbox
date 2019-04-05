@@ -1498,7 +1498,7 @@ public final class Utilities {
                     matchingWordExampleList = multExplDatabase.get(current_ME_index)[GlobalConstants.COLUMN_MULT_EXPLANATIONS_EXAMPLES];
                     List<Word.Meaning.Explanation.Example> exampleList = new ArrayList<>();
                     if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
-                        parsed_example_list = Arrays.asList(matchingWordExampleList.split(", "));
+                        parsed_example_list = Arrays.asList(matchingWordExampleList.split(";"));
                         for (int t = 0; t < parsed_example_list.size(); t++) {
                             Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
                             example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
@@ -1527,7 +1527,7 @@ public final class Utilities {
                 matchingWordExampleList = meaningsDatabase.get(current_MM_index)[GlobalConstants.COLUMN_MEANINGS_EXAMPLES];
                 List<Word.Meaning.Explanation.Example> exampleList = new ArrayList<>();
                 if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
-                    parsed_example_list = Arrays.asList(matchingWordExampleList.split(", "));
+                    parsed_example_list = Arrays.asList(matchingWordExampleList.split(";"));
                     for (int t = 0; t < parsed_example_list.size(); t++) {
                         Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
                         example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
@@ -1878,7 +1878,7 @@ public final class Utilities {
      * @param queryIsVerbWithTo
      * @return
      */
-    public static int getRankingFromWordAttributes(Word currentWord, String mInputQuery, String queryWordWithoutTo, boolean queryIsVerbWithTo) {
+    public static int getRankingFromWordAttributes(Word currentWord, String mInputQuery, String queryWordWithoutTo, boolean queryIsVerbWithTo, String language) {
 
         int ranking;
         String romaji_value = currentWord.getRomaji();
@@ -1890,6 +1890,24 @@ public final class Utilities {
         // with penalties depending on the lateness of the word in the meanings
         // and the exactness of the match
         List<Word.Meaning> currentMeanings = currentWord.getMeaningsEN();
+        switch (language) {
+            case "en":
+                currentMeanings = currentWord.getMeaningsEN();
+                break;
+            case "fr":
+                currentMeanings = currentWord.getMeaningsFR();
+                break;
+            case "es":
+                currentMeanings = currentWord.getMeaningsES();
+                break;
+        }
+        int missingLanguagePenatly = 0;
+        if (currentMeanings == null || currentMeanings.size()==0) {
+            missingLanguagePenatly = 10000;
+            currentMeanings = currentWord.getMeaningsEN();
+        }
+
+
         String currentMeaning;
         String inputQuery;
         int baseMeaningLength = 1500;
@@ -2044,6 +2062,8 @@ public final class Utilities {
 
         //If the romaji or Kanji value is an exact match to the search word, then it must appear at the start of the list
         if (romaji_value.equals(mInputQuery) || kanji_value.equals(mInputQuery)) ranking = 0;
+
+        ranking += missingLanguagePenatly;
 
         return ranking;
     }
@@ -2956,33 +2976,6 @@ public final class Utilities {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
             state = sharedPreferences.getBoolean(activity.getString(R.string.pref_show_sources_key),
                     activity.getResources().getBoolean(R.bool.pref_show_sources_default));
-        }
-        return state;
-    }
-    public static boolean getPreferenceShowMeaningsEN(Activity activity) {
-        boolean state = false;
-        if (activity!=null) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
-            state = sharedPreferences.getBoolean(activity.getString(R.string.pref_show_meanings_EN_key),
-                    activity.getResources().getBoolean(R.bool.pref_show_meanings_EN_default));
-        }
-        return state;
-    }
-    public static boolean getPreferenceShowMeaningsFR(Activity activity) {
-        boolean state = false;
-        if (activity!=null) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
-            state = sharedPreferences.getBoolean(activity.getString(R.string.pref_show_meanings_FR_key),
-                    activity.getResources().getBoolean(R.bool.pref_show_meanings_FR_default));
-        }
-        return state;
-    }
-    public static boolean getPreferenceShowMeaningsES(Activity activity) {
-        boolean state = false;
-        if (activity!=null) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
-            state = sharedPreferences.getBoolean(activity.getString(R.string.pref_show_meanings_ES_key),
-                    activity.getResources().getBoolean(R.bool.pref_show_meanings_ES_default));
         }
         return state;
     }
