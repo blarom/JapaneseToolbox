@@ -324,7 +324,7 @@
         WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and limitations under the License.
     </string>
     <string name="AboutTextDisclaimer2">
-        *disclaimer for EDICT Japanese dictionary:\nThis package uses a modified subset of the EDICT and KANJIDIC dictionary files. These files are the property of
+        *disclaimer for EDICT Japanese dictionary:\nThis package uses a modified subset of the EDICT, JMDICT and KANJIDIC dictionary files. These files are the property of
         the Electronic Dictionary Research and Development Group, and are used in conformance with the Group\'s licence;
         See http://www.csse.monash.edu.au/~jwb/edict.html and http://www.edrdg.org/.
     </string>

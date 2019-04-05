@@ -239,7 +239,7 @@
         *avertissement pour cjkdecomp:\nDroits d\'auteur 2017 Gavin Grover\nLicensié sous Apache,\n Version 2.0 (la \"Licence\"); vous ne utiliser cette base de données que conformément à la licence.\nVous pouvez obtenir une copie de la licence à l\'adresse http://www.apache.org/licenses/LICENSE-2.0\nSi non requis par la loi en vigueur ou convenu par écrit, les logiciels distribués sous licence sont distribués \"TELS QUELS\",\n SANS AUCUNE GARANTIE NI CONDITION, qu\'elle soit explicite ou implicite.\nLisez la licence pour le langage spécifique régissant les autorisations et les limitations sous la licence.
     </string>
     <string name="AboutTextDisclaimer2">
-        *avertissement concernant le dictionnaire japonais EDICT:\nCe package utilise un sous-ensemble modifié des fichiers de dictionnaire EDICT et KANJIDIC. Ces fichiers sont la propriété du Electronic Dictionary Research and Development Group et sont utilisés conformément à la licence du groupe;\n Voir http://www.csse.monash.edu.au/~jwb/edict .html et http://www.edrdg.org/.
+        *avertissement concernant le dictionnaire japonais EDICT:\nCe package utilise un sous-ensemble modifié des fichiers de dictionnaire EDICT, JMDICT et KANJIDIC. Ces fichiers sont la propriété du Electronic Dictionary Research and Development Group et sont utilisés conformément à la licence du groupe;\n Voir http://www.csse.monash.edu.au/~jwb/edict .html et http://www.edrdg.org/.
     </string>
     <string name="ok">OK</string>
     <string name="ocr_header">Cliquez sur \"Détecter le texte\" pour détecter le texte.</string>
@@ -327,7 +327,7 @@
     <string name="from_alt_form">De la forme alt.</string>
     <string name="from_alt_form_containing">De la forme alt. contenant</string>
     <string name="from_conjugated_form">De la forme conjugée</string>
-    <string name="from_associated_word">Du mot associé</string>
+    <string name="from_associated_word">Par association à</string>
     <string name="derived_from">Dérivé de</string>
     <string name="unavailable">non disponibles, séléctionez le mot pour voir les sens en anglais</string>
     <string name="meanings_in">Senses en</string>

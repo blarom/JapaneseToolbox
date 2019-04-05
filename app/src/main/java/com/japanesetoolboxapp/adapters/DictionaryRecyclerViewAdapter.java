@@ -437,7 +437,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
             //region Setting the antonym
             if (!antonym.equals("")) {
-                String fullAntonym = mContext.getString(R.string.antonyms_) + antonym;
+                String fullAntonym = mContext.getString(R.string.antonyms_) + " " + antonym;
                 SpannableString fullAntonymSpannable = new SpannableString(fullAntonym);
 
                 String[] antonymsList = antonym.split(",");
@@ -458,7 +458,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
             //regionSetting the synonym
             if (!synonym.equals("")) {
-                String fullSynonym = mContext.getString(R.string.synonyms_) + synonym;
+                String fullSynonym = mContext.getString(R.string.synonyms_) + " " + synonym;
                 SpannableString fullSynonymSpannable = new SpannableString(fullSynonym);
 
                 String[] synonymsList = synonym.split(",");

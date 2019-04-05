@@ -239,7 +239,7 @@
         *descargo de responsabilidad de cjkdecomp:\nDerechos de autor 2017 Gavin Grover\nBajo la Licencia de Apache,\n Versión 2.0 (la \"Licencia\"); no puede utilizar esta base de datos excepto en cumplimiento con la Licencia.\nUsted puede\n obtener una copia de la Licencia en http://www.apache.org/licenses/LICENSE-2.0\n A menos que sea requerido por la ley aplicable o esté de acuerdo por escrito, él software distribuido bajo la Licencia se distribuye \"TAL CUAL\",\n SIN GARANTÍAS O CONDICIONES DE NINGÚN TIPO, ya sea explícita o implícita.\nConsulte la Licencia del idioma específico que rige los permisos y limitaciones de la Licencia. 
     </string>
     <string name="AboutTextDisclaimer2">
-        *renuncia de responsabilidad para él diccionario japonés EDICT:\nEste paquete utiliza un subconjunto modificado de los archivos de diccionario EDICT y KANJIDIC. Estos archivos son propiedad de\n Electronic Dictionary Research and Development Group y se utilizan de conformidad con la licencia del Grupo;\n Consulte http://www.csse.monash.edu.au/~jwb/edict .html y http://www.edrdg.org/.
+        *renuncia de responsabilidad para él diccionario japonés EDICT:\nEste paquete utiliza un subconjunto modificado de los archivos de diccionario EDICT, JMDICT y KANJIDIC. Estos archivos son propiedad de\n Electronic Dictionary Research and Development Group y se utilizan de conformidad con la licencia del Grupo;\n Consulte http://www.csse.monash.edu.au/~jwb/edict .html y http://www.edrdg.org/.
     </string>
     <string name="ok">OK</string>
     <string name="ocr_header">Haga clic en \"Detectar texto\" para detectar texto</string>
@@ -324,12 +324,12 @@
     <string name="optical_character_recognition">Reconocimiento Óptico de Caracteres</string>
     <string name="decomposition">Decomposición</string>
     <string name="verb">verbo</string>
-    <string name="from_alt_form">De forma alt.</string>
-    <string name="from_alt_form_containing">De forma alt. contiendo</string>
-    <string name="from_conjugated_form">De forma conjugada</string>
-    <string name="from_associated_word">De palabra asociada</string>
+    <string name="from_alt_form">De la forma alt.</string>
+    <string name="from_alt_form_containing">De la forma alt. contiendo</string>
+    <string name="from_conjugated_form">De la forma conjugada</string>
+    <string name="from_associated_word">Por asociación a</string>
     <string name="derived_from">Derivado de</string>
-    <string name="unavailable">no disponibles, seleccione la palabra para ver las significaciones en anglés</string>
+    <string name="unavailable">no disponibles, selecc. la palabra para ver los significados en anglés</string>
     <string name="meanings_in">Significados en</string>
     <string name="value_">Valor:\u0020</string>
 
