@@ -93,26 +93,26 @@ public final class GlobalConstants {
     public static final String VERB_FAMILY_U_GODAN = "u";
     public static final String VERB_FAMILY_U_SPECIAL = "us";
 
-    public final static HashMap<String, String> VERB_FAMILIES_FULL_NAME_MAP = createVerbFamiliesMap();
-    private static HashMap<String, String> createVerbFamiliesMap() {
-        HashMap<String, String> map = new HashMap<>();
-        map.put(VERB_FAMILY_SU_GODAN, "su godan");
-        map.put(VERB_FAMILY_KU_GODAN, "ku godan");
-        map.put(VERB_FAMILY_IKU_SPECIAL, "iku special class");
-        map.put(VERB_FAMILY_YUKU_SPECIAL, "yuku special class");
-        map.put(VERB_FAMILY_GU_GODAN, "gu godan");
-        map.put(VERB_FAMILY_BU_GODAN, "bu godan");
-        map.put(VERB_FAMILY_MU_GODAN, "mu godan");
-        map.put(VERB_FAMILY_NU_GODAN, "nu godan");
-        map.put(VERB_FAMILY_RU_GODAN, "ru godan");
-        map.put(VERB_FAMILY_ARU_SPECIAL, "aru special class");
-        map.put(VERB_FAMILY_TSU_GODAN, "tsu godan");
-        map.put(VERB_FAMILY_U_GODAN, "u godan");
-        map.put(VERB_FAMILY_U_SPECIAL, "u special class");
-        map.put(VERB_FAMILY_RU_ICHIDAN, "ru ichidan");
-        map.put(VERB_FAMILY_DA, "desu copula");
-        map.put(VERB_FAMILY_KURU, "kuru verb");
-        map.put(VERB_FAMILY_SURU, "suru verb");
+    public final static HashMap<String, Integer> VERB_FAMILIES_FULL_NAME_MAP = createVerbFamiliesMap();
+    private static HashMap<String, Integer> createVerbFamiliesMap() {
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put(VERB_FAMILY_SU_GODAN, R.string.verb_family_su);
+        map.put(VERB_FAMILY_KU_GODAN, R.string.verb_family_ku);
+        map.put(VERB_FAMILY_IKU_SPECIAL, R.string.verb_family_iku);
+        map.put(VERB_FAMILY_YUKU_SPECIAL, R.string.verb_family_yuku);
+        map.put(VERB_FAMILY_GU_GODAN, R.string.verb_family_gu);
+        map.put(VERB_FAMILY_BU_GODAN, R.string.verb_family_bu);
+        map.put(VERB_FAMILY_MU_GODAN, R.string.verb_family_mu);
+        map.put(VERB_FAMILY_NU_GODAN, R.string.verb_family_nu);
+        map.put(VERB_FAMILY_RU_GODAN, R.string.verb_family_rug);
+        map.put(VERB_FAMILY_ARU_SPECIAL, R.string.verb_family_aru);
+        map.put(VERB_FAMILY_TSU_GODAN, R.string.verb_family_tsu);
+        map.put(VERB_FAMILY_U_GODAN, R.string.verb_family_u);
+        map.put(VERB_FAMILY_U_SPECIAL, R.string.verb_family_us);
+        map.put(VERB_FAMILY_RU_ICHIDAN, R.string.verb_family_rui);
+        map.put(VERB_FAMILY_DA, R.string.verb_family_da);
+        map.put(VERB_FAMILY_KURU, R.string.verb_family_kuru);
+        map.put(VERB_FAMILY_SURU, R.string.verb_family_suru);
         return map;
     }
 

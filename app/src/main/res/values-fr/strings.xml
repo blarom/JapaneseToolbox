@@ -636,4 +636,21 @@
     <string name="legend_ZSt">terme de shinto</string>
     <string name="legend_ZZ">terme de zoologie</string>
 
+    <string name="verb_family_su">su godan</string>
+    <string name="verb_family_ku">ku godan</string>
+    <string name="verb_family_iku">classe spéciale iku</string>
+    <string name="verb_family_yuku">classe spéciale yuku</string>
+    <string name="verb_family_gu">gu godan</string>
+    <string name="verb_family_bu">bu godan</string>
+    <string name="verb_family_mu">mu godan</string>
+    <string name="verb_family_nu">nu godan</string>
+    <string name="verb_family_rug">ru godan</string>
+    <string name="verb_family_aru">classe spéciale aru</string>
+    <string name="verb_family_tsu">tsu godan</string>
+    <string name="verb_family_u">u godan</string>
+    <string name="verb_family_us">classe spéciale u</string>
+    <string name="verb_family_rui">ru ichidan</string>
+    <string name="verb_family_da">copule desu</string>
+    <string name="verb_family_kuru">verbe kuru</string>
+    <string name="verb_family_suru">verbe suru</string>
 </resources>

@@ -868,7 +868,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
             }
 
             if (GlobalConstants.VERB_FAMILIES_FULL_NAME_MAP.containsKey(currentVerb.getFamily())) {
-                currentVerb.setFamily(VERB_FAMILIES_FULL_NAME_MAP.get(currentVerb.getFamily()));
+                currentVerb.setFamily(getContext().getString(VERB_FAMILIES_FULL_NAME_MAP.get(currentVerb.getFamily())));
             }
             //endregion
 

@@ -636,4 +636,21 @@
     <string name="legend_ZSt">térm. sintoísta</string>
     <string name="legend_ZZ">térm. zoología</string>
 
+    <string name="verb_family_su">su godan</string>
+    <string name="verb_family_ku">ku godan</string>
+    <string name="verb_family_iku">clase epecial iku</string>
+    <string name="verb_family_yuku">clase epecial yuku</string>
+    <string name="verb_family_gu">gu godan</string>
+    <string name="verb_family_bu">bu godan</string>
+    <string name="verb_family_mu">mu godan</string>
+    <string name="verb_family_nu">nu godan</string>
+    <string name="verb_family_rug">ru godan</string>
+    <string name="verb_family_aru">clase epecial aru</string>
+    <string name="verb_family_tsu">tsu godan</string>
+    <string name="verb_family_u">u godan</string>
+    <string name="verb_family_us">clase epecial u</string>
+    <string name="verb_family_rui">ru ichidan</string>
+    <string name="verb_family_da">cópula desu</string>
+    <string name="verb_family_kuru">verbo kuru</string>
+    <string name="verb_family_suru">verbo suru</string>
 </resources>

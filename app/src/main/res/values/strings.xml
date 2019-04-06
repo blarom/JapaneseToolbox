@@ -753,6 +753,23 @@
     <string name="legend_ZSp">sports term</string>
     <string name="legend_ZSt">Shinto term</string>
     <string name="legend_ZZ">zoology term</string>
-
+    
+    <string name="verb_family_su">su godan</string>
+    <string name="verb_family_ku">ku godan</string>
+    <string name="verb_family_iku">iku special class</string>
+    <string name="verb_family_yuku">yuku special class</string>
+    <string name="verb_family_gu">gu godan</string>
+    <string name="verb_family_bu">bu godan</string>
+    <string name="verb_family_mu">mu godan</string>
+    <string name="verb_family_nu">nu godan</string>
+    <string name="verb_family_rug">ru godan</string>
+    <string name="verb_family_aru">aru special class</string>
+    <string name="verb_family_tsu">tsu godan</string>
+    <string name="verb_family_u">u godan</string>
+    <string name="verb_family_us">u special class</string>
+    <string name="verb_family_rui">ru ichidan</string>
+    <string name="verb_family_da">desu copula</string>
+    <string name="verb_family_kuru">kuru verb</string>
+    <string name="verb_family_suru">suru verb</string>
 
 </resources>
