@@ -1510,8 +1510,8 @@ public final class Utilities {
             //Getting the Type value
             matchingWordType = current_meaning_characteristics[GlobalConstants.COLUMN_MEANINGS_TYPE];
 
-            //Make corrections to the meaning values if the hit is a verb
-            if (matchingWordType.contains("V") && !matchingWordType.equals("VC") && !matchingWordType.equals("NV") && !matchingWordType.equals("VdaI")) {
+            //Adding "to " to the meaning values if the hit is a verb and these are english meanings
+            if (language.equals("en") && matchingWordType.contains("V") && !matchingWordType.equals("VC") && !matchingWordType.equals("NV") && !matchingWordType.equals("VdaI")) {
 
                 List<String> meaningElements = Arrays.asList(matchingWordMeaning.split(","));
                 StringBuilder meaningFixed = new StringBuilder();

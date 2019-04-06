@@ -2,42 +2,42 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2|indicates direction or goal (e.g. "to"), toward|PP||X e @ X = noun|764|||
 3|too, also, in addition, (not) either (in a negative sentence)|PP||X mo @ X = phrase|765|||
 4|even, as much as, as many as, as far as, as long as, no less than, no fewer than|PP|Used for emphasis or to express absence of doubt regarding a quantity, etc.|X mo @ X = phrase|1354|||
-5|both A and B, A as well as B|PP|Both X and Y.|X mo Y mo @ X/Y = noun|766, 1262|||
+5|both A and B, A as well as B|PP|Both X and Y.|X mo Y mo @ X/Y = noun|766;1262|||
 6|neither A nor B (in a negative sentence)|PP|Neither X nor Y.|X mo Y mo @ X/Y = noun||||
 7|and|PP||X to @ X = noun|767|||
 8|with|PP||X to @ X = noun|768|||
-9|yes, yeah, uh huh|OI||-||||
+9|yes, yeah, uh huh|OI||||||
 10|object marker|PP|Used in phrases such a "to imasu" or "to moshimasu".|X to @ X = phrase||||
 11|if, when|CO|ME#0101;0102|||||
 12|such things as …, and ... and|PP|Expresses a list of items where some are not listed, similar to "and … etc..".|X ya Y @ X/Y = noun||||
-13|et cetera, etc., and the like, and so forth|PP||X nado @ X = list of nouns|769, 1291|||
-14|made of, indicates possessive, 's|PP||X no @ X = noun|770|||
+13|et cetera, etc., and the like, and so forth|PP||X nado @ X = list of nouns|769;1291|||
+14|made of, indicates possessive 's|PP||X no @ X = noun|770|||
 15|connection between elements (e.g. in a phone number)|PP||X no Y @ X/Y = element|772|||
 16|feminine tone|PP|Used at the end of a sentence.|X no @ X = phrase|773|||
 17|(at sentence-end, rising tone) indicates question|PP|Alternative to "ka", used in casual speech.|X no @ X = phrase||||
 18|descriptor|PP|Used to indicate a specific type of the subject.|X no Y @ Y = noun, X = descriptor|774|||
-19|in fact, indeed|PP|Used to provide emphasis to the sentence, politer than "n".|X no da @ X = verb (any tense)|775, 776, 777|||
-20|polite softener|PP|Used as a softener to the sentence, politer than "n".|X no @ X = verb|778, 779|||
-21|nominalizes verbs and adjectives|VC|Used to make a noun out of a verb (all plain tenses), similar in function to "koto" in forming a verb gerund.|X no @ X = verb plain form|867, 1387, 1388, 1389|||
-22|transforms into pronoun for use as subject|PP|This is a combination of two particels: a possessive marker "no" and a subject indicator "ga". It transforms the phrase (adverb, adjective, verb) into a noun for use as the subject of an enclosing phrase. The enclosing phrase in turn requires the "ga" subject marker due to the grammar rules governing it.|X no ga @ X = phrase|771, 1453, 1480|||
+19|in fact, indeed|PP|Used to provide emphasis to the sentence, politer than "n".|X no da @ X = verb (any tense)|775;776;777|||
+20|polite softener|PP|Used as a softener to the sentence, politer than "n".|X no @ X = verb|778;779|||
+21|nominalizes verbs and adjectives|VC|Used to make a noun out of a verb (all plain tenses), similar in function to "koto" in forming a verb gerund.|X no @ X = verb plain form|867;1387;1388;1389|||
+22|transforms into pronoun for use as subject|PP|This is a combination of two particles: a possessive marker "no" and a subject indicator "ga". It transforms the phrase (adverb, adjective, verb) into a noun for use as the subject of an enclosing phrase. The enclosing phrase in turn requires the "ga" subject marker due to the grammar rules governing it.|X no ga @ X = phrase|771;1453;1480|||
 23|description/opinion of an action|CO|[description Y/opinion Y] of an action X. Conveys a speaker' s opinion on an action. The "no" transforms the relevan verb into a noun, the "ga" indicates the object verb, and the "Y da" corresponds to the describing state of being (to like, to be good at, etc..).|X no ga Y da @ X = verb plain form, Y = suki, kirai, ii, warui, jouzu, etc..|1387|||
-24|nominalizer for use as subject|PP|This is a combination of two particles: a possessive marker "no" and an object indicator "wo". It transforms the phrase (adverb, adjective, verb) into a noun for use as the object of an enclosing phrase. The enclosing phrase in turn requires the "wo" subject marker due to the grammar rules governing it.|X no wo @ X = phrase|1455|||
-25|in fact, indeed|PP|Used to provide emphasis to the sentence, casual form of "no".|X n @ X = verb|780, 781, 782|||
-26|softener, emphasizer|PP|Used as a softener/emphasizer to the sentence, casual form of "no".|X n @ X = verb|783, 784, 1481, 1482|||
-27|verb object marker, indicates direct object of action|PP||X wo Y @ X = object, Y = verb|785, 1343|||
-28|gerund object marker, indicates subject of causative expression|PP||X wo Y ga … @ X = object, Y = verb gerund|786, 787, 1505|||
-29|object marker for verbs such as "to leave", indicates point of departure or separation of action|PP|Used for "leaving" verbs: deru, oru, etc..|X wo Y @ X = object, Y = verb|788, 789, 1507|||
+24|converts to noun for use as subject|PP|This is a combination of two particles: a possessive marker "no" and an object indicator "wo". It transforms the phrase (adverb, adjective, verb) into a noun for use as the object of an enclosing phrase. The enclosing phrase in turn requires the "wo" subject marker due to the grammar rules governing it.|X no wo @ X = phrase|1455|||
+25|in fact, indeed|PP|Used to provide emphasis to the sentence, casual form of "no".|X n @ X = verb|780;781;782|||
+26|softener, emphasizer|PP|Used as a softener/emphasizer to the sentence, casual form of "no".|X n @ X = verb|783;784;1481;1482|||
+27|verb object marker, indicates direct object of action|PP||X wo Y @ X = object, Y = verb|785;1343|||
+28|gerund object marker, indicates subject of causative expression|PP||X wo Y ga … @ X = object, Y = verb gerund|786;787;1505|||
+29|object marker for verbs such as "to leave", indicates point of departure or separation of action|PP|Used for "leaving" verbs: deru, oru, etc..|X wo Y @ X = object, Y = verb|788;789;1507|||
 30|object marker for verbs such as "going through", indicates an area traversed|PP|Used for "going through" verbs: magaru, etc..|X wo Y @ X = object, Y = verb|1504|||
-31|subject marker, topic marker particle|PP||X wa @ X = subject/topic|790, 791|||
+31|subject marker, topic marker particle|PP||X wa @ X = subject/topic|790;791|||
 32|choice marker, indicates contrast with another option (stated or unstated)|PP|Out of X, Y is … . Presents the set from which a choice may be made.|X wa Y … @ X/Y = noun|792|||
 33|verb object marker|PP|Used instead of wo/ga when making a general statement (as opposed to wo/ga).|X wa @ X = object|793|||
-34|verb object marker|PP|Used instead of wo/ga when comparing statements.|X wa @ X = object|794, 795, 796|||
+34|verb object marker|PP|Used instead of wo/ga when comparing statements.|X wa @ X = object|794;795;796|||
 35|verb object marker|PP|Used instead of wo/ga in distinct cases such as "aru" in negative tenses.|X wa Y @ X = object, Y = verb||||
 36|you know, certainly, hear me out, indicates emotion or admiration, indicates emphasis|PP|Used at the end of a sentence to provide emphasis when giving information. Usually said by a female character.|X wa @ X = phrase||||
-37|indicates location of action|PP|Is differentiated from the use of "ni" for an action taking place at a location by the short-term aspect of the action, e.g. eating at a restaurant.|X de @ X = noun|797, 798, 1317|||
+37|indicates location of action|PP|Is differentiated from the use of "ni" for an action taking place at a location by the short-term aspect of the action, e.g. eating at a restaurant.|X de @ X = noun|797;798;1317|||
 38|indicates means of action, cause of effect, by, by means of|PP||X de @ X = noun|799|||
-39|substance of a material|PP||X de @ X = noun|800, 211|||
-40|because of, due to, and then, so|PP||X de @ X = noun|801, 163, 1385|||
+39|substance of a material|PP||X de @ X = noun|800;211|||
+40|because of, due to, and then, so|PP||X de @ X = noun|801;163;1385|||
 41|indicates limits in space|PP||X de @ X = noun|802|||
 42|indicates time of action|PP||X de @ X = noun|803|||
 43|indicates limits in price or quantity|PP||X de @ X = noun|804|||
@@ -62,7 +62,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 62|but, however, still|CO|ME#0144;0145|||||
 63|and|CO|ME#0146;0147;0148|||||
 64|Kanji connector|PP|Used to join two kanjis when forming a noun.|X ka/ga Y @ X = kanji, Y = kanji||||
-65|indicates emphasis, agreement, request for confirmation, etc., is it so|PP|Use "ne" and "wa ne" for male and female colloquial speech respectively.|X ne? / X wa ne? @ X = phrase|819, 820|||
+65|indicates emphasis, agreement, request for confirmation, etc., is it so|PP|Use "ne" and "wa ne" for male and female colloquial speech respectively.|X ne? / X wa ne? @ X = phrase|819;820|||
 66|hey, come on, listen|PP||X ne @ X = phrase||||
 67|(away) from|PP||X kara|821|||
 68|therefore|CO|ME#0132;0133|||||
@@ -73,20 +73,20 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 73|like, similar to|PS||X you de||||
 74|like, similar to, same as|PP||X goto||||
 75|between|PS|between X and Y|X to Y no made||||
-76|made by, because of, due to, by means of, depending on, according to|PP||X ni yotte|1309, 1310, 1311|||
-77|at (place, time), during, performing a continuous action at a location|PP|Is differentiated from the use of "de" for an action taking place at a location by the long-term continuity of the action, e.g. sleeping at a location.|X ni @ X = noun|823, 827|||
-78|to (direction, state), toward, into|PP||X ni @ X = noun|824, 825|||
+76|made by, because of, due to, by means of, depending on, according to|PP||X ni yotte|1309;1310;1311|||
+77|at (place, time), during, performing a continuous action at a location|PP|Is differentiated from the use of "de" for an action taking place at a location by the long-term continuity of the action, e.g. sleeping at a location.|X ni @ X = noun|823;827|||
+78|to (direction, state), toward, into|PP||X ni @ X = noun|824;825|||
 79|and, in addition to|PP||X ni||||
 80|if, although|PP|Archaic.|X ni||||
 81|per, in, for, a (e.g. "once a month"), frequency or proportion of an action/event|PP||X ni|828|||
 82|change or resulting condition|PP||X ni|829|||
 83|object marker for decision verb|PP||X ni|830|||
 84|object marker for verb in causative active tense|PP|ME#0069;0070|||||
-85|object marker for giving/receiving verb|PP||X ni|826, 831|||
+85|object marker for giving/receiving verb|PP||X ni|826;831|||
 86|by, from, subject marker in a passive sentence|PP||X ni|832|||
 87|as (i.e. in the role of), object marker for person who is allowed/made to do an action|PP||X ni|833|||
 88|used when comparing/differentiating/estimating|PP||X ni|834|||
-89|for (purpose)|PP|for the purpose of doing X|X ni|835, 1273|||
+89|for (purpose)|PP|for the purpose of doing X|X ni|835;1273|||
 90|made for|PP|made for X|X ni|836|||
 91|because of (reason), for, with|PP||X ni|837|||
 92|ability, skill, knowledge|PP||X ni|838|||
@@ -94,20 +94,20 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 94|lists|PP|Seldom used.|X ni|840|||
 95|in order to|CO|Do Y in order to [do/be] X.|X ni Y @ X = action verb i-stem, Y = verb|982|||
 96|by means of|CO|X by means of Y.|X ni Y @ X/Y = action verb||||
-97|go/come to do|CO|Go/come to do X.|X ni Y @ X = action verb, Y = kuru/iku/kaeru, no object in between|1064, 1065|||
-98|adverb form of na-adjective|naAC||Adjective conjuation: [root] + ni|1092, 1093|||
-99|from the object's point of view|PP||X ni wa|841, 842, 1269|||
+97|go/come to do|CO|Go/come to do X.|X ni Y @ X = action verb, Y = kuru/iku/kaeru, no object in between|1064;1065|||
+98|adverb form of na-adjective|naAC|na-adjective conjugation.|[root] + ni|1092;1093|||
+99|from the object's point of view|PP||X ni wa|841;842;1269|||
 100|verb object marker|PP|Used in a compound sentence for verbs using "ni" as the object marker.|X ni wa Y @ X = object, Y = verb taking "ni" as object marker (e.g. au)|843|||
-101|noun modifier for use as subject|PP|This is a combination of two particles: a possessive marker "no" and a subject indicator "wa". It transforms the phrase (adverb, adjective, verb) into a noun for use as the subject of an enclosing phrase. The enclosing phrase in turn requires the "wa" subject marker according to the grammar rules governing it. For example, "eat food" is modified to "the eating of food" and is used as the subject of the phrase "the eating of food is good".|X no wa Y @ X = object, Y =phrase|1329, 1330, 1451, 1452, 1454|||
-102|among other things, such things as, or something like that|PP|Used repeatedly (toka…. toka) to emphasize a list of examples. Similar to "ya… nado".|X toka Y toka @ X/Y = noun, verb in plain form or adjective|1296, 1297, 1298|||
+101|noun modifier for use as subject|PP|This is a combination of two particles: a possessive marker "no" and a subject indicator "wa". It transforms the phrase (adverb, adjective, verb) into a noun for use as the subject of an enclosing phrase. The enclosing phrase in turn requires the "wa" subject marker according to the grammar rules governing it. For example, "eat food" is modified to "the eating of food" and is used as the subject of the phrase "the eating of food is good".|X no wa Y @ X = object, Y =phrase|1329;1330;1451;1452;1454|||
+102|among other things, such things as, or something like that|PP|Used repeatedly (toka…. toka) to emphasize a list of examples. Similar to "ya… nado".|X toka Y toka @ X/Y = noun, verb in plain form or adjective|1296;1297;1298|||
 103|and, as well as|CO|Used in conjunction with narabi ni (並びに) to form complex lists, particularly in legal contexts. Narabi ni divides subsets within the list while oyobi is used to conjoin more closely related items. Often written in hiragana. (source: Wiktionary)||1502|||
 104|the good out of …|PC|Out of X, the Y is good. Used by the speaker to single out a good item out of a set of items.|X wa Y ga ii desu @ X = noun describing a set of objects, Y = noun as subset of X|844|||
-105|as for|PC|As for X, Y is [verb]. Used by the speaker to describe an aspect [verb] of an item Y in an object/set X.|X wa Y ga (verb) @ X = subject 1, Y = subject 2|845, 846|||
+105|as for|PC|As for X, Y is [verb]. Used by the speaker to describe an aspect [verb] of an item Y in an object/set X.|X wa Y ga (verb) @ X = subject 1, Y = subject 2|845;846|||
 106|worth|PC|[counter] X are worth [price] yen. Used to give the price of a number of counted items.|X [counter] de [price] en|847|||
 107|sold at|PC|Y (is/are being) sold at X. To indicate that an item is sold at a certain location, the progressive form "utteiru" of the verb "uru" (to sell) is used instead its passive form.|Y ga X de utteiru @ X = noun, Y = subject||||
-108|will have|PC|I will have X. Used when requesting an item from a list, e.g. when ordering food at a restaurant.|X ni suru @ X = noun|848, 1471, 1472|||
+108|will have|PC|I will have X. Used when requesting an item from a list, e.g. when ordering food at a restaurant.|X ni suru @ X = noun|848;1471;1472|||
 109|also|PC|X also Y so … . Used to express the speaker's point of view regarding a certain object/concept mentioned by another speaker.|X mo sou Y @ X = pronoun, Y = think, believe, observe, etc..|849|||
-110|that|CO|X that Y. Describes an action Y that the subject X is performing, or a state of being Y of a subject X. If this phrase is used as the subect of a sentence, then any "wa" subject markers are changed to "ga" to prevent confusion on the sentence's main subject.|Y X @ X = phrase, Y = action/state of being describing that phrase|850, 851, 852, 853|||
+110|that|CO|X that Y. Describes an action Y that the subject X is performing, or a state of being Y of a subject X. If this phrase is used as the subect of a sentence, then any "wa" subject markers are changed to "ga" to prevent confusion on the sentence's main subject.|Y X @ X = phrase, Y = action/state of being describing that phrase|850;851;852;853|||
 111|just the way it is|PC|ME#0071;0072;0073|||||
 112|the way it is meant to be, as planned|PC|ME#0074;0075|||||
 113|it would be best if|PC|ME#0076;0077|||||
@@ -123,12 +123,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 123|is, am|PC|Is X, am X. Expresses a state of being. Formal and literary form of "desu".|X dearu @ X = phrase|1496|||
 124|is included|PC|X is included.|X ga tsuiteimasu|302|||
 125|is included|PC|X is included.|X ga hatteimasu|129|||
-126|or something|PC|Be X or something.|||||
-127|or someone|PC|Be X or someone.|||||
-128|or somewhere|PC|Be at X or somewhere.|||||
+126|or something|PC|Be X or something.|X ka nanika wo||||
+127|or someone|PC|Be X or someone.|X ka dareka wo||||
+128|or somewhere|PC|Be at X or somewhere.|X ka dokoka wo||||
 129|probably|PC|(He) probably [does/is] X. Presumptive tense.|X darou @ X = verb plain form, i-adj., na-adj., noun|1357|||
 130|wonder if|PC|[I/you/he/she] wonder if [I/you/he/she] [does/is] X.|X darou @ X = question word (doko, dare, etc)||||
-131|probably|PC|(He) probably [does/is] X. Presumptive tense, polite form.|X deshou @ X = verb plain form, i-adj., na-adj., noun|1356, 1358, 1359, 1360|||
+131|probably|PC|(He) probably [does/is] X. Presumptive tense, polite form.|X deshou @ X = verb plain form, i-adj., na-adj., noun|1356;1358;1359;1360|||
 132|wonder if|PC|[I/you/he/she] wonder if [I/you/he/she] [does/is] X.|X deshou @ X = question word (doko, dare, etc)||||
 133|apart from|PC|Apart from X … .|X no hoka @ X = phrase||||
 134|too much|PC|ME#0095;0096;0097|||||
@@ -150,14 +150,14 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 150|so, accordingly, now, then, thereupon, therefore|CO|Can be used to start a sentence.|X soko de Y||||
 151|therefore, consequently|CO|Can be used to start a sentence.|X. yue ni Y / X yue ni Y||||
 152|then, therefore|CO|X therefore Y. Can also be used to start a sentence.|soshitara X @ X = phrase||||
-153|given that …|CO|ME#0134;0135|||||
+153|that being the case, because of ..., the reason is ..., given that ...|CO|ME#0134;0135|||||
 154|and then, and so, and, so then|CO|ME#0136;0137|||||
 155|therefore|CO|ME#0138;0139;0140;0141|||||
 156|by means of|CO|X by means of Y.|X te/de Y @ X = action verb te-form, Y = action verb|1044|||
 157|dangerous, risky|N||||||
 158|despite, in spite of, regardless of|PC|Despite X, in spite of X, regardless of X.|X kakawarazu @ X = phrase||||
 159|except for, other than, with the exception of|PC|Except for X, other than X, with the exception of X.|X igai @ X = phrase||||
-160||-||||||
+160|would like?|PC|Would (you) like to [do/be] X?|X ikaga desu ka @ X = phrase in plain form||||
 161|however, but, even if, nevertheless, even so, notwithstanding|CO|X however Y, X but Y, Y even if X, X nevertheless Y, X even so Y, Y notwithstanding X.|X soredemo Y @ X/Y = phrase|795|||
 162|however, but, apart from, other than, aside from, more than|CO|X however Y, X but Y, Y apart from X, Y other than X, Y aside from X, Y more than X.|X. soreyori Y @ X/Y = phrase||||
 163|but, however, provided that|CO|X but Y, X however Y, Y provided that X.|X. tadashi Y @ X/Y = phrase||||
@@ -168,19 +168,19 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 168|totteringly, staggeringly, unsteadily|A;M||||||
 169|lanky, spindly, slender, frail|Ana||||||
 170|nevertheless, however|CO|X nevertheless Y, X however Y|X. sore ni shite mo Y @ Y = phrase||||
-171|or|PC|X? or Y?|X? soretomo Y? @ X/Y = phrase|948, 949|||
+171|or|PC|X? or Y?|X? soretomo Y? @ X/Y = phrase|948;949|||
 172|don't do but instead do|CO|Don't do X but instead do Y|X naide Y @ X/Y = action verb|950|||
 173|don't do without doing|CO|Don't do Y without doing X|X naide Y @ X naide = verb naide form, Y = sentence||||
 174|don't do then do|CO|Not X and then Y.|X naide Y @ X/Y = action verb|1068|||
 175|although, despite, even though, and yet|CO|ME#0155;0156;0157|||||
-176|in order to, for the purpose of|VC|In order to [do/be] X. For the purpose of [doing/being] X. Similar to converting the verb to its gerund ("koto") form.|X no ni @ X = verb dict. form|983, 1274|||
+176|in order to, for the purpose of|VC|In order to [do/be] X. For the purpose of [doing/being] X. Similar to converting the verb to its gerund ("koto") form.|X no ni @ X = verb dict. form|983;1274|||
 177||-|X but Y. Usually starts a phrase with a problematic, conflicting topic.|X shikashi Y @ X/Y = phrase|957|||
-178|not and instead|CO|Not X but Y instead|X ja nakute Y @ X/Y = phrase|958, 337|||
+178|not and instead|CO|Not X but Y instead|X ja nakute Y @ X/Y = phrase|958;337|||
 179|or, otherwise|CO|X or Y, X otherwise Y.|X mata wa Y @ X/Y = phrase||||
 180|together with|CO|X together with Y.|X to issho ni Y @ X/Y = phrase||||
 181|besides, in addition to|CO|Y besides X, Y in addition to X.|X. sore ni Y|1275|||
-182|besides, in addition to|CO|Y besides X, Y in addition to X.|X. sono ue Y||||
-183||-||||||
+182||-||||||
+183|say/tell that|PC|ME#0257;0258|||||
 184|and|PC|ME#0158;0159|||||
 185|and/or|PC|ME#0160;0161;0162|||||
 186|happening at the same time|PC|ME#0163;0164;0165|||||
@@ -188,20 +188,20 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 188|happening during|CO|ME#0169;0170;0171|||||
 189|happening in the midst of|CO|Action Y happening in the midst of event X.|X no tochuu de Y|978|||
 190|exists during a movement|CO|Y exists on the way during movement X.|X tochuu ni Y|979|||
-191|happening during a movement|CO|Action Y happening on the way during movement X.|X tochuu de Y @ X = movement|980, 981|||
+191|happening during a movement|CO|Action Y happening on the way during movement X.|X tochuu de Y @ X = movement|980;981|||
 192|and also|CO|X is true and also Y.|X. ato Y|129|||
 193|try to do|PC|(Try/make an effort) in order to [do/be] X, in the hopes of something uncertain.|X you ni to suru @ X = action|984||tame ni|
 194|in order to, for, for the sake of, in favor of, in favour of, on behalf of|CO|Y for the sake of [doing/being] X, for the sake of something certain.|X tame ni Y @ X = verb, Y = verb|991||you ni|
 195|for the benefit of|CO|ME#0172;0173|||||
-196|tell/ask to do|PC|Tell/ask to [do/be] X|X you ni to Y @ X = action, Y = iu, tsutaeru|994, 995|||
+196|tell/ask to do|PC|Tell/ask to [do/be] X|X you ni to Y @ X = action, Y = iu, tsutaeru|994;995|||
 197|say/tell that|PC|ME#0174;0175|||||
 198|think that|PC|ME#0176;0177|||||
 199|not always|PC|ME#0178;0179|||||
 200|as far as|PC|As far as X.|X tokoro dewa|1009|||
-201|know/think/believe/see if is|PC|Do you Y if X is ...?|X ka Y ka? @ X = question, Y = know/think/believe/see/etc..|1010, 1011, 1012, 1013, 1014|||
-202|know/think/believe/see if is not|PC|Do you Y if X is ... or not?|X ka dou ka Y ka? @ X = question, Y = know/think/believe/see/etc..|1016, 1017|||
+201|know/think/believe/see if is|PC|Do you Y if X is ...?|X ka Y ka? @ X = question, Y = know/think/believe/see/etc..|1010;1011;1012;1013;1014|||
+202|know/think/believe/see if is not|PC|Do you Y if X is ... or not?|X ka dou ka Y ka? @ X = question, Y = know/think/believe/see/etc..|1016;1017|||
 203|I don't know/think/believe if is or not|PC|ME#0180;0181;0182|||||
-204|In order to see if is or not|PC|In order to see if X is … or not.|X ka dou ka Y miru @ X = phrase, Y = verb in te-form|1349, 1350|||
+204|In order to see if is or not|PC|In order to see if X is … or not.|X ka dou ka Y miru @ X = phrase, Y = verb in te-form|1349;1350|||
 205|supposed to be/do, expected to be/do, should be/do, must be/do|PC|ME#0183;0184;0185;0186;0187;0188;0189|||||
 206|not supposed to be/do, expected not to be/do, should not be/do, must not be/do|PC|ME#0190;0191;0192;0193;0194;0195;0196|||||
 207|certainly supposed to be/do|PC|ME#0197;0198;0199|||||
@@ -215,7 +215,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 215|same|PC|X and Y have the same (characteristic).|X to Y onaji (characteristic)|1049|||
 216|similar|PC|Y resembles/similar to X.|X wa Y ni niteiru @ X = noun|1361|||
 217|which is the most|PC|Which of X and Y is most [characteristic Z]?|X to Y to dochira ga Z @ X/Y = noun, Z = characteristic|767|||
-218|is the most out of all|PC|Out of all the X, Y is the most [characteristic Z].|X no naka de Y ga ichiban Z @ X/Y = noun, Z = characteristic|1050, 1487|||
+218|is the most out of all|PC|Out of all the X, Y is the most [characteristic Z].|X no naka de Y ga ichiban Z @ X/Y = noun, Z = characteristic|1050;1487|||
 219|more than|PC|ME#0215;0216;0217|||||
 220|less than|PC|ME#0218;0219|||||
 221|between|PC|ME#0220;0221|||||
@@ -224,48 +224,48 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 224|after|CO|ME#0228;0229;0230|||||
 225|before|CO|ME#0231;0232|||||
 226|and then, and so, and, so then, indicates continuing action|CO|ME#0233;0234|||||
-227|and then|CO|X and then Y.|X sorekara Y|1073, 1074|||
+227|and then|CO|X and then Y.|X sorekara Y|1073;1074|||
 228||-|X and then Y. Used after an adverb, adjective or copula.|X soshite Y|1075|||
 229|furthermore, again, after all, more and more, moreover, even more|A||||||
 230|inflict, impose (a fine, etc.)|VsuruT||||||
 231|being done during|VC|X is being done (present progressive) while [doing/being] something.|X ite @ X = verb te form||||
 232|being done during|VC|X is being done (present progressive) while [doing/being] something. Colloquial form of "teite/deite".|X te @ X = verb te form||||
 233|being done|VC|X is being done (present progressive).|X iru @ X = verb te form||||
-234|still being done|VC|X is a past action/event that is still relevant to the present (progressive).|X iru @ X = verb te form|652, 1079|||
-235|been done|VC|X has (already) been done. Similar to use of "te iru", usually with the connotation of something already being (e.g. the window is already open"). The "te aru" form generally requires the "ga" object indicator.|X aru @ X = verb te form|1080, 1081, 1377|||
+234|still being done|VC|X is a past action/event that is still relevant to the present (progressive).|X iru @ X = verb te form|652;1079|||
+235|been done|VC|X has (already) been done. Similar to use of "te iru", usually with the connotation of something already being (e.g. the window is already open"). The "te aru" form generally requires the "ga" object indicator.|X aru @ X = verb te form|1080;1081;1377|||
 236|continuing|VC|X has been happening and will continue to happen.|X iku @ X = verb te form||||
 237|do while moving away|VC|To [do/be] X while moving away.|X iku @ X = verb te form||||
 238|do then go somewhere|VC|To [do/be] X then go somewhere.|X iku @ X = verb te form||||
-239|do in advance|VC|To [do/be] X preemptively, in preparation for, in advance for.|X oku @ X = verb te form|1069, 1347, 1418||ttoku|
+239|do in advance|VC|To [do/be] X preemptively, in preparation for, in advance for.|X oku @ X = verb te form|1069;1347;1418||ttoku|
 240|do in advance|VC|To [do/be] X preemptively, in preparation for, in advance for.|X ttoku @ X = verb root|1070||te oku|
-241|and then|VC|X and then Y.|X kara Y @ X = verb te form|1071, 1072|||
-242|to come to do/be X|VC|Refers to an event began in the past and is continuing in the present.|X kuru @ X = verb te form||||
+241|and then|VC|X and then Y.|X kara Y @ X = verb te form|1071;1072|||
+242|to come to do/be X|VC|Refers to an event that began in the past and is continuing in the present.|X kuru @ X = verb te form||||
 243|do while approaching|VC|To [do/be] X while approaching.|X kuru @ X = verb te form||||
 244|do then come over|VC|To [do/be] X then come over.|X kuru @ X = verb te form||||
-245|is possible|VC|[doing/being] X is possible.|X mo ii da @ X = verb te form / sentence object|887, 888, 889, 150|||
-246|not permitted, forbidden|VC|[doing/being] X is not permitted/forbidden.|X wa ikenai @ X = verb te form / sentence object|890, 483, 1484||cha ikenai|
+245|is possible|VC|[doing/being] X is possible.|X mo ii da @ X = verb te form / sentence object|887;888;889;150|||
+246|not permitted, forbidden|VC|[doing/being] X is not permitted/forbidden.|X wa ikenai @ X = verb te form / sentence object|890;483;1484||cha ikenai|
 247|not permitted, forbidden|VC|[doing/being] X is not permitted/forbidden. Colloquial form of "te wa ikenai" for verbs.|X cha ikenai @ X = verb root|1483||te wa ikenai|
 248|fine to do|VC|Is it fine if [I/you/he/she] [does/is] X?|X mo ii desu ka @ X = verb te form|891|||
-249|do as a favor|VC|[I/you/he/she] [do/does/am/are/is] X as a personal favor for someone. Use "te ageru" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence).|X ageru @ X = verb te form|885, 1393, 1436, 1437, 1440, 1443||te morau, te kureru|
+249|do as a favor|VC|[I/you/he/she] [do/does/am/are/is] X as a personal favor for someone. Use "te ageru" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence).|X ageru @ X = verb te form|885;1393;1436;1437;1440;1443||te morau, te kureru|
 250|want to do/be, hope to do/be|VC|[I/you/he/she] want someone to [do/be] X, hope someone [does/is] X.|X hoshii da @ X = verb te form||||
 251|please do/be|VC|Please [do/be] X.|X kudasai @ X = verb te form (add "sumimasen" or "chotto" to soften the request)|886|||
 252||-||||||
 253|would you please do|VC|Would you please [do/be] X.|X kuremasen ka @ X = verb te form (expression used when the request may cause some trouble to the other person)|||te kurenai, te itadakemasen ka|
-254|do as a favor|VC|[you/he/she] [do/does/are/is] X as a favor for me. Use "te kureru" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence). Usually refers to performing an act for the subject or a close familiar. Usage of "te kureru" corresponds to an active phrase as opposted to "te morau"that corresponds to a passive phrase.|Y ga Z wo X kureru @ X = verb te form, Y = person doing the favor, Z = object of the favor|1435, 1438, 1441||te morau, te ageru|
-255|do and see what happens|VC|To [do/be] X and see what happens.|X miru @ X = verb te form|1349, 1350, 1390|||
+254|do as a favor|VC|[you/he/she] [do/does/are/is] X as a favor for me. Use "te kureru" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence). Usually refers to performing an act for the subject or a close familiar. Usage of "te kureru" corresponds to an active phrase as opposed to "te morau"that corresponds to a passive phrase.|Y ga Z wo X kureru @ X = verb te form, Y = person doing the favor, Z = object of the favor|1435;1438;1441||te morau, te ageru|
+255|do and see what happens|VC|To [do/be] X and see what happens.|X miru @ X = verb te form|1349;1350;1390|||
 256|want to do and see what happens, want to try doing|VC|To want to [do/be] X and see what happens, to want to try [doing/being] X.|X miru @ X = verb te form|990|||
 257|can do as a favor|VC|[I/you/he/she] can [do/be] X as a favor.|X moraeru @ X = verb te form||||
 258|asking to do as a favor|VC|Could (you) [do/be] X (as a favor)?|X moraemasu ka @ X = verb te form||||
 259|if can do as a favor|VC|If someone can [do/be] X as a favor.|X moraeru to @ X = verb te form||||
 260|please try to do|VC|Please try to [do/be] X.|X goran @ X = verb te form||||
-261|do as a personal favor for someone or for me|VC|Someone [does/is] X as a personal favor for someone or for me. Use "te morau" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence). Usage of "te kureru" corresponds to an active phrase as opposted to "te morau"that corresponds to a passive phrase.|Y ni Z wo X morau @ X = verb te form, Y = person doing the favor, Z = object of the favor|1430, 1432, 1439, 1441||te kureru, te ageru|
+261|do as a personal favor for someone or for me|VC|Someone [does/is] X as a personal favor for someone or for me. Use "te morau" not only for polite language, but also for implicitly specifying the giver/recipient (e.g. "watashi/kare ni" is removed from the sentence). Usage of "te kureru" corresponds to an active phrase as opposed to "te morau"that corresponds to a passive phrase.|Y ni Z wo X morau @ X = verb te form, Y = person doing the favor, Z = object of the favor|1430;1432;1439;1441||te kureru, te ageru|
 262|want someone to do (as a favor)|VC|I want someone to [do/be] X (as a favor).|X moraitai @ X = verb te form||||
-263|want someone to do (as a favor)|VC|I want someone to [do/be] X (as a favor).|X moraitai @ X = verb te form||||
+263||-||||||
 264|fail to do|VC|To fail to [do/be] X.|X sokonau @ X = verb te form||||
 265|would you please do (as a favor)|VC|Would you please [do/be] X (as a favor).|X moraitai n desu ga @ X = verb te form||||
 266|completely finished doing|VC|[I/you/he/she] [have/has] completely finished [doing/being] X.|X shimau @ X = verb te form||||
 267|regret doing|VC|[I/you/he/she] [regret/regrets] [doing/being] X.|X shimau @ X = verb te form||||
-268|did and regret doing it|VC|[I/you/he/she] [did/was/were] X and regret doing it.|X shimatta @ X = verb te form|892, 893|||
+268|did and regret doing it|VC|[I/you/he/she] [did/was/were] X and regret doing it.|X shimatta @ X = verb te form|892;893|||
 269|did and regret doing it|VC|[I/you/he/she] [did/was/were] X and regret doing it. Colloquial form of "te shimatta".|X cchimatta @ X = verb root|||te shimatta|
 270|sorry to do|VC|[I/you/he/she] [am/are/is] sorry to [do/be] X.|X sumimasen @ X = verb te form||||
 271|always doing|VC|Always doing X.|X bakari iru @ X = verb te form|1077|||
@@ -282,28 +282,28 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 282|should, must, ought to|VC|[I/you/he/she] should [do/be] X, must [do/be] X, ought to [do/be] X.|X beki @ X = verb dict. form||||
 283|to go into, to put into, to remain (seated), to be plunged into (silence), to do thoroughly, to do intently, to continue in the same state|VC|To go into, to put into, to remain (seated), to be plunged into (silence), to do thoroughly, to do intently, to continue in the same state.|X komu @ X = verb masu stem||||
 284|to start to do/be|VC|To start to [do/be].|X hajimeru @ X = verb masu stem||||
-285|completely finished doing|VC|[I/you/he/she] [have/has] completely finished [doing/being] X. Used colloquially (casual speech) only.|X chatta/jatta @ X = verb masu form or root (depending on verb type)||||
-286|did and regret doing it|VC|[I/you/he/she] [did/was] X and regret doing it. Used colloquially (casual speech) only.|X chatta/jatta @ X = verb masu form or root (depending on verb type)||||
-287|do (honorific)|VC|To [do/be] X (honorific).|(o) X ni naru @ X = verb masu stem|1460, 1461|||
+285|completely finished doing|VC|[I/you/he/she] [have/has] completely finished [doing/being] X. Used colloquially (casual speech) only.|X chau @ X = verb masu form or root (depending on verb type)||||
+286|did and regret doing it|VC|[I/you/he/she] [did/was] X and regret doing it. Used colloquially (casual speech) only.|X chatta @ X = verb masu form or root (depending on verb type)||||
+287|do (honorific)|VC|To [do/be] X (honorific).|(o) X ni naru @ X = verb masu stem|1460;1461|||
 288|do (honorific)|VC|To [do/be] X (honorific).|(o) X nasaru @ X = verb masu stem||||
 289|do (humble)|VC|To [do/be] X (humble).|(o) X suru @ X = verb masu stem||||
 290|do (humble)|VC|To [do/be] X (humble).|(o) X itasu @ X = verb masu stem||||
-291|please do|VC|To please [do/be] X.|(o) X kudasai @ X = verb masu stem|1462, 1463|||
-292|please don't do|VC|To please don't [do/be] X.|(o) X kudasai @ X = verb naide form|1475, 1476|||
+291|please do|VC|To please [do/be] X.|(o) X kudasai @ X = verb masu stem|1462;1463|||
+292|please don't do|VC|To please don't [do/be] X.|(o) X kudasai @ X = verb naide form|1475;1476|||
 293|please do (honorific)|VC|To please [do/be] X (honorific).|X nasaimase @ X = verb masu stem||||
 294|please don't do (honorific)|VC|To please don't [do/be] X (honorific).|X nasaimasu na @ X = verb masu stem||||
 295|ordered to do (polite)|VC|You are ordered to [do/be] X (polite).|X nasai @ X = verb masu stem||||
 296|ordered not to do (polite)|VC|You are ordered not to [do/be] X (polite).|X nasaru na @ X = verb masu stem||||
 297|as it is, as one likes, because, as, as long as|VC|As it is, as one likes, because, as, as long as.|X mama @ X = verb plain past|1394|||
 298|do over again|VC|To [do/be] X over again. Sometimes with the connotation of repeating an action as reparation.|X naosu @ X = verb masu stem|1403|||
-299|want to ... do something, would like to …|VC|Want to ... do something, would like to …. Want to [do/be] X.|X @ X = verb tai form||||
-300|wanted to …|VC|Wanted to …. Wanted to [do/be] X|X @ X = verb tai form||||
-301|don't want to …|VC|Don't want to …. Don't want to [do/be] X|X @ X = verb tai form||||
-302|didn't want to …|VC|Didn't want to …. Didn't want to [do/be] X|X @ X = verb tai form||||
-303|want to ... (polite)|VC|Want to ... (polite). Want to [do/be] X (polite)|X @ X = verb tai form||||
-304|wanted to ... (polite)|VC|Wanted to ... (polite). Wanted to [do/be] X (polite)|X @ X = verb tai form||||
-305|don't want to ... (polite)|VC|Don't want to ... (polite). Don't want to [do/be] X (polite)|X @ X = verb tai form||||
-306|didn't want to ... (polite)|VC|Didn't want to ... (polite). Didn't want to [do/be] X (polite)|X @ X = verb tai form||||
+299|want to do, would like to …|VC|Want to/would like to [do/be] X|X @ X = verb tai form||||
+300|wanted to …|VC|Wanted to [do/be] X|X @ X = verb tai form||||
+301|don't want to …|VC|Don't want to [do/be] X|X @ X = verb tai form||||
+302|didn't want to …|VC|Didn't want to [do/be] X|X @ X = verb tai form||||
+303|want to ... (polite)|VC|Want to [do/be] X (polite)|X @ X = verb tai form||||
+304|wanted to ... (polite)|VC|Wanted to [do/be] X (polite)|X @ X = verb tai form||||
+305|don't want to ... (polite)|VC|Don't want to [do/be] X (polite)|X @ X = verb tai form||||
+306|didn't want to ... (polite)|VC|Didn't want to [do/be] X (polite)|X @ X = verb tai form||||
 307|(I understand that) he/she wants to do|VC|(I understand that) he/she wants to [do/be] X. Third person usage only.|X @ X = verb tagaru form||||
 308|easy to do|VC|Easy to [do/be] X.|X yasui @ X = verb masu stem|894|||
 309|difficult to do|VC|Difficult to [do/be] X.|X nikui @ X = verb masu stem|895|||
@@ -312,87 +312,87 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 312|not do|VC|To not [do/be] X. Archaic form of negation.|X nu @ X = verb masu stem||||
 313|without doing|VC|To [verb] without [doing/being] X. Archaic form of negation.|X zu @ X = verb masu stem|898|||
 314|done doing|VC|[I/you/he/she] [am/are/is] done [doing/being] X. Indicates the completion of an action.|X agaru @ X = verb masu stem||||
-315|to the point of|VC|To do the point of X.|X hodo @ X = verb dict. form|1267|||
+315|to the point of|VC|To do to the point of X.|X hodo @ X = verb dict. form|1267|||
 316|or not|VC|To do or not do X.|X ka ina ka @ X = verb dict. form|1268|||
 317|have decided to do|VC|To have decided to [do/be] X (in the future). More colloquial form of "koto ni kimeru".|X koto ni suru @ X = verb dict./nai form|1410|||
-318|decided to do|VC|We decided to [do/be] X.|X koto ni shita @ X = verb dict./nai form|1402, 1408|||
+318|decided to do|VC|We decided to [do/be] X.|X koto ni shita @ X = verb dict./nai form|1402;1408|||
 319|cannot, should not, will not, must not|VC|[I/you/he/she] cannot, should not, will not, must not [do/be] X.|X maji @ X = verb dict./nai form|1420|||
-320|have decided to be doing|VC|[I/you/he/she] have decided to be [doing/being] X.|X koto ni shiteiru @ X = verb dict./nai form|1409|||
+320|has decided to be doing|VC|[I/you/he/she] have decided to be [doing/being] X.|X koto ni shiteiru @ X = verb dict./nai form|1409|||
 321|it has been decided to do|VC|It has been decided that [I/you/he/she] does/be X.|X koto ni naru @ X = verb dict./nai form||||
 322|as soon as|VC|As soon as [I/you/he/she] [does/is] X.|X ga hayai ka @ X = verb plain form|687|||
 323|why not doing, how about doing|VC|Why don't [I/you/he/she] [do/be] X? How about [doing/being] X?|X dou desu ka? @ X = verb tara form||||
 324|what do (you) think/suggest|VC|What do [I/you/he/she] [think/suggest] if [I/you/he/she] [do/does/am/is] X?|X ii desu ka? @ X = verb tara form||||
 325|shouldn't (you) do?|VC|Shouldn't [I/you/he/she] [do/be] X?|X deshou ka? @ X deshou = verb deshou form||||
-326|why don't (you) do?|VC|ME#0235;0236|||||
+326|why don't (you) do?|VC|Why don't [I/you/he/she] [do/be] X? |X ka? @ X = verb masen form||||
 327|may do?|VC|May [I/you/he/she] [do/be] X?|X mashou ka? @ X mashou = verb mashou form||||
 328|only do|VC|To only do X.|X dake da @ X = verb plain form||||
-329|have (just) recently done|VC|To have (just) recently done X.|X bakari @ X = verb ta form|1076, 1419|||
+329|has (just) recently done|VC|To have (just) recently done X.|X bakari @ X = verb ta form|1076;1419|||
 330|ready to do|VC|To be ready to [do/be] X.|X bakari da @ X = verb dict. form|1078|||
 331|have done just now|VC|To have [done/been] X just now.|X tokoro da @ X = verb ta form||||
 332|just about to do|VC|To be just about to [do/be] X.|X tokoro da @ X = verb dict. form||||
 333|be just in the middle of|VC|To be just in the middle of X-ing.|X tokoro da @ X = verb teiru form||||
 334|occasionally do|VC|To occasionally [do/be] X.|X koto ga aru @ X = verb dict./nai form||||
 335|allowed to do|VC|To be allowed to [do/be] X.|X koto ga de aru @ X = verb dict./nai form||||
-336|have experienced|VC|To have experienced X-ing.|X koto ga aru @ X = verb ta form|1473, 1474|||
+336|have experienced|VC|To have experienced X-ing.|X koto ga aru @ X = verb ta form|1473;1474|||
 337|have happened to do|VC|To have happened to [do/be] X.|X koto ni naru @ X = verb ta form||||
 338|be scheduled to do|VC|To be scheduled/due to do X.|X koto ni nattieru @ X = verb dict./nai form||||
-339|about to do|VC|To be about to [do/be] X.|X to suru/shiteiru @ X = verb ou (volitional) form||||
+339|about to do|VC|To be about to [do/be] X.|X to shiteiru @ X = verb ou (volitional) form||||
 340|was just about to do, tried to do|VC|To have been just about to do X, to have tried to do X.|X to shita @ X = verb ou (volitional) form||||
 341|plan to do, intend to do|VC|To plan to [do/be] X, to intend to [do/be] X. "tsumori" indicates more of a concrete intention that "ou to omou".|X to omou @ X = verb ou (volitional) form|||tsumori|
 342|planning to do|VC|Planning to [do/be] X. "tsumori" indicates more of a concrete intention that "ou to omotteiru".|X to omoteiru @ X = verb ou (volitional) form||||
 343|not intending to do|VC|Not intending to [do/be] X.|X tomonaku @ X = verb dict. form|988|||
-344|intend to do|VC|To intend to [do/be] X. "tsumori" indicates more of a concrete intention that "ou to omou".|X tsumori da @ X = verb plain form|989, 1294||ou to omou|
-345|should do|VC|(He) should [do/be] X.|X ii noni @ X = verb ba form||||
-346|should do|VC|(He) should [do/be] X.|X yokatta noni @ X = verb ba form||||
-347|should have done|VC|(He) should have [done/been] X.|X yokatta @ X = verb ba form||||
-348|am, is, present tense|iAC||Adjective conjuation: [root] + i||||
-349|am, is, present tense (polite)|iAC||Adjective conjuation: [root] + i desu||||
-350|am not, is not, present negative tense|iAC||Adjective conjuation: [root] + kunai desu||||
-351|am not, is not, present negative tense (polite)|iAC||Adjective conjuation: [root] + ku arimasen||||
-352|was, past tense|iAC||Adjective conjuation: [root] + katta desu||||
-353|was not, past negative tense|iAC||Adjective conjuation: [root] + kunakatta desu||||
-354|was not, past negative tense (polite)|iAC||Adjective conjuation: [root] + ku arimasen deshita||||
-355|adverb form|iAC||Adjective conjuation: [root] + ku|1082, 1083, 1084|||
-356|and|iAC|X and Y. Used to adjoin more than two adjective to a noun.|Adjective conjuation: [root] + kute + next adj.|1085|||
-357|is so that|iAC||Adjective conjuation: [root] + kute|1262|||
-358|to turn into|iAC||Adjective conjuation: [root] + ku naru|1086, 1087|||
-359|to make|iAC||Adjective conjuation: [root] + ku suru|1088|||
-360|noun form|iAC||Adjective conjuation: [root] + mi|1089|||
-361|if|iAC||Adjective conjuation: [root] + kereba||||
-362|should do, must do, ought to do|iAC||Adjective conjuation: [root] + karou||||
-363|am, is, present tense|naAC||Adjective conjuation: [root] + ||||
-364|am, is, present tense (polite)|naAC||Adjective conjuation: [root] + desu||||
-365|am not, is not, present negative tense (most polite)|naAC||Adjective conjuation: [root] + de wa arimasen||||
-366|am not, is not, present negative tense (polite)|naAC||Adjective conjuation: [root] + ja nai desu||||
-367|am not, is not, present negative tense (neutral)|naAC||Adjective conjuation: [root] + dewa nai|1091|||
-368|am not, is not, present negative tense (impolite)|naAC||Adjective conjuation: [root] + ja nai|108|||
-369|was, past tense|naAC||Adjective conjuation: [root] + deshita||||
-370|was not, past negative tense|naAC||Adjective conjuation: [root] + ja arimasen deshita||||
-371|was not, past negative tense (polite)|naAC||Adjective conjuation: [root] + de wa arimasen deshita||||
-372|and|naAC|X and Y. Used to adjoin more than two adjective to a noun.|Adjective conjuation: [root] + de + [next adj.]||||
-373|to turn into |naAC||Adjective conjuation: [root] + ni naru|1094, 1095|||
-374|to make|naAC||Adjective conjuation: [root] + ni suru|323|||
-375|if|naAC||Adjective conjuation: [root] + deareba||||
+344|intend to do|VC|To intend to [do/be] X. "tsumori" indicates more of a concrete intention that "ou to omou".|X tsumori da @ X = verb plain form|989;1294||ou to omou|
+345|should do|VC|[I/you/he/she] should [do/be] X.|X ii noni @ X = verb ba form||||
+346|should do|VC|[I/you/he/she] should [do/be] X.|X yokatta noni @ X = verb ba form||||
+347|should have done|VC|[I/you/he/she] should have [done/been] X.|X yokatta @ X = verb ba form||||
+348|am, is|iAC|i-adjective conjugation: present tense.|[root] + i||||
+349|am, is|iAC|i-adjective conjugation: present tense (polite).|[root] + i desu||||
+350|am not, is not|iAC|i-adjective conjugation: present negative tense.|[root] + kunai desu||||
+351|am not, is not|iAC|i-adjective conjugation: present negative tense (polite).|[root] + ku arimasen||||
+352|was|iAC|i-adjective conjugation: past tense.|[root] + katta desu||||
+353|was not|iAC|i-adjective conjugation: past negative tense.|[root] + kunakatta desu||||
+354|was not|iAC|i-adjective conjugation: past negative tense (polite).|[root] + ku arimasen deshita||||
+355|manner of being|iAC|i-adjective conjugation: adverb form.|[root] + ku|1082;1083;1084|||
+356|and|iAC|i-adjective conjugation: X and Y. Used to adjoin more than two adjectives to a noun.|[root] + kute + [next adj.]|1085|||
+357|is so that|iAC|i-adjective conjugation.|[root] + kute|1262|||
+358|to turn into|iAC|i-adjective conjugation.|[root] + ku naru|1086;1087|||
+359|to make|iAC|i-adjective conjugation.|[root] + ku suru|1088|||
+360|noun form|iAC|i-adjective conjugation.|[root] + mi|1089|||
+361|if|iAC|i-adjective conjugation.|[root] + kereba||||
+362|should do, must do, ought to do|iAC|i-adjective conjugation.|[root] + karou||||
+363|am, is|naAC|na-adjective conjugation: present tense.|[root]||||
+364|am, is|naAC|na-adjective conjugation: present tense (polite).|[root] + desu||||
+365|am not|naAC|na-adjective conjugation: present negative tense (most polite).|[root] + de wa arimasen||||
+366|am not|naAC|na-adjective conjugation: present negative tense (polite).|[root] + ja nai desu||||
+367|am not|naAC|na-adjective conjugation: present negative tense (neutral).|[root] + dewa nai|1091|||
+368|am not|naAC|na-adjective conjugation: present negative tense (impolite).|[root] + ja nai|108|||
+369|was|naAC|na-adjective conjugation: past tense.|[root] + deshita||||
+370|was not|naAC|na-adjective conjugation: past negative tense.|[root] + ja arimasen deshita||||
+371|was not|naAC|na-adjective conjugation: past negative tense (polite).|[root] + de wa arimasen deshita||||
+372|and|naAC|na-adjective conjugation: X and Y. Used to adjoin more than two adjectives to a noun.|[root] + de + [next adj.]||||
+373|to turn into |naAC|na-adjective conjugation.|[root] + ni naru|1094;1095|||
+374|to make|naAC|na-adjective conjugation.|[root] + ni suru|323|||
+375|if|naAC|na-adjective conjugation.|[root] + deareba||||
 376|a number of|A|||741|||
 377|any choice|A|ME#0021;0022|||||
 378|any kind|A|ME#0023;0024|||||
 379|any number of|A||||||
 380|as the next follow|A|||||daremo|
-381|anything, whatever|A||Sentences where nanika is used instead of nanidemo.|718|||
+381|any one, any, whichever|A||Sentences where nanika is used instead of nanidemo.|718|||
 382|black|A|||627|||
 383|comparatively|A||||||
 384|rate, ratio, percentage, proportion|N;MSE||||||
-385|comparatively, proportionately, in comparison, in proportion|A||||||
+385||-||||||
 386|apiece, each|A|||643|||
 387|either choice|A||||||
 388|every kind|A||Always followed by affirmative verb.||||
 389|no kind|A||Always followed by negative verb.||||
 390|everybody, everyone|A||||||
-391|everything|A|||711, 712|||
+391|everything|A||||||
 392|lankily, spindly, frailly|A;M||||||
 393|everyone, every person, all, anyone|A||||||
 394|everything|A||||||
-395|exactly, surely, certainly|A||||||
+395||-||||||
 396|him/her (here)|A|ME#0006;0007|||||
 397|this one (something physically close to the speaker)|A|ME#0015;0016|||||
 398|him/her (over there)|A|ME#0010;0011|||||
@@ -401,23 +401,23 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 401|that one (something close to the listener)|A|ME#0017;0018|||||
 402|in addition to, besides, other than, else|A|ME#0004;0005|||||
 403|me too|A||||||
-404|(some) more, even more, longer, further|A|||646, 647|||
+404|(some) more, even more, longer, further|A|||646;647|||
 405|monotone, monotonic|Ana||||||
 406|monotony, dullness|N;Abs||||||
 407|neither choice|A||||||
 408|none|A||||||
 409|no one, nobody|A|||710|||
-410|not particularly, nothing, separately, apart|A||||||
+410||-||||||
 411|nothing (with neg. verbs), not any|A|||1376|||
 412|particularly, especially|A|||631|||
 413|some kind|A||||||
 414|someone|A|||709|||
 415|something|A|ME#0012;0013;0014|||||
 416|surely, undoubtedly, almost certainly, most likely (e.g. 90 percent)|A|Used as an onomatopeia.|||||
-417|that (something or someone distant from the speaker, close to the listener, actions of the listener, or ideas expressed or understood by the listener), the|A|||713, 714|||
+417|that (something or someone distant from the speaker, close to the listener, actions of the listener, or ideas expressed or understood by the listener), the|A|||713;714|||
 418|that kind of|A||||||
 419|that kind of (over there)|A||||||
-420|that over there|A|||715, 716|||
+420|that over there|A|||715;716|||
 421|this (something or someone close to the speaker (including the speaker), or ideas expressed by the speaker)|A|||104|||
 422|this kind of|A||"konna" describing the type of object.|721|||
 423|after all|A||||||
@@ -437,12 +437,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 437|good grief (expression of exasperation)|CE||||||
 438|indeed, really, absolutely, truly, in truth, actually, very, quite|A||||||
 439|maybe, possibly|A|||622|||
-440|no, nay|A|Used only by male subjects.|||||
+440||-||||||
 441|no, nay|A|Used by both male and female subjects.|||||
 442|no, nay|A||||||
 443|tentatively, for the time being|A|||1401|||
 444|almost all, in large part, for the greater part, in majority, mostly, for the most part|A||||||
-445|perhaps, possibly, if I'm not wrong|A||||||
+445||-||||||
 446|please|A||||||
 447|please|A|Dialect.|||||
 448|please give me|A||||||
@@ -465,15 +465,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 465|just like, the spitting image of|Ana||||||
 466|all, thoroughly|A;Dg||||||
 467|entirely, completely|A;Dg||||||
-468|all, entire, whole, altogether|A;Dg|||653, 1258, 1355|subete, zenbu||
+468|all, entire, whole, altogether|A;Dg|||653;1258;1355|subete, zenbu||
 469|in general, overall|A;Dg||||minna, zenbu||
 470|altogether, entirely|A;Dg|||||尽く|
-471|usually|A;Dg|||649, 650|||
+471|usually|A;Dg|||649;650|||
 472|approximately, about (quantity, time)|A;Dg|||633|||
 473|just, only|A;Dg|||648|||
 474|always, without exception, necessarily, certainly, without fail, positively, invariably|A;Dg||||||
-475|approximately, about (quantity, time)|A;Dg|||632, 141|||
-476|approximately, about, at most|A;Dg|||1468, 1469, 1470|||
+475|approximately, about (quantity, time)|A;Dg|||632;141|||
+476|approximately, about, at most|A;Dg|||1468;1469;1470|||
 477|degree, extent, bounds, limit|N;Abs||||||
 478|as ever, as usual, the same, still|A;Dg|Based on the "zu" conjugation of kawaru (ie. without changing).||1413|||
 479|at last, at length|A;Dg||||||
@@ -500,24 +500,24 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 500|a little, for a little while|A;Dg|||641|||
 501|small quantity, little, few, something|Ana||||||
 502|finally, at last, reaching a head|A;Dg||||||
-503|generally, more or less|A;Dg|||634, 1307, 1308|||
+503|generally, more or less|A;Dg|||634;1307;1308|||
 504|halfway, partly, semi|A;Dg||||||
 505|middle, half|N;Abs||||||
-506|just, only|A;Dg||X dake|1098, 1099, 1367||shika, tatta|
-507|like so, like this, in this way|A;Dg||"konna ni" meaning "like so/like this/in this way".|722, 723, 724|||
-508|like that, in that way|A;Dg|||725, 726, 727|||
+506|just, only|A;Dg||X dake|1098;1099;1367||shika, tatta|
+507|like so, like this, in this way|A;Dg||"konna ni" meaning "like so/like this/in this way".|722;723;724|||
+508|like that, in that way|A;Dg|||725;726;727|||
 509|little by little|A;Dg||||||
 510|pass (of time)|VnuI||||||
 511|little while, short while, instant, quite a time|N;Abs||||||
 512|a large number of|A;Dg||||chotto|ooi|
 513|much|A;Dg|||1415|chotto|ooku|
-514|numerous, a lot of|Ai|||460, 471, 1285, 1326|sukunai||
-515|die|VnuI|||642, 194|||
+514|numerous, a lot of|Ai|||460;471;1285;1326|sukunai||
+515|die|VnuI|||642;194|||
 516|go bad, rot|VnuI||||||
 517|most, extremely|A;Dg||||||
 518|mostly, nearly, practically, well-nigh, almost invariably, all but, just about, almost|A;Dg|||1416|||
 519|mostly, ordinarily, usually, generally, probably|A;Dg|||1428|||
-520|ordinary, usual, general, probable|Ana|||613, 1272|||
+520|ordinary, usual, general, probable|Ana|||613;1272|||
 521|motionlessly, fixedly, patiently, firmly (e.g. hold), in a restrained manner|A;Dg||||||
 522|no matter what, however much|A;Dg||||||
 523|whatever kind of, what kind of|P||||||
@@ -527,14 +527,14 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 527|quite, really, very, extremely|A;Dg|Used in an affirmative phrase.|||||
 528|not at all|A;Dg|Used in a negative phrase.|||||
 529|not at all (with neg. verb)|A;Dg|Use in phrase with negative tense only.||682||metta ni, amari, never|
-530|not important, doesn't matter|A;Dg|||729, 730, 731|||
+530|not important, doesn't matter|A;Dg|||729;730;731|||
 531|not less than, ... and more, ... and upwards|A;Dg|||1290|||
 532|beyond ... (e.g. one's means), further (e.g. nothing further to say), more than ... (e.g. cannot pay more than that)|N;Abs||||ikka||
-533|not much, not often|A;Dg|Use in phrase with negative tense only.||680, 681, 1464||metta ni, zenzen|
+533|not often|A;Dg|Use in phrase with negative tense only.||680;681;1464||metta ni, zenzen|
 534|not so much, not very|A;Dg|Used in a negative phrase.|||||
-535|not very (well)|A;Dg|||680, 1321, 1414|||
+535|not very (well)|A;Dg|||1321;1414|||
 536|remainder, rest, balance, remains, scraps, residue, remnant, surplus, excess|N;Abs||||||
-537|nothing except for|A;Dg|Only used in a negative phrase. Usually used to emphasize that there should be more. Colloquial form: shikia, shikkia.|X shika|651, 652, 1100, 1101||tatta, dake|
+537|nothing except for|A;Dg|Only used in a negative phrase. Usually used to emphasize that there should be more. Colloquial form: shikia, shikkia.|X shika|651;652;1100;1101||tatta, dake|
 538|only|A;Dg|||||shika,dake|
 539|only, nothing but|A;Dg||X nomi||||
 540|only, simply, merely, just|A;Dg||||||
@@ -549,23 +549,23 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 549|reasonably, fairly well|A;Dg||||||
 550|or so, about|Sx||||||
 551|relatively|A;Dg||||||
-552||-|||640, 1349|||
+552|why don't (you) do?|VC|Why don't [I/you/he/she] [do/be] X? |X ka? @ X = verb nai form||||
 553|roughly, in round numbers|A;Dg||||||
-554|simply, merely, only, solely|A;Dg||||||
+554||-||||||
 555|somehow or other, for some reason or another|A;Dg||||||
 556|to that degree, to that extent|A;Dg||||||
 557|to that extent|A;Dg||||||
 558|until then, till then, up to that time|A;T||||||
 559|to that extent, to that degree|A;Dg|||728|||
-560|together, jointly, along with, both|A;Dg||||||
-561|together, with|A;Dg|||636|hitori de|minna de, futari de|
-562|very, awfully, exceedingly|A;Dg|"tottemo" is usually used in a more expressive context than "totemo".||637, 1275|||
+560||-||||||
+561||-||||||
+562|very, awfully, exceedingly|A;Dg|"tottemo" is usually used in a more expressive context than "totemo".||637;1275|||
 563|very, extremely|A;Dg||||||
 564|that is…|CE||||||
 565|very, extremely, surprisingly, considerably, awfully, terribly|A;Dg|||1342|||
 566|terrible, horrid, contemptible, reprehensible|Ana||||||
 567|very, greatly, terribly, awfully|A;Dg|||638|||
-568|immense, enormous, great, serious, grave, stressful, terrible, dreadful, difficult, hard|Ana|||591, 592|yasashii, raku|muzukashii, nukui|
+568|immense, enormous, great, serious, grave, stressful, terrible, dreadful, difficult, hard|Ana|||591;592|yasashii, raku|muzukashii, nukui|
 569|very, much, greatly, a lot of|A;Dg||||||
 570|without omission, in full, fully|A;Dg||||||
 571|adorable|Ai||||||
@@ -573,23 +573,23 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 573|applauded (to applaud)|Ai|Verb-based, linked to object by "ga" when used with desu verb.|||||
 574|appropriate, adequate, suitable, fitting, worthy|Ai||||||
 575|huh?, what?|OI||||||
-576||-|"hidee" is used colloquially.||535, 1284|idai||
+576||-||||||
 577|bad, poor, inferior|Ai|||514|ii, yoi, kekkou, yoroshii||
-578|beautiful|Ai||||||
-579|beautiful, lovely|Ai|||||kirei|
-580|beautiful, lovely|Ai||||||
+578||-||||||
+579||-||||||
+580|beautiful, lovely|Ai|||||kirei|
 581|big, large, great|Ai|||552|||
 582|bitter|Ai|||581|||
 583|black|Ai||||||
 584|blue, azure|Ai||||||
 585|boring, uninteresting|Ai|||551|omoshiroi, tanoshii||
-586|bothersome, troublesome, tiresome, annoying|Ai||||||
+586||-||||||
 587|colorful|Ai|||516|kurai||
 588|brown|Ai||||||
-589|busy, occupied, hectic|Ai|||534, 1262|hima, jiyuu||
+589|busy, occupied, hectic|Ai|||534;1262|hima, jiyuu||
 590|careless, thoughtless|Ai||||||
 591|charming, bewitching, mysterious|Ai||||||
-592|cheap, inexpensive|Ai|||512, 538|takai||
+592|cheap, inexpensive|Ai|||512;538|takai||
 593|cold (object)|Ai|||542|atatakai, atsui|samui, suzushii|
 594|cold (ambient temperature)|Ai||||atsui, atatakai|suzushii, tsumetai|
 595|convenient|Ai||||||
@@ -598,7 +598,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 598|dangerous, risky, awful, terrible, crap, terrific, amazing, cool|Ai|Used colloquially.|||||
 599|dangerous, risky, hazardous, perilous, precarious|Ai||||||
 600|dangerous, risky, hazardous, perilous, precarious|Ai|||540|anzen||
-601|sorrowful, bitter, unclear, unknown|Ai|||517, 1383|akarui||
+601|sorrowful, bitter, unclear, unknown|Ai|||517;1383|akarui||
 602|dear, desired, missed|Ai||||apart from||
 603|deep (color), dark, strong (flavor, smell, etc.)|Ai|||572|usui||
 604|deep|Ai|||568|浅い||
@@ -606,7 +606,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 606|deserted, empty of people|Ai||||||
 607|detailed, full, accurate, knowing very well, well-acquainted, well-informed|Ai||||||
 608|not|Sx||||||
-609|hard to do ...|Sx|||1117, 1118, 1319|||
+609|hard to do ...|Sx|||1117;1118;1319|||
 610|s|PP|Abbreviation of "no" as a possessive marker.|||||
 611|dim, gloomy|Ai||||||
 612|at (place, time), in, on, during|PP|Abbreviation of the "ni" particle.|||||
@@ -616,18 +616,18 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 616|very|Px|Emphatic prefix, usu. before an adjective.|||||
 617|earth-shattering, staggering, to a very great extent|Ai||||||
 618|easy|Ai||||||
-619|easy, plain, simple|Ai|||555, 556|muzukashii, nikui, taihen||
+619|easy, plain, simple|Ai|||555;556|muzukashii, nikui, taihen||
 620|easy, simple, light|Ai||||||
 621|envious, jealous, enviable|Ai||||||
 622|similar|Ai||||||
-623|expensive, high-priced|Ai|||509, 538|yasui||
-624|tall (object), high|Ai|||510, 511|||
-625|far, distant|Ai|||525, 1265|chikai||
+623|expensive, high-priced|Ai|||509;538|yasui||
+624|tall (object), high|Ai|||510;511|||
+625|far, distant|Ai|||525;1265|chikai||
 626|fortunate, splendid, promising|Ai||||||
 627|friendly, tender, kind, gentle, graceful, affectionate, amiable, suave, sweet|Ai|||554|shinsetsu|fushinsetsu|
 628|-al, -ial, -ic, -ical, -ish, -y|Sx|Suffix forming adjectives or adverbs, after an indeclinable word.|||||
 629||-|||576|||
-630|good, ok, all right, fine|Ai|||513|warui|kekkou, yoroshii|
+630||-|||513|warui|kekkou, yoroshii|
 631|good, ok, all right, fine|Ai||||||
 632|good-for-nothing, stupid, trivial, worthless|Ai||||||
 633|grateful, thankful, welcome, appreciated, evoking gratitude|Ai||||||
@@ -639,12 +639,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 639|heavy, massive, serious, important, severe, oppressed|Ai||||||
 640|hectic, bewildering, bustling, dizzy|Ai||||||
 641|hot (object)|Ai|Used for objects.||558|||
-642|hot and humid, sultry|Ai|||564, 1359|||
-643|am/is not X|PC||X dewa nai @ X = phrase|1497|||
+642|hot and humid, sultry|Ai|||564;1359|||
+643|am/is not X|PC|na-adjective conjugation.|X dewa nai @ X = phrase|1497|||
 644|impious, profane, sacrilegious|Ai||||||
 645|insistent, obstinate, persistent, tenacious, too rich (e.g. in taste)|Ai||||||
 646|not|-|Colloquialism for "nai" (verb-negating suffix), may indicate question or invitation with rising intonation.|||||
-647||-||||||
+647|about to do|VC|To be about to [do/be] X.|X to suru @ X = verb ou (volitional) form||||
 648|intolerable, unbearable, unendurable, irresistible, tremendous, out of this world|Ai||||||
 649|invisible, unseen, vague, mysterious, imaginary|Ai||||miyasui||
 650|itchy, itching|Ai||||||
@@ -665,12 +665,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 665|no match for|Ai||||||
 666|noisy, boisterous, strict, fault-finding, carping, fussy|Ai||||||
 667|not fresh, late|Ai|||523|atarashii, wakai||
-668|rough, stiff, hard|Ai||||||
-669|painful, sore|Ai|||541, 1324|||
+668|rough|Ai||||||
+669|painful, sore|Ai|||541;1324|||
 670|painful, bitter, heartbreaking|Ai||||||
 671|agonizing|Ai||||||
 672|painful, heartrending, trying, oppressive, suffocating, miserable|Ai||||||
-673|poor|Ai|||541|okanemochi|binbou|
+673|poor, needy|Ai|||541|okanemochi|binbou|
 674|powerful, strong, forceful, vigorous, reassuring, encouraging|Ai||||||
 675|precious, valuable, priceless, noble, exalted, sacred|Ai||||||
 676||-||||||
@@ -687,7 +687,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 687||-|||563|||
 688|sad, sorrowful, unhappy|Ai|||543|ureshi||
 689|salty|Ai|||580|||
-690|few, a little, scarce, insufficient, seldom|Ai|||544, 1272, 1286|ooi||
+690|few, a little, scarce, insufficient, seldom|Ai|||544;1272;1286|ooi||
 691|scary, frightening, eerie, dreadful|Ai|||569|||
 692|severe, strict, rigid, unsparing, relentless, stern, austere, grave, solemn|Ai||||||
 693|shallow, superficial|Ai|||567|fukai||
@@ -699,22 +699,22 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 699||-||||||
 700|small, little, tiny|Ai|||553|||
 701|small, fine, minute, minor, trivial, sensitive, attentive|Ai||||||
-702|smelling of fish or blood, fishy, bloody, depraved, corrupt, fallen, worldly, mundane, secular, common, ordinary, suspicious, questionable|Ai||||||
+702||-||||||
 703||-||||||
 704|soft, weak|Ai||||tsuyoi, joubu|yowai, hiyowai, hiyowa, yowacchii, yurui, usui, nayocchii, kasuka, hijaku, yawa|
 705|sour, acid|Ai|||583|||
 706|spicy, hot|Ai|||582|||
 707|stiff, tight, wooden, formal, bookish|Ai||||||
 708|stinky, suspicious, fishy|Ai|||571|||
-709|strong, potent, competent, domineering, tough|Ai|||520, 1321|yowai, hiyowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, kasuka, hijaku, yawa|joubu, kyouryoku|
+709|strong, potent, competent, domineering, tough|Ai|||520;1321|yowai, hiyowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, kasuka, hijaku, yawa|joubu, kyouryoku|
 710|strong, firm, tough|Ai|||565|yawarakai||
 711||-||||||
 712|sweet-tasting, sweet, sugary, sugared|Ai|||579|||
-713|tall (person)|Ai|||1220, 1400|se ga hikui||
+713|tall (person)|Ai|||1220;1400|se ga hikui||
 714|tasteless, nasty, tasting bad, disgusting|Ai|||531|oishii||
 715||-||||||
 716|terrible, dreadful, terrifying, frightening, frightened, surprising, startling, tremendous, amazing|Ai||||||
-717|thick, abundant|Ai|||557|||
+717|abundant|Ai|||557|||
 718||-||||||
 719|thickheaded, obtuse, stupid, indulgent (esp. to the opposite sex), doting|Ai||||||
 720|thin, pale light, dilute, weak (e.g. taste)|Ai|||545|tsuyoi, koi, joubu, futoi|hosoi, yowai, hiyowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, kasuka, hijaku, yawa|
@@ -722,15 +722,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 722|(too) tight, constricting, close|Ai||||yurui||
 723|hard on the eyes|Ai||||rippa||
 724|uncomfortable|Ai||||kaiteki||
-725||-||||||
-726||-||||||
+725|completely finished doing|VC|[I/you/he/she] [have/has] completely finished [doing/being] X. Used colloquially (casual speech) only.|X jau @ X = verb masu form or root (depending on verb type)||||
+726|did and regret doing it|VC|[I/you/he/she] [did/was] X and regret doing it. Used colloquially (casual speech) only.|X jatta @ X = verb masu form or root (depending on verb type)||||
 727|unusual, rare, curious, weird|Ai|||573|||
 728||-||||||
 729|vexing, annoying, frustrating, regrettable, mortifying|Ai||||||
 730||-||||||
 731|visible, understandable, easy on the eyes, easy to see, beautiful, pretty|Ai|||513|imoshinai||
-732|wanted (to want)|Ai|Verb-based, linked to object by "ga" when used with desu verb.||577, 1374|||
-733|warm|Ai|||527, 1303|suzushii, samui, tsumetai|atsui|
+732|wanted (to want)|Ai|Verb-based, linked to object by "ga" when used with desu verb.||577;1374|||
+733|warm|Ai|||527;1303|suzushii, samui, tsumetai|atsui|
 734|warm (weather), hot (weather)|Ai|Used for weather and general heat.||529|suzushii, samui, tsumetai|atatakai|
 735|weak, feeble|Ai||||tsuyoi, joubu|yowai, hiyowai, hiyowa yurui, usui, yawai, nayocchii, kasuka, hijaku, yawa|
 736|weak, frail, delicate, tender, unskilled, weak (wine)|Ai|||521|tsuyoi, joubu|hiyowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, kasuka, hijaku, yawa|
@@ -742,13 +742,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 742|wise, clever, smart|Ai||||||
 743|wonderful|Ai||||||
 744|yellow|Ai|||578|||
-745|young, youthful|Ai|||560, 561|furui|atarashii|
+745|young, youthful|Ai|||560;561|furui|atarashii|
 746|absent-mindedly|A;M||||||
 747|soft, fluffy|Ana||||||
 748|again and again, repeatedly|A;M||||||
 749|alone|A;M|||1286|futari de, issho ni, minna de||
 750|anyhow, at any rate, anyway, somehow or other, generally speaking, in any case|A;M||||||
-751|was X|PC||X deatta @ X = phrase||||
+751|was|PC|Was X.|X deatta @ X = phrase||||
 752|arbitrarily, of its own accord, involuntarily, willfully, willfully, as one pleases|A;M||||||
 753|arduously, diligently, industriously|A;M||||||
 754||-||||||
@@ -816,27 +816,27 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 816|original, primary|N;Abs||||||
 817|ploppily, splashily, tumblingly|A;M|Onomatopeia|||||
 818|precisely, accurately|A;M||||||
-819|precisely, accurately, neatly|A;M|||1345, 1346|||
+819|precisely, accurately, neatly|A;M|||1345;1346|||
 820|prettily|A;M||||||
 821|stretchily, with tension|A;M||||||
 822|quietly, calmly, gently, peacefully|A;M||||||
 823|really, truly|A;M||||||
-824|really, truly|A;M||||||
+824||-||||||
 825|in a scattered or dipersed fashion, loosely, disconnectedly, rustlingly|A;M||||||
 826|scattered, disperse, loose, disconnected, in pieces, in drops, rustling|Ana||||||
 827|separately, individually|A;M||||||
 828|skillfully, aptly, well, cleverly|A;M|||||yoku, yoroshiku, jouzu ni|
 829|slowly, late|A;M||||hayaku||
-830||-||||||
+830|please, somehow or other|A||||||
 831|soon, momentarily, before long, any time now|A;T|Mainly used to refer to an event that will be related to the subject of the sentence (usually a person).||1382||sugu|
 832|by slurping (noodles)|A;M||||||
 833|softly, gently, quietly, secretly|A;M||||||
-834|somehow|A;M|||1414, 1415, 1416|||
+834||-||||||
 835|soundly (asleep), fast (asleep)|A;M||||||
 836|stealthily, secretly|A;M||||||
 837|strongly|A;M||||||
 838|suddenly, all of a sudden|A;M||||||
-839|suddenly, unexpectedly, abruptly|A;M|||626||totsuzen|
+839||-||||||
 840|thus, in this way|A;M||||||
 841|tightly, closely, exactly, precisely, suddenly stopping, perfectly suited, ideally|A;M||||||
 842|time and time again, many times, a number of times|A;M||||||
@@ -868,7 +868,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 868||-||||futekisetsu||
 869|at one's own convenience, in one's own way|Ana||||||
 870|automatic|Ana||||||
-871|delinquent, failing, defective|Ana||||||
+871|failing, defective|Ana||||||
 872|badness, inferiority, delinquency, failure, defect, blemish|N;Abs||||||
 873|barefoot|Ana||||||
 874|big, great, grand, large, greater, upper, senior|Ana|||596|||
@@ -903,7 +903,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 903||-|||593|taihen, muzukashii, nukui|yasashii|
 904|comfort, ease, relief, (at) peace, relaxation|N;Abs||||||
 905||-||||||
-906|equality, evenness, par, good match|N;Abs||||||
+906|equality, evenness, good match|N;Abs||||||
 907||-||||||
 908|equality, impartiality, evenness|N;Abs||||||
 909|exactly, just, right|Ana|||283|||
@@ -912,7 +912,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 912||-||||||
 913||-||||||
 914|fairness, impartiality, justice, objectivity|N;Abs||||||
-915|famous|Ana|||420, 1360|||
+915|famous|Ana|||420;1360|||
 916|fame|N;Abs||||||
 917|feeble, faint, weak|Ana||||tsuyoi, joubu|yowai, hiyowai, hiyowa, yowacchii, yurui, usui, yawai, nayocchii, kasuka, yawa|
 918|firm, unshakeable, resolute|Ana||||||
@@ -950,7 +950,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 950|happy, fortunate, lucky, blessed|Ana||||||
 951|happiness, good fortune, luck, blessing|N;Abs|||166|||
 952|hateful, unlikable, disgusting|Ana|||609|||
-953|fine, all right|Ana|||585, 586|byouki, fukenkou|kenkouteki, joubu|
+953|fine, all right|Ana|||585;586|byouki, fukenkou|kenkouteki, joubu|
 954|energy, stamina, vitality, vim, spirit, courage, pep, vigor, vigour, health|N;Abs||||||
 955|healthy, robust, strong, solid, durable, firm|Ana|||611|fukenkou|daijoubu|
 956|healthy, sound, wholesome|Ana||||||
@@ -962,7 +962,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 962|identical, same, one and the same, equal|Ana||||||
 963|identity, sameness, similarity, equality, fairness|N;Abs||||||
 964|immediately, at once, right away, directly|Ana||||||
-965|soon, in a short time, before long, shortly, immediately, right away, fast|A;T|||669, 670, 1364||sorosoro|
+965|soon, in a short time, before long, shortly, immediately, right away, fast|A;T|||669;670;1364||sorosoro|
 966|important, momentous, essential, principal, major|Ana||||||
 967||-||||||
 968||-||||||
@@ -990,7 +990,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 990|large grain, large drop|N;Abs||||||
 991||-||||||
 992|fond|Ana|Verb-based, linked to object by "ga" when used with desu verb.||507|kirai, daikirai|daisuki|
-993|lively, bustling, busy|Ana|||601, 1413|||
+993|lively, bustling, busy|Ana|||601;1413|||
 994|long (time since the last time)|Ana||||||
 995|a long time (since the last time), it's been a while (since I last saw, mailed, etc., you)|N;Abs||||||
 996|long-term|Ana||||||
@@ -1046,10 +1046,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1046|displeasure, ill humor, ill humour, sullenness|N;Abs||||||
 1047|powerful, strong|Ana||||tsuyoi||
 1048|precise, accurate|Ana||||||
-1049|pretty, lovely, beautiful, fair, clean, clear, pure, tidy, neat|Ana|||595, 1263|||
+1049|pretty, lovely, beautiful, fair, clean, clear, pure, tidy, neat|Ana|||595;1263|||
 1050|pulpy, soppy, sloppy|Ana||||||
 1051|questionable, doubtful, suspicious|Ana||||||
-1052|quiet, peaceful|Ana|||587, 1275|urusai||
+1052||-|||587;1275|urusai||
 1053|quite right|Ana||||||
 1054|rapid (e.g. progress)|Ana||||||
 1055|rare, curious, strange|Ana||||||
@@ -1060,7 +1060,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1060|regrettable, vexing, upsetting, unthinkable, wholly unexpected|Ana||||||
 1061|remaining, fraction of|Ana||||||
 1062|remnant, fragment, incomplete set, fraction, odd sum, incompleteness|N;Abs||||||
-1063|representative, exemplary, model|Ana||||||
+1063||-||||||
 1064|rich person|Ana|||466|mazushii, binbou||
 1065|ride, discourteous|Ana|||614|teinei||
 1066|impoliteness, rudeness, discourtesy|N;Abs|||112|||
@@ -1078,7 +1078,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1078|-like, sort of, similar to, resembling|Ana|Used colloquially.|||||
 1079|simple, convenient, easy|Ana||||||
 1080|simplicity, convenience, easiness, quasi-|N;Abs||||||
-1081|simple, easy, straightforward, uncomplicated|Ana|||589, 604|fukuzatsu, taihen||
+1081|simple, easy, straightforward, uncomplicated|Ana|||589;604|fukuzatsu, taihen||
 1082|brief, quick, light|Ana||||||
 1083||-||||||
 1084|dexterity|N;Abs||||||
@@ -1089,7 +1089,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1089|flavor, flavour, taste, charm, style, experience|N;Abs||||||
 1090|soft|Ana||||||
 1091|so-so|Ana||||||
-1092|special, particular, extraordinary, exceptional, especial|Ana|||1255, 1325|futsuu||
+1092|special, particular, extraordinary, exceptional, especial|Ana|||1255;1325|futsuu||
 1093|specialness|N;Abs||||||
 1094|spiritual, incorporeal|Ana||||||
 1095||-||||||
@@ -1140,7 +1140,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1140|urgent, pressing|Ana||||||
 1141|urgency, emergency|N;Abs||||||
 1142|rapid, swift, fast|Ana||||||
-1143|various, all sorts of, variety of|Ana|||603, 1296, 1298|||
+1143|various, all sorts of, variety of|Ana|||603;1296;1298|||
 1144|very disliked (to dislike very much), hated|Ana|Verb-based, linked to object by "ga" when used with desu verb.|||suki, daisuki|kirai|
 1145|very liked (to like very much), loved|Ana|Verb-based, linked to object by "ga" when used with desu verb.||619|kirai, daikirai|suki|
 1146|weak (organization)|Ana||||||
@@ -1159,7 +1159,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1159|first of all, to start with, to begin with, originally|A;T||||||
 1160|firstly|A;T||||||
 1161|first, foremost, number one|N;Abs||||||
-1162|next, following, subsequent|A;T|||657, 658|saki||
+1162|next, following, subsequent|A;T|||657;658|saki||
 1163|in front|A;T||||tsugi||
 1164|before|Sx|e.g. renrakusaki (before making a reservation)|||||
 1165||-||||||
@@ -1209,7 +1209,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1209|whole year, all year round, throughout the year|N;Abs||||||
 1210||-||||||
 1211|always, constantly, frequently, often|A;T||||||
-1212|always, usually, every time|A;T||Always followed by affirmative verb.|443, 1263, 1358|||
+1212|always, usually, every time|A;T||Always followed by affirmative verb.|443;1263;1358|||
 1213|never|A;T||Always followed by negative verb.||||
 1214|any hour, all hours|A;T|||744|||
 1215|any day|A;T|||745|||
@@ -1229,10 +1229,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1229|day after tomorrow|A;T|||288|||
 1230|the day after tomorrow|N;T|||277|||
 1231|early|A;T|Usually means "early-ish", a bit less early than hayaku.|||||
-1232||-|||672, 1294, 1295|osoku||
+1232||-|||672;1294;1295|osoku||
 1233|every day|A;T|||748|||
 1234|every day, daily|A;T||||||
-1235|every evening, every night|A;T|||750, 1410|||
+1235|every evening, every night|A;T|||750;1410|||
 1236|every hour, hourly|A;T||||||
 1237|every month|A;T|||758|||
 1238|every morning|A;T|||749|||
@@ -1242,7 +1242,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1242|first time (doing something)|A;T|||683|||
 1243|for a long time|A;T||||||
 1244|for some years|A;T||||||
-1245|from now on, after this|A;T||||||
+1245|from now on|A;T||||||
 1246|immediately, at once, directly, shortly, soon, right away, promptly|A;T|||686||chikaku, sassoku|
 1247|directly, shortly, soon, right away|A;T|||687||sugu ni, chikaku|
 1248|in the end|A;T||||||
@@ -1296,10 +1296,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1296|this week|A;T|||753|||
 1297|this year, this fiscal year, this school year|A;T|||760|||
 1298|today, this day|A;T|||929|||
-1299|tomorrow|A;T|||747, 173|||
-1300|tonight, this evening|A;T|||751, 1410|||
-1301|very seldom, almost never, rarely|A;T|Use in phrase with negative tense only.||679, 134||amari, zenzen|
-1302|very soon, before long, in a moment|A;T|||665, 666|||
+1299|tomorrow|A;T|||747;173|||
+1300|tonight, this evening|A;T|||751;1410|||
+1301|very seldom, almost never, rarely|A;T|Use in phrase with negative tense only.||679;134||amari, zenzen|
+1302|very soon, before long, in a moment|A;T|||665;666|||
 1303|X in addition to, besides Y|A;T||hoka ni X Y, WHERE: X = characteristic, Y = time||||
 1304||-|||746|||
 1305|yesterday|N;T|||||yuube|
@@ -1314,9 +1314,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1314|counter for bus line|C||||||
 1315|counter for copies of a newspaper or magazine|C|Used for magazines, newspapers or stacks of papers.|||||
 1316|counter for days, -st/nd/rd/th day|C|For counting days, except for ichinichi.||1145|||
-1317|counter for days, -st/nd/rd/th day (also "of the month")|C|Usage: ichinichi/tsuitachi (1), futsuka (2), mikka (3), yokka (4), itsuka (5), muika (6), nanoka (7), youka (8), kokonoka (9), touka (10), juu yokka (14), hatsuka (20), nijuu yokka (24)||1130, 1131|||
+1317|counter for days, -st/nd/rd/th day (also "of the month")|C|Usage: ichinichi/tsuitachi (1), futsuka (2), mikka (3), yokka (4), itsuka (5), muika (6), nanoka (7), youka (8), kokonoka (9), touka (10), juu yokka (14), hatsuka (20), nijuu yokka (24)||1130;1131|||
 1318|day of the month|N;T|||||hi|
-1319|counter for degrees, times|C|Used for occurrences, number of times, degrees of temperature or angle (see also: kai). Examples: ichido (once), saido (twice), sando (thrice)...||1137, 1138||kai, tabi|
+1319|counter for degrees, times|C|Used for occurrences, number of times, degrees of temperature or angle (see also: kai). Examples: ichido (once), saido (twice), sando (thrice)...||1137;1138||kai, tabi|
 1320|counter for desks, chairs, long-stemmed glasses|C|Use "byaku" when necessary.|||||
 1321|counter for floor, stories|C|||1136|||
 1322|counter for food, drink, medicine, etc.|C||||||
@@ -1328,20 +1328,20 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1328|departure, departing (from ...), departing (at time ...)|N;Ac||||||
 1329|departing from, departing at time, sent by, sent at|Sx|||1329|||
 1330|counter for hour-long periods|C|Usage: yojikan (4), shichijikan (7), kujikan (9), juuyojikan (14), nijuuyojikan (24)||1146|||
-1331|time|N;T|||481, 1314, 1320||toki|
+1331|time|N;T|||481;1314;1320||toki|
 1332|counter for house number|C||||||
 1333||-||||||
 1334|counter for broad, flat objects, levels or stages, e.g. in a video game|C|Used for mirrors, boards for board games (chess, igo, shogi), stages of computer games, walls of a room, tennis courts.|||||
-1335|counter for long narrow objects|C|Used for trees, pencils, bottles, sticks, etc.. (Note tha the counter for book is "satsu", not "hon"). Usage: ippon (1), sanbon (3), roppon (6), happon (8), juppon (10), nanbon (how many)||1121, 1122|||
+1335|counter for long narrow objects|C|Used for trees, pencils, bottles, sticks, etc.. (Note tha the counter for book is "satsu", not "hon"). Usage: ippon (1), sanbon (3), roppon (6), happon (8), juppon (10), nanbon (how many)||1121;1122|||
 1336|book, volume, script|N;GO|||298|||
 1337|counter for machines, incl. vehicles|C|Used for cars, bicycles, machines, mechanical devices, household appliances.||1149|||
-1338|counter for month-long periods|C|Usage: ikkagetsu/hitotsuki (1), nikagetsu (2), rokkagetsu (6), hachikagetsu/hakkagetsu (8), jikkagetsu/jukkagetsu (10)||1147, 1148|||
+1338|counter for month-long periods|C|Usage: ikkagetsu/hitotsuki (1), nikagetsu (2), rokkagetsu (6), hachikagetsu/hakkagetsu (8), jikkagetsu/jukkagetsu (10)||1147;1148|||
 1339|counter for multiples|C|Used for multiples, fold as in "twofold". Examples: ippai (1), sanbai (3), roppai (6), happai (8), jubbai (10)||1135|||
-1340|counter for nights of a stay|C|Usage: ippaku (1), nihaku (2), sampaku (3), yonhaku/yompaku (4), gohaku (5), roppaku (6), nanahaku (7), happaku (8), kyuuhaku (9), zyuppaku (10)|||||
-1341|counter for number|C|Used in position, turn, sports matches.||1139, 377, 1140, 1141|||
-1342|counter for hours|C|Usage: yoji (4), shichiji (7), kuji (9). In speech use numbers until 12 only, e.g. yoji (16) instead of juu roku ji.||1128, 1129, 1329|||
+1340|counter for nights of a stay|C|Usage: ippaku (1), nihaku (2), sampaku (3), yonhaku/yompaku (4), gohaku (5), roppaku (6), nanahaku (7), happaku (8), kyuuhaku (9), juppaku (10)|||||
+1341|counter for number|C|Used in position, turn, sports matches.||1139;377;1140;1141|||
+1342|counter for hours|C|Usage: yoji (4), shichiji (7), kuji (9). In speech use numbers until 12 only, e.g. yoji (4pm) instead of juu roku ji (16:00).||1128;1129;1329|||
 1343|hour, moment|N;T|||437|||
-1344|counter for people|C|Usage: hitori (1), futari (2), yonnin (4), shichinin (7), juuyonin (14), nijuuyonin (24)||1134, 7, 1290, 1355|||
+1344|counter for people|C|Usage: hitori (1), futari (2), yonnin (4), shichinin (7), juuyonin (14), nijuuyonin (24)||1134;7;1290;1355|||
 1345|counter for people|C|Used in a polite context.|||||
 1346|counter for pills, capsules|C|||1284|||
 1347|counter for rooms|C|This room counter is usually not used.|||||
@@ -1357,20 +1357,20 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1357|counter for swings, shakes, waves|C||||||
 1358||-||||||
 1359||-||||||
-1360|after a relatively long time interval (of waiting), after a pause|Sx|||1312, 1313|||
+1360|after a relatively long time interval (of waiting), after a pause|Sx|||1312;1313|||
 1361|style, manner|Sx||||||
 1362|counter for Tatami mats|C|||1370|||
 1363|counter for thick slices, cuts (e.g. fish, meat)|C||||||
 1364|counter for thousands|C|Usage: issen (1), sanzen (3), hassen (8), nanzen (how many)|||||
 1365|one thousand |N;num|||9|||
-1366|counter for times|C|Used for occurrences, number of times (see also: do). Examples: ikkai (once), nikai (twice), ikkaime (first time), nikaime (second time)||1135, 1388, 1428||do, tabi|
+1366|counter for times|C|Used for occurrences, number of times (see also: do). Examples: ikkai (once), nikai (twice), ikkaime (first time), nikaime (second time)||1135;1388;1428||do, tabi|
 1367|counter for times, occurrences|C|||||do, kai|
-1368|counter for undefined objects|C|Usage: hitotsu (1), futatsu (2), mittsu (3), yottsu (4), itsutsu (5), muttsu (6), nanatsu (7), yattsu (8), kokonotsu (9), tou (10)||1125, 1126, 1127|||
+1368|counter for undefined objects|C|Usage: hitotsu (1), futatsu (2), mittsu (3), yottsu (4), itsutsu (5), muttsu (6), nanatsu (7), yattsu (8), kokonotsu (9), tou (10)||1125;1126;1127|||
 1369|counter for weeks|C|||1137|||
 1370|week|N;T|As of time passing.||499|||
 1371|counter for year-long periods|C||||||
 1372|counter for years|C|Used for years, school years (grades), not years of age.||1144|||
-1373|counter for years old, school years|C|used for years of age (才 is used informally as a shorthand), counter is optional. Examples: issai (1), hachisai/hassai (8), jissai/jussai (10), juu issai (11), hatachi (20).||1132, 1133|||
+1373|counter for years old, school years|C|used for years of age (才 is used informally as a shorthand), counter is optional. Examples: issai (1), hachisai/hassai (8), jissai/jussai (10), juu issai (11), hatachi (20).||1132;1133|||
 1374|counter for yen|C||||||
 1375|yen, Japanese monetary unit|N;Abs||||||
 1376|(he) has bad taste, (he) has bad fashion sense|CE||||||
@@ -1387,9 +1387,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1387|almost never, few and far between, little or nothing, hardly any, hardly anything at all, very little|CE||||||
 1388|are you well?|CE|||1152|||
 1389|as (in the role of), for (from the viewpoint of), (not) even|CE||||||
-1390|as a matter of fact, by the way, to tell you the truth, to be honest, frankly, the story is|CE||||||
+1390||-||||||
 1391|as I though, also, still, in spite of, absolutely, of course|CE||||||
-1392|as much as (I) can, as much as possible, if at all possible|CE|||1293, 1294|||
+1392||-||||||
 1393|as one would expect|CE||||||
 1394|at the very least|CE||||||
 1395|baby, newborn|CE|Literally means "Mr./Mrs. red", in reference to the color of a newborn.|||||
@@ -1417,7 +1417,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1417|full to the brim|CE||||||
 1418|take care of yourself, get well soon, God bless you, bless you|CE|||1208|||
 1419||-|||1185|||
-1420|go and come back (when leaving a home)|CE|||1181|||
+1420||-||||||
 1421|good bye|CE|||1161|||
 1422|good combination|CE|||1217|||
 1423|good evening|CE|||1159|||
@@ -1428,7 +1428,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1428|Greetings / Sorry for disturbing you|CE|ME#0241;0242|||||
 1429|have no choice|CE||||||
 1430|hello|CE|||1158|||
-1431|hello (telephone)|CE|||465|||
+1431||-|||465|||
 1432|hold it carefully because it is important|CE||||||
 1433|how|CE||||||
 1434|how hungry are you|CE||||||
@@ -1452,13 +1452,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1452|I'm looking forward (to it)|CE||||||
 1453|I'm thirsty (my throat is dry)|CE|||1206|||
 1454|in, at, for|CE||||||
-1455|is referred to as|CE|||1362, 1363|||
+1455|is referred to as|CE|||1362;1363|||
 1456|Is something wrong?|CE|||1344|||
 1457|Is that so?|CE|||1150|||
 1458|is what (I) mean|CE|||1219|||
 1459|isn't it?|CE|Colloquial (slang), contraction of "ja nai".|||||
 1460|it costs|CE||||||
-1461|it goes without saying|CE|||1209|||
+1461||-||||||
 1462|it is me, not you|CE||||||
 1463|it is not possible, there is no such thing as|CE||||||
 1464|it is very important (to someone)|CE||||||
@@ -1492,7 +1492,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1492|nothing can be done (about it)|CE||||||
 1493|now that you mention it, well in fact|CE|||1424|||
 1494|okay?|CE||||||
-1495|once more|CE|||1186, 1353|||
+1495|once more|CE|||1186;1353|||
 1496|one after the other|CE||||||
 1497|one way street|CE|||1196|||
 1498|open now (store)|CE||||||
@@ -1554,7 +1554,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1554|to not apply, to be proof against|CE||||||
 1555||-|||||setsumon suru|
 1556|to receive favor, to be much obliged to someone, to be indebted, to be grateful|CE||||||
-1557|to stop working at a company, to quit, to resign|CE|||830, 1408|||
+1557|to stop working at a company, to quit, to resign|CE|||830;1408|||
 1558|to take a fleeting glance at, to take a quick look at|CE||||||
 1559|to take a vacation, to go on vacation|CE||||||
 1560|to taste|CE||||||
@@ -1727,7 +1727,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1727|eruption|N;Ac||||||
 1728|establishing of proof, demonstration, substantiation|N;Ac||||||
 1729|posing (of a problem), setting (of a movie, scene, options …), assignment|N;Ac||||||
-1730|estrangement, neglect, alienation, casting out|N;Ac||||||
+1730|estrangement, neglect, alienation|N;Ac||||||
 1731||-||||||
 1732||-||||||
 1733|exact calculation, squaring of accounts, adjustment|N;Ac||||||
@@ -1938,7 +1938,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1938|washing|N;Ac||||||
 1939|whisper, secret talk, murmur|N;Ac||||||
 1940|win, victory|N;Ac|||||senshou, shouri|
-1941|work, job, business, occupation, employment, vocation, task|N;Ac|||91, 1297|||
+1941|work, job, business, occupation, employment, vocation, task|N;Ac|||91;1297|||
 1942|(a) going|N;Abs||||||
 1943|(fire) match|N;Abs|||114|||
 1944|(Japanese folklore) ghosts|N;Abs||||||
@@ -1948,7 +1948,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1948|ability, faculty|N;Abs||||||
 1949|absence, being away from home|N;Abs||||||
 1950|accent, dialect|N;Abs||||||
-1951|accident, incident, trouble|N;Abs|||121, 1326, 1373|||
+1951|accident, incident, trouble|N;Abs|||121;1326;1373|||
 1952|account (e.g. bank)|N;Abs|e.g. bank account|||||
 1953|account number|N;Abs||||||
 1954|account, finance, accountant, treasurer, paymaster, reckoning, bill|N;Abs||||||
@@ -1973,7 +1973,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 1973|all members (unanimity), all hands, the whole crew, everyone, everybody|N;Abs||||||
 1974|whole energy|N;Abs||||||
 1975|altitude sickness, mountain sickness|N;Abs||||||
-1976|altitude, height|N;Abs||||||
+1976||-||||||
 1977||-||||||
 1978|amount of money|N;Abs||||||
 1979|animal husbandry|N;Abs||||||
@@ -2006,7 +2006,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2006|beginning, start, outset, opening|N;Abs||||||
 2007|rest (of a statement)|N;Abs||||||
 2008|not exceeding, and downwards, and below, under, less than|Sx||||||
-2009||-|||1050, 1487, 1488|||
+2009||-|||1050;1487;1488|||
 2010|birth date, date of birth, DOB|N;Abs||||||
 2011|birth year|N;Abs||||||
 2012|birth, birthplace|N;Abs||||||
@@ -2057,17 +2057,17 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2057|considerations|N;Abs||||||
 2058|class|N;Abs|As of a subject class.||96|||
 2059|school class, school grade|N;Abs||||||
-2060|class, lecture, teaching unit, lectureship, professorial chair|N;Abs||||||
+2060|class|N;Abs||||||
 2061|class, lesson|N;Abs|||97|||
 2062|classroom|N;Abs|Refers only to the location.||98|||
 2063|cleaning, sweeping, dusting, scrubbing|N;Abs||||||
 2064|clique, fashion, school (e.g. of style)|N;Abs||||||
-2065|tooth, teeth|N;An|||182, 1324|||
+2065|tooth, teeth|N;An|||182;1324|||
 2066|uncooked dough, batter|N;Abs||||||
 2067|students' society|N;Abs|Not to be confused with a dance club.|||||
 2068|clue, key, trail, scent, track, contact, handhold, on hand|N;Abs||||||
 2069|code, cipher, password|N;Abs|||150|||
-2070|common cold, cold, influenza, flu, ague|N;Abs|As of an illness||130, 1322|||
+2070|common cold, cold, influenza, flu, ague|N;Abs|As of an illness||130;1322|||
 2071|coming of age, passing into adulthood|N;Abs||||||
 2072|commercial rights|N;Abs||||||
 2073|committee, commission, board, panel, committee meeting|N;Abs||||||
@@ -2112,7 +2112,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2112|Bunka era (1804.2.11-1818.4.22)|N;JEP|1804.2.11-1818.4.22AD|||||
 2113|current status, condition, situation, circumstances, state|N;Abs||||||
 2114|curse, spell, malediction|N;Abs||||||
-2115|custom, habit, manners|N;Abs|||156, 1341|||
+2115|custom, habit, manners|N;Abs|||156;1341|||
 2116|dance|N;Abs||||||
 2117|darkness|N;Abs||||||
 2118|bewilderment, despair, hopelessness|N;Abs||||||
@@ -2150,7 +2150,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2150||-||||||
 2151|duty, obligation, responsibility|N;Abs||||||
 2152|earliness|N;Abs||||||
-2153|earthquake|N;Abs|||164, 1291|||
+2153|earthquake|N;Abs|||164;1291|||
 2154|economics, business, finance, economy|N;Abs||||||
 2155|edge (of a blade)|N;Abs||||||
 2156|edict, public announcement|N;Abs||||||
@@ -2199,20 +2199,20 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2199|faults, defects, weaknesses|N;Abs||||||
 2200||-||||||
 2201|feast, treat|N;Abs||||||
-2202|fee, charge, fare|N;Abs|||141, 142, 1288, 1310|||
+2202|fee, charge, fare|N;Abs|||141;142;1288;1310|||
 2203|fee, charge, fare, cost, price, tariff|N;Abs|||1309|||
 2204|feeling, mood|N;Abs||||||
 2205|feeling, sensation, mood|N;Abs|||1323|||
 2206|feeling, sense, impression|N;Abs||||||
 2207||-||||||
 2208|festival|N;Abs|||106|||
-2209|fever, temperature|N;Abs|||115, 1492|||
+2209|fever, temperature|N;Abs|||115;1492|||
 2210|field, sphere, realm, division, branch|N;Abs||||||
 2211|figure, shape|N;Abs||||||
 2212|figure, form, style|N;Abs||||||
 2213||-||||||
 2214|file|N;Abs|||136|||
-2215|fire, conflagration|N;Abs|||124, 1291|||
+2215|fire, conflagration|N;Abs|||124;1291|||
 2216|first-class, top grade, foremost, top-notch, leading, characteristic, peculiar, unique|N;Abs||||||
 2217|first-year|N;Abs||||||
 2218||-||||||
@@ -2239,7 +2239,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2239|the future (usually distant)|N;Abs|||1338||shourai|
 2240|gait, pace, step|N;Abs||||||
 2241|game, spoils, trophy, prey|N;Abs||||||
-2242|geography|N;Abs||||||
+2242||-||||||
 2243|German language|N;Abs|||70|||
 2244|ghost, apparition, phantom, specter, demon, monster, goblin|N;Abs||||||
 2245|gift, godsend|N;Abs||||||
@@ -2280,7 +2280,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2280|hole|N;Abs||||||
 2281||-||||||
 2282|home, family, household|N;Abs||||||
-2283|homework, assignment|N;Abs|||99, 100|||
+2283|homework, assignment|N;Abs|||99;100|||
 2284|honor, honour|N;Abs||||||
 2285|hope, wish, aspiration|N;Abs||||||
 2286|hospitalization, hospitalisation|N;Abs||||||
@@ -2316,7 +2316,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2316|intense persistent smell|N;Abs||||||
 2317|intent to kill, intent to murder, urge to kill, murderous impulse|N;Abs||||||
 2318|intention, aim, design|N;Abs||||||
-2319|intention, plan, conviction, belief|N;Abs|||119, 120|||
+2319|intention, plan, conviction, belief|N;Abs|||119;120|||
 2320|intention, wish, purpose, mind (to do)|N;Abs||||||
 2321|interest (in something), curiosity (about something), zest (for)|N;Abs||||||
 2322|interest (monetary)|N;Abs||||||
@@ -2405,7 +2405,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2405|marriage ceremony, wedding, nuptials|N;Abs|||1272|||
 2406|masses, great number, the people|N;Abs||||||
 2407|matter and mind|N;Abs||||||
-2408|meaning, significance, sense|N;Abs|||101, 102|||
+2408|meaning, significance, sense|N;Abs|||101;102|||
 2409|means, way, measure|N;Abs||||||
 2410|medical care, treatment, advance preparation|N;Abs||||||
 2411|medical science, medicine|N;Abs||||||
@@ -2414,7 +2414,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2414|meeting, assembly, gathering|N;Abs||||||
 2415|meeting, assembly, party, association, club|N;Abs||||||
 2416|membership fee|N;Abs||||||
-2417|memo, memorandum|N;Abs|||149, 1353|||
+2417|memo, memorandum|N;Abs|||149;1353|||
 2418|memories, recollections, reminiscence|N;Abs||||||
 2419|message|N;Abs|||1280|||
 2420|method, process, manner, way, means, technique|N;Abs||||||
@@ -2432,25 +2432,25 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2432|morale (of troops, team, etc.), esprit de corps|N;Abs||||||
 2433|morals, morality, sincerity|N;Abs||||||
 2434|morning sun|N;Abs||||||
-2435|most, almost all|N;Abs||||||
+2435||-||||||
 2436|motion, change, confusion|N;Abs||||||
 2437|exercise, physical training, work-out|N;Abs||||||
-2438|movie, film|N;Abs|||89, 1301|||
+2438|movie, film|N;Abs|||89;1301|||
 2439|mutual, reciprocal|N;Abs||||||
 2440|mystery, wonder|N;Abs||||||
 2441|na-adjective|N;Abs||||||
-2442|name, full name|N;Abs|||83, 1278|||
+2442|name, full name|N;Abs|||83;1278|||
 2443|nationality|N;Abs|||154|||
 2444||-||||||
 2445|natural shape, one's true colors, true character, true identity, consciousness, one's senses|N;Abs||||||
 2446|nature|N;Abs|||109|||
 2447||-||||||
 2448|nature, disposition|N;Abs||||||
-2449|New Year's day|N;Abs|||1262, 1263, 1264|||
+2449|New Year's day|N;Abs|||1262;1263;1264|||
 2450||-||||||
-2451|news|N;Abs|||76, 1373|||
-2452|gossip, (military) intelligence|N;Abs|||1295, 1374|||
-2453|newspaper story, article, account|N;Abs||||||
+2451|news|N;Abs|||76;1373|||
+2452|gossip, (military) intelligence|N;Abs|||1295;1374|||
+2453||-||||||
 2454|free of charge|N;Abs||||||
 2455|mid-day|N;Abs||||||
 2456|nothing, naught, nought, nil, zero|N;Abs||||||
@@ -2574,7 +2574,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2574|representative, representation, delegation, type, example, model|N;Abs||||||
 2575|resolution, resignation, readiness, preparedness|N;Abs||||||
 2576|break|N;Abs||||||
-2577|vacation, holidays|N;Abs|Used in an informal dialogue||77, 1298|||
+2577|vacation, holidays|N;Abs|Used in an informal dialogue||77;1298|||
 2578||-||||||
 2579|results, record, grades, performance, marks|N;Abs||||||
 2580|retirement|N;Abs||||||
@@ -2599,12 +2599,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2599|scale, scope, plan, structure|N;Abs||||||
 2600|scar|N;Abs||||||
 2601|setting (e.g. of a novel)|N;Abs||||||
-2602|scenery, scene, landscape|N;Abs|||137, 1275|||
+2602|scenery, scene, landscape|N;Abs|||137;1275|||
 2603|scenery|N;Abs||||||
 2604|schematic, schema, illustration, explanatory diagram|N;Abs||||||
 2605|school term, semester|N;Abs||||||
 2606|seal|N;Abs||||||
-2607|season|N;Abs|||75, 1310, 1315, 1316|||
+2607|season|N;Abs|||75;1310;1315;1316|||
 2608|seat|N;Abs||||||
 2609|second helping, another cup, seconds|N;Abs|||113|||
 2610|second-year|N;Abs||||||
@@ -2653,8 +2653,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2653|sounds|N;Abs|||64|||
 2654|present, souvenir|N;Abs||||||
 2655|souvenir|N;Abs|As of an object|||||
-2656||-|||1351, 1352|||
-2657|space, room, time, pause|N;Abs||||||
+2656||-|||1351;1352|||
+2657|time, pause|N;Abs||||||
 2658|special skill|N;Abs||||||
 2659||-||||||
 2660|speech|N;Abs|||1375|||
@@ -2666,7 +2666,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2666|spirit, sprite, nymph|N;Abs||||||
 2667|spiritual or magical barrier|N;Abs||||||
 2668|spiritual power|N;Abs||||||
-2669|sport, sports|N;Abs|||157, 1298|||
+2669|sport, sports|N;Abs|||157;1298|||
 2670||-||||||
 2671|position, situation|N;Abs||||||
 2672|start, commencement, beginning, initiation|N;Abs||||||
@@ -2676,7 +2676,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2676||-||||||
 2677|state, state of affairs, situation, circumstances|N;Abs||||||
 2678|stone thrown at somebody, throwing of stones|N;Abs||||||
-2679|talk, speech, chat, story, conversation|N;Abs|||111, 1336|||
+2679|talk, speech, chat, story, conversation|N;Abs|||111;1336|||
 2680|stream, current, flow|N;Abs||||||
 2681|strength, power|N;Abs||||||
 2682||-||||||
@@ -2698,7 +2698,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2698|tactics, strategy, operations|N;Abs||||||
 2699|talent, ability|N;Abs||||||
 2700|duty, service|N;Abs||||||
-2701|meant for|Sx|||1097, 303|||
+2701|meant for|Sx|||1097;303|||
 2702|tasks, things to do, errand, business (to take care of), affairs, engagement|N;Abs||||||
 2703|taste, flavor, flavour|N;Abs||||||
 2704|tax, duty|N;Abs|||154|||
@@ -2728,7 +2728,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2728|things, matters|N;Abs|||1298|||
 2729||-||||||
 2730|thought, idea, ideology|N;Abs||||||
-2731|thought, imagination, mind, heart, desire, wish, hope, expectation, love, affection, feelings, emotion, sentiment, experience|N;Abs||||||
+2731|thought|N;Abs||||||
 2732|thunderous roar|N;Abs||||||
 2733|time (of the year)|N;Abs||||||
 2734|time of death|N;Abs||||||
@@ -2748,7 +2748,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2748|transitive verb|N;Abs||||||
 2749||-|||82|||
 2750|treasure|N;Abs||||||
-2751|travel, trip, journey, excursion, tour|N;Abs|||61, 1303|||
+2751|travel, trip, journey, excursion, tour|N;Abs|||61;1303|||
 2752||-||||||
 2753|trouble, difficulty, care, attention|N;Abs||||||
 2754|troubles, worry, distress, sorrows, anguish, agony, problems|N;Abs||||||
@@ -2762,7 +2762,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2762|use, utilization, utilisation, application|N;Abs|||1270|||
 2763|usual, habitual, ordinary, everyday, always|N;Abs||||||
 2764|vacation, holidays|N;Abs|Used in a formal dialogue|||||
-2765|vacation, holidays|N;Abs|Used in word conjunctions & for medium-long vacations|||||
+2765|vacation, holidays|N;Abs|Used in word conjunctions and for medium-long vacations|||||
 2766|treasures|N;Abs|||152|||
 2767|value, worth, price, dignity|N;Abs||||||
 2768|vedana (sensation)|N;Abs|From Buddhism: sensation.|||||
@@ -2773,7 +2773,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2773|virtue|N;Abs||||||
 2774||-||||||
 2775||-||||||
-2776|a cry|N;Abs|||63, 1333|||
+2776|a cry|N;Abs|||63;1333|||
 2777|volitional ("should do")|N;Abs||||||
 2778|vote, ballot|N;Abs||||||
 2779|war|N;Abs||||||
@@ -2788,7 +2788,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2788|way, method, means, resource, course|N;Abs||||||
 2789|way, method, means, resource, remedy, technical specifications|N;Abs||||||
 2790|weak point, weakness, shortcoming, defect, flaw, sore spot, tender spot|N;Abs||||||
-2791|weather, the elements|N;Abs|||72, 1315, 1323|||
+2791|weather, the elements|N;Abs|||72;1315;1323|||
 2792|week-long holiday|N;Abs||||||
 2793|weeping, lamenting|N;Abs||||||
 2794|Western years|N;Abs||||||
@@ -2821,7 +2821,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2821|biceps|N;An||||||
 2822|birthmark, nevus, bruise, tache de vin, envie|N;An||||||
 2823|blood, consanguinity|N;An||||||
-2824|body|N;An|||184, 1306|||
+2824|body|N;An|||184;1306|||
 2825|health|N;An||||||
 2826|body, trunk, torso, hull (boat), fuselage (aircraft)|N;An||||||
 2827||-||||||
@@ -2837,11 +2837,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2837|ear|N;An|||185|||
 2838|elbow|N;An||||||
 2839|eye, eyeball|N;An|||180|||
-2840|1st, 2nd, 3rd, 4th…|Sx|Used as a suffix to a number to show rank, e.g. futatsume = second object, ikkaime = first time, ichibanme = first in line/turn, ichijikanme = first hour-long period||1105, 1388, 1389|||
+2840|1st, 2nd, 3rd, 4th…|Sx|Used as a suffix to a number to show rank, e.g. futatsume = second object, ikkaime = first time, ichibanme = first in line/turn, ichijikanme = first hour-long period||1105;1388;1389|||
 2841|eye pupil, eye|N;An||||||
 2842|eyebrows|N;An||||||
 2843|eyelashes|N;An||||||
-2844|face, visage|N;An|||181, 1322|||
+2844|face, visage|N;An|||181;1322|||
 2845|wing|N;An||||||
 2846|finger, toe, digit|N;An||||||
 2847|fingertip, finger|N;An||||||
@@ -2874,7 +2874,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2874|scale (of fish)|N;An||||||
 2875|shoulder|N;An||||||
 2876|sole of foot|N;An||||||
-2877|stomach|N;An|||183, 1267|||
+2877|stomach|N;An|||183;1267|||
 2878|stomach|N;An|Scientific term.|||||
 2879|testicles, testes|N;An|colloquialism, lit. "golden balls"|||||
 2880|the body, the flesh|N;An||||||
@@ -2892,7 +2892,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2892|black tie|N;Ati|As of the event||206|||
 2893|blouse|N;Ati||||||
 2894|blouse|N;Ati|||197|||
-2895|button|N;Ati|||198, 199|||
+2895|button|N;Ati|||198;199|||
 2896|clothes (esp. Western clothes)|N;Ati|||189|||
 2897|coat|N;Ati|||195|||
 2898|outerwear|N;Ati|||208|||
@@ -2915,7 +2915,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2915|sandal|N;Ati||||||
 2916|scarf|N;Ati||||||
 2917|shirt (underwear), undershirt, singlet|N;Ati|||200|||
-2918|shoe, shoes, boots, footwear, footgear|N;Ati|||192, 1349|||
+2918|shoe, shoes, boots, footwear, footgear|N;Ati|||192;1349|||
 2919|skirt|N;Ati|||209|||
 2920|slipper, slippers|N;Ati|||196|||
 2921|socks, sock, stockings, stocking|N;Ati|||202|||
@@ -2967,7 +2967,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2967||-||||||
 2968|bonito flakes|N;Cu||||||
 2969|bouillon, broth|N;Cu||||||
-2970|bread, pastries (e.g. croissants), pastry-based products|N;Cu|||248, 1318|||
+2970|bread, pastries (e.g. croissants), pastry-based products|N;Cu|||248;1318|||
 2971|bread crumbs|N;Cu||||||
 2972|bread flour, strong flour, hard flour|N;Cu||||||
 2973|breakfast|N;Cu|||241|||
@@ -2984,7 +2984,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 2984|clam|N;Cu||||||
 2985|coarse tea, low-quality tea, cheap tea|N;Cu||||||
 2986||-||||||
-2987|coffee shop|N;Pl|||246, 421|||
+2987|coffee shop|N;Pl|||246;421|||
 2988|combined minced meat (beef and pork)|N;Cu||||||
 2989|condensed milk|N;Cu||||||
 2990|consommé|N;Cu||||||
@@ -3048,7 +3048,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3048|oil|N;Cu||||||
 3049|olive oil|N;Cu||||||
 3050|oyster sauce|N;Cu||||||
-3051|peach|N;Cu||||||
+3051|peach (Prunus persica)|N;Cu||||||
 3052|peanut butter|N;Cu||||||
 3053|pepper|N;Cu||||||
 3054|pesticide-free, non-chemical, organic|N;Cu||||||
@@ -3109,7 +3109,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3109|unsalted butter|N;Cu||||||
 3110|vanilla essence|N;Cu||||||
 3111|vanilla oil|N;Cu||||||
-3112|vegetables|N;Cu|||259, 1339|||
+3112|vegetables|N;Cu|||259;1339|||
 3113|vinegar|N;Cu||||||
 3114|watermelon|N;Cu||||||
 3115|wine|N;Cu|||271|||
@@ -3154,14 +3154,14 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3154|Thursday|N;DW|||55|||
 3155|Tuesday|N;DW|||53|||
 3156|Wednesday|N;DW|||54|||
-3157|animal|N;Fa|||176, 1296|||
+3157|animal|N;Fa|||176;1296|||
 3158|bear|N;Fa||||||
 3159|beast|N;Fa||||||
 3160|beast, animal, brute|N;Fa||||||
 3161|beast, brute, animal|N;Fa||||||
 3162|beasts, mammals|N;Fa||||||
 3163|bee, wasp, hornet|N;Fa||||||
-3164|bird|N;Fa|||177, 1333|||
+3164|bird|N;Fa|||177;1333|||
 3165|butterfly|N;Fa||||||
 3166|cat|N;Fa||||||
 3167|oxen|N;Fa||||||
@@ -3246,7 +3246,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3246|brother|N;Fy||||||
 3247|cousin|N;Fy||||||
 3248|daughter, young lady|N;Fy||||||
-3249|father|N;Fy|Used when the speaker is of the same family.||217, 1385|||
+3249|father|N;Fy|Used when the speaker is of the same family.||217;1385|||
 3250|father|N;Fy||||||
 3251|father and mother, parents|N;Fy||||||
 3252||-||||||
@@ -3279,7 +3279,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3279|someone else's child|N;Fy||||||
 3280|someone else's father|N;Fy|Used when the speaker is of another family or when referring to that person within the family.||218|||
 3281|someone else's grandfather|N;Fy|Used when the speaker is of another family or when referring to that person within the family.||234|||
-3282|someone else's mother|N;Fy|Used when the speaker is of another family or when referring to that person within the family.||220, 1339|||
+3282|someone else's mother|N;Fy|Used when the speaker is of another family or when referring to that person within the family.||220;1339|||
 3283|someone else's older brother|N;Fy|Used when the speaker is of another family or when referring to that person within the family.||227|||
 3284|someone else's older sister|N;Fy|Used when the speaker is of another family or when referring to that person within the family.||229|||
 3285|someone else's wife|N;Fy|Used when the speaker is of another family (when referring to that person within the family, their name is used instead).||224|||
@@ -3294,7 +3294,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3294|advertisement|N;GO||||||
 3295|air conditioner|N;GO|||384|||
 3296|alarm (fire, burglar, etc.)|N;GO||||||
-3297|alarm clock|N;GO||||||
+3297||-||||||
 3298|answer sheet|N;GO|||386|||
 3299|arrow|N;GO|||315|||
 3300|ashtray|N;GO|||352|||
@@ -3348,7 +3348,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3348|cloth|N;GO||||||
 3349|ball, sphere, globe, orb|N;GO||||||
 3350|commuter pass, season ticket|N;GO|||1300|||
-3351|computer|N;GO||||||
+3351||-||||||
 3352|cosmetics|N;GO||||||
 3353|coupon|N;GO||||||
 3354|cover, lid, cap|N;GO||||||
@@ -3364,7 +3364,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3364|dishes, tableware|N;GO||||||
 3365|dishwasher|N;GO||||||
 3366|documents, official papers|N;GO||||||
-3367|doll, puppet, figure|N;GO|||345, 1335|||
+3367|doll, puppet, figure|N;GO|||345;1335|||
 3368|dollar|N;GO||||||
 3369|dome|N;GO|||377|||
 3370|door (Western-style)|N;GO|||374||to|
@@ -3387,7 +3387,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3387|first class|N;GO||||||
 3388|fork|N;GO|||314|||
 3389|fountain pen|N;GO|||383|||
-3390|free pass|N;GO|||1255, 1218|||
+3390|free pass|N;GO|||1255;1218|||
 3391|furniture|N;GO||||||
 3392|futon (quilted Japanese-style mattress laid out on the floor), round cushion used for Zen meditation|N;GO||||||
 3393|dust bin|N;GO|||1351|||
@@ -3413,7 +3413,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3413|letter|N;GO|As of a message||341|||
 3414|light, lamp, torch|N;GO||||||
 3415|lighter|N;GO||||||
-3416|burden|N;GO|||369, 1286, 1369|||
+3416|burden|N;GO|||369;1286;1369|||
 3417|machine|N;GO||||||
 3418|machine, mechanism|N;GO|||1414|||
 3419|journal, magazine, periodical|N;GO|||330|||
@@ -3428,7 +3428,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3428||-||||||
 3429|needle, pin|N;GO||||||
 3430|nest, rookery, breeding place, hive, den, haunt, spider web|N;GO||||||
-3431|newspaper|N;GO|||337, 1302|||
+3431|newspaper|N;GO|||337;1302|||
 3432|note left by dead person, suicide note, testamentary letter, will, testament, posthumous work|N;GO||||||
 3433|notebook|N;GO|||332|||
 3434|notebook, memo pad, (pocket) diary|N;GO|Also used as an abbreviation for a certificate or identification card.|||||
@@ -3445,7 +3445,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3445|pencil|N;GO||||||
 3446|perfume|N;GO|||303|||
 3447|personal computer|N;GO|||370|||
-3448|phone number|N;GO|||350, 1278|||
+3448||-||||||
 3449||-||||||
 3450|piano|N;GO|||367|||
 3451||-||||||
@@ -3507,10 +3507,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3507|textbook, coursebook, schoolbook|N;GO||||||
 3508|thread, yarn, string|N;GO||||||
 3509|ticket|N;GO||||||
-3510|ticket|N;GO|||333, 1255, 1325|||
+3510|ticket|N;GO|||333;1255;1325|||
 3511|ticket, coupon, bond, certificate|N;GO||||||
 3512|airline ticket, plane ticket, air ticket|N;GO||||||
-3513|ticket sold in advance|N;GO|||335, 1301|||
+3513|ticket sold in advance|N;GO|||335;1301|||
 3514|tie|N;GO||||||
 3515|tissue|N;GO|||306|||
 3516|tobacco, cigarettes|N;GO|||312|||
@@ -3519,7 +3519,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3519||-||||||
 3520|traveler's check|N;GO||||||
 3521|treasure, treasured item, prized possession|N;GO||||||
-3522|umbrella|N;GO|||316|||
+3522|umbrella, parasol|N;GO|||316|||
 3523|(flower) vase|N;GO|||343|||
 3524|veil|N;GO||||||
 3525|vending machine|N;GO||||||
@@ -3528,8 +3528,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3528||-||||||
 3529||-||||||
 3530|washing machine|N;GO||||||
-3531|watch, clock, timepiece|N;GO|||308, 1320|||
-3532|window|N;GO|||361, 1275|||
+3531|watch, clock, timepiece|N;GO|||308;1320|||
+3532|window|N;GO|||361;1275|||
 3533|word processor|N;GO|||372|||
 3534|Asuka period|N;JEP|538-710AD|||||
 3535|Azuchi-Momoyama period|N;JEP|1573-1603AD|||||
@@ -3560,7 +3560,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3560|cough, coughing, tussis|N;Md|||1493|||
 3561|maternity and gynaecology department (gynecology), department of obstetrics and gynaecology (gynecology)|N;Md||||||
 3562|dermatology|N;Md||||||
-3563|diarrhoea, diarrhea|N;Md||||||
+3563||-||||||
 3564|hay fever, pollinosis (allergy to pollen)|N;Md||||||
 3565|internal medicine (i.e. non-surgical)|N;Md||||||
 3566|medical thermometer|N;Md|lit. "body heat measurement"|||||
@@ -3583,7 +3583,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3583|area, extent|N;MSE|||1370|||
 3584|atmospheric temperature|N;MSE||||||
 3585|centimeter|N;MSE||||||
-3586|chemistry|N;MSE||||||
+3586||-||||||
 3587|circle|N;MSE|||505|||
 3588|perimeter, edge, locality|N;MSE||||||
 3589|concentration, thickness, density|N;MSE||||||
@@ -3603,7 +3603,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3603|limits, boundary, domain, zone, sphere, territory|N;MSE||||||
 3604|logical true, positive, greater than zero|N;MSE||||||
 3605|mathematics, arithmetic|N;MSE||||||
-3606|meter|N;MSE|||505, 1368, 1371|||
+3606|meter|N;MSE|||505;1368;1371|||
 3607|minus|N;MSE||||purasu||
 3608||-||||||
 3609|orbit, trajectory|N;MSE||||||
@@ -3725,11 +3725,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3725|oil-based|N;NE||||||
 3726|pearl|N;NE|||1363|||
 3727|Picasso|N;Ne||||||
-3728|rain|N;NE|||291, 1342|||
+3728|rain|N;NE|||291;1342|||
 3729|sand, grit|N;NE||||||
 3730|sea, ocean, waters|N;NE||||||
 3731|salt water, ocean water|N;NE||||||
-3732|sky, the air, the heavens|N;NE|||293, 1383|||
+3732|sky, the air, the heavens|N;NE|||293;1383|||
 3733|sky, heavens|N;NE||||||
 3734|Smith|N;Ne||||||
 3735|smoke, fumes|N;NE||||||
@@ -3755,14 +3755,14 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3755|France|N;Nn|||214|||
 3756|Germany|N;Nn||||||
 3757|India|N;Nn||||||
-3758|Japan|N;Nn|||213, 1341|||
+3758|Japan|N;Nn|||213;1341|||
 3759|South Korea, Republic of Korea|N;Nn||||||
 3760|nationality|N;Nn||||||
 3761|small country|N;Nn||||||
 3762|the West|N;Nn||||||
 3763|United Kingdom, England|N;Nn||||||
 3764|United States of America, USA|N;Nn|||289|||
-3765|association, union|N;org||||||
+3765||-||||||
 3766|civilization, civilisation, culture|N;org||||||
 3767|High Court|N;org||||||
 3768|House of Councilors|N;org||||||
@@ -3789,7 +3789,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3789|beautiful woman|N;Pe||||||
 3790|bellboy|N;Pe|||1340|||
 3791||-||||||
-3792|boy, male child, baby boy|N;Pe|||391|onna no ko||
+3792||-|||391|onna no ko||
 3793|brat, kid, preta (hungry ghost), ghoul|N;Pe||||||
 3794||-||||||
 3795|bureau director, office chief|N;Pe||||||
@@ -3799,7 +3799,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3799|chief (of police), head (of office)|N;Pe||||||
 3800|chief clerk|N;Pe|Normal hierarchy in Japan: kaishain < kakarichou < buchou < kachou < shachou.|||||
 3801|head (of an office, laboratory)|N;Pe||||||
-3802|child|N;Pe|||400, 1288, 1339|||
+3802|child|N;Pe|||400;1288;1339|||
 3803||-||||||
 3804|townsperson|N;Pe||||||
 3805|classmate|N;Pe||||||
@@ -3843,22 +3843,22 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3843||-||||||
 3844|fourth-year student, senior|N;Pe||||||
 3845|friend, companion|N;Pe|||1298|||
-3846|friend (polite)|N;Pe|||393, 1330|||
+3846|friend (polite)|N;Pe|||393;1330|||
 3847|friend, acquaintance|N;Pe||||||
 3848|friend, ally, supporter|N;Pe||||||
 3849|friend, companion, comrade, pal|N;Pe||||||
 3850|person with a natural gift|N;Pe||||||
-3851|girl, female child, baby girl|N;Pe|||392|otoko no ko||
+3851||||||||
 3852|shapeshifting (of an animal or spirit), goblin, ghost, apparition, bugbear|N;Pe||||||
 3853|government employee, public servant, civil servant, government worker|N;Pe||||||
 3854|gynecologist, obstetrician|N;Pe||||||
 3855|hag, bitch|N;Pe|Derogatory.|||||
 3856|half-human and half-demon|N;Pe||||||
 3857|superiority|N;Pe||||||
-3858|helper, assistant, help|N;Pe||||||
+3858||-||||||
 3859|helpmeet, tutor|N;Pe||||||
 3860|his/her/your (honorable, honourable) parents|N;Pe||||||
-3861|hostage, prisoner|N;Pe||||||
+3861||-||||||
 3862|house-husband|N;Pe||||||
 3863|housewife, mistress (of the house), homemaker|N;Pe||||||
 3864||-||||||
@@ -3891,13 +3891,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3891|obstetrician and gynecologist|N;Pe||||||
 3892|offender, criminal, culprit|N;Pe||||||
 3893|old woman|N;Pe||||||
-3894|themselves|N;Pe|||1272, 1297, 1410|||
+3894|themselves|N;Pe|||1272;1297;1410|||
 3895|ordinary person|N;Pe||||||
 3896|painter, artist|N;Pe||||||
 3897|patient|N;Pe||||||
 3898|pedestrian|N;Pe||||||
 3899|person, lady, gentleman|N;Pe|Honorific reference.||389||hito|
-3900|method of, manner of, way of, how to|Sx|||1115, 1116, 1307, 1477, 1478|||
+3900|method of, manner of, way of, how to|Sx|||1115;1116;1307;1477;1478|||
 3901|person|N;Pe|Rarely used without a qualifier.||390|||
 3902|being on duty, person on duty|N;Pe||||||
 3903||-||||||
@@ -3954,7 +3954,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3954|sumo wrestler, rikishi|N;Pe||||||
 3955||-||||||
 3956|sycophant, flatterer, ass-kisser|N;Pe||||||
-3957|teacher, master, doctor|N;Pe|lit. "born earlier"||397, 1355||kyoushi|
+3957|teacher, master, doctor|N;Pe|lit. "born earlier"||397;1355||kyoushi|
 3958|teacher (classroom)|N;Pe|esp. of a classroom||||sensei|
 3959|the aged, old person|N;Pe|||157|||
 3960|the person himself, oneself|N;Pe||||||
@@ -3975,7 +3975,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3975|writer (often in self-reference), author|N;Pe||||||
 3976|yokozuna (sumo grand champion)|N;Pe||||||
 3977|young girl, lass, adolescent female|N;Pe||||||
-3978|young lady, little girl, virgin, maiden, daughter|N;Pe||||||
+3978||-||||||
 3979|youngster|N;Pe||||||
 3980|youth, young man|N;Pe||||||
 3981|(one's parents') home|N;Pl||||||
@@ -3988,7 +3988,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 3988|apartment building, apartment block, apartment house|N;Pl|||474|||
 3989|area along a train line|N;Pl||||||
 3990||-||||||
-3991|part, place|N;Pl|||445, 445, 446||atari|
+3991|part, place|N;Pl|||445;445;446||atari|
 3992|art gallery, art museum|N;Pl|||467|||
 3993||-||||||
 3994|Asakusa|N;Pl|Oldest temple in Tokyo.|||||
@@ -4005,7 +4005,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4005|beach, seashore, captures pieces (in the game of go)|N;Pl||||||
 4006|beauty parlour, beauty parlor, beauty salon, hairdressing salon|N;Pl||||||
 4007|bedroom|N;Pl||||||
-4008|the opposite person|N;Pl|||132, 1334, 1368||asoko|
+4008|the opposite person|N;Pl|||132;1334;1368||asoko|
 4009|big city|N;Pl||||||
 4010|bookshop, bookstore|N;Pl||||||
 4011|bookstore|N;Pl|||464|||
@@ -4015,12 +4015,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4015|branch office|N;Pl||||||
 4016|branch office|N;Pl||||||
 4017|bridge|N;Pl|||462|||
-4018|multi-floor building, multi-story building|N;Pl|||414, 415|||
+4018|multi-floor building, multi-story building|N;Pl|||414;415|||
 4019||-||||||
 4020|capital city, metropolis|N;Pl||||||
 4021|ceiling|N;Pl|||1397|||
 4022|centre, center, middle, heart|N;Pl|||406|||
-4023|center, centre, middle, heart, core, focus, pivot, emphasis, balance|N;Pl|||276, 447|||
+4023|center, centre, middle, heart, core, focus, pivot, emphasis, balance|N;Pl|||276;447|||
 4024|-centered, -centred, -focused, -oriented, centered on, focused on|Sx||||||
 4025|church, congregation|N;Pl||||||
 4026|city|N;Pl|||472|||
@@ -4036,7 +4036,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4036|desert|N;Pl||||||
 4037|dine-in|N;Pl||||||
 4038|bus stop|N;Pl|||377|||
-4039|direction, way, side, area (in a particular direction)|N;Pl|||468, 468, 469|||
+4039|direction, way, side, area (in a particular direction)|N;Pl|||468;468;469|||
 4040|district, section, sector|N;Pl||||||
 4041|doctor's office, clinic, dispensary|N;Pl||||||
 4042||-||||||
@@ -4054,12 +4054,12 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4054|fare adjustment office|N;Pl||||||
 4055|field, cultivated land, vegetable plot, kitchen garden, plantation, specialization, sphere|N;Pl||||||
 4056|floor, stage|N;Pl||||||
-4057|footpath, walkway, sidewalk|N;Pl||||||
+4057||-||||||
 4058|juxtaposed to|N;Pl|||436|ushiro|mae|
 4059|garden, yard, courtyard|N;Pl|||425|||
 4060|greengrocer, vegetable store|N;Pl|||463|||
 4061|gymnasium|N;Pl||||||
-4062|Hawaii|N;Pl|||288, 1303|||
+4062|Hawaii|N;Pl|||288;1303|||
 4063|headquarters|N;Pl||||||
 4064|heater|N;Pl|||477|||
 4065||-||||||
@@ -4074,8 +4074,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4074|Hong Kong, Hongkong|N;Pl|||1363|||
 4075|side (of), beside, aside, next to|N;Pl|side of X|X no yoko|448|||
 4076|hospital|N;Pl|||429|||
-4077|hotel|N;Pl|||438, 1272|||
-4078|house, home (one's own)|N;Pl|"uchi" is used more familiarly, wheras "ie" is used in a strict sense.||408, 1307|||
+4077|hotel|N;Pl|||438;1272|||
+4078|house, home (one's own)|N;Pl|"uchi" is used more familiarly, wheras "ie" is used in a strict sense.||408;1307|||
 4079|hut, cabin, shed, (animal) pen|N;Pl||||||
 4080|immigration office|N;Pl|||436|||
 4081|imperial palace|N;Pl|||471|||
@@ -4092,7 +4092,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4092|kitchen|N;Pl||||||
 4093|kitchen|N;Pl|||410|||
 4094|Kobayashi|N;Pl|||282|||
-4095|Kyoto (city)|N;Pl|Literally "old city".||279, 1316|||
+4095|Kyoto (city)|N;Pl|Literally "old city".||279;1316|||
 4096|Kyushu (southernmost of the four main islands of Japan)|N;Pl|||284|||
 4097|laboratory|N;Pl||||||
 4098|lake|N;Pl||||||
@@ -4113,8 +4113,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4113|Morikawa|N;Pl|||281|||
 4114|Mount Fuji, Mt. Fuji, Fujiyama, Fuji-san|N;Pl|||1371|||
 4115|mountain range|N;Pl||||||
-4116|mountain, hill|N;Pl|||426, 1377|||
-4117|movie theatre, movie theater, cinema|N;Pl|||418, 1301|||
+4116|mountain, hill|N;Pl|||426;1377|||
+4117|movie theatre, movie theater, cinema|N;Pl|||418;1301|||
 4118|Nara (city)|N;Pl|||279|||
 4119|Narita|N;Pl|||287|||
 4120|neighborhood, neighbourhood|N;Pl||||||
@@ -4122,7 +4122,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4122|nest|N;Pl||||||
 4123|newspaper stand, newspaper seller, paper carrier, newspaper company|N;Pl||||||
 4124|Niko|N;Pl|||279|||
-4125|Nile|N;Pl||||||
+4125||-||||||
 4126|north|N;Pl|||459|||
 4127|office|N;Pl|||473|||
 4128|office|N;Pl||||||
@@ -4163,9 +4163,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4163|road, highway|N;Pl||||||
 4164||-||||||
 4165|roadway, path|N;Pl||||||
-4166|roof|N;Pl|||1328, 1362|||
+4166|roof|N;Pl|||1328;1362|||
 4167|rooftop|N;Pl||||||
-4168|room, chamber|N;Pl|||433, 1355|||
+4168|room, chamber|N;Pl|||433;1355|||
 4169|Roppongi|N;Pl|||280|||
 4170|rural area, countryside, the sticks|N;Pl||||||
 4171|Satou|N;Pl|||1330|||
@@ -4175,8 +4175,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4175|senior high school, high school|N;Pl||||||
 4176|shelf, shelves, ledge, rack|N;Pl|||378|||
 4177|Shibuya|N;Pl||||||
-4178|Shinjuku|N;Pl|||285, 1413|||
-4179|Shinkansen, bullet train|N;Pl|||283, 1372|||
+4178|Shinjuku|N;Pl|||285;1413|||
+4179|Shinkansen, bullet train|N;Pl|||283;1372|||
 4180|Shinto shrine|N;Pl||||||
 4181|store, shop, establishment, restaurant|N;Pl||||||
 4182|shop, stand, kiosk|N;Pl|||1302|||
@@ -4190,7 +4190,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4190|south|N;Pl|||179|||
 4191||-||||||
 4192|place for boarding vehicles, bus stop, bus terminal, railway platform, taxi stand, jetty, wharf|N;Pl||||||
-4193|railway station, train station|N;Pl|As of transportation only||419, 132, 1300, 1302, 1307|||
+4193|railway station, train station|N;Pl|As of transportation only||419;132;1300;1302;1307|||
 4194|stationary shop|N;Pl||||||
 4195|store|N;Pl|||412|||
 4196|street|N;Pl||||||
@@ -4216,7 +4216,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4216|tourist information center|N;Pl|||1218||tourist information centre|
 4217|town, block, neighbourhood, neighborhood|N;Pl|||467|||
 4218|municipality, urban area|N;Pl||||||
-4219|traditional Japanese inn|N;Pl|||420, 1277, 1307|||
+4219|traditional Japanese inn|N;Pl|||420;1277;1307|||
 4220|trough, gutter, water pipe, flume, chute|N;Pl||||||
 4221|Ueno|N;Pl|Section of Tokyo|||||
 4222|university, college|N;Pl|||407|||
@@ -4229,9 +4229,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4229|water well|N;Pl||||||
 4230|west|N;Pl|||458|||
 4231|Western Wall, Wailing Wall|N;Pl||||||
-4232|within, inside of, less than|N;Pl|||437, 165|uchi|soto|
+4232|within, inside of, less than|N;Pl|||437;165|uchi|soto|
 4233|the world, society, the universe|N;Pl||||||
-4234|world, universe|N;Sp|||466, 1303, 1338, 1362|||
+4234|world, universe|N;Sp|||466;1303;1338;1362|||
 4235|Yamanotesen line|N;Pl||||||
 4236|your house, your home, your family, you|N;Pl|Honorific language.||465|||
 4237|zoo, zoological gardens|N;Pl|||1296|||
@@ -4248,13 +4248,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4248|sun, solar|N;Sp||||||
 4249|sun, sunlight|N;Sp||||||
 4250||-||||||
-4251|day, days|N;T|||501, 502, 1314||nichi|
+4251|day, days|N;T|||501;502;1314||nichi|
 4252|sunlight, rays of the sun|N;Sp||||||
 4253|the Earth|N;Sp||||||
 4254|a few minutes|N;T||||||
 4255|just past noon, afternoon|N;T||||||
 4256|PM|N;T|||494|||
-4257|autumn, fall|N;T|||487, 1406|||
+4257|autumn, fall|N;T|||487;1406|||
 4258|early afternoon|N;T||||||
 4259|early evening|N;T|||492||ban, yoru|
 4260|early morning|N;T||||||
@@ -4279,7 +4279,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4279||-||||||
 4280||-||||||
 4281|this morning|N;T|||496|||
-4282|time, hour, moment|N;T|||482, 483, 1298||jikan|
+4282|time, hour, moment|N;T|||482;483;1298||jikan|
 4283||-||||||
 4284||-||||||
 4285|week|N;T|As of the concept.||500|||
@@ -4296,13 +4296,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4296|cab|N;V||||||
 4297|car, automobile, vehicle|N;V|||327|||
 4298|(horse-drawn) coach, carriage, wagon, cart|N;V||||||
-4299|drone|N;V||||||
+4299||-||||||
 4300|elevator|N;V|||1291|||
 4301|escalator|N;V||||||
 4302|motorcycle|N;V||||||
 4303||-||||||
 4304|space ship|N;V||||||
-4305|taxi|N;V|||371, 1277|||
+4305|taxi|N;V|||371;1277|||
 4306|tram|N;V|||353|||
 4307||-||||||
 4308|one week|T||||||
@@ -4332,7 +4332,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4332|lion roar|OI||||||
 4333|look!, look out!, hey!, look at me!, there you are!|OI||||||
 4334|mouse sound|OI||||||
-4335|no|OI||||||
+4335|no, nay|OI|Used only by male subjects.|||||
 4336|oh|OI||||||
 4337|oh|OI||||||
 4338|oh really?|OI||||||
@@ -4353,7 +4353,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4353|well let me see|OI||||||
 4354|well now|OI||||||
 4355|then, well, so, well then|CO|||1232|||
-4356|well then|OI|||1233|||
+4356|well then ...​|CE||||||
 4357|well, now, then|OI||||||
 4358|well...|OI||||||
 4359|what, why, come again|OI||||||
@@ -4385,10 +4385,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4385||-||||||
 4386|we, us|P||||||
 4387|we|P||||||
-4388|we, us|P|Plural Male/Female||||atashitachi|
+4388||-||||||
 4389|we, us|P|Colloquial, Plural Male/Female|||||
-4390|you (referring to someone of equal or lower status)|P|Singular Male/Female|||||
-4391|you|P|Colloquial, male language, archaic|||||
+4390|you (referring to someone of equal or lower status)|P|Singular Male/Female. "anta" is used in a colloquial setting.|||||
+4391||-|Colloquial, male language, archaic|||||
 4392|you|P|When refering to one with equal or lower status, archaic.|||||
 4393|you|P||||||
 4394|you|P|Colloquial, Singular Male/Female|||||
@@ -4428,7 +4428,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4428|how much time|SI|||1429|||
 4429|name of an object or person|SI|ME#0045;0046|||||
 4430|somehow, how, in what way, why, what kind of|SI||Use "toiu" in reply to "douiu".||||
-4431|what|SI|||689, 690|||
+4431|what|SI|||689;690|||
 4432|what date, which day of the month|SI|||703|||
 4433|what day|SI||||||
 4434|what hour, what time|SI|||702|||
@@ -4444,7 +4444,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4444|why, how come|SI||||||
 4445||-||||||
 4446|how come|SI|||707|||
-4447|several, a number of|Sx||Use "ssu" or "zu" in some cases (e.g. ninzu 人数).|1107, 1108, 1109, 1285|||
+4447|several, a number of|Sx||Use "ssu" or "zu" in some cases (e.g. ninzu 人数).|1107;1108;1109;1285|||
 4448|after|Sx|e.g. shuudengo (after the last train)|||||
 4449|arriving at ...|Sx||||||
 4450|characteristic of someone/something|Sx|||1104|||
@@ -4453,7 +4453,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4453|going to, bound for|Sx||||||
 4454|body, group, party, company, troupe|Sx||||||
 4455|implying (negatively) that something is full of (e.g. mistakes), covered all over (e.g. with blood)|Sx||||||
-4456|in the middle of, at the time of|Sx|||1112, 1113, 1292|||
+4456|in the middle of, at the time of|Sx|||1112;1113;1292|||
 4457||-||||||
 4458|indicates plurality of persons & animate objects|Sx||||||
 4459|informal female & family indicator|Sx||||||
@@ -4461,7 +4461,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4461|intended for, oriented towards, aimed at|Sx||||||
 4462|label, ticket, tag, stub|Sx||||||
 4463|of a country, nationality|Sx|||1106|||
-4464|only ever|Sx|||1102, 1103|||
+4464|only ever|Sx|||1102;1103|||
 4465||-||||||
 4466|plural modifier|Sx|First-person plural (or singular) if spoken in Humble language, second/third-person plural if the speaker if of higher status than those referred to.|||||
 4467|polite humble person indicator (Mr., Ms., Mrs.)|Sx||||||
@@ -4469,7 +4469,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4469|store, shop|Sx|||1114|||
 4470||-||||||
 4471|style of, method of, manner of|Sx||||||
-4472|during all of, all of|Sx|||1269, 1303, 1306|||
+4472|during all of, all of|Sx|||1269;1303;1306|||
 4473|typical of, similar to, like|Sx|Applies to nouns to create na-adjectives.|||||
 4474|typical of, similar to, like|Sx|Applies to nouns to create i-adjectives.||1120|||
 4475|typical of, similar to, like, appropriate for, becoming of, worthy of the name|Sx|Applies to nouns to create i-adjectives.||1119|||
@@ -4490,7 +4490,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4490|produce (e.g. results), bring about|VsuT||||||
 4491|translate, interpret|VsuT||||||
 4492|spill, drop, shed (tears), grumble, complain, let one's feelings show|VsuT||||||
-4493|take out, get out|VsuT|||1234, 1235|deru||
+4493|take out, get out|VsuT|||1234;1235|deru||
 4494|spit out, vomit|VsuT||||||
 4495|smash, wreck, ruin, spoil, damage|VsuT||||||
 4496|find out, discover, notice, detect, select, pick out, look outside, be wide-eyed (in surprise, anger…)|VsuT||||||
@@ -4678,13 +4678,13 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4678|reach, arrive, get through, get at|VkuI||||||
 4679|draw (attention, etc.), attract (interest, etc.)|VkuT|||1322|||
 4680|play (a string instrument)|VkuT||||||
-4681||-|||1366, 1237, 1277, 1278|||
+4681||-|||1366;1237;1277;1278|||
 4682|be told, obey, ask, enquire, query|VkuT||||||
-4683|ask, enquire, query, listen (formal)|VkuT|||1237, 1277, 1278|||
+4683|ask, enquire, query, listen (formal)|VkuT|||1237;1277;1278|||
 4684|be less crowded, be vacant, be empty, be free, be available|VkuI||||||
-4685|walk|VkuI|||1332, 1364|||
+4685|walk|VkuI|||1332;1364|||
 4686|brush, polish|VkuT||||||
-4687|function|VkuI|||1238, 1424|||
+4687|function|VkuI|||1238;1424|||
 4688|be open (esp. door)|VkuI||||akeru||
 4689|have been opened (e.g. neckline, eyes), come an end|VkuI||||||
 4690|open (e.g. eyes, mouth)|VkuT||||||
@@ -4820,7 +4820,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4820||-||||||
 4821|be finished, result less severely than expected, feel at ease|VmuI||||||
 4822|live (in a dwelling)|VmuI||||||
-4823|rest (on holiday), go bed, lie down sleep, retire (bed), take a break|VmuT|||1239, 1382|||
+4823|rest (on holiday), go bed, lie down sleep, retire (bed), take a break|VmuT|||1239;1382|||
 4824|knit, plait, braid|VmuT||||||
 4825||-||||||
 4826|pick (a flower), pluck, trim|VmuT||||||
@@ -4937,11 +4937,11 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 4937|be in distress, in a bad position, be troubled, be in trouble|VrugI||||||
 4938|to be satisfied (with), to find satisfactory|CE||||||
 4939|dance|VrugI||||||
-4940|sell|VrugT|||1218, 1300, 1301, 1302|||
+4940|sell|VrugT|||1218;1300;1301;1302|||
 4941|climb, ascend, go up|VrugI||||||
 4942|protect, guard, defend|VrugT||||||
 4943|to travel overland, to go by land|CE||||||
-4944|wear (specifically pants, underwear, shoes), take a bath|VrugI|||1242, 1243|||
+4944|wear (specifically pants, underwear, shoes), take a bath|VrugI|||1242;1243|||
 4945|to go on a trip, to go out to play, to go and visit (a friend)|CE||||||
 4946|chatter, talk|VrugI||||||
 4947|be aware of, be conscious of, cognize, cognise|VrugT||||||
@@ -5028,7 +5028,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5028|be on the right track, to go well|VikuI||||||
 5029|harden, solidify|VrugI||||||
 5030|favor|VrugT||||||
-5031|change, be transformed, be altered, vary|VrugI|||1283, 1401|||
+5031|change, be transformed, be altered, vary|VrugI|||1283;1401|||
 5032|decorate, ornament, adorn|VrugT|||1397|||
 5033|kick, refuse, reject|VrugT||||||
 5034|be agreed upon|VrugI||||||
@@ -5053,7 +5053,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5053|distort, parody, make a pun|VrugT||||||
 5054|be profitable, yield a profit, make money|VrugI||||||
 5055|pluck, pick, tear|VrugT||||||
-5056|strike, hit, punch|VrugT||||||
+5056||-||||||
 5057|rebuke, scold, tell off|VrugT||||||
 5058|die|VrugI||||||
 5059|be cured, get well, be healed|VrugI||||||
@@ -5299,8 +5299,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5299|do ... each other|VuT|||1249|||
 5300|receive, take, accept|VuT||||||
 5301|express|VuT||||||
-5302|be wrong|VuI|||1250, 1309, 1310, 1311|||
-5303|use (a thing, method, person, time, money, language), put use, operate|VuT|||1251, 1272, 1291|||
+5302|be wrong|VuI|||1250;1309;1310;1311|||
+5303|use (a thing, method, person, time, money, language), put use, operate|VuT|||1251;1272;1291|||
 5304|suck in|VuT||||||
 5305|take lessons in, be taught, learn (from a teacher), study (under a teacher), get training in|VuT||||||
 5306|invite, ask, call (for), tempt, lure, induce|VuT||||||
@@ -5428,7 +5428,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5428|convey, report, transmit, communicate, tell, impart, propagate, teach, bequeath, send a message|VruiT|||1280|||
 5429|make a mistake (in), commit an error (e.g. in calculation)|VruiI||||||
 5430|appear, come out|VruiI||||||
-5431|fall down, drop, fall (e.g. rain), sink (e.g. sun or moon), fall onto (e.g. light or one's gaze, be used in a certain place (e.g. money)|VruiI|||1254, 1328|otosu||
+5431|fall down, drop, fall (e.g. rain), sink (e.g. sun or moon), fall onto (e.g. light or one's gaze, be used in a certain place (e.g. money)|VruiI|||1254;1328|otosu||
 5432||-||||||
 5433||-||||||
 5434|hang (e.g. picture), be partway (verb), take (time, money), wear / put on (glasses, etc.), burden someone, turn on (an engine, etc.), put an effect on (spell, anaesthetic, etc.), pour / sprinkle / spray onto, present (e.g. idea a conference, etc.)|VruiT||||||
@@ -5767,7 +5767,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 5767|cheat someone out of, wangle|VruiT||||||
 5768||-||||||
 5769|answer, respond, meet, satisfy, accept|VruiI||||||
-5770|be called (a name), be referred (as), be treated something (e.g. a meal), be invited to|VruiI|||1362, 1363|||
+5770|be called (a name), be referred (as), be treated something (e.g. a meal), be invited to|VruiI|||1362;1363|||
 5771|seal (letter)|VruiI||||||
 5772|be playful, gambol, be amused, play, sport, frolic, joke|VruiI||||||
 5773|be tormented (by dreams), have a nightmare|VruiI||||||
@@ -6084,7 +6084,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6084|one night, one evening|A;T||||||
 6085|complete, entire|Sx||||||
 6086|walk about, walk to and fro, pace around|VrugI||||||
-6087|to turn up, to make an appearance, to put in an appearance, to appear, to show up|CE||||||
+6087||-||||||
 6088|cry (esp. animal), roar, chirp, tweet, bark, whine, meow|N;Ac||||||
 6089|echo, reverberation|N;Ac||||||
 6090|resound, echo, reverberate|VrugI||||||
@@ -6101,7 +6101,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6101|hedgehog|N;Fa||||||
 6102|dark gray, dark grey, slate|N;Col||||||
 6103|I have a problem|CE||||||
-6104|(I) hope that X|PC|ME#0245;0246|||||
+6104|hope that|PC|ME#0245;0246|||||
 6105|(it's) well made|CE||||||
 6106|do the dishes|VuI||||||
 6107||-||||||
@@ -6122,8 +6122,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6122|recommendation, referral, endorsement|N;Ac||||||
 6123|recommend, refer, endorse|VsuruT||||||
 6124||-||||||
-6125|will you please do X|VC||X kurenai @ X = verb te form (expression used when the request may cause some trouble to the other person)|||te kuremasen ka, te itadakemasen ka|
-6126|could you please do X|VC||X itadakemasen ka @ X = verb te form (expression used when the request may cause some trouble to the other person)|||te kuremasen ka, te kurenai|
+6125|will you please do|VC|Will you please [do/be] X.|X kurenai @ X = verb te form (expression used when the request may cause some trouble to the other person)|||te kuremasen ka, te itadakemasen ka|
+6126|could you please do|VC|Would you please [do/be] X.|X itadakemasen ka @ X = verb te form (expression used when the request may cause some trouble to the other person)|||te kuremasen ka, te kurenai|
 6127|daruma, tumbling doll, round, red-painted good-luck doll in the shape of Bodhidharma, with an blank eye to be completed when a person's wish is granted|N;GO||||||
 6128|also there|PP|Combination of the particles "de" and "mo", literally: also (at a place) where the action is performed|||||
 6129|eyebrow, eyebrows, brow|N;An||||||
@@ -6145,8 +6145,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6145|ancient times|N;Abs||||||
 6146|folklore demons of the Oga Peninsula (villagers dress up as namahage on New Year's Eve and frighten children)|N;Pe||||||
 6147|as for in|PP|As for in X, … . Combination of "de" indicating location and "wa" as a subject marker.|X de wa @ X = noun|1444|||
-6148|(I) hope that X|PC|ME#0247;0248|||||
-6149|I plan to X|PC||X wo yotei da @ X = phrase|1448|||
+6148|hope that|PC|ME#0247;0248|||||
+6149|plan to|PC|I plan to X.|X wo yotei da @ X = phrase|1448|||
 6150|scholarship, stipend, bursary|N;Abs||||||
 6151|student loan|N;Abs|||1450|||
 6152|miserable, pitiable, shameful, deplorable, pathetic|Ai|Also used as an insult in a condescending setting.|||||
@@ -6194,17 +6194,17 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6194|people in general, general public, public at large|N;Abs||||||
 6195|large part, greater part, majority|N;Abs||||||
 6196|probably, maybe, perhaps|A||||||
-6197|level, degree of something|iAC|Add "sa" to adjectives to express a degree or amount.|i/na-adj. root + sa|1458, 1459|||
+6197|level, degree of something|iAC|i/na-adjective conjugation.|[root] + sa|1458;1459|||
 6198|yes, that's right|CE||||||
 6199||-||||||
 6200|seen from that light, thinking like that, from that point of view|CE||||||
 6201|if you do it that way…, if done that way…|CE||||||
 6202|if you don't do it that way…|CE||||||
 6203|that’s too bad, I regret (to say), unfortunately|CE||||||
-6204|Y even if X|CO|"if" condition used for more "poetic" phrases.|tatoe X mo Y @ X = phrase with verb in te form, Y = phrase|1465, 1466, 1467|||
+6204|even if|CO|Y even if X. "if" condition used for more "poetic" phrases.|tatoe X mo Y @ X = phrase with verb in te form, Y = phrase|1465;1466;1467|||
 6205|abbreviation for possessive indicator|PP||X no @ X = phrase|1479|||
-6206|even if|iAC||X temo @ X = i-adj. root|1490|||
-6207|even if|iAC||X demo @ X = na-adj. root||||
+6206|even if|iAC|i-adjective conjugation.|X temo @ X = i-adj. root|1490|||
+6207|even if|iAC|na-adjective conjugation.|X demo @ X = na-adj. root||||
 6208|clever, smart|CE||||||
 6209|fat, plump, stout|CE||||||
 6210|slim, thin|CE||||||
@@ -6238,7 +6238,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6238|gun|N;GO||||||
 6239|gun, firearm|N;GO||||||
 6240|gun, pistol|N;GO||||||
-6241|machine gun|N;GO||||||
+6241||-||||||
 6242|empty gun, gun loaded with blanks, firing a blank|N;GO||||||
 6243|hunting gun, sports gun|N;GO||||||
 6244|use, service, role|N;Abs||||||
@@ -6320,10 +6320,10 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6320|mistake, fault|N;Abs||||||
 6321|words mainly used in song or poetry|N;Abs||||||
 6322|Chinese language|N;Abs||||||
-6323|the past, bygone days, the previous|N;Abs||||||
-6324|a past (i.e. a personal history one would prefer remained secret), one's past|N;Abs||||||
-6325|past (tense), preterit, preterite|N;Abs;ZL||||||
-6326|previous life|N;Abs||||||
+6323||-||||||
+6324||-||||||
+6325||-||||||
+6326||-||||||
 6327|virtual|Ana||||||
 6328|drone|N;GO||||||
 6329|smartphone|N;GO||||||
@@ -6464,17 +6464,17 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6464|member of the same category|N;Abs||||||
 6465|joining a group|N;Ac||||||
 6466|join a group|VsuruT||||||
-6467|person's origin (e.g. city, country, parentage, school)|N;Abs||||||
+6467||-||||||
 6468|dust|N;NE||||||
 6469|one ten-billionth|N;MSE||||||
 6470|pride, boast|N;Abs||||||
 6471|attendance, presence, appearance|N;Abs||||||
 6472|attend, be present, appear|VsuruI||||||
-6473|tune, tone, key, pitch, time, rhythm|N;MAC||||||
-6474|vein, mood, way, manner, style, knack|N;Abs||||||
-6475|condition, state of health|N;Abs||||||
-6476|impetus, spur of the moment, strain|N;Abs||||||
-6477|trend|N;Abs||||||
+6473||-||||||
+6474||-||||||
+6475||-||||||
+6476||-||||||
+6477||-||||||
 6478|(sake) decanter|N;GO||||||
 6479|investigation, examination, inquiry, enquiry, survey|N;Ac||||||
 6480|investigate, examine, inquire, enquire, survey|VsuruI||||||
@@ -6504,15 +6504,15 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6504|integral expression|N;MSE||||||
 6505|base (military, expedition, etc.)|N;Pl||||||
 6506|wit, resources, tact|N;Abs||||||
-6507|citizen, citizenry, public|N;Abs||||||
-6508|city inhabitant, townspeople|N;Pe||||||
-6509|bourgeoisie, middle class|N;Abs||||||
+6507||-||||||
+6508||-||||||
+6509||-||||||
 6510|opposition, resistance, antagonism, hostility, objection, dissension|N;Abs||||||
 6511|opposing, resisting, antagonizing, antagonising, hostile, objecting, dissenting|Ana||||||
 6512|oppose, resist, antagonize, antagonise, hostile, object, dissent|VsuruT||||||
 6513|reverse, opposite, vice versa, contrast|N;Abs||||||
 6514|oppose with, contrast with|VsuruI||||||
-6515|prefectural governor|N;Pe||||||
+6515||-||||||
 6516|female (animal)|N;Abs||||||
 6517|male (animal)|N;Abs||||||
 6518|capybara|N;Fa||||||
@@ -6571,7 +6571,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6571|serve (in one's master's home)|VrugI||||||
 6572|go north|VrugI||||||
 6573|in great numbers|A;Dg||||||
-6574|sale, offering for sale, release (for sale), launch (product)|N;Ac||||||
+6574||-||||||
 6575||-||||||
 6576|steps, stairs, staircase, terrace|N;Pl||||||
 6577|one day|N;T||||||
@@ -6609,7 +6609,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6609||-||||||
 6610|hopeless, wasted, in vain, purposeless|Ana||||||
 6611|cannot, must not, not allowed|Ana||||||
-6612|I am interested in X|PC||X ni kyoumi ga aru @ X = phrase||||
+6612|interested in|PC|I am interested in X.|X ni kyoumi ga aru @ X = phrase||||
 6613|immature, green|Ai||||||
 6614|low (number), small|Ai||||||
 6615|strong, brawny, powerful, healthy, rugged|Ai||||||
@@ -6819,7 +6819,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6819|excessive (work, etc.), immoderate|Ana||||||
 6820|irrational|N;MSE||||||
 6821|no way, not a chance, never, dream on|CE|Colloquialism|||||
-6822|(very) patient, persevering|Ai||||||
+6822||-||||||
 6823|trouble, hardship, difficulty, labour, labor, toil, pains|N;Abs||||||
 6824|anxiety, worry, concern, cares|N;Abs||||||
 6825|question, problem, doubt, guess|N;Abs||||||
@@ -6880,7 +6880,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6880|after (period of time) again (e.g. meeting again after a year), for the first time in (period of time)|Sx||||||
 6881|switchboard number, main number|N;Abs||||||
 6882|side (of something, or taking someone's side), part|N;Sx||||||
-6883|was not X|PC||X dewa nakatta @ X = phrase||||
+6883|was not|PC|(He) was not X.|X dewa nakatta @ X = phrase||||
 6884||-||||||
 6885|(watch) case|N;Sx||||||
 6886||-||||||
@@ -6940,9 +6940,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6940|consume time and-or resources|VuT||||||
 6941|receive something (usu. an unfavourable event)|VuT||||||
 6942|have sexual relations with a woman, esp. for the first time|VuT||||||
-6943|swiftly, rapidly, quickly, immediately, hastily, hurriedly|A||||||
-6944|suddenly, abruptly, unexpectedly|A||||||
-6945|sharply (of a slope, bend, etc.), steeply|A||||||
+6943|swiftly, rapidly, quickly, immediately, hastily, hurriedly|A;M|||626||totsuzen|
+6944|suddenly, abruptly, unexpectedly|A;M||||||
+6945|sharply (of a slope, bend, etc.), steeply|A;M||||||
 6946|vital part (of the body), tender spot, weak point, vitals|N;Abs||||||
 6947|key point, essential point, crux (of a problem), heart (of a matter)|N;Abs||||||
 6948|male crotch (as a target in fighting)|N;Abs||||||
@@ -6956,7 +6956,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 6956|it is assuredly that ..., can say with confidence that ...|PP||||||
 6957|did not ...|PP||||||
 6958|something, something or other, so-and-so|CE||||||
-6959|somehow, anyhow, one way or another|A||||||
+6959|somehow, anyhow, one way or another|A|||1414;1415;1416|||
 6960|fix, correct, repair|VsuT||||||
 6961|consent, assent, agreement|N;Abs||||||
 6962|understanding, comprehension, grasp|N;Abs||||||
@@ -7022,8 +7022,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7022|if ... then|PP|Indicates supposition.|||||
 7023|do you seriously think that|PP|Used as "katte", indicates a satirical or rhetorical question.|||||
 7024|I already told you, you should know by now that, of course|PP|Indicates certainty, insistence, emphasis, etc.|||||
-7025|the said …|PP|Abbreviation of "to iu".||||sou, to iu|
-7026|says that ...|PP|Abbreviation of "to itteiru".|||||
+7025|you said, he said, she said, they said|PP|Abbreviation of "to iu".||||sou, to iu|
+7026|the said ...|PP|Abbreviation of "to itteiru".|||||
 7027|I hear that ...|PP|Abbreviation of "to kiiteiru".|||||
 7028|as for the term ...|PP|Abbreviation of "to wa"/"to iu no wa".|||||
 7029|as for ...|PP|Equivalent to "wa" topic marker.|||||
@@ -7164,7 +7164,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 7164|whale (Cetacea spp.)|N;Abs||||||
 7165|bitterness, distress, pain, anguish, affliction|N;Abs||||||
 7166|bitterness and astringency|N;Abs||||||
-7167|ninety|N;Abs||||||
+7167||-||||||
 7168|street, road|N;Abs||||||
 7169|109.09 m|N;Abs||||||
 7170|0.99 hectares|N;Abs||||||
@@ -8050,7 +8050,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8050|cultivate (a habit, a quality, etc.), develop, build up, foster|VuT||||||
 8051|recuperate (from injury, illness, etc.)|VuT||||||
 8052|estimate, budget|N;Abs||||||
-8053|plans, arrangement, schedule, program, programme, expectation, estimate|N;Abs|||1283, 1385|||
+8053|plans, arrangement, schedule, program, programme, expectation, estimate|N;Abs|||1283;1385|||
 8054|adopted child (usu. male), son-in-law|N;Abs||||||
 8055|coward, weakling, scaredy cat, wimp, sissy|N;Abs||||||
 8056|cowardly, weak, scared, wimpy, sissy|Ana||||||
@@ -8272,9 +8272,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 8272|probability, likelihood, chances|N;Abs||||||
 8273|signboard, sign, billboard, hoarding, doorplate|N;Abs||||||
 8274|draw, attraction, feature, highlight, spokesman, figurehead|N;Abs||||||
-8275|reputation (of a shop)|N;Abs||||||
-8276|appearance, look|N;Abs||||||
-8277|closing time|N;Abs||||||
+8275|reputation (of a shop), name|N;Abs||||||
+8276|appearance, look, show|N;Abs||||||
+8277|closing (for the day, esp. of a restaurant or bar), closing time|N;Abs||||||
 8278|main line, trunk line|N;Abs||||||
 8279|infection, contagion|N;Abs||||||
 8280|(ocean) vessels, warship|N;Abs||||||
@@ -9234,7 +9234,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9234|rare, seldom|Ana||||||
 9235|Malaysia|N;Abs||||||
 9236|still less|CE||||||
-9237|thing, object, article, stuff, substance|N;Abs|||110, 1263|||
+9237|thing, object, article, stuff, substance|N;Abs|||110;1263|||
 9238|one's things, possessions, property, belongings|N;Abs||||||
 9239|things, something, anything, everything, nothing|N;Abs||||||
 9240|quality|N;Abs||||||
@@ -9383,7 +9383,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9383|be able (in a position) to do, be up to the task|VruiI||||||
 9384|be ready, be completed|VruiI||||||
 9385|be good at, be permitted (to do)|VruiI||||||
-9386|as much as one can, as much as possible, if at all possible|CE||||||
+9386|as much as one can, as much as possible, if at all possible|CE|||1293;1294|||
 9387|battery, cell|N;Abs||||||
 9388|utility pole, power pole, telephone pole, telegraph pole, lightpole|N;Abs||||||
 9389|biography, life story|N;Abs||||||
@@ -9441,7 +9441,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9441|go, board game of capturing territory|N;Abs||||||
 9442|word root, word derivation, etymology|N;Abs||||||
 9443|afternoon, p.m.|N;T||||||
-9444|cooked rice|N;Abs|||245, 1318|||
+9444|cooked rice|N;Abs|||245;1318|||
 9445|meal|N;Abs||||||
 9446|vocabulary, lexicon, lexis, terminology|N;Abs||||||
 9447|misunderstanding|N;Abs||||||
@@ -9890,7 +9890,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 9890|push in, force into, break in (e.g. into a house), intrude|VrugI||||||
 9891|press, push, force|VruiT||||||
 9892|foist on (task, responsibility), impose (one's will)|VruiT||||||
-9893|slow, time-consuming, sluggish|Ai|||538, 1314|hayai||
+9893|slow, time-consuming, sluggish|Ai|||538;1314|hayai||
 9894|late (in the day), towards the end (of the day or night), until a time far into the day or night|Ai||||||
 9895|later (than expected or usual), late, behind schedule, behind time, tardy, overdue, unpunctual|Ai||||||
 9896|too late, having missed the boat|Ai||||||
@@ -10312,7 +10312,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 10312|bow (for a violin, etc.)|N;Abs||||||
 10313|importation, import, introduction|N;Abs||||||
 10314|afferent|N;Abs||||||
-10315||-|||503, 1303||sakuya, kinou|
+10315||-|||503;1303||sakuya, kinou|
 10316|mail service, postal service, mail, post|N;Abs||||||
 10317|mail, postal matter, postal items|N;Abs||||||
 10318|post office|N;Abs||||||
@@ -11066,8 +11066,8 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 11066|(in neo-Confucianism) the underlying principles of the cosmos|N;Abs||||||
 11067|theory, reason|N;Abs||||||
 11068|reason, reasoning power, (one's) sense|N;Abs||||||
-11069|indicates assertion|PP||||||
-11070|come, come now|PP||||||
+11069||-||||||
+11070||-||||||
 11071||-||||||
 11072|difference, variation|N;Sx||||||
 11073|difference|N;Abs||||||
@@ -11210,7 +11210,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 11210|Thann, Tan, Tang, Tung|N;Pl||||||
 11211|exploration, expedition|N;Abs||||||
 11212|coal mine, coal pit|N;Abs||||||
-11213|simply, merely, only, solely|A||||||
+11213|simply, merely, only, solely|A;Dg||||||
 11214|carbon (C)|N;Abs||||||
 11215|fresh water (i.e. not salt water)|N;Abs||||||
 11216|make war (on), wage war (against), go to war (with), fight (with), do battle (against)|VuI||||||
@@ -11255,7 +11255,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 11255|piece of information that one has heard, I hear that ..., it is said that ...|N;Abs||||||
 11256|preamble, premise, reason, prerequisite, condition, assumption, hypothesis, given|N;Abs||||||
 11257|deteriorate, grow worse, aggrave, degenerate, be corrupted|VsuruI||||||
-11258|abuse, insult, slander, speak evil, bad mouth|VsuruT||||||
+11258||-||||||
 11259|beg (animal)|VsuruI||||||
 11260|act as agent, act on (someone's) behalf, execute business for|VsuruI||||||
 11261|become a pupil (of), become an apprentice|VsuruI||||||
@@ -11718,7 +11718,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 11718|arrangement of food (on a dish), serving of (arranged) food|N;Abs||||||
 11719|now, soon, shortly, before long, presently|A||||||
 11720|already, yet, by now, (not) anymore|A||||||
-11721|further, more, again, another, the other|A|||644, 645, 367, 676, 677|mada||
+11721|further, more, again, another, the other|A|||644;645;367;676;677|mada||
 11722|tsk, dammit, jeez, come on|A||||||
 11723|once more, again|CE||||||
 11724|prepare ahead of time|VruiT||||||
@@ -12090,7 +12090,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12090|soft, tender, pliant, supple, limber, limp|Ai|||566|katai||
 12091|gentle, mild, mellow|Ai||||||
 12092|informal, light, flexible (e.g. thinking)|Ai||||||
-12093|nicely, properly, well, skillfully, skilfully|A|||630, 102, 1269||umaku, yoroshiku, jouzu ni|
+12093|nicely, properly, well, skillfully, skilfully|A|||630;102;1269||umaku, yoroshiku, jouzu ni|
 12094|frequently, often|A||||||
 12095|frequently asked questions, FAQ|CE;N||||||
 12096||-||||||
@@ -12317,7 +12317,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12317|explanation|N;Abs||||||
 12318|announce, tell, sentence, order|VsuT||||||
 12319|about when, how soon|A;T||||||
-12320|it goes without saying, there is no need to say so, but of course, it is needless to say, it need scarcely be said|CE;Ai||||||
+12320|it goes without saying, there is no need to say so, but of course, it is needless to say, it need scarcely be said|CE;Ai|||1209|||
 12321||-||||||
 12322|wire netting, wire mesh, wire screen, chain-link mesh|N;Abs||||||
 12323|hammer|N;Abs||||||
@@ -12492,7 +12492,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12492|one color, one colour, one article|N;Abs||||||
 12493|same tendency|Ana||||||
 12494|everyone being caught up in the same thing|N;Abs||||||
-12495|together (with), at the same time, in a lump|A||||||
+12495|together (with), at the same time, in a lump|A|||636|hitori de|minna de, futari de|
 12496|whole life, a lifetime, all through life, one existence, a generation, an age, the whole world, the era|N;T|||504|||
 12497|(the only, the greatest, etc.) of one's life|N;Abs||||||
 12498|lovely, dear, beloved, darling, dearest|Ai||||||
@@ -12550,7 +12550,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12550|crowd, flock, swarm|VruiI||||||
 12551|(a) little, somewhat, somehow|A||||||
 12552|something or other, one thing or another, this or that|A||||||
-12553|it is assuredly that ..., can say with confidence that ...|PP||||||
+12553||-||||||
 12554|delicious, tasty, sweet|Ai|||530|mazui||
 12555|attractive, appealing, convenient, favorable, desirable, profitable|Ai||||||
 12556|interesting, fascinating, intriguing, enthralling|Ai|||298|tsumaranai||
@@ -12959,7 +12959,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 12959|(school) subject, curriculum, course|N;Abs||||||
 12960|may, might, perhaps, may be, possibly|CE||||||
 12961|may, might, perhaps, may be, possibly|CE||||||
-12962|may, might, perhaps, may be, possibly|CE||||||
+12962||-||||||
 12963|cargo, freight|N;Abs||||||
 12964|money or assets|N;Abs||||||
 12965|from (e.g. time, place, numerical quantity), since|PP||||||
@@ -13168,7 +13168,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13168|outward appearance, ostensible, public, official|N;Abs||||||
 13169|girl, daughter|CE;N||||||
 13170||-||||||
-13171|young woman|CE;N||||||
+13171|young woman, girl, female child, baby girl|N;Pe|||392|otoko no ko||
 13172||-||||||
 13173|womanly, ladylike, feminine|Ai||||||
 13174|very young|Ai||||||
@@ -13198,7 +13198,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13198|mime, dumb show, silent drama, pantomime|N;Abs||||||
 13199|underpants, pants, briefs, panties, shorts, knickers|N;Abs||||||
 13200|trousers (esp. women's), jodhpurs, breeches, pants, trunks (e.g. swimming)|N;Abs||||||
-13201|bakery, baker, pastry shop|N;Abs||||||
+13201||-||||||
 13202|abuse, misuse, misappropriation, using to excess|N;Abs||||||
 13203|underselling, panic selling|N;Abs||||||
 13204|violence, assault, running riot|N;Abs||||||
@@ -13411,7 +13411,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13411|coat, tunic, jacket, outer garment|N;Abs||||||
 13412|wakame (species of edible brown seaweed, Undaria pinnatifida)|N;Abs||||||
 13413|myself|P||||||
-13414|we, us|P||||||
+13414|we, us|P|Plural Male/Female||||atashitachi|
 13415|childish, infantile, immature, primitive|Ana||||||
 13416|term, terminology|N;Abs||||||
 13417|wording, choice of words, phraseology|N;Abs||||||
@@ -13908,7 +13908,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13908|bureau (government department beneath a ministry under the ritsuryo system)|N;Abs||||||
 13909|quantity, amount, volume, portion (of food)|N;Sx||||||
 13910||-||||||
-13911|cooking, cookery, cuisine|N;Abs|||94, 1264, 1410|||
+13911|cooking, cookery, cuisine|N;Abs|||94;1264;1410|||
 13912|dealing with something, handling, administration, management|N;Abs||||||
 13913|fisherman|N;Abs||||||
 13914|parents, both parents|N;Abs||||||
@@ -13989,7 +13989,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 13989|live (of humans), reside, inhabit, dwell, abide|VmuI||||||
 13990|one (esp. of two), the other, one way, the other way, one direction, the other direction, one side, the other side, one party, the other party|N;Abs||||||
 13991|on the other hand|PP||||||
-13992|indicates emphasis|PP||||||
+13992||-||||||
 13993|height, stature|N;Abs||||||
 13994|length (esp. of clothing)|N;Abs||||||
 13995|all (one has), everything|N;Abs||||||
@@ -14545,7 +14545,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14545|waste of time, killing time|N;Abs||||||
 14546|sunrise|N;Abs||||||
 14547|sunset|N;Abs||||||
-14548|man, person|N;Abs|||1272, 1311||kata|
+14548|man, person|N;Abs|||1272;1311||kata|
 14549|human being, mankind, people|N;Abs||||||
 14550|human (Homo sapiens), humans as a species|N;Abs||||||
 14551|character, personality|N;Abs||||||
@@ -14656,7 +14656,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14656|superiority, excellence|N;Abs||||||
 14657|(that's) just fine!, bring it on!|CE;idp||||||
 14658||-||||||
-14659|skillful, skilled, proficient, good (at), adept, clever|Ana|Verb-based, linked to object by "ga" when used with desu verb.||367, 620|heta||
+14659|skillful, skilled, proficient, good (at), adept, clever|Ana|Verb-based, linked to object by "ga" when used with desu verb.||367;620|heta||
 14660|flattery|N;Abs||||||
 14661|through, throughout, in the course of|Sx||||||
 14662|all over or throughout (e.g. a place)|Sx||||||
@@ -14680,7 +14680,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 14680|Islam|N;Abs||||||
 14681|conversation, conference (usu. between important people), discussion, interview|N;Abs||||||
 14682|church, chapel, synagogue, tabernacle|N;Abs||||||
-14683|meeting, conference, session, assembly, council, convention, congress|N;Abs|||90, 1292|||
+14683|meeting, conference, session, assembly, council, convention, congress|N;Abs|||90;1292|||
 14684|association|N;Abs||||||
 14685|conjunction|N;Abs||||||
 14686|evasion, avoidance|N;Abs||||||
@@ -15127,9 +15127,9 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15127|royal family|N;Abs||||||
 15128|check|N;Abs||||||
 15129|throne|N;Abs||||||
-15130|dragon (esp. a Chinese dragon)|N;Abs||||||
-15131|naga, semi-divine human-cobra chimera in Hindu and Buddhist mythology|N;Abs||||||
-15132|promoted rook|N;Abs||||||
+15130||-||||||
+15131||-||||||
+15132||-||||||
 15133|Dragon King|N;Abs||||||
 15134|promoted rook|N;Abs||||||
 15135|on the occasion of, circumstances, juncture|N;Abs||||||
@@ -15269,7 +15269,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15269||-||||||
 15270|before very long, soon, someday, one of these days, sooner or later|CE;A||||||
 15271||-||||||
-15272|in addition, furthermore|PP||||||
+15272|in addition, furthermore, besides|CO|Y besides X, Y in addition to X.|X. sono ue Y||||
 15273|above (which), on top of (which)|PP||||||
 15274|soap|N;Abs||||||
 15275|brothel where one can bathe with the prostitutes|N;Abs||||||
@@ -15278,7 +15278,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15278|there (indicating a place near the listener)|P||||||
 15279|you|P||||||
 15280|and, thereupon, because of that|PP||||||
-15281|well then ...|CE||||||
+15281|well then ...|CE|||1233|||
 15282|in that situation, in which case|CE||||||
 15283|but (still), and yet, nevertheless, even so, notwithstanding|PP||||||
 15284|to that degree, to that extent, that much|A||||||
@@ -15333,7 +15333,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15333|sometimes, at times|A||||||
 15334|sometimes|N;Abs||||||
 15335|in some cases, sometimes, on occasions|A||||||
-15336|together, jointly|A||||||
+15336|together, jointly, along with|A||||||
 15337|at the same time, with, as ..., including, along with|A||||||
 15338|both|A||||||
 15339|taking in, bringing in|N;Abs||||||
@@ -15387,7 +15387,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15387|designate, name, brand|VbuT||||||
 15388|garner (support, etc.), gather|VbuT||||||
 15389|take as one's wife|VbuT||||||
-15390|good, excellent, fine, nice, pleasant, agreeable|Ai||||||
+15390|good, excellent, fine, nice, pleasant, agreeable, ok, all right|Ai||||||
 15391|sufficient (can be used to turn down an offer), ready, prepared|Ai||||||
 15392|profitable (e.g. deal, business offer, etc.), beneficial|Ai||||||
 15393|OK|Ai||||||
@@ -15654,7 +15654,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 15654|identical, equal to, same (kind), like, similarity|Ana||||||
 15655|Edo (old name of Tokyo)|N;Abs||||||
 15656|Edo River|N;Abs||||||
-15657|Edo period (1603-1868 CE)|N;Abs||||||
+15657||-||||||
 15658|true Tokyoite, person born and raised in Edo|N;Abs||||||
 15659|English (language)|N;Abs||||||
 15660|influence, clout, leverage|N;Abs||||||
@@ -16117,7 +16117,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 16117|warrior|N;Abs||||||
 16118|long time, long interval, for quite some time|CE;N||||||
 16119|for quite some time|A;T||||||
-16120|while, during, as|PP|Describes an action Y done during X.|X nagara Y @ X = verb nagara form, Y = action verb teimasu form. Note: the sentence order is important.|959, 960|||
+16120|while, during, as|PP|Describes an action Y done during X.|X nagara Y @ X = verb nagara form, Y = action verb teimasu form. Note: the sentence order is important.|959;960|||
 16121|while, although, though, despite, in spite of, notwithstanding|PP||||||
 16122|all, both|PP||||||
 16123|as (e.g. "as always", "as long ago"), in (e.g. "in tears")|PP||||||
@@ -17090,7 +17090,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 17090|indoor|N;Abs||||||
 17091|Indonesia|N;Abs||||||
 17092|Indochina|N;Abs||||||
-17093|have a good day, take care, see you|UNC||||||
+17093|have a good day, take care, see you|CE|Literally "go and come back".||1181|||
 17094|where, which, who|A||||||
 17095|where, which, who|P||||||
 17096|anyway, anyhow, at any rate|A||||||
@@ -17387,7 +17387,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 17387|end, tip, extremities, terminal|N;Abs||||||
 17388|manufacturer, maker|N;Abs||||||
 17389|go toward, head for|VsuT||||||
-17390|road, path, street, lane, passage|N;Abs|||460, 461|||
+17390|road, path, street, lane, passage|N;Abs|||460;461|||
 17391|route, way|N;Abs||||||
 17392|distance, journey|N;Abs||||||
 17393|road (e.g. to victory), course|N;Abs||||||
@@ -17656,7 +17656,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 17656|rumour, rumor, gossip, hearsay|N;Abs||||||
 17657|persuasion|N;Abs||||||
 17658|persuasiveness, powers of persuasion, cogency|N;Abs||||||
-17659|photograph, photo, picture, snapshot, snap|N;Abs|To take a picture: "shashin wo toru".||323, 1294|||
+17659|photograph, photo, picture, snapshot, snap|N;Abs|To take a picture: "shashin wo toru".||323;1294|||
 17660|movie|N;Abs||||||
 17661|photographer|N;Abs||||||
 17662|photography, taking photographs|N;Abs||||||
@@ -20438,7 +20438,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20438|communication|N;Abs||||||
 20439|concrete|N;Abs||||||
 20440|competition, contest|N;Abs||||||
-20441|computer|N;Abs||||||
+20441||-||||||
 20442|contest|N;Abs||||||
 20443|coffee|N;Abs||||||
 20444|Koran, Qur'an, Quran, the Islamic holy book|N;Abs||||||
@@ -20534,7 +20534,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 20534|attack, strike, meet with misfortune, suffer an attack|VuT||||||
 20535||-||||||
 20536|South Africa|N;Pl||||||
-20537|all, everyone, everybody|N;Abs||||||
+20537|all, everyone, everybody|N;Abs|||711;712|||
 20538|to learn, to acquire knowledge|CE||||||
 20539|to carry, to wear (clothes, etc.), to put on|CE||||||
 20540|all, everyone, everybody|A||||||
@@ -21720,7 +21720,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 21720|banner (e.g. of democracy), slogan, cause, objective|N;Abs||||||
 21721|right to speak|N;Abs||||||
 21722|speaker|N;Abs||||||
-21723|fast, quick, hasty, brisk|Ai|||536, 1314|osoi||
+21723|fast, quick, hasty, brisk|Ai|||536;1314|osoi||
 21724|early (in the day, etc.), premature|Ai||||||
 21725|(too) soon, not yet, (too) early|Ai||||||
 21726|easy, simple, quick|Ai||||||
@@ -25469,7 +25469,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 25469|stronghold, citadel, headquarters|N||||||
 25470|diary|N||||||
 25471|Nimu (Jammu & Kashmir), Nym|Pl||||||
-25472|that being the case, because of ..., the reason is ..., given that ...|PP||||||
+25472||-||||||
 25473|wet hands|N||||||
 25474|anger someone, provoke, offend someone, make somebody's hackles rise|VruiI||||||
 25475|square one's shoulders|VruiI||||||
@@ -25706,7 +25706,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 25706|during imprisonment, while in jail (gaol)|N;Ano||||||
 25707|thank you for your hard work, I appreciate your efforts|Ana;CE||||||
 25708|deceive, falsify, misrepresent, cheat, swindle, tamper, juggle, manipulate|VsuT||||||
-25709|dodge, beg the question (issue|VsuT||||||
+25709|dodge, beg the question (issue, difficulties)|VsuT||||||
 25710|varnish over, gloss over|VsuT||||||
 25711|may I come in?|CE||||||
 25712|please forgive me, I'm sorry|CE;LHn||||||
@@ -26374,7 +26374,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 26374|the number of days, date|N||||||
 26375|day by day, by the day|A||||||
 26376|daily, every day|A;ar||||||
-26377|cynicism, sarcasm, irony, satire|N;Ano||||||
+26377||-||||||
 26378|cynical, sarcastic, ironic, satirical|Ana||||||
 26379|be stationed (troops)|VsuruI||||||
 26380|transport, convey|VsuruT||||||
@@ -27409,7 +27409,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 27409|scanning a book or magazine to create an ebook by oneself|N;Ano||||||
 27410|oneself and others|N||||||
 27411|transitive and intransitive|N||||||
-27412|declining, refusal, nonacceptance, turning down, withdrawal (e.g. candidacy), pulling out (e.g. race), excusing oneself|N;Ano||||||
+27412|withdrawal (e.g. candidacy), pulling out (e.g. race)|N;Ano||||||
 27413|one's home, one's house|N||||||
 27414|encyclopedia, cyclopedia|N||||||
 27415|live bullets, live ammunition, ball cartridge, money|N||||||
@@ -28790,7 +28790,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28790|rolling about|N;A||||||
 28791||-||||||
 28792|hull (rice, barley, etc.), pound (rice), polish (rice), stamp (ore)|VkuT||||||
-28793|the said ...|PP||||||
+28793||-||||||
 28794|or rather (say), or better (say), or perhaps I should say, or, how should I put it,..., I mean|PP||||||
 28795|contract (for work), contracting, undertaking|N||||||
 28796|contract, undertake|VuT||||||
@@ -28998,7 +28998,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 28998|state guest|N||||||
 28999|national treasure|N||||||
 29000|moment by moment, hour by hour|A;Ato;CE||||||
-29001|None|-||||||
+29001|moment by moment, hour by hour|CE||||||
 29002|notice, bulletin|N||||||
 29003|resembling closely, being strikingly similar, bearing a strong likeness|N||||||
 29004|indigenous person, inhabitant of a country|N||||||
@@ -33548,7 +33548,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 33548|correction, looking over, touching up|N||||||
 33549|fighting in numerous battles|N||||||
 33550|(job) turnover|N||||||
-33551|change of occupation|N||||||
+33551|change of occupation, career change|N||||||
 33552|moving out, transfer|N||||||
 33553|falling down, tumbling, overturning, turning over|N;Ano||||||
 33554|reversing, inverting, inversion|N;Ano||||||
@@ -35703,7 +35703,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 35703|stub out (e.g. a cigarette), crush out, smother (fire)|VsuT||||||
 35704|hush up, cover up, stifle, suppress|VsuT||||||
 35705|if, in case|A||||||
-35706|perhaps, possibly, maybe, by any chance, if I'm not mistaken|CE||||||
+35706|perhaps, possibly, maybe, by any chance, if I'm not mistaken, if I'm not wrong|CE||||||
 35707|go back to the start, reset, restore, return to the point (of a discussion), return something (that has been moved) to previous place, reconstitute|VsuI||||||
 35708|to render futile, to bring to naught, to waste, to not make good use of|CE||||||
 35709|shooting star, falling star, meteor|N||||||
@@ -35821,7 +35821,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 35821|be doing, be in the process of doing|VrugI||||||
 35822|person who notifies the police, informer, whistleblower, delator|N||||||
 35823|stout heart, strong mind|CE||||||
-35824|you said, he said, she said, they said|PP||||||
+35824||-||||||
 35825|fourth sign of the Chinese zodiac (The Hare, 5am-7am, east, February)|N||||||
 35826|innocent, naive, unsophisticated, inexperienced, green, wet behind the ears|Ana||||||
 35827|innocence, naiveté, insophistication, inexperience|N||||||
@@ -35877,7 +35877,7 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 35877|suffix appended to somebody else's family members|Sx||||||
 35878|too late (by a short time), just failed (by a small margin)|CE||||||
 35879|passing mark, qualifying marks (score)|N||||||
-35880|cruel, heartless, hard, harsh, severe|Ai||||||
+35880|cruel, heartless, hard, harsh, severe|Ai|"hidee" is used colloquially.||535;1284|idai||
 35881|violent, intense, strong, heavy, extreme|Ai||||||
 35882|very bad, terrible, awful|Ai||||||
 35883|excessive, exorbitant, unreasonable, outrageous, unfair, unjust|Ai||||||
@@ -36293,3 +36293,152 @@ MM Index|Meaning|Type|Explanation|Rules|Example|Opposite|Synonym|
 36293|employ, use, set to work, enslave|VsuruT||||||
 36294|patrol (esp. using ships or aircraft)|VsuruT||||||
 36295|slip, skid, slide|VsuruI||||||
+36296|to keep company, to listen to, to associate with, to take notice of, to deal with, to play against (e.g. a team), to take on (e.g. a rival)|CE||||||
+36297|night vision|N||||||
+36298|thick, deep, heavy|Ai||||||
+36299|kind, cordial, hospitable, warm, faithful|Ai||||||
+36300|serious (of an illness)|Ai||||||
+36301|classical (or formal) written style based on Heian-period Japanese|N||||||
+36302|bloodshot eyes|N||||||
+36303|(doing something in a) frenzy|N||||||
+36304|surprise attack|N||||||
+36305|bad, poor, inferior|Ana||||||
+36306|delinquent, hoodlum, hooligan|N||||||
+36307|inferior goods, defective product, defective goods|N||||||
+36308|apt to do, liable to do, tend to do|Sx||||||
+36309|technical side|N||||||
+36310|troubadour, minstrel|N||||||
+36311|origin of a word, derivation of a word, etymology|N||||||
+36312|irony, sarcasm, cynicism, satire|N||||||
+36313|unexpected, different from what one expected, not as one had planned|Ana||||||
+36314|(only) surface, something superficial|N||||||
+36315|skin and bone, body|N||||||
+36316|purse snatching, handbag snatching, purse snatcher, handbag snatcher|N||||||
+36317|frame|N||||||
+36318|outline, core|N||||||
+36319|backbone, spirit, fortitude|N||||||
+36320|laborious, troublesome, difficult|Ana||||||
+36321|survive|VrugI||||||
+36322|these days, nowadays, present day, modern times|UNC||||||
+36323|at this time (of the day)|UNC||||||
+36324|declining, refusal, nonacceptance, turning down, withdrawal (e.g. of candidacy), pulling out (e.g. of a race), excusing oneself|N||||||
+36325|empress|N||||||
+36326|smithing, blacksmith|N||||||
+36327|something shaped like an umbrella or a conical hat, shade (of a lamp), mushroom cap, pileus|N||||||
+36328|change, exchange, convert, renew, throw a switch, replace, switch over|VruiT||||||
+36329|antique, curio|N||||||
+36330|(modern) spoken Japanese, written style based on (modern) spoken Japanese|N||||||
+36331|vein (of ore), reef, streak, lode|N||||||
+36332|academic teaching unit, lectureship, professorial chair|N||||||
+36333|course (e.g. of lectures)|N||||||
+36334|account number (bank, etc.)|N||||||
+36335|Kouzan|Pl||||||
+36336|tough, stiff, hard|Ai||||||
+36337|inflexible, obstinate, stubborn|Ai||||||
+36338|cool (temperature, color, etc.)|Ana||||||
+36339|cool (i.e. calm and collected)|Ana||||||
+36340|cool (i.e. fashionable, attractive, etc.)|Ana||||||
+36341|course (of medical treatment)|N||||||
+36342|season (series) of a television program (usu. 13 installments over a 3-month period)|N||||||
+36343|Chur (Switzerland), Coeur, Cool, Kuhl|Pl||||||
+36344|space|N||||||
+36345|room|N||||||
+36346|just (e.g. "just wait here"), come now, now, now|A||||||
+36347|tolerably, passably, moderately, reasonably, fairly, rather, somewhat|A||||||
+36348|well..., I think..., it would seem..., you might say..., Hmmm, I guess so...|A||||||
+36349|oh!, oh dear!, oh, my!, wow!, goodness gracious!, good heavens!|A||||||
+36350|harassment by an Internet pitchfork mob, online shaming, flaming|N||||||
+36351|lacking (quantity and quality-wise), poor, scanty, skimpy, slight, inadequate|Ai||||||
+36352|tanning|Px||||||
+36353|tan (leather, hide, etc.), dress|VsuT||||||
+36354|like, similar to|CE||||||
+36355|as with, in the same way|CE||||||
+36356|imagination, mind, heart|N||||||
+36357|desire, wish, hope, expectation|N||||||
+36358|love, affection|N||||||
+36359|feelings, emotion, sentiment, experience|N||||||
+36360|language|N||||||
+36361|lung|N||||||
+36362|female weaver|N||||||
+36363|Vega (star in the constellation Lyra), Alpha Lyrae|N||||||
+36364|casting out, ostracism, giving the cold shoulder|N||||||
+36365|that, it|CE||||||
+36366|well yes, actually, now that you mention it, well, in fact|CE||||||
+36367|chafing, sore, scrape, scratch, mark, rub, rubbing together, blister|N;Sx||||||
+36368||-||||||
+36369|slave (device)|N||||||
+36370|slave (person)|N||||||
+36371|slate|N||||||
+36372|slender|Ana||||||
+36373|ebb tide, waning fortunes|N||||||
+36374|height, elevated place|N||||||
+36375|too much for one to handle, beyond one's capacity, unmanageable, uncontrollable, incorrigible, obstreperous|CE||||||
+36376|river crossing|N||||||
+36377|tray|N||||||
+36378|trade|N||||||
+36379|trademark|N||||||
+36380|trainer (someone who works with sports athletes)|N||||||
+36381|sweatshirt|N||||||
+36382|trailer (vehicle)|N||||||
+36383|semi-trailer truck|N||||||
+36384|trailer (for a film, video game, etc.)|N||||||
+36385|trace|N||||||
+36386|treasure|N||||||
+36387|Treasure|NNe||||||
+36388|trekker|N||||||
+36389|trench coat|N||||||
+36390|trendy|Ana||||||
+36391||-||||||
+36392|trend|N||||||
+36393|cold (to the touch), chilly, icy, freezing|Ai||||||
+36394|coldhearted, unfeeling, indifferent, unfriendly|Ai||||||
+36395|slander, bad-mouthing, abuse, insult, speaking ill (of)|N||||||
+36396|servant (esp. a samurai's attendant)|N||||||
+36397|chivalrous man (c. Edo period)|N||||||
+36398|cubed tofu (often served cold)|N||||||
+36399|kite shaped like a footman|N||||||
+36400|Edo-period hairstyle worn by samurai's attendants|N||||||
+36401|enslavement (of a woman, Edo-period punishment for her own or her husband's crime)|N||||||
+36402|he, she, him, her|P||||||
+36403|motion sickness, travel sickness|N||||||
+36404|hard to read, illegible|Ai||||||
+36405|Yomiuri (newspaper)|N||||||
+36406|armor, armour|N||||||
+36407|Yoroi|Pl||||||
+36408|like, similar to|P||||||
+36409|to reach the point that, to come to be that, to turn into|CE||||||
+36410|ebb, wane|VsuruI||||||
+36411|cross a river|VsuruI||||||
+36412|trade|VsuruI||||||
+36413|trace|VsuruI||||||
+36414|slander, bad-mouth, abuse, insult, speaking ill of|VsuruT||||||
+36415|two|num||||||
+36416|part-time worker|N||||||
+36417|albite|N||||||
+36418|aldehyde|N||||||
+36419|alpha|N||||||
+36420|alphabet|N||||||
+36421|algorithm|N||||||
+36422|alkali|N||||||
+36423|aluminum (Al), aluminium|N||||||
+36424|aluminum (Al), aluminium|N||||||
+36425|alps|N||||||
+36426|Alps|Pl||||||
+36427|Boke (Guinea)|Pl||||||
+36428|play stupid, say something stupid (oft. on purpose, esp. as part of a comedic routine)|VruiI||||||
+36429|(female) nurse|N||||||
+36430|strike, hit, beat, punch|VrugT||||||
+36431|temple|N||||||
+36432|monk|N||||||
+36433|shout, shouting|N||||||
+36434|quiet, silent|Ana||||||
+36435|slow, unhurried|Ana||||||
+36436|calm, peaceful|Ana||||||
+36437|swift horse|N||||||
+36438|bow (and arrow, esp. of a noble)|N||||||
+36439|knife blade, sword blade|N||||||
+36440|says that ...|PP||||||
+36441|forward somersault, forward roll|N||||||
+36442|do a part-time job, do a side job|VsuruI||||||
+36443|shout|VsuruI||||||
+36444|do a forward somersault, do a forward roll|VsuruI||||||
