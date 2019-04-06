@@ -35,7 +35,6 @@ import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -375,32 +374,47 @@ public class DictionaryFragment extends Fragment implements
             mMergedMatchingWordsList = Utilities.getMergedWordsList(mMergedMatchingWordsList, mMatchingWordsFromVerbs, "");
             mMergedMatchingWordsList = sortWordsAccordingToRanking(mMergedMatchingWordsList);
 
-            String text = "Found "
+            String text = getString(R.string.found) + " "
                     + Integer.toString(mLocalMatchingWordsList.size())
-                    + " local result"
-                    + ((mLocalMatchingWordsList.size()==1)? "" : "s");
+                    + " "
+                    + ((mLocalMatchingWordsList.size()==1)? getString(R.string.local_result) : getString(R.string.local_results));
 
             if (showOnlineResults && mAlreadyLoadedJishoResults) {
                 if (showConjResults) text += ", ";
-                else text += " and ";
+                else text += " " + getString(R.string.and) + " ";
 
-                text +=
-                    Integer.toString(mDifferentJishoWords.size())
-                    + ((mDifferentJishoWords.size()>0)? " new or fuller" : " new")
-                    + " online result"
-                    + ((mDifferentJishoWords.size()==1)? "" : "s");
+                switch (mDifferentJishoWords.size()) {
+                    case 0:
+                        text += getString(R.string.no_new_online_results);
+                        break;
+                    case 1:
+                        text += getString(R.string.one_new_or_fuller_online_result);
+                        break;
+                    default:
+                        text += Integer.toString(mDifferentJishoWords.size()) + " " + getString(R.string.new_or_fuller_online_results);
+                        break;
+                }
             }
 
             if (showConjResults && mAlreadyLoadedVerbs) {
-                if (showOnlineResults && mAlreadyLoadedJishoResults) text += ", and ";
+                if (showOnlineResults && mAlreadyLoadedJishoResults) text += ", "+getString(R.string.and)+" ";
                 else if (showOnlineResults) text += ", ";
-                else text += " and ";
+                else text += " "+getString(R.string.and)+" ";
 
-                text +=
-                    ((mMatchingWordsFromVerbs.size()!=0)? Integer.toString(mMatchingWordsFromVerbs.size()) : "no")
-                    + " verb"
-                    + ((mMatchingWordsFromVerbs.size()==1)? "" : "s")
-                    + " with conjugations matching the search word";
+                text += getString(R.string.including)+" ";
+
+                switch (mMatchingWordsFromVerbs.size()) {
+                    case 0:
+                        text += getString(R.string.no_verb);
+                        break;
+                    case 1:
+                        text += getString(R.string.one_verb);
+                        break;
+                    default:
+                        text += Integer.toString(mMatchingWordsFromVerbs.size()) + " " + getString(R.string.verbs);
+                        break;
+                }
+                text += " " + getString(R.string.with_conjugations_matching_the_search_word);
             }
 
             text += ".";

@@ -1,6 +1,7 @@
 package com.japanesetoolboxapp;
 
 
+import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -39,13 +40,20 @@ public class JapaneseToolboxTest {
             e.printStackTrace();
         }
 
-        TestInputStringAndButton("DICT", "");
-        TestInputStringAndButton("DICT", "fdvsd");
-        TestInputStringAndButton("DICT", "when");
-        TestInputStringAndButton("DICT", "taberu");
-        TestInputStringAndButton("DICT", "kyoukasho");
-        TestInputStringAndButton("DICT", "suggee");
-        TestInputStringAndButton("DICT", "言");
+        String dictButtontitle = "DICT";
+        try {
+            TestInputStringAndButton(dictButtontitle, "");
+        } catch (NoMatchingViewException e) {
+            dictButtontitle = "DICC";
+        }
+
+        TestInputStringAndButton(dictButtontitle, "");
+        TestInputStringAndButton(dictButtontitle, "fdvsd");
+        TestInputStringAndButton(dictButtontitle, "when");
+        TestInputStringAndButton(dictButtontitle, "taberu");
+        TestInputStringAndButton(dictButtontitle, "kyoukasho");
+        TestInputStringAndButton(dictButtontitle, "suggee");
+        TestInputStringAndButton(dictButtontitle, "言");
 
         TestInputStringAndButton("CONJ", "");
         TestInputStringAndButton("CONJ", "sdvsdvsd");
@@ -69,7 +77,7 @@ public class JapaneseToolboxTest {
         TestInputStringAndButton("CONJ", "よやくする");
         TestInputStringAndButton("CONJ", "予約する");
 
-        TestSpinnerLink("DICT", "taberu");
+        TestSpinnerLink(dictButtontitle, "taberu");
         TestTransliterator("tabertai");
 
         TestRadicalComposition();
@@ -89,17 +97,28 @@ public class JapaneseToolboxTest {
                 allOf(withId(R.id.query), isDisplayed()));
         autoCompleteTextView2.perform(replaceText(input), closeSoftKeyboard());
 
-        if (button_string.equals("DICT")) {
-            ViewInteraction button = onView(
-                    allOf(withId(R.id.button_dict), withText("DICT"), isDisplayed()));
-            button.perform(click());
-            //button.perform(closeSoftKeyboard()).perform(scrollTo()).perform(click());
-        }
-        else {
-            ViewInteraction button = onView(
-                    allOf(withId(R.id.button_conj), withText("CONJ"), isDisplayed()));
-            button.perform(click());
-            //button.perform(closeSoftKeyboard()).perform(scrollTo()).perform(click());
+        switch (button_string) {
+            case "DICT": {
+                ViewInteraction button = onView(
+                        allOf(withId(R.id.button_dict), withText(button_string), isDisplayed()));
+                button.perform(click());
+                //button.perform(closeSoftKeyboard()).perform(scrollTo()).perform(click());
+                break;
+            }
+            case "DICC": {
+                ViewInteraction button = onView(
+                        allOf(withId(R.id.button_dict), withText(button_string), isDisplayed()));
+                button.perform(click());
+                //button.perform(closeSoftKeyboard()).perform(scrollTo()).perform(click());
+                break;
+            }
+            default: {
+                ViewInteraction button = onView(
+                        allOf(withId(R.id.button_conj), withText("CONJ"), isDisplayed()));
+                button.perform(click());
+                //button.perform(closeSoftKeyboard()).perform(scrollTo()).perform(click());
+                break;
+            }
         }
     }
     private void TestSpinnerLink(String button_string, String input) {

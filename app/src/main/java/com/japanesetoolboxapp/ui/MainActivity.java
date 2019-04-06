@@ -50,7 +50,6 @@ import butterknife.Unbinder;
 ////TODO: allow user to enter verb in gerund form (ing) and still find its
 ////TODO Show the adjective conjugations (it will also explain to the user why certain adjectives appear in the list, based on their conjugations)
 ////TODO Add filtering functionality: if more than one word is entered, the results will be limited to those that include all words.
-////TODO Translate the app into other European languages, and allow the user to choose the wanted language.
 ////TODO make the DICT return kanjis having the same romaji value as that of the entered kanji, similar to the way jisho.org works
 
 //TODO: bugs

@@ -1133,11 +1133,11 @@ public final class Utilities {
                         } else if (typeElement.contains("Suru verb")) {
                                 if (matchingWordType.contains("intransitive")) typesAsLegend.add("VsuruI");
                                 if (matchingWordType.contains("Transitive")) typesAsLegend.add("VsuruT");
-                                else typesAsLegend.add("VsuruI");
+                                else typesAsLegend.add("Vsuru"); //TODO: this line prevents "Suru verb, intrans." from appearing in dict results, may want to improve this
                         } else if (typeElement.contains("Kuru verb")) {
                             if (matchingWordType.contains("intransitive")) typesAsLegend.add("VkuruI");
                             if (matchingWordType.contains("Transitive")) typesAsLegend.add("VkuruT");
-                            else typesAsLegend.add("VkuruI");
+                            else typesAsLegend.add("Vkuru");
                         }
                     }
                     matchingWordType = TextUtils.join(GlobalConstants.DB_ELEMENTS_DELIMITER, typesAsLegend);

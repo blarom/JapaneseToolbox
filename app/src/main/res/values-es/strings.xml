@@ -653,4 +653,17 @@
     <string name="verb_family_da">cópula desu</string>
     <string name="verb_family_kuru">verbo kuru</string>
     <string name="verb_family_suru">verbo suru</string>
+
+    <string name="found">Encontró</string>
+    <string name="local_result">resultado local</string>
+    <string name="local_results">resultados locales</string>
+    <string name="and">y</string>
+    <string name="no_new_online_results">ningunos resultados nuevos en línea</string>
+    <string name="one_new_or_fuller_online_result">un resultado nuevo o más completo en línea</string>
+    <string name="new_or_fuller_online_results">resultados nuevos o más completos en línea</string>
+    <string name="no_verb">ningún verbo</string>
+    <string name="one_verb">un verbo</string>
+    <string name="verbs">verbos</string>
+    <string name="with_conjugations_matching_the_search_word">con conjugaciones correspondientes a la palabra buscada</string>
+    <string name="including">incluyendo</string>
 </resources>

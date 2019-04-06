@@ -772,4 +772,17 @@
     <string name="verb_family_kuru">kuru verb</string>
     <string name="verb_family_suru">suru verb</string>
 
+    <string name="found">Found</string>
+    <string name="local_result">local result</string>
+    <string name="local_results">local results</string>
+    <string name="and">and</string>
+    <string name="no_new_online_results">no new online results</string>
+    <string name="one_new_or_fuller_online_result">one new or fuller online result</string>
+    <string name="new_or_fuller_online_results">new or fuller online results</string>
+    <string name="no_verb">no verb</string>
+    <string name="one_verb">one verb</string>
+    <string name="verbs">verbs</string>
+    <string name="with_conjugations_matching_the_search_word">with conjugations matching the search word</string>
+    <string name="including">including</string>
+
 </resources>
