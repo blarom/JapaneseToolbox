@@ -448,7 +448,8 @@
     <string name="from_conjugated_form">From conjugated form</string>
     <string name="from_associated_word">From associated word</string>
     <string name="derived_from">Derived from</string>
-    <string name="unavailable">unavailable, select word to see english meanings</string>
+    <string name="unavailable_select_word_to_see_meanings">unavailable, select word to see english meanings</string>
+    <string name="unavailable">unavailable</string>
     <string name="meanings_in">Meanings in</string>
     <string name="value_">Value:\u0020</string>
 

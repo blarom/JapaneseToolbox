@@ -818,16 +818,6 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
         String[] currentConjugationExceptionsRowKanji;
         //endregion
 
-        //region Finding the Passive tense index in order to remove passive conjugations from verbs that are intransitive
-        String currentTitle;
-        int passiveTenseCategoryIndex = 0;
-        for (int i = 0; i < mConjugationTitles.size(); i++) {
-            currentTitle = mConjugationTitles.get(i).getTitle();
-            if (currentTitle.contains("Passive (X is done to him)")) {
-            }
-        }
-        //endregion
-
         //region Updating the verbs with their conjugations
         for (int p = 0; p < mMatchingVerbIdsAndCols.size(); p++) {
             matchingVerbId = mMatchingVerbIdsAndCols.get(p)[0];

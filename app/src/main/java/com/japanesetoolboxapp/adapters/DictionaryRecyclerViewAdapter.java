@@ -28,7 +28,6 @@ import com.japanesetoolboxapp.ui.ConvertFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -249,7 +248,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         + " "
                         + language.toLowerCase()
                         + " "
-                        + mContext.getString(R.string.unavailable);
+                        + mContext.getString(R.string.unavailable_select_word_to_see_meanings);
             }
             else {
                 extract += Utilities.removeDuplicatesFromCommaList(Utilities.getMeaningsExtract(meanings, GlobalConstants.BALANCE_POINT_REGULAR_DISPLAY));

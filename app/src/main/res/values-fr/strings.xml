@@ -329,7 +329,8 @@
     <string name="from_conjugated_form">De la forme conjugée</string>
     <string name="from_associated_word">Par association à</string>
     <string name="derived_from">Dérivé de</string>
-    <string name="unavailable">non disponibles, séléctionez le mot pour voir les sens en anglais</string>
+    <string name="unavailable_select_word_to_see_meanings">non disponibles, séléctionez le mot pour voir les sens en anglais</string>
+    <string name="unavailable">non disponibles</string>
     <string name="meanings_in">Senses en</string>
     <string name="value_">Valeur:\u0020</string>
 
