@@ -70,14 +70,11 @@ public class MainActivity extends BaseActivity implements
     @BindView(R.id.second_fragment_placeholder) FrameLayout mSecondFragmentPlaceholder;
     private String mSecondFragmentFlag;
     private InputQueryFragment mInputQueryFragment;
-    private HashMap<String, String> LegendDatabase;
     private List<String[]> VerbLatinConjDatabase;
     private List<String[]> VerbKanjiConjDatabase;
     private List<String[]> SimilarsDatabase;
     private List<String[]> RadicalsOnlyDatabase;
     private Typeface CJK_typeface;
-
-    private Intent restartIntent;
 
     private boolean mShowOnlineResults;
     private boolean mWaitForOnlineResults;
@@ -144,7 +141,7 @@ public class MainActivity extends BaseActivity implements
     }
     @Override protected void onStart() {
         super.onStart();
-        restartIntent = this.getBaseContext().getPackageManager()
+        Intent restartIntent = this.getBaseContext().getPackageManager()
                 .getLaunchIntentForPackage(this.getBaseContext().getPackageName());
 
     }
@@ -570,17 +567,10 @@ public class MainActivity extends BaseActivity implements
 
             Object[] databases = (Object[]) data;
 
-            List<String[]> LegendDatabaseList = new ArrayList((List<String[]>) databases[0]);
-
-            LegendDatabase = new HashMap<>();
-            for (int i=0; i<LegendDatabaseList.size(); i++) {
-                LegendDatabase.put(LegendDatabaseList.get(i)[0], LegendDatabaseList.get(i)[1]);
-            }
-
-            SimilarsDatabase = new ArrayList((List<String[]>) databases[1]);
-            VerbLatinConjDatabase = new ArrayList((List<String[]>) databases[2]);
-            VerbKanjiConjDatabase = new ArrayList((List<String[]>) databases[3]);
-            RadicalsOnlyDatabase = new ArrayList((List<String[]>) databases[4]);
+            SimilarsDatabase = new ArrayList((List<String[]>) databases[0]);
+            VerbLatinConjDatabase = new ArrayList((List<String[]>) databases[1]);
+            VerbKanjiConjDatabase = new ArrayList((List<String[]>) databases[2]);
+            RadicalsOnlyDatabase = new ArrayList((List<String[]>) databases[3]);
 
             if (getLoaderManager()!=null) getLoaderManager().destroyLoader(SMALL_DATABASE_LOADER);
         }
@@ -605,7 +595,6 @@ public class MainActivity extends BaseActivity implements
         public Object loadInBackground() {
 
             //JapaneseToolboxRoomDatabase japaneseToolboxRoomDatabase = JapaneseToolboxRoomDatabase.getInstance(getContext()); //Required for Room
-            List<String[]> LegendDatabase = Utilities.readCSVFile("LineLegend - 3000 kanji.csv", getContext());
             List<String[]> SimilarsDatabase = Utilities.readCSVFile("LineSimilars - 3000 kanji.csv", getContext());
             List<String[]> VerbLatinConjDatabase = Utilities.readCSVFile("LineLatinConj - 3000 kanji.csv", getContext());
             List<String[]> VerbKanjiConjDatabase = Utilities.readCSVFile("LineKanjiConj - 3000 kanji.csv", getContext());
@@ -613,7 +602,6 @@ public class MainActivity extends BaseActivity implements
 
             Log.i("Diagnosis Time","Loaded All Small Databases.");
             return new Object[] {
-                    LegendDatabase,
                     SimilarsDatabase,
                     VerbLatinConjDatabase,
                     VerbKanjiConjDatabase,
@@ -632,7 +620,7 @@ public class MainActivity extends BaseActivity implements
         mInputQuery = query;
 
         if (!mAllowButtonOperations) return;
-        if (LegendDatabase==null) {
+        if (SimilarsDatabase==null) {
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -651,7 +639,6 @@ public class MainActivity extends BaseActivity implements
         bundle.putString(getString(R.string.user_query_word), query);
         bundle.putSerializable(getString(R.string.latin_conj_database), new ArrayList<>(VerbLatinConjDatabase));
         bundle.putSerializable(getString(R.string.kanji_conj_database), new ArrayList<>(VerbKanjiConjDatabase));
-        bundle.putSerializable(getString(R.string.legend_database), LegendDatabase);
         mDictionaryFragment.setArguments(bundle);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -668,7 +655,7 @@ public class MainActivity extends BaseActivity implements
         if (!mAllowButtonOperations) return;
         cleanSavedData();
         //clearBackstack();
-        if (LegendDatabase==null) {
+        if (SimilarsDatabase==null) {
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -722,7 +709,7 @@ public class MainActivity extends BaseActivity implements
 
         cleanSavedData();
 
-        if (LegendDatabase==null) {
+        if (SimilarsDatabase==null) {
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -753,7 +740,7 @@ public class MainActivity extends BaseActivity implements
 
         cleanSavedData();
 
-        if (LegendDatabase==null) {
+        if (SimilarsDatabase==null) {
             Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
             return;
         }

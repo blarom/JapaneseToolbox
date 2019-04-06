@@ -1022,10 +1022,8 @@ public final class Utilities {
 
                 //Getting the Type value
                 String matchingWordType = meaningTagsFromTree.get(j);
-                if (matchingWordType.contains("Expression")) {
-                    matchingWordType = "CE";
-                }
-                else if (matchingWordType.contains("verb")) {
+
+                if (matchingWordType.contains("verb") && !matchingWordType.contains("Suru") && !matchingWordType.contains("Kuru")) {
                     if (matchingWordType.contains("su ending")) {
                         if (matchingWordType.contains("intransitive")) matchingWordType = "VsuI";
                         if (matchingWordType.contains("Transitive")) matchingWordType = "VsuT";
@@ -1067,6 +1065,82 @@ public final class Utilities {
                         if (matchingWordType.contains("Transitive")) matchingWordType = "VruiT";
                         else matchingWordType = "VruiI";
                     }
+                }
+                else {
+                    String[] typeElements = matchingWordType.split(", ");
+                    List<String> typesAsLegend = new ArrayList<>();
+                    for (String typeElement : typeElements) {
+
+                        if (typeElement.contains("Expression")) {
+                            typesAsLegend.add("CE");
+                        }
+                        else if (typeElement.equals("Adverb")) {
+                            typesAsLegend.add("A");
+                        }
+                        else if (typeElement.equals("Noun")) {
+                            typesAsLegend.add("N");
+                        }
+                        else if (typeElement.equals("Place")) {
+                            typesAsLegend.add("Pl");
+                        }
+                        else if (typeElement.equals("Temporal noun")) {
+                            typesAsLegend.add("T");
+                        }
+                        else if (typeElement.equals("Proper noun")) {
+                            typesAsLegend.add("Ne");
+                        }
+                        else if (typeElement.equals("Numeric")) {
+                            typesAsLegend.add("num");
+                        }
+                        else if (typeElement.equals("Counter")) {
+                            typesAsLegend.add("C");
+                        }
+                        else if (typeElement.contains("Suffix, Counter")) {
+                            typesAsLegend.add("C");
+                        }
+                        else if (typeElement.contains("Suffix") || matchingWordType.contains("suffix")) {
+                            typesAsLegend.add("Sx");
+                        }
+                        else if (typeElement.contains("Prefix") || matchingWordType.contains("prefix")) {
+                            typesAsLegend.add("Px");
+                        }
+                        else if (typeElement.contains("I-adjective") || matchingWordType.contains("i-adjective")) {
+                            typesAsLegend.add("Ai");
+                        }
+                        else if (typeElement.contains("Na-adjective") || matchingWordType.contains("na-adjective")) {
+                            typesAsLegend.add("Ana");
+                        }
+                        else if (typeElement.contains("No-adjective") || matchingWordType.contains("na-adjective")) {
+                            typesAsLegend.add("Ano");
+                        }
+                        else if (typeElement.contains("adjective") || matchingWordType.contains("Adjective")) {
+                            typesAsLegend.add("Aj");
+                        }
+                        else if (typeElement.contains("Pre-noun adjectival") || matchingWordType.contains("Pronoun")) {
+                            typesAsLegend.add("P");
+                        }
+                        else if (typeElement.contains("Auxiliary verb")) {
+                            typesAsLegend.add("Vx");
+                        }
+                        else if (typeElement.contains("Auxiliary adjective")) {
+                            typesAsLegend.add("Ax");
+                        }
+                        else if (typeElement.contains("Particle") || matchingWordType.contains("Preposition")) {
+                            typesAsLegend.add("PP");
+                        }
+                        else if (typeElement.contains("Conjunction")) {
+                            typesAsLegend.add("CO");
+                        } else if (typeElement.contains("Suru verb")) {
+                                if (matchingWordType.contains("intransitive")) typesAsLegend.add("VsuruI");
+                                if (matchingWordType.contains("Transitive")) typesAsLegend.add("VsuruT");
+                                else typesAsLegend.add("VsuruI");
+                        } else if (typeElement.contains("Kuru verb")) {
+                            if (matchingWordType.contains("intransitive")) typesAsLegend.add("VkuruI");
+                            if (matchingWordType.contains("Transitive")) typesAsLegend.add("VkuruT");
+                            else typesAsLegend.add("VkuruI");
+                        }
+                    }
+                    matchingWordType = TextUtils.join(GlobalConstants.DB_ELEMENTS_DELIMITER, typesAsLegend);
                 }
                 wordMeaning.setType(matchingWordType);
 
@@ -1116,7 +1190,7 @@ public final class Utilities {
     }
     private static String reformatMeanings(String meaningsOriginal) {
 
-        String meanings_commas = meaningsOriginal.replace(";",",");
+        String meanings_commas = meaningsOriginal.replace(GlobalConstants.DB_ELEMENTS_DELIMITER,",");
         meanings_commas = Utilities.fromHtml(meanings_commas).toString();
         meanings_commas = meanings_commas.replaceAll("',", "'");
         meanings_commas = meanings_commas.replaceAll("\",", "\"");
@@ -1418,7 +1492,7 @@ public final class Utilities {
 
         //Finding the meanings using the supplied index
         String MM_indexEN = centralDatabase.get(centralDbRowIndex)[meaningsColumn];
-        List<String> MM_index_list = Arrays.asList(MM_indexEN.split(";"));
+        List<String> MM_index_list = Arrays.asList(MM_indexEN.split(GlobalConstants.DB_ELEMENTS_DELIMITER));
         if (MM_index_list.size() == 0 || MM_index_list.get(0).equals("")) { return new ArrayList<>(); }
 
         List<Word.Meaning> meaningsList = new ArrayList<>();
@@ -1478,7 +1552,7 @@ public final class Utilities {
 
             List<Word.Meaning.Explanation> explanationList = new ArrayList<>();
             if (has_multiple_explanations) {
-                List<String> ME_index_list = Arrays.asList(ME_index.split(";"));
+                List<String> ME_index_list = Arrays.asList(ME_index.split(GlobalConstants.DB_ELEMENTS_DELIMITER));
                 int current_ME_index;
                 for (int j=0; j<ME_index_list.size(); j++) {
 
@@ -1498,7 +1572,7 @@ public final class Utilities {
                     matchingWordExampleList = multExplDatabase.get(current_ME_index)[GlobalConstants.COLUMN_MULT_EXPLANATIONS_EXAMPLES];
                     List<Word.Meaning.Explanation.Example> exampleList = new ArrayList<>();
                     if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
-                        parsed_example_list = Arrays.asList(matchingWordExampleList.split(";"));
+                        parsed_example_list = Arrays.asList(matchingWordExampleList.split(GlobalConstants.DB_ELEMENTS_DELIMITER));
                         for (int t = 0; t < parsed_example_list.size(); t++) {
                             Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
                             example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
@@ -1527,7 +1601,7 @@ public final class Utilities {
                 matchingWordExampleList = meaningsDatabase.get(current_MM_index)[GlobalConstants.COLUMN_MEANINGS_EXAMPLES];
                 List<Word.Meaning.Explanation.Example> exampleList = new ArrayList<>();
                 if (!matchingWordExampleList.equals("") && !matchingWordExampleList.contains("Example")) {
-                    parsed_example_list = Arrays.asList(matchingWordExampleList.split(";"));
+                    parsed_example_list = Arrays.asList(matchingWordExampleList.split(GlobalConstants.DB_ELEMENTS_DELIMITER));
                     for (int t = 0; t < parsed_example_list.size(); t++) {
                         Word.Meaning.Explanation.Example example = new Word.Meaning.Explanation.Example();
                         example_index = Integer.parseInt(parsed_example_list.get(t)) - 1;
@@ -1568,7 +1642,7 @@ public final class Utilities {
 
         //Setting the family
         String MM_index = verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_MEANING_EN_INDEXES];
-        List<String> MM_index_list = Arrays.asList(MM_index.split(";"));
+        List<String> MM_index_list = Arrays.asList(MM_index.split(GlobalConstants.DB_ELEMENTS_DELIMITER));
         if (MM_index_list.size() == 0) { return verb; }
 
         int current_MM_index;
@@ -1579,7 +1653,7 @@ public final class Utilities {
             currentMeaningCharacteristics = meaningsDatabase.get(current_MM_index);
 
             //Getting the Family value
-            types = currentMeaningCharacteristics[2].split(";");
+            types = currentMeaningCharacteristics[2].split(GlobalConstants.DB_ELEMENTS_DELIMITER);
 
             foundVerbType = false;
             for (String type : types) {
@@ -2227,7 +2301,7 @@ public final class Utilities {
         //region Get the indexes of all of the results that were found
         List<String> indexList;
         for (String searchResultIndexes : searchResultIndexesArray) {
-            indexList = Arrays.asList(searchResultIndexes.split(";"));
+            indexList = Arrays.asList(searchResultIndexes.split(GlobalConstants.DB_ELEMENTS_DELIMITER));
             for (int j = 0; j < indexList.size(); j++) {
                 matchingWordIds.add(Long.valueOf(indexList.get(j)));
             }
@@ -2246,10 +2320,10 @@ public final class Utilities {
 
         for (Object indexLatin : latinIndices) {
             List<String> indexList = new ArrayList<>();
-            if (indexLatin instanceof IndexRomaji )         indexList = Arrays.asList(((IndexRomaji) indexLatin).getWordIds().split(";"));
-            else if (indexLatin instanceof IndexEnglish )   indexList = Arrays.asList(((IndexEnglish) indexLatin).getWordIds().split(";"));
-            else if (indexLatin instanceof IndexFrench )    indexList = Arrays.asList(((IndexFrench) indexLatin).getWordIds().split(";"));
-            else if (indexLatin instanceof IndexSpanish )   indexList = Arrays.asList(((IndexSpanish) indexLatin).getWordIds().split(";"));
+            if (indexLatin instanceof IndexRomaji )         indexList = Arrays.asList(((IndexRomaji) indexLatin).getWordIds().split(GlobalConstants.DB_ELEMENTS_DELIMITER));
+            else if (indexLatin instanceof IndexEnglish )   indexList = Arrays.asList(((IndexEnglish) indexLatin).getWordIds().split(GlobalConstants.DB_ELEMENTS_DELIMITER));
+            else if (indexLatin instanceof IndexFrench )    indexList = Arrays.asList(((IndexFrench) indexLatin).getWordIds().split(GlobalConstants.DB_ELEMENTS_DELIMITER));
+            else if (indexLatin instanceof IndexSpanish )   indexList = Arrays.asList(((IndexSpanish) indexLatin).getWordIds().split(GlobalConstants.DB_ELEMENTS_DELIMITER));
 
             for (int j = 0; j < indexList.size(); j++) {
                 newMatchingWordIdsFromIndex.add(Long.valueOf(indexList.get(j)));
@@ -2608,7 +2682,7 @@ public final class Utilities {
                 for (Word.Meaning meaning : word.getMeaningsEN()) {
                     typesList.add(meaning.getType());
                 }
-                typesList = Arrays.asList(TextUtils.join(";", typesList).split(";"));
+                typesList = Arrays.asList(TextUtils.join(GlobalConstants.DB_ELEMENTS_DELIMITER, typesList).split(GlobalConstants.DB_ELEMENTS_DELIMITER));
                 if (typesList.contains("Ai") || typesList.contains("Ana")) {
                     for (long id : matchingWordIds) {
                         if (id == word.getWordId()) {
@@ -2652,7 +2726,7 @@ public final class Utilities {
             List<String> indexList;
             List<Long> matchingWordIdsFromIndex = new ArrayList<>();
             for (String searchResultIndexes : searchResultIndexesArray) {
-                indexList = Arrays.asList(searchResultIndexes.split(";"));
+                indexList = Arrays.asList(searchResultIndexes.split(GlobalConstants.DB_ELEMENTS_DELIMITER));
                 for (int j = 0; j < indexList.size(); j++) {
                     matchingWordIdsFromIndex.add(Long.valueOf(indexList.get(j)));
                 }
@@ -2670,7 +2744,7 @@ public final class Utilities {
                     for (Word.Meaning meaning : word.getMeaningsEN()) {
                         typesList.add(meaning.getType());
                     }
-                    typesList = Arrays.asList(TextUtils.join(";", typesList).split(";"));
+                    typesList = Arrays.asList(TextUtils.join(GlobalConstants.DB_ELEMENTS_DELIMITER, typesList).split(GlobalConstants.DB_ELEMENTS_DELIMITER));
                     if (typesList.contains("C")) {
                         for (long id : matchingWordIds) {
                             if (id == word.getWordId()) {
@@ -2797,7 +2871,7 @@ public final class Utilities {
 
         List<String> indexList;
         for (String searchResultIndexes : searchResultIndexesArray) {
-            indexList = Arrays.asList(searchResultIndexes.split(";"));
+            indexList = Arrays.asList(searchResultIndexes.split(GlobalConstants.DB_ELEMENTS_DELIMITER));
             for (int j = 0; j < indexList.size(); j++) {
                 matchingWordIdsFromIndex.add(Long.valueOf(indexList.get(j)));
             }

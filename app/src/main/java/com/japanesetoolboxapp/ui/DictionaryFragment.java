@@ -71,7 +71,6 @@ public class DictionaryFragment extends Fragment implements
     private boolean mAlreadyLoadedJMDictFRResults;
     private boolean mAlreadyLoadedJMDictESResults;
     private boolean mAlreadyLoadedVerbs;
-    private HashMap<String, String> mLegendDatabase;
     private List<String[]> mVerbLatinConjDatabase;
     private List<String[]> mVerbKanjiConjDatabase;
     private List<ConjugationTitle> mConjugationTitles;
@@ -258,7 +257,6 @@ public class DictionaryFragment extends Fragment implements
             mInputQuery = getArguments().getString(getString(R.string.user_query_word));
             mVerbLatinConjDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.latin_conj_database));
             mVerbKanjiConjDatabase = (List<String[]>) getArguments().getSerializable(getString(R.string.kanji_conj_database));
-            mLegendDatabase = (HashMap<String, String>) getArguments().getSerializable(getString(R.string.legend_database));
         }
     }
     private void initializeParameters() {
@@ -280,7 +278,7 @@ public class DictionaryFragment extends Fragment implements
 
         mDictionaryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         mDictionaryRecyclerView.setNestedScrollingEnabled(true);
-        mDictionaryRecyclerViewAdapter = new DictionaryRecyclerViewAdapter(getContext(), this, null, mLegendDatabase, mInputQuery, LocaleHelper.getLanguage(getContext()));
+        mDictionaryRecyclerViewAdapter = new DictionaryRecyclerViewAdapter(getContext(), this, null, mInputQuery, LocaleHelper.getLanguage(getContext()));
         mDictionaryRecyclerView.setAdapter(mDictionaryRecyclerViewAdapter);
     }
     private void getQuerySearchResults() {

@@ -40,7 +40,6 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     private static final String RULE_DELIMITER = "@";
     public static final int DETAILS_LEFT_PADDING = 12;
     private final Context mContext;
-    private final HashMap<String, String> mLegendDatabase;
     private final String mInputQuery;
     private final int mInputQueryTextType;
     private final String mInputQueryFirstLetter;
@@ -61,12 +60,10 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     public DictionaryRecyclerViewAdapter(Context context,
                                          DictionaryItemClickHandler listener,
                                          List<Word> wordsList,
-                                         HashMap<String, String> legendDatabase,
                                          String inputQuery,
                                          String language) {
         this.mContext = context;
         this.mWordsList = wordsList;
-        this.mLegendDatabase = legendDatabase;
         this.mOnItemClickHandler = listener;
         this.mInputQuery = inputQuery;
         this.mUILanguage = language;
@@ -409,8 +406,11 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
             //region Setting the type and meaning
             List<String> types = new ArrayList<>();
+
             for (String element : type.split(";")) {
-                if (mLegendDatabase.containsKey(element)) types.add(Utilities.capitalizeFirstLetter(mLegendDatabase.get(element)));
+                if (GlobalConstants.TYPES.containsKey(element)) {
+                    types.add(Utilities.capitalizeFirstLetter(mContext.getString(GlobalConstants.TYPES.get(element))));
+                }
             }
             fullType = TextUtils.join(", ", types);
             if (fullType.equals("")) fullType = type;
