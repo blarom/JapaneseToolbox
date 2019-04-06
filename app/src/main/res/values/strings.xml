@@ -784,5 +784,7 @@
     <string name="verbs">verbs</string>
     <string name="with_conjugations_matching_the_search_word">with conjugations matching the search word</string>
     <string name="including">including</string>
+    <string name="please_wait_for_db_to_finish_loading">Please wait for the database to finish loading.</string>
+    <string name="close">Close</string>
 
 </resources>

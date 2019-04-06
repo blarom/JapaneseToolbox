@@ -297,7 +297,7 @@
     <string name="select_radical">Selecc. Radical</string>
     <string name="select_component">Selecc. Componente</string>
     <string name="select_overall_kanji_structure">Selecc. la estructura general del kanji:</string>
-    <string name="find_the_kanji">Encuentra él kanji!</string>
+    <string name="find_the_kanji">Encuentrar los kanjis!</string>
     <string name="select_the_component">Selecc. él componente</string>
     <string name="results">Resultados</string>
     <string name="structure">Estructura:</string>
@@ -666,4 +666,6 @@
     <string name="verbs">verbos</string>
     <string name="with_conjugations_matching_the_search_word">con conjugaciones correspondientes a la palabra buscada</string>
     <string name="including">incluyendo</string>
+    <string name="please_wait_for_db_to_finish_loading">Por favor, espere a que la base de datos termine de cargarse.</string>
+    <string name="close">Cerrar</string>
 </resources>

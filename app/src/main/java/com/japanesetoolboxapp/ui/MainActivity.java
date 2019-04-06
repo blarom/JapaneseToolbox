@@ -22,7 +22,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -34,7 +33,6 @@ import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -103,9 +101,6 @@ public class MainActivity extends BaseActivity implements
     private List<Word> mLocalMatchingWords;
     private String mInputQuery;
     private List<String> mQueryHistory;
-    private boolean mMeaningsEN;
-    private boolean mMeaningsFR;
-    private boolean mMeaningsES;
     private String mLanguageCode;
     //endregion
 
@@ -620,7 +615,7 @@ public class MainActivity extends BaseActivity implements
 
         if (!mAllowButtonOperations) return;
         if (SimilarsDatabase==null) {
-            Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.please_wait_for_db_to_finish_loading), Toast.LENGTH_SHORT).show();
             return;
         }
         cleanSavedData();
@@ -655,7 +650,7 @@ public class MainActivity extends BaseActivity implements
         cleanSavedData();
         //clearBackstack();
         if (SimilarsDatabase==null) {
-            Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.please_wait_for_db_to_finish_loading), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -709,7 +704,7 @@ public class MainActivity extends BaseActivity implements
         cleanSavedData();
 
         if (SimilarsDatabase==null) {
-            Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.please_wait_for_db_to_finish_loading), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -740,7 +735,7 @@ public class MainActivity extends BaseActivity implements
         cleanSavedData();
 
         if (SimilarsDatabase==null) {
-            Toast.makeText(this, "Please wait for the database to finish loading.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.please_wait_for_db_to_finish_loading), Toast.LENGTH_SHORT).show();
             return;
         }
 

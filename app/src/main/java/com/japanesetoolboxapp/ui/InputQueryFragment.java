@@ -1041,7 +1041,7 @@ public class InputQueryFragment extends Fragment implements
                 //Overridden later on
             }
         });
-        builder.setNegativeButton(R.string.done, new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.close), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
             }
