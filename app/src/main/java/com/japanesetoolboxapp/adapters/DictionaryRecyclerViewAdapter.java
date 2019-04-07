@@ -406,9 +406,13 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             //region Setting the type and meaning
             List<String> types = new ArrayList<>();
 
-            for (String element : type.split(";")) {
+            for (String element : type.split(GlobalConstants.DB_ELEMENTS_DELIMITER)) {
                 if (GlobalConstants.TYPES.containsKey(element)) {
-                    types.add(Utilities.capitalizeFirstLetter(mContext.getString(GlobalConstants.TYPES.get(element))));
+                    String  currentType = Utilities.capitalizeFirstLetter(mContext.getString(GlobalConstants.TYPES.get(element)));
+                    if (language != GlobalConstants.LANG_EN) {
+                        currentType = currentType.replace(", trans.", "").replace(", intrans.", "");
+                    }
+                    types.add(currentType);
                 }
             }
             fullType = TextUtils.join(", ", types);

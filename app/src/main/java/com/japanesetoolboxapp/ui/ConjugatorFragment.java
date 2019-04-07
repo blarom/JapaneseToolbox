@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -30,6 +31,8 @@ import com.japanesetoolboxapp.data.ConjugationTitle;
 import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.loaders.VerbSearchAsyncTaskLoader;
+import com.japanesetoolboxapp.resources.GlobalConstants;
+import com.japanesetoolboxapp.resources.LocaleHelper;
 import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
@@ -434,14 +437,14 @@ public class ConjugatorFragment extends Fragment implements
                     && !(verb.getActiveAltSpelling().equals(verb.getKanji())
                         || verb.getActiveAltSpelling().equals(verb.getRomaji()))
                     ) {
-                SpinnerText = SpinnerText + ": alt. form [" + verb.getActiveAltSpelling() + "]";
+                SpinnerText = SpinnerText + ": "+getString(R.string.alt_form)+" [" + verb.getActiveAltSpelling() + "]";
                 verbchooser_Kanji_and_ustem.setText(SpinnerText);
             }
 
             //Setting the trans./intrans.
             if (!verb.getFamily().equals("")) {
                 SpinnerText = verb.getFamily();
-                if (!verb.getTrans().equals("")) SpinnerText = SpinnerText + ", " + verb.getTrans();
+                if (!verb.getTrans().equals("") && LocaleHelper.getLanguage(getContext()).equals("en")) SpinnerText = SpinnerText + ", " + verb.getTrans();
             }
             else {
                 if (!verb.getTrans().equals("")) SpinnerText = verb.getTrans();

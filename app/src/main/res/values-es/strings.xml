@@ -668,4 +668,5 @@
     <string name="including">incluyendo</string>
     <string name="please_wait_for_db_to_finish_loading">Por favor, espere a que la base de datos termine de cargarse.</string>
     <string name="close">Cerrar</string>
+    <string name="alt_form">forma alt.</string>
 </resources>
