@@ -49,6 +49,7 @@ public class DictionaryFragment extends Fragment implements
 
     private static final int WORD_RESULTS_MAX_RESPONSE_DELAY = 2000;
     private static final String DEBUG_TAG = "JT DEBUG";
+    public static final int MAX_NUM_WORDS_TO_SHARE = 30;
     //region Parameters
     @BindView(R.id.dictionary_recyclerview) RecyclerView mDictionaryRecyclerView;
     @BindView(R.id.word_hint) TextView mHintTextView;
@@ -176,7 +177,8 @@ public class DictionaryFragment extends Fragment implements
             mLocalMatchingWordsList = loaderResultWordsList;
             mLocalMatchingWordsList = sortWordsAccordingToRanking(mLocalMatchingWordsList);
 
-            dictionaryFragmentOperationsHandler.onLocalMatchingWordsFound(mLocalMatchingWordsList);
+            int maxIndex = mLocalMatchingWordsList.size()> MAX_NUM_WORDS_TO_SHARE ? MAX_NUM_WORDS_TO_SHARE : mLocalMatchingWordsList.size();
+            dictionaryFragmentOperationsHandler.onLocalMatchingWordsFound(mLocalMatchingWordsList.subList(0,maxIndex));
 
             Log.i(DEBUG_TAG, "Displaying Room words");
             displayMergedWordsToUser();
@@ -421,7 +423,8 @@ public class DictionaryFragment extends Fragment implements
 
             displayResults(mMergedMatchingWordsList);
 
-            dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mMergedMatchingWordsList);
+            int maxIndex = mLocalMatchingWordsList.size()> MAX_NUM_WORDS_TO_SHARE ? MAX_NUM_WORDS_TO_SHARE : mLocalMatchingWordsList.size();
+            dictionaryFragmentOperationsHandler.onFinalMatchingWordsFound(mMergedMatchingWordsList.subList(0,maxIndex));
 
             if (mLocalMatchingWordsList.size()==0) {
                 //performConjSearch();
