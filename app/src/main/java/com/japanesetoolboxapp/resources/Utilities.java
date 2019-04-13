@@ -1970,9 +1970,13 @@ public final class Utilities {
      */
     public static int getRankingFromWordAttributes(Word currentWord, String mInputQuery, String queryWordWithoutTo, boolean queryIsVerbWithTo, String language) {
 
+        String inputQueryLatin = ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN);
         int ranking;
         String romaji_value = currentWord.getRomaji();
         String kanji_value = currentWord.getKanji();
+        String altSpellings_value = currentWord.getAltSpellings();
+        String kwJap_value = currentWord.getExtraKeywordsJAP() == null? "" : currentWord.getExtraKeywordsJAP();
+        String kwLat_value ="";
         String type = currentWord.getMeaningsEN().get(0).getType();
         boolean currentWordIsAVerb = type.length()>0 && type.substring(0,1).equals("V") && !type.equals("VC") && !type.equals("NV");
 
@@ -1983,12 +1987,15 @@ public final class Utilities {
         switch (language) {
             case "en":
                 currentMeanings = currentWord.getMeaningsEN();
+                kwLat_value = currentWord.getExtraKeywordsEN() == null? "" : currentWord.getExtraKeywordsEN();
                 break;
             case "fr":
                 currentMeanings = currentWord.getMeaningsFR();
+                kwLat_value = currentWord.getExtraKeywordsFR() == null? "" : currentWord.getExtraKeywordsFR();
                 break;
             case "es":
                 currentMeanings = currentWord.getMeaningsES();
+                kwLat_value = currentWord.getExtraKeywordsES() == null? "" : currentWord.getExtraKeywordsES();
                 break;
         }
         int missingLanguagePenatly = 0;
@@ -2139,7 +2146,6 @@ public final class Utilities {
         ranking = romaji_value.length() + kanji_value.length() + ranking;
 
         //If the word starts with the inputQuery, its ranking improves
-        String inputQueryLatin = ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN);
         String romajiNoSpaces = getRomajiNoSpacesForSpecialPartsOfSpeech(romaji_value);
 
         if (       (romaji_value.length() >= mInputQuery.length() && romaji_value.substring(0,mInputQuery.length()).equals(mInputQuery))
@@ -2149,6 +2155,32 @@ public final class Utilities {
                 ) {
             ranking -= 100;
         }
+
+        //If one of the elements in altSpellings is a perfect match, the ranking improves
+        for (String element : altSpellings_value.split(",")) {
+            if (mInputQuery.equals(element.trim()) || inputQueryLatin.equals(element.trim())) {
+                ranking -= 70;
+                break;
+            }
+        }
+
+        //If one of the elements in the Japanese Keywords is a perfect match, the ranking improves
+        for (String element : kwJap_value.split(",")) {
+            if (mInputQuery.equals(element.trim()) || inputQueryLatin.equals(element.trim())) {
+                ranking -= 70;
+                break;
+            }
+        }
+
+        //If one of the elements in the Latin Keywords is a perfect match, the ranking improves
+        for (String element : kwLat_value.split(",")) {
+            if (mInputQuery.equals(element.trim()) || inputQueryLatin.equals(element.trim())) {
+                ranking -= 40;
+                break;
+            }
+        }
+
+        ranking = romaji_value.length() + kanji_value.length() + ranking;
 
         //If the romaji or Kanji value is an exact match to the search word, then it must appear at the start of the list
         if (romaji_value.equals(mInputQuery) || kanji_value.equals(mInputQuery)) ranking = 0;
