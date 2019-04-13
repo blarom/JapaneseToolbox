@@ -16,6 +16,7 @@ import android.text.style.ClickableSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,12 +39,15 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
     private static final String RULE_DELIMITER = "@";
     public static final int DETAILS_LEFT_PADDING = 12;
+    public static final int EXAMPLES_LEFT_PADDING = 20;
+    public static final int PARENT_VISIBILITY = 0;
+    public static final int EXPLANATION_VISIBILITIES = 1;
     private final Context mContext;
     private final String mInputQuery;
     private final int mInputQueryTextType;
     private final String mInputQueryFirstLetter;
     private boolean[] mActiveMeaningLanguages;
-    private boolean[] mChildIsVisible;
+    private Object[][] mVisibilitiesRegister;
     private List<Word> mWordsList;
     final private DictionaryItemClickHandler mOnItemClickHandler;
     private final Typeface mDroidSansJapaneseTypeface;
@@ -93,7 +97,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     @Override public void onBindViewHolder(@NonNull final DictItemViewHolder holder, int position) {
 
         //region Setting behavior when element is clicked
-        if (mChildIsVisible[position]) {
+        if ((boolean) mVisibilitiesRegister[position][PARENT_VISIBILITY]) {
             holder.childLinearLayout.setVisibility(View.VISIBLE);
             holder.meaningsTextView.setVisibility(View.GONE);
             holder.sourceInfoTextView.setVisibility(View.GONE);
@@ -114,14 +118,14 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     holder.meaningsTextView.setVisibility(View.VISIBLE);
                     holder.parentContainer.setBackgroundColor(Color.TRANSPARENT);
                     holder.dropdownArrowImageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_down_black_24dp));
-                    mChildIsVisible[holder.getAdapterPosition()] = false;
+                    mVisibilitiesRegister[holder.getAdapterPosition()][PARENT_VISIBILITY] = false;
                 }
                 else {
                     holder.childLinearLayout.setVisibility(View.VISIBLE);
                     holder.meaningsTextView.setVisibility(View.GONE);
                     holder.parentContainer.setBackgroundColor(mContext.getResources().getColor(R.color.colorSelectedDictResultBackground));
                     holder.dropdownArrowImageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_up_black_24dp));
-                    mChildIsVisible[holder.getAdapterPosition()] = true;
+                    mVisibilitiesRegister[holder.getAdapterPosition()][PARENT_VISIBILITY] = true;
                 }
             }
         });
@@ -372,7 +376,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
         }
     }
-    private void setMeaningsLayout(int position, DictItemViewHolder holder, int language) {
+    private void setMeaningsLayout(final int position, final DictItemViewHolder holder, int language) {
 
         String type;
         String fullType;
@@ -393,9 +397,13 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 meanings = mWordsList.get(position).getMeaningsES();
                 break;
         }
-        if (meanings == null || meanings.size() == 0) meanings = mWordsList.get(position).getMeaningsEN();
+        final int numMeanings = meanings.size();
+        if (numMeanings == 0) meanings = mWordsList.get(position).getMeaningsEN();
 
-        for (Word.Meaning wordMeaning : meanings) {
+        for (int meaningIndex=0; meaningIndex<numMeanings; meaningIndex++) {
+
+            Word.Meaning wordMeaning = meanings.get(meaningIndex);
+            final int currentMeaningIndex = meaningIndex;
             meaning = wordMeaning.getMeaning();
             type = wordMeaning.getType();
             antonym = wordMeaning.getAntonym();
@@ -480,34 +488,79 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             }
             //endregion
 
-            //region Setting the explanation, rule show/hide line and examples
-            List<Word.Meaning.Explanation> currentExplanations = wordMeaning.getExplanations();
+            //regionSetting the explanations collapse/expand button
+            final List<Word.Meaning.Explanation> currentExplanations = wordMeaning.getExplanations();
+            final LinearLayout meaningExplanationsLL = new LinearLayout(mContext);
+            meaningExplanationsLL.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            meaningExplanationsLL.setOrientation(LinearLayout.VERTICAL);
+            meaningExplanationsLL.setClickable(false);
+            meaningExplanationsLL.setFocusable(false);
+            meaningExplanationsLL.setVisibility(View.GONE);
+
+            if (!currentExplanations.get(0).getExplanation().equals("")
+                    || !currentExplanations.get(0).getRules().equals("")
+                    || currentExplanations.get(0).getExamples().size()>0) {
+                ImageView iv = new ImageView(mContext);
+                iv.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_down_explanations_24dp));
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                iv.setLayoutParams(layoutParams);
+                iv.setId(100*position+meaningIndex);
+                iv.setClickable(true);
+                iv.setFocusable(true);
+                iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                iv.setPadding(DETAILS_LEFT_PADDING, 0, 0, 0);
+                iv.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ImageView iv = (ImageView) view;
+
+                        boolean[] explanationsVisible = (boolean[]) mVisibilitiesRegister[position][EXPLANATION_VISIBILITIES];
+                        //if (explanationsVisible.length != numMeanings) return;
+
+                        if (explanationsVisible[currentMeaningIndex]) {
+                            meaningExplanationsLL.setVisibility(View.GONE);
+                            iv.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_down_explanations_24dp));
+                            explanationsVisible[currentMeaningIndex] = false;
+                        }
+                        else {
+                            meaningExplanationsLL.setVisibility(View.VISIBLE);
+                            iv.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_up_explanations_24dp));
+                            explanationsVisible[currentMeaningIndex] = true;
+                        }
+                        mVisibilitiesRegister[position][EXPLANATION_VISIBILITIES] = explanationsVisible;
+                    }
+                });
+                holder.childElementsLinearLayout.addView(iv);
+                //iv.requestLayout();
+            }
+            //endregion
+
+            //region Setting the explanation, rules and examples
             String explanation;
             String rules;
             List<Word.Meaning.Explanation.Example> examplesList;
 
             for (int i = 0; i < currentExplanations.size(); i++) {
-
                 explanation = currentExplanations.get(i).getExplanation();
                 rules = currentExplanations.get(i).getRules();
 
                 //region Adding the explanation
                 if (!explanation.equals("")) {
-                    TextView explHeaderTV = addHeaderField(holder.childElementsLinearLayout, SpannableString.valueOf(mContext.getString(R.string.explanation_)));
+                    TextView explHeaderTV = addHeaderField(meaningExplanationsLL, SpannableString.valueOf(mContext.getString(R.string.explanation_)));
                     explHeaderTV.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-                    addSubHeaderField(holder.childElementsLinearLayout, SpannableString.valueOf(explanation));
+                    addSubHeaderField(meaningExplanationsLL, SpannableString.valueOf(explanation));
                 }
                 //endregion
 
                 //region Adding a separator
                 if (!explanation.equals("") && !rules.equals("")) {
-                    addExplanationsLineSeparator(holder.childElementsLinearLayout);
+                    addExplanationsLineSeparator(meaningExplanationsLL);
                 }
                 //endregion
 
                 //region Adding the rules
                 if (!rules.equals("")) {
-                    TextView rulesHeaderTV = addHeaderField(holder.childElementsLinearLayout, SpannableString.valueOf(mContext.getString(R.string.how_it_s_used_)));
+                    TextView rulesHeaderTV = addHeaderField(meaningExplanationsLL, SpannableString.valueOf(mContext.getString(R.string.how_it_s_used_)));
                     rulesHeaderTV.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
 
                     String[] parsedRule = rules.split(RULE_DELIMITER);
@@ -523,7 +576,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                                 parsedRule[1];
                         spanned_rule = Utilities.fromHtml(typeAsHtmlText);
                     }
-                    addSubHeaderField(holder.childElementsLinearLayout, SpannableString.valueOf(spanned_rule));
+                    addSubHeaderField(meaningExplanationsLL, SpannableString.valueOf(spanned_rule));
                 }
                 //endregion
 
@@ -533,7 +586,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
                     final List<TextView> examplesTextViews = new ArrayList<>();
 
-                    final TextView examplesShowTextView = addHeaderField(holder.childElementsLinearLayout, SpannableString.valueOf(mContext.getString(R.string.show_examples)));
+                    final TextView examplesShowTextView = addHeaderField(meaningExplanationsLL, SpannableString.valueOf(mContext.getString(R.string.show_examples)));
                     examplesShowTextView.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
                     examplesShowTextView.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -559,18 +612,21 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     for (int j=0; j<examplesList.size(); j++) {
 
                         //Setting the English example characteristics
-                        tv = addSubHeaderField(holder.childElementsLinearLayout, SpannableString.valueOf(examplesList.get(j).getLatinSentence()));
+                        tv = addSubHeaderField(meaningExplanationsLL, SpannableString.valueOf(examplesList.get(j).getLatinSentence()));
+                        tv.setPadding(EXAMPLES_LEFT_PADDING, 0, 0, 16);
                         tv.setTextColor(mContext.getResources().getColor(R.color.colorAccent));
                         tv.setVisibility(View.GONE);
                         examplesTextViews.add(tv);
 
                         //Setting the Romaji example characteristics
-                        tv = addSubHeaderField(holder.childElementsLinearLayout, SpannableString.valueOf(examplesList.get(j).getRomajiSentence()));
+                        tv = addSubHeaderField(meaningExplanationsLL, SpannableString.valueOf(examplesList.get(j).getRomajiSentence()));
+                        tv.setPadding(EXAMPLES_LEFT_PADDING, 0, 0, 16);
                         tv.setVisibility(View.GONE);
                         examplesTextViews.add(tv);
 
                         //Setting the Kanji example characteristics
-                        tv = addSubHeaderField(holder.childElementsLinearLayout, SpannableString.valueOf(examplesList.get(j).getKanjiSentence()));
+                        tv = addSubHeaderField(meaningExplanationsLL, SpannableString.valueOf(examplesList.get(j).getKanjiSentence()));
+                        tv.setPadding(EXAMPLES_LEFT_PADDING, 0, 0, 16);
                         tv.setVisibility(View.GONE);
                         if (j < examplesList.size()-1) tv.setPadding(DETAILS_LEFT_PADDING,0,0,32);
                         examplesTextViews.add(tv);
@@ -581,10 +637,13 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
                 //region Adding the separator line between explanations
                 if (!rules.equals("") && i < currentExplanations.size()-1) {
-                    addExplanationsLineSeparator(holder.childElementsLinearLayout);
+                    addExplanationsLineSeparator(meaningExplanationsLL);
                 }
                 //endregion
+
             }
+
+            if (currentExplanations.size()>0) holder.childElementsLinearLayout.addView(meaningExplanationsLL);
             //endregion
 
         }
@@ -613,6 +672,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     }
     private TextView addHeaderField(LinearLayout linearLayout, Spanned type_and_meaning) {
         TextView tv = new TextView(mContext);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        tv.setLayoutParams(layoutParams);
         tv.setText(type_and_meaning);
         tv.setTextColor(mContext.getResources().getColor(R.color.colorPrimaryDark));
         tv.setTextSize(16);
@@ -626,6 +687,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     }
     private TextView addSubHeaderField(LinearLayout linearLayout, SpannableString spannableString) {
         TextView tv = new TextView(mContext);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        tv.setLayoutParams(layoutParams);
         tv.setText(spannableString);
         tv.setMovementMethod(LinkMovementMethod.getInstance());
         tv.setTextColor(mContext.getResources().getColor(R.color.colorPrimaryDark));
@@ -639,8 +702,23 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
     }
 
     private void createVisibilityArray() {
-        mChildIsVisible = new boolean[mWordsList==null? 0 : mWordsList.size()];
-        Arrays.fill(mChildIsVisible, false);
+        if (mWordsList==null) mVisibilitiesRegister = new Object[0][2];
+        else {
+            mVisibilitiesRegister = new Object[mWordsList.size()][2];
+            for (int i=0; i<mWordsList.size(); i++) {
+                mVisibilitiesRegister[i][PARENT_VISIBILITY] = false;
+
+                List<Word.Meaning> meanings = new ArrayList<>();
+                switch (mUILanguage) {
+                    case "en": meanings = mWordsList.get(i).getMeaningsEN(); break;
+                    case "fr": meanings = mWordsList.get(i).getMeaningsFR(); break;
+                    case "es": meanings = mWordsList.get(i).getMeaningsES(); break;
+                }
+                boolean[] explanationVisibilities = new boolean[meanings.size()];
+                Arrays.fill(explanationVisibilities, false);
+                mVisibilitiesRegister[i][EXPLANATION_VISIBILITIES] = explanationVisibilities;
+            }
+        }
     }
     private void setHyperlinksInCopyToInputLine(String type, TextView textView, String before, String hyperlinkText, String after) {
         String totalText = "<b>" +
@@ -753,7 +831,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 if (!TextUtils.isEmpty(mWordsSourceInfo.get(getAdapterPosition()))) sourceInfoTextView.setVisibility(View.VISIBLE);
                 parentContainer.setBackgroundColor(Color.TRANSPARENT);
                 dropdownArrowImageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_down_black_24dp));
-                mChildIsVisible[clickedPosition] = false;
+                mVisibilitiesRegister[clickedPosition][PARENT_VISIBILITY] = false;
             }
             else {
                 childLinearLayout.setVisibility(View.VISIBLE);
@@ -761,7 +839,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 sourceInfoTextView.setVisibility(View.GONE);
                 parentContainer.setBackgroundColor(mContext.getResources().getColor(R.color.colorSelectedDictResultBackground));
                 dropdownArrowImageView.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_up_black_24dp));
-                mChildIsVisible[clickedPosition] = true;
+                mVisibilitiesRegister[clickedPosition][PARENT_VISIBILITY] = true;
             }
         }
     }
