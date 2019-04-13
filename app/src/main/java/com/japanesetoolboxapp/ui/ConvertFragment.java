@@ -500,7 +500,11 @@ public class ConvertFragment extends Fragment {
             case "ゲ": added_string = "ge"; break;
             case "ゴ": added_string = "go"; break;
             case "サ": added_string = "sa"; break;
-            case "ス": added_string = "su"; break;
+            case "ス":
+                switch (character_next) {
+                    case "ゥ": added_string = "su"; i++; break;
+                    default: added_string = "su"; break;
+                } break;
             case "セ": added_string = "se"; break;
             case "ソ": added_string = "so"; break;
             case "ザ": added_string = "za"; break;
