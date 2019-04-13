@@ -508,7 +508,6 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 iv.setClickable(true);
                 iv.setFocusable(true);
                 iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                iv.setPadding(DETAILS_LEFT_PADDING, 0, 0, 0);
                 iv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
