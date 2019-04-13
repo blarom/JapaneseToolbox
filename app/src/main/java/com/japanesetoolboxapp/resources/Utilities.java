@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.media.AudioManager;
+import android.media.FaceDetector;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -660,6 +661,21 @@ public final class Utilities {
         List<Word> wordsList = adaptJishoTreeToWordsList(parsedData);
 
         return wordsList;
+    }
+    public static List<Word> removeEdictExceptionsFromJisho(List<Word> words) {
+
+        List<Word> nonExceptionWords = new ArrayList<>();
+        boolean isException;
+        for (Word word : words) {
+            isException = false;
+            for (String[] romajiKanji : GlobalConstants.EDICT_EXCEPTIONS) {
+                if (word.getKanji().equals(romajiKanji[1]) && (romajiKanji[0].equals("*") || word.getRomaji().equals(romajiKanji[0]))) {
+                    isException = true;
+                }
+            }
+            if (!isException) nonExceptionWords.add(word);
+        }
+        return nonExceptionWords;
     }
     public static List<Word> cleanUpProblematicWordsFromJisho(List<Word> words) {
 

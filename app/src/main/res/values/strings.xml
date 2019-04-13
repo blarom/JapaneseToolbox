@@ -589,6 +589,7 @@
     <string name="verb_masuCmp10">He does/is X (vulgar - denotes hatred/contempt)</string>
     <string name="verb_masuCmp11">He is unable/finds it difficult to do/be X</string>
     <string name="verb_masuCmp12">He completes doing/being X</string>
+    <string name="verb_masuCmp13">Do/be X (imperative)</string>
 
     <string name="verb_TitleStemMisc">Stem + Misc. Attributes</string>
     <string name="verb_StemMisc1">He does [action] in order to do/be X</string>
@@ -604,6 +605,10 @@
     <string name="verb_TitleArch">Archaic</string>
     <string name="verb_Arch1">Plain Pres. Neg. (equiv. to "nai")</string>
     <string name="verb_Arch2">To [verb] without doing/being X</string>
+    <string name="verb_Arch3">Plain Pres. Neg. (equiv. to "nai")</string>
+    <string name="verb_Arch4">Compelled to do/be X</string>
+
+
     <string name="trans_">trans.</string>
     <string name="intrans_">intrans.</string>
     <string name="trans_intrans_">trans./intrans.</string>

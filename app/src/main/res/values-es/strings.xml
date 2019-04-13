@@ -470,6 +470,7 @@
     <string name="verb_masuCmp10">Él hace/es X (vulgar - denota odio/desprecio)</string>
     <string name="verb_masuCmp11">Él es incapaz/le resulta difícil de hacer/ser X</string>
     <string name="verb_masuCmp12">Él completa haciendo/siendo X</string>
+    <string name="verb_masuCmp13">Haz/se X (imperativo)</string>
 
     <string name="verb_TitleStemMisc">Radical + Misc. Atributos</string>
     <string name="verb_StemMisc1">Él hace [acción] con él find de hacer/ser X</string>
@@ -485,6 +486,8 @@
     <string name="verb_TitleArch">Forma te</string>
     <string name="verb_Arch1">Pres. Simple Neg. (equiv. a "nai")</string>
     <string name="verb_Arch2">[verbo] sin hacer/ser X</string>
+    <string name="verb_Arch3">Pres. Simple Neg. (equiv. a "nai")</string>
+    <string name="verb_Arch4">Obligado a hacer/ser X</string>
 
     <string name="trans_">trans.</string>
     <string name="intrans_">intrans.</string>

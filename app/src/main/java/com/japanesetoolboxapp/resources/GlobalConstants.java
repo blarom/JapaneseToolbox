@@ -8,6 +8,62 @@ import java.util.HashMap;
 public final class GlobalConstants {
 
     public static final String DB_ELEMENTS_DELIMITER = ";";
+    public static final String[][] EDICT_EXCEPTIONS = new String[][]{
+        {"ha", "は"},
+        {"wa","は"},
+        {"he","へ"},
+        {"e","へ"},
+        {"deha","では"},
+        {"dewa","では"},
+        {"niha","には"},
+        {"niwa","には"},
+        {"kana","かな"},
+        {"node","ので"},
+        {"nanode","なので"},
+        {"to","と"},
+        {"ya","や"},
+        {"mo","も"},
+        {"no","の"},
+        {"noga","のが"},
+        {"nowo","のを"},
+        {"n","ん"},
+        {"wo","を"},
+        {"wa","わ"},
+        {"yo","よ"},
+        {"na","な"},
+        {"ka","か"},
+        {"ga","が"},
+        {"ni","に"},
+        {"*","ケ"},
+        {"*","ヶ"},
+        {"noha","のは"},
+        {"nowa","のは"},
+        {"demo","でも"},
+        {"tte","って"},
+        {"datte","だって"},
+        {"temo","ても"},
+        {"ba","ば"},
+        {"nakereba","なければ"},
+        {"nakereba","無ければ"},
+        {"nakya","なきゃ"},
+        {"nakya","無きゃ"},
+        {"shi","し"},
+        {"kara","から"},
+        {"dakara","だから"},
+        {"tara","たら"},
+        {"datara","だたら"},
+        {"nakattara","なかったら"},
+        {"soshitara","そしたら"},
+        {"node","ので"},
+        {"nde","んで"},
+        {"te","て"},
+        {"noni","のに"},
+        {"nagara","ながら"},
+        {"nagara","乍ら"},
+        {"nara","なら"},
+        {"dano","だの"}
+    };
+
     // Defining the column title (and index) of each column in the excel files
 
     public static final int COLUMN_WORD_ID                      = ColIndexConverter("a");
@@ -381,6 +437,7 @@ public final class GlobalConstants {
         map.put("masuCmp10", R.string.verb_masuCmp10);
         map.put("masuCmp11", R.string.verb_masuCmp11);
         map.put("masuCmp12", R.string.verb_masuCmp12);
+        map.put("masuCmp13", R.string.verb_masuCmp13);
 
         map.put("TitleStemMisc", R.string.verb_TitleStemMisc);
         map.put("StemMisc1", R.string.verb_StemMisc1);
@@ -396,6 +453,8 @@ public final class GlobalConstants {
         map.put("TitleArch", R.string.verb_TitleArch);
         map.put("Arch1", R.string.verb_Arch1);
         map.put("Arch2", R.string.verb_Arch2);
+        map.put("Arch3", R.string.verb_Arch3);
+        map.put("Arch4", R.string.verb_Arch4);
 
         return map;
     }
