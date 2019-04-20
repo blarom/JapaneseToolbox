@@ -60,7 +60,6 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
     private final static int INDEX_LATIN_ROOT = 3;
     private final static int INDEX_KANJI_ROOT = 4;
     private final static int INDEX_ACTIVE_ALTSPELLING = 5;
-    private List<Object[]> mMatchingConjugationParameters;
     //endregion
 
     public VerbSearchAsyncTaskLoader(Context context, String inputQuery,
@@ -126,12 +125,15 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
                 conjugations = conjugationCategories.get(i).getConjugations();
                 for (Verb.ConjugationCategory.Conjugation conjugation : conjugations) {
 
-                    if (mInputQueryTextType == TYPE_LATIN && conjugation.getConjugationLatin().equals(inputQuery)) {
+                    if (mInputQueryTextType == TYPE_LATIN
+                            && conjugation.getConjugationLatin().replace(" ", "")
+                                .equals(inputQuery.replace(" ", ""))) {
                         matchingConjugation = conjugation.getConjugationLatin();
                         foundMatch = true;
                     }
                     else if ((mInputQueryTextType == TYPE_HIRAGANA || mInputQueryTextType == TYPE_KATAKANA)
-                            && conjugation.getConjugationLatin().equals(inputQueryLatin)) {
+                            && conjugation.getConjugationLatin().replace(" ", "")
+                                .equals(inputQueryLatin.replace(" ", ""))) {
                         matchingConjugation = conjugation.getConjugationLatin();
                         foundMatch = true;
                     }
