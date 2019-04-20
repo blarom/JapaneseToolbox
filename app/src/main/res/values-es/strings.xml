@@ -156,18 +156,18 @@
         Un conjugador de verbos con más de 140 conjugaciones para más de 2000 verbos regulares y más de 3400 verbos suru.
     </string>
     <string name="AboutTextButtonsConjParagraph2">
-        Si busca un verbo conjugado (en forma de romaji, kana o kanji) con esta función, un único motor de búsqueda inversa\n encontrará todos los verbos coincidentes posibles y le dará él significado de su conjugación.
+        Si busca un verbo conjugado (en forma de romaji, kana o kanji) con esta función, un único motor de búsqueda inversa encontrará todos los verbos coincidentes posibles y le dará él significado de su conjugación.
     </string>
     <string name="AboutTextButtonsConvertTitle">あ⇔A</string>
     <string name="AboutTextButtonsConvertParagraph1">
         Un convertidor de texto romaji-hiragana-katakana.
     </string>
     <string name="AboutTextButtonsConvertParagraph2">
-        Aunque hay varias formas de transcribir las sílabas de kana a romaji y volver,\n elegí una forma más intuitiva para los estudiantes occidentales y compatible con la mayoría de las convenciones modernas.
+        Aunque hay varias formas de transcribir las sílabas de kana a romaji y volver, elegí una forma más intuitiva para los estudiantes occidentales y compatible con la mayoría de las convenciones modernas.
     </string>
     <string name="AboutTextButtonsSearchByRadicalTitle">女+子 ⇒ 好</string>
     <string name="AboutTextButtonsSearchByRadicalParagraph1">
-        Encuentra cualquier kanji basado en hasta 4 radicales/componentes o identificando su estructura general. Puede encontrar componentes seleccionando uno de los 214 radicales\n o sus variantes, o buscando una lista de componentes comunes de kanji (ordenados por popularidad). También puede filtrar los resultados ingresando\n la pronunciación deseada, él significado o él número del radical.
+        Encuentra cualquier kanji basado en hasta 4 radicales/componentes o identificando su estructura general. Puede encontrar componentes seleccionando uno de los 214 radicales o sus variantes, o buscando una lista de componentes comunes de kanji (ordenados por popularidad). También puede filtrar los resultados ingresando la pronunciación deseada, él significado o él número del radical.
     </string>
     <string name="AboutTextButtonsSearchByRadicalParagraph2">
         Él motor de búsqueda es mucho mejor de lo que encontrarás en línea, ya que inspeccioné y corregí manualmente la base de datos de componentes en la que se basan los sitios en línea.
@@ -194,7 +194,7 @@
         Convierta palabras japonesas o inglesas en texto para buscar, haciendo una foto o usando una imagen en su dispositivo. Esta función funciona sin conexión.
     </string>
     <string name="AboutTextButtonsCameraParagraph2">
-        Puede elegir él idioma de reconocimiento de texto y la saturación / él contraste / él brillo de la imagen inicial en la Configuración.
+        Puede elegir él idioma de reconocimiento de texto y la saturación/él contraste/él brillo de la imagen inicial en la Configuración.
     </string>
     <string name="AboutTextButtonsMicrophoneTitle">Micrófono</string>
     <string name="AboutTextButtonsMicrophoneParagraph1">
@@ -208,10 +208,10 @@
         Si tiene algún comentario o encontró un error, le invitamos a publicarlos en japanesetoolboxapp@gmail.com.
     </string>
     <string name="AboutTextPersonalParagraph2">
-        Construí JapaneseToolbox en mi tiempo libre por amor al idioma japonés y para ayudar a las personas a aprender japonés más rápido. La aplicación siempre se mantendrá\n GRATUITA y sin publicidad, y ninguna información que ingresó en la aplicación se usará de ninguna otra forma para fines distintos a los servicios proporcionados en la aplicación.
+        Construí JapaneseToolbox en mi tiempo libre por amor al idioma japonés y para ayudar a las personas a aprender japonés más rápido. La aplicación siempre se mantendrá GRATUITA y sin publicidad, y ninguna información que ingresó en la aplicación se usará de ninguna otra forma para fines distintos a los servicios proporcionados en la aplicación.
     </string>
     <string name="AboutTextPersonalParagraph3">
-        Él código fuente del proyecto está disponible gratuitamente en https://github.com/blarom/JapaneseToolbox. ¡Usted puede\n copiar él código a voluntad! Recomiendo él intercambio gratuito de conocimientos, y si desea crear una aplicación con funciones similares,\n es más que bienvenido a hacerlo. Simplemente no olvide darme crédito, pasé mucho tiempo desarrollando estas herramientas :)
+        Él código fuente del proyecto está disponible gratuitamente en https://github.com/blarom/JapaneseToolbox. ¡Usted puede copiar él código a voluntad! Recomiendo él intercambio gratuito de conocimientos, y si desea crear una aplicación con funciones similares, es más que bienvenido a hacerlo. Simplemente no olvide darme crédito, pasé mucho tiempo desarrollando estas herramientas :)
     </string>
     <string name="AboutTextCreditsTitle">
         Créditos: parte de las herramientas de la aplicación se basan en lo siguiente:
@@ -231,16 +231,23 @@
     </string>
     <string name="AboutTextCreditsDatabasesTitle">Fuentes de base de datos</string>
     <string name="AboutTextCreditsDatabasesParagraph1">
-        La base de datos de descomposiciones de caracteres CJK se basa originalmente en la base de datos cjkdecomp de Gavin Grover (https://github.com/amake/cjk-decomp - vea la cláusula de exención de responsabilidad *),\n que modifiqué y corregí.
+        La base de datos de descomposiciones de caracteres CJK se basa originalmente en la base de datos cjkdecomp de Gavin Grover (https://github.com/amake/cjk-decomp - vea la cláusula de exención de responsabilidad *),
+         que modifiqué y corregí.
     </string>
     <string name="AboutTextCreditsDatabasesParagraph2">
-        Él diccionario local es una forma reducida del diccionario EDICT de código abierto, que modifiqué y actualicé manualmente para satisfacer las necesidades de la aplicación.\n Se usaron algunas otras fuentes, incluido wiktionary.org para actualizar los significados de los verbos suru.
+        Él diccionario local es una forma reducida del diccionario EDICT de código abierto, que modifiqué y actualicé manualmente para satisfacer las necesidades de la aplicación.
+         Se usaron algunas otras fuentes, incluido wiktionary.org para actualizar los significados de los verbos suru.
     </string>
     <string name="AboutTextDisclaimer1">
-        *descargo de responsabilidad de cjkdecomp:\nDerechos de autor 2017 Gavin Grover\nBajo la Licencia de Apache,\n Versión 2.0 (la \"Licencia\"); no puede utilizar esta base de datos excepto en cumplimiento con la Licencia.\nUsted puede\n obtener una copia de la Licencia en http://www.apache.org/licenses/LICENSE-2.0\n A menos que sea requerido por la ley aplicable o esté de acuerdo por escrito, él software distribuido bajo la Licencia se distribuye \"TAL CUAL\",\n SIN GARANTÍAS O CONDICIONES DE NINGÚN TIPO, ya sea explícita o implícita.\nConsulte la Licencia del idioma específico que rige los permisos y limitaciones de la Licencia. 
+        *descargo de responsabilidad de cjkdecomp:\nDerechos de autor 2017 Gavin Grover\nBajo la Licencia de Apache, Versión 2.0 (la \"Licencia\"); no puede utilizar esta base de datos excepto en cumplimiento con la Licencia.\nUsted puede
+         obtener una copia de la Licencia en http://www.apache.org/licenses/LICENSE-2.0
+         A menos que sea requerido por la ley aplicable o esté de acuerdo por escrito, él software distribuido bajo la Licencia se distribuye \"TAL CUAL\",
+         SIN GARANTÍAS O CONDICIONES DE NINGÚN TIPO, ya sea explícita o implícita.\nConsulte la Licencia del idioma específico que rige los permisos y limitaciones de la Licencia. 
     </string>
     <string name="AboutTextDisclaimer2">
-        *renuncia de responsabilidad para él diccionario japonés EDICT:\nEste paquete utiliza un subconjunto modificado de los archivos de diccionario EDICT, JMDICT y KANJIDIC. Estos archivos son propiedad de\n Electronic Dictionary Research and Development Group y se utilizan de conformidad con la licencia del Grupo;\n Consulte http://www.csse.monash.edu.au/~jwb/edict .html y http://www.edrdg.org/.
+        *renuncia de responsabilidad para él diccionario japonés EDICT:\nEste paquete utiliza un subconjunto modificado de los archivos de diccionario EDICT, JMDICT y KANJIDIC. Estos archivos son propiedad de
+         Electronic Dictionary Research and Development Group y se utilizan de conformidad con la licencia del Grupo;
+         Consulte http://www.csse.monash.edu.au/~jwb/edict .html y http://www.edrdg.org/.
     </string>
     <string name="ok">OK</string>
     <string name="ocr_header">Haga clic en \"Detectar texto\" para detectar texto</string>
@@ -257,8 +264,10 @@
     <string name="attempting_download_first_part">Intentando descargar los datos de ROC\u0020</string>
     <string name="attempting_download_second_part">. Por favor espera.</string>
     <string name="failed_to_connect_to_internet">Error al conectarse a internet.</string>
-    <string name="loading_central_database">Instalando la base de datos central.\n ~ Puede tardar hasta un minuto ~</string>
-    <string name="loading_kanji_database">Ha finalizado la instalación de la base de datos central.\nActualmente se está instalando la base de datos de kanji.\n ~ Puede tardar 3-5 minutos ~</string>
+    <string name="loading_central_database">Instalando la base de datos central.
+         ~ Puede tardar hasta un minuto ~</string>
+    <string name="loading_kanji_database">Ha finalizado la instalación de la base de datos central.\nActualmente se está instalando la base de datos de kanji.
+         ~ Puede tardar 3-5 minutos ~</string>
     <string name="finished_loading_databases">Terminé de cargar las bases de datos.</string>
     <string name="database_being_installed">La base de datos se está instalando actualmente.\nEsto puede tardar unos minutos.\nEste retraso solo se produce al instalar o actualizar la aplicación.</string>
     <string name="sure_you_want_to_exit">¿Estás seguro de que quieres salir de la aplicación?</string>
@@ -273,7 +282,10 @@
     <string name="search_by_radical_no_results_found">No se han encontrado resultados para sus selecciones.</string>
     <string name="copy_to_input">Copiar al input</string>
     <string name="clear_search_history">Limpiar historial de búsqueda</string>
-    <string name="image_adjustment_hint">La imagen original tiene saturación 1.0 (colores normales), contraste 1.0 y brillo 0.\n\n\nLos valores óptimos para él reconocimiento de caracteres están alrededor de la saturación 0 (escala de grises), contraste 3.0 y brillo -0.5.\n Estos son los ajustes predeterminados, pero no dude en cambiarlos para que la imagen sea lo más clara posible.\n Puede ajustar estos valores predeterminados en la Configuración.</string>
+    <string name="image_adjustment_hint">La imagen original tiene saturación 1.0 (colores normales), contraste 1.0 y brillo 0.
+        \nLos valores óptimos para él reconocimiento de caracteres están alrededor de la saturación 0 (escala de grises), contraste 3.0 y brillo -0.5.
+         Estos son los ajustes predeterminados, pero no dude en cambiarlos para que la imagen sea lo más clara posible.
+         Puede ajustar estos valores predeterminados en la Configuración.</string>
     <string name="pref_invalid_input_default_set">Entrada no válida, él valor predeterminado establecido en su lugar.</string>
     <string name="pref_cannot_set_value_outside_range">No puede establecer un valor fuera del intervalo</string>
     <string name="search_any_property_">propiedad/nombre/etc..</string>
@@ -359,7 +371,7 @@
     <string name="verb_TitleRequest">Solicitud (Se le pide que haga/sea X)</string>
     <string name="verb_TitleImperative">Imperativo (Se te ordena hacer/ser X)</string>
     <string name="verb_TitleDesire">Deseo (Él quiere hacer/ser X)</string>
-    <string name="verb_TitleProvisional">Provisional / Condicional (Si él hace/es X)</string>
+    <string name="verb_TitleProvisional">Provisional/Condicional (Si él hace/es X)</string>
     <string name="verb_TitleVolitional">Volicional (Él debería/intenta hacer/ser X)</string>
     <string name="verb_TitleObligation">Obligación (Él debe/está obligado hacer/ser X)</string>
     <string name="verb_TitlePresumptive">Presunto (Él probablemente hace/es X)</string>
