@@ -3110,6 +3110,15 @@ public final class Utilities {
         }
         return showInfoBoxesOnSearch;
     }
+    public static Boolean getPreferenceUseJapaneseFont(Activity activity) {
+        boolean state = false;
+        if (activity!=null) {
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+            state = sharedPreferences.getBoolean(activity.getString(R.string.pref_use_japanese_font_key),
+                    activity.getResources().getBoolean(R.bool.pref_use_japanese_font_default));
+        }
+        return state;
+    }
     public static Boolean getPreferenceShowDecompKanjiStructureInfo(Activity activity) {
         boolean showDecompStructureInfo = false;
         if (activity!=null) {

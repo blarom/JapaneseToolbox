@@ -18,6 +18,12 @@
         android:key="@string/pref_app_language_key"
         android:title="@string/pref_app_language" />
 
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_use_japanese_font_default"
+        android:key="@string/pref_use_japanese_font_key"
+        android:summaryOff="@string/use_default_font_for_asian_characters"
+        android:summaryOn="@string/use_japanese_font_for_asian_characters"
+        android:title="@string/use_japanese_font_in_texts" />
 
     <PreferenceCategory
         android:title="@string/search" />

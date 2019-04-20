@@ -1,6 +1,8 @@
 package com.japanesetoolboxapp.ui;
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -36,6 +38,7 @@ import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -278,9 +281,15 @@ public class DictionaryFragment extends Fragment implements
     private void initializeViews(View rootView) {
         mBinding = ButterKnife.bind(this, rootView);
 
+        if (getContext() == null) return;
+
+        AssetManager am = getContext().getApplicationContext().getAssets();
+        Typeface typeface = Utilities.getPreferenceUseJapaneseFont(getActivity()) ?
+                Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf")) : Typeface.DEFAULT;
+
         mDictionaryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         mDictionaryRecyclerView.setNestedScrollingEnabled(true);
-        mDictionaryRecyclerViewAdapter = new DictionaryRecyclerViewAdapter(getContext(), this, null, mInputQuery, LocaleHelper.getLanguage(getContext()));
+        mDictionaryRecyclerViewAdapter = new DictionaryRecyclerViewAdapter(getContext(), this, null, mInputQuery, LocaleHelper.getLanguage(getContext()), typeface);
         mDictionaryRecyclerView.setAdapter(mDictionaryRecyclerViewAdapter);
     }
     private void getQuerySearchResults() {

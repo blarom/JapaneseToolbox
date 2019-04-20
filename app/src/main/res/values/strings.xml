@@ -13,6 +13,7 @@
     <string name="about">About</string>
     <string name="hidden_online_search">Don\'t get words and meanings online</string>
     <string name="shown_online_search">Merge online search results with local results</string>
+    <string name="use_japanese_font_for_asian_characters">Use Japanese font for Asian characters (Chinese characters used in Japanese will be displayed in Japanese font)</string>
     <string name="wait_for_online_results_off">Display the list immediately when finding results, and refresh it when getting online results.</string>
     <string name="wait_for_online_results_on">Wait for online results before showing the list</string>
     <string name="complete_with_conj_search_off">Don\'t check verb conjugations</string>
@@ -32,6 +33,7 @@
     <string name="hidden_decomp_structure_info">Don\'t show Kanji structure explanation</string>
     <string name="shown_decomp_structure_info">Show decomposed Kanji structure explanation</string>
     <string name="pref_complete_local_with_online_search_key" translatable="false">complete_local_with_online_search</string>
+    <string name="pref_use_japanese_font_key" translatable="false">use_japanese_font</string>
     <string name="pref_wait_for_online_results_key" translatable="false">wait_for_online_results</string>
     <string name="pref_complete_with_conj_search_key" translatable="false">complete_with_search</string>
     <string name="pref_wait_for_conj_results_key" translatable="false">wait_for_results</string>
@@ -43,6 +45,7 @@
     <string name="pref_show_decomp_structure_info_key" translatable="false">show_decomp_structure_info</string>
     <string name="pref_show" translatable="false">complete_local_with_online_search</string>
     <string name="complete_local_with_online_search">Search for words online</string>
+    <string name="use_japanese_font_in_texts">Use Japanese Font in Texts</string>
     <string name="wait_for_online_results">Wait for online results</string>
     <string name="complete_with_conj_search">Search verb conjugations</string>
     <string name="pref_wait_for_conj_results">Wait for matching verbs</string>
@@ -792,5 +795,6 @@
     <string name="please_wait_for_db_to_finish_loading">Please wait for the database to finish loading.</string>
     <string name="close">Close</string>
     <string name="alt_form">alt. form</string>
+    <string name="use_default_font_for_asian_characters">Use default font for Asian characters (Chinese characters will be displayed in the default Mandarin font)</string>
 
 </resources>

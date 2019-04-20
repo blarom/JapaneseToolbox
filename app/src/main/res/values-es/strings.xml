@@ -672,4 +672,7 @@
     <string name="please_wait_for_db_to_finish_loading">Por favor, espere a que la base de datos termine de cargarse.</string>
     <string name="close">Cerrar</string>
     <string name="alt_form">forma alt.</string>
+    <string name="use_japanese_font_for_asian_characters">Use una fuente japonesa para los caracteres asiáticos (los caracteres chinos que se usan en japonés se mostrarán en fuente japonesa)</string>
+    <string name="use_default_font_for_asian_characters">Use la fuente predeterminada para los caracteres asiáticos (los caracteres chinos se mostrarán en la fuente predeterminada de mandarín)</string>
+    <string name="use_japanese_font_in_texts">Usar Fuente Japonesa En Textos</string>
 </resources>

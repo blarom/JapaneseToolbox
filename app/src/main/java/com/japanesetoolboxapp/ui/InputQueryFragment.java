@@ -318,6 +318,11 @@ public class InputQueryFragment extends Fragment implements
         mAlreadyGotOcrResult = false;
         mAlreadyGotRomajiFromKanji = false;
 
+        if (getContext() == null) return;
+        //Setting the Typeface
+        AssetManager am = getContext().getApplicationContext().getAssets();
+        mDroidSansJapaneseTypeface = Utilities.getPreferenceUseJapaneseFont(getActivity()) ?
+                Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf")) : Typeface.DEFAULT;
     }
     @SuppressLint("ClickableViewAccessibility") private void initializeViews(View rootView) {
 
@@ -331,6 +336,7 @@ public class InputQueryFragment extends Fragment implements
                 mQueryHistoryWordsOnly));
 
         mInputQueryAutoCompleteTextView.setText(mInputQuery);
+        mInputQueryAutoCompleteTextView.setTypeface(mDroidSansJapaneseTypeface);
 
         mInputQueryAutoCompleteTextView.setOnEditorActionListener(new EditText.OnEditorActionListener() {
             @Override
@@ -351,10 +357,6 @@ public class InputQueryFragment extends Fragment implements
         mSearchByRadicalButton.setEnabled(true);
         mDecomposeButton.setEnabled(true);
 
-        //Setting the Typeface
-        AssetManager am = getContext().getApplicationContext().getAssets();
-        mDroidSansJapaneseTypeface = Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf"));
-        mInputQueryAutoCompleteTextView.setTypeface(mDroidSansJapaneseTypeface);
     }
     private void sendImageToImageAdjuster(CropImage.ActivityResult result) {
         mPhotoURI = result.getUri();

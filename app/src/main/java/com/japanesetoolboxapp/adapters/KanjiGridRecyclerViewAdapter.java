@@ -30,7 +30,7 @@ public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGrid
     private boolean[] mKanjiIsSelected;
     private final boolean isResultsGrid;
 
-    public KanjiGridRecyclerViewAdapter(Context context, ComponentClickHandler listener , List<String> components, boolean isResultsGrid) {
+    public KanjiGridRecyclerViewAdapter(Context context, ComponentClickHandler listener , List<String> components, boolean isResultsGrid, Typeface typeface) {
         this.mContext = context;
         this.mKanjis = components;
         this.mOnItemClickHandler = listener;
@@ -39,7 +39,7 @@ public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGrid
 
         //Setting the Typeface
         AssetManager am = mContext.getApplicationContext().getAssets();
-        mDroidSansJapaneseTypeface = Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf"));
+        mDroidSansJapaneseTypeface = typeface;
     }
 
     @NonNull @Override public ComponentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {LayoutInflater inflater = LayoutInflater.from(mContext);

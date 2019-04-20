@@ -672,4 +672,7 @@
     <string name="please_wait_for_db_to_finish_loading">Veuillez attendre que le chargement de la base de données soit terminé.</string>
     <string name="close">Fermer</string>
     <string name="alt_form">forme alt.</string>
+    <string name="use_japanese_font_for_asian_characters">Utiliser une police japonaise pour les caractères asiatiques (les caractères chinois utilisés en japonais seront affichés avec une police japonaise)</string>
+    <string name="use_default_font_for_asian_characters">Utiliser la police de défaut pour les caractères asiatiques (les caractères chinois seront affichés dans la police mandarine de défaut)</string>
+    <string name="use_japanese_font_in_texts">Utiliser Police Japonaise Dans Les Textes</string>
 </resources>

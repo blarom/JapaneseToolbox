@@ -3,8 +3,10 @@ package com.japanesetoolboxapp.ui;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.AssetManager;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -48,6 +50,7 @@ import com.japanesetoolboxapp.resources.Utilities;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -110,6 +113,7 @@ public class SearchByRadicalFragment extends Fragment implements
     private int mNumberOfResultGridColumns;
     private String mSelectedComponent;
     private int mMaxRecyclerViewHeightPixels;
+    private Typeface mDroidSansJapaneseTypeface;
     //endregion
 
 
@@ -163,6 +167,11 @@ public class SearchByRadicalFragment extends Fragment implements
     private void initializeParameters() {
         mAlreadyLoadedSelectionGrid = false;
         mSelectedComponent = "";
+
+        //Setting the Typeface
+        AssetManager am = getContext().getApplicationContext().getAssets();
+        mDroidSansJapaneseTypeface = Utilities.getPreferenceUseJapaneseFont(getActivity()) ?
+                Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf")) : Typeface.DEFAULT;
     }
     private void initializeViews(View rootView) {
 
@@ -516,7 +525,7 @@ public class SearchByRadicalFragment extends Fragment implements
 
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), mNumberOfComponentGridColumns);
         mSelectionGridRecyclerView.setLayoutManager(layoutManager);
-        if (mComponentsGridAdapter==null) mComponentsGridAdapter = new KanjiGridRecyclerViewAdapter(getContext(), this, mDisplayableComponentSelections, false);
+        if (mComponentsGridAdapter==null) mComponentsGridAdapter = new KanjiGridRecyclerViewAdapter(getContext(), this, mDisplayableComponentSelections, false, mDroidSansJapaneseTypeface);
         else mComponentsGridAdapter.setContents(mDisplayableComponentSelections);
         mSelectionGridRecyclerView.setAdapter(mComponentsGridAdapter);
 
@@ -537,7 +546,7 @@ public class SearchByRadicalFragment extends Fragment implements
 
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), mNumberOfResultGridColumns);
         mResultsGridRecyclerView.setLayoutManager(layoutManager);
-        if (mResultsGridAdapter==null) mResultsGridAdapter = new KanjiGridRecyclerViewAdapter(getContext(), this, mPrintableSearchResults, true);
+        if (mResultsGridAdapter==null) mResultsGridAdapter = new KanjiGridRecyclerViewAdapter(getContext(), this, mPrintableSearchResults, true, mDroidSansJapaneseTypeface);
         else mResultsGridAdapter.setContents(mPrintableSearchResults);
         mResultsGridRecyclerView.setAdapter(mResultsGridAdapter);
 

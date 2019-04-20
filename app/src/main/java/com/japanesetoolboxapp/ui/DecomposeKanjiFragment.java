@@ -88,7 +88,8 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
         //Setting the Typeface
         AssetManager am = getContext().getApplicationContext().getAssets();
-        mDroidSansJapaneseTypeface = Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf"));
+        mDroidSansJapaneseTypeface = Utilities.getPreferenceUseJapaneseFont(getActivity()) ?
+                Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf")) : Typeface.DEFAULT;
 
         getDecomposition();
 

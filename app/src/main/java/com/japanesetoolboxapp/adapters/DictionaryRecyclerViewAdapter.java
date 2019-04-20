@@ -64,7 +64,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                                          DictionaryItemClickHandler listener,
                                          List<Word> wordsList,
                                          String inputQuery,
-                                         String language) {
+                                         String language,
+                                         Typeface typeface) {
         this.mContext = context;
         this.mWordsList = wordsList;
         this.mOnItemClickHandler = listener;
@@ -75,8 +76,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
         mInputQueryTextType = ConvertFragment.getTextType(mInputQuery);
         mInputQueryFirstLetter = (mInputQuery.length()>0) ? mInputQuery.substring(0,1) : "";
 
-        AssetManager am = mContext.getApplicationContext().getAssets();
-        mDroidSansJapaneseTypeface = Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf"));
+        mDroidSansJapaneseTypeface = typeface;
 
         mChildLineParams = new LinearLayout.LayoutParams( LinearLayout.LayoutParams.MATCH_PARENT, 2 );
         mChildLineParams.setMargins(0, 16, 0, 16);
@@ -397,8 +397,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 meanings = mWordsList.get(position).getMeaningsES();
                 break;
         }
+        if (meanings==null || meanings.size()==0)  meanings = mWordsList.get(position).getMeaningsEN();
         final int numMeanings = meanings.size();
-        if (numMeanings == 0) meanings = mWordsList.get(position).getMeaningsEN();
 
         for (int meaningIndex=0; meaningIndex<numMeanings; meaningIndex++) {
 
@@ -713,6 +713,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     case "fr": meanings = mWordsList.get(i).getMeaningsFR(); break;
                     case "es": meanings = mWordsList.get(i).getMeaningsES(); break;
                 }
+                if (meanings == null || meanings.size()==0) meanings = mWordsList.get(i).getMeaningsEN();
                 boolean[] explanationVisibilities = new boolean[meanings.size()];
                 Arrays.fill(explanationVisibilities, false);
                 mVisibilitiesRegister[i][EXPLANATION_VISIBILITIES] = explanationVisibilities;
