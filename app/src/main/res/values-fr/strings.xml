@@ -84,7 +84,7 @@
     <string name="DownloadDialogMessageSPA">Veuillez sélectionner le mode de téléchargement des données de reconnaissance optique de caractères espagnols requises (environ 20 Mo).</string>
     <string name="DownloadDialogWifiOnly">WiFi uniquement</string>
     <string name="DownloadDialogWifiAndMobile">À tout moment</string>
-    <string name="no_match_found">Non trouvé dans le dictionnaire local. Recherche d\'autres sources…</string>
+    <string name="no_match_found">Pas trouvé dans le dictionnaire local. Recherche d\'autres sources…</string>
     <string name="please_enter_word">
         <![CDATA[
         <b>Veuillez entrer un mot valide.</b>

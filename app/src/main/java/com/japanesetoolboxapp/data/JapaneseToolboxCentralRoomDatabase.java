@@ -23,7 +23,7 @@ import java.util.List;
                         IndexFrench.class,
                         IndexSpanish.class,
                         IndexKanji.class},
-                    version = 83,
+                    version = 86,
                     exportSchema = false)
 public abstract class JapaneseToolboxCentralRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
