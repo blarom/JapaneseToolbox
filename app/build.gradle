@@ -9,7 +9,7 @@ android {
         minSdkVersion 17
         targetSdkVersion 28
         versionCode 65
-        versionName "4.00"
+        versionName "4.03"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
         // the following code makes the app only available to relevant phones, thereby reducing the apk size
