@@ -11,7 +11,7 @@
     <string name="splashscreen_should_take_only_a_few_seconds">This should only take a few seconds.</string>
     <string name="settings">Settings</string>
     <string name="about">About</string>
-    <string name="hidden_online_search">Don\'t get words and meanings online</string>
+    <string name="hidden_online_search">Don\'t get words and meaningsEN online</string>
     <string name="shown_online_search">Merge online search results with local results</string>
     <string name="use_japanese_font_for_asian_characters">Use Japanese font for Asian characters (Chinese characters used in Japanese will be displayed in Japanese font)</string>
     <string name="wait_for_online_results_off">Display the list immediately when finding results, and refresh it when getting online results.</string>
@@ -22,12 +22,12 @@
     <string name="wait_for_conj_results_on">Wait for matching verbs results before showing the list</string>
     <string name="show_sources_off">Don\'t show extra information on each word</string>
     <string name="show_sources_on">Show extra information (source, common status)</string>
-    <string name="show_meanings_EN_off">Don\'t show English meanings in search results</string>
-    <string name="show_meanings_EN_on">Show English meanings in search results</string>
-    <string name="show_meanings_FR_off">Don\'t show French meanings in search results</string>
-    <string name="show_meanings_FR_on">Show French meanings in search results</string>
-    <string name="show_meanings_ES_off">Don\'t show Spanish meanings in search results</string>
-    <string name="show_meanings_ES_on">Show Spanish meanings in search results</string>
+    <string name="show_meanings_EN_off">Don\'t show English meaningsEN in search results</string>
+    <string name="show_meanings_EN_on">Show English meaningsEN in search results</string>
+    <string name="show_meanings_FR_off">Don\'t show French meaningsEN in search results</string>
+    <string name="show_meanings_FR_on">Show French meaningsEN in search results</string>
+    <string name="show_meanings_ES_off">Don\'t show Spanish meaningsEN in search results</string>
+    <string name="show_meanings_ES_on">Show Spanish meaningsEN in search results</string>
     <string name="hidden_info_boxes">Don\'t show informative popup texts on search</string>
     <string name="shown_info_boxes">Show informative popup texts on search</string>
     <string name="hidden_decomp_structure_info">Don\'t show Kanji structure explanation</string>
@@ -204,7 +204,7 @@
     </string>
     <string name="AboutTextIntro2">
         The app is designed to help you manually decipher texts in intermediate to advanced Japanese,
-        allowing you to understand the meanings and components of every word or phrase you read at a faster pace than what other translation tools can offer.
+        allowing you to understand the meaningsEN and components of every word or phrase you read at a faster pace than what other translation tools can offer.
     </string>
     <string name="AboutTextIntro3">
         The app does not depend on an Internet connection, so you can use it whenever and wherever you want.
@@ -220,7 +220,7 @@
         Better than most online reference tools, you can find explanations on any grammar rule just by entering a relevant keyword, even partially.
     </string>
     <string name="AboutTextButtonsDictParagraph3">
-        I manually expanded the dictionary over the years with extra meanings and alternate word forms, so you will find words that many online dictionaries fail to find.
+        I manually expanded the dictionary over the years with extra meaningsEN and alternate word forms, so you will find words that many online dictionaries fail to find.
     </string>
     <string name="AboutTextButtonsDictParagraph4">
         If there is Internet access then online results are added (you can change this in the Settings menu).
@@ -255,7 +255,7 @@
     </string>
     <string name="AboutTextButtonsDecomposeTitle">好 ⇒ 女+子</string>
     <string name="AboutTextButtonsDecomposeParagraph1">
-        Get the meanings and readings of all of the components in a given Kanji, recursively.
+        Get the meaningsEN and readings of all of the components in a given Kanji, recursively.
     </string>
     <string name="AboutTextButtonsDecomposeParagraph2">
         Very useful if you want ot understand Kanjis through their radicals.
@@ -317,7 +317,7 @@
     </string>
     <string name="AboutTextCreditsDatabasesParagraph2">
         The local dictionary is a reduced form of the open-source EDICT dictionary, which I modified and manually upgraded to suit the app\'s needs.
-        Some other sources were used, including wiktionary.org for updating the suru verb meanings.
+        Some other sources were used, including wiktionary.org for updating the suru verb meaningsEN.
     </string>
     <string name="AboutTextDisclaimer1">
         *disclaimer for cjkdecomp:\nCopyright 2017 Gavin Grover\nLicensed under the Apache License,
@@ -381,11 +381,10 @@
     <string name="sure_you_want_to_exit">Are you sure you want to exit the app?</string>
     <string name="yes">Yes</string>
     <string name="no_matching_words_online">No matching words found online.</string>
-    <string name="no_new_words_or_meanings_found_online">No new words or meanings found online.</string>
+    <string name="no_new_words_or_meanings_found_online">No new words or meaningsEN found online.</string>
     <string name="structure_">Structure:\u0020</string>
     <string name="properties_">Properties:\u0020</string>
     <string name="this_component_is_a_CJK_character">This component is a CJK Character.</string>
-    <string name="radical_">Radical:\u0020</string>
     <string name="search_for_radical_search_too_broad">Your search is too broad. Please select another structure or select Kanji elements to narrow the search.</string>
     <string name="search_by_radical_no_results_found">No results found for your selections.</string>
     <string name="similars_database" translatable="false">similars_database</string>
@@ -424,7 +423,7 @@
     <string name="select_the_component">Select the Component</string>
     <string name="results">Results</string>
     <string name="structure">Structure:</string>
-    <string name="radical">Radical:</string>
+    <string name="radical_">Radical:</string>
     <string name="on_reading">On reading: </string>
     <string name="name_reading">Name reading:</string>
     <string name="kun_reading">Kun reading: </string>
@@ -451,7 +450,7 @@
     <string name="from_conjugated_form">From conjugated form</string>
     <string name="from_associated_word">From associated word</string>
     <string name="derived_from">Derived from</string>
-    <string name="unavailable_select_word_to_see_meanings">unavailable, select word to see english meanings</string>
+    <string name="unavailable_select_word_to_see_meanings">unavailable, select word to see english meaningsEN</string>
     <string name="unavailable">unavailable</string>
     <string name="meanings_in">Meanings in</string>
     <string name="value_">Value:\u0020</string>
@@ -796,5 +795,17 @@
     <string name="close">Close</string>
     <string name="alt_form">alt. form</string>
     <string name="use_default_font_for_asian_characters">Use default font for Asian characters (Chinese characters will be displayed in the default Mandarin font)</string>
+    <string name="characters_main_radical_is">Character\'s main radical is</string>
+    <string name="aditional_strokes">additional strokes</string>
+    <string name="additional_stroke">additional stroke</string>
+    <string name="number_abbrev_">No.</string>
+    <string name="with">with</string>
+    <string name="special_symbol_with_meaning">Special symbol with meaning</string>
+    <string name="strokes">strokes</string>
+    <string name="stroke">stroke.</string>
+    <string name="radical">Radical</string>
+    <string name="radical_variant">radical variant</string>
+    <string name="simplification">simplification</string>
+    <string name="english_meanings_available_only">(English meanings available only)</string>
 
 </resources>

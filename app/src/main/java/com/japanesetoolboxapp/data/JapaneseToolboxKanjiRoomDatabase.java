@@ -16,7 +16,9 @@ import com.japanesetoolboxapp.resources.Utilities;
 import java.util.ArrayList;
 import java.util.List;
 
-@Database(entities = {KanjiCharacter.class, KanjiComponent.class}, version = 15, exportSchema = false)
+@Database(entities = {KanjiCharacter.class, KanjiComponent.class},
+        version = 16,
+        exportSchema = false)
 public abstract class JapaneseToolboxKanjiRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
 
@@ -102,9 +104,13 @@ public abstract class JapaneseToolboxKanjiRoomDatabase extends RoomDatabase {
             KanjiCharacter kanjiCharacter = kanjiCharacter().getKanjiCharacterByHexId(KanjiDict_Database.get(i)[0]);
             if (kanjiCharacter!=null) {
                 String[] readings = KanjiDict_Database.get(i)[1].split("#");
-                kanjiCharacter.setReadings(readings[0].trim());
-                kanjiCharacter.setNameReadings(readings.length > 1? readings[1].trim() : "");
-                kanjiCharacter.setMeanings(KanjiDict_Database.get(i)[2]);
+
+                kanjiCharacter.setOnReadings(readings.length > 2? readings[0].trim() : "");
+                kanjiCharacter.setKunReadings(readings.length > 2? readings[1].trim() : "");
+                kanjiCharacter.setNameReadings(readings.length > 21? readings[2].trim() : "");
+                kanjiCharacter.setMeaningsEN(KanjiDict_Database.get(i)[2]);
+                kanjiCharacter.setMeaningsFR(KanjiDict_Database.get(i)[3]);
+                kanjiCharacter.setMeaningsES(KanjiDict_Database.get(i)[4]);
                 kanjiCharacter().update(kanjiCharacter);
             }
         }
@@ -178,8 +184,17 @@ public abstract class JapaneseToolboxKanjiRoomDatabase extends RoomDatabase {
     public List<KanjiCharacter> getKanjiCharactersByHexIdList(List<String> queryHexList) {
         return kanjiCharacter().getKanjiCharactersByHexIdList(queryHexList);
     }
-    public List<KanjiCharacter> getKanjiCharactersByLatinDescriptor(String query) {
-        return kanjiCharacter().getKanjiCharactersByLatinDescriptor(query);
+    public List<KanjiCharacter> getKanjiCharactersByDescriptor(String query) {
+        return kanjiCharacter().getKanjiCharactersByDescriptor(query);
+    }
+    public List<KanjiCharacter> getKanjiCharactersByMeaningEN(String query) {
+        return kanjiCharacter().getKanjiCharactersByMeaningEN(query);
+    }
+    public List<KanjiCharacter> getKanjiCharactersByMeaningFR(String query) {
+        return kanjiCharacter().getKanjiCharactersByMeaningFR(query);
+    }
+    public List<KanjiCharacter> getKanjiCharactersByMeaningES(String query) {
+        return kanjiCharacter().getKanjiCharactersByMeaningES(query);
     }
     public List<KanjiCharacter> getKanjiCharactersByKanaDescriptor(String query) {
         return kanjiCharacter().getKanjiCharactersByKanaDescriptor(query);

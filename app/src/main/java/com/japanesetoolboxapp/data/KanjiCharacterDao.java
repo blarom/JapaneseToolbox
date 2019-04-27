@@ -48,22 +48,30 @@ public interface KanjiCharacterDao {
     @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_KANJI_HEX_ID + " IN (:hexIdList)")
     List<KanjiCharacter> getKanjiCharactersByHexIdList(List<String> hexIdList);
 
-    //Get a KanjiCharacter list by Meaning
+    //Get a KanjiCharacter list by Descriptor
     @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE "
-            + KanjiCharacter.COLUMN_KANJI_MEANINGS + " LIKE  '%' || :query || '%' OR "
             + KanjiCharacter.COLUMN_KANJI_RADICAL_PLUS_STROKES + " =  :query OR "
             + KanjiCharacter.COLUMN_KANJI_RADICAL_PLUS_STROKES + " LIKE  '%' || :query || '+%'")
-    List<KanjiCharacter> getKanjiCharactersByLatinDescriptor(String query);
+    List<KanjiCharacter> getKanjiCharactersByDescriptor(String query);
 
-    //Get a KanjiCharacter list by Meaning
+    //Get a KanjiCharacter list by MeaningEN
+    @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_KANJI_MEANINGS_EN + " LIKE  '%' || :query || '%'")
+    List<KanjiCharacter> getKanjiCharactersByMeaningEN(String query);
+
+    //Get a KanjiCharacter list by MeaningFR
+    @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_KANJI_MEANINGS_FR + " LIKE  '%' || :query || '%'")
+    List<KanjiCharacter> getKanjiCharactersByMeaningFR(String query);
+
+    //Get a KanjiCharacter list by MeaningES
+    @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_KANJI_MEANINGS_ES + " LIKE  '%' || :query || '%'")
+    List<KanjiCharacter> getKanjiCharactersByMeaningES(String query);
+
+    //Get a KanjiCharacter list by Reading
     @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE "
-            + KanjiCharacter.COLUMN_KANJI_READINGS + " LIKE  '%' || :query || '%' OR "
-            + KanjiCharacter.COLUMN_KANJI_NAME_READINGS + " LIKE  '%' || :query || '%'")
+            + KanjiCharacter.COLUMN_KANJI_ON_READINGS + " LIKE '%' || :query || '%' OR "
+            + KanjiCharacter.COLUMN_KANJI_KUN_READINGS + " LIKE '%' || :query || '%' OR "
+            + KanjiCharacter.COLUMN_KANJI_NAME_READINGS + " LIKE '%' || :query || '%'")
     List<KanjiCharacter> getKanjiCharactersByKanaDescriptor(String query);
-
-    //Get a KanjiCharacter list by Meaning
-    @Query("SELECT * FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_KANJI_MEANINGS + " LIKE  '%' || :query || '%'")
-    List<KanjiCharacter> getKanjiCharactersByReading(String query);
 
     //Delete a KanjiCharacter by Id
     @Query("DELETE FROM " + KanjiCharacter.TABLE_NAME + " WHERE " + KanjiCharacter.COLUMN_ID + " = :id")

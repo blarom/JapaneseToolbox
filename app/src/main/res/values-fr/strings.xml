@@ -269,7 +269,6 @@
     <string name="structure_">Structure:\u0020</string>
     <string name="properties_">Propriétés:</string>
     <string name="this_component_is_a_CJK_character">Ce composant est un caractère CJK.</string>
-    <string name="radical_">Radical:\u0020</string>
     <string name="search_for_radical_search_too_broad">Votre recherche est trop large. Veuillez sélectionner une autre structure ou sélectionner des éléments de kanji pour affiner la recherche.</string>
     <string name="search_by_radical_no_results_found">Aucun résultat trouvé pour vos sélections.</string>
     <string name="copy_to_input">Copier à l\'input</string>
@@ -306,9 +305,9 @@
     <string name="select_the_component">Sélect. le composant</string>
     <string name="results">Résultats</string>
     <string name="structure">Structure:</string>
-    <string name="radical">Radical:</string>
+    <string name="radical_">Radical:</string>
     <string name="on_reading">Lecture On:</string>
-    <string name="name_reading">Util. dans noms:</string>
+    <string name="name_reading">Lecture noms:</string>
     <string name="kun_reading">Lecture Kun:</string>
     <string name="meaning">Sens:</string>
     <string name="remove_decomposition">enlever la décomposition</string>
@@ -680,4 +679,16 @@
     <string name="use_japanese_font_for_asian_characters">Utiliser une police japonaise pour les caractères asiatiques (les caractères chinois utilisés en japonais seront affichés avec une police japonaise)</string>
     <string name="use_default_font_for_asian_characters">Utiliser la police de défaut pour les caractères asiatiques (les caractères chinois seront affichés dans la police mandarine de défaut)</string>
     <string name="use_japanese_font_in_texts">Utiliser Police Japonaise Dans Les Textes</string>
+    <string name="characters_main_radical_is">Le radical principal du caractère est</string>
+    <string name="aditional_strokes">touches additionelles</string>
+    <string name="additional_stroke">touche additionelle</string>
+    <string name="number_abbrev_">No.</string>
+    <string name="with">avec</string>
+    <string name="special_symbol_with_meaning">Symbole spécial avec le sens</string>
+    <string name="strokes">touches</string>
+    <string name="stroke">touhe</string>
+    <string name="radical_variant">variante de radical</string>
+    <string name="simplification">simplification</string>
+    <string name="radical">Radical</string>
+    <string name="english_meanings_available_only">(Senses en anglais disponibles uniquement)</string>
 </resources>

@@ -44,6 +44,7 @@ import com.japanesetoolboxapp.data.JapaneseToolboxKanjiRoomDatabase;
 import com.japanesetoolboxapp.data.KanjiCharacter;
 import com.japanesetoolboxapp.data.KanjiComponent;
 import com.japanesetoolboxapp.resources.GlobalConstants;
+import com.japanesetoolboxapp.resources.LocaleHelper;
 import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
@@ -830,7 +831,7 @@ public class SearchByRadicalFragment extends Fragment implements
                 String last_index = "0";
                 for (int i = 0; i < mRadicalsOnlyDatabase.size(); i++) {
                     currentElement = mRadicalsOnlyDatabase.get(i);
-                    parsed_list = currentElement[2].split(";");
+                    parsed_list = currentElement[GlobalConstants.RADICAL_NUM].split(";");
 
                     //Skipping radicals not found in the CJK decompositons database
                     if (parsed_list.length == 3 && parsed_list[2].equals("not found in decompositions")) continue;
@@ -1002,7 +1003,6 @@ public class SearchByRadicalFragment extends Fragment implements
         private final List<String[]> mRadicalsOnlyDatabase;
         private final String mKanjiCharacterNameForFilter;
         private List<String> mDisplayableComponentSelections;
-        private List<String[]> sortedList;
         private JapaneseToolboxKanjiRoomDatabase mJapaneseToolboxKanjiRoomDatabase;
         //endregion
 
@@ -1037,6 +1037,8 @@ public class SearchByRadicalFragment extends Fragment implements
             if (displayableComponentSelections ==null) return new ArrayList<>();
             else if (TextUtils.isEmpty(mKanjiCharacterNameForFilter)) return displayableComponentSelections;
 
+            String language = LocaleHelper.getLanguage(getContext());
+
             List<String> intersectionWithMatchingDescriptors;
             if (mComponentSelectionType.contains("radical")) {
                 List<String> matchingRadicals = new ArrayList<>();
@@ -1047,29 +1049,52 @@ public class SearchByRadicalFragment extends Fragment implements
                 String numberStrokes;
                 String matchingRadicalNumber = "";
                 for (int i = 0; i < mRadicalsOnlyDatabase.size(); i++) {
-                    radical = mRadicalsOnlyDatabase.get(i)[0];
-                    radicalNumber = mRadicalsOnlyDatabase.get(i)[2];
+
+                    radical = mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_KANA];
+                    radicalNumber = mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_NUM];
                     radicalNumberFirstElement = radicalNumber.split(";")[0];
-                    radicalName = mRadicalsOnlyDatabase.get(i)[3];
-                    numberStrokes = mRadicalsOnlyDatabase.get(i)[4];
+                    radicalName = "";
+                    switch (language) {
+                        case "en": radicalName = mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_NAME_EN]; break;
+                        case "fr": radicalName = mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_NAME_FR]; break;
+                        case "es": radicalName = mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_NAME_ES]; break;
+                    }
+                    numberStrokes = mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_NUM_STROKES];
+
                     if (radical.equals(mKanjiCharacterNameForFilter)
                             || radicalNumberFirstElement.equals(mKanjiCharacterNameForFilter)
                             || radicalName.contains(mKanjiCharacterNameForFilter)
                             || numberStrokes.equals(mKanjiCharacterNameForFilter)) {
-                        matchingRadicals.add(mRadicalsOnlyDatabase.get(i)[0]);
+                        matchingRadicals.add(mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_KANA]);
                         matchingRadicalNumber = radicalNumber;
                     }
                     if (radicalName.equals("") && !matchingRadicalNumber.equals("") && radicalNumberFirstElement.equals(matchingRadicalNumber)) {
-                        matchingRadicals.add(mRadicalsOnlyDatabase.get(i)[0] + "variant");
+                        matchingRadicals.add(mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_KANA] + "variant");
                     }
                 }
 
                 intersectionWithMatchingDescriptors = Utilities.getIntersectionOfLists(displayableComponentSelections, matchingRadicals);
             }
             else {
-                List<KanjiCharacter> matchingKanjiCharactersByDescriptor = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByLatinDescriptor(mKanjiCharacterNameForFilter);
+                List<KanjiCharacter> matchingKanjiCharactersByDescriptor = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByDescriptor(mKanjiCharacterNameForFilter);
+
+                List<KanjiCharacter> matchingKanjiCharactersByMeaning = new ArrayList<>();
+                switch (LocaleHelper.getLanguage(getContext())) {
+                    case "en":
+                        matchingKanjiCharactersByMeaning = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByMeaningEN(mKanjiCharacterNameForFilter);
+                        break;
+                    case "fr":
+                        matchingKanjiCharactersByMeaning = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByMeaningFR(mKanjiCharacterNameForFilter);
+                        break;
+                    case "es":
+                        matchingKanjiCharactersByMeaning = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByMeaningES(mKanjiCharacterNameForFilter);
+                        break;
+                }
+                matchingKanjiCharactersByDescriptor.addAll(matchingKanjiCharactersByMeaning);
+
                 String hiraganaDescriptor = ConvertFragment.getLatinHiraganaKatakana(mKanjiCharacterNameForFilter).get(GlobalConstants.TYPE_HIRAGANA);
                 matchingKanjiCharactersByDescriptor.addAll(mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByKanaDescriptor(hiraganaDescriptor));
+
                 String katakanaDescriptor = ConvertFragment.getLatinHiraganaKatakana(mKanjiCharacterNameForFilter).get(GlobalConstants.TYPE_KATAKANA);
                 matchingKanjiCharactersByDescriptor.addAll(mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByKanaDescriptor(katakanaDescriptor));
 

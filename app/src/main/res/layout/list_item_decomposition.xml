@@ -103,13 +103,13 @@
             android:text="@string/hyphen"
             android:textIsSelectable="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toEndOf="@+id/decomposition_element_name_readings_title"
             app:layout_constraintTop_toBottomOf="@+id/decomposition_element_separator1"/>
 
         <TextView
             android:id="@+id/decomposition_element_radical_title"
             style="@style/DecomposeTitleStyle"
-            android:text="@string/radical"
+            android:text="@string/radical_"
             app:layout_constraintEnd_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/decomposition_element_structure_value"/>
@@ -121,7 +121,7 @@
             android:textIsSelectable="true"
             android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toEndOf="@+id/decomposition_element_name_readings_title"
             app:layout_constraintTop_toBottomOf="@id/decomposition_element_structure_value"/>
 
         <TextView
@@ -139,7 +139,7 @@
             android:textIsSelectable="true"
             android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toEndOf="@+id/decomposition_element_name_readings_title"
             app:layout_constraintTop_toBottomOf="@id/decomposition_element_radical_value"/>
 
         <TextView
@@ -147,9 +147,11 @@
             style="@style/DecomposeTitleStyle"
             android:layout_height="26dp"
             android:text="@string/name_reading"
-            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            android:paddingEnd="12dp"
+            android:paddingStart="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/decomposition_element_kun_readings_value"/>
+        <!--app:layout_constraintEnd_toEndOf="@+id/guideline"-->
 
         <TextView
             android:id="@+id/decomposition_element_name_readings_value"
@@ -158,7 +160,7 @@
             android:textIsSelectable="true"
             android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toEndOf="@+id/decomposition_element_name_readings_title"
             app:layout_constraintTop_toBottomOf="@id/decomposition_element_kun_readings_value"/>
 
         <TextView
@@ -176,7 +178,7 @@
             android:textIsSelectable="true"
             android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toEndOf="@+id/decomposition_element_name_readings_title"
             app:layout_constraintTop_toBottomOf="@id/decomposition_element_on_readings_value"/>
 
         <TextView
@@ -194,7 +196,7 @@
             android:textIsSelectable="true"
             android:focusable="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toEndOf="@+id/decomposition_element_name_readings_title"
             app:layout_constraintTop_toBottomOf="@id/decomposition_element_name_readings_value"/>
 
         <android.support.constraint.Guideline
@@ -202,7 +204,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.3"/>
+            app:layout_constraintGuide_percent="0.3"
+            />
+            <!--app:layout_constraintGuide_percent="0.3"-->
+        <!--app:layout_constraintStart_toEndOf="@id/decomposition_element_name_readings_title"-->
 
         <ImageView
             android:id="@+id/remove_decomposition_imageview"

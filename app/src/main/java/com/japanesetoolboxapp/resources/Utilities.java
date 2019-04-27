@@ -210,7 +210,7 @@ public final class Utilities {
 
         Intent intent = activity.getPackageManager().getLaunchIntentForPackage( activity.getPackageName() );
         if (intent!=null) {
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             activity.startActivity(intent);
             activity.finish();
         }

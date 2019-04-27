@@ -29,6 +29,7 @@ import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.JapaneseToolboxKanjiRoomDatabase;
 import com.japanesetoolboxapp.data.KanjiCharacter;
 import com.japanesetoolboxapp.resources.GlobalConstants;
+import com.japanesetoolboxapp.resources.LocaleHelper;
 import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
@@ -356,33 +357,51 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 radicalTV.setText(radicalValue);
             }
             else if (radical_row[2].equals("Special")){
-                radicalValue = "Special symbol with meaning '" + radical_row[3] + "'.";
+                radicalValue = getContext().getString(R.string.special_symbol_with_meaning) + " '" + radical_row[3] + "'.";
                 radicalTV.setText(radicalValue);
             }
             else {
                 //region Get the radical characteristics from the RadialsOnlyDatabase
-                List<String> parsed_number = Arrays.asList(mRadicalsOnlyDatabase.get(radicalIndex)[2].split(";"));
+                List<String> parsed_number = Arrays.asList(mRadicalsOnlyDatabase.get(radicalIndex)[GlobalConstants.RADICAL_NUM].split(";"));
                 String[] main_radical_row = mRadicalsOnlyDatabase.get(radicalIndexOriginal);
 
-                String strokes = " strokes.";
-                if (main_radical_row[4].equals("1")) { strokes = " stroke.";}
+                String strokes = " " + getContext().getString(R.string.strokes) + ".";
+                if (main_radical_row[4].equals("1")) { strokes = " " + getContext().getString(R.string.stroke) + ".";}
 
                 radicalValue = "";
+                String radicalName = "";
+                switch (LocaleHelper.getLanguage(getContext())) {
+                    case "en": radicalName = main_radical_row[GlobalConstants.RADICAL_NAME_EN]; break;
+                    case "fr": radicalName = main_radical_row[GlobalConstants.RADICAL_NAME_FR]; break;
+                    case "es": radicalName = main_radical_row[GlobalConstants.RADICAL_NAME_ES]; break;
+                }
                 if (parsed_number.size()>1) {
                     switch (parsed_number.get(1)) {
                         case "alt":
-                            radicalValue = "\"" + main_radical_row[3] + "\"" + " (Radical No. " + parsed_number.get(0) + "), " + main_radical_row[4] + strokes;
+                            radicalValue = "\"" + radicalName
+                                    + "\" (" + getContext().getString(R.string.radical) + " "
+                                    + getContext().getString(R.string.number_abbrev_) + parsed_number.get(0) + "), "
+                                    + main_radical_row[GlobalConstants.RADICAL_NUM_STROKES] + strokes;
                             break;
                         case "variant":
-                            radicalValue = "\"" + main_radical_row[3] + "\" radical variant" + " (Radical No. " + parsed_number.get(0) + ").";
+                            radicalValue = "\"" + radicalName
+                                    + "\" " + getContext().getString(R.string.radical_variant)
+                                    + " (" +  getContext().getString(R.string.radical) + " "
+                                    + getContext().getString(R.string.number_abbrev_) + parsed_number.get(0) + ").";
                             break;
                         case "simplification":
-                            radicalValue = "\"" + main_radical_row[3] + "\" (Radical No. " + parsed_number.get(0) + " simplification).";
+                            radicalValue = "\"" + radicalName
+                                    + "\" (" + getContext().getString(R.string.radical) + " "
+                                    + getContext().getString(R.string.number_abbrev_) + " "
+                                    + parsed_number.get(0) + ": " + getContext().getString(R.string.simplification) + ").";
                             break;
                     }
                 }
                 else {
-                    radicalValue = "\""+ main_radical_row[3] + "\""+ " (Radical No. " + parsed_number.get(0) + "), " + main_radical_row[4] + strokes;
+                    radicalValue = "\""+ radicalName
+                            + "\" (" + getContext().getString(R.string.radical) + " "
+                            + getContext().getString(R.string.number_abbrev_) + " "
+                            + parsed_number.get(0) + "), " + main_radical_row[GlobalConstants.RADICAL_NUM_STROKES] + strokes;
                 }
                 radicalTV.setText(radicalValue);
                 //endregion
@@ -672,6 +691,8 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
     }
     @Override public void onLoadFinished(@NonNull Loader<Object> loader, Object data) {
 
+        if (getContext() == null) return;
+
         if (loader.getId() == ROOM_DB_KANJI_DECOMPOSITION_LOADER && !mAlreadyGotFirstQuery && data!=null) {
             mAlreadyGotFirstQuery = true;
 
@@ -853,48 +874,47 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
             return string_value_of_hex;
         }
+        String getFormattedReadings(String readings) {
+
+            String readingLatin;
+            String[] components;
+            List<String> readingsList = new ArrayList<>();
+            if (readings != null) {
+                for (String reading : readings.split(";")) {
+                    components = reading.split("\\.");
+                    readingLatin = ConvertFragment.getLatinHiraganaKatakana(components[0]).get(GlobalConstants.TYPE_LATIN);
+                    if (components.length > 1) readingLatin +=
+                            "(" + ConvertFragment.getLatinHiraganaKatakana(components[1]).get(GlobalConstants.TYPE_LATIN) + ")";
+                    readingsList.add(readingLatin);
+                }
+                readingsList = Utilities.removeDuplicatesFromList(readingsList);
+            }
+
+            return (readingsList.size()>0 && !readingsList.get(0).equals(""))? TextUtils.join(", ", readingsList) : "-";
+        }
         List<String> getKanjiDetailedCharacteristics(KanjiCharacter kanjiCharacter) {
 
             List<String> characteristics = new ArrayList<>(Arrays.asList("", "", "", ""));
-            if (kanjiCharacter ==null || kanjiCharacter.getReadings()==null) return characteristics;
+            if (kanjiCharacter ==null) return characteristics;
 
-            String[] readings = kanjiCharacter.getReadings().split(";");
-            String weirdScriptInSource = "T2";
-            String readingLatin;
-            String[] components;
-            List<String> onReadings = new ArrayList<>();
-            List<String> kunReadings = new ArrayList<>();
-            for (String reading : readings) {
-                components = reading.replace(weirdScriptInSource,"").split("\\.");
-                readingLatin = ConvertFragment.getLatinHiraganaKatakana(components[0]).get(GlobalConstants.TYPE_LATIN);
-                if (components.length>1) readingLatin +=
-                        "(" + ConvertFragment.getLatinHiraganaKatakana(components[1]).get(GlobalConstants.TYPE_LATIN) + ")";
+            characteristics.set(KANJI_ON_READING, getFormattedReadings(kanjiCharacter.getOnReadings()));
+            characteristics.set(KANJI_KUN_READING, getFormattedReadings(kanjiCharacter.getKunReadings()));
+            characteristics.set(KANJI_NAME_READING, getFormattedReadings(kanjiCharacter.getNameReadings()));
 
-                if (ConvertFragment.getTextType(reading.substring(0,1)) == GlobalConstants.TYPE_HIRAGANA) {
-                    kunReadings.add(readingLatin);
-                }
-                else if (ConvertFragment.getTextType(reading.substring(0,1)) == GlobalConstants.TYPE_KATAKANA) {
-                    onReadings.add(readingLatin);
-                }
+            boolean meaningsENisEmpty = TextUtils.isEmpty(kanjiCharacter.getMeaningsEN());
+            switch (LocaleHelper.getLanguage(getContext())) {
+                case "en":
+                    characteristics.set(KANJI_MEANING, meaningsENisEmpty? "-" : kanjiCharacter.getMeaningsEN());
+                    break;
+                case "fr":
+                    characteristics.set(KANJI_MEANING, TextUtils.isEmpty(kanjiCharacter.getMeaningsFR())?
+                            (meaningsENisEmpty? "-" : getContext().getString(R.string.english_meanings_available_only) + " " + kanjiCharacter.getMeaningsEN()) : kanjiCharacter.getMeaningsFR());
+                    break;
+                case "es":
+                    characteristics.set(KANJI_MEANING, TextUtils.isEmpty(kanjiCharacter.getMeaningsES())?
+                            (meaningsENisEmpty? "-" : getContext().getString(R.string.english_meanings_available_only) + " " + kanjiCharacter.getMeaningsEN()) : kanjiCharacter.getMeaningsES());
+                    break;
             }
-            onReadings = Utilities.removeDuplicatesFromList(onReadings);
-            kunReadings = Utilities.removeDuplicatesFromList(kunReadings);
-            characteristics.set(KANJI_ON_READING, (onReadings.size()>0 && !onReadings.get(0).equals(""))? TextUtils.join(", ", onReadings) : "-");
-            characteristics.set(KANJI_KUN_READING, (kunReadings.size()>0 && !kunReadings.get(0).equals(""))? TextUtils.join(", ", kunReadings) : "-");
-
-            readings = kanjiCharacter.getNameReadings().split(";");
-            List<String> nameReadings = new ArrayList<>();
-            for (String reading : readings) {
-                components = reading.replace(weirdScriptInSource,"").split("\\.");
-                readingLatin = ConvertFragment.getLatinHiraganaKatakana(components[0]).get(GlobalConstants.TYPE_LATIN);
-                if (components.length>1) readingLatin +=
-                        "(" + ConvertFragment.getLatinHiraganaKatakana(components[1]).get(GlobalConstants.TYPE_LATIN) + ")";
-                nameReadings.add(readingLatin);
-            }
-            nameReadings = Utilities.removeDuplicatesFromList(nameReadings);
-            characteristics.set(KANJI_NAME_READING, (nameReadings.size()>0 && !nameReadings.get(0).equals(""))? TextUtils.join(", ", nameReadings) : "-");
-
-            characteristics.set(KANJI_MEANING, TextUtils.isEmpty(kanjiCharacter.getMeanings())? "-" : kanjiCharacter.getMeanings());
 
             return characteristics;
         }
@@ -912,20 +932,22 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                     if (!parsed_list.get(1).equals("0")) {
                         int radical_index = -1;
                         for (int i = 0; i < mRadicalsOnlyDatabase.size(); i++) {
-                            if (parsed_list.get(0).equals(mRadicalsOnlyDatabase.get(i)[2])) {
+                            if (parsed_list.get(0).equals(mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_NUM])) {
                                 radical_index = i;
                                 break;
                             }
                         }
                         String text = "";
                         if (radical_index != -1) {
-                            text = "Character's main radical is " +
-                                    mRadicalsOnlyDatabase.get(radical_index)[0] +
-                                    " (No. " +
+                            text = getContext().getString(R.string.characters_main_radical_is) + " " +
+                                    mRadicalsOnlyDatabase.get(radical_index)[GlobalConstants.RADICAL_KANA] + " " +
+                                    "(" + getContext().getString(R.string.number_abbrev_) + " " +
                                     parsed_list.get(0) +
-                                    ") with " +
-                                    parsed_list.get(1) +
-                                    ((Integer.valueOf(parsed_list.get(1))>1)? " additional strokes." : " additional stroke.");
+                                    ") "  + getContext().getString(R.string.with) + " " +
+                                    parsed_list.get(1) + " " +
+                                    ((Integer.valueOf(parsed_list.get(1))>1)? getContext().getString(R.string.aditional_strokes)
+                                            : getContext().getString(R.string.additional_stroke))
+                                    + ".";
                         }
                         radical_characteristics.add(text);
                     }
@@ -944,19 +966,19 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
 
             //Find the radical index
             for (int i = 0; i< mRadicalsOnlyDatabase.size(); i++) {
-                if (inputQuery.equals(mRadicalsOnlyDatabase.get(i)[0])) {
+                if (inputQuery.equals(mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_KANA])) {
                     radicalIndex = i;
                 }
             }
 
             if (radicalIndex >= 0) {
-                List<String> parsed_number = Arrays.asList(mRadicalsOnlyDatabase.get(radicalIndex)[2].split(";"));
+                List<String> parsed_number = Arrays.asList(mRadicalsOnlyDatabase.get(radicalIndex)[GlobalConstants.RADICAL_NUM].split(";"));
                 boolean found_main_radical = false;
                 mainRadicalIndex = radicalIndex;
 
                 if (parsed_number.size() > 1) {
                     while (!found_main_radical) {
-                        if (mRadicalsOnlyDatabase.get(mainRadicalIndex)[2].contains(";")) {
+                        if (mRadicalsOnlyDatabase.get(mainRadicalIndex)[GlobalConstants.RADICAL_NUM].contains(";")) {
                             mainRadicalIndex--;
                         } else {
                             found_main_radical = true;
@@ -965,7 +987,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 }
 
                 //Get the remaining radical characteristics (readings, meanings) from the KanjiDictDatabase
-                String mainRadical = mRadicalsOnlyDatabase.get(mainRadicalIndex)[0];
+                String mainRadical = mRadicalsOnlyDatabase.get(mainRadicalIndex)[GlobalConstants.RADICAL_KANA];
                 String radicalHexIdentifier = Utilities.convertToUTF8Index(mainRadical).toUpperCase();
                 KanjiCharacter kanjiCharacter = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharacterByHexId(radicalHexIdentifier);
                 currentMainRadicalDetailedCharacteristics = getKanjiDetailedCharacteristics(kanjiCharacter);

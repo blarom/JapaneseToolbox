@@ -277,7 +277,6 @@
     <string name="structure_">Estructura:\u0020</string>
     <string name="properties_">Propiedades:\u0020</string>
     <string name="this_component_is_a_CJK_character">Este componente es un carácter CJK.</string>
-    <string name="radical_">Radical:\u0020</string>
     <string name="search_for_radical_search_too_broad">Su búsqueda es demasiado amplia. Seleccione otra estructura o seleccione elementos de kanji para limitar la búsqueda.</string>
     <string name="search_by_radical_no_results_found">No se han encontrado resultados para sus selecciones.</string>
     <string name="copy_to_input">Copiar al input</string>
@@ -314,9 +313,9 @@
     <string name="select_the_component">Selecc. él componente</string>
     <string name="results">Resultados</string>
     <string name="structure">Estructura:</string>
-    <string name="radical">Radical:</string>
+    <string name="radical_">Radical:</string>
     <string name="on_reading">Lectura On:</string>
-    <string name="name_reading">Util. en nombres:</string>
+    <string name="name_reading">Lectura nombres:</string>
     <string name="kun_reading">Lectura Kun:</string>
     <string name="meaning">Sentido:</string>
     <string name="remove_decomposition">eliminar la descomposición</string>
@@ -378,7 +377,7 @@
     <string name="verb_TitleAlternative">Alternativo (Él hace/es X, entre otras cosas)</string>
     <string name="verb_TitleCausativeA">Causativo Activo (Él lo hace hacer/ser X)</string>
     <string name="verb_TitleCausativePv">Causativo Pasivo (Él se le hace hacer/ser X)</string>
-    <string name="verb_TitlePassive">Pasivo (X is done to him), also Humilde Form</string>
+    <string name="verb_TitlePassive">Pasivo (X fue hecho a él), también Forma Humilde</string>
     <string name="verb_TitlePotential">Potencial (Él peude hacer/ser X)</string>
     <string name="verb_TitleContinuative">Continuativo (Él hace/es X y …)</string>
     <string name="verb_TitleCompulsion">Compulsión (Él tiene que hacer/ser X)</string>
@@ -688,4 +687,16 @@
     <string name="use_japanese_font_for_asian_characters">Use una fuente japonesa para los caracteres asiáticos (los caracteres chinos que se usan en japonés se mostrarán en fuente japonesa)</string>
     <string name="use_default_font_for_asian_characters">Use la fuente predeterminada para los caracteres asiáticos (los caracteres chinos se mostrarán en la fuente predeterminada de mandarín)</string>
     <string name="use_japanese_font_in_texts">Usar Fuente Japonesa En Textos</string>
+    <string name="characters_main_radical_is">El principal radical del carácter es</string>
+    <string name="aditional_strokes">pinceladas adicionales</string>
+    <string name="additional_stroke">pincelada adicional</string>
+    <string name="number_abbrev_">No.</string>
+    <string name="with">con</string>
+    <string name="special_symbol_with_meaning">"Símbolo especial con el significado "</string>
+    <string name="strokes">pinceladas</string>
+    <string name="stroke">pincelada</string>
+    <string name="radical_variant">variante de radical</string>
+    <string name="simplification">simplificacíon</string>
+    <string name="radical">Radical</string>
+    <string name="english_meanings_available_only">(Sentidos en inglés disponibles solamente)</string>
 </resources>

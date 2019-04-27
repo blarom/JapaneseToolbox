@@ -18,9 +18,12 @@ public class KanjiCharacter  {
     static final String COLUMN_KANJI_HEX_ID = "hexIdentifier";
     private static final String COLUMN_KANJI_STRUCTURE = "structure";
     private static final String COLUMN_KANJI_COMPONENTS = "components";
-    static final String COLUMN_KANJI_READINGS = "readings";
+    static final String COLUMN_KANJI_ON_READINGS = "onreadings";
+    static final String COLUMN_KANJI_KUN_READINGS = "kunreadings";
     static final String COLUMN_KANJI_NAME_READINGS = "nameReadings";
-    static final String COLUMN_KANJI_MEANINGS = "meanings";
+    static final String COLUMN_KANJI_MEANINGS_EN = "meaningsEN";
+    static final String COLUMN_KANJI_MEANINGS_FR = "meaningsFR";
+    static final String COLUMN_KANJI_MEANINGS_ES = "meaningsES";
     static final String COLUMN_KANJI_RADICAL_PLUS_STROKES = "radPlusStrokes";
 
     public KanjiCharacter() {
@@ -84,13 +87,22 @@ public class KanjiCharacter  {
         return components;
     }
 
-    @ColumnInfo(name = COLUMN_KANJI_READINGS)
-    private String readings;
-    public void setReadings(String readings) {
-        this.readings = readings;
+    @ColumnInfo(name = COLUMN_KANJI_ON_READINGS)
+    private String onReadings;
+    public void setOnReadings(String onReadings) {
+        this.onReadings = onReadings;
     }
-    public String getReadings() {
-        return readings;
+    public String getOnReadings() {
+        return onReadings;
+    }
+
+    @ColumnInfo(name = COLUMN_KANJI_KUN_READINGS)
+    private String kunReadings;
+    public void setKunReadings(String kunReadings) {
+        this.kunReadings = kunReadings;
+    }
+    public String getKunReadings() {
+        return kunReadings;
     }
 
     @ColumnInfo(name = COLUMN_KANJI_NAME_READINGS)
@@ -102,13 +114,31 @@ public class KanjiCharacter  {
         return nameReadings;
     }
 
-    @ColumnInfo(name = COLUMN_KANJI_MEANINGS)
-    private String meanings;
-    public void setMeanings(String meanings) {
-        this.meanings = meanings;
+    @ColumnInfo(name = COLUMN_KANJI_MEANINGS_EN)
+    private String meaningsEN;
+    public void setMeaningsEN(String meaningsEN) {
+        this.meaningsEN = meaningsEN;
     }
-    public String getMeanings() {
-        return meanings;
+    public String getMeaningsEN() {
+        return meaningsEN;
+    }
+
+    @ColumnInfo(name = COLUMN_KANJI_MEANINGS_FR)
+    private String meaningsFR;
+    public void setMeaningsFR(String meaningsFR) {
+        this.meaningsFR = meaningsFR;
+    }
+    public String getMeaningsFR() {
+        return meaningsFR;
+    }
+
+    @ColumnInfo(name = COLUMN_KANJI_MEANINGS_ES)
+    private String meaningsES;
+    public void setMeaningsES(String meaningsES) {
+        this.meaningsES = meaningsES;
+    }
+    public String getMeaningsES() {
+        return meaningsES;
     }
 
     @ColumnInfo(name = COLUMN_KANJI_RADICAL_PLUS_STROKES)

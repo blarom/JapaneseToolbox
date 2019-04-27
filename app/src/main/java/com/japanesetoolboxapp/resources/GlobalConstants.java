@@ -169,6 +169,14 @@ public final class GlobalConstants {
     public static final int VALUE_NUMBER = 4;
     public static final int TYPE_INVALID = 5;
 
+    public static final int RADICAL_KANA = 0;
+    public static final int RADICAL_UTF8 = 1;
+    public static final int RADICAL_NUM = 2;
+    public static final int RADICAL_NUM_STROKES = 3;
+    public static final int RADICAL_NAME_EN = 4;
+    public static final int RADICAL_NAME_FR = 5;
+    public static final int RADICAL_NAME_ES = 6;
+
     public static final String VERB_FAMILY_BU_GODAN = "bu";
     public static final String VERB_FAMILY_DA = "da";
     public static final String VERB_FAMILY_GU_GODAN = "gu";
