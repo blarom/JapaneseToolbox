@@ -524,6 +524,8 @@ public class ConjugatorFragment extends Fragment implements
     }
     @Override public void onLoadFinished(@NonNull Loader<Object> loader, Object data) {
 
+        if (getContext() == null) return;
+
         if (loader.getId() == VERB_SEARCH_LOADER && !mAlreadyLoadedVerbs && data!=null) {
             mAlreadyLoadedVerbs = true;
             Object[] dataElements = (Object[]) data;

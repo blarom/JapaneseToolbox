@@ -2,6 +2,8 @@ package com.japanesetoolboxapp.ui;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -70,6 +72,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
     private Typeface mDroidSansJapaneseTypeface;
     private String mInputQuery;
     private int mScrollY;
+    private Resources mLocalizedResources;
     //endregion
 
 
@@ -93,6 +96,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf")) : Typeface.DEFAULT;
 
         getDecomposition();
+        mLocalizedResources = Utilities.getLocalizedResources(getContext(), Locale.getDefault());
 
         return rootView;
     }
@@ -103,7 +107,11 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
     @Override public void onDestroyView() {
         super.onDestroyView();
         mBinding.unbind();
+        if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_KANJI_DECOMPOSITION_LOADER);
         if (getActivity()!=null && MainApplication.getRefWatcher(getActivity())!=null) MainApplication.getRefWatcher(getActivity()).watch(this);
+    }
+    @Override public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
 
@@ -357,7 +365,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 radicalTV.setText(radicalValue);
             }
             else if (radical_row[2].equals("Special")){
-                radicalValue = getContext().getString(R.string.special_symbol_with_meaning) + " '" + radical_row[3] + "'.";
+                radicalValue = mLocalizedResources.getString(R.string.special_symbol_with_meaning) + " '" + radical_row[3] + "'.";
                 radicalTV.setText(radicalValue);
             }
             else {
@@ -365,8 +373,8 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                 List<String> parsed_number = Arrays.asList(mRadicalsOnlyDatabase.get(radicalIndex)[GlobalConstants.RADICAL_NUM].split(";"));
                 String[] main_radical_row = mRadicalsOnlyDatabase.get(radicalIndexOriginal);
 
-                String strokes = " " + getContext().getString(R.string.strokes) + ".";
-                if (main_radical_row[4].equals("1")) { strokes = " " + getContext().getString(R.string.stroke) + ".";}
+                String strokes = " " + mLocalizedResources.getString(R.string.strokes) + ".";
+                if (main_radical_row[4].equals("1")) { strokes = " " + mLocalizedResources.getString(R.string.stroke) + ".";}
 
                 radicalValue = "";
                 String radicalName = "";
@@ -379,28 +387,28 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                     switch (parsed_number.get(1)) {
                         case "alt":
                             radicalValue = "\"" + radicalName
-                                    + "\" (" + getContext().getString(R.string.radical) + " "
-                                    + getContext().getString(R.string.number_abbrev_) + parsed_number.get(0) + "), "
+                                    + "\" (" + mLocalizedResources.getString(R.string.radical) + " "
+                                    + mLocalizedResources.getString(R.string.number_abbrev_) + parsed_number.get(0) + "), "
                                     + main_radical_row[GlobalConstants.RADICAL_NUM_STROKES] + strokes;
                             break;
                         case "variant":
                             radicalValue = "\"" + radicalName
-                                    + "\" " + getContext().getString(R.string.radical_variant)
-                                    + " (" +  getContext().getString(R.string.radical) + " "
-                                    + getContext().getString(R.string.number_abbrev_) + parsed_number.get(0) + ").";
+                                    + "\" " + mLocalizedResources.getString(R.string.radical_variant)
+                                    + " (" +  mLocalizedResources.getString(R.string.radical) + " "
+                                    + mLocalizedResources.getString(R.string.number_abbrev_) + parsed_number.get(0) + ").";
                             break;
                         case "simplification":
                             radicalValue = "\"" + radicalName
-                                    + "\" (" + getContext().getString(R.string.radical) + " "
-                                    + getContext().getString(R.string.number_abbrev_) + " "
-                                    + parsed_number.get(0) + ": " + getContext().getString(R.string.simplification) + ").";
+                                    + "\" (" + mLocalizedResources.getString(R.string.radical) + " "
+                                    + mLocalizedResources.getString(R.string.number_abbrev_) + " "
+                                    + parsed_number.get(0) + ": " + mLocalizedResources.getString(R.string.simplification) + ").";
                             break;
                     }
                 }
                 else {
                     radicalValue = "\""+ radicalName
-                            + "\" (" + getContext().getString(R.string.radical) + " "
-                            + getContext().getString(R.string.number_abbrev_) + " "
+                            + "\" (" + mLocalizedResources.getString(R.string.radical) + " "
+                            + mLocalizedResources.getString(R.string.number_abbrev_) + " "
                             + parsed_number.get(0) + "), " + main_radical_row[GlobalConstants.RADICAL_NUM_STROKES] + strokes;
                 }
                 radicalTV.setText(radicalValue);
@@ -663,6 +671,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
             bundle.putString(getString(R.string.decomposition_query), inputKanjiAtIndex);
             bundle.putInt(getString(R.string.decomposition_radical_iteration),radicalIteration);
             bundle.putInt(getString(R.string.decomposition_kanji_list_index),kanjiListIndex);
+            //loaderManager.initLoader(ROOM_DB_KANJI_DECOMPOSITION_LOADER, bundle, this);
             if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_KANJI_DECOMPOSITION_LOADER, bundle, this);
             else loaderManager.restartLoader(ROOM_DB_KANJI_DECOMPOSITION_LOADER, bundle, this);
         }
@@ -757,6 +766,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         private final List<String[]> mRadicalsOnlyDatabase;
         private final int radicalIteration;
         private final int kanjiListIndex;
+        private Resources mLocalizedResources;
         //endregion
 
         KanjiCharacterDecompositionAsyncTaskLoader(Context context, String inputQuery, int radicalIteration, List<String[]> mRadicalsOnlyDatabase, int kanjiListIndex) {
@@ -776,6 +786,7 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
         public Object loadInBackground() {
 
             mJapaneseToolboxKanjiRoomDatabase = JapaneseToolboxKanjiRoomDatabase.getInstance(getContext());
+            mLocalizedResources = Utilities.getLocalizedResources(getContext(), Locale.getDefault());
 
             // Search for the input in the database and retrieve the result's characteristics
 
@@ -800,7 +811,6 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                     kanjiListIndex
             };
         }
-
         List<List<String>> Decomposition(String word) {
 
             String concatenated_input = Utilities.removeSpecialCharacters(word);
@@ -908,11 +918,11 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                     break;
                 case "fr":
                     characteristics.set(KANJI_MEANING, TextUtils.isEmpty(kanjiCharacter.getMeaningsFR())?
-                            (meaningsENisEmpty? "-" : getContext().getString(R.string.english_meanings_available_only) + " " + kanjiCharacter.getMeaningsEN()) : kanjiCharacter.getMeaningsFR());
+                            (meaningsENisEmpty? "-" : mLocalizedResources.getString(R.string.english_meanings_available_only) + " " + kanjiCharacter.getMeaningsEN()) : kanjiCharacter.getMeaningsFR());
                     break;
                 case "es":
                     characteristics.set(KANJI_MEANING, TextUtils.isEmpty(kanjiCharacter.getMeaningsES())?
-                            (meaningsENisEmpty? "-" : getContext().getString(R.string.english_meanings_available_only) + " " + kanjiCharacter.getMeaningsEN()) : kanjiCharacter.getMeaningsES());
+                            (meaningsENisEmpty? "-" : mLocalizedResources.getString(R.string.english_meanings_available_only) + " " + kanjiCharacter.getMeaningsEN()) : kanjiCharacter.getMeaningsES());
                     break;
             }
 
@@ -939,14 +949,14 @@ public class DecomposeKanjiFragment extends Fragment implements LoaderManager.Lo
                         }
                         String text = "";
                         if (radical_index != -1) {
-                            text = getContext().getString(R.string.characters_main_radical_is) + " " +
+                            text = mLocalizedResources.getString(R.string.characters_main_radical_is) + " " +
                                     mRadicalsOnlyDatabase.get(radical_index)[GlobalConstants.RADICAL_KANA] + " " +
-                                    "(" + getContext().getString(R.string.number_abbrev_) + " " +
+                                    "(" + mLocalizedResources.getString(R.string.number_abbrev_) + " " +
                                     parsed_list.get(0) +
-                                    ") "  + getContext().getString(R.string.with) + " " +
+                                    ") "  + mLocalizedResources.getString(R.string.with) + " " +
                                     parsed_list.get(1) + " " +
-                                    ((Integer.valueOf(parsed_list.get(1))>1)? getContext().getString(R.string.aditional_strokes)
-                                            : getContext().getString(R.string.additional_stroke))
+                                    ((Integer.valueOf(parsed_list.get(1))>1)? mLocalizedResources.getString(R.string.aditional_strokes)
+                                            : mLocalizedResources.getString(R.string.additional_stroke))
                                     + ".";
                         }
                         radical_characteristics.add(text);

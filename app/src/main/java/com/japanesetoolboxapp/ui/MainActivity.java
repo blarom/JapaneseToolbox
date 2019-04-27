@@ -34,6 +34,7 @@ import com.japanesetoolboxapp.resources.Utilities;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -138,7 +139,6 @@ public class MainActivity extends BaseActivity implements
         super.onStart();
         Intent restartIntent = this.getBaseContext().getPackageManager()
                 .getLaunchIntentForPackage(this.getBaseContext().getPackageName());
-
     }
     @Override protected void onResume() {
         super.onResume();
@@ -166,6 +166,11 @@ public class MainActivity extends BaseActivity implements
             e.printStackTrace();
         }
         PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);
+        mDictionaryFragment = null;
+        mConjugatorFragment = null;
+        mDecomposeKanjiFragment = null;
+        mSearchByRadicalFragment = null;
+        mConvertFragment = null;
         mBinding.unbind();
     }
     @Override public void onBackPressed() {
