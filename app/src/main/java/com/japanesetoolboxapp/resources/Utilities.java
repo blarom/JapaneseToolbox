@@ -1221,19 +1221,6 @@ public final class Utilities {
         meanings_commas = meanings_commas.replaceAll(",0", "'0"); //Fixes number display problems
         return meanings_commas;
     }
-
-    public static List<Word> getWordsFromJMDictFR(String word, final Context context) {
-
-        if (TextUtils.isEmpty(word)) { return new ArrayList<>(); }
-
-        return new ArrayList<>();
-    }
-    public static List<Word> getWordsFromJMDictES(String word, final Context context) {
-
-        if (TextUtils.isEmpty(word)) { return new ArrayList<>(); }
-
-        return new ArrayList<>();
-    }
     public String createQueryOnJMDict(String word) {
         //inspired by: https://stackoverflow.com/questions/38220828/an-htmlunit-alternative-for-android
         //inspired by: https://stackoverflow.com/questions/15805771/submit-form-using-httpurlconnection

@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +27,7 @@ import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.ConjugationTitle;
 import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.data.Word;
-import com.japanesetoolboxapp.loaders.VerbSearchAsyncTaskLoader;
+import com.japanesetoolboxapp.asynctasks.VerbSearchAsyncTask;
 import com.japanesetoolboxapp.resources.LocaleHelper;
 import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
@@ -45,11 +43,10 @@ import butterknife.Unbinder;
 import static com.japanesetoolboxapp.resources.GlobalConstants.TYPE_KANJI;
 
 public class ConjugatorFragment extends Fragment implements
-        LoaderManager.LoaderCallbacks<Object> {
+        VerbSearchAsyncTask.VerbSearchAsyncResponseHandler {
 
 
     //region Parameters
-    private static final int VERB_SEARCH_LOADER = 6542;
     private static final int MAX_NUM_RESULTS_FOR_SURU_CONJ_SEARCH = 100;
 
     @BindView(R.id.verb_chooser_spinner) Spinner mVerbChooserSpinner;
@@ -111,12 +108,12 @@ public class ConjugatorFragment extends Fragment implements
     private String mChosenRomajiOrKanji;
     private List<Verb> mMatchingVerbs;
     private List<ConjugationTitle> mConjugationTitles;
-    private boolean mAlreadyLoadedVerbs;
     private List<String[]> mVerbLatinConjDatabase;
     private List<String[]> mVerbKanjiConjDatabase;
     private List<Word> mWordsFromDictFragment;
     private Typeface mDroidSansJapaneseTypeface;
     private List<Object[]> mMatchingConjugationParameters;
+    private VerbSearchAsyncTask mVerbSearchAsyncTask;
     //endregion
 
 
@@ -150,7 +147,7 @@ public class ConjugatorFragment extends Fragment implements
     }
     @Override public void onDetach() {
         super.onDetach();
-        if (getLoaderManager()!=null) getLoaderManager().destroyLoader(VERB_SEARCH_LOADER);
+        if (mVerbSearchAsyncTask != null) mVerbSearchAsyncTask.cancel(true);
     }
     @Override public void onDestroyView() {
         super.onDestroyView();
@@ -182,13 +179,9 @@ public class ConjugatorFragment extends Fragment implements
     }
     private void startSearchingForMatchingVerbsInRoomDb() {
         if (getActivity()!=null) {
+            mVerbSearchAsyncTask = new VerbSearchAsyncTask(getContext(), mInputQuery, mConjugationTitles, mVerbLatinConjDatabase, mVerbKanjiConjDatabase, mWordsFromDictFragment, this);
+            mVerbSearchAsyncTask.execute();
             showLoadingIndicator();
-            LoaderManager loaderManager = getActivity().getSupportLoaderManager();
-            Loader<String> roomDbSearchLoader = loaderManager.getLoader(VERB_SEARCH_LOADER);
-            Bundle bundle = new Bundle();
-            bundle.putString(getString(R.string.saved_input_query), mInputQuery);
-            if (roomDbSearchLoader == null) loaderManager.initLoader(VERB_SEARCH_LOADER, bundle, this);
-            else loaderManager.restartLoader(VERB_SEARCH_LOADER, bundle, this);
         }
     }
     private void getInputQueryParameters() {
@@ -204,7 +197,6 @@ public class ConjugatorFragment extends Fragment implements
 
         if (getActivity()==null) return;
 
-        hideLoadingIndicator();
         if (mMatchingVerbs.size() != 0) {
             showResults();
             mVerbChooserSpinner.setAdapter(new VerbSpinnerAdapter(getContext(), R.layout.spinner_item_verb, mMatchingVerbs));
@@ -507,46 +499,23 @@ public class ConjugatorFragment extends Fragment implements
     }
 
 
-    //Asynchronous methods
-    @NonNull @Override public Loader<Object> onCreateLoader(int id, final Bundle args) {
-
-        String inputQuery = "";
-        if (args!=null && args.getString(getString(R.string.saved_input_query))!=null) {
-            inputQuery = args.getString(getString(R.string.saved_input_query));
-        }
-
-        if (id == VERB_SEARCH_LOADER){
-            VerbSearchAsyncTaskLoader verbSearchLoader = new VerbSearchAsyncTaskLoader(
-                    getContext(), inputQuery, mConjugationTitles, mVerbLatinConjDatabase, mVerbKanjiConjDatabase, mWordsFromDictFragment);
-            return verbSearchLoader;
-        }
-        else return new VerbSearchAsyncTaskLoader(getContext(), "", null, null, null, null);
-    }
-    @Override public void onLoadFinished(@NonNull Loader<Object> loader, Object data) {
-
-        if (getContext() == null) return;
-
-        if (loader.getId() == VERB_SEARCH_LOADER && !mAlreadyLoadedVerbs && data!=null) {
-            mAlreadyLoadedVerbs = true;
-            Object[] dataElements = (Object[]) data;
-            mMatchingVerbs = (List<Verb>) dataElements[0];
-            List<Word> matchingWords = (List<Word>) dataElements[1];
-            mMatchingConjugationParameters = (List<Object[]>) dataElements[2];
-
-            conjugatorFragmentOperationsHandler.onMatchingVerbsFound(matchingWords);
-
-            //Displaying the local results
-            displayVerbsInVerbChooserSpinner();
-
-            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(VERB_SEARCH_LOADER);
-        }
-
-    }
-    @Override public void onLoaderReset(@NonNull Loader<Object> loader) {}
-
     //Communication with parent activity
     private ConjugatorFragmentOperationsHandler conjugatorFragmentOperationsHandler;
     interface ConjugatorFragmentOperationsHandler {
         void onMatchingVerbsFound(List<Word> matchingVerbsAsWords);
+    }
+
+    //Communication with AsyncTasks
+    @Override public void onVerbSearchAsyncTaskResultFound(Object[] dataElements) {
+
+        mMatchingVerbs = (List<Verb>) dataElements[0];
+        List<Word> matchingWords = (List<Word>) dataElements[1];
+        mMatchingConjugationParameters = (List<Object[]>) dataElements[2];
+
+        conjugatorFragmentOperationsHandler.onMatchingVerbsFound(matchingWords);
+
+        //Displaying the local results
+        hideLoadingIndicator();
+        displayVerbsInVerbChooserSpinner();
     }
 }

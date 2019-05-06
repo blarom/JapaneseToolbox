@@ -8,6 +8,7 @@ import java.util.HashMap;
 public final class GlobalConstants {
 
     public static final String DB_ELEMENTS_DELIMITER = ";";
+    public static final String KANJI_ASSOCIATED_COMPONENTS_DELIMITER = "";
     public static final String[][] EDICT_EXCEPTIONS = new String[][]{
         {"ha", "は"},
         {"wa","は"},
@@ -176,6 +177,14 @@ public final class GlobalConstants {
     public static final int RADICAL_NAME_EN = 4;
     public static final int RADICAL_NAME_FR = 5;
     public static final int RADICAL_NAME_ES = 6;
+
+    public final static int KANJI_ON_READING = 0;
+    public final static int KANJI_KUN_READING = 1;
+    public final static int KANJI_NAME_READING = 2;
+    public final static int KANJI_MEANING = 3;
+    public final static int DECOMP_KANJI_LIST_INDEX = 0;
+    public final static int DECOMP_RADICAL_ITERATION = 1;
+    public final static int DECOMP_PARENT_ALREADY_DISPLAYED = 2;
 
     public static final String VERB_FAMILY_BU_GODAN = "bu";
     public static final String VERB_FAMILY_DA = "da";

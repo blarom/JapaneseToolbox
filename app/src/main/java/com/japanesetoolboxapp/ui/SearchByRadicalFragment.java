@@ -1,10 +1,8 @@
 package com.japanesetoolboxapp.ui;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.AssetManager;
-import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -12,9 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.AsyncTaskLoader;
-import android.support.v4.content.Loader;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
@@ -40,16 +35,14 @@ import android.widget.TextView;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.adapters.KanjiGridRecyclerViewAdapter;
 import com.japanesetoolboxapp.adapters.StructuresGridViewAdapter;
-import com.japanesetoolboxapp.data.JapaneseToolboxKanjiRoomDatabase;
-import com.japanesetoolboxapp.data.KanjiCharacter;
-import com.japanesetoolboxapp.data.KanjiComponent;
+import com.japanesetoolboxapp.asynctasks.ComponentGridCreationAsyncTask;
+import com.japanesetoolboxapp.asynctasks.ComponentsGridFilterAsyncTask;
+import com.japanesetoolboxapp.asynctasks.KanjiSearchAsyncTask;
 import com.japanesetoolboxapp.resources.GlobalConstants;
-import com.japanesetoolboxapp.resources.LocaleHelper;
 import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -59,8 +52,10 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class SearchByRadicalFragment extends Fragment implements
-        LoaderManager.LoaderCallbacks<Object>,
-        KanjiGridRecyclerViewAdapter.ComponentClickHandler {
+        KanjiGridRecyclerViewAdapter.ComponentClickHandler,
+        KanjiSearchAsyncTask.KanjiSearchAsyncResponseHandler,
+        ComponentGridCreationAsyncTask.ComponentGridCreationAsyncResponseHandler,
+        ComponentsGridFilterAsyncTask.ComponentsGridFilterAsyncResponseHandler {
 
 
     //region Parameters
@@ -86,11 +81,7 @@ public class SearchByRadicalFragment extends Fragment implements
     @BindView(R.id.search_by_radical_results_grid) RecyclerView mResultsGridRecyclerView;
     @BindView(R.id.search_by_radical_selection_grid_no_results_textview) TextView mNoResultsTextView;
     private Unbinder mBinding;
-    private static final String ASSOCIATED_COMPONENTS_DELIMITER = "";
     private static final int MAX_RECYCLERVIEW_HEIGHT_DP = 320;
-    private static final int ROOM_DB_COMPONENT_GRID_LOADER = 5684;
-    private static final int ROOM_DB_COMPONENT_GRID_FILTER_LOADER = 4682;
-    private static final int ROOM_DB_KANJI_SEARCH_LOADER = 9512;
     private int mSelectedOverallStructure;
     private int mSelectedComponentStructure;
     private String mComponentSelectionType;
@@ -98,10 +89,7 @@ public class SearchByRadicalFragment extends Fragment implements
     private List<String> mDisplayableComponentSelections;
     private String mInputQuery;
     private List<String[]> mRadicalsOnlyDatabase;
-    private boolean mAlreadyLoadedSelectionGrid;
-    private boolean mAlreadyLoadedKanjiSearchResults;
     private String mKanjiCharacterNameForFilter;
-    private boolean mAlreadyFilteredSelectionGrid;
     private int mNumberOfComponentGridColumns;
     private List<String> mUnfilteredDisplayableComponentSelections;
     private List<String[]> mSimilarsDatabase;
@@ -115,6 +103,9 @@ public class SearchByRadicalFragment extends Fragment implements
     private String mSelectedComponent;
     private int mMaxRecyclerViewHeightPixels;
     private Typeface mDroidSansJapaneseTypeface;
+    private KanjiSearchAsyncTask mKanjiSearchAsyncTask;
+    private ComponentGridCreationAsyncTask mComponentGridCreationAsyncTask;
+    private ComponentsGridFilterAsyncTask mComponentsGridFilterAsyncTask;
     //endregion
 
 
@@ -148,7 +139,7 @@ public class SearchByRadicalFragment extends Fragment implements
     }
     @Override public void onDetach() {
         super.onDetach();
-        if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_COMPONENT_GRID_LOADER);
+        cancelAsyncOperations();
     }
     @Override public void onDestroyView() {
         super.onDestroyView();
@@ -166,10 +157,10 @@ public class SearchByRadicalFragment extends Fragment implements
         }
     }
     private void initializeParameters() {
-        mAlreadyLoadedSelectionGrid = false;
         mSelectedComponent = "";
 
         //Setting the Typeface
+        if (getContext()==null) return;
         AssetManager am = getContext().getApplicationContext().getAssets();
         mDroidSansJapaneseTypeface = Utilities.getPreferenceUseJapaneseFont(getActivity()) ?
                 Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf")) : Typeface.DEFAULT;
@@ -563,50 +554,39 @@ public class SearchByRadicalFragment extends Fragment implements
         mResultsGridRecyclerView.setVisibility(View.VISIBLE);
         mNoResultsTextView.setVisibility(View.GONE);
     }
-    @TargetApi(23) private static boolean isPrintable( String c ) {
-        Paint paint=new Paint();
-        //paint.setTypeface(MainActivity.CJK_typeface);
-        boolean hasGlyph = true;
-        if (!c.equals("")) hasGlyph=paint.hasGlyph(c);
-        return hasGlyph;
-//            Character.UnicodeBlock block = Character.UnicodeBlock.of( c );
-//            return (!Character.isISOControl(c)) &&
-//                    block != null &&
-//                    block != Character.UnicodeBlock.SPECIALS;
-    }
     private void startCreatingComponentKanjiGridElementsAsynchronously() {
         if (getActivity()!=null) {
             showLoadingIndicator();
-            LoaderManager loaderManager = getActivity().getSupportLoaderManager();
-            Loader<String> roomDbSearchLoader = loaderManager.getLoader(ROOM_DB_COMPONENT_GRID_LOADER);
-            if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_COMPONENT_GRID_LOADER, null, this);
-            else loaderManager.restartLoader(ROOM_DB_COMPONENT_GRID_LOADER, null, this);
+            mComponentGridCreationAsyncTask = new ComponentGridCreationAsyncTask(
+                    getContext(), mComponentSelectionType, mRadicalsOnlyDatabase, mSelectedComponentStructure, this);
+            mComponentGridCreationAsyncTask.execute();
         }
     }
     private void startFilteringComponentKanjiGridElementsAsynchronously() {
         if (getActivity()!=null) {
             showLoadingIndicator();
-            LoaderManager loaderManager = getActivity().getSupportLoaderManager();
-            Loader<String> roomDbSearchLoader = loaderManager.getLoader(ROOM_DB_COMPONENT_GRID_FILTER_LOADER);
-            if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_COMPONENT_GRID_FILTER_LOADER, null, this);
-            else loaderManager.restartLoader(ROOM_DB_COMPONENT_GRID_FILTER_LOADER, null, this);
+            mComponentsGridFilterAsyncTask = new ComponentsGridFilterAsyncTask(
+                    getContext(), mComponentSelectionType, mRadicalsOnlyDatabase, mKanjiCharacterNameForFilter, mUnfilteredDisplayableComponentSelections, this);
+            mComponentsGridFilterAsyncTask.execute();
         }
     }
     private void startSearchingForKanjisAsynchronously(String[] elements_strings) {
         if (getActivity()!=null) {
             showLoadingIndicator();
-            LoaderManager loaderManager = getActivity().getSupportLoaderManager();
-            Loader<String> roomDbSearchLoader = loaderManager.getLoader(ROOM_DB_KANJI_SEARCH_LOADER);
-            Bundle bundle = new Bundle();
-            bundle.putStringArray(getString(R.string.search_by_radical_elements_list), elements_strings);
-            if (roomDbSearchLoader == null) loaderManager.initLoader(ROOM_DB_KANJI_SEARCH_LOADER, bundle, this);
-            else loaderManager.restartLoader(ROOM_DB_KANJI_SEARCH_LOADER, bundle, this);
+
+            mKanjiSearchAsyncTask = new KanjiSearchAsyncTask(getContext(), elements_strings, mSelectedOverallStructure, mSimilarsDatabase, this);
+            mKanjiSearchAsyncTask.execute();
         }
     }
     private void filterComponentKanjiGridElements() {
         if (getActivity()!=null) Utilities.hideSoftKeyboard(getActivity());
         mKanjiCharacterNameForFilter = mCharacterDescriptorEditText.getText().toString();
         startFilteringComponentKanjiGridElementsAsynchronously();
+    }
+    private void cancelAsyncOperations() {
+        if (mKanjiSearchAsyncTask != null) mKanjiSearchAsyncTask.cancel(true);
+        if (mComponentGridCreationAsyncTask != null) mComponentGridCreationAsyncTask.cancel(true);
+        if (mComponentsGridFilterAsyncTask != null) mComponentsGridFilterAsyncTask.cancel(true);
     }
 
 
@@ -673,652 +653,6 @@ public class SearchByRadicalFragment extends Fragment implements
     }
 
 
-    //Asynchronous methods
-    @NonNull @Override public Loader<Object> onCreateLoader(int id, final Bundle args) {
-
-        if (id == ROOM_DB_COMPONENT_GRID_LOADER) {
-            mAlreadyLoadedSelectionGrid = false;
-            ComponentGridCreationAsyncTaskLoader gridCreationLoader = new ComponentGridCreationAsyncTaskLoader(
-                    getContext(), mComponentSelectionType, mRadicalsOnlyDatabase, mSelectedComponentStructure);
-            return gridCreationLoader;
-        }
-        else if (id == ROOM_DB_COMPONENT_GRID_FILTER_LOADER) {
-            mAlreadyFilteredSelectionGrid = false;
-            ComponentGridFilterAsyncTaskLoader gridFilterLoader = new ComponentGridFilterAsyncTaskLoader(
-                    getContext(), mComponentSelectionType, mRadicalsOnlyDatabase, mKanjiCharacterNameForFilter, mUnfilteredDisplayableComponentSelections);
-            return gridFilterLoader;
-        }
-        else if (id == ROOM_DB_KANJI_SEARCH_LOADER) {
-            mAlreadyLoadedKanjiSearchResults = false;
-            String[] elements_list = args.getStringArray(getString(R.string.search_by_radical_elements_list));
-            KanjiSearchAsyncTaskLoader kanjiSearchLoader = new KanjiSearchAsyncTaskLoader(
-                    getContext(), elements_list, mSelectedOverallStructure, mSimilarsDatabase);
-            return kanjiSearchLoader;
-        }
-        else return new ComponentGridCreationAsyncTaskLoader(getContext(), "", null, 0);
-    }
-    @Override public void onLoadFinished(@NonNull Loader<Object> loader, Object data) {
-
-        if (getContext()==null) return;
-
-        //region Selection Grid
-        if (loader.getId() == ROOM_DB_COMPONENT_GRID_LOADER && !mAlreadyLoadedSelectionGrid && data!=null) {
-            mAlreadyLoadedSelectionGrid = true;
-
-            mUnfilteredDisplayableComponentSelections = (List<String>) data;
-            mDisplayableComponentSelections = (List<String>) new ArrayList(mUnfilteredDisplayableComponentSelections);
-
-            hideLoadingIndicator();
-            mKanjiCharacterNameForFilter = mCharacterDescriptorEditText.getText().toString();
-            if (TextUtils.isEmpty(mKanjiCharacterNameForFilter)) {
-                if (mDisplayableComponentSelections.size() != 0) createComponentsGrid();
-                else showNoComponentsTextInsteadOfComponentsGrid();
-            }
-            else startFilteringComponentKanjiGridElementsAsynchronously();
-
-            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_COMPONENT_GRID_LOADER);
-        }
-        //endregion
-
-        //region Selection grid filtered
-        else if (loader.getId() == ROOM_DB_COMPONENT_GRID_FILTER_LOADER && !mAlreadyFilteredSelectionGrid && data!=null) {
-            mAlreadyFilteredSelectionGrid = true;
-
-            mDisplayableComponentSelections = (List<String>) data;
-
-            hideLoadingIndicator();
-
-            if (mDisplayableComponentSelections.size() != 0) createComponentsGrid();
-            else showNoComponentsTextInsteadOfComponentsGrid();
-
-            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_COMPONENT_GRID_FILTER_LOADER);
-        }
-        //endregion
-
-        //region Results grid
-        else if (loader.getId() == ROOM_DB_KANJI_SEARCH_LOADER && !mAlreadyLoadedKanjiSearchResults && data!=null) {
-            mAlreadyLoadedKanjiSearchResults = true;
-
-            Object[] dataElements = (Object[]) data;
-
-            List<String> search_results = (List<String>) dataElements[0];
-            boolean searchTooBroad = (boolean) dataElements[1];
-
-            hideLoadingIndicator();
-
-            //Displaying only the search results that have a glyph in the font
-            mPrintableSearchResults = new ArrayList<>();
-            String value;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                for (int i = 0; i < search_results.size(); i++) {
-                    value = search_results.get(i);
-                    if (value.length()>0 && isPrintable(value.substring(0, 1))) {
-                        mPrintableSearchResults.add(search_results.get(i));
-                    }
-                }
-            }
-            else {
-                mPrintableSearchResults = search_results;
-            }
-
-            //Displaying only the first 400 values to prevent overload
-            List<String> selections = new ArrayList<>();
-            int display_limit = 400;
-            for (int i = 0; i < mPrintableSearchResults.size(); i++) {
-                selections.add(mPrintableSearchResults.get(i));
-                if (i>display_limit) break;
-            }
-            mPrintableSearchResults = selections;
-
-            //Displaying the results grid
-            if (searchTooBroad) showNoResultsTextInsteadOfResultsGrid(getString(R.string.search_for_radical_search_too_broad));
-            else if (mPrintableSearchResults.size() != 0) createResultsGrid();
-            else showNoResultsTextInsteadOfResultsGrid(getString(R.string.search_by_radical_no_results_found));
-
-            //createSearchResultsGrid(printable_search_results, searchTooBroad);
-            if (getLoaderManager()!=null) getLoaderManager().destroyLoader(ROOM_DB_COMPONENT_GRID_LOADER);
-        }
-        //endregion
-    }
-    @Override public void onLoaderReset(@NonNull Loader<Object> loader) {}
-    private static class ComponentGridCreationAsyncTaskLoader extends AsyncTaskLoader<Object> {
-
-        private static final int CHARACTER_RESULTS_GRID_MAX_NUMBER = 400;
-        //region Parameters
-        private final String mComponentSelectionType;
-        private final List<String[]> mRadicalsOnlyDatabase;
-        private final int chosen_components_list;
-        private List<String[]> sortedList;
-        private JapaneseToolboxKanjiRoomDatabase mJapaneseToolboxKanjiRoomDatabase;
-        //endregion
-
-        ComponentGridCreationAsyncTaskLoader(Context context,
-                                             String mComponentSelectionType,
-                                             List<String[]> mRadicalsOnlyDatabase,
-                                             int chosen_components_list) {
-            super(context);
-            this.mComponentSelectionType = mComponentSelectionType;
-            this.mRadicalsOnlyDatabase = mRadicalsOnlyDatabase;
-            this.chosen_components_list = chosen_components_list;
-        }
-
-        @Override
-        protected void onStartLoading() {
-            forceLoad();
-        }
-
-        @Override
-        public Object loadInBackground() {
-
-            mJapaneseToolboxKanjiRoomDatabase = JapaneseToolboxKanjiRoomDatabase.getInstance(getContext());
-            List<String> displayableComponentSelections = getSelectionGridElements();
-
-            return displayableComponentSelections;
-        }
-
-        List<String> getSelectionGridElements() {
-
-            if (mComponentSelectionType.equals("")) return new ArrayList<>();
-
-            //Creating the the list to be displayed in the dialog grid
-            List<String> selections = new ArrayList<>();
-            String[] currentElement;
-
-            //region If the user clicks on the radical button, then a radical selection grid is shown
-            if (mComponentSelectionType.contains("radical")) {
-
-                String[] parsed_list;
-                String last_index = "0";
-                for (int i = 0; i < mRadicalsOnlyDatabase.size(); i++) {
-                    currentElement = mRadicalsOnlyDatabase.get(i);
-                    parsed_list = currentElement[GlobalConstants.RADICAL_NUM].split(";");
-
-                    //Skipping radicals not found in the CJK decompositons database
-                    if (parsed_list.length == 3 && parsed_list[2].equals("not found in decompositions")) continue;
-
-                    // Adding the header radical numbers to the list of radicals
-                    if (!currentElement[4].equals(last_index)) {
-                        if (parsed_list[0].equals("Special") || parsed_list[0].equals("Hiragana") || parsed_list[0].equals("Katakana")) {
-                        } else if (parsed_list.length > 1) {
-                            if (parsed_list[1].equals("variant")) {
-                                selections.add(currentElement[4]);
-                                selections.add(currentElement[0] + "variant");
-                                last_index = currentElement[4];
-                            }
-                        } else {
-                            selections.add(currentElement[4]);
-                            selections.add(currentElement[0]);
-                            last_index = currentElement[4];
-                        }
-                    } else if (currentElement[4].equals(last_index)) {
-                        if (parsed_list.length > 1) {
-                            if (parsed_list[1].equals("variant")) {
-                                selections.add(currentElement[0] + "variant");
-                            }
-                        } else {
-                            selections.add(currentElement[0]);
-                        }
-                        last_index = currentElement[4];
-                    }
-                }
-            }
-            //endregion
-
-            //region If the user clicks on the component button, then then the components grid is extracted from Room
-            else {
-                List<String[]> fullList = new ArrayList<>();
-                String[] printableResultsForCurrentElement;
-                boolean containsAtLeastOnePrintableGlyph;
-
-                //List<KanjiComponent> kanjiComponents = mJapaneseToolboxRoomDatabase.getAllKanjiComponents();
-                String componentStructure = GlobalConstants.COMPONENT_STRUCTURES_MAP.get(chosen_components_list);
-                if (!TextUtils.isEmpty(componentStructure)) {
-
-                    List<KanjiComponent> kanjiComponents = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName(componentStructure);
-                    if (kanjiComponents != null && kanjiComponents.size()>0) {
-                        KanjiComponent kanjiComponent = kanjiComponents.get(0);
-                        List<KanjiComponent.AssociatedComponent> associatedComponents = kanjiComponent.getAssociatedComponents();
-
-                        if (componentStructure.equals("full") && kanjiComponents.size()==2) {
-                            associatedComponents.addAll(kanjiComponents.get(1).getAssociatedComponents());
-                        }
-
-                        for (int i = 0; i < associatedComponents.size(); i++) {
-                            currentElement = new String[2];
-                            currentElement[0] = associatedComponents.get(i).getComponent();
-                            currentElement[1] = Integer.toString(associatedComponents.get(i).getAssociatedComponents().length());
-
-                            containsAtLeastOnePrintableGlyph = true;
-
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                printableResultsForCurrentElement = associatedComponents.get(i).getAssociatedComponents().split(ASSOCIATED_COMPONENTS_DELIMITER);
-                                for (String aPrintableResultsForCurrentElement : printableResultsForCurrentElement) {
-                                    containsAtLeastOnePrintableGlyph = false;
-                                    if (aPrintableResultsForCurrentElement.length() > 0 && isPrintable(aPrintableResultsForCurrentElement.substring(0, 1))) {
-                                        containsAtLeastOnePrintableGlyph = true;
-                                        break;
-                                    }
-                                }
-                            }
-
-                            if (containsAtLeastOnePrintableGlyph) { fullList.add(currentElement);}
-                        }
-
-                    }
-                }
-
-                sortedList = sortAccordingToGrowingFrequency(fullList); //Output list is in order of growing frequency, next for loop inverts this
-                //sorted_list = fullList;
-                for (int i = 0; i< sortedList.size(); i++) {
-                    selections.add(sortedList.get(sortedList.size()-1-i)[0]);
-                }
-            }
-            //endregion
-
-            //region Displaying only the search results that have a glyph in the font
-            List<String> displayableComponentSelections = new ArrayList<>();
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                for (int i = 0; i < selections.size(); i++) {
-                    if (isPrintable(selections.get(i).substring(0, 1))) {
-                        displayableComponentSelections.add(selections.get(i));
-                    }
-                }
-            }
-            else {
-                displayableComponentSelections = selections;
-            }
-            //endregion
-
-            //region Displaying only the first XX values to prevent overload
-            selections = new ArrayList<>();
-            for (int i = 0; i < displayableComponentSelections.size(); i++) {
-                selections.add(displayableComponentSelections.get(i));
-                if (i>CHARACTER_RESULTS_GRID_MAX_NUMBER) {break;}
-            }
-            displayableComponentSelections = selections;
-            //endregion
-
-
-            return displayableComponentSelections;
-        }
-
-        // QuickSort Algorithm (adapted from http://www.vogella.com/tutorials/JavaAlgorithmsQuicksort/article.html)
-        List<String[]> sortAccordingToGrowingFrequency(List<String[]> values) {
-            // check for empty or null array
-            if (values ==null || values.size()==0){
-                return new ArrayList<>();
-            }
-            this.sortedList = values;
-            quicksort(0, values.size() - 1);
-            return sortedList;
-        }
-        private void quicksort(int low, int high) {
-            int i = low, j = high;
-            // Get the pivot element from the middle of the list
-            int pivot = Integer.parseInt(sortedList.get(low + (high-low)/2)[1]);
-
-            // Divide into component_substructures[2] lists
-            while (i <= j) {
-                // If the current value from the left list is smaller then the pivot
-                // element then get the next element from the left list
-                while (Integer.parseInt(sortedList.get(i)[1]) < pivot) {
-                    i++;
-                }
-                // If the current value from the right list is larger then the pivot
-                // element then get the next element from the right list
-                while (Integer.parseInt(sortedList.get(j)[1]) > pivot) {
-                    j--;
-                }
-
-                // If we have found a values in the left list which is larger then
-                // the pivot element and if we have found a value in the right list
-                // which is smaller then the pivot element then we exchange the
-                // values.
-                // As we are done we can increase i and j
-                if (i <= j) {
-                    exchange(i, j);
-                    i++;
-                    j--;
-                }
-            }
-            // Recursion
-            if (low < j)
-                quicksort(low, j);
-            if (i < high)
-                quicksort(i, high);
-        }
-        private void exchange(int i, int j) {
-            String[] value_to_i = {sortedList.get(j)[0], sortedList.get(j)[1]};
-            String[] value_to_j = {sortedList.get(i)[0], sortedList.get(i)[1]};
-            sortedList.set(i, value_to_i);
-            sortedList.set(j, value_to_j);
-        }
-
-    }
-    private static class ComponentGridFilterAsyncTaskLoader extends AsyncTaskLoader<Object> {
-
-        //region Parameters
-        private final String mComponentSelectionType;
-        private final List<String[]> mRadicalsOnlyDatabase;
-        private final String mKanjiCharacterNameForFilter;
-        private List<String> mDisplayableComponentSelections;
-        private JapaneseToolboxKanjiRoomDatabase mJapaneseToolboxKanjiRoomDatabase;
-        //endregion
-
-        ComponentGridFilterAsyncTaskLoader(Context context,
-                                         String mComponentSelectionType,
-                                         List<String[]> mRadicalsOnlyDatabase,
-                                         String mKanjiCharacterNameForFilter,
-                                           List<String> mDisplayableComponentSelections) {
-            super(context);
-            this.mComponentSelectionType = mComponentSelectionType;
-            this.mRadicalsOnlyDatabase = mRadicalsOnlyDatabase;
-            this.mKanjiCharacterNameForFilter = mKanjiCharacterNameForFilter;
-            this.mDisplayableComponentSelections = mDisplayableComponentSelections;
-        }
-
-        @Override
-        protected void onStartLoading() {
-            forceLoad();
-        }
-
-        @Override
-        public Object loadInBackground() {
-
-            mJapaneseToolboxKanjiRoomDatabase = JapaneseToolboxKanjiRoomDatabase.getInstance(getContext());
-            mDisplayableComponentSelections = filterGridElementsAccordingToDescriptor(mDisplayableComponentSelections);
-
-            return mDisplayableComponentSelections;
-        }
-
-        List<String> filterGridElementsAccordingToDescriptor(List<String> displayableComponentSelections) {
-
-            if (displayableComponentSelections ==null) return new ArrayList<>();
-            else if (TextUtils.isEmpty(mKanjiCharacterNameForFilter)) return displayableComponentSelections;
-
-            String language = LocaleHelper.getLanguage(getContext());
-
-            List<String> intersectionWithMatchingDescriptors;
-            if (mComponentSelectionType.contains("radical")) {
-                List<String> matchingRadicals = new ArrayList<>();
-                String radical;
-                String radicalNumber;
-                String radicalNumberFirstElement;
-                String radicalName;
-                String numberStrokes;
-                String matchingRadicalNumber = "";
-                for (int i = 0; i < mRadicalsOnlyDatabase.size(); i++) {
-
-                    radical = mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_KANA];
-                    radicalNumber = mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_NUM];
-                    radicalNumberFirstElement = radicalNumber.split(";")[0];
-                    radicalName = "";
-                    switch (language) {
-                        case "en": radicalName = mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_NAME_EN]; break;
-                        case "fr": radicalName = mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_NAME_FR]; break;
-                        case "es": radicalName = mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_NAME_ES]; break;
-                    }
-                    numberStrokes = mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_NUM_STROKES];
-
-                    if (radical.equals(mKanjiCharacterNameForFilter)
-                            || radicalNumberFirstElement.equals(mKanjiCharacterNameForFilter)
-                            || radicalName.contains(mKanjiCharacterNameForFilter)
-                            || numberStrokes.equals(mKanjiCharacterNameForFilter)) {
-                        matchingRadicals.add(mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_KANA]);
-                        matchingRadicalNumber = radicalNumber;
-                    }
-                    if (radicalName.equals("") && !matchingRadicalNumber.equals("") && radicalNumberFirstElement.equals(matchingRadicalNumber)) {
-                        matchingRadicals.add(mRadicalsOnlyDatabase.get(i)[GlobalConstants.RADICAL_KANA] + "variant");
-                    }
-                }
-
-                intersectionWithMatchingDescriptors = Utilities.getIntersectionOfLists(displayableComponentSelections, matchingRadicals);
-            }
-            else {
-                List<KanjiCharacter> matchingKanjiCharactersByDescriptor = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByDescriptor(mKanjiCharacterNameForFilter);
-
-                List<KanjiCharacter> matchingKanjiCharactersByMeaning = new ArrayList<>();
-                switch (LocaleHelper.getLanguage(getContext())) {
-                    case "en":
-                        matchingKanjiCharactersByMeaning = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByMeaningEN(mKanjiCharacterNameForFilter);
-                        break;
-                    case "fr":
-                        matchingKanjiCharactersByMeaning = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByMeaningFR(mKanjiCharacterNameForFilter);
-                        break;
-                    case "es":
-                        matchingKanjiCharactersByMeaning = mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByMeaningES(mKanjiCharacterNameForFilter);
-                        break;
-                }
-                matchingKanjiCharactersByDescriptor.addAll(matchingKanjiCharactersByMeaning);
-
-                String hiraganaDescriptor = ConvertFragment.getLatinHiraganaKatakana(mKanjiCharacterNameForFilter).get(GlobalConstants.TYPE_HIRAGANA);
-                matchingKanjiCharactersByDescriptor.addAll(mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByKanaDescriptor(hiraganaDescriptor));
-
-                String katakanaDescriptor = ConvertFragment.getLatinHiraganaKatakana(mKanjiCharacterNameForFilter).get(GlobalConstants.TYPE_KATAKANA);
-                matchingKanjiCharactersByDescriptor.addAll(mJapaneseToolboxKanjiRoomDatabase.getKanjiCharactersByKanaDescriptor(katakanaDescriptor));
-
-                List<String> matchingCharacters = new ArrayList<>();
-                for (KanjiCharacter kanjiCharacter : matchingKanjiCharactersByDescriptor) {
-                    matchingCharacters.add(Utilities.convertFromUTF8Index(kanjiCharacter.getHexIdentifier()));
-                }
-
-                intersectionWithMatchingDescriptors = Utilities.getIntersectionOfLists(displayableComponentSelections, matchingCharacters);
-            }
-
-            return intersectionWithMatchingDescriptors;
-
-        }
-    }
-    private static class KanjiSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
-
-        //region Parameters
-        private final String[] elements_list;
-        private final int mSelectedStructure;
-        private final List<String[]> mSimilarsDatabase;
-        private JapaneseToolboxKanjiRoomDatabase mJapaneseToolboxKanjiRoomDatabase;
-        private boolean mSearchTooBroad;
-        //endregion
-
-        KanjiSearchAsyncTaskLoader(Context context, String[] elements_list, int mSelectedStructure, List<String[]> mSimilarsDatabase) {
-            super(context);
-            this.elements_list = elements_list;
-            this.mSelectedStructure = mSelectedStructure;
-            this.mSimilarsDatabase = mSimilarsDatabase;
-        }
-
-        @Override
-        protected void onStartLoading() {
-            if (elements_list!=null) forceLoad();
-        }
-
-        @Override
-        public Object loadInBackground() {
-
-            mJapaneseToolboxKanjiRoomDatabase = JapaneseToolboxKanjiRoomDatabase.getInstance(getContext());
-            List<String> result = findSearchResults();
-
-            return new Object[] {result, mSearchTooBroad};
-        }
-
-        private List<String> findSearchResults() {
-
-            //region Initialization
-            for (int j=0; j<elements_list.length; j++) {
-                if (!elements_list[j].equals("")) {
-                    for (int i=0; i<mSimilarsDatabase.size(); i++) {
-                        if (elements_list[j].equals(mSimilarsDatabase.get(i)[0])) {
-                            elements_list[j] = mSimilarsDatabase.get(i)[1];
-                            break;
-                        }
-                    }
-                }
-            }
-
-            String elementA = elements_list[0];
-            String elementB = elements_list[1];
-            String elementC = elements_list[2];
-            String elementD = elements_list[3];
-
-            if (    (mSelectedStructure == GlobalConstants.Index_full
-                    || mSelectedStructure == GlobalConstants.Index_across2
-                    || mSelectedStructure == GlobalConstants.Index_down2
-                    || mSelectedStructure == GlobalConstants.Index_across3
-                    || mSelectedStructure == GlobalConstants.Index_down3)
-                    && (elementA.equals("") && elementB.equals("") && elementC.equals("") && elementD.equals(""))) {
-                mSearchTooBroad = true;
-                return new ArrayList<>();
-            }
-            //endregion
-
-            //region Finding the list of matches in the Full components list, that correspond to the user's input
-            List<KanjiComponent.AssociatedComponent> associatedComponents = null;
-            List<KanjiComponent> kanjiComponentsFull1 = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName("full1");
-            List<KanjiComponent> kanjiComponentsFull2 = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName("full2");
-            if (kanjiComponentsFull1 != null && kanjiComponentsFull1.size() > 0) {
-                associatedComponents = kanjiComponentsFull1.get(0).getAssociatedComponents();
-            }
-            if (kanjiComponentsFull2 != null && kanjiComponentsFull2.size() > 0) {
-                associatedComponents.addAll(kanjiComponentsFull2.get(0).getAssociatedComponents());
-            }
-
-            elementA = Utilities.removeSpecialCharacters(elementA);
-            elementB = Utilities.removeSpecialCharacters(elementB);
-            elementC = Utilities.removeSpecialCharacters(elementC);
-            elementD = Utilities.removeSpecialCharacters(elementD);
-            boolean checkForExactMatchesOfElementA = !elementA.equals("");
-            boolean checkForExactMatchesOfElementB = !elementB.equals("");
-            boolean checkForExactMatchesOfElementC = !elementC.equals("");
-            boolean checkForExactMatchesOfElementD = !elementD.equals("");
-            List<String> listOfMatchingResultsElementA = new ArrayList<>();
-            List<String> listOfMatchingResultsElementB = new ArrayList<>();
-            List<String> listOfMatchingResultsElementC = new ArrayList<>();
-            List<String> listOfMatchingResultsElementD = new ArrayList<>();
-
-            if (!checkForExactMatchesOfElementA || !checkForExactMatchesOfElementB || !checkForExactMatchesOfElementC || !checkForExactMatchesOfElementD) {
-                List<String> listOfAllKanjis = mJapaneseToolboxKanjiRoomDatabase.getAllKanjis();
-                if (!checkForExactMatchesOfElementA) listOfMatchingResultsElementA = listOfAllKanjis;
-                if (!checkForExactMatchesOfElementB) listOfMatchingResultsElementB = listOfAllKanjis;
-                if (!checkForExactMatchesOfElementC) listOfMatchingResultsElementC = listOfAllKanjis;
-                if (!checkForExactMatchesOfElementD) listOfMatchingResultsElementD = listOfAllKanjis;
-            }
-
-            for (KanjiComponent.AssociatedComponent associatedComponent : associatedComponents) {
-                if (checkForExactMatchesOfElementA && associatedComponent.getComponent().equals(elementA)) {
-                    listOfMatchingResultsElementA = Arrays.asList(associatedComponent.getAssociatedComponents().split(ASSOCIATED_COMPONENTS_DELIMITER));
-                    checkForExactMatchesOfElementA = false;
-                }
-                if (checkForExactMatchesOfElementB && associatedComponent.getComponent().equals(elementB)) {
-                    listOfMatchingResultsElementB = Arrays.asList(associatedComponent.getAssociatedComponents().split(ASSOCIATED_COMPONENTS_DELIMITER));
-                    checkForExactMatchesOfElementB = false;
-                }
-                if (checkForExactMatchesOfElementC && associatedComponent.getComponent().equals(elementC)) {
-                    listOfMatchingResultsElementC = Arrays.asList(associatedComponent.getAssociatedComponents().split(ASSOCIATED_COMPONENTS_DELIMITER));
-                    checkForExactMatchesOfElementC = false;
-                }
-                if (checkForExactMatchesOfElementD && associatedComponent.getComponent().equals(elementD)) {
-                    listOfMatchingResultsElementD = Arrays.asList(associatedComponent.getAssociatedComponents().split(ASSOCIATED_COMPONENTS_DELIMITER));
-                    checkForExactMatchesOfElementD = false;
-                }
-                if (!checkForExactMatchesOfElementA && !checkForExactMatchesOfElementB &&!checkForExactMatchesOfElementC && !checkForExactMatchesOfElementD) break;
-            }
-            //endregion
-
-            //region Getting the match intersections in the Full list
-            List<String> listOfIntersectingResults = new ArrayList<>();
-            if      ( elementA.equals("") &&  elementB.equals("") &&  elementC.equals("") &&  elementD.equals("")) {
-                listOfIntersectingResults.addAll(listOfMatchingResultsElementA);
-            }
-            else if ( elementA.equals("") &&  elementB.equals("") &&  elementC.equals("") && !elementD.equals("")) {
-                listOfIntersectingResults.addAll(listOfMatchingResultsElementD);
-            }
-            else if ( elementA.equals("") &&  elementB.equals("") && !elementC.equals("") &&  elementC.equals("")) {
-                listOfIntersectingResults.addAll(listOfMatchingResultsElementC);
-            }
-            else if ( elementA.equals("") &&  elementB.equals("") && !elementC.equals("") && !elementD.equals("")) {
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfMatchingResultsElementC, listOfMatchingResultsElementD);
-            }
-            else if ( elementA.equals("") && !elementB.equals("") &&  elementC.equals("") &&  elementD.equals("")) {
-                listOfIntersectingResults.addAll(listOfMatchingResultsElementB);
-            }
-            else if ( elementA.equals("") && !elementB.equals("") &&  elementC.equals("") && !elementD.equals("")) {
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfMatchingResultsElementB, listOfMatchingResultsElementD);
-            }
-            else if ( elementA.equals("") && !elementB.equals("") && !elementC.equals("") &&  elementD.equals("")) {
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfMatchingResultsElementB, listOfMatchingResultsElementC);
-            }
-            else if ( elementA.equals("") && !elementB.equals("") && !elementC.equals("") && !elementD.equals("")) {
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfMatchingResultsElementB, listOfMatchingResultsElementC);
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfIntersectingResults, listOfMatchingResultsElementD);
-            }
-            else if (!elementA.equals("") &&  elementB.equals("") &&  elementC.equals("") &&  elementD.equals("")) {
-                listOfIntersectingResults.addAll(listOfMatchingResultsElementA);
-            }
-            else if (!elementA.equals("") &&  elementB.equals("") &&  elementC.equals("") && !elementD.equals("")) {
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementD);
-            }
-            else if (!elementA.equals("") &&  elementB.equals("") && !elementC.equals("") &&  elementD.equals("")) {
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementC);
-            }
-            else if (!elementA.equals("") &&  elementB.equals("") && !elementC.equals("") && !elementD.equals("")) {
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementC);
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfIntersectingResults, listOfMatchingResultsElementD);
-            }
-            else if (!elementA.equals("") && !elementB.equals("") &&  elementC.equals("") &&  elementD.equals("")) {
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementB);
-            }
-            else if (!elementA.equals("") && !elementB.equals("") &&  elementC.equals("") && !elementD.equals("")) {
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementB);
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfIntersectingResults, listOfMatchingResultsElementD);
-            }
-            else if (!elementA.equals("") && !elementB.equals("") && !elementC.equals("") &&  elementD.equals("")) {
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementB);
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfIntersectingResults, listOfMatchingResultsElementC);
-            }
-            else if (!elementA.equals("") && !elementB.equals("") && !elementC.equals("") && !elementD.equals("")) {
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfMatchingResultsElementA, listOfMatchingResultsElementB);
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfIntersectingResults, listOfMatchingResultsElementC);
-                listOfIntersectingResults = Utilities.getIntersectionOfLists(listOfIntersectingResults, listOfMatchingResultsElementD);
-            }
-            //endregion
-
-            //region Getting the subset of characters match the user's selected structure
-            List<String> listOfResultsRelevantToRequestedStructure = new ArrayList<>();
-            if (mSelectedStructure != GlobalConstants.Index_full) {
-
-                //Getting the components list relevant to the requested structure
-                KanjiComponent kanjiComponentForRequestedStructure = null;
-                String componentStructure = GlobalConstants.COMPONENT_STRUCTURES_MAP.get(mSelectedStructure);
-                if (!TextUtils.isEmpty(componentStructure)) {
-                    List<KanjiComponent> kanjiComponents = mJapaneseToolboxKanjiRoomDatabase.getKanjiComponentsByStructureName(componentStructure);
-                    if (kanjiComponents != null && kanjiComponents.size() > 0) {
-                        kanjiComponentForRequestedStructure = kanjiComponents.get(0);
-                        associatedComponents = kanjiComponentForRequestedStructure.getAssociatedComponents();
-                    }
-                }
-                if (kanjiComponentForRequestedStructure==null || associatedComponents==null) return new ArrayList<>();
-
-                //Looping over all the structure's components and adding only the ones that appear in listOfIntersectingResults
-                List<String> structureComponents;
-                List<String> currentIntersections;
-                for (KanjiComponent.AssociatedComponent associatedComponent : associatedComponents) {
-                    structureComponents = Arrays.asList(associatedComponent.getAssociatedComponents().split(ASSOCIATED_COMPONENTS_DELIMITER));
-                    currentIntersections = Utilities.getIntersectionOfLists(listOfIntersectingResults, structureComponents);
-                    listOfResultsRelevantToRequestedStructure.addAll(currentIntersections);
-                }
-                listOfResultsRelevantToRequestedStructure = Utilities.removeDuplicatesFromList(listOfResultsRelevantToRequestedStructure);
-
-            }
-            else {
-                listOfResultsRelevantToRequestedStructure = listOfIntersectingResults;
-            }
-            //endregion
-
-            return listOfResultsRelevantToRequestedStructure;
-        }
-
-    }
-
     //Communication with parent activity
     private SearchByRadicalFragmentOperationsHandler searchByRadicalFragmentOperationsHandler;
     interface SearchByRadicalFragmentOperationsHandler {
@@ -1331,5 +665,66 @@ public class SearchByRadicalFragment extends Fragment implements
     }
     @Override public void onSearchResultClicked(int clickedPosition) {
         searchByRadicalFragmentOperationsHandler.onQueryTextUpdateFromSearchByRadicalRequested(mPrintableSearchResults.get(clickedPosition));
+    }
+
+    //Communication with AsyncTasks
+    @Override public void onKanjiSearchAsyncTaskResultsFound(Object[] dataElements) {
+        if (getContext()==null) return;
+
+        List<String> search_results = (List<String>) dataElements[0];
+        boolean searchTooBroad = (boolean) dataElements[1];
+
+        hideLoadingIndicator();
+
+        //Displaying only the search results that have a glyph in the font
+        mPrintableSearchResults = new ArrayList<>();
+        String value;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            for (int i = 0; i < search_results.size(); i++) {
+                value = search_results.get(i);
+                if (value.length()>0 && Utilities.isPrintable(value.substring(0, 1))) {
+                    mPrintableSearchResults.add(search_results.get(i));
+                }
+            }
+        }
+        else {
+            mPrintableSearchResults = search_results;
+        }
+
+        //Displaying only the first 400 values to prevent overload
+        List<String> selections = new ArrayList<>();
+        int display_limit = 400;
+        for (int i = 0; i < mPrintableSearchResults.size(); i++) {
+            selections.add(mPrintableSearchResults.get(i));
+            if (i>display_limit) break;
+        }
+        mPrintableSearchResults = selections;
+
+        //Displaying the results grid
+        if (searchTooBroad) showNoResultsTextInsteadOfResultsGrid(getString(R.string.search_for_radical_search_too_broad));
+        else if (mPrintableSearchResults.size() != 0) createResultsGrid();
+        else showNoResultsTextInsteadOfResultsGrid(getString(R.string.search_by_radical_no_results_found));
+
+        //createSearchResultsGrid(printable_search_results, searchTooBroad);
+    }
+    @Override public void onComponentGridCreationAsyncTaskDone(List<String> data) {
+        if (getContext()==null) return;
+        mUnfilteredDisplayableComponentSelections = data;
+        mDisplayableComponentSelections = new ArrayList<>(mUnfilteredDisplayableComponentSelections);
+        hideLoadingIndicator();
+        mKanjiCharacterNameForFilter = mCharacterDescriptorEditText.getText().toString();
+        if (TextUtils.isEmpty(mKanjiCharacterNameForFilter)) {
+            if (mDisplayableComponentSelections.size() != 0) createComponentsGrid();
+            else showNoComponentsTextInsteadOfComponentsGrid();
+        }
+        else startFilteringComponentKanjiGridElementsAsynchronously();
+    }
+    @Override public void onComponentsGridFilterAsyncTaskDone(List<String> data) {
+        if (getContext()==null) return;
+        mDisplayableComponentSelections = data;
+        hideLoadingIndicator();
+
+        if (mDisplayableComponentSelections.size() != 0) createComponentsGrid();
+        else showNoComponentsTextInsteadOfComponentsGrid();
     }
 }

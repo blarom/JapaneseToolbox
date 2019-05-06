@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Database(entities = {KanjiCharacter.class, KanjiComponent.class},
-        version = 16,
+        version = 17,
         exportSchema = false)
 public abstract class JapaneseToolboxKanjiRoomDatabase extends RoomDatabase {
     //Adapted from: https://github.com/googlesamples/android-architecture-components/blob/master/PersistenceContentProviderSample/app/src/main/java/com/example/android/contentprovidersample/data/SampleDatabase.java
@@ -103,11 +103,11 @@ public abstract class JapaneseToolboxKanjiRoomDatabase extends RoomDatabase {
             if (TextUtils.isEmpty(KanjiDict_Database.get(i)[0])) break;
             KanjiCharacter kanjiCharacter = kanjiCharacter().getKanjiCharacterByHexId(KanjiDict_Database.get(i)[0]);
             if (kanjiCharacter!=null) {
-                String[] readings = KanjiDict_Database.get(i)[1].split("#");
+                String[] readings = KanjiDict_Database.get(i)[1].split("#",-1); //-1 to prevent discarding last empty string
 
                 kanjiCharacter.setOnReadings(readings.length > 2? readings[0].trim() : "");
                 kanjiCharacter.setKunReadings(readings.length > 2? readings[1].trim() : "");
-                kanjiCharacter.setNameReadings(readings.length > 21? readings[2].trim() : "");
+                kanjiCharacter.setNameReadings(readings.length > 2? readings[2].trim() : "");
                 kanjiCharacter.setMeaningsEN(KanjiDict_Database.get(i)[2]);
                 kanjiCharacter.setMeaningsFR(KanjiDict_Database.get(i)[3]);
                 kanjiCharacter.setMeaningsES(KanjiDict_Database.get(i)[4]);

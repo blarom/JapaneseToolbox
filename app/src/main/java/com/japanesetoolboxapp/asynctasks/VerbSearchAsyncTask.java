@@ -1,7 +1,7 @@
-package com.japanesetoolboxapp.loaders;
+package com.japanesetoolboxapp.asynctasks;
 
 import android.content.Context;
-import android.support.v4.content.AsyncTaskLoader;
+import android.os.AsyncTask;
 import android.text.TextUtils;
 
 import com.japanesetoolboxapp.R;
@@ -14,12 +14,14 @@ import com.japanesetoolboxapp.resources.LocaleHelper;
 import com.japanesetoolboxapp.resources.Utilities;
 import com.japanesetoolboxapp.ui.ConvertFragment;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import static com.japanesetoolboxapp.resources.GlobalConstants.COLUMN_VERB_ISTEM;
 import static com.japanesetoolboxapp.resources.GlobalConstants.TYPE_HIRAGANA;
 import static com.japanesetoolboxapp.resources.GlobalConstants.TYPE_INVALID;
 import static com.japanesetoolboxapp.resources.GlobalConstants.TYPE_KANJI;
@@ -29,11 +31,12 @@ import static com.japanesetoolboxapp.resources.GlobalConstants.VERB_FAMILIES_FUL
 import static com.japanesetoolboxapp.resources.GlobalConstants.VERB_FAMILY_DA;
 import static com.japanesetoolboxapp.resources.GlobalConstants.VERB_FAMILY_KURU;
 import static com.japanesetoolboxapp.resources.GlobalConstants.VERB_FAMILY_SURU;
-import static com.japanesetoolboxapp.resources.GlobalConstants.COLUMN_VERB_ISTEM;
 
-public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
+public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
 
     //region Parameters
+    private WeakReference<Context> contextRef;
+    public VerbSearchAsyncResponseHandler listener;
     private static final int MAX_NUM_RESULTS_FOR_SURU_CONJ_SEARCH = 100;
     private static final int MATCHING_CATEGORY_INDEX = 0;
     public static final int MATCHING_CONJUGATION = 1;
@@ -62,28 +65,28 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
     private final static int INDEX_ACTIVE_ALTSPELLING = 5;
     //endregion
 
-    public VerbSearchAsyncTaskLoader(Context context, String inputQuery,
-                              List<ConjugationTitle> conjugationTitles,
-                              List<String[]> mVerbLatinConjDatabase,
-                              List<String[]> mVerbKanjiConjDatabase,
-                              List<Word> mWordsFromDictFragment) {
-        super(context);
+    public VerbSearchAsyncTask(Context context, String inputQuery,
+                               List<ConjugationTitle> conjugationTitles,
+                               List<String[]> mVerbLatinConjDatabase,
+                               List<String[]> mVerbKanjiConjDatabase,
+                               List<Word> mWordsFromDictFragment,
+                               VerbSearchAsyncResponseHandler listener) {
+        contextRef = new WeakReference<>(context);
         this.mInputQuery = inputQuery;
         this.mConjugationTitles = conjugationTitles;
         this.mVerbLatinConjDatabase = mVerbLatinConjDatabase;
         this.mVerbKanjiConjDatabase = mVerbKanjiConjDatabase;
         this.mWordsFromDictFragment = mWordsFromDictFragment;
+        this.listener = listener;
     }
 
-    @Override
-    protected void onStartLoading() {
-        if (!TextUtils.isEmpty(mInputQuery)) forceLoad();
+    protected void onPreExecute() {
+        super.onPreExecute();
     }
-
     @Override
-    public Object loadInBackground() {
+    protected Object[] doInBackground(Void... voids) {
 
-        mJapaneseToolboxCentralRoomDatabase = JapaneseToolboxCentralRoomDatabase.getInstance(getContext());
+        mJapaneseToolboxCentralRoomDatabase = JapaneseToolboxCentralRoomDatabase.getInstance(contextRef.get());
         if (mCompleteVerbsList == null || mCompleteVerbsList.size()==0) {
             mCompleteVerbsList = mJapaneseToolboxCentralRoomDatabase.getAllVerbs();
         }
@@ -127,13 +130,13 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
                     if (mInputQueryTextType == TYPE_LATIN
                             && conjugation.getConjugationLatin().replace(" ", "")
-                                .equals(inputQuery.replace(" ", ""))) {
+                            .equals(inputQuery.replace(" ", ""))) {
                         matchingConjugation = conjugation.getConjugationLatin();
                         foundMatch = true;
                     }
                     else if ((mInputQueryTextType == TYPE_HIRAGANA || mInputQueryTextType == TYPE_KATAKANA)
                             && conjugation.getConjugationLatin().replace(" ", "")
-                                .equals(inputQueryLatin.replace(" ", ""))) {
+                            .equals(inputQueryLatin.replace(" ", ""))) {
                         matchingConjugation = conjugation.getConjugationLatin();
                         foundMatch = true;
                     }
@@ -426,15 +429,15 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
         List<String[]> verbConjugationMaxLengths = new ArrayList<>();
         int conjugationMaxLength;
         if (mInputQueryTextType == TYPE_LATIN) {
-            verbConjugationMaxLengths = Utilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
+            verbConjugationMaxLengths = Utilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", contextRef.get());
             queryLengthForDilution = mInputQueryContatenatedLength;
         }
         else if (mInputQueryTextType == TYPE_HIRAGANA || mInputQueryTextType == TYPE_KATAKANA) {
-            verbConjugationMaxLengths = Utilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", getContext());
+            verbConjugationMaxLengths = Utilities.readCSVFileFirstRow("LineVerbsLengths - 3000 kanji.csv", contextRef.get());
             queryLengthForDilution = mInputQueryTransliteratedLatinFormContatenatedLength;
         }
         else if (mInputQueryTextType == TYPE_KANJI) {
-            verbConjugationMaxLengths = Utilities.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", getContext());
+            verbConjugationMaxLengths = Utilities.readCSVFileFirstRow("LineVerbsKanjiLengths - 3000 kanji.csv", contextRef.get());
             queryLengthForDilution = mInputQueryContatenatedLength;
         }
 
@@ -769,7 +772,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
             Word currentWord = mJapaneseToolboxCentralRoomDatabase.getWordByWordId(ConjugationSearchMatchingVerbRowColIndexList.get(i)[0]);
             if (currentWord==null) continue;
 
-            String language = LocaleHelper.getLanguage(getContext());
+            String language = LocaleHelper.getLanguage(contextRef.get());
             int ranking = Utilities.getRankingFromWordAttributes(currentWord, inputQuery, queryWordWithoutTo, queryIsVerbWithTo, language);
 
             long[] currentMatchingWordIndexLengthAndCol = new long[3];
@@ -834,17 +837,17 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
             //region Setting the verb's basic characteristics for display
             List<Word.Meaning> meanings;
             String language = "";
-            switch (LocaleHelper.getLanguage(getContext())) {
+            switch (LocaleHelper.getLanguage(contextRef.get())) {
                 case "en":
-                    language = getContext().getResources().getString(R.string.language_label_english).toLowerCase();
+                    language = contextRef.get().getResources().getString(R.string.language_label_english).toLowerCase();
                     meanings = currentWord.getMeaningsEN();
                     break;
                 case "fr":
-                    language = getContext().getResources().getString(R.string.language_label_french).toLowerCase();
+                    language = contextRef.get().getResources().getString(R.string.language_label_french).toLowerCase();
                     meanings = currentWord.getMeaningsFR();
                     break;
                 case "es":
-                    language = getContext().getResources().getString(R.string.language_label_spanish).toLowerCase();
+                    language = contextRef.get().getResources().getString(R.string.language_label_spanish).toLowerCase();
                     meanings = currentWord.getMeaningsES();
                     break;
                 default: meanings = currentWord.getMeaningsEN();
@@ -853,24 +856,24 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
             if (meanings == null || meanings.size() == 0) {
                 meanings = currentWord.getMeaningsEN();
                 extract += "["
-                        + getContext().getString(R.string.meanings_in)
+                        + contextRef.get().getString(R.string.meanings_in)
                         + " "
                         + language.toLowerCase()
                         + " "
-                        + getContext().getString(R.string.unavailable)
+                        + contextRef.get().getString(R.string.unavailable)
                         + "] ";
             }
             extract += Utilities.removeDuplicatesFromCommaList(Utilities.getMeaningsExtract(meanings, GlobalConstants.BALANCE_POINT_REGULAR_DISPLAY));
             currentVerb.setMeaning(extract);
 
             switch (currentVerb.getTrans()) {
-                case "T": currentVerb.setTrans(getContext().getString(R.string.trans_)); break;
-                case "I": currentVerb.setTrans(getContext().getString(R.string.intrans_)); break;
-                case "T/I": currentVerb.setTrans(getContext().getString(R.string.trans_intrans_)); break;
+                case "T": currentVerb.setTrans(contextRef.get().getString(R.string.trans_)); break;
+                case "I": currentVerb.setTrans(contextRef.get().getString(R.string.intrans_)); break;
+                case "T/I": currentVerb.setTrans(contextRef.get().getString(R.string.trans_intrans_)); break;
             }
 
             if (GlobalConstants.VERB_FAMILIES_FULL_NAME_MAP.containsKey(currentVerb.getFamily())) {
-                currentVerb.setFamily(getContext().getString(VERB_FAMILIES_FULL_NAME_MAP.get(currentVerb.getFamily())));
+                currentVerb.setFamily(contextRef.get().getString(VERB_FAMILIES_FULL_NAME_MAP.get(currentVerb.getFamily())));
             }
             //endregion
 
@@ -914,7 +917,7 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
 
             //region Getting the verb conjugations and putting each conjugation of the conjugations row into its appropriate category
             conjugationCategories = new ArrayList<>();
-            String verbClause = "[" + getContext().getString(R.string.verb) + "]";
+            String verbClause = "[" + contextRef.get().getString(R.string.verb) + "]";
             for (int categoryIndex = 1; categoryIndex < mConjugationTitles.size(); categoryIndex++) {
 
                 //region Getting the set of Latin and Kanji conjugations according to the current category's subtitle column indexes
@@ -999,5 +1002,15 @@ public class VerbSearchAsyncTaskLoader extends AsyncTaskLoader<Object> {
             answer = true;
         }
         return answer;
+    }
+
+    @Override
+    protected void onPostExecute(Object[] objectArray) {
+        super.onPostExecute(objectArray);
+        listener.onVerbSearchAsyncTaskResultFound(objectArray);
+    }
+
+    public interface VerbSearchAsyncResponseHandler {
+        void onVerbSearchAsyncTaskResultFound(Object[] text);
     }
 }
