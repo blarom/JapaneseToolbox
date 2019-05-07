@@ -8,8 +8,8 @@ android {
         applicationId "com.japanesetoolboxapp"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 65
-        versionName "4.03"
+        versionCode 66
+        versionName "4.05"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
         // the following code makes the app only available to relevant phones, thereby reducing the apk size

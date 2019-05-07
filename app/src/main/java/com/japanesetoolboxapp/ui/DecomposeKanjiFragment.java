@@ -103,7 +103,7 @@ public class DecomposeKanjiFragment extends Fragment implements
     }
     @Override public void onDetach() {
         super.onDetach();
-        mKanjiCharacterDecompositionAsyncTask.cancel(true);
+        if (mKanjiCharacterDecompositionAsyncTask != null) mKanjiCharacterDecompositionAsyncTask.cancel(true);
     }
     @Override public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
