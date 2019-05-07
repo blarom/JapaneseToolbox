@@ -197,7 +197,7 @@ public class KanjiSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
         }
         //endregion
 
-        //region Getting the subset of characters match the user's selected structure
+        //region Getting the subset of characters that match the user's selected structure
         List<String> listOfResultsRelevantToRequestedStructure = new ArrayList<>();
         if (mSelectedStructure != GlobalConstants.Index_full) {
 
