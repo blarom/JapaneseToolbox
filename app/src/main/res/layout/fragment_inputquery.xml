@@ -46,8 +46,9 @@
                 android:layout_height="@dimen/clearButtonWidth"
                 android:layout_gravity="end|center_vertical"
                 android:layout_marginEnd="@dimen/clearButtonLeftRightMargin"
-                android:drawableStart="@drawable/ic_clear_black_24dp"
                 android:background="@android:color/transparent" />
+
+            <!--android:drawableStart="@drawable/ic_clear_black_24dp"-->
 
             <Button
                 android:id="@+id/button_show_history"
@@ -56,8 +57,9 @@
                 android:layout_height="@dimen/histButtonWidth"
                 android:layout_gravity="end|center_vertical"
                 android:layout_marginEnd="@dimen/histButtonLeftRightMargin"
-                android:background="@android:color/transparent"
-                android:drawableStart="@drawable/ic_history_black_24dp"/>
+                android:background="@android:color/transparent"/>
+
+            <!--android:drawableStart="@drawable/ic_history_black_24dp"-->
 
 
 		</FrameLayout>

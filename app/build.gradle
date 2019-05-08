@@ -12,12 +12,7 @@ android {
         versionName "4.05"
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
-        // the following code makes the app only available to relevant phones, thereby reducing the apk size
-        // See https://android.jlelse.eu/controlling-apk-size-when-using-native-libraries-45c6c0e5b70a
-//        ndk {
-//
-//            abiFilters "armeabi-v7a", "x86"
-//        }
+        ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
 
         buildConfigField("String", "firebaseEmail", firebaseEmail)
         buildConfigField("String", "firebasePass", firebasePass)

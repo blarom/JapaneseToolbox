@@ -27,10 +27,12 @@ import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -82,7 +84,6 @@ public class InputQueryFragment extends Fragment implements
         LoaderManager.LoaderCallbacks<String>,
         TextToSpeech.OnInitListener {
 
-
     //region Parameters
     @BindView(R.id.query) AutoCompleteTextView mInputQueryAutoCompleteTextView;
     @BindView(R.id.button_dict) Button mDictButton;
@@ -90,6 +91,8 @@ public class InputQueryFragment extends Fragment implements
     @BindView(R.id.button_convert) Button mConvertButton;
     @BindView(R.id.button_search_by_radical) Button mSearchByRadicalButton;
     @BindView(R.id.button_decompose) Button mDecomposeButton;
+    @BindView(R.id.button_show_history) Button mShowHistoryButton;
+    @BindView(R.id.button_clear_query) Button mClearQueryButton;
     private static final boolean ALLOW_OCR_FOR_LATIN_LANGUAGES = false;
     private static final int MAX_OCR_DIALOG_RECYCLERVIEW_HEIGHT_DP = 150;
     private int mQueryHistoryMaxSize = 20;
@@ -326,7 +329,7 @@ public class InputQueryFragment extends Fragment implements
     }
     @SuppressLint("ClickableViewAccessibility") private void initializeViews(View rootView) {
 
-        if (getContext()==null) return;
+        if (getContext()==null || getActivity() == null) return;
 
         mBinding = ButterKnife.bind(this, rootView);
 
@@ -356,6 +359,14 @@ public class InputQueryFragment extends Fragment implements
 
         mSearchByRadicalButton.setEnabled(true);
         mDecomposeButton.setEnabled(true);
+
+        //https://stackoverflow.com/questions/36661068/edittext-drwableleft-dont-work-with-vectors
+        mClearQueryButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                VectorDrawableCompat.create(getActivity().getResources(), R.drawable.ic_clear_black_24dp, mClearQueryButton.getContext().getTheme()),
+                null, null, null);
+        mShowHistoryButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                VectorDrawableCompat.create(getActivity().getResources(), R.drawable.ic_history_black_24dp, mClearQueryButton.getContext().getTheme()),
+                null, null, null);
 
     }
     private void sendImageToImageAdjuster(CropImage.ActivityResult result) {
