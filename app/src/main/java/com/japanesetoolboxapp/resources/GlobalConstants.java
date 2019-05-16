@@ -342,6 +342,10 @@ public final class GlobalConstants {
     public static final int LANG_FR = 1;
     public static final int LANG_ES = 2;
 
+    public static final String LANG_STR_EN = "en";
+    public static final String LANG_STR_FR = "fr";
+    public static final String LANG_STR_ES = "es";
+
     public final static HashMap<String, String> LANGUAGE_CODE_MAP = createLanguageMap();
     private static HashMap<String, String> createLanguageMap() {
         HashMap<String, String> map = new HashMap<>();

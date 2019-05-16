@@ -194,13 +194,13 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
         //region Setting the wordMeaning elements
         switch (mUILanguage) {
-            case "en":
+            case GlobalConstants.LANG_STR_EN:
                 if (mActiveMeaningLanguages[GlobalConstants.LANG_EN]) setMeaningsLayout(position, holder, GlobalConstants.LANG_EN);
                 break;
-            case "fr":
+            case GlobalConstants.LANG_STR_FR:
                 if (mActiveMeaningLanguages[GlobalConstants.LANG_EN]) setMeaningsLayout(position, holder, GlobalConstants.LANG_FR);
                 break;
-            case "es":
+            case GlobalConstants.LANG_STR_ES:
                 if (mActiveMeaningLanguages[GlobalConstants.LANG_EN]) setMeaningsLayout(position, holder, GlobalConstants.LANG_ES);
                 break;
         }

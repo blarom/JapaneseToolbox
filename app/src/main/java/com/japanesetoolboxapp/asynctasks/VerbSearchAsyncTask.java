@@ -96,7 +96,8 @@ public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
             setInputQueryParameters();
             getFamilyConjugationIndexes();
 
-            List<long[]> mMatchingVerbIdsAndCols = getMatchingVerbIdsAndCols();
+            String language = LocaleHelper.getLanguage(contextRef.get());
+            List<long[]> mMatchingVerbIdsAndCols = getMatchingVerbIdsAndCols(language);
             mMatchingVerbIdsAndCols = sortMatchingVerbsList(mMatchingVerbIdsAndCols);
             matchingVerbs = getVerbs(mMatchingVerbIdsAndCols);
         }
@@ -269,7 +270,7 @@ public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
 
         return characteristics;
     }
-    private List<long[]> getMatchingVerbIdsAndCols() {
+    private List<long[]> getMatchingVerbIdsAndCols(String language) {
 
         if (mInputQueryTextType == TYPE_INVALID || mCompleteVerbsList==null) return new ArrayList<>();
 
@@ -454,7 +455,7 @@ public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
         //For words of length>=4, The matches are determined by the word's keywords list.
         List<Word> mMatchingWords;
         if (mWordsFromDictFragment == null) {
-            List<Long> mMatchingWordIds = Utilities.getMatchingWordIdsAndDoBasicFiltering(mInputQuery, mJapaneseToolboxCentralRoomDatabase);
+            List<Long> mMatchingWordIds = Utilities.getMatchingWordIdsAndDoBasicFiltering(mInputQuery, mJapaneseToolboxCentralRoomDatabase, language);
             mMatchingWords = mJapaneseToolboxCentralRoomDatabase.getWordListByWordIds(mMatchingWordIds);
         }
         else {

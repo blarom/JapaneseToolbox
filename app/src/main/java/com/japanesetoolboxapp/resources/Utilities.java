@@ -2191,7 +2191,7 @@ public final class Utilities {
      * @param japaneseToolboxCentralRoomDatabase
      * @return
      */
-    public static List<Long> getMatchingWordIdsAndDoBasicFiltering(String inputWord, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+    public static List<Long> getMatchingWordIdsAndDoBasicFiltering(String inputWord, JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase, String language) {
 
         //region Initializations
         List<Long> matchingWordIds = new ArrayList<>();
@@ -2260,7 +2260,7 @@ public final class Utilities {
 
         //region Getting the matches
         matchingWordIds = addNormalMatchesToMatchesList(searchWord, searchWordNoSpaces, inglessVerb, searchWordWithoutTo,
-                queryIsVerbWithTo, inputTextType, matchingWordIds, japaneseToolboxCentralRoomDatabase);
+                queryIsVerbWithTo, inputTextType, matchingWordIds, japaneseToolboxCentralRoomDatabase, language);
 
         matchingWordIds = addConjugatedAdjectivesToMatchesList(searchWord, inputTextType, matchingWordIds, japaneseToolboxCentralRoomDatabase);
         matchingWordIds = addCountersToMatchesList(searchWord, inputTextType, matchingWordIds, japaneseToolboxCentralRoomDatabase);
@@ -2269,7 +2269,7 @@ public final class Utilities {
         return matchingWordIds;
     }
     private static List<Long> getMatchingWordIdsForOriginalInputQuery(boolean forceExactSearch, int inputTextType, String searchWord, String searchWordNoSpaces,
-                                                                      JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+                                                                      JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase, String language) {
 
         List<Long> matchingWordIds = new ArrayList<>();
 
@@ -2290,7 +2290,7 @@ public final class Utilities {
             String inputWordNoSpaces = Utilities.removeSpecialCharacters(inputWord);
 
             boolean exactSearch = inputWordNoSpaces.length() < 3 || forceExactSearch;
-            latinIndices = findQueryInLatinIndices(inputWordNoSpaces, exactSearch, "All", japaneseToolboxCentralRoomDatabase);
+            latinIndices = findQueryInLatinIndices(inputWordNoSpaces, exactSearch, new String[]{"romaji", language}, japaneseToolboxCentralRoomDatabase);
 
             if (latinIndices.size()==0) return matchingWordIds;
 
@@ -2359,7 +2359,7 @@ public final class Utilities {
         List<Long> newMatchingWordIdsFromIndex = new ArrayList<>(matchingWordIdsFromIndex);
 
         boolean exactSearch = inglessVerb.length() < 3 || forceExactSearch;
-        List<Object> latinIndices = findQueryInLatinIndices(inglessVerb, exactSearch, "englishOnly", japaneseToolboxCentralRoomDatabase);
+        List<Object> latinIndices = findQueryInLatinIndices(inglessVerb, exactSearch,  new String[]{GlobalConstants.LANG_STR_EN}, japaneseToolboxCentralRoomDatabase);
 
         for (Object indexLatin : latinIndices) {
             List<String> indexList = new ArrayList<>();
@@ -2387,15 +2387,16 @@ public final class Utilities {
      * @return
      */
     private static List<Long> getMatchingWordIds(int inputTextType, String searchWord, String searchWordNoSpaces, String inglessVerb,
-                                                 JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+                                                 JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase,
+                                                 String language) {
 
         List<Long> matchingWordIds = getMatchingWordIdsForOriginalInputQuery(false, inputTextType,
-                searchWord, searchWordNoSpaces, japaneseToolboxCentralRoomDatabase);
+                searchWord, searchWordNoSpaces, japaneseToolboxCentralRoomDatabase, language);
 
         //If the number of matching ids is larger than MAX_SQL_VARIABLES_FOR_QUERY, perform an exact search
         if (matchingWordIds.size() > GlobalConstants.MAX_SQL_VARIABLES_FOR_QUERY) {
             matchingWordIds = getMatchingWordIdsForOriginalInputQuery(true, inputTextType,
-                    searchWord, searchWordNoSpaces, japaneseToolboxCentralRoomDatabase);
+                    searchWord, searchWordNoSpaces, japaneseToolboxCentralRoomDatabase, language);
         }
 
         //If the number of matching ids is still larger than MAX_SQL_VARIABLES_FOR_QUERY, limit the list length to MAX_SQL_VARIABLES_FOR_QUERY
@@ -2404,8 +2405,9 @@ public final class Utilities {
         }
 
         //Adding search results where the "ing" is removed from an "ing" verb in english
-        if ((inputTextType == GlobalConstants.TYPE_LATIN || inputTextType == GlobalConstants.TYPE_HIRAGANA
-                || inputTextType == GlobalConstants.TYPE_KATAKANA || inputTextType == GlobalConstants.VALUE_NUMBER) && !inglessVerb.equals(searchWord)) {
+        if (language.equals(GlobalConstants.LANG_STR_EN) && !inglessVerb.equals(searchWord)
+                && (inputTextType == GlobalConstants.TYPE_LATIN || inputTextType == GlobalConstants.TYPE_HIRAGANA
+                || inputTextType == GlobalConstants.TYPE_KATAKANA || inputTextType == GlobalConstants.VALUE_NUMBER)) {
 
             List<Long> newMatchingWordIds = getMatchingWordIdsForQueryWithoutExtraIng(false,
                     matchingWordIds, inglessVerb, japaneseToolboxCentralRoomDatabase);
@@ -2440,7 +2442,8 @@ public final class Utilities {
      */
     private static List<Long> addNormalMatchesToMatchesList(String searchWord, String searchWordNoSpaces, String inglessVerb, String searchWordWithoutTo,
                                                             boolean queryIsVerbWithTo, int inputTextType, List<Long> matchingWordIds,
-                                                            JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
+                                                            JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase,
+                                                            String language) {
 
         //region Initializations
         List<long[]> MatchList = new ArrayList<>();
@@ -2449,7 +2452,7 @@ public final class Utilities {
         boolean foundMatch;
         //endregion
 
-        List<Long> matchingWordIdsFromIndex = getMatchingWordIds(inputTextType, searchWord, searchWordNoSpaces, inglessVerb, japaneseToolboxCentralRoomDatabase);
+        List<Long> matchingWordIdsFromIndex = getMatchingWordIds(inputTextType, searchWord, searchWordNoSpaces, inglessVerb, japaneseToolboxCentralRoomDatabase, language);
 
         //region Limiting the database query if there are too many results (prevents long query times)
         boolean onlyRetrieveShortRomajiWords = false;
@@ -2480,16 +2483,7 @@ public final class Utilities {
                     || inputTextType == GlobalConstants.TYPE_KATAKANA) && onlyRetrieveShortRomajiWords) {
 
                 //Checking if the word is an exact match to one of the words in the meanings
-                isExactMeaningWordsMatch = getMeaningsContainExactQueryMatch(searchWord, word, "EN");
-
-                //TODO: add setting to choose which dictionaries to search from
-                if (!isExactMeaningWordsMatch) {
-                    isExactMeaningWordsMatch = getMeaningsContainExactQueryMatch(searchWord, word, "FR");
-                }
-
-                if (!isExactMeaningWordsMatch) {
-                    isExactMeaningWordsMatch = getMeaningsContainExactQueryMatch(searchWord, word, "ES");
-                }
+                isExactMeaningWordsMatch = getMeaningsContainExactQueryMatch(searchWord, word, language);
 
                 if (!isExactMeaningWordsMatch) {
                     //Checking if the romaji is a match
@@ -2529,10 +2523,11 @@ public final class Utilities {
                 keywordsList.add(word.getKanji());
                 keywordsList.add(word.getAltSpellings());
                 keywordsList.add(word.getExtraKeywordsJAP());
-                keywordsList.add(word.getExtraKeywordsEN());
-                //TODO: add setting to choose which dictionaries to search from
-                keywordsList.add(word.getExtraKeywordsFR());
-                keywordsList.add(word.getExtraKeywordsES());
+                switch (language) {
+                    case GlobalConstants.LANG_STR_EN: keywordsList.add(word.getExtraKeywordsEN()); break;
+                    case GlobalConstants.LANG_STR_FR: keywordsList.add(word.getExtraKeywordsFR()); break;
+                    case GlobalConstants.LANG_STR_ES: keywordsList.add(word.getExtraKeywordsES()); break;
+                }
                 keywordsList.add(getConcatenatedMeanings(word));
                 keywords = TextUtils.join(", ", keywordsList).replace(" ","").toLowerCase();
 
@@ -2659,13 +2654,13 @@ public final class Utilities {
 
         List<Word.Meaning> meanings = new ArrayList<>();
         switch (language) {
-            case "EN":
+            case GlobalConstants.LANG_STR_EN:
                 meanings = word.getMeaningsEN();
                 break;
-            case "FR":
+            case GlobalConstants.LANG_STR_FR:
                 meanings = word.getMeaningsFR();
                 break;
-            case "ES":
+            case GlobalConstants.LANG_STR_ES:
                 meanings = word.getMeaningsES();
                 break;
         }
@@ -2855,7 +2850,7 @@ public final class Utilities {
             if (!isPotentialAdjective) return matchingWordIds;
 
             boolean exactSearch = baseAdjective.length() < 3 || forceExactSearch;
-            List<Object> latinIndicesForAdjective = findQueryInLatinIndices(baseAdjective, exactSearch, "romajiOnly",  japaneseToolboxCentralRoomDatabase);
+            List<Object> latinIndicesForAdjective = findQueryInLatinIndices(baseAdjective, exactSearch, new String[]{"romaji"},  japaneseToolboxCentralRoomDatabase);
 
             if (latinIndicesForAdjective.size()==0) return matchingWordIds;
 
@@ -2972,7 +2967,7 @@ public final class Utilities {
         }
         return concatenated_sentence.toString();
     }
-    private static List<Object> findQueryInLatinIndices(String concatenated_word, boolean exactSearch, String searchType,
+    private static List<Object> findQueryInLatinIndices(String concatenated_word, boolean exactSearch, String[] searchType,
                                                         JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
         List<Object> matchingIndices;
@@ -2980,40 +2975,49 @@ public final class Utilities {
         if (exactSearch) {
             //Preventing the index search from returning too many results and crashing the app
 
-            if (searchType.equals("romajiOnly") || searchType.equals("All")) {
+            if (Arrays.asList(searchType).contains("romaji")) {
                 IndexRomaji indexRomaji = japaneseToolboxCentralRoomDatabase.getRomajiIndexForExactWord(concatenated_word);
                 if (indexRomaji != null) matchingIndices.add(indexRomaji); //Only add the index if the word was found in the index
             }
 
-            if (searchType.equals("englishOnly") || searchType.equals("All")) {
+            if (Arrays.asList(searchType).contains(GlobalConstants.LANG_STR_EN)) {
+                IndexEnglish indexEnglish = japaneseToolboxCentralRoomDatabase.getEnglishIndexForExactWord(concatenated_word);
+                if (indexEnglish!=null) matchingIndices.add(indexEnglish); //Only add the index if the word was found in the index
+            }
+            else if (Arrays.asList(searchType).contains(GlobalConstants.LANG_STR_FR)) {
+                IndexFrench indexFrench = japaneseToolboxCentralRoomDatabase.getFrenchIndexForExactWord(concatenated_word);
+                if (indexFrench != null) matchingIndices.add(indexFrench); //Only add the index if the word was found in the index
+                IndexEnglish indexEnglish = japaneseToolboxCentralRoomDatabase.getEnglishIndexForExactWord(concatenated_word);
+                if (indexEnglish!=null) matchingIndices.add(indexEnglish); //Only add the index if the word was found in the index
+            }
+            else if (Arrays.asList(searchType).contains(GlobalConstants.LANG_STR_ES)) {
+                IndexSpanish indexSpanish = japaneseToolboxCentralRoomDatabase.getSpanishIndexForExactWord(concatenated_word);
+                if (indexSpanish != null) matchingIndices.add(indexSpanish); //Only add the index if the word was found in the index
                 IndexEnglish indexEnglish = japaneseToolboxCentralRoomDatabase.getEnglishIndexForExactWord(concatenated_word);
                 if (indexEnglish!=null) matchingIndices.add(indexEnglish); //Only add the index if the word was found in the index
             }
 
-            if (searchType.equals("All")) {
-                IndexFrench indexFrench = japaneseToolboxCentralRoomDatabase.getFrenchIndexForExactWord(concatenated_word);
-                if (indexFrench != null) matchingIndices.add(indexFrench); //Only add the index if the word was found in the index
-
-                IndexSpanish indexSpanish = japaneseToolboxCentralRoomDatabase.getSpanishIndexForExactWord(concatenated_word);
-                if (indexSpanish != null) matchingIndices.add(indexSpanish); //Only add the index if the word was found in the index
-            }
-
         } else {
-            if (searchType.equals("romajiOnly") || searchType.equals("All")) {
+            if (Arrays.asList(searchType).contains("romaji")) {
                 List<IndexRomaji> indexesRomaji = japaneseToolboxCentralRoomDatabase.getRomajiIndexesListForStartingWord(concatenated_word);
                 if (indexesRomaji != null && indexesRomaji.size()>0) matchingIndices.addAll(indexesRomaji);
             }
 
-            if (searchType.equals("englishOnly") || searchType.equals("All")) {
+            if (Arrays.asList(searchType).contains(GlobalConstants.LANG_STR_EN)) {
                 List<IndexEnglish> indexesEnglish = japaneseToolboxCentralRoomDatabase.getEnglishIndexesListForStartingWord(concatenated_word);
                 if (indexesEnglish != null && indexesEnglish.size()>0) matchingIndices.addAll(indexesEnglish);
             }
-
-            if (searchType.equals("All")) {
+            else if (Arrays.asList(searchType).contains(GlobalConstants.LANG_STR_FR)) {
                 List<IndexFrench> indexesFrench = japaneseToolboxCentralRoomDatabase.getFrenchIndexesListForStartingWord(concatenated_word);
                 if (indexesFrench != null && indexesFrench.size()>0) matchingIndices.addAll(indexesFrench);
+                List<IndexEnglish> indexesEnglish = japaneseToolboxCentralRoomDatabase.getEnglishIndexesListForStartingWord(concatenated_word);
+                if (indexesEnglish != null && indexesEnglish.size()>0) matchingIndices.addAll(indexesEnglish);
+            }
+            else if (Arrays.asList(searchType).contains(GlobalConstants.LANG_STR_ES)) {
                 List<IndexSpanish> indexesSpanish = japaneseToolboxCentralRoomDatabase.getSpanishIndexesListForStartingWord(concatenated_word);
                 if (indexesSpanish != null && indexesSpanish.size()>0) matchingIndices.addAll(indexesSpanish);
+                List<IndexEnglish> indexesEnglish = japaneseToolboxCentralRoomDatabase.getEnglishIndexesListForStartingWord(concatenated_word);
+                if (indexesEnglish != null && indexesEnglish.size()>0) matchingIndices.addAll(indexesEnglish);
             }
         }
         return matchingIndices;

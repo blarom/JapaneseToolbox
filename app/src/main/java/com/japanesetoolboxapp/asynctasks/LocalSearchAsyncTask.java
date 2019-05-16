@@ -6,6 +6,7 @@ import android.text.TextUtils;
 
 import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
 import com.japanesetoolboxapp.data.Word;
+import com.japanesetoolboxapp.resources.LocaleHelper;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.lang.ref.WeakReference;
@@ -33,7 +34,8 @@ public class LocalSearchAsyncTask extends AsyncTask<Void, Void, List<Word>> {
         List<Word> localMatchingWordsList = new ArrayList<>();
         if (!TextUtils.isEmpty(mQuery)) {
             JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase = JapaneseToolboxCentralRoomDatabase.getInstance(contextRef.get());
-            List<Long> matchingWordIds = Utilities.getMatchingWordIdsAndDoBasicFiltering(mQuery, japaneseToolboxCentralRoomDatabase);
+            String language = LocaleHelper.getLanguage(contextRef.get());
+            List<Long> matchingWordIds = Utilities.getMatchingWordIdsAndDoBasicFiltering(mQuery, japaneseToolboxCentralRoomDatabase, language);
             localMatchingWordsList = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(matchingWordIds);
         }
 

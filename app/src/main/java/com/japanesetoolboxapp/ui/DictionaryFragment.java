@@ -184,8 +184,6 @@ public class DictionaryFragment extends Fragment implements
             }
             if (Utilities.getPreferenceShowOnlineResults(getActivity())) {
                 startSearchingForWordsInJisho();
-                //startSearchingForWordsInJMDictFR();
-                //startSearchingForWordsInJMDictES();
             }
 
             //Preventing computation/connectivity delays from freezing the UI thread
@@ -450,6 +448,10 @@ public class DictionaryFragment extends Fragment implements
     //Communication with AsyncTasks
     @Override public void onLocalDictSearchAsyncTaskResultFound(List<Word> words) {
 
+        if (getContext()==null) return;
+
+        mAlreadyLoadedRoomResults = true;
+
         mLocalMatchingWordsList = words;
         mLocalMatchingWordsList = sortWordsAccordingToRanking(mLocalMatchingWordsList);
 
@@ -463,6 +465,7 @@ public class DictionaryFragment extends Fragment implements
 
         if (getContext()==null) return;
 
+        mAlreadyLoadedJishoResults = true;
         mJishoMatchingWordsList = Utilities.removeEdictExceptionsFromJisho(mJishoMatchingWordsList);
         mJishoMatchingWordsList = Utilities.cleanUpProblematicWordsFromJisho(loaderResultWordsList);
         for (Word word : mJishoMatchingWordsList) word.setIsLocal(false);
@@ -483,6 +486,8 @@ public class DictionaryFragment extends Fragment implements
         displayMergedWordsToUser();
     }
     @Override public void onVerbSearchAsyncTaskResultFound(Object[] dataElements) {
+
+        if (getContext()==null) return;
 
         mAlreadyLoadedVerbs = true;
         List<Verb> mMatchingVerbs = (List<Verb>) dataElements[0];
