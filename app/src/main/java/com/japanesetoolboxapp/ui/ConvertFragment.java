@@ -179,7 +179,7 @@ public class ConvertFragment extends Fragment {
                 } else if (latinAlphabet.contains(character) || latinAlphabetCap.contains(character)) {
                     text_type = GlobalConstants.TYPE_LATIN;
                 } else if (numberAlphabet.contains(character)) {
-                    text_type = GlobalConstants.VALUE_NUMBER;
+                    text_type = GlobalConstants.TYPE_NUMBER;
                 } else {
                     text_type = GlobalConstants.TYPE_KANJI;
                 }

@@ -363,7 +363,7 @@ public class DictionaryFragment extends Fragment implements
         int inputTextType = ConvertFragment.getTextType(inputQuery);
         if (inputTextType == GlobalConstants.TYPE_HIRAGANA || inputTextType == GlobalConstants.TYPE_KATAKANA) {
             List<String> translationList = ConvertFragment.getLatinHiraganaKatakana(inputQuery.replace(" ", ""));
-            inputQuery = translationList.get(0);
+            inputQuery = translationList.get(GlobalConstants.TYPE_LATIN);
         }
         //endregion
 

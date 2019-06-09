@@ -167,7 +167,7 @@ public final class GlobalConstants {
     public static final int TYPE_HIRAGANA = 1;
     public static final int TYPE_KATAKANA = 2;
     public static final int TYPE_KANJI = 3;
-    public static final int VALUE_NUMBER = 4;
+    public static final int TYPE_NUMBER = 4;
     public static final int TYPE_INVALID = 5;
 
     public static final int RADICAL_KANA = 0;

@@ -13,7 +13,6 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.media.AudioManager;
-import android.media.FaceDetector;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -2278,7 +2277,7 @@ public final class Utilities {
         List<Object> latinIndices;
         List<IndexKanji> kanjiIndices;
         if (inputTextType == GlobalConstants.TYPE_LATIN || inputTextType == GlobalConstants.TYPE_HIRAGANA
-                || inputTextType == GlobalConstants.TYPE_KATAKANA || inputTextType == GlobalConstants.VALUE_NUMBER) {
+                || inputTextType == GlobalConstants.TYPE_KATAKANA || inputTextType == GlobalConstants.TYPE_NUMBER) {
 
             //If the input is a verb in "to " form, remove the "to " for the search only (results will be filtered later on)
             String inputWord = Utilities.removeNonSpaceSpecialCharacters(searchWord);
@@ -2299,7 +2298,7 @@ public final class Utilities {
                         || inputTextType == GlobalConstants.TYPE_HIRAGANA
                         || inputTextType == GlobalConstants.TYPE_KATAKANA)
                         && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD)
-                    || (inputTextType == GlobalConstants.VALUE_NUMBER
+                    || (inputTextType == GlobalConstants.TYPE_NUMBER
                         && searchWordNoSpaces.length() < WORD_SEARCH_CHAR_COUNT_THRESHOLD-1)) {
 
                 for (Object indexLatin : latinIndices) {
@@ -2407,7 +2406,7 @@ public final class Utilities {
         //Adding search results where the "ing" is removed from an "ing" verb in english
         if (language.equals(GlobalConstants.LANG_STR_EN) && !inglessVerb.equals(searchWord)
                 && (inputTextType == GlobalConstants.TYPE_LATIN || inputTextType == GlobalConstants.TYPE_HIRAGANA
-                || inputTextType == GlobalConstants.TYPE_KATAKANA || inputTextType == GlobalConstants.VALUE_NUMBER)) {
+                || inputTextType == GlobalConstants.TYPE_KATAKANA || inputTextType == GlobalConstants.TYPE_NUMBER)) {
 
             List<Long> newMatchingWordIds = getMatchingWordIdsForQueryWithoutExtraIng(false,
                     matchingWordIds, inglessVerb, japaneseToolboxCentralRoomDatabase);
@@ -2483,7 +2482,7 @@ public final class Utilities {
                     || inputTextType == GlobalConstants.TYPE_KATAKANA) && onlyRetrieveShortRomajiWords) {
 
                 //Checking if the word is an exact match to one of the words in the meanings
-                isExactMeaningWordsMatch = getMeaningsContainExactQueryMatch(searchWord, word, language);
+                isExactMeaningWordsMatch = getMeaningsContainingExactQueryMatch(searchWord, word, language);
 
                 if (!isExactMeaningWordsMatch) {
                     //Checking if the romaji is a match
@@ -2650,7 +2649,7 @@ public final class Utilities {
 
         return matchingWordIds;
     }
-    private static boolean getMeaningsContainExactQueryMatch(String searchWord, Word word, String language) {
+    private static boolean getMeaningsContainingExactQueryMatch(String searchWord, Word word, String language) {
 
         List<Word.Meaning> meanings = new ArrayList<>();
         switch (language) {
@@ -2686,7 +2685,6 @@ public final class Utilities {
         for (Word.Meaning meaning : word.getMeaningsEN()) {
             meanings.add(meaning.getMeaning());
         }
-        //TODO: add setting to choose which dictionaries to search from
         for (Word.Meaning meaning : word.getMeaningsFR()) {
             meanings.add(meaning.getMeaning());
         }
@@ -2739,18 +2737,7 @@ public final class Utilities {
                                                                    JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase) {
 
         if (inputTextType == GlobalConstants.TYPE_KANJI && searchWord.length()==2
-                && (searchWord.substring(0,1).equals("何")
-                || searchWord.substring(0,1).equals("一")
-                || searchWord.substring(0,1).equals("二")
-                || searchWord.substring(0,1).equals("三")
-                || searchWord.substring(0,1).equals("四")
-                || searchWord.substring(0,1).equals("五")
-                || searchWord.substring(0,1).equals("六")
-                || searchWord.substring(0,1).equals("七")
-                || searchWord.substring(0,1).equals("八")
-                || searchWord.substring(0,1).equals("九")
-                || searchWord.substring(0,1).equals("十") )
-                ) {
+                && "何一二三四五六七八九十".contains(searchWord.substring(0,1)) ) {
 
             List<IndexKanji> kanjiIndicesForCounter = findQueryInKanjiIndex(searchWord.substring(1,2), true, japaneseToolboxCentralRoomDatabase);
 
@@ -2935,7 +2922,7 @@ public final class Utilities {
         }
         return output.toString();
     }
-    private static Boolean isOfTypeIngIng(String verb) {
+    public static Boolean isOfTypeIngIng(String verb) {
         boolean answer = false;
         if (	verb.equals("accinging") || verb.equals("astringing") || verb.equals("befringing") || verb.equals("besinging") ||
                 verb.equals("binging") || verb.equals("boinging") || verb.equals("bowstringing") || verb.equals("bringing") ||

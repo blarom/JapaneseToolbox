@@ -303,16 +303,16 @@ public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
         if (mInputQueryLength > 2 && mInputQuery.substring(mInputQueryLength -3).equals("ing")) {
 
             if (mInputQueryLength > 5 && mInputQuery.substring(mInputQueryLength -6).equals("inging")) {
-                if (	(mInputQuery.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(mInputQuery.substring(3, mInputQueryLength))) ||
-                        (!mInputQuery.substring(0, 2+1).equals("to ") && IsOfTypeIngIng(mInputQuery.substring(0, mInputQueryLength)))   ) {
+                if (	(mInputQuery.substring(0, 2+1).equals("to ") && Utilities.isOfTypeIngIng(mInputQuery.substring(3, mInputQueryLength))) ||
+                        (!mInputQuery.substring(0, 2+1).equals("to ") && Utilities.isOfTypeIngIng(mInputQuery.substring(0, mInputQueryLength)))   ) {
                     // If the verb ends with "inging" then remove the the second "ing"
                     mInputQuery = mInputQuery.substring(0, mInputQueryLength -3);
                 }
             }
             else {
                 String verb2WithIng = mInputQuery + "ing";
-                if ((verb2WithIng.substring(0, 2 + 1).equals("to ") && IsOfTypeIngIng(verb2WithIng.substring(3, mInputQueryLength + 3))) ||
-                        (!verb2WithIng.substring(0, 2 + 1).equals("to ") && IsOfTypeIngIng(verb2WithIng.substring(0, mInputQueryLength + 3)))) {
+                if ((verb2WithIng.substring(0, 2 + 1).equals("to ") && Utilities.isOfTypeIngIng(verb2WithIng.substring(3, mInputQueryLength + 3))) ||
+                        (!verb2WithIng.substring(0, 2 + 1).equals("to ") && Utilities.isOfTypeIngIng(verb2WithIng.substring(0, mInputQueryLength + 3)))) {
                 } else {
                     // If the verb does not belong to the list, then remove the ending "ing" so that it can be compared later on to the verbs excel
                     //If the verb is for e.g. to sing / sing (verb2 = to singing / singing), then check that verb2 (without the "to ") belongs to the list, and if it does then do nothing
@@ -982,27 +982,6 @@ public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
         //endregion
 
         return verbs;
-    }
-    private boolean IsOfTypeIngIng(String verb) {
-        boolean answer = false;
-        if (	verb.equals("accinging") || verb.equals("astringing") || verb.equals("befringing") || verb.equals("besinging") ||
-                verb.equals("binging") || verb.equals("boinging") || verb.equals("bowstringing") || verb.equals("bringing") ||
-                verb.equals("clinging") || verb.equals("constringing") || verb.equals("cringing") || verb.equals("dinging") ||
-                verb.equals("enringing") || verb.equals("flinging") || verb.equals("folksinging") || verb.equals("fringing") ||
-                verb.equals("gunslinging") || verb.equals("hamstringing") || verb.equals("handwringing") || verb.equals("hinging") ||
-                verb.equals("impinging") || verb.equals("inbringing") || verb.equals("infringing") || verb.equals("kinging") ||
-                verb.equals("minging") || verb.equals("mudslinging") || verb.equals("outringing") || verb.equals("outsinging") ||
-                verb.equals("outspringing") || verb.equals("outswinging") || verb.equals("outwinging") || verb.equals("overswinging") ||
-                verb.equals("overwinging") || verb.equals("perstringing") || verb.equals("pinging") || verb.equals("refringing") ||
-                verb.equals("rehinging") || verb.equals("respringing") || verb.equals("restringing") || verb.equals("ringing") ||
-                verb.equals("singing") || verb.equals("slinging") || verb.equals("springing") || verb.equals("stinging") ||
-                verb.equals("stringing") || verb.equals("swinging") || verb.equals("syringing") || verb.equals("twinging") ||
-                verb.equals("unhinging") || verb.equals("unkinging") || verb.equals("unslinging") || verb.equals("unstringing") ||
-                verb.equals("upbringing") || verb.equals("upflinging") || verb.equals("upspringing") || verb.equals("upswinging") ||
-                verb.equals("whinging") || verb.equals("winging") || verb.equals("wringing") || verb.equals("zinging") ) {
-            answer = true;
-        }
-        return answer;
     }
 
     @Override

@@ -496,13 +496,13 @@
     <string name="verb_StemMisc9">Él hace/es X (muy vulgar - denota odio/desprecio)</string>
 
     <string name="verb_TitleArch">Forma te</string>
-    <string name="verb_Arch1">Pres. Simple Neg. (equiv. a "nai")</string>
+    <string name="verb_Arch1">Pres. Simple Neg. (equiv. a \"nai\")</string>
     <string name="verb_Arch2">[verbo] sin hacer/ser X</string>
-    <string name="verb_Arch3">Pres. Simple Neg. (equiv. a "nai")</string>
+    <string name="verb_Arch3">Pres. Simple Neg. (equiv. a \"nai\")</string>
     <string name="verb_Arch4">Obligado a hacer/ser X</string>
 
     <string name="trans_">trans.</string>
-    <string name="intrans_">intrans.</string>
+    <string name="intranss_">intrans.</string>
     <string name="trans_intrans_">trans./intrans.</string>
     <string name="antonyms_">Antónimos:</string>
     <string name="synonyms_">Sinónimos:</string>
@@ -519,15 +519,15 @@
     <string name="legend_Abs">térm. abstracto</string>
     <string name="legend_Ac">actividad</string>
     <string name="legend_Af">sust./verbo actuando prenominalmente</string>
-    <string name="legend_Ai">adj. "i"</string>
+    <string name="legend_Ai">adj. \"i\"</string>
     <string name="legend_Aj">adj.</string>
     <string name="legend_An">térm. de anatomía</string>
-    <string name="legend_Ana">adj. "na"</string>
-    <string name="legend_Ano">adj. "no"</string>
+    <string name="legend_Ana">adj. \"na\"</string>
+    <string name="legend_Ano">adj. \"no\"</string>
     <string name="legend_Apn">adj. preconombre</string>
     <string name="legend_Ati">térm. de ropa</string>
-    <string name="legend_Ato">adverbio tomando "to"</string>
-    <string name="legend_Atr">adj. "taru"</string>
+    <string name="legend_Ato">adverbio tomando \"to\"</string>
+    <string name="legend_Atr">adj. \"taru\"</string>
     <string name="legend_ar">arcaísmo</string>
     <string name="legend_Ax">adj. aux.</string>
     <string name="legend_B">térm. religioso</string>
@@ -544,7 +544,7 @@
     <string name="legend_Fl">flora</string>
     <string name="legend_Fy">familia</string>
     <string name="legend_GO">objeto</string>
-    <string name="legend_iAC">conj. adj. "i"</string>
+    <string name="legend_iAC">conj. adj. \"i\"</string>
     <string name="legend_idp">idioma/prov.</string>
     <string name="legend_IES">térm. grosero/calificado X</string>
     <string name="legend_JEP">Era japonesa</string>
@@ -560,7 +560,7 @@
     <string name="legend_Mo">mes</string>
     <string name="legend_MSE">térm. de mat./cien./ing.</string>
     <string name="legend_N">sustantivo</string>
-    <string name="legend_naAC">conj. adj. "na"</string>
+    <string name="legend_naAC">conj. adj. \"na\"</string>
     <string name="legend_NAdv">sust. adverbial</string>
     <string name="legend_Ne">nombre correcto</string>
     <string name="legend_NE">elemento natural</string>
