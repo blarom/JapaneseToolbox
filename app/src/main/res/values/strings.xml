@@ -760,6 +760,9 @@
     <string name="legend_ZSp">sports term</string>
     <string name="legend_ZSt">Shinto term</string>
     <string name="legend_ZZ">zoology term</string>
+    <string name="legend_Akari">kari-adj.</string>
+    <string name="legend_Aku">ku-adj.</string>
+    <string name="legend_Ashiku">shiku-adj.</string>
     
     <string name="verb_family_su">su godan</string>
     <string name="verb_family_ku">ku godan</string>

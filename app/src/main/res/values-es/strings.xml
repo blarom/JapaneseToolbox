@@ -650,6 +650,9 @@
     <string name="legend_ZSp">térm. de deportivo</string>
     <string name="legend_ZSt">térm. sintoísta</string>
     <string name="legend_ZZ">térm. zoología</string>
+    <string name="legend_Akari">adj. \"kari\"</string>
+    <string name="legend_Aku">adj. \"ku\"</string>
+    <string name="legend_Ashiku">adj. \"shiku\"</string>
 
     <string name="verb_family_su">su godan</string>
     <string name="verb_family_ku">ku godan</string>
