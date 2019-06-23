@@ -12,8 +12,6 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +27,8 @@ import com.japanesetoolboxapp.resources.Utilities;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Random;
+
+import androidx.preference.PreferenceManager;
 
 public class AdjustImageActivity extends BaseActivity {
     //http://android-er.blogspot.co.il/2013/09/adjust-saturation-of-bitmap-with.html

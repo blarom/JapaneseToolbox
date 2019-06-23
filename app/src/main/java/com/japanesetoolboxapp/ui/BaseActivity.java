@@ -3,7 +3,6 @@ package com.japanesetoolboxapp.ui;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 
@@ -11,6 +10,8 @@ import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.resources.LocaleHelper;
 
 import java.util.Locale;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class BaseActivity extends AppCompatActivity {
 

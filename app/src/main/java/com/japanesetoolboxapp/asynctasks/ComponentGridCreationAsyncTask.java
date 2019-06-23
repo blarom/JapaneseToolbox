@@ -60,7 +60,7 @@ public class ComponentGridCreationAsyncTask extends AsyncTask<Void, Void, List<S
         void onComponentGridCreationAsyncTaskDone(List<String> text);
     }
 
-    List<String> getSelectionGridElements() {
+    private List<String> getSelectionGridElements() {
 
         if (mComponentSelectionType.equals("")) return new ArrayList<>();
 
@@ -81,28 +81,28 @@ public class ComponentGridCreationAsyncTask extends AsyncTask<Void, Void, List<S
                 if (parsed_list.length == 3 && parsed_list[2].equals("not found in decompositions")) continue;
 
                 // Adding the header radical numbers to the list of radicals
-                if (!currentElement[4].equals(last_index)) {
+                if (!currentElement[GlobalConstants.RADICAL_NUM_STROKES].equals(last_index)) {
                     if (parsed_list[0].equals("Special") || parsed_list[0].equals("Hiragana") || parsed_list[0].equals("Katakana")) {
                     } else if (parsed_list.length > 1) {
                         if (parsed_list[1].equals("variant")) {
-                            selections.add(currentElement[4]);
-                            selections.add(currentElement[0] + "variant");
-                            last_index = currentElement[4];
+                            selections.add(currentElement[GlobalConstants.RADICAL_NUM_STROKES]);
+                            selections.add(currentElement[GlobalConstants.RADICAL_KANA] + "variant");
+                            last_index = currentElement[GlobalConstants.RADICAL_NUM_STROKES];
                         }
                     } else {
-                        selections.add(currentElement[4]);
-                        selections.add(currentElement[0]);
-                        last_index = currentElement[4];
+                        selections.add(currentElement[GlobalConstants.RADICAL_NUM_STROKES]);
+                        selections.add(currentElement[GlobalConstants.RADICAL_KANA]);
+                        last_index = currentElement[GlobalConstants.RADICAL_NUM_STROKES];
                     }
-                } else if (currentElement[4].equals(last_index)) {
+                } else if (currentElement[GlobalConstants.RADICAL_NUM_STROKES].equals(last_index)) {
                     if (parsed_list.length > 1) {
                         if (parsed_list[1].equals("variant")) {
-                            selections.add(currentElement[0] + "variant");
+                            selections.add(currentElement[GlobalConstants.RADICAL_KANA] + "variant");
                         }
                     } else {
-                        selections.add(currentElement[0]);
+                        selections.add(currentElement[GlobalConstants.RADICAL_KANA]);
                     }
-                    last_index = currentElement[4];
+                    last_index = currentElement[GlobalConstants.RADICAL_NUM_STROKES];
                 }
             }
         }
@@ -164,7 +164,7 @@ public class ComponentGridCreationAsyncTask extends AsyncTask<Void, Void, List<S
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             for (int i = 0; i < selections.size(); i++) {
-                if (Utilities.isPrintable(selections.get(i).substring(0, 1))) {
+                if (selections.get(i).length() > 0 && Utilities.isPrintable(selections.get(i).substring(0, 1))) {
                     displayableComponentSelections.add(selections.get(i));
                 }
             }
@@ -188,7 +188,7 @@ public class ComponentGridCreationAsyncTask extends AsyncTask<Void, Void, List<S
     }
 
     // QuickSort Algorithm (adapted from http://www.vogella.com/tutorials/JavaAlgorithmsQuicksort/article.html)
-    List<String[]> sortAccordingToGrowingFrequency(List<String[]> values) {
+    private List<String[]> sortAccordingToGrowingFrequency(List<String[]> values) {
         // check for empty or null array
         if (values ==null || values.size()==0){
             return new ArrayList<>();

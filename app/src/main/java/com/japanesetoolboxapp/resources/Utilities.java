@@ -19,9 +19,11 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.preference.PreferenceManager;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.preference.PreferenceManager;
+
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -3117,8 +3119,9 @@ public final class Utilities {
     public static int getPreferenceQueryHistorySize(SharedPreferences sharedPreferences, Context context) {
         int queryHistorySize = Integer.parseInt(context.getResources().getString(R.string.pref_query_history_size_default_value));
         try {
-            queryHistorySize = Integer.parseInt(sharedPreferences.getString(context.getResources().getString(R.string.pref_query_history_size_key),
-                    context.getResources().getString(R.string.pref_query_history_size_default_value)));
+            String queryHist = sharedPreferences.getString(context.getResources().getString(R.string.pref_query_history_size_key),
+                    context.getResources().getString(R.string.pref_query_history_size_default_value));
+            queryHistorySize = Integer.parseInt(queryHist == null? "0" : queryHist);
         } catch (Exception e) {
             queryHistorySize = Integer.parseInt(context.getResources().getString(R.string.pref_query_history_size_default_value));
         } finally {
