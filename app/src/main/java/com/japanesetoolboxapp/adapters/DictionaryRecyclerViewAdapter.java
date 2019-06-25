@@ -228,15 +228,15 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
             String language = "";
             switch (mUILanguage) {
-                case "en":
+                case GlobalConstants.LANG_STR_EN:
                     language = mContext.getResources().getString(R.string.language_label_english);
                     meanings = word.getMeaningsEN();
                     break;
-                case "fr":
+                case GlobalConstants.LANG_STR_FR:
                     language = mContext.getResources().getString(R.string.language_label_french);
                     meanings = word.getMeaningsFR();
                     break;
-                case "es":
+                case GlobalConstants.LANG_STR_ES:
                     language = mContext.getResources().getString(R.string.language_label_spanish);
                     meanings = word.getMeaningsES();
                     break;

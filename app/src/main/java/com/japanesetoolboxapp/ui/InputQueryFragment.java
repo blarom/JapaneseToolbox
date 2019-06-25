@@ -1239,7 +1239,7 @@ public class InputQueryFragment extends Fragment implements
         if (getContext() != null) {
             SharedPreferences sharedPref = getContext().getSharedPreferences(getString(R.string.preferences_query_history_list), Context.MODE_PRIVATE);
             String queryHistoryAsString = sharedPref.getString(getString(R.string.preferences_query_history_list), "");
-            if (!queryHistoryAsString.equals("")) mQueryHistory = new ArrayList<>(Arrays.asList(queryHistoryAsString.split(GlobalConstants.QUERY_HISTORY_ELEMENTS_DELIMITER)));
+            if (!TextUtils.isEmpty(queryHistoryAsString)) mQueryHistory = new ArrayList<>(Arrays.asList(queryHistoryAsString.split(GlobalConstants.QUERY_HISTORY_ELEMENTS_DELIMITER)));
         }
 
         updateQueryHistoryWordsOnly();

@@ -438,7 +438,7 @@ public class MainActivity extends BaseActivity implements
         else if (fromConjSearch) {
             mInputQueryFragment.updateQueryDefinitionInHistory(
                     matchingWords.get(0).getRomaji(),
-                    Utilities.getMeaningsExtract(matchingWords.get(0).getMeaningsEN(), 2)
+                    Utilities.getMeaningsExtract(matchingWords.get(0).getMeaningsByLanguage(mLanguageCode), 2)
             );
         }
         else {
@@ -448,17 +448,17 @@ public class MainActivity extends BaseActivity implements
                         || Utilities.getRomajiNoSpacesForSpecialPartsOfSpeech(word.getRomaji())
                             .equals(ConvertFragment.getLatinHiraganaKatakana(mInputQuery).get(GlobalConstants.TYPE_LATIN)) ) {
                     romaji = word.getRomaji();
-                    meaning = getCurrentMeanings(word);
+                    meaning = Utilities.getMeaningsExtract(word.getMeaningsByLanguage(mLanguageCode), GlobalConstants.BALANCE_POINT_HISTORY_DISPLAY);
                     break;
                 }
             }
             //If no definition was found, get the first definition matching the altSpellings
             if (romaji.equals("")) {
                 for (Word word : matchingWords) {
-                    List<String> altSpellings = (word.getAltSpellings() != null) ? Arrays.asList(word.getAltSpellings().split(",")) : new ArrayList<String>();
+                    List<String> altSpellings = (word.getAltSpellings() != null) ? Arrays.asList(word.getAltSpellings().split(",")) : new ArrayList<>();
                     if (altSpellings.contains(mInputQuery)) {
                         romaji = word.getRomaji();
-                        meaning = getCurrentMeanings(word);
+                        meaning = Utilities.getMeaningsExtract(word.getMeaningsByLanguage(mLanguageCode), GlobalConstants.BALANCE_POINT_HISTORY_DISPLAY);
                         break;
                     }
                 }
@@ -467,7 +467,7 @@ public class MainActivity extends BaseActivity implements
             if (romaji.equals("")) {
                 for (Word word : matchingWords) {
                     List<String> wordsInMeanings = new ArrayList<>();
-                    for (Word.Meaning wordMeaning : word.getMeaningsEN()) {
+                    for (Word.Meaning wordMeaning : word.getMeaningsByLanguage(mLanguageCode)) {
                         wordsInMeanings.add(wordMeaning.getMeaning()
                                 .replace(", ", ";")
                                 .replace("(", "")
@@ -480,35 +480,13 @@ public class MainActivity extends BaseActivity implements
                     }
                     if (wordsInMeanings.contains(mInputQuery)) {
                         romaji = word.getRomaji();
-                        meaning = getCurrentMeanings(word);
+                        meaning = Utilities.getMeaningsExtract(word.getMeaningsByLanguage(mLanguageCode), GlobalConstants.BALANCE_POINT_HISTORY_DISPLAY);
                         break;
                     }
                 }
             }
             mInputQueryFragment.updateQueryDefinitionInHistory(romaji, meaning);
         }
-    }
-    private String getCurrentMeanings(Word word) {
-
-        List<Word.Meaning> meanings;
-        switch (mLanguageCode) {
-            case "en":
-                meanings = word.getMeaningsEN();
-                break;
-            case "fr":
-                meanings = word.getMeaningsFR();
-                break;
-            case "es":
-                meanings = word.getMeaningsES();
-                break;
-            default: meanings = word.getMeaningsEN();
-        }
-
-        if (meanings == null || meanings.size() == 0) {
-            meanings = word.getMeaningsEN();
-        }
-
-        return Utilities.getMeaningsExtract(meanings, GlobalConstants.BALANCE_POINT_HISTORY_DISPLAY);
     }
     private void showExitAppDialog() {
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();

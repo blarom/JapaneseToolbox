@@ -12,6 +12,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.provider.BaseColumns;
 
+import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.List;
@@ -139,6 +140,44 @@ public class Word implements Parcelable {
     }
     public boolean getIsLocal() {
         return isLocal;
+    }
+
+    public List<Meaning> getMeaningsByLanguage(String languageCode) {
+        List<Meaning> meanings;
+        switch (languageCode) {
+            case GlobalConstants.LANG_STR_EN:
+                meanings = getMeaningsEN();
+                break;
+            case GlobalConstants.LANG_STR_FR:
+                meanings = getMeaningsFR();
+                break;
+            case GlobalConstants.LANG_STR_ES:
+                meanings = getMeaningsES();
+                break;
+            default: meanings = getMeaningsEN();
+        }
+
+        if (meanings == null || meanings.size() == 0) {
+            meanings = getMeaningsEN();
+        }
+        return meanings;
+    }
+    public String getExtraKeywordsByLanguage(String languageCode) {
+        String extraKeywords;
+        switch (languageCode) {
+            case GlobalConstants.LANG_STR_EN:
+                extraKeywords = getExtraKeywordsEN();
+                break;
+            case GlobalConstants.LANG_STR_FR:
+                extraKeywords = getExtraKeywordsFR();
+                break;
+            case GlobalConstants.LANG_STR_ES:
+                extraKeywords = getExtraKeywordsES();
+                break;
+            default: extraKeywords = getExtraKeywordsEN();
+        }
+
+        return extraKeywords;
     }
 
     @TypeConverters({JapaneseToolboxDbTypeConverters.class})
