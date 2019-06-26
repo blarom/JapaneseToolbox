@@ -2,28 +2,19 @@ package com.japanesetoolboxapp.resources;
 
 import android.app.Application;
 import android.content.Context;
-import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-import com.livefront.bridge.Bridge;
-import com.livefront.bridge.SavedStateHandler;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import icepick.Icepick;
 
 public class MainApplication extends Application {
 
-    private static final boolean ALLOW_USE_OF_LEAK_CANARY = false;
+    //private static final boolean ALLOW_USE_OF_LEAK_CANARY = false;
 
     @Override public void onCreate() {
         super.onCreate();
 
-        activateLeakCanary();
-        activateBridgeAndIcePick();
+        //activateLeakCanary();
+        //activateBridgeAndIcePick();
         activateFirebase();
 
     }
@@ -33,6 +24,7 @@ public class MainApplication extends Application {
     }
 
 
+    /*
     private RefWatcher refWatcher;
     public static RefWatcher getRefWatcher(Context context) {
         MainApplication application = (MainApplication) context.getApplicationContext();
@@ -50,6 +42,8 @@ public class MainApplication extends Application {
         refWatcher = LeakCanary.install(this);
         // Normal app init code...
     }
+    */
+    /*
     private void activateBridgeAndIcePick() {
 
         Bridge.initialize(getApplicationContext(), new SavedStateHandler() {
@@ -64,6 +58,7 @@ public class MainApplication extends Application {
             }
         });
     }
+    */
     private void activateFirebase() {
 
         /* Enable disk persistence  */

@@ -123,7 +123,7 @@ public class DictionaryFragment extends Fragment implements
     }
     @Override public void onDestroy() {
         super.onDestroy();
-        if (getActivity()!=null && MainApplication.getRefWatcher(getActivity())!=null) MainApplication.getRefWatcher(getActivity()).watch(this);
+        //if (getActivity()!=null && MainApplication.getRefWatcher(getActivity())!=null) MainApplication.getRefWatcher(getActivity()).watch(this);
     }
 
 

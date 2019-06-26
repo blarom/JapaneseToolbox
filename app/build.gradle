@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -11,9 +11,9 @@ android {
     defaultConfig {
         applicationId "com.japanesetoolboxapp"
         minSdkVersion 17
-        targetSdkVersion 28
-        versionCode 67
-        versionName "4.11"
+        targetSdkVersion 29
+        versionCode 70
+        versionName "4.15"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
         ndk.abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
@@ -21,6 +21,7 @@ android {
         buildConfigField("String", "firebaseEmail", firebaseEmail)
         buildConfigField("String", "firebasePass", firebasePass)
     }
+
     signingConfigs {
         release {
             storePassword "default"
@@ -86,7 +87,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:18.0.0'
 
     //3rd-party libraries
-    implementation 'com.rmtheis:tess-two:8.0.0'
+    implementation 'com.rmtheis:tess-two:9.0.0'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.0'
     implementation 'com.jakewharton:butterknife:10.0.0'
@@ -97,12 +98,12 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.1'
-    implementation 'com.github.livefront:bridge:v1.1.2'
-    implementation 'frankiesardo:icepick:3.2.0'
-    annotationProcessor 'frankiesardo:icepick-processor:3.2.0'
+    //debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
+    //releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
+    //debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.1'
+    //implementation 'com.github.livefront:bridge:v1.1.2'
+    //implementation 'frankiesardo:icepick:3.2.0'
+    //annotationProcessor 'frankiesardo:icepick-processor:3.2.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

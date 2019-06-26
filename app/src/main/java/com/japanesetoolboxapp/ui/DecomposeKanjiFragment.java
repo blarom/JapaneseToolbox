@@ -90,7 +90,7 @@ public class DecomposeKanjiFragment extends Fragment implements
     @Override public void onDestroyView() {
         super.onDestroyView();
         mBinding.unbind();
-        if (getActivity()!=null && MainApplication.getRefWatcher(getActivity())!=null) MainApplication.getRefWatcher(getActivity()).watch(this);
+        //if (getActivity()!=null && MainApplication.getRefWatcher(getActivity())!=null) MainApplication.getRefWatcher(getActivity()).watch(this);
     }
     @Override public void onDetach() {
         super.onDetach();

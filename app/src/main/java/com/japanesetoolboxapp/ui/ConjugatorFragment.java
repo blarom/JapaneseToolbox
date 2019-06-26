@@ -152,7 +152,7 @@ public class ConjugatorFragment extends Fragment implements
     @Override public void onDestroyView() {
         super.onDestroyView();
         mBinding.unbind();
-        if (getActivity()!=null && MainApplication.getRefWatcher(getActivity())!=null) MainApplication.getRefWatcher(getActivity()).watch(this);
+        //if (getActivity()!=null && MainApplication.getRefWatcher(getActivity())!=null) MainApplication.getRefWatcher(getActivity()).watch(this);
     }
 
 
