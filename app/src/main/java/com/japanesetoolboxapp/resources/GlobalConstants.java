@@ -324,14 +324,19 @@ public final class GlobalConstants {
     }
 
 	private static int ColIndexConverter(String colIndexLetter) {
-	   int colIndexNumber = 0;
-	   int value;
-	   for (int i = 0; i < colIndexLetter.length(); i++) {
-	       if (colIndexLetter.length() == 1) { value = (int)colIndexLetter.charAt(0) - (int)'a'; }
-	       else { value = ((int)colIndexLetter.charAt(0) - (int)'a' + 1)*26 + (int)colIndexLetter.charAt(1) - (int)'a' + 1; }
-	       colIndexNumber = value;
-	   }
-	   return colIndexNumber;
+        int colIndexNumber = 0;
+        int value = 0;
+        if (colIndexLetter.length() == 1) {
+            value = (int)colIndexLetter.charAt(0) - (int)'a';
+        }
+        else if (colIndexLetter.length() == 2) {
+            value = ((int)colIndexLetter.charAt(0) - (int)'a' + 1)*26 + (int)colIndexLetter.charAt(1) - (int)'a' + 1;
+        }
+        else if (colIndexLetter.length() == 3) {
+            value = (((int)colIndexLetter.charAt(0) - (int)'a' + 1)*26 + (int)colIndexLetter.charAt(1) - (int)'a' + 1)*26 + (int)colIndexLetter.charAt(2) - (int)'a' + 1;
+        }
+        colIndexNumber = value;
+        return colIndexNumber;
 	}
 
     public static final String QUERY_HISTORY_ELEMENTS_DELIMITER = ";";

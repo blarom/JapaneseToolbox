@@ -1322,14 +1322,12 @@ public final class Utilities {
         } catch (Exception e) {
             System.out.println("Error in CsvFileReader !!!");
             e.printStackTrace();
-            Log.i("Diagnosis Time","Error in CsvFileReader opening Loaded DecompositionDatabase_PART4. Line number:"+line_number);
         } finally {
             try {
                 if (fileReader != null) {fileReader.close();}
             } catch (IOException e) {
                 System.out.println("Error while closing fileReader !!!");
                 e.printStackTrace();
-                Log.i("Diagnosis Time","Error in CsvFileReader closing Loaded DecompositionDatabase_PART4.");
             }
         }
 

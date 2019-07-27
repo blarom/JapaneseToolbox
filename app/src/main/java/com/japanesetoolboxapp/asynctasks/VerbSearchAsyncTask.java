@@ -580,15 +580,15 @@ public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
 
                 //region Only allowing searches on verbs that satisfy the following conditions (including identical 1st char, kuru/suru/da, query length)
                 if (    !(     (mInputQueryTextType == TYPE_LATIN && (romaji.charAt(0) == mInputQueryContatenated.charAt(0)))
-                        || ((mInputQueryTextType == TYPE_HIRAGANA || mInputQueryTextType == TYPE_KATAKANA)
-                        && (hiraganaFirstChar == mInputQueryTransliteratedKanaForm.charAt(0)))
-                        || (mInputQueryTextType == TYPE_KANJI && kanjiRoot.contains(mInputQueryContatenated.substring(0,1)))
-                        || romaji.contains("kuru")
-                        || romaji.equals("suru")
-                        || romaji.equals("da") )
+                            || ((mInputQueryTextType == TYPE_HIRAGANA || mInputQueryTextType == TYPE_KATAKANA)
+                            && (hiraganaFirstChar == mInputQueryTransliteratedKanaForm.charAt(0)))
+                            || (mInputQueryTextType == TYPE_KANJI && kanjiRoot.contains(mInputQueryContatenated.substring(0,1)))
+                            || romaji.contains("kuru")
+                            || romaji.equals("suru")
+                            || romaji.equals("da") )
                         || (mInputQueryTextType == TYPE_LATIN && mInputQueryContatenated.length() < 4 && !romaji.contains(mInputQueryContatenated))
                         || ((mInputQueryTextType == TYPE_HIRAGANA || mInputQueryTextType == TYPE_KATAKANA)
-                        && mInputQueryContatenated.length() < 3 && !romaji.contains(mInputQueryTransliteratedLatinFormContatenated))
+                            && mInputQueryContatenated.length() < 3 && !romaji.contains(mInputQueryTransliteratedLatinFormContatenated))
                         || (mInputQueryTextType == TYPE_KANJI && mInputQueryContatenated.length() < 3 && !mInputQueryContatenated.contains(kanjiRoot))
                         || (onlyRetrieveShortRomajiVerbs && romaji.length() > 4)     ) {
                     continue;
@@ -596,16 +596,11 @@ public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
                 //endregion
 
                 //region If the verb is equal to a family conjugation, only roots with length 1 (ie. iru/aru/eru/oru/uru verbs only) or a verb with the exact romaji value are considered. This prevents too many results. This does not conflict with da or kuru.
-                if (        queryIsContainedInNormalFamilyConjugation
-                        && latinRoot.length() > 1
-                        ||  queryIsContainedInASuruConjugation
-                        && !(kanjiRoot.equals("為"))
-                        ||  queryIsContainedInAKuruConjugation
-                        && !romaji.contains("kuru")
-                        ||  queryIsContainedInADesuConjugation
-                        && !romaji.equals("da")
-                        || queryIsContainedInIruVerbConjugation
-                        && !romaji.equals("iru")) {
+                if (        queryIsContainedInNormalFamilyConjugation && latinRoot.length() > 1
+                        ||  queryIsContainedInASuruConjugation && !(kanjiRoot.equals("為"))
+                        ||  queryIsContainedInAKuruConjugation && !romaji.contains("kuru")
+                        ||  queryIsContainedInADesuConjugation && !romaji.equals("da")
+                        || queryIsContainedInIruVerbConjugation && !romaji.equals("iru")) {
 
                     //If the input is suru then prevent verbs with suru in the conjugations from giving a hit, but allow other verbs with romaji suru to give a hit
                     if (romaji.contains(" suru")) {
@@ -839,15 +834,15 @@ public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
             List<Word.Meaning> meanings;
             String language = "";
             switch (LocaleHelper.getLanguage(contextRef.get())) {
-                case "en":
+                case GlobalConstants.LANG_STR_EN:
                     language = contextRef.get().getResources().getString(R.string.language_label_english).toLowerCase();
                     meanings = currentWord.getMeaningsEN();
                     break;
-                case "fr":
+                case GlobalConstants.LANG_STR_FR:
                     language = contextRef.get().getResources().getString(R.string.language_label_french).toLowerCase();
                     meanings = currentWord.getMeaningsFR();
                     break;
-                case "es":
+                case GlobalConstants.LANG_STR_ES:
                     language = contextRef.get().getResources().getString(R.string.language_label_spanish).toLowerCase();
                     meanings = currentWord.getMeaningsES();
                     break;

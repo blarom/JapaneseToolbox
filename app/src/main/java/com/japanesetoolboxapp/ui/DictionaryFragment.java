@@ -53,7 +53,7 @@ public class DictionaryFragment extends Fragment implements
     @BindView(R.id.dict_results_loading_indicator) ProgressBar mProgressBarLoadingIndicator;
     private static final int WORD_RESULTS_MAX_RESPONSE_DELAY = 2000;
     private static final int MAX_NUMBER_RESULTS_SHOWN = 50;
-    public static final int MAX_NUM_WORDS_TO_SHARE = 30;
+    private static final int MAX_NUM_WORDS_TO_SHARE = 30;
     private static final String DEBUG_TAG = "JT DEBUG";
     private String mInputQuery;
     private List<Word> mLocalMatchingWordsList;
@@ -156,7 +156,7 @@ public class DictionaryFragment extends Fragment implements
         Typeface typeface = Utilities.getPreferenceUseJapaneseFont(getActivity()) ?
                 Typeface.createFromAsset(am, String.format(Locale.JAPAN, "fonts/%s", "DroidSansJapanese.ttf")) : Typeface.DEFAULT;
 
-        mDictionaryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        mDictionaryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         mDictionaryRecyclerView.setNestedScrollingEnabled(true);
         mDictionaryRecyclerViewAdapter = new DictionaryRecyclerViewAdapter(getContext(), this, null, mInputQuery, LocaleHelper.getLanguage(getContext()), typeface);
         mDictionaryRecyclerView.setAdapter(mDictionaryRecyclerViewAdapter);
@@ -215,12 +215,12 @@ public class DictionaryFragment extends Fragment implements
     private void startReverseConjSearchForMatchingVerbs() {
         if (getActivity()!=null) {
             mVerbSearchAsyncTask = new VerbSearchAsyncTask(getContext(), mInputQuery, mConjugationTitles,
-                    mVerbLatinConjDatabase, mVerbKanjiConjDatabase, new ArrayList<Word>(), this);
+                    mVerbLatinConjDatabase, mVerbKanjiConjDatabase, new ArrayList<>(), this);
             mVerbSearchAsyncTask.execute();
         }
     }
     private void showEmptySearchResults() {
-        displayResults(new ArrayList<Word>());
+        displayResults(new ArrayList<>());
     }
     private void displayMergedWordsToUser() {
 
