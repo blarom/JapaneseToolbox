@@ -591,8 +591,10 @@
     <string name="legend_VdaT">verbo desu copula, trans.</string>
     <string name="legend_VguI">verbo gu godan, intrans.</string>
     <string name="legend_VguT">verbo gu godan, trans.</string>
-    <string name="legend_VikuI">verbo iku/yuku clase especial, intrans.</string>
-    <string name="legend_VikuT">verbo iku/yuku clase especial, trans.</string>
+    <string name="legend_VikuI">verbo iku clase especial, intrans.</string>
+    <string name="legend_VikuT">verbo iku clase especial, trans.</string>
+    <string name="legend_VyukuI">verbo yuku clase especial, intrans.</string>
+    <string name="legend_VyukuT">verbo yuku clase especial, trans.</string>
     <string name="legend_VkuI">verbo ku godan, intrans.</string>
     <string name="legend_VkuruI">verbo kuru, intrans.</string>
     <string name="legend_VkuruT">verbo kuru, trans.</string>
@@ -635,7 +637,7 @@
     <string name="legend_ZGg">térm. geología</string>
     <string name="legend_ZH">térm. humorístico</string>
     <string name="legend_ZI">térm. informático</string>
-    <string name="legend_ZL">térm. lingüístico</string>
+    <string name="legend_ZL">térm. linguístico</string>
     <string name="legend_ZLw">térm. legal</string>
     <string name="legend_ZM">térm. de artes marciales</string>
     <string name="legend_ZMc">térm. musical</string>

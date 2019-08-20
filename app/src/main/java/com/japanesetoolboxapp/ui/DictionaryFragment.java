@@ -188,12 +188,10 @@ public class DictionaryFragment extends Fragment implements
 
             //Preventing computation/connectivity delays from freezing the UI thread
             mOverrideDisplayConditions = false;
-            new Handler().postDelayed(new Runnable() {
-                @Override public void run() {
-                    mOverrideDisplayConditions = true;
-                    Log.i(DEBUG_TAG, "Displaying merged words at WORD_RESULTS_MAX_RESPONSE_DELAY");
-                    if (!mAlreadyDisplayedResults) displayMergedWordsToUser();
-                }
+            new Handler().postDelayed(() -> {
+                mOverrideDisplayConditions = true;
+                Log.i(DEBUG_TAG, "Displaying merged words at WORD_RESULTS_MAX_RESPONSE_DELAY");
+                if (!mAlreadyDisplayedResults) displayMergedWordsToUser();
             }, WORD_RESULTS_MAX_RESPONSE_DELAY);
         }
         else showEmptySearchResults();
@@ -255,7 +253,7 @@ public class DictionaryFragment extends Fragment implements
             mMergedMatchingWordsList = sortWordsAccordingToRanking(mMergedMatchingWordsList);
 
             String text = getString(R.string.found) + " "
-                    + Integer.toString(mLocalMatchingWordsList.size())
+                    + mLocalMatchingWordsList.size()
                     + " "
                     + ((mLocalMatchingWordsList.size()==1)? getString(R.string.local_result) : getString(R.string.local_results));
 
@@ -271,7 +269,7 @@ public class DictionaryFragment extends Fragment implements
                         text += getString(R.string.one_new_or_fuller_online_result);
                         break;
                     default:
-                        text += Integer.toString(mDifferentJishoWords.size()) + " " + getString(R.string.new_or_fuller_online_results);
+                        text += mDifferentJishoWords.size() + " " + getString(R.string.new_or_fuller_online_results);
                         break;
                 }
             }

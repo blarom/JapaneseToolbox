@@ -606,6 +606,8 @@ public final class GlobalConstants {
         map.put("VguT", R.string.legend_VguT);
         map.put("VikuI", R.string.legend_VikuI);
         map.put("VikuT", R.string.legend_VikuT);
+        map.put("VyukuI", R.string.legend_VyukuI);
+        map.put("VyukuT", R.string.legend_VyukuT);
         map.put("VkuI", R.string.legend_VkuI);
         map.put("VkuruI", R.string.legend_VkuruI);
         map.put("VkuruT", R.string.legend_VkuruT);

@@ -1648,7 +1648,7 @@ public final class Utilities {
         verb.setRomaji(verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_ROMAJI]);
         verb.setKanji(verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_KANJI]);
         verb.setAltSpellings(verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_ALT_SPELLINGS]);
-        verb.setHiraganaFirstChar(ConvertFragment.getLatinHiraganaKatakana(verb.getRomaji()).get(1).substring(0,1));
+        verb.setHiraganaFirstChar(ConvertFragment.getLatinHiraganaKatakana(verb.getRomaji()).get(GlobalConstants.TYPE_HIRAGANA).substring(0,1));
 
         //Setting the family
         String MM_index = verbDatabase.get(verbDbRowIndex)[GlobalConstants.COLUMN_MEANING_EN_INDEXES];
@@ -1716,6 +1716,7 @@ public final class Utilities {
             finalWord.setExtraKeywordsJAP(currentLocalWord.getExtraKeywordsJAP());
             finalWord.setIsCommon(currentLocalWord.getIsCommon());
             finalWord.setIsLocal(currentLocalWord.getIsLocal());
+            finalWord.setVerbConjMatchStatus(currentLocalWord.getVerbConjMatchStatus());
 
             //Adjusting and copying alt spellings
             List<String> finalAltSpellings;
@@ -2149,6 +2150,12 @@ public final class Utilities {
                 ) {
             ranking -= 100;
         }
+
+        //If the word is a verb and one of its conjugations is a perfect match, the ranking improves
+        if (currentWord.getVerbConjMatchStatus() == Word.CONJ_MATCH_EXACT) ranking -= 90;
+
+        //If the word is a verb and one of its conjugations is a partial match, the ranking improves a bit
+        if (currentWord.getVerbConjMatchStatus() == Word.CONJ_MATCH_CONTAINED) ranking -= 30;
 
         //If one of the elements in altSpellings is a perfect match, the ranking improves
         for (String element : altSpellings_value.split(",")) {

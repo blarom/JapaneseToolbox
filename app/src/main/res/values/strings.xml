@@ -701,8 +701,10 @@
     <string name="legend_VdaT">verb desu copula, trans.</string>
     <string name="legend_VguI">verb gu godan, intrans.</string>
     <string name="legend_VguT">verb gu godan, trans.</string>
-    <string name="legend_VikuI">verb iku/yuku special class, intrans.</string>
-    <string name="legend_VikuT">verb iku/yuku special class, trans.</string>
+    <string name="legend_VikuI">verb iku special class, intrans.</string>
+    <string name="legend_VikuT">verb iku special class, trans.</string>
+    <string name="legend_VyukuI">verb yuku special class, intrans.</string>
+    <string name="legend_VyukuT">verb yuku special class, trans.</string>
     <string name="legend_VkuI">verb ku godan, intrans.</string>
     <string name="legend_VkuruI">kuru verb, intrans.</string>
     <string name="legend_VkuruT">kuru verb, trans.</string>

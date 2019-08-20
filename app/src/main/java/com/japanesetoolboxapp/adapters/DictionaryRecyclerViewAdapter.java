@@ -231,14 +231,17 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 case GlobalConstants.LANG_STR_EN:
                     language = mContext.getResources().getString(R.string.language_label_english);
                     meanings = word.getMeaningsEN();
+                    keywords = word.getExtraKeywordsEN();
                     break;
                 case GlobalConstants.LANG_STR_FR:
                     language = mContext.getResources().getString(R.string.language_label_french);
                     meanings = word.getMeaningsFR();
+                    keywords = word.getExtraKeywordsFR();
                     break;
                 case GlobalConstants.LANG_STR_ES:
                     language = mContext.getResources().getString(R.string.language_label_spanish);
                     meanings = word.getMeaningsES();
+                    keywords = word.getExtraKeywordsES();
                     break;
             }
 
@@ -363,7 +366,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 }
             }
 
-                if (mShowSources) {
+            if (mShowSources) {
                 sourceInfo.add((word.getIsCommon())? mContext.getString(R.string.common_word) : mContext.getString(R.string.less_common_word));
                 sourceInfo.add((word.getIsLocal()) ? mContext.getString(R.string.source_local_offline) : mContext.getString(R.string.source_edict_online));
             }

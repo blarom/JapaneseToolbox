@@ -1,13 +1,5 @@
 package com.japanesetoolboxapp.data;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.Index;
-import androidx.room.PrimaryKey;
-import androidx.room.TypeConverters;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.provider.BaseColumns;
@@ -16,6 +8,12 @@ import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.List;
+
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 @Entity(tableName = Word.TABLE_NAME, indices = {@Index("uniqueIdentifier")})
 public class Word implements Parcelable {
@@ -35,6 +33,10 @@ public class Word implements Parcelable {
     private static final String COLUMN_WORD_COMMON_STATUS = "isCommon";
     private static final String COLUMN_WORD_IS_LOCAL = "isLocal";
     private static final String COLUMN_WORD_KEYWORDS_JAP = "keywordsJAP";
+    private static final String COLUMN_WORD_CONJ_MATCH_STATUS = "conjMatchStatus";
+    public static final int CONJ_MATCH_NONE = 0;
+    public static final int CONJ_MATCH_EXACT = 1;
+    public static final int CONJ_MATCH_CONTAINED = 2;
 
     public Word() {
     }
@@ -47,6 +49,7 @@ public class Word implements Parcelable {
         extraKeywordsES = in.readString();
         extraKeywordsJAP = in.readString();
         uniqueIdentifier = in.readString();
+        verbConjMatchStatus = in.readInt();
         romaji = in.readString();
         kanji = in.readString();
         altSpellings = in.readString();
@@ -237,6 +240,15 @@ public class Word implements Parcelable {
         return extraKeywordsES;
     }
 
+    @ColumnInfo(name = COLUMN_WORD_CONJ_MATCH_STATUS)
+    private int verbConjMatchStatus = CONJ_MATCH_NONE;
+    public int getVerbConjMatchStatus() {
+        return verbConjMatchStatus;
+    }
+    public void setVerbConjMatchStatus(int status) {
+        verbConjMatchStatus = status;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -250,6 +262,7 @@ public class Word implements Parcelable {
         parcel.writeString(extraKeywordsES);
         parcel.writeString(extraKeywordsJAP);
         parcel.writeString(uniqueIdentifier);
+        parcel.writeInt(verbConjMatchStatus);
         parcel.writeString(romaji);
         parcel.writeString(kanji);
         parcel.writeString(altSpellings);

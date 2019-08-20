@@ -558,7 +558,7 @@
     <string name="legend_NE">élément naturel</string>
     <string name="legend_Nn">nation</string>
     <string name="legend_num">terme numérique</string>
-    <string name="legend_Obs">terme obsolète</string>
+    <string name="legend_Obs">terme obsolet</string>
     <string name="legend_OI">onom./interj.</string>
     <string name="legend_org">org./institution</string>
     <string name="legend_P">pronom</string>
@@ -583,8 +583,10 @@
     <string name="legend_VdaT">verbe desu copula, trans.</string>
     <string name="legend_VguI">verbe gu godan, intrans.</string>
     <string name="legend_VguT">verbe gu godan, trans.</string>
-    <string name="legend_VikuI">verbe classe spéciale iku/yuku, intrans.</string>
-    <string name="legend_VikuT">verbe classe spéciale iku/yuku, trans.</string>
+    <string name="legend_VikuI">verbe classe spéciale iku, intrans.</string>
+    <string name="legend_VikuT">verbe classe spéciale iku, trans.</string>
+    <string name="legend_VyukuI">verbe classe spéciale yuku, intrans.</string>
+    <string name="legend_VyukuT">verbe classe spéciale yuku, trans.</string>
     <string name="legend_VkuI">verbe ku godan, intrans.</string>
     <string name="legend_VkuruI">verbe kuru, intrans.</string>
     <string name="legend_VkuruT">verbe kuru, trans.</string>

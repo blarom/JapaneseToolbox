@@ -9,6 +9,7 @@ import com.japanesetoolboxapp.data.ConjugationTitle;
 import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
 import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.data.Word;
+import com.japanesetoolboxapp.data.WordDao;
 import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.LocaleHelper;
 import com.japanesetoolboxapp.resources.Utilities;
@@ -92,27 +93,75 @@ public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
         }
 
         List<Verb> matchingVerbs = new ArrayList<>();
+        List<long[]> mMatchingVerbIdsAndCols = new ArrayList<>();
         if (!TextUtils.isEmpty(mInputQuery)) {
             setInputQueryParameters();
             getFamilyConjugationIndexes();
 
             String language = LocaleHelper.getLanguage(contextRef.get());
-            List<long[]> mMatchingVerbIdsAndCols = getMatchingVerbIdsAndCols(language);
+            mMatchingVerbIdsAndCols = getMatchingVerbIdsAndCols(language);
             mMatchingVerbIdsAndCols = sortMatchingVerbsList(mMatchingVerbIdsAndCols);
             matchingVerbs = getVerbs(mMatchingVerbIdsAndCols);
         }
 
-        List<Word> matchingWords = new ArrayList<>();
+        List<Long> ids = new ArrayList<>();
+        for (long[] idsAndCols : mMatchingVerbIdsAndCols) {
+            ids.add(idsAndCols[0]);
+        }
+        List<Word> matchingWords = updateWordsWithConjMatchStatus(mJapaneseToolboxCentralRoomDatabase.getWordListByWordIds(ids), matchingVerbs);
         List<Object[]> matchingConjugationParameters = new ArrayList<>();
         for (Verb verb : matchingVerbs) {
-            List<Word> words = mJapaneseToolboxCentralRoomDatabase.getWordsByExactRomajiAndKanjiMatch(verb.getRomaji(), verb.getKanji());
-            if (words.size()>0) matchingWords.add(words.get(0));
+            //List<Word> words = mJapaneseToolboxCentralRoomDatabase.getWordsByExactRomajiAndKanjiMatch(verb.getRomaji(), verb.getKanji());
+            //if (words.size()>0) matchingWords.add(words.get(0));
 
             Object[] parameters = getConjugationParameters(verb, mInputQuery, mInputQueryTransliterations.get(GlobalConstants.TYPE_LATIN));
             matchingConjugationParameters.add(parameters);
         }
 
         return new Object[]{matchingVerbs, matchingWords, matchingConjugationParameters};
+    }
+
+    private List<Word> updateWordsWithConjMatchStatus(List<Word> matchingWords, List<Verb> matchingVerbs) {
+        boolean foundExactMatch;
+        boolean foundContainedMatch;
+        for (Word word : matchingWords) {
+            for (Verb verb : matchingVerbs) {
+                if (verb.getVerbId() == word.getWordId()) {
+                    foundExactMatch = false;
+                    for (Verb.ConjugationCategory category : verb.getConjugationCategories()) {
+                        for (Verb.ConjugationCategory.Conjugation conjugation : category.getConjugations()) {
+                            if (conjugation.getConjugationLatin().equals(mInputQuery) || conjugation.getConjugationKanji().equals(mInputQuery)
+                                    || conjugation.getConjugationLatin().equals(mInputQueryContatenated) || conjugation.getConjugationKanji().equals(mInputQueryContatenated)) {
+                                foundExactMatch = true;
+                                break;
+                            }
+                        }
+                        if (foundExactMatch) break;
+                    }
+                    if (foundExactMatch) {
+                        word.setVerbConjMatchStatus(Word.CONJ_MATCH_EXACT);
+                        break;
+                    }
+
+                    foundContainedMatch = false;
+                    for (Verb.ConjugationCategory category : verb.getConjugationCategories()) {
+                        for (Verb.ConjugationCategory.Conjugation conjugation : category.getConjugations()) {
+                            if (conjugation.getConjugationLatin().contains(mInputQuery) || conjugation.getConjugationKanji().contains(mInputQuery)
+                                || conjugation.getConjugationLatin().contains(mInputQueryContatenated) || conjugation.getConjugationKanji().contains(mInputQueryContatenated)) {
+                                foundContainedMatch = true;
+                                break;
+                            }
+                        }
+                        if (foundContainedMatch) break;
+                    }
+                    if (foundContainedMatch) {
+                        word.setVerbConjMatchStatus(Word.CONJ_MATCH_CONTAINED);
+                    }
+                    break;
+                }
+            }
+        }
+        return matchingWords;
     }
 
     private Object[] getConjugationParameters(Verb verb, String inputQuery, String inputQueryLatin) {
@@ -579,9 +628,9 @@ public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
                 //endregion
 
                 //region Only allowing searches on verbs that satisfy the following conditions (including identical 1st char, kuru/suru/da, query length)
-                if (    !(     (mInputQueryTextType == TYPE_LATIN && (romaji.charAt(0) == mInputQueryContatenated.charAt(0)))
-                            || ((mInputQueryTextType == TYPE_HIRAGANA || mInputQueryTextType == TYPE_KATAKANA)
-                            && (hiraganaFirstChar == mInputQueryTransliteratedKanaForm.charAt(0)))
+                if (    !(     ( mInputQueryTextType == TYPE_LATIN && romaji.charAt(0) == mInputQueryContatenated.charAt(0) )
+                            || ( (mInputQueryTextType == TYPE_HIRAGANA || mInputQueryTextType == TYPE_KATAKANA)
+                                && (hiraganaFirstChar == mInputQueryTransliteratedKanaForm.charAt(0)) )
                             || (mInputQueryTextType == TYPE_KANJI && kanjiRoot.contains(mInputQueryContatenated.substring(0,1)))
                             || romaji.contains("kuru")
                             || romaji.equals("suru")
@@ -607,7 +656,9 @@ public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
                         allowExpandedConjugationsComparison = false;
                     }
                     //Otherwise, if the verb does not meet the above conditions, skip this verb
-                    else continue;
+                    else {
+                        continue;
+                    }
                 }
                 //endregion
 
