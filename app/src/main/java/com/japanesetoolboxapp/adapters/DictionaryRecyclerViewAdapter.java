@@ -223,6 +223,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             String kanji = word.getKanji();
             String alternatespellings = word.getAltSpellings();
             String keywords = word.getExtraKeywordsEN();
+            String matchingConj = word.getMatchingConj() == null? "" : word.getMatchingConj();
             String type = "";
             List<Word.Meaning> meanings = new ArrayList<>();
 
@@ -348,10 +349,18 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         String keyword = element.trim();
                         if (!romaji.contains(keyword) && !kanji.contains(keyword) && !alternatespellings.contains(keyword)
                                 && !cumulative_meaning_value.toString().contains(keyword)) {
-                            sourceInfo.add((typeIsVerb)? mContext.getString(R.string.from_conjugated_form)+" \"" + keyword + "\"." : mContext.getString(R.string.from_associated_word)+" \"" + keyword + "\".");
+                            sourceInfo.add(mContext.getString(R.string.from_associated_word)+" \"" + keyword + "\".");
                             break;
                         }
                     }
+                }
+                else if (!TextUtils.isEmpty(matchingConj)
+                        && word.getVerbConjMatchStatus() == Word.CONJ_MATCH_EXACT
+                            || word.getVerbConjMatchStatus() == Word.CONJ_MATCH_CONTAINED
+                        && matchingConj.contains(mInputQuery)
+                            || matchingConj.contains(inputQueryNoSpaces)
+                            || matchingConj.contains(inputQueryLatin)) {
+                    sourceInfo.add((typeIsVerb)? mContext.getString(R.string.from_conjugated_form)+" \"" + matchingConj + "\"." : mContext.getString(R.string.from_associated_word)+" \"" + matchingConj + "\".");
                 }
                 else if ((mInputQueryTextType == GlobalConstants.TYPE_KANJI
                         && kanji.length() > 0 && !kanji.substring(0, 1).equals(mInputQueryFirstLetter))

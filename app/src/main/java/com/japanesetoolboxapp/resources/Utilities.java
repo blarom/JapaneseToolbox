@@ -1717,6 +1717,7 @@ public final class Utilities {
             finalWord.setIsCommon(currentLocalWord.getIsCommon());
             finalWord.setIsLocal(currentLocalWord.getIsLocal());
             finalWord.setVerbConjMatchStatus(currentLocalWord.getVerbConjMatchStatus());
+            finalWord.setMatchingConj(currentLocalWord.getMatchingConj());
 
             //Adjusting and copying alt spellings
             List<String> finalAltSpellings;

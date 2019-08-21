@@ -34,6 +34,7 @@ public class Word implements Parcelable {
     private static final String COLUMN_WORD_IS_LOCAL = "isLocal";
     private static final String COLUMN_WORD_KEYWORDS_JAP = "keywordsJAP";
     private static final String COLUMN_WORD_CONJ_MATCH_STATUS = "conjMatchStatus";
+    private static final String COLUMN_WORD_MATCHING_CONJ = "matchingConj";
     public static final int CONJ_MATCH_NONE = 0;
     public static final int CONJ_MATCH_EXACT = 1;
     public static final int CONJ_MATCH_CONTAINED = 2;
@@ -50,6 +51,7 @@ public class Word implements Parcelable {
         extraKeywordsJAP = in.readString();
         uniqueIdentifier = in.readString();
         verbConjMatchStatus = in.readInt();
+        matchingConj = in.readString();
         romaji = in.readString();
         kanji = in.readString();
         altSpellings = in.readString();
@@ -249,6 +251,15 @@ public class Word implements Parcelable {
         verbConjMatchStatus = status;
     }
 
+    @ColumnInfo(name = COLUMN_WORD_MATCHING_CONJ)
+    private String matchingConj;
+    public void setMatchingConj(String matchingConj) {
+        this.matchingConj = matchingConj;
+    }
+    public String getMatchingConj() {
+        return matchingConj;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -263,6 +274,7 @@ public class Word implements Parcelable {
         parcel.writeString(extraKeywordsJAP);
         parcel.writeString(uniqueIdentifier);
         parcel.writeInt(verbConjMatchStatus);
+        parcel.writeString(matchingConj);
         parcel.writeString(romaji);
         parcel.writeString(kanji);
         parcel.writeString(altSpellings);
