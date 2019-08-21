@@ -2152,7 +2152,7 @@ public final class Utilities {
         }
 
         //If the word is a verb and one of its conjugations is a perfect match, the ranking improves
-        if (currentWord.getVerbConjMatchStatus() == Word.CONJ_MATCH_EXACT) ranking -= 90;
+        if (currentWord.getVerbConjMatchStatus() == Word.CONJ_MATCH_EXACT) ranking -= 100;
 
         //If the word is a verb and one of its conjugations is a partial match, the ranking improves a bit
         if (currentWord.getVerbConjMatchStatus() == Word.CONJ_MATCH_CONTAINED) ranking -= 30;

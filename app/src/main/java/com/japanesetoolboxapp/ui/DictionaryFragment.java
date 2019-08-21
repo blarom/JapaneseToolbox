@@ -495,9 +495,9 @@ public class DictionaryFragment extends Fragment implements
         //Adapting the words list to include information used for proper display in the results list
         for (int i = 0; i < mMatchingWordsFromVerbs.size(); i++) {
             Word word = mMatchingWordsFromVerbs.get(i);
-            String matchingConjugation = (String) mMatchingConjugationParameters.get(i)[VerbSearchAsyncTask.MATCHING_CONJUGATION];
             word.setIsLocal(true);
-            word.setExtraKeywordsEN(word.getExtraKeywordsEN() + ", " + matchingConjugation);
+            //String matchingConjugation = (String) mMatchingConjugationParameters.get(i)[VerbSearchAsyncTask.MATCHING_CONJUGATION];
+            //word.setExtraKeywordsEN(word.getExtraKeywordsEN() + ", " + matchingConjugation); //not needed anymore since the verbMatchStatus was added to Word
         }
 
         Log.i(DEBUG_TAG, "Displaying Verb merged words");
