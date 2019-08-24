@@ -645,6 +645,7 @@
     <string name="legend_CE">expression</string>
     <string name="legend_CO">conjunction</string>
     <string name="legend_Col">color</string>
+    <string name="legend_coq">colloquial</string>
     <string name="legend_Cu">culinary term</string>
     <string name="legend_Dg">degree of doing/being</string>
     <string name="legend_DM">day of the month</string>

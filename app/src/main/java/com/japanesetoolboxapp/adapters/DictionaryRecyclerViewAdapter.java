@@ -506,9 +506,16 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             meaningExplanationsLL.setFocusable(false);
             meaningExplanationsLL.setVisibility(View.GONE);
 
+            boolean hasAtLeastOneValidExample = false;
+            for (int j=0; j<currentExplanations.get(0).getExamples().size(); j++) {
+                if (!currentExplanations.get(0).getExamples().get(j).getKanjiSentence().equals("")) {
+                    hasAtLeastOneValidExample = true;
+                    break;
+                }
+            }
             if (!currentExplanations.get(0).getExplanation().equals("")
                     || !currentExplanations.get(0).getRules().equals("")
-                    || currentExplanations.get(0).getExamples().size()>0) {
+                    || currentExplanations.get(0).getExamples().size()>0 && hasAtLeastOneValidExample) {
                 ImageView iv = new ImageView(mContext);
                 iv.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_down_explanations_24dp));
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -590,7 +597,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
                 //region Adding the examples
                 examplesList = currentExplanations.get(i).getExamples();
-                if (examplesList.size()>0) {
+                if (examplesList.size()>0 && hasAtLeastOneValidExample) {
 
                     final List<TextView> examplesTextViews = new ArrayList<>();
 
@@ -618,6 +625,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
                     TextView tv;
                     for (int j=0; j<examplesList.size(); j++) {
+
+                        if (examplesList.get(j).getKanjiSentence().equals("")) continue;
 
                         //Setting the English example characteristics
                         tv = addSubHeaderField(meaningExplanationsLL, SpannableString.valueOf(examplesList.get(j).getLatinSentence()));

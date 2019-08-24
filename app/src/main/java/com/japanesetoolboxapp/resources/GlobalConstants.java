@@ -548,6 +548,7 @@ public final class GlobalConstants {
         map.put("CE", R.string.legend_CE);
         map.put("CO", R.string.legend_CO);
         map.put("Col", R.string.legend_Col);
+        map.put("coq", R.string.legend_coq);
         map.put("Cu", R.string.legend_Cu);
         map.put("Dg", R.string.legend_Dg);
         map.put("DM", R.string.legend_DM);

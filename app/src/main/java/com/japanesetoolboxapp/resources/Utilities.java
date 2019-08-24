@@ -498,7 +498,7 @@ public final class Utilities {
         }
         else if (meanings.size() > balancePoint || balancePoint > 6) {
             for (Word.Meaning meaning : meanings) {
-                addMeaningElementsToListUpToMaxNumber(
+                totalMeaningElements = addMeaningElementsToListUpToMaxNumber(
                         totalMeaningElements, meaning.getMeaning(), 1);
             }
             return TextUtils.join(", ", totalMeaningElements);
