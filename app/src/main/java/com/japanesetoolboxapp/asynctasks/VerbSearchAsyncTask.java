@@ -638,7 +638,7 @@ public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
                         || (mInputQueryTextType == TYPE_LATIN && mInputQueryContatenated.length() < 4 && !romaji.contains(mInputQueryContatenated))
                         || ((mInputQueryTextType == TYPE_HIRAGANA || mInputQueryTextType == TYPE_KATAKANA)
                             && mInputQueryContatenated.length() < 3 && !romaji.contains(mInputQueryTransliteratedLatinFormContatenated))
-                        || (mInputQueryTextType == TYPE_KANJI && mInputQueryContatenated.length() < 3 && !mInputQueryContatenated.contains(kanjiRoot))
+                        || (mInputQueryTextType == TYPE_KANJI && mInputQueryContatenated.length() < 3 && kanjiRoot.length()>0 && !mInputQueryContatenated.contains(kanjiRoot))
                         || (onlyRetrieveShortRomajiVerbs && romaji.length() > 4)     ) {
                     continue;
                 }
