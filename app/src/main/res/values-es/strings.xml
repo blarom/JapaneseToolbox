@@ -266,6 +266,8 @@
     <string name="failed_to_connect_to_internet">Error al conectarse a internet.</string>
     <string name="loading_central_database">Instalando la base de datos central.
          ~ Puede tardar hasta un minuto ~</string>
+    <string name="loading_extended_database">Ha finalizado la instalación de la base de datos central.\nActualmente se está instalando la base de datos extendita.
+         ~ Puede tardar 3-5 minutos ~</string>
     <string name="loading_kanji_database">Ha finalizado la instalación de la base de datos central.\nActualmente se está instalando la base de datos de kanji.
          ~ Puede tardar 3-5 minutos ~</string>
     <string name="finished_loading_databases">Terminé de cargar las bases de datos.</string>
@@ -674,6 +676,20 @@
     <string name="verb_family_da">cópula desu</string>
     <string name="verb_family_kuru">verbo kuru</string>
     <string name="verb_family_suru">verbo suru</string>
+    
+    <string name="legend_NmSu">apellido</string>
+    <string name="legend_NmPl">nombre de lugar</string>
+    <string name="legend_NmU">nombre sin clasificación</string>
+    <string name="legend_NmC">nombre de empresa</string>
+    <string name="legend_NmPr">nombre de producto</string>
+    <string name="legend_NmW">obra de arte, literatura, música, etc. nombre</string>
+    <string name="legend_NmM">nombre masculino o nombre de pila</string>
+    <string name="legend_NmF">nombre femenino o nombre de pila</string>
+    <string name="legend_NmPe">nombre completo de una persona en particular</string>
+    <string name="legend_NmG">nombre de pila o nombre, género no especificado</string>
+    <string name="legend_NmSt">estación de tren</string>
+    <string name="legend_NmO">nombre de organización</string>
+    <string name="legend_NmI">forma kana antigua o irregular</string>
 
     <string name="found">Encontró</string>
     <string name="local_result">resultado local</string>

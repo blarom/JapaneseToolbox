@@ -18,14 +18,15 @@ public class IndexKanji {
     IndexKanji() { }
 
     @Ignore
-    IndexKanji(String kana, String wordIds, @NonNull String kanaIds) {
+    IndexKanji(@NonNull String kana, String wordIds, @NonNull String kanaIds) {
         this.kana = kana;
         this.wordIds = wordIds;
         this.kanaIds = kanaIds;
     }
 
+    @PrimaryKey()
     @ColumnInfo(name = COLUMN_KANA)
-    private String kana;
+    @NonNull private String kana;
     public void setKana(String kana) {
         this.kana = kana;
     }
@@ -42,7 +43,6 @@ public class IndexKanji {
         return wordIds;
     }
 
-    @PrimaryKey()
     @ColumnInfo(index = true, name = COLUMN_KANA_IDS)
     @NonNull private String kanaIds = ".";
     public void setKanaIds(@NonNull String kanaIds) {

@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.ConjugationTitle;
 import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
+import com.japanesetoolboxapp.data.JapaneseToolboxExtendedRoomDatabase;
 import com.japanesetoolboxapp.data.Verb;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.data.WordDao;
@@ -504,7 +505,8 @@ public class VerbSearchAsyncTask extends AsyncTask<Void, Void, Object[]> {
         //For words of length>=4, The matches are determined by the word's keywords list.
         List<Word> mMatchingWords;
         if (mWordsFromDictFragment == null) {
-            List<Long> mMatchingWordIds = Utilities.getMatchingWordIdsAndDoBasicFiltering(mInputQuery, mJapaneseToolboxCentralRoomDatabase, language);
+            List<Long> mMatchingWordIds = ((List<Long>) Utilities.getMatchingWordIdsAndDoBasicFiltering(mInputQuery,
+                    mJapaneseToolboxCentralRoomDatabase, null, language)[0]);
             mMatchingWords = mJapaneseToolboxCentralRoomDatabase.getWordListByWordIds(mMatchingWordIds);
         }
         else {

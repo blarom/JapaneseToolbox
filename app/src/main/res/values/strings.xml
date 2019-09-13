@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name" translatable="false">Japanese Toolbox</string>
+    <string name="app_name" translatable="false">Japagram</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="action_settings" translatable="false">Settings</string>
     <string name="EmptyResult" translatable="false"> </string>
@@ -374,9 +374,11 @@
     <string name="database_finished_loading_flag" translatable="false">database_finished_loading_flag</string>
     <string name="app_preferences" translatable="false">app_preferences</string>
     <string name="loading_central_database">Installing the central words database.\n~ May take up to one minute ~</string>
+    <string name="loading_extended_database">Finished installing the central database.\nCurrently installing the Extended database.\n~ May take up to 3-5 minutes ~</string>
     <string name="loading_kanji_database">Finished installing the central database.\nCurrently installing the Kanji database.\n~ May take up to 3-5 minutes ~</string>
     <string name="finished_loading_databases">Finished loading the databases.</string>
     <string name="word_and_verb_database_finished_loading_flag" translatable="false">word_and_verb_database_finished_loading_flag</string>
+    <string name="extended_database_finished_loading_flag" translatable="false">extended_database_finished_loading_flag</string>
     <string name="database_being_installed">The database is currently being installed.\nThis may take a few minutes.\nThis delay only occurs when installing or upgrading the app.</string>
     <string name="sure_you_want_to_exit">Are you sure you want to exit the app?</string>
     <string name="yes">Yes</string>
@@ -766,7 +768,21 @@
     <string name="legend_Akari">kari-adj.</string>
     <string name="legend_Aku">ku-adj.</string>
     <string name="legend_Ashiku">shiku-adj.</string>
-    
+
+    <string name="legend_NmSu">family or surname</string>
+    <string name="legend_NmPl">place name</string>
+    <string name="legend_NmU">unclassified name</string>
+    <string name="legend_NmC">company name</string>
+    <string name="legend_NmPr">product name</string>
+    <string name="legend_NmW">work of art, literature, music, etc. name</string>
+    <string name="legend_NmM">male given name or forename</string>
+    <string name="legend_NmF">female given name or forename</string>
+    <string name="legend_NmPe">full name of a particular person</string>
+    <string name="legend_NmG">given name or forename, gender not specified</string>
+    <string name="legend_NmSt">railway station</string>
+    <string name="legend_NmO">organization name</string>
+    <string name="legend_NmI">old or irregular kana form</string>
+
     <string name="verb_family_su">su godan</string>
     <string name="verb_family_ku">ku godan</string>
     <string name="verb_family_iku">iku special class</string>

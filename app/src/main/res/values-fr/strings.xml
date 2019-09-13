@@ -259,6 +259,7 @@
     <string name="attempting_download_second_part">. S\'il vous plaît, attendez.</string>
     <string name="failed_to_connect_to_internet">Échec de la connexion à Internet.</string>
     <string name="loading_central_database">Installation de la base de données centrale.\n ~ Peut prendre environ une minute ~</string>
+    <string name="loading_extended_database">Terminé l\'installation de la base de données centrale.\nInstallation de la base de données étendue.\n ~ Peut prendre jusqu\'à 3-5 minutes ~</string>
     <string name="loading_kanji_database">Terminé l\'installation de la base de données centrale.\nInstallation de la base de données de kanji.\n ~ Peut prendre jusqu\'à 3-5 minutes ~</string>
     <string name="finished_loading_databases">Chargement des bases de données accompli.</string>
     <string name="database_being_installed">La base de données est en cours d\'installation.\nCeci pourrait prendre quelques minutes.\nCe délai ne se produit que lors de l\'installation ou de la mise à niveau de l\'application.</string>
@@ -648,7 +649,21 @@
     <string name="legend_Akari">adj. \"kari\"</string>
     <string name="legend_Aku">adj. \"ku\"</string>
     <string name="legend_Ashiku">adj. \"shiku\"</string>
-
+    
+    <string name="legend_NmSu">nom de famille</string>
+    <string name="legend_NmPl">nom de lieu</string>
+    <string name="legend_NmU">nom non-classifié</string>
+    <string name="legend_NmC">nom de société</string>
+    <string name="legend_NmPr">nom de produit</string>
+    <string name="legend_NmW">oeuvre d\'art, littérature, musique, etc.</string>
+    <string name="legend_NmM">prénom masculin</string>
+    <string name="legend_NmF">prénom féminin</string>
+    <string name="legend_NmPe">nom complet d\'une personne particulière</string>
+    <string name="legend_NmG">nom ou prénom, sexe non spécifié</string>
+    <string name="legend_NmSt">station de train</string>
+    <string name="legend_NmO">nom d\'organisation</string>
+    <string name="legend_NmI">forme kana ancienne ou irrégulière</string>
+    
     <string name="verb_family_su">su godan</string>
     <string name="verb_family_ku">ku godan</string>
     <string name="verb_family_iku">classe spéciale iku</string>

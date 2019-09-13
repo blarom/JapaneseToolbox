@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
+import com.japanesetoolboxapp.data.JapaneseToolboxExtendedRoomDatabase;
 import com.japanesetoolboxapp.data.JapaneseToolboxKanjiRoomDatabase;
 import com.japanesetoolboxapp.resources.Utilities;
 
@@ -27,7 +28,9 @@ public class SplashScreenActivity extends BaseActivity {
     @BindView(R.id.splashscreen_time_to_load_textview) TextView mTimeToLoadTextView;
     @BindView(R.id.splashscreen_current_loading_database) TextView mLoadingDatabaseTextView;
     private boolean mLoadedCentralDb;
+    private boolean mLoadedExtendedDb;
     private boolean mLoadedKanjiDb;
+    private boolean mExtendedDbTextAlreadyLoaded;
     private boolean mKanjiDbTextAlreadyLoaded;
     private CountDownTimer countDownTimer;
     private boolean mFirstTick;
@@ -42,7 +45,9 @@ public class SplashScreenActivity extends BaseActivity {
 
         mBinding =  ButterKnife.bind(this);
 
+        mExtendedDbTextAlreadyLoaded = false;
         mKanjiDbTextAlreadyLoaded = false;
+
         mLoadingDatabaseTextView.setText(getString(R.string.loading_central_database));
         Runnable dbLoadRunnable = new Runnable() {
             @Override
@@ -53,6 +58,17 @@ public class SplashScreenActivity extends BaseActivity {
             }
         };
         Thread dbLoadThread = new Thread(dbLoadRunnable);
+        dbLoadThread.start();
+
+        dbLoadRunnable = new Runnable() {
+            @Override
+            public void run() {
+                mLoadedExtendedDb = false;
+                JapaneseToolboxExtendedRoomDatabase japaneseToolboxExtendedRoomDatabase = JapaneseToolboxExtendedRoomDatabase.getInstance(SplashScreenActivity.this); //Required for Room
+                mLoadedExtendedDb = true;
+            }
+        };
+        dbLoadThread = new Thread(dbLoadRunnable);
         dbLoadThread.start();
 
         dbLoadRunnable = new Runnable() {
@@ -81,8 +97,9 @@ public class SplashScreenActivity extends BaseActivity {
                 }
 
                 boolean finishedLoadingWordDatabases = Utilities.getAppPreferenceWordVerbDatabasesFinishedLoadingFlag(SplashScreenActivity.this);
+                boolean finishedLoadingExtendedDatabases = Utilities.getAppPreferenceExtendedDatabasesFinishedLoadingFlag(SplashScreenActivity.this);
                 boolean finishedLoadingKanjiDatabases = Utilities.getAppPreferenceKanjiDatabaseFinishedLoadingFlag(SplashScreenActivity.this);
-                if (!finishedLoadingWordDatabases || !finishedLoadingKanjiDatabases) {
+                if (!finishedLoadingWordDatabases || !finishedLoadingExtendedDatabases || !finishedLoadingKanjiDatabases) {
                     if (mTimeToLoadTextView!=null) mTimeToLoadTextView.setText(R.string.database_being_installed);
                     if (mLoadingDatabaseTextView!=null) mLoadingDatabaseTextView.setVisibility(View.VISIBLE);
                     showLoadingIndicator();
@@ -93,11 +110,15 @@ public class SplashScreenActivity extends BaseActivity {
                     if (mLoadingDatabaseTextView!=null) mLoadingDatabaseTextView.setVisibility(View.GONE);
                 }
 
-                if (mLoadedCentralDb && !mLoadedKanjiDb && !mKanjiDbTextAlreadyLoaded) {
+                if (mLoadedCentralDb && !mLoadedExtendedDb && !mExtendedDbTextAlreadyLoaded) {
+                    mExtendedDbTextAlreadyLoaded = true;
+                    if (mLoadingDatabaseTextView!=null) mLoadingDatabaseTextView.setText(getString(R.string.loading_extended_database));
+                }
+                else if (mLoadedCentralDb && !mLoadedKanjiDb && !mKanjiDbTextAlreadyLoaded) {
                     mKanjiDbTextAlreadyLoaded = true;
                     if (mLoadingDatabaseTextView!=null) mLoadingDatabaseTextView.setText(getString(R.string.loading_kanji_database));
                 }
-                else if (mLoadedCentralDb && mLoadedKanjiDb) {
+                else if (mLoadedCentralDb && mLoadedExtendedDb && mLoadedKanjiDb) {
                     countDownTimer.onFinish();
                     countDownTimer.cancel();
                 }

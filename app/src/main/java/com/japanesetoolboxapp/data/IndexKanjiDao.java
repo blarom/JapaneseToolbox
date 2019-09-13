@@ -35,9 +35,17 @@ public interface IndexKanjiDao {
     @Query("SELECT * FROM " + IndexKanji.TABLE_NAME + " WHERE " + IndexKanji.COLUMN_KANA_IDS + " LIKE :query  || '%' ")
     List<IndexKanji> getKanjiIndexByStartingUTF8Query(String query);
 
+    //Get a IndexKanji list by similar query match - see: https://stackoverflow.com/questions/44234644/android-rooms-search-in-string
+    @Query("SELECT * FROM " + IndexKanji.TABLE_NAME + " WHERE " + IndexKanji.COLUMN_KANA + " LIKE :query  || '%' ")
+    List<IndexKanji> getKanjiIndexByStartingQuery(String query);
+
     //Get a IndexKanji by Exact query match
     @Query("SELECT * FROM " + IndexKanji.TABLE_NAME + " WHERE " + IndexKanji.COLUMN_KANA_IDS + " LIKE :query")
     IndexKanji getKanjiIndexByExactUTF8Query(String query);
+
+    //Get a IndexKanji by Exact query match
+    @Query("SELECT * FROM " + IndexKanji.TABLE_NAME + " WHERE " + IndexKanji.COLUMN_KANA + " LIKE :query")
+    IndexKanji getKanjiIndexByExactQuery(String query);
 
     //Delete a IndexKanji by Kanji
     @Query("DELETE FROM " + IndexKanji.TABLE_NAME + " WHERE " + IndexKanji.COLUMN_KANA + " = :kana")

@@ -143,6 +143,14 @@ public final class GlobalConstants {
     public final static int COLUMN_VERB_ISTEM                   = ColIndexConverter("j");
     public final static int COLUMN_VERB_MASUSTEM                = ColIndexConverter("p");
 
+    public final static int XDB_COL_INDEX                      = 0;
+    public final static int XDB_COL_ROMAJI                     = 1;
+    public final static int XDB_COL_KANJI                      = 2;
+    public final static int XDB_COL_POS                        = 3;
+    public final static int XDB_COL_ALTS                       = 4;
+    public final static int XDB_COL_MEANINGS_EN                = 5;
+    public final static int XDB_COL_MEANINGS_FR                = 6;
+    public final static int XDB_COL_MEANINGS_ES                = 7;
 
     public final static int Index_full = 0;
     public final static int Index_across2 = 1;
@@ -666,7 +674,20 @@ public final class GlobalConstants {
         map.put("ZSp", R.string.legend_ZSp);
         map.put("ZSt", R.string.legend_ZSt);
         map.put("ZZ", R.string.legend_ZZ);
-
+        
+        map.put("NmSu", R.string.legend_NmSu);
+        map.put("NmPl", R.string.legend_NmPl);
+        map.put("NmU", R.string.legend_NmU);
+        map.put("NmC", R.string.legend_NmC);
+        map.put("NmPr", R.string.legend_NmPr);
+        map.put("NmW", R.string.legend_NmW);
+        map.put("NmM", R.string.legend_NmM);
+        map.put("NmF", R.string.legend_NmF);
+        map.put("NmPe", R.string.legend_NmPe);
+        map.put("NmG", R.string.legend_NmG);
+        map.put("NmSt", R.string.legend_NmSt);
+        map.put("NmO", R.string.legend_NmO);
+        map.put("NmI", R.string.legend_NmI);
         return map;
     }
 }

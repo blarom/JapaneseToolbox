@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.text.TextUtils;
 
 import com.japanesetoolboxapp.data.JapaneseToolboxCentralRoomDatabase;
+import com.japanesetoolboxapp.data.JapaneseToolboxExtendedRoomDatabase;
 import com.japanesetoolboxapp.data.Word;
 import com.japanesetoolboxapp.resources.LocaleHelper;
 import com.japanesetoolboxapp.resources.Utilities;
@@ -34,9 +35,15 @@ public class LocalSearchAsyncTask extends AsyncTask<Void, Void, List<Word>> {
         List<Word> localMatchingWordsList = new ArrayList<>();
         if (!TextUtils.isEmpty(mQuery)) {
             JapaneseToolboxCentralRoomDatabase japaneseToolboxCentralRoomDatabase = JapaneseToolboxCentralRoomDatabase.getInstance(contextRef.get());
+            JapaneseToolboxExtendedRoomDatabase japaneseToolboxExtendedRoomDatabase = JapaneseToolboxExtendedRoomDatabase.getInstance(contextRef.get());
             String language = LocaleHelper.getLanguage(contextRef.get());
-            List<Long> matchingWordIds = Utilities.getMatchingWordIdsAndDoBasicFiltering(mQuery, japaneseToolboxCentralRoomDatabase, language);
-            localMatchingWordsList = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(matchingWordIds);
+            Object[] matchingWordIds = Utilities.getMatchingWordIdsAndDoBasicFiltering(mQuery,
+                    japaneseToolboxCentralRoomDatabase, japaneseToolboxExtendedRoomDatabase, language);
+            List<Long> matchingWordIdsCentral = (List<Long>) matchingWordIds[0];
+            List<Long> matchingWordIdsExtended = (List<Long>) matchingWordIds[1];
+            localMatchingWordsList = japaneseToolboxCentralRoomDatabase.getWordListByWordIds(matchingWordIdsCentral);
+            localMatchingWordsList.addAll(japaneseToolboxExtendedRoomDatabase.getWordListByWordIds(matchingWordIdsExtended));
+
         }
 
         return localMatchingWordsList;

@@ -456,7 +456,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             //endregion
 
             //region Setting the antonym
-            if (!antonym.equals("")) {
+            if (!TextUtils.isEmpty(antonym)) {
                 String fullAntonym = mContext.getString(R.string.antonyms_) + " " + antonym;
                 SpannableString fullAntonymSpannable = new SpannableString(fullAntonym);
 
@@ -477,7 +477,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             //endregion
 
             //regionSetting the synonym
-            if (!synonym.equals("")) {
+            if (!TextUtils.isEmpty(synonym)) {
                 String fullSynonym = mContext.getString(R.string.synonyms_) + " " + synonym;
                 SpannableString fullSynonymSpannable = new SpannableString(fullSynonym);
 
@@ -499,6 +499,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
             //regionSetting the explanations collapse/expand button
             final List<Word.Meaning.Explanation> currentExplanations = wordMeaning.getExplanations();
+            if (currentExplanations == null) continue;
             final LinearLayout meaningExplanationsLL = new LinearLayout(mContext);
             meaningExplanationsLL.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             meaningExplanationsLL.setOrientation(LinearLayout.VERTICAL);
@@ -507,15 +508,17 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             meaningExplanationsLL.setVisibility(View.GONE);
 
             boolean hasAtLeastOneValidExample = false;
-            for (int j=0; j<currentExplanations.get(0).getExamples().size(); j++) {
-                if (!currentExplanations.get(0).getExamples().get(j).getKanjiSentence().equals("")) {
-                    hasAtLeastOneValidExample = true;
-                    break;
+            if (currentExplanations.get(0).getExamples() != null) {
+                for (int j = 0; j < currentExplanations.get(0).getExamples().size(); j++) {
+                    if (!currentExplanations.get(0).getExamples().get(j).getKanjiSentence().equals("")) {
+                        hasAtLeastOneValidExample = true;
+                        break;
+                    }
                 }
             }
             if (!currentExplanations.get(0).getExplanation().equals("")
                     || !currentExplanations.get(0).getRules().equals("")
-                    || currentExplanations.get(0).getExamples().size()>0 && hasAtLeastOneValidExample) {
+                    || currentExplanations.get(0).getExamples() != null && currentExplanations.get(0).getExamples().size()>0 && hasAtLeastOneValidExample) {
                 ImageView iv = new ImageView(mContext);
                 iv.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_arrow_drop_down_explanations_24dp));
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -554,7 +557,6 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
             String explanation;
             String rules;
             List<Word.Meaning.Explanation.Example> examplesList;
-
             for (int i = 0; i < currentExplanations.size(); i++) {
                 explanation = currentExplanations.get(i).getExplanation();
                 rules = currentExplanations.get(i).getRules();
@@ -597,7 +599,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
                 //region Adding the examples
                 examplesList = currentExplanations.get(i).getExamples();
-                if (examplesList.size()>0 && hasAtLeastOneValidExample) {
+                if (examplesList != null && examplesList.size() > 0 && hasAtLeastOneValidExample) {
 
                     final List<TextView> examplesTextViews = new ArrayList<>();
 
@@ -606,14 +608,13 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     examplesShowTextView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if (examplesTextViews.size()>0) {
+                            if (examplesTextViews.size() > 0) {
                                 if (examplesTextViews.get(0).getVisibility() == View.VISIBLE) {
                                     examplesShowTextView.setText(mContext.getString(R.string.show_examples));
                                     for (TextView textView : examplesTextViews) {
                                         textView.setVisibility(View.GONE);
                                     }
-                                }
-                                else {
+                                } else {
                                     examplesShowTextView.setText(mContext.getString(R.string.HideExamples));
                                     for (TextView textView : examplesTextViews) {
                                         textView.setVisibility(View.VISIBLE);
@@ -624,7 +625,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                     });
 
                     TextView tv;
-                    for (int j=0; j<examplesList.size(); j++) {
+                    for (int j = 0; j < examplesList.size(); j++) {
 
                         if (examplesList.get(j).getKanjiSentence().equals("")) continue;
 
@@ -645,7 +646,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                         tv = addSubHeaderField(meaningExplanationsLL, SpannableString.valueOf(examplesList.get(j).getKanjiSentence()));
                         tv.setPadding(EXAMPLES_LEFT_PADDING, 0, 0, 16);
                         tv.setVisibility(View.GONE);
-                        if (j < examplesList.size()-1) tv.setPadding(DETAILS_LEFT_PADDING,0,0,32);
+                        if (j < examplesList.size() - 1)
+                            tv.setPadding(DETAILS_LEFT_PADDING, 0, 0, 32);
                         examplesTextViews.add(tv);
                     }
 
@@ -653,7 +655,7 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
                 //endregion
 
                 //region Adding the separator line between explanations
-                if (!rules.equals("") && i < currentExplanations.size()-1) {
+                if (!rules.equals("") && i < currentExplanations.size() - 1) {
                     addExplanationsLineSeparator(meaningExplanationsLL);
                 }
                 //endregion
@@ -727,9 +729,9 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
                 List<Word.Meaning> meanings = new ArrayList<>();
                 switch (mUILanguage) {
-                    case "en": meanings = mWordsList.get(i).getMeaningsEN(); break;
-                    case "fr": meanings = mWordsList.get(i).getMeaningsFR(); break;
-                    case "es": meanings = mWordsList.get(i).getMeaningsES(); break;
+                    case GlobalConstants.LANG_STR_EN: meanings = mWordsList.get(i).getMeaningsEN(); break;
+                    case GlobalConstants.LANG_STR_FR: meanings = mWordsList.get(i).getMeaningsFR(); break;
+                    case GlobalConstants.LANG_STR_ES: meanings = mWordsList.get(i).getMeaningsES(); break;
                 }
                 if (meanings == null || meanings.size()==0) meanings = mWordsList.get(i).getMeaningsEN();
                 boolean[] explanationVisibilities = new boolean[meanings.size()];
