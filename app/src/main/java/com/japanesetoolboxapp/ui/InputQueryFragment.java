@@ -339,6 +339,7 @@ public class InputQueryFragment extends Fragment implements
 
         mInputQueryAutoCompleteTextView.setText(mInputQuery);
         mInputQueryAutoCompleteTextView.setTypeface(mDroidSansJapaneseTypeface);
+        mInputQueryAutoCompleteTextView.setTextColor(Utilities.getResColorValue(getContext(), R.attr.appTextPrimaryColor));
 
         mInputQueryAutoCompleteTextView.setOnEditorActionListener(new EditText.OnEditorActionListener() {
             @Override
@@ -400,11 +401,11 @@ public class InputQueryFragment extends Fragment implements
         mSearchByRadicalButton.setBackgroundResource(0);
         mDecomposeButton.setBackgroundResource(0);
 
-        if (button.getId() == mDictButton.getId()) mDictButton.setBackgroundResource(R.drawable.border_background_accent_color);
-        else if (button.getId() == mConjButton.getId()) mConjButton.setBackgroundResource(R.drawable.border_background_accent_color);
-        else if (button.getId() == mConvertButton.getId()) mConvertButton.setBackgroundResource(R.drawable.border_background_accent_color);
-        else if (button.getId() == mSearchByRadicalButton.getId()) mSearchByRadicalButton.setBackgroundResource(R.drawable.border_background_accent_color);
-        else if (button.getId() == mDecomposeButton.getId()) mDecomposeButton.setBackgroundResource(R.drawable.border_background_accent_color);
+        if (button.getId() == mDictButton.getId()) mDictButton.setBackgroundResource(R.drawable.background_kanji_grid_item);
+        else if (button.getId() == mConjButton.getId()) mConjButton.setBackgroundResource(R.drawable.background_kanji_grid_item);
+        else if (button.getId() == mConvertButton.getId()) mConvertButton.setBackgroundResource(R.drawable.background_kanji_grid_item);
+        else if (button.getId() == mSearchByRadicalButton.getId()) mSearchByRadicalButton.setBackgroundResource(R.drawable.background_kanji_grid_item);
+        else if (button.getId() == mDecomposeButton.getId()) mDecomposeButton.setBackgroundResource(R.drawable.background_kanji_grid_item);
     }
 
 
@@ -1005,7 +1006,7 @@ public class InputQueryFragment extends Fragment implements
     }
     @TargetApi(Build.VERSION_CODES.LOLLIPOP) private void createOcrListDialog(String ocrResult) {
 
-        if (getActivity()==null) return;
+        if (getActivity()==null || getContext() == null) return;
 
         mImageToBeDecoded = adjustImageAfterOCR(mImageToBeDecoded);
 
@@ -1023,12 +1024,15 @@ public class InputQueryFragment extends Fragment implements
         //Adjusting the scrollview height
         final ScrollView ocrResultsScrollView = dialogView.findViewById(R.id.ocrResultsTextViewContainer);
         final TextView ocrResultsTextView = dialogView.findViewById(R.id.ocrResultsTextView);
+        final TextView ocrResultsTextViewDialogInstructions = dialogView.findViewById(R.id.ocrResultsTextViewDialogInstructions);
         final List<String> ocrResultsList = Arrays.asList(ocrResult.split("\\r\\n|\\n|\\r"));
         List<String> textDisplayedInDialog = new ArrayList<>(ocrResultsList);
         for (int i = 0; i < textDisplayedInDialog.size(); i++) {
             textDisplayedInDialog.set(i, "~ " + textDisplayedInDialog.get(i) + " ~");
         }
         ocrResultsTextView.setText(TextUtils.join("\n", textDisplayedInDialog));
+        ocrResultsTextView.setTextColor(Utilities.getResColorValue(getContext(), R.attr.colorAccent));
+        ocrResultsTextViewDialogInstructions.setTextColor(Utilities.getResColorValue(getContext(), R.attr.colorAccentDark));
         ocrResultsScrollView.post(new Runnable() {
             @Override
             public void run() {
@@ -1228,6 +1232,7 @@ public class InputQueryFragment extends Fragment implements
                 queryHistoryElement.setEllipsize(TextUtils.TruncateAt.END);
                 queryHistoryElement.setTypeface(mDroidSansJapaneseTypeface);
                 queryHistoryElement.setGravity(View.TEXT_ALIGNMENT_CENTER|View.TEXT_ALIGNMENT_TEXT_START);
+                queryHistoryElement.setTextColor(Utilities.getResColorValue(getContext(), R.attr.appTextPrimaryColor));
                 return layout;
             }
             else return null;

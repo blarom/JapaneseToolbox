@@ -56,12 +56,20 @@
     <string name="show_info_boxes_when_searching">Show Info Boxes On Search</string>
     <string name="show_decomp_structure_info_text">Show Decomp. Structure Text</string>
     <string name="language_label_japanese">Japanese</string>
+    <string name="theme_color_label_lightbluegreen">Blue-Green, Light Background</string>
+    <string name="theme_color_label_lightredblack">Red-Black, Light Background</string>
     <string name="language_label_english">English</string>
     <string name="language_label_french">French</string>
     <string name="language_label_spanish">Spanish</string>
+    <string name="pref_app_theme_color_key" translatable="false">app_theme_color</string>
     <string name="pref_app_language_key" translatable="false">app_language</string>
+    <string name="pref_app_theme_color">Color Theme</string>
     <string name="pref_app_language">App Language</string>
+    <string name="pref_theme_colors_value_lightbluegreen" translatable="false">lightbluegreen</string>
+    <string name="pref_theme_colors_value_lightredblack" translatable="false">lightredblack</string>
     <string name="pref_language_value_japanese" translatable="false">japanese</string>
+    <string name="pref_theme_color_value_lightbluegreen" translatable="false">lightbluegreen</string>
+    <string name="pref_theme_color_value_lightredblack" translatable="false">lightredblack</string>
     <string name="pref_language_value_english" translatable="false">english</string>
     <string name="pref_language_value_french" translatable="false">french</string>
     <string name="pref_language_value_spanish" translatable="false">spanish</string>

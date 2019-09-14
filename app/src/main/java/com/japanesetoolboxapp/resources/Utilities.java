@@ -20,6 +20,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.provider.MediaStore;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.preference.PreferenceManager;
@@ -29,6 +30,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
@@ -2331,7 +2333,7 @@ public final class Utilities {
         matchingWordIdsCentral = addConjugatedAdjectivesToMatchesList(searchWord, inputTextType, matchingWordIdsCentral, japaneseToolboxCentralRoomDatabase);
         matchingWordIdsCentral = addCountersToMatchesList(searchWord, inputTextType, matchingWordIdsCentral, japaneseToolboxCentralRoomDatabase);
 
-        matchingWordIdsExtended = addNormalMatchesToMatchesList(searchWord, searchWordNoSpaces, inglessVerb, searchWordWithoutTo,
+        if (japaneseToolboxExtendedRoomDatabase != null) matchingWordIdsExtended = addNormalMatchesToMatchesList(searchWord, searchWordNoSpaces, inglessVerb, searchWordWithoutTo,
                 queryIsVerbWithTo, inputTextType, new ArrayList<>(),
                 japaneseToolboxCentralRoomDatabase, japaneseToolboxExtendedRoomDatabase,
                 language, true);
@@ -3167,6 +3169,44 @@ public final class Utilities {
         return sharedPref.getBoolean(context.getString(R.string.extended_database_finished_loading_flag), false);
     }
 
+    public static void setAppPreferenceColorTheme(Context context, String theme) {
+        if (context != null) {
+            SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.app_preferences), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putString(context.getString(R.string.pref_app_theme_color), theme);
+            editor.apply();
+        }
+    }
+    public static String getAppPreferenceColorTheme(Context context) {
+        SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.app_preferences), Context.MODE_PRIVATE);
+        return sharedPref.getString(context.getString(R.string.pref_app_theme_color), context.getString(R.string.pref_theme_color_value_lightbluegreen));
+    }
+    public static boolean changeThemeColor(Activity activity) {
+
+        String themeColor = Utilities.getAppPreferenceColorTheme(activity);
+        boolean changeThemeColor = false;
+        try {
+            int currentTheme = activity.getPackageManager().getActivityInfo(activity.getComponentName(), 0).getThemeResource();
+            if (themeColor.equals(activity.getString(R.string.pref_theme_color_value_lightbluegreen)) && currentTheme != R.style.AppTheme_LightBlueGreen) {
+                activity.setTheme(R.style.AppTheme_LightBlueGreen);
+                changeThemeColor = true;
+            } else if (themeColor.equals(activity.getString(R.string.pref_theme_color_value_lightredblack)) && currentTheme != R.style.AppTheme_LightRedBlack) {
+                activity.setTheme(R.style.AppTheme_LightRedBlack);
+                changeThemeColor = true;
+            }
+            return changeThemeColor;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return changeThemeColor;
+    }
+    public static int getResColorValue(Context context, int res_value){
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(res_value, typedValue, true);
+        @ColorInt int color = typedValue.data;
+        return color;
+    }
 
     //Conjugator Module utilities
     public static List<ConjugationTitle> getConjugationTitles(List<String[]> verbLatinConjDatabase, Context context) {

@@ -108,6 +108,8 @@ public class MainActivity extends BaseActivity implements
 
     //Lifecycle methods
     @Override protected void onCreate(Bundle savedInstanceState) {
+
+        Utilities.changeThemeColor(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

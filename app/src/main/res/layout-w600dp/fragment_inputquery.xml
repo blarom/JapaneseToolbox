@@ -37,7 +37,7 @@
                 android:maxLines="1"
                 android:scrollbars="horizontal"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/textColorSearch" />
+                android:textColor="?attr/textSearchColor" />
 
             <Button
                 android:id="@+id/button_clear_query"

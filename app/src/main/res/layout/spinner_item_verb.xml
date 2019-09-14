@@ -17,7 +17,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginStart="2dp"
 	        android:text="@string/Kanji"
-	        android:textColor="@color/textColorConjugatorVerbChooserPreposition"
+	        android:textColor="@color/appThemeBlueGreen_textConjugatorVerbChooserPreposition"
 	        android:textSize="18sp"
 	        android:textStyle="bold" />
         
@@ -27,7 +27,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginStart="0dp"
 	        android:text="@string/Kanji"
-	        android:textColor="@color/textColorConjugatorVerbChooserKanjiRomaji"
+	        android:textColor="@color/appThemeBlueGreen_textConjugatorVerbChooserKanjiRomaji"
 	        android:textSize="18sp"
 	        android:textStyle="bold" />
     </LinearLayout>
@@ -40,7 +40,7 @@
         android:layout_marginBottom="2dp"
         android:textSize="16sp"
         android:text="@string/English"
-        android:textColor="@color/textColorConjugatorVerbChooserCharacteristics" />
+        android:textColor="@color/appThemeBlueGreen_textConjugatorVerbChooserCharacteristics" />
 
     <TextView
         android:id="@+id/verbchooser_LatinMeaning"
@@ -51,6 +51,6 @@
         android:text="@string/English"
         android:ellipsize="end"
         android:maxLines="4"
-        android:textColor="@color/textColorConjugatorVerbChooserMeaning" />
+        android:textColor="@color/appThemeBlueGreen_textConjugatorVerbChooserMeaning" />
 
 </LinearLayout>

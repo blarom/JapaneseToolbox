@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:alpha="0.9"
         android:focusable="false"
-        android:background="@drawable/border_background_fill_white_edge_accent"
+        android:background="@drawable/background_decompose_fill_white_edge_secondary"
         android:padding="8dp">
 
         <TextView

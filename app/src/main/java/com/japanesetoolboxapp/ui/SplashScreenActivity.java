@@ -27,6 +27,7 @@ public class SplashScreenActivity extends BaseActivity {
     @BindView(R.id.splashscreen_loading_indicator) ProgressBar mProgressBarLoadingIndicator;
     @BindView(R.id.splashscreen_time_to_load_textview) TextView mTimeToLoadTextView;
     @BindView(R.id.splashscreen_current_loading_database) TextView mLoadingDatabaseTextView;
+    @BindView(R.id.splashscreen_loading_database_textview) TextView mLoadingDbTextView;
     private boolean mLoadedCentralDb;
     private boolean mLoadedExtendedDb;
     private boolean mLoadedKanjiDb;
@@ -39,6 +40,7 @@ public class SplashScreenActivity extends BaseActivity {
 
         Log.i("Diagnosis Time", "Started Splashscreen.");
 
+        Utilities.changeThemeColor(this);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splashscreen);
@@ -47,6 +49,8 @@ public class SplashScreenActivity extends BaseActivity {
 
         mExtendedDbTextAlreadyLoaded = false;
         mKanjiDbTextAlreadyLoaded = false;
+
+        mLoadingDbTextView.setTextColor(Utilities.getResColorValue(this, R.attr.colorPrimaryLight));
 
         mLoadingDatabaseTextView.setText(getString(R.string.loading_central_database));
         Runnable dbLoadRunnable = new Runnable() {

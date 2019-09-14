@@ -330,6 +330,7 @@
     <string name="no_elements_found">No se encontraron elementos.</string>
     <string name="language_label_french">Francés</string>
     <string name="language_label_spanish">Español</string>
+    <string name="pref_app_theme_color">Tema de Color</string>
     <string name="pref_app_language">Idioma de la Applicación</string>
     <string name="general">General</string>
     <string name="search">Búsqueda</string>

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <array name="pref_app_theme_color_labels">
+        <item>@string/theme_color_label_lightbluegreen</item>
+        <item>@string/theme_color_label_lightredblack</item>
+    </array>
+
+    <array name="pref_app_theme_color_values">
+        <item>@string/pref_theme_color_value_lightbluegreen</item>
+        <item>@string/pref_theme_color_value_lightredblack</item>
+    </array>
+
     <array name="pref_app_language_labels">
         <item>@string/language_label_english</item>
         <item>@string/language_label_french</item>

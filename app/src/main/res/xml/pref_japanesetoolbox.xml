@@ -4,12 +4,12 @@
     <PreferenceCategory
         android:title="@string/general" />
 
-    <EditTextPreference
-        android:defaultValue="@string/pref_query_history_size_default_value"
-        android:key="@string/pref_query_history_size_key"
-        android:summary="@string/pref_query_history_size_summary"
-        android:inputType="number"
-        android:title="@string/pref_query_history_size_title" />
+    <ListPreference
+        android:defaultValue="@string/pref_theme_colors_value_lightbluegreen"
+        android:entries="@array/pref_app_theme_color_labels"
+        android:entryValues="@array/pref_app_theme_color_values"
+        android:key="@string/pref_app_theme_color_key"
+        android:title="@string/pref_app_theme_color" />
 
     <ListPreference
         android:defaultValue="@string/pref_language_value_english"
@@ -17,6 +17,13 @@
         android:entryValues="@array/pref_app_language_values"
         android:key="@string/pref_app_language_key"
         android:title="@string/pref_app_language" />
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_query_history_size_default_value"
+        android:key="@string/pref_query_history_size_key"
+        android:summary="@string/pref_query_history_size_summary"
+        android:inputType="number"
+        android:title="@string/pref_query_history_size_title" />
 
     <CheckBoxPreference
         android:defaultValue="@bool/pref_use_japanese_font_default"

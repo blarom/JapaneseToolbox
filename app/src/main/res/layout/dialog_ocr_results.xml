@@ -26,6 +26,7 @@
         android:src="@drawable/test_image"/>
 
     <TextView
+        android:id="@+id/ocrResultsTextViewDialogInstructions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ocr_results_dialog_instructions"
@@ -45,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textIsSelectable="true"
-            android:background="@drawable/border_background_fill_white_edge_accent"
+            android:background="@drawable/background_decompose_fill_white_edge_secondary"
             android:lineSpacingMultiplier="1.5"
             android:focusable="true"
             android:textSize="22sp"

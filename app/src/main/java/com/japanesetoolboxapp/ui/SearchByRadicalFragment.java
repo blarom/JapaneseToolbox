@@ -33,7 +33,6 @@ import com.japanesetoolboxapp.asynctasks.ComponentGridCreationAsyncTask;
 import com.japanesetoolboxapp.asynctasks.ComponentsGridFilterAsyncTask;
 import com.japanesetoolboxapp.asynctasks.KanjiSearchAsyncTask;
 import com.japanesetoolboxapp.resources.GlobalConstants;
-import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
@@ -320,10 +319,10 @@ public class SearchByRadicalFragment extends Fragment implements
         mElementCEditTextContainer.setBackgroundResource(0);
         mElementDEditTextContainer.setBackgroundResource(0);
 
-        if (editText.getId() == mElementAEditText.getId()) mElementAEditTextContainer.setBackgroundResource(R.drawable.border_background_three_sided);
-        else if (editText.getId() == mElementBEditText.getId()) mElementBEditTextContainer.setBackgroundResource(R.drawable.border_background_three_sided);
-        else if (editText.getId() == mElementCEditText.getId()) mElementCEditTextContainer.setBackgroundResource(R.drawable.border_background_three_sided);
-        else if (editText.getId() == mElementDEditText.getId()) mElementDEditTextContainer.setBackgroundResource(R.drawable.border_background_three_sided);
+        if (editText.getId() == mElementAEditText.getId()) mElementAEditTextContainer.setBackgroundResource(R.drawable.background_search_by_radical_three_sided);
+        else if (editText.getId() == mElementBEditText.getId()) mElementBEditTextContainer.setBackgroundResource(R.drawable.background_search_by_radical_three_sided);
+        else if (editText.getId() == mElementCEditText.getId()) mElementCEditTextContainer.setBackgroundResource(R.drawable.background_search_by_radical_three_sided);
+        else if (editText.getId() == mElementDEditText.getId()) mElementDEditTextContainer.setBackgroundResource(R.drawable.background_search_by_radical_three_sided);
     }
     private void updateInputElements(String inputQuery) {
 
@@ -345,10 +344,10 @@ public class SearchByRadicalFragment extends Fragment implements
             if (userSelectionIndex==4) break;
         }
 
-        if (!user_selections[0].equals("")) mElementAEditText.setText(user_selections[0]);
-        if (!user_selections[1].equals("")) mElementBEditText.setText(user_selections[1]);
-        if (!user_selections[2].equals("")) mElementCEditText.setText(user_selections[2]);
-        if (!user_selections[3].equals("")) mElementDEditText.setText(user_selections[3]);
+        if (!user_selections[0].equals("")) mElementAEditText.setText(user_selections[0]); else mElementAEditText.setText("");
+        if (!user_selections[1].equals("")) mElementBEditText.setText(user_selections[1]); else mElementBEditText.setText("");
+        if (!user_selections[2].equals("")) mElementCEditText.setText(user_selections[2]); else mElementCEditText.setText("");
+        if (!user_selections[3].equals("")) mElementDEditText.setText(user_selections[3]); else mElementDEditText.setText("");
         //endregion
     }
     private void showStructuresDialog(final String type) {

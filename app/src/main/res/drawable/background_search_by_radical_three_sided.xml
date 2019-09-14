@@ -10,7 +10,7 @@
         <shape android:shape="rectangle">
             <stroke
                 android:width="3dp"
-                android:color="@color/colorAccentLight" />
+                android:color="?attr/elementsBoxBorderColor" />
         </shape>
     </item>
 </layer-list>

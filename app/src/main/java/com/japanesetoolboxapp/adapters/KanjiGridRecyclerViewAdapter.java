@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.japanesetoolboxapp.R;
+import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.Arrays;
 import java.util.List;
@@ -52,7 +53,7 @@ public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGrid
         String kanji = mKanjis.get(position);
         final TextView tv = holder.kanjiTextView;
 
-        if (mKanjiIsSelected[position]) tv.setBackgroundResource(R.drawable.border_background_accent_color);
+        if (mKanjiIsSelected[position]) tv.setBackgroundResource(R.drawable.background_kanji_grid_item);
         else tv.setBackgroundResource(0);
 
         tv.setText(kanji);
@@ -69,13 +70,13 @@ public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGrid
         else if (kanji.contains("variant")) {
             tv.setTextSize(28);
             tv.setText(kanji.substring(0,1));
-            tv.setTextColor(mContext.getResources().getColor(R.color.colorPrimaryLight));
+            tv.setTextColor(Utilities.getResColorValue(mContext, R.attr.colorPrimaryLight));
         }
         else {
             tv.setTextSize(isResultsGrid? 32 : 28);
             tv.setText(kanji);
             tv.setTypeface(null, Typeface.NORMAL);
-            tv.setTextColor(mContext.getResources().getColor(R.color.colorAccentLight));
+            tv.setTextColor(Utilities.getResColorValue(mContext, R.attr.colorAccentLight));
         }
 
         tv.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +102,7 @@ public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGrid
         }
         else {
             createSelectedArray();
-            tv.setBackgroundResource(R.drawable.border_background_accent_color);
+            tv.setBackgroundResource(R.drawable.background_kanji_grid_item);
             mKanjiIsSelected[position] = true;
         }
     }

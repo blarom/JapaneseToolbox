@@ -54,7 +54,7 @@
                         android:id="@+id/search_by_radical_elementA_container"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/border_background_three_sided">
+                        android:background="@drawable/background_search_by_radical_three_sided">
 
                         <EditText
                             android:id="@+id/search_by_radical_elementA"
@@ -107,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="44dp"
                     android:layout_gravity="bottom|center_horizontal"
-                    android:background="@drawable/border_background_accent_color"
+                    android:background="@drawable/background_kanji_grid_item"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -136,7 +136,7 @@
                 android:layout_marginEnd="24dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/border_background_accent_color"
+                android:background="@drawable/background_kanji_grid_item"
                 android:drawableEnd="@drawable/colored_structure_2_overlapping"
                 android:drawablePadding="8dp"
                 android:gravity="center"
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/border_background_primary_color"
+                android:background="@drawable/background_search_by_radical_search"
                 android:paddingEnd="16dp"
                 android:paddingStart="16dp"
                 android:text="@string/find_the_kanji"/>
@@ -161,7 +161,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/border_background_accent_color"
+                android:background="@drawable/background_kanji_grid_item"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:padding="8dp">
@@ -180,7 +180,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
-                    android:background="@drawable/border_background_accent_color"
+                    android:background="@drawable/background_kanji_grid_item"
                     android:drawableEnd="@drawable/colored_structure_2_left_right"
                     android:drawablePadding="8dp"
                     android:gravity="center"
@@ -197,7 +197,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
-                    android:background="@drawable/border_background_accent_color"
+                    android:background="@drawable/background_kanji_grid_item"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -308,14 +308,14 @@
                 android:id="@+id/search_by_radical_results_grid_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/border_background_accent_color"
+                android:background="@drawable/background_kanji_grid_item"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
                 android:padding="8dp">
 
                 <TextView
                     style="@style/SearchByRadicalTextStyle"
-                    android:background="@drawable/border_background_bottom_primary_color"
+                    android:background="@drawable/background_search_by_radical_results_title_underline"
                     android:layout_height="28dp"
                     android:text="@string/results"/>
 

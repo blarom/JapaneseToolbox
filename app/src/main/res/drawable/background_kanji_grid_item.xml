@@ -3,5 +3,5 @@
        android:shape="rectangle">
     <stroke
         android:width="3dp"
-        android:color="@color/colorPrimaryDark" />
+        android:color="?attr/kanjiGridItemBorderColor" />
 </shape>

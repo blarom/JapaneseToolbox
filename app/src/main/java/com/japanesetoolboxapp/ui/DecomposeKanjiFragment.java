@@ -24,7 +24,6 @@ import com.japanesetoolboxapp.R;
 import com.japanesetoolboxapp.asynctasks.KanjiCharacterDecompositionAsyncTask;
 import com.japanesetoolboxapp.resources.GlobalConstants;
 import com.japanesetoolboxapp.resources.LocaleHelper;
-import com.japanesetoolboxapp.resources.MainApplication;
 import com.japanesetoolboxapp.resources.Utilities;
 
 import java.util.ArrayList;
@@ -450,10 +449,10 @@ public class DecomposeKanjiFragment extends Fragment implements
         //region Setting the border color
         if (getContext()!=null) {
             if (kanjiListIndex % 2 == 0) {
-                layout.setBackground(getContext().getResources().getDrawable(R.drawable.border_background_fill_white_edge_accent));
+                layout.setBackground(getContext().getResources().getDrawable(R.drawable.background_decompose_fill_white_edge_secondary));
             }
             else {
-                layout.setBackground(getContext().getResources().getDrawable(R.drawable.border_background_fill_white_edge_primary));
+                layout.setBackground(getContext().getResources().getDrawable(R.drawable.background_decompose_fill_white_edge_primary));
             }
         }
         //endregion

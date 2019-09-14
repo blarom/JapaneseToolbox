@@ -27,7 +27,7 @@
             android:layout_gravity="center_horizontal|start"
             android:text="@string/Conversion"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/textColorPrimary"
+            android:textColor="?attr/appTextPrimaryColor"
             android:textSize="18sp"
             android:textStyle="bold"/>
 
@@ -43,7 +43,7 @@
                 android:layout_marginStart="8dp"
                 android:text="@string/ConversionLatin"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/textColorSecondary"
+                android:textColor="?attr/appTextSecondaryColor"
                 android:textIsSelectable="true"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -56,7 +56,7 @@
                 android:layout_marginStart="6dp"
                 android:text="@string/EmptyResult"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/textColorSecondary"
+                android:textColor="?attr/appTextSecondaryColor"
                 android:textIsSelectable="true"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -74,7 +74,7 @@
                 android:layout_marginStart="8dp"
                 android:text="@string/ConversionHiragana"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/textColorSecondary"
+                android:textColor="?attr/appTextSecondaryColor"
                 android:textIsSelectable="true"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -86,7 +86,7 @@
                 android:layout_marginStart="25dp"
                 android:text="@string/EmptyResult"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/textColorSecondary"
+                android:textColor="?attr/appTextSecondaryColor"
                 android:textIsSelectable="true"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -104,7 +104,7 @@
                 android:layout_marginStart="8dp"
                 android:text="@string/ConversionKatakana"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/textColorSecondary"
+                android:textColor="?attr/appTextSecondaryColor"
                 android:textIsSelectable="true"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
@@ -117,7 +117,7 @@
                 android:layout_marginStart="22dp"
                 android:text="@string/EmptyResult"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/textColorSecondary"
+                android:textColor="?attr/appTextSecondaryColor"
                 android:textIsSelectable="true"
                 android:textSize="18sp"
                 android:textStyle="bold"/>

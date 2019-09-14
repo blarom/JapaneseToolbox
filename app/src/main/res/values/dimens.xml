@@ -23,8 +23,8 @@
     <dimen name="inputQueryButtonWidthAtTopRow">70dp</dimen>
     <dimen name="inputQueryButtonWidthAtBottomRow">120dp</dimen>
 
-    <dimen name="DictionaryGroupItemRomajiKanji">20sp</dimen>
-    <dimen name="DictionaryGroupItemMeanings">18sp</dimen>
+    <dimen name="DictionaryGroupItemRomajiKanji">18sp</dimen>
+    <dimen name="DictionarySubtextSize">16sp</dimen>
 
     <dimen name="AboutTextViewSize">18sp</dimen>
     <dimen name="AboutTextViewSubtextSize">16sp</dimen>

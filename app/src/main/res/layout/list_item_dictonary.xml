@@ -8,8 +8,8 @@
     android:paddingStart="2dp"
     android:paddingEnd="2dp"
     android:paddingTop="2dp"
-    android:paddingBottom="2dp"
-    android:layout_marginBottom="8dp"
+    android:paddingBottom="8dp"
+    android:layout_marginBottom="2dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="start">
 
@@ -23,12 +23,11 @@
         android:clickable="true"
         android:focusable="true"
         android:text="@string/Kanji"
-        android:textColor="@color/colorAccentDark"
+        android:textColor="@color/appThemeBlueGreen_colorAccentDark"
         android:textSize="@dimen/DictionaryGroupItemRomajiKanji"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textStyle="bold" />
-    <!--android:textColor="@color/textColorDictionaryGroupItemRomajiAndKanji"-->
 
     <TextView
         android:id="@+id/list_item_source_info"
@@ -37,8 +36,8 @@
         android:text="@string/NoText"
         android:layout_gravity="start"
         android:layout_marginStart="2dp"
-        android:textColor="@color/textColorDictionaryChildItemKanji"
-        android:textSize="16sp"
+        android:textColor="@color/appThemeBlueGreen_textDictionaryChildItemKanji"
+        android:textSize="@dimen/DictionarySubtextSize"
         app:layout_constraintTop_toBottomOf="@id/list_item_romaji_and_kanji"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="4dp"
@@ -52,14 +51,13 @@
         android:layout_marginBottom="2dp"
         android:paddingBottom="4dp"
         android:gravity="start|center_vertical"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/DictionaryGroupItemMeanings"
+        android:textColor="@color/appThemeBlueGreen_colorPrimary"
+        android:textSize="@dimen/DictionarySubtextSize"
         android:text="@string/English"
         app:layout_constraintTop_toBottomOf="@id/list_item_source_info"
         app:layout_constraintStart_toStartOf="parent"
         android:ellipsize="end"
         android:maxLines="4" />
-    <!--android:textColor="@color/textColorDictionaryGroupItemMeanings"-->
 
 
     <LinearLayout
@@ -68,7 +66,7 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         android:orientation="vertical"
-        android:background="@color/colorSelectedDictResultBackground"
+        android:background="@color/appThemeBlueGreen_colorSelectedDictResultBackground"
         app:layout_constraintTop_toBottomOf="@id/list_item_meanings"
         app:layout_constraintStart_toStartOf="parent"
         android:padding="6dp" >
@@ -86,8 +84,8 @@
                 android:text="@string/NoText"
                 android:layout_gravity="start"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/textColorDictionaryChildItemRomaji"
-                android:textSize="14sp"
+                android:textColor="@color/appThemeBlueGreen_textDictionaryChildItemRomaji"
+                android:textSize="@dimen/DictionarySubtextSize"
                 android:layout_marginBottom="4dp"
                 android:textIsSelectable="true" />
 
@@ -99,8 +97,8 @@
                 android:text="@string/NoText"
                 android:layout_gravity="start"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/textColorDictionaryChildItemKanji"
-                android:textSize="14sp"
+                android:textColor="@color/appThemeBlueGreen_textDictionaryChildItemKanji"
+                android:textSize="@dimen/DictionarySubtextSize"
                 android:layout_marginBottom="4dp"
                 android:textIsSelectable="true" />
 
