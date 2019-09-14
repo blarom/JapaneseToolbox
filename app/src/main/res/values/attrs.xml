@@ -14,6 +14,7 @@
 
     <!--InputQueryFragment colors-->
     <attr name="textSearchColor" format="reference"/>
+    <attr name="buttonBackgroundColor" format="reference"/>
 
     <!--Dictionary colors-->
     <attr name="textDictionaryGroupItemRomajiAndKanjiColor" format="reference"/>

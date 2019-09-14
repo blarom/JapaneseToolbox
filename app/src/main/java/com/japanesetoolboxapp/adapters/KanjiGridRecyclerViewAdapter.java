@@ -65,7 +65,7 @@ public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGrid
                 || kanji.contains("7") || kanji.contains("8") || kanji.contains("9")) {
             tv.setTextSize(26);
             tv.setTypeface(null, Typeface.BOLD);
-            tv.setTextColor(Color.RED);
+            tv.setTextColor(Utilities.getResColorValue(mContext, R.attr.colorAccent));
         }
         else if (kanji.contains("variant")) {
             tv.setTextSize(28);
@@ -76,7 +76,7 @@ public class KanjiGridRecyclerViewAdapter extends RecyclerView.Adapter<KanjiGrid
             tv.setTextSize(isResultsGrid? 32 : 28);
             tv.setText(kanji);
             tv.setTypeface(null, Typeface.NORMAL);
-            tv.setTextColor(Utilities.getResColorValue(mContext, R.attr.colorAccentLight));
+            tv.setTextColor(Utilities.getResColorValue(mContext, R.attr.colorPrimaryDark));
         }
 
         tv.setOnClickListener(new View.OnClickListener() {

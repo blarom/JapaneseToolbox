@@ -15,6 +15,7 @@
         <item name="appTextPrimaryColor">@color/appThemeBlueGreen_appTextPrimary</item>
         <item name="appTextSecondaryColor">@color/appThemeBlueGreen_appTextSecondary</item>
         <item name="textSearchColor">@color/appThemeBlueGreen_textSearch</item>
+        <item name="buttonBackgroundColor">@color/appThemeBlueGreen_buttonBackground</item>
         <item name="textDictionaryGroupItemRomajiAndKanjiColor">@color/appThemeBlueGreen_textDictionaryGroupItemRomajiAndKanji</item>
         <item name="textDictionaryGroupItemMeaningsColor">@color/appThemeBlueGreen_textDictionaryGroupItemMeanings</item>
         <item name="textDictionaryChildItemRomajiColor">@color/appThemeBlueGreen_textDictionaryChildItemRomaji</item>
@@ -53,6 +54,7 @@
         <item name="appTextPrimaryColor">@color/appThemeBlueGreen_appTextPrimary</item>
         <item name="appTextSecondaryColor">@color/appThemeBlueGreen_appTextSecondary</item>
         <item name="textSearchColor">@color/appThemeBlueGreen_textSearch</item>
+        <item name="buttonBackgroundColor">@color/appThemeBlueGreen_buttonBackground</item>
         <item name="textDictionaryGroupItemRomajiAndKanjiColor">@color/appThemeBlueGreen_textDictionaryGroupItemRomajiAndKanji</item>
         <item name="textDictionaryGroupItemMeaningsColor">@color/appThemeBlueGreen_textDictionaryGroupItemMeanings</item>
         <item name="textDictionaryChildItemRomajiColor">@color/appThemeBlueGreen_textDictionaryChildItemRomaji</item>
@@ -91,6 +93,7 @@
         <item name="appTextPrimaryColor">@color/appThemeRedBlack_appTextPrimary</item>
         <item name="appTextSecondaryColor">@color/appThemeRedBlack_appTextSecondary</item>
         <item name="textSearchColor">@color/appThemeRedBlack_textSearch</item>
+        <item name="buttonBackgroundColor">@color/appThemeRedBlack_buttonBackground</item>
         <item name="textDictionaryGroupItemRomajiAndKanjiColor">@color/appThemeRedBlack_textDictionaryGroupItemRomajiAndKanji</item>
         <item name="textDictionaryGroupItemMeaningsColor">@color/appThemeRedBlack_textDictionaryGroupItemMeanings</item>
         <item name="textDictionaryChildItemRomajiColor">@color/appThemeRedBlack_textDictionaryChildItemRomaji</item>

@@ -191,7 +191,8 @@ public class DictionaryRecyclerViewAdapter extends RecyclerView.Adapter<Dictiona
 
         //region Setting the alternate spellings
         if (!TextUtils.isEmpty(alternatespellings)) {
-            String htmlText = "<b>" + mContext.getString(R.string.alternate_forms_) + "</b> " + alternatespellings;
+            //String htmlText = "<b>" + mContext.getString(R.string.alternate_forms_) + "</b> " + alternatespellings;
+            String htmlText = mContext.getString(R.string.alternate_forms_) + " " + alternatespellings;
             TextView tv = addHeaderField(holder.childElementsLinearLayout, Utilities.fromHtml(htmlText));
             tv.setPadding(0, 16, 0, 16);
         }

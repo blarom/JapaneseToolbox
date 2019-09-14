@@ -401,11 +401,11 @@ public class InputQueryFragment extends Fragment implements
         mSearchByRadicalButton.setBackgroundResource(0);
         mDecomposeButton.setBackgroundResource(0);
 
-        if (button.getId() == mDictButton.getId()) mDictButton.setBackgroundResource(R.drawable.background_kanji_grid_item);
-        else if (button.getId() == mConjButton.getId()) mConjButton.setBackgroundResource(R.drawable.background_kanji_grid_item);
-        else if (button.getId() == mConvertButton.getId()) mConvertButton.setBackgroundResource(R.drawable.background_kanji_grid_item);
-        else if (button.getId() == mSearchByRadicalButton.getId()) mSearchByRadicalButton.setBackgroundResource(R.drawable.background_kanji_grid_item);
-        else if (button.getId() == mDecomposeButton.getId()) mDecomposeButton.setBackgroundResource(R.drawable.background_kanji_grid_item);
+        if (button.getId() == mDictButton.getId()) mDictButton.setBackgroundResource(R.drawable.background_full_no_borders);
+        else if (button.getId() == mConjButton.getId()) mConjButton.setBackgroundResource(R.drawable.background_full_no_borders);
+        else if (button.getId() == mConvertButton.getId()) mConvertButton.setBackgroundResource(R.drawable.background_full_no_borders);
+        else if (button.getId() == mSearchByRadicalButton.getId()) mSearchByRadicalButton.setBackgroundResource(R.drawable.background_full_no_borders);
+        else if (button.getId() == mDecomposeButton.getId()) mDecomposeButton.setBackgroundResource(R.drawable.background_full_no_borders);
     }
 
 

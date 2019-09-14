@@ -15,15 +15,41 @@
     <color name="colorAccentDark">@color/appThemeBlueGreen_colorAccentDark</color>
     <color name="colorAccentLight">@color/appThemeBlueGreen_colorAccentLight</color>
 
+<!--    Opacity guide:
+    100% — FF
+    95% — F2
+    90% — E6
+    85% — D9
+    80% — CC
+    75% — BF
+    70% — B3
+    65% — A6
+    60% — 99
+    55% — 8C
+    50% — 80
+    45% — 73
+    40% — 66
+    35% — 59
+    30% — 4D
+    25% — 40
+    20% — 33
+    15% — 26
+    10% — 1A
+    05% — 0D
+    00% — 00
+-->
     <color name="appThemeBlueGreen_colorPrimary">#2e7d32</color>
     <color name="appThemeBlueGreen_colorPrimaryDark">#005005</color>
     <color name="appThemeBlueGreen_colorPrimaryLight">#60ad5e</color>
+    <color name="appThemeBlueGreen_colorPrimaryTransparent">#1a2e7d32</color>
     <color name="appThemeBlueGreen_colorAccent">#303f9f</color>
     <color name="appThemeBlueGreen_colorAccentDark">#001970</color>
     <color name="appThemeBlueGreen_colorAccentLight">#666ad1</color>
+
     <color name="appThemeRedBlack_colorPrimary">#cf2e2e</color>
     <color name="appThemeRedBlack_colorPrimaryDark">#960006</color>
     <color name="appThemeRedBlack_colorPrimaryLight">#ff6458</color>
+    <color name="appThemeRedBlack_colorPrimaryTransparent">#1acf2e2e</color>
     <!--    <color name="appThemeRedBlack_colorPrimary">#960006</color>-->
     <!--    <color name="appThemeRedBlack_colorPrimaryDark">#620000</color>-->
     <!--    <color name="appThemeRedBlack_colorPrimaryLight">#ce422f</color>-->
@@ -40,6 +66,8 @@
     <!--InputQueryFragment colors-->
     <color name="appThemeBlueGreen_textSearch">@color/appThemeBlueGreen_colorPrimaryDark</color>
     <color name="appThemeRedBlack_textSearch">@color/appThemeRedBlack_colorPrimaryDark</color>
+    <color name="appThemeBlueGreen_buttonBackground">@color/appThemeBlueGreen_colorPrimaryTransparent</color>
+    <color name="appThemeRedBlack_buttonBackground">@color/appThemeRedBlack_colorPrimaryTransparent</color>
 
     <!--Dictionary colors-->
     <color name="appThemeBlueGreen_textDictionaryGroupItemRomajiAndKanji">@color/appThemeBlueGreen_colorPrimaryDark</color>
@@ -77,7 +105,7 @@
 
     <!--Search By Radical colors-->
 <!--    <color name="appThemeBlueGreen_textCompositionGridElementDefault">@color/Purple</color>-->
-    <color name="appThemeBlueGreen_textCompositionGridElementDefault">@color/appThemeBlueGreen_colorPrimary</color>
+    <color name="appThemeBlueGreen_textCompositionGridElementDefault">@color/appThemeBlueGreen_colorPrimaryDark</color>
     <color name="appThemeBlueGreen_textCompositionGridElementSelected">@color/appThemeBlueGreen_colorAccent</color>
     <color name="appThemeBlueGreen_colorSelectedDictResultBackground">@color/semiWhite</color>
     <color name="appThemeBlueGreen_elementsBoxBorder">@color/appThemeBlueGreen_colorAccentLight</color>

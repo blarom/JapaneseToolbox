@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Japanese Toolbox</string>
+    <string name="app_name">Japagram</string>
     <string name="splashscreen_intro_sentence">Su asistente personal para descifrar\nel idioma japonés.</string>
     <string name="splashscreen_loading_database">Carga la base de datos local…</string>
     <string name="splashscreen_should_take_only_a_few_seconds">Esto debería tomar sólo unos pocos segundos.</string>
@@ -37,7 +37,11 @@
     <string name="show_info_boxes_when_searching">Mostrar Cuadros de Info de Búsqueda</string>
     <string name="show_decomp_structure_info_text">Mostrar Infos. sobre Estructura</string>
     <string name="language_label_japanese">japonés</string>
+    <string name="theme_color_label_lightbluegreen">Azul-Verde, Fondo Claro</string>
+    <string name="theme_color_label_lightredblack">Rojo-Negro, Fondo Claro</string>
     <string name="language_label_english">Inglés (EE. UU.)</string>
+    <string name="language_label_french">Francés</string>
+    <string name="language_label_spanish">Español</string>
     <string name="pref_preferred_STT_language">Lengua de Voz a Texto</string>
     <string name="pref_preferred_TTS_language">Lengua de Texto a Voz</string>
     <string name="pref_preferred_OCR_language">Lengua del Motor de Reconocimiento</string>
@@ -328,8 +332,6 @@
     <string name="select_the_radical">Selecc. él radical</string>
     <string name="kanji_structure">estructura del kanji</string>
     <string name="no_elements_found">No se encontraron elementos.</string>
-    <string name="language_label_french">Francés</string>
-    <string name="language_label_spanish">Español</string>
     <string name="pref_app_theme_color">Tema de Color</string>
     <string name="pref_app_language">Idioma de la Applicación</string>
     <string name="general">General</string>
