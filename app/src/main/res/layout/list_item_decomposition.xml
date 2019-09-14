@@ -23,7 +23,7 @@
             android:paddingTop="4dp"
             android:text="A"
             android:textIsSelectable="true"
-            android:textSize="30sp"
+            android:textSize="@dimen/DecompKanjiSize"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 

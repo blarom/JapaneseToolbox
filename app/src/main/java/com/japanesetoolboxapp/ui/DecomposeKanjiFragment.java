@@ -10,6 +10,7 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -225,6 +226,7 @@ public class DecomposeKanjiFragment extends Fragment implements
         //region Setting the main Kanji
         kanjiTV.setTypeface(mDroidSansJapaneseTypeface);
         kanjiTV.setTextLocale(Locale.JAPAN);
+        kanjiTV.setTextColor(Utilities.getResColorValue(getContext(), R.attr.colorPrimaryDark));
         setPrintableKanji(kanjiTV, mainKanji);
         kanjiTV.setHint(mainKanji);
         structure_info = getStructureInfo(decomposedKanji.get(0).get(1));
@@ -243,7 +245,7 @@ public class DecomposeKanjiFragment extends Fragment implements
             final TextView tv = new TextView(getContext());
             tv.setLayoutParams(radical_gallery_layoutParams);
             display_text = decomposedKanji.get(i).get(0);
-            text = Utilities.fromHtml("<b><font color='#800080'>" + display_text + "</font></b>");
+            text = Utilities.fromHtml("<font color='"+Utilities.getResColorValue(getContext(), R.attr.colorPrimaryDark)+"'>" + display_text + "</font>");
             clickable_text = new SpannableString(text);
 
             tv.setTypeface(mDroidSansJapaneseTypeface);
@@ -297,7 +299,8 @@ public class DecomposeKanjiFragment extends Fragment implements
                 }
             });
             tv.setTag(Integer.toString(kanjiListIndex)+";"+Integer.toString(radicalIteration)+";"+mainKanji);
-            tv.setTextSize(26);
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.DecompKanjiSize));
+            tv.setTextColor(Utilities.getResColorValue(getContext(), R.attr.colorPrimaryDark));
             tv.setPadding(10,0,10,0);
             tv.setMovementMethod(LinkMovementMethod.getInstance());
             radicalGalleryLL.addView(tv);

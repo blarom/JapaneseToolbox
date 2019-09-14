@@ -48,6 +48,9 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
                 if (currentPreference.getKey().equals(getString(R.string.pref_app_language_key))) {
                     setLanguage(currentPreference);
                 }
+                else if (currentPreference.getKey().equals(getString(R.string.pref_app_theme_color_key))) {
+                    setThemeColor(currentPreference);
+                }
             }
         }
 
@@ -73,9 +76,11 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
                 setSummaryForPreference(currentPreference, sharedPreferences);
                 if (currentPreference.getKey().equals(getString(R.string.pref_app_language_key))) {
                     setLanguage(currentPreference);
+                    if (getActivity() != null) Utilities.restartApplication(getActivity());
                 }
                 else if (currentPreference.getKey().equals(getString(R.string.pref_app_theme_color_key))) {
                     setThemeColor(currentPreference);
+                    if (getActivity() != null) Utilities.restartApplication(getActivity());
                 }
             }
         }
@@ -86,14 +91,12 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
         String currentLanguageCode = LocaleHelper.getLanguage(getContext());
         if (!currentLanguageCode.equals(languageCode)) {
             LocaleHelper.setLocale(getContext(), languageCode);
-            if (getActivity() != null) Utilities.restartApplication(getActivity());
         }
     }
     private void setThemeColor(Preference currentPreference) {
         String themeColor = ((ListPreference) currentPreference).getValue();
         if (getActivity() == null || getContext() == null) return;
         Utilities.setAppPreferenceColorTheme(getContext(), themeColor);
-        Utilities.restartApplication(getActivity());
     }
     private void checkIfValueIsInRangeOrWarnUser(Preference preference, SharedPreferences sharedPreferences) {
         String newValue = sharedPreferences.getString(preference.getKey(), "");

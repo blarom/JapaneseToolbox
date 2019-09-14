@@ -8,12 +8,12 @@
     <color name="Transparent">#80FFFFFF</color>
     <color name="semiWhite">#edf8ff</color>
     
-    <color name="colorPrimary">@color/appThemeBlueGreen_colorPrimary</color>
-    <color name="colorPrimaryDark">@color/appThemeBlueGreen_colorPrimaryDark</color>
-    <color name="colorPrimaryLight">@color/appThemeBlueGreen_colorPrimaryLight</color>
-    <color name="colorAccent">@color/appThemeBlueGreen_colorAccent</color>
-    <color name="colorAccentDark">@color/appThemeBlueGreen_colorAccentDark</color>
-    <color name="colorAccentLight">@color/appThemeBlueGreen_colorAccentLight</color>
+    <color name="colorPrimary">@color/appThemeRedBlack_colorPrimary</color>
+    <color name="colorPrimaryDark">@color/appThemeRedBlack_colorPrimaryDark</color>
+    <color name="colorPrimaryLight">@color/appThemeRedBlack_colorPrimaryLight</color>
+    <color name="colorAccent">@color/appThemeRedBlack_colorAccent</color>
+    <color name="colorAccentDark">@color/appThemeRedBlack_colorAccentDark</color>
+    <color name="colorAccentLight">@color/appThemeRedBlack_colorAccentLight</color>
 
 <!--    Opacity guide:
     100% — FF

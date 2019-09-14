@@ -28,6 +28,8 @@
 
     <dimen name="AboutTextViewSize">18sp</dimen>
     <dimen name="AboutTextViewSubtextSize">16sp</dimen>
+
+    <dimen name="DecompKanjiSize">30sp</dimen>
 a
     <dimen name="list_item_image_double_margin">16dp</dimen>
 
