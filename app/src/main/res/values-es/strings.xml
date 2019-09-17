@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Japagram</string>
-    <string name="splashscreen_intro_sentence">Su asistente personal para descifrar\nel idioma japonés.</string>
+    <string name="app_name">Japanese Toolbox</string>
+    <string name="splashscreen_intro_sentence">¡TENGA EN CUENTA! Japanese Toolbox está siendo descontinuado y ya no estará disponible en Google Play.
+         \ nDescargue la aplicación Japagram para Android: es la misma aplicación gratuita que se continuará actualizando y mejorando.</string>
     <string name="splashscreen_loading_database">Carga la base de datos local…</string>
     <string name="splashscreen_should_take_only_a_few_seconds">Esto debería tomar sólo unos pocos segundos.</string>
     <string name="settings">Ajustes</string>

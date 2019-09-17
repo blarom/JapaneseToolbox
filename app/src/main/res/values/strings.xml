@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name" translatable="false">Japagram</string>
+    <string name="app_name" translatable="false">Japanese Toolbox</string>
     <string name="title_activity_main" translatable="false">MainActivity</string>
     <string name="action_settings" translatable="false">Settings</string>
     <string name="EmptyResult" translatable="false"> </string>
     <string name="NoText" translatable="false"></string>
-    <string name="splashscreen_intro_sentence">Your personal aid for deciphering\nthe Japanese language.</string>
+    <string name="splashscreen_intro_sentence">PLEASE NOTE! Japanese Toolbox is being discontinued and won\'t be available anymore in Google Play.
+        \nPlease download the Japagram Android app - it\'s the same free app, which will continue to be updated and improved.</string>
     <string name="splashscreen_loading_database">Loading Local Database…</string>
     <string name="splashscreen_should_take_only_a_few_seconds">This should only take a few seconds.</string>
     <string name="settings">Settings</string>
